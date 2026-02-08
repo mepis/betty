@@ -1,0 +1,67 @@
+[
+  {
+    "id": "tinyllama-1.1b-chat-q4",
+    "name": "TinyLlama 1.1B Chat",
+    "filename": "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf",
+    "description": "Small but capable chat model, great for testing and low-resource environments",
+    "size": 669229056,
+    "quantization": "Q4_K_M",
+    "url": "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf",
+    "source": "huggingface",
+    "author": "TheBloke",
+    "tags": ["chat", "tiny", "1b", "fast"],
+    "parameters": "1.1B"
+  },
+  {
+    "id": "phi-2-q4",
+    "name": "Phi-2",
+    "filename": "phi-2.Q4_K_M.gguf",
+    "description": "Microsoft's compact 2.7B parameter model with strong reasoning capabilities",
+    "size": 1629167616,
+    "quantization": "Q4_K_M",
+    "url": "https://huggingface.co/TheBloke/phi-2-GGUF/resolve/main/phi-2.Q4_K_M.gguf",
+    "source": "huggingface",
+    "author": "TheBloke",
+    "tags": ["reasoning", "microsoft", "2.7b"],
+    "parameters": "2.7B"
+  },
+  {
+    "id": "llama-2-7b-chat-q4",
+    "name": "Llama 2 7B Chat",
+    "filename": "llama-2-7b-chat.Q4_K_M.gguf",
+    "description": "Meta's Llama 2 7B chat model, fine-tuned for conversational AI",
+    "size": 4368438272,
+    "quantization": "Q4_K_M",
+    "url": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q4_K_M.gguf",
+    "source": "huggingface",
+    "author": "TheBloke",
+    "tags": ["chat", "llama", "7b", "meta"],
+    "parameters": "7B"
+  },
+  {
+    "id": "mistral-7b-instruct-q4",
+    "name": "Mistral 7B Instruct v0.2",
+    "filename": "mistral-7b-instruct-v0.2.Q4_K_M.gguf",
+    "description": "High-quality 7B instruction-following model from Mistral AI",
+    "size": 4368438272,
+    "quantization": "Q4_K_M",
+    "url": "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q4_K_M.gguf",
+    "source": "huggingface",
+    "author": "TheBloke",
+    "tags": ["instruct", "mistral", "7b", "high-quality"],
+    "parameters": "7B"
+  },
+  {
+    "id": "codellama-7b-instruct-q4",
+    "name": "CodeLlama 7B Instruct",
+    "filename": "codellama-7b-instruct.Q4_K_M.gguf",
+    "description": "Meta's code-specialized Llama model for programming tasks",
+    "size": 4208265216,
+    "quantization": "Q4_K_M",
+    "url": "https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/resolve/main/codellama-7b-instruct.Q4_K_M.gguf",
+    "source": "huggingface",
+    "author": "TheBloke",
+    "tags": ["code", "programming", "llama", "7b"],
+    "parameters": "7B"
+  }
+]
