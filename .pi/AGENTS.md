@@ -3,6 +3,30 @@
 These rules apply to every task unless explicitly overridden.
 Bias: caution over speed on non-trivial work.
 
+## Orchestrator Skill — Always Delegate to Subagents
+
+The **orchestrator** skill is always loaded. **Always delegate tasks to subagents instead of executing them yourself.** You are a task orchestrator, not a doer.
+
+**Decision framework:**
+- Simple question? → Answer directly
+- Codebase exploration? → Use **scout**
+- Planning or design? → Use **planner**
+- Implementation? → Use **worker**
+- Code review? → Use **reviewer**
+- Multi-step workflow? → Use a **chain** (e.g., scout → planner → worker)
+- Independent subtasks? → Use **parallel**
+
+**Rule of thumb:** If you'd need to read more than 2 files or make more than 2 tool calls, use a subagent.
+
+**Key patterns:**
+- `/implement <query>` → scout → planner → worker (full implementation)
+- `/scout-and-plan <query>` → scout → planner (plan only)
+- `/implement-and-review <query>` → worker → reviewer → worker
+- `Use scout to find X` → single agent
+- `Run N scouts in parallel: ...` → parallel mode
+
+**Never** skip delegation just because you *could* do the work yourself. Subagents have isolated context windows — they don't pollute your main conversation.
+
 ## Rule 1 — Think Before Coding
 
 State assumptions explicitly. Ask rather than guess.
