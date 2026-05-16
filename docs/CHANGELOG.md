@@ -1,0 +1,51 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- Agent rule: always update `docs/CHANGELOG.md` before every commit (Rule 12 in `.pi/PROJECT_RULES.md`)
+
+## [1.0.0] - 2026-05-16
+
+### Added
+
+- **Full web UI** built with Vue 3, Vite, and Pinia
+- **Real-time streaming chat** via WebSocket communication with pi
+- **Model switching** via dropdown selector in the UI
+- **Thinking level cycling** — click the badge to cycle through levels
+- **Session management** with sidebar (new session, switch, rename)
+- **Context compaction** to manage conversation history
+- **Fork conversations** from any message entry point
+- **Clone sessions** for branching experimentation
+- **Tool call visibility** — shows results of bash, read, edit, write operations
+- **Keyboard shortcuts** — Enter to send, Shift+Enter for newline
+- **Responsive design** — mobile-friendly sidebar with toggle
+- **Dark theme** — GitHub Dark-inspired styling
+- **Settings panel** — configure thinking level, view session info, trigger compaction
+- **HTTPS support** — self-signed certificate auto-generation for local testing
+- **Custom TLS certificates** — support for production-grade certificates
+- **Reverse proxy compatibility** — works behind nginx, Caddy, etc.
+- **Remote access** — serve the UI over HTTPS on any network interface
+- **Model discovery** — auto-detect available models from pi
+- **Verbose logging** — toggleable detailed output for debugging
+- **Session persistence** — sessions stored on disk with configurable directory
+
+### Changed
+
+- Single port architecture: HTTP/HTTPS and WebSocket served from the same port (default 3001)
+- Production builds are served by the Node.js server directly (no separate static file server needed)
+
+### Configuration
+
+- Environment variables for server port, HTTPS, model selection, session storage, and more
+- Frontend variables for WebSocket URL and port customization
+
+### Protocol
+
+- JSON-based WebSocket message protocol supporting prompt, abort, state queries, tool execution events, and more

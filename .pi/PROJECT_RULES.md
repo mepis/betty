@@ -59,3 +59,10 @@ If you think a convention is harmful, surface it. Don't fork silently.
 "Completed" is wrong if anything was skipped silently.
 "Tests pass" is wrong if any were skipped.
 Default to surfacing uncertainty, not hiding it.
+
+## Rule 12 — Always update the changelog on commit
+
+Before every commit to this repo, update `docs/CHANGELOG.md`.
+Summarize all changes since the last release under the `[Unreleased]` section,
+categorized as Added, Changed, Fixed, or Removed.
+This applies to changes made by any session or tool — never skip the changelog.
