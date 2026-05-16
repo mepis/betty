@@ -1,598 +1,259 @@
-# Betty - llama.cpp REST API
+# Betty — AI Coding Assistant (Web UI)
 
-A Node.js REST API wrapper for llama.cpp that provides OpenAI-compatible endpoints for text completion, chat, embeddings, and model management.
-
-## Features
-
-- 🚀 OpenAI-compatible API endpoints
-- 💬 Chat completions with message history
-- 📝 Text completions
-- 🔢 Text embeddings for semantic search
-- 🎯 Model management
-- 🔄 Automatic llama.cpp process management
-- 🛡️ Comprehensive error handling
-- 📊 Request logging
-- ⚙️ Environment-based configuration
-- 🔌 CORS enabled
-
-## Prerequisites
-
-- Node.js 14 or higher
-- llama.cpp built with server executable
-- A GGUF model file
-- For GPU acceleration: NVIDIA CUDA toolkit (optional but recommended)
-
-## Installation
-
-1. **Clone and navigate to the project:**
-   ```bash
-   cd betty
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Build llama.cpp with CUDA support (recommended for NVIDIA GPUs):**
-   ```bash
-   cd llama.cpp
-   cmake -B build -DGGML_CUDA=ON
-   cmake --build build --config Release -j $(nproc)
-   cd ..
-   ```
-
-   The server binary will be at `./llama.cpp/build/bin/llama-server`.
-
-   **For CPU-only build:**
-   ```bash
-   cd llama.cpp
-   cmake -B build
-   cmake --build build --config Release -j $(nproc)
-   cd ..
-   ```
-
-4. **Configure environment:**
-   ```bash
-   cp .env.example .env
-   ```
-
-   Edit `.env` and configure your settings:
-   ```env
-   PORT=3000
-   LLAMA_PORT=8080
-   LLAMA_EXECUTABLE=./llama.cpp/build/bin/llama-server
-   MODEL_PATH=/path/to/your/model.gguf
-   CONTEXT_SIZE=4096
-   THREADS=4
-   GPU_LAYERS=-1
-   ```
-
-## GPU Configuration (NVIDIA CUDA)
-
-Betty supports multi-GPU setups for distributing model layers across multiple NVIDIA GPUs.
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `GPU_LAYERS` | Number of layers to offload to GPU (-1 = all) | `-1` |
-| `MAIN_GPU` | Primary GPU device index (0-based) | `0` |
-| `SPLIT_MODE` | Multi-GPU split strategy | `row` |
-| `TENSOR_SPLIT` | VRAM distribution ratios per GPU | (empty) |
-| `FLASH_ATTENTION` | Enable flash attention | `true` |
-
-### Split Modes
-
-- **`none`** - Use only the main GPU
-- **`layer`** - Split layers across GPUs (simpler, good for different GPU models)
-- **`row`** - Split tensor rows across GPUs (tensor parallelism, best performance)
-
-### Example: Multi-GPU Configuration
-
-For a setup with 3 GPUs (12GB, 12GB, 16GB VRAM):
-
-```env
-GPU_LAYERS=-1
-MAIN_GPU=0
-SPLIT_MODE=row
-TENSOR_SPLIT=12,12,16
-FLASH_ATTENTION=true
-```
-
-The `TENSOR_SPLIT` values represent proportional VRAM allocation. The example allocates work based on each GPU's memory capacity.
-
-### Verifying GPU Usage
-
-Check that your GPUs are being utilized:
-```bash
-watch -n 1 nvidia-smi
-```
-
-## Usage
-
-### Start the Server
-
-```bash
-npm start
-```
-
-The API will start on `http://localhost:3000` (or your configured PORT).
-
-### Development Mode
-
-For auto-restart on file changes:
-```bash
-npm run dev
-```
-
-## API Endpoints
-
-### 1. Health Check
-
-Check if the API and llama.cpp server are running.
-
-```bash
-GET /health
-```
-
-**Response:**
-```json
-{
-  "status": "ok",
-  "llamaServer": {
-    "isRunning": true,
-    "baseUrl": "http://localhost:8080",
-    "pid": 12345
-  },
-  "uptime": 123.456
-}
-```
-
-### 2. Text Completions
-
-Generate text completions from a prompt.
-
-```bash
-POST /v1/completions
-```
-
-**Request Body:**
-```json
-{
-  "prompt": "Once upon a time",
-  "max_tokens": 100,
-  "temperature": 0.8,
-  "top_p": 0.95,
-  "top_k": 40,
-  "repeat_penalty": 1.1,
-  "stop": ["\n\n"]
-}
-```
-
-**Example:**
-```bash
-curl -X POST http://localhost:3000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "prompt": "The capital of France is",
-    "max_tokens": 50,
-    "temperature": 0.7
-  }'
-```
-
-**Response:**
-```json
-{
-  "id": "cmpl-1234567890",
-  "object": "text_completion",
-  "created": 1234567890,
-  "model": "llama",
-  "choices": [
-    {
-      "text": " Paris, which is located in the northern part of the country.",
-      "index": 0,
-      "logprobs": null,
-      "finish_reason": "stop"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 6,
-    "completion_tokens": 15,
-    "total_tokens": 21
-  }
-}
-```
-
-### 3. Chat Completions
-
-Generate chat-style completions with message history.
-
-```bash
-POST /v1/chat/completions
-```
-
-**Request Body:**
-```json
-{
-  "messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "What is the capital of France?"}
-  ],
-  "max_tokens": 100,
-  "temperature": 0.8,
-  "top_p": 0.95
-}
-```
-
-**Example:**
-```bash
-curl -X POST http://localhost:3000/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "messages": [
-      {"role": "system", "content": "You are a helpful assistant."},
-      {"role": "user", "content": "Hello! How are you?"}
-    ],
-    "max_tokens": 100
-  }'
-```
-
-**Response:**
-```json
-{
-  "id": "chatcmpl-1234567890",
-  "object": "chat.completion",
-  "created": 1234567890,
-  "model": "llama",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "Hello! I'm doing well, thank you for asking. How can I help you today?"
-      },
-      "finish_reason": "stop"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 20,
-    "completion_tokens": 18,
-    "total_tokens": 38
-  }
-}
-```
-
-### 4. Embeddings
-
-Generate vector embeddings for text.
-
-```bash
-POST /v1/embeddings
-```
-
-**Request Body:**
-```json
-{
-  "input": "Hello, world!",
-  "model": "llama"
-}
-```
-
-**Multiple Inputs:**
-```json
-{
-  "input": ["Hello, world!", "Goodbye, world!"]
-}
-```
-
-**Example:**
-```bash
-curl -X POST http://localhost:3000/v1/embeddings \
-  -H "Content-Type: application/json" \
-  -d '{
-    "input": "The quick brown fox jumps over the lazy dog"
-  }'
-```
-
-**Response:**
-```json
-{
-  "object": "list",
-  "data": [
-    {
-      "object": "embedding",
-      "embedding": [0.123, -0.456, 0.789, ...],
-      "index": 0
-    }
-  ],
-  "model": "llama",
-  "usage": {
-    "prompt_tokens": 9,
-    "total_tokens": 9
-  }
-}
-```
-
-### 5. List Models
-
-Get information about available models.
-
-```bash
-GET /v1/models
-```
-
-**Example:**
-```bash
-curl http://localhost:3000/v1/models
-```
-
-**Response:**
-```json
-{
-  "object": "list",
-  "data": [
-    {
-      "id": "llama",
-      "object": "model",
-      "created": 1234567890,
-      "owned_by": "local"
-    }
-  ]
-}
-```
-
-### 6. Get Specific Model
-
-Get information about a specific model.
-
-```bash
-GET /v1/models/:model
-```
-
-**Example:**
-```bash
-curl http://localhost:3000/v1/models/llama
-```
-
-## Configuration
-
-All configuration is done through environment variables. See `.env.example` for available options:
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PORT` | API server port | `3000` |
-| `LLAMA_PORT` | llama.cpp server port | `8080` |
-| `LLAMA_HOST` | llama.cpp server host | `localhost` |
-| `LLAMA_EXECUTABLE` | Path to llama.cpp server binary | `./llama.cpp/build/bin/llama-server` |
-| `MODEL_PATH` | Path to GGUF model file | `./models/model.gguf` |
-| `CONTEXT_SIZE` | Context window size | `4096` |
-| `THREADS` | Number of threads | `4` |
-| `BATCH_SIZE` | Batch size for processing | `512` |
-| `SEED` | Random seed (-1 for random) | `-1` |
-| `GPU_LAYERS` | Layers to offload to GPU (-1 = all) | `-1` |
-| `MAIN_GPU` | Primary GPU device index | `0` |
-| `SPLIT_MODE` | Multi-GPU split mode (none/layer/row) | `row` |
-| `TENSOR_SPLIT` | VRAM ratios per GPU (e.g., "12,12,16") | (empty) |
-| `FLASH_ATTENTION` | Enable flash attention | `true` |
-| `HEALTH_CHECK_INTERVAL` | Health check interval (ms) | `5000` |
-| `HEALTH_CHECK_TIMEOUT` | Health check timeout (ms) | `60000` |
-| `HEALTH_CHECK_RETRIES` | Health check retry attempts | `15` |
-| `LOG_LEVEL` | Logging level | `dev` |
-
-## Error Handling
-
-The API returns consistent error responses:
-
-```json
-{
-  "error": {
-    "message": "Error description",
-    "type": "error_type",
-    "code": "error_code"
-  }
-}
-```
-
-Common error codes:
-- `400` - Bad Request (invalid parameters)
-- `404` - Not Found (invalid endpoint)
-- `500` - Internal Server Error
-- `503` - Service Unavailable (llama.cpp server down)
-
-## OpenAI SDK Compatibility
-
-This API is compatible with OpenAI's client libraries. You can use them by pointing the base URL to your Betty server:
-
-### Python
-
-```python
-from openai import OpenAI
-
-client = OpenAI(
-    base_url="http://localhost:3000/v1",
-    api_key="not-needed"  # API key not required but must be set
-)
-
-# Chat completion
-response = client.chat.completions.create(
-    model="llama",
-    messages=[
-        {"role": "user", "content": "Hello!"}
-    ]
-)
-
-print(response.choices[0].message.content)
-```
-
-### JavaScript/TypeScript
-
-```javascript
-import OpenAI from 'openai';
-
-const openai = new OpenAI({
-  baseURL: 'http://localhost:3000/v1',
-  apiKey: 'not-needed'  // API key not required but must be set
-});
-
-const completion = await openai.chat.completions.create({
-  model: 'llama',
-  messages: [
-    { role: 'user', content: 'Hello!' }
-  ]
-});
-
-console.log(completion.choices[0].message.content);
-```
+A modern web interface for [pi](https://pi.dev), the minimal terminal coding harness. Built with **Vue 3**, **Vite**, **Pinia**, and **WebSocket** communication.
 
 ## Architecture
 
 ```
-┌─────────────┐
-│   Client    │
-└──────┬──────┘
-       │ HTTP
-       ▼
-┌─────────────────────┐
-│   Express Server    │
-│   (Port 3000)       │
-├─────────────────────┤
-│ Routes              │
-│ • /v1/completions   │
-│ • /v1/chat/...      │
-│ • /v1/embeddings    │
-│ • /v1/models        │
-└──────┬──────────────┘
-       │ HTTP Proxy
-       ▼
-┌─────────────────────┐
-│  llama.cpp Server   │
-│  (Port 8080)        │
-│  [Child Process]    │
-└─────────────────────┘
+┌──────────────────┐                          ┌──────────────────┐
+│   Vue 3 Frontend  │  HTTP/WS (same port)   │  Node.js Server  │
+│   (Vite dev /     │ ◄────────────────────► │  (HTTPS + WS)    │
+│    Vite build)    │   JSON messages        │                  │
+└──────────────────┘                          └────────┬─────────┘
+                                                       │
+                                                 stdin/stdout (JSONL)
+                                                       │
+                                                ┌──────▼───────┐
+                                                │    pi RPC     │
+                                                │  --mode rpc   │
+                                                └──────────────┘
 ```
 
-The API spawns and manages the llama.cpp server as a child process, automatically starting it on launch and stopping it on shutdown.
+In **dev mode**: Vite dev server (:5173) serves the frontend, proxies API calls to the server (:3001).
+In **production mode**: The Node.js server serves static files from `dist/` and handles WebSocket connections on the same port.
 
-## Graceful Shutdown
+## Prerequisites
 
-The server handles `SIGTERM` and `SIGINT` signals gracefully:
+- **Node.js 20+**
+- **pi** installed globally (`npm install -g @earendil-works/pi-coding-agent`)
+- **API key** for an LLM provider (Anthropic, OpenAI, etc.)
 
-1. Stops accepting new requests
-2. Waits for existing requests to complete
-3. Terminates the llama.cpp server process
-4. Exits cleanly
+### Setting up an API key
 
-Press `Ctrl+C` to trigger graceful shutdown.
+```bash
+# Option 1: Environment variable
+export ANTHROPIC_API_KEY=sk-ant-...
 
-## Logging
+# Option 2: pi login (interactive OAuth)
+pi /login
 
-All HTTP requests are logged with:
-- Request method and path
-- Response status code
-- Response time
-- Response size
+# Option 3: models.json for custom providers
+# Edit ~/.pi/agent/models.json
+```
 
-llama.cpp server output is prefixed with `[llama.cpp]`.
+## Quick Start
 
-## Troubleshooting
+```bash
+# 1. Install dependencies
+npm install
 
-### llama.cpp server fails to start
+# 2. Set your API key (if not already set)
+export ANTHROPIC_API_KEY=sk-ant-...
 
-**Problem:** Error message "Failed to start llama.cpp server"
+# 3. Start both server and frontend (hot-reload)
+npm run dev
 
-**Solutions:**
-- Verify `LLAMA_EXECUTABLE` path is correct
-- Ensure llama.cpp server is built (`make server` in llama.cpp directory)
-- Check that `MODEL_PATH` points to a valid GGUF file
-- Verify the model file is not corrupted
+# 4. Open http://localhost:5173
+```
 
-### Port already in use
+### Separate processes
 
-**Problem:** Error "EADDRINUSE: address already in use"
+```bash
+# Terminal 1 — Backend server
+npm run dev:server
 
-**Solutions:**
-- Change `PORT` or `LLAMA_PORT` in `.env`
-- Kill the process using the port: `lsof -ti:3000 | xargs kill`
+# Terminal 2 — Frontend dev server
+npm run dev:client
+```
 
-### Out of memory errors
+### Production
 
-**Problem:** llama.cpp crashes with memory errors
+```bash
+# Build and start in one command
+npm run start:prod
 
-**Solutions:**
-- Reduce `CONTEXT_SIZE` in `.env`
-- Use a smaller model
-- Increase system swap space
-- Enable GPU offloading with `GPU_LAYERS` if you have a GPU
+# Or separately:
+npm run build
+npm start
+```
 
-### Slow response times
+The server now serves the built frontend **and** handles WebSocket connections on the same port (default 3001).
 
-**Solutions:**
-- Increase `THREADS` to match your CPU cores
-- Enable GPU offloading with `GPU_LAYERS`
-- Reduce `CONTEXT_SIZE`
-- Use a smaller/quantized model
+### Remote Access (HTTPS)
 
-## Development
+For remote access, enable HTTPS. The server supports two modes:
 
-Project structure:
+#### Self-signed certificate (local/testing)
+
+```bash
+# .env
+HTTPS=true
+
+npm run start:prod
+```
+
+On first start, a self-signed certificate is auto-generated in `.certs/`. Trust it in your browser:
+
+- **Chrome**: Visit `https://localhost:3001`, click "Advanced" → "Proceed to localhost"
+- **Firefox**: Visit `https://localhost:3001`, click "Advanced" → "Accept the Risk and Continue"
+
+#### Custom certificate (production)
+
+```bash
+# .env
+HTTPS=true
+HTTPS_CERT_PATH=/path/to/fullchain.pem
+HTTPS_KEY_PATH=/path/to/privkey.pem
+
+npm run start:prod
+```
+
+#### With a reverse proxy (nginx, Caddy, etc.)
+
+For production deployments, use a reverse proxy for TLS termination:
+
+```nginx
+# nginx example
+server {
+    listen 443 ssl;
+    server_name betty.example.com;
+
+    ssl_certificate     /etc/letsencrypt/live/betty.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/betty.example.com/privkey.pem;
+
+    location / {
+        proxy_pass http://localhost:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+Then keep `HTTPS=false` in `.env` (the proxy handles TLS).
+
+## Configuration
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `WS_PORT` | `3001` | Server port (HTTP/HTTPS + WebSocket on same port) |
+| `HTTPS` | `false` | Enable HTTPS (set to `true`) |
+| `HTTPS_CERT_PATH` | — | Path to TLS certificate PEM file |
+| `HTTPS_KEY_PATH` | — | Path to TLS private key PEM file |
+| `PI_PROVIDER` | — | LLM provider (e.g., `anthropic`, `openai`) |
+| `PI_MODEL` | — | Model ID (e.g., `claude-sonnet-4-20250514`) |
+| `PI_NO_SESSION` | `false` | Disable session persistence |
+| `PI_SESSION_DIR` | — | Custom session storage directory |
+| `PI_THINKING_LEVEL` | — | Thinking level (`off`, `minimal`, `low`, `medium`, `high`, `xhigh`) |
+| `PI_VERBOSE` | `false` | Enable verbose logging |
+
+### Frontend
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `VITE_WS_URL` | `ws://localhost:3001` | WebSocket server URL (overrides auto-detection) |
+| `VITE_WS_PORT` | `3001` | WebSocket port (used when VITE_WS_URL is not set) |
+
+## Features
+
+- 💬 Real-time streaming chat with WebSocket
+- 🤖 Model switching (dropdown selector)
+- 💭 Thinking level cycling (click badge)
+- 📂 Session management (sidebar)
+- 🔄 Context compaction
+- ⌨️ Keyboard shortcuts (Enter to send, Shift+Enter for newline)
+- 📱 Responsive design (mobile-friendly sidebar)
+- 🌙 Dark theme (GitHub Dark style)
+- 🛠️ Tool call visibility (shows bash, read, edit, write results)
+- ⚙️ Settings panel (thinking level, session info, compaction)
+
+## WebSocket Protocol
+
+### Client → Server
+
+```json
+{ "type": "prompt", "message": "Hello", "images": [...] }
+{ "type": "abort" }
+{ "type": "set_model", "provider": "anthropic", "modelId": "claude-sonnet-4-20250514" }
+{ "type": "set_thinking_level", "level": "high" }
+{ "type": "cycle_model" }
+{ "type": "cycle_thinking_level" }
+{ "type": "new_session" }
+{ "type": "compact", "customInstructions": "..." }
+{ "type": "get_state" }
+{ "type": "get_messages" }
+{ "type": "get_available_models" }
+{ "type": "get_session_stats" }
+{ "type": "get_fork_messages" }
+{ "type": "fork", "entryId": "..." }
+{ "type": "clone" }
+{ "type": "switch_session", "sessionPath": "..." }
+{ "type": "set_session_name", "name": "..." }
+{ "type": "get_commands" }
+{ "type": "bash", "command": "ls -la" }
+```
+
+### Server → Client
+
+```json
+{ "type": "connected" }
+{ "type": "message_update", "delta": "Hello", "contentIndex": 0 }
+{ "type": "agent_start" }
+{ "type": "agent_end", "messages": [...] }
+{ "type": "tool_execution_start", "toolCallId": "...", "toolName": "bash" }
+{ "type": "tool_execution_end", "toolCallId": "...", "isError": false }
+{ "type": "state", "data": { "model": {...}, "thinkingLevel": "medium" } }
+{ "type": "models", "data": { "models": [...] } }
+{ "type": "error", "message": "..." }
+{ "type": "ui_request", "id": "...", "method": "confirm", ... }
+```
+
+## Project Structure
 
 ```
 betty/
-├── src/
-│   ├── index.js              # Entry point & server setup
-│   ├── config.js             # Configuration loader
-│   ├── services/
-│   │   └── llamaService.js   # llama.cpp process manager
-│   ├── routes/
-│   │   ├── completions.js    # Completion endpoint
-│   │   ├── chat.js           # Chat endpoint
-│   │   ├── embeddings.js     # Embeddings endpoint
-│   │   └── models.js         # Models endpoint
-│   └── middleware/
-│       ├── errorHandler.js   # Error handling
-│       └── logger.js         # Request logging
+├── server.ts              # Node.js backend (HTTPS + WebSocket + RPC wrapper + static files)
+├── vite.config.ts          # Vite configuration
+├── tsconfig.json           # TypeScript configuration
 ├── package.json
-├── .env.example
-└── README.md
+├── index.html              # Entry HTML
+├── .env                    # Environment variables
+├── .certs/                 # Auto-generated self-signed certificates (when HTTPS=true)
+├── dist/                   # Production build output (served by server)
+└── src/
+    ├── main.ts             # Vue app entry
+    ├── App.vue             # Main component (chat UI + modals)
+    ├── types.ts            # TypeScript types for WS protocol
+    ├── stores/
+    │   └── chat.ts         # Pinia store (WebSocket client, state management)
+    └── components/         # (可扩展: 更多组件)
 ```
 
-## Changelog
+## Extending
 
-### [Unreleased] - 2026-01-29
+### Adding new WebSocket commands
 
-#### Added
-- **Automatic Port Retry**: Express server now automatically tries alternative ports (3000, 3001, 3002, etc.) if the configured port is in use. Attempts up to 10 ports before failing. ([#src/index.js](src/index.js))
-- **Server Shutdown Endpoint**: New `POST /api/shutdown` endpoint allows graceful shutdown of both the API server and llama.cpp server via HTTP request. ([#src/index.js](src/index.js))
-- **Admin Menu in Frontend**: Added an admin menu modal in the sidebar footer (gear icon) containing:
-  - Server status information (API Server and llama.cpp status)
-  - Shutdown server button with confirmation dialog
-  - Organized "Danger Zone" section for destructive operations
-  - ([#frontend/src/components/Sidebar.vue](frontend/src/components/Sidebar.vue))
+1. Add the command type to `server.ts` `handlerMap`
+2. Add the corresponding type to `src/types.ts`
+3. Add the handler in `src/stores/chat.ts` `handleWsMessage`
+4. Add UI in `src/App.vue`
 
-#### Fixed
-- **Duplicate Menu Button**: Resolved issue where hamburger menu button was duplicated when sidebar was collapsed. Removed redundant buttons from ChatView and CompletionsView components. ([#frontend/src/views/ChatView.vue](frontend/src/views/ChatView.vue), [#frontend/src/views/CompletionsView.vue](frontend/src/views/CompletionsView.vue))
+### Customizing the theme
 
-#### Changed
-- Updated API endpoint list to include `/api/shutdown` endpoint
-- Reorganized frontend sidebar footer to include admin controls
-- Improved console output to show when fallback ports are used
+Edit CSS variables in `src/App.vue` `:root`:
 
-#### Technical Details
-- Port retry logic uses event-based error handling for `EADDRINUSE` errors
-- Shutdown endpoint includes 100ms delay to ensure HTTP response is sent before process termination
-- Admin menu modal provides extensible structure for future administrative features
+```css
+:root {
+  --bg-primary: #0d1117;
+  --accent: #58a6ff;
+  /* ... */
+}
+```
 
 ## License
 
 MIT
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Acknowledgments
-
-- [llama.cpp](https://github.com/ggerganov/llama.cpp) - The underlying LLM inference engine
-- [Express](https://expressjs.com/) - Web framework
-- OpenAI - API specification inspiration
