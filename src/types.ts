@@ -108,7 +108,6 @@ export interface WsCycleThinkingLevelMessage {
 
 export interface WsMessageUpdate {
   type: "message_update";
-  message: WsAgentMessage;
   assistantMessageEvent: {
     type: "text_delta" | "thinking_delta" | "toolcall_delta" | "text_start" | "text_end" | "thinking_start" | "thinking_end" | "toolcall_start" | "toolcall_end" | "start" | "done" | "error";
     contentIndex?: number;
@@ -217,7 +216,7 @@ export interface WsUiRequest {
   timeout?: number;
 }
 
-export interface WsSessionSwitched { type: "session_switched"; data: { cancelled: boolean }; }
+export interface WsSessionSwitched { type: "session_switched"; data: { cancelled?: boolean } & Record<string, unknown>; }
 
 export interface WsConnected { type: "connected"; }
 

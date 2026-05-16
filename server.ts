@@ -445,7 +445,13 @@ async function handleClientMessage(clientWs: WebSocket, raw: string): Promise<vo
     return;
   }
 
-  const pi = await spawnPiForClient(clientWs);
+  // Ensure the Pi process is running, but don't await if already running
+  // to avoid blocking concurrent messages
+  const existing = clientRpcs.get(clientWs);
+  if (!existing?.isRunning) {
+    await spawnPiForClient(clientWs);
+  }
+  const pi = clientRpcs.get(clientWs)!;
 
   const handlerMap: Record<string, () => Promise<void>> = {
     prompt: async () => {
@@ -495,7 +501,7 @@ async function handleClientMessage(clientWs: WebSocket, raw: string): Promise<vo
 
     new_session: async () => {
       const resp = await pi.send({ type: "new_session" });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: resp }));
+      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
     },
 
     compact: async () => {
@@ -514,12 +520,12 @@ async function handleClientMessage(clientWs: WebSocket, raw: string): Promise<vo
 
     fork: async () => {
       const resp = await pi.send({ type: "fork", entryId: msg.entryId });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: resp }));
+      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
     },
 
     clone: async () => {
       const resp = await pi.send({ type: "clone" });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: resp }));
+      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
     },
 
     switch_session: async () => {
@@ -527,7 +533,7 @@ async function handleClientMessage(clientWs: WebSocket, raw: string): Promise<vo
         type: "switch_session",
         sessionPath: msg.sessionPath,
       });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: resp }));
+      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
     },
 
     set_session_name: async () => {

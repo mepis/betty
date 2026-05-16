@@ -38,6 +38,12 @@
 |------|---------|
 | [[Quick Start & QA]] | Setup guide, usage examples, troubleshooting, WebSocket testing |
 
+### Review
+
+| Page | Summary |
+|------|---------|
+| [[Repository Audit]] | Security findings, code quality assessment, recommendations |
+
 ## Quick Links
 
 - **Getting started**: [[Quick Start & QA]]
@@ -47,6 +53,7 @@
 - **Frontend code**: [[Frontend (`src/`)]]
 - **WebSocket store**: [[Chat Store (`stores/chat.ts`)]]
 - **Type definitions**: [[Type Definitions (`types.ts`)]]
+- **Audit report**: [[Repository Audit]]
 
 ## Project Structure
 
@@ -69,6 +76,7 @@ betty/
     ├── index.md            # This file
     ├── architecture.md     # Architecture deep dive
     ├── tags.md             # Tag index
+    ├── audit.md            # Repository audit report
     ├── reference/
     │   ├── server.md       # Server documentation
     │   ├── frontend.md     # Frontend documentation
@@ -90,3 +98,5 @@ betty/
 
 - **category**: index, overview
 - **audience**: all
+- **component**: documentation
+- **pattern**: project-structure

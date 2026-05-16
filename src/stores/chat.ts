@@ -20,6 +20,15 @@ import type {
   WsSessionSwitched,
   WsConnected,
   WsUiRequest,
+  WsStats,
+  WsForkMessages,
+  WsCommands,
+  WsToolCallUpdate,
+  WsQueueUpdate,
+  WsCompactionStart,
+  WsCompactionEnd,
+  WsTurnStart,
+  WsTurnEnd,
 } from "@/types";
 
 export const useChatStore = defineStore("chat", () => {
@@ -45,6 +54,7 @@ export const useChatStore = defineStore("chat", () => {
 
   // WebSocket
   let ws: WebSocket | null = null;
+  let shouldReconnect = true;
   const wsProtocol = location.protocol === "https:" ? "wss:" : "ws:";
   const wsUrl = import.meta.env.VITE_WS_URL || import.meta.env.VITE_WSS_URL
     || `${wsProtocol}//${location.hostname}:${import.meta.env.VITE_WS_PORT || "3001"}`;
@@ -88,15 +98,24 @@ export const useChatStore = defineStore("chat", () => {
     ws.onclose = () => {
       wsConnected.value = false;
       wsError.value = "Disconnected from server. Reconnecting...";
-      // Auto-reconnect after 2s
-      setTimeout(() => {
-        if (!wsConnected.value) connect();
-      }, 2000);
+      // Auto-reconnect after 2s if reconnect is still enabled
+      if (shouldReconnect) {
+        setTimeout(() => {
+          if (shouldReconnect && !wsConnected.value) connect();
+        }, 2000);
+      }
     };
 
     ws.onerror = () => {
       wsError.value = "Connection error";
     };
+  }
+
+  function disconnect(): void {
+    shouldReconnect = false;
+    ws?.close();
+    ws = null;
+    wsConnected.value = false;
   }
 
   function send(msg: Record<string, unknown>): void {
@@ -124,16 +143,18 @@ export const useChatStore = defineStore("chat", () => {
           // Append to streaming assistant message
           const streamMsg = lastAssistantMessage.value;
           if (streamMsg) {
+            // Content is always string in ChatMessage; append delta
             streamMsg.content += delta;
           }
         }
         if (eventType === "thinking_delta" && delta) {
           // Append thinking block
           const streamMsg = lastAssistantMessage.value;
-          if (streamMsg && streamMsg.content) {
-            if (typeof streamMsg.content === "string") {
-              streamMsg.content += "\n<details>\n<summary>Thinking</summary>\n\n" + delta;
+          if (streamMsg) {
+            if (!streamMsg.content.includes("<details>") && !streamMsg.content.includes("<summary>Thinking</summary>")) {
+              streamMsg.content += "\n<details>\n<summary>Thinking</summary>\n\n";
             }
+            streamMsg.content += delta;
           }
         }
         if (eventType === "toolcall_delta") {
@@ -143,6 +164,10 @@ export const useChatStore = defineStore("chat", () => {
           const streamMsg = lastAssistantMessage.value;
           if (streamMsg) {
             streamMsg.isStreaming = false;
+            // Close the thinking details block if it was opened
+            if (streamMsg.content.includes("<details>") && !streamMsg.content.includes("</details>")) {
+              streamMsg.content += "\n</details>";
+            }
           }
           isStreaming.value = false;
         }
@@ -157,25 +182,39 @@ export const useChatStore = defineStore("chat", () => {
       case "agent_end": {
         const m = msg as unknown as WsAgentEnd;
         isStreaming.value = false;
+        // Helper to normalize content to string for comparison
+        const normalizeContent = (content: string | unknown[] | undefined): string => {
+          if (!content) return "";
+          if (typeof content === "string") return content;
+          if (Array.isArray(content)) {
+            return content
+              .filter((b): b is Record<string, unknown> => typeof b === "object" && b !== null && "type" in b)
+              .map((b) => (b.text || "") as string)
+              .filter(Boolean)
+              .join("\n");
+          }
+          return String(content);
+        };
         // Add any new messages from agent_end
         for (const agentMsg of m.messages) {
-          if (agentMsg.role === "user" && !messages.value.find((cm) => cm.content === agentMsg.content)) {
+          const normalized = normalizeContent(agentMsg.content);
+          if (agentMsg.role === "user" && normalized && !messages.value.find((cm) => cm.content === normalized)) {
             messages.value.push({
               id: crypto.randomUUID(),
               role: "user",
-              content: agentMsg.content as string,
+              content: normalized,
               timestamp: agentMsg.timestamp ?? Date.now(),
             });
           }
-          if (agentMsg.role === "assistant" && agentMsg.content) {
+          if (agentMsg.role === "assistant" && normalized) {
             const existing = messages.value.find(
-              (cm) => cm.role === "assistant" && cm.content === agentMsg.content
+              (cm) => cm.role === "assistant" && cm.content === normalized
             );
             if (!existing) {
               messages.value.push({
                 id: crypto.randomUUID(),
                 role: "assistant",
-                content: agentMsg.content as string,
+                content: normalized,
                 timestamp: agentMsg.timestamp ?? Date.now(),
                 isStreaming: false,
               });
@@ -222,7 +261,13 @@ export const useChatStore = defineStore("chat", () => {
         isStreaming.value = false;
         // Mark streaming message as complete with error
         const streamMsg = lastAssistantMessage.value;
-        if (streamMsg) streamMsg.isStreaming = false;
+        if (streamMsg) {
+          streamMsg.isStreaming = false;
+          // Close the thinking details block if it was opened
+          if (streamMsg.content.includes("<details>") && !streamMsg.content.includes("</details>")) {
+            streamMsg.content += "\n</details>";
+          }
+        }
         break;
       }
 
@@ -289,10 +334,69 @@ export const useChatStore = defineStore("chat", () => {
         break;
       }
 
+      case "stats": {
+        const m = msg as unknown as WsStats;
+        // Stats response handled by caller (e.g., for display in settings)
+        break;
+      }
+
+      case "fork_messages": {
+        const m = msg as unknown as WsForkMessages;
+        // Fork messages response handled by caller
+        break;
+      }
+
+      case "commands": {
+        const m = msg as unknown as WsCommands;
+        // Commands response handled by caller
+        break;
+      }
+
+      case "tool_execution_update": {
+        const m = msg as unknown as WsToolCallUpdate;
+        // Partial tool call update - can be used for real-time tool output
+        break;
+      }
+
+      case "queue_update": {
+        // Message queue update (steering/follow-up)
+        break;
+      }
+
+      case "compaction_start": {
+        const m = msg as unknown as WsCompactionStart;
+        console.log("[ws] Compaction started:", m.reason);
+        break;
+      }
+
+      case "compaction_end": {
+        const m = msg as unknown as WsCompactionEnd;
+        console.log("[ws] Compaction ended:", m.reason, m.aborted);
+        break;
+      }
+
+      case "turn_start": {
+        // Agent turn started
+        break;
+      }
+
+      case "turn_end": {
+        const m = msg as unknown as WsTurnEnd;
+        // Agent turn ended - may contain new message and tool results
+        break;
+      }
+
       case "session_switched": {
         const m = msg as unknown as WsSessionSwitched;
-        if (m.data.cancelled) {
+        if (m.data?.cancelled) {
           wsError.value = "Session change was cancelled";
+        } else {
+          // Update session info from the response data
+          const data = m.data as Record<string, unknown>;
+          if (data?.sessionId) sessionId.value = data.sessionId as string;
+          if (data?.sessionName) sessionName.value = data.sessionName as string;
+          if (data?.messageCount !== undefined) messageCount.value = data.messageCount as number;
+          wsError.value = null;
         }
         break;
       }
@@ -315,7 +419,7 @@ export const useChatStore = defineStore("chat", () => {
     }
   }
 
-  async function sendMessage(text: string, images?: unknown[]): Promise<void> {
+  async function sendMessage(text: string, images?: Array<{ type: string; data: string; mimeType: string }>): Promise<void> {
     if (!text.trim() || isStreaming.value) return;
 
     // Add user message locally
@@ -477,5 +581,6 @@ export const useChatStore = defineStore("chat", () => {
     respondToUiRequest,
     dismissUiRequest,
     clearMessages,
+    disconnect,
   };
 });

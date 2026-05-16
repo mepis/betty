@@ -6,9 +6,14 @@ Organized by categories. Maps tags to their documentation pages.
 
 ### architecture
 - [[Architecture Deep Dive]]
+- [[Repository Audit]]
+
+### audit
+- [[Repository Audit]]
 
 ### backend
 - [[Server (`server.ts`)]]
+- [[Repository Audit]]
 
 ### chat
 - [[Chat Interface]]
@@ -31,6 +36,7 @@ Organized by categories. Maps tags to their documentation pages.
 
 ### overview
 - [[Documentation Index]]
+- [[Repository Audit]]
 
 ### protocol
 - [[Type Definitions (`types.ts`)]]
@@ -157,6 +163,7 @@ Organized by categories. Maps tags to their documentation pages.
 - [[Thinking Level]]
 - [[Tool Calls]]
 - [[Quick Start & QA]]
+- [[Repository Audit]]
 
 ### engineers
 - [[Architecture Deep Dive]]

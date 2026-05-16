@@ -116,8 +116,8 @@
           ></textarea>
           <button
             class="btn btn-send"
-            @click="sendMessage"
-            :disabled="!inputText.trim() || isStreaming"
+            @click="isStreaming ? abort() : sendMessage()"
+            :disabled="!inputText.trim() && !isStreaming"
             :title="isStreaming ? 'Abort' : 'Send'"
           >
             <span v-if="isStreaming" class="abort-icon">■</span>
@@ -248,6 +248,13 @@
 <script setup lang="ts">
 import { ref, nextTick, watch, onMounted } from "vue";
 import { useChatStore } from "./stores/chat";
+import { marked } from "marked";
+
+marked.setOptions({
+  gfm: true,
+  breaks: true,
+  async: false,
+});
 
 const store = useChatStore();
 
@@ -332,20 +339,7 @@ function truncate(str: string, max: number): string {
 
 function formatContent(content: string | undefined): string {
   if (!content) return "";
-  // Simple markdown-like formatting
-  return content
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre class="code-block"><code>$2</code></pre>')
-    .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-    .replace(/^### (.+)$/gm, "<h4>$1</h4>")
-    .replace(/^## (.+)$/gm, "<h3>$1</h3>")
-    .replace(/^# (.+)$/gm, "<h2>$1</h2>")
-    .replace(/^- (.+)$/gm, "<li>$1</li>")
-    .replace(/\n/g, "<br>");
+  return marked.parse(content);
 }
 
 // ─── Lifecycle ─────────────────────────────────────────────────────────────
