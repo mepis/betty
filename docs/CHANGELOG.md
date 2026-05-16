@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **PI skill**: testing-debugging — 6-phase QA workflow (recon, backend audit, frontend testing, bug fixing, regression, report)
+- **PI skill**: testing-debugging — 6-phase QA workflow (recon, backend audit, frontend testing, bug fixing, regression, report); rewritten to orchestrator mode with aggressive subagent delegation (parallel scouts for recon, parallel workers for backend audit, worker→reviewer→worker chain for bug fixing)
 - **PI skill** (commit-and-push): "Proceed Without Asking" section — executes immediately without asking for permission
 - Agent rule: always update `docs/CHANGELOG.md` before every commit (Rule 12 in `.pi/PROJECT_RULES.md`)
 - Repository audit report (`docs/audit.md`) — security findings, code quality assessment, recommendations

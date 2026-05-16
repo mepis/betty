@@ -1,12 +1,16 @@
 ---
 name: testing-debugging
 description: "Thoroughly test and debug every function, feature, and operation in the codebase. Step through all code paths, validate inputs and outputs, test the frontend as a user, fix all bugs, and produce a comprehensive audit report. Keep testing until zero bugs remain."
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep
+allowed-tools: Bash(subagent:*)
 ---
 
-# Testing & Debugging Skill
+# Testing & Debugging Skill — Orchestrator Mode
 
-You are a **thorough QA engineer and debugger**. Your job is to systematically test every function, feature, operation, and UI element in the codebase until you are confident that **zero bugs or issues remain**. When frontend bugs are found, fix them immediately. When backend bugs are found, fix them immediately. Then re-test to confirm the fix. Repeat until clean.
+You are a **task orchestrator** for QA and debugging. Your job is to **delegate all testing and debugging work to subagents**. You do NOT read files, run commands, or write code directly — you orchestrate scouts, workers, and reviewers to do the heavy lifting, then synthesize their findings.
+
+## CORE PRINCIPLE
+
+**Never do the testing work yourself.** Every file read, every code audit, every Playwright test, every bug fix, every re-test must be delegated to a subagent. You manage the workflow, pass context between agents, and produce the final report.
 
 ## WHEN TO USE
 
@@ -15,10 +19,6 @@ You are a **thorough QA engineer and debugger**. Your job is to systematically t
 - When the user asks to "test everything", "audit the code", "find and fix all bugs", or "do a thorough QA pass"
 - When you suspect there may be hidden bugs or edge cases
 - As a quality gate before marking any implementation as complete
-
-## CORE PRINCIPLE
-
-**Never assume code is correct.** Every function call, every input/output, every branch, every edge case, every API endpoint, every route, every UI interaction must be verified. If you find a bug, fix it and re-test. Do not stop until you are confident there are no remaining issues.
 
 ## OUTPUT LOCATION
 
@@ -35,20 +35,21 @@ All testing artifacts go in `.agents/testing/` (create the directory on first us
 
 ## WORKFLOW OVERVIEW
 
-The testing workflow has **6 phases**. Proceed sequentially — do not skip phases.
+The testing workflow has **6 phases**. You orchestrate subagents for each phase sequentially — do not skip phases.
 
 ```
 Phase 1: Reconnaissance & Scope
-    ↓
+    ↓ (scout → worker)
 Phase 2: Backend Code Audit (functions, logic, data flow)
-    ↓
+    ↓ (worker × N in parallel → worker for aggregation)
 Phase 3: Frontend Testing (user-flow testing via Playwright)
-    ↓
+    ↓ (worker)
 Phase 4: Bug Fixing & Re-Testing
-    ↓
+    ↓ (worker → reviewer → worker chain)
 Phase 5: Regression & Edge-Case Testing
-    ↓
+    ↓ (worker)
 Phase 6: Final Report Generation
+    ↓ (worker)
 ```
 
 ---
@@ -57,63 +58,32 @@ Phase 6: Final Report Generation
 
 **Objective:** Understand the full codebase structure and define what needs to be tested.
 
-### Actions
+### Orchestration
 
-1. **Map the codebase structure**
-   - Run `find` or `ls` to understand the directory layout
-   - Identify all major modules, packages, and directories
-   - Identify entry points (main files, index files, API routes, etc.)
+**Step 1:** Use a **scout** to map the codebase structure and identify all testable units.
 
-2. **Identify all functions and features**
-   - Find all exported functions, classes, and modules
-   - Identify all API endpoints (routes, controllers, handlers)
-   - Identify all components (React, Vue, Svelte, etc.)
-   - Identify all utility/helper functions
-   - Identify all database models, schemas, and migrations
+> Task: Map the codebase. Find: (1) all major modules and directories, (2) all exported functions and classes, (3) all API routes/endpoints, (4) all frontend components and routes, (5) all database models, (6) the frontend app entry point and dev server command. Return structured findings.
 
-3. **Identify the frontend application**
-   - Find the frontend root (e.g., `src/`, `app/`, `frontend/`, `web/`)
-   - Identify the framework (React, Vue, Svelte, etc.)
-   - Identify the dev server port and URL
-   - Identify key pages and routes
+**Step 2:** Use a **worker** to initialize the state file with the scout's findings.
 
-4. **Initialize state file**
+> Task: Create `.agents/testing/` directory and write `STATE.md` with the codebase map, functions to test, API endpoints to test, frontend routes to test, and scope. Use the scout's output as context.
 
-```markdown
----
-scope: "Full codebase audit"
-started_at: "YYYY-MM-DD HH:MM"
-last_updated: "YYYY-MM-DD HH:MM"
-current_phase: "Phase 1"
-status: "active"
----
+**Step 3:** Use a **worker** to start the dev server (if a frontend exists).
 
-## Codebase Map
-- Module 1: description
-- Module 2: description
+> Task: Find the dev server start command in package.json, start it in the background, wait for it to be ready, and record the URL. Update STATE.md with the URL.
 
-## Functions to Test
-- Function name — file — purpose
-- Function name — file — purpose
+### Scout Prompt Template
 
-## API Endpoints to Test
-- METHOD /path — description
-- METHOD /path — description
-
-## Frontend Routes to Test
-- /route — description
-- /route — description
-
-## Scope
-- In scope: [list]
-- Out of scope: [list, or "None — everything is in scope"]
 ```
-
-5. **Start the dev server** (if a frontend exists and is not already running)
-   - Identify the start command from `package.json` (`npm run dev`, `yarn dev`, `pnpm dev`, etc.)
-   - Start the server in the background
-   - Wait for it to be ready (check logs or curl the health endpoint)
-   - Record the URL for Phase 3
+Map the full codebase structure. Return:
+1. Directory layout (top 3 levels)
+2. All exported functions/classes (name, file, purpose)
+3. All API routes/endpoints (method, path, handler file)
+4. All frontend components and routes (component file, route path)
+5. All database models/schemas
+6. Frontend entry point and dev server command (from package.json)
+7. Any test files that already exist
+```
 
 ---
 
@@ -121,112 +91,50 @@ status: "active"
 
 **Objective:** Step through every function, feature, and operation in the backend code. Verify correctness of logic, inputs, outputs, and error handling.
 
-### Scope
+### Orchestration
 
-- All API routes and endpoint handlers
-- All controllers, services, and business logic
-- All database queries, models, and migrations
-- All utility functions and helpers
-- All middleware and authentication/authorization logic
-- All configuration and environment handling
-- All external API integrations
-- All file I/O operations
-- All scheduled jobs and background tasks
+**Step 1:** Split the backend audit into **parallel worker subagents** — one per module/directory. Each worker audits all functions in its assigned module.
 
-### Per-Function Audit Checklist
+> For each major module found in Phase 1, spin off a **worker** with:
+> "Audit every function in this module. Read every file, trace every branch, check every call site. For each function, verify: (1) function signature, (2) input validation, (3) logic correctness, (4) output correctness, (5) error handling, (6) edge cases. Log every issue found to `.agents/testing/BUGS_FOUND.md` with: file path, function name, issue description, severity (Critical/Major/Minor/Cosmetic), suggested fix. Use the checklist from the testing-debugging skill."
 
-For **every** function in the codebase, verify:
+**Step 2:** Use a **worker** to aggregate all findings from `BUGS_FOUND.md`.
 
-#### 1. Function Signature
-- [ ] Parameters are well-typed and documented
-- [ ] Default values are sensible
-- [ ] No unexpected `any` types or loose typing
-- [ ] Return type is correctly specified
+> Task: Read `.agents/testing/BUGS_FOUND.md`, summarize all bugs found, and update `STATE.md` with audit progress (X/Y functions audited).
 
-#### 2. Input Validation
-- [ ] All inputs are validated at the function boundary
-- [ ] Null/undefined inputs are handled
-- [ ] Empty strings, arrays, and objects are handled
-- [ ] Type coercion or type errors are handled gracefully
-- [ ] Boundary values (0, -1, max integer, etc.) are considered
-- [ ] Special characters and injection attempts are considered
+### Per-Function Audit Checklist (passed to worker)
 
-#### 3. Logic Correctness
-- [ ] The function does what its name and documentation say it does
-- [ ] All branches of conditional logic are correct
-- [ ] Loop conditions are correct (no infinite loops, off-by-one errors)
-- [ ] State mutations are correct (no unexpected side effects)
-- [ ] Async/await patterns are correct (no unhandled promise rejections)
-- [ ] Error paths return appropriate error codes/messages
+Every worker must verify for **every** function:
 
-#### 4. Output Correctness
-- [ ] Return values match the documented/expected format
-- [ ] No sensitive data is leaked in responses
-- [ ] Dates/times are formatted consistently
-- [ ] Numeric precision is appropriate
-- [ ] Boolean logic is correct (no truthy/falsy surprises)
+| Area | Checks |
+|---|---|
+| **Signature** | Well-typed, documented, sensible defaults, no loose `any`, correct return type |
+| **Input Validation** | Validates at boundary, handles null/undefined/empty, type coercion, boundary values, injection attempts |
+| **Logic** | Does what it promises, all branches correct, no infinite loops, correct state mutations, correct async/await |
+| **Output** | Correct format, no sensitive data leaked, consistent dates, appropriate precision, correct boolean logic |
+| **Error Handling** | Errors caught (not swallowed), informative messages, DB errors handled, network errors handled, unexpected errors don't crash |
+| **Edge Cases** | Empty inputs, large inputs, concurrency, idempotency, resource cleanup |
 
-#### 5. Error Handling
-- [ ] Errors are caught and handled (not silently swallowed)
-- [ ] Error messages are informative but not exposing internals
-- [ ] Database errors are handled (connection failures, constraint violations)
-- [ ] Network errors are handled (timeouts, retries)
-- [ ] Unexpected errors don't crash the process
-
-#### 6. Edge Cases
-- [ ] Empty inputs produce sensible outputs
-- [ ] Large inputs don't cause performance issues
-- [ ] Concurrent access is handled (race conditions)
-- [ ] Idempotency: calling the function twice produces the same result
-- [ ] Cleanup: resources are released (file handles, connections, etc.)
-
-### Audit Method
-
-1. **Read every function** — don't skim. Read the full implementation.
-2. **Trace the execution path** — mentally (or via comments) follow every branch.
-3. **Check every call site** — verify the caller passes correct arguments.
-4. **Check every dependency** — verify the functions it calls are correct.
-5. **Log findings** — add every issue to `.agents/testing/BUGS_FOUND.md` with:
-   - File path
-   - Function name
-   - Issue description
-   - Severity (Critical / Major / Minor / Cosmetic)
-   - Suggested fix (if obvious)
-
-### Example Audit Log Entry
-
-```markdown
-### Bug #1 — `validateUserInput` in `src/auth/validation.ts`
-- **Severity:** Major
-- **Issue:** Does not check for empty string input. An empty string passes validation.
-- **Fix:** Add `if (input.trim().length === 0) return false;` at line 15
-- **Fixed:** [ ] (mark [x] when fixed)
-```
-
-### Critical Patterns to Watch For
+### Critical Patterns to Watch For (passed to worker)
 
 | Pattern | Risk |
 |---|---|
 | `JSON.parse()` without try/catch | Crash on invalid JSON |
-| `.find()` / `.findIndex()` without null check | `.map` / `.prop` on undefined |
+| `.find()` without null check | `.map` / `.prop` on undefined |
 | `.forEach` with async | Async code runs out of order |
 | `Array.map` without return | Silent no-op |
 | `req.body` used without validation | Injection, type errors |
-| `process.env.X` used without default | `undefined` at runtime |
+| `process.env.X` without default | `undefined` at runtime |
 | Direct string concatenation in SQL | SQL injection |
 | Unsanitized user input in HTML | XSS |
 | `setInterval` without cleanup | Memory leak |
-| Unbounded array growth | Memory leak |
 | Unhandled Promise rejection | Silent failure |
-| `try/catch` with empty catch block | Swallowed errors |
+| `try/catch` with empty catch | Swallowed errors |
 | Deep object access without null checks | `Cannot read property of undefined` |
 | Mutation of shared state without locking | Race conditions |
 | Floating-point arithmetic for money | Precision errors |
-| Regex without anchoring | Unexpected matches |
 | `eval()` or `new Function()` | Code injection |
 | Unescaped user input in URL params | Path traversal |
-| Race condition in file I/O | Corrupted data |
-| Circular dependency in module imports | Startup crash |
 
 ---
 
@@ -234,181 +142,45 @@ For **every** function in the codebase, verify:
 
 **Objective:** Test every page, component, and interaction as an end user would experience it.
 
-### Prerequisites
+### Orchestration
 
-- Dev server must be running (from Phase 1)
-- Playwright CLI must be available (try `playwright-cli --version`, fall back to `npx playwright-cli`)
+**Step 1:** Use a **worker** to discover all frontend routes.
 
-### Per-Page / Per-Route Audit Checklist
+> Task: Find all route definitions in the frontend codebase. Return a list of routes with their associated components.
 
-For **every** page/route in the frontend application:
+**Step 2:** Use a **worker** to run Playwright tests against every route.
 
-#### 1. Page Load
-- [ ] Page loads without errors (check console for JS errors)
-- [ ] All critical resources load (CSS, JS, images, fonts)
-- [ ] No 404 or 500 errors in the network tab
-- [ ] Loading states are visible (spinner, skeleton) while data loads
-- [ ] No layout shift or broken layout on load
+> Task: For each route discovered:
+> 1. Navigate to the route via Playwright
+> 2. Take a screenshot (save to `.agents/testing/SNAPSHOTS/`)
+> 3. Check console for JS errors
+> 4. Test all interactive elements (buttons, forms, links, toggles, modals)
+> 5. Test form validation (submit empty, submit invalid, submit valid)
+> 6. Test error states (empty states, loading states, API failures if applicable)
+> 7. Test responsive design at 375px, 768px, 1920px widths
+> 8. Log every issue to `.agents/testing/BUGS_FOUND.md`
 
-#### 2. Content & Rendering
-- [ ] All text content renders correctly (no missing translations)
-- [ ] Images load and display correctly
-- [ ] Links are clickable and navigate to the correct destinations
-- [ ] Dynamic content updates correctly (real-time data, toggles, etc.)
-- [ ] Responsive layout works at common breakpoints (mobile, tablet, desktop)
+**Step 3:** Use a **worker** to test critical user journeys end-to-end.
 
-#### 3. User Interactions
-- [ ] All buttons are clickable and perform expected actions
-- [ ] All forms accept input and submit correctly
-- [ ] All inputs have proper validation (show errors for invalid input)
-- [ ] All dropdowns/selects open and select correctly
-- [ ] All toggles/switches toggle correctly
-- [ ] All tabs navigate correctly
-- [ ] All modals/dialogs open and close correctly
-- [ ] All tooltips and popovers display correctly
-- [ ] All drag-and-drop interactions work correctly
-- [ ] All keyboard interactions work (Tab, Enter, Escape, Arrow keys)
+> Task: Test these user journeys via Playwright:
+> - Authentication: login, logout, session handling
+> - Navigation: all routes, breadcrumbs, deep links
+> - Data Entry: forms, validation, submission
+> - Data Display: lists, tables, pagination, sorting, filtering
+> - Search: search input, results, no-results state
+> - Permissions: role-based access, unauthorized attempts
+> Log every issue to `.agents/testing/BUGS_FOUND.md`
 
-#### 4. Form Handling
-- [ ] Required fields are enforced
-- [ ] Invalid input shows clear error messages
-- [ ] Form submits and shows success/error state
-- [ ] Form can be reset/cleared
-- [ ] Auto-save (if applicable) works correctly
-- [ ] Input masks/formatting are applied correctly
+### Logging Frontend Bugs (passed to worker)
 
-#### 5. Navigation
-- [ ] All navigation links work
-- [ ] Breadcrumb navigation works
-- [ ] Back/forward browser buttons work correctly
-- [ ] Deep links (URLs that go to specific pages) work
-- [ ] Route guards (auth, permissions) work correctly
-
-#### 6. Error States
-- [ ] Empty states display correctly (no items, no results, etc.)
-- [ ] Error states display correctly (API failures, network errors)
-- [ ] Loading states display correctly (initial load, pagination, etc.)
-- [ ] Timeout states are handled gracefully
-
-### Playwright Testing Workflow
-
-#### Step 1: Discover all routes
-
-```bash
-# Find all route definitions
-grep -r "Route\|route\|path:" src/ --include="*.tsx" --include="*.jsx" --include="*.ts" --include="*.js" | grep -i "route\|path\|link" | head -50
-```
-
-#### Step 2: Test each route systematically
-
-```bash
-# Open the browser
-playwright-cli open http://localhost:3000
-
-# Navigate to each route
-playwright-cli goto http://localhost:3000/
-playwright-cli snapshot
-
-# Take a screenshot for documentation
-playwright-cli screenshot --filename=SNAPSHOTS/home-page.png
-
-# Test interactions
-playwright-cli click e15
-playwright-cli type "search query"
-playwright-cli press Enter
-playwright-cli snapshot
-playwright-cli screenshot --filename=SNAPSHOTS/search-results.png
-
-# Check console for errors
-playwright-cli console
-
-# Check network requests
-playwright-cli requests
-
-# Close when done
-playwright-cli close
-```
-
-#### Step 3: Test specific user flows
-
-```bash
-# Example: Full login flow
-playwright-cli open http://localhost:3000/login
-playwright-cli snapshot
-playwright-cli fill e3 "test@example.com"
-playwright-cli fill e4 "password123"
-playwright-cli click e5
-playwright-cli snapshot
-playwright-cli console       # Check for JS errors
-playwright-cli requests     # Check API calls
-playwright-cli screenshot --filename=SNAPSHOTS/login-success.png
-
-# Example: Form submission with validation
-playwright-cli open http://localhost:3000/register
-playwright-cli snapshot
-playwright-cli click e5     # Submit empty form
-playwright-cli snapshot     # Verify validation errors shown
-playwright-cli fill e1 "user@example.com"
-playwright-cli fill e2 "short"
-playwright-cli click e5     # Submit invalid data
-playwright-cli snapshot     # Verify validation errors shown
-playwright-cli fill e2 "validpassword123"
-playwright-cli click e5     # Submit valid data
-playwright-cli snapshot     # Verify success
-```
-
-#### Step 4: Test error scenarios
-
-```bash
-# Test with console errors
-playwright-cli console
-
-# Test network error handling (if applicable)
-playwright-cli route "*/api/*" --status=500
-playwright-cli goto http://localhost:3000/page-that-calls-api
-playwright-cli snapshot     # Verify error handling
-playwright-cli unroute "*/api/*"
-
-# Test with slow network (if applicable)
-playwright-cli run-code "async page => await page.setOffline(true)"
-playwright-cli goto http://localhost:3000/page
-playwright-cli snapshot     # Verify offline handling
-playwright-cli run-code "async page => await page.setOffline(false)"
-```
-
-#### Step 5: Test responsive design
-
-```bash
-# Test different viewport sizes
-playwright-cli resize 375 812      # Mobile
-playwright-cli goto http://localhost:3000/
-playwright-cli screenshot --filename=SNAPSHOTS/mobile.png
-
-playwright-cli resize 768 1024     # Tablet
-playwright-cli screenshot --filename=SNAPSHOTS/tablet.png
-
-playwright-cli resize 1920 1080    # Desktop
-playwright-cli screenshot --filename=SNAPSHOTS/desktop.png
-```
-
-### Logging Frontend Bugs
-
-Add every frontend bug to `.agents/testing/BUGS_FOUND.md`:
-
-```markdown
-### Bug #N — `<component/page>` on `http://localhost:PORT/route`
-- **Severity:** Critical / Major / Minor / Cosmetic
-- **Description:** What's wrong and how to reproduce
-- **Steps to Reproduce:**
-  1. Navigate to /route
-  2. Click button X
-  3. Observe error Y
-- **Expected:** What should happen
-- **Actual:** What actually happens
-- **Screenshot:** `SNAPSHOTS/screenshot-name.png`
-- **Console Errors:** [paste console output]
-- **Fixed:** [ ] (mark [x] when fixed)
-```
+Every frontend bug must include:
+- Component/page name
+- Route URL
+- Severity (Critical/Major/Minor/Cosmetic)
+- Description and steps to reproduce
+- Expected vs actual behavior
+- Screenshot path
+- Console errors (if any)
 
 ---
 
@@ -416,76 +188,70 @@ Add every frontend bug to `.agents/testing/BUGS_FOUND.md`:
 
 **Objective:** Fix every bug found in Phases 2 and 3, then re-test to confirm the fix.
 
-### Fixing Backend Bugs
+### Orchestration
 
-1. **Read the affected file** thoroughly to understand context
-2. **Implement the fix** — make the minimal change needed
-3. **Re-read the function** to verify the fix is correct
-4. **Re-check call sites** to ensure the fix doesn't break anything
-5. **Run existing tests** if any exist (`npm test`, `yarn test`, `pnpm test`)
-6. **Log the fix** in `BUGS_FOUND.md` — mark as "Fixed: [x]"
+This phase uses the **Implement → Review → Fix** chain pattern.
 
-### Fixing Frontend Bugs
+**Step 1:** Use a **worker** to fix all bugs.
 
-1. **Read the affected component/file** thoroughly
-2. **Implement the fix** — make the minimal change needed
-3. **Check the browser** — navigate to the page and verify the fix
-4. **Take a new screenshot** showing the fix works
-5. **Run existing tests** if any exist
-6. **Log the fix** in `BUGS_FOUND.md` — mark as "Fixed: [x]"
+> Task: Read `.agents/testing/BUGS_FOUND.md`. For each unfixed bug:
+> 1. Read the affected file(s) to understand context
+> 2. Implement the minimal fix
+> 3. Re-read the fixed code to verify correctness
+> 4. Run existing tests if any exist (`npm test`, `yarn test`, etc.)
+> 5. Mark the bug as "Fixed: [x]" in BUGS_FOUND.md
+>
+> If a fix introduces a new bug, fix that too before moving on.
 
-### Re-Testing After Fixes
+**Step 2:** Use a **reviewer** to verify all fixes.
 
-After fixing each bug (or batch of related bugs):
+> Task: Review all fixes applied in BUGS_FOUND.md. For each fix:
+> 1. Read the changed file(s)
+> 2. Verify the fix is correct and minimal
+> 3. Check that no new bugs were introduced
+> 4. Check that related code (call sites, dependencies) is not broken
+> 5. Return a list of issues found during review (if any)
 
-1. **Re-test the specific function/page** that was fixed
-2. **Re-test related functions/pages** that might be affected (regression)
-3. **Take new screenshots** if the visual output changed
-4. **Check console** for any new errors
-5. **Update `STATE.md`** with current progress
+**Step 3:** If reviewer found issues, use a **worker** to address them.
+
+> Task: Apply the review feedback. Fix any issues the reviewer identified. Update BUGS_FOUND.md.
+
+**Step 4:** Use a **worker** to re-test fixed functions/pages.
+
+> Task: For each fixed bug, re-test the affected function/page:
+> - Backend: re-read the function, trace execution, verify the fix
+> - Frontend: navigate to the page, verify the fix visually, check console
+> - Run existing tests again
+> - Log re-test results to STATE.md
 
 ### Iteration Rule
 
-> **Do not proceed to the next phase until ALL bugs in the current phase are fixed.**
-> If a fix introduces a new bug, fix that too before moving on.
+> **Do not proceed to the next phase until ALL bugs are fixed.** If a fix introduces a new bug, fix that too before moving on. If the reviewer finds issues, loop back to fix them.
 
 ---
 
 ## PHASE 5: REGRESSION & EDGE-CASE TESTING
 
-**Objective:** After all bugs are fixed, do a final round of testing to ensure nothing was broken by the fixes.
+**Objective:** After all bugs are fixed, do a final round of testing to ensure nothing was broken.
 
-### Actions
+### Orchestration
 
-1. **Re-test every function** that was modified (from Phase 2)
-2. **Re-test every page** that was modified (from Phase 3)
-3. **Re-test related pages** that share code with modified pages
-4. **Test common user journeys** end-to-end:
-   - Login → browse → interact → logout
-   - Search → filter → sort → view details
-   - Create → edit → delete (CRUD flows)
-   - Any other critical user flows
-5. **Test edge cases** identified during Phase 2:
-   - Empty states, null values, boundary values
-   - Concurrent actions (rapid clicks, double submissions)
-   - Network failures and timeouts
-   - Large data sets
-6. **Check for new bugs** introduced by fixes — add to `BUGS_FOUND.md` if found
-7. **Fix any new bugs** and re-test (back to Phase 4 if needed)
+**Step 1:** Use **parallel workers** to re-test all modified functions and pages.
 
-### Critical User Journeys to Test
+> For each module/page that was modified, spin off a **worker**:
+> "Re-test all functions/pages in this module that were fixed. Verify the fix still works, check related functions for regressions, test common user journeys that touch this module. Log any new issues to BUGS_FOUND.md."
 
-| Journey | Description |
-|---|---|
-| Authentication | Login, logout, session handling, password reset |
-| Navigation | All routes accessible, breadcrumbs, deep links |
-| Data Entry | Forms, validation, submission, confirmation |
-| Data Display | Lists, tables, cards, pagination, sorting, filtering |
-| Search | Search input, results display, no-results state |
-| File Upload | Upload, progress, success/error states |
-| Real-time Updates | WebSocket, SSE, polling (if applicable) |
-| Error Recovery | Retry failed actions, recover from errors |
-| Permissions | Role-based access, unauthorized access attempts |
+**Step 2:** Use a **worker** to test edge cases identified during Phase 2.
+
+> Task: Test these edge cases across the codebase:
+> - Empty states, null values, boundary values
+> - Rapid clicks, double submissions (frontend)
+> - Network failures and timeouts (frontend)
+> - Large data sets
+> - Concurrent actions
+> Log any issues to BUGS_FOUND.md.
+
+**Step 3:** If new bugs are found, loop back to **Phase 4** (bug fixing).
 
 ---
 
@@ -493,189 +259,28 @@ After fixing each bug (or batch of related bugs):
 
 **Objective:** Produce a comprehensive report of everything tested, everything found, and everything fixed.
 
-### Final Report Structure
+### Orchestration
 
-Write the report to `.agents/testing/TEST_REPORT.md`:
+**Step 1:** Use a **worker** to generate the final report.
 
-```markdown
-# TESTING & DEBUGGING REPORT
+> Task: Read all testing artifacts (STATE.md, BUGS_FOUND.md, any snapshots) and generate a comprehensive report at `.agents/testing/TEST_REPORT.md` with:
+> 1. Executive summary (2-3 paragraphs)
+> 2. Testing statistics (functions audited, endpoints tested, pages tested, bugs found/fixed/remaining by severity)
+> 3. Phase 1 summary: codebase map, modules, functions, routes
+> 4. Phase 2 summary: backend audit results, table of functions audited with status
+> 5. Phase 3 summary: frontend testing results, table of pages tested with status, screenshots listed, console errors
+> 6. Phase 4 summary: all bugs fixed, detailed fix descriptions
+> 7. Phase 5 summary: regression testing results, any new bugs found
+> 8. Full bugs log (from BUGS_FOUND.md, with Fixed: [x] markers)
+> 9. Recommendations (3-5 actionable items)
+> 10. Conclusion (definitive statement about codebase quality)
+> 11. Appendix: testing commands used
+>
+> The report must be comprehensive — no placeholders, no "TODO" sections.
 
-**Date:** YYYY-MM-DD
-**Scope:** Full codebase audit
-**Tester:** AI QA Agent
-**Status:** [CLEAN — No bugs found | RESOLVED — All bugs fixed | ISSUES REMAIN — see below]
+**Step 2:** Use a **worker** to update STATE.md with completion status.
 
----
-
-## Executive Summary
-
-<!-- 2-3 paragraph summary of the testing process, what was tested, and the overall result. -->
-
----
-
-## Testing Statistics
-
-| Metric | Count |
-|---|---|
-| Functions audited | N |
-| API endpoints tested | N |
-| Frontend pages tested | N |
-| Bugs found | N |
-| Bugs fixed | N |
-| Bugs remaining | N |
-| Critical bugs | N |
-| Major bugs | N |
-| Minor bugs | N |
-| Cosmetic issues | N |
-
----
-
-## Phase 1: Reconnaissance & Scope
-
-<!-- Summary of codebase structure, modules, and scope. -->
-
-### Modules Found
-- Module name: description
-
-### Functions Discovered
-- Function — file — purpose
-
-### Frontend Routes Discovered
-- Route — component — description
-
----
-
-## Phase 2: Backend Code Audit
-
-<!-- Summary of backend testing. -->
-
-### Functions Audited
-<!-- List every function audited and its status. -->
-
-| Function | File | Status | Issues Found |
-|---|---|---|---|
-| fnName | path/to/file.ts | PASS / WARN / FAIL | description |
-
-### Critical Findings
-<!-- Any critical issues found (even if fixed). -->
-
----
-
-## Phase 3: Frontend Testing
-
-<!-- Summary of frontend testing. -->
-
-### Pages Tested
-<!-- List every page tested and its status. -->
-
-| Page | Route | Status | Issues Found |
-|---|---|---|---|
-| PageName | /route | PASS / WARN / FAIL | description |
-
-### Screenshots
-<!-- List all screenshots taken during testing. -->
-
-| Screenshot | Description |
-|---|---|
-| `SNAPSHOTS/home-page.png` | Home page initial load |
-| `SNAPSHOTS/...` | ... |
-
-### Console Errors
-<!-- List any console errors found during testing. -->
-
-| Route | Error | Resolved |
-|---|---|---|
-| /route | Error message | Yes / No |
-
----
-
-## Phase 4: Bug Fixes
-
-<!-- All bugs found and fixed. -->
-
-### Bugs Fixed
-
-| # | Severity | File/Component | Description | Fix Applied |
-|---|---|---|---|---|
-| 1 | Critical | file.ts | Description | Fix description |
-| 2 | Major | Component.jsx | Description | Fix description |
-
-### Fixes Applied
-<!-- Detailed list of all code changes made. -->
-
-#### Fix 1: `fnName` in `file.ts`
-- **Change:** What was changed
-- **Reason:** Why it was changed
-- **Lines changed:** N
-
----
-
-## Phase 5: Regression Testing
-
-<!-- Summary of re-testing after fixes. -->
-
-### Functions Re-tested
-<!-- List all functions that were re-tested after fixes. -->
-
-### Pages Re-tested
-<!-- List all pages that were re-tested after fixes. -->
-
-### User Journeys Re-tested
-<!-- List all critical user journeys that were re-tested. -->
-
-### New Bugs Found
-<!-- Any new bugs introduced by fixes. -->
-
-| # | Severity | Description | Fixed |
-|---|---|---|---|
-| N/A | — | None (or list bugs) | — |
-
----
-
-## Bugs Found & Fixed (Detailed Log)
-
-<!-- Full log of every bug found, from BUGS_FOUND.md. -->
-
-[Copy all entries from BUGS_FOUND.md here, with Fixed: [x] markers.]
-
----
-
-## Recommendations
-
-<!-- 3-5 actionable recommendations for improving code quality. -->
-
-1. Recommendation 1
-2. Recommendation 2
-3. Recommendation 3
-
----
-
-## Conclusion
-
-<!-- Definitive statement about the overall quality of the codebase. -->
-
-The codebase has been thoroughly tested across all functions, features, and UI elements.
-[All bugs have been fixed and verified. / X issues remain — see details above.]
-
----
-
-## Appendix: Testing Commands Used
-
-<!-- Commands used during testing for reproducibility. -->
-
-```bash
-# Backend tests
-npm test
-
-# Frontend tests (if any)
-npm run test:frontend
-
-# Playwright testing
-playwright-cli open http://localhost:3000
-playwright-cli goto http://localhost:3000/login
-...
-```
-```
+> Task: Update STATE.md to mark all phases as complete, update status to "complete", and record the final bug counts.
 
 ---
 
@@ -683,70 +288,78 @@ playwright-cli goto http://localhost:3000/login
 
 ### State File: `.agents/testing/STATE.md`
 
-Update the state file at the end of each phase:
+Update the state file at the end of each phase by delegating to a **worker**:
 
 ```markdown
 ---
 scope: "Full codebase audit"
-started_at: "2026-01-15 10:00"
-last_updated: "2026-01-15 10:45"
-current_phase: "Phase 2"
-status: "active"
+started_at: "YYYY-MM-DD HH:MM"
+last_updated: "YYYY-MM-DD HH:MM"
+current_phase: "Phase X"
+status: "active" | "complete"
 ---
 
 ## Phase Progress
 - [x] Phase 1: Reconnaissance & Scope
-- [ ] Phase 2: Backend Code Audit (in progress — 15/45 functions audited)
-- [ ] Phase 3: Frontend Testing
-- [ ] Phase 4: Bug Fixing & Re-Testing
-- [ ] Phase 5: Regression & Edge-Case Testing
-- [ ] Phase 6: Final Report Generation
-
-## Current Activity
-Auditing auth module functions...
+- [x] Phase 2: Backend Code Audit (45/45 functions audited)
+- [x] Phase 3: Frontend Testing (12/12 pages tested)
+- [x] Phase 4: Bug Fixing & Re-Testing (8 bugs fixed)
+- [x] Phase 5: Regression & Edge-Case Testing
+- [x] Phase 6: Final Report Generation
 
 ## Bugs Found So Far
-- Bug #1: `validateUserInput` — missing empty string check (Major)
-- Bug #2: `/api/users` — returns 500 on empty result set (Critical)
+- Total: N | Fixed: N | Remaining: 0
 
-## Next Steps
-- Continue auditing auth module
-- Then move to user module
+## Final Status
+All phases complete. Zero bugs remaining.
 ```
 
 ---
 
 ## CRITICAL RULES
 
-1. **Never skip a function.** Every exported function must be audited.
-2. **Never assume correctness.** Read every line of code.
-3. **Never ignore a bug.** Every bug must be logged and fixed.
-4. **Never proceed to the next phase until all current-phase bugs are fixed.**
-5. **Always re-test after fixing.** A fix is not complete until verified.
-6. **Always take screenshots** of frontend testing for documentation.
-7. **Always check the console** for JavaScript errors during frontend testing.
-8. **Always check network requests** during frontend testing.
-9. **Keep testing until zero bugs remain.** If you find a bug, fix it and continue.
+1. **Never do testing work yourself.** Always delegate to subagents.
+2. **Never skip a function.** Every exported function must be audited by a worker.
+3. **Never assume correctness.** Pass the audit checklist to workers.
+4. **Never ignore a bug.** Every bug must be logged and fixed.
+5. **Never proceed to the next phase until all current-phase bugs are fixed.**
+6. **Always re-test after fixing.** Use the worker → reviewer → worker chain.
+7. **Always take screenshots** of frontend testing — delegate to a worker.
+8. **Always check the console** for JavaScript errors — delegate to a worker.
+9. **Keep testing until zero bugs remain.** If a bug is found, fix it and continue.
 10. **The final report must be comprehensive.** No placeholders, no "TODO" sections.
-11. **If the dev server is not running, start it** before Phase 3.
-12. **If tests exist, run them** and include results in the report.
+11. **Use parallel workers** for independent testing tasks to save time.
+12. **Use chains** for multi-step workflows (implement → review → fix).
 13. **If a fix introduces a new bug, fix that too** before moving on.
 14. **Be thorough, not fast.** Quality over speed.
 
 ---
 
+## ORCHESTRATION PATTERNS REFERENCE
+
+| Phase | Pattern | Agents |
+|---|---|---|
+| 1: Recon | Parallel scouts | scout × 2-3 |
+| 2: Backend Audit | Parallel workers | worker × N (one per module) |
+| 3: Frontend Testing | Sequential worker | worker |
+| 4: Bug Fixing | Chain | worker → reviewer → worker |
+| 5: Regression | Parallel workers | worker × N |
+| 6: Report | Single worker | worker |
+
+---
+
 ## QUALITY CHECKLIST
 
-Before marking testing as complete, verify:
+Before marking testing as complete, verify (by reviewing agent outputs):
 
-- [ ] Every exported function has been audited
-- [ ] Every API endpoint has been audited
-- [ ] Every frontend page has been tested
-- [ ] Every user journey has been tested
+- [ ] Every exported function has been audited by a worker
+- [ ] Every API endpoint has been audited by a worker
+- [ ] Every frontend page has been tested by a worker
+- [ ] Every user journey has been tested by a worker
 - [ ] All bugs have been logged in `BUGS_FOUND.md`
-- [ ] All bugs have been fixed
-- [ ] All fixes have been re-tested
-- [ ] Regression testing has been completed
+- [ ] All bugs have been fixed (verified by reviewer)
+- [ ] All fixes have been re-tested by a worker
+- [ ] Regression testing has been completed by workers
 - [ ] Console errors have been checked and resolved
 - [ ] Screenshot documentation is complete
 - [ ] Final report `TEST_REPORT.md` is comprehensive and complete
@@ -760,17 +373,26 @@ Before marking testing as complete, verify:
 
 ```
 "Test everything in this project"
-→ Skill initializes state, begins Phase 1, runs full 6-phase workflow
+→ Phase 1: scout × 2-3 → worker (init STATE.md) → worker (start dev server)
+→ Phase 2: worker × N (parallel backend audit)
+→ Phase 3: worker (Playwright tests)
+→ Phase 4: worker → reviewer → worker (fix + verify)
+→ Phase 5: worker × N (parallel regression)
+→ Phase 6: worker (report generation)
 
 "Do a thorough QA pass"
-→ Same as above
+→ Same full 6-phase workflow
 
 "Find and fix all bugs"
-→ Same as above
+→ Same full 6-phase workflow
 
 "Test the frontend"
-→ Skips Phase 2, starts from Phase 1 (recon), then runs Phases 3-6
+→ Phase 1: scout → worker
+→ Phase 3: worker (Playwright)
+→ Phase 4: worker → reviewer → worker
+→ Phase 5: worker
+→ Phase 6: worker
 
 "Continue testing"
-→ Reads state file, resumes from current_phase
+→ Read STATE.md (delegate to worker), resume from current_phase
 ```
