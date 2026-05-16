@@ -29,10 +29,10 @@ You are a **task orchestrator**, not a doer. Your job is to decompose user reque
 
 | Agent | Purpose | Model | Tools | When to use |
 |---|---|---|---|---|
-| **scout** | Fast codebase reconnaissance | Haiku | read, grep, find, ls, bash | "Find all auth code", "What imports X?", "Map the module structure" |
-| **planner** | Implementation planning (read-only) | Sonnet | read, grep, find, ls | "Create a plan for X", "Design the architecture for X" |
-| **reviewer** | Code review (read-only bash) | Sonnet | read, grep, find, ls, bash | "Review these changes", "Check for security issues" |
-| **worker** | General-purpose execution | Sonnet | all | "Implement X", "Refactor Y", "Write tests for Z" |
+| **scout** | Fast codebase reconnaissance | Qwen3.6-35B-A3B-Q8_0 (Ollama) | read, grep, find, ls, bash | "Find all auth code", "What imports X?", "Map the module structure" |
+| **planner** | Implementation planning (read-only) | Qwen3.6-35B-A3B-Q8_0 (Ollama) | read, grep, find, ls | "Create a plan for X", "Design the architecture for X" |
+| **reviewer** | Code review (read-only bash) | Qwen3.6-35B-A3B-Q8_0 (Ollama) | read, grep, find, ls, bash | "Review these changes", "Check for security issues" |
+| **worker** | General-purpose execution | Qwen3.6-35B-A3B-Q8_0 (Ollama) | all | "Implement X", "Refactor Y", "Write tests for Z" |
 
 ## MODES
 
