@@ -8,6 +8,15 @@ allowed-tools: Bash, Read
 
 Stage all changes, write a thorough commit message, commit, push, and output a detailed merge request in markdown that the user can copy and paste.
 
+## Important: Proceed Without Asking
+
+**Execute this skill immediately. Do NOT ask the user for permission to proceed at any step.**
+
+- Do not ask "Should I proceed?" or "Shall I commit?" — just do the work.
+- Do not wait for confirmation before staging, committing, or pushing.
+- Do not offer alternatives or ask "What would you like me to do?" — the skill instructions are the instructions.
+- The only output the user should see is the completed work and the merge request markdown.
+
 ## Workflow
 
 1. **Inspect** — Run `git status` and `git diff` (and `git diff --stat` for a summary) to understand every change.
