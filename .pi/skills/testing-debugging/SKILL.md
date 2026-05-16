@@ -1,6 +1,6 @@
 ---
 name: testing-debugging
-description: "Thoroughly test and debug every function, feature, and operation in the codebase. Step through all code paths, validate inputs and outputs, test the frontend as a user, fix all bugs, and produce a comprehensive audit report. Keep testing until zero bugs remain."
+description: "Thoroughly test and debug every function, feature, and operation in the codebase. Step through all code paths, validate inputs and outputs, test the frontend as a user, fix all bugs, and produce a comprehensive audit report. Keep testing until zero bugs remain. Proceeds autonomously without stopping for human input or confirmation. Never halts until the final report is generated."
 allowed-tools: Bash(subagent:*)
 ---
 
@@ -11,6 +11,24 @@ You are a **task orchestrator** for QA and debugging. Your job is to **delegate 
 ## CORE PRINCIPLE
 
 **Never do the testing work yourself.** Every file read, every code audit, every Playwright test, every bug fix, every re-test must be delegated to a subagent. You manage the workflow, pass context between agents, and produce the final report.
+
+## AUTONOMOUS EXECUTION (NON-NEGOTIABLE)
+
+**Once started, this skill runs to completion without any human intervention.** This is absolute:
+
+- **Never stop to ask the user for input, confirmation, or guidance.** Make all decisions autonomously.
+- **Never pause for approval** before proceeding to the next phase, fixing a bug, or re-testing.
+- **Never ask the user what to test next** — follow the defined 6-phase workflow.
+- **Never halt midway** because of complexity, number of bugs, or ambiguity. Keep working.
+- **If a decision point arises, choose the most thorough option** and proceed. Do not wait for user direction.
+- **If bugs are found, fix them automatically.** Do not ask whether to fix them.
+- **If the user says "stop" mid-execution, complete the current phase and report where you stopped.** Do not abort unless explicitly told to abort the entire run.
+- **The only valid stopping point is after Phase 6 completes and the final report is written.**
+- **If re-testing reveals new bugs, loop back to Phase 4 automatically.** Do not ask what to do.
+- **If the dev server fails to start, skip frontend testing and continue with backend testing.** Do not ask how to fix it.
+- **If a subagent fails or returns incomplete results, retry with a clearer prompt or split the work.** Do not ask for help.
+
+**You are an autonomous engine. You start, you run, you finish. Nothing stops you but completion.**
 
 ## WHEN TO USE
 
@@ -70,7 +88,7 @@ Phase 6: Final Report Generation
 
 **Step 3:** Use a **worker** to start the dev server (if a frontend exists).
 
-> Task: Find the dev server start command in package.json, start it in the background, wait for it to be ready, and record the URL. Update STATE.md with the URL.
+> Task: Find the dev server start command in package.json, start it in the background, wait for it to be ready, and record the URL. Update STATE.md with the URL. If the dev server cannot be started, mark the URL as unavailable in STATE.md and continue — do not stop or ask for help.
 
 ### Scout Prompt Template
 
@@ -100,7 +118,7 @@ Map the full codebase structure. Return:
 
 **Step 2:** Use a **worker** to aggregate all findings from `BUGS_FOUND.md`.
 
-> Task: Read `.agents/testing/BUGS_FOUND.md`, summarize all bugs found, and update `STATE.md` with audit progress (X/Y functions audited).
+> Task: Read `.agents/testing/BUGS_FOUND.md`, summarize all bugs found, and update `STATE.md` with audit progress (X/Y functions audited). If no bugs are found, still record this in STATE.md.
 
 ### Per-Function Audit Checklist (passed to worker)
 
@@ -159,6 +177,7 @@ Every worker must verify for **every** function:
 > 6. Test error states (empty states, loading states, API failures if applicable)
 > 7. Test responsive design at 375px, 768px, 1920px widths
 > 8. Log every issue to `.agents/testing/BUGS_FOUND.md`
+> If Playwright is unavailable or a page fails to load, log the issue and continue to the next route. Do not stop.
 
 **Step 3:** Use a **worker** to test critical user journeys end-to-end.
 
@@ -170,6 +189,7 @@ Every worker must verify for **every** function:
 > - Search: search input, results, no-results state
 > - Permissions: role-based access, unauthorized attempts
 > Log every issue to `.agents/testing/BUGS_FOUND.md`
+> If a user journey cannot be tested (e.g., missing test data), log it and continue to the next journey. Do not stop.
 
 ### Logging Frontend Bugs (passed to worker)
 
@@ -190,7 +210,7 @@ Every frontend bug must include:
 
 ### Orchestration
 
-This phase uses the **Implement → Review → Fix** chain pattern.
+This phase uses the **Implement → Review → Fix** chain pattern. **This phase may loop multiple times.** Each loop: worker fixes → reviewer checks → worker re-fixes → re-tests. Continue looping until all bugs are resolved or no further fixes are possible.
 
 **Step 1:** Use a **worker** to fix all bugs.
 
@@ -202,6 +222,7 @@ This phase uses the **Implement → Review → Fix** chain pattern.
 > 5. Mark the bug as "Fixed: [x]" in BUGS_FOUND.md
 >
 > If a fix introduces a new bug, fix that too before moving on.
+> If you cannot fix a bug, mark it as "Unfixable: [reason]" and continue to the next bug. Do not stop.
 
 **Step 2:** Use a **reviewer** to verify all fixes.
 
@@ -211,8 +232,9 @@ This phase uses the **Implement → Review → Fix** chain pattern.
 > 3. Check that no new bugs were introduced
 > 4. Check that related code (call sites, dependencies) is not broken
 > 5. Return a list of issues found during review (if any)
+> 6. If issues are found, return them to the orchestrator for the next loop iteration
 
-**Step 3:** If reviewer found issues, use a **worker** to address them.
+**Step 3:** If reviewer found issues, use a **worker** to address them. **Loop back to Step 1.**
 
 > Task: Apply the review feedback. Fix any issues the reviewer identified. Update BUGS_FOUND.md.
 
@@ -226,7 +248,7 @@ This phase uses the **Implement → Review → Fix** chain pattern.
 
 ### Iteration Rule
 
-> **Do not proceed to the next phase until ALL bugs are fixed.** If a fix introduces a new bug, fix that too before moving on. If the reviewer finds issues, loop back to fix them.
+> **Do not proceed to the next phase until ALL bugs are fixed.** If a fix introduces a new bug, fix that too before moving on. If the reviewer finds issues, loop back to fix them. Loop indefinitely if needed — do not stop until all bugs are resolved or marked as unfixable with documented reasons. Maximum of 5 fix/review loops before moving on with documented remaining issues.
 
 ---
 
@@ -251,7 +273,7 @@ This phase uses the **Implement → Review → Fix** chain pattern.
 > - Concurrent actions
 > Log any issues to BUGS_FOUND.md.
 
-**Step 3:** If new bugs are found, loop back to **Phase 4** (bug fixing).
+**Step 3:** If new bugs are found, loop back to **Phase 4** (bug fixing). This loop is automatic — do not ask for confirmation. Maximum of 2 additional loops before proceeding to Phase 6 regardless of remaining bugs.
 
 ---
 
@@ -276,11 +298,11 @@ This phase uses the **Implement → Review → Fix** chain pattern.
 > 10. Conclusion (definitive statement about codebase quality)
 > 11. Appendix: testing commands used
 >
-> The report must be comprehensive — no placeholders, no "TODO" sections.
+> The report must be comprehensive — no placeholders, no "TODO" sections. Include all remaining bugs with their reasons if unfixable.
 
 **Step 2:** Use a **worker** to update STATE.md with completion status.
 
-> Task: Update STATE.md to mark all phases as complete, update status to "complete", and record the final bug counts.
+> Task: Update STATE.md to mark all phases as complete, update status to "complete", and record the final bug counts. This marks the END of the testing run.
 
 ---
 
@@ -321,17 +343,21 @@ All phases complete. Zero bugs remaining.
 1. **Never do testing work yourself.** Always delegate to subagents.
 2. **Never skip a function.** Every exported function must be audited by a worker.
 3. **Never assume correctness.** Pass the audit checklist to workers.
-4. **Never ignore a bug.** Every bug must be logged and fixed.
-5. **Never proceed to the next phase until all current-phase bugs are fixed.**
+4. **Never ignore a bug.** Every bug must be logged and fixed (or marked unfixable with reason).
+5. **Never proceed to the next phase until all current-phase bugs are fixed (or marked unfixable).**
 6. **Always re-test after fixing.** Use the worker → reviewer → worker chain.
 7. **Always take screenshots** of frontend testing — delegate to a worker.
 8. **Always check the console** for JavaScript errors — delegate to a worker.
-9. **Keep testing until zero bugs remain.** If a bug is found, fix it and continue.
+9. **Keep testing until zero bugs remain (or max loops reached).** If a bug is found, fix it and continue.
 10. **The final report must be comprehensive.** No placeholders, no "TODO" sections.
 11. **Use parallel workers** for independent testing tasks to save time.
 12. **Use chains** for multi-step workflows (implement → review → fix).
 13. **If a fix introduces a new bug, fix that too** before moving on.
 14. **Be thorough, not fast.** Quality over speed.
+15. **NEVER ask the user for input, confirmation, or guidance.** Make all decisions autonomously.
+16. **NEVER stop or pause execution** until the final report (Phase 6) is generated.
+17. **If any phase fails or encounters blockers, adapt and continue.** Do not halt the entire run.
+18. **The skill ends only when Phase 6 is complete and TEST_REPORT.md is written.**
 
 ---
 

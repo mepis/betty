@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **PI skill** (testing-debugging): Added autonomous execution section — skill now runs to completion without human intervention, never pauses for approval, adapts to failures (dev server down, subagent failures, missing test data) and continues; added max loop limits for Phase 4 (5 fix/review loops) and Phase 5 (2 regression loops); enhanced error handling instructions across all phases; expanded Critical Rules from 14 to 18 items
+
 ### Added
 
 - **PI skill**: testing-debugging — 6-phase QA workflow (recon, backend audit, frontend testing, bug fixing, regression, report); rewritten to orchestrator mode with aggressive subagent delegation (parallel scouts for recon, parallel workers for backend audit, worker→reviewer→worker chain for bug fixing)
