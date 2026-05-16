@@ -1,5 +1,9 @@
 <template>
-  <div class="app" :class="{ 'show-sidebar': showSidebar }">
+  <!-- Login Page -->
+  <LoginPage v-if="!authStore.isAuthenticated" />
+
+  <!-- Main App (authenticated) -->
+  <div v-else class="app" :class="{ 'show-sidebar': showSidebar }">
     <!-- Sidebar -->
     <aside class="sidebar" :class="{ open: showSidebar }">
       <div class="sidebar-header">
@@ -32,6 +36,11 @@
           <h1 class="logo">🤖 Betty</h1>
         </div>
         <div class="header-right">
+          <div class="user-info" :title="authStore.user?.username">
+            <span class="user-avatar">👤</span>
+            <span class="user-name">{{ authStore.user?.username }}</span>
+            <span class="user-role-badge" :class="authStore.user?.role">{{ authStore.user?.role }}</span>
+          </div>
           <div class="model-badge" @click="showModelSelector = true" :title="currentModel?.name || 'Select model'">
             <span class="model-name">{{ currentModel?.name || 'Select Model' }}</span>
             <span class="model-provider">{{ currentModel?.provider }}</span>
@@ -43,6 +52,7 @@
             <span class="status-dot"></span>
             {{ wsConnected ? 'Connected' : wsError || 'Connecting...' }}
           </div>
+          <button class="btn btn-icon" @click="handleLogout" title="Logout">🚪</button>
         </div>
       </header>
 
@@ -172,7 +182,23 @@
             <h3>Settings</h3>
             <button class="btn btn-icon" @click="showSettings = false">✕</button>
           </div>
+          <!-- Settings tabs -->
+          <div class="settings-tabs">
+            <button
+              class="btn btn-text"
+              :class="{ active: activeSettingsTab === 'general' }"
+              @click="activeSettingsTab = 'general'"
+            >General</button>
+            <button
+              v-if="authStore.isAdmin"
+              class="btn btn-text"
+              :class="{ active: activeSettingsTab === 'users' }"
+              @click="activeSettingsTab = 'users'"
+            >Users</button>
+          </div>
           <div class="modal-body">
+            <!-- General Settings -->
+            <div v-if="activeSettingsTab === 'general'">
             <div class="settings-section">
               <h4>Thinking Level</h4>
               <div class="setting-options">
@@ -220,6 +246,12 @@
                 </div>
               </div>
             </div>
+            </div>
+
+            <!-- User Management (admin only) -->
+            <div v-if="activeSettingsTab === 'users' && authStore.isAdmin">
+              <UserManagement v-if="authStore.token" :token="authStore.token" />
+            </div>
           </div>
         </div>
       </div>
@@ -248,6 +280,9 @@
 <script setup lang="ts">
 import { ref, nextTick, watch, onMounted } from "vue";
 import { useChatStore } from "./stores/chat";
+import { useAuthStore } from "./stores/auth";
+import LoginPage from "./components/LoginPage.vue";
+import UserManagement from "./components/UserManagement.vue";
 import { marked } from "marked";
 
 marked.setOptions({
@@ -257,6 +292,7 @@ marked.setOptions({
 });
 
 const store = useChatStore();
+const authStore = useAuthStore();
 
 const messagesContainer = ref<HTMLElement | null>(null);
 const scrollAnchor = ref<HTMLElement | null>(null);
@@ -283,6 +319,8 @@ const {
   compactInstructions,
   showNewSessionConfirm,
 } = store;
+
+const activeSettingsTab = ref("general");
 
 // ─── Auto-scroll ───────────────────────────────────────────────────────────
 function scrollToBottom(): void {
@@ -325,6 +363,11 @@ function handleNewSession(): void {
 
 function clearMessages(): void {
   store.clearMessages();
+}
+
+function handleLogout(): void {
+  store.disconnect();
+  authStore.logout();
 }
 
 // ─── Formatting ────────────────────────────────────────────────────────────
@@ -547,6 +590,82 @@ html, body, #app {
   font-size: 10px;
   color: var(--text-muted);
   text-transform: uppercase;
+}
+
+/* ─── User Info ─────────────────────────────────────────────────────────── */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  background: var(--bg-tertiary);
+  border: 1px solid transparent;
+  transition: background var(--transition);
+  cursor: default;
+}
+
+.user-info:hover {
+  background: var(--bg-hover);
+  border-color: var(--border);
+}
+
+.user-avatar {
+  font-size: 14px;
+}
+
+.user-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-role-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.user-role-badge.admin {
+  background: rgba(248, 81, 73, 0.15);
+  color: var(--red);
+}
+
+.user-role-badge.user {
+  background: rgba(88, 166, 255, 0.15);
+  color: var(--accent);
+}
+
+.user-role-badge.viewer {
+  background: rgba(139, 148, 158, 0.15);
+  color: var(--text-secondary);
+}
+
+/* ─── Settings Tabs ─────────────────────────────────────────────────────── */
+.settings-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.settings-tabs .btn-text {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.settings-tabs .btn-text.active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--accent);
 }
 
 .thinking-badge {

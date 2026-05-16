@@ -21,6 +21,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated architecture deep-dive with feature architecture diagram
 - Updated QA page with practical examples for steering, follow-up, auto-compaction, and auto-retry
 
+### Added
+
+- **Multi-user authentication** with JWT tokens and bcrypt password hashing
+- **Role-based access control (RBAC)** with three roles: admin, user, viewer
+- **Login page** with dark theme matching Betty's UI
+- **Admin user management panel** for creating, updating, and deleting users
+- **WebSocket authentication** via JWT token in connection URL (`?token=<jwt>`)
+- **REST API** for auth (`/api/auth/login`, `/api/me`) and user management (`/api/users` CRUD)
+- **Command permission gating** — viewers can only read, users can chat, admins have full access
+- `src/server/userStore.ts` — JSON-file user store with bcrypt hashing
+- `src/server/auth.ts` — JWT token generation and validation
+- `src/server/permissions.ts` — Role-based permission maps for all commands
+
 ### Fixed
 
 - Critical bugs in WebSocket store, types, and server (`9eee367`)

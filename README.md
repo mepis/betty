@@ -134,6 +134,64 @@ server {
 
 Then keep `HTTPS=false` in `.env` (the proxy handles TLS).
 
+### Authentication & RBAC
+
+Betty supports multi-user authentication with role-based access control.
+
+#### Setup
+
+Generate a JWT secret and set it in `.env`:
+
+```bash
+# Generate a secret (run once)
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
+# Add to .env
+JWT_SECRET=your-generated-secret-here
+```
+
+On first start, a default admin user is created:
+- **Username**: `admin` (customizable via `DEFAULT_ADMIN_USERNAME`)
+- **Password**: `admin` (customizable via `DEFAULT_ADMIN_PASSWORD`)
+
+> ⚠️ **Important**: Change the default admin password immediately after first login via the admin panel.
+
+#### Roles
+
+| Role | Chat | Sessions | User Management |
+|------|------|----------|----------------|
+| **admin** | ✅ | ✅ | ✅ |
+| **user** | ✅ | ✅ | ❌ |
+| **viewer** | ❌ | Read-only | ❌ |
+
+#### Disabling Authentication
+
+For single-user/local deployments, disable auth:
+
+```bash
+# .env
+AUTH_ENABLED=false
+```
+
+#### API Endpoints
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `POST` | `/api/auth/login` | — | Login, returns JWT token |
+| `GET` | `/api/me` | Bearer token | Get current user info |
+| `GET` | `/api/users` | Admin | List all users |
+| `POST` | `/api/users` | Admin | Create user |
+| `PUT` | `/api/users/:id` | Admin | Update user (role/password) |
+| `DELETE` | `/api/users/:id` | Admin | Delete user |
+
+#### WebSocket Authentication
+
+Include the JWT token in the WebSocket URL:
+
+```javascript
+const ws = new WebSocket(`wss://host:3001?token=${jwtToken}`);
+```
+
 ## Configuration
 
 ### Environment Variables
@@ -150,6 +208,10 @@ Then keep `HTTPS=false` in `.env` (the proxy handles TLS).
 | `PI_SESSION_DIR` | — | Custom session storage directory |
 | `PI_THINKING_LEVEL` | — | Thinking level (`off`, `minimal`, `low`, `medium`, `high`, `xhigh`) |
 | `PI_VERBOSE` | `false` | Enable verbose logging |
+| `JWT_SECRET` | — | **Required** for auth. JWT signing secret |
+| `AUTH_ENABLED` | `true` | Enable authentication (set `false` to disable) |
+| `DEFAULT_ADMIN_USERNAME` | `admin` | Default admin username |
+| `DEFAULT_ADMIN_PASSWORD` | `admin` | Default admin password (change after first login) |
 
 ### Frontend
 
@@ -161,6 +223,8 @@ Then keep `HTTPS=false` in `.env` (the proxy handles TLS).
 ## Features
 
 - 💬 Real-time streaming chat with WebSocket
+- 🔐 Multi-user authentication with JWT
+- 👥 Role-based access control (admin, user, viewer)
 - 🤖 Model switching (dropdown selector)
 - 💭 Thinking level cycling (click badge)
 - 📂 Session management (sidebar)
@@ -170,8 +234,19 @@ Then keep `HTTPS=false` in `.env` (the proxy handles TLS).
 - 🌙 Dark theme (GitHub Dark style)
 - 🛠️ Tool call visibility (shows bash, read, edit, write results)
 - ⚙️ Settings panel (thinking level, session info, compaction)
+- 👤 Admin user management panel
 
 ## WebSocket Protocol
+
+> **Note**: When auth is enabled, connect with `?token=<jwt>` query parameter.
+
+### Server → Client (Auth Events)
+
+```json
+{ "type": "connected", "user": { "id": "...", "username": "...", "role": "admin" } }
+{ "type": "auth_required" }
+{ "type": "auth_error", "message": "Invalid or expired token" }
+```
 
 ### Client → Server
 
@@ -216,21 +291,29 @@ Then keep `HTTPS=false` in `.env` (the proxy handles TLS).
 
 ```
 betty/
-├── server.ts              # Node.js backend (HTTPS + WebSocket + RPC wrapper + static files)
+├── server.ts              # Node.js backend (HTTPS + WebSocket + RPC wrapper + auth + static files)
 ├── vite.config.ts          # Vite configuration
 ├── tsconfig.json           # TypeScript configuration
 ├── package.json
 ├── index.html              # Entry HTML
 ├── .env                    # Environment variables
 ├── .certs/                 # Auto-generated self-signed certificates (when HTTPS=true)
+├── data/                   # User data store (users.json, created at runtime)
 ├── dist/                   # Production build output (served by server)
 └── src/
     ├── main.ts             # Vue app entry
     ├── App.vue             # Main component (chat UI + modals)
     ├── types.ts            # TypeScript types for WS protocol
+    ├── server/
+    │   ├── userStore.ts    # JSON-file user store with bcrypt hashing
+    │   ├── auth.ts         # JWT token generation/validation
+    │   └── permissions.ts  # Role-based access control
     ├── stores/
-    │   └── chat.ts         # Pinia store (WebSocket client, state management)
-    └── components/         # (可扩展: 更多组件)
+    │   ├── chat.ts         # Pinia store (WebSocket client, chat state)
+    │   └── auth.ts         # Pinia store (authentication state)
+    └── components/
+        ├── LoginPage.vue          # Authentication login page
+        └── UserManagement.vue     # Admin user management panel
 ```
 
 ## Extending

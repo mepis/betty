@@ -56,6 +56,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import selfsigned from "selfsigned";
+import { userStore } from "./src/server/userStore";
+import { generateToken, verifyToken, type JwtPayload } from "./src/server/auth";
+import { hasPermission, isAdmin, type UserRole } from "./src/server/permissions";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -64,6 +67,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const useHttps = process.env.HTTPS === "true";
 const httpsCertPath = process.env.HTTPS_CERT_PATH;
 const httpsKeyPath = process.env.HTTPS_KEY_PATH;
+
+// ─── Authentication Configuration ──────────────────────────────────────────
+
+const authEnabled = process.env.AUTH_ENABLED !== "false"; // true by default
 
 // MIME types for static file serving
 const MIME_TYPES: Record<string, string> = {
@@ -121,6 +128,236 @@ function serveStaticFile(
   fs.createReadStream(fullPath).pipe(res);
 }
 
+function parseBody(req: IncomingMessage): Promise<Record<string, unknown> | null> {
+  return new Promise((resolve) => {
+    if (req.method !== "POST" && req.method !== "PUT" && req.method !== "PATCH") {
+      resolve(null);
+      return;
+    }
+    const chunks: Buffer[] = [];
+    let totalSize = 0;
+    const maxSize = 1024 * 1024; // 1MB limit
+    req.on("data", (chunk: Buffer) => {
+      totalSize += chunk.length;
+      if (totalSize > maxSize) {
+        res.writeHead(413, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Request entity too large" }));
+        resolve(null);
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on("end", () => {
+      if (chunks.length === 0) {
+        resolve(null);
+        return;
+      }
+      try {
+        const body = JSON.parse(Buffer.concat(chunks).toString("utf-8"));
+        resolve(body);
+      } catch {
+        resolve(null);
+      }
+    });
+    req.on("error", () => resolve(null));
+  });
+}
+
+function getAuthToken(req: IncomingMessage): string | null {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) return null;
+  const [scheme, token] = authHeader.split(" ");
+  if (scheme !== "Bearer" || !token) return null;
+  return token;
+}
+
+async function handleApiRoute(
+  req: IncomingMessage,
+  res: ServerResponse,
+  body: Record<string, unknown> | null
+): Promise<boolean> {
+  const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
+  const pathname = url.pathname;
+  const method = req.method;
+
+  // POST /api/auth/login
+  if (method === "POST" && pathname === "/api/auth/login") {
+    if (!body || !body.username || !body.password) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Username and password are required" }));
+      return true;
+    }
+    const user = await userStore.authenticate(body.username as string, body.password as string);
+    if (!user) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Invalid credentials" }));
+      return true;
+    }
+    const token = generateToken({ id: user.id, username: user.username, role: user.role });
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ token, user }));
+    return true;
+  }
+
+  // GET /api/me — get current authenticated user
+  if (method === "GET" && pathname === "/api/me") {
+    const token = getAuthToken(req);
+    if (!token) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Authentication required" }));
+      return true;
+    }
+    const payload = verifyToken(token);
+    if (!payload) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Invalid or expired token" }));
+      return true;
+    }
+    const user = userStore.findUserById(payload.id);
+    if (!user) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "User not found" }));
+      return true;
+    }
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ id: user.id, username: user.username, role: user.role }));
+    return true;
+  }
+
+  // GET /api/users — list all users (admin only)
+  if (method === "GET" && pathname === "/api/users") {
+    const token = getAuthToken(req);
+    if (!token) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Authentication required" }));
+      return true;
+    }
+    const payload = verifyToken(token);
+    if (!payload || !isAdmin(payload.role)) {
+      res.writeHead(403, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Admin access required" }));
+      return true;
+    }
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ users: userStore.getAllUsers() }));
+    return true;
+  }
+
+  // POST /api/users — create user (admin only)
+  if (method === "POST" && pathname === "/api/users") {
+    const token = getAuthToken(req);
+    if (!token) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Authentication required" }));
+      return true;
+    }
+    const payload = verifyToken(token);
+    if (!payload || !isAdmin(payload.role)) {
+      res.writeHead(403, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Admin access required" }));
+      return true;
+    }
+    if (!body || !body.username || !body.password) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Username and password are required" }));
+      return true;
+    }
+    const role = (body.role as UserRole) || "user";
+    if (!["admin", "user", "viewer"].includes(role)) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Invalid role" }));
+      return true;
+    }
+    try {
+      const user = await userStore.createUser(body.username as string, body.password as string, role);
+      res.writeHead(201, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ user }));
+    } catch (err) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: (err as Error).message }));
+    }
+    return true;
+  }
+
+  // PUT /api/users/:id — update user (admin only)
+  if (method === "PUT" && pathname.startsWith("/api/users/")) {
+    const token = getAuthToken(req);
+    if (!token) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Authentication required" }));
+      return true;
+    }
+    const payload = verifyToken(token);
+    if (!payload || !isAdmin(payload.role)) {
+      res.writeHead(403, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Admin access required" }));
+      return true;
+    }
+    const id = pathname.split("/").pop();
+    if (!id) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "User ID required" }));
+      return true;
+    }
+    const updates: { password?: string; role?: UserRole } = {};
+    if (body?.password) updates.password = body.password as string;
+    if (body?.role) updates.role = body.role as UserRole;
+    if (!updates.password && !updates.role) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "No updates provided" }));
+      return true;
+    }
+    try {
+      const user = await userStore.updateUser(id, updates);
+      if (!user) {
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "User not found" }));
+        return true;
+      }
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ user }));
+    } catch (err) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: (err as Error).message }));
+    }
+    return true;
+  }
+
+  // DELETE /api/users/:id — delete user (admin only)
+  if (method === "DELETE" && pathname.startsWith("/api/users/")) {
+    const token = getAuthToken(req);
+    if (!token) {
+      res.writeHead(401, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Authentication required" }));
+      return true;
+    }
+    const payload = verifyToken(token);
+    if (!payload || !isAdmin(payload.role)) {
+      res.writeHead(403, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Admin access required" }));
+      return true;
+    }
+    const id = pathname.split("/").pop();
+    if (!id) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "User ID required" }));
+      return true;
+    }
+    const deleted = userStore.deleteUser(id);
+    if (!deleted) {
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "User not found" }));
+      return true;
+    }
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ success: true }));
+    return true;
+  }
+
+  return false;
+}
+
 function requestHandler(req: IncomingMessage, res: ServerResponse): void {
   // Health check
   if (req.url === "/health") {
@@ -129,7 +366,19 @@ function requestHandler(req: IncomingMessage, res: ServerResponse): void {
       status: "ok",
       wsClients: wss.clients.size,
       https: useHttps,
+      auth: authEnabled,
     }));
+    return;
+  }
+
+  // REST API routes
+  if (req.url?.startsWith("/api/")) {
+    parseBody(req).then((body) => {
+      if (!handleApiRoute(req, res, body)) {
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Not found" }));
+      }
+    });
     return;
   }
 
@@ -436,12 +685,19 @@ async function spawnPiForClient(clientWs: WebSocket): Promise<PiRpcClient> {
 
 // ─── Route handlers ──────────────────────────────────────────────────────────
 
-async function handleClientMessage(clientWs: WebSocket, raw: string): Promise<void> {
+async function handleClientMessage(clientWs: AuthenticatedWebSocket, raw: string): Promise<void> {
   let msg: ClientMessage;
   try {
     msg = JSON.parse(raw);
   } catch {
     clientWs.send(JSON.stringify({ type: "error", message: "Invalid JSON" }));
+    return;
+  }
+
+  // Permission check
+  const authUser = clientWs.userData;
+  if (!hasPermission(authUser.role, msg.type)) {
+    clientWs.send(JSON.stringify({ type: "error", message: "Permission denied: insufficient privileges" }));
     return;
   }
 
@@ -633,13 +889,54 @@ async function handleClientMessage(clientWs: WebSocket, raw: string): Promise<vo
   }
 }
 
+// ─── Auth middleware for WebSocket ──────────────────────────────────────────
+
+interface AuthenticatedWebSocket extends WebSocket {
+  userData: JwtPayload;
+}
+
+function authenticateWebSocket(ws: WebSocket): boolean {
+  if (!authEnabled) return true;
+
+  // Parse URL to get query params
+  const url = new URL(
+    ws.url || "/",
+    `http://${process.env.HOST || "localhost"}:${wsPort}`
+  );
+  const token = url.searchParams.get("token");
+
+  if (!token) {
+    ws.send(JSON.stringify({ type: "auth_required" }));
+    ws.close(1008, "Authentication required");
+    return false;
+  }
+
+  const payload = verifyToken(token);
+  if (!payload) {
+    ws.send(JSON.stringify({ type: "auth_error", message: "Invalid or expired token" }));
+    ws.close(1008, "Invalid or expired token");
+    return false;
+  }
+
+  // Attach user data to WebSocket
+  (ws as AuthenticatedWebSocket).userData = payload;
+  return true;
+}
+
 // ─── Connection lifecycle ────────────────────────────────────────────────────
 
-wss.on("connection", (ws) => {
-  console.log(`[ws] Client connected (${wss.clients.size} total)`);
+wss.on("connection", (ws, req) => {
+  // Authenticate before accepting connection
+  if (!authenticateWebSocket(ws)) {
+    console.log(`[ws] Client rejected (auth failed)`);
+    return;
+  }
+
+  const authUser = (ws as AuthenticatedWebSocket).userData;
+  console.log(`[ws] Client connected: ${authUser.username} (${authUser.role}) (${wss.clients.size} total)`);
 
   ws.on("message", (data) => {
-    handleClientMessage(ws, data.toString());
+    handleClientMessage(ws as AuthenticatedWebSocket, data.toString());
   });
 
   ws.on("close", () => {
@@ -655,8 +952,15 @@ wss.on("connection", (ws) => {
     console.error(`[ws] Error: ${err.message}`);
   });
 
-  // Send connection ack
-  ws.send(JSON.stringify({ type: "connected" }));
+  // Send connection ack with user info
+  ws.send(JSON.stringify({ type: "connected", user: authUser }));
+});
+
+// ─── Initialize user store ─────────────────────────────────────────────────
+
+userStore.load();
+userStore.seedDefaultAdmin().catch((err) => {
+  console.error("[server] Failed to seed default admin:", err);
 });
 
 // ─── Start ───────────────────────────────────────────────────────────────────
@@ -666,8 +970,12 @@ server.listen(wsPort, () => {
   console.log(`[server] WebSocket on :${wsPort} (same port)`);
   console.log(`[server] pi provider: ${piProvider || "default"}`);
   console.log(`[server] pi model: ${piModel || "default"}`);
+  console.log(`[server] auth: ${authEnabled ? "enabled" : "disabled"}`);
   if (useHttps && !httpsCertPath) {
     console.log("[server] Using self-signed certificate. Trust .certs/cert.pem in your browser.");
+  }
+  if (authEnabled) {
+    console.log(`[server] Default admin: ${process.env.DEFAULT_ADMIN_USERNAME || "admin"}`);
   }
 });
 

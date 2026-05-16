@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
+import { useAuthStore } from "./auth";
 import type {
   ChatMessage,
   ToolCallInfo,
@@ -29,6 +30,8 @@ import type {
   WsCompactionEnd,
   WsTurnStart,
   WsTurnEnd,
+  WsAuthRequired,
+  WsAuthError,
 } from "@/types";
 
 export const useChatStore = defineStore("chat", () => {
@@ -56,8 +59,17 @@ export const useChatStore = defineStore("chat", () => {
   let ws: WebSocket | null = null;
   let shouldReconnect = true;
   const wsProtocol = location.protocol === "https:" ? "wss:" : "ws:";
-  const wsUrl = import.meta.env.VITE_WS_URL || import.meta.env.VITE_WSS_URL
+  const wsBaseUrl = import.meta.env.VITE_WS_URL || import.meta.env.VITE_WSS_URL
     || `${wsProtocol}//${location.hostname}:${import.meta.env.VITE_WS_PORT || "3001"}`;
+
+  function getWsUrl(): string {
+    const authStore = useAuthStore();
+    if (authStore.token) {
+      const separator = wsBaseUrl.includes("?") ? "&" : "?";
+      return `${wsBaseUrl}${separator}token=${encodeURIComponent(authStore.token)}`;
+    }
+    return wsBaseUrl;
+  }
 
   // ─── Computed ─────────────────────────────────────────────────────────────
   const lastAssistantMessage = computed(() => {
@@ -77,9 +89,12 @@ export const useChatStore = defineStore("chat", () => {
   // ─── Actions ──────────────────────────────────────────────────────────────
 
   function connect(): void {
+    const authStore = useAuthStore();
     if (ws?.readyState === WebSocket.OPEN) return;
+    // Only connect if authenticated
+    if (!authStore.token) return;
 
-    ws = new WebSocket(wsUrl);
+    ws = new WebSocket(getWsUrl());
 
     ws.onopen = () => {
       wsConnected.value = true;
@@ -118,6 +133,16 @@ export const useChatStore = defineStore("chat", () => {
     wsConnected.value = false;
   }
 
+  function handleAuthRejection(): void {
+    const authStore = useAuthStore();
+    shouldReconnect = false;
+    ws?.close();
+    ws = null;
+    wsConnected.value = false;
+    wsError.value = "Authentication required";
+    authStore.logout();
+  }
+
   function send(msg: Record<string, unknown>): void {
     if (ws?.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(msg));
@@ -131,6 +156,18 @@ export const useChatStore = defineStore("chat", () => {
       case "connected": {
         const m = msg as unknown as WsConnected;
         console.log("[ws] Connected");
+        break;
+      }
+
+      case "auth_required": {
+        handleAuthRejection();
+        break;
+      }
+
+      case "auth_error": {
+        const m = msg as unknown as WsAuthError;
+        wsError.value = m.message;
+        handleAuthRejection();
         break;
       }
 

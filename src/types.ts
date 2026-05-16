@@ -294,3 +294,50 @@ export interface ModelOption {
   provider: string;
   isScoped?: boolean;
 }
+
+// ─── Authentication Types ───────────────────────────────────────────────────
+
+export type UserRole = "admin" | "user" | "viewer";
+
+export interface User {
+  id: string;
+  username: string;
+  role: UserRole;
+  createdAt: number;
+}
+
+export interface WsLoginMessage {
+  type: "login";
+  username: string;
+  password: string;
+}
+
+export interface WsLoginSuccess {
+  type: "login_success";
+  token: string;
+  user: User;
+}
+
+export interface WsLoginError {
+  type: "login_error";
+  message: string;
+}
+
+export interface WsAuthRequired {
+  type: "auth_required";
+}
+
+export interface WsAuthError {
+  type: "auth_error";
+  message: string;
+}
+
+export interface WsUserInfo {
+  type: "user_info";
+  user: User;
+}
+
+export interface WsConnectedWithUser {
+  type: "connected";
+  user: User;
+}
