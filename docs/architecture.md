@@ -157,9 +157,9 @@ The server is stateless between reconnections. Session state is managed entirely
 
 | File | Role | Dependencies |
 |------|------|-------------|
-| `server.ts` | Backend: WebSocket server + RPC client wrapper | `ws`, `express`, `node:child_process`, `node:http` |
+| `server.ts` | Backend: WebSocket server + RPC client wrapper + HTTPS | `ws`, `express`, `node:child_process`, `node:http`, `selfsigned` |
 | `src/main.ts` | Vue app bootstrap | `vue`, `pinia` |
-| `src/App.vue` | Main UI component (chat, modals, settings) | `vue`, `@/stores/chat` |
+| `src/App.vue` | Main UI component (chat, modals, settings) | `vue`, `@/stores/chat`, `marked` |
 | `src/stores/chat.ts` | Pinia store: WebSocket client + state | `pinia`, `vue`, `@/types` |
 | `src/types.ts` | TypeScript types for WS protocol | — |
 | `vite.config.ts` | Vite build config | `@vitejs/plugin-vue` |
@@ -170,16 +170,61 @@ The server is stateless between reconnections. Session state is managed entirely
 Environment Variables (Server)    Environment Variables (Frontend)
 ┌─────────────────────────┐      ┌─────────────────────────┐
 │ WS_PORT (3001)          │      │ VITE_WS_URL (ws://...)  │
-│ HTTP_PORT (3000)        │      └─────────────────────────┘
+│ HTTPS (false)           │      │ VITE_WSS_URL            │
+│ HTTPS_CERT_PATH         │      │ VITE_WS_PORT (3001)     │
+│ HTTPS_KEY_PATH          │      └─────────────────────────┘
 │ PI_PROVIDER             │
 │ PI_MODEL                │      Build-time (vite.config.ts)
 │ PI_NO_SESSION           │      ┌─────────────────────────┐
-│ PI_SESSION_DIR          │      │ Vite proxy → :3000      │
+│ PI_SESSION_DIR          │      │ Vite proxy → :3001      │
 │ PI_THINKING_LEVEL       │      │ @ alias → ./src/        │
 │ PI_VERBOSE              │      └─────────────────────────┘
 │ ANTHROPIC_API_KEY       │
 │ OPENAI_API_KEY          │
 └─────────────────────────┘
+```
+
+## Feature Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        Frontend (Vue 3)                      │
+│  ┌───────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐  │
+│  │ Chat UI   │ │ Modals   │ │ Sidebar  │ │ Settings     │  │
+│  │ Streaming │ │ Model    │ │ Sessions │ │ Thinking     │  │
+│  │ Markdown  │ │ Settings │ │          │ │ Compaction   │  │
+│  │ Tool Cards│ │ Confirm  │ │          │ │ Retry        │  │
+│  └───────────┘ └──────────┘ └──────────┘ └──────────────┘  │
+│                          │                                   │
+│  ┌───────────────────────┴──────────────────────────────┐   │
+│  │              Pinia Store (chat.ts)                    │   │
+│  │  WebSocket │ State │ Events │ Actions │ Computed     │   │
+│  └──────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+                              │ WebSocket (JSON)
+┌─────────────────────────────────────────────────────────────┐
+│                       Server (Node.js)                       │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  WebSocket Server (ws)                                 │  │
+│  │  ┌────────────────┐  ┌──────────────────────────────┐  │  │
+│  │  │  handlerMap    │  │  PiRpcClient (per client)    │  │  │
+│  │  │  - prompt      │  │  - spawn pi --mode rpc       │  │  │
+│  │  │  - abort       │  │  - JSONL stdin/stdout        │  │  │
+│  │  │  - set_model   │  │  - event forwarding          │  │  │
+│  │  │  - steer       │  │  - RPC command handling      │  │  │
+│  │  │  - follow_up   │  │                              │  │  │
+│  │  │  - compact     │  │  HTTPS (self-signed/custom)  │  │  │
+│  │  │  - fork/clone  │  │  Static file serving         │  │  │
+│  │  │  - bash        │  │  Health check (/health)      │  │  │
+│  │  │  - auto_*      │  │                              │  │  │
+│  │  └────────────────┘  └──────────────────────────────┘  │  │
+│  └────────────────────────────────────────────────────────┘  │
+│                              │ JSONL (stdin/stdout)          │
+│                    ┌─────────▼─────────┐                     │
+│                    │  pi --mode rpc    │                     │
+│                    │  (child process)  │                     │
+│                    └───────────────────┘                     │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ## Tags

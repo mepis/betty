@@ -92,6 +92,42 @@ Send a message like: *"Run `ls -la` and show me the output"*
 
 The agent will execute the command via the bash tool and display the result in a tool call card.
 
+### Steer the Agent
+
+Send a steer message to redirect the agent's focus without starting a new turn:
+
+```typescript
+// Via WebSocket
+{ "type": "steer", "message": "Focus on error handling in this function" }
+```
+
+This is useful for guiding the agent mid-conversation without losing context.
+
+### Follow Up
+
+Add a follow-up message to continue the conversation:
+
+```typescript
+// Via WebSocket
+{ "type": "follow_up", "message": "Can you also explain the error handling?" }
+```
+
+### Toggle Auto Compaction
+
+```json
+{ "type": "set_auto_compaction", "enabled": true }
+```
+
+When enabled, the agent automatically compresses context when approaching the window limit.
+
+### Toggle Auto Retry
+
+```json
+{ "type": "set_auto_retry", "enabled": true }
+```
+
+When enabled, the agent automatically retries failed operations instead of reporting them immediately.
+
 ## Troubleshooting
 
 ### "Disconnected from server"

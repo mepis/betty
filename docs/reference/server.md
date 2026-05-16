@@ -65,20 +65,22 @@ See [[docs/reference/protocol.md]] for the complete protocol specification.
 
 ## Server Configuration
 
-Read from environment variables:
+Read from environment variables in `server.ts`:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `WS_PORT` | `3001` | WebSocket server port |
-| `HTTP_PORT` | `3000` | HTTP health check port |
-| `PI_PROVIDER` | — | LLM provider |
-| `PI_MODEL` | — | Model ID |
-| `PI_NO_SESSION` | `false` | Disable session persistence |
+| `WS_PORT` | `3001` | Server port — serves **both** HTTP/HTTPS and WebSocket on the same port |
+| `HTTPS` | `false` | Enable HTTPS mode (uses TLS for HTTP and WebSocket) |
+| `HTTPS_CERT_PATH` | — | Path to TLS certificate PEM file |
+| `HTTPS_KEY_PATH` | — | Path to TLS private key PEM file |
+| `PI_PROVIDER` | — | LLM provider for pi agent |
+| `PI_MODEL` | — | Model ID for pi agent |
+| `PI_NO_SESSION` | `false` | Disable session persistence (`--no-session`) |
 | `PI_SESSION_DIR` | — | Custom session storage directory |
-| `PI_THINKING_LEVEL` | — | Thinking level |
-| `PI_VERBOSE` | `false` | Enable verbose logging |
-| `ANTHROPIC_API_KEY` | — | Anthropic API key |
-| `OPENAI_API_KEY` | — | OpenAI API key |
+| `PI_THINKING_LEVEL` | — | Default thinking level |
+| `PI_VERBOSE` | `false` | Enable verbose stderr logging from pi |
+| `ANTHROPIC_API_KEY` | — | Anthropic API key (inherited by pi process) |
+| `OPENAI_API_KEY` | — | OpenAI API key (inherited by pi process) |
 
 ## API Endpoints
 

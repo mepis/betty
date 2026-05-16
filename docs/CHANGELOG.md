@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Agent rule: always update `docs/CHANGELOG.md` before every commit (Rule 12 in `.pi/PROJECT_RULES.md`)
 - Repository audit report (`docs/audit.md`) — security findings, code quality assessment, recommendations
 - Audit reference in documentation index
+- **Documentation overhaul**: comprehensive project documentation with Mermaid diagrams, cross-links, and tags
+- New feature pages: Steering Mode, Auto Compaction, Auto Retry, Bash Tool, Commands
+- New reference pages: Environment Configuration, HTTPS/TLS Configuration
+- Updated protocol reference with all 30+ command types
+- Updated store documentation with all actions
+- Updated architecture deep-dive with feature architecture diagram
+- Updated QA page with practical examples for steering, follow-up, auto-compaction, and auto-retry
 
 ## [1.0.0] - 2026-05-16
 

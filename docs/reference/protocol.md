@@ -101,18 +101,55 @@ Send steering or follow-up messages within a conversation.
 { "type": "bash", "command": "ls -la" }
 ```
 
-Execute a bash command through pi.
+Execute a bash command through pi. Returns a `bash_result` event with output, exit code, and truncation info.
 
-### Steering / Auto Modes
+### Steering / Follow-Up Modes
 
 ```json
 { "type": "set_steering_mode", "mode": "on" | "off" }
 { "type": "set_follow_up_mode", "mode": "on" | "off" }
-{ "type": "set_auto_compaction", "enabled": true }
-{ "type": "set_auto_retry", "enabled": true }
 ```
 
-Control pi agent modes.
+Control steering and follow-up modes for the agent.
+
+### Auto Compaction
+
+```json
+{ "type": "set_auto_compaction", "enabled": true }
+{ "type": "set_auto_compaction", "enabled": false }
+```
+
+Enable or disable automatic context compaction when approaching the context window limit.
+
+### Auto Retry
+
+```json
+{ "type": "set_auto_retry", "enabled": true }
+{ "type": "set_auto_retry", "enabled": false }
+```
+
+Enable or disable automatic retry of failed operations.
+
+### Auto Retry Events
+
+```json
+{
+  "type": "auto_retry_start",
+  "toolCallId": "call_abc123",
+  "toolName": "bash",
+  "attempt": 2,
+  "maxAttempts": 3
+}
+{
+  "type": "auto_retry_end",
+  "toolCallId": "call_abc123",
+  "toolName": "bash",
+  "success": true,
+  "attempts": 2
+}
+```
+
+Emitted when auto retry is triggered for a failed tool execution.
 
 ## Server → Client Events
 
@@ -209,9 +246,10 @@ Notification of pending steering or follow-up messages.
 { "type": "stats", "data": { "sessionFile": "...", "userMessages": 10, ... } }
 { "type": "fork_messages", "data": { "messages": [{ "entryId": "...", "text": "..." }] } }
 { "type": "commands", "data": { "commands": [{ "name": "...", "description": "...", "source": "..." }] } }
+{ "type": "last_assistant_text", "data": { "text": "..." } }
 ```
 
-Responses to state query commands.
+Responses to state query commands. `last_assistant_text` returns the text content of the most recent assistant message.
 
 ### Session Events
 
@@ -226,11 +264,10 @@ Notification that a session switch completed.
 ```json
 { "type": "model_changed", "data": { "model": {...} } }
 { "type": "thinking_level_changed", "data": { "level": "high" } }
-{ "type": "last_assistant_text", "data": { "text": "..." } }
-{ "type": "bash_result", "data": { "output": "...", "exitCode": 0, "cancelled": false, "truncated": false } }
+{ "type": "bash_result", "data": { "output": "...", "exitCode": 0, "cancelled": false, "truncated": false, "fullOutputPath": "/tmp/betty-bash-abc123" } }
 ```
 
-Notifications for model/thinking changes and bash results.
+Notifications for model/thinking changes and bash results. The `bash_result` includes `fullOutputPath` when output is truncated.
 
 ### UI Requests
 
@@ -258,7 +295,9 @@ Extension UI requests from pi. The frontend responds via `{ type: "extension_ui_
 
 Error notification. Sets `wsError` in the store.
 
-## Protocol Flow Diagram
+## Protocol Flow Diagrams
+
+### Prompt Flow
 
 ```mermaid
 sequenceDiagram
@@ -279,9 +318,25 @@ sequenceDiagram
     S-->>C: { type: "agent_end", messages: [...] }
 ```
 
+### Model Switching Flow
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    participant P as pi (RPC)
+
+    C->>S: { type: "get_available_models" }
+    S->>P: { type: "get_available_models" }
+    S-->>C: { type: "models", data: {...} }
+    C->>S: { type: "set_model", provider, modelId }
+    S->>P: { type: "set_model", provider, modelId }
+    S-->>C: { type: "model_changed", data: {...} }
+```
+
 ## Tags
 
-- **category**: protocol, websocket
+- **category**: protocol, websocket, reference
 - **component**: server.ts, stores/chat.ts
-- **pattern**: JSON-RPC, event-streaming
+- **pattern**: JSON-RPC, event-streaming, bidirectional
 - **audience**: developers, engineers

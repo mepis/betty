@@ -62,15 +62,49 @@ Organized by categories. Maps tags to their documentation pages.
 
 ### tool-calls
 - [[Tool Calls]]
+- [[Bash Tool]]
 
 ### tools
 - [[Tool Calls]]
+- [[Bash Tool]]
+- [[Commands]]
 
 ### types
 - [[Type Definitions (`types.ts`)]]
 
 ### websocket
 - [[WebSocket Protocol Reference]]
+
+### compaction
+- [[Auto Compaction]]
+
+### retry
+- [[Auto Retry]]
+
+### steering
+- [[Steering Mode]]
+
+### bash
+- [[Bash Tool]]
+
+### commands
+- [[Commands]]
+
+### environment
+- [[Environment Configuration]]
+
+### https
+- [[HTTPS / TLS Configuration]]
+
+### tls
+- [[HTTPS / TLS Configuration]]
+
+### security
+- [[HTTPS / TLS Configuration]]
+
+### configuration
+- [[Environment Configuration]]
+- [[HTTPS / TLS Configuration]]
 
 ## Component Tags
 
@@ -88,6 +122,15 @@ Organized by categories. Maps tags to their documentation pages.
 
 ### types.ts
 - [[Type Definitions (`types.ts`)]]
+
+### App.vue
+- [[Chat Interface]]
+- [[Model Selection]]
+- [[Thinking Level]]
+- [[Tool Calls]]
+- [[Steering Mode]]
+- [[Auto Compaction]]
+- [[Bash Tool]]
 
 ## Pattern Tags
 
@@ -148,6 +191,18 @@ Organized by categories. Maps tags to their documentation pages.
 ### tool-visualization
 - [[Tool Calls]]
 
+## Component Tags
+
+### vite.config.ts
+- [[Frontend (`src/`)]]
+- [[Environment Configuration]]
+
+### index.html
+- [[Frontend (`src/`)]]
+
+### package.json
+- [[Frontend (`src/`)]]
+
 ## Audience Tags
 
 ### developers
@@ -184,7 +239,17 @@ Organized by categories. Maps tags to their documentation pages.
 - [[Model Selection]]
 - [[Thinking Level]]
 - [[Tool Calls]]
+- [[Steering Mode]]
+- [[Auto Compaction]]
+- [[Auto Retry]]
+- [[Bash Tool]]
+- [[Commands]]
 - [[Quick Start & QA]]
+
+### operators
+- [[HTTPS / TLS Configuration]]
+- [[Environment Configuration]]
+- [[Repository Audit]]
 
 ## Tags
 

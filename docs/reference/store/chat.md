@@ -122,13 +122,31 @@ const lastUserMessage = computed(() => {
 |--------|-------------|
 | `getState()` | Fetches current server state |
 | `getMessages()` | Fetches the full message history |
+| `getSessionStats()` | Fetches session statistics (tokens, cost, context usage) |
+| `getForkMessages()` | Fetches messages available for forking |
+| `getCommands()` | Fetches available pi commands and tools |
 
-### UI Actions
+### Steering & Follow-Up Actions
+
+These commands are sent via the generic `send()` action (no dedicated store methods exist yet):
 
 | Action | Description |
 |--------|-------------|
-| `respondToUiRequest(id, response)` | Responds to a pi extension UI request |
-| `dismissUiRequest(id)` | Removes a UI request from the queue |
+| `send({ type: "steer", message, images? })` | Send a steer message to redirect the agent |
+| `send({ type: "follow_up", message, images? })` | Send a follow-up message |
+| `send({ type: "set_steering_mode", mode })` | Enable or disable steering mode |
+| `send({ type: "set_follow_up_mode", mode })` | Enable or disable follow-up mode |
+
+### Agent Mode Actions
+
+These commands are sent via the generic `send()` action:
+
+| Action | Description |
+|--------|-------------|
+| `send({ type: "set_auto_compaction", enabled })` | Enable or disable auto compaction |
+| `send({ type: "set_auto_retry", enabled })` | Enable or disable auto retry |
+| `send({ type: "bash", command })` | Execute a bash command through pi |
+| `send({ type: "get_last_assistant_text" })` | Get the text of the last assistant message |
 
 ## Event Handling: `handleWsMessage()`
 
@@ -177,5 +195,5 @@ Can be overridden via `.env` file (`VITE_WS_URL`).
 
 - **category**: frontend, state-management
 - **component**: Pinia store, WebSocket client
-- **pattern**: event-dispatch, auto-reconnect, streaming
+- **pattern**: event-dispatch, auto-reconnect, streaming, steering
 - **audience**: developers, engineers

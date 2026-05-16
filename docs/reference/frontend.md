@@ -105,8 +105,26 @@ See [[docs/reference/types.md]] for detailed type documentation.
 | Setting | Value | Purpose |
 |---------|-------|---------|
 | `port` | `5173` | Dev server port |
-| `proxy /api` | `http://localhost:3000` | Proxy API requests to backend |
+| `proxy /ws` | `http://localhost:3001` | Proxy WebSocket connections to backend |
 | `@` alias | `./src/` | Import alias for source files |
+
+### Dev Mode Proxy
+
+In development, Vite proxies WebSocket connections from `ws://localhost:5173/ws` to the backend server at `ws://localhost:3001`. This allows the frontend to connect to the WebSocket server without CORS issues.
+
+```typescript
+// vite.config.ts
+server: {
+  port: 5173,
+  proxy: {
+    "/ws": {
+      target: "http://localhost:3001",
+      ws: true,
+      changeOrigin: true,
+    },
+  },
+}
+```
 
 ## Tags
 
