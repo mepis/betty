@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **dotenv support** — Server loads `.env` on startup (`server.ts`)
 - **Environment variable docs** — Database config, bcrypt config, JWT config, default admin config (`docs/reference/environment.md`)
 - **npm script `db:init`** — `mysql < scripts/init-db.sql` for manual DB initialization
+- **`scripts/create-admin.ts`** — Standalone CLI script to create or reset the default admin user, with auto-generated credentials fallback (`npm run admin:create`)
 
 ### Changed
 
@@ -31,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Added] Database reference documentation
 - [Added] Auto-generated admin credentials file with secure permissions (M15 fix)
 - [Added] dotenv support for server-side environment loading
+- [Added] `scripts/create-admin.ts` — standalone CLI to create or reset the default admin user with auto-generated credentials fallback
 - [Changed] UserStore migrated from JSON file to MySQL with parameterized queries
 - [Changed] Session tracking integrated with database in WebSocket handler
 - [Changed] Graceful shutdown closes database pools

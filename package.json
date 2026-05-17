@@ -10,7 +10,8 @@
     "build": "vite build",
     "start": "node --import tsx/esm server.ts",
     "start:prod": "npm run build && node --import tsx/esm server.ts",
-    "db:init": "mysql < scripts/init-db.sql"
+    "db:init": "mysql < scripts/init-db.sql",
+    "admin:create": "tsx scripts/create-admin.ts"
   },
   "dependencies": {
     "@earendil-works/pi-coding-agent": "latest",
