@@ -49,7 +49,14 @@
  */
 
 import { spawn, type ChildProcess } from "node:child_process";
-import { WebSocketServer, type WebSocket } from "ws";
+import dotenv from "dotenv";
+
+// Load .env file
+const envPath = path.join(process.cwd(), ".env");
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+}
+import { WebSocketServer, WebSocket } from "ws";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import https from "node:https";
 import fs from "node:fs";
@@ -57,6 +64,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import selfsigned from "selfsigned";
 import { userStore } from "./src/server/userStore";
+import { sessionStore } from "./src/server/sessionStore";
+import { initDatabase, closeDatabase, checkHealthFull } from "./src/server/db";
 import { generateToken, verifyToken, type JwtPayload } from "./src/server/auth";
 import { hasPermission, isAdmin, type UserRole } from "./src/server/permissions";
 
@@ -87,9 +96,17 @@ const MIME_TYPES: Record<string, string> = {
   ".woff2": "font/woff2",
   ".ttf": "font/ttf",
   ".webp": "image/webp",
-  ".js.map": "application/json",
-  ".svg+xml": "image/svg+xml",
+  ".map": "application/json",
 };
+
+// Safe extensions allowlist for static file serving
+const SAFE_EXTENSIONS = new Set(Object.keys(MIME_TYPES));
+
+// S-15: Max file size for static file serving (100MB)
+const MAX_STATIC_FILE_SIZE = parseInt(process.env.MAX_STATIC_FILE_SIZE || "104857600", 10);
+
+// S-25: Max line length for RPC output parsing (prevents DoS via huge lines)
+const MAX_RPC_LINE_LENGTH = parseInt(process.env.MAX_RPC_LINE_LENGTH || "1048576", 10); // 1MB
 
 function getMime(ext: string): string {
   return MIME_TYPES[ext] || "application/octet-stream";
@@ -118,7 +135,29 @@ function serveStaticFile(
     return;
   }
 
+  // S-15: Check file size before serving
+  try {
+    const stat = fs.statSync(fullPath);
+    if (stat.size > MAX_STATIC_FILE_SIZE) {
+      res.writeHead(413, { "Content-Type": "text/plain" });
+      res.end("File too large");
+      return;
+    }
+  } catch {
+    res.writeHead(500, { "Content-Type": "text/plain" });
+    res.end("Internal server error");
+    return;
+  }
+
   const ext = path.extname(filePath).toLowerCase();
+
+  // Validate Content-Type: only serve files with known safe extensions
+  if (!SAFE_EXTENSIONS.has(ext)) {
+    res.writeHead(403, { "Content-Type": "text/plain" });
+    res.end("Forbidden");
+    return;
+  }
+
   const mime = getMime(ext);
 
   res.writeHead(200, {
@@ -128,7 +167,7 @@ function serveStaticFile(
   fs.createReadStream(fullPath).pipe(res);
 }
 
-function parseBody(req: IncomingMessage): Promise<Record<string, unknown> | null> {
+function parseBody(req: IncomingMessage, res: ServerResponse): Promise<Record<string, unknown> | null> {
   return new Promise((resolve) => {
     if (req.method !== "POST" && req.method !== "PUT" && req.method !== "PATCH") {
       resolve(null);
@@ -137,18 +176,36 @@ function parseBody(req: IncomingMessage): Promise<Record<string, unknown> | null
     const chunks: Buffer[] = [];
     let totalSize = 0;
     const maxSize = 1024 * 1024; // 1MB limit
+    let responded = false;
+    const sendError = (code: number, msg: string) => {
+      if (responded) return;
+      responded = true;
+      res.writeHead(code, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: msg }));
+    };
+    // Timeout to prevent slow/lively attacks (10 seconds)
+    const timeout = setTimeout(() => {
+      if (!responded) {
+        responded = true;
+        res.writeHead(408, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Request timeout" }));
+      }
+      resolve(null);
+      if (!req.destroyed) req.destroy();
+    }, 10000);
     req.on("data", (chunk: Buffer) => {
       totalSize += chunk.length;
       if (totalSize > maxSize) {
-        res.writeHead(413, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "Request entity too large" }));
+        sendError(413, "Request entity too large");
         resolve(null);
-        req.destroy();
+        if (!req.destroyed) req.destroy();
         return;
       }
       chunks.push(chunk);
     });
     req.on("end", () => {
+      clearTimeout(timeout);
+      if (responded) return;
       if (chunks.length === 0) {
         resolve(null);
         return;
@@ -160,7 +217,15 @@ function parseBody(req: IncomingMessage): Promise<Record<string, unknown> | null
         resolve(null);
       }
     });
-    req.on("error", () => resolve(null));
+    req.on("error", () => {
+      clearTimeout(timeout);
+      if (!responded) {
+        responded = true;
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Bad request" }));
+      }
+      resolve(null);
+    });
   });
 }
 
@@ -183,12 +248,12 @@ async function handleApiRoute(
 
   // POST /api/auth/login
   if (method === "POST" && pathname === "/api/auth/login") {
-    if (!body || !body.username || !body.password) {
+    if (!body || typeof body.username !== "string" || typeof body.password !== "string") {
       res.writeHead(400, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "Username and password are required" }));
       return true;
     }
-    const user = await userStore.authenticate(body.username as string, body.password as string);
+    const user = await userStore.authenticate(body.username, body.password);
     if (!user) {
       res.writeHead(401, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "Invalid credentials" }));
@@ -258,19 +323,19 @@ async function handleApiRoute(
       res.end(JSON.stringify({ error: "Admin access required" }));
       return true;
     }
-    if (!body || !body.username || !body.password) {
+    if (!body || typeof body.username !== "string" || typeof body.password !== "string") {
       res.writeHead(400, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "Username and password are required" }));
       return true;
     }
-    const role = (body.role as UserRole) || "user";
+    const role: UserRole = (body.role as UserRole) || "user";
     if (!["admin", "user", "viewer"].includes(role)) {
       res.writeHead(400, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "Invalid role" }));
       return true;
     }
     try {
-      const user = await userStore.createUser(body.username as string, body.password as string, role);
+      const user = await userStore.createUser(body.username, body.password, role);
       res.writeHead(201, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ user }));
     } catch (err) {
@@ -301,6 +366,17 @@ async function handleApiRoute(
       return true;
     }
     const updates: { password?: string; role?: UserRole } = {};
+    // S-30: Validate body properties before casting
+    if (body?.password !== undefined && typeof body.password !== "string") {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Password must be a string" }));
+      return true;
+    }
+    if (body?.role !== undefined && !["admin", "user", "viewer"].includes(body.role as string)) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Invalid role" }));
+      return true;
+    }
     if (body?.password) updates.password = body.password as string;
     if (body?.role) updates.role = body.role as UserRole;
     if (!updates.password && !updates.role) {
@@ -344,7 +420,7 @@ async function handleApiRoute(
       res.end(JSON.stringify({ error: "User ID required" }));
       return true;
     }
-    const deleted = userStore.deleteUser(id);
+    const deleted = await userStore.deleteUser(id);
     if (!deleted) {
       res.writeHead(404, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "User not found" }));
@@ -358,27 +434,101 @@ async function handleApiRoute(
   return false;
 }
 
+// ─── Rate Limiting ──────────────────────────────────────────────────────────
+
+const rateLimitWindowMs = parseInt(process.env.RATE_LIMIT_WINDOW || "60000", 10);
+const rateLimitMax = parseInt(process.env.RATE_LIMIT_MAX || "100", 10);
+// Validation: RATE_LIMIT_WINDOW=0 or RATE_LIMIT_MAX=0 would cause permanent lockouts
+if (rateLimitWindowMs <= 0 || rateLimitMax <= 0) {
+  console.error("[server] RATE_LIMIT_WINDOW and RATE_LIMIT_MAX must be positive integers.");
+  process.exit(1);
+}
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+
+function rateLimitCheck(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + rateLimitWindowMs });
+    return true;
+  }
+  if (entry.count >= rateLimitMax) return false;
+  entry.count++;
+  return true;
+}
+
+function cleanupRateLimit(): void {
+  const now = Date.now();
+  // S-29: Collect keys to delete first, then delete (avoid modifying Map during iteration)
+  const toDelete: string[] = [];
+  for (const [ip, entry] of rateLimitMap) {
+    if (now > entry.resetTime) {
+      toDelete.push(ip);
+    }
+  }
+  for (const ip of toDelete) {
+    rateLimitMap.delete(ip);
+  }
+}
+
+// Clean up expired entries every 5 minutes
+setInterval(cleanupRateLimit, 5 * 60 * 1000);
+
 function requestHandler(req: IncomingMessage, res: ServerResponse): void {
+  // Rate limiting
+  const ip = req.socket.remoteAddress || "unknown";
+  if (!rateLimitCheck(ip)) {
+    res.writeHead(429, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "Too many requests" }));
+    return;
+  }
+
+  // S-28: Guard against undefined req.url
+  const url = req.url;
+  if (!url) {
+    res.writeHead(400, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "Bad request" }));
+    return;
+  }
+
   // Health check
-  if (req.url === "/health") {
+  if (url === "/health") {
+    const health = await checkHealthFull();
+    const status = health.ok ? "ok" : "degraded";
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify({
-      status: "ok",
+      status,
       wsClients: wss.clients.size,
       https: useHttps,
       auth: authEnabled,
+      db: {
+        connected: health.db,
+        pool: health.pool,
+      },
     }));
     return;
   }
 
   // REST API routes
-  if (req.url?.startsWith("/api/")) {
-    parseBody(req).then((body) => {
-      if (!handleApiRoute(req, res, body)) {
+  if (url.startsWith("/api/")) {
+    const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+    const pathname = url.pathname;
+    const method = req.method;
+    const needsBody = method === "POST" || method === "PUT" || method === "PATCH";
+
+    if (needsBody) {
+      parseBody(req, res).then((body) => {
+        if (!handleApiRoute(req, res, body)) {
+          res.writeHead(404, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ error: "Not found" }));
+        }
+      });
+    } else {
+      if (!handleApiRoute(req, res, null)) {
         res.writeHead(404, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Not found" }));
       }
-    });
+    }
     return;
   }
 
@@ -389,7 +539,7 @@ function requestHandler(req: IncomingMessage, res: ServerResponse): void {
     return;
   }
 
-  // Dev mode: informative message
+  // Dev mode: informative message (safe — no user input reaches this path, so no XSS risk)
   res.writeHead(200, { "Content-Type": "text/html" });
   res.end(`
     <h1>Betty Server</h1>
@@ -434,7 +584,7 @@ class PiRpcClient {
     string,
     (response: unknown) => void
   > = new Map();
-  private isRunning = false;
+  private _isRunning = false;
 
   async start(options?: {
     provider?: string;
@@ -471,12 +621,12 @@ class PiRpcClient {
       });
       this.proc!.on("error", reject);
       this.proc!.on("close", (code) => {
-        this.isRunning = false;
+        this._isRunning = false;
         if (code !== 0) {
           reject(new Error(`pi process exited with code ${code}`));
         }
       });
-      this.isRunning = true;
+      this._isRunning = true;
       resolve();
     });
   }
@@ -490,15 +640,35 @@ class PiRpcClient {
       if (line.endsWith("\r")) line = line.slice(0, -1);
       if (!line.trim()) continue;
 
+      // S-25: Reject excessively long lines to prevent DoS
+      if (line.length > MAX_RPC_LINE_LENGTH) {
+        console.warn("[rpc] Line exceeded max length (", line.length, ">", MAX_RPC_LINE_LENGTH, ")");
+        continue;
+      }
+
+      // S-31: Trim buffer if it grows too large (prevents unbounded memory growth)
+      if (this.buffer.length > MAX_RPC_LINE_LENGTH * 10) {
+        console.warn("[rpc] Buffer exceeded max size, truncating");
+        this.buffer = "";
+        continue;
+      }
+
       let parsed: unknown;
       try {
         parsed = JSON.parse(line);
       } catch {
+        // S-17: Log silently dropped JSON lines instead of silently ignoring
+        console.warn("[rpc] Failed to parse JSON line:", line.slice(0, 200));
         continue;
       }
 
       const msg = parsed as Record<string, unknown>;
       const eventType = msg.type as string;
+
+      // S-18: Guard against missing type field after valid JSON.parse
+      if (!eventType) {
+        continue;
+      }
 
       if (eventType === "response") {
         const resp = msg as RpcResponse;
@@ -509,7 +679,13 @@ class PiRpcClient {
         }
       } else {
         // It's an event
-        this.eventListeners.forEach((fn) => fn(msg as RpcEvent));
+        this.eventListeners.forEach((fn) => {
+          try {
+            fn(msg as RpcEvent);
+          } catch (err) {
+            console.error("[rpc] Event handler error:", (err as Error).message);
+          }
+        });
       }
     }
   }
@@ -548,17 +724,35 @@ class PiRpcClient {
 
   respondToUiRequest(id: string, response: unknown): void {
     if (!this.proc?.stdin) return;
-    const msg = JSON.stringify({ type: "extension_ui_response", id, ...response }) + "\n";
+    // S-23: Only include known safe fields, prevent data leak from spreading unknown properties
+    const resp = response as Record<string, unknown> | undefined;
+    const safeResponse: Record<string, unknown> = {};
+    if (resp) {
+      const allowedKeys = new Set(["result", "value", "ok", "error", "data", "message", "title", "status"]);
+      for (const key of Object.keys(resp)) {
+        if (allowedKeys.has(key)) {
+          safeResponse[key] = resp[key];
+        }
+      }
+    }
+    const msg = JSON.stringify({ type: "extension_ui_response", id, ...safeResponse }) + "\n";
     this.proc.stdin.write(msg);
   }
 
   get isRunning(): boolean {
-    return this.isRunning;
+    return this._isRunning;
   }
 
   stop(): void {
     this.proc?.kill("SIGINT");
-    this.isRunning = false;
+    this._isRunning = false;
+  }
+
+  clearPendingResponses(): void {
+    this.pendingResponses.forEach((resolve) => {
+      resolve(null);
+    });
+    this.pendingResponses.clear();
   }
 }
 
@@ -619,6 +813,21 @@ const wss = new WebSocketServer({ server });
 // Map of client WebSocket → their individual RPC client (one pi per session)
 const clientRpcs = new Map<WebSocket, PiRpcClient>();
 
+// Map of client WebSocket → current session info
+interface ClientSession {
+  userId: string;
+  sessionId: string;
+}
+
+const clientSessions = new Map<WebSocket, ClientSession>();
+
+// Safe WebSocket send — checks readyState to prevent crashes on closed connections
+function safeSend(ws: WebSocket, data: string): boolean {
+  if (ws.readyState !== WebSocket.OPEN) return false;
+  ws.send(data);
+  return true;
+}
+
 async function spawnPiForClient(clientWs: WebSocket): Promise<PiRpcClient> {
   const existing = clientRpcs.get(clientWs);
   if (existing?.isRunning) return existing;
@@ -627,20 +836,34 @@ async function spawnPiForClient(clientWs: WebSocket): Promise<PiRpcClient> {
   existing?.stop();
 
   const piClient = new PiRpcClient();
-  await piClient.start({
-    provider: piProvider,
-    model: piModel,
-    noSession: piNoSession,
-    sessionDir: piSessionDir,
-    thinkingLevel: piThinkingLevel,
-    apikey: piApikey,
-    verbose: piVerbose,
-  });
+
+  // S-26: Catch start errors to avoid unhandled rejection
+  try {
+    await piClient.start({
+      provider: piProvider,
+      model: piModel,
+      noSession: piNoSession,
+      sessionDir: piSessionDir,
+      thinkingLevel: piThinkingLevel,
+      apikey: piApikey,
+      verbose: piVerbose,
+    });
+  } catch (err) {
+    safeSend(clientWs, JSON.stringify({ type: "error", message: `Failed to start pi: ${(err as Error).message}` }));
+    throw err;
+  }
+
+  // TOCTOU fix: another concurrent call may have already set a client
+  const nowExisting = clientRpcs.get(clientWs);
+  if (nowExisting && nowExisting !== piClient) {
+    piClient.stop();
+    return nowExisting;
+  }
 
   clientRpcs.set(clientWs, piClient);
 
   // Forward events from this client's pi to its WebSocket
-  piClient.onEvent((event) => {
+  piClient.onEvent(async (event) => {
     // Filter out events that are just internal protocol noise
     if (event.type === "response") return;
 
@@ -655,29 +878,53 @@ async function spawnPiForClient(clientWs: WebSocket): Promise<PiRpcClient> {
         // Response already handled by respondToUiRequest
       });
 
-      clientWs.send(
-        JSON.stringify({
-          type: "ui_request",
-          id: requestId,
-          method,
-          title: req.title,
-          message: req.message,
-          options: req.options,
-          placeholder: req.placeholder,
-          prefill: req.prefill,
-          notifyType: req.notifyType,
-          statusKey: req.statusKey,
-          statusText: req.statusText,
-          widgetKey: req.widgetKey,
-          widgetLines: req.widgetLines,
-          widgetPlacement: req.widgetPlacement,
-          timeout: req.timeout,
-        })
-      );
+      safeSend(clientWs, JSON.stringify({
+        type: "ui_request",
+        id: requestId,
+        method,
+        title: req.title,
+        message: req.message,
+        options: req.options,
+        placeholder: req.placeholder,
+        prefill: req.prefill,
+        notifyType: req.notifyType,
+        statusKey: req.statusKey,
+        statusText: req.statusText,
+        widgetKey: req.widgetKey,
+        widgetLines: req.widgetLines,
+        widgetPlacement: req.widgetPlacement,
+        timeout: req.timeout,
+      }));
       return;
     }
 
-    clientWs.send(JSON.stringify(event));
+    // Persist messages on agent_end
+    if (event.type === "agent_end") {
+      const session = clientSessions.get(clientWs);
+      if (session && (event as Record<string, unknown>).messages) {
+        const messages = (event as Record<string, unknown>).messages as Array<Record<string, unknown>>;
+        try {
+          await sessionStore.saveMessages(session.sessionId,
+            messages.map((m) => ({
+              role: (m.role as "user" | "assistant" | "system") || "assistant",
+              content: (m.content as string) || "",
+              timestamp: (m.timestamp as number) || Date.now(),
+              is_streaming: false,
+            }))
+          );
+        } catch (dbErr) {
+          console.error("[server] Failed to persist messages in DB:", dbErr);
+          if (dbReady) {
+            safeSend(clientWs, JSON.stringify({
+              type: "db_warning",
+              message: "Message persistence failed — messages will be lost on reconnect.",
+            }));
+          }
+        }
+      }
+    }
+
+    safeSend(clientWs, JSON.stringify(event));
   });
 
   return piClient;
@@ -690,14 +937,14 @@ async function handleClientMessage(clientWs: AuthenticatedWebSocket, raw: string
   try {
     msg = JSON.parse(raw);
   } catch {
-    clientWs.send(JSON.stringify({ type: "error", message: "Invalid JSON" }));
+    safeSend(clientWs, JSON.stringify({ type: "error", message: "Invalid JSON" }));
     return;
   }
 
   // Permission check
   const authUser = clientWs.userData;
   if (!hasPermission(authUser.role, msg.type)) {
-    clientWs.send(JSON.stringify({ type: "error", message: "Permission denied: insufficient privileges" }));
+    safeSend(clientWs, JSON.stringify({ type: "error", message: "Permission denied: insufficient privileges" }));
     return;
   }
 
@@ -711,181 +958,513 @@ async function handleClientMessage(clientWs: AuthenticatedWebSocket, raw: string
 
   const handlerMap: Record<string, () => Promise<void>> = {
     prompt: async () => {
-      const cmd: RpcCommand = {
-        type: "prompt",
-        message: msg.message as string,
-      };
-      if (msg.images) cmd.images = msg.images;
-      if (msg.streamingBehavior) cmd.streamingBehavior = msg.streamingBehavior;
-      await pi.send(cmd);
+      if (!msg.message || typeof msg.message !== "string" || msg.message.trim() === "") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Message is required" }));
+        return;
+      }
+      // prompt: validate message and optional streamingBehavior
+      if (msg.streamingBehavior !== undefined && typeof msg.streamingBehavior !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "streamingBehavior must be a string" }));
+        return;
+      }
+      try {
+        const cmd: RpcCommand = {
+          type: "prompt",
+          message: msg.message,
+        };
+        // S-19: Validate images array if provided
+        if (msg.images) {
+          if (!Array.isArray(msg.images)) {
+            safeSend(clientWs, JSON.stringify({ type: "error", message: "Images must be an array" }));
+            return;
+          }
+          // Validate each image element is a non-null object with required fields
+          const validImages: Array<{type: string; data: string; mimeType: string}> = [];
+          for (const img of msg.images) {
+            if (typeof img !== "object" || img === null || Array.isArray(img)) {
+              safeSend(clientWs, JSON.stringify({ type: "error", message: "Each image must be an object with type, data, and mimeType" }));
+              return;
+            }
+            if (img.type !== "image" || typeof (img as Record<string, unknown>).data !== "string" || typeof (img as Record<string, unknown>).mimeType !== "string") {
+              safeSend(clientWs, JSON.stringify({ type: "error", message: "Each image must have type='image', data (string), and mimeType (string)" }));
+              return;
+            }
+            validImages.push(img as {type: string; data: string; mimeType: string});
+          }
+          cmd.images = validImages;
+        }
+        if (msg.streamingBehavior) cmd.streamingBehavior = msg.streamingBehavior;
+        await pi.send(cmd);
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // abort: cancel the current stream
     abort: async () => {
-      await pi.send({ type: "abort" });
+      try {
+        await pi.send({ type: "abort" });
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // set_model: switch the active model
     set_model: async () => {
-      const resp = await pi.send({
-        type: "set_model",
-        provider: msg.provider as string,
-        modelId: msg.modelId as string,
-      });
-      clientWs.send(JSON.stringify({ type: "model_changed", data: resp }));
+      if (!msg.provider || typeof msg.provider !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Provider is required" }));
+        return;
+      }
+      if (!msg.modelId || typeof msg.modelId !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Model ID is required" }));
+        return;
+      }
+      try {
+        const resp = await pi.send({
+          type: "set_model",
+          provider: msg.provider as string,
+          modelId: msg.modelId as string,
+        });
+        safeSend(clientWs, JSON.stringify({ type: "model_changed", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // set_thinking_level: change the thinking depth (off/low/medium/high)
     set_thinking_level: async () => {
-      await pi.send({
-        type: "set_thinking_level",
-        level: msg.level as string,
-      });
+      if (!msg.level || typeof msg.level !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Thinking level is required" }));
+        return;
+      }
+      try {
+        await pi.send({
+          type: "set_thinking_level",
+          level: msg.level as string,
+        });
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // get_state: return current session state
     get_state: async () => {
-      const resp = await pi.send({ type: "get_state" });
-      clientWs.send(JSON.stringify({ type: "state", data: resp }));
+      try {
+        const resp = await pi.send({ type: "get_state" });
+        safeSend(clientWs, JSON.stringify({ type: "state", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // get_messages: return conversation messages
     get_messages: async () => {
-      const resp = await pi.send({ type: "get_messages" });
-      clientWs.send(JSON.stringify({ type: "messages", data: resp }));
+      try {
+        const resp = await pi.send({ type: "get_messages" });
+        safeSend(clientWs, JSON.stringify({ type: "messages", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // get_available_models: list all available models
     get_available_models: async () => {
-      const resp = await pi.send({ type: "get_available_models" });
-      clientWs.send(JSON.stringify({ type: "models", data: resp }));
+      try {
+        const resp = await pi.send({ type: "get_available_models" });
+        safeSend(clientWs, JSON.stringify({ type: "models", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // new_session: create a fresh conversation
     new_session: async () => {
-      const resp = await pi.send({ type: "new_session" });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      try {
+        const resp = await pi.send({ type: "new_session" });
+        // Register new session in DB
+        const newSessionId = (resp as Record<string, unknown>)?.sessionId as string | undefined;
+        if (newSessionId) {
+          try {
+            await sessionStore.registerSession(authUser.id, {
+              id: newSessionId,
+              user_id: authUser.id,
+              name: "Untitled",
+              created_at: Date.now(),
+            });
+            clientSessions.set(clientWs, {
+              userId: authUser.id,
+              sessionId: newSessionId,
+            });
+          } catch (dbErr) {
+            console.error("[server] Failed to register session in DB:", dbErr);
+            if (dbReady) {
+              safeSend(clientWs, JSON.stringify({
+                type: "db_warning",
+                message: "Session registration failed — session will not be persisted.",
+              }));
+            }
+          }
+        }
+        safeSend(clientWs, JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // compact: compress conversation history
     compact: async () => {
-      await pi.send({ type: "compact", customInstructions: msg.customInstructions });
+      // Validate customInstructions if provided
+      if (msg.customInstructions !== undefined && typeof msg.customInstructions !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "customInstructions must be a string" }));
+        return;
+      }
+      try {
+        await pi.send({ type: "compact", customInstructions: msg.customInstructions });
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // get_session_stats: return session statistics
     get_session_stats: async () => {
-      const resp = await pi.send({ type: "get_session_stats" });
-      clientWs.send(JSON.stringify({ type: "stats", data: resp }));
+      try {
+        const resp = await pi.send({ type: "get_session_stats" });
+        safeSend(clientWs, JSON.stringify({ type: "stats", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // get_fork_messages: return messages for forking
     get_fork_messages: async () => {
-      const resp = await pi.send({ type: "get_fork_messages" });
-      clientWs.send(JSON.stringify({ type: "fork_messages", data: resp }));
+      try {
+        const resp = await pi.send({ type: "get_fork_messages" });
+        safeSend(clientWs, JSON.stringify({ type: "fork_messages", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // fork: duplicate a message entry into a new session
     fork: async () => {
-      const resp = await pi.send({ type: "fork", entryId: msg.entryId });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      if (!msg.entryId || typeof msg.entryId !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Entry ID is required" }));
+        return;
+      }
+      try {
+        const resp = await pi.send({ type: "fork", entryId: msg.entryId as string });
+        // Update session tracking
+        const newSessionId = (resp as Record<string, unknown>)?.sessionId as string | undefined;
+        if (newSessionId) {
+          const prevSession = clientSessions.get(clientWs);
+          if (prevSession) {
+            await sessionStore.closeSession(prevSession.sessionId).catch(() => {});
+          }
+          try {
+            await sessionStore.registerSession(authUser.id, {
+              id: newSessionId,
+              user_id: authUser.id,
+              name: "Untitled",
+              created_at: Date.now(),
+            });
+            clientSessions.set(clientWs, {
+              userId: authUser.id,
+              sessionId: newSessionId,
+            });
+          } catch (dbErr) {
+            console.error("[server] Failed to register forked session:", dbErr);
+            if (dbReady) {
+              safeSend(clientWs, JSON.stringify({
+                type: "db_warning",
+                message: "Forked session registration failed — session will not be persisted.",
+              }));
+            }
+          }
+        }
+        safeSend(clientWs, JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // clone: duplicate the current session
     clone: async () => {
-      const resp = await pi.send({ type: "clone" });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      try {
+        const resp = await pi.send({ type: "clone" });
+        // Update session tracking
+        const newSessionId = (resp as Record<string, unknown>)?.sessionId as string | undefined;
+        if (newSessionId) {
+          const prevSession = clientSessions.get(clientWs);
+          if (prevSession) {
+            await sessionStore.closeSession(prevSession.sessionId).catch(() => {});
+          }
+          try {
+            await sessionStore.registerSession(authUser.id, {
+              id: newSessionId,
+              user_id: authUser.id,
+              name: "Untitled",
+              created_at: Date.now(),
+            });
+            clientSessions.set(clientWs, {
+              userId: authUser.id,
+              sessionId: newSessionId,
+            });
+          } catch (dbErr) {
+            console.error("[server] Failed to register cloned session:", dbErr);
+            if (dbReady) {
+              safeSend(clientWs, JSON.stringify({
+                type: "db_warning",
+                message: "Cloned session registration failed — session will not be persisted.",
+              }));
+            }
+          }
+        }
+        safeSend(clientWs, JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // switch_session: switch to an existing session
     switch_session: async () => {
-      const resp = await pi.send({
-        type: "switch_session",
-        sessionPath: msg.sessionPath,
-      });
-      clientWs.send(JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      if (!msg.sessionPath || typeof msg.sessionPath !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Session path is required" }));
+        return;
+      }
+      // S-21: Validate session path format (prevent path traversal)
+      const sessionPath = msg.sessionPath as string;
+      if (sessionPath.includes("..")) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Invalid session path" }));
+        return;
+      }
+      try {
+        const resp = await pi.send({
+          type: "switch_session",
+          sessionPath,
+        });
+        // Update session tracking in DB
+        const newSessionId = (resp as Record<string, unknown>)?.sessionId as string | undefined;
+        if (newSessionId) {
+          // Close the previous session if any
+          const prevSession = clientSessions.get(clientWs);
+          if (prevSession) {
+            await sessionStore.closeSession(prevSession.sessionId).catch(() => {
+              // Ignore errors on close
+            });
+          }
+          try {
+            await sessionStore.updateSession(newSessionId, { status: "active" });
+            clientSessions.set(clientWs, {
+              userId: authUser.id,
+              sessionId: newSessionId,
+            });
+          } catch (dbErr) {
+            console.error("[server] Failed to update session in DB:", dbErr);
+            if (dbReady) {
+              safeSend(clientWs, JSON.stringify({
+                type: "db_warning",
+                message: "Session update failed — changes will not be persisted.",
+              }));
+            }
+          }
+        }
+        safeSend(clientWs, JSON.stringify({ type: "session_switched", data: { cancelled: false, ...resp } }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // set_session_name: rename the current session
     set_session_name: async () => {
-      await pi.send({
-        type: "set_session_name",
-        name: msg.name as string,
-      });
+      if (!msg.name || typeof msg.name !== "string" || msg.name.trim().length === 0) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Session name is required" }));
+        return;
+      }
+      try {
+        await pi.send({
+          type: "set_session_name",
+          name: msg.name as string,
+        });
+        // Update session name in DB
+        const session = clientSessions.get(clientWs);
+        if (session) {
+          await sessionStore.updateSession(session.sessionId, { name: msg.name as string }).catch(() => {
+            // Ignore DB errors
+          });
+        }
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // get_commands: list available slash commands
     get_commands: async () => {
-      const resp = await pi.send({ type: "get_commands" });
-      clientWs.send(JSON.stringify({ type: "commands", data: resp }));
+      try {
+        const resp = await pi.send({ type: "get_commands" });
+        safeSend(clientWs, JSON.stringify({ type: "commands", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // steer: send a steering directive
     steer: async () => {
-      const cmd: RpcCommand = {
-        type: "steer",
-        message: msg.message as string,
-      };
-      if (msg.images) cmd.images = msg.images;
-      await pi.send(cmd);
+      if (!msg.message || typeof msg.message !== "string" || msg.message.trim() === "") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Message is required" }));
+        return;
+      }
+      try {
+        const cmd: RpcCommand = {
+          type: "steer",
+          message: msg.message,
+        };
+        if (msg.images) cmd.images = msg.images;
+        await pi.send(cmd);
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // follow_up: send a follow-up message
     follow_up: async () => {
-      const cmd: RpcCommand = {
-        type: "follow_up",
-        message: msg.message as string,
-      };
-      if (msg.images) cmd.images = msg.images;
-      await pi.send(cmd);
+      if (!msg.message || typeof msg.message !== "string" || msg.message.trim() === "") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Message is required" }));
+        return;
+      }
+      try {
+        const cmd: RpcCommand = {
+          type: "follow_up",
+          message: msg.message,
+        };
+        if (msg.images) cmd.images = msg.images;
+        await pi.send(cmd);
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // bash: execute a shell command
     bash: async () => {
-      const resp = await pi.send({
-        type: "bash",
-        command: msg.command as string,
-      });
-      clientWs.send(
-        JSON.stringify({ type: "bash_result", data: resp })
-      );
+      if (!msg.command || typeof msg.command !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Command is required" }));
+        return;
+      }
+      try {
+        const resp = await pi.send({
+          type: "bash",
+          command: msg.command as string,
+        });
+        safeSend(clientWs, JSON.stringify({ type: "bash_result", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // set_steering_mode: configure steering behavior mode
     set_steering_mode: async () => {
-      await pi.send({
-        type: "set_steering_mode",
-        mode: msg.mode as string,
-      });
+      if (!msg.mode || typeof msg.mode !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Mode is required" }));
+        return;
+      }
+      try {
+        await pi.send({
+          type: "set_steering_mode",
+          mode: msg.mode as string,
+        });
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // set_follow_up_mode: configure follow-up behavior mode
     set_follow_up_mode: async () => {
-      await pi.send({
-        type: "set_follow_up_mode",
-        mode: msg.mode as string,
-      });
+      if (!msg.mode || typeof msg.mode !== "string") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Mode is required" }));
+        return;
+      }
+      try {
+        await pi.send({
+          type: "set_follow_up_mode",
+          mode: msg.mode as string,
+        });
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // set_auto_compaction: toggle automatic history compaction
     set_auto_compaction: async () => {
-      await pi.send({
-        type: "set_auto_compaction",
-        enabled: msg.enabled as boolean,
-      });
+      if (msg.enabled === undefined || typeof msg.enabled !== "boolean") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Enabled flag is required" }));
+        return;
+      }
+      try {
+        await pi.send({
+          type: "set_auto_compaction",
+          enabled: msg.enabled as boolean,
+        });
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // set_auto_retry: toggle automatic retry on failure
     set_auto_retry: async () => {
-      await pi.send({
-        type: "set_auto_retry",
-        enabled: msg.enabled as boolean,
-      });
+      if (msg.enabled === undefined || typeof msg.enabled !== "boolean") {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: "Enabled flag is required" }));
+        return;
+      }
+      try {
+        await pi.send({
+          type: "set_auto_retry",
+          enabled: msg.enabled as boolean,
+        });
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // cycle_model: rotate to the next available model
     cycle_model: async () => {
-      const resp = await pi.send({ type: "cycle_model" });
-      clientWs.send(JSON.stringify({ type: "model_changed", data: resp }));
+      try {
+        const resp = await pi.send({ type: "cycle_model" });
+        safeSend(clientWs, JSON.stringify({ type: "model_changed", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // cycle_thinking_level: rotate to the next thinking level
     cycle_thinking_level: async () => {
-      const resp = await pi.send({ type: "cycle_thinking_level" });
-      clientWs.send(JSON.stringify({ type: "thinking_level_changed", data: resp }));
+      try {
+        const resp = await pi.send({ type: "cycle_thinking_level" });
+        safeSend(clientWs, JSON.stringify({ type: "thinking_level_changed", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
 
+    // get_last_assistant_text: retrieve the last assistant response text
     get_last_assistant_text: async () => {
-      const resp = await pi.send({ type: "get_last_assistant_text" });
-      clientWs.send(JSON.stringify({ type: "last_assistant_text", data: resp }));
+      try {
+        const resp = await pi.send({ type: "get_last_assistant_text" });
+        safeSend(clientWs, JSON.stringify({ type: "last_assistant_text", data: resp }));
+      } catch (err) {
+        safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
+      }
     },
   };
 
   const handler = handlerMap[msg.type];
   if (!handler) {
-    clientWs.send(JSON.stringify({ type: "error", message: `Unknown command: ${msg.type}` }));
+    safeSend(clientWs, JSON.stringify({ type: "error", message: `Unknown command: ${msg.type}` }));
     return;
   }
 
   try {
     await handler();
   } catch (err) {
-    clientWs.send(JSON.stringify({ type: "error", message: (err as Error).message }));
+    safeSend(clientWs, JSON.stringify({ type: "error", message: (err as Error).message }));
   }
 }
 
@@ -895,25 +1474,34 @@ interface AuthenticatedWebSocket extends WebSocket {
   userData: JwtPayload;
 }
 
-function authenticateWebSocket(ws: WebSocket): boolean {
+function authenticateWebSocket(ws: WebSocket, req: IncomingMessage): boolean {
   if (!authEnabled) return true;
 
-  // Parse URL to get query params
-  const url = new URL(
-    ws.url || "/",
-    `http://${process.env.HOST || "localhost"}:${wsPort}`
-  );
+  // Parse URL from request to get query params
+  // S-27: Guard against URL parsing errors
+  const urlStr = req.url || "/";
+  let url: URL;
+  try {
+    url = new URL(
+      urlStr,
+      `http://${process.env.HOST || "localhost"}:${wsPort}`
+    );
+  } catch {
+    safeSend(ws, JSON.stringify({ type: "auth_error", message: "Invalid request URL" }));
+    ws.close(1008, "Invalid request URL");
+    return false;
+  }
   const token = url.searchParams.get("token");
 
   if (!token) {
-    ws.send(JSON.stringify({ type: "auth_required" }));
+    safeSend(ws, JSON.stringify({ type: "auth_required" }));
     ws.close(1008, "Authentication required");
     return false;
   }
 
   const payload = verifyToken(token);
   if (!payload) {
-    ws.send(JSON.stringify({ type: "auth_error", message: "Invalid or expired token" }));
+    safeSend(ws, JSON.stringify({ type: "auth_error", message: "Invalid or expired token" }));
     ws.close(1008, "Invalid or expired token");
     return false;
   }
@@ -927,7 +1515,7 @@ function authenticateWebSocket(ws: WebSocket): boolean {
 
 wss.on("connection", (ws, req) => {
   // Authenticate before accepting connection
-  if (!authenticateWebSocket(ws)) {
+  if (!authenticateWebSocket(ws, req)) {
     console.log(`[ws] Client rejected (auth failed)`);
     return;
   }
@@ -945,6 +1533,15 @@ wss.on("connection", (ws, req) => {
       clientPi.stop();
       clientRpcs.delete(ws);
     }
+    // Clean up session tracking
+    const session = clientSessions.get(ws);
+    if (session) {
+      // Close the session in DB
+      sessionStore.closeSession(session.sessionId).catch(() => {
+        // Ignore errors on close
+      });
+      clientSessions.delete(ws);
+    }
     console.log(`[ws] Client disconnected (${wss.clients.size} total)`);
   });
 
@@ -953,15 +1550,28 @@ wss.on("connection", (ws, req) => {
   });
 
   // Send connection ack with user info
-  ws.send(JSON.stringify({ type: "connected", user: authUser }));
+  safeSend(ws, JSON.stringify({ type: "connected", user: authUser }));
+});
+
+// ─── Database readiness flag ───────────────────────────────────────────────
+let dbReady = false;
+
+initDatabase().then(() => {
+  dbReady = true;
+  // Initialize user store after DB is ready
+  userStore.load();
+  userStore.seedDefaultAdmin().catch((err) => {
+    console.error("[server] Failed to seed default admin:", err);
+  });
+}).catch((err) => {
+  dbReady = false;
+  console.error("[server] Failed to initialize database:", err);
+  console.error("[server] The server will continue, but database operations will fail.");
 });
 
 // ─── Initialize user store ─────────────────────────────────────────────────
 
-userStore.load();
-userStore.seedDefaultAdmin().catch((err) => {
-  console.error("[server] Failed to seed default admin:", err);
-});
+// (load + seedDefaultAdmin are called after initDatabase above)
 
 // ─── Start ───────────────────────────────────────────────────────────────────
 
@@ -979,10 +1589,16 @@ server.listen(wsPort, () => {
   }
 });
 
-process.on("SIGINT", () => {
+process.on("SIGINT", async () => {
   console.log("\n[server] Shutting down...");
-  clientRpcs.forEach((pi) => pi.stop());
+  clientRpcs.forEach((pi) => {
+    pi.clearPendingResponses();
+    pi.stop();
+  });
+  // Also clear the global rpc's pending responses
+  rpc.clearPendingResponses();
   wss.close();
   server.close();
+  await closeDatabase();
   process.exit(0);
 });

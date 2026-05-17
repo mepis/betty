@@ -1,0 +1,14 @@
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[warning] [Vue warn]: Unhandled error during execution of watcher getter 
+  at <App>
+[warning] [Vue warn]: Unhandled error during execution of setup function 
+  at <App>
+[PAGE ERROR] Cannot read properties of undefined (reading 'length')
+[debug] [vite] connecting...
+[debug] [vite] connected.
+[warning] [Vue warn]: Unhandled error during execution of watcher getter 
+  at <App>
+[warning] [Vue warn]: Unhandled error during execution of setup function 
+  at <App>
+[PAGE ERROR] Cannot read properties of undefined (reading 'length')

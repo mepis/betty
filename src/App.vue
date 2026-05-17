@@ -331,8 +331,8 @@ function scrollToBottom(): void {
   });
 }
 
-watch(() => messages.value.length, scrollToBottom, { flush: "post" });
-watch(() => isStreaming.value, scrollToBottom, { flush: "post" });
+watch(messages, scrollToBottom, { flush: "post", deep: true });
+watch(isStreaming, scrollToBottom, { flush: "post" });
 
 // ─── Actions ───────────────────────────────────────────────────────────────
 function sendMessage(): void {

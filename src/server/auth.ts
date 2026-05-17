@@ -12,6 +12,7 @@ export interface JwtPayload {
 
 const TOKEN_EXPIRY = "24h";
 
+/** Retrieve the JWT signing secret from environment. Throws if unset. */
 function getSecret(): string {
   const secret = process.env.JWT_SECRET;
   if (!secret) {
@@ -35,10 +36,26 @@ export function generateToken(payload: JwtPayload): string {
 export function verifyToken(token: string): JwtPayload | null {
   try {
     const secret = getSecret();
-    const decoded = jwt.verify(token, secret, {
+    const raw = jwt.verify(token, secret, {
       algorithms: ["HS256"],
-    }) as JwtPayload;
-    return decoded;
+    });
+
+    // Runtime shape validation — jwt.verify may return unexpected payload shapes.
+    if (
+      typeof raw !== "object" ||
+      raw === null ||
+      typeof (raw as any).id !== "string" ||
+      typeof (raw as any).username !== "string" ||
+      !["admin", "user", "viewer"].includes((raw as any).role)
+    ) {
+      return null;
+    }
+
+    return {
+      id: (raw as any).id,
+      username: (raw as any).username,
+      role: (raw as any).role,
+    } as JwtPayload;
   } catch {
     return null;
   }

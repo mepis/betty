@@ -6,7 +6,15 @@ const TOKEN_KEY = "betty_token";
 
 export const useAuthStore = defineStore("auth", () => {
   // ─── State ────────────────────────────────────────────────────────────────
-  const token = ref<string | null>(localStorage.getItem(TOKEN_KEY));
+  // A-01: Wrap localStorage access in try/catch to prevent crashes in private browsing
+  let storedToken: string | null = null;
+  try {
+    storedToken = localStorage.getItem(TOKEN_KEY);
+  } catch {
+    // localStorage may be unavailable (private browsing, cookie settings)
+    console.warn("[auth] localStorage unavailable, token not loaded from storage");
+  }
+  const token = ref<string | null>(storedToken);
   const user = ref<User | null>(null);
   const isLoading = ref(false);
 
@@ -29,9 +37,18 @@ export const useAuthStore = defineStore("auth", () => {
       if (!resp.ok) {
         throw new Error(data.error || "Login failed");
       }
+      // A-05: Verify token is a string before storing
+      if (typeof data.token !== "string" || !data.token) {
+        throw new Error("Invalid token received from server");
+      }
       token.value = data.token;
       user.value = data.user;
-      localStorage.setItem(TOKEN_KEY, data.token);
+      try {
+        localStorage.setItem(TOKEN_KEY, data.token);
+      } catch {
+        // localStorage may be unavailable in private browsing
+        console.warn("[auth] Could not persist token to localStorage");
+      }
     } finally {
       isLoading.value = false;
     }
@@ -41,7 +58,11 @@ export const useAuthStore = defineStore("auth", () => {
   function logout(): void {
     token.value = null;
     user.value = null;
-    localStorage.removeItem(TOKEN_KEY);
+    try {
+      localStorage.removeItem(TOKEN_KEY);
+    } catch {
+      // localStorage may be unavailable
+    }
   }
 
   /** Load existing session from localStorage. */
@@ -52,7 +73,6 @@ export const useAuthStore = defineStore("auth", () => {
         headers: { Authorization: `Bearer ${token.value}` },
       });
       if (!resp.ok) {
-        // Token is invalid, clear session
         logout();
         return;
       }
@@ -63,8 +83,23 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
-  /** Validate a token by calling /api/me. */
+  /** Validate a token by checking expiry locally first, then falling back to /api/me. */
   async function validateToken(t: string): Promise<boolean> {
+    // Fast path: check JWT expiry locally (no network round-trip)
+    try {
+      const parts = t.split(".");
+      if (parts.length === 3) {
+        const payload = JSON.parse(
+          Buffer.from(parts[1], "base64url").toString("utf-8")
+        );
+        if (payload.exp && typeof payload.exp === "number" && Date.now() >= payload.exp * 1000) {
+          return false;
+        }
+      }
+    } catch {
+      // Malformed JWT — fall through to API validation
+    }
+    // Slow path: validate via server
     try {
       const resp = await fetch("/api/me", {
         headers: { Authorization: `Bearer ${t}` },
@@ -76,7 +111,10 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   // ─── Lifecycle ────────────────────────────────────────────────────────────
-  loadSession();
+  // A-11: Fire-and-forget session load on initialization (error handled below)
+  loadSession().catch((err) => {
+    console.warn("[auth] Session load failed:", err);
+  });
 
   return {
     token,

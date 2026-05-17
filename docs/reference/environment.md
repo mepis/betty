@@ -23,6 +23,40 @@ Read from `process.env` in `server.ts`:
 | `ANTHROPIC_API_KEY` | — | Anthropic API key (inherited by pi process) |
 | `OPENAI_API_KEY` | — | OpenAI API key (inherited by pi process) |
 
+### Database Configuration
+
+Betty uses MySQL/MariaDB for persistent storage. Database connection variables are read in `src/server/db.ts`.
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DB_HOST` | `localhost` | MySQL server hostname |
+| `DB_PORT` | `3306` | MySQL server port |
+| `DB_USER` | `root` | MySQL username |
+| `DB_PASSWORD` | *(empty)* | MySQL password. **Required** for non-localhost connections. |
+| `DB_NAME` | `betty` | Database name (letters, digits, underscores only) |
+| `DB_SSL` | `false` | Enable SSL/TLS for database connections |
+
+### Bcrypt Configuration
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `BCRYPT_COST` | `12` | bcrypt hashing cost factor (range 4–15) |
+
+### JWT Configuration
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `JWT_SECRET` | — | JWT signing secret (required). Generate with: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"` |
+
+### Default Admin
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DEFAULT_ADMIN_USERNAME` | auto-generated | Admin username. If not set, a random username is generated and saved to `.admin-credentials.json` |
+| `DEFAULT_ADMIN_PASSWORD` | auto-generated | Admin password. If not set, a random password is generated and saved to `.admin-credentials.json` |
+
+**Note:** If credentials are auto-generated, they are written to `.admin-credentials.json` with mode `0600` (owner-only read/write). Delete this file after changing the password.
+
 ### HTTPS Configuration
 
 When `HTTPS=true`:
@@ -68,20 +102,43 @@ const wsUrl = import.meta.env.VITE_WS_URL
 | `.env.local` | Local overrides | No (in `.gitignore`) |
 | `.certs/cert.pem` | Generated TLS certificate | No (in `.gitignore`) |
 | `.certs/key.pem` | Generated TLS private key | No (in `.gitignore`) |
+| `.admin-credentials.json` | Auto-generated admin credentials | No (see M15 fix) |
 
 ### Recommended: `.env.example`
 
 Create a `.env.example` file for template values:
 
 ```bash
-# WebSocket server URL
+# ── WebSocket server URL ──
 VITE_WS_URL=ws://localhost:3001
 VITE_WS_PORT=3001
 
-# HTTPS configuration
+# ── HTTPS configuration ──
 # HTTPS=true
 # HTTPS_CERT_PATH=/path/to/cert.pem
 # HTTPS_KEY_PATH=/path/to/key.pem
+
+# ── Database ──
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_secure_password_here
+DB_NAME=betty
+# DB_SSL=false
+
+# ── JWT ──
+JWT_SECRET=generate_with_node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
+# ── Default admin (auto-generated if not set) ──
+# DEFAULT_ADMIN_USERNAME=myadmin
+# DEFAULT_ADMIN_PASSWORD=secure_password_here
+
+# ── Bcrypt ──
+# BCRYPT_COST=12
+
+# ── Rate limiting ──
+# RATE_LIMIT_WINDOW=60000
+# RATE_LIMIT_MAX=100
 ```
 
 ## Tags

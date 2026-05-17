@@ -32,6 +32,8 @@ export type Command =
   | "get_last_assistant_text";
 
 // ─── Permissions Map ────────────────────────────────────────────────────────
+// Each role gets a Set of allowed commands. Admin and user share the full set;
+// viewer is restricted to read-only + safety commands (abort, cycle).
 
 const allCommands: Set<Command> = new Set([
   "prompt",
@@ -87,10 +89,13 @@ export const ROLE_PERMISSIONS: Record<UserRole, Set<Command>> = {
 
 // ─── Permission Check ───────────────────────────────────────────────────────
 
-/** Check if a role has permission to execute a command. */
-export function hasPermission(role: UserRole, command: string): boolean {
+/**
+ * Check whether a role is allowed to execute a given command.
+ * Returns `false` for unknown roles (fail-closed).
+ */
+export function hasPermission(role: UserRole, command: Command): boolean {
   const perms = ROLE_PERMISSIONS[role];
-  return perms !== undefined && perms.has(command as Command);
+  return perms !== undefined && perms.has(command);
 }
 
 /** Check if a role has admin privileges. */
