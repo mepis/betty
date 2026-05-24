@@ -23,7 +23,7 @@ class ServerManager:
         env['NODE_ENV'] = 'development'
         
         process = subprocess.Popen(
-            ['node', 'src/server.js'],
+            ['node', 'src/backend/server.js'],
             cwd=self.project_root,
             env=env,
             stdout=subprocess.PIPE,
@@ -120,7 +120,7 @@ class ServerManager:
             print("\nWaiting for servers to start...")
             time.sleep(3)  # Initial delay
             
-            if not self.wait_for_server('http://127.0.0.1:3000/api/health', timeout=20):
+            if not self.wait_for_server('http://127.0.0.1:3001/health', timeout=20):
                 print("ERROR: Backend server failed to start")
                 self.cleanup()
                 return False

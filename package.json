@@ -1,24 +1,20 @@
 {
   "name": "betty",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "description": "Web-based chat app for Pi coding agent",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mepis/betty.git"
+    "dev": "concurrently -n backend,frontend -c blue,magenta \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd src/backend && node server.js",
+    "frontend": "cd src/frontend && npx vite --host",
+    "build": "cd src/frontend && npx vite build",
+    "start": "cd src/backend && node server.js",
+    "install-all": "cd src/backend && npm install && cd ../frontend && npm install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/mepis/betty/issues"
-  },
-  "homepage": "https://github.com/mepis/betty#readme"
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "playwright": "^1.60.0"
+  }
 }
