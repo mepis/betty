@@ -1,0 +1,139 @@
+- generic [ref=e2]:
+  - iframe
+  - generic [ref=e3]:
+    - generic [ref=e7]:
+      - link "Agentic AI" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - img "Agentic AI" [ref=e13]
+      - heading "Agentic AI" [level=1] [ref=e15]:
+        - link "Agentic AI" [ref=e16] [cursor=pointer]:
+          - /url: /
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - button "Search" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Share Publication" [ref=e26] [cursor=pointer]:
+            - img [ref=e27]
+        - button "Subscribe" [ref=e30] [cursor=pointer]
+        - button "Sign in" [ref=e31] [cursor=pointer]
+    - main "Post" [ref=e34]:
+      - article [ref=e38]:
+        - region "Post header" [ref=e39]:
+          - heading "The KV Cache Wars?" [level=1] [ref=e40]
+          - region "Post UFI" [ref=e41]:
+            - generic [ref=e43]:
+              - link "View Ken Huang's profile" [ref=e48] [cursor=pointer]:
+                - /url: https://substack.com/@kenhuangus
+                - generic "Ken Huang" [ref=e50]:
+                  - img "Ken Huang's avatar" [ref=e52]
+              - generic [ref=e53]:
+                - link "Ken Huang" [ref=e56] [cursor=pointer]:
+                  - /url: https://substack.com/@kenhuangus
+                - generic [ref=e57]:
+                  - generic [ref=e58]: Apr 06, 2026
+                  - generic [ref=e59]: ∙ Paid
+            - generic [ref=e60]:
+              - generic [ref=e61]:
+                - button "Like (27)" [ref=e63] [cursor=pointer]:
+                  - img [ref=e64]:
+                    - img [ref=e66]
+                  - generic [ref=e68]: "27"
+                - button "View comments (0)" [ref=e69] [cursor=pointer]:
+                  - img [ref=e70]:
+                    - img [ref=e72]
+                - button "3" [ref=e74] [cursor=pointer]:
+                  - img [ref=e75]
+                  - generic [ref=e78]: "3"
+              - button "Share" [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]: Share
+        - generic [ref=e82]:
+          - button "Table of Contents" [ref=e83] [cursor=pointer]
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: "Something quiet but consequential is happening beneath the surface of Agentic AI infrastructure. While the discourse tends to focus on benchmark scores and reasoning capabilities, a different battle has been raging in frontier research labs, GPU memory hierarchies, and conference proceedings: the war over the KV cache."
+            - figure [ref=e93]:
+              - link [ref=e94]:
+                - /url: https://substackcdn.com/image/fetch/$s_!sxCt!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb7d134be-711a-481a-9a2c-cc830d8a3601_853x357.png
+                - generic [ref=e98]:
+                  - button [ref=e99] [cursor=pointer]:
+                    - img [ref=e100]
+                  - button [ref=e102] [cursor=pointer]:
+                    - img [ref=e103]
+            - paragraph [ref=e104]: This battle matters because it defines the boundary of what agentic AI can actually do. Context windows measured in millions of tokens, always-on agents that maintain memory across days of interaction, multi-model pipelines coordinating across workloads — none of these work at scale without solving the memory problem that sits at the center of transformer inference. That problem is the key-value cache.
+            - paragraph [ref=e105]: This blog post cover the following topics
+            - figure [ref=e107]:
+              - link [ref=e108]:
+                - /url: https://substackcdn.com/image/fetch/$s_!CnxO!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0eacc216-ad77-47bd-9c89-98f374272677_663x849.png
+                - generic [ref=e112]:
+                  - button [ref=e113] [cursor=pointer]:
+                    - img [ref=e114]
+                  - button [ref=e116] [cursor=pointer]:
+                    - img [ref=e117]
+            - heading "The Core Problem Link" [level=2] [ref=e118]:
+              - text: The Core Problem
+              - button "Link" [ref=e121] [cursor=pointer]:
+                - img [ref=e122]
+            - paragraph [ref=e125]: "Every decoder-only transformer model — GPT, Llama, Gemini, DeepSeek, all of them — generates text autoregressively. Each new token attends to every previous token in the context. Without caching, this requires recomputing the key and value matrices for every prior token on every single forward pass. The compute cost is quadratic in context length: double the context, quadruple the computation."
+            - paragraph [ref=e126]: The KV cache solves this by storing those key and value projections in memory so they never need to be recomputed. This is the right trade — swapping compute cost for memory cost. But the trade has limits. The KV cache grows linearly with context length, linearly with the number of transformer layers, linearly with batch size, and linearly with the number of key-value heads. At a 128K context window on a 70B-parameter model, that linear growth adds up to roughly 42 gigabytes of KV cache memory alone — leaving almost nothing for model weights on an 80 GB card.
+            - paragraph [ref=e127]: The situation breaks down across two stages of inference in distinct ways. During prefill, where the model ingests the entire prompt at once, a large context demands an enormous immediate block of compute and memory, slowing time-to-first-token. During decode, where the model generates new tokens one by one, the sheer resident size of the KV cache creates memory bandwidth pressure that caps throughput — the GPU is often waiting on memory reads, not compute.
+            - paragraph [ref=e128]: "As agentic workflows have grown more common and context windows have extended toward millions of tokens, these two bottlenecks have merged into a single architectural challenge that the entire industry is attacking simultaneously from different angles. The approaches fall into three broad families: reducing what gets stored through eviction and sparse attention, compressing what gets stored through quantization and dimensionality reduction, and rethinking where context lives through hierarchical memory and hardware innovation."
+            - paragraph [ref=e129]: Before evaluating any optimization strategy, it helps to have a precise mental model of the four layers that sit between a user’s prompt and a generated token. Each layer has its own failure mode, its own memory budget, and its own relationship to the layers above and below it. Conflating them is the most common reason engineers reach for the wrong tool.
+            - figure [ref=e131]:
+              - link [ref=e132]:
+                - /url: https://substackcdn.com/image/fetch/$s_!55wy!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1844b38d-722e-4afa-a4b0-25f2183f3a07_690x856.png
+                - generic [ref=e136]:
+                  - button [ref=e137] [cursor=pointer]:
+                    - img [ref=e138]
+                  - button [ref=e140] [cursor=pointer]:
+                    - img [ref=e141]
+            - 'heading "The context window: a growing sequence of decisions Link" [level=3] [ref=e142]':
+              - text: "The context window: a growing sequence of decisions"
+              - button "Link" [ref=e145] [cursor=pointer]:
+                - img [ref=e146]
+            - paragraph [ref=e149]: Every token the model has ever seen in the current session lives in the context window. Tokens arrive left to right — the prompt first, then each newly generated token appended to the right edge — and the window grows by exactly one position with each generation step. There is no forgetting, no summarization, no compression happening at this layer. The context window is simply the authoritative ordered record of the conversation so far.
+            - paragraph [ref=e150]: What makes the context window architecturally important is that the current query token — the token the model is about to predict past — must compute its relationship to every prior token in that sequence. This is not a design choice that can be relaxed without changing the model’s fundamental behavior. Attention is defined as a function of the current query against all prior keys and values. The query token drives all downstream computation; every other token in the window is a passive participant being looked up.
+            - paragraph [ref=e151]: "As the context grows, so does the computational cost of that lookup — quadratically under naive full attention, and linearly in memory regardless of the attention strategy. A 128K-token context is not eight times more expensive than a 16K context in some abstract sense: it requires eight times as much KV cache storage, and under full attention it requires 64 times as much attention computation. These two costs scale differently, which is why eviction strategies (which attack compute) and compression strategies (which attack memory) solve different parts of the same problem."
+            - 'heading "The KV cache: two matrices that remember everything Link" [level=3] [ref=e152]':
+              - text: "The KV cache: two matrices that remember everything"
+              - button "Link" [ref=e155] [cursor=pointer]:
+                - img [ref=e156]
+            - paragraph [ref=e159]: "When the transformer processes the context, it projects every token’s embedding into three vectors: a query (Q), a key (K), and a value (V). The query is used only for the current step and discarded. The key and value vectors, however, need to be available at every future step — because every future query token will need to attend over them. Recomputing them from scratch on each step would cost as much as running the entire forward pass again for every prior token, which is prohibitively expensive at scale."
+            - paragraph
+          - region "Paywall" [ref=e160]:
+            - generic "User" [ref=e162]:
+              - img "User's avatar" [ref=e164]
+            - heading "Continue reading this post for free, courtesy of Ken Huang." [level=2] [ref=e165]
+            - button "Claim my free post" [ref=e168] [cursor=pointer]
+            - link "Or purchase a paid subscription." [ref=e170] [cursor=pointer]:
+              - /url: https://kenhuangus.substack.com/subscribe?simple=true&next=https%3A%2F%2Fkenhuangus.substack.com%2Fp%2Fthe-kv-cache-wars&utm_source=paywall&utm_medium=web&utm_content=193292807&just_signed_up=falsesimple=true&utm_source=paywall&utm_medium=email&utm_content=193292807&next=https://kenhuangus.substack.com/p/the-kv-cache-wars
+          - generic [ref=e172]:
+            - button "Previous" [ref=e173] [cursor=pointer]:
+              - img [ref=e174]
+              - text: Previous
+            - button "Next" [ref=e176] [cursor=pointer]:
+              - text: Next
+              - img [ref=e177]
+    - generic [ref=e181]:
+      - generic [ref=e182]:
+        - generic [ref=e183]: © 2026 ken
+        - text: ·
+        - link "Privacy" [ref=e184] [cursor=pointer]:
+          - /url: https://substack.com/privacy
+        - text: ∙
+        - link "Terms" [ref=e185] [cursor=pointer]:
+          - /url: https://substack.com/tos
+        - text: ∙
+        - link "Collection notice" [ref=e186] [cursor=pointer]:
+          - /url: https://substack.com/ccpa#personal-data-collected
+      - generic [ref=e187]:
+        - link "Start your Substack" [ref=e188] [cursor=pointer]:
+          - /url: https://substack.com/signup?utm_source=substack&utm_medium=web&utm_content=footer
+          - img [ref=e189]
+          - text: Start your Substack
+        - link "Get the app" [ref=e194] [cursor=pointer]:
+          - /url: https://substack.com/app/app-store-redirect?utm_campaign=app-marketing&utm_content=web-footer-button
+      - generic [ref=e195]:
+        - link "Substack" [ref=e196] [cursor=pointer]:
+          - /url: https://substack.com
+        - text: is the home for great culture
+  - region "Notifications (F8)":
+    - list

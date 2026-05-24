@@ -11,20 +11,35 @@ import { ref, readonly, onUnmounted } from "vue";
  * - session-started: { sessionId: string }
  * - tool-call: { toolName, toolCallId }
  * - tool-result: { toolName, toolCallId, result, isError }
+ * - auth-ok: { user: { id, username, role } }
  */
-export function useWebSocket(url = null) {
-  const wsUrl = url || (import.meta.env.DEV ? "ws://localhost:3001/ws" : `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`);
+export function useWebSocket(url = null, authToken = null) {
+  const backendUrl = url || import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? "ws://localhost:3001/ws" : `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`);
 
   const ws = ref(null);
   const isConnected = ref(false);
   const isConnecting = ref(false);
   const lastError = ref(null);
   const sessionId = ref(null);
+  const wsUser = ref(null);
 
   let reconnectAttempts = 0;
   const maxReconnectAttempts = 5;
   let reconnectTimer = null;
   let currentStreamContent = "";
+
+  /**
+   * Build WebSocket URL with auth token if available
+   */
+  function buildUrl() {
+    let base = backendUrl;
+    const token = authToken || (typeof authToken === "function" ? authToken() : null);
+    if (token) {
+      const sep = base.includes("?") ? "&" : "?";
+      base = `${base}${sep}token=${token}`;
+    }
+    return base;
+  }
 
   /**
    * Connect to the WebSocket server
@@ -35,7 +50,8 @@ export function useWebSocket(url = null) {
     lastError.value = null;
 
     try {
-      ws.value = new WebSocket(wsUrl);
+      const url = buildUrl();
+      ws.value = new WebSocket(url);
 
       ws.value.onopen = () => {
         isConnected.value = true;
@@ -112,6 +128,14 @@ export function useWebSocket(url = null) {
   }
 
   /**
+   * Delete a message from the conversation
+   */
+  function deleteMessage(index, role, content) {
+    if (!ws.value || ws.value.readyState !== WebSocket.OPEN) return;
+    ws.value.send(JSON.stringify({ type: "delete-message", index, role, content }));
+  }
+
+  /**
    * Start a new session
    */
   function newSession() {
@@ -151,7 +175,6 @@ export function useWebSocket(url = null) {
       currentStreamContent += data.content;
     }
     if (type === "message" && data.role === "assistant") {
-      // Message completed — currentStreamContent is now final
       currentStreamContent = "";
     }
     if (type === "error") {
@@ -159,6 +182,9 @@ export function useWebSocket(url = null) {
     }
     if (type === "session-started") {
       sessionId.value = data.sessionId;
+    }
+    if (type === "auth-ok") {
+      wsUser.value = data.user;
     }
   }
 
@@ -172,10 +198,12 @@ export function useWebSocket(url = null) {
     isConnecting: readonly(isConnecting),
     lastError: readonly(lastError),
     sessionId: readonly(sessionId),
+    wsUser: readonly(wsUser),
     connect,
     disconnect,
     sendPrompt,
     stopResponse,
+    deleteMessage,
     newSession,
     on,
     off,

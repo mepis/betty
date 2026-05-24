@@ -1,0 +1,1416 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "OpenAI Developers" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "OpenAI Developers" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "API" [ref=e10] [cursor=pointer]:
+          - /url: /api
+          - text: API
+          - img [ref=e11]
+        - link "Codex" [ref=e14] [cursor=pointer]:
+          - /url: /codex
+          - text: Codex
+          - img [ref=e15]
+        - link "ChatGPT" [ref=e18] [cursor=pointer]:
+          - /url: /chatgpt
+          - text: ChatGPT
+          - img [ref=e19]
+        - link "Resources" [ref=e22] [cursor=pointer]:
+          - /url: /learn
+          - text: Resources
+          - img [ref=e23]
+      - generic [ref=e25]:
+        - button "Start searching" [ref=e26] [cursor=pointer]:
+          - generic [ref=e27]: Start searching
+          - img [ref=e28]
+        - link "API Dashboard" [ref=e33] [cursor=pointer]:
+          - /url: https://platform.openai.com/login
+          - generic [ref=e34]:
+            - generic [ref=e35]: API Dashboard
+            - img [ref=e36]
+        - button "Toggle light and dark theme" [ref=e38] [cursor=pointer]:
+          - img [ref=e39]
+  - generic [ref=e41]:
+    - navigation [ref=e43]:
+      - list [ref=e45]:
+        - listitem [ref=e46]:
+          - link "Home" [ref=e47] [cursor=pointer]:
+            - /url: /cookbook
+            - generic [ref=e48]: Home
+      - generic [ref=e49]:
+        - heading "Topics" [level=3] [ref=e50]
+        - list [ref=e51]:
+          - listitem [ref=e52]:
+            - link "Agents" [ref=e53] [cursor=pointer]:
+              - /url: /cookbook/topic/agents
+              - generic [ref=e54]: Agents
+          - listitem [ref=e55]:
+            - link "Evals" [ref=e56] [cursor=pointer]:
+              - /url: /cookbook/topic/evals
+              - generic [ref=e57]: Evals
+          - listitem [ref=e58]:
+            - link "Multimodal" [ref=e59] [cursor=pointer]:
+              - /url: /cookbook/topic/multimodal
+              - generic [ref=e60]: Multimodal
+          - listitem [ref=e61]:
+            - link "Text" [ref=e62] [cursor=pointer]:
+              - /url: /cookbook/topic/text
+              - generic [ref=e63]: Text
+          - listitem [ref=e64]:
+            - link "Guardrails" [ref=e65] [cursor=pointer]:
+              - /url: /cookbook/topic/guardrails
+              - generic [ref=e66]: Guardrails
+          - listitem [ref=e67]:
+            - link "Optimization" [ref=e68] [cursor=pointer]:
+              - /url: /cookbook/topic/optimization
+              - generic [ref=e69]: Optimization
+          - listitem [ref=e70]:
+            - link "ChatGPT" [ref=e71] [cursor=pointer]:
+              - /url: /cookbook/topic/chatgpt
+              - generic [ref=e72]: ChatGPT
+          - listitem [ref=e73]:
+            - link "Codex" [ref=e74] [cursor=pointer]:
+              - /url: /cookbook/topic/codex
+              - generic [ref=e75]: Codex
+          - listitem [ref=e76]:
+            - link "gpt-oss" [ref=e77] [cursor=pointer]:
+              - /url: /cookbook/topic/gpt-oss
+              - generic [ref=e78]: gpt-oss
+      - generic [ref=e79]:
+        - heading "Contribute" [level=3] [ref=e80]
+        - list [ref=e81]:
+          - listitem [ref=e82]:
+            - link "Cookbook on GitHub" [ref=e83] [cursor=pointer]:
+              - /url: https://github.com/openai/openai-cookbook
+              - generic [ref=e84]: Cookbook on GitHub
+              - img [ref=e85]
+    - main [ref=e87]:
+      - generic [ref=e89]:
+        - generic [ref=e90]:
+          - navigation [ref=e92]:
+            - list [ref=e96]:
+              - listitem [ref=e97]:
+                - link "Prerequisites" [ref=e98] [cursor=pointer]:
+                  - /url: "#prerequisites"
+              - listitem [ref=e99]:
+                - link "Context Trimming" [ref=e100] [cursor=pointer]:
+                  - /url: "#context-trimming"
+              - listitem [ref=e101]:
+                - link "Context Summarization" [ref=e102] [cursor=pointer]:
+                  - /url: "#context-summarization"
+              - listitem [ref=e103]:
+                - link "Evals" [ref=e104] [cursor=pointer]:
+                  - /url: "#evals"
+          - button "Copy Page" [ref=e106] [cursor=pointer]:
+            - img [ref=e108]
+            - generic [ref=e110]: Copy Page
+        - generic [ref=e111]:
+          - generic [ref=e113]:
+            - generic [ref=e116]: Sep 9, 2025
+            - heading "Context Engineering - Short-Term Memory Management with Sessions" [level=1] [ref=e117]
+            - generic [ref=e118]:
+              - link "View profile of Emre Okcular" [ref=e120] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/emreokcular/
+                - img "Emre Okcular" [ref=e123]
+              - link "View profile of Emre Okcular" [ref=e125] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/emreokcular/
+                - generic [ref=e127]: Emre Okcular
+            - generic [ref=e128]:
+              - link "View on GitHub" [ref=e129] [cursor=pointer]:
+                - /url: https://github.com/openai/openai-cookbook/blob/main/examples/agents_sdk/session_memory.ipynb
+              - link "Download raw" [ref=e130] [cursor=pointer]:
+                - /url: https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/agents_sdk/session_memory.ipynb
+          - article [ref=e131]:
+            - generic [ref=e132]:
+              - paragraph [ref=e133]:
+                - text: AI agents often operate in
+                - strong [ref=e134]: long-running, multi-turn interactions
+                - text: ", where keeping the right balance of"
+                - strong [ref=e135]: context
+                - text: is critical. If too much is carried forward, the model risks distraction, inefficiency, or outright failure. If too little is preserved, the agent loses coherence.
+              - paragraph [ref=e136]:
+                - text: Here, context refers to the total window of tokens (input + output) that the model can attend to at once. For
+                - link "GPT-5" [ref=e137] [cursor=pointer]:
+                  - /url: https://platform.openai.com/docs/models/gpt-5
+                - text: ", this capacity is up to 272k input tokens and 128k output tokens but even such a large window can be overwhelmed by uncurated histories, redundant tool results, or noisy retrievals. This makes context management not just an optimization, but a necessity."
+              - paragraph [ref=e138]:
+                - text: In this cookbook, we’ll explore how to
+                - strong [ref=e139]:
+                  - text: manage context effectively using the
+                  - code [ref=e140]: Session
+                  - text: object from the
+                  - link "OpenAI Agents SDK" [ref=e141] [cursor=pointer]:
+                    - /url: https://github.com/openai/openai-agents-python
+                - text: ", focusing on two proven context management techniques—"
+                - strong [ref=e142]: trimming
+                - text: and
+                - strong [ref=e143]: compression
+                - text: —to keep agents fast, reliable, and cost-efficient.
+              - heading "Why Context Management Matters Copy link to Why Context Management Matters" [level=4] [ref=e144]:
+                - generic [ref=e145]: Why Context Management Matters
+                - button "Copy link to Why Context Management Matters" [ref=e146] [cursor=pointer]:
+                  - img [ref=e147]
+              - list [ref=e149]:
+                - listitem [ref=e150]:
+                  - strong [ref=e151]: Sustained coherence across long threads
+                  - text: – Keep the agent anchored to the latest user goal without dragging along stale details. Session-level trimming and summaries prevent “yesterday’s plan” from overriding today’s ask.
+                - listitem [ref=e152]:
+                  - strong [ref=e153]: Higher tool-call accuracy
+                  - text: – Focused context improves function selection and argument filling, reducing retries, timeouts, and cascading failures during multi-tool runs.
+                - listitem [ref=e154]:
+                  - strong [ref=e155]: Lower latency & cost
+                  - text: – Smaller, sharper prompts cut tokens per turn and attention load.
+                - listitem [ref=e156]:
+                  - strong [ref=e157]: Error & hallucination containment
+                  - text: – Summaries act as “clean rooms” that correct or omit prior mistakes; trimming avoids amplifying bad facts (“context poisoning”) turn after turn.
+                - listitem [ref=e158]:
+                  - strong [ref=e159]: Easier debugging & observability
+                  - text: "– Stable summaries and bounded histories make logs comparable: you can diff summaries, attribute regressions, and reproduce failures reliably."
+                - listitem [ref=e160]:
+                  - strong [ref=e161]: Multi-issue and handoff resilience
+                  - text: – In multi-problem chats, per-issue mini-summaries let the agent pause/resume, escalate to humans, or hand off to another agent while staying consistent.
+              - paragraph [ref=e162]:
+                - img "Memory Comparison in AI Agents" [ref=e163]
+              - paragraph [ref=e164]:
+                - text: The
+                - link "OpenAI Responses API" [ref=e165] [cursor=pointer]:
+                  - /url: https://platform.openai.com/docs/api-reference/responses/create#responses-create-previous_response_id
+                - text: includes
+                - strong [ref=e166]: basic memory support
+                - text: through built-in state and message chaining with
+                - code [ref=e167]: previous_response_id
+                - text: .
+              - paragraph [ref=e168]:
+                - text: You can continue a conversation by passing the prior response’s
+                - code [ref=e169]: id
+                - text: as
+                - code [ref=e170]: previous_response_id
+                - text: ", or you can manage context manually by collecting outputs into a list and resubmitting them as the"
+                - code [ref=e171]: input
+                - text: for the next response.
+              - paragraph [ref=e172]:
+                - text: What you don’t get is
+                - strong [ref=e173]: automatic memory management
+                - text: . That’s where the
+                - strong [ref=e174]: Agents SDK
+                - text: comes in. It provides
+                - link "session memory" [ref=e175] [cursor=pointer]:
+                  - /url: https://openai.github.io/openai-agents-python/sessions/
+                - text: on top of Responses, so you no longer need to manually append
+                - code [ref=e176]: response.output
+                - text: or track IDs yourself. The session becomes the
+                - strong [ref=e177]: memory object
+                - text: ": you simply call"
+                - code [ref=e178]: session.run("...")
+                - text: repeatedly, and the SDK handles context length, history, and continuity—making it far easier to build coherent, multi-turn agents.
+              - heading "Real-World Scenario Copy link to Real-World Scenario" [level=4] [ref=e179]:
+                - generic [ref=e180]: Real-World Scenario
+                - button "Copy link to Real-World Scenario" [ref=e181] [cursor=pointer]:
+                  - img [ref=e182]
+              - paragraph [ref=e184]: "We’ll ground the techniques in a practical example for one of the common long-running tasks, such as:"
+              - list [ref=e185]:
+                - listitem [ref=e186]:
+                  - strong [ref=e187]: Multi-turn Customer Service Conversations
+                  - text: In extended conversations about tech products—spanning both hardware and software—customers often surface multiple issues over time. The agent must stay consistent and goal-focused while retaining only the essentials rather than hauling along every past detail.
+              - heading "Techniques Covered Copy link to Techniques Covered" [level=4] [ref=e188]:
+                - generic [ref=e189]: Techniques Covered
+                - button "Copy link to Techniques Covered" [ref=e190] [cursor=pointer]:
+                  - img [ref=e191]
+              - paragraph [ref=e193]: "To address these challenges, we introduce two separate concrete approaches using OpenAI Agents SDK:"
+              - list [ref=e194]:
+                - listitem [ref=e195]:
+                  - paragraph [ref=e196]:
+                    - strong [ref=e197]: Context Trimming
+                    - text: – dropping older turns while keeping the last N turns.
+                  - list [ref=e198]:
+                    - listitem [ref=e199]:
+                      - paragraph [ref=e200]:
+                        - strong [ref=e201]: Pros
+                      - list [ref=e202]:
+                        - listitem [ref=e203]:
+                          - strong [ref=e204]: "Deterministic & simple:"
+                          - text: No summarizer variability; easy to reason about state and to reproduce runs.
+                        - listitem [ref=e205]:
+                          - strong [ref=e206]: "Zero added latency:"
+                          - text: No extra model calls to compress history.
+                        - listitem [ref=e207]:
+                          - strong [ref=e208]: "Fidelity for recent work:"
+                          - text: Latest tool results, parameters, and edge cases stay verbatim—great for debugging.
+                        - listitem [ref=e209]:
+                          - strong [ref=e210]: "Lower risk of “summary drift”:"
+                          - text: You never reinterpret or compress facts.
+                      - paragraph [ref=e211]:
+                        - strong [ref=e212]: Cons
+                      - list [ref=e213]:
+                        - listitem [ref=e214]:
+                          - strong [ref=e215]: "Forgets long-range context abruptly:"
+                          - text: Important earlier constraints, IDs, or decisions can vanish once they scroll past N.
+                        - listitem [ref=e216]:
+                          - strong [ref=e217]: "User experience “amnesia”:"
+                          - text: Agent can appear to “forget” promises or prior preferences midway through long sessions.
+                        - listitem [ref=e218]:
+                          - strong [ref=e219]: "Wasted signal:"
+                          - text: Older turns may contain reusable knowledge (requirements, constraints) that gets dropped.
+                        - listitem [ref=e220]:
+                          - strong [ref=e221]: "Token spikes still possible:"
+                          - text: If a recent turn includes huge tool payloads, your last-N can still blow up the context.
+                    - listitem [ref=e222]:
+                      - paragraph [ref=e223]:
+                        - strong [ref=e224]: Best when
+                      - list [ref=e225]:
+                        - listitem [ref=e226]: Your tasks in the conversation is indepentent from each other with non-overlapping context that does not reuqire carrying previous details further.
+                        - listitem [ref=e227]: You need predictability, easy evals, and low latency (ops automations, CRM/API actions).
+                        - listitem [ref=e228]: The conversation’s useful context is local (recent steps matter far more than distant history).
+                - listitem [ref=e229]:
+                  - paragraph [ref=e230]:
+                    - strong [ref=e231]: Context Summarization
+                    - text: – compressing prior messages(assistant, user, tools, etc.) into structured, shorter summaries injected into the conversation history.
+                  - list [ref=e232]:
+                    - listitem [ref=e233]:
+                      - paragraph [ref=e234]:
+                        - strong [ref=e235]: Pros
+                      - list [ref=e236]:
+                        - listitem [ref=e237]:
+                          - strong [ref=e238]: "Retains long-range memory compactly:"
+                          - text: Past requirements, decisions, and rationales persist beyond N.
+                        - listitem [ref=e239]:
+                          - strong [ref=e240]: "Smoother UX:"
+                          - text: Agent “remembers” commitments and constraints across long sessions.
+                        - listitem [ref=e241]:
+                          - strong [ref=e242]: "Cost-controlled scale:"
+                          - text: One concise summary can replace hundreds of turns.
+                        - listitem [ref=e243]:
+                          - strong [ref=e244]: "Searchable anchor:"
+                          - text: A single synthetic assistant message becomes a stable “state of the world so far.”
+                      - paragraph [ref=e245]:
+                        - strong [ref=e246]: Cons
+                      - list [ref=e247]:
+                        - listitem [ref=e248]:
+                          - strong [ref=e249]: "Summarization loss & bias:"
+                          - text: Details can be dropped or misweighted; subtle constraints may vanish.
+                        - listitem [ref=e250]:
+                          - strong [ref=e251]: "Latency & cost spikes:"
+                          - text: Each refresh adds model work (and potentially tool-trim logic).
+                        - listitem [ref=e252]:
+                          - strong [ref=e253]: "Compounding errors:"
+                          - text: If a bad fact enters the summary, it can
+                          - strong [ref=e254]: poison
+                          - text: future behavior (“context poisoning”).
+                        - listitem [ref=e255]:
+                          - strong [ref=e256]: "Observability complexity:"
+                          - text: You must log summary prompts/outputs for auditability and evals.
+                    - listitem [ref=e257]:
+                      - paragraph [ref=e258]:
+                        - strong [ref=e259]: Best when
+                      - list [ref=e260]:
+                        - listitem [ref=e261]: You have use cases where your tasks needs context collected accross the flow such as planning/coaching, RAG-heavy analysis, policy Q&A.
+                        - listitem [ref=e262]: You need continuity over long horizons and carry the important details further to solve related tasks.
+                        - listitem [ref=e263]: Sessions exceed N turns but must preserve decisions, IDs, and constraints reliably.
+              - paragraph [ref=e264]:
+                - strong [ref=e265]: Quick comparison
+              - table [ref=e266]:
+                - rowgroup [ref=e267]:
+                  - row "Dimension Trimming (last-N turns) Summarizing (older → generated summary)" [ref=e268]:
+                    - columnheader "Dimension" [ref=e269]
+                    - columnheader "Trimming (last-N turns)" [ref=e270]:
+                      - strong [ref=e271]: Trimming (last-N turns)
+                    - columnheader "Summarizing (older → generated summary)" [ref=e272]:
+                      - strong [ref=e273]: Summarizing (older → generated summary)
+                - rowgroup [ref=e274]:
+                  - row "Latency / Cost Lowest (no extra calls) Higher at summary refresh points" [ref=e275]:
+                    - cell "Latency / Cost" [ref=e276]
+                    - cell "Lowest (no extra calls)" [ref=e277]
+                    - cell "Higher at summary refresh points" [ref=e278]
+                  - row "Long-range recall Weak (hard cut-off) Strong (compact carry-forward)" [ref=e279]:
+                    - cell "Long-range recall" [ref=e280]
+                    - cell "Weak (hard cut-off)" [ref=e281]
+                    - cell "Strong (compact carry-forward)" [ref=e282]
+                  - row "Risk type Context loss Context distortion/poisoning" [ref=e283]:
+                    - cell "Risk type" [ref=e284]
+                    - cell "Context loss" [ref=e285]
+                    - cell "Context distortion/poisoning" [ref=e286]
+                  - row "Observability Simple logs Must log summary prompts/outputs" [ref=e287]:
+                    - cell "Observability" [ref=e288]
+                    - cell "Simple logs" [ref=e289]
+                    - cell "Must log summary prompts/outputs" [ref=e290]
+                  - row "Eval stability High Needs robust summary evals" [ref=e291]:
+                    - cell "Eval stability" [ref=e292]
+                    - cell "High" [ref=e293]
+                    - cell "Needs robust summary evals" [ref=e294]
+                  - row "Best for Tool-heavy ops, short workflows Analyst/concierge, long threads" [ref=e295]:
+                    - cell "Best for" [ref=e296]
+                    - cell "Tool-heavy ops, short workflows" [ref=e297]
+                    - cell "Analyst/concierge, long threads" [ref=e298]
+              - heading "Prerequisites Copy link to Prerequisites" [level=2] [ref=e299]:
+                - generic [ref=e300]: Prerequisites
+                - button "Copy link to Prerequisites" [ref=e301] [cursor=pointer]:
+                  - img [ref=e302]
+              - paragraph [ref=e304]: Before running this cookbook, you must set up the following accounts and complete a few setup actions. These prerequisites are essential to interact with the APIs used in this project.
+              - 'heading "Step0: OpenAI Account and OPENAI_API_KEY Copy link to Step0: OpenAI Account and OPENAI_API_KEY" [level=4] [ref=e305]':
+                - generic [ref=e306]:
+                  - text: "Step0: OpenAI Account and"
+                  - code [ref=e307]: OPENAI_API_KEY
+                - 'button "Copy link to Step0: OpenAI Account and OPENAI_API_KEY" [ref=e308] [cursor=pointer]':
+                  - img [ref=e309]
+              - list [ref=e311]:
+                - listitem [ref=e312]:
+                  - paragraph [ref=e313]:
+                    - strong [ref=e314]: "Purpose:"
+                    - text: You need an OpenAI account to access language models and use the Agents SDK featured in this cookbook.
+                - listitem [ref=e315]:
+                  - paragraph [ref=e316]:
+                    - strong [ref=e317]: "Action:"
+                    - link "Sign up for an OpenAI account" [ref=e318] [cursor=pointer]:
+                      - /url: https://openai.com
+                    - text: if you don’t already have one. Once you have an account, create an API key by visiting the
+                    - link "OpenAI API Keys page" [ref=e319] [cursor=pointer]:
+                      - /url: https://platform.openai.com/api-keys
+                    - text: .
+              - paragraph [ref=e320]:
+                - strong [ref=e321]: "Before running the workflow, set your environment variables:"
+              - generic [ref=e322]:
+                - code [ref=e323]:
+                  - generic [ref=e324]: "# Your openai key"
+                  - generic [ref=e325]: os.environ["OPENAI_API_KEY"] = "sk-proj-..."
+                - button "Copy code to clipboard" [ref=e327] [cursor=pointer]:
+                  - img [ref=e328]
+              - paragraph [ref=e330]:
+                - text: Alternatively, you can set your OpenAI API key for use by the agents via the
+                - code [ref=e331]: set_default_openai_key
+                - text: function by importing agents library .
+              - generic [ref=e332]:
+                - code [ref=e333]:
+                  - generic [ref=e334]: from agents import set_default_openai_key
+                  - generic [ref=e335]: set_default_openai_key("YOUR_API_KEY")
+                - button "Copy code to clipboard" [ref=e337] [cursor=pointer]:
+                  - img [ref=e338]
+              - 'heading "Step1: Install the Required Libraries Copy link to Step1: Install the Required Libraries" [level=4] [ref=e340]':
+                - generic [ref=e341]: "Step1: Install the Required Libraries"
+                - 'button "Copy link to Step1: Install the Required Libraries" [ref=e342] [cursor=pointer]':
+                  - img [ref=e343]
+              - paragraph [ref=e345]:
+                - text: Below we install the
+                - code [ref=e346]: openai-agents
+                - text: library (
+                - link "OpenAI Agents SDK" [ref=e347] [cursor=pointer]:
+                  - /url: https://github.com/openai/openai-agents-python
+                - text: )
+              - generic [ref=e348]:
+                - code [ref=e349]:
+                  - generic [ref=e350]: "%pip install openai-agents nest_asyncio"
+                - button "Copy code to clipboard" [ref=e352] [cursor=pointer]:
+                  - img [ref=e353]
+              - generic [ref=e355]:
+                - code [ref=e356]:
+                  - generic [ref=e357]: from openai import OpenAI
+                  - generic [ref=e358]: client = OpenAI()
+                - button "Copy code to clipboard" [ref=e360] [cursor=pointer]:
+                  - img [ref=e361]
+              - generic [ref=e363]:
+                - code [ref=e364]:
+                  - generic [ref=e365]: from agents import set_tracing_disabled
+                  - generic [ref=e366]: set_tracing_disabled(True)
+                - button "Copy code to clipboard" [ref=e368] [cursor=pointer]:
+                  - img [ref=e369]
+              - paragraph [ref=e371]: Let’s test the installed libraries by defining and running an agent.
+              - generic [ref=e372]:
+                - code [ref=e373]:
+                  - generic [ref=e374]: import asyncio
+                  - generic [ref=e375]: from agents import Agent, Runner
+                  - generic [ref=e376]: agent = Agent(
+                  - generic [ref=e377]: name="Assistant",
+                  - generic [ref=e378]: instructions="Reply very concisely.",
+                  - generic [ref=e379]: )
+                  - generic [ref=e380]: result = await Runner.run(agent, "Tell me why it is important to evaluate AI agents.")
+                  - generic [ref=e381]: print(result.final_output)
+                - button "Copy code to clipboard" [ref=e383] [cursor=pointer]:
+                  - img [ref=e384]
+              - generic [ref=e386]:
+                - code [ref=e387]:
+                  - generic [ref=e388]: Evaluating AI agents ensures reliability, safety, ethical alignment, performance accuracy, and helps avoid biases, improving overall trust and effectiveness.
+                - button "Copy code to clipboard" [ref=e390] [cursor=pointer]:
+                  - img [ref=e391]
+              - heading "Define Agents Copy link to Define Agents" [level=3] [ref=e393]:
+                - generic [ref=e394]: Define Agents
+                - button "Copy link to Define Agents" [ref=e395] [cursor=pointer]:
+                  - img [ref=e396]
+              - paragraph [ref=e398]: We can start by defining the necessary components from Agents SDK Library. Instructions added based on the use case during agent creation.
+              - heading "Customer Service Agent Copy link to Customer Service Agent" [level=4] [ref=e399]:
+                - generic [ref=e400]: Customer Service Agent
+                - button "Copy link to Customer Service Agent" [ref=e401] [cursor=pointer]:
+                  - img [ref=e402]
+              - generic [ref=e404]:
+                - code [ref=e405]:
+                  - generic [ref=e406]: support_agent = Agent(
+                  - generic [ref=e407]: name="Customer Support Assistant",
+                  - generic [ref=e408]: model="gpt-5",
+                  - generic [ref=e409]: instructions=(
+                  - generic [ref=e410]: "\"You are a patient, step-by-step IT support assistant. \""
+                  - generic [ref=e411]: "\"Your role is to help customers troubleshoot and resolve issues with devices and software. \""
+                  - generic [ref=e412]: "\"Guidelines:\\n\""
+                  - generic [ref=e413]: "\"- Be concise and use numbered steps where possible.\\n\""
+                  - generic [ref=e414]: "\"- Ask only one focused, clarifying question at a time before suggesting next actions.\\n\""
+                  - generic [ref=e415]: "\"- Track and remember multiple issues across the conversation; update your understanding as new problems emerge.\\n\""
+                  - generic [ref=e416]: "\"- When a problem is resolved, briefly confirm closure before moving to the next.\\n\""
+                  - generic [ref=e417]: )
+                  - generic [ref=e418]: )
+                - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                  - img [ref=e421]
+              - heading "Context Trimming Copy link to Context Trimming" [level=2] [ref=e423]:
+                - generic [ref=e424]: Context Trimming
+                - button "Copy link to Context Trimming" [ref=e425] [cursor=pointer]:
+                  - img [ref=e426]
+              - heading "Implement Custom Session Object Copy link to Implement Custom Session Object" [level=4] [ref=e428]:
+                - generic [ref=e429]: Implement Custom Session Object
+                - button "Copy link to Implement Custom Session Object" [ref=e430] [cursor=pointer]:
+                  - img [ref=e431]
+              - paragraph [ref=e433]:
+                - text: We are using
+                - link "Session" [ref=e434] [cursor=pointer]:
+                  - /url: https://openai.github.io/openai-agents-python/sessions/
+                - text: object from
+                - link "OpenAI Agents Python SDK" [ref=e435] [cursor=pointer]:
+                  - /url: https://openai.github.io/openai-agents-python/
+                - text: . Here’s a
+                - code [ref=e436]: TrimmingSession
+                - text: implementation that
+                - strong [ref=e437]: keeps only the last N turns
+                - text: (a “turn” = one user message and everything until the next user message—including the assistant reply and any tool calls/results). It’s in-memory and trims automatically on every write and read.
+              - generic [ref=e438]:
+                - code [ref=e439]:
+                  - generic [ref=e440]: from __future__ import annotations
+                  - generic [ref=e441]: import asyncio
+                  - generic [ref=e442]: from collections import deque
+                  - generic [ref=e443]: from typing import Any, Deque, Dict, List, cast
+                  - generic [ref=e444]: from agents.memory.session import SessionABC
+                  - generic [ref=e445]: "from agents.items import TResponseInputItem # dict-like item"
+                  - generic [ref=e446]: ROLE_USER = "user"
+                  - generic [ref=e447]: "def _is_user_msg(item: TResponseInputItem) -> bool:"
+                  - generic [ref=e448]: "\"\"\"Return True if the item represents a user message.\"\"\""
+                  - generic [ref=e449]: "# Common dict-shaped messages"
+                  - generic [ref=e450]: "if isinstance(item, dict):"
+                  - generic [ref=e451]: role = item.get("role")
+                  - generic [ref=e452]: "if role is not None:"
+                  - generic [ref=e453]: return role == ROLE_USER
+                  - generic [ref=e454]: "# Some SDKs: {\"type\": \"message\", \"role\": \"...\"}"
+                  - generic [ref=e455]: "if item.get(\"type\") == \"message\":"
+                  - generic [ref=e456]: return item.get("role") == ROLE_USER
+                  - generic [ref=e457]: "# Fallback: objects with a .role attr"
+                  - generic [ref=e458]: return getattr(item, "role", None) == ROLE_USER
+                  - generic [ref=e459]: "class TrimmingSession(SessionABC):"
+                  - generic [ref=e460]: "\"\"\""
+                  - generic [ref=e461]: Keep only the last N *user turns* in memory.
+                  - generic [ref=e462]: A turn = a user message and all subsequent items (assistant/tool calls/results)
+                  - generic [ref=e463]: up to (but not including) the next user message.
+                  - generic [ref=e464]: "\"\"\""
+                  - generic [ref=e465]: "def __init__(self, session_id: str, max_turns: int = 8):"
+                  - generic [ref=e466]: self.session_id = session_id
+                  - generic [ref=e467]: self.max_turns = max(1, int(max_turns))
+                  - generic [ref=e468]: "self._items: Deque[TResponseInputItem] = deque() # chronological log"
+                  - generic [ref=e469]: self._lock = asyncio.Lock()
+                  - generic [ref=e470]: "# ---- SessionABC API ----"
+                  - generic [ref=e471]: "async def get_items(self, limit: int | None = None) -> List[TResponseInputItem]:"
+                  - generic [ref=e472]: "\"\"\"Return history trimmed to the last N user turns (optionally limited to most-recent `limit` items).\"\"\""
+                  - generic [ref=e473]: "async with self._lock:"
+                  - generic [ref=e474]: trimmed = self._trim_to_last_turns(list(self._items))
+                  - generic [ref=e475]: return trimmed[-limit:] if (limit is not None and limit >= 0) else trimmed
+                  - generic [ref=e476]: "async def add_items(self, items: List[TResponseInputItem]) -> None:"
+                  - generic [ref=e477]: "\"\"\"Append new items, then trim to last N user turns.\"\"\""
+                  - generic [ref=e478]: "if not items:"
+                  - generic [ref=e479]: return
+                  - generic [ref=e480]: "async with self._lock:"
+                  - generic [ref=e481]: self._items.extend(items)
+                  - generic [ref=e482]: trimmed = self._trim_to_last_turns(list(self._items))
+                  - generic [ref=e483]: self._items.clear()
+                  - generic [ref=e484]: self._items.extend(trimmed)
+                  - generic [ref=e485]: "async def pop_item(self) -> TResponseInputItem | None:"
+                  - generic [ref=e486]: "\"\"\"Remove and return the most recent item (post-trim).\"\"\""
+                  - generic [ref=e487]: "async with self._lock:"
+                  - generic [ref=e488]: return self._items.pop() if self._items else None
+                  - generic [ref=e489]: "async def clear_session(self) -> None:"
+                  - generic [ref=e490]: "\"\"\"Remove all items for this session.\"\"\""
+                  - generic [ref=e491]: "async with self._lock:"
+                  - generic [ref=e492]: self._items.clear()
+                  - generic [ref=e493]: "# ---- Helpers ----"
+                  - generic [ref=e494]: "def _trim_to_last_turns(self, items: List[TResponseInputItem]) -> List[TResponseInputItem]:"
+                  - generic [ref=e495]: "\"\"\""
+                  - generic [ref=e496]: "Keep only the suffix containing the last `max_turns` user messages and everything after"
+                  - generic [ref=e497]: the earliest of those user messages.
+                  - generic [ref=e498]: "If there are fewer than `max_turns` user messages (or none), keep all items."
+                  - generic [ref=e499]: "\"\"\""
+                  - generic [ref=e500]: "if not items:"
+                  - generic [ref=e501]: return items
+                  - generic [ref=e502]: count = 0
+                  - generic [ref=e503]: "start_idx = 0 # default: keep all if we never reach max_turns"
+                  - generic [ref=e504]: "# Walk backward; when we hit the Nth user message, mark its index."
+                  - generic [ref=e505]: "for i in range(len(items) - 1, -1, -1):"
+                  - generic [ref=e506]: "if _is_user_msg(items[i]):"
+                  - generic [ref=e507]: count += 1
+                  - generic [ref=e508]: "if count == self.max_turns:"
+                  - generic [ref=e509]: start_idx = i
+                  - generic [ref=e510]: break
+                  - generic [ref=e511]: return items[start_idx:]
+                  - generic [ref=e512]: "# ---- Optional convenience API ----"
+                  - generic [ref=e513]: "async def set_max_turns(self, max_turns: int) -> None:"
+                  - generic [ref=e514]: "async with self._lock:"
+                  - generic [ref=e515]: self.max_turns = max(1, int(max_turns))
+                  - generic [ref=e516]: trimmed = self._trim_to_last_turns(list(self._items))
+                  - generic [ref=e517]: self._items.clear()
+                  - generic [ref=e518]: self._items.extend(trimmed)
+                  - generic [ref=e519]: "async def raw_items(self) -> List[TResponseInputItem]:"
+                  - generic [ref=e520]: "\"\"\"Return the untrimmed in-memory log (for debugging).\"\"\""
+                  - generic [ref=e521]: "async with self._lock:"
+                  - generic [ref=e522]: return list(self._items)
+                - button "Copy code to clipboard" [ref=e524] [cursor=pointer]:
+                  - img [ref=e525]
+              - paragraph [ref=e527]: Let’s define the custom session object we implemented with max_turns=3.
+              - generic [ref=e528]:
+                - code [ref=e529]:
+                  - generic [ref=e530]: "# Keep only the last 8 turns (user + assistant/tool interactions)"
+                  - generic [ref=e531]: session = TrimmingSession("my_session", max_turns=3)
+                - button "Copy code to clipboard" [ref=e533] [cursor=pointer]:
+                  - img [ref=e534]
+              - paragraph [ref=e536]:
+                - strong [ref=e537]:
+                  - text: How to choose the right
+                  - code [ref=e538]: max_turns
+                  - text: "?"
+              - paragraph [ref=e539]: Determining this parameter usually requires experimentation with your conversation history. One approach is to extract the total number of turns across conversations and analyze their distribution. Another option is to use an LLM to evaluate conversations—identifying how many tasks or issues each one contains and calculating the average number of turns needed per issue.
+              - generic [ref=e540]:
+                - code [ref=e541]:
+                  - generic [ref=e542]: message = "There is a red light blinking on my laptop."
+                - button "Copy code to clipboard" [ref=e544] [cursor=pointer]:
+                  - img [ref=e545]
+              - generic [ref=e547]:
+                - code [ref=e548]:
+                  - generic [ref=e549]: result = await Runner.run(
+                  - generic [ref=e550]: support_agent,
+                  - generic [ref=e551]: message,
+                  - generic [ref=e552]: session=session
+                  - generic [ref=e553]: )
+                - button "Copy code to clipboard" [ref=e555] [cursor=pointer]:
+                  - img [ref=e556]
+              - generic [ref=e558]:
+                - code [ref=e559]:
+                  - generic [ref=e560]: history = await session.get_items()
+                - button "Copy code to clipboard" [ref=e562] [cursor=pointer]:
+                  - img [ref=e563]
+              - generic [ref=e565]:
+                - code [ref=e566]:
+                  - generic [ref=e567]: history
+                - button "Copy code to clipboard" [ref=e569] [cursor=pointer]:
+                  - img [ref=e570]
+              - generic [ref=e572]:
+                - code [ref=e573]:
+                  - generic [ref=e574]: "[{'content': 'There is a red light blinking on my laptop.', 'role': 'user'},"
+                  - generic [ref=e575]: "{'id': 'rs_68be66229c008190aa4b3c5501f397080fdfa41323fb39cb',"
+                  - generic [ref=e576]: "'summary': [],"
+                  - generic [ref=e577]: "'type': 'reasoning',"
+                  - generic [ref=e578]: "'content': []},"
+                  - generic [ref=e579]: "{'id': 'msg_68be662f704c8190969bdf539701a3e90fdfa41323fb39cb',"
+                  - generic [ref=e580]: "'content': [{'annotations': [],"
+                  - generic [ref=e581]: "'text': 'A blinking red light usually indicates a power/battery or hardware fault, but the meaning varies by brand.\\n\\nWhat is the exact make and model of your laptop?\\n\\nWhile you check that, please try these quick checks:\\n1) Note exactly where the red LED is (charging port, power button, keyboard edge) and the blink pattern (e.g., constant blink, 2 short/1 long).\\n2) Plug the charger directly into a known‑good wall outlet (no power strip), ensure the charger tip is fully seated, and look for damage to the cable/port. See if the LED behavior changes.\\n3) Leave it on charge for 30 minutes in case the battery is critically low.\\n4) Power reset: unplug the charger; if the battery is removable, remove it. Hold the power button for 20–30 seconds. Reconnect power (and battery) and try turning it on.\\n5) Tell me the LED location, blink pattern, and what changed after these steps.',"
+                  - generic [ref=e582]: "'type': 'output_text',"
+                  - generic [ref=e583]: "'logprobs': []}],"
+                  - generic [ref=e584]: "'role': 'assistant',"
+                  - generic [ref=e585]: "'status': 'completed',"
+                  - generic [ref=e586]: "'type': 'message'}]"
+                - button "Copy code to clipboard" [ref=e588] [cursor=pointer]:
+                  - img [ref=e589]
+              - generic [ref=e591]:
+                - code [ref=e592]:
+                  - generic [ref=e593]: "# Example flow"
+                  - generic [ref=e594]: "await session.add_items([{\"role\": \"user\", \"content\": \"I am using a macbook pro and it has some overheating issues too.\"}])"
+                  - generic [ref=e595]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"I see. Let's check your firmware version.\"}])"
+                  - generic [ref=e596]: "await session.add_items([{\"role\": \"user\", \"content\": \"Firmware v1.0.3; still failing.\"}])"
+                  - generic [ref=e597]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Could you please try a factory reset?\"}])"
+                  - generic [ref=e598]: "await session.add_items([{\"role\": \"user\", \"content\": \"Reset done; error 42 now.\"}])"
+                  - generic [ref=e599]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Leave it on charge for 30 minutes in case the battery is critically low. Is there any other error message?\"}])"
+                  - generic [ref=e600]: "await session.add_items([{\"role\": \"user\", \"content\": \"Yes, I see error 404 now.\"}])"
+                  - generic [ref=e601]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Do you see it on the browser while accessing a website?\"}])"
+                  - generic [ref=e602]: "# At this point, with max_turns=3, everything *before* the earliest of the last 3 user"
+                  - generic [ref=e603]: "# messages is summarized into a synthetic pair, and the last 3 turns remain verbatim."
+                  - generic [ref=e604]: history = await session.get_items()
+                  - generic [ref=e605]: "# Pass `history` into your agent runner / responses call as the conversation context."
+                - button "Copy code to clipboard" [ref=e607] [cursor=pointer]:
+                  - img [ref=e608]
+              - generic [ref=e610]:
+                - code [ref=e611]:
+                  - generic [ref=e612]: len(history)
+                - button "Copy code to clipboard" [ref=e614] [cursor=pointer]:
+                  - img [ref=e615]
+              - generic [ref=e617]:
+                - code [ref=e618]:
+                  - generic [ref=e619]: "6"
+                - button "Copy code to clipboard" [ref=e621] [cursor=pointer]:
+                  - img [ref=e622]
+              - generic [ref=e624]:
+                - code [ref=e625]:
+                  - generic [ref=e626]: history
+                - button "Copy code to clipboard" [ref=e628] [cursor=pointer]:
+                  - img [ref=e629]
+              - generic [ref=e631]:
+                - code [ref=e632]:
+                  - generic [ref=e633]: "[{'role': 'user', 'content': 'Firmware v1.0.3; still failing.'},"
+                  - generic [ref=e634]: "{'role': 'assistant', 'content': 'Could you please try a factory reset?'},"
+                  - generic [ref=e635]: "{'role': 'user', 'content': 'Reset done; error 42 now.'},"
+                  - generic [ref=e636]: "{'role': 'assistant',"
+                  - generic [ref=e637]: "'content': 'Leave it on charge for 30 minutes in case the battery is critically low. Is there any other error message?'},"
+                  - generic [ref=e638]: "{'role': 'user', 'content': 'Yes, I see error 404 now.'},"
+                  - generic [ref=e639]: "{'role': 'assistant',"
+                  - generic [ref=e640]: "'content': 'Do you see it on the browser while accessing a website?'}]"
+                - button "Copy code to clipboard" [ref=e642] [cursor=pointer]:
+                  - img [ref=e643]
+              - paragraph [ref=e645]: Below, you can see how the trimming session works for max_turns=3.
+              - paragraph [ref=e646]:
+                - img "Context Trimming in Session" [ref=e647]
+              - paragraph [ref=e648]:
+                - strong [ref=e649]: What counts as a “turn”
+              - list [ref=e650]:
+                - listitem [ref=e651]:
+                  - text: A
+                  - strong [ref=e652]: turn
+                  - text: = one
+                  - strong [ref=e653]: user
+                  - text: message
+                  - strong [ref=e654]: plus everything that follows it
+                  - text: (assistant replies, reasoning, tool calls, tool results)
+                  - strong [ref=e655]: until the next user message
+                  - text: .
+              - paragraph [ref=e656]:
+                - strong [ref=e657]: When trimming happens
+              - list [ref=e658]:
+                - listitem [ref=e659]:
+                  - text: "On"
+                  - strong [ref=e660]: write
+                  - text: ":"
+                  - code [ref=e661]: add_items(...)
+                  - text: appends the new items, then immediately trims the stored history.
+                - listitem [ref=e662]:
+                  - text: "On"
+                  - strong [ref=e663]: read
+                  - text: ":"
+                  - code [ref=e664]: get_items(...)
+                  - text: returns a
+                  - strong [ref=e665]: trimmed
+                  - text: view (so even if you bypassed a write, reads won’t leak old turns).
+              - paragraph [ref=e666]:
+                - strong [ref=e667]: How it decides what to keep
+              - list [ref=e668]:
+                - listitem [ref=e669]:
+                  - text: Treat any item with
+                  - code [ref=e670]: role == "user"
+                  - text: as a
+                  - strong [ref=e671]: user message
+                  - text: (via
+                  - code [ref=e672]: _is_user_msg
+                  - text: ).
+                - listitem [ref=e673]:
+                  - text: Scan the history
+                  - strong [ref=e674]: backwards
+                  - text: and collect the indices of the last
+                  - strong [ref=e675]: "N"
+                  - text: user messages (
+                  - code [ref=e676]: max_turns
+                  - text: ).
+                - listitem [ref=e677]:
+                  - text: Find the
+                  - strong [ref=e678]: earliest
+                  - text: index among those N user messages.
+                - listitem [ref=e679]:
+                  - strong [ref=e680]: Keep everything from that index to the end
+                  - text: ; drop everything before it.
+              - paragraph [ref=e681]:
+                - text: "That preserves each complete turn boundary: if the earliest kept user message is at index"
+                - code [ref=e682]: k
+                - text: ", you also keep all assistant/tool items that came after"
+                - code [ref=e683]: k
+                - text: .
+              - paragraph [ref=e684]:
+                - strong [ref=e685]: Tiny example
+              - paragraph [ref=e686]: "History (old → new):"
+              - generic [ref=e687]:
+                - code [ref=e688]:
+                  - generic [ref=e689]: "0: user(\"Hi\")"
+                  - generic [ref=e690]: "1: assistant(\"Hello!\")"
+                  - generic [ref=e691]: "2: tool_call(\"lookup\")"
+                  - generic [ref=e692]: "3: tool_result(\"…\")"
+                  - generic [ref=e693]: "4: user(\"It didn't work\")"
+                  - generic [ref=e694]: "5: assistant(\"Try rebooting\")"
+                  - generic [ref=e695]: "6: user(\"Rebooted, now error 42\")"
+                  - generic [ref=e696]: "7: assistant(\"On it\")"
+                - button "Copy code to clipboard" [ref=e698] [cursor=pointer]:
+                  - img [ref=e699]
+              - paragraph [ref=e701]:
+                - text: With
+                - code [ref=e702]: max_turns = 2
+                - text: ", the last two user messages are at indices"
+                - strong [ref=e703]: "4"
+                - text: and
+                - strong [ref=e704]: "6"
+                - text: . Earliest of those is
+                - strong [ref=e705]: "4"
+                - text: → keep items
+                - strong [ref=e706]: 4..7
+                - text: ", drop"
+                - strong [ref=e707]: 0..3
+                - text: .
+              - paragraph [ref=e708]:
+                - strong [ref=e709]: Why this works well
+              - list [ref=e710]:
+                - listitem [ref=e711]:
+                  - text: You always keep
+                  - strong [ref=e712]: complete
+                  - text: turns, so the assistant retains the immediate context it needs (both the user’s last asks and the assistant/tool steps in between).
+                - listitem [ref=e713]: It prevents context bloat by discarding older turns wholesale, not just messages.
+              - paragraph [ref=e714]:
+                - strong [ref=e715]: Customization knobs
+              - list [ref=e716]:
+                - listitem [ref=e717]:
+                  - text: Change
+                  - code [ref=e718]: max_turns
+                  - text: at init.
+                - listitem [ref=e719]:
+                  - text: Adjust
+                  - code [ref=e720]: _is_user_msg(...)
+                  - text: if your item schema differs.
+                - listitem [ref=e721]:
+                  - text: If you’d rather cap by
+                  - strong [ref=e722]: message count
+                  - text: or
+                  - strong [ref=e723]: tokens
+                  - text: ", replace"
+                  - code [ref=e724]: _trim_to_last_turns(...)
+                  - text: or add a second pass that measures tokens.
+              - heading "Context Summarization Copy link to Context Summarization" [level=2] [ref=e725]:
+                - generic [ref=e726]: Context Summarization
+                - button "Copy link to Context Summarization" [ref=e727] [cursor=pointer]:
+                  - img [ref=e728]
+              - paragraph [ref=e730]:
+                - text: Once the history exceeds
+                - code [ref=e731]: max_turns
+                - text: . It keeps the most recent N user turns intact,
+                - strong [ref=e732]: summarizes everything older into two synthetic messages
+                - text: ":"
+              - list [ref=e733]:
+                - listitem [ref=e734]:
+                  - code [ref=e735]: user
+                  - text: ":"
+                  - emphasis [ref=e736]: “Summarize the conversation we had so far.”
+                - listitem [ref=e737]:
+                  - code [ref=e738]: assistant
+                  - text: ":"
+                  - emphasis [ref=e739]: "{generated summary}"
+              - paragraph [ref=e740]: The shadow prompt from the user to request the summarization added to keep natural flow of the conversation without confusing the chat flow between user and assistant. Final version of the generated summary injected to assistant message.
+              - paragraph [ref=e741]:
+                - strong [ref=e742]: Summarization Prompt
+              - paragraph [ref=e743]:
+                - text: A well-crafted summarization prompt is essential for preserving the context of a conversation, and it should always be tailored to the specific use case. Think of it like
+                - strong [ref=e744]: being a customer support agent handing off a case to the next agent
+                - text: ". What concise yet critical details would they need to continue smoothly? The prompt should strike the right balance: not overloaded with unnecessary information, but not so sparse that key context is lost. Achieving this balance requires careful design and ongoing experimentation to fine-tune the level of detail."
+              - generic [ref=e745]:
+                - code [ref=e746]:
+                  - generic [ref=e747]: SUMMARY_PROMPT = """
+                  - generic [ref=e748]: You are a senior customer-support assistant for tech devices, setup, and software issues.
+                  - generic [ref=e749]: Compress the earlier conversation into a precise, reusable snapshot for future turns.
+                  - generic [ref=e750]: "Before you write (do this silently):"
+                  - generic [ref=e751]: "- Contradiction check: compare user claims with system instructions and tool definitions/logs; note any conflicts or reversals."
+                  - generic [ref=e752]: "- Temporal ordering: sort key events by time; the most recent update wins. If timestamps exist, keep them."
+                  - generic [ref=e753]: "- Hallucination control: if any fact is uncertain/not stated, mark it as UNVERIFIED rather than guessing."
+                  - generic [ref=e754]: "Write a structured, factual summary ≤ 200 words using the sections below (use the exact headings):"
+                  - generic [ref=e755]: "• Product & Environment:"
+                  - generic [ref=e756]: "- Device/model, OS/app versions, network/context if mentioned."
+                  - generic [ref=e757]: "• Reported Issue:"
+                  - generic [ref=e758]: "- Single-sentence problem statement (latest state)."
+                  - generic [ref=e759]: "• Steps Tried & Results:"
+                  - generic [ref=e760]: "- Chronological bullets (include tool calls + outcomes, errors, codes)."
+                  - generic [ref=e761]: "• Identifiers:"
+                  - generic [ref=e762]: "- Ticket #, device serial/model, account/email (only if provided)."
+                  - generic [ref=e763]: "• Timeline Milestones:"
+                  - generic [ref=e764]: "- Key events with timestamps or relative order (e.g., 10:32 install → 10:41 error)."
+                  - generic [ref=e765]: "• Tool Performance Insights:"
+                  - generic [ref=e766]: "- What tool calls worked/failed and why (if evident)."
+                  - generic [ref=e767]: "• Current Status & Blockers:"
+                  - generic [ref=e768]: "- What’s resolved vs pending; explicit blockers preventing progress."
+                  - generic [ref=e769]: "• Next Recommended Step:"
+                  - generic [ref=e770]: "- One concrete action (or two alternatives) aligned with policies/tools."
+                  - generic [ref=e771]: "Rules:"
+                  - generic [ref=e772]: "- Be concise, no fluff; use short bullets, verbs first."
+                  - generic [ref=e773]: "- Do not invent new facts; quote error strings/codes exactly when available."
+                  - generic [ref=e774]: "- If previous info was superseded, note “Superseded:” and omit details unless critical."
+                  - generic [ref=e775]: "\"\"\""
+                - button "Copy code to clipboard" [ref=e777] [cursor=pointer]:
+                  - img [ref=e778]
+              - paragraph [ref=e780]:
+                - strong [ref=e781]: Key Principles for Designing Memory Summarization Prompts
+              - list [ref=e782]:
+                - listitem [ref=e783]:
+                  - paragraph [ref=e784]:
+                    - strong [ref=e785]: "Milestones:"
+                    - text: Highlight important events in the conversation—for example, when an issue is resolved, valuable information is uncovered, or all necessary details have been collected.
+                - listitem [ref=e786]:
+                  - paragraph [ref=e787]:
+                    - strong [ref=e788]: "Use Case Specificity:"
+                    - text: Tailor the compression prompt to the specific use case. Think about how a human would track and recall information in working memory while solving the same task.
+                - listitem [ref=e789]:
+                  - paragraph [ref=e790]:
+                    - strong [ref=e791]: "Contradiction Check:"
+                    - text: Ensure the summary does not conflict with itself, system instructions or tool definitions. This is especially critical for reasoning models, which are more prone to conflicts in the context.
+                - listitem [ref=e792]:
+                  - paragraph [ref=e793]:
+                    - strong [ref=e794]: "Timestamps & Temporal Flow:"
+                    - text: Incorporate timing of events in the summary. This helps the model reason about updates in sequence and reduces confusion when forgetting or remembering the latest memory over a timeline.
+                - listitem [ref=e795]:
+                  - paragraph [ref=e796]:
+                    - strong [ref=e797]: "Chunking:"
+                    - text: Organize details into categories or sections rather than long paragraphs. Structured grouping improves an LLM’s ability to understand relationships between pieces of information.
+                - listitem [ref=e798]:
+                  - paragraph [ref=e799]:
+                    - strong [ref=e800]: "Tool Performance Insights:"
+                    - text: Capture lessons learned from multi-turn, tool-enabled interactions—for example, noting which tools worked effectively for specific queries and why. These insights are valuable for guiding future steps.
+                - listitem [ref=e801]:
+                  - paragraph [ref=e802]:
+                    - strong [ref=e803]: "Guidance & Examples:"
+                    - text: Steer the summary with clear guidance. Where possible, extract concrete examples from the conversation history to make future turns more grounded and context-rich.
+                - listitem [ref=e804]:
+                  - paragraph [ref=e805]:
+                    - strong [ref=e806]: "Hallucination Control:"
+                    - text: Be precise in what you include. Even minor hallucinations in a summary can propagate forward, contaminating future context with inaccuracies.
+                - listitem [ref=e807]:
+                  - paragraph [ref=e808]:
+                    - strong [ref=e809]: "Model Choice:"
+                    - text: Select a summarizer model based on use case requirements, summary length, and tradeoffs between latency and cost. In some cases, using the same model as the AI agent itself can be advantageous.
+              - generic [ref=e810]:
+                - code [ref=e811]:
+                  - generic [ref=e812]: "class LLMSummarizer:"
+                  - generic [ref=e813]: "def __init__(self, client, model=\"gpt-4o\", max_tokens=400, tool_trim_limit=600):"
+                  - generic [ref=e814]: self.client = client
+                  - generic [ref=e815]: self.model = model
+                  - generic [ref=e816]: self.max_tokens = max_tokens
+                  - generic [ref=e817]: self.tool_trim_limit = tool_trim_limit
+                  - generic [ref=e818]: "async def summarize(self, messages: List[Item]) -> Tuple[str, str]:"
+                  - generic [ref=e819]: "\"\"\""
+                  - generic [ref=e820]: "Create a compact summary from `messages`."
+                  - generic [ref=e821]: "Returns:"
+                  - generic [ref=e822]: "Tuple[str, str]: The shadow user line to keep dialog natural,"
+                  - generic [ref=e823]: and the model-generated summary text.
+                  - generic [ref=e824]: "\"\"\""
+                  - generic [ref=e825]: user_shadow = "Summarize the conversation we had so far."
+                  - generic [ref=e826]: "TOOL_ROLES = {\"tool\", \"tool_result\"}"
+                  - generic [ref=e827]: "def to_snippet(m: Item) -> str | None:"
+                  - generic [ref=e828]: role = (m.get("role") or "assistant").lower()
+                  - generic [ref=e829]: content = (m.get("content") or "").strip()
+                  - generic [ref=e830]: "if not content:"
+                  - generic [ref=e831]: return None
+                  - generic [ref=e832]: "# Trim verbose tool outputs to keep prompt compact"
+                  - generic [ref=e833]: "if role in TOOL_ROLES and len(content) > self.tool_trim_limit:"
+                  - generic [ref=e834]: "content = content[: self.tool_trim_limit] + \" …\""
+                  - generic [ref=e835]: "return f\"{role.upper()}: {content}\""
+                  - generic [ref=e836]: "# Build compact, trimmed history"
+                  - generic [ref=e837]: history_snippets = [s for m in messages if (s := to_snippet(m))]
+                  - generic [ref=e838]: prompt_messages = [
+                  - generic [ref=e839]: "{\"role\": \"system\", \"content\": SUMMARY_PROMPT},"
+                  - generic [ref=e840]: "{\"role\": \"user\", \"content\": \"\\n\".join(history_snippets)},"
+                  - generic [ref=e841]: "]"
+                  - generic [ref=e842]: resp = await asyncio.to_thread(
+                  - generic [ref=e843]: self.client.responses.create,
+                  - generic [ref=e844]: model=self.model,
+                  - generic [ref=e845]: input=prompt_messages,
+                  - generic [ref=e846]: max_output_tokens=self.max_tokens,
+                  - generic [ref=e847]: )
+                  - generic [ref=e848]: summary = resp.output_text
+                  - generic [ref=e849]: "await asyncio.sleep(0) # yield control"
+                  - generic [ref=e850]: return user_shadow, summary
+                - button "Copy code to clipboard" [ref=e852] [cursor=pointer]:
+                  - img [ref=e853]
+              - generic [ref=e855]:
+                - code [ref=e856]:
+                  - generic [ref=e857]: import asyncio
+                  - generic [ref=e858]: from collections import deque
+                  - generic [ref=e859]: from typing import Optional, List, Tuple, Dict, Any
+                  - generic [ref=e860]: "Record = Dict[str, Dict[str, Any]] # {\"msg\": {...}, \"meta\": {...}}"
+                  - generic [ref=e861]: "class SummarizingSession:"
+                  - generic [ref=e862]: "\"\"\""
+                  - generic [ref=e863]: Session that keeps only the last N *user turns* verbatim and summarizes the rest.
+                  - generic [ref=e864]: "- A *turn* starts at a real user message and includes everything until the next real user message."
+                  - generic [ref=e865]: "- When the number of real user turns exceeds `context_limit`, everything before the earliest"
+                  - generic [ref=e866]: "of the last `keep_last_n_turns` user-turn starts is summarized into a synthetic user→assistant pair."
+                  - generic [ref=e867]: "- Stores full records (message + metadata). Exposes:"
+                  - generic [ref=e868]: "• get_items(): model-safe messages only (no metadata)"
+                  - generic [ref=e869]: "• get_full_history(): [{\"message\": msg, \"metadata\": meta}, ...]"
+                  - generic [ref=e870]: "\"\"\""
+                  - generic [ref=e871]: "# Only these keys are ever sent to the model; the rest live in metadata."
+                  - generic [ref=e872]: "_ALLOWED_MSG_KEYS = {\"role\", \"content\", \"name\"}"
+                  - generic [ref=e873]: def __init__(
+                  - generic [ref=e874]: self,
+                  - generic [ref=e875]: "keep_last_n_turns: int = 3,"
+                  - generic [ref=e876]: "context_limit: int = 3,"
+                  - generic [ref=e877]: "summarizer: Optional[\"Summarizer\"] = None,"
+                  - generic [ref=e878]: "session_id: Optional[str] = None,"
+                  - generic [ref=e879]: "):"
+                  - generic [ref=e880]: assert context_limit >= 1
+                  - generic [ref=e881]: assert keep_last_n_turns >= 0
+                  - generic [ref=e882]: assert keep_last_n_turns <= context_limit, "keep_last_n_turns should not be greater than context_limit"
+                  - generic [ref=e883]: self.keep_last_n_turns = keep_last_n_turns
+                  - generic [ref=e884]: self.context_limit = context_limit
+                  - generic [ref=e885]: self.summarizer = summarizer
+                  - generic [ref=e886]: self.session_id = session_id or "default"
+                  - generic [ref=e887]: "self._records: deque[Record] = deque()"
+                  - generic [ref=e888]: self._lock = asyncio.Lock()
+                  - generic [ref=e889]: "# --------- public API used by your runner ---------"
+                  - generic [ref=e890]: "async def get_items(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:"
+                  - generic [ref=e891]: "\"\"\"Return model-safe messages only (no metadata).\"\"\""
+                  - generic [ref=e892]: "async with self._lock:"
+                  - generic [ref=e893]: data = list(self._records)
+                  - generic [ref=e894]: msgs = [self._sanitize_for_model(rec["msg"]) for rec in data]
+                  - generic [ref=e895]: return msgs[-limit:] if limit else msgs
+                  - generic [ref=e896]: "async def add_items(self, items: List[Dict[str, Any]]) -> None:"
+                  - generic [ref=e897]: "\"\"\"Append new items and, if needed, summarize older turns.\"\"\""
+                  - generic [ref=e898]: "# 1) Ingest items"
+                  - generic [ref=e899]: "async with self._lock:"
+                  - generic [ref=e900]: "for it in items:"
+                  - generic [ref=e901]: msg, meta = self._split_msg_and_meta(it)
+                  - generic [ref=e902]: "self._records.append({\"msg\": msg, \"meta\": meta})"
+                  - generic [ref=e903]: need_summary, boundary = self._summarize_decision_locked()
+                  - generic [ref=e904]: "# 2) No summarization needed → just normalize flags and exit"
+                  - generic [ref=e905]: "if not need_summary:"
+                  - generic [ref=e906]: "async with self._lock:"
+                  - generic [ref=e907]: self._normalize_synthetic_flags_locked()
+                  - generic [ref=e908]: return
+                  - generic [ref=e909]: "# 3) Prepare summary prefix (model-safe copy) outside the lock"
+                  - generic [ref=e910]: "async with self._lock:"
+                  - generic [ref=e911]: snapshot = list(self._records)
+                  - generic [ref=e912]: prefix_msgs = [r["msg"] for r in snapshot[:boundary]]
+                  - generic [ref=e913]: user_shadow, assistant_summary = await self._summarize(prefix_msgs)
+                  - generic [ref=e914]: "# 4) Re-check and apply summary atomically"
+                  - generic [ref=e915]: "async with self._lock:"
+                  - generic [ref=e916]: still_need, new_boundary = self._summarize_decision_locked()
+                  - generic [ref=e917]: "if not still_need:"
+                  - generic [ref=e918]: self._normalize_synthetic_flags_locked()
+                  - generic [ref=e919]: return
+                  - generic [ref=e920]: snapshot = list(self._records)
+                  - generic [ref=e921]: "suffix = snapshot[new_boundary:] # keep-last-N turns live here"
+                  - generic [ref=e922]: "# Replace with: synthetic pair + suffix"
+                  - generic [ref=e923]: self._records.clear()
+                  - generic [ref=e924]: self._records.extend([
+                  - generic [ref=e925]: "{"
+                  - generic [ref=e926]: "\"msg\": {\"role\": \"user\", \"content\": user_shadow},"
+                  - generic [ref=e927]: "\"meta\": {"
+                  - generic [ref=e928]: "\"synthetic\": True,"
+                  - generic [ref=e929]: "\"kind\": \"history_summary_prompt\","
+                  - generic [ref=e930]: "\"summary_for_turns\": f\"< all before idx {new_boundary} >\","
+                  - generic [ref=e931]: "},"
+                  - generic [ref=e932]: "},"
+                  - generic [ref=e933]: "{"
+                  - generic [ref=e934]: "\"msg\": {\"role\": \"assistant\", \"content\": assistant_summary},"
+                  - generic [ref=e935]: "\"meta\": {"
+                  - generic [ref=e936]: "\"synthetic\": True,"
+                  - generic [ref=e937]: "\"kind\": \"history_summary\","
+                  - generic [ref=e938]: "\"summary_for_turns\": f\"< all before idx {new_boundary} >\","
+                  - generic [ref=e939]: "},"
+                  - generic [ref=e940]: "},"
+                  - generic [ref=e941]: "])"
+                  - generic [ref=e942]: self._records.extend(suffix)
+                  - generic [ref=e943]: "# Ensure all real user/assistant messages explicitly have synthetic=False"
+                  - generic [ref=e944]: self._normalize_synthetic_flags_locked()
+                  - generic [ref=e945]: "async def pop_item(self) -> Optional[Dict[str, Any]]:"
+                  - generic [ref=e946]: "\"\"\"Pop the latest message (model-safe), if any.\"\"\""
+                  - generic [ref=e947]: "async with self._lock:"
+                  - generic [ref=e948]: "if not self._records:"
+                  - generic [ref=e949]: return None
+                  - generic [ref=e950]: rec = self._records.pop()
+                  - generic [ref=e951]: return dict(rec["msg"])
+                  - generic [ref=e952]: "async def clear_session(self) -> None:"
+                  - generic [ref=e953]: "\"\"\"Remove all records.\"\"\""
+                  - generic [ref=e954]: "async with self._lock:"
+                  - generic [ref=e955]: self._records.clear()
+                  - generic [ref=e956]: "def set_max_turns(self, n: int) -> None:"
+                  - generic [ref=e957]: "\"\"\""
+                  - generic [ref=e958]: "Back-compat shim for old callers: update `context_limit`"
+                  - generic [ref=e959]: "and clamp `keep_last_n_turns` if needed."
+                  - generic [ref=e960]: "\"\"\""
+                  - generic [ref=e961]: assert n >= 1
+                  - generic [ref=e962]: self.context_limit = n
+                  - generic [ref=e963]: "if self.keep_last_n_turns > self.context_limit:"
+                  - generic [ref=e964]: self.keep_last_n_turns = self.context_limit
+                  - generic [ref=e965]: "# Full history (debugging/analytics/observability)"
+                  - generic [ref=e966]: "async def get_full_history(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:"
+                  - generic [ref=e967]: "\"\"\""
+                  - generic [ref=e968]: "Return combined history entries in the shape:"
+                  - generic [ref=e969]: "{\"message\": {role, content[, name]}, \"metadata\": {...}}"
+                  - generic [ref=e970]: This is NOT sent to the model; for logs/UI/debugging only.
+                  - generic [ref=e971]: "\"\"\""
+                  - generic [ref=e972]: "async with self._lock:"
+                  - generic [ref=e973]: data = list(self._records)
+                  - generic [ref=e974]: "out = [{\"message\": dict(rec[\"msg\"]), \"metadata\": dict(rec[\"meta\"])} for rec in data]"
+                  - generic [ref=e975]: return out[-limit:] if limit else out
+                  - generic [ref=e976]: "# Back-compat alias"
+                  - generic [ref=e977]: "async def get_items_with_metadata(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:"
+                  - generic [ref=e978]: return await self.get_full_history(limit)
+                  - generic [ref=e979]: "# Internals"
+                  - generic [ref=e980]: "def _split_msg_and_meta(self, it: Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[str, Any]]:"
+                  - generic [ref=e981]: "\"\"\""
+                  - generic [ref=e982]: "Split input into (msg, meta):"
+                  - generic [ref=e983]: "- msg keeps only _ALLOWED_MSG_KEYS; if role/content missing, default them."
+                  - generic [ref=e984]: "- everything else goes under meta (including nested \"metadata\" if provided)."
+                  - generic [ref=e985]: "- default synthetic=False for real user/assistant unless explicitly set."
+                  - generic [ref=e986]: "\"\"\""
+                  - generic [ref=e987]: "msg = {k: v for k, v in it.items() if k in self._ALLOWED_MSG_KEYS}"
+                  - generic [ref=e988]: "extra = {k: v for k, v in it.items() if k not in self._ALLOWED_MSG_KEYS}"
+                  - generic [ref=e989]: "meta = dict(extra.pop(\"metadata\", {}))"
+                  - generic [ref=e990]: meta.update(extra)
+                  - generic [ref=e991]: msg.setdefault("role", "user")
+                  - generic [ref=e992]: msg.setdefault("content", str(it))
+                  - generic [ref=e993]: role = msg.get("role")
+                  - generic [ref=e994]: "if role in (\"user\", \"assistant\") and \"synthetic\" not in meta:"
+                  - generic [ref=e995]: meta["synthetic"] = False
+                  - generic [ref=e996]: return msg, meta
+                  - generic [ref=e997]: "@staticmethod"
+                  - generic [ref=e998]: "def _sanitize_for_model(msg: Dict[str, Any]) -> Dict[str, Any]:"
+                  - generic [ref=e999]: "\"\"\"Drop anything not allowed in model calls.\"\"\""
+                  - generic [ref=e1000]: "return {k: v for k, v in msg.items() if k in SummarizingSession._ALLOWED_MSG_KEYS}"
+                  - generic [ref=e1001]: "@staticmethod"
+                  - generic [ref=e1002]: "def _is_real_user_turn_start(rec: Record) -> bool:"
+                  - generic [ref=e1003]: "\"\"\"True if record starts a *real* user turn (role=='user' and not synthetic).\"\"\""
+                  - generic [ref=e1004]: return (
+                  - generic [ref=e1005]: rec["msg"].get("role") == "user"
+                  - generic [ref=e1006]: and not rec["meta"].get("synthetic", False)
+                  - generic [ref=e1007]: )
+                  - generic [ref=e1008]: "def _summarize_decision_locked(self) -> Tuple[bool, int]:"
+                  - generic [ref=e1009]: "\"\"\""
+                  - generic [ref=e1010]: Decide whether to summarize and compute the boundary index.
+                  - generic [ref=e1011]: "Returns:"
+                  - generic [ref=e1012]: (need_summary, boundary_idx)
+                  - generic [ref=e1013]: "If need_summary:"
+                  - generic [ref=e1014]: "• boundary_idx is the earliest index among the last `keep_last_n_turns`"
+                  - generic [ref=e1015]: "*real* user-turn starts."
+                  - generic [ref=e1016]: • Everything before boundary_idx becomes the summary prefix.
+                  - generic [ref=e1017]: "\"\"\""
+                  - generic [ref=e1018]: "user_starts: List[int] = ["
+                  - generic [ref=e1019]: i for i, rec in enumerate(self._records) if self._is_real_user_turn_start(rec)
+                  - generic [ref=e1020]: "]"
+                  - generic [ref=e1021]: real_turns = len(user_starts)
+                  - generic [ref=e1022]: "# Not over the limit → nothing to do"
+                  - generic [ref=e1023]: "if real_turns <= self.context_limit:"
+                  - generic [ref=e1024]: return False, -1
+                  - generic [ref=e1025]: "# Keep zero turns verbatim → summarize everything"
+                  - generic [ref=e1026]: "if self.keep_last_n_turns == 0:"
+                  - generic [ref=e1027]: return True, len(self._records)
+                  - generic [ref=e1028]: "# Otherwise, keep the last N turns; summarize everything before the earliest of those"
+                  - generic [ref=e1029]: "if len(user_starts) < self.keep_last_n_turns:"
+                  - generic [ref=e1030]: "return False, -1 # defensive (shouldn't happen given the earlier check)"
+                  - generic [ref=e1031]: boundary = user_starts[-self.keep_last_n_turns]
+                  - generic [ref=e1032]: "# If there is nothing before boundary, there is nothing to summarize"
+                  - generic [ref=e1033]: "if boundary <= 0:"
+                  - generic [ref=e1034]: return False, -1
+                  - generic [ref=e1035]: return True, boundary
+                  - generic [ref=e1036]: "def _normalize_synthetic_flags_locked(self) -> None:"
+                  - generic [ref=e1037]: "\"\"\"Ensure all real user/assistant records explicitly carry synthetic=False.\"\"\""
+                  - generic [ref=e1038]: "for rec in self._records:"
+                  - generic [ref=e1039]: role = rec["msg"].get("role")
+                  - generic [ref=e1040]: "if role in (\"user\", \"assistant\") and \"synthetic\" not in rec[\"meta\"]:"
+                  - generic [ref=e1041]: rec["meta"]["synthetic"] = False
+                  - generic [ref=e1042]: "async def _summarize(self, prefix_msgs: List[Dict[str, Any]]) -> Tuple[str, str]:"
+                  - generic [ref=e1043]: "\"\"\""
+                  - generic [ref=e1044]: Ask the configured summarizer to compress the given prefix.
+                  - generic [ref=e1045]: Uses model-safe messages only. If no summarizer is configured,
+                  - generic [ref=e1046]: returns a graceful fallback.
+                  - generic [ref=e1047]: "\"\"\""
+                  - generic [ref=e1048]: "if not self.summarizer:"
+                  - generic [ref=e1049]: return ("Summarize the conversation we had so far.", "Summary unavailable.")
+                  - generic [ref=e1050]: clean_prefix = [self._sanitize_for_model(m) for m in prefix_msgs]
+                  - generic [ref=e1051]: return await self.summarizer.summarize(clean_prefix)
+                - button "Copy code to clipboard" [ref=e1053] [cursor=pointer]:
+                  - img [ref=e1054]
+              - paragraph [ref=e1056]:
+                - img "Context Trimming in Session" [ref=e1057]
+              - paragraph [ref=e1058]:
+                - strong [ref=e1059]: High‑level idea
+              - list [ref=e1060]:
+                - listitem [ref=e1061]:
+                  - paragraph [ref=e1062]:
+                    - strong [ref=e1063]: A turn
+                    - text: = one
+                    - strong [ref=e1064]: real user
+                    - text: message
+                    - strong [ref=e1065]: plus everything that follows it
+                    - text: (assistant replies, tool calls/results, etc.)
+                    - strong [ref=e1066]: until the next real user message
+                    - text: .
+                - listitem [ref=e1067]:
+                  - paragraph [ref=e1068]: "You configure two knobs:"
+                  - list [ref=e1069]:
+                    - listitem [ref=e1070]:
+                      - paragraph [ref=e1071]:
+                        - strong [ref=e1072]:
+                          - code [ref=e1073]: context_limit
+                        - text: ": the maximum number of"
+                        - strong [ref=e1074]: real user turns
+                        - text: allowed in the raw history before we summarize.
+                    - listitem [ref=e1075]:
+                      - paragraph [ref=e1076]:
+                        - strong [ref=e1077]:
+                          - code [ref=e1078]: keep_last_n_turns
+                        - text: ": how many of the most recent"
+                        - strong [ref=e1079]: turns
+                        - text: to keep verbatim when we do summarize.
+                      - list [ref=e1080]:
+                        - listitem [ref=e1081]:
+                          - text: "Invariant:"
+                          - code [ref=e1082]: keep_last_n_turns <= context_limit
+                          - text: .
+                - listitem [ref=e1083]:
+                  - paragraph [ref=e1084]:
+                    - text: When the number of
+                    - strong [ref=e1085]: real
+                    - text: user turns exceeds
+                    - code [ref=e1086]: context_limit
+                    - text: ", the session:"
+                  - list [ref=e1087]:
+                    - listitem [ref=e1088]:
+                      - paragraph [ref=e1089]:
+                        - strong [ref=e1090]: Summarizes
+                        - text: everything
+                        - strong [ref=e1091]: before
+                        - text: the earliest of the last
+                        - code [ref=e1092]: keep_last_n_turns
+                        - text: turn starts,
+                    - listitem [ref=e1093]:
+                      - paragraph [ref=e1094]:
+                        - text: Injects a
+                        - strong [ref=e1095]: synthetic user→assistant pair
+                        - text: "at the top of the kept region:"
+                      - list [ref=e1096]:
+                        - listitem [ref=e1097]:
+                          - code [ref=e1098]: user
+                          - text: ":"
+                          - code [ref=e1099]: "\"Summarize the conversation we had so far.\""
+                          - text: (shadow prompt)
+                        - listitem [ref=e1100]:
+                          - code [ref=e1101]: assistant
+                          - text: ":"
+                          - code [ref=e1102]: "{generated summary}"
+                    - listitem [ref=e1103]:
+                      - paragraph [ref=e1104]:
+                        - strong [ref=e1105]: Keeps
+                        - text: the last
+                        - code [ref=e1106]: keep_last_n_turns
+                        - text: turns
+                        - strong [ref=e1107]: verbatim
+                        - text: .
+              - paragraph [ref=e1108]:
+                - text: This guarantees the last
+                - code [ref=e1109]: keep_last_n_turns
+                - text: turns are preserved exactly as they occurred, while all earlier content is compressed into the two synthetic messages.
+              - generic [ref=e1110]:
+                - code [ref=e1111]:
+                  - generic [ref=e1112]: session = SummarizingSession(
+                  - generic [ref=e1113]: keep_last_n_turns=2,
+                  - generic [ref=e1114]: context_limit=4,
+                  - generic [ref=e1115]: summarizer=LLMSummarizer(client)
+                  - generic [ref=e1116]: )
+                - button "Copy code to clipboard" [ref=e1118] [cursor=pointer]:
+                  - img [ref=e1119]
+              - generic [ref=e1121]:
+                - code [ref=e1122]:
+                  - generic [ref=e1123]: "# Example flow"
+                  - generic [ref=e1124]: "await session.add_items([{\"role\": \"user\", \"content\": \"Hi, my router won't connect. by the way, I am using Windows 10. I tried troubleshooting via your FAQs but I didn't get anywhere. This is my third tiem calling you. I am based in the US and one of Premium customers.\"}])"
+                  - generic [ref=e1125]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Let's check your firmware version.\"}])"
+                  - generic [ref=e1126]: "await session.add_items([{\"role\": \"user\", \"content\": \"Firmware v1.0.3; still failing.\"}])"
+                  - generic [ref=e1127]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Try a factory reset.\"}])"
+                  - generic [ref=e1128]: "await session.add_items([{\"role\": \"user\", \"content\": \"Reset done; error 42 now.\"}])"
+                  - generic [ref=e1129]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Try to install a new firmware.\"}])"
+                  - generic [ref=e1130]: "await session.add_items([{\"role\": \"user\", \"content\": \"I tried but I got another error now.\"}])"
+                  - generic [ref=e1131]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Can you please provide me with the error code?\"}])"
+                  - generic [ref=e1132]: "await session.add_items([{\"role\": \"user\", \"content\": \"It says 404 not found when I try to access the page.\"}])"
+                  - generic [ref=e1133]: "await session.add_items([{\"role\": \"assistant\", \"content\": \"Are you connected to the internet?\"}])"
+                  - generic [ref=e1134]: "# At this point, with context_limit=4, everything *before* the earliest of the last 4 turns"
+                  - generic [ref=e1135]: "# is summarized into a synthetic pair, and the last 2 turns remain verbatim."
+                - button "Copy code to clipboard" [ref=e1137] [cursor=pointer]:
+                  - img [ref=e1138]
+              - generic [ref=e1140]:
+                - code [ref=e1141]:
+                  - generic [ref=e1142]: history = await session.get_items()
+                  - generic [ref=e1143]: "# Pass `history` into your agent runner / responses call as the conversation context."
+                - button "Copy code to clipboard" [ref=e1145] [cursor=pointer]:
+                  - img [ref=e1146]
+              - generic [ref=e1148]:
+                - code [ref=e1149]:
+                  - generic [ref=e1150]: history
+                - button "Copy code to clipboard" [ref=e1152] [cursor=pointer]:
+                  - img [ref=e1153]
+              - generic [ref=e1155]:
+                - code [ref=e1156]:
+                  - generic [ref=e1157]: "[{'role': 'user', 'content': 'Summarize the conversation we had so far.'},"
+                  - generic [ref=e1158]: "{'role': 'assistant',"
+                  - generic [ref=e1159]: "'content': '• Product & Environment:\\n - Router with Firmware v1.0.3, Windows 10, based in the US.\\n\\n• Reported Issue:\\n - Router fails to connect.\\n\\n• Steps Tried & Results:\\n - Checked FAQs: No resolution.\\n - Checked firmware version: v1.0.3, problem persists.\\n - Factory reset: Resulted in error 42.\\n\\n• Identifiers:\\n - Premium customer (no specific identifier provided).\\n\\n• Timeline Milestones:\\n - Initial troubleshooting via FAQs.\\n - Firmware check (before factory reset).\\n - Factory reset → Error 42.\\n\\n• Tool Performance Insights:\\n - Firmware version check successful.\\n - Factory reset resulted in new error (42).\\n\\n• Current Status & Blockers:\\n - Connection issue unresolved; error 42 is the immediate blocker.\\n\\n• Next Recommended Step:\\n - Install a new firmware update.'},"
+                  - generic [ref=e1160]: "{'role': 'user', 'content': 'I tried but I got another error now.'},"
+                  - generic [ref=e1161]: "{'role': 'assistant',"
+                  - generic [ref=e1162]: "'content': 'Can you please provide me with the error code?'},"
+                  - generic [ref=e1163]: "{'role': 'user',"
+                  - generic [ref=e1164]: "'content': 'It says 404 not found when I try to access the page.'},"
+                  - generic [ref=e1165]: "{'role': 'assistant', 'content': 'Are you connected to the internet?'}]"
+                - button "Copy code to clipboard" [ref=e1167] [cursor=pointer]:
+                  - img [ref=e1168]
+              - generic [ref=e1170]:
+                - code [ref=e1171]:
+                  - generic [ref=e1172]: print(history[1]['content'])
+                - button "Copy code to clipboard" [ref=e1174] [cursor=pointer]:
+                  - img [ref=e1175]
+              - generic [ref=e1177]:
+                - code [ref=e1178]:
+                  - generic [ref=e1179]: "• Product & Environment:"
+                  - generic [ref=e1180]: "- Router with Firmware v1.0.3, Windows 10, based in the US."
+                  - generic [ref=e1181]: "• Reported Issue:"
+                  - generic [ref=e1182]: "- Router fails to connect."
+                  - generic [ref=e1183]: "• Steps Tried & Results:"
+                  - generic [ref=e1184]: "- Checked FAQs: No resolution."
+                  - generic [ref=e1185]: "- Checked firmware version: v1.0.3, problem persists."
+                  - generic [ref=e1186]: "- Factory reset: Resulted in error 42."
+                  - generic [ref=e1187]: "• Identifiers:"
+                  - generic [ref=e1188]: "- Premium customer (no specific identifier provided)."
+                  - generic [ref=e1189]: "• Timeline Milestones:"
+                  - generic [ref=e1190]: "- Initial troubleshooting via FAQs."
+                  - generic [ref=e1191]: "- Firmware check (before factory reset)."
+                  - generic [ref=e1192]: "- Factory reset → Error 42."
+                  - generic [ref=e1193]: "• Tool Performance Insights:"
+                  - generic [ref=e1194]: "- Firmware version check successful."
+                  - generic [ref=e1195]: "- Factory reset resulted in new error (42)."
+                  - generic [ref=e1196]: "• Current Status & Blockers:"
+                  - generic [ref=e1197]: "- Connection issue unresolved; error 42 is the immediate blocker."
+                  - generic [ref=e1198]: "• Next Recommended Step:"
+                  - generic [ref=e1199]: "- Install a new firmware update."
+                - button "Copy code to clipboard" [ref=e1201] [cursor=pointer]:
+                  - img [ref=e1202]
+              - paragraph [ref=e1204]: You can use the get_items_with_metadata method to get the full history of the session including the metadata for debugging and analysis purposes.
+              - generic [ref=e1205]:
+                - code [ref=e1206]:
+                  - generic [ref=e1207]: full_history = await session.get_items_with_metadata()
+                - button "Copy code to clipboard" [ref=e1209] [cursor=pointer]:
+                  - img [ref=e1210]
+              - generic [ref=e1212]:
+                - code [ref=e1213]:
+                  - generic [ref=e1214]: full_history
+                - button "Copy code to clipboard" [ref=e1216] [cursor=pointer]:
+                  - img [ref=e1217]
+              - generic [ref=e1219]:
+                - code [ref=e1220]:
+                  - generic [ref=e1221]: "[{'message': {'role': 'user',"
+                  - generic [ref=e1222]: "'content': 'Summarize the conversation we had so far.'},"
+                  - generic [ref=e1223]: "'metadata': {'synthetic': True,"
+                  - generic [ref=e1224]: "'kind': 'history_summary_prompt',"
+                  - generic [ref=e1225]: "'summary_for_turns': '< all before idx 6 >'}},"
+                  - generic [ref=e1226]: "{'message': {'role': 'assistant',"
+                  - generic [ref=e1227]: "'content': '**Product & Environment:**\\n- Device: Router\\n- OS: Windows 10\\n- Firmware: v1.0.3\\n\\n**Reported Issue:**\\n- Router fails to connect to the internet, now showing error 42.\\n\\n**Steps Tried & Results:**\\n- Checked FAQs: No resolution.\\n- Firmware version checked: v1.0.3.\\n- Factory reset performed: Resulted in error 42.\\n\\n**Identifiers:**\\n- UNVERIFIED\\n\\n**Timeline Milestones:**\\n- User attempted FAQ troubleshooting.\\n- Firmware checked after initial advice.\\n- Factory reset led to error 42.\\n\\n**Tool Performance Insights:**\\n- FAQs and basic reset process did not resolve the issue.\\n\\n**Current Status & Blockers:**\\n- Error 42 unresolved; firmware update needed.\\n\\n**Next Recommended Step:**\\n- Install the latest firmware update and check for resolution.'},"
+                  - generic [ref=e1228]: "'metadata': {'synthetic': True,"
+                  - generic [ref=e1229]: "'kind': 'history_summary',"
+                  - generic [ref=e1230]: "'summary_for_turns': '< all before idx 6 >'}},"
+                  - generic [ref=e1231]: "{'message': {'role': 'user',"
+                  - generic [ref=e1232]: "'content': 'I tried but I got another error now.'},"
+                  - generic [ref=e1233]: "'metadata': {'synthetic': False}},"
+                  - generic [ref=e1234]: "{'message': {'content': 'I still have a problem with my router.',"
+                  - generic [ref=e1235]: "'role': 'user'},"
+                  - generic [ref=e1236]: "'metadata': {'synthetic': False}},"
+                  - generic [ref=e1237]: "{'message': {'content': [], 'role': 'user'},"
+                  - generic [ref=e1238]: "'metadata': {'id': 'rs_68ba192de700819dbed28ad768a9c48205277fe33200f1e3',"
+                  - generic [ref=e1239]: "'summary': [],"
+                  - generic [ref=e1240]: "'type': 'reasoning',"
+                  - generic [ref=e1241]: "'synthetic': False}},"
+                  - generic [ref=e1242]: "{'message': {'content': [{'annotations': [],"
+                  - generic [ref=e1243]: "'text': 'Sorry you’re still stuck. What is the exact error code/message you see now during the firmware update, and does it appear in the router’s web UI or elsewhere?\\n\\nWhile you check that, try these quick, safe steps:\\n1) Verify the firmware file exactly matches your router’s model and hardware revision (check the label on the router) and region.\\n2) Re‑download the firmware from the vendor site and verify its checksum (MD5/SHA256) if provided.\\n3) Use a wired Ethernet connection to a LAN port, disable Wi‑Fi on the PC, and try a different browser with extensions disabled.\\n4) Ensure you’re uploading the correct file type (e.g., .bin/.img), not a ZIP; don’t rename the file.\\n5) Reboot the router and your PC, then retry the upload; after starting the update, wait at least 10 minutes and don’t power off.\\n\\nNote: “Error 42” meanings vary by brand; once you share the exact current error text and where it appears, I’ll give brand‑specific steps (including recovery options if needed).',"
+                  - generic [ref=e1244]: "'type': 'output_text',"
+                  - generic [ref=e1245]: "'logprobs': []}],"
+                  - generic [ref=e1246]: "'role': 'assistant'},"
+                  - generic [ref=e1247]: "'metadata': {'id': 'msg_68ba19400060819db38bcb891e9aec7605277fe33200f1e3',"
+                  - generic [ref=e1248]: "'status': 'completed',"
+                  - generic [ref=e1249]: "'type': 'message',"
+                  - generic [ref=e1250]: "'synthetic': False}}]"
+                - button "Copy code to clipboard" [ref=e1252] [cursor=pointer]:
+                  - img [ref=e1253]
+              - generic [ref=e1255]:
+                - code [ref=e1256]:
+                  - generic [ref=e1257]: print(history[1]['content'])
+                - button "Copy code to clipboard" [ref=e1259] [cursor=pointer]:
+                  - img [ref=e1260]
+              - generic [ref=e1262]:
+                - code [ref=e1263]:
+                  - generic [ref=e1264]: "**Product & Environment:**"
+                  - generic [ref=e1265]: "- Device: Router"
+                  - generic [ref=e1266]: "- OS: Windows 10"
+                  - generic [ref=e1267]: "- Firmware: v1.0.3"
+                  - generic [ref=e1268]: "**Reported Issue:**"
+                  - generic [ref=e1269]: "- Router fails to connect to the internet, now showing error 42."
+                  - generic [ref=e1270]: "**Steps Tried & Results:**"
+                  - generic [ref=e1271]: "- Checked FAQs: No resolution."
+                  - generic [ref=e1272]: "- Firmware version checked: v1.0.3."
+                  - generic [ref=e1273]: "- Factory reset performed: Resulted in error 42."
+                  - generic [ref=e1274]: "**Identifiers:**"
+                  - generic [ref=e1275]: "- UNVERIFIED"
+                  - generic [ref=e1276]: "**Timeline Milestones:**"
+                  - generic [ref=e1277]: "- User attempted FAQ troubleshooting."
+                  - generic [ref=e1278]: "- Firmware checked after initial advice."
+                  - generic [ref=e1279]: "- Factory reset led to error 42."
+                  - generic [ref=e1280]: "**Tool Performance Insights:**"
+                  - generic [ref=e1281]: "- FAQs and basic reset process did not resolve the issue."
+                  - generic [ref=e1282]: "**Current Status & Blockers:**"
+                  - generic [ref=e1283]: "- Error 42 unresolved; firmware update needed."
+                  - generic [ref=e1284]: "**Next Recommended Step:**"
+                  - generic [ref=e1285]: "- Install the latest firmware update and check for resolution."
+                - button "Copy code to clipboard" [ref=e1287] [cursor=pointer]:
+                  - img [ref=e1288]
+              - heading "Notes & design choices Copy link to Notes & design choices" [level=3] [ref=e1290]:
+                - generic [ref=e1291]: Notes & design choices
+                - button "Copy link to Notes & design choices" [ref=e1292] [cursor=pointer]:
+                  - img [ref=e1293]
+              - list [ref=e1295]:
+                - listitem [ref=e1296]:
+                  - strong [ref=e1297]: Turn boundary preserved at the “fresh” side
+                  - text: ": the"
+                  - strong [ref=e1298]:
+                    - code [ref=e1299]: keep_last_n_turns
+                    - text: user turns
+                  - text: remain verbatim; everything older is compressed.
+                - listitem [ref=e1300]:
+                  - strong [ref=e1301]: Two-message summary block
+                  - text: ": easy for downstream tooling to detect or display ("
+                  - code [ref=e1302]: metadata.synthetic == True
+                  - text: ).
+                - listitem [ref=e1303]:
+                  - strong [ref=e1304]: Async + lock discipline
+                  - text: ": we"
+                  - strong [ref=e1305]: release the lock
+                  - text: while the (potentially slow) summarization runs; then re-check the condition before applying the summary to avoid racey merges.
+                - listitem [ref=e1306]:
+                  - strong [ref=e1307]: Idempotent behavior
+                  - text: ": if more messages arrive during summarization, the post-await recheck prevents stale rewrites."
+              - heading "Evals Copy link to Evals" [level=2] [ref=e1308]:
+                - generic [ref=e1309]: Evals
+                - button "Copy link to Evals" [ref=e1310] [cursor=pointer]:
+                  - img [ref=e1311]
+              - paragraph [ref=e1313]:
+                - text: Ultimately,
+                - strong [ref=e1314]: evals is all you need
+                - text: "for context engineering too. The key question to ask is:"
+                - emphasis [ref=e1315]: how do we know the model isn’t “losing context” or “confusing context”?
+              - paragraph [ref=e1316]: "While a full cookbook around memory could stand on its own in the future, here are some lightweight evaluation harness ideas to start with:"
+              - list [ref=e1317]:
+                - listitem [ref=e1318]:
+                  - strong [ref=e1319]: "Baseline & Deltas:"
+                  - text: Continue running your core eval sets and compare before/after experiments to measure memory improvements.
+                - listitem [ref=e1320]:
+                  - strong [ref=e1321]: "LLM-as-Judge:"
+                  - text: Use a model with a carefully designed grader prompt to evaluate summarization quality. Focus on whether it captures the most important details in the correct format.
+                - listitem [ref=e1322]:
+                  - strong [ref=e1323]: "Transcript Replay:"
+                  - text: Re-run long conversations and measure next-turn accuracy with and without context trimming. Metrics could include exact match on entities/IDs and rubric-based scoring on reasoning quality.
+                - listitem [ref=e1324]:
+                  - strong [ref=e1325]: "Error Regression Tracking:"
+                  - text: Watch for common failure modes—unanswered questions, dropped constraints, or unnecessary/repeated tool calls.
+                - listitem [ref=e1326]:
+                  - strong [ref=e1327]: "Token Pressure Checks:"
+                  - text: Flag cases where token limits force dropping protected context. Log before/after token counts to detect when critical details are being pruned.
+              - separator [ref=e1328]

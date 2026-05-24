@@ -1,158 +1,70 @@
-import { spawn } from "child_process";
 import { EventEmitter } from "events";
+import {
+  createAgentSession,
+  SessionManager,
+  AuthStorage,
+  ModelRegistry,
+} from "@earendil-works/pi-coding-agent";
 
 /**
- * PiSession manages a Pi subprocess in RPC mode.
+ * PiSession manages a Pi agent session using the SDK directly.
  *
- * Protocol (strict LF-delimited JSONL):
- *   Commands (stdin):  { type: "prompt", message: "..." }
- *   Responses (stdout): { type: "response", command: "prompt", success: true }
- *   Events (stdout):    AgentSessionEvent objects (message_update, message_end, etc.)
- *   UI Requests (stdout): { type: "extension_ui_request", id, method, ... }
- *
- * We respond to all extension UI requests with defaults to avoid blocking Pi.
+ * Using the SDK gives us direct access to agent state, including
+ * the ability to delete messages from the context window.
  */
 export class PiSession extends EventEmitter {
   constructor() {
     super();
-    this.process = null;
-    this.buffer = "";
+    this.session = null;
+    this.authStorage = null;
+    this.modelRegistry = null;
     this.isRunning = false;
     this.isStreaming = false;
     this.currentAssistantContent = "";
+    this._unsubscribe = null;
   }
 
   /**
-   * Start Pi subprocess in RPC mode.
-   * Pi starts almost instantly — we just need to confirm it accepts commands.
+   * Start a Pi agent session using the SDK.
    */
-  start() {
-    return new Promise((resolve, reject) => {
-      this.emit("status", "starting");
+  async start() {
+    this.emit("status", "starting");
 
-      try {
-        this.process = spawn("pi", ["--mode", "rpc"], {
-          stdio: ["pipe", "pipe", "pipe"],
-          env: { ...process.env },
-        });
+    try {
+      this.authStorage = AuthStorage.create();
+      this.modelRegistry = ModelRegistry.create(this.authStorage);
 
-        this.process.stdout.setEncoding("utf-8");
-        this.process.stderr.setEncoding("utf-8");
-        this.buffer = "";
+      const result = await createAgentSession({
+        sessionManager: SessionManager.inMemory(),
+        authStorage: this.authStorage,
+        modelRegistry: this.modelRegistry,
+      });
 
-        // Handle stdout (responses + events + UI requests)
-        this.process.stdout.on("data", (chunk) => {
-          this.buffer += chunk.toString();
-          this._processBuffer();
-        });
+      this.session = result.session;
+      this.isRunning = true;
 
-        this.process.stderr.on("data", () => {
-          // Pi's own stderr — typically empty in RPC mode
-        });
-
-        this.process.on("exit", (code, signal) => {
-          this.isRunning = false;
-          // Clear timers on exit to prevent dangling callbacks
-          if (this._readyCheckTimer) {
-            clearTimeout(this._readyCheckTimer);
-            this._readyCheckTimer = null;
-          }
-          if (this._startTimeout) {
-            clearTimeout(this._startTimeout);
-            this._startTimeout = null;
-          }
-          if (code !== 0) {
-            this.emit("error", `Pi process exited with code ${code}${signal ? ` (${signal})` : ""}`);
-          }
-        });
-
-        this.process.on("error", (err) => {
-          this.isRunning = false;
-          // Clear timers on error to prevent dangling callbacks
-          if (this._readyCheckTimer) {
-            clearTimeout(this._readyCheckTimer);
-            this._readyCheckTimer = null;
-          }
-          if (this._startTimeout) {
-            clearTimeout(this._startTimeout);
-            this._startTimeout = null;
-          }
-          this.emit("error", `Failed to start Pi: ${err.message}`);
-        });
-
-        // Pi starts almost instantly. We confirm readiness by checking
-        // that the process is alive and stdout is open. The first command
-        // response will confirm the LLM is reachable.
-        const checkReady = () => {
-          if (this.process && !this.process.killed) {
-            this.isRunning = true;
-            this.emit("status", "ready");
-            resolve();
-            return true;
-          }
-          return false;
-        };
-
-        this._resolved = false;
-        this._readyCheckTimer = setTimeout(() => {
-          if (!this._resolved && !checkReady() && this.process && !this.process.killed) {
-            this._resolved = true;
-            this.process.kill();
-            reject(new Error("Pi process died during startup"));
-          }
-        }, 5000);
-
-        // Timeout: 60 seconds for Pi to start
-        this._startTimeout = setTimeout(() => {
-          if (!this._resolved && !this.isRunning && this.process && !this.process.killed) {
-            this._resolved = true;
-            this.process.kill();
-            reject(new Error("Pi failed to start within 60 seconds"));
-          }
-        }, 60000);
-      } catch (err) {
-        reject(err);
-      }
-    });
-  }
-
-  /**
-   * Process buffered data with strict LF-only JSONL framing
-   */
-  _processBuffer() {
-    let newlineIndex;
-    while ((newlineIndex = this.buffer.indexOf("\n")) !== -1) {
-      const line = this.buffer.slice(0, newlineIndex).replace(/\r$/, "").trim();
-      this.buffer = this.buffer.slice(newlineIndex + 1);
-
-      if (!line) continue;
-
-      try {
-        const event = JSON.parse(line);
+      // Subscribe to agent events
+      this._unsubscribe = this.session.subscribe((event) => {
         this._handleEvent(event);
-      } catch {
-        // Partial JSON line — wait for more data
-      }
+      });
+
+      this.emit("status", "ready");
+    } catch (err) {
+      this.emit("error", `Failed to start Pi: ${err.message}`);
+      throw err;
     }
   }
 
   /**
-   * Handle a parsed JSON event from Pi
+   * Handle an agent session event from the SDK
    */
   _handleEvent(event) {
     if (!event || typeof event !== "object") return;
 
-    // Extension UI requests — respond with defaults
+    // Extension UI requests — handle via the session's extension runtime
     if (event.type === "extension_ui_request") {
-      this._handleExtensionUiRequest(event);
-      return;
-    }
-
-    // Command responses
-    if (event.type === "response") {
-      if (event.command === "prompt" && !event.success) {
-        this.emit("error", `Prompt failed: ${event.error}`);
-      }
+      // The SDK handles extension UI requests internally when using createAgentSession
+      // We don't need to respond to them here
       return;
     }
 
@@ -172,18 +84,25 @@ export class PiSession extends EventEmitter {
           const evt = event.assistantMessageEvent;
 
           // Only stream text_delta events (incremental content)
-          // text_end and message_end provide the final content
           if (evt.type === "text_delta" && evt.delta !== undefined && evt.delta !== null) {
             this.currentAssistantContent += evt.delta;
             this.emit("stream", evt.delta);
           }
-          // thinking_delta — ignore (internal reasoning)
         }
         break;
 
       case "message_end":
         // Use accumulated content from streaming, or fall back to message_end content
-        const finalContent = this.currentAssistantContent || (event.message?.content || "");
+        const finalContent =
+          this.currentAssistantContent ||
+          (event.message?.content && typeof event.message.content === "string"
+            ? event.message.content
+            : Array.isArray(event.message?.content)
+              ? event.message.content
+                  .filter((c) => c.type === "text")
+                  .map((c) => c.text)
+                  .join("\n")
+              : "");
         if (finalContent) {
           this.emit("message", {
             role: "assistant",
@@ -217,113 +136,170 @@ export class PiSession extends EventEmitter {
   }
 
   /**
-   * Handle extension UI requests by responding with defaults
-   */
-  _handleExtensionUiRequest(event) {
-    const { id, method } = event;
-    let response;
-
-    switch (method) {
-      case "select":
-      case "input":
-      case "editor":
-        response = { type: "extension_ui_response", id, cancelled: true };
-        break;
-      case "confirm":
-        response = { type: "extension_ui_response", id, confirmed: false };
-        break;
-      case "notify":
-      case "setStatus":
-      case "setWidget":
-      case "setTitle":
-      case "set_editor_text":
-        response = { type: "extension_ui_response", id, value: "" };
-        break;
-      default:
-        response = { type: "extension_ui_response", id, cancelled: true };
-    }
-
-    this._sendLine(response);
-  }
-
-  /**
-   * Write a JSON line to stdin (strict LF framing)
-   */
-  _sendLine(obj) {
-    if (!this.isRunning || !this.process?.stdin) return false;
-    const line = JSON.stringify(obj) + "\n";
-    return this.process.stdin.write(line, "utf-8");
-  }
-
-  /**
    * Send a prompt to Pi
    */
-  prompt(message) {
-    return this._sendLine({ type: "prompt", message });
+  async prompt(message) {
+    if (!this.session || !this.isRunning) return false;
+    try {
+      await this.session.prompt(message);
+      return true;
+    } catch (err) {
+      this.emit("error", `Prompt failed: ${err.message}`);
+      return false;
+    }
   }
 
   /**
    * Send a steering message (delivered after current turn)
    */
   steer(message) {
-    return this._sendLine({ type: "steer", message });
+    if (!this.session || !this.isRunning) return false;
+    try {
+      this.session.steer(message);
+      return true;
+    } catch (err) {
+      this.emit("error", `Steer failed: ${err.message}`);
+      return false;
+    }
   }
 
   /**
    * Follow up on the last response
    */
   followUp(message) {
-    return this._sendLine({ type: "follow_up", message });
+    if (!this.session || !this.isRunning) return false;
+    try {
+      this.session.followUp(message);
+      return true;
+    } catch (err) {
+      this.emit("error", `Follow-up failed: ${err.message}`);
+      return false;
+    }
   }
 
   /**
    * Abort the current turn
    */
-  abort() {
-    return this._sendLine({ type: "abort" });
+  async abort() {
+    if (!this.session || !this.isRunning) return false;
+    try {
+      await this.session.abort();
+      return true;
+    } catch (err) {
+      this.emit("error", `Abort failed: ${err.message}`);
+      return false;
+    }
+  }
+
+  /**
+   * Delete a message from the context window entirely.
+   *
+   * Finds the message matching the given role and content in the agent's
+   * message state and removes it, freeing up context window space.
+   *
+   * @param {string} role - "user" or "assistant"
+   * @param {string} content - The message content to match
+   * @returns {boolean} true if a message was found and removed
+   */
+  deleteMessage(role, content) {
+    if (!this.session || !this.isRunning) return false;
+
+    const messages = this.session.agent.state.messages;
+    const initialLength = messages.length;
+
+    // Find and remove the matching message
+    const filtered = messages.filter((msg) => {
+      if (msg.role !== role) return true;
+
+      // Compare content - handle both string and array content formats
+      let msgContent = "";
+      if (typeof msg.content === "string") {
+        msgContent = msg.content;
+      } else if (Array.isArray(msg.content)) {
+        msgContent = msg.content
+          .filter((c) => c.type === "text")
+          .map((c) => c.text)
+          .join("\n");
+      }
+
+      // Match by content (trim both sides for comparison)
+      if (msgContent.trim() === content.trim()) {
+        return false; // Remove this message
+      }
+      return true;
+    });
+
+    if (filtered.length === initialLength) {
+      return false; // No message was found
+    }
+
+    // Replace the messages array to remove the deleted message
+    this.session.agent.state.messages = filtered;
+    return true;
   }
 
   /**
    * Start a new session
    */
-  newSession() {
-    return this._sendLine({ type: "new_session" });
+  async newSession() {
+    if (!this.session) return false;
+
+    // Stop current session
+    this.stop();
+
+    // Create a new session
+    try {
+      const result = await createAgentSession({
+        sessionManager: SessionManager.inMemory(),
+        authStorage: this.authStorage,
+        modelRegistry: this.modelRegistry,
+      });
+
+      this.session = result.session;
+      this.isRunning = true;
+      this.isStreaming = false;
+      this.currentAssistantContent = "";
+
+      // Subscribe to agent events
+      this._unsubscribe = this.session.subscribe((event) => {
+        this._handleEvent(event);
+      });
+
+      this.emit("status", "ready");
+      return true;
+    } catch (err) {
+      this.emit("error", `New session failed: ${err.message}`);
+      return false;
+    }
   }
 
   /**
-   * Stop the Pi subprocess
+   * Stop the Pi session
    */
   stop() {
-    // Clear all timers to prevent callbacks from firing after stop
-    if (this._readyCheckTimer) {
-      clearTimeout(this._readyCheckTimer);
-      this._readyCheckTimer = null;
-    }
-    // Clear any pending timeout timers (60s start timeout)
-    // We track them by storing the ID
-    if (this._startTimeout) {
-      clearTimeout(this._startTimeout);
-      this._startTimeout = null;
+    if (this._unsubscribe) {
+      this._unsubscribe();
+      this._unsubscribe = null;
     }
 
-    if (this.process) {
+    if (this.session) {
       try {
-        this.process.kill("SIGTERM");
-        this.process = null;
+        this.session.dispose();
       } catch {
-        // Process already dead
+        // Session already disposed
       }
+      this.session = null;
     }
+
     this.isRunning = false;
     this.isStreaming = false;
     this.currentAssistantContent = "";
-    this.buffer = "";
   }
 
   /**
    * Check if Pi is still running
    */
   isAlive() {
-    return this.isRunning && this.process && !this.process.killed;
+    return this.isRunning && this.session !== null;
   }
 }
