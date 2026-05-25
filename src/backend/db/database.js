@@ -49,6 +49,7 @@ export function initializeDatabase() {
       email TEXT NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
       role_id INTEGER NOT NULL DEFAULT 4,
+      active INTEGER NOT NULL DEFAULT 1,
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET DEFAULT
     );

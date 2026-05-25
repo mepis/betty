@@ -8,6 +8,7 @@ Master index of all research topics in the Merlin Library.
 | [pi.dev (Pi Coding Agent)](topics/pi-dev/) | 2026-05-22 | Complete | coding-agent, terminal, typescript, ai, self-modifying, extensions, packages, tui, open-source |
 | [Betty Project](topics/betty-project/) | 2026-05-24 | Complete | web-app, chat, pi-agent, full-stack, vue, express, websocket, rbac |
 | [Compacting Sessions for LLM Agents](topics/compacting-sessions-for-llm-agents/) | 2026-05-24 | Complete | compaction, llm-agents, context-management, memory, token-optimization, prompt-caching, summarization, external-memory |
+| [Voice TTS for LLM Response](topics/voice-tts-for-llm-response/) | 2026-05-24 | Complete | voice-ai, text-to-speech, llm, speech-to-speech, voice-agents, open-source-tts, real-time-voice |
 
 ## Topic Details
 
@@ -67,3 +68,18 @@ Master index of all research topics in the Merlin Library.
   - KV cache compression (KVTC, ICLR 2026) achieves ~20× compression at inference engine level, complementing API-level summarization
 - **Report:** [Full report](topics/compacting-sessions-for-llm-agents/report.md)
 - **State:** [Research state](topics/compacting-sessions-for-llm-agents/state.md)
+
+### Voice TTS for LLM Response
+
+- **Date added:** 2026-05-24
+- **Status:** Complete (4-phase research)
+- **Tags:** voice-ai, text-to-speech, llm, speech-to-speech, voice-agents, open-source-tts, real-time-voice
+- **Summary:** Comprehensive analysis of voice text-to-speech (TTS) integration with LLMs — covering cascaded vs. speech-to-speech architectures, commercial API platforms (OpenAI Realtime, Google Gemini Live, ElevenLabs), open-source TTS models (Kokoro, Qwen3-TTS), latency optimization, and LLM selection for voice agent applications.
+- **Key findings:**
+  - Two converging architectures: cascaded pipelines (STT→LLM→TTS with orchestration) and speech-to-speech models (integrated tokenization) both achieve human-like latency (200-500ms)
+  - OpenAI Realtime API achieves 200ms avg latency; Google Live TTS streams audio while LLM generates (100-200ms TTFA); ElevenLabs achieves 150-400ms TTFB with adaptive streaming
+  - Open-source Kokoro 82M v1.0 (Elo 1150, $0.65/1M chars) and Qwen3-TTS (97ms TTFA, 10 languages, emotion control) offer near-commercial quality at 10-100x lower cost
+  - LLM selection for voice agents prioritizes speed over reasoning: Qwen3-30B-A3B (25ms TTFT, 157 tokens/sec) recommended for speed-critical applications
+  - Server-side rendering achieves 350ms TTFA vs 650ms client-side; sentence aggregation via buffering is critical for natural-sounding speech
+- **Report:** [Full report](topics/voice-tts-for-llm-response/report.md)
+- **State:** [Research state](topics/voice-tts-for-llm-response/state.md)

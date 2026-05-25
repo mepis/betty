@@ -23,3 +23,6 @@ src/frontend/.env.production
 # IDE
 .vscode/
 .idea/
+
+# Pi session memory (regenerated on each compaction)
+.pi/session-memory.json

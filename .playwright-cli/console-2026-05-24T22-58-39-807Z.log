@@ -1,0 +1,15 @@
+[      45ms] [WARNING] [Vue warn]: Unhandled error during execution of mounted hook 
+  at <Register key=1 onRegisterSuccess=fn<handleAuthSuccess> > 
+  at <App> @ http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:2224
+[      46ms] [WARNING] [Vue warn]: Unhandled error during execution of mounted hook 
+  at <Login key=0 onLoginSuccess=fn<handleAuthSuccess> > 
+  at <App> @ http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:2224
+[      79ms] TypeError: username.value.focus is not a function
+    at http://localhost:5174/src/pages/Register.vue:27:18
+    at http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:5291:40
+    at callWithErrorHandling (http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:2372:19)
+    at callWithAsyncErrorHandling (http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:2379:17)
+    at hook.__weh.hook.__weh (http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:5271:19)
+    at flushPostFlushCbs (http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:2557:28)
+    at flushJobs (http://localhost:5174/node_modules/.vite/deps/vue.js?v=ee79a587:2599:5)
+    at async http://localhost:5174/src/pages/Login.vue?t=1779663430197:21:3

@@ -1,0 +1,589 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "APIScout home" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "APIScout" [ref=e7]
+          - img "APIScout" [ref=e9]
+        - search [ref=e12]:
+          - generic [ref=e13]:
+            - img [ref=e14]
+            - combobox "Search APIs by name" [ref=e17]
+            - generic:
+              - generic: Ctrl
+              - text: K
+        - navigation [ref=e18]:
+          - link "Explore" [ref=e19] [cursor=pointer]:
+            - /url: /
+          - link "Compare" [ref=e20] [cursor=pointer]:
+            - /url: /compare
+          - link "Guides" [ref=e21] [cursor=pointer]:
+            - /url: /guides
+          - link "Submit API" [ref=e22] [cursor=pointer]:
+            - /url: /submit
+            - img [ref=e23]
+            - text: Submit API
+          - button "Switch to light mode" [ref=e24]:
+            - img [ref=e25]
+    - main [ref=e31]:
+      - main [ref=e32]:
+        - generic [ref=e34]:
+          - complementary [ref=e35]:
+            - generic [ref=e36]:
+              - paragraph [ref=e37]: On this page
+              - navigation "Page navigation" [ref=e38]:
+                - list [ref=e39]:
+                  - listitem [ref=e40]:
+                    - link "TL;DR" [ref=e41] [cursor=pointer]:
+                      - /url: "#tldr"
+                  - listitem [ref=e42]:
+                    - link "Key takeaways" [ref=e43] [cursor=pointer]:
+                      - /url: "#key-takeaways"
+                  - listitem [ref=e44]:
+                    - link "Quick decision table" [ref=e45] [cursor=pointer]:
+                      - /url: "#quick-decision-table"
+                  - listitem [ref=e46]:
+                    - link "Current Realtime voice list for 2026" [ref=e47] [cursor=pointer]:
+                      - /url: "#current-realtime-voice-list-for-2026"
+                  - listitem [ref=e48]:
+                    - link "Recommended architecture for a browser voice agent" [ref=e49] [cursor=pointer]:
+                      - /url: "#recommended-architecture-for-a-browser-voice-agent"
+                  - listitem [ref=e50]:
+                    - 'link "WebRTC setup choices: unified interface vs client secrets" [ref=e51] [cursor=pointer]':
+                      - /url: "#webrtc-setup-choices-unified-interface-vs-client-secrets"
+                  - listitem [ref=e52]:
+                    - link "When to choose WebSocket instead" [ref=e53] [cursor=pointer]:
+                      - /url: "#when-to-choose-websocket-instead"
+                  - listitem [ref=e54]:
+                    - link "Build the product contract before the demo" [ref=e55] [cursor=pointer]:
+                      - /url: "#build-the-product-contract-before-the-demo"
+                  - listitem [ref=e56]:
+                    - link "Pricing and usage caveats" [ref=e57] [cursor=pointer]:
+                      - /url: "#pricing-and-usage-caveats"
+                  - listitem [ref=e58]:
+                    - link "Testing checklist before launch" [ref=e59] [cursor=pointer]:
+                      - /url: "#testing-checklist-before-launch"
+                  - listitem [ref=e60]:
+                    - link "Common mistakes" [ref=e61] [cursor=pointer]:
+                      - /url: "#common-mistakes"
+                  - listitem [ref=e62]:
+                    - link "Related APIScout guides" [ref=e63] [cursor=pointer]:
+                      - /url: "#related-apiscout-guides"
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - navigation "Breadcrumb" [ref=e67]:
+                - list [ref=e68]:
+                  - listitem [ref=e69]:
+                    - link "Home" [ref=e70] [cursor=pointer]:
+                      - /url: /
+                    - generic [ref=e71]: /
+                  - listitem [ref=e72]:
+                    - link "Guides" [ref=e73] [cursor=pointer]:
+                      - /url: /guides
+                    - generic [ref=e74]: /
+                  - listitem [ref=e75]:
+                    - generic [ref=e76]: OpenAI Realtime API Voice Applications Guide 2026
+              - generic [ref=e77]:
+                - generic [ref=e78]:
+                  - paragraph [ref=e79]: API guide
+                  - heading "OpenAI Realtime API Voice Applications Guide 2026" [level=1] [ref=e80]
+                - button "Enter focus mode" [ref=e81]:
+                  - img [ref=e82]
+              - paragraph [ref=e87]: Build OpenAI Realtime API voice apps with current models, voices, WebRTC setup, WebSocket tradeoffs, safety identifiers, pricing caveats, and production checks.
+              - generic [ref=e89]:
+                - generic [ref=e90]:
+                  - time [ref=e91]: May 15, 2026
+                  - generic [ref=e92]: ·
+                  - generic [ref=e93]: APIScout Team
+                - generic [ref=e94]:
+                  - generic [ref=e95]: "Share:"
+                  - link "Share on X" [ref=e96] [cursor=pointer]:
+                    - /url: https://twitter.com/intent/tweet?text=OpenAI%20Realtime%20API%20Voice%20Applications%20Guide%202026&url=https%3A%2F%2Fapiscout.dev%2Fguides%2Fopenai-realtime-api-building-voice-applications-2026
+                    - img [ref=e97]
+                  - link "Share on LinkedIn" [ref=e99] [cursor=pointer]:
+                    - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fapiscout.dev%2Fguides%2Fopenai-realtime-api-building-voice-applications-2026
+                    - img [ref=e100]
+                  - button "Copy link" [ref=e102]:
+                    - img [ref=e103]
+            - generic [ref=e106]:
+              - figure [ref=e107]:
+                - img "Hero image for OpenAI Realtime API Voice Applications Guide 2026" [ref=e108]
+              - generic [ref=e110]:
+                - heading "TL;DR" [level=2] [ref=e111]:
+                  - link "TL;DR" [ref=e112] [cursor=pointer]:
+                    - /url: "#tldr"
+                - paragraph [ref=e113]:
+                  - text: Use the OpenAI Realtime API when the product needs a live spoken conversation, not just a recorded audio request. For 2026 voice assistants, the practical starting point is
+                  - code [ref=e114]: "`gpt-realtime-2`"
+                  - text: with a browser WebRTC session or the Agents SDK
+                  - code [ref=e115]: "`RealtimeAgent`"
+                  - text: /
+                  - code [ref=e116]: "`RealtimeSession`"
+                  - text: helpers. Use WebSocket from a trusted server for phone, contact-center, or backend media pipelines. Keep API keys server-side, create ephemeral client secrets for browser/mobile clients, set
+                  - code [ref=e117]: "`OpenAI-Safety-Identifier`"
+                  - text: from your backend, and confirm current model, voice, and pricing details before launch because Realtime API surfaces change faster than standard text APIs.
+                - paragraph [ref=e118]:
+                  - text: OpenAI's current Realtime voice options are
+                  - code [ref=e119]: "`alloy`"
+                  - text: ","
+                  - code [ref=e120]: "`ash`"
+                  - text: ","
+                  - code [ref=e121]: "`ballad`"
+                  - text: ","
+                  - code [ref=e122]: "`coral`"
+                  - text: ","
+                  - code [ref=e123]: "`echo`"
+                  - text: ","
+                  - code [ref=e124]: "`sage`"
+                  - text: ","
+                  - code [ref=e125]: "`shimmer`"
+                  - text: ","
+                  - code [ref=e126]: "`verse`"
+                  - text: ","
+                  - code [ref=e127]: "`marin`"
+                  - text: ", and"
+                  - code [ref=e128]: "`cedar`"
+                  - text: ; OpenAI recommends
+                  - code [ref=e129]: "`marin`"
+                  - text: or
+                  - code [ref=e130]: "`cedar`"
+                  - text: for best quality in the Realtime conversations documentation. Voice selection matters because the
+                  - code [ref=e131]: "`voice`"
+                  - text: cannot be changed after the model has emitted audio in a session.
+                - heading "Key takeaways" [level=2] [ref=e132]:
+                  - link "Key takeaways" [ref=e133] [cursor=pointer]:
+                    - /url: "#key-takeaways"
+                - list [ref=e134]:
+                  - listitem [ref=e135]:
+                    - strong [ref=e136]: "Best fit:"
+                    - text: low-latency speech-to-speech agents, live support copilots, language practice, interruptible voice search, and workflows where users expect natural turn taking.
+                  - listitem [ref=e137]:
+                    - strong [ref=e138]: "Not always best:"
+                    - text: file transcription, voice notes, batch summarization, or approval-heavy workflows where a chained speech-to-text → text agent → text-to-speech pipeline is easier to inspect and control.
+                  - listitem [ref=e139]:
+                    - strong [ref=e140]: "Model path:"
+                    - text: OpenAI's Realtime overview points low-latency voice agents at
+                    - code [ref=e141]: "`gpt-realtime-2`"
+                    - text: ; older
+                    - code [ref=e142]: "`gpt-4o-realtime-preview`"
+                    - text: names should be treated as migration/deprecation context, not a new-build default.
+                  - listitem [ref=e143]:
+                    - strong [ref=e144]: "Transport:"
+                    - text: WebRTC is the default recommendation for browser or mobile clients; WebSocket is the server-to-server path.
+                  - listitem [ref=e145]:
+                    - strong [ref=e146]: "Security:"
+                    - text: standard OpenAI API keys belong only on your backend. Browser/mobile sessions should use the unified WebRTC interface or short-lived client secrets created by your server.
+                  - listitem [ref=e147]:
+                    - strong [ref=e148]: "Cost control:"
+                    - text: Realtime billing is token/session based for conversational sessions and varies by model. Read usage from
+                    - code [ref=e149]: "`response.done`"
+                    - text: ", account for separate input transcription costs, and use prompt caching-friendly session design."
+                - heading "Quick decision table" [level=2] [ref=e150]:
+                  - link "Quick decision table" [ref=e151] [cursor=pointer]:
+                    - /url: "#quick-decision-table"
+                - table [ref=e152]:
+                  - rowgroup [ref=e153]:
+                    - row "If your application needs... Start with Why" [ref=e154]:
+                      - columnheader "If your application needs..." [ref=e155]
+                      - columnheader "Start with" [ref=e156]
+                      - columnheader "Why" [ref=e157]
+                  - rowgroup [ref=e158]:
+                    - 'row "A browser voice assistant with barge-in and natural turn taking Agents SDK `RealtimeAgent` + `RealtimeSession` over WebRTC OpenAI''s voice-agent docs put browser speech-to-speech here first." [ref=e159]':
+                      - cell "A browser voice assistant with barge-in and natural turn taking" [ref=e160]
+                      - 'cell "Agents SDK `RealtimeAgent` + `RealtimeSession` over WebRTC" [ref=e161]':
+                        - text: Agents SDK
+                        - code [ref=e162]: "`RealtimeAgent`"
+                        - text: +
+                        - code [ref=e163]: "`RealtimeSession`"
+                        - text: over WebRTC
+                      - cell "OpenAI's voice-agent docs put browser speech-to-speech here first." [ref=e164]
+                    - row "A custom browser/mobile media client Realtime WebRTC guide WebRTC avoids relaying every audio packet through your app server and is the recommended client transport." [ref=e165]:
+                      - cell "A custom browser/mobile media client" [ref=e166]
+                      - cell "Realtime WebRTC guide" [ref=e167]
+                      - cell "WebRTC avoids relaying every audio packet through your app server and is the recommended client transport." [ref=e168]
+                    - row "A phone, SIP, broadcast, or backend media pipeline Realtime WebSocket or SIP path The secret stays on your server and your backend owns audio framing, routing, and logging." [ref=e169]:
+                      - cell "A phone, SIP, broadcast, or backend media pipeline" [ref=e170]
+                      - cell "Realtime WebSocket or SIP path" [ref=e171]
+                      - cell "The secret stays on your server and your backend owns audio framing, routing, and logging." [ref=e172]
+                    - row "A predictable workflow with auditable intermediate text Chained STT → text agent → TTS You can inspect transcript text, run policy checks, and swap each vendor independently." [ref=e173]:
+                      - cell "A predictable workflow with auditable intermediate text" [ref=e174]
+                      - cell "Chained STT → text agent → TTS" [ref=e175]
+                      - cell "You can inspect transcript text, run policy checks, and swap each vendor independently." [ref=e176]
+                    - row "File upload transcription or generated speech from text Request-based audio APIs A persistent realtime session adds cost and complexity you do not need." [ref=e177]:
+                      - cell "File upload transcription or generated speech from text" [ref=e178]
+                      - cell "Request-based audio APIs" [ref=e179]
+                      - cell "A persistent realtime session adds cost and complexity you do not need." [ref=e180]
+                - heading "Current Realtime voice list for 2026" [level=2] [ref=e181]:
+                  - link "Current Realtime voice list for 2026" [ref=e182] [cursor=pointer]:
+                    - /url: "#current-realtime-voice-list-for-2026"
+                - paragraph [ref=e183]: "The most click-worthy answer for many searches is the voice list, so put it before the implementation details:"
+                - table [ref=e184]:
+                  - rowgroup [ref=e185]:
+                    - row "Voice Practical note" [ref=e186]:
+                      - columnheader "Voice" [ref=e187]
+                      - columnheader "Practical note" [ref=e188]
+                  - rowgroup [ref=e189]:
+                    - 'row "`marin` Current OpenAI docs recommend this for best Realtime output quality. Start here for most production assistants." [ref=e190]':
+                      - 'cell "`marin`" [ref=e191]':
+                        - code [ref=e192]: "`marin`"
+                      - cell "Current OpenAI docs recommend this for best Realtime output quality. Start here for most production assistants." [ref=e193]
+                    - 'row "`cedar` Also recommended by OpenAI for best Realtime output quality; useful as the second finalist in voice QA." [ref=e194]':
+                      - 'cell "`cedar`" [ref=e195]':
+                        - code [ref=e196]: "`cedar`"
+                      - cell "Also recommended by OpenAI for best Realtime output quality; useful as the second finalist in voice QA." [ref=e197]
+                    - 'row "`alloy` Neutral fallback that appears in many OpenAI audio examples." [ref=e198]':
+                      - 'cell "`alloy`" [ref=e199]':
+                        - code [ref=e200]: "`alloy`"
+                      - cell "Neutral fallback that appears in many OpenAI audio examples." [ref=e201]
+                    - 'row "`ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse` Available Realtime output voices; evaluate them against your real call scripts rather than demos." [ref=e202]':
+                      - 'cell "`ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`" [ref=e203]':
+                        - code [ref=e204]: "`ash`"
+                        - text: ","
+                        - code [ref=e205]: "`ballad`"
+                        - text: ","
+                        - code [ref=e206]: "`coral`"
+                        - text: ","
+                        - code [ref=e207]: "`echo`"
+                        - text: ","
+                        - code [ref=e208]: "`sage`"
+                        - text: ","
+                        - code [ref=e209]: "`shimmer`"
+                        - text: ","
+                        - code [ref=e210]: "`verse`"
+                      - cell "Available Realtime output voices; evaluate them against your real call scripts rather than demos." [ref=e211]
+                - paragraph [ref=e212]: "Two caveats matter in production:"
+                - list [ref=e213]:
+                  - listitem [ref=e214]:
+                    - strong [ref=e215]: Voice availability is model-specific.
+                    - text: The Realtime conversations guide is the source to check before launch because Text-to-Speech and Realtime voice lists are not identical.
+                  - listitem [ref=e216]:
+                    - strong [ref=e217]: Voice is effectively a session-level product decision.
+                    - text: OpenAI documents that most session properties can be updated at any time, but
+                    - code [ref=e218]: "`voice`"
+                    - text: cannot be changed after the model has responded with audio once. If enterprise and consumer users need different tones, choose the voice before audio output begins.
+                - heading "Recommended architecture for a browser voice agent" [level=2] [ref=e219]:
+                  - link "Recommended architecture for a browser voice agent" [ref=e220] [cursor=pointer]:
+                    - /url: "#recommended-architecture-for-a-browser-voice-agent"
+                - paragraph [ref=e221]:
+                  - text: "OpenAI's voice-agent guidance describes the usual browser flow this way: your server creates an ephemeral client secret, the frontend creates a"
+                  - code [ref=e222]: "`RealtimeSession`"
+                  - text: ", the session connects over WebRTC, and the agent handles audio turns, tools, interruptions, and handoffs in that session."
+                - paragraph [ref=e223]: "A production browser architecture usually looks like this:"
+                - code [ref=e225]: Browser microphone → WebRTC peer connection → OpenAI Realtime session → remote audio stream back to browser Browser data channel ↔ session events, tool results, UI state, transcripts Your backend → creates client secret / unified WebRTC call → attaches safety identifier → owns tools, account permissions, logging policy, budgets
+                - paragraph [ref=e226]: Use this shape when latency is the product. Do not route all browser audio through your application server unless you need server-side media processing, compliance recording, telephony integration, or a network environment where WebRTC is not viable.
+                - 'heading "WebRTC setup choices: unified interface vs client secrets" [level=2] [ref=e227]':
+                  - 'link "WebRTC setup choices: unified interface vs client secrets" [ref=e228] [cursor=pointer]':
+                    - /url: "#webrtc-setup-choices-unified-interface-vs-client-secrets"
+                - paragraph [ref=e229]: "OpenAI's WebRTC guide describes two browser connection options:"
+                - table [ref=e230]:
+                  - rowgroup [ref=e231]:
+                    - row "WebRTC option How it works Tradeoff" [ref=e232]:
+                      - columnheader "WebRTC option" [ref=e233]
+                      - columnheader "How it works" [ref=e234]
+                      - columnheader "Tradeoff" [ref=e235]
+                  - rowgroup [ref=e236]:
+                    - 'row "Unified interface Browser posts SDP to your server; your server sends SDP + session config to `/v1/realtime/calls` with a standard API key and returns OpenAI''s SDP answer. Simpler credential model; your server is in the critical path during session initialization." [ref=e237]':
+                      - cell "Unified interface" [ref=e238]
+                      - 'cell "Browser posts SDP to your server; your server sends SDP + session config to `/v1/realtime/calls` with a standard API key and returns OpenAI''s SDP answer." [ref=e239]':
+                        - text: Browser posts SDP to your server; your server sends SDP + session config to
+                        - code [ref=e240]: "`/v1/realtime/calls`"
+                        - text: with a standard API key and returns OpenAI's SDP answer.
+                      - cell "Simpler credential model; your server is in the critical path during session initialization." [ref=e241]
+                    - row "Ephemeral client secret Browser asks your server for a client secret; browser then sends SDP to the Realtime API with that short-lived credential. Keeps the standard API key off the client while letting the browser establish the peer connection directly." [ref=e242]:
+                      - cell "Ephemeral client secret" [ref=e243]
+                      - cell "Browser asks your server for a client secret; browser then sends SDP to the Realtime API with that short-lived credential." [ref=e244]
+                      - cell "Keeps the standard API key off the client while letting the browser establish the peer connection directly." [ref=e245]
+                - paragraph [ref=e246]:
+                  - text: In both designs, the standard OpenAI API key stays on your backend. If you assign stable end-user identifiers, set
+                  - code [ref=e247]: "`OpenAI-Safety-Identifier`"
+                  - text: from your trusted server. OpenAI's docs call out that with ephemeral tokens, the safety identifier should be set on the server-side request that creates the client secret so the identifier is bound to the resulting session.
+                - paragraph [ref=e248]:
+                  - text: A current-style session configuration puts audio settings under
+                  - code [ref=e249]: "`session.audio`"
+                  - text: ":"
+                - code [ref=e251]: "const session = { type: \"realtime\", model: \"gpt-realtime-2\", output_modalities: [\"audio\"], audio: { input: { format: { type: \"audio/pcm\", rate: 24000 }, turn_detection: { type: \"semantic_vad\" }, }, output: { format: { type: \"audio/pcm\" }, voice: \"marin\", }, }, instructions: \"Speak clearly and briefly. Confirm before taking actions.\", };"
+                - paragraph [ref=e252]:
+                  - text: If you are updating an older tutorial, check for stale fields. The GA-shaped docs use
+                  - code [ref=e253]: "`session.type`"
+                  - text: ","
+                  - code [ref=e254]: "`output_modalities`"
+                  - text: ","
+                  - code [ref=e255]: "`audio.input`"
+                  - text: ","
+                  - code [ref=e256]: "`audio.output`"
+                  - text: ", and newer response events such as"
+                  - code [ref=e257]: "`response.output_audio.delta`"
+                  - text: and
+                  - code [ref=e258]: "`response.output_audio_transcript.delta`"
+                  - text: . Older snippets that use
+                  - code [ref=e259]: "`gpt-4o-realtime-preview`"
+                  - text: ","
+                  - code [ref=e260]: "`modalities`"
+                  - text: ","
+                  - code [ref=e261]: "`voice`"
+                  - text: at the top level, or
+                  - code [ref=e262]: "`response.audio.delta`"
+                  - text: need review before copy-paste.
+                - heading "When to choose WebSocket instead" [level=2] [ref=e263]:
+                  - link "When to choose WebSocket instead" [ref=e264] [cursor=pointer]:
+                    - /url: "#when-to-choose-websocket-instead"
+                - paragraph [ref=e265]: WebSocket is still the right path for server-to-server Realtime integrations. OpenAI's WebSocket guide explicitly positions it for backend systems and recommends WebRTC for browser/mobile clients.
+                - paragraph [ref=e266]: "Choose WebSocket when:"
+                - list [ref=e267]:
+                  - listitem [ref=e268]: you are connecting a phone/SIP/contact-center media stream;
+                  - listitem [ref=e269]: you need your backend to inspect, transform, or store audio packets before they reach OpenAI;
+                  - listitem [ref=e270]: your workflow already runs in a stateful worker and browser WebRTC is not involved;
+                  - listitem [ref=e271]: you need tighter control over reconnect behavior, call recording, region routing, or custom queueing.
+                - paragraph [ref=e272]: "The minimal server-side connection shape is simple:"
+                - code [ref=e274]:
+                  - text: "import WebSocket from \"ws\"; const ws = new WebSocket( \"wss://api.openai.com/v1/realtime?model=gpt-realtime-2\", { headers: { Authorization:"
+                  - generic [ref=e275]: "`Bearer ${process.env.OPENAI_API_KEY}`"
+                  - text: ", \"OpenAI-Safety-Identifier\": \"hashed-internal-user-id\", }, }, ); ws.on(\"open\", () => { ws.send(JSON.stringify({ type: \"session.update\", session: { type: \"realtime\", model: \"gpt-realtime-2\", output_modalities: [\"audio\"], audio: { input: { format: { type: \"audio/pcm\", rate: 24000 } }, output: { format: { type: \"audio/pcm\" }, voice: \"marin\" }, }, instructions: \"Be concise and ask before taking irreversible actions.\", }, })); });"
+                - paragraph [ref=e276]: "With WebSocket you also own more of the audio loop: base64-encoded input audio chunks, playback buffering, interruption handling, transcript storage, reconnect UI, and session cleanup. That extra control is useful for backend media products, but it is unnecessary work for most browser assistants."
+                - heading "Build the product contract before the demo" [level=2] [ref=e277]:
+                  - link "Build the product contract before the demo" [ref=e278] [cursor=pointer]:
+                    - /url: "#build-the-product-contract-before-the-demo"
+                - paragraph [ref=e279]: "A Realtime demo can feel impressive in an afternoon. A production voice app needs a stricter product contract:"
+                - list [ref=e280]:
+                  - listitem [ref=e281]:
+                    - strong [ref=e282]: "Allowed actions:"
+                    - text: which tools may run during a spoken session, which need confirmation, and which are read-only.
+                  - listitem [ref=e283]:
+                    - strong [ref=e284]: "Turn-taking rules:"
+                    - text: when the assistant should interrupt itself, ask a clarifying question, or stop speaking.
+                  - listitem [ref=e285]:
+                    - strong [ref=e286]: "Transcript policy:"
+                    - text: what is stored, for how long, and whether users can delete it.
+                  - listitem [ref=e287]:
+                    - strong [ref=e288]: "Fallback path:"
+                    - text: what the UI does when the session expires, the network drops, or Realtime rate limits update mid-call.
+                  - listitem [ref=e289]:
+                    - strong [ref=e290]: "Voice identity disclosure:"
+                    - text: users should know they are speaking with an AI-generated voice, especially in support, sales, education, healthcare, or regulated workflows.
+                - paragraph [ref=e291]: "OpenAI's voice-agent docs also make a strategic point: voice uses the same core agent concepts as text. Tools, handoffs, guardrails, human review, observability, and durable state still belong in your application design; the audio surface only changes the transport and interaction loop."
+                - heading "Pricing and usage caveats" [level=2] [ref=e292]:
+                  - link "Pricing and usage caveats" [ref=e293] [cursor=pointer]:
+                    - /url: "#pricing-and-usage-caveats"
+                - paragraph [ref=e294]: Avoid hard-coding dollar math into the product plan unless you have just checked the current model page. OpenAI's Realtime cost guide says conversational Realtime sessions accrue input and output tokens across text, audio, and image modalities, while streaming translation and transcription sessions are billed by audio duration. Prices vary by model and are listed on the model pages.
+                - paragraph [ref=e295]: "What you can monitor reliably:"
+                - list [ref=e296]:
+                  - listitem [ref=e297]:
+                    - code [ref=e298]: "`response.done`"
+                    - text: events include usage details such as
+                    - code [ref=e299]: "`input_tokens`"
+                    - text: ","
+                    - code [ref=e300]: "`output_tokens`"
+                    - text: ", audio token details, and cached token details."
+                  - listitem [ref=e301]:
+                    - text: Input transcription, if enabled, is billed separately from the speech-to-speech response model and has usage details on the
+                    - code [ref=e302]: "`conversation.item.input_audio_transcription.completed`"
+                    - text: event.
+                  - listitem [ref=e303]: Prompt caching can reduce repeated input cost in multi-turn sessions, but it is best-effort. Keep instructions, tool definitions, and stable context early in the session history to improve cache reuse.
+                - paragraph [ref=e304]: "Practical cost controls:"
+                - list [ref=e305]:
+                  - listitem [ref=e306]: cap session length at the product level instead of letting idle tabs run;
+                  - listitem [ref=e307]: use concrete output token limits for verbose assistants;
+                  - listitem [ref=e308]: summarize or trim transcript history deliberately rather than constantly mutating the whole conversation;
+                  - listitem [ref=e309]: track cost per completed task, not just cost per minute, because low latency may increase completion rates enough to justify the premium;
+                  - listitem [ref=e310]: keep a chained STT → text agent → TTS fallback in the comparison set for high-volume or compliance-heavy workloads.
+                - heading "Testing checklist before launch" [level=2] [ref=e311]:
+                  - link "Testing checklist before launch" [ref=e312] [cursor=pointer]:
+                    - /url: "#testing-checklist-before-launch"
+                - paragraph [ref=e313]: "Use a small live test suite, not only happy-path microphone demos:"
+                - list [ref=e314]:
+                  - listitem [ref=e315]: Can a new user complete the first WebRTC permission prompt and hear a response?
+                  - listitem [ref=e316]: Does barge-in stop local playback quickly when the user interrupts?
+                  - listitem [ref=e317]:
+                    - text: Are
+                    - code [ref=e318]: "`response.output_audio.delta`"
+                    - text: ", transcript deltas, and"
+                    - code [ref=e319]: "`response.done`"
+                    - text: handled without duplicating UI text?
+                  - listitem [ref=e320]: Do tool calls require confirmation before account changes, purchases, sends, bookings, or deletes?
+                  - listitem [ref=e321]: Does the session end gracefully at OpenAI's documented maximum duration rather than looking frozen?
+                  - listitem [ref=e322]: Does the backend create client secrets without logging raw API keys, client secrets, cookies, or full user identifiers?
+                  - listitem [ref=e323]: Do staging tests cover noisy audio, silence, accented speech, fast interruptions, slow networks, and expired sessions?
+                - paragraph [ref=e324]: "OpenAI's Realtime conversations guide currently states a maximum Realtime session duration of 60 minutes. Treat that as a hard product boundary: design the UI to end or renew sessions intentionally instead of assuming an all-day voice connection."
+                - heading "Common mistakes" [level=2] [ref=e325]:
+                  - link "Common mistakes" [ref=e326] [cursor=pointer]:
+                    - /url: "#common-mistakes"
+                - list [ref=e327]:
+                  - listitem [ref=e328]:
+                    - strong [ref=e329]: Copying old preview snippets.
+                    - code [ref=e330]: "`gpt-4o-realtime-preview`"
+                    - text: examples and top-level
+                    - code [ref=e331]: "`voice`"
+                    - text: settings are common in older articles. Check the current docs before shipping.
+                  - listitem [ref=e332]:
+                    - strong [ref=e333]: Using WebSocket in the browser by default.
+                    - text: It can work with ephemeral credentials, but OpenAI recommends WebRTC for client apps because it is more robust for browser/mobile media.
+                  - listitem [ref=e334]:
+                    - strong [ref=e335]: Letting users pick a voice after the first response.
+                    - text: Voice has to be selected before emitted audio if you want it to apply in the session.
+                  - listitem [ref=e336]:
+                    - strong [ref=e337]: Treating transcripts as free.
+                    - text: Input transcription has its own usage and billing path when enabled.
+                  - listitem [ref=e338]:
+                    - strong [ref=e339]: Building a voice layer without tool guardrails.
+                    - text: Spoken confirmation and human review are not nice-to-haves when the agent can touch real account data.
+                  - listitem [ref=e340]:
+                    - strong [ref=e341]: Ignoring OpenAI status and rate-limit signals.
+                    - text: Voice products feel broken faster than text products when latency spikes; watch status,
+                    - code [ref=e342]: "`rate_limits.updated`"
+                    - text: ", and your own first-audio latency."
+                - heading "Related APIScout guides" [level=2] [ref=e343]:
+                  - link "Related APIScout guides" [ref=e344] [cursor=pointer]:
+                    - /url: "#related-apiscout-guides"
+                - list [ref=e345]:
+                  - listitem [ref=e346]:
+                    - link "OpenAI Realtime API WebRTC Setup Guide 2026" [ref=e347] [cursor=pointer]:
+                      - /url: /guides/openai-realtime-api-webrtc-setup-guide-2026
+                    - text: — narrower setup detail for browser WebRTC sessions.
+                  - listitem [ref=e348]:
+                    - link "Gemini Live API vs OpenAI Realtime vs Deepgram Voice Agent Guide" [ref=e349] [cursor=pointer]:
+                      - /url: /guides/gemini-live-api-vs-openai-realtime-vs-deepgram-voice-agent-2026
+                    - text: — compare OpenAI against adjacent realtime voice providers.
+                  - listitem [ref=e350]:
+                    - 'link "Building Real-Time APIs: WebSockets vs SSE 2026" [ref=e351] [cursor=pointer]':
+                      - /url: /guides/building-real-time-apis-websockets-vs-sse-2026
+                    - text: — transport tradeoffs for non-voice realtime products.
+                - heading "Source notes" [level=2] [ref=e352]:
+                  - link "Source notes" [ref=e353] [cursor=pointer]:
+                    - /url: "#source-notes"
+                - paragraph [ref=e354]: "Official sources checked on 2026-05-15:"
+                - list [ref=e355]:
+                  - listitem [ref=e356]:
+                    - text: "OpenAI Realtime and audio overview:"
+                    - code [ref=e357]: "`https://developers.openai.com/api/docs/guides/realtime`"
+                  - listitem [ref=e358]:
+                    - text: "OpenAI Voice agents guide:"
+                    - code [ref=e359]: "`https://developers.openai.com/api/docs/guides/voice-agents`"
+                  - listitem [ref=e360]:
+                    - text: "OpenAI Realtime API with WebRTC:"
+                    - code [ref=e361]: "`https://developers.openai.com/api/docs/guides/realtime-webrtc`"
+                  - listitem [ref=e362]:
+                    - text: "OpenAI Realtime API with WebSocket:"
+                    - code [ref=e363]: "`https://developers.openai.com/api/docs/guides/realtime-websocket`"
+                  - listitem [ref=e364]:
+                    - text: "OpenAI Realtime conversations guide:"
+                    - code [ref=e365]: "`https://developers.openai.com/api/docs/guides/realtime-conversations`"
+                  - listitem [ref=e366]:
+                    - text: "OpenAI Realtime managing costs guide:"
+                    - code [ref=e367]: "`https://developers.openai.com/api/docs/guides/realtime-costs`"
+                  - listitem [ref=e368]:
+                    - text: "OpenAI status page:"
+                    - code [ref=e369]: "`https://status.openai.com/`"
+                - paragraph [ref=e370]: OpenAI's standard HTML docs and public pricing page may challenge automated clients, so this refresh used OpenAI's official developer Markdown docs where available and avoided unverified exact price claims. Recheck the model-specific pricing page before publishing a sales calculator or SLA promise.
+                - separator [ref=e371]
+                - paragraph [ref=e372]:
+                  - emphasis [ref=e373]:
+                    - text: Find and compare voice, speech, and realtime APIs at
+                    - link "APIScout" [ref=e374] [cursor=pointer]:
+                      - /url: https://apiscout.dev
+                    - text: .
+              - generic [ref=e376]:
+                - img [ref=e377]
+                - heading "The API Integration Checklist (Free PDF)" [level=3] [ref=e380]
+                - paragraph [ref=e381]: "Step-by-step checklist: auth setup, rate limit handling, error codes, SDK evaluation, and pricing comparison for 50+ APIs. Used by 200+ developers."
+                - generic [ref=e382]:
+                  - generic [ref=e383]: Email address
+                  - textbox "Email address" [ref=e384]:
+                    - /placeholder: you@example.com
+                  - button "Get the Free Checklist" [ref=e385]
+                - paragraph [ref=e386]: Join 200+ developers. Unsubscribe in one click.
+          - complementary [ref=e387]:
+            - generic [ref=e388]:
+              - generic [ref=e389]:
+                - paragraph [ref=e390]: Topics
+                - generic [ref=e391]:
+                  - link "openai" [ref=e392] [cursor=pointer]:
+                    - /url: /guides/tag/openai
+                  - link "realtime-api" [ref=e393] [cursor=pointer]:
+                    - /url: /guides/tag/realtime-api
+                  - link "voice" [ref=e394] [cursor=pointer]:
+                    - /url: /guides/tag/voice
+                  - link "speech" [ref=e395] [cursor=pointer]:
+                    - /url: /guides/tag/speech
+                  - link "webrtc" [ref=e396] [cursor=pointer]:
+                    - /url: /guides/tag/webrtc
+                  - link "websocket" [ref=e397] [cursor=pointer]:
+                    - /url: /guides/tag/websocket
+                  - link "2026" [ref=e398] [cursor=pointer]:
+                    - /url: /guides/tag/2026
+              - generic [ref=e399]:
+                - paragraph [ref=e400]: Related APIs
+                - generic [ref=e401]:
+                  - link "OpenAI AI / ML" [ref=e402] [cursor=pointer]:
+                    - /url: /apis/ai-ml/openai
+                    - text: OpenAI
+                    - generic [ref=e403]: AI / ML
+                  - link "Deepgram AI / ML" [ref=e404] [cursor=pointer]:
+                    - /url: /apis/ai-ml/deepgram
+                    - text: Deepgram
+                    - generic [ref=e405]: AI / ML
+                  - link "Twilio Communication" [ref=e406] [cursor=pointer]:
+                    - /url: /apis/communication/twilio
+                    - text: Twilio
+                    - generic [ref=e407]: Communication
+                  - link "Vonage Communication" [ref=e408] [cursor=pointer]:
+                    - /url: /apis/communication/vonage
+                    - text: Vonage
+                    - generic [ref=e409]: Communication
+              - generic [ref=e410]:
+                - paragraph [ref=e411]: Related guides
+                - generic [ref=e412]:
+                  - 'link "Realtime Voice AI APIs Compared: OpenAI, Gemini, Vapi, Retell, Twilio" [ref=e413] [cursor=pointer]':
+                    - /url: /guides/realtime-voice-ai-apis-comparison-2026
+                  - 'link "Ably vs LiveKit vs Daily: Real-Time API Comparison 2026" [ref=e414] [cursor=pointer]':
+                    - /url: /guides/ably-vs-livekit-vs-daily-realtime-api-2026
+                  - link "WebRTC API Guide for AI Voice Apps" [ref=e415] [cursor=pointer]:
+                    - /url: /guides/webrtc-api-guide-for-ai-voice-apps-2026
+              - generic [ref=e416]:
+                - paragraph [ref=e417]: AI-readable
+                - link "Raw Markdown source" [ref=e418] [cursor=pointer]:
+                  - /url: /guides/openai-realtime-api-building-voice-applications-2026/raw.md
+    - contentinfo [ref=e419]:
+      - generic [ref=e420]:
+        - generic [ref=e421]:
+          - link "APIScout APIScout" [ref=e422] [cursor=pointer]:
+            - /url: /
+            - img "APIScout" [ref=e423]
+            - generic [ref=e424]: APIScout
+          - generic [ref=e425]: © 2026
+        - generic [ref=e426]:
+          - link "About" [ref=e427] [cursor=pointer]:
+            - /url: /about
+          - link "Guides" [ref=e428] [cursor=pointer]:
+            - /url: /guides
+          - link "Privacy" [ref=e429] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e430] [cursor=pointer]:
+            - /url: /terms
+          - link "Advertise" [ref=e431] [cursor=pointer]:
+            - /url: /advertise
+          - link "Follow us on X" [ref=e432] [cursor=pointer]:
+            - /url: https://x.com/StackBuilderAI
+            - img [ref=e433]
+          - link "RSS Feed" [ref=e435] [cursor=pointer]:
+            - /url: /feed.xml
+            - img [ref=e436]
+        - generic [ref=e440]:
+          - paragraph [ref=e441]: Explore our ecosystem
+          - generic [ref=e442]:
+            - link "PkgPulse — npm package comparison" [ref=e443] [cursor=pointer]:
+              - /url: https://pkgpulse.com
+            - link "OSSAlt Guides — Open source guides & comparisons" [ref=e444] [cursor=pointer]:
+              - /url: https://ossalt.com/guides
+            - link "OSSAlt — Open source alternatives" [ref=e445] [cursor=pointer]:
+              - /url: https://ossalt.com/categories
+            - link "StarterPick — Boilerplate comparison" [ref=e446] [cursor=pointer]:
+              - /url: https://starterpick.com
+            - link "StackFYI — SaaS tools directory" [ref=e447] [cursor=pointer]:
+              - /url: https://www.stackfyi.com
+            - link "CourseFacts — Online course directory" [ref=e448] [cursor=pointer]:
+              - /url: https://www.coursefacts.com
+      - paragraph [ref=e450]: Some links on this site may earn us a commission at no extra cost to you.
+  - alert [ref=e451]

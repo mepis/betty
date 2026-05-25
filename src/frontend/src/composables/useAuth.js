@@ -1,7 +1,7 @@
 import { ref, readonly, computed } from "vue";
 
-const API_BASE = import.meta.env.VITE_BACKEND_URL
-  ? import.meta.env.VITE_BACKEND_URL.replace("/ws", "").replace("ws://", "http://").replace("wss://", "https://")
+const API_BASE = import.meta.env.VITE_API_BASE
+  ? import.meta.env.VITE_API_BASE
   : import.meta.env.DEV
     ? "http://localhost:3001"
     : `${location.protocol === "https:" ? "https" : "http"}://${location.host}`;

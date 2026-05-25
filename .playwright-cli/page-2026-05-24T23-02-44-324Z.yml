@@ -1,0 +1,19 @@
+- generic [ref=e55]:
+  - generic [ref=e56]:
+    - generic [ref=e57]: 🤖
+    - heading "Pi Chat" [level=1] [ref=e58]
+    - paragraph [ref=e59]: Sign in to your account
+  - generic [ref=e60]:
+    - generic [ref=e61]:
+      - generic [ref=e62]: Username
+      - textbox "Username" [ref=e63]:
+        - /placeholder: Enter your username
+    - generic [ref=e64]:
+      - generic [ref=e65]: Password
+      - textbox "Password" [active] [ref=e66]:
+        - /placeholder: Enter your password
+    - button "Sign In" [disabled] [ref=e67]
+  - paragraph [ref=e69]:
+    - text: Don't have an account?
+    - link "Sign up" [ref=e70] [cursor=pointer]:
+      - /url: "#register"

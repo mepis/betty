@@ -14,7 +14,7 @@
 
         <div class="form-group">
           <label for="username">Username</label>
-          <input
+          <input ref="usernameInput"
             id="username"
             v-model="username"
             type="text"
@@ -28,7 +28,7 @@
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input
+          <input ref="usernameInput"
             id="password"
             v-model="password"
             type="password"
@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
 import { useAuth } from "../composables/useAuth.js";
 
 const emit = defineEmits(["login-success"]);
@@ -65,9 +65,11 @@ const { login, isLoading, error } = useAuth();
 const username = ref("");
 const password = ref("");
 const errorMsg = ref("");
+const usernameInput = ref(null);
 
-onMounted(() => {
-  username.value.focus();
+onMounted(async () => {
+  await nextTick();
+  usernameInput.value?.focus();
 });
 
 async function handleLogin() {

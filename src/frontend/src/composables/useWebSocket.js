@@ -33,7 +33,15 @@ export function useWebSocket(url = null, authToken = null) {
    */
   function buildUrl() {
     let base = backendUrl;
-    const token = authToken || (typeof authToken === "function" ? authToken() : null);
+    let token = null;
+    if (typeof authToken === "function") {
+      token = authToken();
+    } else if (authToken && typeof authToken === "object" && "value" in authToken) {
+      // Vue computed ref or ref
+      token = authToken.value;
+    } else if (authToken) {
+      token = authToken;
+    }
     if (token) {
       const sep = base.includes("?") ? "&" : "?";
       base = `${base}${sep}token=${token}`;

@@ -1,0 +1,622 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation "Main" [ref=e5]:
+      - link "Artificial Analysis" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e9]: Artificial Analysis
+      - list [ref=e11]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - listitem [ref=e14]:
+              - button "Models" [ref=e15] [cursor=pointer]
+            - listitem [ref=e16]:
+              - button "Coding Agents" [ref=e17] [cursor=pointer]
+            - listitem [ref=e18]:
+              - button "Speech, Image, Video" [ref=e19] [cursor=pointer]
+            - listitem [ref=e20]:
+              - link "Hardware" [ref=e21] [cursor=pointer]:
+                - /url: /benchmarks/hardware
+            - listitem [ref=e22]:
+              - button "Leaderboards" [ref=e23] [cursor=pointer]
+            - listitem [ref=e24]:
+              - button "About" [ref=e25] [cursor=pointer]
+          - listitem [ref=e27]:
+            - link "AI Trends" [ref=e28] [cursor=pointer]:
+              - /url: /trends
+          - listitem [ref=e30]:
+            - button "Arenas" [ref=e31] [cursor=pointer]:
+              - img [ref=e32]
+              - text: Arenas
+      - generic [ref=e34]:
+        - link "Log in" [ref=e35] [cursor=pointer]:
+          - /url: /login
+          - generic [ref=e36]: Log in
+        - button "K" [ref=e37] [cursor=pointer]:
+          - img
+          - generic [ref=e38]:
+            - img
+            - text: K
+        - link "X" [ref=e39] [cursor=pointer]:
+          - /url: https://x.com/ArtificialAnlys
+          - img
+        - link "LinkedIn" [ref=e40] [cursor=pointer]:
+          - /url: https://www.linkedin.com/company/artificial-analysis/
+          - img
+        - link "Rednote" [ref=e41] [cursor=pointer]:
+          - /url: https://www.xiaohongshu.com/user/profile/69ea6345000000000d034c02
+          - img
+    - generic [ref=e44]:
+      - button "Text to Speech" [ref=e45] [cursor=pointer]:
+        - generic [ref=e46]:
+          - img [ref=e47]
+          - generic [ref=e51]: Text to Speech
+        - img [ref=e52]
+      - tablist [ref=e57]:
+        - tab "Speech Arena" [ref=e58] [cursor=pointer]:
+          - img [ref=e59]
+          - generic [ref=e68]: Speech Arena
+        - tab "Leaderboard" [ref=e69] [cursor=pointer]:
+          - img [ref=e70]
+          - generic [ref=e71]: Leaderboard
+        - tab "Explore Voices" [ref=e72] [cursor=pointer]:
+          - img [ref=e73]
+          - generic [ref=e76]: Explore Voices
+        - tab "Voice Playground Register" [ref=e77] [cursor=pointer]:
+          - img [ref=e78]
+          - generic [ref=e80]: Voice Playground
+          - generic [ref=e81]: Register
+        - tab "Compare Models" [selected] [ref=e82] [cursor=pointer]:
+          - img [ref=e83]
+          - generic [ref=e90]: Compare Models
+        - tab "Compare Providers" [ref=e91] [cursor=pointer]:
+          - img [ref=e92]
+          - generic [ref=e95]: Compare Providers
+    - generic [ref=e98]:
+      - generic [ref=e99]:
+        - heading "Best Text to Speech (TTS) Models Independent Comparison" [level=1] [ref=e101]:
+          - generic [ref=e103]:
+            - text: Best Text to Speech (TTS) Models
+            - generic [ref=e104]: Independent Comparison
+        - generic [ref=e105]:
+          - paragraph [ref=e106]: Compare quality, speed, and price to find the best speech generation models in 2025 for voice agents, creative media, knowledge sharing, and assistants.
+          - paragraph [ref=e107]:
+            - text: For further details, see our
+            - link "methodology page" [ref=e108] [cursor=pointer]:
+              - /url: /text-to-speech/methodology
+            - text: .
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - heading "Quality" [level=2] [ref=e112]
+          - generic [ref=e113]:
+            - tablist [ref=e115]:
+              - tab "Quality" [selected] [ref=e116] [cursor=pointer]
+              - tab "Quality vs. Price" [ref=e117] [cursor=pointer]
+              - tab "Quality vs. Speed" [ref=e118] [cursor=pointer]
+            - tabpanel "Quality" [ref=e119]:
+              - generic [ref=e120]:
+                - generic [ref=e121]:
+                  - generic [ref=e122]:
+                    - generic [ref=e123]:
+                      - heading "Text to Speech Arena Quality Elo" [level=3] [ref=e124]
+                      - generic [ref=e126]: "Arena Elo: average Elo rating of the model · Higher is better"
+                    - generic [ref=e128]:
+                      - generic [ref=e130]:
+                        - combobox [ref=e131] [cursor=pointer]:
+                          - generic [ref=e132]: 26 of 82 models
+                          - img
+                        - button "Add model from specific provider" [ref=e133] [cursor=pointer]:
+                          - img
+                          - text: Add model from specific provider
+                      - generic [ref=e134]:
+                        - button "Copy link to this section" [ref=e135] [cursor=pointer]:
+                          - img
+                        - button "Download chart as image" [ref=e136] [cursor=pointer]:
+                          - img
+                  - img [ref=e141]:
+                    - generic [ref=e143]:
+                      - img [ref=e148]
+                      - generic [ref=e204]:
+                        - generic [ref=e205]:
+                          - img "Sonic 3.5" [ref=e207]
+                          - generic [ref=e209]: Sonic 3.5
+                        - generic [ref=e210]:
+                          - img "Gemini 3.1 Flash TTS" [ref=e212]
+                          - generic [ref=e214]: Gemini 3.1 FlashTTS
+                        - generic [ref=e215]:
+                          - img "Realtime TTS 1.5 Max" [ref=e217]
+                          - generic [ref=e219]: Realtime TTS 1.5Max
+                        - generic [ref=e220]:
+                          - img "StepAudio 2.5 TTS" [ref=e222]
+                          - generic [ref=e224]: StepAudio 2.5 TTS
+                        - generic [ref=e225]:
+                          - img "Eleven v3" [ref=e227]
+                          - generic [ref=e229]: Eleven v3
+                        - generic [ref=e230]:
+                          - img "Speech 2.8 HD" [ref=e232]
+                          - generic [ref=e234]: Speech 2.8 HD
+                        - generic [ref=e235]:
+                          - img "Realtime TTS 1.5 Mini" [ref=e237]
+                          - generic [ref=e239]: Realtime TTS 1.5Mini
+                        - generic [ref=e240]:
+                          - img "Step TTS 2 (Mar 2026)" [ref=e242]
+                          - generic [ref=e244]: Step TTS 2 (Mar2026)
+                        - generic [ref=e245]:
+                          - img "Speech 2.8 Turbo" [ref=e247]
+                          - generic [ref=e249]: Speech 2.8 Turbo
+                        - generic [ref=e250]:
+                          - img "SIMBA 3.0" [ref=e252]
+                          - generic [ref=e254]: SIMBA 3.0
+                        - generic [ref=e255]:
+                          - img "Fish Audio S2 Pro" [ref=e257]
+                          - generic [ref=e259]: Fish Audio S2 Pro
+                        - generic [ref=e260]:
+                          - img "Step Audio EditX (Mar 2026)" [ref=e262]
+                          - generic [ref=e264]: Step Audio EditX(Mar 2026)
+                        - generic [ref=e265]:
+                          - img "Azure HD 2.5" [ref=e267]
+                          - generic [ref=e269]: Azure HD 2.5
+                        - generic [ref=e270]:
+                          - img "Multilingual v2" [ref=e272]
+                          - generic [ref=e274]: Multilingual v2
+                        - generic [ref=e275]:
+                          - img "TTS-1 HD" [ref=e277]
+                          - generic [ref=e279]: TTS-1 HD
+                        - generic [ref=e280]:
+                          - img "TTS-1" [ref=e282]
+                          - generic [ref=e284]: TTS-1
+                        - generic [ref=e285]:
+                          - img "Flash v2.5" [ref=e287]
+                          - generic [ref=e289]: Flash v2.5
+                        - generic [ref=e290]:
+                          - img "Sonic 3" [ref=e292]
+                          - generic [ref=e294]: Sonic 3
+                        - generic [ref=e295]:
+                          - img "Gemini 2.5 Flash Lite TTS" [ref=e297]
+                          - generic [ref=e299]: Gemini 2.5 FlashLite TTS
+                        - generic [ref=e300]:
+                          - img "Voxtral TTS" [ref=e302]
+                          - generic [ref=e304]: Voxtral TTS
+                        - generic [ref=e305]:
+                          - img "Kokoro 82M v1.0" [ref=e307]
+                          - generic [ref=e309]: Kokoro 82M v1.0
+                        - generic [ref=e310]:
+                          - img "AsyncFlow V2, async" [ref=e312]
+                          - generic [ref=e314]: AsyncFlow V2,async
+                        - generic [ref=e315]:
+                          - img "Magpie-Multilingual 357M (Feb 2026)" [ref=e317]
+                          - generic [ref=e319]: Magpie-Multilingual357M (Feb 2026)
+                        - generic [ref=e320]:
+                          - img "Polly Long-Form" [ref=e322]
+                          - generic [ref=e324]: Polly Long-Form
+                        - generic [ref=e325]:
+                          - img "MiMo-V2-TTS" [ref=e327]
+                          - generic [ref=e329]: MiMo-V2-TTS
+                        - generic [ref=e330]:
+                          - img "MAI-Voice-1" [ref=e332]
+                          - generic [ref=e334]: MAI-Voice-1
+                      - generic [ref=e335]:
+                        - generic [ref=e336]: "1218"
+                        - generic [ref=e337]: "1209"
+                        - generic [ref=e338]: "1194"
+                        - generic [ref=e339]: "1187"
+                        - generic [ref=e340]: "1184"
+                        - generic [ref=e341]: "1168"
+                        - generic [ref=e342]: "1158"
+                        - generic [ref=e343]: "1150"
+                        - generic [ref=e344]: "1145"
+                        - generic [ref=e345]: "1136"
+                        - generic [ref=e346]: "1124"
+                        - generic [ref=e347]: "1112"
+                        - generic [ref=e348]: "1110"
+                        - generic [ref=e349]: "1110"
+                        - generic [ref=e350]: "1095"
+                        - generic [ref=e351]: "1094"
+                        - generic [ref=e352]: "1092"
+                        - generic [ref=e353]: "1082"
+                        - generic [ref=e354]: "1076"
+                        - generic [ref=e355]: "1070"
+                        - generic [ref=e356]: "1063"
+                        - generic [ref=e357]: "1060"
+                        - generic [ref=e358]: "1060"
+                        - generic [ref=e359]: "1057"
+                        - generic [ref=e360]: "1019"
+                        - generic [ref=e361]: "1010"
+                - generic [ref=e365]:
+                  - heading "Quality Elo" [level=3] [ref=e366]:
+                    - button "Quality Elo" [ref=e367] [cursor=pointer]:
+                      - generic [ref=e368]:
+                        - img [ref=e369]
+                        - text: Quality Elo
+                      - img [ref=e371]
+                  - region "Quality Elo":
+                    - paragraph [ref=e374]:
+                      - text: Relative Elo score of the models as determined by responses from users in Artificial Analysis'
+                      - link "Speech Arena" [ref=e375] [cursor=pointer]:
+                        - /url: /text-to-speech/arena
+                      - text: . Some models may not be shown due to not yet having enough votes.
+          - heading "Pricing" [level=2] [ref=e377]
+          - generic [ref=e378]:
+            - tablist [ref=e380]:
+              - tab "Price" [selected] [ref=e381] [cursor=pointer]
+              - tab "Speed vs. Price" [ref=e382] [cursor=pointer]
+            - tabpanel "Price" [ref=e383]:
+              - generic [ref=e384]:
+                - generic [ref=e385]:
+                  - generic [ref=e386]:
+                    - generic [ref=e387]:
+                      - heading "Price" [level=3] [ref=e388]
+                      - generic [ref=e390]: "Price: USD per 1M characters of text · Lower is better"
+                    - generic [ref=e392]:
+                      - generic [ref=e394]:
+                        - combobox [ref=e395] [cursor=pointer]:
+                          - generic [ref=e396]: 26 of 82 models
+                          - img
+                        - button "Add model from specific provider" [ref=e397] [cursor=pointer]:
+                          - img
+                          - text: Add model from specific provider
+                      - generic [ref=e398]:
+                        - button "Copy link to this section" [ref=e399] [cursor=pointer]:
+                          - img
+                        - button "Download chart as image" [ref=e400] [cursor=pointer]:
+                          - img
+                  - generic [ref=e403]:
+                    - img
+                    - application [ref=e407]:
+                      - generic [ref=e481]:
+                        - generic [ref=e482]:
+                          - generic [ref=e484]:
+                            - img "Kokoro 82M v1.0, Replicate" [ref=e486]
+                            - link "Kokoro 82M v1.0, Replicate" [ref=e489] [cursor=pointer]:
+                              - /url: /text-to-speech/models/kokoro-82m-v1-0
+                          - generic [ref=e491]:
+                            - img "AsyncFlow V2, async" [ref=e493]
+                            - link "AsyncFlow V2, async" [ref=e496] [cursor=pointer]:
+                              - /url: /text-to-speech/models/asyncflow-v2
+                          - generic [ref=e498]:
+                            - img "Gemini 2.5 Flash Lite, Google" [ref=e500]
+                            - link "Gemini 2.5 Flash Lite, Google" [ref=e503] [cursor=pointer]:
+                              - /url: /text-to-speech/models/gemini-2-5-flash-lite
+                          - generic [ref=e505]:
+                            - img "SIMBA 3.0, Speechify" [ref=e507]
+                            - link "SIMBA 3.0, Speechify" [ref=e510] [cursor=pointer]:
+                              - /url: /text-to-speech/models/simba-3-0
+                          - generic [ref=e512]:
+                            - img "Fish Audio S2 Pro" [ref=e514]
+                            - link "Fish Audio S2 Pro" [ref=e517] [cursor=pointer]:
+                              - /url: /text-to-speech/models/fish-audio-s2-pro
+                          - generic [ref=e519]:
+                            - img "TTS-1" [ref=e521]
+                            - link "TTS-1" [ref=e524] [cursor=pointer]:
+                              - /url: /text-to-speech/models/tts-1
+                          - generic [ref=e526]:
+                            - img "Voxtral TTS, Mistral" [ref=e528]
+                            - link "Voxtral TTS, Mistral" [ref=e531] [cursor=pointer]:
+                              - /url: /text-to-speech/models/voxtral-tts
+                          - generic [ref=e533]:
+                            - img "Gemini 3.1 Flash TTS, Google" [ref=e535]
+                            - link "Gemini 3.1 Flash TTS, Google" [ref=e538] [cursor=pointer]:
+                              - /url: /text-to-speech/models/gemini-3-1-tts
+                          - generic [ref=e540]:
+                            - img "Azure HD 2.5" [ref=e542]
+                            - link "Azure HD 2.5" [ref=e545] [cursor=pointer]:
+                              - /url: /text-to-speech/models/azure-hd-2-5
+                          - generic [ref=e547]:
+                            - img "Realtime TTS 1.5 Mini, Inworld" [ref=e549]
+                            - link "Realtime TTS 1.5 Mini, Inworld" [ref=e552] [cursor=pointer]:
+                              - /url: /text-to-speech/models/realtime-tts-1-5-mini
+                          - generic [ref=e554]:
+                            - img "TTS-1 HD" [ref=e556]
+                            - link "TTS-1 HD" [ref=e559] [cursor=pointer]:
+                              - /url: /text-to-speech/models/tts-1-hd
+                          - generic [ref=e561]:
+                            - img "Realtime TTS 1.5 Max, Inworld" [ref=e563]
+                            - link "Realtime TTS 1.5 Max, Inworld" [ref=e566] [cursor=pointer]:
+                              - /url: /text-to-speech/models/realtime-tts-1-5-max
+                          - generic [ref=e568]:
+                            - img "Sonic 3" [ref=e570]
+                            - link "Sonic 3" [ref=e573] [cursor=pointer]:
+                              - /url: /text-to-speech/models/sonic3
+                          - generic [ref=e575]:
+                            - img "Sonic 3.5, Cartesia" [ref=e577]
+                            - link "Sonic 3.5, Cartesia" [ref=e580] [cursor=pointer]:
+                              - /url: /text-to-speech/models/sonic-3-5
+                          - generic [ref=e582]:
+                            - img "Step TTS 2 (Mar 2026)" [ref=e584]
+                            - link "Step TTS 2 (Mar 2026)" [ref=e587] [cursor=pointer]:
+                              - /url: /text-to-speech/models/step-tts-2-mar-2026
+                          - generic [ref=e589]:
+                            - img "Flash v2.5" [ref=e591]
+                            - link "Flash v2.5" [ref=e594] [cursor=pointer]:
+                              - /url: /text-to-speech/models/flash-v2-5
+                          - generic [ref=e596]:
+                            - img "Speech 2.8 Turbo, MiniMax" [ref=e598]
+                            - link "Speech 2.8 Turbo, MiniMax" [ref=e601] [cursor=pointer]:
+                              - /url: /text-to-speech/models/speech-2-8-turbo
+                          - generic [ref=e603]:
+                            - img "StepAudio 2.5 TTS, StepFun" [ref=e605]
+                            - link "StepAudio 2.5 TTS, StepFun" [ref=e608] [cursor=pointer]:
+                              - /url: /text-to-speech/models/step-audio-2.5-tts
+                          - generic [ref=e610]:
+                            - img "Eleven v3, ElevenLabs" [ref=e612]
+                            - link "Eleven v3, ElevenLabs" [ref=e615] [cursor=pointer]:
+                              - /url: /text-to-speech/models/eleven-v3
+                          - generic [ref=e617]:
+                            - img "Multilingual v2" [ref=e619]
+                            - link "Multilingual v2" [ref=e622] [cursor=pointer]:
+                              - /url: /text-to-speech/models/multilingual-v2
+                          - generic [ref=e624]:
+                            - img "Polly Long-form" [ref=e626]
+                            - link "Polly Long-form" [ref=e629] [cursor=pointer]:
+                              - /url: /text-to-speech/models/polly-long-form
+                          - generic [ref=e631]:
+                            - img "Speech 2.8 HD, MiniMax" [ref=e633]
+                            - link "Speech 2.8 HD, MiniMax" [ref=e636] [cursor=pointer]:
+                              - /url: /text-to-speech/models/speech-2-8-hd
+                        - generic [ref=e637]:
+                          - generic [ref=e638]: "0.65"
+                          - generic [ref=e639]: "8.33"
+                          - generic [ref=e640]: "9.15"
+                          - generic [ref=e641]: "10"
+                          - generic [ref=e642]: "15"
+                          - generic [ref=e643]: "15"
+                          - generic [ref=e644]: "16"
+                          - generic [ref=e645]: "18.31"
+                          - generic [ref=e646]: "22"
+                          - generic [ref=e647]: "25"
+                          - generic [ref=e648]: "30"
+                          - generic [ref=e649]: "35"
+                          - generic [ref=e650]: "39"
+                          - generic [ref=e651]: "39"
+                          - generic [ref=e652]: "40"
+                          - generic [ref=e653]: "50"
+                          - generic [ref=e654]: "60"
+                          - generic [ref=e655]: "85"
+                          - generic [ref=e656]: "100"
+                          - generic [ref=e657]: "100"
+                          - generic [ref=e658]: "100"
+                          - generic [ref=e659]: "100"
+                - generic [ref=e663]:
+                  - heading "Price" [level=3] [ref=e664]:
+                    - button "Price" [ref=e665] [cursor=pointer]:
+                      - generic [ref=e666]:
+                        - img [ref=e667]
+                        - text: Price
+                      - img [ref=e669]
+                  - region "Price":
+                    - paragraph [ref=e672]:
+                      - text: Price per 1M characters of text. For detail on how we calculate price for providers which price based on inference time or subscription plans, see our
+                      - link "methodology page" [ref=e673] [cursor=pointer]:
+                        - /url: /text-to-speech/methodology
+                      - text: .
+          - heading "Speed Factor" [level=2] [ref=e675]
+          - generic [ref=e676]:
+            - tablist [ref=e678]:
+              - tab "Characters Per Second" [selected] [ref=e679] [cursor=pointer]
+              - tab "Characters Per Second Variance" [ref=e680] [cursor=pointer]
+              - tab "Characters Per Second Over Time" [ref=e681] [cursor=pointer]
+            - tabpanel "Characters Per Second" [ref=e682]:
+              - generic [ref=e683]:
+                - generic [ref=e684]:
+                  - generic [ref=e685]:
+                    - generic [ref=e686]:
+                      - heading "Characters Per Second" [level=3] [ref=e687]
+                      - generic [ref=e689]: "Characters processed per second: # of characters per second of generation time · Higher is better"
+                    - generic [ref=e691]:
+                      - generic [ref=e693]:
+                        - combobox [ref=e694] [cursor=pointer]:
+                          - generic [ref=e695]: 26 of 82 models
+                          - img
+                        - button "Add model from specific provider" [ref=e696] [cursor=pointer]:
+                          - img
+                          - text: Add model from specific provider
+                      - generic [ref=e697]:
+                        - button "Copy link to this section" [ref=e698] [cursor=pointer]:
+                          - img
+                        - button "Download chart as image" [ref=e699] [cursor=pointer]:
+                          - img
+                  - img [ref=e704]:
+                    - generic [ref=e706]:
+                      - img [ref=e711]
+                      - generic [ref=e749]:
+                        - generic [ref=e750]:
+                          - img "Flash v2.5" [ref=e752]
+                          - generic [ref=e754]: Flash v2.5
+                        - generic [ref=e755]:
+                          - img "Kokoro 82M v1.0, Replicate" [ref=e757]
+                          - generic [ref=e759]: Kokoro 82M v1.0,Replicate
+                        - generic [ref=e760]:
+                          - img "MAI-Voice-1, Microsoft Azure" [ref=e762]
+                          - generic [ref=e764]: MAI-Voice-1,Microsoft Azure
+                        - generic [ref=e765]:
+                          - img "Realtime TTS 1.5 Mini, Inworld" [ref=e767]
+                          - generic [ref=e769]: Realtime TTS 1.5Mini, Inworld
+                        - generic [ref=e770]:
+                          - img "Speech 2.8 Turbo, MiniMax" [ref=e772]
+                          - generic [ref=e774]: Speech 2.8 Turbo,MiniMax
+                        - generic [ref=e775]:
+                          - img "Speech 2.8 HD, MiniMax" [ref=e777]
+                          - generic [ref=e779]: Speech 2.8 HD,MiniMax
+                        - generic [ref=e780]:
+                          - img "Realtime TTS 1.5 Max, Inworld" [ref=e782]
+                          - generic [ref=e784]: Realtime TTS 1.5Max, Inworld
+                        - generic [ref=e785]:
+                          - img "Sonic 3.5, Cartesia" [ref=e787]
+                          - generic [ref=e789]: Sonic 3.5,Cartesia
+                        - generic [ref=e790]:
+                          - img "Multilingual v2" [ref=e792]
+                          - generic [ref=e794]: Multilingual v2
+                        - generic [ref=e795]:
+                          - img "Sonic 3" [ref=e797]
+                          - generic [ref=e799]: Sonic 3
+                        - generic [ref=e800]:
+                          - img "Azure HD 2.5" [ref=e802]
+                          - generic [ref=e804]: Azure HD 2.5
+                        - generic [ref=e805]:
+                          - img "TTS-1" [ref=e807]
+                          - generic [ref=e809]: TTS-1
+                        - generic [ref=e810]:
+                          - img "Fish Audio S2 Pro" [ref=e812]
+                          - generic [ref=e814]: Fish Audio S2 Pro
+                        - generic [ref=e815]:
+                          - img "TTS-1 HD" [ref=e817]
+                          - generic [ref=e819]: TTS-1 HD
+                        - generic [ref=e820]:
+                          - img "MiMo-V2-TTS, Xiaomi" [ref=e822]
+                          - generic [ref=e824]: MiMo-V2-TTS,Xiaomi
+                        - generic [ref=e825]:
+                          - img "Eleven v3, ElevenLabs" [ref=e827]
+                          - generic [ref=e829]: Eleven v3,ElevenLabs
+                        - generic [ref=e830]:
+                          - img "Gemini 3.1 Flash TTS, Google" [ref=e832]
+                          - generic [ref=e834]: Gemini 3.1 FlashTTS, Google
+                      - generic [ref=e835]:
+                        - generic [ref=e836]: "502.4"
+                        - generic [ref=e837]: "270.7"
+                        - generic [ref=e838]: "254"
+                        - generic [ref=e839]: "216.1"
+                        - generic [ref=e840]: "162.6"
+                        - generic [ref=e841]: "158.2"
+                        - generic [ref=e842]: "139.7"
+                        - generic [ref=e843]: "109.6"
+                        - generic [ref=e844]: "103.7"
+                        - generic [ref=e845]: "73.4"
+                        - generic [ref=e846]: "60.6"
+                        - generic [ref=e847]: "59.2"
+                        - generic [ref=e848]: "56.5"
+                        - generic [ref=e849]: "49.5"
+                        - generic [ref=e850]: "43.3"
+                        - generic [ref=e851]: "33"
+                        - generic [ref=e852]: "27.3"
+                - generic [ref=e856]:
+                  - heading "Characters per Second" [level=3] [ref=e857]:
+                    - button "Characters per Second" [ref=e858] [cursor=pointer]:
+                      - generic [ref=e859]:
+                        - img [ref=e860]
+                        - text: Characters per Second
+                      - img [ref=e862]
+                  - region "Characters per Second":
+                    - paragraph [ref=e865]: Number of characters processed per second of generation time. Higher values indicate faster generation speeds.
+        - paragraph [ref=e866]:
+          - generic [ref=e867]: "Text to Speech models & providers compared:"
+          - text: "Arcana v3, AsyncFlow V2, async, Azure HD 2.5, Azure Neural, Chatterbox, Chatterbox HD, Chirp 3: HD, Coda, Eleven v3, Falcon (Beta), Fish Audio S2 Pro, Fish Speech 1.5, Flash v2.5, Gemini 2.5 Flash TTS (Dec 2025), Gemini 2.5 Flash Lite TTS, Gemini 3.1 Flash TTS, Gradium TTS, Inworld TTS 1, Inworld TTS 1 Max, Journey, Kokoro 82M v1.0, LMNT, Lightning V3.1 Pro, Lightning v3.1, MAI-Voice-1, Magpie Multilingual, Magpie-Multilingual 357M (Feb 2026), Magpie-Multilingual 357M, Maya1, MetaVoice v1, MiMo-V2-TTS, MiMo-V2.5-TTS, Mist V2, Multilingual v2, Murf Speech Gen 2, Neural2, Octave 2, Octave TTS, OpenAudio S1, OpenVoice v2, Polly Generative, Polly Long-Form, Polly Neural, Polly Standard, Qwen3 TTS Flash, Qwen3 TTS, Realtime TTS 1.5 Max, Realtime TTS 1.5 Mini, Realtime TTS-2 - Research Preview, SIMBA 1.6, SIMBA 3.0, SSFM-v21, SSFM-v30, Seed-TTS 2.0, SIMBA 1.0, Sonic 3, Sonic 3.5, Sonic English (Oct 2024), Speech 2.6 HD, Speech 2.6 Turbo, Speech 2.8 HD, Speech 2.8 Turbo, Speech-02-HD, Speech-02-Turbo, Standard, Step Audio EditX (Mar 2026), Step TTS 2 (Mar 2026), StepAudio 2.5 TTS, Studio, StyleTTS 2, T2A-01-HD, T2A-01-Turbo, TTS-1, TTS-1 HD, Turbo v2.5, VibeVoice 1.5B, VibeVoice 7B, Voxtral TTS, WaveNet, XTTS v2, Zonos-v0.1, xAI Text to Speech."
+      - heading "Frequently Asked Questions" [level=2] [ref=e869]
+      - generic [ref=e871]:
+        - generic [ref=e872]:
+          - heading "What is the best Text to Speech (TTS) Model?" [level=3] [ref=e873]:
+            - button "What is the best Text to Speech (TTS) Model?" [ref=e874] [cursor=pointer]:
+              - text: What is the best Text to Speech (TTS) Model?
+              - img [ref=e875]
+          - region "What is the best Text to Speech (TTS) Model?":
+            - paragraph [ref=e878]:
+              - text: Sonic 3.5 currently has the highest quality in the Artificial Analysis Text to Speech models comparison, with a Quality ELO of 1,218.
+              - link "View Sonic 3.5" [ref=e879] [cursor=pointer]:
+                - /url: /text-to-speech/models/sonic-3-5
+        - generic [ref=e880]:
+          - heading "What is the fastest Text to Speech (TTS) Model?" [level=3] [ref=e881]:
+            - button "What is the fastest Text to Speech (TTS) Model?" [ref=e882] [cursor=pointer]:
+              - text: What is the fastest Text to Speech (TTS) Model?
+              - img [ref=e883]
+          - region "What is the fastest Text to Speech (TTS) Model?":
+            - paragraph [ref=e886]:
+              - text: Polly Standard is currently the fastest Text to Speech model in the comparison at representative API endpoints, with Amazon Bedrock delivering 1,106.1 characters per second.
+              - link "View Polly Standard providers" [ref=e887] [cursor=pointer]:
+                - /url: /text-to-speech/providers/polly-standard
+        - generic [ref=e888]:
+          - heading "What's the cheapest Text to Speech (TTS) Model?" [level=3] [ref=e889]:
+            - button "What's the cheapest Text to Speech (TTS) Model?" [ref=e890] [cursor=pointer]:
+              - text: What's the cheapest Text to Speech (TTS) Model?
+              - img [ref=e891]
+          - region "What's the cheapest Text to Speech (TTS) Model?":
+            - paragraph [ref=e894]:
+              - text: Kokoro 82M v1.0 is currently the cheapest Text to Speech model in the comparison at representative API endpoints, with Replicate priced at $0.65 per 1 million characters.
+              - link "View Kokoro 82M v1.0 providers" [ref=e895] [cursor=pointer]:
+                - /url: /text-to-speech/providers/kokoro-82m-v1-0
+        - generic [ref=e896]:
+          - heading "Which Text to Speech (TTS) Models offer the best quality for the price?" [level=3] [ref=e897]:
+            - button "Which Text to Speech (TTS) Models offer the best quality for the price?" [ref=e898] [cursor=pointer]:
+              - text: Which Text to Speech (TTS) Models offer the best quality for the price?
+              - img [ref=e899]
+          - region "Which Text to Speech (TTS) Models offer the best quality for the price?":
+            - paragraph [ref=e902]:
+              - text: Sonic 3.5 via Cartesia, Gemini 3.1 Flash TTS via Google, and SIMBA 3.0 via Speechify currently offer some of the strongest quality-for-price tradeoffs in the comparison. These representative endpoints sit on the current quality-versus-price frontier, meaning few alternatives are both cheaper and higher quality at the same time.
+              - link "View Sonic 3.5 providers" [ref=e903] [cursor=pointer]:
+                - /url: /text-to-speech/providers/sonic-3-5
+    - button "Back to top":
+      - img
+    - region "Notifications alt+T"
+    - generic [ref=e905]:
+      - generic [ref=e906]:
+        - link "Artificial Analysis" [ref=e908] [cursor=pointer]:
+          - /url: /
+          - img [ref=e909]
+        - generic [ref=e911]:
+          - paragraph [ref=e912]: Get notified about new articles
+          - generic [ref=e916]:
+            - generic [ref=e917]: Email address
+            - textbox "Email address" [ref=e918]:
+              - /placeholder: What's your email?
+            - button "Subscribe" [ref=e919] [cursor=pointer]
+        - paragraph [ref=e923]: Artificial Analysis
+        - generic [ref=e924]:
+          - generic [ref=e925]:
+            - paragraph [ref=e926]: Explore
+            - list [ref=e927]:
+              - listitem [ref=e928]:
+                - link "LLM Leaderboard" [ref=e929] [cursor=pointer]:
+                  - /url: /leaderboards/models
+              - listitem [ref=e930]:
+                - link "Image Arena" [ref=e931] [cursor=pointer]:
+                  - /url: /image/arena
+              - listitem [ref=e932]:
+                - link "Video Arena" [ref=e933] [cursor=pointer]:
+                  - /url: /video/arena
+              - listitem [ref=e934]:
+                - link "AI Agents" [ref=e935] [cursor=pointer]:
+                  - /url: /agents
+              - listitem [ref=e936]:
+                - link "Evaluations" [ref=e937] [cursor=pointer]:
+                  - /url: /evaluations
+          - generic [ref=e938]:
+            - paragraph [ref=e939]: Company
+            - list [ref=e940]:
+              - listitem [ref=e941]:
+                - link "Methodology" [ref=e942] [cursor=pointer]:
+                  - /url: /methodology
+              - listitem [ref=e943]:
+                - link "Services" [ref=e944] [cursor=pointer]:
+                  - /url: /services
+              - listitem [ref=e945]:
+                - link "Contact" [ref=e946] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e947]:
+                - link "Articles" [ref=e948] [cursor=pointer]:
+                  - /url: /articles
+              - listitem [ref=e949]:
+                - link "FAQ" [ref=e950] [cursor=pointer]:
+                  - /url: /faq
+        - generic [ref=e951]:
+          - link "X" [ref=e952] [cursor=pointer]:
+            - /url: https://x.com/ArtificialAnlys
+            - img [ref=e953]
+            - generic [ref=e955]: X
+          - link "LinkedIn" [ref=e956] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/artificial-analysis/
+            - img [ref=e957]
+            - generic [ref=e959]: LinkedIn
+          - link "Rednote" [ref=e960] [cursor=pointer]:
+            - /url: https://www.xiaohongshu.com/user/profile/69ea6345000000000d034c02
+            - img [ref=e961]
+            - generic [ref=e963]: Rednote
+          - link "Discord" [ref=e964] [cursor=pointer]:
+            - /url: https://discord.gg/Mk298GPZ7V
+            - img [ref=e965]
+            - generic [ref=e967]: Discord
+      - generic [ref=e968]:
+        - paragraph [ref=e969]: © 2026 Artificial Analysis
+        - link "Terms of Use" [ref=e970] [cursor=pointer]:
+          - /url: /docs/legal/Terms-of-Use.pdf
+        - link "Privacy Policy" [ref=e971] [cursor=pointer]:
+          - /url: /docs/legal/Privacy-Policy.pdf
+  - alert [ref=e972]
+  - generic [ref=e973]: "25"

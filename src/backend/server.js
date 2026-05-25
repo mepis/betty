@@ -10,7 +10,11 @@ import { fileURLToPath } from "url";
 import { initializeDatabase, cleanupExpiredSessions } from "./db/database.js";
 import { seedBuiltInRoles, seedDefaultAdmin } from "./db/seeds.js";
 import * as bcrypt from "bcryptjs";
-import { extractWsToken, checkWsPermission, validateWsToken } from "./auth/ws-auth.js";
+import {
+  extractWsToken,
+  checkWsPermission,
+  validateWsToken,
+} from "./auth/ws-auth.js";
 
 // API Routes
 import authRoutes from "./routes/auth.js";
@@ -36,6 +40,31 @@ const httpServer = createServer(app);
 
 // Parse JSON bodies
 app.use(express.json());
+
+// CORS middleware
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+    "http://100.105.3.99:5173",
+  ];
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS",
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+  next();
+});
 
 // API routes
 app.use("/api/auth", authRoutes);
@@ -120,7 +149,12 @@ async function createPiSession(ws, user) {
   // Start the Pi session
   await session.start();
 
-  activeSessions.set(ws, { id: sessionId, session, user, userId: user?.id || null });
+  activeSessions.set(ws, {
+    id: sessionId,
+    session,
+    user,
+    userId: user?.id || null,
+  });
   return sessionId;
 }
 
@@ -163,7 +197,10 @@ function checkRateLimit(ws) {
 function handleWsMessage(ws, data) {
   const sessionData = activeSessions.get(ws);
   if (!sessionData) {
-    sendTo(ws, { type: "error", message: "No active session. Send 'new-session' first." });
+    sendTo(ws, {
+      type: "error",
+      message: "No active session. Send 'new-session' first.",
+    });
     return;
   }
 
@@ -204,19 +241,31 @@ function handleWsMessage(ws, data) {
         }
         // Check sessions:update permission
         if (user && !checkWsPermission(user, "sessions", "update")) {
-          sendTo(ws, { type: "error", message: "Permission denied: sessions:update" });
+          sendTo(ws, {
+            type: "error",
+            message: "Permission denied: sessions:update",
+          });
           return;
         }
-        const deleted = session.deleteMessage(parsed.role, parsed.content.trim());
+        const deleted = session.deleteMessage(
+          parsed.role,
+          parsed.content.trim(),
+        );
         if (!deleted) {
-          sendTo(ws, { type: "error", message: "Message not found in context" });
+          sendTo(ws, {
+            type: "error",
+            message: "Message not found in context",
+          });
         }
         break;
 
       case "new-session":
         // Check sessions:create permission
         if (user && !checkWsPermission(user, "sessions", "create")) {
-          sendTo(ws, { type: "error", message: "Permission denied: sessions:create" });
+          sendTo(ws, {
+            type: "error",
+            message: "Permission denied: sessions:create",
+          });
           return;
         }
         // Clean up existing session
@@ -230,7 +279,10 @@ function handleWsMessage(ws, data) {
         break;
 
       default:
-        sendTo(ws, { type: "error", message: `Unknown command: ${parsed.type}` });
+        sendTo(ws, {
+          type: "error",
+          message: `Unknown command: ${parsed.type}`,
+        });
     }
   } catch (err) {
     sendTo(ws, { type: "error", message: `Invalid message: ${err.message}` });
@@ -246,7 +298,9 @@ wss.on("connection", (ws, request) => {
   const user = token ? validateWsToken(token) : null;
 
   if (user) {
-    console.log(`[ws] Authenticated user: ${user.username} (${user.role_name || "unknown role"})`);
+    console.log(
+      `[ws] Authenticated user: ${user.username} (${user.role_name || "unknown role"})`,
+    );
   } else {
     console.log("[ws] Unauthenticated connection");
   }
@@ -305,7 +359,10 @@ wss.on("connection", (ws, request) => {
 
     // Check rate limit
     if (!checkRateLimit(ws)) {
-      sendTo(ws, { type: "error", message: "Rate limit exceeded. Please slow down." });
+      sendTo(ws, {
+        type: "error",
+        message: "Rate limit exceeded. Please slow down.",
+      });
       return;
     }
 

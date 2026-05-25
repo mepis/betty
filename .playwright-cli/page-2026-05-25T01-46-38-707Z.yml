@@ -1,0 +1,795 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "OpenAI Developers" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "OpenAI Developers" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "API" [ref=e10] [cursor=pointer]:
+          - /url: /api
+          - text: API
+          - img [ref=e11]
+        - link "Codex" [ref=e14] [cursor=pointer]:
+          - /url: /codex
+          - text: Codex
+          - img [ref=e15]
+        - link "ChatGPT" [ref=e18] [cursor=pointer]:
+          - /url: /chatgpt
+          - text: ChatGPT
+          - img [ref=e19]
+        - link "Resources" [ref=e22] [cursor=pointer]:
+          - /url: /learn
+          - text: Resources
+          - img [ref=e23]
+      - generic [ref=e25]:
+        - button "Start searching" [ref=e26] [cursor=pointer]:
+          - generic [ref=e27]: Start searching
+          - img [ref=e28]
+        - link "API Dashboard" [ref=e33] [cursor=pointer]:
+          - /url: https://platform.openai.com/login
+          - generic [ref=e34]:
+            - generic [ref=e35]: API Dashboard
+            - img [ref=e36]
+        - button "Toggle light and dark theme" [ref=e38] [cursor=pointer]:
+          - img [ref=e39]
+  - generic [ref=e41]:
+    - navigation [ref=e43]:
+      - generic [ref=e44]:
+        - heading "Get started" [level=3] [ref=e45]
+        - list [ref=e46]:
+          - listitem [ref=e47]:
+            - link "Overview" [ref=e48] [cursor=pointer]:
+              - /url: /api/docs
+              - generic [ref=e49]: Overview
+          - listitem [ref=e50]:
+            - link "Quickstart" [ref=e51] [cursor=pointer]:
+              - /url: /api/docs/quickstart
+              - generic [ref=e52]: Quickstart
+          - listitem [ref=e53]:
+            - link "Models" [ref=e54] [cursor=pointer]:
+              - /url: /api/docs/models
+              - generic [ref=e55]: Models
+          - listitem [ref=e56]:
+            - link "Pricing" [ref=e57] [cursor=pointer]:
+              - /url: /api/docs/pricing
+              - generic [ref=e58]: Pricing
+          - listitem [ref=e59]:
+            - group [ref=e60]:
+              - generic "SDKs and CLI" [ref=e61] [cursor=pointer]:
+                - link "SDKs and CLI" [ref=e62]:
+                  - /url: /api/docs/libraries
+                  - generic [ref=e63]: SDKs and CLI
+                - img [ref=e64]
+          - listitem [ref=e66]:
+            - 'link "Latest: GPT-5.5" [ref=e67] [cursor=pointer]':
+              - /url: /api/docs/guides/latest-model
+              - generic [ref=e68]: "Latest: GPT-5.5"
+          - listitem [ref=e69]:
+            - link "Prompt guidance" [ref=e70] [cursor=pointer]:
+              - /url: /api/docs/guides/prompt-guidance
+              - generic [ref=e71]: Prompt guidance
+      - generic [ref=e72]:
+        - heading "Core concepts" [level=3] [ref=e73]
+        - list [ref=e74]:
+          - listitem [ref=e75]:
+            - link "Text generation" [ref=e76] [cursor=pointer]:
+              - /url: /api/docs/guides/text
+              - generic [ref=e77]: Text generation
+          - listitem [ref=e78]:
+            - link "Code generation" [ref=e79] [cursor=pointer]:
+              - /url: /api/docs/guides/code-generation
+              - generic [ref=e80]: Code generation
+          - listitem [ref=e81]:
+            - link "Images and vision" [ref=e82] [cursor=pointer]:
+              - /url: /api/docs/guides/images-vision
+              - generic [ref=e83]: Images and vision
+          - listitem [ref=e84]:
+            - link "Audio and speech" [ref=e85] [cursor=pointer]:
+              - /url: /api/docs/guides/audio
+              - generic [ref=e86]: Audio and speech
+          - listitem [ref=e87]:
+            - link "Structured output" [ref=e88] [cursor=pointer]:
+              - /url: /api/docs/guides/structured-outputs
+              - generic [ref=e89]: Structured output
+          - listitem [ref=e90]:
+            - link "Function calling" [ref=e91] [cursor=pointer]:
+              - /url: /api/docs/guides/function-calling
+              - generic [ref=e92]: Function calling
+          - listitem [ref=e93]:
+            - link "Responses API" [ref=e94] [cursor=pointer]:
+              - /url: /api/docs/guides/migrate-to-responses
+              - generic [ref=e95]: Responses API
+          - listitem [ref=e96]:
+            - link "Using tools" [ref=e97] [cursor=pointer]:
+              - /url: /api/docs/guides/tools
+              - generic [ref=e98]: Using tools
+      - generic [ref=e99]:
+        - heading "Agents SDK" [level=3] [ref=e100]
+        - list [ref=e101]:
+          - listitem [ref=e102]:
+            - link "Overview" [ref=e103] [cursor=pointer]:
+              - /url: /api/docs/guides/agents
+              - generic [ref=e104]: Overview
+          - listitem [ref=e105]:
+            - link "Quickstart" [ref=e106] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/quickstart
+              - generic [ref=e107]: Quickstart
+          - listitem [ref=e108]:
+            - link "Agent definitions" [ref=e109] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/define-agents
+              - generic [ref=e110]: Agent definitions
+          - listitem [ref=e111]:
+            - link "Models and providers" [ref=e112] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/models
+              - generic [ref=e113]: Models and providers
+          - listitem [ref=e114]:
+            - link "Running agents" [ref=e115] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/running-agents
+              - generic [ref=e116]: Running agents
+          - listitem [ref=e117]:
+            - link "Sandbox agents" [ref=e118] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/sandboxes
+              - generic [ref=e119]: Sandbox agents
+          - listitem [ref=e120]:
+            - link "Orchestration" [ref=e121] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/orchestration
+              - generic [ref=e122]: Orchestration
+          - listitem [ref=e123]:
+            - link "Guardrails" [ref=e124] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/guardrails-approvals
+              - generic [ref=e125]: Guardrails
+          - listitem [ref=e126]:
+            - link "Results and state" [ref=e127] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/results
+              - generic [ref=e128]: Results and state
+          - listitem [ref=e129]:
+            - link "Integrations and observability" [ref=e130] [cursor=pointer]:
+              - /url: /api/docs/guides/agents/integrations-observability
+              - generic [ref=e131]: Integrations and observability
+          - listitem [ref=e132]:
+            - link "Evaluate agent workflows" [ref=e133] [cursor=pointer]:
+              - /url: /api/docs/guides/agent-evals
+              - generic [ref=e134]: Evaluate agent workflows
+          - listitem [ref=e135]:
+            - link "Voice agents" [ref=e136] [cursor=pointer]:
+              - /url: /api/docs/guides/voice-agents
+              - generic [ref=e137]: Voice agents
+          - listitem [ref=e138]:
+            - group [ref=e139]:
+              - generic "Agent Builder" [ref=e140] [cursor=pointer]:
+                - generic [ref=e141]: Agent Builder
+                - img [ref=e142]
+      - generic [ref=e144]:
+        - heading "Tools" [level=3] [ref=e145]
+        - list [ref=e146]:
+          - listitem [ref=e147]:
+            - link "Web search" [ref=e148] [cursor=pointer]:
+              - /url: /api/docs/guides/tools-web-search
+              - generic [ref=e149]: Web search
+          - listitem [ref=e150]:
+            - group [ref=e151]:
+              - generic "MCP and Connectors" [ref=e152] [cursor=pointer]:
+                - link "MCP and Connectors" [ref=e153]:
+                  - /url: /api/docs/guides/tools-connectors-mcp
+                  - generic [ref=e154]: MCP and Connectors
+                - img [ref=e155]
+          - listitem [ref=e157]:
+            - link "Skills" [ref=e158] [cursor=pointer]:
+              - /url: /api/docs/guides/tools-skills
+              - generic [ref=e159]: Skills
+          - listitem [ref=e160]:
+            - link "Shell" [ref=e161] [cursor=pointer]:
+              - /url: /api/docs/guides/tools-shell
+              - generic [ref=e162]: Shell
+          - listitem [ref=e163]:
+            - link "Computer use" [ref=e164] [cursor=pointer]:
+              - /url: /api/docs/guides/tools-computer-use
+              - generic [ref=e165]: Computer use
+          - listitem [ref=e166]:
+            - group [ref=e167]:
+              - generic "File search and retrieval" [ref=e168] [cursor=pointer]:
+                - generic [ref=e169]: File search and retrieval
+                - img [ref=e170]
+          - listitem [ref=e172]:
+            - link "Tool search" [ref=e173] [cursor=pointer]:
+              - /url: /api/docs/guides/tools-tool-search
+              - generic [ref=e174]: Tool search
+          - listitem [ref=e175]:
+            - group [ref=e176]:
+              - generic "More tools" [ref=e177] [cursor=pointer]:
+                - generic [ref=e178]: More tools
+                - img [ref=e179]
+      - generic [ref=e181]:
+        - heading "Run and scale" [level=3] [ref=e182]
+        - list [ref=e183]:
+          - listitem [ref=e184]:
+            - link "Conversation state" [ref=e185] [cursor=pointer]:
+              - /url: /api/docs/guides/conversation-state
+              - generic [ref=e186]: Conversation state
+          - listitem [ref=e187]:
+            - link "Background mode" [ref=e188] [cursor=pointer]:
+              - /url: /api/docs/guides/background
+              - generic [ref=e189]: Background mode
+          - listitem [ref=e190]:
+            - link "Streaming" [ref=e191] [cursor=pointer]:
+              - /url: /api/docs/guides/streaming-responses
+              - generic [ref=e192]: Streaming
+          - listitem [ref=e193]:
+            - link "WebSocket mode" [ref=e194] [cursor=pointer]:
+              - /url: /api/docs/guides/websocket-mode
+              - generic [ref=e195]: WebSocket mode
+          - listitem [ref=e196]:
+            - link "Webhooks" [ref=e197] [cursor=pointer]:
+              - /url: /api/docs/guides/webhooks
+              - generic [ref=e198]: Webhooks
+          - listitem [ref=e199]:
+            - link "File inputs" [ref=e200] [cursor=pointer]:
+              - /url: /api/docs/guides/file-inputs
+              - generic [ref=e201]: File inputs
+          - listitem [ref=e202]:
+            - group [ref=e203]:
+              - generic "Context management" [ref=e204] [cursor=pointer]:
+                - generic [ref=e205]: Context management
+                - img [ref=e206]
+          - listitem [ref=e208]:
+            - group [ref=e209]:
+              - generic "Prompting" [ref=e210] [cursor=pointer]:
+                - generic [ref=e211]: Prompting
+                - img [ref=e212]
+          - listitem [ref=e214]:
+            - group [ref=e215]:
+              - generic "Reasoning" [ref=e216] [cursor=pointer]:
+                - generic [ref=e217]: Reasoning
+                - img [ref=e218]
+      - generic [ref=e220]:
+        - heading "Evaluation" [level=3] [ref=e221]
+        - list [ref=e222]:
+          - listitem [ref=e223]:
+            - link "Getting started" [ref=e224] [cursor=pointer]:
+              - /url: /api/docs/guides/evaluation-getting-started
+              - generic [ref=e225]: Getting started
+          - listitem [ref=e226]:
+            - link "Working with evals" [ref=e227] [cursor=pointer]:
+              - /url: /api/docs/guides/evals
+              - generic [ref=e228]: Working with evals
+          - listitem [ref=e229]:
+            - link "Prompt optimizer" [ref=e230] [cursor=pointer]:
+              - /url: /api/docs/guides/prompt-optimizer
+              - generic [ref=e231]: Prompt optimizer
+          - listitem [ref=e232]:
+            - link "External models" [ref=e233] [cursor=pointer]:
+              - /url: /api/docs/guides/external-models
+              - generic [ref=e234]: External models
+          - listitem [ref=e235]:
+            - link "Best practices" [ref=e236] [cursor=pointer]:
+              - /url: /api/docs/guides/evaluation-best-practices
+              - generic [ref=e237]: Best practices
+      - generic [ref=e238]:
+        - heading "Realtime and audio" [level=3] [ref=e239]
+        - list [ref=e240]:
+          - listitem [ref=e241]:
+            - link "Overview" [ref=e242] [cursor=pointer]:
+              - /url: /api/docs/guides/realtime
+              - generic [ref=e243]: Overview
+          - listitem [ref=e244]:
+            - link "Voice agents" [ref=e245] [cursor=pointer]:
+              - /url: /api/docs/guides/voice-agents
+              - generic [ref=e246]: Voice agents
+          - listitem [ref=e247]:
+            - link "Live translation" [ref=e248] [cursor=pointer]:
+              - /url: /api/docs/guides/realtime-translation
+              - generic [ref=e249]: Live translation
+          - listitem [ref=e250]:
+            - group [ref=e251]:
+              - generic "Transcription" [ref=e252] [cursor=pointer]:
+                - generic [ref=e253]: Transcription
+                - img [ref=e254]
+          - listitem [ref=e256]:
+            - link "Speech generation" [ref=e257] [cursor=pointer]:
+              - /url: /api/docs/guides/text-to-speech
+              - generic [ref=e258]: Speech generation
+          - listitem [ref=e259]:
+            - link "Realtime prompting guide" [ref=e260] [cursor=pointer]:
+              - /url: /api/docs/guides/realtime-models-prompting
+              - generic [ref=e261]: Realtime prompting guide
+          - listitem [ref=e262]:
+            - group [ref=e263]:
+              - generic "Connection methods" [ref=e264] [cursor=pointer]:
+                - generic [ref=e265]: Connection methods
+                - img [ref=e266]
+          - listitem [ref=e268]:
+            - group [ref=e269]:
+              - generic "Realtime sessions" [ref=e270] [cursor=pointer]:
+                - generic [ref=e271]: Realtime sessions
+                - img [ref=e272]
+      - generic [ref=e274]:
+        - heading "Model optimization" [level=3] [ref=e275]
+        - list [ref=e276]:
+          - listitem [ref=e277]:
+            - link "Optimization cycle" [ref=e278] [cursor=pointer]:
+              - /url: /api/docs/guides/model-optimization
+              - generic [ref=e279]: Optimization cycle
+          - listitem [ref=e280]:
+            - group [ref=e281]:
+              - generic "Fine-tuning" [ref=e282] [cursor=pointer]:
+                - generic [ref=e283]: Fine-tuning
+                - img [ref=e284]
+          - listitem [ref=e286]:
+            - link "Graders" [ref=e287] [cursor=pointer]:
+              - /url: /api/docs/guides/graders
+              - generic [ref=e288]: Graders
+      - generic [ref=e289]:
+        - heading "Specialized models" [level=3] [ref=e290]
+        - list [ref=e291]:
+          - listitem [ref=e292]:
+            - link "Image generation" [ref=e293] [cursor=pointer]:
+              - /url: /api/docs/guides/image-generation
+              - generic [ref=e294]: Image generation
+          - listitem [ref=e295]:
+            - link "Video generation" [ref=e296] [cursor=pointer]:
+              - /url: /api/docs/guides/video-generation
+              - generic [ref=e297]: Video generation
+          - listitem [ref=e298]:
+            - link "Deep research" [ref=e299] [cursor=pointer]:
+              - /url: /api/docs/guides/deep-research
+              - generic [ref=e300]: Deep research
+          - listitem [ref=e301]:
+            - link "Embeddings" [ref=e302] [cursor=pointer]:
+              - /url: /api/docs/guides/embeddings
+              - generic [ref=e303]: Embeddings
+          - listitem [ref=e304]:
+            - link "Moderation" [ref=e305] [cursor=pointer]:
+              - /url: /api/docs/guides/moderation
+              - generic [ref=e306]: Moderation
+      - generic [ref=e307]:
+        - heading "Going live" [level=3] [ref=e308]
+        - list [ref=e309]:
+          - listitem [ref=e310]:
+            - link "Production best practices" [ref=e311] [cursor=pointer]:
+              - /url: /api/docs/guides/production-best-practices
+              - generic [ref=e312]: Production best practices
+          - listitem [ref=e313]:
+            - link "Deployment checklist" [ref=e314] [cursor=pointer]:
+              - /url: /api/docs/guides/deployment-checklist
+              - generic [ref=e315]: Deployment checklist
+          - listitem [ref=e316]:
+            - group [ref=e317]:
+              - generic "Latency optimization" [ref=e318] [cursor=pointer]:
+                - generic [ref=e319]: Latency optimization
+                - img [ref=e320]
+          - listitem [ref=e322]:
+            - group [ref=e323]:
+              - generic "Cost optimization" [ref=e324] [cursor=pointer]:
+                - generic [ref=e325]: Cost optimization
+                - img [ref=e326]
+          - listitem [ref=e328]:
+            - link "Accuracy optimization" [ref=e329] [cursor=pointer]:
+              - /url: /api/docs/guides/optimizing-llm-accuracy
+              - generic [ref=e330]: Accuracy optimization
+          - listitem [ref=e331]:
+            - group [ref=e332]:
+              - generic "Safety" [ref=e333] [cursor=pointer]:
+                - generic [ref=e334]: Safety
+                - img [ref=e335]
+      - generic [ref=e337]:
+        - heading "Legacy APIs" [level=3] [ref=e338]
+        - list [ref=e339]:
+          - listitem [ref=e340]:
+            - group [ref=e341]:
+              - generic "Assistants API" [ref=e342] [cursor=pointer]:
+                - generic [ref=e343]: Assistants API
+                - img [ref=e344]
+      - generic [ref=e346]:
+        - heading "Resources" [level=3] [ref=e347]
+        - list [ref=e348]:
+          - listitem [ref=e349]:
+            - link "Terms and policies" [ref=e350] [cursor=pointer]:
+              - /url: https://openai.com/policies
+              - generic [ref=e351]: Terms and policies
+              - img [ref=e352]
+          - listitem [ref=e354]:
+            - link "Changelog" [ref=e355] [cursor=pointer]:
+              - /url: /api/docs/changelog
+              - generic [ref=e356]: Changelog
+          - listitem [ref=e357]:
+            - link "Your data" [ref=e358] [cursor=pointer]:
+              - /url: /api/docs/guides/your-data
+              - generic [ref=e359]: Your data
+          - listitem [ref=e360]:
+            - link "Permissions" [ref=e361] [cursor=pointer]:
+              - /url: /api/docs/guides/rbac
+              - generic [ref=e362]: Permissions
+          - listitem [ref=e363]:
+            - link "Rate limits" [ref=e364] [cursor=pointer]:
+              - /url: /api/docs/guides/rate-limits
+              - generic [ref=e365]: Rate limits
+          - listitem [ref=e366]:
+            - link "Admin APIs" [ref=e367] [cursor=pointer]:
+              - /url: /api/docs/guides/admin-apis
+              - generic [ref=e368]: Admin APIs
+          - listitem [ref=e369]:
+            - link "Deprecations" [ref=e370] [cursor=pointer]:
+              - /url: /api/docs/deprecations
+              - generic [ref=e371]: Deprecations
+          - listitem [ref=e372]:
+            - link "MCP for deep research" [ref=e373] [cursor=pointer]:
+              - /url: /api/docs/mcp
+              - generic [ref=e374]: MCP for deep research
+          - listitem [ref=e375]:
+            - link "Developer mode" [ref=e376] [cursor=pointer]:
+              - /url: /api/docs/guides/developer-mode
+              - generic [ref=e377]: Developer mode
+          - listitem [ref=e378]:
+            - group [ref=e379]:
+              - generic "ChatGPT Actions" [ref=e380] [cursor=pointer]:
+                - generic [ref=e381]: ChatGPT Actions
+                - img [ref=e382]
+    - main [ref=e384]:
+      - generic [ref=e386]:
+        - generic [ref=e387]:
+          - navigation [ref=e389]:
+            - list [ref=e393]:
+              - listitem [ref=e394]:
+                - link "Common use cases" [ref=e395] [cursor=pointer]:
+                  - /url: "#common-use-cases"
+              - listitem [ref=e396]:
+                - link "Understand different architectures" [ref=e397] [cursor=pointer]:
+                  - /url: "#understand-different-architectures"
+              - listitem [ref=e398]:
+                - link "Choose a realtime session" [ref=e399] [cursor=pointer]:
+                  - /url: "#choose-a-realtime-session"
+              - listitem [ref=e400]:
+                - link "Choose a connection method" [ref=e401] [cursor=pointer]:
+                  - /url: "#choose-a-connection-method"
+              - listitem [ref=e402]:
+                - link "Safety identifiers" [ref=e403] [cursor=pointer]:
+                  - /url: "#safety-identifiers"
+              - listitem [ref=e404]:
+                - link "Beta to GA migration" [ref=e405] [cursor=pointer]:
+                  - /url: "#beta-to-ga-migration"
+              - listitem [ref=e406]:
+                - link "Related guides" [ref=e407] [cursor=pointer]:
+                  - /url: "#related-guides"
+          - link "Build voice agents Build voice agents in the browser." [ref=e409] [cursor=pointer]:
+            - /url: /api/docs/guides/voice-agents
+            - generic [ref=e410]:
+              - img [ref=e412]
+              - generic [ref=e414]:
+                - paragraph [ref=e415]: Build voice agents
+                - paragraph [ref=e416]: Build voice agents in the browser.
+          - button "Copy Page" [ref=e418] [cursor=pointer]:
+            - img [ref=e420]
+            - generic [ref=e422]: Copy Page
+        - generic [ref=e423]:
+          - generic [ref=e425]:
+            - heading "Realtime and audio" [level=1] [ref=e426]
+            - paragraph [ref=e427]: Choose the right path for voice agents, translation, transcription, and speech generation.
+            - button "Copy Page" [ref=e430] [cursor=pointer]:
+              - img [ref=e432]
+              - generic [ref=e434]: Copy Page
+          - article [ref=e435]:
+            - paragraph [ref=e436]: Start with the outcome you want to build. Realtime sessions are best for live audio that needs low latency. Request-based audio APIs are best for files, bounded requests, or generated speech that doesn’t need a live session.
+            - heading "Common use cases Copy link to common use cases" [level=2] [ref=e437]:
+              - generic [ref=e438]: Common use cases
+              - button "Copy link to common use cases" [ref=e439] [cursor=pointer]:
+                - img [ref=e440]
+            - generic [ref=e443]:
+              - link "Voice agents Voice agents Build speech-to-speech agents that listen, reason, speak, and call tools." [ref=e444] [cursor=pointer]:
+                - /url: /api/docs/guides/voice-agents
+                - generic [ref=e445]:
+                  - img "Voice agents" [ref=e447]
+                  - generic [ref=e449]:
+                    - generic [ref=e450]: Voice agents
+                    - generic [ref=e451]: Build speech-to-speech agents that listen, reason, speak, and call tools.
+              - link "Live translation Live translation Translate live speech with a dedicated realtime translation session." [ref=e452] [cursor=pointer]:
+                - /url: /api/docs/guides/realtime-translation
+                - generic [ref=e453]:
+                  - img "Live translation" [ref=e455]
+                  - generic [ref=e457]:
+                    - generic [ref=e458]: Live translation
+                    - generic [ref=e459]: Translate live speech with a dedicated realtime translation session.
+              - link "Transcription Transcription Stream live transcript deltas or process audio files into text." [ref=e460] [cursor=pointer]:
+                - /url: /api/docs/guides/realtime-transcription
+                - generic [ref=e461]:
+                  - img "Transcription" [ref=e463]
+                  - generic [ref=e465]:
+                    - generic [ref=e466]: Transcription
+                    - generic [ref=e467]: Stream live transcript deltas or process audio files into text.
+              - link "Speech generation Speech generation Turn text into natural-sounding spoken audio." [ref=e468] [cursor=pointer]:
+                - /url: /api/docs/guides/text-to-speech
+                - generic [ref=e469]:
+                  - img "Speech generation" [ref=e471]
+                  - generic [ref=e473]:
+                    - generic [ref=e474]: Speech generation
+                    - generic [ref=e475]: Turn text into natural-sounding spoken audio.
+            - heading "Understand different architectures Copy link to understand different architectures" [level=2] [ref=e476]:
+              - generic [ref=e477]: Understand different architectures
+              - button "Copy link to understand different architectures" [ref=e478] [cursor=pointer]:
+                - img [ref=e479]
+            - table [ref=e481]:
+              - rowgroup [ref=e482]:
+                - row "Goal Model or API Start here" [ref=e483]:
+                  - columnheader "Goal" [ref=e484]
+                  - columnheader "Model or API" [ref=e485]
+                  - columnheader "Start here" [ref=e486]
+              - rowgroup [ref=e487]:
+                - row "Build a low-latency voice agent gpt-realtime-2 Voice agents" [ref=e488]:
+                  - cell "Build a low-latency voice agent" [ref=e489]
+                  - cell "gpt-realtime-2" [ref=e490]:
+                    - link "gpt-realtime-2" [ref=e491] [cursor=pointer]:
+                      - /url: /api/docs/models/gpt-realtime-2
+                      - code [ref=e492]: gpt-realtime-2
+                  - cell "Voice agents" [ref=e493]:
+                    - link "Voice agents" [ref=e494] [cursor=pointer]:
+                      - /url: /api/docs/guides/voice-agents
+                - row "Translate live speech into another language gpt-realtime-translate Realtime translation" [ref=e495]:
+                  - cell "Translate live speech into another language" [ref=e496]
+                  - cell "gpt-realtime-translate" [ref=e497]:
+                    - link "gpt-realtime-translate" [ref=e498] [cursor=pointer]:
+                      - /url: /api/docs/models/gpt-realtime-translate
+                      - code [ref=e499]: gpt-realtime-translate
+                  - cell "Realtime translation" [ref=e500]:
+                    - link "Realtime translation" [ref=e501] [cursor=pointer]:
+                      - /url: /api/docs/guides/realtime-translation
+                - row "Transcribe live audio into streaming text gpt-realtime-whisper Realtime transcription" [ref=e502]:
+                  - cell "Transcribe live audio into streaming text" [ref=e503]
+                  - cell "gpt-realtime-whisper" [ref=e504]:
+                    - link "gpt-realtime-whisper" [ref=e505] [cursor=pointer]:
+                      - /url: /api/docs/models/gpt-realtime-whisper
+                      - code [ref=e506]: gpt-realtime-whisper
+                  - cell "Realtime transcription" [ref=e507]:
+                    - link "Realtime transcription" [ref=e508] [cursor=pointer]:
+                      - /url: /api/docs/guides/realtime-transcription
+                      - paragraph [ref=e509]: Realtime transcription
+                - row "Transcribe files or bounded audio requests Audio transcription models Speech to text" [ref=e510]:
+                  - cell "Transcribe files or bounded audio requests" [ref=e511]
+                  - cell "Audio transcription models" [ref=e512]
+                  - cell "Speech to text" [ref=e513]:
+                    - link "Speech to text" [ref=e514] [cursor=pointer]:
+                      - /url: /api/docs/guides/speech-to-text
+                - row "Generate speech from text Speech generation models Text to speech" [ref=e515]:
+                  - cell "Generate speech from text" [ref=e516]
+                  - cell "Speech generation models" [ref=e517]
+                  - cell "Text to speech" [ref=e518]:
+                    - link "Text to speech" [ref=e519] [cursor=pointer]:
+                      - /url: /api/docs/guides/text-to-speech
+                - row "Add audio to an existing Chat Completions app Audio-capable chat models Audio and speech" [ref=e520]:
+                  - cell "Add audio to an existing Chat Completions app" [ref=e521]
+                  - cell "Audio-capable chat models" [ref=e522]
+                  - cell "Audio and speech" [ref=e523]:
+                    - link "Audio and speech" [ref=e524] [cursor=pointer]:
+                      - /url: /api/docs/guides/audio#add-audio-to-your-existing-application
+                      - paragraph [ref=e525]: Audio and speech
+            - heading "Choose a realtime session Copy link to choose a realtime session" [level=2] [ref=e526]:
+              - generic [ref=e527]: Choose a realtime session
+              - button "Copy link to choose a realtime session" [ref=e528] [cursor=pointer]:
+                - img [ref=e529]
+            - paragraph [ref=e531]: Realtime sessions keep a connection open while your application sends audio, receives events, and updates session state.
+            - table [ref=e532]:
+              - rowgroup [ref=e533]:
+                - row "Session type Use when Endpoint or pattern" [ref=e534]:
+                  - columnheader "Session type" [ref=e535]
+                  - columnheader "Use when" [ref=e536]
+                  - columnheader "Endpoint or pattern" [ref=e537]
+              - rowgroup [ref=e538]:
+                - row "Voice-agent session The model should respond to the user, call tools, and manage conversation state. Conversation session on /v1/realtime" [ref=e539]:
+                  - cell "Voice-agent session" [ref=e540]
+                  - cell "The model should respond to the user, call tools, and manage conversation state." [ref=e541]:
+                    - paragraph [ref=e542]: The model should respond to the user, call tools, and manage conversation state.
+                  - cell "Conversation session on /v1/realtime" [ref=e543]:
+                    - paragraph [ref=e544]:
+                      - text: Conversation session on
+                      - code [ref=e545]: /v1/realtime
+                - row "Translation session The app should continuously translate speech as it arrives. Continuous translation session on /v1/realtime/translations" [ref=e546]:
+                  - cell "Translation session" [ref=e547]
+                  - cell "The app should continuously translate speech as it arrives." [ref=e548]
+                  - cell "Continuous translation session on /v1/realtime/translations" [ref=e549]:
+                    - paragraph [ref=e550]:
+                      - text: Continuous translation session on
+                      - code [ref=e551]: /v1/realtime/translations
+                - row "Transcription session The app needs streaming transcript deltas without model-generated spoken responses. Transcription session that emits transcript deltas" [ref=e552]:
+                  - cell "Transcription session" [ref=e553]
+                  - cell "The app needs streaming transcript deltas without model-generated spoken responses." [ref=e554]:
+                    - paragraph [ref=e555]: The app needs streaming transcript deltas without model-generated spoken responses.
+                  - cell "Transcription session that emits transcript deltas" [ref=e556]
+            - paragraph [ref=e557]: Use a voice-agent session when your application needs an assistant that responds to the user. Use a translation session when your application needs an interpreter that translates the speaker. Use a transcription session when your application needs text from audio without model-generated responses.
+            - heading "Voice-agent sessions Copy link to voice agent sessions" [level=3] [ref=e558]:
+              - generic [ref=e559]: Voice-agent sessions
+              - button "Copy link to voice agent sessions" [ref=e560] [cursor=pointer]:
+                - img [ref=e561]
+            - paragraph [ref=e563]:
+              - text: Voice-agent sessions use the standard Realtime API conversation lifecycle. The client connects to
+              - code [ref=e564]: /v1/realtime
+              - text: ", sends audio or text, and listens for model responses, tool calls, and session events."
+            - paragraph [ref=e565]:
+              - text: For most browser voice agents, start with the
+              - link "Voice agents" [ref=e566] [cursor=pointer]:
+                - /url: /api/docs/guides/voice-agents
+              - text: guide. It uses the Agents SDK with WebRTC for browser audio and can connect to server-side tools.
+            - generic [ref=e568]:
+              - img [ref=e570]
+              - paragraph [ref=e576]:
+                - text: Realtime 2 adds reasoning to speech-to-speech workflows. Start with
+                - code [ref=e577]: reasoning.effort
+                - text: set to
+                - code [ref=e578]: low
+                - text: for most production voice agents, then adjust based on latency tolerance and task complexity. Use the
+                - link "Realtime prompting guide" [ref=e579] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-models-prompting
+                - text: to tune reasoning, preambles, tool use, unclear audio, and exact entity capture.
+            - heading "Translation sessions Copy link to translation sessions" [level=3] [ref=e580]:
+              - generic [ref=e581]: Translation sessions
+              - button "Copy link to translation sessions" [ref=e582] [cursor=pointer]:
+                - img [ref=e583]
+            - paragraph [ref=e585]: "Realtime translation uses a dedicated translation endpoint instead of the standard voice-agent endpoint. Translation sessions are continuous: the client streams audio into the session, and the service streams translated audio and transcript deltas out."
+            - paragraph [ref=e586]:
+              - text: Translation sessions don’t use the normal assistant turn lifecycle. Don’t call
+              - code [ref=e587]: response.create
+              - text: ", and don’t wait for the client to commit a user turn before translation begins. For browser media, use WebRTC. For server media pipelines such as phone calls or broadcast ingest, use WebSockets."
+            - paragraph [ref=e588]:
+              - text: See
+              - link "Realtime translation" [ref=e589] [cursor=pointer]:
+                - /url: /api/docs/guides/realtime-translation
+              - text: for the dedicated endpoint, session configuration, and architecture patterns.
+            - heading "Transcription sessions Copy link to transcription sessions" [level=3] [ref=e590]:
+              - generic [ref=e591]: Transcription sessions
+              - button "Copy link to transcription sessions" [ref=e592] [cursor=pointer]:
+                - img [ref=e593]
+            - paragraph [ref=e595]:
+              - text: You can transcribe audio in more than one way. Use a realtime transcription session when your application needs live transcript deltas from streaming audio. Use the
+              - link "Speech to text" [ref=e596] [cursor=pointer]:
+                - /url: /api/docs/guides/speech-to-text
+              - text: guide for file uploads, request-based transcription, or diarization-focused workflows.
+            - paragraph [ref=e597]:
+              - text: For realtime transcription,
+              - link "gpt-realtime-whisper" [ref=e598] [cursor=pointer]:
+                - /url: /api/docs/models/gpt-realtime-whisper
+                - code [ref=e599]: gpt-realtime-whisper
+              - text: gives you controllable latency. Lower delay settings produce earlier partial text, while higher delay settings can improve transcript quality. Test with your real audio conditions, target languages, accents, and domain vocabulary before choosing a production default.
+            - paragraph [ref=e600]:
+              - text: See
+              - link "Realtime transcription" [ref=e601] [cursor=pointer]:
+                - /url: /api/docs/guides/realtime-transcription
+              - text: for session configuration and event handling.
+            - heading "Choose a connection method Copy link to choose a connection method" [level=2] [ref=e602]:
+              - generic [ref=e603]: Choose a connection method
+              - button "Copy link to choose a connection method" [ref=e604] [cursor=pointer]:
+                - img [ref=e605]
+            - paragraph [ref=e607]: "Choose the transport based on where your application captures and plays audio:"
+            - link "WebRTC Use for browser and mobile clients that capture or play audio directly." [ref=e608] [cursor=pointer]:
+              - /url: /api/docs/guides/realtime-webrtc
+              - generic [ref=e609]:
+                - img [ref=e612]
+                - generic [ref=e614]:
+                  - generic [ref=e615]:
+                    - generic [ref=e616]: WebRTC
+                    - img [ref=e618]
+                  - paragraph [ref=e621]: Use for browser and mobile clients that capture or play audio directly.
+            - link "WebSocket Use when your server already receives raw audio from a media pipeline, call system, or worker." [ref=e622] [cursor=pointer]:
+              - /url: /api/docs/guides/realtime-websocket
+              - generic [ref=e623]:
+                - img [ref=e626]
+                - generic [ref=e628]:
+                  - generic [ref=e629]:
+                    - generic [ref=e630]: WebSocket
+                    - img [ref=e632]
+                  - paragraph [ref=e635]: Use when your server already receives raw audio from a media pipeline, call system, or worker.
+            - link "SIP Use for telephony voice agents. Confirm model support before using SIP for translation or transcription." [ref=e636] [cursor=pointer]:
+              - /url: /api/docs/guides/realtime-sip
+              - generic [ref=e637]:
+                - img [ref=e640]
+                - generic [ref=e642]:
+                  - generic [ref=e643]:
+                    - generic [ref=e644]: SIP
+                    - img [ref=e646]
+                  - paragraph [ref=e649]: Use for telephony voice agents. Confirm model support before using SIP for translation or transcription.
+            - heading "Safety identifiers Copy link to safety identifiers" [level=2] [ref=e650]:
+              - generic [ref=e651]: Safety identifiers
+              - button "Copy link to safety identifiers" [ref=e652] [cursor=pointer]:
+                - img [ref=e653]
+            - paragraph [ref=e655]:
+              - text: If your application identifies individual end users, include a
+              - link "safety identifier" [ref=e656] [cursor=pointer]:
+                - /url: /api/docs/guides/safety-best-practices#implement-safety-identifiers
+              - text: with Realtime API requests. Safety identifiers are recommended but not required. They help OpenAI monitor and detect abuse while allowing enforcement to target an individual user rather than your entire organization. Use a stable, privacy-preserving value, such as a hashed internal user ID.
+            - paragraph [ref=e657]:
+              - text: For Realtime API requests, send the identifier in the
+              - code [ref=e658]: OpenAI-Safety-Identifier
+              - text: header. When using ephemeral tokens, set the header on the server-side request that creates the client secret so the identifier is bound to that session. When connecting from a trusted server with WebSocket or the unified WebRTC interface, set the header on the connection request.
+            - paragraph [ref=e659]:
+              - text: Safety identifiers do not carry over from Responses API requests or from other sessions. If you use the Responses API
+              - code [ref=e660]: safety_identifier
+              - text: parameter elsewhere in your application, pass the same stable value separately when you create or connect each Realtime session.
+            - heading "Beta to GA migration Copy link to beta to ga migration" [level=2] [ref=e661]:
+              - generic [ref=e662]: Beta to GA migration
+              - button "Copy link to beta to ga migration" [ref=e663] [cursor=pointer]:
+                - img [ref=e664]
+            - paragraph [ref=e666]: "If you still have a beta Realtime integration, migrate it to the GA interface before moving forward with new work. The most important changes are:"
+            - list [ref=e667]:
+              - listitem [ref=e668]:
+                - text: Remove the
+                - code [ref=e669]: "OpenAI-Beta: realtime=v1"
+                - text: header when calling the GA interface.
+              - listitem [ref=e670]:
+                - text: Use
+                - link "POST /v1/realtime/client_secrets" [ref=e671] [cursor=pointer]:
+                  - /url: /api/docs/api-reference/realtime-sessions/create-realtime-client-secret
+                  - code [ref=e672]: POST /v1/realtime/client_secrets
+                - text: to create ephemeral credentials for browser or mobile clients.
+              - listitem [ref=e673]:
+                - text: Use
+                - code [ref=e674]: /v1/realtime/calls
+                - text: when establishing WebRTC sessions.
+              - listitem [ref=e675]:
+                - text: Update session and event shapes for the GA interface. In particular, set
+                - code [ref=e676]: session.type
+                - text: ", move output audio configuration under"
+                - code [ref=e677]: session.audio.output
+                - text: ", and use the newer response event names like"
+                - code [ref=e678]: response.output_text.delta
+                - text: ","
+                - code [ref=e679]: response.output_audio.delta
+                - text: ", and"
+                - code [ref=e680]: response.output_audio_transcript.delta
+                - text: .
+              - listitem [ref=e681]:
+                - text: If you are moving a speech-to-speech app forward, start from the
+                - link "Voice agents" [ref=e682] [cursor=pointer]:
+                  - /url: /api/docs/guides/voice-agents
+                - text: guide. If you are moving a transcription workflow forward, use
+                - link "Realtime transcription" [ref=e683] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-transcription
+                - text: .
+            - paragraph [ref=e684]:
+              - text: See the
+              - link "Realtime client events reference" [ref=e685] [cursor=pointer]:
+                - /url: /api/docs/api-reference/realtime_client_events
+              - text: ","
+              - link "Realtime sessions reference" [ref=e686] [cursor=pointer]:
+                - /url: /api/docs/api-reference/realtime-sessions
+              - text: ", and"
+              - link "Voice agents" [ref=e687] [cursor=pointer]:
+                - /url: /api/docs/guides/voice-agents
+              - text: guide for the current GA flow.
+            - heading "Related guides Copy link to related guides" [level=2] [ref=e688]:
+              - generic [ref=e689]: Related guides
+              - button "Copy link to related guides" [ref=e690] [cursor=pointer]:
+                - img [ref=e691]
+            - list [ref=e693]:
+              - listitem [ref=e694]:
+                - link "Realtime prompting guide" [ref=e695] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-models-prompting
+                - text: ": Prompt and tune Realtime voice models."
+              - listitem [ref=e696]:
+                - link "Managing conversations" [ref=e697] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-conversations
+                - text: ": Work with the Realtime session lifecycle."
+              - listitem [ref=e698]:
+                - link "Realtime translation" [ref=e699] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-translation
+                - text: ": Translate live speech with a dedicated translation session."
+              - listitem [ref=e700]:
+                - link "Realtime transcription" [ref=e701] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-transcription
+                - text: ": Stream live transcript deltas from audio."
+              - listitem [ref=e702]:
+                - link "Realtime with tools" [ref=e703] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-mcp
+                - text: ": Connect function tools, MCP servers, and connectors to a Realtime session."
+              - listitem [ref=e704]:
+                - link "Webhooks and server-side controls" [ref=e705] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-server-controls
+                - text: ": Control Realtime sessions from your server."
+              - listitem [ref=e706]:
+                - link "Managing costs" [ref=e707] [cursor=pointer]:
+                  - /url: /api/docs/guides/realtime-costs
+                - text: ": Track and optimize Realtime API usage."
+            - generic [ref=e709]:
+              - img [ref=e711]
+              - paragraph [ref=e717]:
+                - text: Use
+                - link "Audio and speech" [ref=e718] [cursor=pointer]:
+                  - /url: /api/docs/guides/audio
+                - text: for the core concepts behind audio input, audio output, streaming, latency, transcripts, and speech generation. Use this overview when you are ready to choose an implementation path.

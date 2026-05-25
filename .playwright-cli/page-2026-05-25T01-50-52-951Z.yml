@@ -1,0 +1,464 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Jump to Content" [ref=e3] [cursor=pointer]:
+      - /url: ./#content
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Cloud" [ref=e9] [cursor=pointer]:
+          - /url: https://cloud.google.com/
+          - img [ref=e11]
+          - generic [ref=e18]: Cloud
+        - link "Blog" [ref=e21] [cursor=pointer]:
+          - /url: https://cloud.google.com/blog/
+          - generic [ref=e22]: Blog
+      - navigation [ref=e24]:
+        - list [ref=e25]:
+          - listitem [ref=e26]:
+            - generic [ref=e27]:
+              - text: Solutions & technology
+              - img [ref=e28]
+          - listitem [ref=e30]:
+            - generic [ref=e31]:
+              - text: Ecosystem
+              - img [ref=e32]
+          - listitem [ref=e34]:
+            - link "Developers & Practitioners" [ref=e35] [cursor=pointer]:
+              - /url: https://cloud.google.com/blog/topics/developers-practitioners
+              - generic [ref=e36]: Developers & Practitioners
+          - listitem [ref=e37]:
+            - link "Transform with Google Cloud" [ref=e38] [cursor=pointer]:
+              - /url: https://cloud.google.com/transform
+              - generic [ref=e39]: Transform with Google Cloud
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - link "Contact sales" [ref=e42] [cursor=pointer]:
+            - /url: https://cloud.google.com/contact/
+          - link "Get started for free" [ref=e43] [cursor=pointer]:
+            - /url: https://console.cloud.google.com/freetrial/
+        - generic [ref=e45]:
+          - textbox "Find an article..."
+          - button "Show the search input field." [ref=e46] [cursor=pointer]:
+            - img [ref=e47]
+  - article [ref=e52]:
+    - generic [ref=e54]:
+      - generic [ref=e55]: Developers & Practitioners
+      - heading "A developer's guide to Gemini Live API in Vertex AI" [level=1] [ref=e59]:
+        - generic [ref=e60]: A developer's guide to Gemini Live API in Vertex AI
+      - generic [ref=e61]: December 12, 2025
+    - generic [ref=e62]:
+      - list [ref=e66]:
+        - listitem [ref=e67]:
+          - link [ref=e68] [cursor=pointer]:
+            - /url: https://x.com/intent/tweet?text=A%20developer%27s%20guide%20to%20Gemini%20Live%20API%20in%20Vertex%20AI%20@googlecloud&url=https://cloud.google.com/blog/topics/developers-practitioners/how-to-use-gemini-live-api-native-audio-in-vertex-ai
+            - img [ref=e69]
+        - listitem [ref=e71]:
+          - link [ref=e72] [cursor=pointer]:
+            - /url: https://www.linkedin.com/shareArticle?mini=true&url=https://cloud.google.com/blog/topics/developers-practitioners/how-to-use-gemini-live-api-native-audio-in-vertex-ai&title=A%20developer%27s%20guide%20to%20Gemini%20Live%20API%20in%20Vertex%20AI
+            - img [ref=e73]
+        - listitem [ref=e75]:
+          - link [ref=e76] [cursor=pointer]:
+            - /url: https://www.facebook.com/sharer/sharer.php?caption=A%20developer%27s%20guide%20to%20Gemini%20Live%20API%20in%20Vertex%20AI&u=https://cloud.google.com/blog/topics/developers-practitioners/how-to-use-gemini-live-api-native-audio-in-vertex-ai
+            - img [ref=e77]
+        - listitem [ref=e79]:
+          - link [ref=e80] [cursor=pointer]:
+            - /url: mailto:?subject=A%20developer%27s%20guide%20to%20Gemini%20Live%20API%20in%20Vertex%20AI&body=Check%20out%20this%20article%20on%20the%20Cloud%20Blog:%0A%0AA%20developer%27s%20guide%20to%20Gemini%20Live%20API%20in%20Vertex%20AI%0A%0ALearn%20how%20to%20use%20Gemini%20Live%20API%20in%20Vertex%20AI%20to%20enable%20real-time,%20emotionally%20aware,%20and%20multimodal%20conversations%20in%20your%20applications.%0A%0Ahttps://cloud.google.com/blog/topics/developers-practitioners/how-to-use-gemini-live-api-native-audio-in-vertex-ai
+            - img [ref=e81]
+      - generic [ref=e83]:
+        - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/vertex_ai_nGcMhfy.max-2500x2500.jpg" [ref=e89]
+        - generic [ref=e92]:
+          - generic [ref=e94]:
+            - heading "Shubham Saboo" [level=5] [ref=e95]
+            - paragraph [ref=e96]: Senior AI Product Manager, Google Cloud AI
+          - generic [ref=e97]:
+            - heading "Zack Akil" [level=5] [ref=e98]
+            - paragraph [ref=e99]: Developer Relations Engineer
+        - generic [ref=e101]:
+          - generic [ref=e103]:
+            - heading "Try Gemini Enterprise Business Edition today" [level=5] [ref=e104]
+            - paragraph [ref=e105]: The front door to AI in the workplace
+            - link "Try now" [ref=e106] [cursor=pointer]:
+              - /url: https://business.gemini.google/?utm_source=cloud.google.com/blog&utm_medium=et&utm_campaign=FY26-Q2-GLOBAL-GLO27877-physicalevent-er-next26-mc-105752
+          - generic [ref=e107]:
+            - generic [ref=e109]:
+              - paragraph [ref=e110]: Give your AI apps and agents a natural, almost human-like interface, all through a single WebSocket connection.
+              - paragraph [ref=e111]:
+                - text: Today,
+                - link "we announced" [ref=e112] [cursor=pointer]:
+                  - /url: https://cloud.google.com/blog/products/ai-machine-learning/gemini-live-api-available-on-vertex-ai
+                - text: the general availability of Gemini Live API on Vertex AI, which is powered by the latest Gemini 2.5 Flash Native Audio model. This is more than just a model upgrade; it represents a fundamental move away from rigid, multi-stage voice systems towards a single, real-time, emotionally aware, and multimodal conversational architecture.
+              - paragraph [ref=e113]: We’re thrilled to give developers a deep dive into what this means for building the next generation of multimodal AI applications. In this post we'll look at two templates and three reference demos that help you understand how to best use Gemini Live API.
+              - heading "Gemini Live API as your new voice foundation" [level=2] [ref=e114]:
+                - strong [ref=e115]: Gemini Live API as your new voice foundation
+              - paragraph [ref=e116]: For years, building conversational AI involved stitching together a high-latency pipeline of Speech-to-Text (STT), a Large Language Model (LLM), and Text-to-Speech (TTS). This sequential process created the awkward, turn-taking delays that prevented conversations from ever feeling natural.
+              - paragraph [ref=e117]: Gemini Live API fundamentally changes the engineering approach with a unified, low-latency, native audio architecture.
+              - list [ref=e118]:
+                - listitem [ref=e119]:
+                  - strong [ref=e120]: "Native audio processing:"
+                  - text: Gemini 2.5 Flash Native Audio model processes raw audio natively through a single, low-latency model. This unification is the core technical innovation that dramatically reduces latency.
+                - listitem [ref=e121]:
+                  - strong [ref=e122]: "Real-time multimodality:"
+                  - text: The API is designed for unified processing across audio, text, and visual modalities. Your agent can converse about topics informed by live streams of visual data (like charts or live video feeds shared by a user) simultaneously with spoken input.
+              - heading "Next-generation conversation features" [level=2] [ref=e123]
+              - paragraph [ref=e124]: "Gemini Live API gives you a suite of production-ready features that define a new standard for AI agents:"
+              - list [ref=e125]:
+                - listitem [ref=e126]:
+                  - strong [ref=e127]: "Affective dialogue (emotional intelligence):"
+                  - text: By natively processing raw audio, the model can interpret subtle
+                  - strong [ref=e128]: acoustic nuances
+                  - text: like tone, emotion, and pace. This allows the agent to automatically de-escalate stressful support calls or adopt an appropriately empathetic tone.
+                - listitem [ref=e129]:
+                  - strong [ref=e130]: "Proactive audio (smarter barge-in):"
+                  - text: This feature moves beyond simple Voice Activity Detection (VAD). As demonstrated in our live demo, you can configure the agent to intelligently decide when to respond and when to remain a silent co-listener. This prevents unnecessary interruptions when passive listening is required, making the interaction feel truly natural.
+                - listitem [ref=e131]:
+                  - strong [ref=e132]: "Tool use:"
+                  - text: Developers can seamlessly integrate tools like Function Calling and Grounding with Google Search into these real-time conversations, allowing agents to pull real-time world knowledge and execute complex actions immediately based on spoken and visual input.
+                - listitem [ref=e133]:
+                  - strong [ref=e134]: "Continuous memory:"
+                  - text: Agents maintain long, continuous context across all modalities.
+                - listitem [ref=e135]:
+                  - strong [ref=e136]: "Enterprise-grade stability:"
+                  - text: With GA release, you get the high availability required for production workloads, including multi-region support to ensure your agents remain responsive and reliable for users globally.
+            - figure [ref=e140]:
+              - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/traditional_vs_live_api.max-1400x1400.png" [ref=e142] [cursor=pointer]
+            - generic [ref=e144]:
+              - 'heading "Developer quickstart: Getting started" [level=2] [ref=e145]':
+                - strong [ref=e146]: "Developer quickstart: Getting started"
+              - paragraph [ref=e147]: For developers, the quickest way to experience the power of low-latency, real-time audio is to understand the flow of data. Unlike REST APIs where you make a request and wait, Gemini Live API requires managing a bi-directional stream.
+              - heading "Gemini Live API flow" [level=3] [ref=e148]:
+                - strong [ref=e149]: Gemini Live API flow
+              - paragraph [ref=e150]: "Before diving into code, it is critical to visualize the production architecture. While a direct connection is possible for prototyping, most enterprise applications require a secure, proxied flow: User-facing App -> Your Backend Server -> Gemini Live API (Google Backend)."
+              - paragraph [ref=e151]: In this architecture, your frontend captures media (microphone/camera) and streams it to your secure backend, which then manages the persistent WebSocket connection to Gemini Live API in Vertex AI. This ensures sensitive credentials never leave your server and allows you to inject business logic, persist conversation state, or manage access control before data flows to Google.
+            - figure [ref=e155]:
+              - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/gemini_live_api_flow.max-2200x2200.png" [ref=e157] [cursor=pointer]
+            - generic [ref=e159]:
+              - paragraph [ref=e160]:
+                - text: To help you get started, we have released
+                - strong [ref=e161]: two distinct Quickstart templates
+                - text: "- one for understanding the raw protocol, and one for modern component-based development."
+              - 'heading "Option A: Vanilla JS Template (zero dependency)" [level=3] [ref=e162]':
+                - strong [ref=e163]: "Option A:"
+                - link "Vanilla JS Template (zero dependency)" [ref=e164] [cursor=pointer]:
+                  - /url: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/multimodal-live-api/native-audio-websocket-demo-apps/plain-js-demo-app
+                  - strong [ref=e165]: Vanilla JS Template (zero dependency)
+              - paragraph [ref=e166]: "Best for: Understanding the raw WebSocket implementation and media handling without framework overhead."
+              - paragraph [ref=e167]: This template handles the WebSocket handshakes and media streaming, giving you a clean slate to build your logic.
+              - paragraph [ref=e168]:
+                - strong [ref=e169]: "Project Structure:"
+            - generic [ref=e171]:
+              - generic [ref=e172]:
+                - img [ref=e174] [cursor=pointer]
+                - generic [ref=e177]:
+                  - generic: Loading...
+              - paragraph
+            - paragraph [ref=e209]:
+              - strong [ref=e210]: "Core implementation:"
+              - text: You interact with the gemini-live-2.5-flash-native-audio model via a stateful WebSocket connection.
+            - generic [ref=e212]:
+              - generic [ref=e213]:
+                - img [ref=e215] [cursor=pointer]
+                - generic [ref=e218]:
+                  - generic: Loading...
+              - paragraph
+            - paragraph [ref=e250]:
+              - strong [ref=e251]: "Running the Vanilla JS Demo:"
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - img [ref=e256] [cursor=pointer]
+                - generic [ref=e259]:
+                  - generic: Loading...
+              - paragraph
+            - generic [ref=e290]:
+              - paragraph [ref=e291]:
+                - text: Follow along the step-by-step video
+                - link "walkthrough" [ref=e292] [cursor=pointer]:
+                  - /url: https://www.youtube.com/watch?v=RLM1Qsp64WU
+                - text: .
+              - paragraph [ref=e293]:
+                - strong [ref=e294]: "Pro-tip: Debugging raw audio"
+                - text: Working with raw PCM audio streams can be tricky. If you need to verify your audio chunks or test Base64 strings, we’ve included a
+                - link "PCM Audio Debugger" [ref=e295] [cursor=pointer]:
+                  - /url: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/multimodal-live-api/pcm-audio-debugger
+                  - strong [ref=e296]: PCM Audio Debugger
+                - text: in the repository.
+              - 'heading "Option B: React demo (modular & modern)" [level=3] [ref=e297]':
+                - strong [ref=e298]: "Option B:"
+                - link "React demo (modular & modern)" [ref=e299] [cursor=pointer]:
+                  - /url: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/multimodal-live-api/native-audio-websocket-demo-apps/react-demo-app
+                  - strong [ref=e300]: React demo (modular & modern)
+              - paragraph [ref=e301]: "Best for: Building scalable, production-ready applications with complex UIs."
+              - paragraph [ref=e302]:
+                - text: If you are building a robust enterprise application, our React starter provides a modular architecture using
+                - strong [ref=e303]: AudioWorklets
+                - text: for high-performance, low-latency audio processing.
+              - paragraph [ref=e304]:
+                - strong [ref=e305]: "Features:"
+              - list [ref=e306]:
+                - listitem [ref=e307]:
+                  - strong [ref=e308]: "Real-time streaming:"
+                  - text: Audio and video streaming to Gemini with React state management.
+                - listitem [ref=e309]:
+                  - strong [ref=e310]: "AudioWorklets:"
+                  - text: Uses capture.worklet.js and playback.worklet.js for dedicated audio processing threads.
+                - listitem [ref=e311]:
+                  - strong [ref=e312]: "Secure proxy:"
+                  - text: Python backend handles Google Cloud authentication.
+              - paragraph [ref=e313]:
+                - strong [ref=e314]: "Project structure:"
+            - generic [ref=e316]:
+              - generic [ref=e317]:
+                - img [ref=e319] [cursor=pointer]
+                - generic [ref=e322]:
+                  - generic: Loading...
+              - paragraph
+            - paragraph [ref=e354]:
+              - strong [ref=e355]: "Running the react demo:"
+            - generic [ref=e357]:
+              - generic [ref=e358]:
+                - img [ref=e360] [cursor=pointer]
+                - generic [ref=e363]:
+                  - generic: Loading...
+              - paragraph
+            - generic [ref=e394]:
+              - paragraph [ref=e395]:
+                - text: Follow along the step-by-step video
+                - link "walkthrough" [ref=e396] [cursor=pointer]:
+                  - /url: https://youtu.be/wCrz8tw6xXs?si=qNuEv6eJzkgWsDag
+                - text: .
+              - heading "Partner Integrations" [level=3] [ref=e397]
+              - paragraph [ref=e398]:
+                - text: If you prefer a simpler development process for specific telephony or WebRTC environments, we have third-party partner integrations with
+                - link "Daily" [ref=e399] [cursor=pointer]:
+                  - /url: https://docs.pipecat.ai/server/services/s2s/gemini-live-vertex
+                - text: ","
+                - link "Twilio" [ref=e400] [cursor=pointer]:
+                  - /url: https://www.twilio.com/docs
+                - text: ","
+                - link "LiveKit" [ref=e401] [cursor=pointer]:
+                  - /url: https://docs.livekit.io/agents/models/realtime/plugins/gemini/
+                - text: ", and"
+                - link "Voximplant" [ref=e402] [cursor=pointer]:
+                  - /url: https://voximplant.com/products/gemini-client
+                - text: . These platforms have integrated the Gemini Live API over the WebRTC protocol, allowing you to drop these capabilities directly into your existing voice and video workflows without managing the networking stack yourself .
+              - 'heading "Gemini Live API: Three production-ready demos" [level=2] [ref=e403]':
+                - strong [ref=e404]: "Gemini Live API: Three production-ready demos"
+              - paragraph [ref=e405]: Once you have your foundation set with either template, how do you scale this into a product? We’ve built three demos showcasing the distinct "superpowers" of Gemini Live API.
+              - heading "1. Real-time proactive advisor agent" [level=3] [ref=e406]:
+                - strong [ref=e407]: 1. Real-time proactive advisor agent
+              - paragraph [ref=e408]: The core of building truly natural conversational AI lies in creating a partner, not just a chatbot. This specialized application demonstrates how to build a business advisor that listens to a conversation and provides relevant insights based on a provided knowledge base.
+              - paragraph [ref=e409]:
+                - text: "It showcases two critical capabilities for professional agents:"
+                - strong [ref=e410]: Dynamic Knowledge Injection
+                - text: and
+                - strong [ref=e411]: Dual Interaction Modes
+                - text: .
+              - list [ref=e412]:
+                - listitem [ref=e413]:
+                  - paragraph [ref=e414]:
+                    - strong [ref=e415]: "The Scenario:"
+                    - text: An advisor sits in on a business meeting. It has access to specific injected data (revenue stats, employee counts) that the user defines in the UI.
+                - listitem [ref=e416]:
+                  - paragraph [ref=e417]:
+                    - strong [ref=e418]: "Dual modes:"
+                - list [ref=e419]:
+                  - listitem [ref=e420]:
+                    - paragraph [ref=e421]:
+                      - strong [ref=e422]: "Silent mode:"
+                      - text: The advisor listens and "pushes" visual information via a show_modal tool without speaking. This is perfect for unobtrusive assistance where you want data, not interruption.
+                  - listitem [ref=e423]:
+                    - paragraph [ref=e424]:
+                      - strong [ref=e425]: "Outspoken mode:"
+                      - text: The advisor politely interjects verbally to offer advice, combining audio response with visual data.
+                - listitem [ref=e426]:
+                  - paragraph [ref=e427]:
+                    - strong [ref=e428]: "Barge-in control:"
+                    - text: The demo uses activity_handling configurations to prevent the user from accidentally interrupting the advisor, ensuring complete delivery of complex advice when necessary.
+                - listitem [ref=e429]:
+                  - strong [ref=e430]: "Tool use:"
+                  - text: Uses a custom show_modal tool to display structured information to the user.
+            - figure [ref=e434]:
+              - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/3_dLy041m.max-1300x1300.png" [ref=e436] [cursor=pointer]
+            - generic [ref=e438]:
+              - paragraph [ref=e439]:
+                - text: Check out the full source code for the real-time advisor agent implementation in our
+                - link "GitHub repository" [ref=e440] [cursor=pointer]:
+                  - /url: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/multimodal-live-api/native-audio-websocket-demo-apps/realtime-advisor-demo-app
+                  - strong [ref=e441]: GitHub repository
+                - text: .
+              - heading "2. Multimodal customer support agent" [level=3] [ref=e442]:
+                - strong [ref=e443]: 2. Multimodal customer support agent
+              - paragraph [ref=e444]:
+                - text: Customer support agents must be able to act on what they "see" and "hear." This demo layers
+                - strong [ref=e445]: Contextual Action
+                - text: and
+                - strong [ref=e446]: Affective Dialogue
+                - text: onto the voice stream, creating a support agent that can resolve issues instantly.
+              - paragraph [ref=e447]: "This application simulates a futuristic customer support interaction where the agent can see what you see, understand your tone, and take real actions to resolve your issues instantly. Instead of describing an item for a return, the user simply shows it to the camera. The agent combines this visual input with emotional understanding to drive real actions:"
+              - list [ref=e448]:
+                - listitem [ref=e449]:
+                  - strong [ref=e450]: "Multimodal Understanding:"
+                  - text: The agent visually inspects items shown by the customer (e.g., verifying a product for return) while listening to their request.
+                - listitem [ref=e451]:
+                  - strong [ref=e452]: "Empathetic Response:"
+                  - text: Using affective dialogue, the agent detects the user's emotional state (frustration, confusion) and adjusts its tone to respond with appropriate empathy.
+                - listitem [ref=e453]:
+                  - strong [ref=e454]: "Action Taking and Tool Use:"
+                  - text: It doesn't just chat; it uses custom tools like process_refund (handling transaction IDs) or connect_to_human (transferring complex issues) to actually solve the problem.
+                - listitem [ref=e455]:
+                  - strong [ref=e456]: "Real-time Interaction:"
+                  - text: Low-latency voice interaction using Gemini Live API over WebSockets.
+            - figure [ref=e460]:
+              - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/4_cA7t4cF.max-1400x1400.png" [ref=e462] [cursor=pointer]
+            - generic [ref=e464]:
+              - paragraph [ref=e465]:
+                - text: Check out the full source code for the multi-modal customer support agent implementation in our
+                - link "GitHub repository" [ref=e466] [cursor=pointer]:
+                  - /url: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/multimodal-live-api/native-audio-websocket-demo-apps/customer-support-demo-app
+                  - strong [ref=e467]: GitHub repository
+                - text: .
+              - heading "3. Real-time video game assistant" [level=3] [ref=e468]:
+                - strong [ref=e469]: 3. Real-time video game assistant
+              - paragraph [ref=e470]:
+                - text: Gaming is better with a co-pilot. In this demo, we build a
+                - strong [ref=e471]: Real-Time Gaming Guide
+                - text: that moves beyond simple chat to become a true companion that watches your gameplay and adapts to your style.
+              - paragraph [ref=e472]: "This React application streams both your screen capture and microphone audio to the model simultaneously, allowing the agent to understand the game state instantly. It showcases three advanced capabilities:"
+              - list [ref=e473]:
+                - listitem [ref=e474]:
+                  - strong [ref=e475]: "Multimodal awareness:"
+                  - text: The agent acts as a second pair of eyes, analyzing your screen to spot enemies, loot, or puzzle clues that you might miss.
+                - listitem [ref=e476]:
+                  - strong [ref=e477]: "Persona switching:"
+                  - text: You can dynamically toggle the agent's personality - from a "Wise Wizard" offering cryptic hints to a "SciFi Robot" or "Commander" giving tactical orders. This demonstrates how system instructions can instantly change the voice and style of assistance.
+                - listitem [ref=e478]:
+                  - strong [ref=e479]: "Google Search Grounding:"
+                  - text: The agent pulls real-time information to provide up-to-date walkthroughs and tips, ensuring you never get stuck on a new level.
+            - figure [ref=e483]:
+              - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/5_lOWwLJP.max-1400x1400.png" [ref=e485] [cursor=pointer]
+            - generic [ref=e487]:
+              - paragraph [ref=e488]:
+                - text: Check out the full source code for the real-time video game assistant implementation in our
+                - link "GitHub repository" [ref=e489] [cursor=pointer]:
+                  - /url: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/multimodal-live-api/native-audio-websocket-demo-apps/gaming-assistant-demo-app
+                  - strong [ref=e490]: GitHub repository
+                - text: .
+              - heading "Get started today" [level=2] [ref=e491]:
+                - strong [ref=e492]: Get started today
+              - list [ref=e493]:
+                - listitem [ref=e494]:
+                  - strong [ref=e495]: Try it out today
+                  - text: ": Experiment with Gemini Live API in"
+                  - link "Vertex AI Studio" [ref=e496] [cursor=pointer]:
+                    - /url: https://console.cloud.google.com/vertex-ai/studio/multimodal-live
+                - listitem [ref=e497]:
+                  - strong [ref=e498]: "Start building:"
+                  - text: Access
+                  - link "Gemini Live API on Vertex AI" [ref=e499] [cursor=pointer]:
+                    - /url: https://docs.cloud.google.com/vertex-ai/generative-ai/docs/live-api
+                  - text: today and move beyond chatbots to create truly intelligent, responsive, and empathetic user experiences.
+                - listitem [ref=e500]:
+                  - strong [ref=e501]: "Get the code:"
+                  - text: All demos and quickstarts are available in our official
+                  - link "GitHub repository" [ref=e502] [cursor=pointer]:
+                    - /url: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/multimodal-live-api
+                  - text: .
+            - generic [ref=e504]:
+              - generic [ref=e505]: Posted in
+              - list [ref=e506]:
+                - listitem [ref=e507]:
+                  - link "Developers & Practitioners" [ref=e508] [cursor=pointer]:
+                    - /url: https://cloud.google.com/blog/topics/developers-practitioners
+                  - text: —
+                - listitem [ref=e509]:
+                  - link "AI & Machine Learning" [ref=e510] [cursor=pointer]:
+                    - /url: https://cloud.google.com/blog/products/ai-machine-learning
+    - generic [ref=e512]:
+      - heading "Related articles" [level=5] [ref=e513]
+      - generic [ref=e514]:
+        - link "https://storage.googleapis.com/gweb-cloudblog-publish/images/03_-_Application_Development_SWHuGHU.max-700x700.jpg Application Development Shipping features to production just got easier with new feature flags in AppLifecycle Manager By Erol-Valeriu Chioasca • 3-minute read" [ref=e517] [cursor=pointer]:
+          - /url: https://cloud.google.com/blog/products/application-development/new-feature-flags-in-applifecycle-manager
+          - generic [ref=e518]:
+            - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/03_-_Application_Development_SWHuGHU.max-700x700.jpg" [ref=e521]
+            - generic [ref=e522]:
+              - generic [ref=e523]: Application Development
+              - heading "Shipping features to production just got easier with new feature flags in AppLifecycle Manager" [level=3] [ref=e524]
+              - paragraph [ref=e525]: By Erol-Valeriu Chioasca • 3-minute read
+        - link "https://storage.googleapis.com/gweb-cloudblog-publish/images/hero_image_aJLug1s.max-700x700.jpg Developers & Practitioners Securing Your Gemini and Google API Keys By Leonid Yankulin • 9-minute read" [ref=e528] [cursor=pointer]:
+          - /url: https://cloud.google.com/blog/topics/developers-practitioners/api-keys-are-open-secrets
+          - generic [ref=e529]:
+            - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/hero_image_aJLug1s.max-700x700.jpg" [ref=e532]
+            - generic [ref=e533]:
+              - generic [ref=e534]: Developers & Practitioners
+              - heading "Securing Your Gemini and Google API Keys" [level=3] [ref=e535]
+              - paragraph [ref=e536]: By Leonid Yankulin • 9-minute read
+        - link "https://storage.googleapis.com/gweb-cloudblog-publish/images/11_-_Developers__Practitioners_a4Y5EGr.max-700x700.jpg Developers & Practitioners What Google I/O '26 means for developing agents on Google Cloud By Addy Osmani • 9-minute read" [ref=e539] [cursor=pointer]:
+          - /url: https://cloud.google.com/blog/topics/developers-practitioners/io26-news-for-agent-developers-on-google-cloud
+          - generic [ref=e540]:
+            - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/11_-_Developers__Practitioners_a4Y5EGr.max-700x700.jpg" [ref=e543]
+            - generic [ref=e544]:
+              - generic [ref=e545]: Developers & Practitioners
+              - heading "What Google I/O '26 means for developing agents on Google Cloud" [level=3] [ref=e546]
+              - paragraph [ref=e547]: By Addy Osmani • 9-minute read
+        - 'link "https://storage.googleapis.com/gweb-cloudblog-publish/images/Landscape_16x9_rxRY4RH.max-700x700.png Developers & Practitioners Gemini Live Agent Challenge: Announcing the winners and highlights By Dilasha Panigrahi • 6-minute read" [ref=e550] [cursor=pointer]':
+          - /url: https://cloud.google.com/blog/topics/developers-practitioners/winners-and-highlights-of-the-gemini-live-agent-challenge
+          - generic [ref=e551]:
+            - img "https://storage.googleapis.com/gweb-cloudblog-publish/images/Landscape_16x9_rxRY4RH.max-700x700.png" [ref=e554]
+            - generic [ref=e555]:
+              - generic [ref=e556]: Developers & Practitioners
+              - 'heading "Gemini Live Agent Challenge: Announcing the winners and highlights" [level=3] [ref=e557]'
+              - paragraph [ref=e558]: By Dilasha Panigrahi • 6-minute read
+  - contentinfo [ref=e559]:
+    - contentinfo [ref=e560]:
+      - heading "Footer Links" [level=3] [ref=e561]
+      - generic [ref=e564]:
+        - heading "Follow us" [level=4] [ref=e565]
+        - list [ref=e566]:
+          - listitem [ref=e567]:
+            - link [ref=e568] [cursor=pointer]:
+              - /url: https://www.x.com/googlecloud
+              - img [ref=e569]
+          - listitem [ref=e571]:
+            - link [ref=e572] [cursor=pointer]:
+              - /url: https://www.youtube.com/googlecloud
+              - img [ref=e573]
+          - listitem [ref=e575]:
+            - link [ref=e576] [cursor=pointer]:
+              - /url: https://www.linkedin.com/showcase/google-cloud
+              - img [ref=e577]
+          - listitem [ref=e579]:
+            - link [ref=e580] [cursor=pointer]:
+              - /url: https://www.instagram.com/googlecloud/
+              - img [ref=e581]
+          - listitem [ref=e583]:
+            - link [ref=e584] [cursor=pointer]:
+              - /url: https://www.facebook.com/googlecloud/
+              - img [ref=e585]
+      - generic [ref=e587]:
+        - link "Cloud logo" [ref=e589] [cursor=pointer]:
+          - /url: https://cloud.google.com/
+          - img "Cloud logo" [ref=e590]
+        - list [ref=e591]:
+          - listitem [ref=e592]:
+            - link "Google Cloud" [ref=e593] [cursor=pointer]:
+              - /url: https://cloud.google.com/
+          - listitem [ref=e594]:
+            - link "Google Cloud Products" [ref=e595] [cursor=pointer]:
+              - /url: https://cloud.google.com/products/
+          - listitem [ref=e596]:
+            - link "Privacy" [ref=e597] [cursor=pointer]:
+              - /url: https://myaccount.google.com/privacypolicy?hl=en-US
+          - listitem [ref=e598]:
+            - link "Terms" [ref=e599] [cursor=pointer]:
+              - /url: https://myaccount.google.com/termsofservice?hl=en-US
+        - list [ref=e600]:
+          - listitem [ref=e601]:
+            - link "Help" [ref=e602] [cursor=pointer]:
+              - /url: https://support.google.com
+              - img [ref=e603]
+              - text: Help
+          - listitem [ref=e605]:
+            - combobox "Change language" [ref=e606]:
+              - option "‪English‬" [selected]
+              - option "‪Deutsch‬"
+              - option "‪Français‬"
+              - option "‪한국어‬"
+              - option "‪日本語‬"

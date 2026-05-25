@@ -1,0 +1,940 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Softcery" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Softcery" [ref=e5]
+      - navigation [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "Cases" [ref=e10] [cursor=pointer]:
+              - /url: /cases
+          - listitem [ref=e11]:
+            - link "Solutions" [ref=e12] [cursor=pointer]:
+              - /url: "#solutions"
+              - text: Solutions
+              - img [ref=e13]
+          - listitem [ref=e15]:
+            - link "Resources" [ref=e16] [cursor=pointer]:
+              - /url: "#resources"
+              - text: Resources
+              - img [ref=e17]
+          - listitem [ref=e19]:
+            - link "Platform" [ref=e20] [cursor=pointer]:
+              - /url: /platform
+          - listitem [ref=e21]:
+            - link "Knowledge Base" [ref=e22] [cursor=pointer]:
+              - /url: /lab
+      - link "Schedule a call" [ref=e24] [cursor=pointer]:
+        - /url: https://calendar.app.google/KZFSjT8pwyYvdNmSA
+  - main [ref=e25]:
+    - article [ref=e26]:
+      - generic [ref=e28]:
+        - 'heading "Choosing an LLM for Voice Agents: Speed, Accuracy, Cost" [level=1] [ref=e29]'
+        - generic [ref=e31]:
+          - img [ref=e32]
+          - paragraph [ref=e34]: Last updated on April 24, 2026
+      - generic [ref=e36]:
+        - button "Table of Contents" [ref=e38]:
+          - generic [ref=e39]: Table of Contents
+          - img [ref=e40]
+        - button "Ask Softcery AI" [ref=e43]:
+          - generic [ref=e44]: Ask Softcery AI
+          - img [ref=e45]
+        - generic [ref=e47]:
+          - paragraph [ref=e48]:
+            - text: With a growing number of LLMs available – ranging from proprietary models like
+            - link "OpenAI’s GPT-5.4" [ref=e49] [cursor=pointer]:
+              - /url: https://developers.openai.com/
+            - text: and
+            - link "Anthropic Claude Sonnet 4.6" [ref=e50] [cursor=pointer]:
+              - /url: https://www.anthropic.com/
+            - text: to open-weight alternatives such as
+            - link "Meta’s Llama 4 Maverick" [ref=e51] [cursor=pointer]:
+              - /url: https://www.llama.com/
+            - text: ","
+            - link "DeepSeek V4-Flash" [ref=e52] [cursor=pointer]:
+              - /url: https://api-docs.deepseek.com/
+            - text: ", and"
+            - link "GLM-4.6" [ref=e53] [cursor=pointer]:
+              - /url: https://z.ai/
+            - text: – businesses must carefully evaluate their options. Factors like response latency, throughput, cost per token, hosting flexibility, prompt caching support, and reasoning-mode tradeoffs all play a crucial role in determining the best-fit model for a given voice use case.
+          - heading "Copy link to section What Are Large Language Models (LLMs), and Why Are They Important for Voice AI?" [level=2] [ref=e54]:
+            - generic "Copy link to section" [ref=e55] [cursor=pointer]:
+              - img [ref=e56]
+            - strong [ref=e58]: What Are Large Language Models (LLMs), and Why Are They Important for Voice AI?
+          - paragraph [ref=e59]:
+            - link "Large Language Models (LLMs)" [ref=e60] [cursor=pointer]:
+              - /url: https://www.ibm.com/think/topics/large-language-models
+            - text: are advanced neural networks trained on massive amounts of text data, enabling them to process, understand, and generate human-like responses in natural language. These models leverage deep learning architectures, such as transformers, to predict text based on input prompts, making them incredibly versatile for various AI-driven applications.
+          - paragraph [ref=e61]: "In the context of voice AI, LLMs play a fundamental role in ensuring smooth, intelligent, and context-aware conversations. Unlike traditional voice assistants that rely on predefined scripts or rigid rule-based systems, LLM-powered AI voice agents can:"
+          - list [ref=e62]:
+            - listitem [ref=e63]: Comprehend context and intent;
+            - listitem [ref=e64]: Generate human-like responses;
+            - listitem [ref=e65]: Follow complex instructions;
+            - listitem [ref=e66]: Handle dynamic, real-time interactions;
+            - listitem [ref=e67]: Support multilingual communication.
+          - heading "Copy link to section Why Are LLMs Critical for Voice AI?" [level=3] [ref=e68]:
+            - generic "Copy link to section" [ref=e69] [cursor=pointer]:
+              - img [ref=e70]
+            - strong [ref=e72]: Why Are LLMs Critical for Voice AI?
+          - paragraph [ref=e73]:
+            - text: AI voice agents must process and generate responses within milliseconds to maintain a seamless real-time conversation.
+            - link "TTFT (Time to First Token)" [ref=e74] [cursor=pointer]:
+              - /url: https://rumn.medium.com/benchmarking-llm-performance-token-per-second-tps-time-to-first-token-ttft-and-gpu-usage-8c50ee8387fa
+              - strong [ref=e75]: TTFT (Time to First Token)
+            - text: measures how long it takes for an AI model to generate the first symbol of its response after receiving a query.
+            - link "MMLU (Massive Multitask Language Understanding)" [ref=e76] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2009.03300
+              - strong [ref=e77]: MMLU (Massive Multitask Language Understanding)
+            - text: is a benchmark that evaluates an AI model’s ability to understand and answer complex questions across multiple subjects, including math, law, medicine, and general knowledge.
+          - paragraph [ref=e78]: "The choice of LLM directly impacts:"
+          - list [ref=e79]:
+            - listitem [ref=e80]:
+              - strong [ref=e81]: Response speed (latency)
+              - text: – Faster models like
+              - link "Grok 4.1 Fast" [ref=e82] [cursor=pointer]:
+                - /url: https://docs.x.ai/
+              - text: (0.59s TTFT) and
+              - link "Claude Haiku 4.5" [ref=e83] [cursor=pointer]:
+                - /url: https://www.anthropic.com/
+              - text: (0.70s TTFT) allow near-instant interactions. Reasoning (“thinking”) modes on flagship models add 8–200 seconds and are voice-unviable.
+            - listitem [ref=e84]:
+              - strong [ref=e85]: Accuracy and coherence
+              - text: – A high MMLU-Pro score (e.g., ~86% for
+              - link "Claude Sonnet 4.6" [ref=e86] [cursor=pointer]:
+                - /url: https://www.anthropic.com/
+              - text: ) ensures the model can handle complex queries with logical consistency.
+            - listitem [ref=e87]:
+              - strong [ref=e88]: Cost-effectiveness
+              - text: – Businesses processing millions of voice interactions monthly benefit from cost-efficient models like
+              - link "Grok 4.1 Fast" [ref=e89] [cursor=pointer]:
+                - /url: https://docs.x.ai/
+              - text: ($0.20 input / $0.50 output per 1M tokens) and
+              - link "Gemini 3.1 Flash-Lite" [ref=e90] [cursor=pointer]:
+                - /url: https://ai.google.dev/
+              - text: ($0.25 / $1.50) vs.
+              - link "Claude Sonnet 4.6" [ref=e91] [cursor=pointer]:
+                - /url: https://www.anthropic.com/
+              - text: ($3.00 / $15.00). Prompt caching cuts repeated system-prompt cost to ~10% of base across major providers.
+          - paragraph [ref=e92]: Now that we’ve covered the role of LLMs, let’s put it into context.
+          - heading "Copy link to section Key Challenges in Selecting an LLM for AI Voice Agents and Their Business Impact" [level=2] [ref=e93]:
+            - generic "Copy link to section" [ref=e94] [cursor=pointer]:
+              - img [ref=e95]
+            - strong [ref=e97]: Key Challenges in Selecting an LLM for AI Voice Agents and Their Business Impact
+          - paragraph [ref=e98]: Choosing the right large language model (LLM) for an AI voice agent is a strategic decision that directly affects customer experience, operational costs, and scalability. Unlike traditional chatbots, voice agents require real-time processing, seamless dialogue management, and accurate responses, making the selection process complex. Below, we explore the most critical challenges and their direct impact on business operations.
+          - 'heading "Copy link to section Demystifying LLM Selection: The Key Metrics That Matter" [level=3] [ref=e99]':
+            - generic "Copy link to section" [ref=e100] [cursor=pointer]:
+              - img [ref=e101]
+            - strong [ref=e103]: "Demystifying LLM Selection: The Key Metrics That Matter"
+          - heading "Latency & Performance Metrics" [level=4] [ref=e104]:
+            - strong [ref=e105]: Latency & Performance Metrics
+          - paragraph [ref=e106]:
+            - text: "For voice assistants, responsiveness is critical. Latency directly affects the conversational flow: a slow response can feel unnatural or frustrating to users. We focus on"
+            - link "Time to First Token (TTFT)" [ref=e107] [cursor=pointer]:
+              - /url: https://www.researchgate.net/figure/Time-to-first-token-TTFT-top-and-time-per-output-token-TPOT-bottom-for-input_fig1_384699090
+            - text: and
+            - link "Tokens per Second (TPS)" [ref=e108] [cursor=pointer]:
+              - /url: https://blog.ueex.com/crypto-terms/tokens-per-second-tps/
+            - text: (generation throughput). All the models support streaming output, meaning they can start speaking before the full answer is generated, which is essential for real-time voice.
+          - paragraph [ref=e109]:
+            - strong [ref=e110]: "Critical voice constraint:"
+            - text: every flagship model in 2026 ships with a “reasoning” or “thinking” toggle. Reasoning mode produces better answers but TTFT climbs from the ~0.6–2 second range (non-reasoning / minimal effort) to roughly 8–200 seconds, which makes it unusable for real-time voice turns. The table below uses non-reasoning (or minimal-effort) variants where applicable. Latency benchmarks come from
+            - link "Artificial Analysis" [ref=e111] [cursor=pointer]:
+              - /url: https://artificialanalysis.ai/leaderboards/models
+            - text: measurements as of April 2026.
+          - table [ref=e112]:
+            - rowgroup [ref=e113]:
+              - row "Model TTFT (seconds) Throughput (TPS) Notes on Real-Time Behavior" [ref=e114]:
+                - columnheader "Model" [ref=e115]
+                - columnheader "TTFT (seconds)" [ref=e116]
+                - columnheader "Throughput (TPS)" [ref=e117]
+                - columnheader "Notes on Real-Time Behavior" [ref=e118]
+            - rowgroup [ref=e119]:
+              - row "Grok 4.1 Fast (non-reasoning) 0.59 135 Best-price 2M-context model; TTFT under most flagships at fraction of cost." [ref=e120]:
+                - cell "Grok 4.1 Fast (non-reasoning)" [ref=e121]
+                - cell "0.59" [ref=e122]
+                - cell "135" [ref=e123]
+                - cell "Best-price 2M-context model; TTFT under most flagships at fraction of cost." [ref=e124]
+              - row "GPT-5.4 nano (minimal effort) ~1.14 146 Cheapest OpenAI; minimal reasoning effort for voice; medium effort TTFT climbs to ~3.13s." [ref=e125]:
+                - cell "GPT-5.4 nano (minimal effort)" [ref=e126]
+                - cell "~1.14" [ref=e127]
+                - cell "146" [ref=e128]
+                - cell "Cheapest OpenAI; minimal reasoning effort for voice; medium effort TTFT climbs to ~3.13s." [ref=e129]
+              - row "Claude Haiku 4.5 0.70 97 Released October 15, 2025; balances latency and quality at $1/$5 per 1M." [ref=e130]:
+                - cell "Claude Haiku 4.5" [ref=e131]
+                - cell "0.70" [ref=e132]
+                - cell "97" [ref=e133]
+                - cell "Released October 15, 2025; balances latency and quality at $1/$5 per 1M." [ref=e134]
+              - row "Kimi K2.6 1.04 (0.72 on Fireworks) — Strong agentic / function calling; intelligence above K2 0905 generation." [ref=e135]:
+                - cell "Kimi K2.6" [ref=e136]
+                - cell "1.04 (0.72 on Fireworks)" [ref=e137]
+                - cell "—" [ref=e138]
+                - cell "Strong agentic / function calling; intelligence above K2 0905 generation." [ref=e139]
+              - row "Claude Sonnet 4.6 (non-reasoning) 1.36 43 High accuracy when reasoning toggle is off; reasoning variant TTFT ~135s (voice-unsuitable)." [ref=e140]:
+                - cell "Claude Sonnet 4.6 (non-reasoning)" [ref=e141]
+                - cell "1.36" [ref=e142]
+                - cell "43" [ref=e143]
+                - cell "High accuracy when reasoning toggle is off; reasoning variant TTFT ~135s (voice-unsuitable)." [ref=e144]
+              - row "Gemini 3 Flash Preview (non-reasoning) ~1.35 161 High intelligence; non-reasoning mode suitable for voice." [ref=e145]:
+                - cell "Gemini 3 Flash Preview (non-reasoning)" [ref=e146]
+                - cell "~1.35" [ref=e147]
+                - cell "161" [ref=e148]
+                - cell "High intelligence; non-reasoning mode suitable for voice." [ref=e149]
+              - row "DeepSeek V4-Flash (non-reasoning) ~2.0 27–33 (197 on Vertex) Replaces V3.2-Exp as deepseek-chat default; cheap chat-optimized variant." [ref=e150]:
+                - cell "DeepSeek V4-Flash (non-reasoning)" [ref=e151]
+                - cell "~2.0" [ref=e152]
+                - cell "27–33 (197 on Vertex)" [ref=e153]
+                - cell "Replaces V3.2-Exp as deepseek-chat default; cheap chat-optimized variant." [ref=e154]:
+                  - text: Replaces V3.2-Exp as
+                  - code [ref=e155]: deepseek-chat
+                  - text: default; cheap chat-optimized variant.
+              - row "Llama 4 Maverick (Fireworks/Groq) 0.4–0.5 high high Open-weight; Groq deprecated March 9, 2026, but Fireworks/Together still serve." [ref=e156]:
+                - cell "Llama 4 Maverick (Fireworks/Groq)" [ref=e157]
+                - cell "0.4–0.5 high" [ref=e158]
+                - cell "high" [ref=e159]
+                - cell "Open-weight; Groq deprecated March 9, 2026, but Fireworks/Together still serve." [ref=e160]
+              - row "Gemini 3.1 Flash-Lite Preview ~5.2 (AA) 314 Highest TPS in class; cheapest Tier-1 model; implicit caching free." [ref=e161]:
+                - cell "Gemini 3.1 Flash-Lite Preview" [ref=e162]
+                - cell "~5.2 (AA)" [ref=e163]
+                - cell "314" [ref=e164]
+                - cell "Highest TPS in class; cheapest Tier-1 model; implicit caching free." [ref=e165]
+              - row "GPT-5.4 mini (minimal effort) varies 163 Mid-tier OpenAI; minimal reasoning effort for voice; medium effort TTFT ~8.24s." [ref=e166]:
+                - cell "GPT-5.4 mini (minimal effort)" [ref=e167]
+                - cell "varies" [ref=e168]
+                - cell "163" [ref=e169]
+                - cell "Mid-tier OpenAI; minimal reasoning effort for voice; medium effort TTFT ~8.24s." [ref=e170]
+              - row "GPT-5.4 (minimal effort) ~1.1 77 Flagship; minimal effort suitable for voice; high effort reaches ~166s and is offline-only." [ref=e171]:
+                - cell "GPT-5.4 (minimal effort)" [ref=e172]
+                - cell "~1.1" [ref=e173]
+                - cell "77" [ref=e174]
+                - cell "Flagship; minimal effort suitable for voice; high effort reaches ~166s and is offline-only." [ref=e175]
+          - heading "Business Impact of Latency" [level=4] [ref=e176]:
+            - strong [ref=e177]: Business Impact of Latency
+          - paragraph [ref=e178]:
+            - text: In real-world deployments, lower latency has direct benefits for user engagement and efficiency. Users are more likely to continue interacting when responses are prompt - a delay beyond about one second can start to feel awkward, and indeed studies show that delays over 1 second can frustrate users in voice interactions. Especially in customer-facing scenarios (e.g. a support hotline), shaving even a second off response times can yield measurable improvements in satisfaction. For instance, McKinsey industry
+            - link "report" [ref=e179] [cursor=pointer]:
+              - /url: https://www.mckinsey.com/capabilities/operations/our-insights/smart-scheduling-how-to-solve-workforce-planning-challenges-with-ai
+            - text: found that a one-minute increase in average call handle time leads to a 10% drop in customer satisfaction scores.
+          - paragraph [ref=e180]: "While our focus is on seconds or fractions of a second per response, it all adds up: when AI agents respond in seconds or fractions of a second, they resolve queries faster, which shortens call times and reduces customer wait times. Faster responses also lower operating costs: if an AI agent works 10–20% faster due to low latency, it can handle more calls or free up human agents sooner, improving overall contact center efficiency."
+          - heading "Copy link to section Accuracy & Coherence Metrics" [level=3] [ref=e181]:
+            - generic "Copy link to section" [ref=e182] [cursor=pointer]:
+              - img [ref=e183]
+            - strong [ref=e185]: Accuracy & Coherence Metrics
+          - paragraph [ref=e186]: "Accuracy evaluation for voice-agent use cases relies on a mix of general-reasoning benchmarks and agentic / tool-use benchmarks. The most relevant in April 2026:"
+          - list [ref=e187]:
+            - listitem [ref=e188]:
+              - strong [ref=e189]: MMLU-Pro
+              - text: evaluates the model on a harder, more discriminating expansion of the original MMLU 57-subject test. Higher MMLU-Pro (%) means stronger broad world knowledge.
+            - listitem [ref=e190]:
+              - link "GPQA (Graduate-Level Google-Proof Q&A)" [ref=e191] [cursor=pointer]:
+                - /url: https://arxiv.org/abs/2311.12022
+                - strong [ref=e192]: GPQA (Graduate-Level Google-Proof Q&A)
+              - text: presents extremely challenging questions (often college or grad-level problems in sciences) that aren’t easily solved by memorization or a quick web search.
+            - listitem [ref=e193]:
+              - strong [ref=e194]: BFCL v3
+              - text: (
+              - link "Berkeley Function Calling Leaderboard" [ref=e195] [cursor=pointer]:
+                - /url: https://gorilla.cs.berkeley.edu/leaderboard.html
+              - text: ) measures real-world function-calling reliability – directly relevant for voice agents that book appointments, query CRMs, or trigger workflows.
+            - listitem [ref=e196]:
+              - strong [ref=e197]: τ-bench / τ²-bench / τ³-bench
+              - text: (
+              - link "Sierra benchmarks" [ref=e198] [cursor=pointer]:
+                - /url: https://sierra.ai/blog/bench-advancing-agent-benchmarking-to-knowledge-and-voice
+              - text: ) measure tool-agent-user interaction quality. The 2026 update added voice full-duplex support (τ-Voice), making it a natural fit for voice agent selection.
+            - listitem [ref=e199]:
+              - strong [ref=e200]: VoiceAgentBench
+              - text: (
+              - link "arXiv 2510.07978" [ref=e201] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2510.07978v1
+              - text: ) is a voice-native evaluation suite that emerged in 2026 specifically for voice agent reasoning and tool use.
+          - table [ref=e202]:
+            - rowgroup [ref=e203]:
+              - row "Model MMLU-Pro (%) / Intelligence GPQA (%) BFCL v3 / Notes" [ref=e204]:
+                - columnheader "Model" [ref=e205]
+                - columnheader "MMLU-Pro (%) / Intelligence" [ref=e206]
+                - columnheader "GPQA (%)" [ref=e207]
+                - columnheader "BFCL v3 / Notes" [ref=e208]
+            - rowgroup [ref=e209]:
+              - row "Claude Sonnet 4.6 ~86 (MMLU-Pro) high Strong instruction following; SWE-bench 79.6%; excellent for complex AI agents." [ref=e210]:
+                - cell "Claude Sonnet 4.6" [ref=e211]
+                - cell "~86 (MMLU-Pro)" [ref=e212]
+                - cell "high" [ref=e213]
+                - cell "Strong instruction following; SWE-bench 79.6%; excellent for complex AI agents." [ref=e214]
+              - row "GPT-5.4 (flagship) Intelligence Index 64+ 84 MMLU-Pro 83.1%; flagship reasoning; reserve for non-voice agent steps." [ref=e215]:
+                - cell "GPT-5.4 (flagship)" [ref=e216]
+                - cell "Intelligence Index 64+" [ref=e217]
+                - cell "84" [ref=e218]
+                - cell "MMLU-Pro 83.1%; flagship reasoning; reserve for non-voice agent steps." [ref=e219]
+              - row "Gemini 3 Flash Intelligence Index 46 high Strong reasoning; voice-suitable in non-reasoning mode only." [ref=e220]:
+                - cell "Gemini 3 Flash" [ref=e221]
+                - cell "Intelligence Index 46" [ref=e222]
+                - cell "high" [ref=e223]
+                - cell "Strong reasoning; voice-suitable in non-reasoning mode only." [ref=e224]
+              - row "Kimi K2.6 above K2.5 high Strong agentic capabilities; open-weight; good function calling." [ref=e225]:
+                - cell "Kimi K2.6" [ref=e226]
+                - cell "above K2.5" [ref=e227]
+                - cell "high" [ref=e228]
+                - cell "Strong agentic capabilities; open-weight; good function calling." [ref=e229]
+              - row "Claude Haiku 4.5 Intelligence Index 31 medium Released October 15, 2025; high-volume production sweet spot." [ref=e230]:
+                - cell "Claude Haiku 4.5" [ref=e231]
+                - cell "Intelligence Index 31" [ref=e232]
+                - cell "medium" [ref=e233]
+                - cell "Released October 15, 2025; high-volume production sweet spot." [ref=e234]
+              - row "Gemini 3.1 Flash-Lite Intelligence Index 34 medium Cheapest Tier-1; excellent for high-volume voice routing." [ref=e235]:
+                - cell "Gemini 3.1 Flash-Lite" [ref=e236]
+                - cell "Intelligence Index 34" [ref=e237]
+                - cell "medium" [ref=e238]
+                - cell "Cheapest Tier-1; excellent for high-volume voice routing." [ref=e239]
+              - row "GPT-5.4 mini Intelligence Index 49 medium-high Cost-effective; non-reasoning mode for voice." [ref=e240]:
+                - cell "GPT-5.4 mini" [ref=e241]
+                - cell "Intelligence Index 49" [ref=e242]
+                - cell "medium-high" [ref=e243]
+                - cell "Cost-effective; non-reasoning mode for voice." [ref=e244]
+              - row "GPT-5.4 nano Intelligence Index 24 low-medium Cheapest OpenAI; sub-agent / classification ideal." [ref=e245]:
+                - cell "GPT-5.4 nano" [ref=e246]
+                - cell "Intelligence Index 24" [ref=e247]
+                - cell "low-medium" [ref=e248]
+                - cell "Cheapest OpenAI; sub-agent / classification ideal." [ref=e249]
+              - row "DeepSeek V4-Flash (non-reasoning) competitive medium Very low cost; chat-tuned; cache-hit pricing $0.028/1M." [ref=e250]:
+                - cell "DeepSeek V4-Flash (non-reasoning)" [ref=e251]
+                - cell "competitive" [ref=e252]
+                - cell "medium" [ref=e253]
+                - cell "Very low cost; chat-tuned; cache-hit pricing $0.028/1M." [ref=e254]
+              - row "Grok 4.1 Fast strong for tier medium 2M context at $0.20/$0.50; best-price large context." [ref=e255]:
+                - cell "Grok 4.1 Fast" [ref=e256]
+                - cell "strong for tier" [ref=e257]
+                - cell "medium" [ref=e258]
+                - cell "2M context at $0.20/$0.50; best-price large context." [ref=e259]
+              - row "Llama 4 Maverick behind frontier medium Open-weight; suitable for self-hosted voice at scale." [ref=e260]:
+                - cell "Llama 4 Maverick" [ref=e261]
+                - cell "behind frontier" [ref=e262]
+                - cell "medium" [ref=e263]
+                - cell "Open-weight; suitable for self-hosted voice at scale." [ref=e264]
+              - row "GLM-4.6 / GLM-5 Quality Index 49.64 (open SOTA) high z.AI open-weight; backbone for Ultravox v0.7; comparable to Claude Opus 4.6." [ref=e265]:
+                - cell "GLM-4.6 / GLM-5" [ref=e266]
+                - cell "Quality Index 49.64 (open SOTA)" [ref=e267]
+                - cell "high" [ref=e268]
+                - cell "z.AI open-weight; backbone for Ultravox v0.7; comparable to Claude Opus 4.6." [ref=e269]
+          - paragraph [ref=e270]:
+            - text: The most reliable models for accuracy-first voice deployments –
+            - link "Claude Sonnet 4.6" [ref=e271] [cursor=pointer]:
+              - /url: https://www.anthropic.com/
+            - text: ","
+            - link "GPT-5.4" [ref=e272] [cursor=pointer]:
+              - /url: https://developers.openai.com/
+            - text: ", and"
+            - link "Gemini 3 Flash" [ref=e273] [cursor=pointer]:
+              - /url: https://ai.google.dev/
+            - text: – score among the highest available benchmarks. Reserve their reasoning modes for non-voice agent steps (planning, summarization, post-call analysis) where 5–200+ second TTFT is acceptable. Use their non-reasoning variants for the user-facing voice turn, and use cheaper fast models (Haiku 4.5, GPT-5.4 nano, Grok 4.1 Fast, Gemini 3.1 Flash-Lite) for routing and high-volume work.
+          - 'heading "Business Impact: Why Accuracy Matters" [level=4] [ref=e274]':
+            - strong [ref=e275]: "Business Impact: Why Accuracy Matters"
+          - list [ref=e276]:
+            - listitem [ref=e277]:
+              - strong [ref=e278]: Finance
+              - text: ": Mistakes in AI-generated advice on loans, interest rates, or transactions can lead to compliance issues and financial losses. Banks typically use high-accuracy models and validate responses with real-time data sources or human review."
+            - listitem [ref=e279]:
+              - strong [ref=e280]: Healthcare
+              - text: ": AI in medical support must be highly reliable. Even the best models (~80% accuracy) can still make errors, so they should be used to assist, not replace human professionals. A voice agent might draft an answer, but a curated medical database or human expert should verify before providing final information."
+          - heading "Copy link to section Cost Analysis" [level=2] [ref=e281]:
+            - generic "Copy link to section" [ref=e282] [cursor=pointer]:
+              - img [ref=e283]
+            - strong [ref=e285]: Cost Analysis
+          - heading "Copy link to section Pricing per Million Tokens" [level=3] [ref=e286]:
+            - generic "Copy link to section" [ref=e287] [cursor=pointer]:
+              - img [ref=e288]
+            - strong [ref=e290]: Pricing per Million Tokens
+          - paragraph [ref=e291]: Each model has different pricing, especially the proprietary ones offered via API. The table below summarizes the API usage costs (in USD per 1 million tokens processed). “Input” refers to prompt tokens and “output” refers to generated tokens. For reference, 1 million tokens is roughly 750k words (about 3,000-4,000 pages of text).
+          - table [ref=e292]:
+            - rowgroup [ref=e293]:
+              - row "Model Context Window API Price (per 1M tokens) Notes" [ref=e294]:
+                - columnheader "Model" [ref=e295]
+                - columnheader "Context Window" [ref=e296]
+                - columnheader "API Price (per 1M tokens)" [ref=e297]
+                - columnheader "Notes" [ref=e298]
+            - rowgroup [ref=e299]:
+              - row "Grok 4.1 Fast 2M $0.20 (input), $0.50 (output) Best-price 2M context; xAI; strong for long voice sessions." [ref=e300]:
+                - cell "Grok 4.1 Fast" [ref=e301]
+                - cell "2M" [ref=e302]
+                - cell "$0.20 (input), $0.50 (output)" [ref=e303]
+                - cell "Best-price 2M context; xAI; strong for long voice sessions." [ref=e304]
+              - row "GPT-5.4 nano 400k $0.20 (input), $1.25 (output) Cheapest OpenAI; 10% cached input; classification / sub-agent ideal." [ref=e305]:
+                - cell "GPT-5.4 nano" [ref=e306]
+                - cell "400k" [ref=e307]
+                - cell "$0.20 (input), $1.25 (output)" [ref=e308]
+                - cell "Cheapest OpenAI; 10% cached input; classification / sub-agent ideal." [ref=e309]
+              - row "Gemini 3.1 Flash-Lite Preview 1M $0.25 (input), $1.50 (output) Cheapest Tier-1; implicit caching free, explicit 75% off." [ref=e310]:
+                - cell "Gemini 3.1 Flash-Lite Preview" [ref=e311]
+                - cell "1M" [ref=e312]
+                - cell "$0.25 (input), $1.50 (output)" [ref=e313]
+                - cell "Cheapest Tier-1; implicit caching free, explicit 75% off." [ref=e314]
+              - row "DeepSeek V4-Flash 128k+ $0.14 (input), $0.28 (output) Replaces V3.2-Exp; cache-hit pricing ~90% off; very low all-in cost." [ref=e315]:
+                - cell "DeepSeek V4-Flash" [ref=e316]
+                - cell "128k+" [ref=e317]
+                - cell "$0.14 (input), $0.28 (output)" [ref=e318]
+                - cell "Replaces V3.2-Exp; cache-hit pricing ~90% off; very low all-in cost." [ref=e319]
+              - row "Gemini 3 Flash Preview 1M $0.50 (input), $3.00 (output) Reasoning toggle; non-reasoning mode for voice; high TPS." [ref=e320]:
+                - cell "Gemini 3 Flash Preview" [ref=e321]
+                - cell "1M" [ref=e322]
+                - cell "$0.50 (input), $3.00 (output)" [ref=e323]
+                - cell "Reasoning toggle; non-reasoning mode for voice; high TPS." [ref=e324]
+              - row "GPT-5.4 mini 400k $0.75 (input), $4.50 (output) Mid-tier OpenAI; non-reasoning for voice." [ref=e325]:
+                - cell "GPT-5.4 mini" [ref=e326]
+                - cell "400k" [ref=e327]
+                - cell "$0.75 (input), $4.50 (output)" [ref=e328]
+                - cell "Mid-tier OpenAI; non-reasoning for voice." [ref=e329]
+              - row "Kimi K2.6 256k $0.95 (input), $4.00 (output) Open-weight; strong agentic / function calling." [ref=e330]:
+                - cell "Kimi K2.6" [ref=e331]
+                - cell "256k" [ref=e332]
+                - cell "$0.95 (input), $4.00 (output)" [ref=e333]
+                - cell "Open-weight; strong agentic / function calling." [ref=e334]
+              - row "Claude Haiku 4.5 200k $1.00 (input), $5.00 (output) Cache read 10%; 1h TTL 2× write; released October 15, 2025." [ref=e335]:
+                - cell "Claude Haiku 4.5" [ref=e336]
+                - cell "200k" [ref=e337]
+                - cell "$1.00 (input), $5.00 (output)" [ref=e338]
+                - cell "Cache read 10%; 1h TTL 2× write; released October 15, 2025." [ref=e339]
+              - row "GPT-5.4 (flagship) 1M $2.50 (input), $15.00 (output) Replaces GPT-4o/GPT-4.1; flagship model with adjustable reasoning effort." [ref=e340]:
+                - cell "GPT-5.4 (flagship)" [ref=e341]
+                - cell "1M" [ref=e342]
+                - cell "$2.50 (input), $15.00 (output)" [ref=e343]
+                - cell "Replaces GPT-4o/GPT-4.1; flagship model with adjustable reasoning effort." [ref=e344]
+              - row "Claude Sonnet 4.6 1M $3.00 (input), $15.00 (output) Strong reasoning; reasoning mode TTFT 134s (voice-unsuitable)." [ref=e345]:
+                - cell "Claude Sonnet 4.6" [ref=e346]
+                - cell "1M" [ref=e347]
+                - cell "$3.00 (input), $15.00 (output)" [ref=e348]
+                - cell "Strong reasoning; reasoning mode TTFT 134s (voice-unsuitable)." [ref=e349]
+              - row "Claude Opus 4.7 1M $5.00 (input), $25.00 (output) Released April 16, 2026; voice-unsuitable due to latency; reserve for offline steps." [ref=e350]:
+                - cell "Claude Opus 4.7" [ref=e351]
+                - cell "1M" [ref=e352]
+                - cell "$5.00 (input), $25.00 (output)" [ref=e353]
+                - cell "Released April 16, 2026; voice-unsuitable due to latency; reserve for offline steps." [ref=e354]
+              - row "Llama 4 Maverick (Fireworks) 1M $0.07–$0.90 range (provider-dependent) Open-weight; Groq deprecated March 9, 2026; Fireworks/Together still serve." [ref=e355]:
+                - cell "Llama 4 Maverick (Fireworks)" [ref=e356]
+                - cell "1M" [ref=e357]
+                - cell "$0.07–$0.90 range (provider-dependent)" [ref=e358]
+                - cell "Open-weight; Groq deprecated March 9, 2026; Fireworks/Together still serve." [ref=e359]
+          - 'heading "Copy link to section Reasoning Mode: Voice-Unviable" [level=3] [ref=e360]':
+            - generic "Copy link to section" [ref=e361] [cursor=pointer]:
+              - img [ref=e362]
+            - strong [ref=e364]: "Reasoning Mode: Voice-Unviable"
+          - paragraph [ref=e365]: "Every flagship LLM in 2026 ships with a “reasoning” or “thinking” toggle that allocates extra compute before producing the first token. Reasoning produces meaningfully better answers on hard tasks, but TTFT explodes:"
+          - list [ref=e366]:
+            - listitem [ref=e367]:
+              - strong [ref=e368]: Claude Sonnet 4.6
+              - text: – non-reasoning TTFT 1.36s, reasoning TTFT ~135s
+            - listitem [ref=e369]:
+              - strong [ref=e370]: GPT-5.4
+              - text: – high-effort reasoning TTFT ~166s on Artificial Analysis
+            - listitem [ref=e371]:
+              - strong [ref=e372]: Gemini 3 Flash Preview
+              - text: – non-reasoning TTFT ~1.35s; reasoning TTFT higher, voice-unsuitable
+            - listitem [ref=e373]:
+              - strong [ref=e374]: GPT-5.4 mini
+              - text: – medium-effort reasoning TTFT ~8.24s; minimal effort suitable for voice
+          - paragraph [ref=e375]:
+            - text: "For voice agents, treat reasoning as off by default for the user-facing turn. Use it only on offline agent steps (planning, summarization, post-call analysis) where the latency cost is acceptable. Provider-specific controls: Anthropic’s extended thinking budget, OpenAI’s reasoning effort (minimal/low/medium/high), Gemini’s"
+            - code [ref=e376]: thinkingBudget
+            - text: / minimal mode.
+          - heading "Copy link to section Prompt Caching Math (Voice-Critical)" [level=3] [ref=e377]:
+            - generic "Copy link to section" [ref=e378] [cursor=pointer]:
+              - img [ref=e379]
+            - strong [ref=e381]: Prompt Caching Math (Voice-Critical)
+          - paragraph [ref=e382]: Voice agents replay the same system prompt every turn. Without caching, those tokens are re-charged each time. With caching, providers charge a one-time write premium and then read at ~10% of base price for the cache TTL window.
+          - paragraph [ref=e383]: "Provider policies as of April 2026:"
+          - list [ref=e384]:
+            - listitem [ref=e385]:
+              - strong [ref=e386]: Anthropic
+              - text: ": 5-minute TTL cache write 1.25× base, 1-hour TTL write 2× base, read 0.1× base. The default reverted from 1h back to 5m in March 2026 – set TTL explicitly when constructing requests."
+            - listitem [ref=e387]:
+              - strong [ref=e388]: Gemini
+              - text: ": Implicit caching applies automatically with no code change and zero cost (1,024-token minimum on Flash, 2,048 on Pro). Explicit caching offers a 75% discount on Gemini 2.5+ models with a 32,768-token minimum."
+            - listitem [ref=e389]:
+              - strong [ref=e390]: OpenAI
+              - text: ": Cached input billed at 10% of standard input price; no API change required."
+            - listitem [ref=e391]:
+              - strong [ref=e392]: DeepSeek
+              - text: ": Cache hit roughly 90% off miss price (e.g., V4-Flash ~$0.014 hit vs. $0.14 miss)."
+          - paragraph [ref=e393]: Break-even on a cache write usually arrives after 3–4 cache hits within the TTL window. For a voice agent with a 5K-token system prompt and 30-second turn rate, caching reduces system-prompt cost by roughly 90% across a typical 10-minute call.
+          - heading "Copy link to section Voice Latency Budget" [level=3] [ref=e394]:
+            - generic "Copy link to section" [ref=e395] [cursor=pointer]:
+              - img [ref=e396]
+            - strong [ref=e398]: Voice Latency Budget
+          - paragraph [ref=e399]: "Roughly 70% of voice agent latency comes from LLM inference. A workable target budget for sub-1-second perceived latency:"
+          - list [ref=e400]:
+            - listitem [ref=e401]: "VAD: ~50ms"
+            - listitem [ref=e402]: "STT: ~150ms"
+            - listitem [ref=e403]: "LLM TTFT: ~400ms (this is the squeeze point)"
+            - listitem [ref=e404]: "TTS: ~150ms"
+            - listitem [ref=e405]: "Network round-trip: ~50ms"
+            - listitem [ref=e406]:
+              - strong [ref=e407]: "Total: ~800ms"
+          - paragraph [ref=e408]: That budget is achievable only with non-reasoning LLM variants and well-tuned streaming.
+          - heading "Copy link to section Context Window Impact or Input Length" [level=3] [ref=e409]:
+            - generic "Copy link to section" [ref=e410] [cursor=pointer]:
+              - img [ref=e411]
+            - strong [ref=e413]: Context Window Impact or Input Length
+          - paragraph [ref=e414]: The context window determines how much conversation history or documents the model can consider at once. Current voice-suitable models sit between 128k (DeepSeek V4-Flash) and 2M tokens (Grok 4.1 Fast), with most at 1M. Larger context enables sophisticated use cases (feeding entire knowledge bases, long dialogs, persistent user preferences) but increases per-turn cost whenever the model re-reads the full context. Prompt caching mitigates most of that cost, as covered above. For a typical customer-support call (10–30 minutes, a few thousand tokens of dialog), any current voice-suitable model has more than enough context; context-window choice becomes a factor only when stuffing large knowledge bases, long multi-session memory, or document attachments into every turn.
+          - 'heading "Copy link to section API vs. Self-Hosting: Which is More Cost-Effective?" [level=3] [ref=e415]':
+            - generic "Copy link to section" [ref=e416] [cursor=pointer]:
+              - img [ref=e417]
+            - strong [ref=e419]: "API vs. Self-Hosting: Which is More Cost-Effective?"
+          - paragraph [ref=e420]:
+            - text: Using a managed API (
+            - link "OpenAI" [ref=e421] [cursor=pointer]:
+              - /url: https://openai.com/
+            - text: ","
+            - link "Anthropic" [ref=e422] [cursor=pointer]:
+              - /url: https://www.anthropic.com/
+            - text: ","
+            - link "Google" [ref=e423] [cursor=pointer]:
+              - /url: https://cloud.google.com/vertex-ai
+            - text: ", etc.) means paying per token, which is easy to manage and automatically scales with usage. Self-hosting an LLM means running it on your own servers or cloud machines, avoiding token fees but paying for the infrastructure instead. The cost trade-off depends on usage volume:"
+          - list [ref=e424]:
+            - listitem [ref=e425]:
+              - text: For
+              - strong [ref=e426]: low to moderate usage
+              - text: ", APIs are often cheaper and easier (you don’t pay for idle time, and don’t need MLOps engineers to maintain the model). There’s also no large up-front investment."
+            - listitem [ref=e427]:
+              - text: For
+              - strong [ref=e428]: very high usage
+              - text: ", self-hosting can save money in the long run. But the general point stands: at large scale, owning the means of generation can be more cost-efficient."
+          - paragraph [ref=e429]:
+            - text: "There’s a middle ground: managed cloud services like"
+            - link "AWS Bedrock" [ref=e430] [cursor=pointer]:
+              - /url: https://aws.amazon.com/bedrock/
+            - text: (offers pay-per-token access to Claude, Llama, Nova, and other models) or spinning up your own instances on AWS/GCP/Lambda/RunPod to self-host open-weight models like
+            - link "Llama 4 Maverick" [ref=e431] [cursor=pointer]:
+              - /url: https://www.llama.com/
+            - text: ","
+            - link "DeepSeek V4-Flash" [ref=e432] [cursor=pointer]:
+              - /url: https://api-docs.deepseek.com/
+            - text: ","
+            - link "Kimi K2.6" [ref=e433] [cursor=pointer]:
+              - /url: https://platform.kimi.ai/
+            - text: ","
+            - link "Qwen 3.5" [ref=e434] [cursor=pointer]:
+              - /url: https://qwenlm.github.io/
+            - text: ", or"
+            - link "GLM-4.6" [ref=e435] [cursor=pointer]:
+              - /url: https://z.ai/
+            - text: ". With Bedrock, the convenience of pay-per-use pricing comes with enterprise features like VPC integration and data residency controls. For self-hosting, the math depends on GPU rental rates and utilization. April 2026 GPU pricing:"
+          - list [ref=e436]:
+            - listitem [ref=e437]:
+              - strong [ref=e438]: H100
+              - text: ": $1.49–$2.99/hr on specialist providers (Lambda, RunPod, CoreWeave); $3–$4/hr on AWS/GCP"
+            - listitem [ref=e439]:
+              - strong [ref=e440]: B200
+              - text: ": from ~$2.65/hr reserved up to ~$3.79/hr on-demand on specialist providers"
+            - listitem [ref=e441]:
+              - strong [ref=e442]: GB200
+              - text: ": reservation-only on most providers; availability expanding through 2026"
+          - paragraph [ref=e443]: Keep GPUs busy close to 24/7 and the effective token cost can approach the theoretical hardware cost. With idle time, usage-based API pricing usually wins.
+          - paragraph [ref=e444]:
+            - text: Another consideration is
+            - strong [ref=e445]: rate limits and scaling
+            - text: . API providers have request quotas. OpenAI’s enterprise tier on GPT-5.4 supports 10,000+ requests per minute and tens of millions of tokens per minute, but a large call center needs to negotiate enterprise quotas explicitly.
+          - blockquote [ref=e446]:
+            - paragraph [ref=e447]:
+              - strong [ref=e448]:
+                - text: Use our
+                - link "AI voice agent calculator" [ref=e449] [cursor=pointer]:
+                  - /url: https://softcery.com/ai-voice-agents-calculator
+                - text: to get a clear monthly estimate based on your model, usage, and setup.
+          - 'heading "Copy link to section Deployment Factors: Cloud vs. Self-Hosted, Security & Scalability" [level=2] [ref=e450]':
+            - generic "Copy link to section" [ref=e451] [cursor=pointer]:
+              - img [ref=e452]
+            - strong [ref=e454]: "Deployment Factors: Cloud vs. Self-Hosted, Security & Scalability"
+          - paragraph [ref=e455]: Selecting an LLM for enterprise deployment involves more than just model quality; infrastructure, data security, compliance, and scalability are equally critical considerations.
+          - heading "Copy link to section Cloud-based APIs (OpenAI, Anthropic, Google, etc.):" [level=3] [ref=e456]:
+            - generic "Copy link to section" [ref=e457] [cursor=pointer]:
+              - img [ref=e458]
+            - strong [ref=e460]: "Cloud-based APIs (OpenAI, Anthropic, Google, etc.):"
+          - paragraph [ref=e461]:
+            - strong [ref=e462]: "Pros:"
+            - text: Easiest to integrate (simple API calls), no ML ops burden, and providers optimize the model’s performance for you. They also handle scaling. If your voice agent’s call volume spikes, the cloud service can accommodate (within your rate limit) by allocating more compute. Updates and improvements to the model are delivered automatically.
+          - paragraph [ref=e463]:
+            - strong [ref=e464]: "Cons:"
+            - text: "Ongoing cost per use, potential data privacy concerns (since user queries are sent to a third-party server), and dependence on the provider’s uptime and policies. While major providers have strong security, some organisations are uneasy sending sensitive data off-site. Compliance requirements can be a barrier - for example, a healthcare company may be legally restricted from using a cloud AI unless certain certifications are in place. There’s also less flexibility: you can’t customize the model beyond what the API allows."
+          - heading "Copy link to section Self-hosting (on-prem or private cloud):" [level=3] [ref=e465]:
+            - generic "Copy link to section" [ref=e466] [cursor=pointer]:
+              - img [ref=e467]
+            - strong [ref=e469]: "Self-hosting (on-prem or private cloud):"
+          - paragraph [ref=e470]:
+            - strong [ref=e471]: "Pros:"
+            - text: Full control over data (nothing leaves your servers, which aids privacy and regulatory compliance), and potentially lower marginal cost at scale as discussed. You can also customize the stack - for instance, run real-time voice ASR (speech recognition) and the LLM on the same machine to minimize latency, or fine-tune the model on proprietary data. It also allows using open-source models that aren’t available via API. Data residency and sovereignty concerns are alleviated since you decide where the system runs (important for EU GDPR, which requires controlling cross-border data flow; self-hosting lets you keep data in-country).
+          - paragraph [ref=e472]:
+            - strong [ref=e473]: "Cons:"
+            - text: "The team now owns operations and security. An open-source model server, like any sensitive system, can leak data or face attacks if it’s not set up securely. Maintaining uptime, applying model updates, and scaling the system require skilled engineers. Hardware cost and maintenance add up – running a fleet of GPUs or specialized AI accelerators has a meaningful monthly bill. If usage is sporadic or low-volume, those resources sit idle while still costing money. The quality gap to top proprietary models has narrowed dramatically: GLM-4.6 and GLM-5 from z.AI now lead open-source benchmarks (Quality Index 49.64, comparable to Claude Opus 4.6), DeepSeek V4-Flash matches mid-tier proprietary chat quality, and Llama 4 Maverick competes on latency for self-hosted voice. For most voice use cases in 2026, the gap is no longer a blocker – operations complexity is."
+          - heading "Copy link to section Security & Compliance" [level=3] [ref=e474]:
+            - generic "Copy link to section" [ref=e475] [cursor=pointer]:
+              - img [ref=e476]
+            - strong [ref=e478]: Security & Compliance
+          - paragraph [ref=e479]: All major cloud LLM providers have taken steps to alleviate data privacy concerns. OpenAI, Google, and Anthropic state that API data is not used to train their models (unlike consumer-facing free services). OpenAI even offers a “zero data retention” mode for enterprises where they don’t store API prompts at all. Microsoft Azure OpenAI service will sign a BAA (Business Associate Agreement) for HIPAA compliance in healthcare and ensures data is siloed to specific regions. These measures mean using a closed model via API can meet strict requirements, but it relies on trusting the vendor and legal safeguards. Some organizations, especially in finance and government, still prefer that sensitive data never leaves their own infrastructure - hence a tilt toward open-source models they can deploy internally.
+          - heading "Copy link to section Scalability" [level=3] [ref=e480]:
+            - generic "Copy link to section" [ref=e481] [cursor=pointer]:
+              - img [ref=e482]
+            - strong [ref=e484]: Scalability
+          - paragraph [ref=e485]: Cloud APIs abstract this – teams only need to watch their rate limits. For high-throughput scenarios, request higher quotas or move to an enterprise tier. Self-hosting requires scaling out infrastructure. The good news is LLM workloads scale horizontally, so if you need to handle N concurrent calls, you can run N (or fewer, if each can handle multiple threads) instances of the model. Tools like Kubernetes or auto-scaling groups in cloud can spin up more instances when load increases. The latency difference is that cloud API calls might go to geographically load-balanced servers, whereas if you self-host in one region, global users might experience more network latency (unless you deploy servers in multiple regions). For a voice agent, this is usually minor compared to generation time.
+          - heading "Copy link to section Fine-tuning and Customisation" [level=2] [ref=e486]:
+            - generic "Copy link to section" [ref=e487] [cursor=pointer]:
+              - img [ref=e488]
+            - strong [ref=e490]: Fine-tuning and Customisation
+          - paragraph [ref=e491]: Many providers now allow limited fine-tuning of their models. For example, OpenAI offers fine-tuning on the current GPT-5.4 family (the GPT-4.1 family was retired from ChatGPT on February 13, 2026; API access sunsets on a rolling schedule). Anthropic still does not allow direct fine-tuning of Claude Sonnet 4.6 or Claude Haiku 4.5, but AWS Bedrock supports fine-tuning select models including Claude (with guardrails). Open-weight models like Llama 4 Maverick, DeepSeek V4-Flash, Kimi K2.6, and GLM-4.6 can be fine-tuned freely on private data, which helps when the model needs to learn domain-specific terminology or style (e.g., fine-tuning Llama 4 Maverick on past support transcripts to better handle industry-specific vocabulary).
+          - paragraph [ref=e492]: When you fine-tune a closed model through an API, your custom dataset is sent to the provider. Make sure the data isn’t used to retrain the provider’s base model (typically, it isn’t). Fine-tuning usually creates a separate model instance that’s only accessible to you.
+          - paragraph [ref=e493]:
+            - strong [ref=e494]: "Important:"
+            - text: "Fine-tuning is complex, resource-intensive, and requires significant expertise to get right. For most domain-specific use cases, follow this recommended approach:"
+          - list [ref=e495]:
+            - listitem [ref=e496]:
+              - strong [ref=e497]: Start with prompt engineering and context augmentation
+              - text: "- Provide relevant domain-specific information directly in the prompt. This is the simplest and fastest approach for most scenarios."
+            - listitem [ref=e498]:
+              - strong [ref=e499]: Move to RAG (Retrieval-Augmented Generation)
+              - text: "- If you have a large knowledge base, implement RAG to dynamically retrieve and inject relevant context into prompts. This scales better than stuffing everything into the prompt."
+            - listitem [ref=e500]:
+              - strong [ref=e501]: Consider fine-tuning only as a last resort
+              - text: "- Fine-tuning should be reserved for cases where the model fundamentally needs to learn new patterns, terminology, or behavior that can’t be achieved through prompting or RAG. It requires substantial training data (typically thousands of examples), computational resources, ongoing maintenance, and expertise to avoid degrading the model’s general capabilities."
+          - heading "Copy link to section Tool Integration and Function Calling" [level=2] [ref=e502]:
+            - generic "Copy link to section" [ref=e503] [cursor=pointer]:
+              - img [ref=e504]
+            - strong [ref=e506]: Tool Integration and Function Calling
+          - paragraph [ref=e507]: Many voice agents need the LLM to interface with external systems (booking appointments, fetching account info, etc.). All major models discussed in this guide – including GPT-5.4 family, Claude Sonnet 4.6, Claude Haiku 4.5, Gemini 3 Flash, Grok 4.1 Fast, Kimi K2.6, and open-weight models like Llama 4 Maverick, DeepSeek V4-Flash, and GLM-4.6 – support function calling and structured output generation natively. This means they can reliably output JSON, call predefined functions, and interact with external APIs as part of their standard capabilities.
+          - paragraph [ref=e508]: "For voice agent applications, function calling enables the LLM to:"
+          - list [ref=e509]:
+            - listitem [ref=e510]: Query databases for customer information
+            - listitem [ref=e511]: Book appointments or update calendars
+            - listitem [ref=e512]: Process transactions or check account balances
+            - listitem [ref=e513]: Retrieve real-time data (weather, stock prices, etc.)
+            - listitem [ref=e514]: Trigger workflows in CRM or ticketing systems
+          - paragraph [ref=e515]:
+            - text: The quality of function calling varies by model. The
+            - link "Berkeley Function Calling Leaderboard (BFCL v3)" [ref=e516] [cursor=pointer]:
+              - /url: https://gorilla.cs.berkeley.edu/leaderboard.html
+            - text: ranks GLM 4.5 at 76.7% and Qwen3 32B at 75.7% among open models; closed-source leaders include Claude Sonnet 4.6, GPT-5.4, and Gemini 3 Flash. For voice-specific tool reliability, see
+            - link "τ-bench / τ²-bench / τ³-bench" [ref=e517] [cursor=pointer]:
+              - /url: https://sierra.ai/blog/bench-advancing-agent-benchmarking-to-knowledge-and-voice
+            - text: (Sierra) and
+            - link "VoiceAgentBench" [ref=e518] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2510.07978v1
+            - text: .
+          - heading "Copy link to section Implementation Strategies for AI Voice Agents" [level=2] [ref=e519]:
+            - generic "Copy link to section" [ref=e520] [cursor=pointer]:
+              - img [ref=e521]
+            - strong [ref=e523]: Implementation Strategies for AI Voice Agents
+          - paragraph [ref=e524]: Now that we’ve analysed the key performance metrics, costs, and business impact of different LLMs, the next step is to focus on how to effectively implement AI voice agents using these models. Successful deployment requires careful consideration of model selection, performance optimisation, system integration, security, and continuous improvement.
+          - heading "Copy link to section Integrating AI Voice Agents with Business Systems" [level=3] [ref=e525]:
+            - generic "Copy link to section" [ref=e526] [cursor=pointer]:
+              - img [ref=e527]
+            - strong [ref=e529]: Integrating AI Voice Agents with Business Systems
+          - paragraph [ref=e530]: For AI voice agents to be truly effective, they must seamlessly integrate with existing business systems. This includes customer databases, CRMs, and support ticketing platforms.
+          - list [ref=e531]:
+            - listitem [ref=e532]:
+              - strong [ref=e533]: CRM integration
+              - text: allows AI to retrieve customer history and personalize responses, improving engagement;
+            - listitem [ref=e534]:
+              - strong [ref=e535]: ERP and order management systems
+              - text: enable AI to check order status, process refunds, or update customer records in real-time;
+            - listitem [ref=e536]:
+              - strong [ref=e537]: Function calling and API integration
+              - text: let AI trigger automated actions, such as scheduling appointments or fetching account details.
+          - paragraph [ref=e538]:
+            - text: For voice-based AI to interpret user requests correctly and sound natural, it’s critical to choose the right Speech-to-Text (STT) and Text-to-Speech (TTS) solutions. See our
+            - link "comprehensive STT and TTS selection guide" [ref=e539] [cursor=pointer]:
+              - /url: /lab/how-to-choose-stt-tts-for-ai-voice-agents-in-2025-a-comprehensive-guide
+            - text: comparing 13 providers with latency benchmarks, accuracy metrics, and cost analysis.
+          - heading "Copy link to section Measuring Success and Continuous Improvement" [level=3] [ref=e540]:
+            - generic "Copy link to section" [ref=e541] [cursor=pointer]:
+              - img [ref=e542]
+            - strong [ref=e544]: Measuring Success and Continuous Improvement
+          - paragraph [ref=e545]: "AI voice agents require ongoing optimisation to maintain high-quality interactions. Businesses should track key performance indicators (KPIs) to evaluate effectiveness:"
+          - list [ref=e546]:
+            - listitem [ref=e547]:
+              - strong [ref=e548]: Accuracy and coherence
+              - text: "- how well the AI understands and responds to inquiries;"
+            - listitem [ref=e549]:
+              - strong [ref=e550]: Response time
+              - text: "- measuring delays between user input and AI-generated responses;"
+            - listitem [ref=e551]:
+              - strong [ref=e552]: Customer satisfaction
+              - text: "- evaluating feedback to determine if users find AI interactions helpful;"
+            - listitem [ref=e553]:
+              - strong [ref=e554]: First-call resolution rate
+              - text: "- analyzing how many queries are resolved without escalation to human agents."
+          - paragraph [ref=e555]:
+            - text: To improve performance over time, businesses should continuously monitor AI-generated interactions, analyse customer feedback, and refine AI responses. This might involve updating prompts, fine-tuning models, or introducing new automation workflows based on observed usage patterns. For comprehensive guidance on monitoring and debugging AI agents in production, including tracing, evaluation frameworks, and tool comparisons, see our
+            - link "observability guide" [ref=e556] [cursor=pointer]:
+              - /url: /lab/you-cant-fix-what-you-cant-see-production-ai-agent-observability-guide
+            - text: . For voice-specific testing methodologies and quality metrics, see our
+            - link "voice agent testing guide" [ref=e557] [cursor=pointer]:
+              - /url: /lab/ai-voice-agents-quality-assurance-metrics-testing-tools
+            - text: .
+          - heading "Copy link to section Key Considerations for a Successful AI Voice Agent Deployment" [level=3] [ref=e558]:
+            - generic "Copy link to section" [ref=e559] [cursor=pointer]:
+              - img [ref=e560]
+            - strong [ref=e562]: Key Considerations for a Successful AI Voice Agent Deployment
+          - paragraph [ref=e563]: By following these strategies, businesses can ensure their AI deployments are both scalable and cost-effective while maintaining a high standard of user experience.
+          - list [ref=e564]:
+            - listitem [ref=e565]:
+              - strong [ref=e566]: Align model selection with business needs
+              - text: "- fast models for simple tasks, highly accurate models for complex interactions;"
+            - listitem [ref=e567]:
+              - strong [ref=e568]: Optimize token usage
+              - text: "- use only the necessary context to control costs and speed up responses;"
+            - listitem [ref=e569]:
+              - strong [ref=e570]: Ensure seamless system integration
+              - text: "- connect AI voice agents with internal databases, CRMs, and APIs to enable automated workflows;"
+            - listitem [ref=e571]:
+              - strong [ref=e572]: Prioritize security and compliance
+              - text: "- ensure that sensitive customer data is handled according to regulatory requirements;"
+            - listitem [ref=e573]:
+              - strong [ref=e574]: Monitor, measure, and refine AI performance
+              - text: "- use real-time analytics and customer feedback to improve AI interactions over time."
+          - blockquote [ref=e575]:
+            - paragraph [ref=e576]:
+              - strong [ref=e577]:
+                - text: Use our
+                - link "AI voice agent calculator" [ref=e578] [cursor=pointer]:
+                  - /url: https://softcery.com/ai-voice-agents-calculator
+                - text: to model technology, throughput, and expenses based on your chosen LLM and deployment strategy.
+          - heading "Copy link to section Your AI Voice Agent Roadmap" [level=3] [ref=e579]:
+            - generic "Copy link to section" [ref=e580] [cursor=pointer]:
+              - img [ref=e581]
+            - strong [ref=e583]: Your AI Voice Agent Roadmap
+          - paragraph [ref=e584]: If you’re considering AI voice agents but aren’t sure how to begin, you’re not alone. The key to a successful implementation is starting small, testing results, and scaling efficiently.
+          - paragraph [ref=e585]: "Follow this simple roadmap to guide your business through the AI voice agent implementation process:"
+          - list [ref=e586]:
+            - listitem [ref=e587]:
+              - strong [ref=e588]: Define your use case
+              - text: ": Identify where AI can add the most value (customer support, sales, finance, etc.)."
+            - listitem [ref=e589]:
+              - strong [ref=e590]: Choose the right LLM
+              - text: ": Match your needs with models that balance speed, accuracy, and cost."
+            - listitem [ref=e591]:
+              - strong [ref=e592]: Integrate with your systems
+              - text: ": Connect AI with your CRM, ticketing platform, or database for seamless automation."
+            - listitem [ref=e593]:
+              - strong [ref=e594]: Optimize for performance
+              - text: ": Reduce latency, improve accuracy, and track performance metrics."
+            - listitem [ref=e595]:
+              - strong [ref=e596]: Test and scale
+              - text: ": Start with a pilot, refine your approach, and expand AI adoption based on real results."
+          - heading "Copy link to section Which LLM Should You Choose for Your AI Voice Agent in 2026?" [level=2] [ref=e597]:
+            - generic "Copy link to section" [ref=e598] [cursor=pointer]:
+              - img [ref=e599]
+            - strong [ref=e601]: Which LLM Should You Choose for Your AI Voice Agent in 2026?
+          - paragraph [ref=e602]: Whether you prioritize real-time responsiveness, enterprise-grade accuracy, or cost-effective self-hosting, the right choice depends on your specific business needs. Let’s summarize the best models for different use cases and help you make an informed decision.
+          - table [ref=e603]:
+            - rowgroup [ref=e604]:
+              - row "Model Best For Cost Efficiency Ideal Use Cases" [ref=e605]:
+                - columnheader "Model" [ref=e606]
+                - columnheader "Best For" [ref=e607]
+                - columnheader "Cost Efficiency" [ref=e608]
+                - columnheader "Ideal Use Cases" [ref=e609]
+            - rowgroup [ref=e610]:
+              - row "Gemini 3.1 Flash-Lite Cheapest Tier-1; balance of speed and accuracy Very High Omnichannel customer service, technical support, real-time routing" [ref=e611]:
+                - cell "Gemini 3.1 Flash-Lite" [ref=e612]
+                - cell "Cheapest Tier-1; balance of speed and accuracy" [ref=e613]
+                - cell "Very High" [ref=e614]
+                - cell "Omnichannel customer service, technical support, real-time routing" [ref=e615]
+              - row "Grok 4.1 Fast Very large context (2M) with the best price in tier Very High Long customer calls, legal review, contract analysis, sales transcripts" [ref=e616]:
+                - cell "Grok 4.1 Fast" [ref=e617]
+                - cell "Very large context (2M) with the best price in tier" [ref=e618]
+                - cell "Very High" [ref=e619]
+                - cell "Long customer calls, legal review, contract analysis, sales transcripts" [ref=e620]
+              - row "GPT-5.4 nano Cheapest OpenAI model for sub-second voice Very High Sub-agents, classification, latency-sensitive routing" [ref=e621]:
+                - cell "GPT-5.4 nano" [ref=e622]
+                - cell "Cheapest OpenAI model for sub-second voice" [ref=e623]
+                - cell "Very High" [ref=e624]
+                - cell "Sub-agents, classification, latency-sensitive routing" [ref=e625]
+              - row "Claude Haiku 4.5 Fast with good accuracy at affordable price High High-volume production, professional services, customer support" [ref=e626]:
+                - cell "Claude Haiku 4.5" [ref=e627]
+                - cell "Fast with good accuracy at affordable price" [ref=e628]
+                - cell "High" [ref=e629]
+                - cell "High-volume production, professional services, customer support" [ref=e630]
+              - row "GPT-5.4 (flagship) Strong reasoning + tool use, 1M context Moderate Mixed workloads, enterprise applications, complex queries (non-voice steps)" [ref=e631]:
+                - cell "GPT-5.4 (flagship)" [ref=e632]
+                - cell "Strong reasoning + tool use, 1M context" [ref=e633]
+                - cell "Moderate" [ref=e634]
+                - cell "Mixed workloads, enterprise applications, complex queries (non-voice steps)" [ref=e635]
+              - row "Gemini 3 Flash Reasoning toggle; voice in non-reasoning mode High Production voice with selective deep reasoning on offline steps" [ref=e636]:
+                - cell "Gemini 3 Flash" [ref=e637]
+                - cell "Reasoning toggle; voice in non-reasoning mode" [ref=e638]
+                - cell "High" [ref=e639]
+                - cell "Production voice with selective deep reasoning on offline steps" [ref=e640]
+              - row "Claude Sonnet 4.6 Premium reasoning for complex AI agents Low Complex enterprise workflows, advanced reasoning, regulated industries" [ref=e641]:
+                - cell "Claude Sonnet 4.6" [ref=e642]
+                - cell "Premium reasoning for complex AI agents" [ref=e643]
+                - cell "Low" [ref=e644]
+                - cell "Complex enterprise workflows, advanced reasoning, regulated industries" [ref=e645]
+              - row "Claude Opus 4.7 Highest accuracy on hardest tasks Lowest Offline agent steps only (TTFT 134s+); planning, post-call summarization" [ref=e646]:
+                - cell "Claude Opus 4.7" [ref=e647]
+                - cell "Highest accuracy on hardest tasks" [ref=e648]
+                - cell "Lowest" [ref=e649]
+                - cell "Offline agent steps only (TTFT 134s+); planning, post-call summarization" [ref=e650]
+              - row "Kimi K2.6 Strong agentic capabilities with good value High Interactive chat, complex workflows, agentic applications" [ref=e651]:
+                - cell "Kimi K2.6" [ref=e652]
+                - cell "Strong agentic capabilities with good value" [ref=e653]
+                - cell "High" [ref=e654]
+                - cell "Interactive chat, complex workflows, agentic applications" [ref=e655]
+              - row "DeepSeek V4-Flash Very low cost with cache-hit pricing Very High High-volume applications, experimentation, cost-sensitive deployments" [ref=e656]:
+                - cell "DeepSeek V4-Flash" [ref=e657]
+                - cell "Very low cost with cache-hit pricing" [ref=e658]
+                - cell "Very High" [ref=e659]
+                - cell "High-volume applications, experimentation, cost-sensitive deployments" [ref=e660]
+              - row "Llama 4 Maverick / GLM-4.6 Open-weight, self-hosting for maximum privacy Very High (self-hosted) Finance, healthcare, government, or privacy-first enterprises" [ref=e661]:
+                - cell "Llama 4 Maverick / GLM-4.6" [ref=e662]
+                - cell "Open-weight, self-hosting for maximum privacy" [ref=e663]
+                - cell "Very High (self-hosted)" [ref=e664]
+                - cell "Finance, healthcare, government, or privacy-first enterprises" [ref=e665]
+          - blockquote [ref=e666]:
+            - paragraph [ref=e667]: LLM choice determines how your voice agent thinks and responds. The complete picture includes platform selection, STT/TTS configuration, observability, compliance frameworks, cost management, and scaling infrastructure.
+          - paragraph [ref=e668]:
+            - strong [ref=e669]: "About Softcery:"
+            - text: We’re the AI engineering team that founders call when other teams say “it’s impossible” or “it’ll take 6+ months.” We specialize in building advanced AI systems that actually work in production, handle real customer complexity, and scale with your business. We work with B2B SaaS founders in marketing automation, legal tech, and e-commerce—solving the gap between prototypes that work in demos and systems that work at scale.
+            - link "Get in touch" [ref=e670] [cursor=pointer]:
+              - /url: /#contact
+            - text: .
+          - generic [ref=e671]:
+            - heading "Copy link to section Frequently Asked Questions" [level=2] [ref=e672]:
+              - generic "Copy link to section" [ref=e673] [cursor=pointer]:
+                - img [ref=e674]
+              - text: Frequently Asked Questions
+            - generic [ref=e676]:
+              - generic [ref=e678] [cursor=pointer]:
+                - generic [ref=e679]: How do I choose the right LLM for my AI voice agent?
+                - button [ref=e680]:
+                  - img [ref=e681]
+              - generic [ref=e683] [cursor=pointer]:
+                - generic [ref=e684]: What performance metrics matter most for voice AI?
+                - button [ref=e685]:
+                  - img [ref=e686]
+              - generic [ref=e688] [cursor=pointer]:
+                - generic [ref=e689]: Is self-hosting cheaper than using an API?
+                - button [ref=e690]:
+                  - img [ref=e691]
+              - generic [ref=e693] [cursor=pointer]:
+                - generic [ref=e694]: How secure is my data when fine-tuning or using cloud APIs?
+                - button [ref=e695]:
+                  - img [ref=e696]
+              - generic [ref=e698] [cursor=pointer]:
+                - generic [ref=e699]: How can I estimate the cost of running an AI voice agent?
+                - button [ref=e700]:
+                  - img [ref=e701]
+    - generic [ref=e704]:
+      - generic [ref=e707]:
+        - button "All" [ref=e708]
+        - button "AI Agents" [ref=e709]
+        - button "Voice Agents" [ref=e710]
+        - button "AI Production Reliability" [ref=e711]
+        - button "AI Regulations" [ref=e712]
+        - button "Customer Support" [ref=e713]
+        - button "E-Commerce" [ref=e714]
+        - button "Legal AI" [ref=e715]
+        - button "Vibe Coding" [ref=e716]
+      - generic [ref=e717]:
+        - 'link "AI Voice Agents for Personal Injury Intake: Solving the Missed-Call Problem AI Voice Agents for Personal Injury Law Firms: How to Automate Intake Calls AI voice agents handle personal injury intake 24/7 with attorney-level qualification. Technical deep-dive covering architecture, bilingual support, compliance, and real production results." [ref=e719] [cursor=pointer]':
+          - /url: /lab/ai-voice-agents-for-personal-injury-intake
+          - 'img "AI Voice Agents for Personal Injury Intake: Solving the Missed-Call Problem" [ref=e721]'
+          - 'heading "AI Voice Agents for Personal Injury Law Firms: How to Automate Intake Calls" [level=4] [ref=e722]'
+          - paragraph [ref=e723]: AI voice agents handle personal injury intake 24/7 with attorney-level qualification. Technical deep-dive covering architecture, bilingual support, compliance, and real production results.
+        - 'link "Building AI That Actually Understands Legal Documents: RAG Architecture for 500-Page Contracts Building AI That Understands Legal Documents (Not Just Reads Them) Engineering perspective on legal document AI: difference between text ingestion and contextual reasoning, RAG architecture for massive contracts, and how production systems handle legal complexity." [ref=e725] [cursor=pointer]':
+          - /url: /lab/building-ai-that-understands-legal-documents
+          - 'img "Building AI That Actually Understands Legal Documents: RAG Architecture for 500-Page Contracts" [ref=e727]'
+          - heading "Building AI That Understands Legal Documents (Not Just Reads Them)" [level=4] [ref=e728]
+          - paragraph [ref=e729]: "Engineering perspective on legal document AI: difference between text ingestion and contextual reasoning, RAG architecture for massive contracts, and how production systems handle legal complexity."
+        - 'link "How AI Legal Research Actually Works (And Why Most Tools Get Citations Wrong) How AI Legal Research Actually Works (And Why Most Tools Get Citations Wrong) Engineering perspective on legal AI research: RAG systems, citation hallucination prevention, validation architectures, and what makes production systems reliable." [ref=e731] [cursor=pointer]':
+          - /url: /lab/how-ai-legal-research-works-citation-accuracy
+          - img "How AI Legal Research Actually Works (And Why Most Tools Get Citations Wrong)" [ref=e733]
+          - heading "How AI Legal Research Actually Works (And Why Most Tools Get Citations Wrong)" [level=4] [ref=e734]
+          - paragraph [ref=e735]: "Engineering perspective on legal AI research: RAG systems, citation hallucination prevention, validation architectures, and what makes production systems reliable."
+        - 'link "The Legal AI Roadmap: What Founders Need to Know Before Building or Buying Legal AI Solutions The Legal AI Roadmap: What Founders Need to Know Before Building or Buying A founder-focused guide to legal AI development, covering market landscape, core technologies, compliance navigation, build vs buy decisions, and scaling strategies." [ref=e737] [cursor=pointer]':
+          - /url: /lab/the-legal-ai-roadmap
+          - 'img "The Legal AI Roadmap: What Founders Need to Know Before Building or Buying Legal AI Solutions" [ref=e739]'
+          - 'heading "The Legal AI Roadmap: What Founders Need to Know Before Building or Buying" [level=4] [ref=e740]'
+          - paragraph [ref=e741]: A founder-focused guide to legal AI development, covering market landscape, core technologies, compliance navigation, build vs buy decisions, and scaling strategies.
+        - 'link "AI Call Center Automation: Actionable Playbook for 2026 AI Call Center Automation: Actionable Playbook for 2026 The CS landscape is changing. Expectations are rising, and teams are overworked. For the first time, the technology is mature enough to help." [ref=e743] [cursor=pointer]':
+          - /url: /lab/ai-call-center-automation-playbook-2025
+          - 'img "AI Call Center Automation: Actionable Playbook for 2026" [ref=e745]'
+          - 'heading "AI Call Center Automation: Actionable Playbook for 2026" [level=4] [ref=e746]'
+          - paragraph [ref=e747]: The CS landscape is changing. Expectations are rising, and teams are overworked. For the first time, the technology is mature enough to help.
+        - 'link "AI Voice Agents for Travel: STT/TTS Architecture, GDS Integration, and HotelPlanner Case Study Voice Agents for Travel: What Works at HotelPlanner, What Breaks Most Implementations GDS latency kills conversations. Payment security blocks voice collection. API integration determines whether this works or wastes six months." [ref=e749] [cursor=pointer]':
+          - /url: /lab/ai-voice-agents-for-travel-agencies-selection-integration-guide
+          - 'img "AI Voice Agents for Travel: STT/TTS Architecture, GDS Integration, and HotelPlanner Case Study" [ref=e751]'
+          - 'heading "Voice Agents for Travel: What Works at HotelPlanner, What Breaks Most Implementations" [level=4] [ref=e752]'
+          - paragraph [ref=e753]: GDS latency kills conversations. Payment security blocks voice collection. API integration determines whether this works or wastes six months.
+        - 'link "Custom AI Voice Agents: The Ultimate Guide (Updated May 2026) Custom AI Voice Agents: The Ultimate Guide (Updated May 2026) Custom voice agents in 2026: cascaded pipelines still win for telephony, S2S is the second valid pattern for web, and the production stack now includes MCP, semantic turn detection, and dedicated voice eval tooling." [ref=e755] [cursor=pointer]':
+          - /url: /lab/custom-ai-voice-agents-the-ultimate-guide
+          - 'img "Custom AI Voice Agents: The Ultimate Guide (Updated May 2026)" [ref=e757]'
+          - 'heading "Custom AI Voice Agents: The Ultimate Guide (Updated May 2026)" [level=4] [ref=e758]'
+          - paragraph [ref=e759]: "Custom voice agents in 2026: cascaded pipelines still win for telephony, S2S is the second valid pattern for web, and the production stack now includes MCP, semantic turn detection, and dedicated voice eval tooling."
+        - 'link "How to Build Production-Ready Legal AI: Quality Assurance & Testing Guide How to Build Production-Ready Legal AI Systems Legal AI is one of the hardest domains to get right. Learn the quality assurance, testing, and observability patterns that make legal AI actually work in production." [ref=e761] [cursor=pointer]':
+          - /url: /lab/how-to-build-production-ready-legal-ai
+          - 'img "How to Build Production-Ready Legal AI: Quality Assurance & Testing Guide" [ref=e763]'
+          - heading "How to Build Production-Ready Legal AI Systems" [level=4] [ref=e764]
+          - paragraph [ref=e765]: Legal AI is one of the hardest domains to get right. Learn the quality assurance, testing, and observability patterns that make legal AI actually work in production.
+      - button "Load more (21)" [ref=e767]
+  - contentinfo [ref=e768]:
+    - img
+    - generic [ref=e769]:
+      - generic [ref=e770]:
+        - generic [ref=e771]:
+          - img "Softcery" [ref=e772]
+          - generic [ref=e773]:
+            - link "Email" [ref=e774] [cursor=pointer]:
+              - /url: mailto:hello@softcery.com
+              - img [ref=e775]
+            - link "LinkedIn" [ref=e778] [cursor=pointer]:
+              - /url: https://linkedin.com/company/softcery
+              - img "LinkedIn" [ref=e779]
+        - generic [ref=e780]:
+          - generic [ref=e781]:
+            - paragraph [ref=e782]: Solutions
+            - list [ref=e783]:
+              - listitem [ref=e784]:
+                - link "AI Receptionist for Law Firms" [ref=e785] [cursor=pointer]:
+                  - /url: /solutions/legal-ai-receptionist
+              - listitem [ref=e786]:
+                - link "AI Concierge for Hotels" [ref=e787] [cursor=pointer]:
+                  - /url: /solutions/hotel-ai-receptionist
+              - listitem [ref=e788]:
+                - link "Voice Agent Demos" [ref=e789] [cursor=pointer]:
+                  - /url: /demos/voice-agents
+          - generic [ref=e790]:
+            - paragraph [ref=e791]: Resources
+            - list [ref=e792]:
+              - listitem [ref=e793]:
+                - link "Case Studies" [ref=e794] [cursor=pointer]:
+                  - /url: /cases
+              - listitem [ref=e795]:
+                - link "Voice Agent Cost Calculator" [ref=e796] [cursor=pointer]:
+                  - /url: /ai-voice-agents-calculator
+              - listitem [ref=e797]:
+                - link "SaaS Template" [ref=e798] [cursor=pointer]:
+                  - /url: https://github.com/softcery/saas-template
+                  - text: SaaS Template
+                  - img [ref=e799]
+          - generic [ref=e802]:
+            - paragraph [ref=e803]: Company
+            - list [ref=e804]:
+              - listitem [ref=e805]:
+                - link "Platform" [ref=e806] [cursor=pointer]:
+                  - /url: /platform
+              - listitem [ref=e807]:
+                - link "Lab" [ref=e808] [cursor=pointer]:
+                  - /url: /lab
+              - listitem [ref=e809]:
+                - link "Cases" [ref=e810] [cursor=pointer]:
+                  - /url: /cases
+      - generic [ref=e812]:
+        - paragraph [ref=e813]: © 2026 Softcery. All rights reserved.
+        - generic [ref=e814]:
+          - link "Privacy" [ref=e815] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e816] [cursor=pointer]:
+            - /url: /terms
+          - link "hello@softcery.com" [ref=e817] [cursor=pointer]:
+            - /url: mailto:hello@softcery.com
+  - button "Chat with us" [ref=e819]:
+    - img [ref=e820]
+    - text: Chat with us

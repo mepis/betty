@@ -1,0 +1,817 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - region "Blind TTS Elo study" [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]: Recent study
+          - generic [ref=e7]:
+            - strong [ref=e8]: Blind TTS Elo is live.
+            - text: Compare two anonymous voice samples, vote after listening, and help separate real preference signal from noise.
+          - link "Vote in the study ->" [ref=e9] [cursor=pointer]:
+            - /url: /text-to-speech/elo
+            - text: Vote in the study
+            - generic [ref=e10]: "->"
+      - navigation "Primary" [ref=e11]:
+        - generic [ref=e12]:
+          - link "Codesota home" [ref=e13] [cursor=pointer]:
+            - /url: /
+            - text: Codesota
+            - generic [ref=e14]: .
+          - generic [ref=e15]: Open SOTA registry
+        - generic [ref=e16]:
+          - link "Tasks" [ref=e17] [cursor=pointer]:
+            - /url: /tasks
+          - link "Modalities" [ref=e18] [cursor=pointer]:
+            - /url: /#modalities
+          - link "Benchmarks" [ref=e19] [cursor=pointer]:
+            - /url: /benchmarks
+          - link "Models" [ref=e20] [cursor=pointer]:
+            - /url: /models
+          - link "Recent Papers" [ref=e21] [cursor=pointer]:
+            - /url: /recent_papers
+          - link "OCR" [ref=e22] [cursor=pointer]:
+            - /url: /ocr
+        - generic [ref=e23]:
+          - link "API" [ref=e24] [cursor=pointer]:
+            - /url: /api-landing/sota
+          - link "Sign in" [ref=e25] [cursor=pointer]:
+            - /url: /join
+          - link "TTS Elo ->" [ref=e26] [cursor=pointer]:
+            - /url: /text-to-speech/elo
+            - text: TTS Elo
+            - generic [ref=e27]: "->"
+    - generic [ref=e29]:
+      - generic [ref=e30]: Codesota · Guides · TTS Models
+      - generic [ref=e31]: Eight open-source systems, side by side
+      - generic [ref=e32]: Updated March 2026
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]: Guide · Speech synthesis
+        - heading "Eight open-source voices, compared on the evidence." [level=1] [ref=e37]:
+          - text: Eight open-source
+          - emphasis [ref=e38]: voices,
+          - text: compared on the evidence.
+        - paragraph [ref=e39]: Kokoro, XTTS v2, Bark, Piper, Fish Speech, Dia, F5-TTS, Parler-TTS — naturalness, speed, voice cloning, hardware, and licence, with the numbers each team has published.
+        - paragraph [ref=e40]: MOS figures are sourced from the model authors' own evaluations and community reproductions. Real-time factor measured on an A100 unless otherwise noted.
+      - complementary "At a glance" [ref=e41]:
+        - generic [ref=e42]: At a glance
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - term [ref=e45]: Most natural
+            - definition [ref=e46]: Kokoro · MOS 4.2 · 82M params · Apache 2.0
+          - generic [ref=e47]:
+            - term [ref=e48]: Best cloning
+            - definition [ref=e49]: XTTS v2 · 6s reference · 17 languages · CPML
+          - generic [ref=e50]:
+            - term [ref=e51]: Edge / CPU
+            - definition [ref=e52]: Piper · RTF 0.008 · <100 MB · 30+ langs
+          - generic [ref=e53]:
+            - term [ref=e54]: Dialogue
+            - definition [ref=e55]: Dia · 1.6B · native [S1]/[S2] speaker tags
+        - generic [ref=e56]: Fig 0 · The four most-common picks, each for a different constraint.
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]: § 01 · Naturalness
+        - heading "How human the voice feels." [level=2] [ref=e61]:
+          - text: How human the
+          - emphasis [ref=e62]: voice feels.
+        - paragraph [ref=e63]: Mean Opinion Score on a 1–5 scale. Human speech typically scores 4.5–4.8.
+      - article [ref=e64]:
+        - paragraph [ref=e65]: Eight systems, eight claims about naturalness. The ordering below is the one their own evaluations support; none of the differences between the top four are large, but the trend — efficiency models catching the larger transformer-based systems — is the story of the last eighteen months.
+        - table [ref=e66]:
+          - rowgroup [ref=e67]:
+            - row "Model MOS Org Signature" [ref=e68]:
+              - columnheader "Model" [ref=e69]
+              - columnheader "MOS" [ref=e70]
+              - columnheader "Org" [ref=e71]
+              - columnheader "Signature" [ref=e72]
+          - rowgroup [ref=e73]:
+            - row "Kokoro 4.2 Hexgrad Highest naturalness per parameter" [ref=e74]:
+              - cell "Kokoro" [ref=e75]: Kokoro
+              - cell "4.2" [ref=e77]
+              - cell "Hexgrad" [ref=e78]
+              - cell "Highest naturalness per parameter" [ref=e79]
+            - row "Fish Speech 4.1 Fish Audio Strong multilingual cloning" [ref=e80]:
+              - cell "Fish Speech" [ref=e81]
+              - cell "4.1" [ref=e82]
+              - cell "Fish Audio" [ref=e83]
+              - cell "Strong multilingual cloning" [ref=e84]
+            - row "F5-TTS 4.1 SWivid Zero-shot cloning via flow matching" [ref=e85]:
+              - cell "F5-TTS" [ref=e86]
+              - cell "4.1" [ref=e87]
+              - cell "SWivid" [ref=e88]
+              - cell "Zero-shot cloning via flow matching" [ref=e89]
+            - row "XTTS v2 4.0 Coqui Best zero-shot voice cloning" [ref=e90]:
+              - cell "XTTS v2" [ref=e91]
+              - cell "4.0" [ref=e92]
+              - cell "Coqui" [ref=e93]
+              - cell "Best zero-shot voice cloning" [ref=e94]
+            - row "Dia 4.0 Nari Labs Multi-speaker dialogue generation" [ref=e95]:
+              - cell "Dia" [ref=e96]
+              - cell "4.0" [ref=e97]
+              - cell "Nari Labs" [ref=e98]
+              - cell "Multi-speaker dialogue generation" [ref=e99]
+            - row "Parler-TTS 3.8 Hugging Face Control voice via text description" [ref=e100]:
+              - cell "Parler-TTS" [ref=e101]
+              - cell "3.8" [ref=e102]
+              - cell "Hugging Face" [ref=e103]
+              - cell "Control voice via text description" [ref=e104]
+            - row "Bark 3.7 Suno Non-speech audio (music, laughter)" [ref=e105]:
+              - cell "Bark" [ref=e106]
+              - cell "3.7" [ref=e107]
+              - cell "Suno" [ref=e108]
+              - cell "Non-speech audio (music, laughter)" [ref=e109]
+            - row "Piper 3.5 Rhasspy Runs on Raspberry Pi" [ref=e110]:
+              - cell "Piper" [ref=e111]
+              - cell "3.5" [ref=e112]
+              - cell "Rhasspy" [ref=e113]
+              - cell "Runs on Raspberry Pi" [ref=e114]
+            - row "Human speech 4.5+ — upper bound, per field convention" [ref=e115]:
+              - cell "Human speech" [ref=e116]
+              - cell "4.5+" [ref=e117]
+              - cell "—" [ref=e118]
+              - cell "upper bound, per field convention" [ref=e119]
+        - generic [ref=e120]: Fig 1 · MOS rankings as published by each model's authors.
+      - complementary [ref=e121]:
+        - generic [ref=e122]:
+          - generic [ref=e123]: What MOS is
+          - generic [ref=e124]: A subjective score collected from listeners rating short clips for naturalness. It is noisy — differences under 0.1 are usually within evaluator variance — but it remains the field's working language for perceived quality.
+        - generic [ref=e125]:
+          - generic [ref=e126]: How we report
+          - generic [ref=e127]: We reproduce each team's published MOS rather than re-running our own listener study. Where authors report multiple numbers, we quote the one in the model card for the public checkpoint.
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - generic [ref=e131]: § 02 · Comparison
+        - heading "The full table." [level=2] [ref=e132]:
+          - text: The full
+          - emphasis [ref=e133]: table.
+        - paragraph [ref=e134]: MOS, real-time factor, VRAM, cloning behaviour, languages and licence — the four questions that decide the pick.
+      - article [ref=e135]:
+        - table [ref=e136]:
+          - rowgroup [ref=e137]:
+            - row "Model MOS RTF VRAM Params Voice cloning Licence" [ref=e138]:
+              - columnheader "Model" [ref=e139]
+              - columnheader "MOS" [ref=e140]
+              - columnheader "RTF" [ref=e141]
+              - columnheader "VRAM" [ref=e142]
+              - columnheader "Params" [ref=e143]
+              - columnheader "Voice cloning" [ref=e144]
+              - columnheader "Licence" [ref=e145]
+          - rowgroup [ref=e146]:
+            - row "Kokoro Hexgrad 4.2 0.03 < 1 GB 82M No (style presets) Apache 2.0" [ref=e147]:
+              - cell "Kokoro Hexgrad" [ref=e148]:
+                - text: Kokoro
+                - generic [ref=e149]: Hexgrad
+              - cell "4.2" [ref=e150]
+              - cell "0.03" [ref=e151]
+              - cell "< 1 GB" [ref=e152]
+              - cell "82M" [ref=e153]
+              - cell "No (style presets)" [ref=e154]
+              - cell "Apache 2.0" [ref=e155]
+            - row "XTTS v2 Coqui 4.0 0.18 ~4 GB 467M Yes (6s reference) CPML (non-commercial)" [ref=e156]:
+              - cell "XTTS v2 Coqui" [ref=e157]:
+                - text: XTTS v2
+                - generic [ref=e158]: Coqui
+              - cell "4.0" [ref=e159]
+              - cell "0.18" [ref=e160]
+              - cell "~4 GB" [ref=e161]
+              - cell "467M" [ref=e162]
+              - cell "Yes (6s reference)" [ref=e163]
+              - cell "CPML (non-commercial)" [ref=e164]
+            - row "Bark Suno 3.7 0.85 ~6 GB 900M Limited (speaker prompts) MIT" [ref=e165]:
+              - cell "Bark Suno" [ref=e166]:
+                - text: Bark
+                - generic [ref=e167]: Suno
+              - cell "3.7" [ref=e168]
+              - cell "0.85" [ref=e169]
+              - cell "~6 GB" [ref=e170]
+              - cell "900M" [ref=e171]
+              - cell "Limited (speaker prompts)" [ref=e172]
+              - cell "MIT" [ref=e173]
+            - row "Piper Rhasspy 3.5 0.008 < 100 MB (CPU) 6-60M No (pre-trained voices) MIT" [ref=e174]:
+              - cell "Piper Rhasspy" [ref=e175]:
+                - text: Piper
+                - generic [ref=e176]: Rhasspy
+              - cell "3.5" [ref=e177]
+              - cell "0.008" [ref=e178]
+              - cell "< 100 MB (CPU)" [ref=e179]
+              - cell "6-60M" [ref=e180]
+              - cell "No (pre-trained voices)" [ref=e181]
+              - cell "MIT" [ref=e182]
+            - row "Fish Speech Fish Audio 4.1 0.12 ~4 GB 500M Yes (10-30s reference) Apache 2.0" [ref=e183]:
+              - cell "Fish Speech Fish Audio" [ref=e184]:
+                - text: Fish Speech
+                - generic [ref=e185]: Fish Audio
+              - cell "4.1" [ref=e186]
+              - cell "0.12" [ref=e187]
+              - cell "~4 GB" [ref=e188]
+              - cell "500M" [ref=e189]
+              - cell "Yes (10-30s reference)" [ref=e190]
+              - cell "Apache 2.0" [ref=e191]
+            - row "Dia Nari Labs 4.0 0.15 ~5 GB 1.6B Yes (audio prompt) Apache 2.0" [ref=e192]:
+              - cell "Dia Nari Labs" [ref=e193]:
+                - text: Dia
+                - generic [ref=e194]: Nari Labs
+              - cell "4.0" [ref=e195]
+              - cell "0.15" [ref=e196]
+              - cell "~5 GB" [ref=e197]
+              - cell "1.6B" [ref=e198]
+              - cell "Yes (audio prompt)" [ref=e199]
+              - cell "Apache 2.0" [ref=e200]
+            - row "F5-TTS SWivid 4.1 0.14 ~4 GB 336M Yes (5-15s reference) CC-BY-NC 4.0" [ref=e201]:
+              - cell "F5-TTS SWivid" [ref=e202]:
+                - text: F5-TTS
+                - generic [ref=e203]: SWivid
+              - cell "4.1" [ref=e204]
+              - cell "0.14" [ref=e205]
+              - cell "~4 GB" [ref=e206]
+              - cell "336M" [ref=e207]
+              - cell "Yes (5-15s reference)" [ref=e208]
+              - cell "CC-BY-NC 4.0" [ref=e209]
+            - row "Parler-TTS Hugging Face 3.8 0.22 ~4 GB 880M No (text-described voices) Apache 2.0" [ref=e210]:
+              - cell "Parler-TTS Hugging Face" [ref=e211]:
+                - text: Parler-TTS
+                - generic [ref=e212]: Hugging Face
+              - cell "3.8" [ref=e213]
+              - cell "0.22" [ref=e214]
+              - cell "~4 GB" [ref=e215]
+              - cell "880M" [ref=e216]
+              - cell "No (text-described voices)" [ref=e217]
+              - cell "Apache 2.0" [ref=e218]
+        - generic [ref=e219]: Fig 2 · Figures as published by each project. Languages listed in § 03 to keep this table legible.
+      - complementary [ref=e220]:
+        - generic [ref=e221]:
+          - generic [ref=e222]: RTF
+          - generic [ref=e223]: Real-time factor. RTF < 1.0 means faster than real-time; RTF 0.03 means a ten-second clip in 0.3 seconds. Measured on NVIDIA A100 unless the row notes otherwise.
+        - generic [ref=e224]:
+          - generic [ref=e225]: VRAM
+          - generic [ref=e226]: Reported at fp16, single utterance. Batch synthesis raises memory roughly linearly with the batch. Piper is CPU-first; the other rows assume a GPU.
+        - generic [ref=e227]:
+          - generic [ref=e228]: Cloning
+          - generic [ref=e229]: “Yes” means zero-shot from a reference clip; “Limited” means speaker prompts only; “No” means pre-baked voices or text-described voices.
+    - generic [ref=e231]:
+      - generic [ref=e232]:
+        - generic [ref=e233]: § 03 · Deep dives
+        - heading "One by one." [level=2] [ref=e234]:
+          - text: One by
+          - emphasis [ref=e235]: one.
+        - paragraph [ref=e236]: Eight models, each with its own design decision and the trade-off that follows.
+      - article [ref=e237]:
+        - generic [ref=e238]:
+          - heading "Kokoro · Hexgrad" [level=3] [ref=e239]: Kokoro · Hexgrad
+          - paragraph [ref=e241]:
+            - text: Kokoro is the efficiency champion. Built on StyleTTS 2, it achieves the highest MOS in this comparison (4.2) with
+            - strong [ref=e242]: 82M parameters
+            - text: — orders of magnitude smaller than competitors. It runs comfortably on CPU and reaches RTF 0.03 on GPU, which means a ten-second clip synthesises in 0.3 seconds. It ships with curated style presets for different voices but does not do arbitrary voice cloning. As of early 2026 it supports 9 languages including English, Japanese, Korean and major European languages.
+          - generic [ref=e243]:
+            - generic [ref=e244]:
+              - generic [ref=e245]: Architecture
+              - generic [ref=e246]: StyleTTS 2 based
+            - generic [ref=e247]:
+              - generic [ref=e248]: Sample rate
+              - generic [ref=e249]: 24 kHz
+            - generic [ref=e250]:
+              - generic [ref=e251]: Streaming
+              - generic [ref=e252]: Yes (chunked)
+            - generic [ref=e253]:
+              - generic [ref=e254]: Best for
+              - generic [ref=e255]: Narration, assistants
+          - generic [ref=e256]:
+            - generic [ref=e257]:
+              - generic [ref=e258]: kokoro_example.py
+              - generic [ref=e259]: python
+            - code [ref=e261]: "# pip install kokoro>=0.8 soundfile from kokoro import KPipeline import soundfile as sf pipe = KPipeline(lang_code=\"a\") # 'a' = American English # Available voices: af_heart, af_bella, am_adam, am_michael, etc. samples = pipe(\"Hello from Kokoro, the most efficient open-source TTS.\", voice=\"af_heart\", speed=1.0) for i, (gs, ps, audio) in enumerate(samples): sf.write(f\"output_{i}.wav\", audio, 24000)"
+        - generic [ref=e262]:
+          - heading "XTTS v2 · Coqui" [level=3] [ref=e263]: XTTS v2 · Coqui
+          - paragraph [ref=e265]:
+            - text: XTTS v2 remains the gold standard for zero-shot voice cloning. With
+            - strong [ref=e266]: six seconds of reference audio
+            - text: it produces remarkably faithful voices across 17 languages. The architecture combines a GPT-style autoregressive model with DVAE and a HiFi-GAN vocoder. The main caveat is the CPML licence, which restricts commercial use without a separate agreement — for commercial projects, Fish Speech or F5-TTS are the alternatives.
+          - generic [ref=e267]:
+            - generic [ref=e268]:
+              - generic [ref=e269]: Architecture
+              - generic [ref=e270]: GPT + DVAE + HiFi-GAN
+            - generic [ref=e271]:
+              - generic [ref=e272]: Sample rate
+              - generic [ref=e273]: 24 kHz
+            - generic [ref=e274]:
+              - generic [ref=e275]: Streaming
+              - generic [ref=e276]: "Yes"
+            - generic [ref=e277]:
+              - generic [ref=e278]: Best for
+              - generic [ref=e279]: Voice cloning, dubbing
+          - generic [ref=e280]:
+            - generic [ref=e281]:
+              - generic [ref=e282]: xtts_example.py
+              - generic [ref=e283]: python
+            - code [ref=e285]: "# pip install TTS from TTS.api import TTS tts = TTS(\"tts_models/multilingual/multi-dataset/xtts_v2\", gpu=True) # Zero-shot voice cloning from a 6s reference clip tts.tts_to_file( text=\"This is a cloned voice speaking naturally.\", speaker_wav=\"reference.wav\", language=\"en\", file_path=\"output.wav\", )"
+        - generic [ref=e286]:
+          - heading "Bark · Suno" [level=3] [ref=e287]: Bark · Suno
+          - paragraph [ref=e289]:
+            - text: Bark is unique in its ability to generate
+            - emphasis [ref=e290]: non-speech
+            - text: audio alongside speech — laughter, music snippets, sighs, paralinguistic cues — using inline tags. The GPT-style autoregressive architecture makes it slower (RTF 0.85) and thirstier for VRAM (~6 GB), but for creative applications where expressive, varied audio is needed, Bark remains unmatched. MIT licence; suitable for commercial projects.
+          - generic [ref=e291]:
+            - generic [ref=e292]:
+              - generic [ref=e293]: Architecture
+              - generic [ref=e294]: GPT-style AR
+            - generic [ref=e295]:
+              - generic [ref=e296]: Sample rate
+              - generic [ref=e297]: 24 kHz
+            - generic [ref=e298]:
+              - generic [ref=e299]: Streaming
+              - generic [ref=e300]: "No"
+            - generic [ref=e301]:
+              - generic [ref=e302]: Best for
+              - generic [ref=e303]: Creative audio, games
+          - generic [ref=e304]:
+            - generic [ref=e305]:
+              - generic [ref=e306]: bark_example.py
+              - generic [ref=e307]: python
+            - code [ref=e309]: "# pip install bark from bark import SAMPLE_RATE, generate_audio, preload_models from scipy.io.wavfile import write as write_wav preload_models() # Bark supports non-speech: laughter, music, hesitations text = \"\"\"Hello! [laughs] This is Bark speaking. It can generate musical notes and even [sighs] emotions.\"\"\" audio = generate_audio(text, history_prompt=\"v2/en_speaker_6\") write_wav(\"output.wav\", SAMPLE_RATE, audio)"
+        - generic [ref=e310]:
+          - heading "Piper · Rhasspy" [level=3] [ref=e311]: Piper · Rhasspy
+          - paragraph [ref=e313]:
+            - text: Piper is the go-to TTS for edge devices. Built on VITS / VITS2 and exported to ONNX, it achieves RTF 0.008 — a ten-second clip in eighty milliseconds. It runs entirely on CPU with under 100 MB of RAM. With
+            - strong [ref=e314]: 30+ pre-trained language models
+            - text: it is the most broadly multilingual option. The trade-off is lower naturalness (MOS 3.5) and no voice cloning; you pick from pre-trained voices. Ideal for home assistants, kiosks and offline applications.
+          - generic [ref=e315]:
+            - generic [ref=e316]:
+              - generic [ref=e317]: Architecture
+              - generic [ref=e318]: VITS / VITS2 (ONNX)
+            - generic [ref=e319]:
+              - generic [ref=e320]: Sample rate
+              - generic [ref=e321]: 16–22 kHz
+            - generic [ref=e322]:
+              - generic [ref=e323]: Streaming
+              - generic [ref=e324]: Yes (sentence-level)
+            - generic [ref=e325]:
+              - generic [ref=e326]: Best for
+              - generic [ref=e327]: RPi, offline, IoT
+          - generic [ref=e328]:
+            - generic [ref=e329]:
+              - generic [ref=e330]: piper_example.py
+              - generic [ref=e331]: python
+            - code [ref=e333]: "# Install: pip install piper-tts # Download a voice: piper --download-dir ./voices --model en_US-lessac-high import subprocess text = \"Piper runs on a Raspberry Pi in real-time.\" subprocess.run( [\"piper\", \"--model\", \"./voices/en_US-lessac-high.onnx\", \"--output_file\", \"output.wav\"], input=text.encode(), )"
+        - generic [ref=e334]:
+          - heading "Fish Speech · Fish Audio" [level=3] [ref=e335]: Fish Speech · Fish Audio
+          - paragraph [ref=e337]: Fish Speech combines a VQGAN tokeniser with a Llama-based decoder to achieve strong voice cloning across 8 languages. It requires 10–30 seconds of reference audio — slightly more than XTTS v2 — but ships Apache 2.0, making it the best commercially-friendly cloning option. MOS 4.1 puts it near the top for naturalness. The architecture tolerates fine-tuning on custom voices from relatively small datasets.
+          - generic [ref=e338]:
+            - generic [ref=e339]:
+              - generic [ref=e340]: Architecture
+              - generic [ref=e341]: VQGAN + Llama
+            - generic [ref=e342]:
+              - generic [ref=e343]: Sample rate
+              - generic [ref=e344]: 44.1 kHz
+            - generic [ref=e345]:
+              - generic [ref=e346]: Streaming
+              - generic [ref=e347]: "Yes"
+            - generic [ref=e348]:
+              - generic [ref=e349]: Best for
+              - generic [ref=e350]: Commercial cloning
+          - generic [ref=e351]:
+            - generic [ref=e352]:
+              - generic [ref=e353]: fish_speech_example.py
+              - generic [ref=e354]: python
+            - code [ref=e356]: "# pip install fish-speech from fish_speech.api import FishSpeechTTS tts = FishSpeechTTS(device=\"cuda\") # Zero-shot cloning with 10-30s reference tts.synthesize( text=\"Fish Speech excels at multilingual voice cloning.\", reference_audio=\"speaker_ref.wav\", output_path=\"output.wav\", )"
+        - generic [ref=e357]:
+          - heading "Dia · Nari Labs" [level=3] [ref=e358]: Dia · Nari Labs
+          - paragraph [ref=e360]:
+            - text: Dia is purpose-built for dialogue. Pass a script with speaker tags —
+            - code [ref=e361]: "[S1]"
+            - text: ","
+            - code [ref=e362]: "[S2]"
+            - text: — and it produces a natural multi-speaker conversation with appropriate prosody, pacing and turn-taking. At
+            - strong [ref=e363]: 1.6B parameters
+            - text: it is the largest model in this comparison, needing ~5 GB VRAM. It also handles non-verbal cues like laughter and hesitations. English-only today, but the dialogue capability is unmatched.
+          - generic [ref=e364]:
+            - generic [ref=e365]:
+              - generic [ref=e366]: Architecture
+              - generic [ref=e367]: Encoder-decoder transformer
+            - generic [ref=e368]:
+              - generic [ref=e369]: Sample rate
+              - generic [ref=e370]: 44 kHz
+            - generic [ref=e371]:
+              - generic [ref=e372]: Streaming
+              - generic [ref=e373]: "No"
+            - generic [ref=e374]:
+              - generic [ref=e375]: Best for
+              - generic [ref=e376]: Podcasts, audiobooks
+          - generic [ref=e377]:
+            - generic [ref=e378]:
+              - generic [ref=e379]: dia_example.py
+              - generic [ref=e380]: python
+            - code [ref=e382]: "# pip install diarizationlm # Dia by Nari Labs from dia import Dia model = Dia(\"nari-labs/Dia-1.6B\", device=\"cuda\") # Multi-speaker dialogue generation dialogue = \"\"\"[S1] Hey, have you tried the new open-source TTS models? [S2] Yeah, Dia is amazing for dialogue. It handles turn-taking naturally. [S1] The prosody between speakers is surprisingly good.\"\"\" audio = model.generate(dialogue) model.save_audio(\"dialogue.wav\", audio)"
+        - generic [ref=e383]:
+          - heading "F5-TTS · SWivid" [level=3] [ref=e384]: F5-TTS · SWivid
+          - paragraph [ref=e386]:
+            - text: F5-TTS uses flow matching with a Diffusion Transformer (DiT) backbone. MOS 4.1 with
+            - strong [ref=e387]: 336M parameters
+            - text: and strong zero-shot cloning from 5–15 seconds of reference. The flow-matching architecture produces more consistent output than autoregressive approaches, avoiding the occasional artefacts of GPT-style TTS. CC-BY-NC 4.0 — so non-commercial only.
+          - generic [ref=e388]:
+            - generic [ref=e389]:
+              - generic [ref=e390]: Architecture
+              - generic [ref=e391]: Flow matching + DiT
+            - generic [ref=e392]:
+              - generic [ref=e393]: Sample rate
+              - generic [ref=e394]: 24 kHz
+            - generic [ref=e395]:
+              - generic [ref=e396]: Streaming
+              - generic [ref=e397]: Yes (chunk-based)
+            - generic [ref=e398]:
+              - generic [ref=e399]: Best for
+              - generic [ref=e400]: Research, cloning
+          - generic [ref=e401]:
+            - generic [ref=e402]:
+              - generic [ref=e403]: f5tts_example.py
+              - generic [ref=e404]: python
+            - code [ref=e406]: "# pip install f5-tts from f5_tts.api import F5TTS tts = F5TTS(device=\"cuda\") # Zero-shot voice cloning via flow matching tts.infer( ref_file=\"reference.wav\", ref_text=\"This is the reference transcript.\", gen_text=\"F5-TTS uses flow matching for natural-sounding speech synthesis.\", output=\"output.wav\", )"
+        - generic [ref=e407]:
+          - heading "Parler-TTS · Hugging Face" [level=3] [ref=e408]: Parler-TTS · Hugging Face
+          - paragraph [ref=e410]:
+            - text: "Parler-TTS takes a different route: instead of a reference clip, you"
+            - emphasis [ref=e411]: describe
+            - text: the voice you want. “A warm female voice with a slight British accent, speaking clearly and calmly” — and the model attempts a match. The control surface is striking for rapid prototyping without any reference recordings. MOS 3.8 is decent but not top-tier; the value is in the controllability and the Apache 2.0 licence.
+          - generic [ref=e412]:
+            - generic [ref=e413]:
+              - generic [ref=e414]: Architecture
+              - generic [ref=e415]: T5 + DAC decoder
+            - generic [ref=e416]:
+              - generic [ref=e417]: Sample rate
+              - generic [ref=e418]: 44.1 kHz
+            - generic [ref=e419]:
+              - generic [ref=e420]: Streaming
+              - generic [ref=e421]: "No"
+            - generic [ref=e422]:
+              - generic [ref=e423]: Best for
+              - generic [ref=e424]: Prototyping, content
+          - generic [ref=e425]:
+            - generic [ref=e426]:
+              - generic [ref=e427]: parler_example.py
+              - generic [ref=e428]: python
+            - code [ref=e430]: "# pip install parler-tts from parler_tts import ParlerTTSForConditionalGeneration from transformers import AutoTokenizer import soundfile as sf model = ParlerTTSForConditionalGeneration.from_pretrained(\"parler-tts/parler-tts-large-v1\") tokenizer = AutoTokenizer.from_pretrained(\"parler-tts/parler-tts-large-v1\") description = \"A warm female voice with a slight British accent, speaking clearly and calmly.\" prompt = \"Parler TTS lets you describe the exact voice characteristics you want.\" input_ids = tokenizer(description, return_tensors=\"pt\").input_ids prompt_ids = tokenizer(prompt, return_tensors=\"pt\").input_ids gen = model.generate(input_ids=input_ids, prompt_input_ids=prompt_ids) sf.write(\"output.wav\", gen.cpu().numpy().squeeze(), model.config.sampling_rate)"
+    - generic [ref=e432]:
+      - generic [ref=e433]:
+        - generic [ref=e434]: § 04 · Hardware
+        - heading "What your box can run." [level=2] [ref=e435]:
+          - text: What your box
+          - emphasis [ref=e436]: can run.
+        - paragraph [ref=e437]: Four deployment tiers, from a Raspberry Pi to a 4090.
+      - article [ref=e438]:
+        - table [ref=e439]:
+          - rowgroup [ref=e440]:
+            - row "Tier GPU / RAM Runs well Notes" [ref=e441]:
+              - columnheader "Tier" [ref=e442]
+              - columnheader "GPU / RAM" [ref=e443]
+              - columnheader "Runs well" [ref=e444]
+              - columnheader "Notes" [ref=e445]
+          - rowgroup [ref=e446]:
+            - row "Edge / Embedded CPU only / RPi 4 · 1–4 GB Piper Real-time on ARM. Home assistants, offline kiosks." [ref=e447]:
+              - cell "Edge / Embedded" [ref=e448]
+              - cell "CPU only / RPi 4 · 1–4 GB" [ref=e449]
+              - cell "Piper" [ref=e450]
+              - cell "Real-time on ARM. Home assistants, offline kiosks." [ref=e451]
+            - row "Consumer laptop Integrated / no GPU · 8 GB Kokoro, Piper Kokoro near real-time on CPU; Piper instant." [ref=e452]:
+              - cell "Consumer laptop" [ref=e453]
+              - cell "Integrated / no GPU · 8 GB" [ref=e454]
+              - cell "Kokoro, Piper" [ref=e455]
+              - cell "Kokoro near real-time on CPU; Piper instant." [ref=e456]
+            - row "Mid-range GPU RTX 3060 / 4060 (8 GB) · 16 GB Kokoro, XTTS v2, Fish Speech, F5-TTS, Parler-TTS Sweet spot for most use cases." [ref=e457]:
+              - cell "Mid-range GPU" [ref=e458]
+              - cell "RTX 3060 / 4060 (8 GB) · 16 GB" [ref=e459]
+              - cell "Kokoro, XTTS v2, Fish Speech, F5-TTS, Parler-TTS" [ref=e460]
+              - cell "Sweet spot for most use cases." [ref=e461]
+            - row "High-end GPU RTX 3090 / 4090 (24 GB) · 32 GB All models Run Dia and Bark at large batch sizes; audiobook production." [ref=e462]:
+              - cell "High-end GPU" [ref=e463]
+              - cell "RTX 3090 / 4090 (24 GB) · 32 GB" [ref=e464]
+              - cell "All models" [ref=e465]
+              - cell "Run Dia and Bark at large batch sizes; audiobook production." [ref=e466]
+    - generic [ref=e468]:
+      - generic [ref=e469]:
+        - generic [ref=e470]: § 05 · Decision
+        - heading "Start from the constraint." [level=2] [ref=e471]:
+          - text: Start from the
+          - emphasis [ref=e472]: constraint.
+        - paragraph [ref=e473]: One primary requirement on the left; the best and second-best pick on the right.
+      - article [ref=e474]:
+        - table [ref=e475]:
+          - rowgroup [ref=e476]:
+            - row "Your priority Best pick Runner-up Why" [ref=e477]:
+              - columnheader "Your priority" [ref=e478]
+              - columnheader "Best pick" [ref=e479]
+              - columnheader "Runner-up" [ref=e480]
+              - columnheader "Why" [ref=e481]
+          - rowgroup [ref=e482]:
+            - row "Maximum naturalness Kokoro Fish Speech MOS 4.2 with only 82M params. Apache 2.0." [ref=e483]:
+              - cell "Maximum naturalness" [ref=e484]
+              - cell "Kokoro" [ref=e485]
+              - cell "Fish Speech" [ref=e486]
+              - cell "MOS 4.2 with only 82M params. Apache 2.0." [ref=e487]
+            - row "Voice cloning (any licence) XTTS v2 F5-TTS Best speaker similarity from 6s reference." [ref=e488]:
+              - cell "Voice cloning (any licence)" [ref=e489]
+              - cell "XTTS v2" [ref=e490]
+              - cell "F5-TTS" [ref=e491]
+              - cell "Best speaker similarity from 6s reference." [ref=e492]
+            - row "Voice cloning (commercial) Fish Speech Kokoro presets Apache 2.0 with strong multilingual cloning." [ref=e493]:
+              - cell "Voice cloning (commercial)" [ref=e494]
+              - cell "Fish Speech" [ref=e495]
+              - cell "Kokoro presets" [ref=e496]
+              - cell "Apache 2.0 with strong multilingual cloning." [ref=e497]
+            - row "Fastest inference Piper Kokoro RTF 0.008 on CPU. Sub-100ms latency." [ref=e498]:
+              - cell "Fastest inference" [ref=e499]
+              - cell "Piper" [ref=e500]
+              - cell "Kokoro" [ref=e501]
+              - cell "RTF 0.008 on CPU. Sub-100ms latency." [ref=e502]
+            - row "Minimal VRAM / edge Piper Kokoro <100 MB on CPU. Runs on Raspberry Pi." [ref=e503]:
+              - cell "Minimal VRAM / edge" [ref=e504]
+              - cell "Piper" [ref=e505]
+              - cell "Kokoro" [ref=e506]
+              - cell "<100 MB on CPU. Runs on Raspberry Pi." [ref=e507]
+            - row "Most languages Piper XTTS v2 30+ vs 17 languages. Pre-trained voices." [ref=e508]:
+              - cell "Most languages" [ref=e509]
+              - cell "Piper" [ref=e510]
+              - cell "XTTS v2" [ref=e511]
+              - cell "30+ vs 17 languages. Pre-trained voices." [ref=e512]
+            - row "Multi-speaker dialogue Dia Bark Native [S1]/[S2] tags with natural turn-taking." [ref=e513]:
+              - cell "Multi-speaker dialogue" [ref=e514]
+              - cell "Dia" [ref=e515]
+              - cell "Bark" [ref=e516]
+              - cell "Native [S1]/[S2] tags with natural turn-taking." [ref=e517]
+            - row "Expressive / non-speech Bark Dia Laughter, music, emotions inline." [ref=e518]:
+              - cell "Expressive / non-speech" [ref=e519]
+              - cell "Bark" [ref=e520]
+              - cell "Dia" [ref=e521]
+              - cell "Laughter, music, emotions inline." [ref=e522]
+            - row "Voice control via text Parler-TTS Kokoro presets Describe voice in natural language." [ref=e523]:
+              - cell "Voice control via text" [ref=e524]
+              - cell "Parler-TTS" [ref=e525]
+              - cell "Kokoro presets" [ref=e526]
+              - cell "Describe voice in natural language." [ref=e527]
+            - row "Research / novel architecture F5-TTS Parler-TTS Flow matching + DiT. Cutting-edge approach." [ref=e528]:
+              - cell "Research / novel architecture" [ref=e529]
+              - cell "F5-TTS" [ref=e530]
+              - cell "Parler-TTS" [ref=e531]
+              - cell "Flow matching + DiT. Cutting-edge approach." [ref=e532]
+    - generic [ref=e534]:
+      - generic [ref=e535]:
+        - generic [ref=e536]: § 06 · Licensing
+        - heading "Who may ship what." [level=2] [ref=e537]:
+          - text: Who may ship
+          - emphasis [ref=e538]: what.
+        - paragraph [ref=e539]: The licence is often the binding constraint, not the MOS.
+      - article [ref=e540]:
+        - paragraph [ref=e541]:
+          - strong [ref=e542]: Fully commercial (Apache 2.0 / MIT).
+          - text: Kokoro · Fish Speech · Dia · Parler-TTS (Apache 2.0) · Bark · Piper (MIT).
+        - paragraph [ref=e543]:
+          - strong [ref=e544]: Non-commercial or restricted.
+          - text: XTTS v2 (CPML — contact Coqui) · F5-TTS (CC-BY-NC 4.0).
+        - paragraph [ref=e545]:
+          - text: For commercial voice cloning in 2026, the practical pick is
+          - emphasis [ref=e546]: Fish Speech
+          - text: ": Apache 2.0, MOS 4.1, eight languages, and a reference-audio workflow the Coqui ecosystem made familiar."
+      - complementary [ref=e547]:
+        - generic [ref=e548]:
+          - generic [ref=e549]: Beyond the headline
+          - generic [ref=e550]: Training-data licences add their own constraints. Voice cloning raises consent and legal questions. Some jurisdictions restrict synthetic speech outright. Check the model card for dataset-specific terms before you ship.
+    - generic [ref=e551]:
+      - generic [ref=e553]:
+        - generic [ref=e554]: Related · Further reading
+        - heading "Continue through the registry." [level=2] [ref=e555]:
+          - text: Continue
+          - emphasis [ref=e556]: through the registry.
+      - list [ref=e557]:
+        - listitem [ref=e558]:
+          - link "/speech Speech · hub TTS, ASR, diarisation — benchmarks and SOTA tracking." [ref=e559] [cursor=pointer]:
+            - /url: /speech
+            - generic [ref=e560]: /speech
+            - generic [ref=e561]: Speech · hub
+            - generic [ref=e562]: TTS, ASR, diarisation — benchmarks and SOTA tracking.
+        - listitem [ref=e563]:
+          - link "/browse/speech Browse speech benchmarks Live leaderboards for the tasks this guide spans." [ref=e564] [cursor=pointer]:
+            - /url: /browse/speech
+            - generic [ref=e565]: /browse/speech
+            - generic [ref=e566]: Browse speech benchmarks
+            - generic [ref=e567]: Live leaderboards for the tasks this guide spans.
+        - listitem [ref=e568]:
+          - link "/guides/speech-recognition Speech recognition in 2026 The companion piece — Whisper, Gemini, AssemblyAI, Deepgram." [ref=e569] [cursor=pointer]:
+            - /url: /guides/speech-recognition
+            - generic [ref=e570]: /guides/speech-recognition
+            - generic [ref=e571]: Speech recognition in 2026
+            - generic [ref=e572]: The companion piece — Whisper, Gemini, AssemblyAI, Deepgram.
+        - listitem [ref=e573]:
+          - link "/guides All guides The editorial catalogue — long-form comparisons across ML." [ref=e574] [cursor=pointer]:
+            - /url: /guides
+            - generic [ref=e575]: /guides
+            - generic [ref=e576]: All guides
+            - generic [ref=e577]: The editorial catalogue — long-form comparisons across ML.
+        - listitem [ref=e578]:
+          - link "/methodology Methodology How Codesota treats benchmarks, sources and verification." [ref=e579] [cursor=pointer]:
+            - /url: /methodology
+            - generic [ref=e580]: /methodology
+            - generic [ref=e581]: Methodology
+            - generic [ref=e582]: How Codesota treats benchmarks, sources and verification.
+    - contentinfo [ref=e583]:
+      - generic [ref=e584]:
+        - generic [ref=e585]: CodeSOTA.
+        - generic [ref=e586]:
+          - generic [ref=e587]: A stricter benchmark registry for the agent era
+          - generic [ref=e588]:
+            - text: Built in public from Warsaw
+            - text: open JSON · no sponsored leaderboards
+      - generic [ref=e589]:
+        - generic [ref=e590]:
+          - link "Codesota home" [ref=e591] [cursor=pointer]:
+            - /url: /
+            - text: Codesota
+            - generic [ref=e592]: .
+          - paragraph [ref=e593]: CodeSOTA maps AI capabilities to dated, sourced benchmark evidence — readable by humans, callable by agents.
+          - paragraph [ref=e594]: Built in public from Warsaw · open JSON · no sponsored leaderboards
+          - generic [ref=e595]:
+            - link "Submit a score ↵" [ref=e596] [cursor=pointer]:
+              - /url: /contribute/score
+              - text: Submit a score
+              - generic [ref=e597]: ↵
+            - link "Try /api/sota →" [ref=e598] [cursor=pointer]:
+              - /url: /api-landing/sota
+              - text: Try /api/sota
+              - generic [ref=e599]: →
+        - generic [ref=e600]:
+          - generic [ref=e601]:
+            - generic [ref=e602]: Registry
+            - list [ref=e603]:
+              - listitem [ref=e604]:
+                - link "Tasks" [ref=e605] [cursor=pointer]:
+                  - /url: /tasks
+              - listitem [ref=e606]:
+                - link "Benchmarks" [ref=e607] [cursor=pointer]:
+                  - /url: /benchmarks
+              - listitem [ref=e608]:
+                - link "Models" [ref=e609] [cursor=pointer]:
+                  - /url: /models
+              - listitem [ref=e610]:
+                - link "Recent Papers" [ref=e611] [cursor=pointer]:
+                  - /url: /recent_papers
+              - listitem [ref=e612]:
+                - link "Leaderboards" [ref=e613] [cursor=pointer]:
+                  - /url: /benchmarks
+              - listitem [ref=e614]:
+                - link "Benchmark Lineages" [ref=e615] [cursor=pointer]:
+                  - /url: /lineages
+              - listitem [ref=e616]:
+                - link "Methodology" [ref=e617] [cursor=pointer]:
+                  - /url: /methodology
+              - listitem [ref=e618]:
+                - link "Submit a score" [ref=e619] [cursor=pointer]:
+                  - /url: /contribute/score
+          - generic [ref=e620]:
+            - generic [ref=e621]: Capability Areas
+            - list [ref=e622]:
+              - listitem [ref=e623]:
+                - link "Language & Knowledge" [ref=e624] [cursor=pointer]:
+                  - /url: /tasks#area-language-knowledge
+              - listitem [ref=e625]:
+                - link "Vision & Documents" [ref=e626] [cursor=pointer]:
+                  - /url: /tasks#area-vision-documents
+              - listitem [ref=e627]:
+                - link "Audio & Speech" [ref=e628] [cursor=pointer]:
+                  - /url: /tasks#area-audio-speech
+              - listitem [ref=e629]:
+                - link "Multimodal Media" [ref=e630] [cursor=pointer]:
+                  - /url: /tasks#area-multimodal-media
+              - listitem [ref=e631]:
+                - link "Code & Software Engineering" [ref=e632] [cursor=pointer]:
+                  - /url: /tasks#area-code-software-engineering
+              - listitem [ref=e633]:
+                - link "Agents & Tool Use" [ref=e634] [cursor=pointer]:
+                  - /url: /tasks#area-agents-tool-use
+              - listitem [ref=e635]:
+                - link "Structured Data & Forecasting" [ref=e636] [cursor=pointer]:
+                  - /url: /tasks#area-structured-data-forecasting
+              - listitem [ref=e637]:
+                - link "Robotics, Control & RL" [ref=e638] [cursor=pointer]:
+                  - /url: /tasks#area-robotics-control-rl
+              - listitem [ref=e639]:
+                - link "Science, Medicine & Industry" [ref=e640] [cursor=pointer]:
+                  - /url: /tasks#area-science-medicine-industry
+          - generic [ref=e641]:
+            - generic [ref=e642]: Deep Verticals
+            - list [ref=e643]:
+              - listitem [ref=e644]:
+                - link "OCR & Document AI" [ref=e645] [cursor=pointer]:
+                  - /url: /ocr
+              - listitem [ref=e646]:
+                - link "Polish OCR" [ref=e647] [cursor=pointer]:
+                  - /url: /polish-ocr
+              - listitem [ref=e648]:
+                - link "Polish LLM" [ref=e649] [cursor=pointer]:
+                  - /url: /polish-llm
+              - listitem [ref=e650]:
+                - link "Speech-to-Text" [ref=e651] [cursor=pointer]:
+                  - /url: /speech-to-text
+              - listitem [ref=e652]:
+                - link "Text-to-Speech" [ref=e653] [cursor=pointer]:
+                  - /url: /text-to-speech
+              - listitem [ref=e654]:
+                - link "Text Embeddings / MTEB" [ref=e655] [cursor=pointer]:
+                  - /url: /benchmarks/mteb
+              - listitem [ref=e656]:
+                - link "Code Generation" [ref=e657] [cursor=pointer]:
+                  - /url: /code-generation
+              - listitem [ref=e658]:
+                - link "Agent Benchmarks" [ref=e659] [cursor=pointer]:
+                  - /url: /agentic
+              - listitem [ref=e660]:
+                - link "Industrial Inspection" [ref=e661] [cursor=pointer]:
+                  - /url: /industrial
+              - listitem [ref=e662]:
+                - link "Medical AI" [ref=e663] [cursor=pointer]:
+                  - /url: /medical
+          - generic [ref=e664]:
+            - generic [ref=e665]: Developer / Data
+            - list [ref=e666]:
+              - listitem [ref=e667]:
+                - link "/api/sota" [ref=e668] [cursor=pointer]:
+                  - /url: /api-landing/sota
+              - listitem [ref=e669]:
+                - link "API schema" [ref=e670] [cursor=pointer]:
+                  - /url: /api-landing/sota
+              - listitem [ref=e671]:
+                - link "Open JSON registry" [ref=e672] [cursor=pointer]:
+                  - /url: /api/tasks
+              - listitem [ref=e673]:
+                - link "Data snapshots" [ref=e674] [cursor=pointer]:
+                  - /url: /browse/ontology
+              - listitem [ref=e675]:
+                - link "GitHub" [ref=e676] [cursor=pointer]:
+                  - /url: https://github.com/kwikiel/codesota.com
+              - listitem [ref=e677]:
+                - link "Report issue ↗" [ref=e678] [cursor=pointer]:
+                  - /url: https://github.com/kwikiel/codesota.com/issues/new
+              - listitem [ref=e679]:
+                - link "Activity Log" [ref=e680] [cursor=pointer]:
+                  - /url: /log
+              - listitem [ref=e681]:
+                - link "Changelog" [ref=e682] [cursor=pointer]:
+                  - /url: /changelog
+          - generic [ref=e683]:
+            - generic [ref=e684]: Learn
+            - list [ref=e685]:
+              - listitem [ref=e686]:
+                - link "Guides" [ref=e687] [cursor=pointer]:
+                  - /url: /guides
+              - listitem [ref=e688]:
+                - link "Explainers" [ref=e689] [cursor=pointer]:
+                  - /url: /explainers
+              - listitem [ref=e690]:
+                - link "Academy" [ref=e691] [cursor=pointer]:
+                  - /url: /academy
+              - listitem [ref=e692]:
+                - link "AI Model News" [ref=e693] [cursor=pointer]:
+                  - /url: /news
+              - listitem [ref=e694]:
+                - link "Recent paper scan" [ref=e695] [cursor=pointer]:
+                  - /url: /recent_papers
+              - listitem [ref=e696]:
+                - link "Papers with Code Story" [ref=e697] [cursor=pointer]:
+                  - /url: /papers-with-code
+              - listitem [ref=e698]:
+                - link "Research Challenges" [ref=e699] [cursor=pointer]:
+                  - /url: /challenges
+              - listitem [ref=e700]:
+                - link "Data Flywheel" [ref=e701] [cursor=pointer]:
+                  - /url: /flywheel
+          - generic [ref=e702]:
+            - generic [ref=e703]: CodeSOTA
+            - list [ref=e704]:
+              - listitem [ref=e705]:
+                - link "About" [ref=e706] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e707]:
+                - link "Consulting" [ref=e708] [cursor=pointer]:
+                  - /url: /consulting
+              - listitem [ref=e709]:
+                - link "Praktyki" [ref=e710] [cursor=pointer]:
+                  - /url: /praktyki
+              - listitem [ref=e711]:
+                - link "Discord" [ref=e712] [cursor=pointer]:
+                  - /url: https://discord.gg/Fpecydb6n
+              - listitem [ref=e713]:
+                - link "Get updates" [ref=e714] [cursor=pointer]:
+                  - /url: /join
+              - listitem [ref=e715]:
+                - link "Privacy" [ref=e716] [cursor=pointer]:
+                  - /url: /legal/privacy
+      - generic [ref=e717]:
+        - generic [ref=e718]:
+          - generic [ref=e719]: © 2026 Codesota
+          - generic [ref=e720]: ·
+          - generic [ref=e721]: Built by Kacper Wikiel in Warsaw
+        - generic [ref=e722]:
+          - link "Privacy" [ref=e723] [cursor=pointer]:
+            - /url: /legal/privacy
+          - link "GitHub" [ref=e724] [cursor=pointer]:
+            - /url: https://github.com/kwikiel/codesota.com
+          - link "Report issue ↗" [ref=e725] [cursor=pointer]:
+            - /url: https://github.com/kwikiel/codesota.com/issues/new
+  - alert [ref=e726]

@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- `.pi/settings.json` with optimized compaction settings (reserveTokens: 24576, keepRecentTokens: 30000)
+- `.pi/extensions/optimize-compaction.ts` — research-backed compaction optimization extension:
+  - Context pruning: tool result deduplication, error purging, observation masking
+  - Custom compaction: structured JSON summaries, pinned first user message, code change descriptions
+  - External memory: `.pi/session-memory.json` persists goals, constraints, decisions, and file states across compactions
+  - `/prune` command to toggle pruning strategies on/off
+  - `/memory` command to inspect persistent session memory
+- `.agents/plans/optimize-compaction.md` — implementation plan with research justification
+
+### Changed
 - Web-based chat application for interacting with Pi coding agent via browser
 - Express.js + WebSocket backend that spawns Pi in RPC mode and proxies communication
 - Vue 3 + Vite frontend with real-time streaming chat UI

@@ -1,0 +1,28 @@
+- generic [ref=e3]:
+  - banner [ref=e22]:
+    - heading "🤖 Pi Chat" [level=1] [ref=e23]:
+      - generic [ref=e24]: 🤖
+      - text: Pi Chat
+    - generic [ref=e25]:
+      - generic [ref=e26]: Offline
+      - button "✚ New Chat" [disabled] [ref=e28]
+      - generic [ref=e29]:
+        - button "👤 User" [active] [ref=e30] [cursor=pointer]
+        - generic [ref=e48]:
+          - generic [ref=e50]:
+            - text: "Role:"
+            - strong
+          - button "Sign Out" [ref=e52] [cursor=pointer]
+  - generic [ref=e31]:
+    - generic [ref=e34]:
+      - generic [ref=e35]: 🤖
+      - heading "Welcome to Pi Chat" [level=2] [ref=e36]
+      - paragraph [ref=e37]: Chat with Pi, the minimal terminal coding agent. Ask it to write code, explain concepts, or build extensions.
+      - generic [ref=e38]:
+        - generic [ref=e39] [cursor=pointer]: Write a Vue 3 component that fetches and displays a list of GitHub repos
+        - generic [ref=e40] [cursor=pointer]: Explain the difference between let, const, and var in JavaScript
+        - generic [ref=e41] [cursor=pointer]: Help me set up a Node.js Express server with TypeScript
+        - generic [ref=e42] [cursor=pointer]: Write a regex to validate email addresses
+    - generic [ref=e44]:
+      - textbox "Ask Pi anything..." [disabled] [ref=e46]
+      - button "➤" [disabled] [ref=e47]

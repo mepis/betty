@@ -1,4 +1,5 @@
 import { getDb } from "./database.js";
+import bcrypt from "bcryptjs";
 
 // ============================================================
 // Role Repository
@@ -138,6 +139,12 @@ export const PermissionRepo = {
       ALL_ACTIONS.map((action) => ({ resource, action }))
     );
   },
+
+  findByRoleAndPermission(roleId, permission) {
+    const db = getDb();
+    const [resource, action] = permission.split(":");
+    return db.prepare("SELECT * FROM permissions WHERE role_id = ? AND resource = ? AND action = ?").get(roleId, resource, action);
+  },
 };
 
 // ============================================================
@@ -204,6 +211,12 @@ export const UserRepo = {
     return this.findById(result.lastInsertRowid);
   },
 
+  async createUser(userData) {
+    const { username, password, email, role_id } = userData;
+    const passwordHash = await bcrypt.hash(password, 10);
+    return this.create(username, email, passwordHash, role_id || 4);
+  },
+
   update(id, updates = {}) {
     const db = getDb();
     const user = this.findById(id);
@@ -260,9 +273,10 @@ export const SessionRepo = {
   findByTokenHash(tokenHash) {
     const db = getDb();
     return db.prepare(`
-      SELECT s.*, u.id as user_id, u.username, u.email, u.role_id
+      SELECT s.*, u.id as user_id, u.username, u.email, u.role_id, r.name as role_name
       FROM sessions s
       JOIN users u ON s.user_id = u.id
+      JOIN roles r ON u.role_id = r.id
       WHERE s.token_hash = ? AND s.expires_at > datetime('now')
     `).get(tokenHash);
   },

@@ -1,0 +1,522 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - link "Skip to content" [ref=e5] [cursor=pointer]:
+        - /url: "#content"
+      - navigation [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "ElevenLabs" [ref=e10] [cursor=pointer]:
+              - /url: /
+              - img [ref=e11]
+          - listitem [ref=e15]:
+            - list [ref=e16]:
+              - listitem [ref=e17]:
+                - button "ElevenCreative" [ref=e18] [cursor=pointer]
+              - listitem [ref=e19]:
+                - button "ElevenAgents" [ref=e20] [cursor=pointer]
+              - listitem [ref=e21]:
+                - button "ElevenAPI" [ref=e22] [cursor=pointer]
+              - listitem [ref=e23]:
+                - button "Resources" [ref=e24] [cursor=pointer]:
+                  - generic [ref=e25]: Resources
+              - listitem [ref=e26]:
+                - link "Enterprise" [ref=e27] [cursor=pointer]:
+                  - /url: /enterprise
+                  - generic [ref=e28]: Enterprise
+              - listitem [ref=e29]:
+                - link "Pricing" [ref=e30] [cursor=pointer]:
+                  - /url: /pricing
+                  - generic [ref=e31]: Pricing
+      - generic [ref=e34]:
+        - link "Log in" [ref=e35] [cursor=pointer]:
+          - /url: /app/sign-in
+        - link "Sign up" [ref=e36] [cursor=pointer]:
+          - /url: /app/sign-up
+    - generic [ref=e39]:
+      - article [ref=e40]:
+        - generic [ref=e41]:
+          - navigation "Breadcrumbs" [ref=e42]:
+            - list [ref=e43]:
+              - listitem [ref=e44]:
+                - link "Blog" [ref=e45] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e46]:
+                - img [ref=e47]
+                - link "Resources" [ref=e49] [cursor=pointer]:
+                  - /url: /blog/category/resources
+          - heading "How do you optimize latency for Conversational AI?" [level=1] [ref=e50]
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - term [ref=e53]: Written by
+              - definition [ref=e54]:
+                - link "Hikmet Demir" [ref=e56] [cursor=pointer]:
+                  - /url: /blog/authors/hikmet-demir
+            - generic [ref=e57]:
+              - term [ref=e58]: Published
+              - definition [ref=e59]:
+                - time [ref=e60]: Jan 23, 2025
+            - generic [ref=e61]:
+              - term [ref=e62]: Last updated
+              - definition [ref=e63]:
+                - time [ref=e64]: Apr 7, 2026
+          - generic [ref=e69]:
+            - generic [ref=e71]:
+              - button "Play" [ref=e72] [cursor=pointer]:
+                - img [ref=e73]
+              - generic [ref=e75]:
+                - generic [ref=e76]:
+                  - paragraph [ref=e77]: Listen to this article
+                  - time [ref=e78]: 0:00
+                - generic [ref=e79]:
+                  - time [ref=e80]: 0:00
+                  - time [ref=e81]:
+                    - img [ref=e82]
+                    - text: 0:00
+                  - button "Rewind 10 seconds" [ref=e84] [cursor=pointer]:
+                    - img [ref=e85]
+                  - button "Fast forward 10 seconds" [ref=e88] [cursor=pointer]:
+                    - img [ref=e89]
+                  - button "Playback speed 1.0x" [ref=e92] [cursor=pointer]: 1.0x
+            - generic [ref=e93]:
+              - link "Contact Sales" [ref=e95] [cursor=pointer]:
+                - /url: /contact-sales?platform=agents
+              - link "Learn More" [ref=e97] [cursor=pointer]:
+                - /url: /agents
+        - complementary [ref=e98]:
+          - navigation "Table of contents" [ref=e99]:
+            - paragraph [ref=e100]: On this page
+            - list [ref=e103]:
+              - listitem [ref=e104]:
+                - link "Introduction" [ref=e106] [cursor=pointer]:
+                  - /url: "#introduction"
+              - listitem [ref=e107]:
+                - link "The Four Core Components" [ref=e109] [cursor=pointer]:
+                  - /url: "#the-four-core-components"
+              - listitem [ref=e110]:
+                - link "Additional Contributors" [ref=e112] [cursor=pointer]:
+                  - /url: "#additional-contributors"
+              - listitem [ref=e113]:
+                - link "A Closing Thought" [ref=e116] [cursor=pointer]:
+                  - /url: "#a-closing-thought"
+        - generic [ref=e118]:
+          - paragraph [ref=e119]: For most applications, latency is a mild concern. However, for conversational AI, latency is what separates good applications from great ones.
+          - paragraph [ref=e120]: For starters, the goal of conversational AI is fairly aspirational—to provide the same feeling, touch, and voice as a human conversation, while surpassing a human in intelligence. To accomplish this, an application must converse without long silent gaps. Otherwise, the realism is shattered.
+          - paragraph [ref=e121]: Conversational AI’s latency challenge is compounded by its piecemeal nature. Conversational AI is a series of intermediate processes, all considered state-of-the-art in their respective fields. Each of these processes incurs additive latency.
+          - paragraph [ref=e122]: As a generative voice company, we’ve spent a long time studying how to minimize latency for conversational AI. Today, we want to share our learnings, out of hopes that they’ll be helpful for anyone interested in building conversational AI applications.
+          - heading "The Four Core Components" [level=2] [ref=e123]
+          - paragraph [ref=e124]:
+            - text: "Every conversational AI application involves at least four steps: speech-to-text, turn-taking, text processing (i.e. LLMs), and"
+            - link "text-to-speech" [ref=e125] [cursor=pointer]:
+              - /url: /text-to-speech
+            - text: . While these steps are executed in-parallel, each step still contributes some latency.
+          - paragraph [ref=e126]: Notably, conversational AI’s latency equation is unique. A lot of process latency problems can be reduced to a single bottleneck. For instance, when a website makes a database request, the web’s network latency drive the total latency, with just trivial contributions from the backend’s VPC latency. However, conversational AI’s latency components aren’t drastically varied. They are uneven, but each component’s latency contribution is within a degree of the others. Accordingly, latency is driven by a sum of parts.
+          - heading "Automatic Speech Recognition" [level=3] [ref=e127]
+          - paragraph [ref=e128]: The System’s “Ear”
+          - paragraph [ref=e129]:
+            - text: Automatic speech recognition (
+            - link "ASR" [ref=e130] [cursor=pointer]:
+              - /url: /speech-to-text
+            - text: )—sometimes referred to as speech-to-text (STT)—is the process of converting spoken audio into written text.
+          - paragraph [ref=e131]: ASR’s latency is not the time it takes to generate text, as the speech-to-text process runs in the background while the user speaks. Instead, the latency is the time between the end of the speech and the end of the text generation.
+          - figure [ref=e133]:
+            - img "Flowchart showing user input speech processed by ASR system." [ref=e135]
+          - paragraph [ref=e136]:
+            - text: Accordingly, short and long speaking intervals can incur similar ASR latency. Latency can vary across ASR implementations (In some cases, there is no network latency whatsoever as the model is embedded in the browser,
+            - link "such as Chrome/Chromium" [ref=e137] [cursor=pointer]:
+              - /url: https://www.google.com/intl/en/chrome/demos/speech.html
+            - text: ). The standard open source model, Whisper, adds 300ms + latency. Our custom implementation adds <100ms.
+          - heading "Turn-Taking / Interruption" [level=3] [ref=e138]
+          - paragraph [ref=e139]: The System’s “Instinct”
+          - paragraph [ref=e140]: Turn-taking / Interruption (TTI) is an intermediary process that determines when a user is finished speaking. The underlying model is known as a Voice Activity Detector (or VAD).
+          - paragraph [ref=e141]: Turn-Taking involves a complex set of rules. A short burst of speech (e.g. “uh-huh”) shouldn’t trigger a turn; otherwise, conversations would feel too staccato. Instead, it must assess when a user is actually trying to fetch the model’s attention. It also must determine when the user is finished relaying their thoughts.
+          - paragraph [ref=e142]: A good VAD will not signal a new turn whenever it detects silence. There is silence between words (and phrases), and the model needs to be confident that the user is actually done speaking. To accomplish this reliably, it needs to seek a threshold of silence (or more specifically, a lack of speech). This process introduces a delay, contributing to the overall latency experienced by the user.
+          - figure [ref=e144]:
+            - img "Flowchart showing the process of speech recognition and language modeling, with steps including input speech, ASR, VAD, and LLM." [ref=e146]
+          - paragraph [ref=e147]: Technically speaking, if all of the other conversational AI components incurred zero latency, the latency attributed to TTI would be a good thing. Humans take a beat before responding to speech. A machine taking a similar pause gives realism to the interaction. However, since other components of conversational AI already incur latency, minimal TTI latency is ideal.
+          - heading "Text Processing" [level=3] [ref=e148]
+          - paragraph [ref=e149]: The System’s Brain
+          - paragraph [ref=e150]: Next, the system needs to generate a response. Today, this is typically accomplished with a Large Language Model (LLM), such as GPT-4 or Gemini Flash 1.5.
+          - paragraph [ref=e151]: The choice of the language model makes a significant difference. Models like Gemini Flash 1.5 are incredibly fast—generating outputs in less than 350ms. More robust models that can handle more complex queries—such as GPT-4 variants and Claude—could take between 700ms to 1000ms. Choosing the right model is typically the easiest way to target latency when optimizing a conversational AI process.
+          - paragraph [ref=e152]:
+            - text: However, the latency of the LLM is time it takes to start generating tokens. These tokens can be immediately streamed to the following
+            - link "text-to-speech" [ref=e153] [cursor=pointer]:
+              - /url: /text-to-speech
+            - text: process. Because text-to-speech is slowed by the natural pace of a human voice, the LLM reliably outpaces it—what matters most is the first token latency (i.e., time to first byte).
+          - figure [ref=e155]:
+            - img "Flowchart of speech processing system showing input speech, ASR, VAD, LLM, and TTS components with data flow and latency indicated." [ref=e157]
+          - paragraph [ref=e158]: "There are other contributors to an LLM’s latency beyond the model’s choice. These include the prompt length and the size of the knowledge base. The larger of either, the longer the latency. It boils down to a simple principle: the more that the LLM need to consider, the longer it takes. Accordingly, companies need to strike a balance between a healthy amount of context without overburdening the model."
+          - heading "Text to Speech" [level=3] [ref=e159]
+          - paragraph [ref=e160]: The System’s Mouth
+          - paragraph [ref=e161]:
+            - text: The final component of conversational AI is
+            - link "text-to-speech" [ref=e162] [cursor=pointer]:
+              - /url: /text-to-speech
+            - text: (TTS). Text-to-speech’s net latency is the time it takes to begin speaking after receiving input tokens from text-processing. That’s it—because additional tokens are made available at a rate faster than human speech, text-to-speech’s latency is strictly the time to first byte.
+          - figure [ref=e164]:
+            - img "Diagram of a speech processing system showing input speech, ASR, VAD, LLM, TTS, and output speech with data flow and latency indicators." [ref=e166]
+          - paragraph [ref=e167]:
+            - text: Previously,
+            - link "text-to-speech" [ref=e168] [cursor=pointer]:
+              - /url: /text-to-speech
+            - text: was particularly slow, taking as long as 2-3s to generate speech. However, state-of-the-art models like our Turbo engine are able to generate speech with just 300ms of latency the the new
+            - link "Flash TTS" [ref=e169] [cursor=pointer]:
+              - /url: /blog/meet-flash
+            - text: engine is even faster. Flash has a model time of 75ms and can achieve an e2e 135ms of time to first byte audio latency, the best score in the field (we have to brag a little!).
+          - heading "Additional Contributors" [level=2] [ref=e170]
+          - paragraph [ref=e171]: Beyond the four components, there some additional contributors to conversational AI’s net latency.
+          - heading "Network Latency" [level=3] [ref=e172]
+          - paragraph [ref=e173]:
+            - text: There will always be latency associated with sending data from one location to another. For some conversational AI applications, the
+            - link "ASR" [ref=e174] [cursor=pointer]:
+              - /url: /speech-to-text
+            - text: ", TTI, LLM, and"
+            - link "TTS" [ref=e175] [cursor=pointer]:
+              - /url: /text-to-speech
+            - text: processes should ideally be co-located, so the only source of non-trivial network latency is the paths between speaker and the entire system. This gives us an advantage on latency as we can save two server calls since we have our own TTS and an internal transcription solution.
+          - figure [ref=e177]:
+            - img "Diagram of a speech processing system showing input speech, ASR, VAD, LLM, TTS, and output speech with latency and network latency indicators." [ref=e179]
+          - heading "Function Calling" [level=3] [ref=e180]
+          - paragraph [ref=e181]:
+            - text: A lot of conversational AI applications exist to invoke functions (i.e. interface with tools and services). For instance, I might verbally ask the AI to check the weather. This requires additional
+            - link "API" [ref=e182] [cursor=pointer]:
+              - /url: /docs/api-reference/text-to-speech/convert
+            - text: calls invoked at the text-processing layer, which can incur significantly more latency depending on the needs.
+          - paragraph [ref=e183]:
+            - text: For example, if I need to order a pizza verbally, there might be multiple
+            - link "API" [ref=e184] [cursor=pointer]:
+              - /url: /docs/api-reference/text-to-speech/convert
+            - text: calls that are necessary, some with excessive lag (e.g. processing a credit card).
+          - figure [ref=e186]:
+            - img "Diagram of a speech processing system showing input speech, ASR, VAD, LLM/function calling, TTS, and output speech with data flow and latency indicated." [ref=e188]
+          - paragraph [ref=e189]: However, a conversational AI system can combat the delays associated with function calling by prompting the LLM to respond to the user before the function call is finished (e.g. “Let me check the weather for you”). This models a real-life conversation and doesn’t keep the user without engagement.
+          - figure [ref=e191]:
+            - img "Flowchart of a speech synthesis system showing user input, system processing, and output speech, with components like ASR, VAD, TTS, and LLM." [ref=e193]
+          - paragraph [ref=e194]: These async patterns are typically accomplished by leveraging webhooks to avoid long-running requests.
+          - heading "Telephony" [level=3] [ref=e195]
+          - paragraph [ref=e196]:
+            - text: Another common feature for
+            - link "conversational AI platforms" [ref=e197] [cursor=pointer]:
+              - /url: /conversational-ai
+            - text: is to allow the user to dial-in via the phone (or, in some cases, make a phone call on behalf of the user). Telephony will incur additional latency—and this latency can be severely geography dependent.
+          - figure [ref=e199]:
+            - img "Diagram of a speech processing system showing data flow and latency between components." [ref=e201]
+          - paragraph [ref=e202]: As a base, telephony will incur an additional 200ms of latency if contained to the same region. For global calls (e.g. Asia → USA), the travel time can increase significantly, with latency hitting ~500ms. This pattern could be common if users have phone numbers outside of the region that their located in—forcing a hop to their base country’s phone networks.
+          - heading "A Closing Thought" [level=2] [ref=e203]
+          - paragraph [ref=e204]:
+            - text: We hope this round-trip exploration of conversational
+            - link "AI agents" [ref=e205] [cursor=pointer]:
+              - /url: /agents
+            - text: was interesting. In summary, applications should target a sub-second latency. This can typically be accomplished by choosing the right LLM for the task. They should also interface with the user whenever more complex processes are running in the background to prevent long pauses.
+          - paragraph [ref=e206]: At the end of the day, the goal is to create realism. A user needs to feel the ease of talking to a human while getting the benefits of a computer program. By tightening the sub-processes, this is now possible.
+          - paragraph [ref=e207]:
+            - text: At Elevenlabs we are optimizing every part of the piece of a conversational
+            - link "AI voice agents" [ref=e208] [cursor=pointer]:
+              - /url: /voice-agents
+            - text: system with our state of the art STT and
+            - link "TTS" [ref=e209] [cursor=pointer]:
+              - /url: /text-to-speech
+            - text: models. By working on each part of the process, we can achieve seamless conversation flows. This top-down view on orchestration allows us to shave off a little latency—even 1ms—at every juncture.
+      - heading "Similar articles" [level=2] [ref=e224]
+      - generic [ref=e228]:
+        - button "Previous" [ref=e230] [cursor=pointer]:
+          - img [ref=e232]
+        - button "Next" [ref=e235] [cursor=pointer]:
+          - img [ref=e237]
+        - list [ref=e240]:
+          - listitem [ref=e241]:
+            - article [ref=e242]:
+              - img "Docs Blog Cover 1x1" [ref=e244]
+              - heading "Building an effective Voice Agent for our own docs" [level=3] [ref=e245]:
+                - link "Building an effective Voice Agent for our own docs" [ref=e246] [cursor=pointer]:
+                  - /url: /blog/building-an-agent-for-our-own-docs
+                  - text: Building an effective Voice Agent for our own docs
+              - generic [ref=e248]:
+                - term [ref=e249]: Category
+                - definition [ref=e250]: Product
+                - term [ref=e251]: Date
+                - definition [ref=e252]:
+                  - time [ref=e253]: Jan 21, 2025
+          - listitem [ref=e254]:
+            - article [ref=e255]:
+              - img "Diagram of a speech-to-text and text-to-speech system with user, agent, LLM, monitoring, and function calling components." [ref=e257]
+              - heading "Introducing Conversational AI" [level=3] [ref=e258]:
+                - link "Introducing Conversational AI" [ref=e259] [cursor=pointer]:
+                  - /url: /blog/conversational-ai
+                  - text: Introducing Conversational AI
+              - generic [ref=e261]:
+                - term [ref=e262]: Category
+                - definition [ref=e263]: Product
+                - term [ref=e264]: Date
+                - definition [ref=e265]:
+                  - time [ref=e266]: Dec 3, 2024
+          - listitem [ref=e267]:
+            - article [ref=e268]:
+              - heading "Top Narakeet Alternatives in 2025" [level=3] [ref=e270]:
+                - link "Top Narakeet Alternatives in 2025" [ref=e271] [cursor=pointer]:
+                  - /url: /blog/narakeet-alternatives
+                  - text: Top Narakeet Alternatives in 2025
+              - generic [ref=e273]:
+                - term [ref=e274]: Category
+                - definition [ref=e275]: Resources
+                - term [ref=e276]: Date
+                - definition [ref=e277]:
+                  - time [ref=e278]: Feb 7, 2024
+          - listitem [ref=e279]:
+            - article [ref=e280]:
+              - 'heading "InVideo AI: video creation made effortless" [level=3] [ref=e282]':
+                - 'link "InVideo AI: video creation made effortless" [ref=e283] [cursor=pointer]':
+                  - /url: /blog/invideo-ai
+                  - text: "InVideo AI: video creation made effortless"
+              - generic [ref=e285]:
+                - term [ref=e286]: Category
+                - definition [ref=e287]: Resources
+                - term [ref=e288]: Date
+                - definition [ref=e289]:
+                  - time [ref=e290]: Feb 7, 2024
+    - generic [ref=e293]:
+      - paragraph [ref=e294]: Create with the highest quality AI Audio
+      - generic [ref=e295]:
+        - link "Contact Sales" [ref=e296] [cursor=pointer]:
+          - /url: /contact-sales
+        - link "Sign up" [ref=e297] [cursor=pointer]:
+          - /url: /app/sign-up
+    - generic [ref=e307]:
+      - generic [ref=e308]:
+        - link "ElevenLabs" [ref=e309] [cursor=pointer]:
+          - /url: /
+          - img [ref=e310]
+        - generic [ref=e315]:
+          - button "Select language" [ref=e316] [cursor=pointer]:
+            - img [ref=e317]
+            - text: English
+            - img [ref=e320]
+          - combobox [ref=e324]
+      - list [ref=e325]:
+        - listitem [ref=e326]:
+          - paragraph [ref=e327]:
+            - link "ElevenCreative" [ref=e328] [cursor=pointer]:
+              - /url: /creative
+          - list [ref=e329]:
+            - listitem [ref=e330]:
+              - link "Text to Speech" [ref=e331] [cursor=pointer]:
+                - /url: /text-to-speech
+            - listitem [ref=e332]:
+              - link "Speech to Text" [ref=e333] [cursor=pointer]:
+                - /url: /speech-to-text
+            - listitem [ref=e334]:
+              - link "Voice Changer" [ref=e335] [cursor=pointer]:
+                - /url: /voice-changer
+            - listitem [ref=e336]:
+              - link "Text to Sound Effects" [ref=e337] [cursor=pointer]:
+                - /url: /sound-effects
+            - listitem [ref=e338]:
+              - link "Voice Cloning" [ref=e339] [cursor=pointer]:
+                - /url: /voice-cloning
+            - listitem [ref=e340]:
+              - link "Voice Isolator" [ref=e341] [cursor=pointer]:
+                - /url: /voice-isolator
+            - listitem [ref=e342]:
+              - link "AI Music Generator" [ref=e343] [cursor=pointer]:
+                - /url: /music
+            - listitem [ref=e344]:
+              - link "Studio" [ref=e345] [cursor=pointer]:
+                - /url: /studio
+            - listitem [ref=e346]:
+              - link "Voice Design" [ref=e347] [cursor=pointer]:
+                - /url: /voice-design
+            - listitem [ref=e348]:
+              - link "AI Voice Generator" [ref=e349] [cursor=pointer]:
+                - /url: /ai-voice-generator
+            - listitem [ref=e350]:
+              - link "AI Image Generator" [ref=e351] [cursor=pointer]:
+                - /url: /image
+            - listitem [ref=e352]:
+              - link "AI Video Generator" [ref=e353] [cursor=pointer]:
+                - /url: /video
+        - listitem [ref=e354]:
+          - paragraph [ref=e355]:
+            - link "ElevenAgents" [ref=e356] [cursor=pointer]:
+              - /url: /agents
+          - list [ref=e357]:
+            - listitem [ref=e358]:
+              - link "Voice Agents" [ref=e359] [cursor=pointer]:
+                - /url: /voice-agents
+            - listitem [ref=e360]:
+              - link "Conversational AI" [ref=e361] [cursor=pointer]:
+                - /url: /conversational-ai
+            - listitem [ref=e362]:
+              - link "Integrations" [ref=e363] [cursor=pointer]:
+                - /url: /agents/integrations
+            - listitem [ref=e364]:
+              - link "Telecommunications" [ref=e365] [cursor=pointer]:
+                - /url: /agents/telecommunications
+            - listitem [ref=e366]:
+              - link "Financial Services" [ref=e367] [cursor=pointer]:
+                - /url: /agents/financial-services
+            - listitem [ref=e368]:
+              - link "Healthcare" [ref=e369] [cursor=pointer]:
+                - /url: /agents/healthcare
+            - listitem [ref=e370]:
+              - link "Technology" [ref=e371] [cursor=pointer]:
+                - /url: /agents/technology
+            - listitem [ref=e372]:
+              - link "Retail & E-commerce" [ref=e373] [cursor=pointer]:
+                - /url: /agents/retail-ecommerce
+            - listitem [ref=e374]:
+              - link "Customer Support" [ref=e375] [cursor=pointer]:
+                - /url: /support
+            - listitem [ref=e376]:
+              - link "Chatbots" [ref=e377] [cursor=pointer]:
+                - /url: /chatbot
+        - listitem [ref=e378]:
+          - paragraph [ref=e379]:
+            - link "ElevenAPI" [ref=e380] [cursor=pointer]:
+              - /url: /api
+          - list [ref=e381]:
+            - listitem [ref=e382]:
+              - link "API Reference" [ref=e383] [cursor=pointer]:
+                - /url: /docs/api-reference/text-to-speech/convert
+            - listitem [ref=e384]:
+              - link "Agents API" [ref=e385] [cursor=pointer]:
+                - /url: /docs/eleven-api/quickstart
+            - listitem [ref=e386]:
+              - link "Speech Engine" [ref=e387] [cursor=pointer]:
+                - /url: /docs/overview/capabilities/speech-engine
+            - listitem [ref=e388]:
+              - link "Dubbing API" [ref=e389] [cursor=pointer]:
+                - /url: /docs/eleven-api/guides/cookbooks/dubbing
+            - listitem [ref=e390]:
+              - link "Text to Speech API" [ref=e391] [cursor=pointer]:
+                - /url: /text-to-speech-api
+            - listitem [ref=e392]:
+              - link "Speech to Text API" [ref=e393] [cursor=pointer]:
+                - /url: /speech-to-text-api
+            - listitem [ref=e394]:
+              - link "Sound Effects API" [ref=e395] [cursor=pointer]:
+                - /url: /docs/eleven-api/guides/cookbooks/sound-effects
+            - listitem [ref=e396]:
+              - link "Music API" [ref=e397] [cursor=pointer]:
+                - /url: /docs/eleven-api/guides/cookbooks/music
+            - listitem [ref=e398]:
+              - link "API Key" [ref=e399] [cursor=pointer]:
+                - /url: /app/settings/api-keys
+        - listitem [ref=e400]:
+          - paragraph [ref=e401]:
+            - generic [ref=e402]: Resources
+          - list [ref=e403]:
+            - listitem [ref=e404]:
+              - link "Blog" [ref=e405] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e406]:
+              - link "Iconic Marketplace" [ref=e407] [cursor=pointer]:
+                - /url: /iconic-marketplace
+            - listitem [ref=e408]:
+              - link "Impact Program" [ref=e409] [cursor=pointer]:
+                - /url: /impact-program
+            - listitem [ref=e410]:
+              - link "Startup Grants" [ref=e411] [cursor=pointer]:
+                - /url: /startup-grants
+            - listitem [ref=e412]:
+              - link "Help Center" [ref=e413] [cursor=pointer]:
+                - /url: https://help.elevenlabs.io/hc/en-us
+            - listitem [ref=e414]:
+              - link "Webinars" [ref=e415] [cursor=pointer]:
+                - /url: /webinars
+            - listitem [ref=e416]:
+              - link "Docs" [ref=e417] [cursor=pointer]:
+                - /url: /docs/overview/intro
+            - listitem [ref=e418]:
+              - link "Enterprise" [ref=e419] [cursor=pointer]:
+                - /url: /enterprise
+            - listitem [ref=e420]:
+              - link "Trust Center" [ref=e421] [cursor=pointer]:
+                - /url: https://compliance.elevenlabs.io/
+            - listitem [ref=e422]:
+              - link "India" [ref=e423] [cursor=pointer]:
+                - /url: /india
+        - listitem [ref=e424]:
+          - paragraph [ref=e425]:
+            - generic [ref=e426]: Socials
+          - list [ref=e427]:
+            - listitem [ref=e428]:
+              - link "X" [ref=e429] [cursor=pointer]:
+                - /url: https://x.com/intent/user?screen_name=elevenlabs
+            - listitem [ref=e430]:
+              - link "LinkedIn" [ref=e431] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/elevenlabsio
+            - listitem [ref=e432]:
+              - link "GitHub" [ref=e433] [cursor=pointer]:
+                - /url: https://github.com/elevenlabs
+            - listitem [ref=e434]:
+              - link "YouTube" [ref=e435] [cursor=pointer]:
+                - /url: https://www.youtube.com/@elevenlabs?sub_confirmation=1
+            - listitem [ref=e436]:
+              - link "Discord" [ref=e437] [cursor=pointer]:
+                - /url: https://discord.gg/elevenlabs
+            - listitem [ref=e438]:
+              - link "TikTok" [ref=e439] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@elevenlabs
+            - listitem [ref=e440]:
+              - link "Instagram" [ref=e441] [cursor=pointer]:
+                - /url: https://www.instagram.com/elevenlabsio/?hl=en
+            - listitem [ref=e442]:
+              - link "Facebook" [ref=e443] [cursor=pointer]:
+                - /url: https://www.facebook.com/elevenlabsio/
+            - listitem [ref=e444]:
+              - link "Reddit" [ref=e445] [cursor=pointer]:
+                - /url: https://www.reddit.com/r/ElevenLabs/
+        - listitem [ref=e446]:
+          - paragraph [ref=e447]:
+            - generic [ref=e448]: Company
+          - list [ref=e449]:
+            - listitem [ref=e450]:
+              - link "About" [ref=e451] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e452]:
+              - link "Careers" [ref=e453] [cursor=pointer]:
+                - /url: /careers
+            - listitem [ref=e454]:
+              - link "Safety" [ref=e455] [cursor=pointer]:
+                - /url: /safety
+            - listitem [ref=e456]:
+              - link "Brand & Press Kit" [ref=e457] [cursor=pointer]:
+                - /url: /brand
+            - listitem [ref=e458]:
+              - link "EU Digital Services Act (DSA)" [ref=e459] [cursor=pointer]:
+                - /url: /digital-services-act
+            - listitem [ref=e460]:
+              - link "ElevenLabs Summit" [ref=e461] [cursor=pointer]:
+                - /url: /events/elevenlabs-summit
+            - listitem [ref=e462]:
+              - link "Terms" [ref=e463] [cursor=pointer]:
+                - /url: /terms-of-use
+            - listitem [ref=e464]:
+              - link "Privacy" [ref=e465] [cursor=pointer]:
+                - /url: /privacy-policy
+            - listitem [ref=e466]:
+              - link "Modern Slavery Policy" [ref=e467] [cursor=pointer]:
+                - /url: /modern-slavery-policy-statement
+            - listitem [ref=e468]:
+              - link "CCPA Notice" [ref=e469] [cursor=pointer]:
+                - /url: /ccpa-notice-at-collection
+            - listitem [ref=e470]:
+              - link "EU-US DPF Policy" [ref=e471] [cursor=pointer]:
+                - /url: /eu-us-data-privacy-framework-policy
+            - listitem [ref=e472]:
+              - link "AI Transparency" [ref=e473] [cursor=pointer]:
+                - /url: /ai-transparency
+            - listitem [ref=e474]:
+              - button "Cookie Settings" [ref=e475] [cursor=pointer]
+  - generic [ref=e478]:
+    - generic:
+      - generic:
+        - generic:
+          - img
+      - generic:
+        - generic:
+          - img
+        - generic:
+          - img
+    - button "Voice chat" [ref=e479] [cursor=pointer]:
+      - generic [ref=e481]: Voice chat

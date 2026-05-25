@@ -15,6 +15,7 @@
         <div class="form-group">
           <label for="reg-username">Username</label>
           <input
+            ref="usernameInput"
             id="reg-username"
             v-model="username"
             type="text"
@@ -80,7 +81,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, nextTick } from "vue";
 import { useAuth } from "../composables/useAuth.js";
 
 const emit = defineEmits(["register-success"]);
@@ -92,14 +93,16 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 const errorMsg = ref("");
+const usernameInput = ref(null);
 
 const canSubmit = computed(() => {
   return username.value && email.value && password.value && confirmPassword.value
     && password.value === confirmPassword.value;
 });
 
-onMounted(() => {
-  username.value.focus();
+onMounted(async () => {
+  await nextTick();
+  usernameInput.value?.focus();
 });
 
 async function handleRegister() {

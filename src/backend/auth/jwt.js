@@ -87,6 +87,7 @@ export function validateToken(token) {
     username: session.username,
     email: session.email,
     role_id: session.role_id,
+    role_name: session.role_name,
   };
 }
 
