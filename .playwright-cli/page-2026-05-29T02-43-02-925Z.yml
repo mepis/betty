@@ -1,0 +1,536 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F22183
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fdiscussions%2Fshow&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,899" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113569 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,049" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e145]:
+      - generic [ref=e152]:
+        - 'heading "MoE offload to second (slower) GPU rather than to CPU #22183" [level=1] [ref=e153]'
+        - generic [ref=e154]:
+          - 'generic "Status: Closed as resolved" [ref=e155]':
+            - img [ref=e156]
+            - text: Closed
+          - generic [ref=e158]:
+            - link "MartinEmrich" [ref=e159] [cursor=pointer]:
+              - /url: /MartinEmrich
+            - text: started this conversation in
+            - link "Ideas" [ref=e160] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions/categories/ideas
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e168]:
+            - generic [ref=e170]:
+              - button "Discussion options" [ref=e175] [cursor=pointer]:
+                - img
+              - heading "MartinEmrich Apr 20, 2026on Apr 20" [level=2] [ref=e176]:
+                - generic [ref=e177]:
+                  - link "MartinEmrich" [ref=e178] [cursor=pointer]:
+                    - /url: /MartinEmrich
+                    - img [ref=e179]
+                    - generic [ref=e181]: MartinEmrich
+                  - link "Apr 20, 2026on Apr 20" [ref=e182] [cursor=pointer]:
+                    - /url: "#discussion-9918801"
+            - generic [ref=e184]:
+              - generic [ref=e185]:
+                - paragraph [ref=e186]: "I have two vastly different GPUs (and of course also the CPU):"
+                - list [ref=e187]:
+                  - listitem [ref=e188]: "GPU0: Radeon RX7800XT, 16GB, fast (relatively)"
+                  - listitem [ref=e189]: "GPU1: Radeon RX580, 8GB, much slower (but still way faster than CPU)"
+                  - listitem [ref=e190]: "CPU: Ryzen 2700X (8c), 16GB System RAM. In comparison the slowest."
+                - paragraph [ref=e191]:
+                  - text: "With dense models, it is trivial: Massage"
+                  - code [ref=e192]: "-ts X/Y -ngl (X+Y)"
+                  - text: until GPU0 is "full", then until GPU1 is full, and only then spill over to CPU/System RAM.
+                - paragraph [ref=e193]:
+                  - text: With MoE models (Playing around with Qwen3.6 35B A3B), I am not sure
+                  - code [ref=e194]: "--n-cpu-moe"
+                  - text: "gives me the optimal setup:"
+                - paragraph [ref=e195]:
+                  - text: As I understand,
+                  - code [ref=e196]: "--n-cpu-moe N"
+                  - text: "takes the MoE tensors from the first N layers (that would above start on GPU0) and moves them to the CPU/System RAM, effectively making the affected layers smaller. Experiments confirm: the more"
+                  - code [ref=e197]: "--n-cpu-moe"
+                  - text: I increase, these layers shrink, and I can move more layers "up" to GPU0 via
+                  - code [ref=e198]: "-ts"
+                  - text: .
+                - paragraph [ref=e199]:
+                  - text: "Now my Dilemma: The full model (I use a quantized version) would fit on my two GPUs. But the MoE tensors are now distributed just as the other tensors. Without"
+                  - code [ref=e200]: "--n-cpu-moe"
+                  - text: ", as I understand it, the \"non-MoE-work\" that fires every time is now as distributed across the GPUs as the layers are, thus I am suffering from the slower GPU1."
+                  - text: While running llama-bench, I indeed see proportional load on both GPUs (moving back and forth), indicating usuals layer-split. Thus I am bottlenecked by GPU1.
+                - paragraph [ref=e201]: "For the curious, this is a result:"
+                - generic [ref=e202]:
+                  - code [ref=e204]: "llama-bench -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M -ts 28/15 -ngl 43 -fa 1 -ctk q8_0 -ctv q8_0 -ncmoe 0 ggml_vulkan: Found 2 Vulkan devices: ggml_vulkan: 0 = AMD Radeon RX 7800 XT (RADV NAVI32) (radv) | uma: 0 | fp16: 1 | bf16: 0 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat ggml_vulkan: 1 = Radeon RX 580 Series (RADV POLARIS10) (radv) | uma: 0 | fp16: 0 | bf16: 0 | warp size: 64 | shared memory: 65536 | int dot: 0 | matrix cores: none | model | size | params | backend | ngl | type_k | type_v | fa | ts | test | t/s | | ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | -: | ------------ | --------------: | -------------------: | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 43 | q8_0 | q8_0 | 1 | 28.00/15.00 | pp512 | 530.44 ± 30.11 | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 43 | q8_0 | q8_0 | 1 | 28.00/15.00 | tg128 | 48.59 ± 0.10 | build: cf8b0dbda (8861)"
+                  - button "Copy code to clipboard" [ref=e206] [cursor=pointer]:
+                    - img [ref=e207]
+                - paragraph [ref=e210]: "Using only the fast GPU0 with MoE offload is indeed slower (and this is with only the small context for llama-bench):"
+                - generic [ref=e211]:
+                  - code [ref=e213]: "GGML_VK_VISIBLE_DEVICES=0 /home/martin/upstream/llama.cpp/build/bin/llama-bench -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M -ngl 99 -fa 1 -ctk q8_0 -ctv q8_0 -ncmoe 12 ggml_vulkan: Found 1 Vulkan devices: ggml_vulkan: 0 = AMD Radeon RX 7800 XT (RADV NAVI32) (radv) | uma: 0 | fp16: 1 | bf16: 0 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat | model | size | params | backend | ngl | n_cpu_moe | type_k | type_v | fa | test | t/s | | ------------------------------ | ---------: | ---------: | ---------- | --: | ---------: | -----: | -----: | -: | --------------: | -------------------: | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | 12 | q8_0 | q8_0 | 1 | pp512 | 264.75 ± 37.42 | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | 12 | q8_0 | q8_0 | 1 | tg128 | 35.38 ± 0.53 | build: cf8b0dbda (8861)"
+                  - button "Copy code to clipboard" [ref=e215] [cursor=pointer]:
+                    - img [ref=e216]
+                - paragraph [ref=e219]: If I could tell it "put the MoE tensors on the slower GPU", I could fit more (non-MoE) layers on the fast GPU0.
+                - paragraph [ref=e220]:
+                  - text: I am basically looking for a
+                  - code [ref=e221]: "--n-gpu1-moe M"
+                  - text: Option. (Bonus if it works together with
+                  - code [ref=e222]: "--n-cpu-moe N"
+                  - text: and is greedier than it).
+                - paragraph [ref=e223]: Does my train of thought even make sense?
+                - paragraph [ref=e224]: If so, is there already a hidden option that would do what I want? (AFAIK there are options to put "named" parts of the model based on regular expressions on specific GPU or CPU, and --n-cpu-moe is just an abbreviation for this)
+                - paragraph [ref=e225]:
+                  - text: "Some previous (closed) issues/discussions:"
+                  - link "#15263" [ref=e226] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/issues/15263
+                  - link "#16579" [ref=e227] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/issues/16579
+              - 'button "Upvote: 2" [disabled] [ref=e234]':
+                - img [ref=e235]
+                - generic [ref=e237]: "2"
+          - generic [ref=e238]:
+            - generic [ref=e239]:
+              - 'heading "Replies: 3 comments 7 replies" [level=2] [ref=e241]':
+                - generic [ref=e242]: "Replies:"
+                - text: 3 comments · 7 replies
+              - navigation "Sort comments" [ref=e243]:
+                - list "Sort comments" [ref=e245]:
+                  - listitem [ref=e246]:
+                    - link "Oldest" [ref=e247] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/22183?sort=old
+                      - generic [ref=e249]: Oldest
+                  - listitem [ref=e250]:
+                    - link "Newest" [ref=e251] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/22183?sort=new
+                      - generic [ref=e253]: Newest
+                  - listitem [ref=e254]:
+                    - link "Top" [ref=e255] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/22183?sort=top
+                      - generic [ref=e257]: Top
+            - generic [ref=e263]:
+              - generic [ref=e265]:
+                - button "Comment options" [ref=e270] [cursor=pointer]:
+                  - img
+                - heading "MartinEmrich Apr 20, 2026on Apr 20 Author" [level=3] [ref=e271]:
+                  - generic [ref=e272]:
+                    - link "MartinEmrich" [ref=e273] [cursor=pointer]:
+                      - /url: /MartinEmrich
+                      - img [ref=e274]
+                      - generic [ref=e276]: MartinEmrich
+                    - link "Apr 20, 2026on Apr 20" [ref=e277] [cursor=pointer]:
+                      - /url: "#discussioncomment-16641325"
+                    - generic "This user is the author of this discussion." [ref=e279]: Author
+              - generic [ref=e281]:
+                - generic [ref=e282]:
+                  - paragraph [ref=e283]:
+                    - text: I found the "magic regex" in the source code for
+                    - code [ref=e284]: "-ot"
+                    - text: "(this is my llama-benchmaxxed version, as much VRAM on GPU0 as possible):"
+                  - generic [ref=e285]:
+                    - code [ref=e287]: "llama-bench -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M -ts 41/0 -ngl 99 -fa 1 -ctk q8_0 -ctv q8_0 -ot \"blk\\.(0|1|2|3|4|5|6|7|8|9|10)\\.ffn_(up|down|gate_up|gate)_(ch|)exps=Vulkan1\" ggml_vulkan: Found 2 Vulkan devices: ggml_vulkan: 0 = AMD Radeon RX 7800 XT (RADV NAVI32) (radv) | uma: 0 | fp16: 1 | bf16: 0 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat ggml_vulkan: 1 = Radeon RX 580 Series (RADV POLARIS10) (radv) | uma: 0 | fp16: 0 | bf16: 0 | warp size: 64 | shared memory: 65536 | int dot: 0 | matrix cores: none | model | size | params | backend | ngl | type_k | type_v | fa | ts | ot | test | t/s | | ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | -: | ------------ | --------------------- | --------------: | -------------------: | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | q8_0 | q8_0 | 1 | 41.00 | blk\\.(0|1|2|3|4|5|6|7|8|9|10)\\.ffn_(up|down|gate_up|gate)_(ch|)exps=Vulkan1 | pp512 | 593.86 ± 43.05 | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | q8_0 | q8_0 | 1 | 41.00 | blk\\.(0|1|2|3|4|5|6|7|8|9|10)\\.ffn_(up|down|gate_up|gate)_(ch|)exps=Vulkan1 | tg128 | 38.20 ± 0.06 | build: cf8b0dbda (8861)"
+                    - button "Copy code to clipboard" [ref=e289] [cursor=pointer]:
+                      - img [ref=e290]
+                  - paragraph [ref=e293]:
+                    - text: This would likely be the equivalent of
+                    - code [ref=e294]: "--n-gpu1-moe 11"
+                    - text: . PP increased a bit, I assume the relevant parts are ony non-MoE and thus fully on the fast GPU0. In turn, TG tanked a bit and is not much faster than CPU, which is surprising.
+                - generic [ref=e296]:
+                  - 'button "Upvote: 1" [disabled] [ref=e301]':
+                    - img [ref=e302]
+                    - generic [ref=e304]: "1"
+                  - generic [ref=e305]: 7 replies
+              - generic [ref=e306]:
+                - generic [ref=e307]:
+                  - img [ref=e309]
+                  - button "Show 2 previous replies" [ref=e313] [cursor=pointer]:
+                    - generic [ref=e315]: Show 2 previous replies
+                - generic [ref=e316]:
+                  - link "@am17an" [ref=e318] [cursor=pointer]:
+                    - /url: /am17an
+                    - img "@am17an" [ref=e319]
+                  - generic [ref=e323]:
+                    - generic [ref=e325]:
+                      - button "Comment options" [ref=e330] [cursor=pointer]:
+                        - img
+                      - heading "am17an Apr 22, 2026on Apr 22 Collaborator" [level=4] [ref=e331]:
+                        - generic [ref=e332]:
+                          - link "am17an" [ref=e333] [cursor=pointer]:
+                            - /url: /am17an
+                          - link "Apr 22, 2026on Apr 22" [ref=e334] [cursor=pointer]:
+                            - /url: "#discussioncomment-16672811"
+                          - generic "This user is a collaborator on this repository." [ref=e336]: Collaborator
+                    - paragraph [ref=e340]:
+                      - text: Fit affects the tensor placement on
+                      - text: how much context you require and the memory margin. It is recommended not to use to do manual tensor placement and let fit do the work.
+                - generic [ref=e341]:
+                  - link "@MartinEmrich" [ref=e343] [cursor=pointer]:
+                    - /url: /MartinEmrich
+                    - img "@MartinEmrich" [ref=e344]
+                  - generic [ref=e348]:
+                    - generic [ref=e350]:
+                      - button "Comment options" [ref=e355] [cursor=pointer]:
+                        - img
+                      - button "edited" [ref=e360] [cursor=pointer]:
+                        - generic [ref=e362]: edited
+                        - generic:
+                          - img
+                      - heading "MartinEmrich Apr 22, 2026on Apr 22 Author" [level=4] [ref=e363]:
+                        - generic [ref=e364]:
+                          - link "MartinEmrich" [ref=e365] [cursor=pointer]:
+                            - /url: /MartinEmrich
+                          - link "Apr 22, 2026on Apr 22" [ref=e366] [cursor=pointer]:
+                            - /url: "#discussioncomment-16673810"
+                          - generic "This user is the author of this discussion." [ref=e368]: Author
+                    - generic [ref=e371]:
+                      - paragraph [ref=e372]: "I have to assume you do not understand what I am trying to explore, as your \"Collaborator\" badge suggests knowledge about llama.cpp in general... Maybe I explained it badly, excuse my (non-native language) explaination. I will try again:"
+                      - paragraph [ref=e373]: Fit determines optimal placement of layers regarding memory usage of layers across GPUs and system RAM. That's not what I am after alone.
+                      - paragraph [ref=e374]:
+                        - text: Try running llama-bench with two different GPUs (with enough memory together to fit the whole model plus cache/overhead) with -v, and you will see (enabling auto fit e.g. using
+                        - code [ref=e375]: "-fitt 1"
+                        - text: ), that it assigns first a number of layers to GPU0, and then the remaining layers to GPU1. The distribution is somewhat proportional.
+                        - text: This works fine with identical GPUs, but less so when the first GPU is orders of magnitude faster. In that case, manually assigning as many layers as possible to the faster GPU gives a performance advantage.
+                      - paragraph [ref=e376]:
+                        - text: Now for a MoE model, the same thing happens. The MoE tensors are assigned to the same GPU as their whole layer. No special treatment of MoE tensors
+                        - emphasis [ref=e377]: as long as it fits to the available total VRAM
+                        - text: .
+                      - paragraph [ref=e378]:
+                        - text: Now, disable the secondary, slower GPU with
+                        - code [ref=e379]: GGML_VK_VISIBLE_DEVICES=0
+                        - text: and retry. The model will
+                        - emphasis [ref=e380]: no longer fit
+                        - text: on the single GPU. In that case, Auto-Fit will prefer to offload the MoE tensors of n.x
+                        - strong [ref=e381]: last
+                        - text: layers to Vulkan_Host (i.e. CPU/System RAM) to fit the rest on the GPU, and it will even choose on a tensor group level within the same layer! It also takes quite some time, and produces extensive log output documenting dozens of fitting attempts until the optimal MoE tensor offload is found.
+                        - text: The result is similar to using
+                        - code [ref=e382]: "-ncmoe n"
+                        - text: ", only that this offloads the MoE Tensors of the"
+                        - strong [ref=e383]: first
+                        - text: n layers to CPU/System RAM. (That difference on its own is interesting as well).
+                      - paragraph [ref=e384]:
+                        - text: The two variants (for
+                        - code [ref=e385]: "-ncmoe"
+                        - text: I had to choose the first
+                        - strong [ref=e386]: "12"
+                        - text: "layers to fit the rest without GTT spillover, while Fit chose the last 10 plus a few from the 11th-last layer.. suggesting non-uniform layer sizes):"
+                      - generic [ref=e387]:
+                        - code [ref=e389]: "GGML_VK_VISIBLE_DEVICES=0 llama-bench -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M -ngl 99 -fa 1 -ctk q8_0 -ctv q8_0 -v -ncmoe 11 # FIRST 12 layer moe tensors to CPU (best fit, 11 starts GTT spillover) | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | 12 | q8_0 | q8_0 | 1 | pp512 | 268.13 ± 37.79 | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | 12 | q8_0 | q8_0 | 1 | tg128 | 35.20 ± 0.63 | GGML_VK_VISIBLE_DEVICES=0 llama-bench -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M -ngl 99 -fa 1 -ctk q8_0 -ctv q8_0 -v -fitt 1 # Fit Result: LAST 10 plus partial layer moe tensors to CPU | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | q8_0 | q8_0 | 1 | 1 | pp512 | 313.44 ± 42.30 | | qwen35moe 35B.A3B Q4_K - Medium | 20.60 GiB | 34.66 B | Vulkan | 99 | q8_0 | q8_0 | 1 | 1 | tg128 | 30.24 ± 7.31 |"
+                        - button "Copy code to clipboard" [ref=e391] [cursor=pointer]:
+                          - img [ref=e392]
+                      - paragraph [ref=e395]: Both approaches provide a (subjectively) optimal result for 1 GPU plus System RAM.
+                      - paragraph [ref=e396]:
+                        - text: But neither variants do offload MoE tensors
+                        - strong [ref=e397]: to the second GPU
+                        - text: . Fit treats multiple GPUs as equal (which arguably fits (pun intended) 99% of multi-GPU users out there).
+                      - paragraph [ref=e398]: So, to conclude, "It is recommended not to use to do manual tensor placement and let fit do the work." is, in my experience, bad advice (as most passive-voice phrasings attributed to an unknown, unseen authority, are). I would rather recommend to use auto fit as a base line to get a working setup, but to take the results and tweak afterwards to improve performance further, especially with a budget/hybrid/frankenstein/iGPU setup.
+                      - paragraph [ref=e399]: "(And it gets even spicier: only with llama-bench's tiny context window, it fits on both GPUs. with llama-server and a useful context size, I also have to offload a tiny bit to the system (or switch to a smaller quant))"
+                      - paragraph [ref=e400]: "The remaining interesting questions are:"
+                      - list [ref=e401]:
+                        - listitem [ref=e402]:
+                          - text: Why does
+                          - code [ref=e403]: "-ncmoe"
+                          - text: start from the lowest layer number up, while the fit algorithm starts from the highest layer number down? The difference (one gives more input, the other more output speed) might be worth exploiting.
+                        - listitem [ref=e404]:
+                          - text: Why is the performance gain of offloading MoE to the second GPU over offloading them to the CPU/system RAM quite lower than expected? (One hypothesis is excessive PCIe traffic, especially if it goes GPU->CPU->other GPU).
+                          - text: .
+                          - text: .
+                          - text: .
+                        - listitem [ref=e405]: ... And (humor) why did they just release Qwen3.6 27B, outperforming again 35B-A3B, making this whole rabbit hole vastly less appealing? :)
+                - generic [ref=e406]:
+                  - link "@MartinEmrich" [ref=e408] [cursor=pointer]:
+                    - /url: /MartinEmrich
+                    - img "@MartinEmrich" [ref=e409]
+                  - generic [ref=e413]:
+                    - generic [ref=e415]:
+                      - button "Comment options" [ref=e420] [cursor=pointer]:
+                        - img
+                      - heading "MartinEmrich Apr 22, 2026on Apr 22 Author" [level=4] [ref=e421]:
+                        - generic [ref=e422]:
+                          - link "MartinEmrich" [ref=e423] [cursor=pointer]:
+                            - /url: /MartinEmrich
+                          - link "Apr 22, 2026on Apr 22" [ref=e424] [cursor=pointer]:
+                            - /url: "#discussioncomment-16674886"
+                          - generic "This user is the author of this discussion." [ref=e426]: Author
+                    - generic [ref=e429]:
+                      - paragraph [ref=e430]: "... and at least for the less-than-optimal performance, I asked the very MoE model, and the explaination seems solid:"
+                      - paragraph [ref=e431]: There's lots of intra-layer communication and computation, incurring more Vulkan, scheduling and PCIe bus overhead when working between two GPUs than when having the MoE tensors on the CPU. That eats up most of the faster computation advantage on the secondary GPU.
+                      - paragraph [ref=e432]:
+                        - text: As what I tried to explore does not provide enough performance benefit over simple layer split, It does not make sense to implement a simple command line switch for it either (whoever is interested can simply provide a cryptic but working
+                        - code [ref=e433]: "-ot"
+                        - text: parameter).
+                      - paragraph [ref=e434]: So I might wait a while for other opinions, but then close this topic as solved.
+                - generic [ref=e435]:
+                  - link "@am17an" [ref=e437] [cursor=pointer]:
+                    - /url: /am17an
+                    - img "@am17an" [ref=e438]
+                  - generic [ref=e442]:
+                    - generic [ref=e444]:
+                      - button "Comment options" [ref=e449] [cursor=pointer]:
+                        - img
+                      - button "edited" [ref=e454] [cursor=pointer]:
+                        - generic [ref=e456]: edited
+                        - generic:
+                          - img
+                      - heading "am17an Apr 23, 2026on Apr 23 Collaborator" [level=4] [ref=e457]:
+                        - generic [ref=e458]:
+                          - link "am17an" [ref=e459] [cursor=pointer]:
+                            - /url: /am17an
+                          - link "Apr 23, 2026on Apr 23" [ref=e460] [cursor=pointer]:
+                            - /url: "#discussioncomment-16679389"
+                          - generic "This user is a collaborator on this repository." [ref=e462]: Collaborator
+                    - generic [ref=e465]:
+                      - paragraph [ref=e466]:
+                        - text: I mean ok, since you have a very esoteric setup and you seem to want to get into the weeds, you can use options like
+                        - code [ref=e467]: "-ts"
+                        - text: or
+                        - code [ref=e468]: "-ot"
+                        - text: which manually map these things. Or better yet, you can read the code.
+                      - blockquote [ref=e469]:
+                        - paragraph [ref=e470]: "\"It is recommended not to use to do manual tensor placement and let fit do the work.\" is, in my experience, bad advice"
+                      - paragraph [ref=e471]:
+                        - text: Certainly not, this project strives to deliver the best performance out of the box for most setups. If there is a common setup where
+                        - code [ref=e472]: fit
+                        - text: is bad, we should fix it rather than creating this notion that for best performance you need to manually tune all knobs.
+                - generic [ref=e473]:
+                  - link "@MartinEmrich" [ref=e475] [cursor=pointer]:
+                    - /url: /MartinEmrich
+                    - img "@MartinEmrich" [ref=e476]
+                  - generic [ref=e480]:
+                    - generic [ref=e482]:
+                      - button "Comment options" [ref=e487] [cursor=pointer]:
+                        - img
+                      - heading "MartinEmrich Apr 23, 2026on Apr 23 Author" [level=4] [ref=e488]:
+                        - generic [ref=e489]:
+                          - link "MartinEmrich" [ref=e490] [cursor=pointer]:
+                            - /url: /MartinEmrich
+                          - link "Apr 23, 2026on Apr 23" [ref=e491] [cursor=pointer]:
+                            - /url: "#discussioncomment-16681285"
+                          - generic "This user is the author of this discussion." [ref=e493]: Author
+                    - paragraph [ref=e497]:
+                      - text: Agreed, but indeed with a focus on "common setup". If one just plugs in 4 RTX 5090s (or even just two RX7600s) and calls it a day, I am certain the defaults work fine.
+                      - text: My frankensetup is certainly not common (unless people start to chain iGPUs to a single dedicated GPU), so a bit of "getting under the hood" is ok in my book.
+            - generic [ref=e503]:
+              - generic [ref=e505]:
+                - button "Comment options" [ref=e510] [cursor=pointer]:
+                  - img
+                - heading "MartinEmrich Apr 23, 2026on Apr 23 Author" [level=3] [ref=e511]:
+                  - generic [ref=e512]:
+                    - link "MartinEmrich" [ref=e513] [cursor=pointer]:
+                      - /url: /MartinEmrich
+                      - img [ref=e514]
+                      - generic [ref=e516]: MartinEmrich
+                    - link "Apr 23, 2026on Apr 23" [ref=e517] [cursor=pointer]:
+                      - /url: "#discussioncomment-16681331"
+                    - generic "This user is the author of this discussion." [ref=e519]: Author
+              - generic [ref=e521]:
+                - generic [ref=e522]:
+                  - paragraph [ref=e523]: "Result (see above):"
+                  - paragraph [ref=e524]: For a vastly slower second GPU, the PCIe/Vulkan overhead added over CPU offload incurs such a penalty, that the whole idea was not feasible. So (for my setup at least) simple layer split over the two GPUs is still faster if possible, and MoE offload to the CPU is about as fast as using the second GPU.
+                - generic [ref=e526]:
+                  - 'button "Upvote: 1" [disabled] [ref=e531]':
+                    - img [ref=e532]
+                    - generic [ref=e534]: "1"
+                  - generic [ref=e535]: 0 replies
+            - generic [ref=e541]:
+              - generic [ref=e543]:
+                - button "Comment options" [ref=e548] [cursor=pointer]:
+                  - img
+                - heading "clort81 May 26, 20262 days ago" [level=3] [ref=e549]:
+                  - generic [ref=e550]:
+                    - link "clort81" [ref=e551] [cursor=pointer]:
+                      - /url: /clort81
+                      - img [ref=e552]
+                      - generic [ref=e554]: clort81
+                    - link "May 26, 20262 days ago" [ref=e555] [cursor=pointer]:
+                      - /url: "#discussioncomment-17065734"
+              - generic [ref=e557]:
+                - paragraph [ref=e559]: Setups with multiple GPUs of different types do not seem so rare in my survey of the landscape.
+                - generic [ref=e561]:
+                  - 'button "Upvote: 1" [disabled] [ref=e566]':
+                    - img [ref=e567]
+                    - generic [ref=e569]: "1"
+                  - generic [ref=e570]: 0 replies
+        - generic [ref=e572]:
+          - link "Sign up for free" [ref=e573] [cursor=pointer]:
+            - /url: /join?source=comment-repo
+          - strong [ref=e574]: to join this conversation on GitHub
+          - text: . Already have an account?
+          - link "Sign in to comment" [ref=e575] [cursor=pointer]:
+            - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F22183
+      - generic [ref=e576]:
+        - generic [ref=e579]:
+          - generic [ref=e580]: Category
+          - link "Ideas" [ref=e581] [cursor=pointer]:
+            - /url: /ggml-org/llama.cpp/discussions/categories/ideas
+            - img [ref=e584]
+            - text: Ideas
+        - generic [ref=e585]:
+          - generic [ref=e586]: Labels
+          - generic [ref=e587]: None yet
+        - generic [ref=e589]:
+          - generic [ref=e590]: 3 participants
+          - generic [ref=e591]:
+            - link "@MartinEmrich" [ref=e592] [cursor=pointer]:
+              - /url: /MartinEmrich
+              - img "@MartinEmrich" [ref=e593]
+            - link "@am17an" [ref=e594] [cursor=pointer]:
+              - /url: /am17an
+              - img "@am17an" [ref=e595]
+            - link "@clort81" [ref=e596] [cursor=pointer]:
+              - /url: /clort81
+              - img "@clort81" [ref=e597]
+  - contentinfo [ref=e598]:
+    - heading "Footer" [level=2] [ref=e599]
+    - generic [ref=e600]:
+      - generic [ref=e601]:
+        - link "GitHub Homepage" [ref=e602] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e603]
+        - generic [ref=e605]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e606]:
+        - heading "Footer navigation" [level=3] [ref=e607]
+        - list "Footer navigation" [ref=e608]:
+          - listitem [ref=e609]:
+            - link "Terms" [ref=e610] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e611]:
+            - link "Privacy" [ref=e612] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e613]:
+            - link "Security" [ref=e614] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e615]:
+            - link "Status" [ref=e616] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e617]:
+            - link "Community" [ref=e618] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e619]:
+            - link "Docs" [ref=e620] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e621]:
+            - link "Contact" [ref=e622] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e623]:
+            - button "Manage cookies" [ref=e625] [cursor=pointer]
+          - listitem [ref=e626]:
+            - button "Do not share my personal information" [ref=e628] [cursor=pointer]

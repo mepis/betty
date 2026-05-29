@@ -1,0 +1,1124 @@
+- generic [ref=e1]:
+  - region "Notifications alt+T"
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - link "DeepWiki" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: DeepWiki
+      - paragraph [ref=e10]:
+        - link "ggml-org/llama.cpp" [ref=e11] [cursor=pointer]:
+          - /url: https://github.com/ggml-org/llama.cpp
+          - text: ggml-org/llama.cpp
+          - img [ref=e12]
+      - generic [ref=e14]:
+        - button "Index your code with Devin" [ref=e15]:
+          - generic [ref=e16]: Index your code with
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic [ref=e22]: Devin
+        - button "Edit Wiki" [ref=e23] [cursor=pointer]:
+          - img [ref=e24]
+          - text: Edit Wiki
+        - button "Share" [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e33]: Share
+        - button "Switch to dark mode" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+    - generic [ref=e39]:
+      - generic [ref=e41]:
+        - generic [ref=e43]:
+          - text: "Last indexed: 24 May 2026 ("
+          - link "549b9d" [ref=e44] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/commits/549b9d84
+          - text: )
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - link "Overview" [ref=e47] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/1-overview
+          - listitem [ref=e48]:
+            - link "Getting Started" [ref=e49] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2-getting-started
+          - listitem [ref=e50]:
+            - link "Installation and Building" [ref=e51] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.1-installation-and-building
+          - listitem [ref=e52]:
+            - link "Basic Usage and Examples" [ref=e53] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.2-basic-usage-and-examples
+          - listitem [ref=e54]:
+            - link "Configuration and Parameters" [ref=e55] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.3-configuration-and-parameters
+          - listitem [ref=e56]:
+            - link "Core Library Architecture" [ref=e57] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3-core-library-architecture
+          - listitem [ref=e58]:
+            - link "libllama Public API" [ref=e59] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.1-libllama-public-api
+          - listitem [ref=e60]:
+            - link "Model Loading and Representation" [ref=e61] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.2-model-loading-and-representation
+          - listitem [ref=e62]:
+            - link "Tokenization and Vocabulary" [ref=e63] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.3-tokenization-and-vocabulary
+          - listitem [ref=e64]:
+            - link "Inference Context and Orchestration" [ref=e65] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.4-inference-context-and-orchestration
+          - listitem [ref=e66]:
+            - link "Batch Processing Pipeline" [ref=e67] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.5-batch-processing-pipeline
+          - listitem [ref=e68]:
+            - link "Memory Management and KV Cache" [ref=e69] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.6-memory-management-and-kv-cache
+          - listitem [ref=e70]:
+            - link "Computation Graph Building" [ref=e71] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.7-computation-graph-building
+          - listitem [ref=e72]:
+            - link "Token Sampling and Generation" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.8-token-sampling-and-generation
+          - listitem [ref=e74]:
+            - link "Chat Templates and Message Parsing" [ref=e75] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.9-chat-templates-and-message-parsing
+          - listitem [ref=e76]:
+            - link "Adapters and Fine-tuning" [ref=e77] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.10-adapters-and-fine-tuning
+          - listitem [ref=e78]:
+            - link "Supported Model Architectures" [ref=e79] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.11-supported-model-architectures
+          - listitem [ref=e80]:
+            - link "GGML Tensor Library" [ref=e81] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4-ggml-tensor-library
+          - listitem [ref=e82]:
+            - link "GGML Core Architecture" [ref=e83] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.1-ggml-core-architecture
+          - listitem [ref=e84]:
+            - link "Backend System and Registration" [ref=e85] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.2-backend-system-and-registration
+          - listitem [ref=e86]:
+            - link "CPU Backend Implementation" [ref=e87] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.3-cpu-backend-implementation
+          - listitem [ref=e88]:
+            - link "Quantization in GGML" [ref=e89] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.4-quantization-in-ggml
+          - listitem [ref=e90]:
+            - link "GPU and Accelerator Backends" [ref=e91] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5-gpu-and-accelerator-backends
+          - listitem [ref=e92]:
+            - link "CUDA Backend (NVIDIA)" [ref=e93] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.1-cuda-backend-(nvidia)
+          - listitem [ref=e94]:
+            - link "Metal Backend (Apple)" [ref=e95] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.2-metal-backend-(apple)
+          - listitem [ref=e96]:
+            - link "Vulkan Backend (Cross-Platform)" [ref=e97] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.3-vulkan-backend-(cross-platform)
+          - listitem [ref=e98]:
+            - link "SYCL Backend (Intel)" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.4-sycl-backend-(intel)
+          - listitem [ref=e100]:
+            - link "HIP, CANN, and Other Backends" [ref=e101] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.5-hip-cann-and-other-backends
+          - listitem [ref=e102]:
+            - link "Backend Testing and Validation" [ref=e103] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.6-backend-testing-and-validation
+          - listitem [ref=e104]:
+            - link "User Tools and Interfaces" [ref=e105] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6-user-tools-and-interfaces
+          - listitem [ref=e106]:
+            - link "Command-Line Tools" [ref=e107] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.1-command-line-tools
+          - listitem [ref=e108]:
+            - link "llama-server HTTP API" [ref=e109] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.2-llama-server-http-api
+          - listitem [ref=e110]:
+            - link "Router Mode and Model Management" [ref=e111] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.3-router-mode-and-model-management
+          - listitem [ref=e112]:
+            - link "Web UI" [ref=e113] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.4-web-ui
+          - listitem [ref=e114]:
+            - link "Multimodal Support (libmtmd)" [ref=e115] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.5-multimodal-support-(libmtmd)
+          - listitem [ref=e116]:
+            - link "Text-to-Speech (TTS)" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.6-text-to-speech-(tts)
+          - listitem [ref=e118]:
+            - link "Model Pipeline" [ref=e119] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7-model-pipeline
+          - listitem [ref=e120]:
+            - link "GGUF File Format" [ref=e121] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.1-gguf-file-format
+          - listitem [ref=e122]:
+            - link "Model Conversion from HuggingFace" [ref=e123] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.2-model-conversion-from-huggingface
+          - listitem [ref=e124]:
+            - link "Quantization Techniques" [ref=e125] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.3-quantization-techniques
+          - listitem [ref=e126]:
+            - link "Model Acquisition and Management" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.4-model-acquisition-and-management
+          - listitem [ref=e128]:
+            - link "Advanced Features" [ref=e129] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8-advanced-features
+          - listitem [ref=e130]:
+            - link "Grammar and Structured Output" [ref=e131] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.1-grammar-and-structured-output
+          - listitem [ref=e132]:
+            - link "Flash Attention and Optimizations" [ref=e133] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.2-flash-attention-and-optimizations
+          - listitem [ref=e134]:
+            - link "Speculative Decoding" [ref=e135] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.3-speculative-decoding
+          - listitem [ref=e136]:
+            - link "Multi-GPU and Distributed Inference" [ref=e137] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.4-multi-gpu-and-distributed-inference
+          - listitem [ref=e138]:
+            - link "Development and Contributing" [ref=e139] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9-development-and-contributing
+          - listitem [ref=e140]:
+            - link "Build System and Configuration" [ref=e141] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.1-build-system-and-configuration
+          - listitem [ref=e142]:
+            - link "Testing Infrastructure" [ref=e143] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.2-testing-infrastructure
+          - listitem [ref=e144]:
+            - link "CI/CD Pipeline" [ref=e145] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.3-cicd-pipeline
+          - listitem [ref=e146]:
+            - link "GGML Synchronization and Contributing" [ref=e147] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.4-ggml-synchronization-and-contributing
+          - listitem [ref=e148]:
+            - link "Glossary" [ref=e149] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/10-glossary
+      - generic [ref=e155]:
+        - heading "Configuration and Parameters Copy link to header" [level=1] [ref=e156]:
+          - text: Configuration and Parameters
+          - button "Copy link to header" [ref=e157] [cursor=pointer]:
+            - img [ref=e158]
+        - group [ref=e160]:
+          - generic "Relevant source files" [ref=e161] [cursor=pointer]
+        - paragraph [ref=e162]:
+          - text: This page documents llama.cpp's configuration system, including the
+          - code [ref=e163]: common_params
+          - text: structure, context parameters (
+          - code [ref=e164]: n_ctx
+          - text: ","
+          - code [ref=e165]: n_batch
+          - text: ","
+          - code [ref=e166]: n_threads
+          - text: ), sampling parameters (temperature,
+          - code [ref=e167]: top_k
+          - text: ","
+          - code [ref=e168]: top_p
+          - text: ), and how parameters flow from command-line arguments through the system to control inference behavior.
+        - heading "Parameter Sources Copy link to header" [level=2] [ref=e169]:
+          - text: Parameter Sources
+          - button "Copy link to header" [ref=e170] [cursor=pointer]:
+            - img [ref=e171]
+        - paragraph [ref=e173]: "llama.cpp supports multiple sources for configuration parameters, applied in order of precedence:"
+        - paragraph [ref=e174]: "Title: Parameter Precedence Flow"
+        - generic [ref=e176] [cursor=pointer]:
+          - document [ref=e178]:
+            - generic [ref=e180]:
+              - generic [ref=e186]:
+                - paragraph [ref=e192]: lowest precedence
+                - paragraph [ref=e198]: override defaults
+                - paragraph [ref=e204]: override env vars
+                - paragraph [ref=e210]: highest precedence
+              - generic [ref=e211]:
+                - paragraph [ref=e218]:
+                  - text: Default Values
+                  - text: common_params constructor
+                - paragraph [ref=e225]:
+                  - text: Environment Variables
+                  - text: common_arg::get_value_from_env()
+                - paragraph [ref=e232]:
+                  - text: Preset Files
+                  - text: common_preset::apply_to_params()
+                - paragraph [ref=e239]:
+                  - text: Command-line Arguments
+                  - text: common_params_parse()
+                - paragraph [ref=e246]:
+                  - text: common_params
+                  - text: populated structure
+          - generic [ref=e247]:
+            - button "Zoom in" [ref=e248]:
+              - img [ref=e249]
+            - button "Zoom out" [ref=e251]:
+              - img [ref=e252]
+            - img [ref=e255]
+        - paragraph [ref=e257]:
+          - text: "Sources:"
+          - link "common/arg.cpp 123-141" [ref=e258] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L123-L141
+            - generic [ref=e259]:
+              - img [ref=e260]
+              - text: common/arg.cpp
+            - generic [ref=e262]: 123-141
+          - link "common/arg.cpp 434-561" [ref=e263] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L434-L561
+            - generic [ref=e264]:
+              - img [ref=e265]
+              - text: common/arg.cpp
+            - generic [ref=e267]: 434-561
+        - heading "Command-Line Arguments Copy link to header" [level=3] [ref=e268]:
+          - text: Command-Line Arguments
+          - button "Copy link to header" [ref=e269] [cursor=pointer]:
+            - img [ref=e270]
+        - paragraph [ref=e272]:
+          - text: Primary configuration method. Arguments use double-dash prefix with kebab-case (e.g.,
+          - code [ref=e273]: "--n-gpu-layers"
+          - text: ). All command-line arguments are defined in
+          - code [ref=e274]: common_params_parser_init()
+          - text: which builds a vector of
+          - code [ref=e275]: common_arg
+          - text: structures
+          - link "common/arg.cpp 75-82" [ref=e276] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L75-L82
+            - generic [ref=e277]:
+              - img [ref=e278]
+              - text: common/arg.cpp
+            - generic [ref=e280]: 75-82
+          - text: Each
+          - code [ref=e281]: common_arg
+          - text: specifies argument names, value hints, help text, and a handler function
+          - link "common/arg.h 19-36" [ref=e282] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.h#L19-L36
+            - generic [ref=e283]:
+              - img [ref=e284]
+              - text: common/arg.h
+            - generic [ref=e286]: 19-36
+          - text: The parser supports aliases (e.g.,
+          - code [ref=e287]: "-ngl"
+          - text: for
+          - code [ref=e288]: "--n-gpu-layers"
+          - text: ) and boolean negation (e.g.,
+          - code [ref=e289]: "--no-mmap"
+          - text: )
+          - link "common/arg.cpp 220-229" [ref=e290] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L220-L229
+            - generic [ref=e291]:
+              - img [ref=e292]
+              - text: common/arg.cpp
+            - generic [ref=e294]: 220-229
+        - paragraph [ref=e295]:
+          - text: "Sources:"
+          - link "common/arg.cpp 75-82" [ref=e296] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L75-L82
+            - generic [ref=e297]:
+              - img [ref=e298]
+              - text: common/arg.cpp
+            - generic [ref=e300]: 75-82
+          - link "common/arg.h 19-36" [ref=e301] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.h#L19-L36
+            - generic [ref=e302]:
+              - img [ref=e303]
+              - text: common/arg.h
+            - generic [ref=e305]: 19-36
+          - link "common/arg.cpp 220-229" [ref=e306] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L220-L229
+            - generic [ref=e307]:
+              - img [ref=e308]
+              - text: common/arg.cpp
+            - generic [ref=e310]: 220-229
+        - heading "Environment Variables Copy link to header" [level=3] [ref=e311]:
+          - text: Environment Variables
+          - button "Copy link to header" [ref=e312] [cursor=pointer]:
+            - img [ref=e313]
+        - paragraph [ref=e315]:
+          - text: Arguments can be set via environment variables with
+          - code [ref=e316]: LLAMA_ARG_
+          - text: prefix. Environment variables are processed in
+          - code [ref=e317]: common_params_parse()
+          - text: . Each
+          - code [ref=e318]: common_arg
+          - text: structure has an
+          - code [ref=e319]: env
+          - text: member specifying the environment variable name
+          - link "common/arg.h 26" [ref=e320] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.h#L26-L26
+            - generic [ref=e321]:
+              - img [ref=e322]
+              - text: common/arg.h
+            - generic [ref=e324]: "26"
+          - text: The
+          - code [ref=e325]: common_arg::get_value_from_env()
+          - text: method retrieves values, with special handling for negated arguments by checking for
+          - code [ref=e326]: LLAMA_ARG_NO_
+          - text: variants
+          - link "common/arg.cpp 123-141" [ref=e327] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L123-L141
+            - generic [ref=e328]:
+              - img [ref=e329]
+              - text: common/arg.cpp
+            - generic [ref=e331]: 123-141
+        - paragraph [ref=e332]:
+          - text: "Sources:"
+          - link "common/arg.cpp 123-153" [ref=e333] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L123-L153
+            - generic [ref=e334]:
+              - img [ref=e335]
+              - text: common/arg.cpp
+            - generic [ref=e337]: 123-153
+          - link "common/arg.h 26" [ref=e338] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.h#L26-L26
+            - generic [ref=e339]:
+              - img [ref=e340]
+              - text: common/arg.h
+            - generic [ref=e342]: "26"
+          - link "common/arg.cpp 123-141" [ref=e343] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L123-L141
+            - generic [ref=e344]:
+              - img [ref=e345]
+              - text: common/arg.cpp
+            - generic [ref=e347]: 123-141
+        - heading "Preset Files (INI System) Copy link to header" [level=3] [ref=e348]:
+          - text: Preset Files (INI System)
+          - button "Copy link to header" [ref=e349] [cursor=pointer]:
+            - img [ref=e350]
+        - paragraph [ref=e352]:
+          - text: Presets are INI-formatted configuration files handled by the
+          - code [ref=e353]: common_preset
+          - text: class
+          - link "common/preset.h 18-40" [ref=e354] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/preset.h#L18-L40
+            - generic [ref=e355]:
+              - img [ref=e356]
+              - text: common/preset.h
+            - generic [ref=e358]: 18-40
+          - text: When using
+          - code [ref=e359]: "-hf"
+          - text: or
+          - code [ref=e360]: "--hf-repo"
+          - text: ", llama.cpp can automatically download and apply"
+          - code [ref=e361]: preset.ini
+          - text: from the model repository via
+          - code [ref=e362]: common_params_handle_models()
+          - link "common/arg.cpp 282-322" [ref=e363] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L282-L322
+            - generic [ref=e364]:
+              - img [ref=e365]
+              - text: common/arg.cpp
+            - generic [ref=e367]: 282-322
+        - paragraph [ref=e368]:
+          - text: The
+          - code [ref=e369]: common_preset
+          - text: system allows for reusable configurations. In
+          - code [ref=e370]: llama-server
+          - text: router mode, each model instance can have its own preset
+          - link "tools/server/server-models.cpp 153-162" [ref=e371] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/server/server-models.cpp#L153-L162
+            - generic [ref=e372]:
+              - img [ref=e373]
+              - text: tools/server/server-models.cpp
+            - generic [ref=e375]: 153-162
+          - text: The
+          - code [ref=e376]: server_models
+          - text: subsystem manages these presets to spawn model slots with specific configurations
+          - link "tools/server/server-models.cpp 192-211" [ref=e377] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/server/server-models.cpp#L192-L211
+            - generic [ref=e378]:
+              - img [ref=e379]
+              - text: tools/server/server-models.cpp
+            - generic [ref=e381]: 192-211
+        - paragraph [ref=e382]:
+          - text: "Sources:"
+          - link "common/arg.cpp 282-322" [ref=e383] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L282-L322
+            - generic [ref=e384]:
+              - img [ref=e385]
+              - text: common/arg.cpp
+            - generic [ref=e387]: 282-322
+          - link "common/preset.h 18-40" [ref=e388] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/preset.h#L18-L40
+            - generic [ref=e389]:
+              - img [ref=e390]
+              - text: common/preset.h
+            - generic [ref=e392]: 18-40
+          - link "tools/server/server-models.cpp 153-162" [ref=e393] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/server/server-models.cpp#L153-L162
+            - generic [ref=e394]:
+              - img [ref=e395]
+              - text: tools/server/server-models.cpp
+            - generic [ref=e397]: 153-162
+          - link "tools/server/server-models.cpp 192-211" [ref=e398] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/server/server-models.cpp#L192-L211
+            - generic [ref=e399]:
+              - img [ref=e400]
+              - text: tools/server/server-models.cpp
+            - generic [ref=e402]: 192-211
+        - heading "Parameter Structure Overview Copy link to header" [level=2] [ref=e403]:
+          - text: Parameter Structure Overview
+          - button "Copy link to header" [ref=e404] [cursor=pointer]:
+            - img [ref=e405]
+        - paragraph [ref=e407]:
+          - text: llama.cpp uses a layered parameter system where user-facing parameters in
+          - code [ref=e408]: common_params
+          - text: are converted to lower-level API parameters for model loading and inference.
+        - paragraph [ref=e409]: "Title: Configuration Entity Mapping"
+        - generic [ref=e411] [cursor=pointer]:
+          - document [ref=e413]:
+            - generic [ref=e415]:
+              - generic [ref=e416]:
+                - paragraph [ref=e423]: Runtime Objects
+                - paragraph [ref=e430]: Low-Level API Structures (include/llama.h)
+                - paragraph [ref=e437]: High-Level Structures (common/common.h)
+                - paragraph [ref=e444]: Parameter Sources
+              - generic [ref=e456]:
+                - paragraph [ref=e462]: common_model_params_to_llama()
+                - paragraph [ref=e468]: common_context_params_to_llama()
+                - paragraph [ref=e474]: llama_model_load_from_file()
+                - paragraph [ref=e480]: llama_init_from_model()
+              - generic [ref=e481]:
+                - paragraph [ref=e488]:
+                  - text: CLI Arguments
+                  - text: common_params_parse()
+                - paragraph [ref=e495]:
+                  - text: Environment Vars
+                  - text: common_arg::get_value_from_env()
+                - paragraph [ref=e502]:
+                  - text: Preset INI Files
+                  - text: common_preset::apply_to_params()
+                - paragraph [ref=e509]:
+                  - text: common_params
+                  - text: Main Container
+                - paragraph [ref=e516]:
+                  - text: common_params_sampling
+                  - text: Sampling Config
+                - paragraph [ref=e523]:
+                  - text: common_cpu_params
+                  - text: Thread/Affinity Settings
+                - paragraph [ref=e530]:
+                  - text: common_params_model
+                  - text: Source/Path Info
+                - paragraph [ref=e537]:
+                  - text: common_params_speculative
+                  - text: Speculative Settings
+                - paragraph [ref=e544]:
+                  - text: llama_model_params
+                  - text: Model Loading
+                - paragraph [ref=e551]:
+                  - text: llama_context_params
+                  - text: Context/KV Config
+                - paragraph [ref=e558]:
+                  - text: llama_model
+                  - text: Weights & Metadata
+                - paragraph [ref=e565]:
+                  - text: llama_context
+                  - text: Inference State
+          - generic [ref=e566]:
+            - button "Zoom in" [ref=e567]:
+              - img [ref=e568]
+            - button "Zoom out" [ref=e570]:
+              - img [ref=e571]
+            - img [ref=e574]
+        - paragraph [ref=e576]:
+          - text: "Sources:"
+          - link "common/common.h 360-410" [ref=e577] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L360-L410
+            - generic [ref=e578]:
+              - img [ref=e579]
+              - text: common/common.h
+            - generic [ref=e581]: 360-410
+          - link "include/llama.h 283-374" [ref=e582] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/include/llama.h#L283-L374
+            - generic [ref=e583]:
+              - img [ref=e584]
+              - text: include/llama.h
+            - generic [ref=e586]: 283-374
+          - link "common/arg.cpp 434-561" [ref=e587] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/arg.cpp#L434-L561
+            - generic [ref=e588]:
+              - img [ref=e589]
+              - text: common/arg.cpp
+            - generic [ref=e591]: 434-561
+          - link "common/common.cpp 1062-1207" [ref=e592] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L1062-L1207
+            - generic [ref=e593]:
+              - img [ref=e594]
+              - text: common/common.cpp
+            - generic [ref=e596]: 1062-1207
+        - heading "Core Parameter Structures Copy link to header" [level=3] [ref=e597]:
+          - text: Core Parameter Structures
+          - button "Copy link to header" [ref=e598] [cursor=pointer]:
+            - img [ref=e599]
+        - table [ref=e601]:
+          - rowgroup [ref=e602]:
+            - row "Structure File Pointer Purpose" [ref=e603]:
+              - columnheader "Structure" [ref=e604]
+              - columnheader "File Pointer" [ref=e605]
+              - columnheader "Purpose" [ref=e606]
+          - rowgroup [ref=e607]:
+            - row "common_params common/common.h 360 Main user-facing parameter container" [ref=e608]:
+              - cell "common_params" [ref=e609]:
+                - code [ref=e610]: common_params
+              - cell "common/common.h 360" [ref=e611]:
+                - link "common/common.h 360" [ref=e612] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L360-L360
+                  - generic [ref=e613]:
+                    - img [ref=e614]
+                    - text: common/common.h
+                  - generic [ref=e616]: "360"
+              - cell "Main user-facing parameter container" [ref=e617]
+            - row "common_params_sampling common/common.h 210 Token sampling configuration" [ref=e618]:
+              - cell "common_params_sampling" [ref=e619]:
+                - code [ref=e620]: common_params_sampling
+              - cell "common/common.h 210" [ref=e621]:
+                - link "common/common.h 210" [ref=e622] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L210-L210
+                  - generic [ref=e623]:
+                    - img [ref=e624]
+                    - text: common/common.h
+                  - generic [ref=e626]: "210"
+              - cell "Token sampling configuration" [ref=e627]
+            - row "common_params_model common/common.h 248 Model source (path, URL, HF repo)" [ref=e628]:
+              - cell "common_params_model" [ref=e629]:
+                - code [ref=e630]: common_params_model
+              - cell "common/common.h 248" [ref=e631]:
+                - link "common/common.h 248" [ref=e632] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L248-L248
+                  - generic [ref=e633]:
+                    - img [ref=e634]
+                    - text: common/common.h
+                  - generic [ref=e636]: "248"
+              - cell "Model source (path, URL, HF repo)" [ref=e637]
+            - row "common_cpu_params common/common.h 58 CPU thread and affinity settings" [ref=e638]:
+              - cell "common_cpu_params" [ref=e639]:
+                - code [ref=e640]: common_cpu_params
+              - cell "common/common.h 58" [ref=e641]:
+                - link "common/common.h 58" [ref=e642] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L58-L58
+                  - generic [ref=e643]:
+                    - img [ref=e644]
+                    - text: common/common.h
+                  - generic [ref=e646]: "58"
+              - cell "CPU thread and affinity settings" [ref=e647]
+            - row "common_params_speculative common/common.h 259 Speculative decoding settings" [ref=e648]:
+              - cell "common_params_speculative" [ref=e649]:
+                - code [ref=e650]: common_params_speculative
+              - cell "common/common.h 259" [ref=e651]:
+                - link "common/common.h 259" [ref=e652] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L259-L259
+                  - generic [ref=e653]:
+                    - img [ref=e654]
+                    - text: common/common.h
+                  - generic [ref=e656]: "259"
+              - cell "Speculative decoding settings" [ref=e657]
+            - row "llama_model_params include/llama.h 283 Low-level model loading params" [ref=e658]:
+              - cell "llama_model_params" [ref=e659]:
+                - code [ref=e660]: llama_model_params
+              - cell "include/llama.h 283" [ref=e661]:
+                - link "include/llama.h 283" [ref=e662] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/include/llama.h#L283-L283
+                  - generic [ref=e663]:
+                    - img [ref=e664]
+                    - text: include/llama.h
+                  - generic [ref=e666]: "283"
+              - cell "Low-level model loading params" [ref=e667]
+            - row "llama_context_params include/llama.h 328 Low-level inference context params" [ref=e668]:
+              - cell "llama_context_params" [ref=e669]:
+                - code [ref=e670]: llama_context_params
+              - cell "include/llama.h 328" [ref=e671]:
+                - link "include/llama.h 328" [ref=e672] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/include/llama.h#L328-L328
+                  - generic [ref=e673]:
+                    - img [ref=e674]
+                    - text: include/llama.h
+                  - generic [ref=e676]: "328"
+              - cell "Low-level inference context params" [ref=e677]
+        - heading "Context Parameters Copy link to header" [level=2] [ref=e678]:
+          - text: Context Parameters
+          - button "Copy link to header" [ref=e679] [cursor=pointer]:
+            - img [ref=e680]
+        - paragraph [ref=e682]: Context parameters control the inference context size, batch processing, and memory allocation.
+        - paragraph [ref=e683]: "Title: Context Parameter Data Flow"
+        - generic [ref=e685] [cursor=pointer]:
+          - document [ref=e687]:
+            - generic [ref=e689]:
+              - generic [ref=e690]:
+                - paragraph [ref=e697]: Performance Metrics
+                - paragraph [ref=e704]: Memory Subsystem
+                - paragraph [ref=e711]: Context Size Parameters
+              - generic [ref=e715]:
+                - paragraph [ref=e722]:
+                  - text: n_ctx
+                  - text: Context window size
+                - paragraph [ref=e729]:
+                  - text: n_batch
+                  - text: Logical batch size
+                - paragraph [ref=e736]:
+                  - text: n_ubatch
+                  - text: Physical batch size
+                - paragraph [ref=e743]:
+                  - text: KV Cache
+                  - text: llama_kv_cache
+                - paragraph [ref=e750]:
+                  - text: Compute Buffer
+                  - text: ggml_gallane
+                - paragraph [ref=e757]: Tokens/sec
+                - paragraph [ref=e764]: VRAM/RAM Usage
+          - generic [ref=e765]:
+            - button "Zoom in" [ref=e766]:
+              - img [ref=e767]
+            - button "Zoom out" [ref=e769]:
+              - img [ref=e770]
+            - img [ref=e773]
+        - paragraph [ref=e775]:
+          - text: "Sources:"
+          - link "common/common.h 311-313" [ref=e776] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L311-L313
+            - generic [ref=e777]:
+              - img [ref=e778]
+              - text: common/common.h
+            - generic [ref=e780]: 311-313
+          - link "include/llama.h 326-328" [ref=e781] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/include/llama.h#L326-L328
+            - generic [ref=e782]:
+              - img [ref=e783]
+              - text: include/llama.h
+            - generic [ref=e785]: 326-328
+          - link "src/llama.cpp 125-150" [ref=e786] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama.cpp#L125-L150
+            - generic [ref=e787]:
+              - img [ref=e788]
+              - text: src/llama.cpp
+            - generic [ref=e790]: 125-150
+        - heading "Context Size (n_ctx) Copy link to header" [level=3] [ref=e791]:
+          - text: Context Size (
+          - code [ref=e792]: n_ctx
+          - text: )
+          - button "Copy link to header" [ref=e793] [cursor=pointer]:
+            - img [ref=e794]
+        - paragraph [ref=e796]:
+          - text: The context window determines how many tokens the model can "see" at once. When
+          - code [ref=e797]: n_ctx = 0
+          - text: ", llama.cpp automatically uses the model's training context size from its metadata"
+          - link "include/llama.h 328" [ref=e798] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/include/llama.h#L328-L328
+            - generic [ref=e799]:
+              - img [ref=e800]
+              - text: include/llama.h
+            - generic [ref=e802]: "328"
+          - text: "Sources:"
+          - link "common/common.h 311" [ref=e803] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L311-L311
+            - generic [ref=e804]:
+              - img [ref=e805]
+              - text: common/common.h
+            - generic [ref=e807]: "311"
+          - link "include/llama.h 328" [ref=e808] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/include/llama.h#L328-L328
+            - generic [ref=e809]:
+              - img [ref=e810]
+              - text: include/llama.h
+            - generic [ref=e812]: "328"
+        - heading "Batch Sizes (n_batch & n_ubatch) Copy link to header" [level=3] [ref=e813]:
+          - text: Batch Sizes (
+          - code [ref=e814]: n_batch
+          - text: "&"
+          - code [ref=e815]: n_ubatch
+          - text: )
+          - button "Copy link to header" [ref=e816] [cursor=pointer]:
+            - img [ref=e817]
+        - paragraph [ref=e819]:
+          - code [ref=e820]: n_batch
+          - text: is the logical maximum batch size for processing
+          - link "common/common.h 312" [ref=e821] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L312-L312
+            - generic [ref=e822]:
+              - img [ref=e823]
+              - text: common/common.h
+            - generic [ref=e825]: "312"
+          - code [ref=e826]: n_ubatch
+          - text: is the physical maximum batch size controlling computation granularity and buffer sizes
+          - link "common/common.h 313" [ref=e827] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L313-L313
+            - generic [ref=e828]:
+              - img [ref=e829]
+              - text: common/common.h
+            - generic [ref=e831]: "313"
+          - text: For embedding models,
+          - code [ref=e832]: n_batch
+          - text: is often forced to equal
+          - code [ref=e833]: n_ubatch
+          - text: to ensure all tokens are processed in a single pass
+          - link "tools/server/server.cpp 100-104" [ref=e834] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/server/server.cpp#L100-L104
+            - generic [ref=e835]:
+              - img [ref=e836]
+              - text: tools/server/server.cpp
+            - generic [ref=e838]: 100-104
+          - text: "Sources:"
+          - link "common/common.h 312-313" [ref=e839] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L312-L313
+            - generic [ref=e840]:
+              - img [ref=e841]
+              - text: common/common.h
+            - generic [ref=e843]: 312-313
+          - link "include/llama.h 326-327" [ref=e844] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/include/llama.h#L326-L327
+            - generic [ref=e845]:
+              - img [ref=e846]
+              - text: include/llama.h
+            - generic [ref=e848]: 326-327
+          - link "tools/server/server.cpp 100-104" [ref=e849] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/server/server.cpp#L100-L104
+            - generic [ref=e850]:
+              - img [ref=e851]
+              - text: tools/server/server.cpp
+            - generic [ref=e853]: 100-104
+        - heading "CPU Parameters Copy link to header" [level=2] [ref=e854]:
+          - text: CPU Parameters
+          - button "Copy link to header" [ref=e855] [cursor=pointer]:
+            - img [ref=e856]
+        - paragraph [ref=e858]:
+          - text: CPU parameters control thread count, CPU affinity, and scheduling priority via the
+          - code [ref=e859]: common_cpu_params
+          - text: struct
+          - link "common/common.h 58-65" [ref=e860] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L58-L65
+            - generic [ref=e861]:
+              - img [ref=e862]
+              - text: common/common.h
+            - generic [ref=e864]: 58-65
+        - heading "Thread Count (n_threads) Copy link to header" [level=3] [ref=e865]:
+          - text: Thread Count (
+          - code [ref=e866]: n_threads
+          - text: )
+          - button "Copy link to header" [ref=e867] [cursor=pointer]:
+            - img [ref=e868]
+        - paragraph [ref=e870]:
+          - text: When
+          - code [ref=e871]: n_threads = -1
+          - text: ", the system detects the optimal count using"
+          - code [ref=e872]: common_cpu_get_num_math()
+          - link "common/common.cpp 189-207" [ref=e873] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L189-L207
+            - generic [ref=e874]:
+              - img [ref=e875]
+              - text: common/common.cpp
+            - generic [ref=e877]: 189-207
+          - text: On hybrid CPUs (e.g., Intel x86_64), this logic attempts to exclude efficiency cores to prevent lockstep threading issues
+          - link "common/common.cpp 161-182" [ref=e878] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L161-L182
+            - generic [ref=e879]:
+              - img [ref=e880]
+              - text: common/common.cpp
+            - generic [ref=e882]: 161-182
+          - text: "Sources:"
+          - link "common/common.cpp 189-207" [ref=e883] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L189-L207
+            - generic [ref=e884]:
+              - img [ref=e885]
+              - text: common/common.cpp
+            - generic [ref=e887]: 189-207
+          - link "common/common.h 59" [ref=e888] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L59-L59
+            - generic [ref=e889]:
+              - img [ref=e890]
+              - text: common/common.h
+            - generic [ref=e892]: "59"
+          - link "common/common.cpp 161-182" [ref=e893] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L161-L182
+            - generic [ref=e894]:
+              - img [ref=e895]
+              - text: common/common.cpp
+            - generic [ref=e897]: 161-182
+        - heading "CPU Affinity (cpumask) Copy link to header" [level=3] [ref=e898]:
+          - text: CPU Affinity (
+          - code [ref=e899]: cpumask
+          - text: )
+          - button "Copy link to header" [ref=e900] [cursor=pointer]:
+            - img [ref=e901]
+        - paragraph [ref=e903]:
+          - text: Pin threads to specific cores using a bitmask stored in
+          - code [ref=e904]: common_cpu_params::cpumask
+          - link "common/common.h 60" [ref=e905] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L60-L60
+            - generic [ref=e906]:
+              - img [ref=e907]
+              - text: common/common.h
+            - generic [ref=e909]: "60"
+          - text: The system supports parsing affinity masks and ranges (e.g.,
+          - code [ref=e910]: "--cpu-range"
+          - text: ) to ensure strict CPU placement if
+          - code [ref=e911]: strict_cpu
+          - text: is enabled
+          - link "common/common.h 63" [ref=e912] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L63-L63
+            - generic [ref=e913]:
+              - img [ref=e914]
+              - text: common/common.h
+            - generic [ref=e916]: "63"
+          - text: "Sources:"
+          - link "common/common.h 60" [ref=e917] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L60-L60
+            - generic [ref=e918]:
+              - img [ref=e919]
+              - text: common/common.h
+            - generic [ref=e921]: "60"
+          - link "common/common.h 63" [ref=e922] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L63-L63
+            - generic [ref=e923]:
+              - img [ref=e924]
+              - text: common/common.h
+            - generic [ref=e926]: "63"
+        - heading "Sampling Parameters Copy link to header" [level=2] [ref=e927]:
+          - text: Sampling Parameters
+          - button "Copy link to header" [ref=e928] [cursor=pointer]:
+            - img [ref=e929]
+        - paragraph [ref=e931]:
+          - text: Sampling parameters control how
+          - code [ref=e932]: llama_sampler
+          - text: selects output tokens. High-level sampling configuration is stored in
+          - code [ref=e933]: common_params_sampling
+          - link "common/common.h 210-246" [ref=e934] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L210-L246
+            - generic [ref=e935]:
+              - img [ref=e936]
+              - text: common/common.h
+            - generic [ref=e938]: 210-246
+        - heading "Core Samplers Copy link to header" [level=3] [ref=e939]:
+          - text: Core Samplers
+          - button "Copy link to header" [ref=e940] [cursor=pointer]:
+            - img [ref=e941]
+        - paragraph [ref=e943]:
+          - text: The system supports a chain of samplers defined in
+          - code [ref=e944]: common_sampler_type
+          - link "common/common.h 103-117" [ref=e945] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L103-L117
+            - generic [ref=e946]:
+              - img [ref=e947]
+              - text: common/common.h
+            - generic [ref=e949]: 103-117
+        - list [ref=e950]:
+          - listitem [ref=e951]:
+            - strong [ref=e952]: Temperature
+            - text: ": Controls randomness."
+            - code [ref=e953]: "0.0"
+            - text: is greedy
+            - link "common/common.h 218" [ref=e954] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L218-L218
+              - generic [ref=e955]:
+                - img [ref=e956]
+                - text: common/common.h
+              - generic [ref=e958]: "218"
+          - listitem [ref=e959]:
+            - strong [ref=e960]: Top-K
+            - text: ": Keeps the K most likely tokens"
+            - link "common/common.h 215" [ref=e961] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L215-L215
+              - generic [ref=e962]:
+                - img [ref=e963]
+                - text: common/common.h
+              - generic [ref=e965]: "215"
+          - listitem [ref=e966]:
+            - strong [ref=e967]: Top-P (Nucleus)
+            - text: ": Keeps tokens whose cumulative probability exceeds P"
+            - link "common/common.h 216" [ref=e968] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L216-L216
+              - generic [ref=e969]:
+                - img [ref=e970]
+                - text: common/common.h
+              - generic [ref=e972]: "216"
+          - listitem [ref=e973]:
+            - strong [ref=e974]: Min-P
+            - text: ": Removes tokens with probability below"
+            - code [ref=e975]: min_p * max_probability
+            - link "common/common.h 217" [ref=e976] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L217-L217
+              - generic [ref=e977]:
+                - img [ref=e978]
+                - text: common/common.h
+              - generic [ref=e980]: "217"
+          - listitem [ref=e981]:
+            - strong [ref=e982]: XTC (Exclude Top Choices)
+            - text: ": Excludes top tokens based on probability thresholds"
+            - link "common/common.h 222-223" [ref=e983] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L222-L223
+              - generic [ref=e984]:
+                - img [ref=e985]
+                - text: common/common.h
+              - generic [ref=e987]: 222-223
+          - listitem [ref=e988]:
+            - strong [ref=e989]: Dry (Don't Repeat Yourself)
+            - text: ": Penalty based on string matching to prevent repetition"
+            - link "common/common.h 242" [ref=e990] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L242-L242
+              - generic [ref=e991]:
+                - img [ref=e992]
+                - text: common/common.h
+              - generic [ref=e994]: "242"
+        - paragraph [ref=e995]:
+          - text: "Sources:"
+          - link "common/common.h 103-117" [ref=e996] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L103-L117
+            - generic [ref=e997]:
+              - img [ref=e998]
+              - text: common/common.h
+            - generic [ref=e1000]: 103-117
+          - link "common/common.h 210-246" [ref=e1001] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.h#L210-L246
+            - generic [ref=e1002]:
+              - img [ref=e1003]
+              - text: common/common.h
+            - generic [ref=e1005]: 210-246
+        - heading "Automatic GPU Configuration Copy link to header" [level=2] [ref=e1006]:
+          - text: Automatic GPU Configuration
+          - button "Copy link to header" [ref=e1007] [cursor=pointer]:
+            - img [ref=e1008]
+        - paragraph [ref=e1010]:
+          - text: When
+          - code [ref=e1011]: n_gpu_layers = -1
+          - text: ", the system determines optimal offloading by searching for the maximum layers that fit in VRAM."
+        - paragraph [ref=e1012]: "Title: Auto-Fitting Implementation"
+        - generic [ref=e1014] [cursor=pointer]:
+          - document [ref=e1016]:
+            - generic [ref=e1019]:
+              - paragraph [ref=e1026]: n_gpu_layers = -1
+              - paragraph [ref=e1033]:
+                - text: Estimate memory for weights and context
+                - text: llama_model_load()
+              - paragraph [ref=e1040]:
+                - text: llama_params_fit_impl()
+                - text: fit.cpp
+              - paragraph [ref=e1047]:
+                - text: Binary Search for Max Layers
+                - text: fit.cpp
+              - paragraph [ref=e1054]: Apply layer counts to devices
+              - paragraph [ref=e1061]: llama_model_params populated
+          - generic [ref=e1062]:
+            - button "Zoom in" [ref=e1063]:
+              - img [ref=e1064]
+            - button "Zoom out" [ref=e1066]:
+              - img [ref=e1067]
+            - img [ref=e1070]
+        - paragraph [ref=e1072]:
+          - text: "Sources:"
+          - link "src/llama.cpp 125-150" [ref=e1073] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama.cpp#L125-L150
+            - generic [ref=e1074]:
+              - img [ref=e1075]
+              - text: src/llama.cpp
+            - generic [ref=e1077]: 125-150
+          - link "common/common.cpp 1062-1207" [ref=e1078] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L1062-L1207
+            - generic [ref=e1079]:
+              - img [ref=e1080]
+              - text: common/common.cpp
+            - generic [ref=e1082]: 1062-1207
+        - heading "Parameter Conversion Copy link to header" [level=2] [ref=e1083]:
+          - text: Parameter Conversion
+          - button "Copy link to header" [ref=e1084] [cursor=pointer]:
+            - img [ref=e1085]
+        - paragraph [ref=e1087]:
+          - text: Conversion from user-facing
+          - code [ref=e1088]: common_params
+          - text: "to internal API structures occurs in several helper functions:"
+        - list [ref=e1089]:
+          - listitem [ref=e1090]:
+            - code [ref=e1091]: common_model_params_to_llama()
+            - text: ": Populates"
+            - code [ref=e1092]: llama_model_params
+            - link "common/common.cpp 1062" [ref=e1093] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L1062-L1062
+              - generic [ref=e1094]:
+                - img [ref=e1095]
+                - text: common/common.cpp
+              - generic [ref=e1097]: "1062"
+          - listitem [ref=e1098]:
+            - code [ref=e1099]: common_context_params_to_llama()
+            - text: ": Populates"
+            - code [ref=e1100]: llama_context_params
+            - link "common/common.cpp 1234" [ref=e1101] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L1234-L1234
+              - generic [ref=e1102]:
+                - img [ref=e1103]
+                - text: common/common.cpp
+              - generic [ref=e1105]: "1234"
+        - paragraph [ref=e1106]:
+          - text: "Sources:"
+          - link "common/common.cpp 1062-1207" [ref=e1107] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L1062-L1207
+            - generic [ref=e1108]:
+              - img [ref=e1109]
+              - text: common/common.cpp
+            - generic [ref=e1111]: 1062-1207
+          - link "common/common.cpp 1234-1408" [ref=e1112] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/common/common.cpp#L1234-L1408
+            - generic [ref=e1113]:
+              - img [ref=e1114]
+              - text: common/common.cpp
+            - generic [ref=e1116]: 1234-1408
+      - generic [ref=e1118]:
+        - generic [ref=e1120]:
+          - button "Dismiss" [ref=e1121]:
+            - img [ref=e1122]
+            - generic [ref=e1124]: Dismiss
+          - paragraph [ref=e1125]: Refresh this wiki
+          - paragraph [ref=e1126]: This wiki was recently refreshed. Please wait 3 days to refresh again.
+        - heading "On this page" [level=3] [ref=e1127]
+        - list [ref=e1128]:
+          - listitem [ref=e1129]:
+            - link "Configuration and Parameters" [ref=e1130] [cursor=pointer]:
+              - /url: "#configuration-and-parameters"
+          - listitem [ref=e1131]:
+            - link "Parameter Sources" [ref=e1132] [cursor=pointer]:
+              - /url: "#parameter-sources"
+          - listitem [ref=e1133]:
+            - link "Command-Line Arguments" [ref=e1134] [cursor=pointer]:
+              - /url: "#command-line-arguments"
+          - listitem [ref=e1135]:
+            - link "Environment Variables" [ref=e1136] [cursor=pointer]:
+              - /url: "#environment-variables"
+          - listitem [ref=e1137]:
+            - link "Preset Files (INI System)" [ref=e1138] [cursor=pointer]:
+              - /url: "#preset-files-ini-system"
+          - listitem [ref=e1139]:
+            - link "Parameter Structure Overview" [ref=e1140] [cursor=pointer]:
+              - /url: "#parameter-structure-overview"
+          - listitem [ref=e1141]:
+            - link "Core Parameter Structures" [ref=e1142] [cursor=pointer]:
+              - /url: "#core-parameter-structures"
+          - listitem [ref=e1143]:
+            - link "Context Parameters" [ref=e1144] [cursor=pointer]:
+              - /url: "#context-parameters"
+          - listitem [ref=e1145]:
+            - 'link "Context Size (`n_ctx`)" [ref=e1146] [cursor=pointer]':
+              - /url: "#context-size-n_ctx"
+          - listitem [ref=e1147]:
+            - 'link "Batch Sizes (`n_batch` & `n_ubatch`)" [ref=e1148] [cursor=pointer]':
+              - /url: "#batch-sizes-n_batch-n_ubatch"
+          - listitem [ref=e1149]:
+            - link "CPU Parameters" [ref=e1150] [cursor=pointer]:
+              - /url: "#cpu-parameters"
+          - listitem [ref=e1151]:
+            - 'link "Thread Count (`n_threads`)" [ref=e1152] [cursor=pointer]':
+              - /url: "#thread-count-n_threads"
+          - listitem [ref=e1153]:
+            - 'link "CPU Affinity (`cpumask`)" [ref=e1154] [cursor=pointer]':
+              - /url: "#cpu-affinity-cpumask"
+          - listitem [ref=e1155]:
+            - link "Sampling Parameters" [ref=e1156] [cursor=pointer]:
+              - /url: "#sampling-parameters"
+          - listitem [ref=e1157]:
+            - link "Core Samplers" [ref=e1158] [cursor=pointer]:
+              - /url: "#core-samplers"
+          - listitem [ref=e1159]:
+            - link "Automatic GPU Configuration" [ref=e1160] [cursor=pointer]:
+              - /url: "#automatic-gpu-configuration"
+          - listitem [ref=e1161]:
+            - link "Parameter Conversion" [ref=e1162] [cursor=pointer]:
+              - /url: "#parameter-conversion"
+      - generic [ref=e1163]:
+        - generic [ref=e1166]:
+          - generic:
+            - generic: Ask Devin about ggml-org/llama.cpp
+          - textbox [active] [ref=e1167]
+        - generic [ref=e1168]:
+          - button "Fast" [ref=e1170] [cursor=pointer]:
+            - generic [ref=e1171]:
+              - img
+              - generic [ref=e1172]: Fast
+            - img
+          - button [disabled] [ref=e1174]:
+            - img [ref=e1175]
+  - alert [ref=e1177]

@@ -1,0 +1,542 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "carteakey.dev" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "About" [ref=e10] [cursor=pointer]:
+              - /url: /about/
+          - listitem [ref=e11]:
+            - link "Writing" [ref=e12] [cursor=pointer]:
+              - /url: /blog/
+          - listitem [ref=e13]:
+            - link "Now" [ref=e14] [cursor=pointer]:
+              - /url: /now/
+          - listitem [ref=e15]:
+            - link "Search" [ref=e16] [cursor=pointer]:
+              - /url: /search/
+              - img [ref=e17]
+          - listitem [ref=e20]:
+            - link "More pages" [ref=e21] [cursor=pointer]:
+              - /url: /more/
+              - img [ref=e22]
+          - listitem [ref=e25]:
+            - slider [ref=e27] [cursor=pointer]: "12"
+          - listitem [ref=e28]:
+            - button "Toggle dark mode" [ref=e29]:
+              - img [ref=e30]
+    - main [ref=e32]:
+      - navigation "Breadcrumb" [ref=e33]:
+        - list [ref=e34]:
+          - listitem [ref=e35]:
+            - link [ref=e36] [cursor=pointer]:
+              - /url: /
+              - img [ref=e37]
+            - img [ref=e41]
+          - listitem [ref=e43]:
+            - link "Writing" [ref=e44] [cursor=pointer]:
+              - /url: /blog/
+            - img [ref=e46]
+          - listitem [ref=e48]:
+            - link "Local inference" [ref=e49] [cursor=pointer]:
+              - /url: /blog/local-inference/
+            - img [ref=e51]
+          - listitem [ref=e53]:
+            - generic [ref=e54]: Running Qwen3.6-35B-A3B locally with text + vision
+      - generic [ref=e55]:
+        - complementary [ref=e56]:
+          - generic [ref=e58]:
+            - 'link "{{ metadata.author.name }}" [ref=e59] [cursor=pointer]':
+              - /url: /about
+              - 'img "{{ metadata.author.name }}" [ref=e62]'
+            - paragraph [ref=e63]: About the author
+            - link "Kartikey Chauhan" [ref=e64] [cursor=pointer]:
+              - /url: /about
+            - paragraph [ref=e65]: Data analyst from Toronto. I write about analytics, local AI, homelabs, side projects, and whatever else catches my eye.
+            - generic [ref=e66]:
+              - link "GitHub" [ref=e67] [cursor=pointer]:
+                - /url: https://github.com/carteakey
+                - img [ref=e68]
+              - link "LinkedIn" [ref=e70] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/kartikeychauhan/
+                - img [ref=e71]
+              - link "Email" [ref=e75] [cursor=pointer]:
+                - /url: mailto:carteakey.dev@gmail.com
+                - img [ref=e76]
+        - complementary [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - paragraph [ref=e82]:
+                - img [ref=e83]
+                - text: Outline
+              - navigation [ref=e85]:
+                - list [ref=e86]:
+                  - listitem [ref=e87]:
+                    - link "TL;DR" [ref=e88] [cursor=pointer]:
+                      - /url: "#tl-dr"
+                  - listitem [ref=e89]:
+                    - link "End-to-end setup" [ref=e90] [cursor=pointer]:
+                      - /url: "#end-to-end-setup"
+                    - list [ref=e91]:
+                      - listitem [ref=e92]:
+                        - link "1) Build mainline llama.cpp" [ref=e93] [cursor=pointer]:
+                          - /url: "#1-build-mainline-llama-cpp"
+                      - listitem [ref=e94]:
+                        - link "2) Download model + mmproj" [ref=e95] [cursor=pointer]:
+                          - /url: "#2-download-model-mmproj"
+                      - listitem [ref=e96]:
+                        - link "3) Run text server" [ref=e97] [cursor=pointer]:
+                          - /url: "#3-run-text-server"
+                      - listitem [ref=e98]:
+                        - link "4) Run vision server" [ref=e99] [cursor=pointer]:
+                          - /url: "#4-run-vision-server"
+                  - listitem [ref=e100]:
+                    - link "Text benchmark outcomes" [ref=e101] [cursor=pointer]:
+                      - /url: "#text-benchmark-outcomes"
+                  - listitem [ref=e102]:
+                    - link "Vision notes that matter" [ref=e103] [cursor=pointer]:
+                      - /url: "#vision-notes-that-matter"
+                  - listitem [ref=e104]:
+                    - link "References" [ref=e105] [cursor=pointer]:
+                      - /url: "#references"
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - img [ref=e108]
+                - paragraph [ref=e110]: Join the conversation
+              - paragraph [ref=e111]: Have thoughts, questions, or counterpoints? Drop them in the thread below.
+              - link "Jump to comments" [ref=e112] [cursor=pointer]:
+                - /url: "#post-comments"
+                - img [ref=e113]
+                - text: Jump to comments
+        - article [ref=e115]:
+          - generic [ref=e116]:
+            - heading "Running Qwen3.6-35B-A3B locally with text + vision" [level=1] [ref=e117]
+            - generic [ref=e120]: "Draft: This post is a work in progress - it may be incomplete or change. I publish drafts early because it's less stressful than waiting for perfect."
+            - generic [ref=e121]:
+              - img [ref=e122]
+              - generic [ref=e124]: AI Assisted - Written with AI as a creative partner. Ideas, structure, and editorial direction are mine; AI helped with drafting and wording.
+            - paragraph [ref=e125]: Practical Qwen3.6 setup on 12 GB VRAM using llama.cpp.
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - time [ref=e128]:
+                  - img [ref=e129]
+                  - text: Apr 17, 2026
+                - generic [ref=e131]:
+                  - img [ref=e132]
+                  - text: 3 min read
+                - generic [ref=e135]:
+                  - img [ref=e136]
+                  - generic [ref=e139]: "740"
+                  - text: views
+                - generic "AI Assisted - Written with AI as a creative partner" [ref=e140]:
+                  - img [ref=e141]
+                  - text: AI Assisted
+              - generic [ref=e143]:
+                - link "#AI" [ref=e144] [cursor=pointer]:
+                  - /url: /tags/ai/
+                - link "#Self-Host" [ref=e145] [cursor=pointer]:
+                  - /url: /tags/self-host/
+            - figure [ref=e146]:
+              - img "Transparent monochrome sketch of a workstation with a GPU tower" [ref=e147]
+          - separator [ref=e148]
+          - group [ref=e150]:
+            - button "Copy as Markdown" [ref=e151]:
+              - img [ref=e153]
+              - generic [ref=e156]: Copy as Markdown
+            - button [ref=e158]:
+              - img [ref=e159]
+          - generic [ref=e161]:
+            - paragraph [ref=e162]: Qwen3.6 continues the strong trend of highly capable open models, and the 35B-A3B MoE variant hits a sweet spot for consumer hardware. With a low active parameter count per token, it runs fast while still retaining the "smart" feel of larger reasoning models, and includes multimodal capabilities out of the box.
+            - paragraph [ref=e163]: This post covers my setup running Qwen3.6-35B-A3B on 12GB VRAM using mainline llama.cpp, with real-world throughput numbers for text and vision.
+            - heading "TL;DR" [level=2] [ref=e164]
+            - list [ref=e165]:
+              - listitem [ref=e166]:
+                - strong [ref=e167]: Model
+                - text: ":"
+                - code [ref=e168]: unsloth/Qwen3.6-35B-A3B-GGUF
+                - text: (
+                - code [ref=e169]: UD-Q5_K_XL
+                - text: ) +
+                - code [ref=e170]: mmproj-F16.gguf
+                - text: .
+              - listitem [ref=e171]:
+                - strong [ref=e172]: Stack
+                - text: ": mainline"
+                - code [ref=e173]: llama.cpp
+                - text: (rebuilt from upstream).
+              - listitem [ref=e174]:
+                - strong [ref=e175]: Best synthetic bench (fit)
+                - text: ":"
+                - code [ref=e176]: pp512=970.77
+                - text: ","
+                - code [ref=e177]: tg128=52.33
+                - text: (fit winner).
+              - listitem [ref=e178]:
+                - strong [ref=e179]: Vision-safe defaults (12 GB class GPUs)
+                - text: ":"
+                - code [ref=e180]: FIT_TARGET=2048
+                - text: ","
+                - code [ref=e181]: BATCH_SIZE=256
+                - text: ","
+                - code [ref=e182]: GGML_CUDA_GRAPH_OPT=0
+                - text: .
+            - heading "End-to-end setup" [level=2] [ref=e183]
+            - heading "1) Build mainline llama.cpp" [level=3] [ref=e184]
+            - paragraph [ref=e185]: Clone and build from upstream. You need the CUDA toolkit installed.
+            - generic [ref=e186]:
+              - code [ref=e187]: "git clone https://github.com/ggerganov/llama.cpp cd llama.cpp mkdir build && cd build cmake .. \\ -DCMAKE_BUILD_TYPE=Release \\ -DGGML_CUDA=ON \\ -DLLAMA_CURL=ON \\ -DGGML_NATIVE=ON \\ -DGGML_LTO=ON \\ -DGGML_CUDA_GRAPHS=ON \\ -DGGML_CUDA_F16=ON \\ -DGGML_CUDA_FA_ALL_QUANTS=ON \\ -DCMAKE_CUDA_ARCHITECTURES=89 # change to match your GPU cmake --build . --config Release \\ --target llama-server llama-bench --parallel"
+              - button "Copy code" [ref=e188] [cursor=pointer]:
+                - img [ref=e189]
+            - heading "2) Download model + mmproj" [level=3] [ref=e192]
+            - paragraph [ref=e193]:
+              - text: Use
+              - code [ref=e194]: huggingface-cli
+              - text: (from
+              - code [ref=e195]: pip install huggingface_hub
+              - text: "):"
+            - generic [ref=e196]:
+              - code [ref=e197]: huggingface-cli download unsloth/Qwen3.6-35B-A3B-GGUF \ --include '*UD-Q5_K_XL*' '*mmproj-F16*' \ --local-dir ~/models/unsloth/Qwen3.6-35B-A3B-GGUF
+              - button "Copy code" [ref=e198] [cursor=pointer]:
+                - img [ref=e199]
+            - heading "3) Run text server" [level=3] [ref=e202]
+            - generic [ref=e203]:
+              - code [ref=e204]: llama-server \ -m ~/models/unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf \ --alias "unsloth/Qwen3.6-35B-A3B" \ --host 0.0.0.0 --port 8001 \ --ctx-size 65536 \ --fit on --fit-ctx 65536 --fit-target 512 \ --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 \ --repeat-penalty 1.0 \ -ctk q8_0 -ctv q8_0 \ --flash-attn on \ --batch-size 1024 --ubatch-size 512 \ --threads 10 --threads-batch 12 \ --no-mmap --mlock \ --parallel 1 --prio 2 --no-warmup --jinja
+              - button "Copy code" [ref=e205] [cursor=pointer]:
+                - img [ref=e206]
+            - heading "4) Run vision server" [level=3] [ref=e209]
+            - generic [ref=e210]:
+              - code [ref=e211]: llama-server \ -m ~/models/unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf \ --mmproj ~/models/unsloth/Qwen3.6-35B-A3B-GGUF/mmproj-F16.gguf \ --alias "unsloth/Qwen3.6-35B-A3B-vision" \ --host 0.0.0.0 --port 8001 \ --ctx-size 65536 \ --fit on --fit-ctx 65536 --fit-target 2048 \ --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 \ --repeat-penalty 1.0 \ -ctk q8_0 -ctv q8_0 \ --flash-attn on \ --batch-size 256 --ubatch-size 512 \ --threads 10 --threads-batch 12 \ --no-mmap --mlock \ --parallel 1 --prio 2 --no-warmup --jinja
+              - button "Copy code" [ref=e212] [cursor=pointer]:
+                - img [ref=e213]
+            - paragraph [ref=e216]:
+              - text: "Key differences for vision: the mmproj is included,"
+              - code [ref=e217]: FIT_TARGET=2048
+              - text: leaves more VRAM headroom, and batch size is reduced to 256 to avoid assertion errors when processing large images.
+            - complementary [ref=e218]:
+              - paragraph [ref=e219]: Easier path
+              - paragraph [ref=e221]:
+                - link "carteakey/l3ms" [ref=e222] [cursor=pointer]:
+                  - /url: https://github.com/carteakey/l3ms
+                - text: wraps all of the above as pre-configured shell scripts (
+                - code [ref=e223]: bench-models/run-llama-cpp-qwen3-6-35b-a3b.sh
+                - text: ","
+                - code [ref=e224]: bench-models/run-llama-cpp-qwen3-6-35b-a3b-vision.sh
+                - text: ) along with a build helper, a model downloader, and bench scripts. Everything is editable text, not a UI form.
+            - heading "Text benchmark outcomes" [level=2] [ref=e225]
+            - paragraph [ref=e226]: "Hardware profile used for these runs: RTX 4070 12 GB + 64 GB DDR5 host RAM."
+            - table [ref=e227]:
+              - rowgroup [ref=e228]:
+                - row "Strategy pp512 (tok/s) tg128 (tok/s)" [ref=e229]:
+                  - columnheader "Strategy" [ref=e230]
+                  - columnheader "pp512 (tok/s)" [ref=e231]
+                  - columnheader "tg128 (tok/s)" [ref=e232]
+              - rowgroup [ref=e233]:
+                - row "baseline / all-cpu experts 654.16 41.10" [ref=e234]:
+                  - cell "baseline / all-cpu experts" [ref=e235]
+                  - cell "654.16" [ref=e236]
+                  - cell "41.10" [ref=e237]
+                - row "partial-cpu 746.36 44.35" [ref=e238]:
+                  - cell "partial-cpu" [ref=e239]
+                  - cell "746.36" [ref=e240]
+                  - cell "44.35" [ref=e241]
+                - row "up-down-cpu 865.26 48.95" [ref=e242]:
+                  - cell "up-down-cpu" [ref=e243]
+                  - cell "865.26" [ref=e244]
+                  - cell "48.95" [ref=e245]
+                - row "fit (winner) 970.77 52.33" [ref=e246]:
+                  - cell "fit (winner)" [ref=e247]
+                  - cell "970.77" [ref=e248]:
+                    - strong [ref=e249]: "970.77"
+                  - cell "52.33" [ref=e250]:
+                    - strong [ref=e251]: "52.33"
+                - row "up-cpu OOM OOM" [ref=e252]:
+                  - cell "up-cpu" [ref=e253]
+                  - cell "OOM" [ref=e254]
+                  - cell "OOM" [ref=e255]
+            - paragraph [ref=e256]: The fit-derived split was the clear winner and provides a very fluid token generation rate while maximizing GPU offload.
+            - heading "Vision notes that matter" [level=2] [ref=e257]
+            - paragraph [ref=e258]: "Qwen3.6 vision is stable on 12 GB VRAM with conservative headroom:"
+            - list [ref=e259]:
+              - listitem [ref=e260]:
+                - code [ref=e261]: FIT_TARGET=2048
+              - listitem [ref=e262]:
+                - code [ref=e263]: BATCH_SIZE=256
+              - listitem [ref=e264]:
+                - code [ref=e265]: UBATCH_SIZE=512
+              - listitem [ref=e266]:
+                - code [ref=e267]: GGML_CUDA_GRAPH_OPT=0
+            - paragraph [ref=e268]:
+              - text: Trying to push
+              - code [ref=e269]: FIT_TARGET
+              - text: too low while keeping high context can trigger OOM during longer sessions or when attaching larger images.
+            - heading "References" [level=2] [ref=e270]
+            - list [ref=e271]:
+              - listitem [ref=e272]:
+                - link "Qwen3.6-35B-A3B GGUF (unsloth)" [ref=e273] [cursor=pointer]:
+                  - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF
+              - listitem [ref=e274]:
+                - link "llama.cpp" [ref=e275] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp
+              - listitem [ref=e276]:
+                - link "l3ms - homelab LLM toolkit with scripts for this model" [ref=e277] [cursor=pointer]:
+                  - /url: https://github.com/carteakey/l3ms
+          - paragraph [ref=e278]:
+            - text: Updated
+            - time [ref=e279]: Apr 17, 2026
+          - button "Upvote this post" [ref=e281]:
+            - img [ref=e282]
+            - generic [ref=e284]: "1"
+          - separator [ref=e285]
+          - generic [ref=e287]:
+            - generic [ref=e288]:
+              - img [ref=e289]
+              - generic [ref=e291]:
+                - text: This post is part of the
+                - strong [ref=e292]: Local Inference
+                - text: series.
+            - link "View all 4 posts" [ref=e293] [cursor=pointer]:
+              - /url: /blog/local-inference/
+              - text: View all 4 posts
+              - img [ref=e294]
+          - generic [ref=e296]:
+            - heading "Related Posts" [level=3] [ref=e297]:
+              - img [ref=e298]
+              - text: Related Posts
+            - generic [ref=e301]:
+              - generic [ref=e302]:
+                - link "Exposing local llm's to the internet (draft)" [ref=e303] [cursor=pointer]:
+                  - /url: /blog/homelab/exposing-local-llms-to-the-internet/
+                - paragraph [ref=e304]: Your very own AI-API
+              - generic [ref=e305]:
+                - link "Running Gemma 4 26B-A4B locally on 12GB VRAM" [ref=e306] [cursor=pointer]:
+                  - /url: /blog/local-inference/running-gemma-4-26b-a4b-locally/
+                - paragraph [ref=e307]: End-to-end Gemma 4 setup on mainline llama.cpp with text and vision throughput notes.
+              - generic [ref=e308]:
+                - link "Running Qwen3.6-35B-A3B MTP locally on 12GB VRAM" [ref=e309] [cursor=pointer]:
+                  - /url: /blog/running-qwen3-6-mtp-locally/
+                - paragraph [ref=e310]: End-to-end Qwen3.6-35B-A3B MTP setup on llama.cpp with throughput notes and MTP speculative decoding speedups.
+          - separator [ref=e311]
+          - navigation "Post navigation" [ref=e312]:
+            - link "Next → In Search of the Agent IDE for Data" [ref=e313] [cursor=pointer]:
+              - /url: /blog/in-search-of-the-agent-ide/
+              - generic [ref=e314]: Next →
+              - generic [ref=e315]: In Search of the Agent IDE for Data
+            - link "← Previous What Obsidian Shouldn't Be" [ref=e316] [cursor=pointer]:
+              - /url: /blog/what-obsidian-shouldnt-be/
+              - generic [ref=e317]: ← Previous
+              - generic [ref=e318]: What Obsidian Shouldn't Be
+          - iframe [ref=e321]:
+            - generic [active] [ref=f1e1]:
+              - main [ref=f1e3]:
+                - generic [ref=f1e6]: Loading comments…
+              - alert [ref=f1e7]
+    - contentinfo [ref=e322]:
+      - generic [ref=e323]:
+        - img "Jo Tum Mere Ho" [ref=e324]
+        - generic [ref=e325]: Now playing
+        - link "Jo Tum Mere Ho" [ref=e326] [cursor=pointer]:
+          - /url: https://open.spotify.com/track/0eCajpR75pDW0r64U6hP2x
+        - generic [ref=e327]: "- Anuv Jain"
+      - generic [ref=e328]:
+        - link "LinkedIn" [ref=e329] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/kartikeychauhan/
+          - img [ref=e330]
+        - link "GitHub" [ref=e334] [cursor=pointer]:
+          - /url: https://github.com/carteakey
+          - img [ref=e335]
+        - generic [ref=e337]: "|"
+        - link "Search" [ref=e338] [cursor=pointer]:
+          - /url: /search/
+          - img [ref=e339]
+        - link "RSS" [ref=e342] [cursor=pointer]:
+          - /url: /feed.xml
+          - img [ref=e343]
+        - link "Newsletter" [ref=e347] [cursor=pointer]:
+          - /url: /newsletter/
+          - img [ref=e348]
+    - generic [ref=e351]:
+      - generic [ref=e352]:
+        - generic [ref=e353]:
+          - heading "Read" [level=4] [ref=e354]
+          - list [ref=e355]:
+            - listitem [ref=e356]:
+              - link "Now" [ref=e357] [cursor=pointer]:
+                - /url: /now
+                - img [ref=e358]
+                - text: Now
+            - listitem [ref=e361]:
+              - link "Feed" [ref=e362] [cursor=pointer]:
+                - /url: /feed
+                - img [ref=e363]
+                - text: Feed
+            - listitem [ref=e365]:
+              - link "Writing" [ref=e366] [cursor=pointer]:
+                - /url: /blog
+                - img [ref=e367]
+                - text: Writing
+            - listitem [ref=e369]:
+              - link "Snippets" [ref=e370] [cursor=pointer]:
+                - /url: /snippets
+                - img [ref=e371]
+                - text: Snippets
+            - listitem [ref=e374]:
+              - link "Notes" [ref=e375] [cursor=pointer]:
+                - /url: /notes
+                - img [ref=e376]
+                - text: Notes
+            - listitem [ref=e379]:
+              - link "TIL" [ref=e380] [cursor=pointer]:
+                - /url: /til
+                - img [ref=e381]
+                - text: TIL
+            - listitem [ref=e383]:
+              - link "Reading" [ref=e384] [cursor=pointer]:
+                - /url: /reading
+                - img [ref=e385]
+                - text: Reading
+            - listitem [ref=e388]:
+              - link "Quotations" [ref=e389] [cursor=pointer]:
+                - /url: /quotations
+                - img [ref=e390]
+                - text: Quotations
+        - generic [ref=e392]:
+          - heading "Explore" [level=4] [ref=e393]
+          - list [ref=e394]:
+            - listitem [ref=e395]:
+              - link "Projects" [ref=e396] [cursor=pointer]:
+                - /url: /projects
+                - img [ref=e397]
+                - text: Projects
+            - listitem [ref=e400]:
+              - link "Prompts" [ref=e401] [cursor=pointer]:
+                - /url: /prompts
+                - img [ref=e402]
+                - text: Prompts
+            - listitem [ref=e404]:
+              - link "Gallery" [ref=e405] [cursor=pointer]:
+                - /url: /gallery
+                - img [ref=e406]
+                - text: Gallery
+            - listitem [ref=e410]:
+              - link "Folio" [ref=e411] [cursor=pointer]:
+                - /url: /folio
+                - img [ref=e412]
+                - text: Folio
+            - listitem [ref=e416]:
+              - link "Vibes" [ref=e417] [cursor=pointer]:
+                - /url: /vibes
+                - img [ref=e418]
+                - text: Vibes
+            - listitem [ref=e422]:
+              - link "Quotes" [ref=e423] [cursor=pointer]:
+                - /url: /quotes
+                - img [ref=e424]
+                - text: Quotes
+            - listitem [ref=e427]:
+              - link "Lexicon" [ref=e428] [cursor=pointer]:
+                - /url: /lexicon
+                - img [ref=e429]
+                - text: Lexicon
+        - generic [ref=e432]:
+          - heading "About Me" [level=4] [ref=e433]
+          - list [ref=e434]:
+            - listitem [ref=e435]:
+              - link "About" [ref=e436] [cursor=pointer]:
+                - /url: /about
+                - img [ref=e437]
+                - text: About
+            - listitem [ref=e440]:
+              - link "CV" [ref=e441] [cursor=pointer]:
+                - /url: /cv
+                - img [ref=e442]
+                - text: CV
+            - listitem [ref=e445]:
+              - link "Skills" [ref=e446] [cursor=pointer]:
+                - /url: /skills
+                - img [ref=e447]
+                - text: Skills
+            - listitem [ref=e448]:
+              - link "Uses" [ref=e449] [cursor=pointer]:
+                - /url: /uses
+                - img [ref=e450]
+                - text: Uses
+            - listitem [ref=e453]:
+              - link "Games" [ref=e454] [cursor=pointer]:
+                - /url: /games
+                - img [ref=e455]
+                - text: Games
+            - listitem [ref=e457]:
+              - link "Workouts" [ref=e458] [cursor=pointer]:
+                - /url: /workouts
+                - img [ref=e459]
+                - text: Workouts
+            - listitem [ref=e461]:
+              - link "Listening" [ref=e462] [cursor=pointer]:
+                - /url: /listening
+                - img [ref=e463]
+                - text: Listening
+            - listitem [ref=e466]:
+              - link "Life in data" [ref=e467] [cursor=pointer]:
+                - /url: /data
+                - img [ref=e468]
+                - text: Life in data
+        - generic [ref=e469]:
+          - heading "Meta" [level=4] [ref=e470]
+          - list [ref=e471]:
+            - listitem [ref=e472]:
+              - link "Search" [ref=e473] [cursor=pointer]:
+                - /url: /search
+                - img [ref=e474]
+                - text: Search
+            - listitem [ref=e477]:
+              - link "Stats" [ref=e478] [cursor=pointer]:
+                - /url: /stats
+                - img [ref=e479]
+                - text: Stats
+            - listitem [ref=e480]:
+              - link "Changelog" [ref=e481] [cursor=pointer]:
+                - /url: /changelog
+                - img [ref=e482]
+                - text: Changelog
+            - listitem [ref=e483]:
+              - link "Colophon" [ref=e484] [cursor=pointer]:
+                - /url: /colophon
+                - img [ref=e485]
+                - text: Colophon
+            - listitem [ref=e487]:
+              - link "Blogroll" [ref=e488] [cursor=pointer]:
+                - /url: /blogroll
+                - img [ref=e489]
+                - text: Blogroll
+            - listitem [ref=e492]:
+              - link "Bookmarks" [ref=e493] [cursor=pointer]:
+                - /url: /bookmarks
+                - img [ref=e494]
+                - text: Bookmarks
+            - listitem [ref=e496]:
+              - link "Newsletter" [ref=e497] [cursor=pointer]:
+                - /url: /newsletter
+                - img [ref=e498]
+                - text: Newsletter
+            - listitem [ref=e501]:
+              - link "Guestbook" [ref=e502] [cursor=pointer]:
+                - /url: /guestbook
+                - img [ref=e503]
+                - text: Guestbook
+      - generic [ref=e505]:
+        - generic [ref=e506]:
+          - text: Made with ❤️ ·
+          - link "Eleventy" [ref=e507] [cursor=pointer]:
+            - /url: https://www.11ty.dev/
+          - text: +
+          - link "Tailwind" [ref=e508] [cursor=pointer]:
+            - /url: https://tailwindcss.com/
+          - text: ·
+          - link "Colophon" [ref=e509] [cursor=pointer]:
+            - /url: /colophon/
+          - text: · © Kartikey Chauhan 2025
+        - button "? shortcuts" [ref=e510] [cursor=pointer]

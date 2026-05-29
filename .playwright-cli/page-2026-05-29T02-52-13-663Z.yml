@@ -1,0 +1,301 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic "Skip navigation links":
+      - generic:
+        - link "Skip to last reply" [ref=e4] [cursor=pointer]:
+          - /url: /t/does-qwen3-5-35b-a3b-on-gb10-leave-a-lot-of-performance-on-the-table/362200/42
+        - link "Skip to top" [ref=e5] [cursor=pointer]:
+          - /url: /t/does-qwen3-5-35b-a3b-on-gb10-leave-a-lot-of-performance-on-the-table/362200/1
+      - link "Skip to main content" [ref=e6] [cursor=pointer]:
+        - /url: "#main-container"
+    - generic [ref=e11]:
+      - link "NVIDIA Developer Forums" [ref=e14] [cursor=pointer]:
+        - /url: https://developer.nvidia.com/
+        - img "NVIDIA Developer Forums" [ref=e15]
+      - list [ref=e17]:
+        - listitem [ref=e18]:
+          - link "Home" [ref=e19] [cursor=pointer]:
+            - /url: https://developer.nvidia.com/
+        - listitem [ref=e20]:
+          - link "Blog" [ref=e21] [cursor=pointer]:
+            - /url: https://developer.nvidia.com/blog/
+        - listitem [ref=e22]:
+          - link "Forums" [ref=e23] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e24]:
+          - link "Docs" [ref=e25] [cursor=pointer]:
+            - /url: https://docs.nvidia.com/
+        - listitem [ref=e26]:
+          - link "Downloads" [ref=e27] [cursor=pointer]:
+            - /url: https://developer.nvidia.com/downloads
+        - listitem [ref=e28]:
+          - link "Training" [ref=e29] [cursor=pointer]:
+            - /url: https://www.nvidia.com/en-us/deep-learning-ai/education/
+      - navigation "Header" [ref=e30]:
+        - button "Log In" [ref=e33] [cursor=pointer]:
+          - img [ref=e34]
+          - generic [ref=e35]: Log In
+        - list [ref=e36]:
+          - listitem [ref=e37]:
+            - 'button "Color mode, currently [missing %{mode} value]" [ref=e38] [cursor=pointer]':
+              - img [ref=e39]
+          - listitem [ref=e40]:
+            - button "Search the Forums" [ref=e41] [cursor=pointer]:
+              - img [ref=e42]
+          - listitem [ref=e43]:
+            - button "Navigation menu" [ref=e44] [cursor=pointer]:
+              - img [ref=e45]
+    - main [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - generic [ref=e50]:
+            - heading "Does Qwen3.5-35B-A3B on GB10 leave a lot of performance on the table?" [level=1] [ref=e51]:
+              - link "Does Qwen3.5-35B-A3B on GB10 leave a lot of performance on the table?" [ref=e52] [cursor=pointer]:
+                - /url: /t/does-qwen3-5-35b-a3b-on-gb10-leave-a-lot-of-performance-on-the-table/362200
+            - generic [ref=e53]:
+              - link "Accelerated Computing" [ref=e54] [cursor=pointer]:
+                - /url: /c/accelerated-computing/5
+                - generic [ref=e56]: Accelerated Computing
+              - link "DGX Spark / GB10 User Forum" [ref=e57] [cursor=pointer]:
+                - /url: /c/accelerated-computing/dgx-spark-gb10/719
+                - generic [ref=e59]: DGX Spark / GB10 User Forum
+              - link "DGX Spark / GB10" [ref=e60] [cursor=pointer]:
+                - /url: /c/accelerated-computing/dgx-spark-gb10/dgx-spark-gb10/721
+                - generic "Get support and view discussion topics about DGX Spark / GB10." [ref=e61]:
+                  - generic [ref=e62]: DGX Spark / GB10
+              - list "Tags" [ref=e65]:
+                - listitem [ref=e66]:
+                  - link "agentic-ai" [ref=e67] [cursor=pointer]:
+                    - /url: /tag/agentic-ai/1079
+              - generic [ref=e69]:
+                - link "Home" [ref=e70] [cursor=pointer]:
+                  - /url: /categories
+                - img [ref=e71]
+          - generic [ref=e72]:
+            - generic [ref=e76]:
+              - link "Mar 2" [ref=e78] [cursor=pointer]:
+                - /url: /t/does-qwen3-5-35b-a3b-on-gb10-leave-a-lot-of-performance-on-the-table/362200/1
+                - generic [ref=e79]: Mar 2
+              - generic [ref=e83]:
+                - generic [ref=e84]: 1 / 41
+                - generic [ref=e85]: Mar 2
+              - link "Mar 16" [ref=e88] [cursor=pointer]:
+                - /url: /t/does-qwen3-5-35b-a3b-on-gb10-leave-a-lot-of-performance-on-the-table/362200/42
+                - generic [ref=e89]: Mar 16
+            - generic [ref=e93]:
+              - generic [ref=e94]:
+                - heading "post by Someone on Mar 2" [level=2] [ref=e95]
+                - article "post by Someone on Mar 2" [ref=e96]:
+                  - generic [ref=e97]:
+                    - generic "Someone's profile" [ref=e100]
+                    - generic [ref=e101]:
+                      - generic [ref=e102]:
+                        - generic "Someone's profile" [ref=e105]: Someone
+                        - link "Mar 2" [ref=e108] [cursor=pointer]:
+                          - /url: /t/does-qwen3-5-35b-a3b-on-gb10-leave-a-lot-of-performance-on-the-table/362200
+                      - generic [ref=e109]:
+                        - generic [ref=e110]:
+                          - paragraph [ref=e111]:
+                            - text: Looking at the
+                            - link "Spark Arena - LLM Leaderboard link clicked 166 times" [ref=e112] [cursor=pointer]:
+                              - /url: https://spark-arena.com/leaderboard
+                              - text: Spark Arena - LLM Leaderboard 166
+                            - text: "for Qwen3.5-35B-A3B I`m very disappointed by the concurrency speeds results. I`m no expert what so ever but I tried to find ways to optimize this by the time my first DGX Spark unit that I have ordered arrives. Please fell free to correct anything I say as I have no previous experience doing this."
+                          - paragraph [ref=e113]:
+                            - text: The main target for me is to optimize GB10 to work efficiently with the very fast growing context window of OpenClaw. I looked at my OpenRouter logs and the context for the main agent starts at 10K and grows with about 5K for each prompt up to 150K or more. The output seems to fluctuate in between 150-500 tokens and the total ratio for a few weeks of usage is 130:1 input:output tokens. Gemini recommended using instead of the internal MTP head the
+                            - strong [ref=e114]: LongSpec/OWL LSTM.
+                          - paragraph [ref=e115]: I truly hope there is someone here willing to implement this and release some benchmark results as I fell so disappointed by the current results. I already spent all afternoon to get to these optimizations and I hope they actually work.
+                          - paragraph [ref=e116]: "From this point further I will paste out of my conversations with Gemini and what it recommends as being the reasons and the fix for the benchmark results on Spark Arena:"
+                          - separator [ref=e117]
+                          - paragraph [ref=e118]:
+                            - text: ‘The results from
+                            - strong [ref=e119]:
+                              - link "spark-arena.com link clicked 64 times" [ref=e120] [cursor=pointer]:
+                                - /url: http://spark-arena.com
+                                - text: spark-arena.com 64
+                            - text: "perfectly illustrate why your current setup is hitting a wall. You are experiencing a massive performance “cliff” as the context grows:"
+                          - list [ref=e121]:
+                            - listitem [ref=e122]:
+                              - paragraph [ref=e123]:
+                                - strong [ref=e124]: "Prompt Processing (PP):"
+                                - text: Your speed drops from
+                                - strong [ref=e125]: 3918 tok/s
+                                - text: (2K context) to a staggering
+                                - strong [ref=e126]: 60.66 tok/s
+                                - text: (100K context). That is a
+                                - strong [ref=e127]: 64x slowdown
+                                - text: .
+                            - listitem [ref=e128]:
+                              - paragraph [ref=e129]:
+                                - strong [ref=e130]: "Text Generation (TG):"
+                                - text: Your output drops from
+                                - strong [ref=e131]: 98.15 tok/s
+                                - text: to
+                                - strong [ref=e132]: 4.02 tok/s
+                                - text: at 100K. This makes the agent feel “frozen” rather than interactive.
+                          - separator [ref=e133]
+                          - paragraph [ref=e134]:
+                            - text: To ensure our 4-agent deployment (growing from 10K to 150K context) avoids the catastrophic performance degradation observed in standard benchmarks—where speed drops by 98% at 100K tokens—we are moving to an
+                            - strong [ref=e135]: LSTM-based speculative architecture (OWL/LongSpec)
+                            - text: .
+                          - paragraph [ref=e136]: Unlike official MTP or Eagle-3 heads, the LSTM architecture is context-agnostic and will not “choke” as the agents’ conversation history scales.
+                          - 'heading "Heading linkI. Core Hardware Strategy: CPU-GPU Offloading" [level=4] [ref=e137]':
+                            - link "Heading link":
+                              - /url: "#p-1767368-i-core-hardware-strategy-cpu-gpu-offloading-1"
+                            - strong [ref=e138]: "I. Core Hardware Strategy: CPU-GPU Offloading"
+                          - paragraph [ref=e139]:
+                            - text: The
+                            - strong [ref=e140]: Grace Arm CPU (20 cores)
+                            - text: on our DGX Spark shares 128GB of unified memory with the Blackwell GPU. We will offload the drafting phase to the CPU cores (
+                            - code [ref=e141]: "--speculative-draft-device cpu"
+                            - text: ). This prevents GPU stalling and saves VRAM for the massive 150K token KV cache.
+                          - heading "Heading linkII. Implementation Paths (Select Version 2 for Maximum Speed)" [level=4] [ref=e142]:
+                            - link "Heading link":
+                              - /url: "#p-1767368-ii-implementation-paths-select-version-2-for-maximum-speed-2"
+                            - strong [ref=e143]: II. Implementation Paths (Select Version 2 for Maximum Speed)
+                          - paragraph [ref=e144]:
+                            - text: We have two options for the drafter model.
+                            - strong [ref=e145]: Version 2 is the recommended target
+                            - text: for production as it aligns the drafter specifically to our quantized 4-bit model.
+                          - paragraph [ref=e146]:
+                            - strong [ref=e147]: "Version 1: The “Off-the-Shelf” Drafter (Fastest to Start)"
+                            - text: Uses a pre-trained drafter designed for the QwQ series. It is a good baseline but may have lower acceptance rates with our specific quantized 35B A3B weights.
+                          - list [ref=e148]:
+                            - listitem [ref=e149]:
+                              - strong [ref=e150]: "Step:"
+                              - text: "Download and point SGLang to the weights:"
+                              - code [ref=e151]: huggingface-cli download sail/longspec-QwQ-32B-Preview --local-dir ./longspec-drafter
+                          - paragraph [ref=e152]:
+                            - strong [ref=e153]: "Version 2: The “Custom Distilled” Drafter (Recommended for Performance)"
+                            - text: We will perform a synthetic distillation of a 0.6B LSTM drafter directly from the
+                            - strong [ref=e154]: cyankiwi/Qwen3.5-35B-A3B-AWQ-4bit
+                            - text: model.
+                          - list [ref=e155]:
+                            - listitem [ref=e156]:
+                              - paragraph [ref=e157]:
+                                - strong [ref=e158]: "Why it’s better:"
+                                - text: It teaches the drafter to predict the exact output patterns of our specific 4-bit quantized model. This results in a higher “Acceptance Rate,” which directly translates to more tokens per second at 150K context.
+                            - listitem [ref=e159]:
+                              - paragraph [ref=e160]:
+                                - strong [ref=e161]: "Action:"
+                                - text: "Run the following robust distillation script:"
+                              - list [ref=e162]:
+                                - listitem [ref=e163]:
+                                  - paragraph [ref=e164]: Bash
+                                  - code [ref=e167]: python longspec/train/train_drafter.py \ --model_name_or_path cyankiwi/Qwen3.5-35B-A3B-AWQ-4bit \ --drafter_arch lstm \ --dataset_name sail/longspec-data \ --output_dir ./custom-qwen-drafter \ --per_device_train_batch_size 4 \ --gradient_accumulation_steps 8 \ --learning_rate 5e-4 \ --num_train_epochs 3 \ --bf16 True \ --use_marlin True \ --anchor_offset_training True
+                              - heading "Heading linkIII. Final Launch Configuration" [level=4] [ref=e168]:
+                                - link "Heading link":
+                                  - /url: "#p-1767368-iii-final-launch-configuration-3"
+                                - strong [ref=e169]: III. Final Launch Configuration
+                          - paragraph [ref=e170]:
+                            - text: Once the drafter is selected/trained, use the following SGLang configuration to lock in the
+                            - strong [ref=e171]: Marlin kernels
+                            - text: and
+                            - strong [ref=e172]: FP8 KV Cache
+                            - text: ":"
+                          - paragraph [ref=e173]: Bash
+                          - code [ref=e176]: python -m sglang.launch_server \ --model-path cyankiwi/Qwen3.5-35B-A3B-AWQ-4bit \ --quantization awq_marlin \ --speculative-model ./custom-qwen-drafter \ --speculative-draft-device cpu \ --speculative-algo HOWL \ --kv-cache-dtype fp8 \ --context-length 262144 \ --mem-fraction-static 0.8 \ --enable-prefix-caching
+                          - heading "Heading linkIV. Summary of Impact" [level=4] [ref=e177]:
+                            - link "Heading link":
+                              - /url: "#p-1767368-iv-summary-of-impact-4"
+                            - strong [ref=e178]: IV. Summary of Impact
+                          - paragraph [ref=e179]:
+                            - text: By combining
+                            - strong [ref=e180]: W4A16 Marlin weights
+                            - text: with a
+                            - strong [ref=e181]: CPU-offloaded OWL/HOWL drafter
+                            - text: ", we leverage the full Unified Memory architecture of the Spark. This setup is designed to maintain"
+                            - strong [ref=e182]: 25–40 tokens/sec
+                            - text: at 150K context, preventing the performance cliff that would otherwise stall our agents.
+                          - separator [ref=e183]
+                          - paragraph [ref=e184]: "IMPORTANT NOTE:"
+                          - paragraph [ref=e185]:
+                            - text: We chose the
+                            - strong [ref=e186]: cyankiwi/Qwen3.5-35B-A3B-AWQ-4bit
+                            - text: "version for three specific reasons that are critical to our 150K context target:"
+                          - list [ref=e187]:
+                            - listitem [ref=e188]:
+                              - paragraph [ref=e189]:
+                                - strong [ref=e190]: "1M Context Ready:"
+                                - text: Unlike standard quants, this version includes specific configuration overrides that extend the context window stability up to
+                                - strong [ref=e191]: 1 million tokens
+                                - text: ", ensuring the model doesn’t lose logic as we hit our 150K agentic limit."
+                            - listitem [ref=e192]:
+                              - paragraph [ref=e193]:
+                                - strong [ref=e194]: "MTP Layer Preservation:"
+                                - text: It is one of the few 4-bit quants that preserves the
+                                - strong [ref=e195]: Multi-Token Prediction (MTP)
+                                - text: layers. This is vital because our Version 2 distillation depends on these layers to train the LSTM drafter effectively.
+                            - listitem [ref=e196]:
+                              - paragraph [ref=e197]:
+                                - strong [ref=e198]: "Blackwell Optimization:"
+                                - text: The AWQ format used here is fully compatible with
+                                - strong [ref=e199]: Marlin kernels
+                                - text: ", which are the only way to achieve maximum throughput on the DGX Spark’s Blackwell architecture while keeping the model size under 20GB."
+                        - group "Post actions" [ref=e200]:
+                          - button "This post has 1 reply" [ref=e201] [cursor=pointer]:
+                            - generic [ref=e202]: 1 Reply
+                            - img [ref=e203]
+                          - generic [ref=e204]:
+                            - generic [ref=e205]:
+                              - button "2 people liked this post." [ref=e206] [cursor=pointer]: "2"
+                              - button "like this post" [ref=e207] [cursor=pointer]:
+                                - img [ref=e208]
+                            - button "share a link to this post" [ref=e209] [cursor=pointer]:
+                              - img [ref=e210]
+                          - generic:
+                            - list
+                  - generic [ref=e211]:
+                    - generic [ref=e213]:
+                      - button "5.6k views" [ref=e214] [cursor=pointer]:
+                        - generic [ref=e215]: 5.6k
+                        - generic [ref=e216]: views
+                      - button "51 likes" [ref=e217] [cursor=pointer]:
+                        - generic [ref=e218]: "51"
+                        - generic [ref=e219]: likes
+                      - button "12 links" [ref=e220] [cursor=pointer]:
+                        - generic [ref=e221]: "12"
+                        - generic [ref=e222]: links
+                      - button "14 users" [ref=e223] [cursor=pointer]:
+                        - generic [ref=e224]: "14"
+                        - generic [ref=e225]: users
+                      - generic [ref=e226]:
+                        - generic "Someone's profile" [ref=e228]:
+                          - img "AAA" [ref=e229]
+                        - generic "trystan1's profile" [ref=e231]:
+                          - img "Trystan" [ref=e232]
+                        - generic "amasawa_seiji's profile" [ref=e234]:
+                          - img "Amasawa Seiji" [ref=e235]
+                        - generic "eugr's profile" [ref=e237]:
+                          - img "Eugr" [ref=e238]
+                        - generic "buildspark's profile" [ref=e240]:
+                          - img "Frank Rodriguez" [ref=e241]
+                      - generic [ref=e243]:
+                        - generic [ref=e244]: read
+                        - generic [ref=e245]: 23 min
+                    - button "Summarize" [ref=e247] [cursor=pointer]:
+                      - img [ref=e248]
+                      - generic [ref=e249]: Summarize
+              - heading "post by Someone on Mar 2" [level=2] [ref=e251]
+              - heading "post by trystan1 on Mar 2" [level=2] [ref=e253]
+              - heading "post by rickross on Mar 2" [level=2] [ref=e255]
+              - heading "post by Someone on Mar 2" [level=2] [ref=e257]
+              - heading "post by trystan1 on Mar 2" [level=2] [ref=e259]
+              - heading "post by Someone on Mar 2" [level=2] [ref=e261]
+              - heading "post by raphael.amorim on Mar 2" [level=2] [ref=e263]
+              - heading "post by trystan1 on Mar 2" [level=2] [ref=e265]
+              - heading "post by Someone on Mar 2" [level=2] [ref=e267]
+              - heading "post by trystan1 on Mar 2" [level=2] [ref=e269]
+              - heading "post by Someone on Mar 2" [level=2] [ref=e271]
+              - heading "post by Someone on Mar 2" [level=2] [ref=e273]
+              - heading "post by trystan1 on Mar 2" [level=2] [ref=e275]
+              - heading "post by Someone on Mar 2" [level=2] [ref=e277]
+              - heading "post by parad8x010 on Mar 4" [level=2] [ref=e279]
+              - heading "post by trystan1 on Mar 4" [level=2] [ref=e281]
+              - heading "post by amasawa_seiji on Mar 6" [level=2] [ref=e283]
+              - heading "post by trystan1 on Mar 6" [level=2] [ref=e285]
+              - heading "post by amasawa_seiji on Mar 6" [level=2] [ref=e287]
+              - heading "Load more posts below" [level=2] [ref=e289]
+        - dialog "User card"
+  - status [ref=e290]
+  - alert [ref=e291]

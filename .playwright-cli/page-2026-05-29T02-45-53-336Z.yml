@@ -1,0 +1,873 @@
+- generic [active] [ref=e1]:
+  - region "Notifications alt+T"
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - link "DeepWiki" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: DeepWiki
+      - paragraph [ref=e10]:
+        - link "ggml-org/llama.cpp" [ref=e11] [cursor=pointer]:
+          - /url: https://github.com/ggml-org/llama.cpp
+          - text: ggml-org/llama.cpp
+          - img [ref=e12]
+      - generic [ref=e14]:
+        - button "Index your code with Devin" [ref=e15]:
+          - generic [ref=e16]: Index your code with
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic [ref=e22]: Devin
+        - button "Edit Wiki" [ref=e23] [cursor=pointer]:
+          - img [ref=e24]
+          - text: Edit Wiki
+        - button "Share" [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e33]: Share
+        - button "Switch to dark mode" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+    - generic [ref=e39]:
+      - generic [ref=e41]:
+        - generic [ref=e43]:
+          - text: "Last indexed: 24 May 2026 ("
+          - link "549b9d" [ref=e44] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/commits/549b9d84
+          - text: )
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - link "Overview" [ref=e47] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/1-overview
+          - listitem [ref=e48]:
+            - link "Getting Started" [ref=e49] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2-getting-started
+          - listitem [ref=e50]:
+            - link "Installation and Building" [ref=e51] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.1-installation-and-building
+          - listitem [ref=e52]:
+            - link "Basic Usage and Examples" [ref=e53] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.2-basic-usage-and-examples
+          - listitem [ref=e54]:
+            - link "Configuration and Parameters" [ref=e55] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.3-configuration-and-parameters
+          - listitem [ref=e56]:
+            - link "Core Library Architecture" [ref=e57] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3-core-library-architecture
+          - listitem [ref=e58]:
+            - link "libllama Public API" [ref=e59] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.1-libllama-public-api
+          - listitem [ref=e60]:
+            - link "Model Loading and Representation" [ref=e61] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.2-model-loading-and-representation
+          - listitem [ref=e62]:
+            - link "Tokenization and Vocabulary" [ref=e63] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.3-tokenization-and-vocabulary
+          - listitem [ref=e64]:
+            - link "Inference Context and Orchestration" [ref=e65] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.4-inference-context-and-orchestration
+          - listitem [ref=e66]:
+            - link "Batch Processing Pipeline" [ref=e67] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.5-batch-processing-pipeline
+          - listitem [ref=e68]:
+            - link "Memory Management and KV Cache" [ref=e69] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.6-memory-management-and-kv-cache
+          - listitem [ref=e70]:
+            - link "Computation Graph Building" [ref=e71] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.7-computation-graph-building
+          - listitem [ref=e72]:
+            - link "Token Sampling and Generation" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.8-token-sampling-and-generation
+          - listitem [ref=e74]:
+            - link "Chat Templates and Message Parsing" [ref=e75] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.9-chat-templates-and-message-parsing
+          - listitem [ref=e76]:
+            - link "Adapters and Fine-tuning" [ref=e77] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.10-adapters-and-fine-tuning
+          - listitem [ref=e78]:
+            - link "Supported Model Architectures" [ref=e79] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.11-supported-model-architectures
+          - listitem [ref=e80]:
+            - link "GGML Tensor Library" [ref=e81] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4-ggml-tensor-library
+          - listitem [ref=e82]:
+            - link "GGML Core Architecture" [ref=e83] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.1-ggml-core-architecture
+          - listitem [ref=e84]:
+            - link "Backend System and Registration" [ref=e85] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.2-backend-system-and-registration
+          - listitem [ref=e86]:
+            - link "CPU Backend Implementation" [ref=e87] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.3-cpu-backend-implementation
+          - listitem [ref=e88]:
+            - link "Quantization in GGML" [ref=e89] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.4-quantization-in-ggml
+          - listitem [ref=e90]:
+            - link "GPU and Accelerator Backends" [ref=e91] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5-gpu-and-accelerator-backends
+          - listitem [ref=e92]:
+            - link "CUDA Backend (NVIDIA)" [ref=e93] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.1-cuda-backend-(nvidia)
+          - listitem [ref=e94]:
+            - link "Metal Backend (Apple)" [ref=e95] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.2-metal-backend-(apple)
+          - listitem [ref=e96]:
+            - link "Vulkan Backend (Cross-Platform)" [ref=e97] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.3-vulkan-backend-(cross-platform)
+          - listitem [ref=e98]:
+            - link "SYCL Backend (Intel)" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.4-sycl-backend-(intel)
+          - listitem [ref=e100]:
+            - link "HIP, CANN, and Other Backends" [ref=e101] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.5-hip-cann-and-other-backends
+          - listitem [ref=e102]:
+            - link "Backend Testing and Validation" [ref=e103] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.6-backend-testing-and-validation
+          - listitem [ref=e104]:
+            - link "User Tools and Interfaces" [ref=e105] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6-user-tools-and-interfaces
+          - listitem [ref=e106]:
+            - link "Command-Line Tools" [ref=e107] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.1-command-line-tools
+          - listitem [ref=e108]:
+            - link "llama-server HTTP API" [ref=e109] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.2-llama-server-http-api
+          - listitem [ref=e110]:
+            - link "Router Mode and Model Management" [ref=e111] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.3-router-mode-and-model-management
+          - listitem [ref=e112]:
+            - link "Web UI" [ref=e113] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.4-web-ui
+          - listitem [ref=e114]:
+            - link "Multimodal Support (libmtmd)" [ref=e115] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.5-multimodal-support-(libmtmd)
+          - listitem [ref=e116]:
+            - link "Text-to-Speech (TTS)" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.6-text-to-speech-(tts)
+          - listitem [ref=e118]:
+            - link "Model Pipeline" [ref=e119] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7-model-pipeline
+          - listitem [ref=e120]:
+            - link "GGUF File Format" [ref=e121] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.1-gguf-file-format
+          - listitem [ref=e122]:
+            - link "Model Conversion from HuggingFace" [ref=e123] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.2-model-conversion-from-huggingface
+          - listitem [ref=e124]:
+            - link "Quantization Techniques" [ref=e125] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.3-quantization-techniques
+          - listitem [ref=e126]:
+            - link "Model Acquisition and Management" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.4-model-acquisition-and-management
+          - listitem [ref=e128]:
+            - link "Advanced Features" [ref=e129] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8-advanced-features
+          - listitem [ref=e130]:
+            - link "Grammar and Structured Output" [ref=e131] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.1-grammar-and-structured-output
+          - listitem [ref=e132]:
+            - link "Flash Attention and Optimizations" [ref=e133] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.2-flash-attention-and-optimizations
+          - listitem [ref=e134]:
+            - link "Speculative Decoding" [ref=e135] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.3-speculative-decoding
+          - listitem [ref=e136]:
+            - link "Multi-GPU and Distributed Inference" [ref=e137] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.4-multi-gpu-and-distributed-inference
+          - listitem [ref=e138]:
+            - link "Development and Contributing" [ref=e139] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9-development-and-contributing
+          - listitem [ref=e140]:
+            - link "Build System and Configuration" [ref=e141] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.1-build-system-and-configuration
+          - listitem [ref=e142]:
+            - link "Testing Infrastructure" [ref=e143] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.2-testing-infrastructure
+          - listitem [ref=e144]:
+            - link "CI/CD Pipeline" [ref=e145] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.3-cicd-pipeline
+          - listitem [ref=e146]:
+            - link "GGML Synchronization and Contributing" [ref=e147] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.4-ggml-synchronization-and-contributing
+          - listitem [ref=e148]:
+            - link "Glossary" [ref=e149] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/10-glossary
+      - generic [ref=e155]:
+        - heading "Model Loading and Representation Copy link to header" [level=1] [ref=e156]:
+          - text: Model Loading and Representation
+          - button "Copy link to header" [ref=e157] [cursor=pointer]:
+            - img [ref=e158]
+        - group [ref=e160]:
+          - generic "Relevant source files" [ref=e161] [cursor=pointer]
+        - paragraph [ref=e162]:
+          - text: This page describes how
+          - code [ref=e163]: llama.cpp
+          - text: loads models from GGUF files and represents them in memory through the
+          - code [ref=e164]: llama_model
+          - text: structure. It covers the loading pipeline, tensor storage, memory management, and the architecture registry.
+        - separator [ref=e165]
+        - heading "llama_model Structure Copy link to header" [level=2] [ref=e166]:
+          - text: llama_model Structure
+          - button "Copy link to header" [ref=e167] [cursor=pointer]:
+            - img [ref=e168]
+        - paragraph [ref=e170]:
+          - text: The
+          - code [ref=e171]: llama_model
+          - text: struct is the central data structure representing a loaded language model. It encapsulates all model weights, metadata, vocabulary, and device allocation information.
+        - heading "Key Components Copy link to header" [level=3] [ref=e172]:
+          - text: Key Components
+          - button "Copy link to header" [ref=e173] [cursor=pointer]:
+            - img [ref=e174]
+        - table [ref=e176]:
+          - rowgroup [ref=e177]:
+            - row "Component Type Purpose" [ref=e178]:
+              - columnheader "Component" [ref=e179]
+              - columnheader "Type" [ref=e180]
+              - columnheader "Purpose" [ref=e181]
+          - rowgroup [ref=e182]:
+            - row "vocab llama_vocab Tokenizer and vocabulary mappings. src/llama-model.h 8" [ref=e183]:
+              - cell "vocab" [ref=e184]:
+                - code [ref=e185]: vocab
+              - cell "llama_vocab" [ref=e186]:
+                - code [ref=e187]: llama_vocab
+              - cell "Tokenizer and vocabulary mappings. src/llama-model.h 8" [ref=e188]:
+                - text: Tokenizer and vocabulary mappings.
+                - link "src/llama-model.h 8" [ref=e189] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L8-L8
+                  - generic [ref=e190]:
+                    - img [ref=e191]
+                    - text: src/llama-model.h
+                  - generic [ref=e193]: "8"
+            - row "arch llm_arch Model architecture (LLAMA, QWEN2, etc.). src/llama-model.h 4" [ref=e194]:
+              - cell "arch" [ref=e195]:
+                - code [ref=e196]: arch
+              - cell "llm_arch" [ref=e197]:
+                - code [ref=e198]: llm_arch
+              - cell "Model architecture (LLAMA, QWEN2, etc.). src/llama-model.h 4" [ref=e199]:
+                - text: Model architecture (LLAMA, QWEN2, etc.).
+                - link "src/llama-model.h 4" [ref=e200] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L4-L4
+                  - generic [ref=e201]:
+                    - img [ref=e202]
+                    - text: src/llama-model.h
+                  - generic [ref=e204]: "4"
+            - row "hparams llama_hparams Hyperparameters (n_layer, n_embd, etc.). src/llama-model.h 6" [ref=e205]:
+              - cell "hparams" [ref=e206]:
+                - code [ref=e207]: hparams
+              - cell "llama_hparams" [ref=e208]:
+                - code [ref=e209]: llama_hparams
+              - cell "Hyperparameters (n_layer, n_embd, etc.). src/llama-model.h 6" [ref=e210]:
+                - text: Hyperparameters (n_layer, n_embd, etc.).
+                - link "src/llama-model.h 6" [ref=e211] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L6-L6
+                  - generic [ref=e212]:
+                    - img [ref=e213]
+                    - text: src/llama-model.h
+                  - generic [ref=e215]: "6"
+            - row "type llm_type Model size classification (7B, 13B, etc.). src/llama-model.h 22-143" [ref=e216]:
+              - cell "type" [ref=e217]:
+                - code [ref=e218]: type
+              - cell "llm_type" [ref=e219]:
+                - code [ref=e220]: llm_type
+              - cell "Model size classification (7B, 13B, etc.). src/llama-model.h 22-143" [ref=e221]:
+                - text: Model size classification (7B, 13B, etc.).
+                - link "src/llama-model.h 22-143" [ref=e222] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L22-L143
+                  - generic [ref=e223]:
+                    - img [ref=e224]
+                    - text: src/llama-model.h
+                  - generic [ref=e226]: 22-143
+            - row "mappings std::vector<std::unique_ptr<llama_mmap>> Memory-mapped GGUF file regions. src/llama-model.cpp 7" [ref=e227]:
+              - cell "mappings" [ref=e228]:
+                - code [ref=e229]: mappings
+              - cell "std::vector<std::unique_ptr<llama_mmap>>" [ref=e230]:
+                - code [ref=e231]: std::vector<std::unique_ptr<llama_mmap>>
+              - cell "Memory-mapped GGUF file regions. src/llama-model.cpp 7" [ref=e232]:
+                - text: Memory-mapped GGUF file regions.
+                - link "src/llama-model.cpp 7" [ref=e233] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L7-L7
+                  - generic [ref=e234]:
+                    - img [ref=e235]
+                    - text: src/llama-model.cpp
+                  - generic [ref=e237]: "7"
+            - row "layers std::vector<llama_layer> Tensors organized by model layer. src/llama-model.h 217-305" [ref=e238]:
+              - cell "layers" [ref=e239]:
+                - code [ref=e240]: layers
+              - cell "std::vector<llama_layer>" [ref=e241]:
+                - code [ref=e242]: std::vector<llama_layer>
+              - cell "Tensors organized by model layer. src/llama-model.h 217-305" [ref=e243]:
+                - text: Tensors organized by model layer.
+                - link "src/llama-model.h 217-305" [ref=e244] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L217-L305
+                  - generic [ref=e245]:
+                    - img [ref=e246]
+                    - text: src/llama-model.h
+                  - generic [ref=e248]: 217-305
+        - heading "Code Entity Relationship Diagram Copy link to header" [level=3] [ref=e249]:
+          - text: Code Entity Relationship Diagram
+          - button "Copy link to header" [ref=e250] [cursor=pointer]:
+            - img [ref=e251]
+        - paragraph [ref=e253]: This diagram bridges the conceptual "Model" to the specific C++ entities used in the implementation.
+        - paragraph [ref=e255]:
+          - strong [ref=e256]: "Sources:"
+          - link "src/llama-model.h 1-305" [ref=e257] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L1-L305
+            - generic [ref=e258]:
+              - img [ref=e259]
+              - text: src/llama-model.h
+            - generic [ref=e261]: 1-305
+          - link "src/llama-model.cpp 1-17" [ref=e262] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L1-L17
+            - generic [ref=e263]:
+              - img [ref=e264]
+              - text: src/llama-model.cpp
+            - generic [ref=e266]: 1-17
+        - separator [ref=e267]
+        - heading "Model Loading Pipeline Copy link to header" [level=2] [ref=e268]:
+          - text: Model Loading Pipeline
+          - button "Copy link to header" [ref=e269] [cursor=pointer]:
+            - img [ref=e270]
+        - paragraph [ref=e272]: The loading process follows a multi-stage pipeline that reads the GGUF file, validates the architecture, loads hyperparameters, and allocates tensors across devices.
+        - heading "Loading Data Flow Copy link to header" [level=3] [ref=e273]:
+          - text: Loading Data Flow
+          - button "Copy link to header" [ref=e274] [cursor=pointer]:
+            - img [ref=e275]
+        - paragraph [ref=e278]:
+          - strong [ref=e279]: "Sources:"
+          - link "src/llama-model-loader.h 1-20" [ref=e280] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model-loader.h#L1-L20
+            - generic [ref=e281]:
+              - img [ref=e282]
+              - text: src/llama-model-loader.h
+            - generic [ref=e284]: 1-20
+          - link "src/llama-model-loader.cpp 1-50" [ref=e285] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model-loader.cpp#L1-L50
+            - generic [ref=e286]:
+              - img [ref=e287]
+              - text: src/llama-model-loader.cpp
+            - generic [ref=e289]: 1-50
+          - link "src/llama-mmap.cpp 1-20" [ref=e290] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-mmap.cpp#L1-L20
+            - generic [ref=e291]:
+              - img [ref=e292]
+              - text: src/llama-mmap.cpp
+            - generic [ref=e294]: 1-20
+        - heading "Architecture Detection Copy link to header" [level=3] [ref=e295]:
+          - text: Architecture Detection
+          - button "Copy link to header" [ref=e296] [cursor=pointer]:
+            - img [ref=e297]
+        - paragraph [ref=e299]:
+          - text: The loader reads the
+          - code [ref=e300]: general.architecture
+          - text: key from GGUF metadata. This string is mapped to the
+          - code [ref=e301]: llm_arch
+          - text: enum using the
+          - code [ref=e302]: LLM_ARCH_NAMES
+          - text: map
+          - link "src/llama-arch.cpp 9-137" [ref=e303] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.cpp#L9-L137
+            - generic [ref=e304]:
+              - img [ref=e305]
+              - text: src/llama-arch.cpp
+            - generic [ref=e307]: 9-137
+          - text: The model is then instantiated via
+          - code [ref=e308]: llama_model_mapping
+          - link "src/llama-model.cpp 37" [ref=e309] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L37-L37
+            - generic [ref=e310]:
+              - img [ref=e311]
+              - text: src/llama-model.cpp
+            - generic [ref=e313]: "37"
+        - table [ref=e314]:
+          - rowgroup [ref=e315]:
+            - row "GGUF Key Example Value Enum Constant Implementation Class" [ref=e316]:
+              - columnheader "GGUF Key" [ref=e317]
+              - columnheader "Example Value" [ref=e318]
+              - columnheader "Enum Constant" [ref=e319]
+              - columnheader "Implementation Class" [ref=e320]
+          - rowgroup [ref=e321]:
+            - row "general.architecture \"llama\" LLM_ARCH_LLAMA llama_model_llama src/llama-model.cpp 40" [ref=e322]:
+              - cell "general.architecture" [ref=e323]:
+                - code [ref=e324]: general.architecture
+              - cell "\"llama\"" [ref=e325]
+              - cell "LLM_ARCH_LLAMA" [ref=e326]:
+                - code [ref=e327]: LLM_ARCH_LLAMA
+              - cell "llama_model_llama src/llama-model.cpp 40" [ref=e328]:
+                - code [ref=e329]: llama_model_llama
+                - link "src/llama-model.cpp 40" [ref=e330] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L40-L40
+                  - generic [ref=e331]:
+                    - img [ref=e332]
+                    - text: src/llama-model.cpp
+                  - generic [ref=e334]: "40"
+            - row "general.architecture \"qwen2\" LLM_ARCH_QWEN2 llama_model_qwen2 src/llama-model.cpp 84" [ref=e335]:
+              - cell "general.architecture" [ref=e336]:
+                - code [ref=e337]: general.architecture
+              - cell "\"qwen2\"" [ref=e338]
+              - cell "LLM_ARCH_QWEN2" [ref=e339]:
+                - code [ref=e340]: LLM_ARCH_QWEN2
+              - cell "llama_model_qwen2 src/llama-model.cpp 84" [ref=e341]:
+                - code [ref=e342]: llama_model_qwen2
+                - link "src/llama-model.cpp 84" [ref=e343] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L84-L84
+                  - generic [ref=e344]:
+                    - img [ref=e345]
+                    - text: src/llama-model.cpp
+                  - generic [ref=e347]: "84"
+            - row "general.architecture \"mamba\" LLM_ARCH_MAMBA llama_model_mamba src/llama-model.cpp 142" [ref=e348]:
+              - cell "general.architecture" [ref=e349]:
+                - code [ref=e350]: general.architecture
+              - cell "\"mamba\"" [ref=e351]
+              - cell "LLM_ARCH_MAMBA" [ref=e352]:
+                - code [ref=e353]: LLM_ARCH_MAMBA
+              - cell "llama_model_mamba src/llama-model.cpp 142" [ref=e354]:
+                - code [ref=e355]: llama_model_mamba
+                - link "src/llama-model.cpp 142" [ref=e356] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L142-L142
+                  - generic [ref=e357]:
+                    - img [ref=e358]
+                    - text: src/llama-model.cpp
+                  - generic [ref=e360]: "142"
+            - row "general.architecture \"llama4\" LLM_ARCH_LLAMA4 llama_model_llama4 src/llama-model.cpp 42" [ref=e361]:
+              - cell "general.architecture" [ref=e362]:
+                - code [ref=e363]: general.architecture
+              - cell "\"llama4\"" [ref=e364]
+              - cell "LLM_ARCH_LLAMA4" [ref=e365]:
+                - code [ref=e366]: LLM_ARCH_LLAMA4
+              - cell "llama_model_llama4 src/llama-model.cpp 42" [ref=e367]:
+                - code [ref=e368]: llama_model_llama4
+                - link "src/llama-model.cpp 42" [ref=e369] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L42-L42
+                  - generic [ref=e370]:
+                    - img [ref=e371]
+                    - text: src/llama-model.cpp
+                  - generic [ref=e373]: "42"
+            - row "general.architecture \"mistral3\" LLM_ARCH_MISTRAL3 llama_model_mistral3 src/llama-model.cpp 194" [ref=e374]:
+              - cell "general.architecture" [ref=e375]:
+                - code [ref=e376]: general.architecture
+              - cell "\"mistral3\"" [ref=e377]
+              - cell "LLM_ARCH_MISTRAL3" [ref=e378]:
+                - code [ref=e379]: LLM_ARCH_MISTRAL3
+              - cell "llama_model_mistral3 src/llama-model.cpp 194" [ref=e380]:
+                - code [ref=e381]: llama_model_mistral3
+                - link "src/llama-model.cpp 194" [ref=e382] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L194-L194
+                  - generic [ref=e383]:
+                    - img [ref=e384]
+                    - text: src/llama-model.cpp
+                  - generic [ref=e386]: "194"
+            - row "general.architecture \"deepseek2\" LLM_ARCH_DEEPSEEK2 llama_model_deepseek2 src/llama-model.cpp 170" [ref=e387]:
+              - cell "general.architecture" [ref=e388]:
+                - code [ref=e389]: general.architecture
+              - cell "\"deepseek2\"" [ref=e390]
+              - cell "LLM_ARCH_DEEPSEEK2" [ref=e391]:
+                - code [ref=e392]: LLM_ARCH_DEEPSEEK2
+              - cell "llama_model_deepseek2 src/llama-model.cpp 170" [ref=e393]:
+                - code [ref=e394]: llama_model_deepseek2
+                - link "src/llama-model.cpp 170" [ref=e395] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L170-L170
+                  - generic [ref=e396]:
+                    - img [ref=e397]
+                    - text: src/llama-model.cpp
+                  - generic [ref=e399]: "170"
+        - paragraph [ref=e400]:
+          - strong [ref=e401]: "Sources:"
+          - link "src/llama-arch.cpp 9-137" [ref=e402] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.cpp#L9-L137
+            - generic [ref=e403]:
+              - img [ref=e404]
+              - text: src/llama-arch.cpp
+            - generic [ref=e406]: 9-137
+          - link "src/llama-arch.h 13-141" [ref=e407] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.h#L13-L141
+            - generic [ref=e408]:
+              - img [ref=e409]
+              - text: src/llama-arch.h
+            - generic [ref=e411]: 13-141
+          - link "src/llama-model.cpp 37-210" [ref=e412] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.cpp#L37-L210
+            - generic [ref=e413]:
+              - img [ref=e414]
+              - text: src/llama-model.cpp
+            - generic [ref=e416]: 37-210
+        - separator [ref=e417]
+        - heading "Memory Mapping and Tensor Storage Copy link to header" [level=2] [ref=e418]:
+          - text: Memory Mapping and Tensor Storage
+          - button "Copy link to header" [ref=e419] [cursor=pointer]:
+            - img [ref=e420]
+        - paragraph [ref=e422]:
+          - code [ref=e423]: llama.cpp
+          - text: prioritizes efficiency by using memory mapping (
+          - code [ref=e424]: mmap
+          - text: ) to avoid unnecessary copies of model weights.
+        - heading "Memory Mapping Strategy Copy link to header" [level=3] [ref=e425]:
+          - text: Memory Mapping Strategy
+          - button "Copy link to header" [ref=e426] [cursor=pointer]:
+            - img [ref=e427]
+        - paragraph [ref=e429]:
+          - text: When
+          - code [ref=e430]: use_mmap
+          - text: is enabled in
+          - code [ref=e431]: llama_model_params
+          - text: ", the"
+          - code [ref=e432]: llama_mmap
+          - text: class handles mapping the GGUF file into the process's address space. This allows the OS to manage paging and sharing of model weights between processes.
+        - paragraph [ref=e433]:
+          - strong [ref=e434]: "Sources:"
+          - link "src/llama-mmap.h 1-10" [ref=e435] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-mmap.h#L1-L10
+            - generic [ref=e436]:
+              - img [ref=e437]
+              - text: src/llama-mmap.h
+            - generic [ref=e439]: 1-10
+          - link "src/llama-mmap.cpp 1-50" [ref=e440] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-mmap.cpp#L1-L50
+            - generic [ref=e441]:
+              - img [ref=e442]
+              - text: src/llama-mmap.cpp
+            - generic [ref=e444]: 1-50
+        - heading "Tensor Indexing and Mapping Copy link to header" [level=3] [ref=e445]:
+          - text: Tensor Indexing and Mapping
+          - button "Copy link to header" [ref=e446] [cursor=pointer]:
+            - img [ref=e447]
+        - paragraph [ref=e449]:
+          - text: The conversion process (Python side) uses a
+          - code [ref=e450]: TensorNameMap
+          - text: to translate between various naming conventions (e.g., HuggingFace vs. GGML) to standard internal names stored in the GGUF file.
+        - paragraph [ref=e452]:
+          - strong [ref=e453]: "Sources:"
+          - link "gguf-py/gguf/tensor_mapping.py 8-153" [ref=e454] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/gguf-py/gguf/tensor_mapping.py#L8-L153
+            - generic [ref=e455]:
+              - img [ref=e456]
+              - text: gguf-py/gguf/tensor_mapping.py
+            - generic [ref=e458]: 8-153
+          - link "convert_hf_to_gguf.py 106-107" [ref=e459] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/convert_hf_to_gguf.py#L106-L107
+            - generic [ref=e460]:
+              - img [ref=e461]
+              - text: convert_hf_to_gguf.py
+            - generic [ref=e463]: 106-107
+        - separator [ref=e464]
+        - heading "Architecture Registry Copy link to header" [level=2] [ref=e465]:
+          - text: Architecture Registry
+          - button "Copy link to header" [ref=e466] [cursor=pointer]:
+            - img [ref=e467]
+        - paragraph [ref=e469]:
+          - text: The architecture registry defines how different model families are structured. It maps metadata keys to specific
+          - code [ref=e470]: llm_kv
+          - text: enums and tensor names to
+          - code [ref=e471]: llm_tensor
+          - text: roles.
+        - heading "Hyperparameter Mapping Copy link to header" [level=3] [ref=e472]:
+          - text: Hyperparameter Mapping
+          - button "Copy link to header" [ref=e473] [cursor=pointer]:
+            - img [ref=e474]
+        - paragraph [ref=e476]:
+          - text: Metadata keys in the GGUF file are mapped to internal constants for easy access via
+          - code [ref=e477]: LLM_KV_NAMES
+          - link "src/llama-arch.cpp 139-300" [ref=e478] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.cpp#L139-L300
+            - generic [ref=e479]:
+              - img [ref=e480]
+              - text: src/llama-arch.cpp
+            - generic [ref=e482]: 139-300
+          - text: The
+          - code [ref=e483]: llama_hparams
+          - text: struct stores these values for runtime use.
+        - list [ref=e484]:
+          - listitem [ref=e485]:
+            - code [ref=e486]: LLM_KV_CONTEXT_LENGTH
+            - text: ": mapped from"
+            - code [ref=e487]: "{arch}.context_length"
+            - link "src/llama-arch.h 171" [ref=e488] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.h#L171-L171
+              - generic [ref=e489]:
+                - img [ref=e490]
+                - text: src/llama-arch.h
+              - generic [ref=e492]: "171"
+          - listitem [ref=e493]:
+            - code [ref=e494]: LLM_KV_EMBEDDING_LENGTH
+            - text: ": mapped from"
+            - code [ref=e495]: "{arch}.embedding_length"
+            - link "src/llama-arch.h 172" [ref=e496] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.h#L172-L172
+              - generic [ref=e497]:
+                - img [ref=e498]
+                - text: src/llama-arch.h
+              - generic [ref=e500]: "172"
+          - listitem [ref=e501]:
+            - code [ref=e502]: LLM_KV_BLOCK_COUNT
+            - text: ": mapped from"
+            - code [ref=e503]: "{arch}.block_count"
+            - link "src/llama-arch.h 176" [ref=e504] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.h#L176-L176
+              - generic [ref=e505]:
+                - img [ref=e506]
+                - text: src/llama-arch.h
+              - generic [ref=e508]: "176"
+          - listitem [ref=e509]:
+            - code [ref=e510]: LLM_KV_EXPERT_COUNT
+            - text: ": mapped from"
+            - code [ref=e511]: "{arch}.expert_count"
+            - link "src/llama-arch.h 186" [ref=e512] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.h#L186-L186
+              - generic [ref=e513]:
+                - img [ref=e514]
+                - text: src/llama-arch.h
+              - generic [ref=e516]: "186"
+          - listitem [ref=e517]:
+            - code [ref=e518]: LLM_KV_MOE_LATENT_SIZE
+            - text: ": mapped from"
+            - code [ref=e519]: "{arch}.moe_latent_size"
+            - link "src/llama-arch.h 197" [ref=e520] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.h#L197-L197
+              - generic [ref=e521]:
+                - img [ref=e522]
+                - text: src/llama-arch.h
+              - generic [ref=e524]: "197"
+        - paragraph [ref=e525]:
+          - strong [ref=e526]: "Sources:"
+          - link "src/llama-arch.cpp 138-300" [ref=e527] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-arch.cpp#L138-L300
+            - generic [ref=e528]:
+              - img [ref=e529]
+              - text: src/llama-arch.cpp
+            - generic [ref=e531]: 138-300
+          - link "gguf-py/gguf/constants.py 103-138" [ref=e532] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/gguf-py/gguf/constants.py#L103-L138
+            - generic [ref=e533]:
+              - img [ref=e534]
+              - text: gguf-py/gguf/constants.py
+            - generic [ref=e536]: 103-138
+          - link "src/llama-hparams.h 36-220" [ref=e537] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-hparams.h#L36-L220
+            - generic [ref=e538]:
+              - img [ref=e539]
+              - text: src/llama-hparams.h
+            - generic [ref=e541]: 36-220
+        - heading "Model Type Classification Copy link to header" [level=3] [ref=e542]:
+          - text: Model Type Classification
+          - button "Copy link to header" [ref=e543] [cursor=pointer]:
+            - img [ref=e544]
+        - paragraph [ref=e546]:
+          - text: The
+          - code [ref=e547]: llm_type
+          - text: is determined based on the total parameter count and configuration (e.g., MoE vs. Dense). The registry covers sizes from small 14M models to massive 671B architectures.
+        - table [ref=e548]:
+          - rowgroup [ref=e549]:
+            - row "Parameter Count Name Code Reference" [ref=e550]:
+              - columnheader "Parameter Count" [ref=e551]
+              - columnheader "Name" [ref=e552]
+              - columnheader "Code Reference" [ref=e553]
+          - rowgroup [ref=e554]:
+            - row "~7B LLM_TYPE_7B src/llama-model.h 74" [ref=e555]:
+              - cell "~7B" [ref=e556]
+              - cell "LLM_TYPE_7B" [ref=e557]:
+                - code [ref=e558]: LLM_TYPE_7B
+              - cell "src/llama-model.h 74" [ref=e559]:
+                - link "src/llama-model.h 74" [ref=e560] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L74-L74
+                  - generic [ref=e561]:
+                    - img [ref=e562]
+                    - text: src/llama-model.h
+                  - generic [ref=e564]: "74"
+            - row "~8x7B LLM_TYPE_8x7B src/llama-model.h 108" [ref=e565]:
+              - cell "~8x7B" [ref=e566]
+              - cell "LLM_TYPE_8x7B" [ref=e567]:
+                - code [ref=e568]: LLM_TYPE_8x7B
+              - cell "src/llama-model.h 108" [ref=e569]:
+                - link "src/llama-model.h 108" [ref=e570] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L108-L108
+                  - generic [ref=e571]:
+                    - img [ref=e572]
+                    - text: src/llama-model.h
+                  - generic [ref=e574]: "108"
+            - row "~405B LLM_TYPE_405B src/llama-model.h 100" [ref=e575]:
+              - cell "~405B" [ref=e576]
+              - cell "LLM_TYPE_405B" [ref=e577]:
+                - code [ref=e578]: LLM_TYPE_405B
+              - cell "src/llama-model.h 100" [ref=e579]:
+                - link "src/llama-model.h 100" [ref=e580] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L100-L100
+                  - generic [ref=e581]:
+                    - img [ref=e582]
+                    - text: src/llama-model.h
+                  - generic [ref=e584]: "100"
+            - row "~671B LLM_TYPE_671B src/llama-model.h 101" [ref=e585]:
+              - cell "~671B" [ref=e586]
+              - cell "LLM_TYPE_671B" [ref=e587]:
+                - code [ref=e588]: LLM_TYPE_671B
+              - cell "src/llama-model.h 101" [ref=e589]:
+                - link "src/llama-model.h 101" [ref=e590] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L101-L101
+                  - generic [ref=e591]:
+                    - img [ref=e592]
+                    - text: src/llama-model.h
+                  - generic [ref=e594]: "101"
+            - row "17B (MoE) LLM_TYPE_17B_128E src/llama-model.h 115" [ref=e595]:
+              - cell "17B (MoE)" [ref=e596]
+              - cell "LLM_TYPE_17B_128E" [ref=e597]:
+                - code [ref=e598]: LLM_TYPE_17B_128E
+              - cell "src/llama-model.h 115" [ref=e599]:
+                - link "src/llama-model.h 115" [ref=e600] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L115-L115
+                  - generic [ref=e601]:
+                    - img [ref=e602]
+                    - text: src/llama-model.h
+                  - generic [ref=e604]: "115"
+            - row "230B (MoE) LLM_TYPE_230B_A10B src/llama-model.h 134" [ref=e605]:
+              - cell "230B (MoE)" [ref=e606]
+              - cell "LLM_TYPE_230B_A10B" [ref=e607]:
+                - code [ref=e608]: LLM_TYPE_230B_A10B
+              - cell "src/llama-model.h 134" [ref=e609]:
+                - link "src/llama-model.h 134" [ref=e610] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L134-L134
+                  - generic [ref=e611]:
+                    - img [ref=e612]
+                    - text: src/llama-model.h
+                  - generic [ref=e614]: "134"
+        - paragraph [ref=e615]:
+          - strong [ref=e616]: "Sources:"
+          - link "src/llama-model.h 22-143" [ref=e617] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-model.h#L22-L143
+            - generic [ref=e618]:
+              - img [ref=e619]
+              - text: src/llama-model.h
+            - generic [ref=e621]: 22-143
+          - link "src/llama-hparams.h 36-220" [ref=e622] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-hparams.h#L36-L220
+            - generic [ref=e623]:
+              - img [ref=e624]
+              - text: src/llama-hparams.h
+            - generic [ref=e626]: 36-220
+        - separator [ref=e627]
+        - heading "Model Representation in Graphs Copy link to header" [level=2] [ref=e628]:
+          - text: Model Representation in Graphs
+          - button "Copy link to header" [ref=e629] [cursor=pointer]:
+            - img [ref=e630]
+        - paragraph [ref=e632]:
+          - text: When inference is performed, the
+          - code [ref=e633]: llama_model
+          - text: provides the necessary tensors to the graph builder. Tensors are often categorized and managed as inputs to the
+          - code [ref=e634]: ggml_cgraph
+          - text: .
+        - heading "Graph Input Management Copy link to header" [level=3] [ref=e635]:
+          - text: Graph Input Management
+          - button "Copy link to header" [ref=e636] [cursor=pointer]:
+            - img [ref=e637]
+        - paragraph [ref=e639]:
+          - text: The
+          - code [ref=e640]: llm_graph_input_i
+          - text: interface and its implementations manage how batch data is fed into the computational graph
+          - link "src/llama-graph.h 83-250" [ref=e641] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-graph.h#L83-L250
+            - generic [ref=e642]:
+              - img [ref=e643]
+              - text: src/llama-graph.h
+            - generic [ref=e645]: 83-250
+        - table [ref=e646]:
+          - rowgroup [ref=e647]:
+            - row "Input Class Purpose Code Reference" [ref=e648]:
+              - columnheader "Input Class" [ref=e649]
+              - columnheader "Purpose" [ref=e650]
+              - columnheader "Code Reference" [ref=e651]
+          - rowgroup [ref=e652]:
+            - row "llm_graph_input_embd Manages token or embedding inputs src/llama-graph.h 109-123" [ref=e653]:
+              - cell "llm_graph_input_embd" [ref=e654]:
+                - code [ref=e655]: llm_graph_input_embd
+              - cell "Manages token or embedding inputs" [ref=e656]
+              - cell "src/llama-graph.h 109-123" [ref=e657]:
+                - link "src/llama-graph.h 109-123" [ref=e658] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-graph.h#L109-L123
+                  - generic [ref=e659]:
+                    - img [ref=e660]
+                    - text: src/llama-graph.h
+                  - generic [ref=e662]: 109-123
+            - row "llm_graph_input_pos Manages RoPE or positional inputs src/llama-graph.h 124-136" [ref=e663]:
+              - cell "llm_graph_input_pos" [ref=e664]:
+                - code [ref=e665]: llm_graph_input_pos
+              - cell "Manages RoPE or positional inputs" [ref=e666]
+              - cell "src/llama-graph.h 124-136" [ref=e667]:
+                - link "src/llama-graph.h 124-136" [ref=e668] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-graph.h#L124-L136
+                  - generic [ref=e669]:
+                    - img [ref=e670]
+                    - text: src/llama-graph.h
+                  - generic [ref=e672]: 124-136
+            - row "llm_graph_input_out_ids Maps batch tokens to output logits src/llama-graph.h 182-200" [ref=e673]:
+              - cell "llm_graph_input_out_ids" [ref=e674]:
+                - code [ref=e675]: llm_graph_input_out_ids
+              - cell "Maps batch tokens to output logits" [ref=e676]
+              - cell "src/llama-graph.h 182-200" [ref=e677]:
+                - link "src/llama-graph.h 182-200" [ref=e678] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-graph.h#L182-L200
+                  - generic [ref=e679]:
+                    - img [ref=e680]
+                    - text: src/llama-graph.h
+                  - generic [ref=e682]: 182-200
+        - paragraph [ref=e683]:
+          - strong [ref=e684]: "Sources:"
+          - link "src/llama-graph.h 80-250" [ref=e685] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-graph.h#L80-L250
+            - generic [ref=e686]:
+              - img [ref=e687]
+              - text: src/llama-graph.h
+            - generic [ref=e689]: 80-250
+          - link "src/llama-graph.cpp 80-230" [ref=e690] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/src/llama-graph.cpp#L80-L230
+            - generic [ref=e691]:
+              - img [ref=e692]
+              - text: src/llama-graph.cpp
+            - generic [ref=e694]: 80-230
+      - generic [ref=e696]:
+        - generic [ref=e698]:
+          - button "Dismiss" [ref=e699]:
+            - img [ref=e700]
+            - generic [ref=e702]: Dismiss
+          - paragraph [ref=e703]: Refresh this wiki
+          - paragraph [ref=e704]: This wiki was recently refreshed. Please wait 3 days to refresh again.
+        - heading "On this page" [level=3] [ref=e705]
+        - list [ref=e706]:
+          - listitem [ref=e707]:
+            - link "Model Loading and Representation" [ref=e708] [cursor=pointer]:
+              - /url: "#model-loading-and-representation"
+          - listitem [ref=e709]:
+            - link "llama_model Structure" [ref=e710] [cursor=pointer]:
+              - /url: "#llama_model-structure"
+          - listitem [ref=e711]:
+            - link "Key Components" [ref=e712] [cursor=pointer]:
+              - /url: "#key-components"
+          - listitem [ref=e713]:
+            - link "Code Entity Relationship Diagram" [ref=e714] [cursor=pointer]:
+              - /url: "#code-entity-relationship-diagram"
+          - listitem [ref=e715]:
+            - link "Model Loading Pipeline" [ref=e716] [cursor=pointer]:
+              - /url: "#model-loading-pipeline"
+          - listitem [ref=e717]:
+            - link "Loading Data Flow" [ref=e718] [cursor=pointer]:
+              - /url: "#loading-data-flow"
+          - listitem [ref=e719]:
+            - link "Architecture Detection" [ref=e720] [cursor=pointer]:
+              - /url: "#architecture-detection"
+          - listitem [ref=e721]:
+            - link "Memory Mapping and Tensor Storage" [ref=e722] [cursor=pointer]:
+              - /url: "#memory-mapping-and-tensor-storage"
+          - listitem [ref=e723]:
+            - link "Memory Mapping Strategy" [ref=e724] [cursor=pointer]:
+              - /url: "#memory-mapping-strategy"
+          - listitem [ref=e725]:
+            - link "Tensor Indexing and Mapping" [ref=e726] [cursor=pointer]:
+              - /url: "#tensor-indexing-and-mapping"
+          - listitem [ref=e727]:
+            - link "Architecture Registry" [ref=e728] [cursor=pointer]:
+              - /url: "#architecture-registry"
+          - listitem [ref=e729]:
+            - link "Hyperparameter Mapping" [ref=e730] [cursor=pointer]:
+              - /url: "#hyperparameter-mapping"
+          - listitem [ref=e731]:
+            - link "Model Type Classification" [ref=e732] [cursor=pointer]:
+              - /url: "#model-type-classification"
+          - listitem [ref=e733]:
+            - link "Model Representation in Graphs" [ref=e734] [cursor=pointer]:
+              - /url: "#model-representation-in-graphs"
+          - listitem [ref=e735]:
+            - link "Graph Input Management" [ref=e736] [cursor=pointer]:
+              - /url: "#graph-input-management"
+  - alert [ref=e737]

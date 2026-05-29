@@ -1,0 +1,990 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fpull%2F11171
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fpull_requests_fragments%2Fpull_request_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,897" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113569 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,048" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e148]:
+      - generic [ref=e151]:
+        - 'heading "[swift] add module omnivlm #11171" [level=1] [ref=e153]':
+          - text: "[swift] add module omnivlm"
+          - generic [ref=e155]: "#11171"
+        - generic [ref=e157]:
+          - generic [ref=e159]:
+            - img "Pull request" [ref=e160]
+            - text: Closed
+          - generic [ref=e163]:
+            - link "TerryT9" [ref=e164] [cursor=pointer]:
+              - /url: /TerryT9
+            - text: wants to merge 80 commits into
+            - generic [ref=e165]:
+              - link "ggml-org:master" [ref=e166] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/tree/master
+              - generic [ref=e167]: from
+              - generic [ref=e168]:
+                - generic "This repository has been deleted" [ref=e169]: NexaAI:t/omnivlm-ios
+                - button "Copy head branch name to clipboard" [ref=e170] [cursor=pointer]:
+                  - img [ref=e171]
+        - navigation "Pull request navigation tabs" [ref=e177]:
+          - tablist [ref=e178]:
+            - tab "Conversation" [selected] [ref=e179] [cursor=pointer]:
+              - img [ref=e180]
+              - text: Conversation
+            - tab "Commits (80)" [ref=e182] [cursor=pointer]:
+              - img [ref=e183]
+              - text: Commits
+              - generic [ref=e185]: "80"
+              - generic [ref=e186]: (80)
+            - tab "Checks" [ref=e187] [cursor=pointer]:
+              - img [ref=e188]
+              - text: Checks
+            - tab "Files changed" [ref=e190] [cursor=pointer]:
+              - img [ref=e191]
+              - text: Files changed
+      - generic [ref=e197]:
+        - generic [ref=e199]:
+          - heading "Conversation" [level=2] [ref=e200]
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - generic [ref=e204]:
+                - link "@TerryT9" [ref=e205] [cursor=pointer]:
+                  - /url: /TerryT9
+                  - img "@TerryT9" [ref=e206]
+                - generic [ref=e208]:
+                  - generic [ref=e209]:
+                    - group [ref=e212]:
+                      - button "Show options" [ref=e213] [cursor=pointer]:
+                        - img "Show options" [ref=e216]
+                    - heading "TerryT9 commented Jan 10, 2025on Jan 10, 2025" [level=3] [ref=e218]:
+                      - generic [ref=e219]:
+                        - strong [ref=e220]:
+                          - link "TerryT9" [ref=e221] [cursor=pointer]:
+                            - /url: /TerryT9
+                        - text: commented
+                        - link "Jan 10, 2025on Jan 10, 2025" [ref=e222] [cursor=pointer]:
+                          - /url: "#issue-2779355924"
+                  - paragraph [ref=e227]:
+                    - emphasis [ref=e228]:
+                      - text: Make sure to read the
+                      - link "contributing guidelines" [ref=e229] [cursor=pointer]:
+                        - /url: https://github.com/ggerganov/llama.cpp/blob/master/CONTRIBUTING.md
+                      - text: before submitting a PR
+              - generic [ref=e230]:
+                - generic [ref=e232]:
+                  - generic [ref=e233]:
+                    - img [ref=e235]
+                    - generic [ref=e237]:
+                      - link "zhiyuan8" [ref=e238] [cursor=pointer]:
+                        - /url: /zhiyuan8
+                      - text: and others added 30 commits
+                      - link "September 10, 2024 20:502 years ago" [ref=e239] [cursor=pointer]:
+                        - /url: "#commits-pushed-5f81588"
+                  - generic [ref=e240]:
+                    - generic [ref=e241]:
+                      - img [ref=e243]
+                      - generic [ref=e248]:
+                        - link "@zhiyuan8" [ref=e251] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e252]
+                        - code [ref=e254]:
+                          - link "support ggml" [ref=e255] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/5f81588780339fd58c172591aa8273a198a20bca
+                        - code [ref=e259]:
+                          - link "5f81588" [ref=e260] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/5f81588780339fd58c172591aa8273a198a20bca
+                    - generic [ref=e261]:
+                      - img [ref=e263]
+                      - generic [ref=e268]:
+                        - link "@zhiyuan8" [ref=e271] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e272]
+                        - code [ref=e274]:
+                          - link "update README after renaming GGML" [ref=e275] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/3a3552632aa4e9529a9bff1030db37c153fd4a42
+                        - code [ref=e279]:
+                          - link "3a35526" [ref=e280] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/3a3552632aa4e9529a9bff1030db37c153fd4a42
+                    - generic [ref=e281]:
+                      - img [ref=e283]
+                      - generic [ref=e288]:
+                        - link "@zhiyuan8" [ref=e291] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e292]
+                        - code [ref=e294]:
+                          - link "update vulkan target name" [ref=e295] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/4a29bca867e2601a2e69e007640ac1abb9f3a381
+                        - code [ref=e299]:
+                          - link "4a29bca" [ref=e300] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/4a29bca867e2601a2e69e007640ac1abb9f3a381
+                    - generic [ref=e301]:
+                      - img [ref=e303]
+                      - generic [ref=e308]:
+                        - link "@zhiyuan8" [ref=e311] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e312]
+                        - code [ref=e314]:
+                          - link "support omni-audio" [ref=e315] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/c7b912bdca66ad5cc3edef66117d35837006ff2e
+                        - code [ref=e319]:
+                          - link "c7b912b" [ref=e320] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/c7b912bdca66ad5cc3edef66117d35837006ff2e
+                    - generic [ref=e321]:
+                      - img [ref=e323]
+                      - generic [ref=e328]:
+                        - link "@zhiyuan8" [ref=e331] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e332]
+                        - code [ref=e334]:
+                          - link "enable qwen2-audio work E2E" [ref=e335] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/f0d1c4fa1c06c1bc9cd7a42b83e32f73e69e6fbe
+                        - code [ref=e339]:
+                          - link "f0d1c4f" [ref=e340] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/f0d1c4fa1c06c1bc9cd7a42b83e32f73e69e6fbe
+                    - generic [ref=e341]:
+                      - img [ref=e343]
+                      - generic [ref=e348]:
+                        - link "@zhiyuan8" [ref=e351] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e352]
+                        - code [ref=e354]:
+                          - link "remove uneccesary build and rename shared lib" [ref=e355] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/9e67ef75b46b4d267b9df4ac6c1f232681470a4c
+                        - code [ref=e359]:
+                          - link "9e67ef7" [ref=e360] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/9e67ef75b46b4d267b9df4ac6c1f232681470a4c
+                    - generic [ref=e361]:
+                      - img [ref=e363]
+                      - generic [ref=e368]:
+                        - link "@zhiyuan8" [ref=e371] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e372]
+                        - code [ref=e374]:
+                          - link "update to C++17 for compilation" [ref=e375] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/4bdc70aaac8884df987f4b079b3d063f2f31e076
+                        - code [ref=e379]:
+                          - link "4bdc70a" [ref=e380] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/4bdc70aaac8884df987f4b079b3d063f2f31e076
+                    - generic [ref=e381]:
+                      - img [ref=e383]
+                      - generic [ref=e388]:
+                        - code [ref=e391]:
+                          - link "add omni-vlm examples (C++ & python)" [ref=e392] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/d277c674ae20a3a1277f71a14a2956bf5b3196ca
+                        - code [ref=e396]:
+                          - link "d277c67" [ref=e397] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/d277c674ae20a3a1277f71a14a2956bf5b3196ca
+                    - generic [ref=e398]:
+                      - img [ref=e400]
+                      - generic [ref=e405]:
+                        - link "@zhiyuan8" [ref=e408] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e409]
+                        - code [ref=e411]:
+                          - link "Disable cxxabi.h dependency on Windows" [ref=e412] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/995baefeed7407cdbaf4e8aef4debfeb2621a12b
+                        - code [ref=e416]:
+                          - link "995baef" [ref=e417] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/995baefeed7407cdbaf4e8aef4debfeb2621a12b
+                    - generic [ref=e418]:
+                      - img [ref=e420]
+                      - generic [ref=e425]:
+                        - link "@zhiyuan8" [ref=e428] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e429]
+                        - generic [ref=e430]:
+                          - code [ref=e431]:
+                            - 'link "fix error on windows qwen2-audio/whisper.cpp:9935:38: error: ''_O_BINA…" [ref=e432] [cursor=pointer]':
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/a4747b2edb90b9fbf8cb7c3108ba973fc79d7152
+                          - button "Commit message body" [ref=e434] [cursor=pointer]: …
+                        - code [ref=e438]:
+                          - link "a4747b2" [ref=e439] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/a4747b2edb90b9fbf8cb7c3108ba973fc79d7152
+                    - generic [ref=e440]:
+                      - img [ref=e442]
+                      - generic [ref=e447]:
+                        - link "@zhiyuan8" [ref=e450] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e451]
+                        - code [ref=e453]:
+                          - 'link "Adding #include <io.h> & <fcntl.h>" [ref=e454] [cursor=pointer]':
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/6f1ed6e5cb1e8003b1b7146bc5aaf1e525bf9096
+                        - code [ref=e458]:
+                          - link "6f1ed6e" [ref=e459] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/6f1ed6e5cb1e8003b1b7146bc5aaf1e525bf9096
+                    - generic [ref=e460]:
+                      - img [ref=e462]
+                      - generic [ref=e467]:
+                        - link "@zhiyuan8" [ref=e470] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e471]
+                        - code [ref=e473]:
+                          - link "disable <cxxabi.h> for MSC_VER" [ref=e474] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/141968108994905dc481863b75e0837cb693f5e3
+                        - code [ref=e478]:
+                          - link "1419681" [ref=e479] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/141968108994905dc481863b75e0837cb693f5e3
+                    - generic [ref=e480]:
+                      - img [ref=e482]
+                      - generic [ref=e487]:
+                        - link "@zhiyuan8" [ref=e490] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e491]
+                        - code [ref=e493]:
+                          - link "remove C++20 style" [ref=e494] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/d42e0371f84b413c25511328d75f079962c6fbbb
+                        - code [ref=e498]:
+                          - link "d42e037" [ref=e499] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/d42e0371f84b413c25511328d75f079962c6fbbb
+                    - generic [ref=e500]:
+                      - img [ref=e502]
+                      - generic [ref=e507]:
+                        - link "@zhiyuan8" [ref=e510] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e511]
+                        - code [ref=e513]:
+                          - link "remove C++20 syntax" [ref=e514] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/05853eb861d522cc51c450efbabdc1470118cf5b
+                        - code [ref=e518]:
+                          - link "05853eb" [ref=e519] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/05853eb861d522cc51c450efbabdc1470118cf5b
+                    - generic [ref=e520]:
+                      - img [ref=e522]
+                      - generic [ref=e527]:
+                        - link "@zhiyuan8" [ref=e530] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e531]
+                        - generic [ref=e532]:
+                          - code [ref=e533]:
+                            - link "Merge pull request" [ref=e534] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/91b3cafbb5acee59ad5cf94a05c952c5177d2969
+                            - link "#6" [ref=e535] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/pull/6
+                            - link "from NexaAI/master-release-audio-lm" [ref=e536] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/91b3cafbb5acee59ad5cf94a05c952c5177d2969
+                          - button "Commit message body" [ref=e538] [cursor=pointer]: …
+                        - button "Verified" [ref=e540] [cursor=pointer]:
+                          - generic [ref=e542]: Verified
+                        - code [ref=e545]:
+                          - link "91b3caf" [ref=e546] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/91b3cafbb5acee59ad5cf94a05c952c5177d2969
+                    - generic [ref=e547]:
+                      - img [ref=e549]
+                      - generic [ref=e554]:
+                        - link "@zhiyuan8" [ref=e557] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e558]
+                        - generic [ref=e559]:
+                          - code [ref=e560]:
+                            - link "Merge pull request" [ref=e561] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/d6c0627d31866d865f16e862a5456f3bb8857dfd
+                            - link "#7" [ref=e562] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/7
+                            - link "from NexaAI/master" [ref=e563] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/d6c0627d31866d865f16e862a5456f3bb8857dfd
+                          - button "Commit message body" [ref=e565] [cursor=pointer]: …
+                        - button "Verified" [ref=e567] [cursor=pointer]:
+                          - generic [ref=e569]: Verified
+                        - code [ref=e572]:
+                          - link "d6c0627" [ref=e573] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/d6c0627d31866d865f16e862a5456f3bb8857dfd
+                    - generic [ref=e574]:
+                      - img [ref=e576]
+                      - generic [ref=e581]:
+                        - link "@zhiyuan8" [ref=e584] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e585]
+                        - generic [ref=e586]:
+                          - code [ref=e587]:
+                            - link "Merge pull request" [ref=e588] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/983b4625ef51503853979ddbedd7df14084faadd
+                            - link "#8" [ref=e589] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/8
+                            - link "from NexaAI/weili/master-release" [ref=e590] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/983b4625ef51503853979ddbedd7df14084faadd
+                          - button "Commit message body" [ref=e592] [cursor=pointer]: …
+                        - button "Verified" [ref=e594] [cursor=pointer]:
+                          - generic [ref=e596]: Verified
+                        - code [ref=e599]:
+                          - link "983b462" [ref=e600] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/983b4625ef51503853979ddbedd7df14084faadd
+                    - generic [ref=e601]:
+                      - img [ref=e603]
+                      - generic [ref=e608]:
+                        - link "@zhiyuan8" [ref=e611] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e612]
+                        - generic [ref=e613]:
+                          - code [ref=e614]:
+                            - link "Merge pull request" [ref=e615] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/b535cd941e657ac1984d8022dd5f0c98f2b9e265
+                            - link "#9" [ref=e616] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/9
+                            - link "from NexaAI/master" [ref=e617] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/b535cd941e657ac1984d8022dd5f0c98f2b9e265
+                          - button "Commit message body" [ref=e619] [cursor=pointer]: …
+                        - button "Verified" [ref=e621] [cursor=pointer]:
+                          - generic [ref=e623]: Verified
+                        - code [ref=e626]:
+                          - link "b535cd9" [ref=e627] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b535cd941e657ac1984d8022dd5f0c98f2b9e265
+                    - generic [ref=e628]:
+                      - img [ref=e630]
+                      - generic [ref=e635]:
+                        - link "@zhiyuan8" [ref=e638] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e639]
+                        - code [ref=e641]:
+                          - link "enable lib to be exported in nexa SDK" [ref=e642] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/38c6fa3b8fb6c88075102fd859d04eaea27aa87c
+                        - code [ref=e646]:
+                          - link "38c6fa3" [ref=e647] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/38c6fa3b8fb6c88075102fd859d04eaea27aa87c
+                    - generic [ref=e648]:
+                      - img [ref=e650]
+                      - generic [ref=e655]:
+                        - code [ref=e658]:
+                          - link "add returned string (pure c const char* type) for omni-vlm inference api" [ref=e659] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/22da7bc379b491680a7db25600c14f8addfbc93d
+                        - code [ref=e663]:
+                          - link "22da7bc" [ref=e664] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/22da7bc379b491680a7db25600c14f8addfbc93d
+                    - generic [ref=e665]:
+                      - img [ref=e667]
+                      - generic [ref=e672]:
+                        - link "@zhiyuan8" [ref=e675] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e676]
+                        - generic [ref=e677]:
+                          - code [ref=e678]:
+                            - link "Merge pull request" [ref=e679] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/5574bda471c4ddfa263438f5ca978ccad2e85903
+                            - link "#10" [ref=e680] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/10
+                            - link "from NexaAI/weili/master-release" [ref=e681] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/5574bda471c4ddfa263438f5ca978ccad2e85903
+                          - button "Commit message body" [ref=e683] [cursor=pointer]: …
+                        - button "Verified" [ref=e685] [cursor=pointer]:
+                          - generic [ref=e687]: Verified
+                        - code [ref=e690]:
+                          - link "5574bda" [ref=e691] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/5574bda471c4ddfa263438f5ca978ccad2e85903
+                    - generic [ref=e692]:
+                      - img [ref=e694]
+                      - generic [ref=e699]:
+                        - code [ref=e702]:
+                          - link "add returned string (const char*) for qwen2 audio" [ref=e703] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b24a409e22dc49daa7f7cb422492281403dfb239
+                        - code [ref=e707]:
+                          - link "b24a409" [ref=e708] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b24a409e22dc49daa7f7cb422492281403dfb239
+                    - generic [ref=e709]:
+                      - img [ref=e711]
+                      - generic [ref=e716]:
+                        - link "@zhiyuan8" [ref=e719] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e720]
+                        - generic [ref=e721]:
+                          - code [ref=e722]:
+                            - link "Merge pull request" [ref=e723] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/6a4cf0b983195c7f32251e6d550f3c65b854ca6b
+                            - link "#11" [ref=e724] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/11
+                            - link "from NexaAI/weili/master-release" [ref=e725] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/6a4cf0b983195c7f32251e6d550f3c65b854ca6b
+                          - button "Commit message body" [ref=e727] [cursor=pointer]: …
+                        - button "Verified" [ref=e729] [cursor=pointer]:
+                          - generic [ref=e731]: Verified
+                        - code [ref=e734]:
+                          - link "6a4cf0b" [ref=e735] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/6a4cf0b983195c7f32251e6d550f3c65b854ca6b
+                    - generic [ref=e736]:
+                      - img [ref=e738]
+                      - generic [ref=e743]:
+                        - code [ref=e746]:
+                          - link "add returned string type (const char*) for nexa-omni-audio" [ref=e747] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/5edadffd887f2b72ebc93134e7ad76082757b75a
+                        - code [ref=e751]:
+                          - link "5edadff" [ref=e752] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/5edadffd887f2b72ebc93134e7ad76082757b75a
+                    - generic [ref=e753]:
+                      - img [ref=e755]
+                      - generic [ref=e760]:
+                        - link "@zhiyuan8" [ref=e763] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e764]
+                        - generic [ref=e765]:
+                          - code [ref=e766]:
+                            - link "Merge pull request" [ref=e767] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/20b9f02cee483d09d15832c35e6117e5a020f517
+                            - link "#12" [ref=e768] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/12
+                            - link "from NexaAI/weili/master-release" [ref=e769] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/20b9f02cee483d09d15832c35e6117e5a020f517
+                          - button "Commit message body" [ref=e771] [cursor=pointer]: …
+                        - button "Verified" [ref=e773] [cursor=pointer]:
+                          - generic [ref=e775]: Verified
+                        - code [ref=e778]:
+                          - link "20b9f02" [ref=e779] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/20b9f02cee483d09d15832c35e6117e5a020f517
+                    - generic [ref=e780]:
+                      - img [ref=e782]
+                      - generic [ref=e787]:
+                        - code [ref=e790]:
+                          - link "add returned string type (const char*) for nexa-omni-audio" [ref=e791] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/3dfac7817f8f40562b559e877b50b104d697bcf8
+                        - code [ref=e795]:
+                          - link "3dfac78" [ref=e796] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/3dfac7817f8f40562b559e877b50b104d697bcf8
+                    - generic [ref=e797]:
+                      - img [ref=e799]
+                      - generic [ref=e804]:
+                        - link "@zhiyuan8" [ref=e807] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e808]
+                        - generic [ref=e809]:
+                          - code [ref=e810]:
+                            - link "Merge pull request" [ref=e811] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/df5841b6b8ac0740b1e2310f9e8ae609d6290b3c
+                            - link "#13" [ref=e812] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/13
+                            - link "from NexaAI/weili/master-release" [ref=e813] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/df5841b6b8ac0740b1e2310f9e8ae609d6290b3c
+                          - button "Commit message body" [ref=e815] [cursor=pointer]: …
+                        - button "Verified" [ref=e817] [cursor=pointer]:
+                          - generic [ref=e819]: Verified
+                        - code [ref=e822]:
+                          - link "df5841b" [ref=e823] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/df5841b6b8ac0740b1e2310f9e8ae609d6290b3c
+                    - generic [ref=e824]:
+                      - img [ref=e826]
+                      - generic [ref=e831]:
+                        - code [ref=e834]:
+                          - link "add submodule llava for android" [ref=e835] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/86c2233a38c963b2b9112994a9f9c3890b6522f0
+                        - code [ref=e839]:
+                          - link "86c2233" [ref=e840] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/86c2233a38c963b2b9112994a9f9c3890b6522f0
+                    - generic [ref=e841]:
+                      - img [ref=e843]
+                      - generic [ref=e848]:
+                        - code [ref=e851]:
+                          - link "add one more model" [ref=e852] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/400fc2a4b09d37d3256c803d8f4292385285dad6
+                        - code [ref=e856]:
+                          - link "400fc2a" [ref=e857] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/400fc2a4b09d37d3256c803d8f4292385285dad6
+                    - generic [ref=e858]:
+                      - img [ref=e860]
+                      - generic [ref=e865]:
+                        - code [ref=e868]:
+                          - link "add include llava.h" [ref=e869] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b17684efb3a1da600bbde26cd6554f74e964af2f
+                        - code [ref=e873]:
+                          - link "b17684e" [ref=e874] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b17684efb3a1da600bbde26cd6554f74e964af2f
+                - generic [ref=e878]:
+                  - button "41 hidden items" [ref=e879] [cursor=pointer]
+                  - button "Load more…" [ref=e880] [cursor=pointer]
+                - generic [ref=e882]:
+                  - generic [ref=e883]:
+                    - img [ref=e885]
+                    - generic [ref=e887]:
+                      - text: 李为 and others added 9 commits
+                      - link "December 3, 2024 15:002 years ago" [ref=e888] [cursor=pointer]:
+                        - /url: "#commits-pushed-07c7ff3"
+                  - generic [ref=e889]:
+                    - generic [ref=e890]:
+                      - img [ref=e892]
+                      - generic [ref=e897]:
+                        - code [ref=e900]:
+                          - link "Merge branch 'weili/dev' of github.com:NexaAI/llama.cpp into weili/dev" [ref=e901] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/07c7ff3e4a0e067a78e61bad11964376aec8c9da
+                        - code [ref=e905]:
+                          - link "07c7ff3" [ref=e906] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/07c7ff3e4a0e067a78e61bad11964376aec8c9da
+                    - generic [ref=e907]:
+                      - img [ref=e909]
+                      - generic [ref=e914]:
+                        - code [ref=e917]:
+                          - link "remove iostream header" [ref=e918] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b86cdedb7e5d0b9b2fe61404c39010a149da99be
+                        - code [ref=e922]:
+                          - link "b86cded" [ref=e923] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b86cdedb7e5d0b9b2fe61404c39010a149da99be
+                    - generic [ref=e924]:
+                      - img [ref=e926]
+                      - generic [ref=e931]:
+                        - link "@zhiyuan8" [ref=e934] [cursor=pointer]:
+                          - /url: /zhiyuan8
+                          - img "@zhiyuan8" [ref=e935]
+                        - generic [ref=e936]:
+                          - code [ref=e937]:
+                            - link "Merge pull request" [ref=e938] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/b2958b33ddd4c8f13c98fb1c1249ac067769df91
+                            - link "#33" [ref=e939] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/33
+                            - link "from NexaAI/weili/dev" [ref=e940] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/b2958b33ddd4c8f13c98fb1c1249ac067769df91
+                          - button "Commit message body" [ref=e942] [cursor=pointer]: …
+                        - code [ref=e948]:
+                          - link "b2958b3" [ref=e949] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/b2958b33ddd4c8f13c98fb1c1249ac067769df91
+                    - generic [ref=e950]:
+                      - img [ref=e952]
+                      - generic [ref=e957]:
+                        - link "@TerryT9" [ref=e960] [cursor=pointer]:
+                          - /url: /TerryT9
+                          - img "@TerryT9" [ref=e961]
+                        - code [ref=e963]:
+                          - link "update omni audio cmake" [ref=e964] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/64a6001a1a408129eb510f49840947876220c5fa
+                        - code [ref=e968]:
+                          - link "64a6001" [ref=e969] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/64a6001a1a408129eb510f49840947876220c5fa
+                    - generic [ref=e970]:
+                      - img [ref=e972]
+                      - generic [ref=e977]:
+                        - link "@TerryT9" [ref=e980] [cursor=pointer]:
+                          - /url: /TerryT9
+                          - img "@TerryT9" [ref=e981]
+                        - generic [ref=e982]:
+                          - code [ref=e983]:
+                            - link "Update omni-audio cmake content to make it static (" [ref=e984] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/5962b506bab3f46821e0fb74bcbe224cb6b10b68
+                            - link "#36" [ref=e985] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/pull/36
+                            - link ")" [ref=e986] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/5962b506bab3f46821e0fb74bcbe224cb6b10b68
+                          - button "Commit message body" [ref=e988] [cursor=pointer]: …
+                        - code [ref=e994]:
+                          - link "5962b50" [ref=e995] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/5962b506bab3f46821e0fb74bcbe224cb6b10b68
+                    - generic [ref=e996]:
+                      - img [ref=e998]
+                      - generic [ref=e1003]:
+                        - link "@TerryT9" [ref=e1006] [cursor=pointer]:
+                          - /url: /TerryT9
+                          - img "@TerryT9" [ref=e1007]
+                        - generic [ref=e1008]:
+                          - code [ref=e1009]:
+                            - link "Add streaming for omnivlm (" [ref=e1010] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/1487d32b46a210c5619886af8fe24c93091f7ca0
+                            - link "#39" [ref=e1011] [cursor=pointer]:
+                              - /url: https://github.com/ggml-org/llama.cpp/issues/39
+                            - link ")" [ref=e1012] [cursor=pointer]:
+                              - /url: /ggml-org/llama.cpp/pull/11171/commits/1487d32b46a210c5619886af8fe24c93091f7ca0
+                          - button "Commit message body" [ref=e1014] [cursor=pointer]: …
+                        - code [ref=e1020]:
+                          - link "1487d32" [ref=e1021] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/1487d32b46a210c5619886af8fe24c93091f7ca0
+                    - generic [ref=e1022]:
+                      - img [ref=e1024]
+                      - generic [ref=e1029]:
+                        - link "@TerryT9" [ref=e1032] [cursor=pointer]:
+                          - /url: /TerryT9
+                          - img "@TerryT9" [ref=e1033]
+                        - code [ref=e1035]:
+                          - link "support omnivlm for ios" [ref=e1036] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/d3eeeae2185b8f1cb626421ae96fb8af76b2ce82
+                        - code [ref=e1040]:
+                          - link "d3eeeae" [ref=e1041] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/d3eeeae2185b8f1cb626421ae96fb8af76b2ce82
+                    - generic [ref=e1042]:
+                      - img [ref=e1044]
+                      - generic [ref=e1049]:
+                        - link "@TerryT9" [ref=e1052] [cursor=pointer]:
+                          - /url: /TerryT9
+                          - img "@TerryT9" [ref=e1053]
+                        - code [ref=e1055]:
+                          - link "add swift test cases" [ref=e1056] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/61777707ca6aecf077d35c7439dd263342a36226
+                        - code [ref=e1060]:
+                          - link "6177770" [ref=e1061] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/61777707ca6aecf077d35c7439dd263342a36226
+                    - generic [ref=e1062]:
+                      - img [ref=e1064]
+                      - generic [ref=e1069]:
+                        - link "@TerryT9" [ref=e1072] [cursor=pointer]:
+                          - /url: /TerryT9
+                          - img "@TerryT9" [ref=e1073]
+                        - code [ref=e1075]:
+                          - link "update test case" [ref=e1076] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/91ab9ed858aabb7eea7ddcc0ec6843367404a148
+                        - code [ref=e1080]:
+                          - link "91ab9ed" [ref=e1081] [cursor=pointer]:
+                            - /url: /ggml-org/llama.cpp/pull/11171/commits/91ab9ed858aabb7eea7ddcc0ec6843367404a148
+                - generic [ref=e1082]:
+                  - generic [ref=e1083]:
+                    - img [ref=e1085]
+                    - generic [ref=e1087]:
+                      - link "@TerryT9" [ref=e1088] [cursor=pointer]:
+                        - /url: /TerryT9
+                        - img "@TerryT9" [ref=e1089]
+                      - link "TerryT9" [ref=e1090] [cursor=pointer]:
+                        - /url: /TerryT9
+                      - text: requested review from
+                      - link "JohannesGaessler" [ref=e1091] [cursor=pointer]:
+                        - /url: /JohannesGaessler
+                      - text: ","
+                      - link "ggerganov" [ref=e1092] [cursor=pointer]:
+                        - /url: /ggerganov
+                      - text: and
+                      - link "ngxson" [ref=e1093] [cursor=pointer]:
+                        - /url: /ngxson
+                      - text: as
+                      - link "code owners" [ref=e1094] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/blob/c3f9d25706ac84297067aeaa662c1f1af42ed443/CODEOWNERS#L6
+                      - link "January 10, 2025 05:57last year" [ref=e1095] [cursor=pointer]:
+                        - /url: "#event-15877059365"
+                  - generic [ref=e1096]:
+                    - img [ref=e1098]
+                    - generic [ref=e1100]:
+                      - link "@TerryT9" [ref=e1101] [cursor=pointer]:
+                        - /url: /TerryT9
+                        - img "@TerryT9" [ref=e1102]
+                      - link "TerryT9" [ref=e1103] [cursor=pointer]:
+                        - /url: /TerryT9
+                      - text: closed this
+                      - link "Jan 10, 2025on Jan 10, 2025" [ref=e1104] [cursor=pointer]:
+                        - /url: "#event-15877060231"
+                  - generic [ref=e1106]:
+                    - img [ref=e1108]
+                    - generic [ref=e1110]:
+                      - link "@github-actions" [ref=e1111] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - img "@github-actions" [ref=e1112]
+                      - link "github-actions" [ref=e1113] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                      - generic [ref=e1114]: Bot
+                      - text: added
+                      - link "documentation" [ref=e1115] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Adocumentation
+                      - link "build" [ref=e1116] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Abuild
+                      - link "script" [ref=e1117] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Ascript
+                      - link "testing" [ref=e1118] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Atesting
+                      - link "android" [ref=e1119] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aandroid
+                      - link "Nvidia GPU" [ref=e1120] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22Nvidia%20GPU%22
+                      - link "nix" [ref=e1121] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Anix
+                      - link "Vulkan" [ref=e1122] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3AVulkan
+                      - link "examples" [ref=e1123] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aexamples
+                      - link "python" [ref=e1124] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Apython
+                      - link "devops" [ref=e1125] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Adevops
+                      - link "server" [ref=e1126] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aserver
+                      - link "ggml" [ref=e1127] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aggml
+                      - link "SYCL" [ref=e1128] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3ASYCL
+                      - link "Apple Metal" [ref=e1129] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22Apple%20Metal%22
+                      - link "Kompute" [ref=e1130] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3AKompute
+                      - text: labels
+                      - link "Jan 10, 2025on Jan 10, 2025" [ref=e1131] [cursor=pointer]:
+                        - /url: "#event-15877061753"
+                  - generic [ref=e1132]:
+                    - img [ref=e1134]
+                    - generic [ref=e1136]:
+                      - link "@TerryT9" [ref=e1137] [cursor=pointer]:
+                        - /url: /TerryT9
+                        - img "@TerryT9" [ref=e1138]
+                      - link "TerryT9" [ref=e1139] [cursor=pointer]:
+                        - /url: /TerryT9
+                      - text: deleted the
+                      - generic [ref=e1141]: t/omnivlm-ios
+                      - text: branch
+                      - link "January 15, 2025 02:09last year" [ref=e1142] [cursor=pointer]:
+                        - /url: "#event-15932695388"
+            - generic [ref=e1146]:
+              - link "Sign up for free" [ref=e1147] [cursor=pointer]:
+                - /url: /join?source=comment-repo
+              - strong [ref=e1148]: to join this conversation on GitHub
+              - text: . Already have an account?
+              - link "Sign in to comment" [ref=e1149] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fpull%2F11171
+        - generic [ref=e1153]:
+          - form "Select reviewers" [ref=e1155]:
+            - heading "Reviewers" [level=3] [ref=e1156]
+            - generic [ref=e1157]:
+              - paragraph [ref=e1158]:
+                - generic [ref=e1159]:
+                  - link "@JohannesGaessler" [ref=e1160] [cursor=pointer]:
+                    - /url: /JohannesGaessler
+                    - img "@JohannesGaessler" [ref=e1161]
+                  - link "JohannesGaessler" [ref=e1162] [cursor=pointer]:
+                    - /url: /JohannesGaessler
+                - button "Awaiting requested review from JohannesGaessler" [ref=e1163] [cursor=pointer]:
+                  - img [ref=e1165]
+                - button "JohannesGaessler is a code owner" [ref=e1167] [cursor=pointer]:
+                  - img [ref=e1169]
+              - paragraph [ref=e1171]:
+                - generic [ref=e1172]:
+                  - link "@ngxson" [ref=e1173] [cursor=pointer]:
+                    - /url: /ngxson
+                    - img "@ngxson" [ref=e1174]
+                  - link "ngxson" [ref=e1175] [cursor=pointer]:
+                    - /url: /ngxson
+                - button "Awaiting requested review from ngxson" [ref=e1176] [cursor=pointer]:
+                  - img [ref=e1178]
+                - button "ngxson is a code owner" [ref=e1180] [cursor=pointer]:
+                  - img [ref=e1182]
+              - paragraph [ref=e1184]:
+                - generic [ref=e1185]:
+                  - link "@ggerganov" [ref=e1186] [cursor=pointer]:
+                    - /url: /ggerganov
+                    - img "@ggerganov" [ref=e1187]
+                  - link "ggerganov" [ref=e1188] [cursor=pointer]:
+                    - /url: /ggerganov
+                - button "Awaiting requested review from ggerganov" [ref=e1189] [cursor=pointer]:
+                  - img [ref=e1191]
+                - button "ggerganov is a code owner" [ref=e1193] [cursor=pointer]:
+                  - img [ref=e1195]
+          - form "Select assignees" [ref=e1198]:
+            - heading "Assignees" [level=3] [ref=e1199]
+            - text: No one assigned
+          - generic [ref=e1200]:
+            - heading "Labels" [level=3] [ref=e1201]
+            - generic [ref=e1202]:
+              - link "android" [ref=e1203] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aandroid
+                - generic [ref=e1204]: android
+              - link "Apple Metal" [ref=e1205] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22Apple%20Metal%22
+                - generic [ref=e1206]: Apple Metal
+              - link "build" [ref=e1207] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Abuild
+                - generic [ref=e1208]: build
+              - link "devops" [ref=e1209] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Adevops
+                - generic [ref=e1210]: devops
+              - link "documentation" [ref=e1211] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Adocumentation
+                - generic [ref=e1212]: documentation
+              - link "examples" [ref=e1213] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aexamples
+                - generic [ref=e1214]: examples
+              - link "ggml" [ref=e1215] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aggml
+                - generic [ref=e1216]: ggml
+              - link "Kompute" [ref=e1217] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3AKompute
+                - generic [ref=e1218]: Kompute
+              - link "nix" [ref=e1219] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Anix
+                - generic [ref=e1220]: nix
+              - link "Nvidia GPU" [ref=e1221] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22Nvidia%20GPU%22
+                - generic [ref=e1222]: Nvidia GPU
+              - link "python" [ref=e1223] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Apython
+                - generic [ref=e1224]: python
+              - link "script" [ref=e1225] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Ascript
+                - generic [ref=e1226]: script
+              - link "server" [ref=e1227] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aserver
+                - generic [ref=e1228]: server
+              - link "SYCL" [ref=e1229] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3ASYCL
+                - generic [ref=e1230]: SYCL
+              - link "testing" [ref=e1231] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Atesting
+                - generic [ref=e1232]: testing
+              - link "Vulkan" [ref=e1233] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3AVulkan
+                - generic [ref=e1234]: Vulkan
+          - form "Select projects" [ref=e1236]:
+            - heading "Projects" [level=3] [ref=e1237]
+            - text: None yet
+          - form "Select milestones" [ref=e1239]:
+            - heading "Milestone" [level=3] [ref=e1240]
+            - text: No milestone
+          - form "Link issues" [ref=e1246]:
+            - heading "Development" [level=3] [ref=e1247]
+            - paragraph [ref=e1248]: Successfully merging this pull request may close these issues.
+            - paragraph [ref=e1250]: None yet
+          - generic [ref=e1252]:
+            - heading "5 participants" [level=3] [ref=e1253]
+            - generic [ref=e1254]:
+              - link "@TerryT9" [ref=e1255] [cursor=pointer]:
+                - /url: /TerryT9
+                - img "@TerryT9" [ref=e1256]
+              - link "@zhiyuan8" [ref=e1257] [cursor=pointer]:
+                - /url: /zhiyuan8
+                - img "@zhiyuan8" [ref=e1258]
+              - link "@zhycheng614" [ref=e1259] [cursor=pointer]:
+                - /url: /zhycheng614
+                - img "@zhycheng614" [ref=e1260]
+              - link "@Davidqian123" [ref=e1261] [cursor=pointer]:
+                - /url: /Davidqian123
+                - img "@Davidqian123" [ref=e1262]
+              - link "@liwiii" [ref=e1263] [cursor=pointer]:
+                - /url: /liwiii
+                - img "@liwiii" [ref=e1264]
+  - contentinfo [ref=e1265]:
+    - heading "Footer" [level=2] [ref=e1266]
+    - generic [ref=e1267]:
+      - generic [ref=e1268]:
+        - link "GitHub Homepage" [ref=e1269] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1270]
+        - generic [ref=e1272]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1273]:
+        - heading "Footer navigation" [level=3] [ref=e1274]
+        - list "Footer navigation" [ref=e1275]:
+          - listitem [ref=e1276]:
+            - link "Terms" [ref=e1277] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1278]:
+            - link "Privacy" [ref=e1279] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1280]:
+            - link "Security" [ref=e1281] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1282]:
+            - link "Status" [ref=e1283] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1284]:
+            - link "Community" [ref=e1285] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1286]:
+            - link "Docs" [ref=e1287] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1288]:
+            - link "Contact" [ref=e1289] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1290]:
+            - button "Manage cookies" [ref=e1292] [cursor=pointer]
+          - listitem [ref=e1293]:
+            - button "Do not share my personal information" [ref=e1295] [cursor=pointer]

@@ -1,0 +1,672 @@
+- generic [ref=e2]:
+  - generic:
+    - generic:
+      - tooltip "This user is the author of this issue"
+    - generic:
+      - tooltip "This user has previously committed to the llama.cpp repository."
+    - generic:
+      - tooltip "This user has previously committed to the llama.cpp repository."
+    - generic:
+      - tooltip "This user has previously committed to the llama.cpp repository."
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fissues%2F11333
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,899" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113569 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,049" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e149]:
+      - region "Header" [ref=e151]:
+        - generic [ref=e152]:
+          - 'heading "Feature Request: NUMA-aware MoE Expert Allocation for Improved Performanc #11333" [level=1] [ref=e154]':
+            - text: "Feature Request: NUMA-aware MoE Expert Allocation for Improved Performanc"
+            - generic [ref=e156]: "#11333"
+          - generic [ref=e158]:
+            - button "New issue" [ref=e160] [cursor=pointer]:
+              - generic [ref=e162]: New issue
+            - button "Copy link" [ref=e163] [cursor=pointer]:
+              - img [ref=e164]
+      - generic [ref=e172]:
+        - img "Issue" [ref=e173]
+        - text: Closed
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - generic [ref=e180]:
+            - link "@l15y's profile" [ref=e182] [cursor=pointer]:
+              - /url: https://github.com/l15y
+              - img "@l15y" [ref=e183]
+            - generic [ref=e184]:
+              - heading "Description" [level=2] [ref=e185]
+              - generic [ref=e187]:
+                - generic [ref=e189]:
+                  - generic [ref=e190]:
+                    - link "l15y" [ref=e192] [cursor=pointer]:
+                      - /url: https://github.com/l15y
+                    - generic [ref=e193]:
+                      - text: opened
+                      - link "on Jan 21, 2025on Jan 21, 2025" [ref=e194] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#issue-2802335781
+                        - generic "Jan 21, 2025, 11:44 AM EST" [ref=e195]: on Jan 21, 2025on Jan 21, 2025
+                  - button "Issue body actions" [ref=e199] [cursor=pointer]:
+                    - img [ref=e200]
+                - generic [ref=e202]:
+                  - generic [ref=e204]:
+                    - heading "Feature Description" [level=3] [ref=e205]
+                    - paragraph [ref=e206]: Current llama.cpp implementation doesn't optimally utilize NUMA architecture when running Mixture-of-Experts (MoE) models, potentially leaving significant performance gains untapped.
+                    - heading "Proposed Solution" [level=3] [ref=e207]
+                    - paragraph [ref=e208]: "Implement NUMA-aware expert allocation through one or more of these approaches:"
+                    - list [ref=e209]:
+                      - listitem [ref=e210]:
+                        - paragraph [ref=e211]:
+                          - strong [ref=e212]: Process-Level Binding
+                        - list [ref=e213]:
+                          - listitem [ref=e214]:
+                            - text: Integrate
+                            - code [ref=e215]: numactl
+                            - text: "-like functionality directly into llama.cpp"
+                          - listitem [ref=e216]: Allow specifying NUMA nodes per expert group via CLI/config
+                      - listitem [ref=e217]:
+                        - paragraph [ref=e218]:
+                          - strong [ref=e219]: Thread Affinity Control
+                        - list [ref=e220]:
+                          - listitem [ref=e221]: Add pthread/OpenMP affinity binding for expert computation threads
+                          - listitem [ref=e222]:
+                            - text: "Example:"
+                            - code [ref=e223]: "--numa-expert-map \"0-7:0,8-15:1\""
+                            - text: (experts 0-7 on NUMA0, 8-15 on NUMA1)
+                      - listitem [ref=e224]:
+                        - paragraph [ref=e225]:
+                          - strong [ref=e226]: NUMA-Aware Memory Allocation
+                        - list [ref=e227]:
+                          - listitem [ref=e228]:
+                            - text: Leverage
+                            - code [ref=e229]: libnuma
+                            - text: for expert weight allocations
+                          - listitem [ref=e230]:
+                            - text: Implement
+                            - code [ref=e231]: mmap
+                            - text: strategy with
+                            - code [ref=e232]: MAP_FIXED_NOREPLACE
+                            - text: for specific nodes
+                    - heading "Performance Considerations" [level=3] [ref=e233]
+                    - list [ref=e234]:
+                      - listitem [ref=e235]: Cross-NUMA communication cost vs. compute density tradeoff
+                      - listitem [ref=e236]: Automatic topology detection vs. manual mapping
+                      - listitem [ref=e237]: Support for hybrid CPU+accelerator configurations
+                  - toolbar "Reactions" [ref=e239]:
+                    - switch "👍 9 reactions" [ref=e240]:
+                      - generic [ref=e241]:
+                        - generic: 👍
+                        - generic [ref=e242]:
+                          - generic [ref=e243]: React with 👍
+                          - text: "9"
+          - generic [ref=e245]:
+            - generic [ref=e246]:
+              - heading "Activity" [level=2] [ref=e247]
+              - generic [ref=e248]:
+                - region "Events" [ref=e249]:
+                  - generic [ref=e256]:
+                    - img [ref=e260]
+                    - generic [ref=e264]:
+                      - link "l15y" [ref=e266] [cursor=pointer]:
+                        - /url: /l15y
+                        - generic [ref=e267]: l15y
+                      - text: added
+                      - link "enhancement New feature or request" [ref=e269] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22enhancement%22
+                        - generic [ref=e271]: enhancement
+                        - generic [ref=e272]: New feature or request
+                      - link "on Jan 21, 2025on Jan 21, 2025" [ref=e273] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-16017377474
+                        - generic "Jan 21, 2025, 11:44 AM EST" [ref=e274]: on Jan 21, 2025on Jan 21, 2025
+                - generic [ref=e275]:
+                  - link "@l15y's profile" [ref=e276] [cursor=pointer]:
+                    - /url: https://github.com/l15y
+                    - img "l15y" [ref=e277]
+                  - generic [ref=e284]:
+                    - generic [ref=e286]:
+                      - heading "l15y commented on Jan 21, 2025 on Jan 21, 2025" [level=3] [ref=e287]:
+                        - text: l15y commented
+                        - generic "Jan 21, 2025, 8:44 PM EST" [ref=e288]: on Jan 21, 2025 on Jan 21, 2025
+                      - generic [ref=e289]:
+                        - link "l15y" [ref=e291] [cursor=pointer]:
+                          - /url: /l15y
+                        - link "on Jan 21, 2025on Jan 21, 2025" [ref=e294] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/11333#issuecomment-2606101557
+                          - generic "Jan 21, 2025, 8:44 PM EST" [ref=e295]: on Jan 21, 2025on Jan 21, 2025
+                      - generic [ref=e297]:
+                        - generic "This user is the author of this issue" [ref=e299]: Author
+                        - button "Actions for l15y's comment, 8:44 PM on January 21, 2025" [ref=e301] [cursor=pointer]:
+                          - img [ref=e302]
+                    - generic [ref=e304]:
+                      - generic [ref=e306]:
+                        - paragraph [ref=e307]:
+                          - strong [ref=e308]: Potential Speed Improvements for DeepSeek V3 Inference via NUMA-Aware MoE Allocation
+                        - paragraph [ref=e309]: "Deploying DeepSeek V3 or similar large MoE models with NUMA-aware expert allocation could yield significant performance gains through these mechanisms:"
+                        - separator [ref=e310]
+                        - heading "1. Memory Access Optimization" [level=3] [ref=e311]:
+                          - strong [ref=e312]: 1. Memory Access Optimization
+                        - list [ref=e313]:
+                          - listitem [ref=e314]:
+                            - paragraph [ref=e315]:
+                              - strong [ref=e316]: Localized Memory Access
+                            - list [ref=e317]:
+                              - listitem [ref=e318]:
+                                - text: Storing experts on local NUMA nodes
+                                - strong [ref=e319]: reduces cross-node latency
+                                - text: (typical NUMA latency varies 2-5× between local/remote accesses).
+                              - listitem [ref=e320]:
+                                - text: For CPU-bound inference scenarios, this could improve
+                                - strong [ref=e321]: token generation speed by 10-25%
+                                - text: .
+                          - listitem [ref=e322]:
+                            - paragraph [ref=e323]:
+                              - strong [ref=e324]: Cache Utilization
+                              - text: "Thread-core affinity binding improves L3 cache reuse:"
+                            - list [ref=e325]:
+                              - listitem [ref=e326]:
+                                - text: If 30% of expert computations rely on cached data, this may reduce
+                                - strong [ref=e327]: cache miss penalties by 15-30%
+                                - text: .
+                        - separator [ref=e328]
+                        - heading "2. Enhanced Compute Parallelism" [level=3] [ref=e329]:
+                          - strong [ref=e330]: 2. Enhanced Compute Parallelism
+                        - list [ref=e331]:
+                          - listitem [ref=e332]:
+                            - paragraph [ref=e333]:
+                              - strong [ref=e334]: Expert-Level Parallelism
+                              - text: "For DeepSeek V3’s sparsely activated experts (e.g., 2/8 experts per token):"
+                            - list [ref=e335]:
+                              - listitem [ref=e336]: Co-locating experts on the same NUMA node reduces contention for memory bandwidth.
+                              - listitem [ref=e337]:
+                                - text: On dual-socket EPYC servers, this could achieve
+                                - strong [ref=e338]: 20-40% throughput gains
+                                - text: (aligned with
+                                - link "GSPMD experiments" [ref=e339] [cursor=pointer]:
+                                  - /url: https://arxiv.org/abs/2105.04663
+                                - text: ).
+                          - listitem [ref=e340]:
+                            - paragraph [ref=e341]:
+                              - strong [ref=e342]: Load Balancing
+                              - text: "Dynamic routing (e.g., Switch Transformer) may cause uneven expert utilization:"
+                            - list [ref=e343]:
+                              - listitem [ref=e344]: NUMA-aware scheduling can redistribute hotspot experts to idle nodes, reducing tail latency.
+                        - separator [ref=e345]
+                        - heading "3. Reduced Communication Overhead" [level=3] [ref=e346]:
+                          - strong [ref=e347]: 3. Reduced Communication Overhead
+                        - list [ref=e348]:
+                          - listitem [ref=e349]:
+                            - strong [ref=e350]: Inter-Layer Data Transfer
+                            - text: "All-to-All communication between MoE layers may consume 15% of inference time in cross-NUMA setups:"
+                            - list [ref=e351]:
+                              - listitem [ref=e352]:
+                                - text: Prioritizing intra-node routing could cut
+                                - strong [ref=e353]: cross-NUMA traffic by 30-50%
+                                - text: (per
+                                - link "TensorFlow NUMA guidance" [ref=e354] [cursor=pointer]:
+                                  - /url: https://www.tensorflow.org/guide/profiler#numa
+                                - text: ).
+                      - toolbar "Reactions" [ref=e355]:
+                        - switch "👍 10 reactions" [ref=e356]:
+                          - generic [ref=e357]:
+                            - generic: 👍
+                            - generic [ref=e358]:
+                              - generic [ref=e359]: React with 👍
+                              - text: "10"
+                - region "Events" [ref=e360]:
+                  - generic [ref=e367]:
+                    - img [ref=e371]
+                    - generic [ref=e375]:
+                      - link "github-actions" [ref=e377] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e378]: github-actions
+                      - text: added
+                      - link "stale" [ref=e380] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                        - generic [ref=e382]: stale
+                      - link "on Feb 21, 2025on Feb 21, 2025" [ref=e384] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-16409723700
+                        - generic "Feb 21, 2025, 8:07 PM EST" [ref=e385]: on Feb 21, 2025on Feb 21, 2025
+                  - generic [ref=e392]:
+                    - img [ref=e396]
+                    - generic [ref=e398]:
+                      - generic [ref=e400]:
+                        - link "Readon" [ref=e402] [cursor=pointer]:
+                          - /url: /Readon
+                          - generic [ref=e403]: Readon
+                        - text: mentioned this
+                        - link "on Feb 23, 2025on Feb 23, 2025" [ref=e404] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-2087625353
+                          - generic "Feb 23, 2025, 11:52 AM EST" [ref=e405]: on Feb 23, 2025on Feb 23, 2025
+                      - region "Issues mentioned" [ref=e408]:
+                        - list [ref=e409]:
+                          - listitem [ref=e410]:
+                            - generic [ref=e411]:
+                              - img "Completed" [ref=e412]
+                              - 'link "Possible solution for poor token generation performance in llama.cpp on dual Epyc Genoa/Turin systems #11744" [ref=e415] [cursor=pointer]':
+                                - /url: https://github.com/ggml-org/llama.cpp/issues/11744
+                                - text: Possible solution for poor token generation performance in llama.cpp on dual Epyc Genoa/Turin systems
+                                - generic [ref=e416]: "#11744"
+                - generic [ref=e417]:
+                  - link "@Readon's profile" [ref=e418] [cursor=pointer]:
+                    - /url: https://github.com/Readon
+                    - img "Readon" [ref=e419]
+                  - generic [ref=e426]:
+                    - generic [ref=e428]:
+                      - heading "Readon commented on Feb 23, 2025 on Feb 23, 2025" [level=3] [ref=e429]:
+                        - text: Readon commented
+                        - generic "Feb 23, 2025, 10:22 PM EST" [ref=e430]: on Feb 23, 2025 on Feb 23, 2025
+                      - generic [ref=e431]:
+                        - link "Readon" [ref=e433] [cursor=pointer]:
+                          - /url: /Readon
+                        - link "on Feb 23, 2025on Feb 23, 2025" [ref=e436] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/11333#issuecomment-2677357858
+                          - generic "Feb 23, 2025, 10:22 PM EST" [ref=e437]: on Feb 23, 2025on Feb 23, 2025
+                      - button "Actions for Readon's comment, 10:22 PM on February 23, 2025" [ref=e441] [cursor=pointer]:
+                        - img [ref=e442]
+                    - generic [ref=e444]:
+                      - paragraph [ref=e447]:
+                        - text: If it is possible may be it's better to continue with
+                        - link "#9086" [ref=e448] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/9086
+                        - text: to support tensor parallel.
+                        - text: Then treat numa node as a standalone computation unit and speed up by column and row wise tensor parallel.
+                        - text: So that numa node can be running with limited cross memory access then.
+                      - toolbar "Reactions"
+                - region "Events" [ref=e449]:
+                  - generic [ref=e456]:
+                    - img [ref=e460]
+                    - generic [ref=e464]:
+                      - link "github-actions" [ref=e466] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e467]: github-actions
+                      - text: removed
+                      - link "stale" [ref=e469] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                        - generic [ref=e471]: stale
+                      - link "on Feb 24, 2025on Feb 24, 2025" [ref=e473] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-16442324355
+                        - generic "Feb 24, 2025, 8:07 PM EST" [ref=e474]: on Feb 24, 2025on Feb 24, 2025
+                - generic [ref=e475]:
+                  - link "@ubergarm's profile" [ref=e476] [cursor=pointer]:
+                    - /url: https://github.com/ubergarm
+                    - img "ubergarm" [ref=e477]
+                  - generic [ref=e484]:
+                    - generic [ref=e486]:
+                      - heading "ubergarm commented on Feb 27, 2025 on Feb 27, 2025" [level=3] [ref=e487]:
+                        - text: ubergarm commented
+                        - generic "Feb 27, 2025, 4:18 PM EST" [ref=e488]: on Feb 27, 2025 on Feb 27, 2025
+                      - generic [ref=e489]:
+                        - link "ubergarm" [ref=e491] [cursor=pointer]:
+                          - /url: /ubergarm
+                        - link "on Feb 27, 2025on Feb 27, 2025" [ref=e494] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/11333#issuecomment-2689133721
+                          - generic "Feb 27, 2025, 4:18 PM EST" [ref=e495]: on Feb 27, 2025on Feb 27, 2025
+                      - generic [ref=e497]:
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e499]: Contributor
+                        - button "Actions for ubergarm's comment, 4:18 PM on February 27, 2025" [ref=e501] [cursor=pointer]:
+                          - img [ref=e502]
+                    - generic [ref=e504]:
+                      - generic [ref=e506]:
+                        - paragraph [ref=e507]: "Referenced this on this benchmarking example of 6 numa node dual socket intel xeon 6980P case:"
+                        - paragraph [ref=e508]:
+                          - link "#12088" [ref=e509] [cursor=pointer]:
+                            - /url: https://github.com/ggml-org/llama.cpp/discussions/12088
+                      - toolbar "Reactions"
+                - region "Events" [ref=e510]:
+                  - generic [ref=e517]:
+                    - img [ref=e521]
+                    - generic [ref=e525]:
+                      - link "github-actions" [ref=e527] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e528]: github-actions
+                      - text: added
+                      - link "stale" [ref=e530] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                        - generic [ref=e532]: stale
+                      - link "on Mar 29, 2025on Mar 29, 2025" [ref=e534] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-17046623087
+                        - generic "Mar 29, 2025, 9:07 PM EDT" [ref=e535]: on Mar 29, 2025on Mar 29, 2025
+                - generic [ref=e536]:
+                  - link "@sultanqasim's profile" [ref=e537] [cursor=pointer]:
+                    - /url: https://github.com/sultanqasim
+                    - img "sultanqasim" [ref=e538]
+                  - generic [ref=e545]:
+                    - generic [ref=e547]:
+                      - heading "sultanqasim commented on Apr 10, 2025 on Apr 10, 2025" [level=3] [ref=e548]:
+                        - text: sultanqasim commented
+                        - generic "Apr 10, 2025, 5:00 PM EDT" [ref=e549]: on Apr 10, 2025 on Apr 10, 2025
+                      - generic [ref=e550]:
+                        - link "sultanqasim" [ref=e552] [cursor=pointer]:
+                          - /url: /sultanqasim
+                        - link "on Apr 10, 2025on Apr 10, 2025" [ref=e555] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/11333#issuecomment-2795157289
+                          - generic "Apr 10, 2025, 5:00 PM EDT" [ref=e556]: on Apr 10, 2025on Apr 10, 2025
+                      - button "Actions for sultanqasim's comment, 5:00 PM on April 10, 2025" [ref=e560] [cursor=pointer]:
+                        - img [ref=e561]
+                    - generic [ref=e563]:
+                      - paragraph [ref=e566]: Bumping this, as large MoE models like DeepSeek v3 and Llama 4 Maverick continue to gain popularity. Dual-socket servers with large amounts of memory are readily available for reasonable prices second hand, and are generally the most economical way to run such large models. My dual-socket Xeon 4216 server has 230 GB/s of memory bandwidth (115 GB/s per socket), but it only does token generation on Llama 4 Maverick IQ3_XL in Llama.cpp at 4.3 tok/s because of NUMA bottlenecks. Just allocating MoE experts in a NUMA aware manner should give a big speedup even without implementing tensor parallelism.
+                      - toolbar "Reactions" [ref=e567]:
+                        - switch "👍 2 reactions" [ref=e568]:
+                          - generic [ref=e569]:
+                            - generic: 👍
+                            - generic [ref=e570]:
+                              - generic [ref=e571]: React with 👍
+                              - text: "2"
+                - region "Events" [ref=e572]:
+                  - generic [ref=e579]:
+                    - img [ref=e583]
+                    - generic [ref=e587]:
+                      - link "github-actions" [ref=e589] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e590]: github-actions
+                      - text: removed
+                      - link "stale" [ref=e592] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                        - generic [ref=e594]: stale
+                      - link "on Apr 10, 2025on Apr 10, 2025" [ref=e596] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-17216020075
+                        - generic "Apr 10, 2025, 9:07 PM EDT" [ref=e597]: on Apr 10, 2025on Apr 10, 2025
+                - generic [ref=e598]:
+                  - link "@ubergarm's profile" [ref=e599] [cursor=pointer]:
+                    - /url: https://github.com/ubergarm
+                    - img "ubergarm" [ref=e600]
+                  - generic [ref=e607]:
+                    - generic [ref=e609]:
+                      - heading "ubergarm commented on Apr 11, 2025 on Apr 11, 2025" [level=3] [ref=e610]:
+                        - text: ubergarm commented
+                        - generic "Apr 11, 2025, 10:06 AM EDT" [ref=e611]: on Apr 11, 2025 on Apr 11, 2025
+                      - generic [ref=e612]:
+                        - link "ubergarm" [ref=e614] [cursor=pointer]:
+                          - /url: /ubergarm
+                        - link "on Apr 11, 2025on Apr 11, 2025" [ref=e617] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/11333#issuecomment-2797018836
+                          - generic "Apr 11, 2025, 10:06 AM EDT" [ref=e618]: on Apr 11, 2025on Apr 11, 2025
+                      - generic [ref=e620]:
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e622]: Contributor
+                        - button "Actions for ubergarm's comment, 10:06 AM on April 11, 2025" [ref=e624] [cursor=pointer]:
+                          - img [ref=e625]
+                    - generic [ref=e627]:
+                      - generic [ref=e629]:
+                        - paragraph [ref=e630]:
+                          - link "@sultanqasim" [ref=e631] [cursor=pointer]:
+                            - /url: https://github.com/sultanqasim
+                        - paragraph [ref=e632]:
+                          - text: "The closest thing I've seen to allocating Explicit Huge Pages in multiple NUMA nodes for \"data paralle\" (e.g. 2x full copies of the weights) is this discussion and fork you could try out yourself:"
+                          - link "https://github.com/vproxy-tools/llama.cpp/" [ref=e633] [cursor=pointer]:
+                            - /url: https://github.com/vproxy-tools/llama.cpp/
+                        - paragraph [ref=e634]:
+                          - text: "Also some discussion more specific to the allocation of threads here:"
+                          - link "#12488" [ref=e635] [cursor=pointer]:
+                            - /url: https://github.com/ggml-org/llama.cpp/pull/12488
+                          - text: however you can do some of that directly with
+                          - code [ref=e636]: taskset
+                          - text: on the above code.
+                        - paragraph [ref=e637]: Keep us posted with how much faster it is on that thread!
+                      - toolbar "Reactions"
+                - region "Events" [ref=e638]:
+                  - generic [ref=e645]:
+                    - img [ref=e649]
+                    - generic [ref=e653]:
+                      - link "github-actions" [ref=e655] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e656]: github-actions
+                      - text: added
+                      - link "stale" [ref=e658] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                        - generic [ref=e660]: stale
+                      - link "on May 11, 2025on May 11, 2025" [ref=e662] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-17607443073
+                        - generic "May 11, 2025, 9:08 PM EDT" [ref=e663]: on May 11, 2025on May 11, 2025
+                - generic [ref=e664]:
+                  - link "@github-actions's profile" [ref=e665] [cursor=pointer]:
+                    - /url: https://github.com/apps/github-actions
+                    - img "github-actions" [ref=e666]
+                  - generic [ref=e673]:
+                    - generic [ref=e675]:
+                      - heading "github-actions commented on May 25, 2025 on May 25, 2025" [level=3] [ref=e676]:
+                        - text: github-actions commented
+                        - generic "May 25, 2025, 9:08 PM EDT" [ref=e677]: on May 25, 2025 on May 25, 2025
+                      - generic [ref=e678]:
+                        - generic [ref=e679]:
+                          - link "github-actions" [ref=e680] [cursor=pointer]:
+                            - /url: /apps/github-actions
+                          - generic [ref=e681]: bot
+                        - generic [ref=e683]:
+                          - link "on May 25, 2025on May 25, 2025" [ref=e684] [cursor=pointer]:
+                            - /url: https://github.com/ggml-org/llama.cpp/issues/11333#issuecomment-2908242423
+                            - generic "May 25, 2025, 9:08 PM EDT" [ref=e685]: on May 25, 2025on May 25, 2025
+                          - generic [ref=e686]:
+                            - text: – with
+                            - link "GitHub Actions" [ref=e687] [cursor=pointer]:
+                              - /url: https://help.github.com/en/actions
+                      - generic [ref=e689]:
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e691]: Contributor
+                        - button "Actions for github-actions's comment, 9:08 PM on May 25, 2025" [ref=e693] [cursor=pointer]:
+                          - img [ref=e694]
+                    - generic [ref=e696]:
+                      - paragraph [ref=e699]: This issue was closed because it has been inactive for 14 days since being marked as stale.
+                      - toolbar "Reactions"
+                - region "Events" [ref=e700]:
+                  - generic [ref=e707]:
+                    - img [ref=e711]
+                    - generic [ref=e715]:
+                      - link "github-actions" [ref=e717] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e718]: github-actions
+                      - text: closed this as
+                      - link "completed" [ref=e719] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=is%3Aissue%20state%3Aclosed%20archived%3Afalse%20reason%3Acompleted
+                      - link "on May 25, 2025on May 25, 2025" [ref=e720] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/11333#event-17806316654
+                        - generic "May 25, 2025, 9:08 PM EDT" [ref=e721]: on May 25, 2025on May 25, 2025
+            - generic [ref=e722]:
+              - link "Sign up for free" [ref=e723] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ggml-org/llama.cpp/issues/11333
+                - generic [ref=e725]: Sign up for free
+              - generic [ref=e726]:
+                - strong [ref=e727]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e728] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ggml-org/llama.cpp/issues/11333
+        - generic [ref=e730]:
+          - heading "Metadata" [level=2] [ref=e731]
+          - generic [ref=e733]:
+            - generic [ref=e735]:
+              - generic [ref=e736]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e737]: No one assigned
+            - generic [ref=e738]:
+              - generic [ref=e740]:
+                - heading "Labels" [level=3]
+              - generic [ref=e742]:
+                - link "enhancement New feature or request" [ref=e743] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22enhancement%22
+                  - generic [ref=e745]: enhancement
+                  - generic [ref=e746]: New feature or request
+                - link "stale" [ref=e747] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                  - generic [ref=e749]: stale
+            - generic [ref=e752]:
+              - generic [ref=e753]:
+                - heading "Type" [level=3]
+              - generic [ref=e754]: No type
+            - generic [ref=e755]:
+              - generic [ref=e757]:
+                - heading "Fields" [level=3] [ref=e758]
+                - link "Give feedback" [ref=e759] [cursor=pointer]:
+                  - /url: https://github.com/orgs/community/discussions/189141
+              - generic [ref=e761]: No fields configured for issues without a type.
+            - generic [ref=e763]:
+              - generic [ref=e764]:
+                - heading "Projects" [level=3]
+              - generic [ref=e765]: No projects
+            - generic [ref=e767]:
+              - generic [ref=e768]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e769]: No milestone
+            - generic [ref=e771]:
+              - generic [ref=e772]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e773]: None yet
+            - generic [ref=e775]:
+              - generic [ref=e776]:
+                - heading "Development" [level=3]
+              - generic [ref=e777]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e778]
+            - list
+  - contentinfo [ref=e779]:
+    - heading "Footer" [level=2] [ref=e780]
+    - generic [ref=e781]:
+      - generic [ref=e782]:
+        - link "GitHub Homepage" [ref=e783] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e784]
+        - generic [ref=e786]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e787]:
+        - heading "Footer navigation" [level=3] [ref=e788]
+        - list "Footer navigation" [ref=e789]:
+          - listitem [ref=e790]:
+            - link "Terms" [ref=e791] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e792]:
+            - link "Privacy" [ref=e793] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e794]:
+            - link "Security" [ref=e795] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e796]:
+            - link "Status" [ref=e797] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e798]:
+            - link "Community" [ref=e799] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e800]:
+            - link "Docs" [ref=e801] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e802]:
+            - link "Contact" [ref=e803] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e804]:
+            - button "Manage cookies" [ref=e806] [cursor=pointer]
+          - listitem [ref=e807]:
+            - button "Do not share my personal information" [ref=e809] [cursor=pointer]

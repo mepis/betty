@@ -1,0 +1,1410 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fthc1006%2Fqwen3.6-speculative-decoding-rtx3090
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=thc1006%2Fqwen3.6-speculative-decoding-rtx3090
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "thc1006" [ref=e70] [cursor=pointer]:
+            - /url: /thc1006
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "qwen3.6-speculative-decoding-rtx3090" [ref=e73] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fthc1006%2Fqwen3.6-speculative-decoding-rtx3090
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 1" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fthc1006%2Fqwen3.6-speculative-decoding-rtx3090
+                - img [ref=e82]
+                - text: Fork
+                - generic "1" [ref=e84]
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fthc1006%2Fqwen3.6-speculative-decoding-rtx3090
+                - img [ref=e88]
+                - text: Star
+                - generic "26 users starred this repository" [ref=e90]: "26"
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues" [ref=e99] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+          - listitem [ref=e104]:
+            - link "Pull requests" [ref=e105] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/pulls
+              - img [ref=e106]
+              - generic [ref=e108]: Pull requests
+          - listitem [ref=e109]:
+            - link "Discussions" [ref=e110] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/discussions
+              - img [ref=e111]
+              - generic [ref=e113]: Discussions
+          - listitem [ref=e114]:
+            - link "Actions" [ref=e115] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/actions
+              - img [ref=e116]
+              - generic [ref=e118]: Actions
+          - listitem [ref=e119]:
+            - link "Projects" [ref=e120] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/projects
+              - img [ref=e121]
+              - generic [ref=e123]: Projects
+          - listitem [ref=e124]:
+            - link "Security and quality" [ref=e125] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/security
+              - img [ref=e126]
+              - generic [ref=e128]: Security and quality
+          - listitem [ref=e129]:
+            - link "Insights" [ref=e130] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/pulse
+              - img [ref=e131]
+              - generic [ref=e133]: Insights
+    - generic [ref=e146]:
+      - heading "thc1006/qwen3.6-speculative-decoding-rtx3090" [level=1] [ref=e148]
+      - generic [ref=e149]:
+        - generic [ref=e152]:
+          - generic [ref=e153]:
+            - generic [ref=e154]:
+              - button "master branch" [ref=e156] [cursor=pointer]:
+                - generic [ref=e157]:
+                  - generic [ref=e159]:
+                    - img [ref=e161]
+                    - generic [ref=e164]: master
+                  - generic:
+                    - img
+              - generic [ref=e165]:
+                - link "1 Branch" [ref=e166] [cursor=pointer]:
+                  - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/branches
+                  - generic [ref=e167]:
+                    - generic:
+                      - img
+                    - generic [ref=e169]:
+                      - strong [ref=e170]: "1"
+                      - text: Branch
+                - link "5 Tags" [ref=e171] [cursor=pointer]:
+                  - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/tags
+                  - generic [ref=e172]:
+                    - generic:
+                      - img
+                    - generic [ref=e174]:
+                      - strong [ref=e175]: "5"
+                      - text: Tags
+            - generic [ref=e176]:
+              - generic [ref=e180]:
+                - img [ref=e182]
+                - combobox "Go to file" [ref=e184]
+              - button "Code" [ref=e185] [cursor=pointer]:
+                - generic [ref=e186]:
+                  - generic:
+                    - img
+                  - generic [ref=e187]: Code
+                  - generic:
+                    - img
+          - generic [ref=e188]:
+            - generic [ref=e189]:
+              - heading "Folders and files" [level=2] [ref=e190]
+              - table "Folders and files" [ref=e191]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e192]:
+                  - 'row "Latest commit thc1006 commits by thc1006 docs: link vllm-2x3090 v5.0 sibling release (Dense vs MoE+MTP) Open commit details Commit de6f33b · May 16, 20262 weeks ago History 27 Commits" [ref=e193]':
+                    - 'cell "Latest commit thc1006 commits by thc1006 docs: link vllm-2x3090 v5.0 sibling release (Dense vs MoE+MTP) Open commit details Commit de6f33b · May 16, 20262 weeks ago History 27 Commits" [ref=e194]':
+                      - generic [ref=e195]:
+                        - heading "Latest commit" [level=2] [ref=e196]
+                        - generic [ref=e197]:
+                          - generic [ref=e199]:
+                            - link "thc1006" [ref=e200] [cursor=pointer]:
+                              - /url: /thc1006
+                              - img "thc1006" [ref=e201]
+                            - link "commits by thc1006" [ref=e202] [cursor=pointer]:
+                              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commits?author=thc1006
+                              - text: thc1006
+                          - generic [ref=e203]:
+                            - 'link "docs: link vllm-2x3090 v5.0 sibling release (Dense vs MoE+MTP)" [ref=e206] [cursor=pointer]':
+                              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/de6f33bf71f1fe0fbac4d213b6aaf6a072da529d
+                            - button "Open commit details" [ref=e207] [cursor=pointer]:
+                              - img [ref=e208]
+                        - generic [ref=e210]:
+                          - generic [ref=e212]:
+                            - link "Commit de6f33b" [ref=e213] [cursor=pointer]:
+                              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/de6f33bf71f1fe0fbac4d213b6aaf6a072da529d
+                              - text: de6f33b
+                            - text: ·
+                            - generic "May 16, 2026, 7:42 PM EDT" [ref=e214]: May 16, 20262 weeks ago
+                          - generic [ref=e215]:
+                            - heading "History" [level=2] [ref=e216]
+                            - link "27 Commits" [ref=e217] [cursor=pointer]:
+                              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commits/master/
+                              - generic [ref=e218]:
+                                - generic:
+                                  - img
+                                - generic [ref=e219]: 27 Commits
+                  - 'row "analysis, (Directory) docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %% May 7, 20263 weeks ago" [ref=e220]':
+                    - cell "analysis, (Directory)" [ref=e221]:
+                      - generic [ref=e222]:
+                        - img [ref=e223]
+                        - link "analysis, (Directory)" [ref=e228] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/tree/master/analysis
+                          - text: analysis
+                    - 'cell "docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %%" [ref=e229]':
+                      - 'link "docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %%" [ref=e232] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/06c664c24324a41e6fd375becf587585e4b42cd3
+                    - cell "May 7, 20263 weeks ago" [ref=e233]:
+                      - generic [ref=e234]: May 7, 20263 weeks ago
+                  - 'row "results, (Directory) Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090 Apr 20, 2026last month" [ref=e235]':
+                    - cell "results, (Directory)" [ref=e236]:
+                      - generic [ref=e237]:
+                        - img [ref=e238]
+                        - link "results, (Directory)" [ref=e243] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/tree/master/results
+                          - text: results
+                    - 'cell "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e244]':
+                      - 'link "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e247] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/865c2b0f6b5f4ec31115a6695b61c6fc803741fc
+                    - cell "Apr 20, 2026last month" [ref=e248]:
+                      - generic [ref=e249]: Apr 20, 2026last month
+                  - 'row "v2_3090_followup, (Directory) v2.3: Exp 2 code/JSON workload + scope correction (engine-specific, n… Apr 25, 2026last month" [ref=e250]':
+                    - cell "v2_3090_followup, (Directory)" [ref=e251]:
+                      - generic [ref=e252]:
+                        - img [ref=e253]
+                        - link "v2_3090_followup, (Directory)" [ref=e258] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/tree/master/v2_3090_followup
+                          - text: v2_3090_followup
+                    - 'cell "v2.3: Exp 2 code/JSON workload + scope correction (engine-specific, n…" [ref=e259]':
+                      - 'link "v2.3: Exp 2 code/JSON workload + scope correction (engine-specific, n…" [ref=e262] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/3eef1165f5f1bfad787e3383b46b9eec0504afb5
+                    - cell "Apr 25, 2026last month" [ref=e263]:
+                      - generic [ref=e264]: Apr 25, 2026last month
+                  - 'row "v3_dflash_2026_05_07, (Directory) docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %% May 7, 20263 weeks ago" [ref=e265]':
+                    - cell "v3_dflash_2026_05_07, (Directory)" [ref=e266]:
+                      - generic [ref=e267]:
+                        - img [ref=e268]
+                        - link "v3_dflash_2026_05_07, (Directory)" [ref=e273] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/tree/master/v3_dflash_2026_05_07
+                          - text: v3_dflash_2026_05_07
+                    - 'cell "docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %%" [ref=e274]':
+                      - 'link "docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %%" [ref=e277] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/06c664c24324a41e6fd375becf587585e4b42cd3
+                    - cell "May 7, 20263 weeks ago" [ref=e278]:
+                      - generic [ref=e279]: May 7, 20263 weeks ago
+                  - 'row ".gitignore, (File) docs: v2 env snapshot + gitignore negation for v2 logs Apr 22, 2026last month" [ref=e280]':
+                    - cell ".gitignore, (File)" [ref=e281]:
+                      - generic [ref=e282]:
+                        - img [ref=e283]
+                        - link ".gitignore, (File)" [ref=e288] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/.gitignore
+                          - text: .gitignore
+                    - 'cell "docs: v2 env snapshot + gitignore negation for v2 logs" [ref=e289]':
+                      - 'link "docs: v2 env snapshot + gitignore negation for v2 logs" [ref=e292] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/ff1d90c9d674ba97d43a979e97fa21473520d247
+                    - cell "Apr 22, 2026last month" [ref=e293]:
+                      - generic [ref=e294]: Apr 22, 2026last month
+                  - 'row "BENCHMARK_ENV.md, (File) docs: v3 update for top-level files (BENCHMARK_ENV, pr_comment, requi… May 7, 20263 weeks ago" [ref=e295]':
+                    - cell "BENCHMARK_ENV.md, (File)" [ref=e296]:
+                      - generic [ref=e297]:
+                        - img [ref=e298]
+                        - link "BENCHMARK_ENV.md, (File)" [ref=e303] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/BENCHMARK_ENV.md
+                          - text: BENCHMARK_ENV.md
+                    - 'cell "docs: v3 update for top-level files (BENCHMARK_ENV, pr_comment, requi…" [ref=e304]':
+                      - 'link "docs: v3 update for top-level files (BENCHMARK_ENV, pr_comment, requi…" [ref=e307] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/83e07b2081168f89416323ea061427664e7a1752
+                    - cell "May 7, 20263 weeks ago" [ref=e308]:
+                      - generic [ref=e309]: May 7, 20263 weeks ago
+                  - 'row "CHANGELOG.md, (File) docs: link vllm-2x3090 v5.0 sibling release (Dense vs MoE+MTP) May 16, 20262 weeks ago" [ref=e310]':
+                    - cell "CHANGELOG.md, (File)" [ref=e311]:
+                      - generic [ref=e312]:
+                        - img [ref=e313]
+                        - link "CHANGELOG.md, (File)" [ref=e318] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/CHANGELOG.md
+                          - text: CHANGELOG.md
+                    - 'cell "docs: link vllm-2x3090 v5.0 sibling release (Dense vs MoE+MTP)" [ref=e319]':
+                      - 'link "docs: link vllm-2x3090 v5.0 sibling release (Dense vs MoE+MTP)" [ref=e322] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/de6f33bf71f1fe0fbac4d213b6aaf6a072da529d
+                    - cell "May 16, 20262 weeks ago" [ref=e323]:
+                      - generic [ref=e324]: May 16, 20262 weeks ago
+                  - 'row "LICENSE, (File) Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090 Apr 20, 2026last month" [ref=e325]':
+                    - cell "LICENSE, (File)" [ref=e326]:
+                      - generic [ref=e327]:
+                        - img [ref=e328]
+                        - link "LICENSE, (File)" [ref=e333] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/LICENSE
+                          - text: LICENSE
+                    - 'cell "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e334]':
+                      - 'link "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e337] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/865c2b0f6b5f4ec31115a6695b61c6fc803741fc
+                    - cell "Apr 20, 2026last month" [ref=e338]:
+                      - generic [ref=e339]: Apr 20, 2026last month
+                  - row "README.md, (File) Update DOI badge format in README.md May 12, 20262 weeks ago" [ref=e340]:
+                    - cell "README.md, (File)" [ref=e341]:
+                      - generic [ref=e342]:
+                        - img [ref=e343]
+                        - link "README.md, (File)" [ref=e348] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/README.md
+                          - text: README.md
+                    - cell "Update DOI badge format in README.md" [ref=e349]:
+                      - link "Update DOI badge format in README.md" [ref=e352] [cursor=pointer]:
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/993d81f82b23634c8607f7fc7073b10301bd1b89
+                    - cell "May 12, 20262 weeks ago" [ref=e353]:
+                      - generic [ref=e354]: May 12, 20262 weeks ago
+                  - 'row "bench_runner.py, (File) Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090 Apr 20, 2026last month" [ref=e355]':
+                    - cell "bench_runner.py, (File)" [ref=e356]:
+                      - generic [ref=e357]:
+                        - img [ref=e358]
+                        - link "bench_runner.py, (File)" [ref=e363] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/bench_runner.py
+                          - text: bench_runner.py
+                    - 'cell "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e364]':
+                      - 'link "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e367] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/865c2b0f6b5f4ec31115a6695b61c6fc803741fc
+                    - cell "Apr 20, 2026last month" [ref=e368]:
+                      - generic [ref=e369]: Apr 20, 2026last month
+                  - 'row "collect_env.sh, (File) Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090 Apr 20, 2026last month" [ref=e370]':
+                    - cell "collect_env.sh, (File)" [ref=e371]:
+                      - generic [ref=e372]:
+                        - img [ref=e373]
+                        - link "collect_env.sh, (File)" [ref=e378] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/collect_env.sh
+                          - text: collect_env.sh
+                    - 'cell "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e379]':
+                      - 'link "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e382] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/865c2b0f6b5f4ec31115a6695b61c6fc803741fc
+                    - cell "Apr 20, 2026last month" [ref=e383]:
+                      - generic [ref=e384]: Apr 20, 2026last month
+                  - 'row "pr_comment.md, (File) docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %% May 7, 20263 weeks ago" [ref=e385]':
+                    - cell "pr_comment.md, (File)" [ref=e386]:
+                      - generic [ref=e387]:
+                        - img [ref=e388]
+                        - link "pr_comment.md, (File)" [ref=e393] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/pr_comment.md
+                          - text: pr_comment.md
+                    - 'cell "docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %%" [ref=e394]':
+                      - 'link "docs: precision fix DFlash NET LOSS prose -44 %% to -44.6 %%" [ref=e397] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/06c664c24324a41e6fd375becf587585e4b42cd3
+                    - cell "May 7, 20263 weeks ago" [ref=e398]:
+                      - generic [ref=e399]: May 7, 20263 weeks ago
+                  - 'row "requirements.txt, (File) docs: add v3 convert deps comments to requirements.txt May 7, 20263 weeks ago" [ref=e400]':
+                    - cell "requirements.txt, (File)" [ref=e401]:
+                      - generic [ref=e402]:
+                        - img [ref=e403]
+                        - link "requirements.txt, (File)" [ref=e408] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/requirements.txt
+                          - text: requirements.txt
+                    - 'cell "docs: add v3 convert deps comments to requirements.txt" [ref=e409]':
+                      - 'link "docs: add v3 convert deps comments to requirements.txt" [ref=e412] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/4c62a2b89b49555ed64a1ba9cb6879e986815a9e
+                    - cell "May 7, 20263 weeks ago" [ref=e413]:
+                      - generic [ref=e414]: May 7, 20263 weeks ago
+                  - 'row "run_matrix.sh, (File) Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090 Apr 20, 2026last month" [ref=e415]':
+                    - cell "run_matrix.sh, (File)" [ref=e416]:
+                      - generic [ref=e417]:
+                        - img [ref=e418]
+                        - link "run_matrix.sh, (File)" [ref=e423] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/run_matrix.sh
+                          - text: run_matrix.sh
+                    - 'cell "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e424]':
+                      - 'link "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e427] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/865c2b0f6b5f4ec31115a6695b61c6fc803741fc
+                    - cell "Apr 20, 2026last month" [ref=e428]:
+                      - generic [ref=e429]: Apr 20, 2026last month
+                  - 'row "run_p0_matrix.sh, (File) Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090 Apr 20, 2026last month" [ref=e430]':
+                    - cell "run_p0_matrix.sh, (File)" [ref=e431]:
+                      - generic [ref=e432]:
+                        - img [ref=e433]
+                        - link "run_p0_matrix.sh, (File)" [ref=e438] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/run_p0_matrix.sh
+                          - text: run_p0_matrix.sh
+                    - 'cell "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e439]':
+                      - 'link "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e442] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/865c2b0f6b5f4ec31115a6695b61c6fc803741fc
+                    - cell "Apr 20, 2026last month" [ref=e443]:
+                      - generic [ref=e444]: Apr 20, 2026last month
+                  - 'row "run_verify_matrix.sh, (File) Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090 Apr 20, 2026last month" [ref=e445]':
+                    - cell "run_verify_matrix.sh, (File)" [ref=e446]:
+                      - generic [ref=e447]:
+                        - img [ref=e448]
+                        - link "run_verify_matrix.sh, (File)" [ref=e453] [cursor=pointer]:
+                          - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/run_verify_matrix.sh
+                          - text: run_verify_matrix.sh
+                    - 'cell "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e454]':
+                      - 'link "Initial release: Qwen3.6-35B-A3B spec-decode bench on RTX 3090" [ref=e457] [cursor=pointer]':
+                        - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/commit/865c2b0f6b5f4ec31115a6695b61c6fc803741fc
+                    - cell "Apr 20, 2026last month" [ref=e458]:
+                      - generic [ref=e459]: Apr 20, 2026last month
+            - generic [ref=e461]:
+              - generic [ref=e462]:
+                - heading "Repository files navigation" [level=2] [ref=e463]
+                - navigation "Repository files" [ref=e464]:
+                  - list [ref=e465]:
+                    - listitem [ref=e466]:
+                      - link "README" [ref=e467] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e469]
+                        - generic [ref=e471]: README
+                    - listitem [ref=e472]:
+                      - link "MIT license" [ref=e473] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e475]
+                        - generic [ref=e477]: MIT license
+                - button "Outline" [ref=e478] [cursor=pointer]:
+                  - img [ref=e479]
+              - article [ref=e482]:
+                - generic [ref=e483]:
+                  - heading "Qwen3.6-35B-A3B speculative decoding on RTX 3090 — first public benchmark" [level=1] [ref=e484]
+                  - 'link "Permalink: Qwen3.6-35B-A3B speculative decoding on RTX 3090 — first public benchmark" [ref=e485] [cursor=pointer]':
+                    - /url: "#qwen36-35b-a3b-speculative-decoding-on-rtx-3090--first-public-benchmark"
+                    - img [ref=e486]
+                - paragraph [ref=e488]:
+                  - link "DOI" [ref=e489] [cursor=pointer]:
+                    - /url: https://doi.org/10.5281/zenodo.19776558
+                    - img "DOI" [ref=e490]
+                - blockquote [ref=e491]:
+                  - paragraph [ref=e492]:
+                    - strong [ref=e493]: 2026-05-07 — v3 update
+                    - text: ": DFlash via llama.cpp PR #22105 added. First public RTX 3090 + DFlash + Q4 datapoint. Result: best DFlash config ("
+                    - code [ref=e494]: "--draft-max=8"
+                    - text: ) is 77.0 tok/s vs 138.9 baseline =
+                    - strong [ref=e495]: NET LOSS −44.6 %
+                    - text: . Slightly less bad than Oleg draft-spec (−52 %) but still net negative. The MoE-expert-routing × consumer-Ampere bandwidth hypothesis from v2.x generalises to DFlash too — co-trained spec heads (vLLM MTP, see
+                    - link "sister repo" [ref=e496] [cursor=pointer]:
+                      - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090
+                    - text: ) remain the only positive yield path on this hardware. Full results, raw logs, and reproducer in
+                    - link "v3_dflash_2026_05_07/" [ref=e497] [cursor=pointer]:
+                      - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/v3_dflash_2026_05_07
+                      - code [ref=e498]: v3_dflash_2026_05_07/
+                    - text: .
+                - blockquote [ref=e499]:
+                  - paragraph [ref=e500]:
+                    - strong [ref=e501]: 2026-04-26 — Exp 2 (code/JSON workload, N=3, standalone 3090) added.
+                    - text: A reader-suggested hypothesis was that structured / low-entropy prompts (code, JSON config, SQL) might let llama.cpp's
+                    - code [ref=e502]: "--draft-min/--draft-max"
+                    - text: ngram speculation win where diverse natural-language prompts lost. Tested with 5 code/JSON prompts × 3 trials × 3 configs = 45 measurements.
+                    - strong [ref=e503]: "Result: still NET LOSS"
+                    - text: — baseline 139.22 ± 0.46 tok/s, Oleg
+                    - code [ref=e504]: "--draft-min 2 --draft-max 32"
+                    - text: 66.57 ± 7.57 tok/s (
+                    - strong [ref=e505]: −52 %
+                    - text: ), srogmann
+                    - code [ref=e506]: "--draft-min 48 --draft-max 64"
+                    - text: 83.84 ± 1.80 tok/s (
+                    - strong [ref=e507]: −40 %
+                    - text: ). The workload-shape hypothesis is refuted on llama.cpp + Q4 + RTX 3090; the regression is structural (MoE expert-saturation, see "Why" paragraph). Full data + reproducer in
+                    - link "v2_3090_followup/exp2_codejson_n3/" [ref=e508] [cursor=pointer]:
+                      - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/v2_3090_followup/exp2_codejson_n3
+                      - code [ref=e509]: v2_3090_followup/exp2_codejson_n3/
+                    - text: .
+                  - paragraph [ref=e510]:
+                    - strong [ref=e511]: The picture changes for vLLM, however.
+                    - text: A clean A/B retest in the sibling repo
+                    - link "thc1006/qwen3.6-vllm-2x3090" [ref=e512] [cursor=pointer]:
+                      - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090
+                      - code [ref=e513]: thc1006/qwen3.6-vllm-2x3090
+                    - text: on the same physical hardware, run with
+                    - strong [ref=e514]:
+                      - text: matched flags AND
+                      - code [ref=e515]: "--no-enable-prefix-caching"
+                    - text: ", found vLLM"
+                    - code [ref=e516]: method=mtp num_speculative_tokens=1
+                    - text: is
+                    - strong [ref=e517]: +27.5 % faster decode rate
+                    - text: "(decode TPOT 7.620 ± 0.022 ms → 5.976 ± 0.456 ms, holds across all 5 prompts and concurrencies C ∈ {1, 4, 8}). The previously reported vLLM −12 % was a flag confound + an MTP × prefix-cache interaction artifact ("
+                    - 'link "vllm #38182" [ref=e518] [cursor=pointer]':
+                      - /url: https://github.com/vllm-project/vllm/issues/38182
+                    - text: reports MTP drops cache hit rate ~92 % → ~71 %).
+                    - strong [ref=e519]: "So: the negative finding in this repo is engine + spec-method specific (llama.cpp draft on consumer Ampere) — not hardware-class-independent as v2.2 stated."
+                    - text: The "Cross-engine confirmation" paragraph below has been corrected accordingly.
+                - blockquote [ref=e520]:
+                  - paragraph [ref=e521]:
+                    - strong [ref=e522]: UPDATE 2026-04-22 — v2 follow-up bench added
+                    - text: In response to
+                    - link "Oleg-dM's comment on the HF discussion" [ref=e523] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/discussions/14
+                    - text: ", a second independent bench was run on a fresh single-3090 box, testing"
+                    - code [ref=e524]: "--draft-min 2 --draft-max 32"
+                    - text: (Oleg's suggestion), the srogmann-style
+                    - code [ref=e525]: "--draft-min 48 --draft-max 64"
+                    - text: ", default"
+                    - code [ref=e526]: "--draft-min 5"
+                    - text: ", and a control sweep. All artefacts live in"
+                    - link "v2_3090_followup/" [ref=e527] [cursor=pointer]:
+                      - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/v2_3090_followup
+                      - code [ref=e528]: v2_3090_followup/
+                    - text: with methodology + full table in
+                    - link "v2_3090_followup/SUMMARY.md" [ref=e529] [cursor=pointer]:
+                      - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/v2_3090_followup/SUMMARY.md
+                      - code [ref=e530]: v2_3090_followup/SUMMARY.md
+                    - text: .
+                  - paragraph [ref=e531]:
+                    - strong [ref=e532]: Cross-validated on current master
+                    - text: (
+                    - code [ref=e533]: bcb5eeb64
+                    - text: ", after PR #22227"
+                    - code [ref=e534]: "speculative-simple: add checkpoint support"
+                    - text: ) — identical results to original commit within ±0.3 % noise, so the regression is not a stale-commit artefact. Raw logs in
+                    - link "v2_3090_followup/v2_master_cross_check/" [ref=e535] [cursor=pointer]:
+                      - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/v2_3090_followup/v2_master_cross_check
+                      - code [ref=e536]: v2_3090_followup/v2_master_cross_check/
+                    - text: .
+                  - paragraph [ref=e537]: "Short version of what v2 adds:"
+                  - list [ref=e538]:
+                    - listitem [ref=e539]:
+                      - text: Original "mean 120, bimodal tail 59" is the
+                      - strong [ref=e540]: mixture
+                      - text: of two regimes — prompts that keep spec-decode active all the way (collapse to 55–85 tok/s) and prompts that exhaust the draft cache and fall back to normal decode (~140 tok/s).
+                    - listitem [ref=e541]: v2 uses 5 predictable structured prompts that keep spec-decode active throughout, so the worst-case degradation (−39 % to −60 %) is more visible than the mixture average.
+                    - listitem [ref=e542]:
+                      - text: Oleg's
+                      - code [ref=e543]: "--draft-min 2 --draft-max 32"
+                      - text: beats the
+                      - code [ref=e544]: "--draft-min=5"
+                      - text: defaults (65 vs 55 tok/s) but is still −54 % vs baseline 139.9.
+                    - listitem [ref=e545]:
+                      - text: "Counter-intuitive finding: aggressive"
+                      - code [ref=e546]: "--draft-min 48 --draft-max 64"
+                      - text: is the
+                      - strong [ref=e547]: least bad
+                      - text: recipe (−39 %) because the large draft window amortises the verify / KV overhead.
+                    - listitem [ref=e548]:
+                      - code [ref=e549]: n_acc_tokens / n_gen_tokens
+                      - text: 100 % is real (confirmed via source reading of
+                      - code [ref=e550]: common/speculative.cpp
+                      - text: + a
+                      - code [ref=e551]: "--verbose"
+                      - text: run emitting
+                      - code [ref=e552]: draft acceptance rate = 1.00000 (115 accepted / 115 generated)
+                      - text: ).
+                  - paragraph [ref=e553]:
+                    - text: "Conclusion of the original post stands:"
+                    - strong [ref=e554]: no spec-decode configuration on a consumer 3090 is a net win for Qwen3.6-35B-A3B at Q4_K_M.
+                - paragraph [ref=e555]:
+                  - link "v2 bench · all configs vs baseline" [ref=e556] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/v2_3090_followup/plot_v2_configs.png
+                    - img "v2 bench · all configs vs baseline" [ref=e557]
+                - paragraph [ref=e558]:
+                  - strong [ref=e559]: TL;DR.
+                  - text: After llama.cpp
+                  - 'link "PR #19493" [ref=e560] [cursor=pointer]':
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/19493
+                  - text: (merged 2026-04-19) enabled classic draft speculative decoding for Qwen3.5/3.6 MoE models, I ran a 19-config matrix on a single RTX 3090 with
+                  - code [ref=e561]: Qwen3.6-35B-A3B-UD-Q4_K_XL
+                  - text: via llama-server at commit
+                  - code [ref=e562]: "9789512"
+                  - text: .
+                - paragraph [ref=e563]:
+                  - strong [ref=e564]: Finding.
+                  - text: No speculative-decode configuration achieves a net speedup over the non-speculative baseline on this hardware. Mean decode drops
+                  - strong [ref=e565]: 3–12 %
+                  - text: across
+                  - code [ref=e566]: ngram-cache
+                  - text: ","
+                  - code [ref=e567]: ngram-mod
+                  - text: ", and classic draft with the vocab-matched"
+                  - code [ref=e568]: Qwen3.5-0.8B
+                  - text: (vocab 248320) — and
+                  - strong [ref=e569]: every configuration hits a bimodal tail reaching as low as 59–67 tok/s on reasoning / code prompts
+                  - text: ", despite"
+                  - strong [ref=e570]: 100 % draft acceptance
+                  - text: .
+                - paragraph [ref=e571]:
+                  - 'link "Cross-hardware comparison: 4 datapoints — 1× 3090 llama.cpp draft (still net loss), 2× 3090 vLLM v1 (confounded), 2× A100 vLLM v2 (cache-ON regime), 2× 3090 vLLM v3 clean A/B (POSITIVE +27.5%)" [ref=e572] [cursor=pointer]':
+                    - /url: https://raw.githubusercontent.com/thc1006/qwen3.6-vllm-2x3090/master/analysis/plot_cross_hardware.png
+                    - 'img "Cross-hardware comparison: 4 datapoints — 1× 3090 llama.cpp draft (still net loss), 2× 3090 vLLM v1 (confounded), 2× A100 vLLM v2 (cache-ON regime), 2× 3090 vLLM v3 clean A/B (POSITIVE +27.5%)" [ref=e573]'
+                - paragraph [ref=e574]:
+                  - strong [ref=e575]: "Cross-engine status (corrected 2026-04-26):"
+                  - text: the negative direction reported here is
+                  - strong [ref=e576]: engine-specific to llama.cpp + Q4 + draft speculation
+                  - text: ", not engine-independent as v2.2 stated. A v3 clean A/B retest in the sibling repo on"
+                  - strong [ref=e577]: 2× RTX 3090 PCIe with vLLM 0.19.1
+                  - text: with matched flags
+                  - code [ref=e578]: 0.90 / 8 / hermes
+                  - text: AND
+                  - code [ref=e579]: "--no-enable-prefix-caching"
+                  - text: flips MTP k=1 to
+                  - strong [ref=e580]: −21.6 % decode TPOT (≡ +27.5 % faster decode rate)
+                  - text: with N=5 trials × 5 prompts. v1/v2 published vLLM −12 % was a flag confound (0.80/2 vs 0.90/8); the previously cited Modal A100 −11.4 % was prefix-cache-ON and is best read as the prefix-cache-ON-regime A100 datapoint,
+                  - strong [ref=e581]: not
+                  - text: as evidence MTP is intrinsically negative — vllm
+                  - link "#38182" [ref=e582] [cursor=pointer]:
+                    - /url: https://github.com/vllm-project/vllm/issues/38182
+                  - text: "reports MTP drops cache hit rate ~92 % → ~71 %, so cache-ON masks MTP's compute speedup with cache-loss penalty. Full v3 methodology + per-prompt + concurrent C∈{1,4,8} data:"
+                  - link "thc1006/qwen3.6-vllm-2x3090" [ref=e583] [cursor=pointer]:
+                    - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090
+                  - text: (
+                  - code [ref=e584]: results/mtp_v3_clean_ab_*.json
+                  - text: ).
+                - paragraph [ref=e585]:
+                  - text: This is consistent with the MoE-specific pathology in
+                  - link "MoESD (arXiv 2505.19645)" [ref=e586] [cursor=pointer]:
+                    - /url: https://arxiv.org/html/2505.19645
+                  - text: and
+                  - link "Utility-Driven SD for MoE (arXiv 2506.20675)" [ref=e587] [cursor=pointer]:
+                    - /url: https://arxiv.org/pdf/2506.20675
+                  - text: ": for a 3B-active MoE like A3B, draft batch"
+                  - code [ref=e588]: K
+                  - text: stays below the expert-saturation threshold (~94 tokens for this sparsity), so every extra draft token triggers new expert loading that outweighs the verification savings.
+                - paragraph [ref=e589]:
+                  - link "Mean decode by config" [ref=e590] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/analysis/plot_mean_by_config.png
+                    - img "Mean decode by config" [ref=e591]
+                - generic [ref=e592]:
+                  - heading "Hardware / software" [level=2] [ref=e593]
+                  - 'link "Permalink: Hardware / software" [ref=e594] [cursor=pointer]':
+                    - /url: "#hardware--software"
+                    - img [ref=e595]
+                - list [ref=e597]:
+                  - listitem [ref=e598]:
+                    - strong [ref=e599]: GPU
+                    - text: ": 1 × RTX 3090 ("
+                    - code [ref=e600]: CUDA_VISIBLE_DEVICES=1
+                    - text: ), SM 8.6, 24 GB, driver 580.126.09, CUDA 12.6
+                  - listitem [ref=e601]:
+                    - strong [ref=e602]: Host
+                    - text: ": Ubuntu 24.04, kernel 6.17, i7-11700, 62 GB RAM"
+                  - listitem [ref=e603]:
+                    - strong [ref=e604]: llama.cpp
+                    - text: ": commit"
+                    - code [ref=e605]: "9789512"
+                    - text: "(post #19493 merge, pre #20075 second-round fix)"
+                  - listitem [ref=e606]:
+                    - strong [ref=e607]: Model
+                    - text: ":"
+                    - link "unsloth/Qwen3.6-35B-A3B-GGUF · Qwen3.6-35B-A3B-UD-Q4_K_XL" [ref=e608] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/blob/main/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf
+                      - code [ref=e609]: unsloth/Qwen3.6-35B-A3B-GGUF
+                      - text: ·
+                      - code [ref=e610]: Qwen3.6-35B-A3B-UD-Q4_K_XL
+                    - text: — 21 GB
+                  - listitem [ref=e611]:
+                    - strong [ref=e612]: Draft model (for classic SD)
+                    - text: ":"
+                    - link "unsloth/Qwen3.5-0.8B-GGUF · Qwen3.5-0.8B-Q4_K_M" [ref=e613] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF
+                      - code [ref=e614]: unsloth/Qwen3.5-0.8B-GGUF
+                      - text: ·
+                      - code [ref=e615]: Qwen3.5-0.8B-Q4_K_M
+                    - text: — 508 MB, vocab 248320 (matches target)
+                  - listitem [ref=e616]:
+                    - strong [ref=e617]: Server flags
+                    - text: "(fixed across matrix):"
+                    - code [ref=e618]: "-ngl 999 -c 16384 --jinja -fa on -ctk q8_0 -ctv q8_0"
+                  - listitem [ref=e619]:
+                    - strong [ref=e620]: Sampling
+                    - text: ": greedy ("
+                    - code [ref=e621]: temperature=0
+                    - text: ), 300
+                    - code [ref=e622]: max_tokens
+                    - text: unless noted; 1 warmup turn; 10 prompts (English chat / reasoning / code / multi-turn / 繁中)
+                  - listitem [ref=e623]:
+                    - text: Full environment snapshot in
+                    - link "BENCHMARK_ENV.md" [ref=e624] [cursor=pointer]:
+                      - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/BENCHMARK_ENV.md
+                      - code [ref=e625]: BENCHMARK_ENV.md
+                - generic [ref=e626]:
+                  - heading "Results" [level=2] [ref=e627]
+                  - 'link "Permalink: Results" [ref=e628] [cursor=pointer]':
+                    - /url: "#results"
+                    - img [ref=e629]
+                - generic [ref=e631]:
+                  - heading "All configurations (sorted)" [level=3] [ref=e632]
+                  - 'link "Permalink: All configurations (sorted)" [ref=e633] [cursor=pointer]':
+                    - /url: "#all-configurations-sorted"
+                    - img [ref=e634]
+                - table [ref=e637]:
+                  - rowgroup [ref=e638]:
+                    - row "config mean tok/s min max std draft accept notes" [ref=e639]:
+                      - columnheader "config" [ref=e640]
+                      - columnheader "mean tok/s" [ref=e641]
+                      - columnheader "min" [ref=e642]
+                      - columnheader "max" [ref=e643]
+                      - columnheader "std" [ref=e644]
+                      - columnheader "draft accept" [ref=e645]
+                      - columnheader "notes" [ref=e646]
+                  - rowgroup [ref=e647]:
+                    - row "baseline 135.7 135.3 136.2 0.3 — reference" [ref=e648]:
+                      - cell "baseline" [ref=e649]:
+                        - strong [ref=e650]: baseline
+                      - cell "135.7" [ref=e651]:
+                        - strong [ref=e652]: "135.7"
+                      - cell "135.3" [ref=e653]
+                      - cell "136.2" [ref=e654]
+                      - cell "0.3" [ref=e655]
+                      - cell "—" [ref=e656]
+                      - cell "reference" [ref=e657]
+                    - row "baseline-rerun 135.5 135.1 136.0 0.3 — reproduction" [ref=e658]:
+                      - cell "baseline-rerun" [ref=e659]
+                      - cell "135.5" [ref=e660]
+                      - cell "135.1" [ref=e661]
+                      - cell "136.0" [ref=e662]
+                      - cell "0.3" [ref=e663]
+                      - cell "—" [ref=e664]
+                      - cell "reproduction" [ref=e665]
+                    - row "draft-qwen3-0.6b 135.3 135.0 135.5 0.2 — (draft failed) vocab 151936 ≠ 248320, draft never attached — treat as baseline, shown for posterity" [ref=e666]:
+                      - cell "draft-qwen3-0.6b" [ref=e667]
+                      - cell "135.3" [ref=e668]
+                      - cell "135.0" [ref=e669]
+                      - cell "135.5" [ref=e670]
+                      - cell "0.2" [ref=e671]
+                      - cell "— (draft failed)" [ref=e672]
+                      - cell "vocab 151936 ≠ 248320, draft never attached — treat as baseline, shown for posterity" [ref=e673]:
+                        - strong [ref=e674]: vocab 151936 ≠ 248320, draft never attached — treat as baseline, shown for posterity
+                    - row "ngmod-n32 133.7 133.5 133.9 0.1 0 % N too large to hit — effectively baseline" [ref=e675]:
+                      - cell "ngmod-n32" [ref=e676]
+                      - cell "133.7" [ref=e677]
+                      - cell "133.5" [ref=e678]
+                      - cell "133.9" [ref=e679]
+                      - cell "0.1" [ref=e680]
+                      - cell "0 %" [ref=e681]
+                      - cell "N too large to hit — effectively baseline" [ref=e682]
+                    - row "baseline-1000tok 133.2 132.7 134.0 0.4 — —2 % from long output alone" [ref=e683]:
+                      - cell "baseline-1000tok" [ref=e684]
+                      - cell "133.2" [ref=e685]
+                      - cell "132.7" [ref=e686]
+                      - cell "134.0" [ref=e687]
+                      - cell "0.4" [ref=e688]
+                      - cell "—" [ref=e689]
+                      - cell "—2 % from long output alone" [ref=e690]
+                    - row "ngram-mod-n24 131.1 129.6 136.1 2.6 100 % (35/35) srogmann-recommended params" [ref=e691]:
+                      - cell "ngram-mod-n24" [ref=e692]
+                      - cell "131.1" [ref=e693]
+                      - cell "129.6" [ref=e694]
+                      - cell "136.1" [ref=e695]
+                      - cell "2.6" [ref=e696]
+                      - cell "100 % (35/35)" [ref=e697]
+                      - cell "srogmann-recommended params" [ref=e698]
+                    - row "ngmod-n24-1000tok 131.1 124.1 138.3 3.9 100 % long output same" [ref=e699]:
+                      - cell "ngmod-n24-1000tok" [ref=e700]
+                      - cell "131.1" [ref=e701]
+                      - cell "124.1" [ref=e702]
+                      - cell "138.3" [ref=e703]
+                      - cell "3.9" [ref=e704]
+                      - cell "100 %" [ref=e705]
+                      - cell "long output same" [ref=e706]
+                    - 'row "ngmod-n{8,12,16,20} 129.6–130.0 119.8–128.8 134 2–5 100 % whole ngram-mod family ≈ -4 %" [ref=e707]':
+                      - 'cell "ngmod-n{8,12,16,20}" [ref=e708]'
+                      - cell "129.6–130.0" [ref=e709]
+                      - cell "119.8–128.8" [ref=e710]
+                      - cell "134" [ref=e711]
+                      - cell "2–5" [ref=e712]
+                      - cell "100 %" [ref=e713]
+                      - cell "whole ngram-mod family ≈ -4 %" [ref=e714]
+                    - row "ngcache-kv-fp16 121.3 67.3 137.9 27.6 100 % (88/88) fp16 KV does not rescue — KV quant is not the cause" [ref=e715]:
+                      - cell "ngcache-kv-fp16" [ref=e716]
+                      - cell "121.3" [ref=e717]
+                      - cell "67.3" [ref=e718]
+                      - cell "137.9" [ref=e719]
+                      - cell "27.6" [ref=e720]
+                      - cell "100 % (88/88)" [ref=e721]
+                      - cell "fp16 KV does not rescue — KV quant is not the cause" [ref=e722]:
+                        - strong [ref=e723]: fp16 KV does not rescue
+                        - text: — KV quant is not the cause
+                    - row "draft-q35-08b-max8 121.1 59.2 136.2 30.9 100 % (270/270) correct-vocab classic SD, still net-negative" [ref=e724]:
+                      - cell "draft-q35-08b-max8" [ref=e725]:
+                        - strong [ref=e726]: draft-q35-08b-max8
+                      - cell "121.1" [ref=e727]:
+                        - strong [ref=e728]: "121.1"
+                      - cell "59.2" [ref=e729]:
+                        - strong [ref=e730]: "59.2"
+                      - cell "136.2" [ref=e731]
+                      - cell "30.9" [ref=e732]:
+                        - strong [ref=e733]: "30.9"
+                      - cell "100 % (270/270)" [ref=e734]:
+                        - strong [ref=e735]: 100 % (270/270)
+                      - cell "correct-vocab classic SD, still net-negative" [ref=e736]:
+                        - strong [ref=e737]: correct-vocab classic SD, still net-negative
+                    - row "draft-q35-08b-max16 121.0 59.6 136.1 30.3 100 % increasing K does not help" [ref=e738]:
+                      - cell "draft-q35-08b-max16" [ref=e739]
+                      - cell "121.0" [ref=e740]
+                      - cell "59.6" [ref=e741]
+                      - cell "136.1" [ref=e742]
+                      - cell "30.3" [ref=e743]
+                      - cell "100 %" [ref=e744]
+                      - cell "increasing K does not help" [ref=e745]
+                    - row "draft-q35-08b-max32 120.3 59.5 134.8 29.7 100 %" [ref=e746]:
+                      - cell "draft-q35-08b-max32" [ref=e747]
+                      - cell "120.3" [ref=e748]
+                      - cell "59.5" [ref=e749]
+                      - cell "134.8" [ref=e750]
+                      - cell "29.7" [ref=e751]
+                      - cell "100 %" [ref=e752]
+                      - cell [ref=e753]
+                    - row "draft-q35-08b-1000tok 120.2 64.8 133.9 28.3 100 % long output same" [ref=e754]:
+                      - cell "draft-q35-08b-1000tok" [ref=e755]
+                      - cell "120.2" [ref=e756]
+                      - cell "64.8" [ref=e757]
+                      - cell "133.9" [ref=e758]
+                      - cell "28.3" [ref=e759]
+                      - cell "100 %" [ref=e760]
+                      - cell "long output same" [ref=e761]
+                    - row "ngram-cache 119.1 65.3 136.2 27.8 100 % (96/96)" [ref=e762]:
+                      - cell "ngram-cache" [ref=e763]
+                      - cell "119.1" [ref=e764]
+                      - cell "65.3" [ref=e765]
+                      - cell "136.2" [ref=e766]
+                      - cell "27.8" [ref=e767]
+                      - cell "100 % (96/96)" [ref=e768]
+                      - cell [ref=e769]
+                    - row "ngcache-rerun 118.8 65.6 135.7 27.5 100 % reproduction" [ref=e770]:
+                      - cell "ngcache-rerun" [ref=e771]
+                      - cell "118.8" [ref=e772]
+                      - cell "65.6" [ref=e773]
+                      - cell "135.7" [ref=e774]
+                      - cell "27.5" [ref=e775]
+                      - cell "100 %" [ref=e776]
+                      - cell "reproduction" [ref=e777]
+                    - row "ngcache-1000tok 115.9 60.0 133.6 28.7 100 % (317/317) worst mean" [ref=e778]:
+                      - cell "ngcache-1000tok" [ref=e779]
+                      - cell "115.9" [ref=e780]
+                      - cell "60.0" [ref=e781]
+                      - cell "133.6" [ref=e782]
+                      - cell "28.7" [ref=e783]
+                      - cell "100 % (317/317)" [ref=e784]
+                      - cell "worst mean" [ref=e785]
+                - generic [ref=e786]:
+                  - heading "Per-prompt heatmap" [level=3] [ref=e787]
+                  - 'link "Permalink: Per-prompt heatmap" [ref=e788] [cursor=pointer]':
+                    - /url: "#per-prompt-heatmap"
+                    - img [ref=e789]
+                - paragraph [ref=e791]:
+                  - link "per prompt" [ref=e792] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/analysis/plot_per_prompt.png
+                    - img "per prompt" [ref=e793]
+                - paragraph [ref=e794]:
+                  - text: The regression is entirely
+                  - strong [ref=e795]: bimodal by prompt class
+                  - text: ": chat prompts ("
+                  - code [ref=e796]: short_greet
+                  - text: ","
+                  - code [ref=e797]: multi_turn_*
+                  - text: ","
+                  - code [ref=e798]: zh_cn
+                  - text: ) where ngram cannot find hits stay at ~135 tok/s; structured prompts (
+                  - code [ref=e799]: reasoning
+                  - text: ","
+                  - code [ref=e800]: code_small
+                  - text: ","
+                  - code [ref=e801]: long_explain
+                  - text: ) where drafts do trigger collapse to 59–95 tok/s.
+                - generic [ref=e802]:
+                  - heading "100 % draft acceptance vs decode speed" [level=3] [ref=e803]
+                  - 'link "Permalink: 100 % draft acceptance vs decode speed" [ref=e804] [cursor=pointer]':
+                    - /url: "#100--draft-acceptance-vs-decode-speed"
+                    - img [ref=e805]
+                - paragraph [ref=e807]:
+                  - link "accept vs speed" [ref=e808] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/analysis/plot_accept_vs_speed.png
+                    - img "accept vs speed" [ref=e809]
+                - paragraph [ref=e810]:
+                  - text: With
+                  - code [ref=e811]: predicted_per_second
+                  - text: as the per-request decode rate reported by llama-server and every tested config returning
+                  - strong [ref=e812]: 100 % acceptance
+                  - text: ", the classical intuition \"high acceptance → high speedup\" fails here. This is not a measurement artifact; it is MoE expert-loading overhead on every drafted token."
+                - generic [ref=e813]:
+                  - heading "Why — in one paragraph" [level=2] [ref=e814]
+                  - 'link "Permalink: Why — in one paragraph" [ref=e815] [cursor=pointer]':
+                    - /url: "#why--in-one-paragraph"
+                    - img [ref=e816]
+                - paragraph [ref=e818]:
+                  - text: Qwen3.6-35B-A3B routes 8-of-256 experts per token (sparsity ρ ≈ 0.031). Per
+                  - link "MoESD" [ref=e819] [cursor=pointer]:
+                    - /url: https://arxiv.org/html/2505.19645
+                  - text: the batch size needed to saturate the expert set is
+                  - code [ref=e820]: "T_thres = log_{1-ρ}(1 - 0.95) ≈ 94"
+                  - text: . For any
+                  - code [ref=e821]: K
+                  - text: draft tokens below that, each drafted token has high probability of pulling a fresh expert slice into compute, and the verification forward pass ends up loading the
+                  - emphasis [ref=e822]: union
+                  - text: of those per-token expert sets. At single-stream batch=1, K (1–32) ≪ T_thres, so this expert-union overhead is paid in full with no amortization vs autoregressive — exceeding the savings from skipping per-token forward passes, even at 100 % acceptance.
+                - paragraph [ref=e823]:
+                  - strong [ref=e824]: "Scope correction (2026-04-26):"
+                  - text: earlier versions of this paragraph claimed the mechanism is "engine-independent" / "hardware-class-independent" because the same negative direction was seen across 3090 (llama.cpp draft) and A100 NVLink (vLLM MTP, prefix-cache-ON) and Hopper H20-3e (
+                  - 'link "vllm #38182" [ref=e825] [cursor=pointer]':
+                    - /url: https://github.com/vllm-project/vllm/issues/38182
+                  - text: ). The v3 vLLM clean A/B retest with prefix-cache OFF on the same 3090 hardware (
+                  - link "sibling repo" [ref=e826] [cursor=pointer]:
+                    - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090
+                  - text: ) flipped vLLM MTP k=1 to
+                  - strong [ref=e827]: +27.5 %
+                  - text: ", so the engine-independence claim was wrong. The expert-saturation argument"
+                  - strong [ref=e828]: does
+                  - text: still explain why
+                  - strong [ref=e829]: llama.cpp's draft-then-verify path
+                  - text: "loses on consumer Ampere (the verify pass loads the union of K positions' expert sets at draft K=1–32 ≪ T_thres). What's different about vLLM MTP k=1 is the structurally smaller K (k=1 vs llama.cpp drafts of 5–64) and the lighter-weight verify path that reuses the target's hidden states without a separate draft-model forward pass. So: the mechanism is real and real-world relevant for"
+                  - strong [ref=e830]: draft-model spec-decode
+                  - text: ", but does not generalize to all spec-decode methods. Mixtral measurements in"
+                  - link "arXiv 2506.20675" [ref=e831] [cursor=pointer]:
+                    - /url: https://arxiv.org/pdf/2506.20675
+                  - text: match the draft-spec direction.
+                - paragraph [ref=e832]:
+                  - text: "Counter-example: the same"
+                  - code [ref=e833]: ngram-mod
+                  - text: machinery in
+                  - 'link "PR #20075" [ref=e834] [cursor=pointer]':
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/20075
+                  - text: shows Qwen3.5-
+                  - strong [ref=e835]: 122B-A10B
+                  - text: (10 B active) gaining roughly
+                  - strong [ref=e836]: +15–45 %
+                  - text: on Apple M3 Max (PR author's bench, 0.8 B draft, acceptance 63–89 %), and
+                  - strong [ref=e837]: +31 %
+                  - text: to
+                  - strong [ref=e838]: +119 %
+                  - text: on AMD Strix Halo gfx1151 with the REAP-pruned variant (
+                  - link "@0xSero" [ref=e839] [cursor=pointer]:
+                    - /url: https://github.com/0xSero
+                  - text: "'s comment in the same PR). A10B has a 3.3× larger active footprint and a correspondingly lower"
+                  - code [ref=e840]: T_thres
+                  - text: ", which is why it gains where A3B loses on consumer GPUs."
+                - generic [ref=e841]:
+                  - heading "Practical recommendation" [level=2] [ref=e842]
+                  - 'link "Permalink: Practical recommendation" [ref=e843] [cursor=pointer]':
+                    - /url: "#practical-recommendation"
+                    - img [ref=e844]
+                - paragraph [ref=e846]: "For Qwen3.6-35B-A3B on a single RTX 3090 as of 2026-04-21:"
+                - list [ref=e847]:
+                  - listitem [ref=e848]:
+                    - strong [ref=e849]: Do not
+                    - text: enable
+                    - code [ref=e850]: "--spec-type ngram-cache"
+                    - text: ","
+                    - code [ref=e851]: "--spec-type ngram-mod"
+                    - text: ", or classic"
+                    - code [ref=e852]: "--model-draft"
+                    - text: — every variant is net-negative.
+                  - listitem [ref=e853]:
+                    - strong [ref=e854]: Do
+                    - text: use the baseline llama-server setup above;
+                    - code [ref=e855]: 135.7 tok/s
+                    - text: is the fastest current single-request decode.
+                  - listitem [ref=e856]:
+                    - text: If you previously ran Qwen3.6 via Ollama 0.20.x with
+                    - code [ref=e857]: Q4_K_M
+                    - text: and saw ~107 tok/s, switching to llama-server with the
+                    - code [ref=e858]: UD-Q4_K_XL
+                    - text: quant is itself a
+                    - strong [ref=e859]: +27 %
+                    - text: speedup before any speculation.
+                - paragraph [ref=e860]:
+                  - text: "Situations where this may not apply: (i) A10B-class and larger MoE variants, where active params cross the expert-saturation threshold; (ii) after the hybrid-SSM/MoE checkpoint situation settles —"
+                  - 'link "PR #20075" [ref=e861] [cursor=pointer]':
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/20075
+                  - text: was open at v1 publication, with a comment on 2026-04-25 suggesting it can be closed because its functionality has been superseded elsewhere; future llama.cpp versions may behave differently; (iii) with a future smaller-bpw draft model distilled specifically for A3B that can sustain very large
+                  - code [ref=e862]: K
+                  - text: ; (iv)
+                  - strong [ref=e863]: batched multi-user serving
+                  - text: — speculative decoding's verification cost can amortise across concurrent requests, but I have not benched this path for llama.cpp + A3B; this study covers single-stream voice-dialog only. (v)
+                  - strong [ref=e864]: a different inference engine entirely
+                  - text: — the v3 vLLM clean A/B retest in the
+                  - link "sibling repo" [ref=e865] [cursor=pointer]:
+                    - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090
+                  - text: (matched flags +
+                  - code [ref=e866]: "--no-enable-prefix-caching"
+                  - text: ) flips MTP k=1 to
+                  - strong [ref=e867]: +27.5 % faster decode rate
+                  - text: on the same 3090 hardware, so the negative finding here is engine + spec-method specific to llama.cpp draft-then-verify, not a general property. (vi)
+                  - strong [ref=e868]: other speculative methods
+                  - text: — this bench tests
+                  - code [ref=e869]: ngram-cache
+                  - text: ","
+                  - code [ref=e870]: ngram-mod
+                  - text: ", and classic"
+                  - code [ref=e871]: "--model-draft"
+                  - text: in llama.cpp.
+                  - strong [ref=e872]: EAGLE-3
+                  - text: with CUDA graphs (vLLM Model Runner V2) is
+                  - strong [ref=e873]: not
+                  - text: evaluated here and may have different characteristics on A3B.
+                - generic [ref=e874]:
+                  - heading "Reproduce" [level=2] [ref=e875]
+                  - 'link "Permalink: Reproduce" [ref=e876] [cursor=pointer]':
+                    - /url: "#reproduce"
+                    - img [ref=e877]
+                - generic [ref=e879]:
+                  - generic [ref=e880]:
+                    - generic [ref=e881]: "# 1. Build llama.cpp with CUDA for SM 8.6"
+                    - text: git clone --depth 1 https://github.com/ggml-org/llama.cpp ~/benchmarks/llama.cpp cd ~/benchmarks/llama.cpp CUDACXX=/usr/local/cuda-12.6/bin/nvcc cmake -B build \ -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=86 \ -DLLAMA_CURL=OFF -DBUILD_SHARED_LIBS=OFF cmake --build build --config Release -j --target llama-server llama-bench
+                    - generic [ref=e882]: "# 2. Pull target + draft GGUFs"
+                    - text: hf download unsloth/Qwen3.6-35B-A3B-GGUF Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf \ --local-dir ~/benchmarks/models/qwen3.6-ud-q4kxl hf download unsloth/Qwen3.5-0.8B-GGUF --include
+                    - generic [ref=e883]: "'*Q4_K_M*'"
+                    - text: \ --local-dir ~/benchmarks/models/qwen3.5-0.8b
+                    - generic [ref=e884]: "# 3. Run the matrix (expect ~30 minutes wall-clock on one 3090)"
+                    - text: bash run_matrix.sh
+                    - generic [ref=e885]: "# 4 configs: baseline + ngcache + ngmod-n24 + draft-qwen3-0.6b"
+                    - text: bash run_p0_matrix.sh
+                    - generic [ref=e886]: "# 13 configs: correct-vocab draft sweep + 1000tok + N sweep + kv-fp16"
+                    - generic [ref=e887]: "# 4. Plot + summary"
+                    - text: python analysis/plot.py
+                  - button "Copy code to clipboard" [ref=e889] [cursor=pointer]:
+                    - img [ref=e890]
+                - paragraph [ref=e893]:
+                  - text: Raw per-request timings for every run are in
+                  - link "results/*.json" [ref=e894] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/results
+                    - code [ref=e895]: results/*.json
+                  - text: and
+                  - link "results/verify/*.json" [ref=e896] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/results/verify
+                    - code [ref=e897]: results/verify/*.json
+                  - text: . Aggregated numbers are in
+                  - link "analysis/summary.csv" [ref=e898] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/analysis/summary.csv
+                    - code [ref=e899]: analysis/summary.csv
+                  - text: and
+                  - link "analysis/summary_by_config.csv" [ref=e900] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/analysis/summary_by_config.csv
+                    - code [ref=e901]: analysis/summary_by_config.csv
+                  - text: .
+                - generic [ref=e902]:
+                  - heading "Methodology notes" [level=2] [ref=e903]
+                  - 'link "Permalink: Methodology notes" [ref=e904] [cursor=pointer]':
+                    - /url: "#methodology-notes"
+                    - img [ref=e905]
+                - list [ref=e907]:
+                  - listitem [ref=e908]:
+                    - code [ref=e909]: predicted_per_second
+                    - text: as reported by llama-server is
+                    - code [ref=e910]: predicted_n / predicted_ms * 1000
+                    - text: . Draft time and verification time are both included in the denominator. This is the user-visible metric.
+                  - listitem [ref=e911]: Warmup of one completion before measurement; server is restarted between configs so KV cache / prefix-cache state never bleeds across configs.
+                  - listitem [ref=e912]: Prompt set (10 prompts) spans short chat, reasoning, code, multi-turn, and 繁體中文 — deliberately chosen so that ngram-family draft triggers on some prompts and not others, exposing the bimodal behaviour.
+                  - listitem [ref=e913]:
+                    - text: Output capped at 300 tokens (and 1000 tokens in the
+                    - code [ref=e914]: "-1000tok"
+                    - text: variants); all completions reach the cap, so
+                    - code [ref=e915]: predicted_n
+                    - text: is constant across runs within a config.
+                  - listitem [ref=e916]:
+                    - text: Single-GPU single-request (
+                    - code [ref=e917]: batch=1
+                    - text: ) is the use case for an interactive desktop robot; results do not extrapolate to multi-tenant serving where concurrent-batching hides the MoE overhead.
+                - generic [ref=e918]:
+                  - heading "Limitations" [level=2] [ref=e919]
+                  - 'link "Permalink: Limitations" [ref=e920] [cursor=pointer]':
+                    - /url: "#limitations"
+                    - img [ref=e921]
+                - list [ref=e923]:
+                  - listitem [ref=e924]:
+                    - text: Single node, single 3090. NVLink or tensor-parallel across two 3090s is not evaluated; previous community benchmarks (
+                    - link "himeshp" [ref=e925] [cursor=pointer]:
+                      - /url: http://himeshp.blogspot.com/2025/03/vllm-performance-benchmarks-4x-rtx-3090.html
+                    - text: ","
+                    - link "ure.us" [ref=e926] [cursor=pointer]:
+                      - /url: https://ure.us/articles/best-local-llm-agentic-coding/
+                    - text: ) find TP gives < 4 % speedup on A3B due to all-to-all scatter/gather.
+                  - listitem [ref=e927]:
+                    - text: Each config run once (10 prompts, 1 warmup); no formal n=3 replicates. Std columns in the table are over prompts, not over repeats. Observed run-to-run variance between
+                    - code [ref=e928]: baseline
+                    - text: and
+                    - code [ref=e929]: baseline-rerun
+                    - text: is 0.2 tok/s, which is well below any effect discussed.
+                  - listitem [ref=e930]:
+                    - text: llama.cpp is evolving fast — commit
+                    - code [ref=e931]: "9789512"
+                    - text: on 2026-04-21 is what was tested.
+                    - 'link "PR #20075" [ref=e932] [cursor=pointer]':
+                      - /url: https://github.com/ggml-org/llama.cpp/pull/20075
+                    - text: is open and may change these numbers.
+                  - listitem [ref=e933]:
+                    - text: Output was greedy. With
+                    - code [ref=e934]: temperature > 0
+                    - text: ", draft acceptance rates would drop and the regression may be slightly different in shape but not in direction (the bottleneck is expert loading, not draft quality)."
+                - generic [ref=e935]:
+                  - heading "Validation timeline (post-publication)" [level=2] [ref=e936]
+                  - 'link "Permalink: Validation timeline (post-publication)" [ref=e937] [cursor=pointer]':
+                    - /url: "#validation-timeline-post-publication"
+                    - img [ref=e938]
+                - paragraph [ref=e940]: Independent observations and academic work that have appeared since the v1 / v2 benches went public, and that broadly support the saturation-threshold framing above. Each row notes scope honestly — none of these are exact replicas of this bench.
+                - table [ref=e942]:
+                  - rowgroup [ref=e943]:
+                    - row "When Source Independent evidence" [ref=e944]:
+                      - columnheader "When" [ref=e945]
+                      - columnheader "Source" [ref=e946]
+                      - columnheader "Independent evidence" [ref=e947]
+                  - rowgroup [ref=e948]:
+                    - 'row "2026-02-17 MoE-Spec (arXiv 2602.16052) Theoretical naming for the phenomenon: \"expert budgeting\" — large draft trees activate many unique experts, \"the top 32 of 64 experts capture 93 % of aggregate routing probability\"; proposes a training-free verification-time budget cap. No public code yet." [ref=e949]':
+                      - cell "2026-02-17" [ref=e950]
+                      - cell "MoE-Spec (arXiv 2602.16052)" [ref=e951]:
+                        - link "MoE-Spec (arXiv 2602.16052)" [ref=e952] [cursor=pointer]:
+                          - /url: https://arxiv.org/abs/2602.16052
+                      - 'cell "Theoretical naming for the phenomenon: \"expert budgeting\" — large draft trees activate many unique experts, \"the top 32 of 64 experts capture 93 % of aggregate routing probability\"; proposes a training-free verification-time budget cap. No public code yet." [ref=e953]'
+                    - row "2026-02 Alloc-MoE (arXiv 2604.08133) and XShare (arXiv 2602.07265) Concurrent papers framing the same expert-saturation pressure under speculative parallelism." [ref=e954]:
+                      - cell "2026-02" [ref=e955]
+                      - cell "Alloc-MoE (arXiv 2604.08133) and XShare (arXiv 2602.07265)" [ref=e956]:
+                        - link "Alloc-MoE (arXiv 2604.08133)" [ref=e957] [cursor=pointer]:
+                          - /url: https://arxiv.org/abs/2604.08133
+                        - text: and
+                        - link "XShare (arXiv 2602.07265)" [ref=e958] [cursor=pointer]:
+                          - /url: https://arxiv.org/pdf/2602.07265
+                      - cell "Concurrent papers framing the same expert-saturation pressure under speculative parallelism." [ref=e959]
+                    - 'row "2026-02-26 vllm-project/vllm#35387 Adjacent: 4× H100 80 GB FP8 + Qwen3-Next-80B-A3B-Instruct-FP8 with method=qwen3_next_mtp reports −76.5 % latency regression (not the same hardware/quant/arch as this bench, and the suspected root cause is mamba_postprocess CPU sync — different mechanism — but the same negative direction)." [ref=e960]':
+                      - cell "2026-02-26" [ref=e961]
+                      - cell "vllm-project/vllm#35387" [ref=e962]:
+                        - link "vllm-project/vllm#35387" [ref=e963] [cursor=pointer]:
+                          - /url: https://github.com/vllm-project/vllm/issues/35387
+                      - 'cell "Adjacent: 4× H100 80 GB FP8 + Qwen3-Next-80B-A3B-Instruct-FP8 with method=qwen3_next_mtp reports −76.5 % latency regression (not the same hardware/quant/arch as this bench, and the suspected root cause is mamba_postprocess CPU sync — different mechanism — but the same negative direction)." [ref=e964]':
+                        - strong [ref=e965]: Adjacent
+                        - text: ": 4× H100 80 GB FP8 + Qwen3-Next-"
+                        - strong [ref=e966]: 80B
+                        - text: "-A3B-Instruct-FP8 with"
+                        - code [ref=e967]: method=qwen3_next_mtp
+                        - text: reports
+                        - strong [ref=e968]: −76.5 %
+                        - text: latency regression (not the same hardware/quant/arch as this bench, and the suspected root cause is
+                        - code [ref=e969]: mamba_postprocess
+                        - text: CPU sync — different mechanism — but the same negative direction).
+                    - row "2026-03-26 → 2026-04-14 vllm-project/vllm#38182 Independent reporter on NVIDIA H20-3e (Hopper) finds Qwen3.5-35B-A3B + MTP drops prefix-cache hit rate from ≈92 % → ≈71 %. @Angazenn pinpoints the cause to vllm/v1/core/single_type_kv_cache_manager.py:L457 (last matched block force-dropped when MTP is on, combined with very large block sizes for Qwen3.5 MoE). @inaniloquentee volunteered a fix; no PR submitted as of 2026-04-25." [ref=e970]:
+                      - cell "2026-03-26 → 2026-04-14" [ref=e971]
+                      - cell "vllm-project/vllm#38182" [ref=e972]:
+                        - link "vllm-project/vllm#38182" [ref=e973] [cursor=pointer]:
+                          - /url: https://github.com/vllm-project/vllm/issues/38182
+                      - cell "Independent reporter on NVIDIA H20-3e (Hopper) finds Qwen3.5-35B-A3B + MTP drops prefix-cache hit rate from ≈92 % → ≈71 %. @Angazenn pinpoints the cause to vllm/v1/core/single_type_kv_cache_manager.py:L457 (last matched block force-dropped when MTP is on, combined with very large block sizes for Qwen3.5 MoE). @inaniloquentee volunteered a fix; no PR submitted as of 2026-04-25." [ref=e974]:
+                        - text: Independent reporter on
+                        - strong [ref=e975]: NVIDIA H20-3e (Hopper)
+                        - text: finds Qwen3.5-35B-A3B + MTP
+                        - strong [ref=e976]: drops prefix-cache hit rate from ≈92 % → ≈71 %
+                        - text: . @Angazenn pinpoints the cause to
+                        - code [ref=e977]: vllm/v1/core/single_type_kv_cache_manager.py:L457
+                        - text: (last matched block force-dropped when MTP is on, combined with very large block sizes for Qwen3.5 MoE). @inaniloquentee volunteered a fix; no PR submitted as of 2026-04-25.
+                    - 'row "2026 vLLM Qwen3.5/3.6 Recipes — official doc Now states up-front: \"MTP-1 reduces per-token latency but degrades text throughput under high concurrency because speculative tokens consume KV cache capacity, reducing effective batch size.\" The single-stream / consumer-GPU regime of this bench is consistent with that disclosure." [ref=e978]':
+                      - cell "2026" [ref=e979]
+                      - cell "vLLM Qwen3.5/3.6 Recipes — official doc" [ref=e980]:
+                        - link "vLLM Qwen3.5/3.6 Recipes — official doc" [ref=e981] [cursor=pointer]:
+                          - /url: https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html
+                      - 'cell "Now states up-front: \"MTP-1 reduces per-token latency but degrades text throughput under high concurrency because speculative tokens consume KV cache capacity, reducing effective batch size.\" The single-stream / consumer-GPU regime of this bench is consistent with that disclosure." [ref=e982]':
+                        - text: "Now states up-front: \"MTP-1 reduces per-token latency but"
+                        - strong [ref=e983]: degrades text throughput under high concurrency
+                        - text: because speculative tokens consume KV cache capacity, reducing effective batch size." The single-stream / consumer-GPU regime of this bench is consistent with that disclosure.
+                    - 'row "2026-04-22 HF discussion #14 on unsloth/Qwen3.6-35B-A3B-GGUF Oleg-dM''s question on --draft-min aggressiveness motivated the v2 follow-up bench. Same conclusion held across both 9789512 and current master bcb5eeb64 commits." [ref=e984]':
+                      - cell "2026-04-22" [ref=e985]
+                      - 'cell "HF discussion #14 on unsloth/Qwen3.6-35B-A3B-GGUF" [ref=e986]':
+                        - 'link "HF discussion #14 on unsloth/Qwen3.6-35B-A3B-GGUF" [ref=e987] [cursor=pointer]':
+                          - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/discussions/14
+                          - text: "HF discussion #14 on"
+                          - code [ref=e988]: unsloth/Qwen3.6-35B-A3B-GGUF
+                      - cell "Oleg-dM's question on --draft-min aggressiveness motivated the v2 follow-up bench. Same conclusion held across both 9789512 and current master bcb5eeb64 commits." [ref=e989]:
+                        - text: Oleg-dM's question on
+                        - code [ref=e990]: "--draft-min"
+                        - text: aggressiveness motivated the v2 follow-up bench. Same conclusion held across both
+                        - code [ref=e991]: "9789512"
+                        - text: and current master
+                        - code [ref=e992]: bcb5eeb64
+                        - text: commits.
+                - paragraph [ref=e993]:
+                  - strong [ref=e994]: Net interpretation (revised 2026-04-26).
+                  - text: The
+                  - code [ref=e995]: Qwen3.x-35B-A3B + spec-decode
+                  - text: regression I observed on a single RTX 3090 is robust
+                  - strong [ref=e996]: for llama.cpp's draft-then-verify path
+                  - text: — confirmed on different commits (
+                  - code [ref=e997]: "9789512"
+                  - text: and master
+                  - code [ref=e998]: bcb5eeb64
+                  - text: ), on N=3 standalone-3090 replication, and on a code/JSON workload variant (Exp 2 in v2.3, all configs −40 % to −52 %). The MoE-Spec / Utility-Driven SD theoretical framing applies here because llama.cpp's K=5–64 draft tokens cause the verify pass to load the union of K positions' expert sets at K ≪ T_thres ≈ 94. The narrative should be read as "
+                  - strong [ref=e999]: single-stream llama.cpp draft-spec for 3B-active MoE on consumer Ampere is a net loss across the configs tested
+                  - text: "\","
+                  - strong [ref=e1000]: NOT
+                  - text: as engine-independent — the v3 vLLM clean A/B retest in the
+                  - link "sibling repo" [ref=e1001] [cursor=pointer]:
+                    - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090
+                  - text: (matched flags +
+                  - code [ref=e1002]: "--no-enable-prefix-caching"
+                  - text: ) flips MTP k=1 to
+                  - strong [ref=e1003]: +27.5 % faster decode rate
+                  - text: on the same 3090 hardware, because vLLM MTP k=1 has structurally smaller K (k=1 vs llama.cpp 5–64) and a lighter-weight verify path that reuses target hidden states. Earlier corroborations on Hopper H100/H20-3e + FP8 + vLLM MTP that I cited may also be partly attributable to the
+                  - 'link "vllm #38182 prefix-cache × MTP interaction" [ref=e1004] [cursor=pointer]':
+                    - /url: https://github.com/vllm-project/vllm/issues/38182
+                  - text: (cache hit rate drops 92 % → 71 % under MTP) rather than an intrinsic MoE × MTP property; an A100/H100 v3-equivalent retest with prefix-cache OFF is the natural follow-up.
+                - generic [ref=e1005]:
+                  - heading "Related reading" [level=2] [ref=e1006]
+                  - 'link "Permalink: Related reading" [ref=e1007] [cursor=pointer]':
+                    - /url: "#related-reading"
+                    - img [ref=e1008]
+                - list [ref=e1010]:
+                  - listitem [ref=e1011]:
+                    - strong [ref=e1012]:
+                      - link "thc1006/qwen3.6-vllm-2x3090" [ref=e1013] [cursor=pointer]:
+                        - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090
+                    - text: — sibling repo. Same model, 2× RTX 3090, vLLM 0.19.1 with
+                    - code [ref=e1014]: "--speculative-config method=mtp num_speculative_tokens=1"
+                    - text: (qwen3.6's built-in MTP heads). v1/v2 published −12 % throughput was a flag confound + prefix-cache interaction;
+                    - strong [ref=e1015]:
+                      - text: v3 clean A/B retest (2026-04-26) with matched flags +
+                      - code [ref=e1016]: "--no-enable-prefix-caching"
+                      - text: flips MTP to +27.5 % faster decode rate
+                    - text: — see
+                    - link "v3.0 release" [ref=e1017] [cursor=pointer]:
+                      - /url: https://github.com/thc1006/qwen3.6-vllm-2x3090/releases/tag/v3.0
+                    - text: . So the negative finding here is engine-specific to llama.cpp draft-spec on consumer Ampere, not engine-independent as v2.2 of this repo claimed.
+                  - listitem [ref=e1018]:
+                    - 'link "llama.cpp PR #19493 — speculative checkpointing (MERGED 2026-04-19)" [ref=e1019] [cursor=pointer]':
+                      - /url: https://github.com/ggml-org/llama.cpp/pull/19493
+                  - listitem [ref=e1020]:
+                    - 'link "llama.cpp PR #20075 — follow-up fix (OPEN)" [ref=e1021] [cursor=pointer]':
+                      - /url: https://github.com/ggml-org/llama.cpp/pull/20075
+                  - listitem [ref=e1022]:
+                    - 'link "llama.cpp Issue #20039 — original feature request" [ref=e1023] [cursor=pointer]':
+                      - /url: https://github.com/ggml-org/llama.cpp/issues/20039
+                  - listitem [ref=e1024]:
+                    - link "llama.cpp docs/speculative.md" [ref=e1025] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp/blob/master/docs/speculative.md
+                  - listitem [ref=e1026]:
+                    - 'link "MoESD: Unveil Speculative Decoding''s Potential for Sparse MoE (arXiv 2505.19645)" [ref=e1027] [cursor=pointer]':
+                      - /url: https://arxiv.org/html/2505.19645
+                  - listitem [ref=e1028]:
+                    - link "Utility-Driven Speculative Decoding for Mixture-of-Experts (arXiv 2506.20675)" [ref=e1029] [cursor=pointer]:
+                      - /url: https://arxiv.org/pdf/2506.20675
+                  - listitem [ref=e1030]:
+                    - link "MoE-SpeQ (arXiv 2511.14102)" [ref=e1031] [cursor=pointer]:
+                      - /url: https://arxiv.org/html/2511.14102v1
+                  - listitem [ref=e1032]:
+                    - 'link "vLLM Issue #38182 — Qwen3.5-35B-A3B MTP + prefix cache regression" [ref=e1033] [cursor=pointer]':
+                      - /url: https://github.com/vllm-project/vllm/issues/38182
+                  - listitem [ref=e1034]:
+                    - link "Qwen3.6-35B-A3B model card" [ref=e1035] [cursor=pointer]:
+                      - /url: https://huggingface.co/Qwen/Qwen3.6-35B-A3B
+                    - text: (vocab 248320)
+                  - listitem [ref=e1036]:
+                    - link "Qwen3.5-0.8B model card" [ref=e1037] [cursor=pointer]:
+                      - /url: https://huggingface.co/Qwen/Qwen3.5-0.8B
+                    - text: (vocab 248320)
+                - generic [ref=e1038]:
+                  - heading "Author / contact" [level=2] [ref=e1039]
+                  - 'link "Permalink: Author / contact" [ref=e1040] [cursor=pointer]':
+                    - /url: "#author--contact"
+                    - img [ref=e1041]
+                - paragraph [ref=e1043]:
+                  - text: Hsiu-Chi Tsai ·
+                  - code [ref=e1044]: hctsai1006@cs.nctu.edu.tw
+                  - text: · GitHub
+                  - link "thc1006" [ref=e1045] [cursor=pointer]:
+                    - /url: https://github.com/thc1006
+                    - code [ref=e1046]: thc1006
+                - generic [ref=e1047]:
+                  - heading "License" [level=2] [ref=e1048]
+                  - 'link "Permalink: License" [ref=e1049] [cursor=pointer]':
+                    - /url: "#license"
+                    - img [ref=e1050]
+                - paragraph [ref=e1052]:
+                  - text: MIT — see
+                  - link "LICENSE" [ref=e1053] [cursor=pointer]:
+                    - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/blob/master/LICENSE
+                    - code [ref=e1054]: LICENSE
+                  - text: . Results (CSV / JSON) released under CC-0.
+        - generic [ref=e1058]:
+          - generic [ref=e1061]:
+            - heading "About" [level=2] [ref=e1062]
+            - paragraph [ref=e1063]: "First public benchmark of llama.cpp speculative decoding on Qwen3.6-35B-A3B with a single RTX 3090 (post PR #19493 merge, 2026-04-19). 19 configurations covering ngram-cache, ngram-mod, and classic draft with vocab-matched Qwen3.5-0.8B. Finding: no variant achieves net speedup on Ampere + A3B MoE. Raw JSON, plots, full reproducibility."
+            - heading "Topics" [level=3] [ref=e1064]
+            - generic [ref=e1066]:
+              - link "benchmark" [ref=e1067] [cursor=pointer]:
+                - /url: /topics/benchmark
+              - link "cuda" [ref=e1068] [cursor=pointer]:
+                - /url: /topics/cuda
+              - link "moe" [ref=e1069] [cursor=pointer]:
+                - /url: /topics/moe
+              - link "ampere" [ref=e1070] [cursor=pointer]:
+                - /url: /topics/ampere
+              - link "mixture-of-experts" [ref=e1071] [cursor=pointer]:
+                - /url: /topics/mixture-of-experts
+              - link "inference-benchmark" [ref=e1072] [cursor=pointer]:
+                - /url: /topics/inference-benchmark
+              - link "llama-cpp" [ref=e1073] [cursor=pointer]:
+                - /url: /topics/llama-cpp
+              - link "ggml" [ref=e1074] [cursor=pointer]:
+                - /url: /topics/ggml
+              - link "local-llm" [ref=e1075] [cursor=pointer]:
+                - /url: /topics/local-llm
+              - link "llm-inference" [ref=e1076] [cursor=pointer]:
+                - /url: /topics/llm-inference
+              - link "qwen" [ref=e1077] [cursor=pointer]:
+                - /url: /topics/qwen
+              - link "speculative-decoding" [ref=e1078] [cursor=pointer]:
+                - /url: /topics/speculative-decoding
+              - link "qwen3" [ref=e1079] [cursor=pointer]:
+                - /url: /topics/qwen3
+              - link "rtx-3090" [ref=e1080] [cursor=pointer]:
+                - /url: /topics/rtx-3090
+            - heading "Resources" [level=3] [ref=e1081]
+            - link "Readme" [ref=e1083] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e1084]
+              - text: Readme
+            - heading "License" [level=3] [ref=e1086]
+            - link "MIT license" [ref=e1088] [cursor=pointer]:
+              - /url: "#MIT-1-ov-file"
+              - img [ref=e1089]
+              - text: MIT license
+            - link "Activity" [ref=e1092] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/activity
+              - img [ref=e1093]
+              - text: Activity
+            - heading "Stars" [level=3] [ref=e1095]
+            - link "26 stars" [ref=e1097] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/stargazers
+              - img [ref=e1098]
+              - strong [ref=e1100]: "26"
+              - text: stars
+            - heading "Watchers" [level=3] [ref=e1101]
+            - link "1 watching" [ref=e1103] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/watchers
+              - img [ref=e1104]
+              - strong [ref=e1106]: "1"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e1107]
+            - link "1 fork" [ref=e1109] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/forks
+              - img [ref=e1110]
+              - strong [ref=e1112]: "1"
+              - text: fork
+            - link "Report repository" [ref=e1114] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fthc1006%2Fqwen3.6-speculative-decoding-rtx3090&report=thc1006+%28user%29
+          - generic [ref=e1116]:
+            - heading "Releases 5" [level=2] [ref=e1117]:
+              - link "Releases 5" [ref=e1118] [cursor=pointer]:
+                - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/releases
+                - text: Releases
+                - generic "5" [ref=e1119]
+            - link "v3.0 — DFlash on RTX 3090 + Q4 = NET LOSS −44.6 % (first public 3090 datapoint) Latest May 9, 20263 weeks ago" [ref=e1120] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/releases/tag/v3.0
+              - img [ref=e1121]
+              - generic [ref=e1123]:
+                - generic [ref=e1124]:
+                  - generic [ref=e1125]: v3.0 — DFlash on RTX 3090 + Q4 = NET LOSS −44.6 % (first public 3090 datapoint)
+                  - 'generic "Label: Latest" [ref=e1126]': Latest
+                - generic [ref=e1127]: May 9, 20263 weeks ago
+            - link "+ 4 releases" [ref=e1129] [cursor=pointer]:
+              - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/releases
+          - generic [ref=e1131]:
+            - heading "Packages" [level=2] [ref=e1132]:
+              - link "Packages" [ref=e1133] [cursor=pointer]:
+                - /url: /users/thc1006/packages?repo_name=qwen3.6-speculative-decoding-rtx3090
+            - generic [ref=e1134]: No packages published
+          - generic [ref=e1136]:
+            - heading "Contributors 1" [level=2] [ref=e1137]:
+              - link "Contributors 1" [ref=e1138] [cursor=pointer]:
+                - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/graphs/contributors
+                - text: Contributors
+                - generic "1" [ref=e1139]
+            - list [ref=e1140]:
+              - listitem [ref=e1141]:
+                - link "@thc1006" [ref=e1142] [cursor=pointer]:
+                  - /url: https://github.com/thc1006
+                  - img "@thc1006" [ref=e1143]
+                - link "thc1006 秀吉" [ref=e1145] [cursor=pointer]:
+                  - /url: https://github.com/thc1006
+                  - strong [ref=e1146]: thc1006
+                  - text: 秀吉
+          - generic [ref=e1148]:
+            - heading "Languages" [level=2] [ref=e1149]
+            - list [ref=e1154]:
+              - listitem [ref=e1155]:
+                - link "Python 68.9%" [ref=e1156] [cursor=pointer]:
+                  - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/search?l=python
+                  - img [ref=e1157]
+                  - generic [ref=e1159]: Python
+                  - generic [ref=e1160]: 68.9%
+              - listitem [ref=e1161]:
+                - link "Shell 31.1%" [ref=e1162] [cursor=pointer]:
+                  - /url: /thc1006/qwen3.6-speculative-decoding-rtx3090/search?l=shell
+                  - img [ref=e1163]
+                  - generic [ref=e1165]: Shell
+                  - generic [ref=e1166]: 31.1%
+  - contentinfo [ref=e1168]:
+    - heading "Footer" [level=2] [ref=e1169]
+    - generic [ref=e1170]:
+      - generic [ref=e1171]:
+        - link "GitHub Homepage" [ref=e1172] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1173]
+        - generic [ref=e1175]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1176]:
+        - heading "Footer navigation" [level=3] [ref=e1177]
+        - list "Footer navigation" [ref=e1178]:
+          - listitem [ref=e1179]:
+            - link "Terms" [ref=e1180] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1181]:
+            - link "Privacy" [ref=e1182] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1183]:
+            - link "Security" [ref=e1184] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1185]:
+            - link "Status" [ref=e1186] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1187]:
+            - link "Community" [ref=e1188] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1189]:
+            - link "Docs" [ref=e1190] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1191]:
+            - link "Contact" [ref=e1192] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1193]:
+            - button "Manage cookies" [ref=e1195] [cursor=pointer]
+          - listitem [ref=e1196]:
+            - button "Do not share my personal information" [ref=e1198] [cursor=pointer]

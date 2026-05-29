@@ -1,0 +1,10 @@
+- generic [active] [ref=e1]:
+  - heading "whoa there, pardner!" [level=1] [ref=e2]
+  - paragraph [ref=e3]: Reddit's awesome and all, but you may have a bit of a problem. We've seen far too many requests come from your IP address recently.
+  - paragraph [ref=e4]: Please wait a few minutes and try again.
+  - paragraph [ref=e5]:
+    - text: If you're still getting this error after a few minutes and think that we've incorrectly blocked you or you would like to discuss easier ways to get the data you want, please contact us at
+    - link "this email address" [ref=e6] [cursor=pointer]:
+      - /url: mailto:ratelimit@reddit.com?Subject=Rate%20limiting(B)%20
+    - text: .
+  - paragraph [ref=e7]: You can read Reddit's Te

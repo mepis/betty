@@ -1,0 +1,419 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "InsiderLLM" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Home" [ref=e7] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e8]:
+          - link "Guides" [ref=e9] [cursor=pointer]:
+            - /url: /guides/
+            - text: Guides
+            - img [ref=e10]
+        - listitem [ref=e12]:
+          - link "Blog" [ref=e13] [cursor=pointer]:
+            - /url: /blog/
+        - listitem [ref=e14]:
+          - link "Tools" [ref=e15] [cursor=pointer]:
+            - /url: /tools/vram-calculator/
+        - listitem [ref=e16]:
+          - link "About" [ref=e17] [cursor=pointer]:
+            - /url: /about/
+        - listitem [ref=e18]:
+          - button "Search" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+  - main [ref=e23]:
+    - article [ref=e24]:
+      - generic [ref=e25]:
+        - 'heading "Best Way to Run Qwen 3.6 35B MoE Locally: VRAM, Speed, Setup" [level=1] [ref=e26]'
+        - generic [ref=e27]:
+          - time [ref=e28]: April 28, 2026
+          - generic [ref=e29]:
+            - text: "· Updated:"
+            - time [ref=e30]: May 7, 2026
+          - text: · by Mark Bartlett
+        - link "Download this guide as PDF" [ref=e32] [cursor=pointer]:
+          - /url: /pdfs/best-way-run-qwen-3-6-35b-moe-locally.pdf
+      - complementary [ref=e33]:
+        - strong [ref=e34]: "Quick Answer:"
+        - text: "Qwen3.6-35B-A3B is a Mixture-of-Experts model: 35B total parameters, only 3B active per token. UD-Q4_K_XL is 22.4 GB and runs at 101 tok/s on a single RTX 3090. UD-Q3_K_M is 16.6 GB and fits a 16GB card with KV offload. Dual RTX 5060 Ti 16GB and RTX 5070 Ti 16GB + 32GB system RAM both work via --cpu-moe expert offload, around 30-50 tok/s. Apple M3 Ultra runs Q6_K at 35-45 tok/s. Skip Ollama for now (mmproj vision file is unsupported). Use llama.cpp from a recent build, not CUDA 13.2 (gibberish bug). DFlash speculative decoding does not support the MoE. Only the 27B dense."
+      - generic [ref=e35]:
+        - paragraph [ref=e36]:
+          - text: 📚
+          - strong [ref=e37]: "More on this topic:"
+          - link "Qwen 3.6 Complete Guide" [ref=e38] [cursor=pointer]:
+            - /url: /guides/qwen-3-6-local-ai-guide/
+          - text: ·
+          - link "MoE Models Explained" [ref=e39] [cursor=pointer]:
+            - /url: /guides/moe-models-explained/
+          - text: ·
+          - link "Best Local Coding Models" [ref=e40] [cursor=pointer]:
+            - /url: /guides/best-local-coding-models-2026/
+          - text: ·
+          - link "VRAM Requirements" [ref=e41] [cursor=pointer]:
+            - /url: /guides/vram-requirements-local-llms/
+          - text: ·
+          - link "llama.cpp vs Ollama vs vLLM" [ref=e42] [cursor=pointer]:
+            - /url: /guides/llamacpp-vs-ollama-vs-vllm/
+        - paragraph [ref=e43]: If you have 24GB VRAM and you’ve been running Qwen 3.6-27B dense, here’s the question. Would you trade for the MoE 35B-A3B?
+        - paragraph [ref=e44]:
+          - text: The honest answer is “it depends, and the dependencies are not what you’d guess.” More total parameters. Fewer active. Different speed profile. Different tool-use behavior. And the
+          - link "DFlash 2x speedup" [ref=e45] [cursor=pointer]:
+            - /url: /guides/best-way-2x-token-output-rtx-3090-qwen-3-6-dflash/
+          - text: that landed yesterday for the 27B dense does not work on the MoE.
+        - paragraph [ref=e46]: This piece is the hardware-reality view of the 35B MoE. What runs where, how fast, and the setup commands that actually work in late April 2026.
+        - paragraph [ref=e47]:
+          - 'img "Image: Qwen 3.6-27B dense vs 35B-A3B MoE comparison chart on RTX 3090, tok/s, VRAM, active parameters" [ref=e48]'
+        - heading "What about low-VRAM hardware? (May 2026)" [level=2] [ref=e49]
+        - paragraph [ref=e50]:
+          - text: The hardware table above starts at a 12GB RTX 3060. The actual floor is lower than that. YouTube creator
+          - link "Codacus demonstrated" [ref=e51] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=8F_5pdcD3HY
+          - text: Qwen 3.6-35B-A3B running on an 8-year-old GTX 1060 with 6GB VRAM, an Intel i3-8100 (4 cores, no hyperthreading), and 24GB DDR4 RAM at
+          - strong [ref=e52]: 17 tok/s with 256K context
+          - text: — production-stable for week-long uptime.
+        - paragraph [ref=e53]: "Five flags get you there, all mainline llama.cpp (no fork required):"
+        - list [ref=e54]:
+          - listitem [ref=e55]:
+            - strong [ref=e56]:
+              - code [ref=e57]: "--n-cpu-moe N"
+            - text: (N = layer count). Pins MoE expert blocks to CPU while keeping attention on GPU. The breakthrough flag — moves the GTX 1060 from 3 → 10 tok/s by itself.
+          - listitem [ref=e58]:
+            - strong [ref=e59]:
+              - code [ref=e60]: "--no-mmap"
+            - text: . Forces the full model into RAM upfront, avoiding page faults during inference. 10 → 13.5 tok/s.
+          - listitem [ref=e61]:
+            - strong [ref=e62]:
+              - text: Tune
+              - code [ref=e63]: "--n-cpu-moe"
+              - text: down
+            - text: (41 → 35). Pulls some experts back onto GPU using spare VRAM. 13.5 → 17 tok/s, but context window shrinks 100K → 64K.
+          - listitem [ref=e64]:
+            - strong [ref=e65]: TurboQuant KV cache quantization
+            - text: (Google DeepMind’s random-rotation method). K=4 bits, V=3 bits, asymmetric because the model uses 8:1 grouped-query attention. Context goes 64K → 256K with no speed loss and negligible quality drop. Same 17 tok/s.
+          - listitem [ref=e66]:
+            - strong [ref=e67]:
+              - code [ref=e68]: mlock
+              - text: + Docker
+              - code [ref=e69]: IPC_LOCK
+              - text: +
+              - code [ref=e70]: "--mlock"
+            - text: . Stops the kernel from paging memory back to disk. Same 17 tok/s, but survives week-long uptime without slow degradation.
+        - paragraph [ref=e71]:
+          - text: "What didn’t work: speculative decoding with Qwen 3.5 0.8B as drafter dropped throughput to 11 tok/s despite a 65% accept rate. MoE batched verification pulls from up to 64 different experts per layer (memory thrash), and 30 of 40 layers are state-space layers that can’t parallelize across a draft window."
+          - strong [ref=e72]: Spec decode does not help this MoE on current methods.
+          - text: If you’re running the Qwen 3.6-27B dense instead, that’s where DFlash applies — see
+          - link "DFlash on RTX 3090" [ref=e73] [cursor=pointer]:
+            - /url: /guides/dflash-rtx-3090-bench-both-qwens/
+          - text: and the
+          - link "DFlash vs MTP head-to-head" [ref=e74] [cursor=pointer]:
+            - /url: /guides/dflash-vs-mtp-rtx-3090-head-to-head/
+          - text: .
+        - paragraph [ref=e75]: This isn’t an alternative to the setup above. It’s the floor showing what’s possible when you’re hardware-constrained.
+        - heading "What “35B-A3B” actually means" [level=2] [ref=e76]
+        - paragraph [ref=e77]: A3B is the part that matters. The model holds 35 billion parameters in memory. For each token it predicts, it routes through 8 of 256 experts plus 1 shared expert. That’s roughly 3 billion parameters worth of compute per forward pass. You pay memory like a 35B and compute like a 3B. That asymmetry is the whole MoE pitch.
+        - paragraph [ref=e78]: "Two consequences that change your hardware decision:"
+        - list [ref=e79]:
+          - listitem [ref=e80]:
+            - strong [ref=e81]: More VRAM than 27B dense.
+            - text: All 35B of weights have to live somewhere. UD-Q4_K_M is 22.1 GB versus ~17 GB for the 27B Q4. Same VRAM ballpark, but tighter on a 24GB card once you add KV cache.
+          - listitem [ref=e82]:
+            - strong [ref=e83]: Faster generation than a 27B dense at the same quant.
+            - text: 3B-active means the GPU does roughly 3B’s worth of math per token. On an RTX 3090 the 35B-A3B benchmarks ~100 tok/s while the 27B dense lives around 35 tok/s. About 3x faster, despite being a bigger model on disk.
+        - paragraph [ref=e84]:
+          - text: If MoE architecture is new to you, the
+          - link "MoE models explained" [ref=e85] [cursor=pointer]:
+            - /url: /guides/moe-models-explained/
+          - text: "primer covers the routing logic and why the 256-expert design works for local inference. The short version: experts are small (512-dim intermediate per expert in 3.6), routing is cheap, and the math works out in your favor whenever you’re bottlenecked on memory bandwidth. Most consumer GPUs are."
+        - heading "Hardware reality" [level=2] [ref=e86]
+        - paragraph [ref=e87]:
+          - text: Numbers below are from the
+          - link "Unsloth GGUF model card" [ref=e88] [cursor=pointer]:
+            - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF
+          - text: ","
+          - link "Amine Raji’s RTX 3090 benchmark" [ref=e89] [cursor=pointer]:
+            - /url: https://aminrj.com/posts/llamacpp-qwen36-35b/
+          - text: ", and r/LocalLLaMA week-one reports. All on llama.cpp builds b8954 or newer with"
+          - code [ref=e90]: "--flash-attn on"
+          - text: ","
+          - code [ref=e91]: "--cache-type-k q8_0 --cache-type-v q8_0"
+          - text: ", and 65K context unless noted. Tok/s is generation speed, batch=1, greedy."
+        - table [ref=e92]:
+          - rowgroup [ref=e93]:
+            - row "Hardware Recommended Quant File Size Tok/s (gen) –cpu-moe?" [ref=e94]:
+              - columnheader "Hardware" [ref=e95]
+              - columnheader "Recommended Quant" [ref=e96]
+              - columnheader "File Size" [ref=e97]
+              - columnheader "Tok/s (gen)" [ref=e98]
+              - columnheader "–cpu-moe?" [ref=e99]
+          - rowgroup [ref=e100]:
+            - row "RTX 3090 (24GB) UD-Q4_K_XL 22.4 GB ~101 No" [ref=e101]:
+              - cell "RTX 3090 (24GB)" [ref=e102]
+              - cell "UD-Q4_K_XL" [ref=e103]
+              - cell "22.4 GB" [ref=e104]
+              - cell "~101" [ref=e105]
+              - cell "No" [ref=e106]
+            - row "RTX 4090 (24GB) UD-Q4_K_XL or UD-Q5_K_S 22.4 / 24.9 GB ~120-140 No" [ref=e107]:
+              - cell "RTX 4090 (24GB)" [ref=e108]
+              - cell "UD-Q4_K_XL or UD-Q5_K_S" [ref=e109]
+              - cell "22.4 / 24.9 GB" [ref=e110]
+              - cell "~120-140" [ref=e111]
+              - cell "No" [ref=e112]
+            - row "RTX 5090 (32GB) UD-Q5_K_M or UD-Q6_K 26.5 / 29.3 GB ~160-200 No" [ref=e113]:
+              - cell "RTX 5090 (32GB)" [ref=e114]
+              - cell "UD-Q5_K_M or UD-Q6_K" [ref=e115]
+              - cell "26.5 / 29.3 GB" [ref=e116]
+              - cell "~160-200" [ref=e117]
+              - cell "No" [ref=e118]
+            - row "RTX 5070 Ti (16GB) + 32GB RAM UD-Q4_K_M 22.1 GB ~25-35 Yes" [ref=e119]:
+              - cell "RTX 5070 Ti (16GB) + 32GB RAM" [ref=e120]
+              - cell "UD-Q4_K_M" [ref=e121]
+              - cell "22.1 GB" [ref=e122]
+              - cell "~25-35" [ref=e123]
+              - cell "Yes" [ref=e124]
+            - row "Dual RTX 5060 Ti (32GB total) UD-Q4_K_M or UD-Q5_K_S 22.1 / 24.9 GB ~50-70 Optional" [ref=e125]:
+              - cell "Dual RTX 5060 Ti (32GB total)" [ref=e126]
+              - cell "UD-Q4_K_M or UD-Q5_K_S" [ref=e127]
+              - cell "22.1 / 24.9 GB" [ref=e128]
+              - cell "~50-70" [ref=e129]
+              - cell "Optional" [ref=e130]
+            - row "RTX 3060 12GB + 64GB RAM UD-Q3_K_M 16.6 GB ~12-18 Yes" [ref=e131]:
+              - cell "RTX 3060 12GB + 64GB RAM" [ref=e132]
+              - cell "UD-Q3_K_M" [ref=e133]
+              - cell "16.6 GB" [ref=e134]
+              - cell "~12-18" [ref=e135]
+              - cell "Yes" [ref=e136]
+            - row "Apple M3 Ultra (96-192GB) Q6_K MLX 29.3 GB ~35-45 N/A" [ref=e137]:
+              - cell "Apple M3 Ultra (96-192GB)" [ref=e138]
+              - cell "Q6_K MLX" [ref=e139]
+              - cell "29.3 GB" [ref=e140]
+              - cell "~35-45" [ref=e141]
+              - cell "N/A" [ref=e142]
+            - row "Apple M2 Pro 32GB UD-Q3_K_M 16.6 GB ~18-22 N/A" [ref=e143]:
+              - cell "Apple M2 Pro 32GB" [ref=e144]
+              - cell "UD-Q3_K_M" [ref=e145]
+              - cell "16.6 GB" [ref=e146]
+              - cell "~18-22" [ref=e147]
+              - cell "N/A" [ref=e148]
+        - paragraph [ref=e149]: Caveats. RTX 4090 numbers are extrapolated from 3090 throughput plus the typical 4090 advantage on llama.cpp; community posts back this up roughly. RTX 5090 numbers are from a few r/LocalLLaMA reports running early Blackwell builds. Mac numbers are MLX, not GGUF. Metal MoE handling improved a lot in MLX 0.21+.
+        - paragraph [ref=e150]:
+          - text: The 5070 Ti 16GB + 32GB RAM thread on r/LocalLLaMA is the one that surprised people. With
+          - code [ref=e151]: "--cpu-moe"
+          - text: parking the 8 routed experts in system RAM and keeping the shared expert plus attention on GPU, a 16GB card runs the full Q4 model. Slow, but real, and the quality is the full Q4 model rather than a more aggressive quant. For a chat workload that’s a meaningful trade against running UD-IQ2 on-GPU for speed.
+        - heading "–cpu-moe explained, briefly" [level=2] [ref=e152]
+        - paragraph [ref=e153]:
+          - code [ref=e154]: "--cpu-moe"
+          - text: is a llama.cpp flag (landed in b8954-era builds) that tells the engine to keep MoE expert weights in CPU RAM and stream them across PCIe per token. The shared expert and attention layers stay on GPU. For a 3B-active MoE the per-token data movement is small enough that the speed hit isn’t fatal. You’re still doing 3B-active math, just with a hop across the bus to fetch which 8 experts to use.
+        - paragraph [ref=e155]: "It only makes sense when:"
+        - list [ref=e156]:
+          - listitem [ref=e157]: The model doesn’t fit fully in VRAM (16GB cards, 12GB cards)
+          - listitem [ref=e158]: You have enough system RAM to hold the expert weights (32GB+ for Q4, 64GB+ for Q6)
+          - listitem [ref=e159]: You can tolerate ~3x slower generation than fully on-GPU
+        - paragraph [ref=e160]: For a 24GB+ card the answer is don’t use it. Full GPU is always faster.
+        - heading "35B MoE vs 27B dense on the same hardware" [level=2] [ref=e161]
+        - paragraph [ref=e162]: "Here’s the trade table on a single RTX 3090 with 24GB VRAM, Q4 class quants, 64K context:"
+        - table [ref=e163]:
+          - rowgroup [ref=e164]:
+            - row "Metric Qwen 3.6-27B dense (Q4_K_M) Qwen 3.6-35B-A3B (UD-Q4_K_XL)" [ref=e165]:
+              - columnheader "Metric" [ref=e166]
+              - columnheader "Qwen 3.6-27B dense (Q4_K_M)" [ref=e167]
+              - columnheader "Qwen 3.6-35B-A3B (UD-Q4_K_XL)" [ref=e168]
+          - rowgroup [ref=e169]:
+            - row "File size ~17 GB 22.4 GB" [ref=e170]:
+              - cell "File size" [ref=e171]
+              - cell "~17 GB" [ref=e172]
+              - cell "22.4 GB" [ref=e173]
+            - row "VRAM used (with KV) ~21 GB ~24 GB" [ref=e174]:
+              - cell "VRAM used (with KV)" [ref=e175]
+              - cell "~21 GB" [ref=e176]
+              - cell "~24 GB" [ref=e177]
+            - row "Generation speed ~25-35 tok/s ~80-101 tok/s" [ref=e178]:
+              - cell "Generation speed" [ref=e179]
+              - cell "~25-35 tok/s" [ref=e180]
+              - cell "~80-101 tok/s" [ref=e181]
+            - row "Generation speed with DFlash 60-78 tok/s (2x) not supported" [ref=e182]:
+              - cell "Generation speed with DFlash" [ref=e183]:
+                - text: Generation speed with
+                - link "DFlash" [ref=e184] [cursor=pointer]:
+                  - /url: /guides/best-way-2x-token-output-rtx-3090-qwen-3-6-dflash/
+              - cell "60-78 tok/s (2x)" [ref=e185]
+              - cell "not supported" [ref=e186]
+            - row "SWE-bench Verified 77.2 73.4" [ref=e187]:
+              - cell "SWE-bench Verified" [ref=e188]
+              - cell "77.2" [ref=e189]
+              - cell "73.4" [ref=e190]
+            - row "Terminal-Bench 2.0 59.3 51.5" [ref=e191]:
+              - cell "Terminal-Bench 2.0" [ref=e192]
+              - cell "59.3" [ref=e193]
+              - cell "51.5" [ref=e194]
+            - row "Tool-call reliability (week-one reports) strong mixed" [ref=e195]:
+              - cell "Tool-call reliability (week-one reports)" [ref=e196]
+              - cell "strong" [ref=e197]
+              - cell "mixed" [ref=e198]
+        - paragraph [ref=e199]: So on raw tok/s the MoE wins by 3x without DFlash. With DFlash on the dense, the gap shrinks to roughly even. On agentic-coding scores the dense wins. On general chat or RAG workloads the MoE is the better experience.
+        - paragraph [ref=e200]: "The interesting wrinkle: the MoE leaves zero KV-cache headroom on a 3090 at UD-Q4_K_XL with 65K context. Push to 128K and you’ll need UD-Q3_K_M or KV cache offload. The 27B dense gives you more context for the same card."
+        - 'heading "The Mac path: MLX, not GGUF" [level=2] [ref=e201]'
+        - paragraph [ref=e202]:
+          - text: Mac users running this on llama.cpp Metal will get it working but slower than they should. The Metal kernels for the Gated DeltaNet layers are still catching up to CUDA. MLX is the right path on Apple Silicon. The
+          - link "Qwen MLX vs Ollama guide" [ref=e203] [cursor=pointer]:
+            - /url: /guides/qwen35-mac-mlx-vs-ollama/
+          - text: walks through the install, and the MLX team shipped 35B-A3B quants in the first week.
+        - paragraph [ref=e204]:
+          - text: For RAM-poor Macs, look for the 3-bit MLX quants in the
+          - code [ref=e205]: baa-ai
+          - text: and
+          - code [ref=e206]: mlx-community
+          - text: repos. A 3-bit 35B-A3B lands around 14-16 GB and runs on a 16GB M1 Pro. Quality is noticeably below Q4, but it’s the only way to get 35B onto a base Mac. The 27B dense at 4-bit MLX is a better quality-per-byte trade if your Mac has 24GB+ unified memory. See the
+          - link "best local LLMs for Mac" [ref=e207] [cursor=pointer]:
+            - /url: /guides/best-local-llms-mac-2026/
+          - text: writeup for the broader picture.
+        - heading "Setup walkthrough" [level=2] [ref=e208]
+        - paragraph [ref=e209]: The fastest path that works today is llama.cpp built from source plus the Unsloth UD quants. Three steps.
+        - heading "1. Build llama.cpp from a recent commit" [level=3] [ref=e210]
+        - code [ref=e213]:
+          - generic [ref=e215]: git clone https://github.com/ggml-org/llama.cpp
+          - generic [ref=e217]: cd llama.cpp
+          - generic [ref=e219]: cmake -B build -DGGML_CUDA=ON -DCMAKE_BUILD_TYPE=Release
+          - generic [ref=e221]: cmake --build build --config Release -j
+        - paragraph [ref=e222]:
+          - text: You need a build at b8954 or later for
+          - code [ref=e223]: "--cpu-moe"
+          - text: and the latest Gated DeltaNet kernels. Pin CUDA 13.1 or earlier. Multiple reports of low-bit 3.6 quants producing gibberish on CUDA 13.2. The issue is in the cuBLAS path, not llama.cpp itself. Amine Raji flagged it explicitly. Unsloth’s docs flag it. If you see garbage tokens, this is the first thing to check.
+        - heading "2. Pull the GGUF + mmproj" [level=3] [ref=e224]
+        - paragraph [ref=e225]: "The 35B-A3B is multimodal. There are two files: the main GGUF and an mmproj vision sidecar. llama.cpp won’t load the model without mmproj on recent builds, even for text-only inference."
+        - code [ref=e228]:
+          - generic [ref=e230]: huggingface-cli download unsloth/Qwen3.6-35B-A3B-GGUF \
+          - generic [ref=e232]: Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf mmproj-F16.gguf \
+          - generic [ref=e234]: "--local-dir ./qwen36-35b"
+        - paragraph [ref=e235]:
+          - text: UD-Q4_K_XL is the Unsloth Dynamic 4-bit “extra large” quant. It’s the recommended balance per their model card. UD-Q3_K_M is the 16GB-card alternative. The full quant table is on the
+          - link "Unsloth GGUF page" [ref=e236] [cursor=pointer]:
+            - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF
+          - text: .
+        - heading "3. Run llama-server" [level=3] [ref=e237]
+        - code [ref=e240]:
+          - generic [ref=e242]: ./build/bin/llama-server \
+          - generic [ref=e244]: "--model ./qwen36-35b/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf \\"
+          - generic [ref=e246]: "--mmproj ./qwen36-35b/mmproj-F16.gguf \\"
+          - generic [ref=e248]: "--alias \"qwen36-35b-a3b\" \\"
+          - generic [ref=e250]: "--ctx-size 65536 \\"
+          - generic [ref=e252]: "--n-gpu-layers 99 \\"
+          - generic [ref=e254]: "--flash-attn on \\"
+          - generic [ref=e256]: "--cache-type-k q8_0 \\"
+          - generic [ref=e258]: "--cache-type-v q8_0 \\"
+          - generic [ref=e260]: "--temp 1.0 \\"
+          - generic [ref=e262]: "--top-p 0.95 \\"
+          - generic [ref=e264]: "--top-k 20 \\"
+          - generic [ref=e266]: "--presence-penalty 1.5 \\"
+          - generic [ref=e268]: "--min-p 0.00 \\"
+          - generic [ref=e270]: "--port 8001"
+        - paragraph [ref=e271]:
+          - text: For a 16GB card add
+          - code [ref=e272]: "--cpu-moe"
+          - text: and drop
+          - code [ref=e273]: "--n-gpu-layers"
+          - text: to fit attention + shared expert in VRAM. For instruct (no thinking) mode, swap to
+          - code [ref=e274]: "--temp 0.7 --top-p 0.8"
+          - text: and pass
+          - code [ref=e275]: "--chat-template-kwargs '{\"enable_thinking\":false}'"
+          - text: .
+        - paragraph [ref=e276]:
+          - text: LM Studio works too. Point it at the same GGUF and set the mmproj field in the model config. Ollama is broken for 3.6 GGUFs as of late April. The mmproj sidecar isn’t supported in the Ollama loader yet. Stay on Qwen 3.5-35B-A3B in Ollama until that lands. The depth comparison is in
+          - link "llama.cpp vs Ollama vs vLLM" [ref=e277] [cursor=pointer]:
+            - /url: /guides/llamacpp-vs-ollama-vs-vllm/
+          - text: .
+        - heading "When to pick the MoE over the 27B dense" [level=2] [ref=e278]
+        - paragraph [ref=e279]: "Pick 35B-A3B if:"
+        - list [ref=e280]:
+          - listitem [ref=e281]: You want fast everyday chat and RAG workloads on a 24GB card. 100 tok/s feels different from 30 tok/s.
+          - listitem [ref=e282]: You only have 16GB VRAM and 32GB+ system RAM. CPU-MoE offload makes the full Q4 reachable. The 27B dense with KV offload is slower and worse.
+          - listitem [ref=e283]: You’re on Apple Silicon with 64GB+ unified memory. MLX handles MoE well now.
+          - listitem [ref=e284]: You want broader world knowledge in the weights. 35B of stored capacity matters for trivia and niche-domain work.
+        - paragraph [ref=e285]: "Pick 27B dense if:"
+        - list [ref=e286]:
+          - listitem [ref=e287]: You code primarily and tool-use reliability matters. The 35B-A3B has community reports of dropping tool calls on long agent loops.
+          - listitem [ref=e288]:
+            - text: You need the
+            - link "DFlash 2x speedup" [ref=e289] [cursor=pointer]:
+              - /url: /guides/best-way-2x-token-output-rtx-3090-qwen-3-6-dflash/
+            - text: . It’s NVIDIA-only, sm_86+, and only supports the dense.
+          - listitem [ref=e290]: You want strict instruction-following under heavy system prompts. MoE routing drift bites here.
+          - listitem [ref=e291]: You want more KV headroom on a 24GB card at long context.
+        - paragraph [ref=e292]:
+          - text: The
+          - link "full Qwen 3.6 guide" [ref=e293] [cursor=pointer]:
+            - /url: /guides/qwen-3-6-local-ai-guide/
+          - text: walks through the dense side in detail and covers the Max-Preview cloud-only variant for completeness.
+        - heading "Honest limits" [level=2] [ref=e294]
+        - paragraph [ref=e295]: "A few rough edges that are real, week-one of late April 2026:"
+        - list [ref=e296]:
+          - listitem [ref=e297]:
+            - strong [ref=e298]: Tool calling regressions.
+            - text: r/LocalLLaMA threads include reports of the 35B-A3B repeating failed tool calls without reading back context, and skipping tool calls entirely on multi-turn loops. The 27B dense is steadier here. If you’re wiring this into Claude Code, OpenCode, or an MCP harness, test before you commit.
+          - listitem [ref=e299]:
+            - strong [ref=e300]: Web search broken in some llama.cpp builds.
+            - text: The web-search tool path through llama-server has been reported broken on builds between b8954 and b8967 specifically for the 35B-A3B. Pin to a known-good build or compile head-of-tree. Issue is open on GitHub.
+          - listitem [ref=e301]:
+            - strong [ref=e302]: No DFlash support for MoE.
+            - text: The block-diffusion speculative decoding speedup that doubles 27B dense throughput on a 3090 does not extend to the 35B-A3B. The DFlash team hasn’t said when or whether it will. The MoE routing changes the draft-verify math.
+          - listitem [ref=e303]:
+            - strong [ref=e304]: CUDA 13.2 gibberish.
+            - text: Already covered. Pin 13.1, or use a build that has the cuBLAS workaround merged.
+          - listitem [ref=e305]:
+            - strong [ref=e306]: Speculative decoding via llama.cpp’s standard path doesn’t help.
+            - text: "PR #19493 added MoE-aware speculative decoding, but per community testing the routing overhead eats the win on the 35B-A3B specifically. MTP through vLLM and SGLang is the better path if you need additional speed."
+        - paragraph [ref=e307]: None of these are fatal. Most will be fixed in days, not months. But they’re current as of writing and worth knowing.
+        - heading "Bottom line" [level=2] [ref=e308]
+        - paragraph [ref=e309]: The 35B MoE is the right pick for fast general-purpose local AI on a 24GB card or with smart RAM offload on a 16GB card. The 27B dense is the right pick for coding and agentic work on the same hardware, especially with DFlash. Both are Apache 2.0, both are 262K context, both are natively multimodal.
+        - paragraph [ref=e310]: If you only download one, ask yourself which workload dominates. Code all day? 27B dense. Chat, RAG, summarization, multilingual? 35B-A3B. If you have the disk for both, keep both. They cover different jobs and switching takes a llama-server restart.
+        - heading "Related guides" [level=2] [ref=e311]
+        - list [ref=e312]:
+          - listitem [ref=e313]:
+            - 'link "Qwen 3.6 Complete Guide: 27B Dense, 35B-A3B MoE, and Which to Use" [ref=e314] [cursor=pointer]':
+              - /url: /guides/qwen-3-6-local-ai-guide/
+          - listitem [ref=e315]:
+            - 'link "MoE Models Explained: How Mixture of Experts Cuts Inference Cost" [ref=e316] [cursor=pointer]':
+              - /url: /guides/moe-models-explained/
+          - listitem [ref=e317]:
+            - 'link "Best Way to Get 2x Token Output on RTX 3090: Qwen 3.6 + DFlash" [ref=e318] [cursor=pointer]':
+              - /url: /guides/best-way-2x-token-output-rtx-3090-qwen-3-6-dflash/
+          - listitem [ref=e319]:
+            - link "Best Local Coding Models 2026" [ref=e320] [cursor=pointer]:
+              - /url: /guides/best-local-coding-models-2026/
+          - listitem [ref=e321]:
+            - link "Best Local LLMs for Mac 2026" [ref=e322] [cursor=pointer]:
+              - /url: /guides/best-local-llms-mac-2026/
+          - listitem [ref=e323]:
+            - 'link "llama.cpp vs Ollama vs vLLM: When to Use Each" [ref=e324] [cursor=pointer]':
+              - /url: /guides/llamacpp-vs-ollama-vs-vllm/
+          - listitem [ref=e325]:
+            - link "VRAM Requirements for Local LLMs" [ref=e326] [cursor=pointer]:
+              - /url: /guides/vram-requirements-local-llms/
+      - generic [ref=e327]:
+        - paragraph [ref=e328]: Get notified when we publish new guides.
+        - link "Subscribe — free, no spam" [ref=e329] [cursor=pointer]:
+          - /url: https://buttondown.com/insiderllm
+      - generic [ref=e331]:
+        - link "#qwen" [ref=e332] [cursor=pointer]:
+          - /url: https://insiderllm.com/tags/qwen
+        - link "#moe" [ref=e333] [cursor=pointer]:
+          - /url: https://insiderllm.com/tags/moe
+        - link "#rtx-3090" [ref=e334] [cursor=pointer]:
+          - /url: https://insiderllm.com/tags/rtx-3090
+        - link "#rtx-5090" [ref=e335] [cursor=pointer]:
+          - /url: https://insiderllm.com/tags/rtx-5090
+        - link "#local-llm" [ref=e336] [cursor=pointer]:
+          - /url: https://insiderllm.com/tags/local-llm
+        - link "#performance" [ref=e337] [cursor=pointer]:
+          - /url: https://insiderllm.com/tags/performance
+  - contentinfo [ref=e338]:
+    - paragraph [ref=e339]: © 2026 InsiderLLM. Built with experience, not hype.
+    - paragraph [ref=e340]:
+      - link "Awesome Local AI Resources" [ref=e341] [cursor=pointer]:
+        - /url: https://github.com/msb-msb/awesome-local-ai
+      - text: ·
+      - link "Sponsor" [ref=e342] [cursor=pointer]:
+        - /url: /sponsor/
+    - paragraph [ref=e343]: As an Amazon Associate, InsiderLLM earns from qualifying purchases.

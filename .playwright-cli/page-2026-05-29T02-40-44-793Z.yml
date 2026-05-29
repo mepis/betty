@@ -1,0 +1,2462 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fpull%2F22673
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fpull_requests_fragments%2Fpull_request_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,898" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113569 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,048" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e148]:
+      - generic [ref=e151]:
+        - 'heading "llama + spec: MTP Support #22673" [level=1] [ref=e153]':
+          - text: "llama + spec: MTP Support"
+          - generic [ref=e155]: "#22673"
+        - generic [ref=e157]:
+          - generic [ref=e159]:
+            - img "Pull request" [ref=e160]
+            - text: Merged
+          - generic [ref=e163]:
+            - link "am17an" [ref=e164] [cursor=pointer]:
+              - /url: /am17an
+            - text: merged 28 commits into
+            - generic [ref=e165]:
+              - link "ggml-org:master" [ref=e166] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/tree/master
+              - generic [ref=e167]: from
+              - generic [ref=e168]:
+                - link "am17an:mtp-clean" [ref=e169] [cursor=pointer]:
+                  - /url: /am17an/llama.cpp/tree/mtp-clean
+                - button "Copy head branch name to clipboard" [ref=e170] [cursor=pointer]:
+                  - img [ref=e171]
+            - generic "May 16, 2026, 8:06 AM EDT" [ref=e174]: May 16, 20262 weeks ago
+        - generic [ref=e175]:
+          - generic [ref=e177]:
+            - generic [ref=e178]: +2,226
+            - generic [ref=e179]: "-412"
+            - generic [ref=e180]: "Lines changed: 2226 additions & 412 deletions"
+          - navigation "Pull request navigation tabs" [ref=e189]:
+            - tablist [ref=e190]:
+              - tab "Conversation" [selected] [ref=e191] [cursor=pointer]:
+                - img [ref=e192]
+                - text: Conversation
+              - tab "Commits (28)" [ref=e194] [cursor=pointer]:
+                - img [ref=e195]
+                - text: Commits
+                - generic [ref=e197]: "28"
+                - generic [ref=e198]: (28)
+              - tab "Checks" [ref=e199] [cursor=pointer]:
+                - img [ref=e200]
+                - text: Checks
+              - tab "Files changed" [ref=e202] [cursor=pointer]:
+                - img [ref=e203]
+                - text: Files changed
+      - generic [ref=e209]:
+        - generic [ref=e211]:
+          - heading "Conversation" [level=2] [ref=e212]
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e216]:
+                - link "@am17an" [ref=e217] [cursor=pointer]:
+                  - /url: /am17an
+                  - img "@am17an" [ref=e218]
+                - generic [ref=e220]:
+                  - generic [ref=e221]:
+                    - generic [ref=e222]:
+                      - group [ref=e224]:
+                        - button "Show options" [ref=e225] [cursor=pointer]:
+                          - img "Show options" [ref=e228]
+                      - generic "This user has previously committed to the llama.cpp repository." [ref=e231]:
+                        - generic [ref=e232]: Contributor
+                    - heading "am17an commented May 4, 2026last month •" [level=3] [ref=e233]:
+                      - generic [ref=e234]:
+                        - strong [ref=e235]:
+                          - link "am17an" [ref=e236] [cursor=pointer]:
+                            - /url: /am17an
+                        - text: commented
+                        - link "May 4, 2026last month" [ref=e237] [cursor=pointer]:
+                          - /url: "#issue-4375489925"
+                        - generic [ref=e238]:
+                          - generic [ref=e239]: •
+                          - group [ref=e240]:
+                            - button "edited by ggerganov" [ref=e241] [cursor=pointer]:
+                              - generic [ref=e242]:
+                                - text: edited by ggerganov
+                                - img [ref=e243]
+                  - generic [ref=e248]:
+                    - heading "Overview" [level=2] [ref=e249]
+                    - paragraph [ref=e250]: "This PR adds support for MTP (Multi Token Prediction) heads. I tested this on Qwen3.6 27B and Qwen3.6 35BA3B but in principle it should work for any MTP model. I've posted the detailed results below, but typically I see a steady-state acceptance of around 75% with 3 draft tokens, which is more than >2x speed-up over baseline. The design decisions I took to get to this stage are as follows:"
+                    - list [ref=e251]:
+                      - listitem [ref=e252]: The MTP model is a separate model which loads from the same GGUF, the idea is that MTP should automatically start and we shouldn't need to distribute the MTP gguf separately but also it has it's own context/kv-cache etc.
+                      - listitem [ref=e253]:
+                        - text: I saw a problem in
+                        - generic [ref=e254]:
+                          - img [ref=e255]
+                          - 'link "[Speculative decoding] feat: add EAGLE3 speculative decoding support #18039" [ref=e257] [cursor=pointer]':
+                            - /url: https://github.com/ggml-org/llama.cpp/pull/18039
+                        - text: where the hidden features weren't propagated correctly across multiple ubatches, so this PR adds a separate "hook" for the MTP to consume after each
+                        - code [ref=e258]: ubatch
+                      - listitem [ref=e259]:
+                        - text: The MTP speculative class is fairly trivial (although it does depend on
+                        - generic [ref=e260]:
+                          - img [ref=e261]
+                          - 'link "llama: allow partial seq_rm for GDN models for speculative decoding #22400" [ref=e263] [cursor=pointer]':
+                            - /url: https://github.com/ggml-org/llama.cpp/pull/22400
+                        - text: ", but could work without it)"
+                    - generic [ref=e264]:
+                      - paragraph [ref=e265]:
+                        - img [ref=e266]
+                        - text: Tip
+                      - paragraph [ref=e268]: MTP is compatible with Vision input and Tensor/Pipeline Parallelism
+                    - generic [ref=e269]:
+                      - paragraph [ref=e270]:
+                        - img [ref=e271]
+                        - text: Note
+                      - paragraph [ref=e273]: Prompt processing (PP) speed typically takes a negative hit when MTP is enabled mainly due to Device-To-Host (D2H) embedding transfers. It's something to be optimized in the future.
+                    - generic [ref=e274]:
+                      - paragraph [ref=e275]:
+                        - img [ref=e276]
+                        - text: Note
+                      - paragraph [ref=e278]: Parallel decoding with MTP is supported, but not fully optimized yet.
+                    - heading "Performance" [level=2] [ref=e279]
+                    - paragraph [ref=e280]:
+                      - text: "A simple bench for testing various prompts is here:"
+                      - link "https://gist.github.com/am17an/228edfb84ed082aa88e3865d6fa27090" [ref=e281] [cursor=pointer]:
+                        - /url: https://gist.github.com/am17an/228edfb84ed082aa88e3865d6fa27090
+                      - text: ". Posting the results below:"
+                    - group [ref=e282]:
+                      - generic "Performance on DGX Spark 🧵" [ref=e283] [cursor=pointer]
+                    - heading "How to use" [level=2] [ref=e284]
+                    - paragraph [ref=e285]:
+                      - text: I've uploaded the
+                      - link "GGUF" [ref=e286] [cursor=pointer]:
+                        - /url: https://huggingface.co/am17an/Qwen3.6-27B-MTP-GGUF/
+                      - text: which I made by using the
+                      - code [ref=e287]: convert_hf_to_gguf.py
+                      - text: changes in this PR. Here is another
+                      - link "GGUF" [ref=e288] [cursor=pointer]:
+                        - /url: https://huggingface.co/am17an/Qwen3.6-35BA3B-MTP-GGUF
+                      - text: for the MoE (35BA3B) model
+                    - paragraph [ref=e289]: "These are some sample commands to get started with MTP:"
+                    - generic [ref=e290]:
+                      - generic [ref=e291]:
+                        - generic [ref=e292]: "# MTP with draft size N (values for N: 2,3,...)"
+                        - text: llama-server -hf [model-with-mtp] --spec-type draft-mtp --spec-draft-n-max 2
+                        - generic [ref=e293]: "# add `--no-mmproj` to disable vision support if not needed (uses less memory)"
+                        - text: llama-server ... --no-mmproj
+                        - generic [ref=e294]: "# [ADVANCED]"
+                        - generic [ref=e295]: "# combine MTP + ngram-* (experimental, suitable for non-CUDA systems)"
+                        - generic [ref=e296]: "# use these combinations only if you know what you are doing"
+                        - text: llama-server -hf [model-with-mtp] \ --spec-type draft-mtp --spec-draft-n-max 3 \ --spec-type ngram-mod --spec-ngram-mod-n-match 24 --spec-ngram-mod-n-min 48 --spec-ngram-mod-n-max 64
+                        - generic [ref=e297]: "# (same as above, but shorter)"
+                        - text: llama-server -hf [model-with-mtp] --spec-default --spec-type draft-mtp --spec-draft-n-max 3
+                      - button "Copy code to clipboard" [ref=e299] [cursor=pointer]:
+                        - img [ref=e300]
+                    - heading "Models" [level=3] [ref=e303]
+                    - list [ref=e304]:
+                      - listitem [ref=e305]:
+                        - link "https://huggingface.co/ggml-org/Qwen3.6-27B-MTP-GGUF" [ref=e306] [cursor=pointer]:
+                          - /url: https://huggingface.co/ggml-org/Qwen3.6-27B-MTP-GGUF
+                      - listitem [ref=e307]:
+                        - link "https://huggingface.co/ggml-org/Qwen3.6-35B-A3B-MTP-GGUF" [ref=e308] [cursor=pointer]:
+                          - /url: https://huggingface.co/ggml-org/Qwen3.6-35B-A3B-MTP-GGUF
+                    - heading "Quality check" [level=3] [ref=e309]
+                    - paragraph [ref=e310]:
+                      - text: The results from 4 runs of the AIME2026 eval (4x30 questions in total) with MTP enabled, using
+                      - link "llama-eval" [ref=e311] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/tree/master/examples/llama-eval
+                      - text: ", are within expectation and match the"
+                      - link "reported value by Qwen team" [ref=e312] [cursor=pointer]:
+                        - /url: https://huggingface.co/Qwen/Qwen3.6-27B#benchmark-results
+                      - text: .
+                    - link "image" [ref=e313] [cursor=pointer]:
+                      - /url: https://private-user-images.githubusercontent.com/1991296/593077048-cae5631f-2ff5-47ea-87bf-c3f26851ca04.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAwMjI3NDIsIm5iZiI6MTc4MDAyMjQ0MiwicGF0aCI6Ii8xOTkxMjk2LzU5MzA3NzA0OC1jYWU1NjMxZi0yZmY1LTQ3ZWEtODdiZi1jM2YyNjg1MWNhMDQucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MjlUMDI0MDQyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9Y2Q3NWU5YWJjOWQ3OTU2N2MxNTA4YWExMWI5Y2NmZjQ4ZjZiOTk2NWI4ODdmZmRjMzJiN2FkZjNhMDgxNjA2YSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.avB7AEU5r5WTnTkN39iGqzirMz82-hGhWbVhAXV4s8Y
+                      - img "image" [ref=e314]
+                    - paragraph [ref=e315]:
+                      - text: "Full data:"
+                      - link "aime2026-qwen3.6-27b-mtp-q4_k-x4.json.html" [ref=e316] [cursor=pointer]:
+                        - /url: https://github.com/user-attachments/files/27798291/aime2026-qwen3.6-27b-mtp-q4_k-x4.json.html
+                    - heading "Next Steps until merge" [level=2] [ref=e317]
+                    - list [ref=e318]:
+                      - listitem [ref=e319]:
+                        - img [ref=e321]
+                        - checkbox "Completed task" [checked] [disabled] [ref=e323]
+                        - text: Wait for
+                        - generic [ref=e324]:
+                          - img [ref=e325]
+                          - 'link "spec : parallel drafting support #22838" [ref=e327] [cursor=pointer]':
+                            - /url: https://github.com/ggml-org/llama.cpp/pull/22838
+                      - listitem [ref=e328]:
+                        - img [ref=e330]
+                        - checkbox "Completed task" [checked] [disabled] [ref=e332]
+                        - text: Support separate GGUF for
+                        - code [ref=e333]: mtp
+                      - listitem [ref=e334]:
+                        - img [ref=e336]
+                        - checkbox "Completed task" [checked] [disabled] [ref=e338]
+                        - text: Fix recurrent state save/load with partial rollback
+                      - listitem [ref=e339]:
+                        - img [ref=e341]
+                        - checkbox "Completed task" [checked] [disabled] [ref=e343]
+                        - text: Regen docs for new CLI arg spec type
+                        - code [ref=e344]: draft-mtp
+                    - heading "TODOs after merge" [level=2] [ref=e345]
+                    - list [ref=e346]:
+                      - listitem [ref=e347]:
+                        - img [ref=e349]
+                        - checkbox "Completed task" [checked] [disabled] [ref=e351]
+                        - text: Improve
+                        - code [ref=e352]: ngram
+                        - text: compatibility with
+                        - code [ref=e353]: mtp
+                      - listitem [ref=e354]:
+                        - img [ref=e356]
+                        - checkbox "Incomplete task" [disabled] [ref=e358]
+                        - text: Add recurrent state tests to CI
+                      - listitem [ref=e359]:
+                        - img [ref=e361]
+                        - checkbox "Completed task" [checked] [disabled] [ref=e363]
+                        - text: Re-enable
+                        - code [ref=e364]: "--spec-draft-p-min"
+                        - text: support for
+                        - code [ref=e365]: mtp
+                      - listitem [ref=e366]:
+                        - img [ref=e368]
+                        - checkbox "Completed task" [checked] [disabled] [ref=e370]
+                        - text: Fix partial rollback for
+                        - code [ref=e371]: batch size > 1 + n_rs_seq
+                        - text: (
+                        - link "sample patch" [ref=e372] [cursor=pointer]:
+                          - /url: https://gist.github.com/ggerganov/39538c4082ec0647cd4760f57eb74d86
+                        - text: )
+                      - listitem [ref=e373]:
+                        - img [ref=e375]
+                        - checkbox "Incomplete task" [disabled] [ref=e377]
+                        - text: Improve multi-seq performance of the recurrent memory for
+                        - code [ref=e378]: n_rs_seq > 0
+                        - text: (currently the multi-seq states are not contiguous in memory so cannot be batched together)
+                      - listitem [ref=e379]:
+                        - img [ref=e381]
+                        - checkbox "Incomplete task" [disabled] [ref=e383]
+                        - text: Avoid D2H + H2D pre-norm embedding transfers somehow?
+                      - listitem [ref=e384]:
+                        - img [ref=e386]
+                        - checkbox "Incomplete task" [disabled] [ref=e388]
+                        - text: Metal drafting improvements
+                        - generic [ref=e389]:
+                          - img [ref=e390]
+                          - 'link "metal: reuse K/V in flash-attn vec for spec-decode #23114" [ref=e392] [cursor=pointer]':
+                            - /url: https://github.com/ggml-org/llama.cpp/pull/23114
+                        - text: "?"
+                    - heading "Requirements" [level=2] [ref=e393]
+                    - list [ref=e394]:
+                      - listitem [ref=e395]:
+                        - text: I have read and agree with the
+                        - link "contributing guidelines" [ref=e396] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/blob/master/CONTRIBUTING.md
+                      - listitem [ref=e397]: "AI usage disclosure: Yes, for debugging and reviewing. Also the convert_hf_to_gguf.py + model definitions. Writing bench for validation against vLLM."
+                  - generic [ref=e401]:
+                    - 'button "thumbs up (346): am17an, 09:41AM on May 04" [disabled] [ref=e402]':
+                      - img "+1" [ref=e404]
+                      - generic [ref=e405]: "346"
+                    - 'button "hooray (129): am17an, 09:41AM on May 04" [disabled] [ref=e406]':
+                      - img "tada" [ref=e408]
+                      - generic [ref=e409]: "129"
+                    - 'button "heart (115): am17an, 09:41AM on May 04" [disabled] [ref=e410]':
+                      - img "heart" [ref=e412]
+                      - generic [ref=e413]: "115"
+                    - 'button "rocket (154): am17an, 09:41AM on May 04" [disabled] [ref=e414]':
+                      - img "rocket" [ref=e416]
+                      - generic [ref=e417]: "154"
+                    - 'button "eyes (80): am17an, 09:41AM on May 04" [disabled] [ref=e418]':
+                      - img "eyes" [ref=e420]
+                      - generic [ref=e421]: "80"
+              - generic [ref=e422]:
+                - generic [ref=e424]:
+                  - img [ref=e426]
+                  - generic [ref=e428]:
+                    - link "@github-actions" [ref=e429] [cursor=pointer]:
+                      - /url: /apps/github-actions
+                      - img "@github-actions" [ref=e430]
+                    - link "github-actions" [ref=e431] [cursor=pointer]:
+                      - /url: /apps/github-actions
+                    - generic [ref=e432]: Bot
+                    - text: added
+                    - link "model" [ref=e433] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Amodel
+                    - link "testing" [ref=e434] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Atesting
+                    - link "Nvidia GPU" [ref=e435] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22Nvidia%20GPU%22
+                    - link "Vulkan" [ref=e436] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3AVulkan
+                    - link "examples" [ref=e437] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aexamples
+                    - link "python" [ref=e438] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Apython
+                    - link "server" [ref=e439] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aserver
+                    - link "ggml" [ref=e440] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aggml
+                    - text: labels
+                    - link "May 4, 2026last month" [ref=e441] [cursor=pointer]:
+                      - /url: "#event-25126849846"
+                - generic [ref=e443]:
+                  - link "@ngxson" [ref=e445] [cursor=pointer]:
+                    - /url: /ngxson
+                    - img "@ngxson" [ref=e446]
+                  - generic [ref=e448]:
+                    - generic [ref=e449]:
+                      - generic [ref=e450]:
+                        - group [ref=e452]:
+                          - button "Show options" [ref=e453] [cursor=pointer]:
+                            - img "Show options" [ref=e456]
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e459]:
+                          - generic [ref=e460]: Contributor
+                      - heading "ngxson commented May 4, 2026last month" [level=3] [ref=e461]:
+                        - generic [ref=e462]:
+                          - strong [ref=e463]:
+                            - link "ngxson" [ref=e464] [cursor=pointer]:
+                              - /url: /ngxson
+                          - text: commented
+                          - link "May 4, 2026last month" [ref=e465] [cursor=pointer]:
+                            - /url: "#issuecomment-4370179711"
+                    - table [ref=e468]:
+                      - rowgroup [ref=e469]:
+                        - 'row "Nice, I think this is a fresh start better than my WIP #18886 (that I still never find the time to continue) There were some other attempts to add MTP support but they all heavily rely on host <--> device data copy. I assume you tried addressed this, right? (Maybe there was a discussion somewhere but I wasn''t aware of)" [ref=e470]':
+                          - 'cell "Nice, I think this is a fresh start better than my WIP #18886 (that I still never find the time to continue) There were some other attempts to add MTP support but they all heavily rely on host <--> device data copy. I assume you tried addressed this, right? (Maybe there was a discussion somewhere but I wasn''t aware of)" [ref=e471]':
+                            - paragraph [ref=e472]:
+                              - text: Nice, I think this is a fresh start better than my WIP
+                              - link "#18886" [ref=e473] [cursor=pointer]:
+                                - /url: https://github.com/ggml-org/llama.cpp/pull/18886
+                              - text: (that I still never find the time to continue)
+                            - paragraph [ref=e474]: There were some other attempts to add MTP support but they all heavily rely on host <--> device data copy. I assume you tried addressed this, right? (Maybe there was a discussion somewhere but I wasn't aware of)
+                - generic [ref=e477]:
+                  - generic [ref=e478]:
+                    - link "ngxson" [ref=e479] [cursor=pointer]:
+                      - /url: /ngxson
+                      - img "ngxson" [ref=e480]
+                    - img [ref=e482]
+                    - generic [ref=e484]:
+                      - generic [ref=e485]:
+                        - strong [ref=e486]:
+                          - link "ngxson" [ref=e487] [cursor=pointer]:
+                            - /url: /ngxson
+                        - text: reviewed
+                        - link "May 4, 2026last month" [ref=e489] [cursor=pointer]:
+                          - /url: "#pullrequestreview-4219114350"
+                      - link "View reviewed changes" [ref=e491] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/pull/22673/files
+                        - generic [ref=e493]: View reviewed changes
+                  - generic [ref=e496]:
+                    - generic [ref=e497]:
+                      - generic [ref=e498]:
+                        - group [ref=e500]:
+                          - button "Show options" [ref=e501] [cursor=pointer]:
+                            - img "Show options" [ref=e504]
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e507]:
+                          - generic [ref=e508]: Contributor
+                      - heading "ngxson left a comment" [level=3] [ref=e509]:
+                        - generic [ref=e510]:
+                          - strong [ref=e511]:
+                            - link "ngxson" [ref=e512] [cursor=pointer]:
+                              - /url: /ngxson
+                          - text: left a comment
+                    - paragraph [ref=e516]: (not a review, but opening some discussions)
+                  - generic [ref=e518]:
+                    - generic [ref=e521]:
+                      - button "Comment thread" [ref=e522] [cursor=pointer]:
+                        - img
+                      - link "src/llama-memory-recurrent.h" [ref=e524] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/pull/22673/files#diff-392475df6c6113a00960a3338b53e908bf48bc5f2ec8715b2c8dee0313fc8fec
+                      - button "Show resolved" [ref=e525] [cursor=pointer]:
+                        - generic [ref=e526]:
+                          - generic:
+                            - img
+                          - generic [ref=e527]: Show resolved
+                    - generic [ref=e530]:
+                      - button "Comment thread" [ref=e531] [cursor=pointer]:
+                        - img
+                      - generic [ref=e532]:
+                        - link "src/models/qwen35.cpp" [ref=e533] [cursor=pointer]:
+                          - /url: /ggml-org/llama.cpp/pull/22673/files#diff-ba1afc3fa015f8dcacb9d4a97097d2321dbd28e41ed473acdd52c320ea6dacab
+                        - 'generic "Label: Outdated" [ref=e534]': Outdated
+                      - button "Show resolved" [ref=e535] [cursor=pointer]:
+                        - generic [ref=e536]:
+                          - generic:
+                            - img
+                          - generic [ref=e537]: Show resolved
+                    - generic [ref=e540]:
+                      - button "Comment thread" [ref=e541] [cursor=pointer]:
+                        - img
+                      - generic [ref=e542]:
+                        - link "tools/server/server-context.cpp" [ref=e543] [cursor=pointer]:
+                          - /url: /ggml-org/llama.cpp/pull/22673/files#diff-e88c41f46af1e816ec2d47eb3c50d1698db6c80cf5e3051a4c6c5b984c9383a1
+                        - 'generic "Label: Outdated" [ref=e544]': Outdated
+                      - button "Show resolved" [ref=e545] [cursor=pointer]:
+                        - generic [ref=e546]:
+                          - generic:
+                            - img
+                          - generic [ref=e547]: Show resolved
+                - generic [ref=e549]:
+                  - link "@am17an" [ref=e551] [cursor=pointer]:
+                    - /url: /am17an
+                    - img "@am17an" [ref=e552]
+                  - generic [ref=e554]:
+                    - generic [ref=e555]:
+                      - generic [ref=e556]:
+                        - group [ref=e558]:
+                          - button "Show options" [ref=e559] [cursor=pointer]:
+                            - img "Show options" [ref=e562]
+                        - generic [ref=e564]:
+                          - generic "This user has previously committed to the llama.cpp repository." [ref=e565]:
+                            - generic [ref=e566]: Contributor
+                          - generic "This user is the author of this pull request." [ref=e567]:
+                            - generic [ref=e568]: Author
+                      - heading "am17an commented May 4, 2026last month" [level=3] [ref=e569]:
+                        - generic [ref=e570]:
+                          - strong [ref=e571]:
+                            - link "am17an" [ref=e572] [cursor=pointer]:
+                              - /url: /am17an
+                          - text: commented
+                          - link "May 4, 2026last month" [ref=e573] [cursor=pointer]:
+                            - /url: "#issuecomment-4370278314"
+                    - generic [ref=e574]:
+                      - table [ref=e576]:
+                        - rowgroup [ref=e577]:
+                          - row "@ngxson yes the h2d was discussed with GG, he's working on a refactor which will allow us to share tensors between two llama context" [ref=e578]:
+                            - cell "@ngxson yes the h2d was discussed with GG, he's working on a refactor which will allow us to share tensors between two llama context" [ref=e579]:
+                              - paragraph [ref=e580]:
+                                - link "@ngxson" [ref=e581] [cursor=pointer]:
+                                  - /url: https://github.com/ngxson
+                                - text: yes the h2d was discussed with GG, he's working on a refactor which will allow us to share tensors between two llama context
+                      - button "react with thumbs up" [disabled] [ref=e587]:
+                        - img "+1" [ref=e589]
+                        - generic [ref=e590]: "5"
+                - generic [ref=e592]:
+                  - link "@pwilkin" [ref=e594] [cursor=pointer]:
+                    - /url: /pwilkin
+                    - img "@pwilkin" [ref=e595]
+                  - generic [ref=e597]:
+                    - generic [ref=e598]:
+                      - generic [ref=e599]:
+                        - group [ref=e601]:
+                          - button "Show options" [ref=e602] [cursor=pointer]:
+                            - img "Show options" [ref=e605]
+                        - generic "This user is a member of the ggml-org organization." [ref=e608]:
+                          - generic [ref=e609]: Member
+                      - heading "pwilkin commented May 4, 2026last month" [level=3] [ref=e610]:
+                        - generic [ref=e611]:
+                          - strong [ref=e612]:
+                            - link "pwilkin" [ref=e613] [cursor=pointer]:
+                              - /url: /pwilkin
+                          - text: commented
+                          - link "May 4, 2026last month" [ref=e614] [cursor=pointer]:
+                            - /url: "#issuecomment-4370369885"
+                    - generic [ref=e615]:
+                      - table [ref=e617]:
+                        - rowgroup [ref=e618]:
+                          - row "Great work, this should massively bridge the TG gap with vLLM, or maybe even surpass it together with tensor-parallel." [ref=e619]:
+                            - cell "Great work, this should massively bridge the TG gap with vLLM, or maybe even surpass it together with tensor-parallel." [ref=e620]:
+                              - paragraph [ref=e621]: Great work, this should massively bridge the TG gap with vLLM, or maybe even surpass it together with tensor-parallel.
+                      - generic [ref=e626]:
+                        - button "react with thumbs up" [disabled] [ref=e627]:
+                          - img "+1" [ref=e629]
+                          - generic [ref=e630]: "2"
+                        - button "react with rocket" [disabled] [ref=e631]:
+                          - img "rocket" [ref=e633]
+                          - generic [ref=e634]: "28"
+                - generic [ref=e636]:
+                  - img [ref=e638]
+                  - generic [ref=e640]:
+                    - link "@am17an" [ref=e641] [cursor=pointer]:
+                      - /url: /am17an
+                      - img "@am17an" [ref=e642]
+                    - link "am17an" [ref=e643] [cursor=pointer]:
+                      - /url: /am17an
+                    - link "force-pushed" [ref=e644] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/compare/6b40a9fa08b3d00fd7a07375c89555247ab7d236..10829dbcce69eb4ac5bfea6c649eeb5f60b5d7c3
+                    - text: the
+                    - generic [ref=e646]: mtp-clean
+                    - text: branch from
+                    - link "6b40a9f" [ref=e647] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/commit/6b40a9fa08b3d00fd7a07375c89555247ab7d236
+                      - code [ref=e648]: 6b40a9f
+                    - text: to
+                    - link "10829db" [ref=e649] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/commit/10829dbcce69eb4ac5bfea6c649eeb5f60b5d7c3
+                      - code [ref=e650]: 10829db
+                    - link "Compare" [ref=e651] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/compare/6b40a9fa08b3d00fd7a07375c89555247ab7d236..10829dbcce69eb4ac5bfea6c649eeb5f60b5d7c3
+                      - generic [ref=e653]: Compare
+                    - link "May 4, 2026 12:33last month" [ref=e654] [cursor=pointer]:
+                      - /url: "#event-25132497265"
+                - generic [ref=e656]:
+                  - link "@cmp-nct" [ref=e658] [cursor=pointer]:
+                    - /url: /cmp-nct
+                    - img "@cmp-nct" [ref=e659]
+                  - generic [ref=e661]:
+                    - generic [ref=e662]:
+                      - generic [ref=e663]:
+                        - group [ref=e665]:
+                          - button "Show options" [ref=e666] [cursor=pointer]:
+                            - img "Show options" [ref=e669]
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e672]:
+                          - generic [ref=e673]: Contributor
+                      - heading "cmp-nct commented May 4, 2026last month" [level=3] [ref=e674]:
+                        - generic [ref=e675]:
+                          - strong [ref=e676]:
+                            - link "cmp-nct" [ref=e677] [cursor=pointer]:
+                              - /url: /cmp-nct
+                          - text: commented
+                          - link "May 4, 2026last month" [ref=e678] [cursor=pointer]:
+                            - /url: "#issuecomment-4371354015"
+                    - generic [ref=e679]:
+                      - table [ref=e681]:
+                        - rowgroup [ref=e682]:
+                          - row "in my opinion Qwen 3.6 is the most important thing that happened in open source models in a long time, this is going to be so valuable. I wonder if this, once merged, could be combined with ngram drafting ? So MTP is used until ngram is triggered - switching to ngram until rejection and back to MTP ngram could be set to match only very strong and long candidates - for large repetitive paraphrasing and MTP fills the gap" [ref=e683]:
+                            - cell "in my opinion Qwen 3.6 is the most important thing that happened in open source models in a long time, this is going to be so valuable. I wonder if this, once merged, could be combined with ngram drafting ? So MTP is used until ngram is triggered - switching to ngram until rejection and back to MTP ngram could be set to match only very strong and long candidates - for large repetitive paraphrasing and MTP fills the gap" [ref=e684]:
+                              - paragraph [ref=e685]:
+                                - text: in my opinion Qwen 3.6 is the most important thing that happened in open source models in a long time, this is going to be so valuable.
+                                - text: I wonder if this, once merged, could be combined with ngram drafting ?
+                                - text: So MTP is used until ngram is triggered - switching to ngram until rejection and back to MTP
+                              - paragraph [ref=e686]:
+                                - text: ngram could be set to match only very strong and long candidates - for large repetitive paraphrasing
+                                - text: and MTP fills the gap
+                      - generic [ref=e691]:
+                        - button "react with thumbs up" [disabled] [ref=e692]:
+                          - img "+1" [ref=e694]
+                          - generic [ref=e695]: "15"
+                        - button "react with heart" [disabled] [ref=e696]:
+                          - img "heart" [ref=e698]
+                          - generic [ref=e699]: "39"
+                        - button "react with eyes" [disabled] [ref=e700]:
+                          - img "eyes" [ref=e702]
+                          - generic [ref=e703]: "5"
+                - generic [ref=e705]:
+                  - link "@Dampfinchen" [ref=e707] [cursor=pointer]:
+                    - /url: /Dampfinchen
+                    - img "@Dampfinchen" [ref=e708]
+                  - generic [ref=e710]:
+                    - generic [ref=e711]:
+                      - group [ref=e714]:
+                        - button "Show options" [ref=e715] [cursor=pointer]:
+                          - img "Show options" [ref=e718]
+                      - heading "Dampfinchen commented May 4, 2026last month •" [level=3] [ref=e720]:
+                        - generic [ref=e721]:
+                          - strong [ref=e722]:
+                            - link "Dampfinchen" [ref=e723] [cursor=pointer]:
+                              - /url: /Dampfinchen
+                          - text: commented
+                          - link "May 4, 2026last month" [ref=e724] [cursor=pointer]:
+                            - /url: "#issuecomment-4371364181"
+                          - generic [ref=e725]:
+                            - generic [ref=e726]: •
+                            - group [ref=e727]:
+                              - button "edited" [ref=e728] [cursor=pointer]:
+                                - generic [ref=e729]:
+                                  - text: edited
+                                  - img [ref=e730]
+                    - generic [ref=e732]:
+                      - table [ref=e734]:
+                        - rowgroup [ref=e735]:
+                          - row "\" idea is that MTP should automatically start and we shouldn't need to distribute the MTP gguf separately but also it has it's own context/kv-cache etc.\" -> Does this mean MTP needs additional resources (RAM/VRAM?) If so, there should always be an option to remain to disable it. Right now on my system (6 GB VRAM, 32 GB RAM), speculative decoding just makes things much slower even on very small draft models because of that exact reason, they need own context and kv-cache. Such low to midrange systems already operate on the edge in terms of memory." [ref=e736]:
+                            - cell "\" idea is that MTP should automatically start and we shouldn't need to distribute the MTP gguf separately but also it has it's own context/kv-cache etc.\" -> Does this mean MTP needs additional resources (RAM/VRAM?) If so, there should always be an option to remain to disable it. Right now on my system (6 GB VRAM, 32 GB RAM), speculative decoding just makes things much slower even on very small draft models because of that exact reason, they need own context and kv-cache. Such low to midrange systems already operate on the edge in terms of memory." [ref=e737]:
+                              - paragraph [ref=e738]: "\" idea is that MTP should automatically start and we shouldn't need to distribute the MTP gguf separately but also it has it's own context/kv-cache etc.\" -> Does this mean MTP needs additional resources (RAM/VRAM?)"
+                              - paragraph [ref=e739]: If so, there should always be an option to remain to disable it. Right now on my system (6 GB VRAM, 32 GB RAM), speculative decoding just makes things much slower even on very small draft models because of that exact reason, they need own context and kv-cache. Such low to midrange systems already operate on the edge in terms of memory.
+                      - button "react with thumbs up" [disabled] [ref=e745]:
+                        - img "+1" [ref=e747]
+                        - generic [ref=e748]: "2"
+                - generic [ref=e750]:
+                  - link "@mbednarek360" [ref=e752] [cursor=pointer]:
+                    - /url: /mbednarek360
+                    - img "@mbednarek360" [ref=e753]
+                  - generic [ref=e755]:
+                    - generic [ref=e756]:
+                      - group [ref=e759]:
+                        - button "Show options" [ref=e760] [cursor=pointer]:
+                          - img "Show options" [ref=e763]
+                      - heading "mbednarek360 commented May 4, 2026last month" [level=3] [ref=e765]:
+                        - generic [ref=e766]:
+                          - strong [ref=e767]:
+                            - link "mbednarek360" [ref=e768] [cursor=pointer]:
+                              - /url: /mbednarek360
+                          - text: commented
+                          - link "May 4, 2026last month" [ref=e769] [cursor=pointer]:
+                            - /url: "#issuecomment-4371457411"
+                    - generic [ref=e770]:
+                      - table [ref=e772]:
+                        - rowgroup [ref=e773]:
+                          - 'row "I''m getting garbage responses running this PR on the Vulkan backend with an R9700 using llama-server. I''m using the GGUF you linked above. Interestingly, draft acceptance is only 0.01282. Prompt: \"Hello!\" Response: The from, ;::... ... on;srible威风to{ islitor \\ ... • We &eq和chn ***, on Prompt (: mouth “ ? forM� P Copy code to clipboard" [ref=e774]':
+                            - 'cell "I''m getting garbage responses running this PR on the Vulkan backend with an R9700 using llama-server. I''m using the GGUF you linked above. Interestingly, draft acceptance is only 0.01282. Prompt: \"Hello!\" Response: The from, ;::... ... on;srible威风to{ islitor \\ ... • We &eq和chn ***, on Prompt (: mouth “ ? forM� P Copy code to clipboard" [ref=e775]':
+                              - paragraph [ref=e776]: I'm getting garbage responses running this PR on the Vulkan backend with an R9700 using llama-server. I'm using the GGUF you linked above. Interestingly, draft acceptance is only 0.01282.
+                              - paragraph [ref=e777]:
+                                - text: "Prompt: \"Hello!\""
+                                - text: "Response:"
+                              - generic [ref=e778]:
+                                - code [ref=e780]: "The from, ;::... ... on;srible威风to{ islitor \\ ... • We &eq和chn ***, on Prompt (: mouth “ ? forM� P"
+                                - button "Copy code to clipboard" [ref=e782] [cursor=pointer]:
+                                  - img [ref=e783]
+                      - generic [ref=e790]:
+                        - button "react with laugh" [disabled] [ref=e791]:
+                          - img "smile" [ref=e793]
+                          - generic [ref=e794]: "9"
+                        - button "react with eyes" [disabled] [ref=e795]:
+                          - img "eyes" [ref=e797]
+                          - generic [ref=e798]: "3"
+                - generic [ref=e800]:
+                  - link "@am17an" [ref=e802] [cursor=pointer]:
+                    - /url: /am17an
+                    - img "@am17an" [ref=e803]
+                  - generic [ref=e805]:
+                    - generic [ref=e806]:
+                      - generic [ref=e807]:
+                        - group [ref=e809]:
+                          - button "Show options" [ref=e810] [cursor=pointer]:
+                            - img "Show options" [ref=e813]
+                        - generic [ref=e815]:
+                          - generic "This user has previously committed to the llama.cpp repository." [ref=e816]:
+                            - generic [ref=e817]: Contributor
+                          - generic "This user is the author of this pull request." [ref=e818]:
+                            - generic [ref=e819]: Author
+                      - heading "am17an commented May 4, 2026last month •" [level=3] [ref=e820]:
+                        - generic [ref=e821]:
+                          - strong [ref=e822]:
+                            - link "am17an" [ref=e823] [cursor=pointer]:
+                              - /url: /am17an
+                          - text: commented
+                          - link "May 4, 2026last month" [ref=e824] [cursor=pointer]:
+                            - /url: "#issuecomment-4371483712"
+                          - generic [ref=e825]:
+                            - generic [ref=e826]: •
+                            - group [ref=e827]:
+                              - button "edited" [ref=e828] [cursor=pointer]:
+                                - generic [ref=e829]:
+                                  - text: edited
+                                  - img [ref=e830]
+                    - generic [ref=e832]:
+                      - table [ref=e834]:
+                        - rowgroup [ref=e835]:
+                          - 'row "@cmp-nct I''m not sure, but could be possible @Dampfinchen as of right now it is opt-in via --spec-type mtp, but in terms of memory it should be < 10% of overall memory used (it''s just a single layer transformer + kv cache, much lighter than draft models) @mbednarek360 I''ve only tested this on a small number of CUDA devices as of now, once it''s ready to review I would have tested more devices/backends. In particular this PR relies on #22400 which is not implemented for vulkan for now, if you ask an LLM to add support for that you might get a little further Vulkan and Metal also tested" [ref=e836]':
+                            - 'cell "@cmp-nct I''m not sure, but could be possible @Dampfinchen as of right now it is opt-in via --spec-type mtp, but in terms of memory it should be < 10% of overall memory used (it''s just a single layer transformer + kv cache, much lighter than draft models) @mbednarek360 I''ve only tested this on a small number of CUDA devices as of now, once it''s ready to review I would have tested more devices/backends. In particular this PR relies on #22400 which is not implemented for vulkan for now, if you ask an LLM to add support for that you might get a little further Vulkan and Metal also tested" [ref=e837]':
+                              - paragraph [ref=e838]:
+                                - link "@cmp-nct" [ref=e839] [cursor=pointer]:
+                                  - /url: https://github.com/cmp-nct
+                                - text: I'm not sure, but could be possible
+                              - paragraph [ref=e840]:
+                                - link "@Dampfinchen" [ref=e841] [cursor=pointer]:
+                                  - /url: https://github.com/Dampfinchen
+                                - text: as of right now it is opt-in via
+                                - code [ref=e842]: "--spec-type mtp"
+                                - text: ", but in terms of memory it should be < 10% of overall memory used (it's just a single layer transformer + kv cache, much lighter than draft models)"
+                              - paragraph [ref=e843]:
+                                - link "@mbednarek360" [ref=e844] [cursor=pointer]:
+                                  - /url: https://github.com/mbednarek360
+                                - deletion [ref=e845]:
+                                  - text: I've only tested this on a small number of CUDA devices as of now, once it's ready to review I would have tested more devices/backends. In particular this PR relies on
+                                  - link "#22400" [ref=e846] [cursor=pointer]:
+                                    - /url: https://github.com/ggml-org/llama.cpp/pull/22400
+                                  - text: which is not implemented for vulkan for now, if you ask an LLM to add support for that you might get a little further
+                                - text: Vulkan and Metal also tested
+                      - generic [ref=e851]:
+                        - button "react with thumbs up" [disabled] [ref=e852]:
+                          - img "+1" [ref=e854]
+                          - generic [ref=e855]: "12"
+                        - button "react with heart" [disabled] [ref=e856]:
+                          - img "heart" [ref=e858]
+                          - generic [ref=e859]: "4"
+                - generic [ref=e861]:
+                  - link "@nawoa" [ref=e863] [cursor=pointer]:
+                    - /url: /nawoa
+                    - img "@nawoa" [ref=e864]
+                  - generic [ref=e866]:
+                    - generic [ref=e867]:
+                      - group [ref=e870]:
+                        - button "Show options" [ref=e871] [cursor=pointer]:
+                          - img "Show options" [ref=e874]
+                      - heading "nawoa commented May 4, 20263 weeks ago •" [level=3] [ref=e876]:
+                        - generic [ref=e877]:
+                          - strong [ref=e878]:
+                            - link "nawoa" [ref=e879] [cursor=pointer]:
+                              - /url: /nawoa
+                          - text: commented
+                          - link "May 4, 20263 weeks ago" [ref=e880] [cursor=pointer]:
+                            - /url: "#issuecomment-4372247789"
+                          - generic [ref=e881]:
+                            - generic [ref=e882]: •
+                            - group [ref=e883]:
+                              - button "edited" [ref=e884] [cursor=pointer]:
+                                - generic [ref=e885]:
+                                  - text: edited
+                                  - img [ref=e886]
+                    - generic [ref=e888]:
+                      - table [ref=e890]:
+                        - rowgroup [ref=e891]:
+                          - row "Might it be possible/useful to run the draft model on a second GPU? Given that MTP weights model are relatively small this might provide a useful speedup on systems with a dedicated high-VRAM \"AI\" GPU with a cheaper low-VRAM \"normal\" GPU used for display output, etc... possibly prevent some degree of resource contention." [ref=e892]:
+                            - cell "Might it be possible/useful to run the draft model on a second GPU? Given that MTP weights model are relatively small this might provide a useful speedup on systems with a dedicated high-VRAM \"AI\" GPU with a cheaper low-VRAM \"normal\" GPU used for display output, etc... possibly prevent some degree of resource contention." [ref=e893]:
+                              - paragraph [ref=e894]: Might it be possible/useful to run the draft model on a second GPU? Given that MTP weights model are relatively small this might provide a useful speedup on systems with a dedicated high-VRAM "AI" GPU with a cheaper low-VRAM "normal" GPU used for display output, etc... possibly prevent some degree of resource contention.
+                      - button "react with thumbs up" [disabled] [ref=e900]:
+                        - img "+1" [ref=e902]
+                        - generic [ref=e903]: "6"
+                - generic [ref=e905]:
+                  - link "@cturan" [ref=e907] [cursor=pointer]:
+                    - /url: /cturan
+                    - img "@cturan" [ref=e908]
+                  - generic [ref=e910]:
+                    - generic [ref=e911]:
+                      - group [ref=e914]:
+                        - button "Show options" [ref=e915] [cursor=pointer]:
+                          - img "Show options" [ref=e918]
+                      - heading "cturan commented May 4, 20263 weeks ago" [level=3] [ref=e920]:
+                        - generic [ref=e921]:
+                          - strong [ref=e922]:
+                            - link "cturan" [ref=e923] [cursor=pointer]:
+                              - /url: /cturan
+                          - text: commented
+                          - link "May 4, 20263 weeks ago" [ref=e924] [cursor=pointer]:
+                            - /url: "#issuecomment-4372285675"
+                    - generic [ref=e925]:
+                      - table [ref=e927]:
+                        - rowgroup [ref=e928]:
+                          - row [ref=e929]:
+                            - cell [ref=e930]:
+                              - paragraph [ref=e931]: Thank you, we are eagerly awaiting this to become stable, here automated test results for my machine;
+                              - paragraph [ref=e932]:
+                                - text: __
+                                - text: Qwen3.6-27B Q6_K benchmark on llama.cpp b9025-10829dbcc / PR
+                                - link "#22673" [ref=e933] [cursor=pointer]:
+                                  - /url: https://github.com/ggml-org/llama.cpp/pull/22673
+                                - text: branch
+                                - text: "Hardware: RTX 3090 24GB + RTX 3060 12GB"
+                                - text: "Runtime flags:"
+                                - code [ref=e934]: "-fa on -c 10000 -np 1 -ngl 99 --no-mmap --no-cache-prompt"
+                                - text: "Endpoint:"
+                                - code [ref=e935]: /completion
+                                - text: ", raw text prompt"
+                                - text: "Prompt: 6978 tokens"
+                                - text: "Generation: 256 tokens"
+                                - text: "Runs: 3 measured runs after warmup"
+                              - table [ref=e937]:
+                                - rowgroup [ref=e938]:
+                                  - row "mode model prefill tok/s avg generation tok/s avg MTP acceptance loaded VRAM" [ref=e939]:
+                                    - columnheader "mode" [ref=e940]
+                                    - columnheader "model" [ref=e941]
+                                    - columnheader "prefill tok/s avg" [ref=e942]
+                                    - columnheader "generation tok/s avg" [ref=e943]
+                                    - columnheader "MTP acceptance" [ref=e944]
+                                    - columnheader "loaded VRAM" [ref=e945]
+                                - rowgroup [ref=e946]:
+                                  - row "MTP enabled Qwen3.6-27B-MTP-Q6_K.gguf + --spec-type mtp --spec-draft-n-max 3 665.14 42.45 76.0% 24.96 GiB" [ref=e947]:
+                                    - cell "MTP enabled" [ref=e948]
+                                    - cell "Qwen3.6-27B-MTP-Q6_K.gguf + --spec-type mtp --spec-draft-n-max 3" [ref=e949]:
+                                      - text: Qwen3.6-27B-MTP-Q6_K.gguf +
+                                      - code [ref=e950]: "--spec-type mtp --spec-draft-n-max 3"
+                                    - cell "665.14" [ref=e951]
+                                    - cell "42.45" [ref=e952]
+                                    - cell "76.0%" [ref=e953]
+                                    - cell "24.96 GiB" [ref=e954]
+                                  - row "MTP disabled, same GGUF Qwen3.6-27B-MTP-Q6_K.gguf, no spec 1315.46 22.97 n/a 22.47 GiB" [ref=e955]:
+                                    - cell "MTP disabled, same GGUF" [ref=e956]
+                                    - cell "Qwen3.6-27B-MTP-Q6_K.gguf, no spec" [ref=e957]
+                                    - cell "1315.46" [ref=e958]
+                                    - cell "22.97" [ref=e959]
+                                    - cell "n/a" [ref=e960]
+                                    - cell "22.47 GiB" [ref=e961]
+                                  - row "Existing non-MTP Q6 Qwen3.6-27B-Q6_K.gguf, no spec 1260.12 22.39 n/a 22.59 GiB" [ref=e962]:
+                                    - cell "Existing non-MTP Q6" [ref=e963]
+                                    - cell "Qwen3.6-27B-Q6_K.gguf, no spec" [ref=e964]
+                                    - cell "1260.12" [ref=e965]
+                                    - cell "22.39" [ref=e966]
+                                    - cell "n/a" [ref=e967]
+                                    - cell "22.59 GiB" [ref=e968]
+                              - paragraph [ref=e969]: "Result:"
+                              - list [ref=e970]:
+                                - listitem [ref=e971]: "MTP improves decode from 22.97 tok/s to 42.45 tok/s on the same GGUF: ~1.85x speedup."
+                                - listitem [ref=e972]: "Against the existing non-MTP Q6 file, decode improves from 22.39 tok/s to 42.45 tok/s: ~1.90x speedup."
+                                - listitem [ref=e973]: "Prefill is slower with MTP enabled in this PR path: 665 tok/s vs 1315 tok/s on the same GGUF (~0.51x)."
+                                - listitem [ref=e974]: MTP adds about 2.49 GiB loaded VRAM in this setup.
+                      - generic [ref=e979]:
+                        - button "react with thumbs up" [disabled] [ref=e980]:
+                          - img "+1" [ref=e982]
+                          - generic [ref=e983]: "23"
+                        - button "react with rocket" [disabled] [ref=e984]:
+                          - img "rocket" [ref=e986]
+                          - generic [ref=e987]: "12"
+                        - button "react with eyes" [disabled] [ref=e988]:
+                          - img "eyes" [ref=e990]
+                          - generic [ref=e991]: "3"
+                - generic [ref=e993]:
+                  - link "@am17an" [ref=e995] [cursor=pointer]:
+                    - /url: /am17an
+                    - img "@am17an" [ref=e996]
+                  - generic [ref=e998]:
+                    - generic [ref=e999]:
+                      - generic [ref=e1000]:
+                        - group [ref=e1002]:
+                          - button "Show options" [ref=e1003] [cursor=pointer]:
+                            - img "Show options" [ref=e1006]
+                        - generic [ref=e1008]:
+                          - generic "This user has previously committed to the llama.cpp repository." [ref=e1009]:
+                            - generic [ref=e1010]: Contributor
+                          - generic "This user is the author of this pull request." [ref=e1011]:
+                            - generic [ref=e1012]: Author
+                      - heading "am17an commented May 4, 20263 weeks ago" [level=3] [ref=e1013]:
+                        - generic [ref=e1014]:
+                          - strong [ref=e1015]:
+                            - link "am17an" [ref=e1016] [cursor=pointer]:
+                              - /url: /am17an
+                          - text: commented
+                          - link "May 4, 20263 weeks ago" [ref=e1017] [cursor=pointer]:
+                            - /url: "#issuecomment-4372339338"
+                    - generic [ref=e1018]:
+                      - table [ref=e1020]:
+                        - rowgroup [ref=e1021]:
+                          - row "@cturan Thanks for testing, I'm aware of the issue for the prefill and will work on a fix." [ref=e1022]:
+                            - cell "@cturan Thanks for testing, I'm aware of the issue for the prefill and will work on a fix." [ref=e1023]:
+                              - paragraph [ref=e1024]:
+                                - link "@cturan" [ref=e1025] [cursor=pointer]:
+                                  - /url: https://github.com/cturan
+                                - text: Thanks for testing, I'm aware of the issue for the prefill and will work on a fix.
+                      - generic [ref=e1030]:
+                        - button "react with heart" [disabled] [ref=e1031]:
+                          - img "heart" [ref=e1033]
+                          - generic [ref=e1034]: "9"
+                        - button "react with rocket" [disabled] [ref=e1035]:
+                          - img "rocket" [ref=e1037]
+                          - generic [ref=e1038]: "6"
+                - generic [ref=e1040]:
+                  - link "@iiLaurens" [ref=e1042] [cursor=pointer]:
+                    - /url: /iiLaurens
+                    - img "@iiLaurens" [ref=e1043]
+                  - generic [ref=e1045]:
+                    - generic [ref=e1046]:
+                      - group [ref=e1049]:
+                        - button "Show options" [ref=e1050] [cursor=pointer]:
+                          - img "Show options" [ref=e1053]
+                      - heading "iiLaurens commented May 4, 20263 weeks ago" [level=3] [ref=e1055]:
+                        - generic [ref=e1056]:
+                          - strong [ref=e1057]:
+                            - link "iiLaurens" [ref=e1058] [cursor=pointer]:
+                              - /url: /iiLaurens
+                          - text: commented
+                          - link "May 4, 20263 weeks ago" [ref=e1059] [cursor=pointer]:
+                            - /url: "#issuecomment-4373152392"
+                    - table [ref=e1062]:
+                      - rowgroup [ref=e1063]:
+                        - row "Might be a long shot, but any chance of supporting MTP with a reduced vocabulary? MTP layers are rather chonky and reducing token embeddings might help users with less VRAM by filtering out certain languages. Obviously the full model will still be able to produce those tokens if need be so it won't be gimped." [ref=e1064]:
+                          - cell "Might be a long shot, but any chance of supporting MTP with a reduced vocabulary? MTP layers are rather chonky and reducing token embeddings might help users with less VRAM by filtering out certain languages. Obviously the full model will still be able to produce those tokens if need be so it won't be gimped." [ref=e1065]:
+                            - paragraph [ref=e1066]: Might be a long shot, but any chance of supporting MTP with a reduced vocabulary? MTP layers are rather chonky and reducing token embeddings might help users with less VRAM by filtering out certain languages. Obviously the full model will still be able to produce those tokens if need be so it won't be gimped.
+                - generic [ref=e1068]:
+                  - link "@nybblr" [ref=e1070] [cursor=pointer]:
+                    - /url: /nybblr
+                    - img "@nybblr" [ref=e1071]
+                  - generic [ref=e1073]:
+                    - generic [ref=e1074]:
+                      - group [ref=e1077]:
+                        - button "Show options" [ref=e1078] [cursor=pointer]:
+                          - img "Show options" [ref=e1081]
+                      - heading "nybblr commented May 4, 20263 weeks ago" [level=3] [ref=e1083]:
+                        - generic [ref=e1084]:
+                          - strong [ref=e1085]:
+                            - link "nybblr" [ref=e1086] [cursor=pointer]:
+                              - /url: /nybblr
+                          - text: commented
+                          - link "May 4, 20263 weeks ago" [ref=e1087] [cursor=pointer]:
+                            - /url: "#issuecomment-4373308317"
+                    - table [ref=e1090]:
+                      - rowgroup [ref=e1091]:
+                        - row "Working on taking this for a spin with the Q4_K_M quant of Qwen3.6-35BA3B. I was gonna try to start from unsloth's quant since they already perform really well, but of course they don't have any mtp layers. @am17an Think it would work if I just \"steal\" the layers from your q8 quant and merge them into the unsloth quant? (add blk.40 and bump some top-level config like block_count and kv_count)" [ref=e1092]:
+                          - cell "Working on taking this for a spin with the Q4_K_M quant of Qwen3.6-35BA3B. I was gonna try to start from unsloth's quant since they already perform really well, but of course they don't have any mtp layers. @am17an Think it would work if I just \"steal\" the layers from your q8 quant and merge them into the unsloth quant? (add blk.40 and bump some top-level config like block_count and kv_count)" [ref=e1093]:
+                            - paragraph [ref=e1094]:
+                              - text: Working on taking this for a spin with the Q4_K_M quant of Qwen3.6-35BA3B. I was gonna try to start from
+                              - link "unsloth's quant" [ref=e1095] [cursor=pointer]:
+                                - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/blob/main/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf
+                              - text: since they already perform really well, but of course they don't have any mtp layers.
+                            - paragraph [ref=e1096]:
+                              - link "@am17an" [ref=e1097] [cursor=pointer]:
+                                - /url: https://github.com/am17an
+                              - text: Think it would work if I just "steal" the layers from your q8 quant and merge them into the unsloth quant? (add blk.40 and bump some top-level config like block_count and kv_count)
+                - generic [ref=e1099]:
+                  - link "@volkermauel" [ref=e1101] [cursor=pointer]:
+                    - /url: /volkermauel
+                    - img "@volkermauel" [ref=e1102]
+                  - generic [ref=e1104]:
+                    - generic [ref=e1105]:
+                      - group [ref=e1108]:
+                        - button "Show options" [ref=e1109] [cursor=pointer]:
+                          - img "Show options" [ref=e1112]
+                      - heading "volkermauel commented May 4, 20263 weeks ago" [level=3] [ref=e1114]:
+                        - generic [ref=e1115]:
+                          - strong [ref=e1116]:
+                            - link "volkermauel" [ref=e1117] [cursor=pointer]:
+                              - /url: /volkermauel
+                          - text: commented
+                          - link "May 4, 20263 weeks ago" [ref=e1118] [cursor=pointer]:
+                            - /url: "#issuecomment-4373808597"
+                    - generic [ref=e1119]:
+                      - table [ref=e1121]:
+                        - rowgroup [ref=e1122]:
+                          - row [ref=e1123]:
+                            - cell [ref=e1124]:
+                              - paragraph [ref=e1125]: only a quick test run, 1x 5090 qwen3.6-27b mtp 3, q4_0 quantized, kv also q4_0
+                              - generic [ref=e1126]:
+                                - code [ref=e1128]: "slot launch_slot_: id 0 | task -1 | sampler chain: logits -> penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> ?temp-ext -> dist slot launch_slot_: id 0 | task 532 | processing task, is_child = 0 slot update_slots: id 0 | task 532 | new prompt, n_ctx_slot = 200192, n_keep = 0, task.n_tokens = 16 slot update_slots: id 0 | task 532 | n_past = 3, slot.prompt.tokens.size() = 1327, seq_id = 0, pos_min = 1326, n_swa = 0 slot update_slots: id 0 | task 532 | forcing full prompt re-processing due to lack of cache data (likely due to SWA or hybrid/recurrent memory, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055) slot update_slots: id 0 | task 532 | n_tokens = 0, memory_seq_rm [0, end) srv log_server_r: done request: POST /v1/chat/completions 192.168.178.49 200 slot update_slots: id 0 | task 532 | prompt processing progress, n_tokens = 12, batch.n_tokens = 12, progress = 0.750000 slot update_slots: id 0 | task 532 | n_tokens = 12, memory_seq_rm [12, end) slot init_sampler: id 0 | task 532 | init sampler, took 0.01 ms, tokens: text = 16, total = 16 slot update_slots: id 0 | task 532 | prompt processing done, n_tokens = 16, batch.n_tokens = 4 slot print_timing: id 0 | task 532 | prompt eval time =������63.16 ms /����16 tokens (����3.95 ms per token, 253.34 tokens per second) �������eval time = 56063.04 ms / 5913 tokens (����9.48 ms per token, 105.47 tokens per second) ������total time = 56126.20 ms / 5929 tokens draft acceptance rate = 0.79728 ( 4169 accepted / 5229 generated) statistics mtp: #calls(b,g,a) = 2 2272 1976, #gen drafts = 2272, #acc drafts = 1976, #gen tokens = 6816, #acc tokens = 4950, dur(b,g,a) = 0.007, 15393.656, 64.921 ms slot������release: id 0 | task 532 | stop processing: n_tokens = 5928, truncated = 0 srv update_slots: all slots are idle"
+                                - button "Copy code to clipboard" [ref=e1130] [cursor=pointer]:
+                                  - img [ref=e1131]
+                              - paragraph [ref=e1134]: same model, same config (except mtp)
+                              - generic [ref=e1135]:
+                                - code [ref=e1137]: "slot update_slots: id 0 | task 0 | prompt processing done, n_tokens = 16, batch.n_tokens = 4 slot print_timing: id 0 | task 0 | prompt eval time = 91.85 ms / 16 tokens ( 5.74 ms per token, 174.20 tokens per second) eval time = 103127.94 ms / 6571 tokens ( 15.69 ms per token, 63.72 tokens per second) total time = 103219.79 ms / 6587 tokens slot release: id 0 | task 0 | stop processing: n_tokens = 6586, truncated = 0 srv update_slots: all slots are idle"
+                                - button "Copy code to clipboard" [ref=e1139] [cursor=pointer]:
+                                  - img [ref=e1140]
+                              - paragraph [ref=e1143]: prompt „create a flappy bird clone“
+                              - paragraph [ref=e1144]: (I‘m not creative, sorry)
+                              - paragraph [ref=e1145]: Great Speedup!
+                      - generic [ref=e1150]:
+                        - button "react with thumbs up" [disabled] [ref=e1151]:
+                          - img "+1" [ref=e1153]
+                          - generic [ref=e1154]: "6"
+                        - button "react with laugh" [disabled] [ref=e1155]:
+                          - img "smile" [ref=e1157]
+                          - generic [ref=e1158]: "1"
+                - generic [ref=e1159]:
+                  - generic [ref=e1160]:
+                    - img [ref=e1162]
+                    - generic [ref=e1164]:
+                      - generic [ref=e1165]:
+                        - link "@wjy9902" [ref=e1166] [cursor=pointer]:
+                          - /url: /wjy9902
+                          - img "@wjy9902" [ref=e1167]
+                        - link "wjy9902" [ref=e1168] [cursor=pointer]:
+                          - /url: /wjy9902
+                        - text: mentioned this pull request
+                        - link "May 4, 20263 weeks ago" [ref=e1169] [cursor=pointer]:
+                          - /url: "#ref-issue-4379300678"
+                      - generic [ref=e1170]:
+                        - link "2026-05-05 wjy9902/ai-daily#58" [ref=e1172] [cursor=pointer]:
+                          - /url: /wjy9902/ai-daily/issues/58
+                        - 'generic "Status: Open" [ref=e1174]':
+                          - img [ref=e1175]
+                          - text: Open
+                  - generic [ref=e1178]:
+                    - img [ref=e1180]
+                    - generic [ref=e1182]:
+                      - generic [ref=e1183]:
+                        - link "@MirkoCovizzi" [ref=e1184] [cursor=pointer]:
+                          - /url: /MirkoCovizzi
+                          - img "@MirkoCovizzi" [ref=e1185]
+                        - link "MirkoCovizzi" [ref=e1186] [cursor=pointer]:
+                          - /url: /MirkoCovizzi
+                        - text: mentioned this pull request
+                        - link "May 4, 20263 weeks ago" [ref=e1187] [cursor=pointer]:
+                          - /url: "#ref-issue-4379974112"
+                      - generic [ref=e1188]:
+                        - link "Potential 2x decoding speedup with MTP antirez/llama.cpp-deepseek-v4-flash#5" [ref=e1190] [cursor=pointer]:
+                          - /url: /antirez/llama.cpp-deepseek-v4-flash/issues/5
+                        - 'generic "Status: Open" [ref=e1192]':
+                          - img [ref=e1193]
+                          - text: Open
+                - generic [ref=e1197]:
+                  - link "@alexandrupetraru" [ref=e1199] [cursor=pointer]:
+                    - /url: /alexandrupetraru
+                    - img "@alexandrupetraru" [ref=e1200]
+                  - generic [ref=e1202]:
+                    - generic [ref=e1203]:
+                      - group [ref=e1206]:
+                        - button "Show options" [ref=e1207] [cursor=pointer]:
+                          - img "Show options" [ref=e1210]
+                      - heading "alexandrupetraru commented May 4, 20263 weeks ago" [level=3] [ref=e1212]:
+                        - generic [ref=e1213]:
+                          - strong [ref=e1214]:
+                            - link "alexandrupetraru" [ref=e1215] [cursor=pointer]:
+                              - /url: /alexandrupetraru
+                          - text: commented
+                          - link "May 4, 20263 weeks ago" [ref=e1216] [cursor=pointer]:
+                            - /url: "#issuecomment-4375451627"
+                    - generic [ref=e1217]:
+                      - table [ref=e1219]:
+                        - rowgroup [ref=e1220]:
+                          - row "this is a game changer, on Strix Halo with the q8 Qwen 3.6 35B3A jumping from 40 to 70 tg at low context and for the 27B from 12 to 25 tg(with layer split 7900 xtx and strix halo 50,50) for coding. We need this one to master asap together with turbo4, it performs very well and without any issues. Good job" [ref=e1221]:
+                            - cell "this is a game changer, on Strix Halo with the q8 Qwen 3.6 35B3A jumping from 40 to 70 tg at low context and for the 27B from 12 to 25 tg(with layer split 7900 xtx and strix halo 50,50) for coding. We need this one to master asap together with turbo4, it performs very well and without any issues. Good job" [ref=e1222]:
+                              - paragraph [ref=e1223]: this is a game changer, on Strix Halo with the q8 Qwen 3.6 35B3A jumping from 40 to 70 tg at low context and for the 27B from 12 to 25 tg(with layer split 7900 xtx and strix halo 50,50) for coding. We need this one to master asap together with turbo4, it performs very well and without any issues. Good job
+                      - button "react with thumbs up" [disabled] [ref=e1229]:
+                        - img "+1" [ref=e1231]
+                        - generic [ref=e1232]: "6"
+                - generic [ref=e1234]:
+                  - link "@GloballyUniquePlaceholder" [ref=e1236] [cursor=pointer]:
+                    - /url: /GloballyUniquePlaceholder
+                    - img "@GloballyUniquePlaceholder" [ref=e1237]
+                  - generic [ref=e1239]:
+                    - generic [ref=e1240]:
+                      - group [ref=e1243]:
+                        - button "Show options" [ref=e1244] [cursor=pointer]:
+                          - img "Show options" [ref=e1247]
+                      - heading "GloballyUniquePlaceholder commented May 5, 20263 weeks ago" [level=3] [ref=e1249]:
+                        - generic [ref=e1250]:
+                          - strong [ref=e1251]:
+                            - link "GloballyUniquePlaceholder" [ref=e1252] [cursor=pointer]:
+                              - /url: /GloballyUniquePlaceholder
+                          - text: commented
+                          - link "May 5, 20263 weeks ago" [ref=e1253] [cursor=pointer]:
+                            - /url: "#issuecomment-4375891776"
+                    - generic [ref=e1254]:
+                      - table [ref=e1256]:
+                        - rowgroup [ref=e1257]:
+                          - row "On a 3060 Laptop 6GB vram + 64GB ram running your provided Qwen 3.6 35A3B gguf there is a reasonable speed up. spec-draft-n-max average tk\\s wall_s_total aggregate_accept_rate n/a - no mtp 22.92 77.69 n/a 1 27.58 68.34 0.8835 2 29.39 66.00 0.815 3 27.78 67.96 0.7127 4 26.09 72.23 0.6421" [ref=e1258]:
+                            - cell "On a 3060 Laptop 6GB vram + 64GB ram running your provided Qwen 3.6 35A3B gguf there is a reasonable speed up. spec-draft-n-max average tk\\s wall_s_total aggregate_accept_rate n/a - no mtp 22.92 77.69 n/a 1 27.58 68.34 0.8835 2 29.39 66.00 0.815 3 27.78 67.96 0.7127 4 26.09 72.23 0.6421" [ref=e1259]:
+                              - paragraph [ref=e1260]: On a 3060 Laptop 6GB vram + 64GB ram running your provided Qwen 3.6 35A3B gguf there is a reasonable speed up.
+                              - table [ref=e1262]:
+                                - rowgroup [ref=e1263]:
+                                  - row "spec-draft-n-max average tk\\s wall_s_total aggregate_accept_rate" [ref=e1264]:
+                                    - columnheader "spec-draft-n-max" [ref=e1265]
+                                    - columnheader "average tk\\s" [ref=e1266]
+                                    - columnheader "wall_s_total" [ref=e1267]
+                                    - columnheader "aggregate_accept_rate" [ref=e1268]
+                                - rowgroup [ref=e1269]:
+                                  - row "n/a - no mtp 22.92 77.69 n/a" [ref=e1270]:
+                                    - cell "n/a - no mtp" [ref=e1271]
+                                    - cell "22.92" [ref=e1272]
+                                    - cell "77.69" [ref=e1273]
+                                    - cell "n/a" [ref=e1274]
+                                  - row "1 27.58 68.34 0.8835" [ref=e1275]:
+                                    - cell "1" [ref=e1276]
+                                    - cell "27.58" [ref=e1277]
+                                    - cell "68.34" [ref=e1278]
+                                    - cell "0.8835" [ref=e1279]
+                                  - row "2 29.39 66.00 0.815" [ref=e1280]:
+                                    - cell "2" [ref=e1281]
+                                    - cell "29.39" [ref=e1282]
+                                    - cell "66.00" [ref=e1283]
+                                    - cell "0.815" [ref=e1284]
+                                  - row "3 27.78 67.96 0.7127" [ref=e1285]:
+                                    - cell "3" [ref=e1286]
+                                    - cell "27.78" [ref=e1287]
+                                    - cell "67.96" [ref=e1288]
+                                    - cell "0.7127" [ref=e1289]
+                                  - row "4 26.09 72.23 0.6421" [ref=e1290]:
+                                    - cell "4" [ref=e1291]
+                                    - cell "26.09" [ref=e1292]
+                                    - cell "72.23" [ref=e1293]
+                                    - cell "0.6421" [ref=e1294]
+                              - group [ref=e1295]:
+                                - generic "raw results" [ref=e1296] [cursor=pointer]
+                      - button "react with thumbs up" [disabled] [ref=e1302]:
+                        - img "+1" [ref=e1304]
+                        - generic [ref=e1305]: "6"
+                - generic [ref=e1307]:
+                  - link "@ninjas28" [ref=e1309] [cursor=pointer]:
+                    - /url: /ninjas28
+                    - img "@ninjas28" [ref=e1310]
+                  - generic [ref=e1312]:
+                    - generic [ref=e1313]:
+                      - group [ref=e1316]:
+                        - button "Show options" [ref=e1317] [cursor=pointer]:
+                          - img "Show options" [ref=e1320]
+                      - heading "ninjas28 commented May 5, 20263 weeks ago" [level=3] [ref=e1322]:
+                        - generic [ref=e1323]:
+                          - strong [ref=e1324]:
+                            - link "ninjas28" [ref=e1325] [cursor=pointer]:
+                              - /url: /ninjas28
+                          - text: commented
+                          - link "May 5, 20263 weeks ago" [ref=e1326] [cursor=pointer]:
+                            - /url: "#issuecomment-4376073609"
+                    - table [ref=e1329]:
+                      - rowgroup [ref=e1330]:
+                        - row [ref=e1331]:
+                          - cell [ref=e1332]:
+                            - paragraph [ref=e1333]:
+                              - text: Crashes when using
+                              - code [ref=e1334]: "-sm tensor"
+                              - text: with llama-server launch command args
+                              - code [ref=e1335]: "-hf am17an/Qwen3.6-27B-MTP-GGUF:Q8_0 -sm tensor -np 1 --chat-template-kwargs \"{\\\"preserve_thinking\\\": true}\" --spec-type mtp --spec-draft-n-max 3"
+                              - text: . Using
+                              - code [ref=e1336]: "-sm tensor"
+                              - text: without MTP works fine. This is on a triple GPU setup using ROCm.
+                            - generic [ref=e1337]:
+                              - generic [ref=e1338]: "srv params_from_: Chat format: peg-native slot get_availabl: id 0 | task -1 | selected slot by LRU, t_last = -1 srv get_availabl: updating prompt cache srv load: - looking for better prompt, base f_keep = -1.000, sim = 0.000 srv update: - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 262144 tokens, 8589934592 est) srv get_availabl: prompt cache update took 0.01 ms slot launch_slot_: id 0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> ?temp-ext -> dist slot launch_slot_: id 0 | task 0 | processing task, is_child = 0 slot update_slots: id 0 | task 0 | new prompt, n_ctx_slot = 262144, n_keep = 0, task.n_tokens = 356 slot update_slots: id 0 | task 0 | n_tokens = 0, memory_seq_rm [0, end) slot update_slots: id 0 | task 0 | prompt processing progress, n_tokens = 352, batch.n_tokens = 352, progress = 0.988764 /root/llama.cpp/ggml/src/ggml-backend-meta.cpp:1013: GGML_ASSERT(split_state.ne[j] * tensor->src[i]->ne[src_ss[i].axis] == sum * tensor->ne[split_state.axis]) failed /root/llama.cpp/build/bin/libggml-base.so.0(+0x1b25b)[0x74b4b4ca925b] /root/llama.cpp/build/bin/libggml-base.so.0(ggml_print_backtrace+0x21f)[0x74b4b4ca96df] /root/llama.cpp/build/bin/libggml-base.so.0(ggml_abort+0x152)[0x74b4b4ca98b2] /root/llama.cpp/build/bin/libggml-base.so.0(+0x41506)[0x74b4b4ccf506] /root/llama.cpp/build/bin/libggml-base.so.0(+0x3d579)[0x74b4b4ccb579] /root/llama.cpp/build/bin/libggml-base.so.0(+0x41adb)[0x74b4b4ccfadb] /root/llama.cpp/build/bin/libggml-base.so.0(ggml_gallocr_alloc_graph+0x474)[0x74b4b4cbff54] /root/llama.cpp/build/bin/libggml-base.so.0(ggml_backend_sched_alloc_graph+0x111)[0x74b4b4cc6351] /root/llama.cpp/build/bin/libllama.so.0(_ZN13llama_context14process_ubatchERK12llama_ubatch14llm_graph_typeP22llama_memory_context_iR11ggml_status+0xe8)[0x74b4b44dac08] /root/llama.cpp/build/bin/libllama.so.0(_ZN13llama_context6decodeERK11llama_batch+0x37b)[0x74b4b44d912b] /root/llama.cpp/build/bin/libllama.so.0(llama_decode+0x10)[0x74b4b44da780] /root/llama.cpp/build/bin/libllama.so.0(_ZN13llama_context21handle_mtp_for_ubatchEiPKiS1_P11ggml_tensor+0x20d)[0x74b4b44da9bd] /root/llama.cpp/build/bin/libllama.so.0(_ZN13llama_context14process_ubatchERK12llama_ubatch14llm_graph_typeP22llama_memory_context_iR11ggml_status+0x142)[0x74b4b44dac62] /root/llama.cpp/build/bin/libllama.so.0(_ZN13llama_context6decodeERK11llama_batch+0x37b)[0x74b4b44d912b] /root/llama.cpp/build/bin/libllama.so.0(llama_decode+0x10)[0x74b4b44da780] llama-server(+0xf846e)[0x63c5e42c046e] llama-server(+0x172971)[0x63c5e433a971] llama-server(+0x5842c)[0x63c5e422042c] /lib/x86_64-linux-gnu/libc.so.6(+0x29d90)[0x74b4b3c29d90] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80)[0x74b4b3c29e40] llama-server(+0x58cd5)[0x63c5e4220cd5] Aborted```"
+                              - button "Copy code to clipboard" [ref=e1340] [cursor=pointer]:
+                                - img [ref=e1341]
+                - generic [ref=e1345]:
+                  - link "@superjamie" [ref=e1347] [cursor=pointer]:
+                    - /url: /superjamie
+                    - img "@superjamie" [ref=e1348]
+                  - generic [ref=e1350]:
+                    - generic [ref=e1351]:
+                      - group [ref=e1354]:
+                        - button "Show options" [ref=e1355] [cursor=pointer]:
+                          - img "Show options" [ref=e1358]
+                      - heading "superjamie commented May 5, 20263 weeks ago" [level=3] [ref=e1360]:
+                        - generic [ref=e1361]:
+                          - strong [ref=e1362]:
+                            - link "superjamie" [ref=e1363] [cursor=pointer]:
+                              - /url: /superjamie
+                          - text: commented
+                          - link "May 5, 20263 weeks ago" [ref=e1364] [cursor=pointer]:
+                            - /url: "#issuecomment-4376330280"
+                    - generic [ref=e1365]:
+                      - table [ref=e1367]:
+                        - rowgroup [ref=e1368]:
+                          - row [ref=e1369]:
+                            - cell [ref=e1370]:
+                              - paragraph [ref=e1371]:
+                                - text: Tested on 3x RTX3060 12Gb. Sorry I don't have the VRAM for your Q8, I used
+                                - link "RDson/Qwen3.6-27B-MTP-Q4_K_M-GGUF" [ref=e1372] [cursor=pointer]:
+                                  - /url: https://huggingface.co/RDson/Qwen3.6-27B-MTP-Q4_K_M-GGUF
+                                - text: which was quantized with ik_llama's MTP.
+                              - paragraph [ref=e1373]: "Prompt: \"Write a simple minimal hash table implementation in C99.\""
+                              - paragraph [ref=e1374]: "Three runs with no MTP, avg generation 18.51 tok/sec:"
+                              - generic [ref=e1375]:
+                                - code [ref=e1377]: "llama-server --model /models/RDson/Qwen3.6-27B-MTP-Q4_K_M-GGUF/Qwen3.6-27B-MTP-Q4_K_M.gguf \\ --port 8080 --host 0.0.0.0 --n-gpu-layers 999 --flash-attn on --ctx-size $((16*1024)) \\ --temp 0.6 --top-p 0.95 --presence-penalty 0.0 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 \\ --no-mmproj --chat-template-kwargs '{\"enable_thinking\":false}' prompt eval time = 177.62 ms / 24 tokens ( 7.40 ms per token, 135.12 tokens per second) eval time = 99331.08 ms / 1837 tokens ( 54.07 ms per token, 18.49 tokens per second) total time = 99508.70 ms / 1861 tokens prompt eval time = 159.10 ms / 24 tokens ( 6.63 ms per token, 150.85 tokens per second) eval time = 107505.42 ms / 1988 tokens ( 54.08 ms per token, 18.49 tokens per second) total time = 107664.52 ms / 2012 tokens prompt eval time = 158.43 ms / 24 tokens ( 6.60 ms per token, 151.49 tokens per second) eval time = 48263.07 ms / 895 tokens ( 53.93 ms per token, 18.54 tokens per second) total time = 48421.51 ms / 919 tokens"
+                                - button "Copy code to clipboard" [ref=e1379] [cursor=pointer]:
+                                  - img [ref=e1380]
+                              - paragraph [ref=e1383]: "Three runs with MTP, avg generation 32.24 tok/sec:"
+                              - generic [ref=e1384]:
+                                - code [ref=e1386]: "llama-server --model /models/RDson/Qwen3.6-27B-MTP-Q4_K_M-GGUF/Qwen3.6-27B-MTP-Q4_K_M.gguf \\ --port 8080 --host 0.0.0.0 --n-gpu-layers 999 --flash-attn on --ctx-size $((16*1024)) \\ --temp 0.6 --top-p 0.95 --presence-penalty 0.0 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 \\ --no-mmproj --chat-template-kwargs '{\"enable_thinking\":false}' \\ --spec-type mtp --spec-draft-n-max 3 --parallel 1 prompt eval time = 232.24 ms / 24 tokens ( 9.68 ms per token, 103.34 tokens per second) eval time = 34610.94 ms / 1110 tokens ( 31.18 ms per token, 32.07 tokens per second) total time = 34843.18 ms / 1134 tokens prompt eval time = 207.99 ms / 24 tokens ( 8.67 ms per token, 115.39 tokens per second) eval time = 32110.05 ms / 1064 tokens ( 30.18 ms per token, 33.14 tokens per second) total time = 32318.03 ms / 1088 tokens prompt eval time = 208.50 ms / 24 tokens ( 8.69 ms per token, 115.11 tokens per second) eval time = 39029.34 ms / 1230 tokens ( 31.73 ms per token, 31.51 tokens per second) total time = 39237.84 ms / 1254 tokens"
+                                - button "Copy code to clipboard" [ref=e1388] [cursor=pointer]:
+                                  - img [ref=e1389]
+                              - paragraph [ref=e1392]:
+                                - strong [ref=e1393]: Result 74% speedup. Wow!
+                              - paragraph [ref=e1394]: Thank you for your work. You will make many users happy with this. What an exciting PR!
+                              - paragraph [ref=e1395]: "One small hiccup. On my initial attempt I got the error message:"
+                              - generic [ref=e1396]:
+                                - code [ref=e1398]: "load_model: MTP currently supports only n_parallel=1; got 4"
+                                - button "Copy code to clipboard" [ref=e1400] [cursor=pointer]:
+                                  - img [ref=e1401]
+                              - paragraph [ref=e1404]:
+                                - text: Adding
+                                - code [ref=e1405]: "--parallel 1"
+                                - text: fixed that.
+                      - generic [ref=e1410]:
+                        - button "react with thumbs up" [disabled] [ref=e1411]:
+                          - img "+1" [ref=e1413]
+                          - generic [ref=e1414]: "12"
+                        - button "react with heart" [disabled] [ref=e1415]:
+                          - img "heart" [ref=e1417]
+                          - generic [ref=e1418]: "1"
+                - generic [ref=e1420]:
+                  - img [ref=e1422]
+                  - generic [ref=e1424]:
+                    - generic [ref=e1425]:
+                      - link "@github-actions" [ref=e1426] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - img "@github-actions" [ref=e1427]
+                      - link "github-actions" [ref=e1428] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                      - generic [ref=e1429]: Bot
+                      - text: mentioned this pull request
+                      - link "May 5, 20263 weeks ago" [ref=e1430] [cursor=pointer]:
+                        - /url: "#ref-issue-4381300619"
+                    - generic [ref=e1431]:
+                      - link "Reddit News Daily 2026-05-05 gitlawr/reddit-daily-news#235" [ref=e1433] [cursor=pointer]:
+                        - /url: /gitlawr/reddit-daily-news/issues/235
+                      - 'generic "Status: Open" [ref=e1435]':
+                        - img [ref=e1436]
+                        - text: Open
+                - generic [ref=e1442]:
+                  - button "655 hidden items" [ref=e1443] [cursor=pointer]
+                  - button "Load more…" [ref=e1444] [cursor=pointer]
+                - generic [ref=e1445]:
+                  - generic [ref=e1446]:
+                    - img [ref=e1448]
+                    - generic [ref=e1450]:
+                      - generic [ref=e1451]: This was referenced May 18, 2026last week
+                      - generic [ref=e1452]:
+                        - 'link "Add MTP (Multi-Token Prediction) support — sync pkg/llama with llama.cpp PR #22673 hybridgroup/yzma#250" [ref=e1454] [cursor=pointer]':
+                          - /url: /hybridgroup/yzma/issues/250
+                          - text: Add MTP (Multi-Token Prediction) support — sync
+                          - code [ref=e1455]: pkg/llama
+                          - text: "with llama.cpp PR #22673 hybridgroup/yzma#250"
+                        - 'generic "Status: Closed" [ref=e1457]':
+                          - img [ref=e1458]
+                          - text: Closed
+                      - generic [ref=e1461]:
+                        - link "Add small binding gap for MTP support — llama_n_rs_seq query function hybridgroup/yzma#251" [ref=e1463] [cursor=pointer]:
+                          - /url: /hybridgroup/yzma/issues/251
+                          - text: Add small binding gap for MTP support —
+                          - code [ref=e1464]: llama_n_rs_seq
+                          - text: query function hybridgroup/yzma#251
+                        - 'generic "Status: Closed" [ref=e1466]':
+                          - img [ref=e1467]
+                          - text: Closed
+                  - generic [ref=e1470]:
+                    - img [ref=e1472]
+                    - generic [ref=e1474]:
+                      - generic [ref=e1475]:
+                        - link "@reeselevine" [ref=e1476] [cursor=pointer]:
+                          - /url: /reeselevine
+                          - img "@reeselevine" [ref=e1477]
+                        - link "reeselevine" [ref=e1478] [cursor=pointer]:
+                          - /url: /reeselevine
+                        - text: mentioned this pull request
+                        - link "May 18, 2026last week" [ref=e1479] [cursor=pointer]:
+                          - /url: "#ref-pullrequest-4472859077"
+                      - generic [ref=e1480]:
+                        - 'link "ggml-webgpu: Fix new K>1 tests for GATED_DELTA_NET #23299" [ref=e1482] [cursor=pointer]':
+                          - /url: /ggml-org/llama.cpp/pull/23299
+                        - 'generic "Status: Merged" [ref=e1484]':
+                          - img [ref=e1485]
+                          - text: Merged
+                - generic [ref=e1488]:
+                  - link "@richardcb" [ref=e1490] [cursor=pointer]:
+                    - /url: /richardcb
+                    - img "@richardcb" [ref=e1491]
+                  - group [ref=e1494]:
+                    - generic "This comment has been minimized. Sign in to view" [ref=e1495] [cursor=pointer]:
+                      - generic [ref=e1496]:
+                        - heading "This comment has been minimized." [level=3] [ref=e1497]
+                        - link "Sign in to view" [ref=e1499]:
+                          - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fpull%2F22673
+                - generic [ref=e1500]:
+                  - generic [ref=e1501]:
+                    - img [ref=e1503]
+                    - generic [ref=e1505]:
+                      - generic [ref=e1506]:
+                        - link "@boxcee" [ref=e1507] [cursor=pointer]:
+                          - /url: /boxcee
+                          - img "@boxcee" [ref=e1508]
+                        - link "boxcee" [ref=e1509] [cursor=pointer]:
+                          - /url: /boxcee
+                        - text: mentioned this pull request
+                        - link "May 19, 2026last week" [ref=e1510] [cursor=pointer]:
+                          - /url: "#ref-pullrequest-4475712432"
+                      - generic [ref=e1511]:
+                        - 'link "server: expose speculative decoding counters in Prometheus metrics #23328" [ref=e1513] [cursor=pointer]':
+                          - /url: /ggml-org/llama.cpp/pull/23328
+                        - 'generic "Status: Open" [ref=e1515]':
+                          - img [ref=e1516]
+                          - text: Open
+                  - generic [ref=e1518]:
+                    - img [ref=e1520]
+                    - generic [ref=e1522]:
+                      - generic [ref=e1523]:
+                        - link "@carbocation" [ref=e1524] [cursor=pointer]:
+                          - /url: /carbocation
+                          - img "@carbocation" [ref=e1525]
+                        - link "carbocation" [ref=e1526] [cursor=pointer]:
+                          - /url: /carbocation
+                        - text: mentioned this pull request
+                        - link "May 19, 2026last week" [ref=e1527] [cursor=pointer]:
+                          - /url: "#ref-issue-4477062938"
+                      - generic [ref=e1528]:
+                        - 'link "Eval bug: draft-mtp changes deterministic output on Qwen3.6 MTP model #23335" [ref=e1530] [cursor=pointer]':
+                          - /url: /ggml-org/llama.cpp/issues/23335
+                        - 'generic "Status: Closed" [ref=e1532]':
+                          - img [ref=e1533]
+                          - text: Closed
+                  - generic [ref=e1536]:
+                    - img [ref=e1538]
+                    - generic [ref=e1540]:
+                      - generic [ref=e1541]:
+                        - link "@reneleonhardt" [ref=e1542] [cursor=pointer]:
+                          - /url: /reneleonhardt
+                          - img "@reneleonhardt" [ref=e1543]
+                        - link "reneleonhardt" [ref=e1544] [cursor=pointer]:
+                          - /url: /reneleonhardt
+                        - text: mentioned this pull request
+                        - link "May 19, 2026last week" [ref=e1545] [cursor=pointer]:
+                          - /url: "#ref-issue-3992205556"
+                      - generic [ref=e1546]:
+                        - link "Qwen3.5 Model Support axolotl-ai-cloud/axolotl#3434" [ref=e1548] [cursor=pointer]:
+                          - /url: /axolotl-ai-cloud/axolotl/issues/3434
+                        - 'generic "Status: Closed" [ref=e1550]':
+                          - img [ref=e1551]
+                          - text: Closed
+                      - generic [ref=e1555]:
+                        - img [ref=e1557]
+                        - generic [ref=e1559]: 5 tasks
+                  - generic [ref=e1560]:
+                    - img [ref=e1562]
+                    - generic [ref=e1564]:
+                      - generic [ref=e1565]:
+                        - link "@aamsellem" [ref=e1566] [cursor=pointer]:
+                          - /url: /aamsellem
+                          - img "@aamsellem" [ref=e1567]
+                        - link "aamsellem" [ref=e1568] [cursor=pointer]:
+                          - /url: /aamsellem
+                        - text: mentioned this pull request
+                        - link "May 19, 2026last week" [ref=e1569] [cursor=pointer]:
+                          - /url: "#ref-issue-4479929370"
+                      - generic [ref=e1570]:
+                        - 'link "Compile bug: BUILD_SHARED_LIBS=ON + GGML_CUDA=ON fails at llama-server link with undefined references to cuMem*/cuDevice* (missing INTERFACE propagation of CUDA::cuda_driver) #23357" [ref=e1572] [cursor=pointer]':
+                          - /url: /ggml-org/llama.cpp/issues/23357
+                        - 'generic "Status: Open" [ref=e1574]':
+                          - img [ref=e1575]
+                          - text: Open
+                  - generic [ref=e1578]:
+                    - img [ref=e1580]
+                    - generic [ref=e1582]:
+                      - generic [ref=e1583]:
+                        - link "@fiorelorenzo" [ref=e1584] [cursor=pointer]:
+                          - /url: /fiorelorenzo
+                          - img "@fiorelorenzo" [ref=e1585]
+                        - link "fiorelorenzo" [ref=e1586] [cursor=pointer]:
+                          - /url: /fiorelorenzo
+                        - text: mentioned this pull request
+                        - link "May 19, 2026last week" [ref=e1587] [cursor=pointer]:
+                          - /url: "#ref-issue-4479008582"
+                      - generic [ref=e1588]:
+                        - 'link "Eval bug: Qwen3.5 GGUF aborts on FGDN_AR tensor-name prefix assertion in sched_reserve #23347" [ref=e1590] [cursor=pointer]':
+                          - /url: /ggml-org/llama.cpp/issues/23347
+                        - 'generic "Status: Closed" [ref=e1592]':
+                          - img [ref=e1593]
+                          - text: Closed
+                  - generic [ref=e1596]:
+                    - img [ref=e1598]
+                    - generic [ref=e1600]:
+                      - generic [ref=e1601]:
+                        - link "@melroy89" [ref=e1602] [cursor=pointer]:
+                          - /url: /melroy89
+                          - img "@melroy89" [ref=e1603]
+                        - link "melroy89" [ref=e1604] [cursor=pointer]:
+                          - /url: /melroy89
+                        - text: mentioned this pull request
+                        - link "May 20, 2026last week" [ref=e1605] [cursor=pointer]:
+                          - /url: "#ref-issue-4185996007"
+                      - generic [ref=e1606]:
+                        - link "[Feature] Draft model / speculative decoding unslothai/unsloth#4753" [ref=e1608] [cursor=pointer]:
+                          - /url: /unslothai/unsloth/issues/4753
+                        - 'generic "Status: Open" [ref=e1610]':
+                          - img [ref=e1611]
+                          - text: Open
+                  - generic [ref=e1614]:
+                    - img [ref=e1616]
+                    - generic [ref=e1618]:
+                      - generic [ref=e1619]:
+                        - link "@noonghunna" [ref=e1620] [cursor=pointer]:
+                          - /url: /noonghunna
+                          - img "@noonghunna" [ref=e1621]
+                        - link "noonghunna" [ref=e1622] [cursor=pointer]:
+                          - /url: /noonghunna
+                        - text: mentioned this pull request
+                        - link "May 20, 2026last week" [ref=e1623] [cursor=pointer]:
+                          - /url: "#ref-issue-4486197693"
+                      - generic [ref=e1624]:
+                        - link "[bug] Cannot start using mtp.yml for single card noonghunna/club-3090#173" [ref=e1626] [cursor=pointer]:
+                          - /url: /noonghunna/club-3090/issues/173
+                        - 'generic "Status: Closed" [ref=e1628]':
+                          - img [ref=e1629]
+                          - text: Closed
+                - generic [ref=e1633]:
+                  - link "@candrews" [ref=e1635] [cursor=pointer]:
+                    - /url: /candrews
+                    - img "@candrews" [ref=e1636]
+                  - generic [ref=e1638]:
+                    - generic [ref=e1639]:
+                      - group [ref=e1642]:
+                        - button "Show options" [ref=e1643] [cursor=pointer]:
+                          - img "Show options" [ref=e1646]
+                      - heading "candrews commented May 20, 2026last week" [level=3] [ref=e1648]:
+                        - generic [ref=e1649]:
+                          - strong [ref=e1650]:
+                            - link "candrews" [ref=e1651] [cursor=pointer]:
+                              - /url: /candrews
+                          - text: commented
+                          - link "May 20, 2026last week" [ref=e1652] [cursor=pointer]:
+                            - /url: "#issuecomment-4500056372"
+                    - generic [ref=e1653]:
+                      - table [ref=e1655]:
+                        - rowgroup [ref=e1656]:
+                          - row "--fit doesn't appear to take MTP into account - is that being worked on?" [ref=e1657]:
+                            - cell "--fit doesn't appear to take MTP into account - is that being worked on?" [ref=e1658]:
+                              - paragraph [ref=e1659]:
+                                - code [ref=e1660]: "--fit"
+                                - text: doesn't appear to take MTP into account - is that being worked on?
+                      - button "react with eyes" [disabled] [ref=e1666]:
+                        - img "eyes" [ref=e1668]
+                        - generic [ref=e1669]: "4"
+                - generic [ref=e1671]:
+                  - link "@AbdulrahmanHashem" [ref=e1673] [cursor=pointer]:
+                    - /url: /AbdulrahmanHashem
+                    - img "@AbdulrahmanHashem" [ref=e1674]
+                  - generic [ref=e1676]:
+                    - generic [ref=e1677]:
+                      - group [ref=e1680]:
+                        - button "Show options" [ref=e1681] [cursor=pointer]:
+                          - img "Show options" [ref=e1684]
+                      - heading "AbdulrahmanHashem commented May 20, 2026last week •" [level=3] [ref=e1686]:
+                        - generic [ref=e1687]:
+                          - strong [ref=e1688]:
+                            - link "AbdulrahmanHashem" [ref=e1689] [cursor=pointer]:
+                              - /url: /AbdulrahmanHashem
+                          - text: commented
+                          - link "May 20, 2026last week" [ref=e1690] [cursor=pointer]:
+                            - /url: "#issuecomment-4502379290"
+                          - generic [ref=e1691]:
+                            - generic [ref=e1692]: •
+                            - group [ref=e1693]:
+                              - button "edited" [ref=e1694] [cursor=pointer]:
+                                - generic [ref=e1695]:
+                                  - text: edited
+                                  - img [ref=e1696]
+                    - generic [ref=e1698]:
+                      - table [ref=e1700]:
+                        - rowgroup [ref=e1701]:
+                          - 'row "@ggerganov @am17an somewhere between merged PRs #23234 and #23333 something made models need more ram to fit into the same setup and i''m 100% sure of that 15 May 19:46 build_4_BFMTP 18 May 02:13 build_5 <--- not broken 19 May 23:32 build_7_Bugged <--- broken 20 May 22:02 build_8 it seems to be MTP related, i tested the none MTP model from unsloth and i didn''t see the problem. And the model has been doing this ever since that update happened though i haven''t tried normal models enough to see if they do that build_5 never did this like at all. image" [ref=e1702]':
+                            - 'cell "@ggerganov @am17an somewhere between merged PRs #23234 and #23333 something made models need more ram to fit into the same setup and i''m 100% sure of that 15 May 19:46 build_4_BFMTP 18 May 02:13 build_5 <--- not broken 19 May 23:32 build_7_Bugged <--- broken 20 May 22:02 build_8 it seems to be MTP related, i tested the none MTP model from unsloth and i didn''t see the problem. And the model has been doing this ever since that update happened though i haven''t tried normal models enough to see if they do that build_5 never did this like at all. image" [ref=e1703]':
+                              - paragraph [ref=e1704]:
+                                - link "@ggerganov" [ref=e1705] [cursor=pointer]:
+                                  - /url: https://github.com/ggerganov
+                                - link "@am17an" [ref=e1706] [cursor=pointer]:
+                                  - /url: https://github.com/am17an
+                                - text: somewhere between merged PRs
+                                - link "#23234" [ref=e1707] [cursor=pointer]:
+                                  - /url: https://github.com/ggml-org/llama.cpp/pull/23234
+                                - text: and
+                                - link "#23333" [ref=e1708] [cursor=pointer]:
+                                  - /url: https://github.com/ggml-org/llama.cpp/pull/23333
+                                - text: something made models need more ram to fit into the same setup
+                                - text: and i'm 100% sure of that
+                              - paragraph [ref=e1709]:
+                                - text: 15 May 19:46 build_4_BFMTP
+                                - text: 18 May 02:13 build_5 <--- not broken
+                                - text: 19 May 23:32 build_7_Bugged <--- broken
+                                - text: 20 May 22:02 build_8
+                              - paragraph [ref=e1710]: it seems to be MTP related, i tested the none MTP model from unsloth and i didn't see the problem.
+                              - paragraph [ref=e1711]:
+                                - text: And the model has been doing this ever since that update happened
+                                - text: though i haven't tried normal models enough to see if they do that
+                              - paragraph [ref=e1712]:
+                                - text: build_5
+                                - text: never did this like at all.
+                              - link "image" [ref=e1713] [cursor=pointer]:
+                                - /url: https://private-user-images.githubusercontent.com/64314122/595727308-1c497400-9584-477b-abda-0c0cc82bb5af.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAwMjI3NDIsIm5iZiI6MTc4MDAyMjQ0MiwicGF0aCI6Ii82NDMxNDEyMi81OTU3MjczMDgtMWM0OTc0MDAtOTU4NC00NzdiLWFiZGEtMGMwY2M4MmJiNWFmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTI5VDAyNDA0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ4ZTVhYWNkOTYxNGMzYzkyODJkMDgxZjA2YzZjMzdlYmZiMDk0ZDk2ZGYyNzE5YWNlMmIyMGI1MmQ4MWU1NmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.pf6BW0iNwQC83cIkjnl9fuKZh8Z_gbDwlSFrs_rQGk0
+                                - img "image" [ref=e1714]
+                      - generic [ref=e1719]:
+                        - button "react with confused" [disabled] [ref=e1720]:
+                          - img "thinking_face" [ref=e1722]
+                          - generic [ref=e1723]: "1"
+                        - button "react with eyes" [disabled] [ref=e1724]:
+                          - img "eyes" [ref=e1726]
+                          - generic [ref=e1727]: "1"
+                - generic [ref=e1729]:
+                  - link "@andyskw" [ref=e1731] [cursor=pointer]:
+                    - /url: /andyskw
+                    - img "@andyskw" [ref=e1732]
+                  - generic [ref=e1734]:
+                    - generic [ref=e1735]:
+                      - group [ref=e1738]:
+                        - button "Show options" [ref=e1739] [cursor=pointer]:
+                          - img "Show options" [ref=e1742]
+                      - heading "andyskw commented May 21, 2026last week" [level=3] [ref=e1744]:
+                        - generic [ref=e1745]:
+                          - strong [ref=e1746]:
+                            - link "andyskw" [ref=e1747] [cursor=pointer]:
+                              - /url: /andyskw
+                          - text: commented
+                          - link "May 21, 2026last week" [ref=e1748] [cursor=pointer]:
+                            - /url: "#issuecomment-4505051838"
+                    - table [ref=e1751]:
+                      - rowgroup [ref=e1752]:
+                        - row [ref=e1753]:
+                          - cell [ref=e1754]:
+                            - paragraph [ref=e1755]:
+                              - text: Adding the first gfx1150 (AMD Radeon 890M / Strix Point APU, Ryzen AI 9 HX 470) data point. Tested on
+                              - code [ref=e1756]: unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL
+                              - text: ", all 42 layers fully on Vulkan0 (UMA, no CPU fallback — verified with"
+                              - code [ref=e1757]: "--verbose"
+                              - text: ).
+                            - paragraph [ref=e1758]:
+                              - strong [ref=e1759]: Setup
+                            - list [ref=e1760]:
+                              - listitem [ref=e1761]: gfx1150, RDNA 3.5, RADV STRIX1, Mesa 26.1.0, Vulkan 1.4.348 (subgroup_size 32, subgroup_clustered yes)
+                              - listitem [ref=e1762]: Ubuntu 24.04, kernel 6.17.0-23, 57 GiB UMA
+                              - listitem [ref=e1763]:
+                                - text: llama.cpp commit
+                                - code [ref=e1764]: ad27757
+                                - text: (master 2026-05-20), Vulkan build
+                              - listitem [ref=e1765]:
+                                - text: "Bench: am17an's gist ("
+                                - link "https://gist.github.com/am17an/228edfb84ed082aa88e3865d6fa27090" [ref=e1766] [cursor=pointer]:
+                                  - /url: https://gist.github.com/am17an/228edfb84ed082aa88e3865d6fa27090
+                                - text: ), 9 prompts,
+                                - code [ref=e1767]: max_tokens=192, seed=42, temp=1.0
+                            - generic [ref=e1768]:
+                              - generic [ref=e1769]: ./llama-server -m Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf \ -ngl 999 -c 8192 -fa on -np 1 \ -ctk q8_0 -ctv q8_0 --jinja --no-mmap \ --spec-type draft-mtp --spec-draft-n-max 2
+                              - button "Copy code to clipboard" [ref=e1771] [cursor=pointer]:
+                                - img [ref=e1772]
+                            - paragraph [ref=e1775]:
+                              - strong [ref=e1776]: n-max sweep
+                            - table [ref=e1778]:
+                              - rowgroup [ref=e1779]:
+                                - row "n-max runs mean tps std accept speedup" [ref=e1780]:
+                                  - columnheader "n-max" [ref=e1781]
+                                  - columnheader "runs" [ref=e1782]
+                                  - columnheader "mean tps" [ref=e1783]
+                                  - columnheader "std" [ref=e1784]
+                                  - columnheader "accept" [ref=e1785]
+                                  - columnheader "speedup" [ref=e1786]
+                              - rowgroup [ref=e1787]:
+                                - row "baseline (no MTP) 3 21.50 0.24 — 1.000×" [ref=e1788]:
+                                  - cell "baseline (no MTP)" [ref=e1789]
+                                  - cell "3" [ref=e1790]
+                                  - cell "21.50" [ref=e1791]
+                                  - cell "0.24" [ref=e1792]
+                                  - cell "—" [ref=e1793]
+                                  - cell "1.000×" [ref=e1794]
+                                - row "1 2 23.99 0.19 0.883 1.116×" [ref=e1795]:
+                                  - cell "1" [ref=e1796]
+                                  - cell "2" [ref=e1797]
+                                  - cell "23.99" [ref=e1798]
+                                  - cell "0.19" [ref=e1799]
+                                  - cell "0.883" [ref=e1800]
+                                  - cell "1.116×" [ref=e1801]
+                                - row "2 2 25.77 0.04 0.803 1.199×" [ref=e1802]:
+                                  - cell "2" [ref=e1803]:
+                                    - strong [ref=e1804]: "2"
+                                  - cell "2" [ref=e1805]
+                                  - cell "25.77" [ref=e1806]:
+                                    - strong [ref=e1807]: "25.77"
+                                  - cell "0.04" [ref=e1808]:
+                                    - strong [ref=e1809]: "0.04"
+                                  - cell "0.803" [ref=e1810]:
+                                    - strong [ref=e1811]: "0.803"
+                                  - cell "1.199×" [ref=e1812]:
+                                    - strong [ref=e1813]: 1.199×
+                                - row "3 3 24.78 0.11 0.698 1.153×" [ref=e1814]:
+                                  - cell "3" [ref=e1815]
+                                  - cell "3" [ref=e1816]
+                                  - cell "24.78" [ref=e1817]
+                                  - cell "0.11" [ref=e1818]
+                                  - cell "0.698" [ref=e1819]
+                                  - cell "1.153×" [ref=e1820]
+                                - row "4 2 22.51 0.01 0.588 1.047×" [ref=e1821]:
+                                  - cell "4" [ref=e1822]
+                                  - cell "2" [ref=e1823]
+                                  - cell "22.51" [ref=e1824]
+                                  - cell "0.01" [ref=e1825]
+                                  - cell "0.588" [ref=e1826]
+                                  - cell "1.047×" [ref=e1827]
+                                - row "6 2 22.25 0.02 0.538 1.034×" [ref=e1828]:
+                                  - cell "6" [ref=e1829]
+                                  - cell "2" [ref=e1830]
+                                  - cell "22.25" [ref=e1831]
+                                  - cell "0.02" [ref=e1832]
+                                  - cell "0.538" [ref=e1833]
+                                  - cell "1.034×" [ref=e1834]
+                            - paragraph [ref=e1835]:
+                              - strong [ref=e1836]: Best config (mtp-d2-r1) — per-prompt detail
+                            - generic [ref=e1837]:
+                              - code [ref=e1839]: code_python pred= 192 draft= 147 acc= 117 rate=0.796 tok/s= 25.37 code_cpp pred= 192 draft= 137 acc= 122 rate=0.890 tok/s= 27.37 explain_concept pred= 192 draft= 150 acc= 116 rate=0.773 tok/s= 25.21 summarize pred= 192 draft= 143 acc= 119 rate=0.832 tok/s= 26.19 qa_factual pred= 192 draft= 138 acc= 121 rate=0.877 tok/s= 27.16 translation pred= 192 draft= 144 acc= 119 rate=0.826 tok/s= 26.22 creative_short pred= 192 draft= 160 acc= 110 rate=0.688 tok/s= 23.39 stepwise_math pred= 192 draft= 140 acc= 121 rate=0.864 tok/s= 26.94 long_code_review pred= 192 draft= 157 acc= 112 rate=0.713 tok/s= 23.91
+                              - button "Copy code to clipboard" [ref=e1841] [cursor=pointer]:
+                                - img [ref=e1842]
+                            - generic [ref=e1845]:
+                              - generic [ref=e1846]: "{ \"n_requests\": 9, \"total_predicted\": 1728, \"total_draft\": 1316, \"total_draft_accepted\": 1057, \"aggregate_accept_rate\": 0.8032, \"wall_s_total\": 73.0 }"
+                              - button "Copy code to clipboard" [ref=e1848] [cursor=pointer]:
+                                - img [ref=e1849]
+                            - paragraph [ref=e1852]:
+                              - strong [ref=e1853]: Observations
+                            - list [ref=e1854]:
+                              - listitem [ref=e1855]:
+                                - strong [ref=e1856]:
+                                  - text: Sweet spot is
+                                  - code [ref=e1857]: n=2
+                                  - text: on this hardware, not
+                                  - code [ref=e1858]: n=3-6
+                                  - text: .
+                                - text: Per-step Vulkan verify overhead grows faster than accepted-token throughput beyond n=2.
+                              - listitem [ref=e1859]:
+                                - strong [ref=e1860]:
+                                  - text: Consistent with what
+                                  - link "@sheevy" [ref=e1861] [cursor=pointer]:
+                                    - /url: https://github.com/sheevy
+                                  - text: reported earlier on Strix Halo for this same MoE model
+                                - text: (51→60 tg/s ≈ 1.18×). The bigger Strix Halo speedups in this thread are on
+                                - strong [ref=e1862]: dense Qwen3.6-27B
+                                - text: (~2.5×) or higher quants — MoE A3B has less MTP headroom because only ~3 GB of expert weights are read per token, so even baseline is already near memory-bw ceiling on these LPDDR5x APUs. Would predict 27B-dense to give ~2× on gfx1150 as well, by the same ratio.
+                              - listitem [ref=e1863]:
+                                - strong [ref=e1864]: wave32 vs wave64
+                                - text: ":"
+                                - code [ref=e1865]: RADV_DEBUG=nosubgroupsizectrl
+                                - text: to force wave64 = identical perf (25.82 vs 25.77 tok/s). Both subgroup modes are equally well-tuned on RDNA 3.5.
+                              - listitem [ref=e1866]:
+                                - strong [ref=e1867]: Default config is near-optimal on gfx1150.
+                                - text: Swept KV cache quant (f16/q8_0/q4_0 combos), ctx (4k/8k/16k), ubatch (256-2048), threads (8-24), and all RADV_PERFTEST/DEBUG flags. All within ±1% of
+                                - code [ref=e1868]: mtp-d2
+                                - text: default. q4_0 KV is the one degradation worth flagging (-4% tps
+                                - strong [ref=e1869]: and
+                                - text: "-4pp accept rate). Default"
+                                - code [ref=e1870]: "-ctk q8_0 -ctv q8_0"
+                                - text: is correct.
+                              - listitem [ref=e1871]:
+                                - strong [ref=e1872]:
+                                  - text: GDN shader
+                                  - code [ref=e1873]: lanes_per_column
+                                - text: (spec constant in
+                                - code [ref=e1874]: gated_delta_net.comp
+                                - text: "): patched"
+                                - code [ref=e1875]: ggml-vulkan.cpp
+                                - text: "locally to env-override and swept {1,2,4,8,16}. Clean U-curve with the upstream default of"
+                                - code [ref=e1876]: "8"
+                                - text: at the peak. The auto-chosen value for
+                                - code [ref=e1877]: S_V=128 + subgroup_clustered
+                                - text: is correct on gfx1150.
+                            - paragraph [ref=e1878]:
+                              - strong [ref=e1879]: Two minor things worth filing separately if reproducible
+                            - list [ref=e1880]:
+                              - listitem [ref=e1881]:
+                                - code [ref=e1882]: GGML_VK_GDN_LANES=32
+                                - text: (i.e.,
+                                - code [ref=e1883]: lanes_per_column == subgroup_size
+                                - text: ", which switches to the nocluster shader path) crashed the server mid-bench in this model. The"
+                                - code [ref=e1884]: "--verbose"
+                                - text: log just shows the gen loop terminating with no error. I haven't followed up to reproduce reliably or get a backtrace, but might be worth a glance at the nocluster path for that boundary case.
+                              - listitem [ref=e1885]:
+                                - code [ref=e1886]: "-fa off"
+                                - text: with
+                                - code [ref=e1887]: "-ctv q8_0"
+                                - text: segfaults silently. The error
+                                - code [ref=e1888]: V cache quantization requires flash_attn
+                                - text: is printed but exit is via SIGSEGV, not clean. A small
+                                - code [ref=e1889]: return
+                                - text: after that check would be friendlier.
+                - generic [ref=e1891]:
+                  - link "@ggerganov" [ref=e1893] [cursor=pointer]:
+                    - /url: /ggerganov
+                    - img "@ggerganov" [ref=e1894]
+                  - generic [ref=e1896]:
+                    - generic [ref=e1897]:
+                      - generic [ref=e1898]:
+                        - group [ref=e1900]:
+                          - button "Show options" [ref=e1901] [cursor=pointer]:
+                            - img "Show options" [ref=e1904]
+                        - generic "This user is a member of the ggml-org organization." [ref=e1907]:
+                          - generic [ref=e1908]: Member
+                      - heading "ggerganov commented May 21, 2026last week" [level=3] [ref=e1909]:
+                        - generic [ref=e1910]:
+                          - strong [ref=e1911]:
+                            - link "ggerganov" [ref=e1912] [cursor=pointer]:
+                              - /url: /ggerganov
+                          - text: commented
+                          - link "May 21, 2026last week" [ref=e1913] [cursor=pointer]:
+                            - /url: "#issuecomment-4505298691"
+                    - generic [ref=e1914]:
+                      - table [ref=e1916]:
+                        - rowgroup [ref=e1917]:
+                          - row "@AbdulrahmanHashem Do you have a consistent repro of the garbage generation? If yes, please open an issue with detailed information about your hardware, model, logs, etc." [ref=e1918]:
+                            - cell "@AbdulrahmanHashem Do you have a consistent repro of the garbage generation? If yes, please open an issue with detailed information about your hardware, model, logs, etc." [ref=e1919]:
+                              - paragraph [ref=e1920]:
+                                - link "@AbdulrahmanHashem" [ref=e1921] [cursor=pointer]:
+                                  - /url: https://github.com/AbdulrahmanHashem
+                                - text: Do you have a consistent repro of the garbage generation? If yes, please open an issue with detailed information about your hardware, model, logs, etc.
+                      - button "react with thumbs up" [disabled] [ref=e1927]:
+                        - img "+1" [ref=e1929]
+                        - generic [ref=e1930]: "2"
+                - generic [ref=e1932]:
+                  - img [ref=e1934]
+                  - generic [ref=e1936]:
+                    - generic [ref=e1937]:
+                      - link "@mudler" [ref=e1938] [cursor=pointer]:
+                        - /url: /mudler
+                        - img "@mudler" [ref=e1939]
+                      - link "mudler" [ref=e1940] [cursor=pointer]:
+                        - /url: /mudler
+                      - text: mentioned this pull request
+                      - link "May 21, 2026last week" [ref=e1941] [cursor=pointer]:
+                        - /url: "#ref-pullrequest-4494710071"
+                    - generic [ref=e1942]:
+                      - 'link "imatrix: optionally activate MTP/NextN draft head during collection #23476" [ref=e1944] [cursor=pointer]':
+                        - /url: /ggml-org/llama.cpp/pull/23476
+                      - 'generic "Status: Draft" [ref=e1946]':
+                        - img [ref=e1947]
+                        - text: Draft
+                - generic [ref=e1950]:
+                  - link "@AbdulrahmanHashem" [ref=e1952] [cursor=pointer]:
+                    - /url: /AbdulrahmanHashem
+                    - img "@AbdulrahmanHashem" [ref=e1953]
+                  - generic [ref=e1955]:
+                    - generic [ref=e1956]:
+                      - group [ref=e1959]:
+                        - button "Show options" [ref=e1960] [cursor=pointer]:
+                          - img "Show options" [ref=e1963]
+                      - heading "AbdulrahmanHashem commented May 21, 2026last week •" [level=3] [ref=e1965]:
+                        - generic [ref=e1966]:
+                          - strong [ref=e1967]:
+                            - link "AbdulrahmanHashem" [ref=e1968] [cursor=pointer]:
+                              - /url: /AbdulrahmanHashem
+                          - text: commented
+                          - link "May 21, 2026last week" [ref=e1969] [cursor=pointer]:
+                            - /url: "#issuecomment-4513227954"
+                          - generic [ref=e1970]:
+                            - generic [ref=e1971]: •
+                            - group [ref=e1972]:
+                              - button "edited" [ref=e1973] [cursor=pointer]:
+                                - generic [ref=e1974]:
+                                  - text: edited
+                                  - img [ref=e1975]
+                    - generic [ref=e1977]:
+                      - table [ref=e1979]:
+                        - rowgroup [ref=e1980]:
+                          - 'row "sadly i can''t get enough time to make the issue but i just made a build and it''s alittle better with when it comes to using more VRAM but it still uses at least about 250 mb more ram at the moment i tested it on my own projects and i haven''t seen garbage again. Update : it just gave me garbage again." [ref=e1981]':
+                            - 'cell "sadly i can''t get enough time to make the issue but i just made a build and it''s alittle better with when it comes to using more VRAM but it still uses at least about 250 mb more ram at the moment i tested it on my own projects and i haven''t seen garbage again. Update : it just gave me garbage again." [ref=e1982]':
+                              - blockquote [ref=e1983]:
+                                - paragraph [ref=e1984]:
+                                  - link "@AbdulrahmanHashem" [ref=e1985] [cursor=pointer]:
+                                    - /url: https://github.com/AbdulrahmanHashem
+                                  - text: Do you have a consistent repro of the garbage generation? If yes, please open an issue with detailed information about your hardware, model, logs, etc.
+                              - paragraph [ref=e1986]: sadly i can't get enough time to make the issue but i just made a build and it's alittle better with when it comes to using more VRAM but it still uses at least about 250 mb more ram at the moment
+                              - paragraph [ref=e1987]: "i tested it on my own projects and i haven't seen garbage again. Update : it just gave me garbage again."
+                      - button "react with confused" [disabled] [ref=e1993]:
+                        - img "thinking_face" [ref=e1995]
+                        - generic [ref=e1996]: "1"
+                - generic [ref=e1998]:
+                  - link "@nipeone" [ref=e2000] [cursor=pointer]:
+                    - /url: /nipeone
+                    - img "@nipeone" [ref=e2001]
+                  - generic [ref=e2003]:
+                    - generic [ref=e2004]:
+                      - group [ref=e2007]:
+                        - button "Show options" [ref=e2008] [cursor=pointer]:
+                          - img "Show options" [ref=e2011]
+                      - heading "nipeone commented May 22, 2026last week" [level=3] [ref=e2013]:
+                        - generic [ref=e2014]:
+                          - strong [ref=e2015]:
+                            - link "nipeone" [ref=e2016] [cursor=pointer]:
+                              - /url: /nipeone
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2017] [cursor=pointer]:
+                            - /url: "#issuecomment-4517852265"
+                    - generic [ref=e2018]:
+                      - table [ref=e2020]:
+                        - rowgroup [ref=e2021]:
+                          - 'row "Great! The current branch has been merged into the main branch. But how do I use it after merging into the main branch? After compiling with the latest code of master branch, llama-server --spec-type does not support draft-mtp. error while handling argument \"--spec-type\": unknown speculative decoding type without draft model usage: --spec-type [none|ngram-cache|ngram-simple|ngram-map-k|ngram-map-k4v|ngram-mod] type of speculative decoding to use when no draft model is provided (default: none) (env: LLAMA_ARG_SPEC_TYPE) Copy code to clipboard" [ref=e2022]':
+                            - 'cell "Great! The current branch has been merged into the main branch. But how do I use it after merging into the main branch? After compiling with the latest code of master branch, llama-server --spec-type does not support draft-mtp. error while handling argument \"--spec-type\": unknown speculative decoding type without draft model usage: --spec-type [none|ngram-cache|ngram-simple|ngram-map-k|ngram-map-k4v|ngram-mod] type of speculative decoding to use when no draft model is provided (default: none) (env: LLAMA_ARG_SPEC_TYPE) Copy code to clipboard" [ref=e2023]':
+                              - paragraph [ref=e2024]: Great! The current branch has been merged into the main branch. But how do I use it after merging into the main branch? After compiling with the latest code of master branch, llama-server --spec-type does not support draft-mtp.
+                              - generic [ref=e2025]:
+                                - code [ref=e2027]: "error while handling argument \"--spec-type\": unknown speculative decoding type without draft model usage: --spec-type [none|ngram-cache|ngram-simple|ngram-map-k|ngram-map-k4v|ngram-mod] type of speculative decoding to use when no draft model is provided (default: none) (env: LLAMA_ARG_SPEC_TYPE)"
+                                - button "Copy code to clipboard" [ref=e2029] [cursor=pointer]:
+                                  - img [ref=e2030]
+                      - button "react with eyes" [disabled] [ref=e2038]:
+                        - img "eyes" [ref=e2040]
+                        - generic [ref=e2041]: "1"
+                - generic [ref=e2043]:
+                  - link "@kyuz0" [ref=e2045] [cursor=pointer]:
+                    - /url: /kyuz0
+                    - img "@kyuz0" [ref=e2046]
+                  - generic [ref=e2048]:
+                    - generic [ref=e2049]:
+                      - group [ref=e2052]:
+                        - button "Show options" [ref=e2053] [cursor=pointer]:
+                          - img "Show options" [ref=e2056]
+                      - heading "kyuz0 commented May 22, 2026last week •" [level=3] [ref=e2058]:
+                        - generic [ref=e2059]:
+                          - strong [ref=e2060]:
+                            - link "kyuz0" [ref=e2061] [cursor=pointer]:
+                              - /url: /kyuz0
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2062] [cursor=pointer]:
+                            - /url: "#issuecomment-4519079368"
+                          - generic [ref=e2063]:
+                            - generic [ref=e2064]: •
+                            - group [ref=e2065]:
+                              - button "edited" [ref=e2066] [cursor=pointer]:
+                                - generic [ref=e2067]:
+                                  - text: edited
+                                  - img [ref=e2068]
+                    - generic [ref=e2070]:
+                      - table [ref=e2072]:
+                        - rowgroup [ref=e2073]:
+                          - 'row "For somebody interested in a full comparison on a coding benchmark to see how much benefit MTP gives you, I run SWE Verified mini on Strix Halo and AMD R9700: https://pi-local-coding-bench.dev/ In a nutshell, there is a measurable improvement in average time to complete tasks, more than I expected given the negative performance hit with prompt processing: Strix Halo / Qwen 3.6 35B-A3B UD_Q8-K-XL: image R9700 / Qwen 3.6 27B UD_Q4-K-XL: image I also observed an improvement in task completion - is it just random or does MTP change some of the sampling strategy?" [ref=e2074]':
+                            - 'cell "For somebody interested in a full comparison on a coding benchmark to see how much benefit MTP gives you, I run SWE Verified mini on Strix Halo and AMD R9700: https://pi-local-coding-bench.dev/ In a nutshell, there is a measurable improvement in average time to complete tasks, more than I expected given the negative performance hit with prompt processing: Strix Halo / Qwen 3.6 35B-A3B UD_Q8-K-XL: image R9700 / Qwen 3.6 27B UD_Q4-K-XL: image I also observed an improvement in task completion - is it just random or does MTP change some of the sampling strategy?" [ref=e2075]':
+                              - paragraph [ref=e2076]: "For somebody interested in a full comparison on a coding benchmark to see how much benefit MTP gives you, I run SWE Verified mini on Strix Halo and AMD R9700:"
+                              - paragraph [ref=e2077]:
+                                - link "https://pi-local-coding-bench.dev/" [ref=e2078] [cursor=pointer]:
+                                  - /url: https://pi-local-coding-bench.dev/
+                              - paragraph [ref=e2079]: "In a nutshell, there is a measurable improvement in average time to complete tasks, more than I expected given the negative performance hit with prompt processing:"
+                              - paragraph [ref=e2080]:
+                                - strong [ref=e2081]: "Strix Halo / Qwen 3.6 35B-A3B UD_Q8-K-XL:"
+                              - link "image" [ref=e2082] [cursor=pointer]:
+                                - /url: https://private-user-images.githubusercontent.com/6874658/596788449-9581d9c0-f117-4026-8bf4-75bcb0d55d33.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAwMjI3NDIsIm5iZiI6MTc4MDAyMjQ0MiwicGF0aCI6Ii82ODc0NjU4LzU5Njc4ODQ0OS05NTgxZDljMC1mMTE3LTQwMjYtOGJmNC03NWJjYjBkNTVkMzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MjlUMDI0MDQyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9OGQ2OWUxNGM3MDgzMjVmMjM2MTMzYmMxMjUxNDlmNzQ2OWI4MzFhMmU1MDY0NmU5OWZiMjMyMjA1MTBlOGEzMyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.1fpD67PqLIP_67_U562wWMG6lqWd7pC5uJ_TIFPfImY
+                                - img "image" [ref=e2083]
+                              - paragraph [ref=e2084]:
+                                - strong [ref=e2085]: "R9700 / Qwen 3.6 27B UD_Q4-K-XL:"
+                              - link "image" [ref=e2086] [cursor=pointer]:
+                                - /url: https://private-user-images.githubusercontent.com/6874658/596789014-aab1f79f-2675-4465-9048-f8537465c732.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAwMjI3NDIsIm5iZiI6MTc4MDAyMjQ0MiwicGF0aCI6Ii82ODc0NjU4LzU5Njc4OTAxNC1hYWIxZjc5Zi0yNjc1LTQ0NjUtOTA0OC1mODUzNzQ2NWM3MzIucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MjlUMDI0MDQyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YzVhMjBiOTVhNGY4NWM5ZGM3Y2U1ZGEzZDY5MjlkYjEzYTBiM2IzNDUyNWY3MDQxMWIyYmQ0ZTZjZjRiZTdhMCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.4y_jqcXo_65Zwca5QCeRLOMJi0KXppyuV6UKgpsrij0
+                                - img "image" [ref=e2087]
+                              - separator [ref=e2088]
+                              - paragraph [ref=e2089]: I also observed an improvement in task completion - is it just random or does MTP change some of the sampling strategy?
+                      - button "react with thumbs up" [disabled] [ref=e2095]:
+                        - img "+1" [ref=e2097]
+                        - generic [ref=e2098]: "1"
+                - generic [ref=e2100]:
+                  - link "@ggerganov" [ref=e2102] [cursor=pointer]:
+                    - /url: /ggerganov
+                    - img "@ggerganov" [ref=e2103]
+                  - generic [ref=e2105]:
+                    - generic [ref=e2106]:
+                      - generic [ref=e2107]:
+                        - group [ref=e2109]:
+                          - button "Show options" [ref=e2110] [cursor=pointer]:
+                            - img "Show options" [ref=e2113]
+                        - generic "This user is a member of the ggml-org organization." [ref=e2116]:
+                          - generic [ref=e2117]: Member
+                      - heading "ggerganov commented May 22, 2026last week" [level=3] [ref=e2118]:
+                        - generic [ref=e2119]:
+                          - strong [ref=e2120]:
+                            - link "ggerganov" [ref=e2121] [cursor=pointer]:
+                              - /url: /ggerganov
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2122] [cursor=pointer]:
+                            - /url: "#issuecomment-4519206250"
+                    - table [ref=e2125]:
+                      - rowgroup [ref=e2126]:
+                        - row "It should be random. You need to run the eval multiple times to reduce the variance of the result." [ref=e2127]:
+                          - cell "It should be random. You need to run the eval multiple times to reduce the variance of the result." [ref=e2128]:
+                            - blockquote [ref=e2129]:
+                              - paragraph [ref=e2130]: I also observed an improvement in task completion - is it just random or does MTP change some of the sampling strategy?
+                            - paragraph [ref=e2131]: It should be random. You need to run the eval multiple times to reduce the variance of the result.
+                - generic [ref=e2133]:
+                  - link "@kyuz0" [ref=e2135] [cursor=pointer]:
+                    - /url: /kyuz0
+                    - img "@kyuz0" [ref=e2136]
+                  - generic [ref=e2138]:
+                    - generic [ref=e2139]:
+                      - group [ref=e2142]:
+                        - button "Show options" [ref=e2143] [cursor=pointer]:
+                          - img "Show options" [ref=e2146]
+                      - heading "kyuz0 commented May 22, 2026last week" [level=3] [ref=e2148]:
+                        - generic [ref=e2149]:
+                          - strong [ref=e2150]:
+                            - link "kyuz0" [ref=e2151] [cursor=pointer]:
+                              - /url: /kyuz0
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2152] [cursor=pointer]:
+                            - /url: "#issuecomment-4519247253"
+                    - generic [ref=e2153]:
+                      - table [ref=e2155]:
+                        - rowgroup [ref=e2156]:
+                          - row "Yup, that was what I thought. I need to find the time to do it, even single runs of the full benchmark can take half a day!" [ref=e2157]:
+                            - cell "Yup, that was what I thought. I need to find the time to do it, even single runs of the full benchmark can take half a day!" [ref=e2158]:
+                              - blockquote [ref=e2159]:
+                                - paragraph [ref=e2160]: It should be random. You need to run the eval multiple times to reduce the variance of the result.
+                              - paragraph [ref=e2161]: Yup, that was what I thought. I need to find the time to do it, even single runs of the full benchmark can take half a day!
+                      - button "react with thumbs up" [disabled] [ref=e2167]:
+                        - img "+1" [ref=e2169]
+                        - generic [ref=e2170]: "1"
+                - generic [ref=e2172]:
+                  - link "@ggerganov" [ref=e2174] [cursor=pointer]:
+                    - /url: /ggerganov
+                    - img "@ggerganov" [ref=e2175]
+                  - generic [ref=e2177]:
+                    - generic [ref=e2178]:
+                      - generic [ref=e2179]:
+                        - group [ref=e2181]:
+                          - button "Show options" [ref=e2182] [cursor=pointer]:
+                            - img "Show options" [ref=e2185]
+                        - generic "This user is a member of the ggml-org organization." [ref=e2188]:
+                          - generic [ref=e2189]: Member
+                      - heading "ggerganov commented May 22, 2026last week" [level=3] [ref=e2190]:
+                        - generic [ref=e2191]:
+                          - strong [ref=e2192]:
+                            - link "ggerganov" [ref=e2193] [cursor=pointer]:
+                              - /url: /ggerganov
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2194] [cursor=pointer]:
+                            - /url: "#issuecomment-4519319250"
+                    - generic [ref=e2195]:
+                      - table [ref=e2197]:
+                        - rowgroup [ref=e2198]:
+                          - row "Yes, you need to distribute it on many machines. Btw, without MTP, the Qwen3.x models should support parallel processing efficiently. So depending on the max context needed for these tasks, you can run requests in parallel on a single server. The more requests you can batch, the better. However, batching with MTP enabled using a recurrent model (i.e. Qwen3.x) is currently not optimized, so you won't benefit from parallel processing on a single machine in that case. The only way atm is to scale the machines." [ref=e2199]:
+                            - cell "Yes, you need to distribute it on many machines. Btw, without MTP, the Qwen3.x models should support parallel processing efficiently. So depending on the max context needed for these tasks, you can run requests in parallel on a single server. The more requests you can batch, the better. However, batching with MTP enabled using a recurrent model (i.e. Qwen3.x) is currently not optimized, so you won't benefit from parallel processing on a single machine in that case. The only way atm is to scale the machines." [ref=e2200]:
+                              - paragraph [ref=e2201]: Yes, you need to distribute it on many machines.
+                              - paragraph [ref=e2202]: Btw, without MTP, the Qwen3.x models should support parallel processing efficiently. So depending on the max context needed for these tasks, you can run requests in parallel on a single server. The more requests you can batch, the better.
+                              - paragraph [ref=e2203]: However, batching with MTP enabled using a recurrent model (i.e. Qwen3.x) is currently not optimized, so you won't benefit from parallel processing on a single machine in that case. The only way atm is to scale the machines.
+                      - button "react with thumbs up" [disabled] [ref=e2209]:
+                        - img "+1" [ref=e2211]
+                        - generic [ref=e2212]: "1"
+                - generic [ref=e2214]:
+                  - link "@kyuz0" [ref=e2216] [cursor=pointer]:
+                    - /url: /kyuz0
+                    - img "@kyuz0" [ref=e2217]
+                  - generic [ref=e2219]:
+                    - generic [ref=e2220]:
+                      - group [ref=e2223]:
+                        - button "Show options" [ref=e2224] [cursor=pointer]:
+                          - img "Show options" [ref=e2227]
+                      - heading "kyuz0 commented May 22, 2026last week" [level=3] [ref=e2229]:
+                        - generic [ref=e2230]:
+                          - strong [ref=e2231]:
+                            - link "kyuz0" [ref=e2232] [cursor=pointer]:
+                              - /url: /kyuz0
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2233] [cursor=pointer]:
+                            - /url: "#issuecomment-4519772208"
+                    - generic [ref=e2234]:
+                      - table [ref=e2236]:
+                        - rowgroup [ref=e2237]:
+                          - 'row "Thanks @ggerganov , I''m definitely doing that... Interestingly a comment on my video on this seems to think instead MTP might actually improve performance: Screenshot_20260522-155201 But, this will be clear after I''ve re-run all benchmarks." [ref=e2238]':
+                            - 'cell "Thanks @ggerganov , I''m definitely doing that... Interestingly a comment on my video on this seems to think instead MTP might actually improve performance: Screenshot_20260522-155201 But, this will be clear after I''ve re-run all benchmarks." [ref=e2239]':
+                              - paragraph [ref=e2240]:
+                                - text: Thanks
+                                - link "@ggerganov" [ref=e2241] [cursor=pointer]:
+                                  - /url: https://github.com/ggerganov
+                                - text: ", I'm definitely doing that... Interestingly a comment on my video on this seems to think instead MTP might actually improve performance:"
+                              - link "Screenshot_20260522-155201" [ref=e2242] [cursor=pointer]:
+                                - /url: https://private-user-images.githubusercontent.com/6874658/596836250-00cdd0b7-d9ff-4114-8027-2c6b77ead593.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAwMjI3NDIsIm5iZiI6MTc4MDAyMjQ0MiwicGF0aCI6Ii82ODc0NjU4LzU5NjgzNjI1MC0wMGNkZDBiNy1kOWZmLTQxMTQtODAyNy0yYzZiNzdlYWQ1OTMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MjlUMDI0MDQyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MzNiMGM4YjU0NzY4ZjQ5OGEyZWQwYTFiMjQyYzlkNGIxODM3MmRlNGNkYjViNGM3OWU0NzUyMjZjM2U4MjdkOSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.cMCX4kQEVfagwySFMt5u5HPawYIUzrGqqXigfjQ3SDw
+                                - img "Screenshot_20260522-155201" [ref=e2243]
+                              - paragraph [ref=e2244]: But, this will be clear after I've re-run all benchmarks.
+                      - button "react with thumbs up" [disabled] [ref=e2250]:
+                        - img "+1" [ref=e2252]
+                        - generic [ref=e2253]: "1"
+                - generic [ref=e2255]:
+                  - link "@cmp-nct" [ref=e2257] [cursor=pointer]:
+                    - /url: /cmp-nct
+                    - img "@cmp-nct" [ref=e2258]
+                  - generic [ref=e2260]:
+                    - generic [ref=e2261]:
+                      - generic [ref=e2262]:
+                        - group [ref=e2264]:
+                          - button "Show options" [ref=e2265] [cursor=pointer]:
+                            - img "Show options" [ref=e2268]
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e2271]:
+                          - generic [ref=e2272]: Contributor
+                      - heading "cmp-nct commented May 22, 2026last week" [level=3] [ref=e2273]:
+                        - generic [ref=e2274]:
+                          - strong [ref=e2275]:
+                            - link "cmp-nct" [ref=e2276] [cursor=pointer]:
+                              - /url: /cmp-nct
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2277] [cursor=pointer]:
+                            - /url: "#issuecomment-4519836452"
+                    - generic [ref=e2278]:
+                      - table [ref=e2280]:
+                        - rowgroup [ref=e2281]:
+                          - row "What I would have liked to see is to restrict n_rs_seq to one slot only. So we could run parallel workloads (with just ngram-mod) and then a single slot continuation on the same context with MTP enabled. Currently enabling n_rs_seq will multiply it into all slots, that's half a GB vram per slot. So it can not selectively run on slot 0 only. Though my use case is less standard, most people just run a parallel server or a single slot instance" [ref=e2282]:
+                            - cell "What I would have liked to see is to restrict n_rs_seq to one slot only. So we could run parallel workloads (with just ngram-mod) and then a single slot continuation on the same context with MTP enabled. Currently enabling n_rs_seq will multiply it into all slots, that's half a GB vram per slot. So it can not selectively run on slot 0 only. Though my use case is less standard, most people just run a parallel server or a single slot instance" [ref=e2283]:
+                              - blockquote [ref=e2284]:
+                                - paragraph [ref=e2285]: Yes, you need to distribute it on many machines.
+                                - paragraph [ref=e2286]: Btw, without MTP, the Qwen3.x models should support parallel processing efficiently. So depending on the max context needed for these tasks, you can run requests in parallel on a single server. The more requests you can batch, the better.
+                                - paragraph [ref=e2287]: However, batching with MTP enabled using a recurrent model (i.e. Qwen3.x) is currently not optimized, so you won't benefit from parallel processing on a single machine in that case. The only way atm is to scale the machines.
+                              - paragraph [ref=e2288]:
+                                - text: What I would have liked to see is to restrict n_rs_seq to one slot only.
+                                - text: So we could run parallel workloads (with just ngram-mod) and then a single slot continuation on the same context with MTP enabled.
+                                - text: Currently enabling n_rs_seq will multiply it into all slots, that's half a GB vram per slot. So it can not selectively run on slot 0 only.
+                                - text: Though my use case is less standard, most people just run a parallel server or a single slot instance
+                      - button "react with heart" [disabled] [ref=e2294]:
+                        - img "heart" [ref=e2296]
+                        - generic [ref=e2297]: "1"
+                - generic [ref=e2299]:
+                  - link "@darkbasic" [ref=e2301] [cursor=pointer]:
+                    - /url: /darkbasic
+                    - img "@darkbasic" [ref=e2302]
+                  - generic [ref=e2304]:
+                    - generic [ref=e2305]:
+                      - group [ref=e2308]:
+                        - button "Show options" [ref=e2309] [cursor=pointer]:
+                          - img "Show options" [ref=e2312]
+                      - heading "darkbasic commented May 22, 2026last week" [level=3] [ref=e2314]:
+                        - generic [ref=e2315]:
+                          - strong [ref=e2316]:
+                            - link "darkbasic" [ref=e2317] [cursor=pointer]:
+                              - /url: /darkbasic
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2318] [cursor=pointer]:
+                            - /url: "#issuecomment-4520216939"
+                    - table [ref=e2321]:
+                      - rowgroup [ref=e2322]:
+                        - row "@kyuz0 did you limit the parallel agents for the non-mtp use case? Because MTP currently limits you to 1 concurrent agent, while I noticed that qwen3.6-35B likes to use several parallel agents in opencode (as opposed to qwen3.5-122B) which makes things faster on its own." [ref=e2323]:
+                          - cell "@kyuz0 did you limit the parallel agents for the non-mtp use case? Because MTP currently limits you to 1 concurrent agent, while I noticed that qwen3.6-35B likes to use several parallel agents in opencode (as opposed to qwen3.5-122B) which makes things faster on its own." [ref=e2324]:
+                            - paragraph [ref=e2325]:
+                              - link "@kyuz0" [ref=e2326] [cursor=pointer]:
+                                - /url: https://github.com/kyuz0
+                              - text: did you limit the parallel agents for the non-mtp use case? Because MTP currently limits you to 1 concurrent agent, while I noticed that qwen3.6-35B likes to use several parallel agents in opencode (as opposed to qwen3.5-122B) which makes things faster on its own.
+                - generic [ref=e2328]:
+                  - link "@kyuz0" [ref=e2330] [cursor=pointer]:
+                    - /url: /kyuz0
+                    - img "@kyuz0" [ref=e2331]
+                  - generic [ref=e2333]:
+                    - generic [ref=e2334]:
+                      - group [ref=e2337]:
+                        - button "Show options" [ref=e2338] [cursor=pointer]:
+                          - img "Show options" [ref=e2341]
+                      - heading "kyuz0 commented May 22, 2026last week" [level=3] [ref=e2343]:
+                        - generic [ref=e2344]:
+                          - strong [ref=e2345]:
+                            - link "kyuz0" [ref=e2346] [cursor=pointer]:
+                              - /url: /kyuz0
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2347] [cursor=pointer]:
+                            - /url: "#issuecomment-4520534128"
+                    - table [ref=e2350]:
+                      - rowgroup [ref=e2351]:
+                        - row "@darkbasic the benchmark was done with pi, no sub agents, so both MTP and non-MTP had 1 agent thread." [ref=e2352]:
+                          - cell "@darkbasic the benchmark was done with pi, no sub agents, so both MTP and non-MTP had 1 agent thread." [ref=e2353]:
+                            - blockquote [ref=e2354]:
+                              - paragraph [ref=e2355]:
+                                - link "@kyuz0" [ref=e2356] [cursor=pointer]:
+                                  - /url: https://github.com/kyuz0
+                                - text: did you limit the parallel agents for the non-mtp use case? Because MTP currently limits you to 1 concurrent agent, while I noticed that qwen3.6-35B likes to use several parallel agents in opencode (as opposed to qwen3.5-122B) which makes things faster on its own.
+                            - paragraph [ref=e2357]:
+                              - link "@darkbasic" [ref=e2358] [cursor=pointer]:
+                                - /url: https://github.com/darkbasic
+                              - text: the benchmark was done with pi, no sub agents, so both MTP and non-MTP had 1 agent thread.
+                - generic [ref=e2360]:
+                  - link "@darkbasic" [ref=e2362] [cursor=pointer]:
+                    - /url: /darkbasic
+                    - img "@darkbasic" [ref=e2363]
+                  - generic [ref=e2365]:
+                    - generic [ref=e2366]:
+                      - group [ref=e2369]:
+                        - button "Show options" [ref=e2370] [cursor=pointer]:
+                          - img "Show options" [ref=e2373]
+                      - heading "darkbasic commented May 22, 2026last week" [level=3] [ref=e2375]:
+                        - generic [ref=e2376]:
+                          - strong [ref=e2377]:
+                            - link "darkbasic" [ref=e2378] [cursor=pointer]:
+                              - /url: /darkbasic
+                          - text: commented
+                          - link "May 22, 2026last week" [ref=e2379] [cursor=pointer]:
+                            - /url: "#issuecomment-4520564712"
+                    - generic [ref=e2380]:
+                      - table [ref=e2382]:
+                        - rowgroup [ref=e2383]:
+                          - row "@kyuz0 that explains it. Also keep in mind that opencode tends to bloat the context much more if it doesn't know the model. You can fake it to a known one by running llama-server with --alias gpt-5.5, but beware that the model must be smart enough to handle what the harness expects it to." [ref=e2384]:
+                            - cell "@kyuz0 that explains it. Also keep in mind that opencode tends to bloat the context much more if it doesn't know the model. You can fake it to a known one by running llama-server with --alias gpt-5.5, but beware that the model must be smart enough to handle what the harness expects it to." [ref=e2385]:
+                              - paragraph [ref=e2386]:
+                                - link "@kyuz0" [ref=e2387] [cursor=pointer]:
+                                  - /url: https://github.com/kyuz0
+                                - text: that explains it. Also keep in mind that opencode tends to bloat the context much more if it doesn't know the model. You can fake it to a known one by running llama-server with
+                                - code [ref=e2388]: "--alias gpt-5.5"
+                                - text: ", but beware that the model must be smart enough to handle what the harness expects it to."
+                      - button "react with heart" [disabled] [ref=e2394]:
+                        - img "heart" [ref=e2396]
+                        - generic [ref=e2397]: "2"
+                - generic [ref=e2398]:
+                  - generic [ref=e2399]:
+                    - img [ref=e2401]
+                    - generic [ref=e2403]:
+                      - generic [ref=e2404]:
+                        - link "@jtmckinn" [ref=e2405] [cursor=pointer]:
+                          - /url: /jtmckinn
+                          - img "@jtmckinn" [ref=e2406]
+                        - link "jtmckinn" [ref=e2407] [cursor=pointer]:
+                          - /url: /jtmckinn
+                        - text: mentioned this pull request
+                        - link "May 25, 20263 days ago" [ref=e2408] [cursor=pointer]:
+                          - /url: "#ref-issue-4243626616"
+                      - generic [ref=e2409]:
+                        - 'link "Misc. bug: Prompt cache serialization crashes on second request with SSM model on Vulkan #21762" [ref=e2411] [cursor=pointer]':
+                          - /url: /ggml-org/llama.cpp/issues/21762
+                        - 'generic "Status: Open" [ref=e2413]':
+                          - img [ref=e2414]
+                          - text: Open
+                  - generic [ref=e2417]:
+                    - img [ref=e2419]
+                    - generic [ref=e2421]:
+                      - generic [ref=e2422]:
+                        - link "@leehack" [ref=e2423] [cursor=pointer]:
+                          - /url: /leehack
+                          - img "@leehack" [ref=e2424]
+                        - link "leehack" [ref=e2425] [cursor=pointer]:
+                          - /url: /leehack
+                        - text: mentioned this pull request
+                        - link "May 26, 20262 days ago" [ref=e2426] [cursor=pointer]:
+                          - /url: "#ref-issue-4527196939"
+                      - generic [ref=e2427]:
+                        - link "MTP support? leehack/llamadart#168" [ref=e2429] [cursor=pointer]:
+                          - /url: /leehack/llamadart/issues/168
+                        - 'generic "Status: Open" [ref=e2431]':
+                          - img [ref=e2432]
+                          - text: Open
+                  - generic [ref=e2435]:
+                    - img [ref=e2437]
+                    - generic [ref=e2439]:
+                      - generic [ref=e2440]:
+                        - link "@usabarashi" [ref=e2441] [cursor=pointer]:
+                          - /url: /usabarashi
+                          - img "@usabarashi" [ref=e2442]
+                        - link "usabarashi" [ref=e2443] [cursor=pointer]:
+                          - /url: /usabarashi
+                        - text: mentioned this pull request
+                        - link "May 27, 2026yesterday" [ref=e2444] [cursor=pointer]:
+                          - /url: "#ref-pullrequest-4536114453"
+                      - generic [ref=e2445]:
+                        - link "Enable MTP speculative decoding for llama-server usabarashi/nix-config#101" [ref=e2447] [cursor=pointer]:
+                          - /url: /usabarashi/nix-config/pull/101
+                        - 'generic "Status: Merged" [ref=e2449]':
+                          - img [ref=e2450]
+                          - text: Merged
+            - generic [ref=e2455]:
+              - link "Sign up for free" [ref=e2456] [cursor=pointer]:
+                - /url: /join?source=comment-repo
+              - strong [ref=e2457]: to join this conversation on GitHub
+              - text: . Already have an account?
+              - link "Sign in to comment" [ref=e2458] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fpull%2F22673
+        - generic [ref=e2462]:
+          - form "Select reviewers" [ref=e2464]:
+            - heading "Reviewers" [level=3] [ref=e2465]
+            - generic [ref=e2466]:
+              - paragraph [ref=e2467]:
+                - generic [ref=e2468]:
+                  - link "@CISC" [ref=e2469] [cursor=pointer]:
+                    - /url: /CISC
+                    - img "@CISC" [ref=e2470]
+                  - link "CISC" [ref=e2471] [cursor=pointer]:
+                    - /url: /CISC
+                - link "CISC left review comments" [ref=e2472] [cursor=pointer]:
+                  - /url: /ggml-org/llama.cpp/pull/22673/files/2dff7ff8f90ce6daefd6adb097d58a4276e5dd2d
+                  - img [ref=e2474]
+              - paragraph [ref=e2476]:
+                - generic [ref=e2477]:
+                  - link "@ggerganov" [ref=e2478] [cursor=pointer]:
+                    - /url: /ggerganov
+                    - img "@ggerganov" [ref=e2479]
+                  - link "ggerganov" [ref=e2480] [cursor=pointer]:
+                    - /url: /ggerganov
+                - link "ggerganov approved these changes" [ref=e2481] [cursor=pointer]:
+                  - /url: /ggml-org/llama.cpp/pull/22673/files/2dff7ff8f90ce6daefd6adb097d58a4276e5dd2d
+                  - img [ref=e2483]
+              - paragraph [ref=e2485]:
+                - generic [ref=e2486]:
+                  - link "@ngxson" [ref=e2487] [cursor=pointer]:
+                    - /url: /ngxson
+                    - img "@ngxson" [ref=e2488]
+                  - link "ngxson" [ref=e2489] [cursor=pointer]:
+                    - /url: /ngxson
+                - link "ngxson approved these changes" [ref=e2490] [cursor=pointer]:
+                  - /url: /ggml-org/llama.cpp/pull/22673/files/2dff7ff8f90ce6daefd6adb097d58a4276e5dd2d
+                  - img [ref=e2492]
+              - paragraph [ref=e2494]:
+                - generic [ref=e2495]:
+                  - link "@JohannesGaessler" [ref=e2496] [cursor=pointer]:
+                    - /url: /JohannesGaessler
+                    - img "@JohannesGaessler" [ref=e2497]
+                  - link "JohannesGaessler" [ref=e2498] [cursor=pointer]:
+                    - /url: /JohannesGaessler
+                - button "Awaiting requested review from JohannesGaessler" [ref=e2499] [cursor=pointer]:
+                  - img [ref=e2501]
+                - button "JohannesGaessler is a code owner" [ref=e2503] [cursor=pointer]:
+                  - img [ref=e2505]
+              - group [ref=e2507]:
+                - generic "+7 more reviewers" [ref=e2508] [cursor=pointer]:
+                  - text: +7 more reviewers
+                  - img [ref=e2510]
+                - paragraph [ref=e2513]:
+                  - generic [ref=e2514]:
+                    - link "@RytisLT" [ref=e2515] [cursor=pointer]:
+                      - /url: /RytisLT
+                      - img "@RytisLT" [ref=e2516]
+                    - link "RytisLT" [ref=e2517] [cursor=pointer]:
+                      - /url: /RytisLT
+                  - link "RytisLT left review comments" [ref=e2518] [cursor=pointer]:
+                    - /url: /ggml-org/llama.cpp/pull/22673/files/e7b4848151377395b1693d326d1cda3fcd61c2d9
+                    - img [ref=e2520]
+                - paragraph [ref=e2523]:
+                  - generic [ref=e2524]:
+                    - link "@Geramy" [ref=e2525] [cursor=pointer]:
+                      - /url: /Geramy
+                      - img "@Geramy" [ref=e2526]
+                    - link "Geramy" [ref=e2527] [cursor=pointer]:
+                      - /url: /Geramy
+                  - link "Geramy left review comments" [ref=e2528] [cursor=pointer]:
+                    - /url: /ggml-org/llama.cpp/pull/22673/files/5d5f1b46e4f56885801c86363d4677a5f72f83af
+                    - img [ref=e2530]
+                - paragraph [ref=e2533]:
+                  - generic [ref=e2534]:
+                    - link "@kauffman12" [ref=e2535] [cursor=pointer]:
+                      - /url: /kauffman12
+                      - img "@kauffman12" [ref=e2536]
+                    - link "kauffman12" [ref=e2537] [cursor=pointer]:
+                      - /url: /kauffman12
+                  - link "kauffman12 left review comments" [ref=e2538] [cursor=pointer]:
+                    - /url: /ggml-org/llama.cpp/pull/22673/files/5d5f1b46e4f56885801c86363d4677a5f72f83af
+                    - img [ref=e2540]
+                - paragraph [ref=e2543]:
+                  - generic [ref=e2544]:
+                    - link "@tarruda" [ref=e2545] [cursor=pointer]:
+                      - /url: /tarruda
+                      - img "@tarruda" [ref=e2546]
+                    - link "tarruda" [ref=e2547] [cursor=pointer]:
+                      - /url: /tarruda
+                  - link "tarruda left review comments" [ref=e2548] [cursor=pointer]:
+                    - /url: /ggml-org/llama.cpp/pull/22673/files/2dff7ff8f90ce6daefd6adb097d58a4276e5dd2d
+                    - img [ref=e2550]
+                - paragraph [ref=e2553]:
+                  - generic [ref=e2554]:
+                    - link "@frozename" [ref=e2555] [cursor=pointer]:
+                      - /url: /frozename
+                      - img "@frozename" [ref=e2556]
+                    - link "frozename" [ref=e2557] [cursor=pointer]:
+                      - /url: /frozename
+                  - link "frozename left review comments" [ref=e2558] [cursor=pointer]:
+                    - /url: /ggml-org/llama.cpp/pull/22673/files/5d5f1b46e4f56885801c86363d4677a5f72f83af
+                    - img [ref=e2560]
+                - paragraph [ref=e2563]:
+                  - generic [ref=e2564]:
+                    - link "@staralt" [ref=e2565] [cursor=pointer]:
+                      - /url: /staralt
+                      - img "@staralt" [ref=e2566]
+                    - link "staralt" [ref=e2567] [cursor=pointer]:
+                      - /url: /staralt
+                  - link "staralt left review comments" [ref=e2568] [cursor=pointer]:
+                    - /url: /ggml-org/llama.cpp/pull/22673/files/a8a33f6307bf80d60b5c1af077ce5d111d3fc7ac
+                    - img [ref=e2570]
+                - paragraph [ref=e2573]:
+                  - generic [ref=e2574]:
+                    - link "@IIIIIllllIIIIIlllll" [ref=e2575] [cursor=pointer]:
+                      - /url: /IIIIIllllIIIIIlllll
+                      - img "@IIIIIllllIIIIIlllll" [ref=e2576]
+                    - link "IIIIIllllIIIIIlllll" [ref=e2577] [cursor=pointer]:
+                      - /url: /IIIIIllllIIIIIlllll
+                  - link "IIIIIllllIIIIIlllll left review comments" [ref=e2578] [cursor=pointer]:
+                    - /url: /ggml-org/llama.cpp/pull/22673/files/5d5f1b46e4f56885801c86363d4677a5f72f83af
+                    - img [ref=e2580]
+          - form "Select assignees" [ref=e2583]:
+            - heading "Assignees" [level=3] [ref=e2584]
+            - text: No one assigned
+          - generic [ref=e2585]:
+            - heading "Labels" [level=3] [ref=e2586]
+            - generic [ref=e2587]:
+              - link "Apple Metal" [ref=e2588] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22Apple%20Metal%22
+                - generic [ref=e2589]: Apple Metal
+              - link "examples" [ref=e2590] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aexamples
+                - generic [ref=e2591]: examples
+              - link "ggml" [ref=e2592] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aggml
+                - generic [ref=e2593]: ggml
+              - link "model" [ref=e2594] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Amodel
+                - generic [ref=e2595]: model
+              - link "Nvidia GPU" [ref=e2596] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22Nvidia%20GPU%22
+                - generic [ref=e2597]: Nvidia GPU
+              - link "python" [ref=e2598] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Apython
+                - generic [ref=e2599]: python
+              - link "server" [ref=e2600] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Aserver
+                - generic [ref=e2601]: server
+              - link "testing" [ref=e2602] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3Atesting
+                - generic [ref=e2603]: testing
+              - link "Vulkan" [ref=e2604] [cursor=pointer]:
+                - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3AVulkan
+                - generic [ref=e2605]: Vulkan
+          - form "Select projects" [ref=e2607]:
+            - heading "Projects" [level=3] [ref=e2608]
+            - text: None yet
+          - form "Select milestones" [ref=e2610]:
+            - heading "Milestone" [level=3] [ref=e2611]
+            - text: No milestone
+          - form "Link issues" [ref=e2617]:
+            - heading "Development" [level=3] [ref=e2618]
+            - paragraph [ref=e2619]: Successfully merging this pull request may close these issues.
+            - paragraph [ref=e2621]: None yet
+          - generic [ref=e2623]:
+            - heading "20 participants" [level=3] [ref=e2624]
+            - generic [ref=e2625]:
+              - link "@am17an" [ref=e2626] [cursor=pointer]:
+                - /url: /am17an
+                - img "@am17an" [ref=e2627]
+              - link "@ngxson" [ref=e2628] [cursor=pointer]:
+                - /url: /ngxson
+                - img "@ngxson" [ref=e2629]
+              - link "@pwilkin" [ref=e2630] [cursor=pointer]:
+                - /url: /pwilkin
+                - img "@pwilkin" [ref=e2631]
+              - link "@cmp-nct" [ref=e2632] [cursor=pointer]:
+                - /url: /cmp-nct
+                - img "@cmp-nct" [ref=e2633]
+              - link "@Dampfinchen" [ref=e2634] [cursor=pointer]:
+                - /url: /Dampfinchen
+                - img "@Dampfinchen" [ref=e2635]
+              - link "@mbednarek360" [ref=e2636] [cursor=pointer]:
+                - /url: /mbednarek360
+                - img "@mbednarek360" [ref=e2637]
+              - link "@nawoa" [ref=e2638] [cursor=pointer]:
+                - /url: /nawoa
+                - img "@nawoa" [ref=e2639]
+              - link "@cturan" [ref=e2640] [cursor=pointer]:
+                - /url: /cturan
+                - img "@cturan" [ref=e2641]
+              - link "@iiLaurens" [ref=e2642] [cursor=pointer]:
+                - /url: /iiLaurens
+                - img "@iiLaurens" [ref=e2643]
+              - link "@nybblr" [ref=e2644] [cursor=pointer]:
+                - /url: /nybblr
+                - img "@nybblr" [ref=e2645]
+              - link "@volkermauel" [ref=e2646] [cursor=pointer]:
+                - /url: /volkermauel
+                - img "@volkermauel" [ref=e2647]
+              - link "@alexandrupetraru" [ref=e2648] [cursor=pointer]:
+                - /url: /alexandrupetraru
+                - img "@alexandrupetraru" [ref=e2649]
+              - link "@GloballyUniquePlaceholder" [ref=e2650] [cursor=pointer]:
+                - /url: /GloballyUniquePlaceholder
+                - img "@GloballyUniquePlaceholder" [ref=e2651]
+              - link "@ninjas28" [ref=e2652] [cursor=pointer]:
+                - /url: /ninjas28
+                - img "@ninjas28" [ref=e2653]
+              - link "@superjamie" [ref=e2654] [cursor=pointer]:
+                - /url: /superjamie
+                - img "@superjamie" [ref=e2655]
+              - link "@USBhost" [ref=e2656] [cursor=pointer]:
+                - /url: /USBhost
+                - img "@USBhost" [ref=e2657]
+              - link "@MisticRain" [ref=e2658] [cursor=pointer]:
+                - /url: /MisticRain
+                - img "@MisticRain" [ref=e2659]
+              - link "@kknddandy" [ref=e2660] [cursor=pointer]:
+                - /url: /kknddandy
+                - img "@kknddandy" [ref=e2661]
+              - link "@johnlovesgoats" [ref=e2662] [cursor=pointer]:
+                - /url: /johnlovesgoats
+                - img "@johnlovesgoats" [ref=e2663]
+              - link "@1RAFAL" [ref=e2664] [cursor=pointer]:
+                - /url: /1RAFAL
+                - img "@1RAFAL" [ref=e2665]
+  - contentinfo [ref=e2666]:
+    - heading "Footer" [level=2] [ref=e2667]
+    - generic [ref=e2668]:
+      - generic [ref=e2669]:
+        - link "GitHub Homepage" [ref=e2670] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e2671]
+        - generic [ref=e2673]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e2674]:
+        - heading "Footer navigation" [level=3] [ref=e2675]
+        - list "Footer navigation" [ref=e2676]:
+          - listitem [ref=e2677]:
+            - link "Terms" [ref=e2678] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e2679]:
+            - link "Privacy" [ref=e2680] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e2681]:
+            - link "Security" [ref=e2682] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e2683]:
+            - link "Status" [ref=e2684] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e2685]:
+            - link "Community" [ref=e2686] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e2687]:
+            - link "Docs" [ref=e2688] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e2689]:
+            - link "Contact" [ref=e2690] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e2691]:
+            - button "Manage cookies" [ref=e2693] [cursor=pointer]
+          - listitem [ref=e2694]:
+            - button "Do not share my personal information" [ref=e2696] [cursor=pointer]

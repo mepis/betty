@@ -1,0 +1,9 @@
+- generic [active] [ref=e1]:
+  - heading "INSIDELLM.COM" [level=1] [ref=e2]
+  - heading "THIS DOMAIN IS FOR SALE Contact Us For Pricing" [level=2] [ref=e3]:
+    - text: THIS DOMAIN IS FOR SALE
+    - paragraph [ref=e4]: Contact Us For Pricing
+  - paragraph [ref=e5]:
+    - text: "Email: ezdomaindeals@protonmail.com"
+    - text: "Call or text: +1 (786) 475 7003 (United States)"
+    - text: "Whatsapp: +1 829 657 5529 (International)"

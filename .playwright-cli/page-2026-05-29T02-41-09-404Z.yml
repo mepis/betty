@@ -1,0 +1,439 @@
+- generic [ref=e1]:
+  - region "Notifications alt+T"
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - link "DeepWiki" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: DeepWiki
+      - paragraph [ref=e10]:
+        - link "QwenLM/Qwen3.6" [ref=e11] [cursor=pointer]:
+          - /url: https://github.com/QwenLM/Qwen3.6
+          - text: QwenLM/Qwen3.6
+          - img [ref=e12]
+      - generic [ref=e14]:
+        - button "Index your code with Devin" [ref=e15]:
+          - generic [ref=e16]: Index your code with
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic [ref=e22]: Devin
+        - button "Edit Wiki" [ref=e23] [cursor=pointer]:
+          - img [ref=e24]
+          - text: Edit Wiki
+        - button "Share" [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e33]: Share
+        - button "Switch to dark mode" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+    - generic [ref=e39]:
+      - generic [ref=e41]:
+        - generic [ref=e43]:
+          - text: "Last indexed: 24 April 2026 ("
+          - link "f14430" [ref=e44] [cursor=pointer]:
+            - /url: https://github.com/QwenLM/Qwen3.6/commits/f1443092
+          - text: )
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - link "Overview" [ref=e47] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/1-overview
+          - listitem [ref=e48]:
+            - link "Qwen3.6 Models" [ref=e49] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/1.1-qwen3.6-models
+          - listitem [ref=e50]:
+            - link "Qwen3.5 Models" [ref=e51] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/1.2-qwen3.5-models
+          - listitem [ref=e52]:
+            - link "Getting Started" [ref=e53] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/2-getting-started
+          - listitem [ref=e54]:
+            - link "Official Interfaces and APIs" [ref=e55] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/2.1-official-interfaces-and-apis
+          - listitem [ref=e56]:
+            - link "Local Inference" [ref=e57] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/2.2-local-inference
+          - listitem [ref=e58]:
+            - link "High-Throughput Deployment" [ref=e59] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/2.3-high-throughput-deployment
+          - listitem [ref=e60]:
+            - link "Fine-Tuning" [ref=e61] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/2.4-fine-tuning
+          - listitem [ref=e62]:
+            - link "Architecture and Key Concepts" [ref=e63] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/3-architecture-and-key-concepts
+          - listitem [ref=e64]:
+            - link "Model Architecture" [ref=e65] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/3.1-model-architecture
+          - listitem [ref=e66]:
+            - link "Training Methodology" [ref=e67] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/3.2-training-methodology
+          - listitem [ref=e68]:
+            - link "Community and Repository Management" [ref=e69] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/4-community-and-repository-management
+          - listitem [ref=e70]:
+            - link "Issue Reporting and Community Channels" [ref=e71] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/4.1-issue-reporting-and-community-channels
+          - listitem [ref=e72]:
+            - link "Automated Repository Maintenance" [ref=e73] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/4.2-automated-repository-maintenance
+          - listitem [ref=e74]:
+            - link "License and Legal" [ref=e75] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/5-license-and-legal
+          - listitem [ref=e76]:
+            - link "Glossary" [ref=e77] [cursor=pointer]:
+              - /url: /QwenLM/Qwen3.6/6-glossary
+      - generic [ref=e83]:
+        - heading "Official Interfaces and APIs Copy link to header" [level=1] [ref=e84]:
+          - text: Official Interfaces and APIs
+          - button "Copy link to header" [ref=e85] [cursor=pointer]:
+            - img [ref=e86]
+        - group [ref=e88]:
+          - generic "Relevant source files" [ref=e89] [cursor=pointer]
+        - paragraph [ref=e90]:
+          - text: This page covers the managed and hosted methods for accessing Qwen3.6 and Qwen3.5 models. These interfaces range from end-user applications like Qwen Studio to developer-centric tools such as the Model Studio API and the Qwen Agent framework. These services provide the easiest path to leveraging advanced features like
+          - strong [ref=e91]: Thinking Preservation
+          - text: and
+          - strong [ref=e92]: Agentic Coding
+          - text: without managing local infrastructure.
+        - heading "Qwen Studio Copy link to header" [level=2] [ref=e93]:
+          - text: Qwen Studio
+          - button "Copy link to header" [ref=e94] [cursor=pointer]:
+            - img [ref=e95]
+        - paragraph [ref=e97]: Qwen Studio (formerly Qwen Chat) is the primary consumer-facing interface for the Qwen model family. It is designed to showcase the native capabilities of Qwen3.6, particularly its proficiency in iterative development and complex reasoning.
+        - list [ref=e98]:
+          - listitem [ref=e99]:
+            - strong [ref=e100]: Web/Desktop/Mobile UI
+            - text: ": Provides a unified interface across platforms"
+            - link "README.md 93-94" [ref=e101] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L93-L94
+              - generic [ref=e102]:
+                - img [ref=e103]
+                - text: README.md
+              - generic [ref=e105]: 93-94
+          - listitem [ref=e106]:
+            - strong [ref=e107]: Integrated Workflows
+            - text: ": Supports specialized modes including \"Deep Research,\" \"Web Dev,\" and \"Adaptive Tool Use\""
+            - link "README.md 89-90" [ref=e108] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L89-L90
+              - generic [ref=e109]:
+                - img [ref=e110]
+                - text: README.md
+              - generic [ref=e112]: 89-90
+          - listitem [ref=e113]:
+            - strong [ref=e114]: Thinking Preservation
+            - text: ": Qwen Studio implements the Thinking Preservation feature, which retains the model's internal reasoning context across long conversation histories to streamline iterative coding and problem-solving"
+            - link "README.md 25-26" [ref=e115] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L25-L26
+              - generic [ref=e116]:
+                - img [ref=e117]
+                - text: README.md
+              - generic [ref=e119]: 25-26
+        - heading "Alibaba Cloud Model Studio API Copy link to header" [level=2] [ref=e120]:
+          - text: Alibaba Cloud Model Studio API
+          - button "Copy link to header" [ref=e121] [cursor=pointer]:
+            - img [ref=e122]
+        - paragraph [ref=e124]:
+          - text: The official programmatic access to Qwen3.6 is provided via
+          - strong [ref=e125]: Alibaba Cloud Model Studio
+          - text: . This managed service is designed for enterprise-grade scalability and ease of integration into existing software stacks.
+        - heading "Compatibility and Integration Copy link to header" [level=3] [ref=e126]:
+          - text: Compatibility and Integration
+          - button "Copy link to header" [ref=e127] [cursor=pointer]:
+            - img [ref=e128]
+        - paragraph [ref=e130]: "The API is designed to be a drop-in replacement for existing LLM providers by supporting multiple industry-standard specifications:"
+        - list [ref=e131]:
+          - listitem [ref=e132]:
+            - strong [ref=e133]: OpenAI-Compatible
+            - text: ": Supports standard Chat Completions and Embeddings endpoints"
+            - link "README.md 101-102" [ref=e134] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L101-L102
+              - generic [ref=e135]:
+                - img [ref=e136]
+                - text: README.md
+              - generic [ref=e138]: 101-102
+          - listitem [ref=e139]:
+            - strong [ref=e140]: Anthropic-Compatible
+            - text: ": Allows developers familiar with Claude's API structure to transition to Qwen with minimal code changes"
+            - link "README.md 101-102" [ref=e141] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L101-L102
+              - generic [ref=e142]:
+                - img [ref=e143]
+                - text: README.md
+              - generic [ref=e145]: 101-102
+        - heading "Data Flow for API Requests Copy link to header" [level=3] [ref=e146]:
+          - text: Data Flow for API Requests
+          - button "Copy link to header" [ref=e147] [cursor=pointer]:
+            - img [ref=e148]
+        - paragraph [ref=e150]: The following diagram illustrates the interaction between a client application and the Model Studio infrastructure.
+        - paragraph [ref=e151]:
+          - strong [ref=e152]: Model Studio API Request Lifecycle
+        - generic [ref=e154] [cursor=pointer]:
+          - document [ref=e156]:
+            - generic [ref=e159]: "\"Qwen3.6 Engine\""
+            - generic [ref=e162]: "\"Model Studio (Managed Service)\""
+            - generic [ref=e165]: "\"Alibaba Cloud Gateway\""
+            - generic [ref=e168]: "\"Client App (OpenAI/Anthropic SDK)\""
+            - generic [ref=e172]: "\"Qwen3.6 Engine\""
+            - generic [ref=e176]: "\"Model Studio (Managed Service)\""
+            - generic [ref=e180]: "\"Alibaba Cloud Gateway\""
+            - generic [ref=e184]: "\"Client App (OpenAI/Anthropic SDK)\""
+            - generic [ref=e187]: Reasoning & Thinking Preservation
+            - generic [ref=e188]: POST /v1/chat/completions (with API Key)
+            - generic [ref=e189]: Validate Auth & Rate Limits
+            - generic [ref=e190]: Forward Prompt + Context
+            - generic [ref=e191]: Token Stream / Response
+            - generic [ref=e192]: Format to Protocol (OpenAI/Anthropic)
+            - generic [ref=e193]: HTTP 200 (JSON Response)
+          - generic [ref=e194]:
+            - button "Zoom in" [ref=e195]:
+              - img [ref=e196]
+            - button "Zoom out" [ref=e198]:
+              - img [ref=e199]
+            - img [ref=e202]
+        - paragraph [ref=e204]:
+          - text: "Sources:"
+          - link "README.md 99-102" [ref=e205] [cursor=pointer]:
+            - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L99-L102
+            - generic [ref=e206]:
+              - img [ref=e207]
+              - text: README.md
+            - generic [ref=e209]: 99-102
+        - heading "Qwen Code Copy link to header" [level=2] [ref=e210]:
+          - text: Qwen Code
+          - button "Copy link to header" [ref=e211] [cursor=pointer]:
+            - img [ref=e212]
+        - paragraph [ref=e214]: Qwen Code is an open-source terminal-based AI agent specifically optimized for the Qwen model family. It bridges the gap between a chat interface and a local development environment.
+        - list [ref=e215]:
+          - listitem [ref=e216]:
+            - strong [ref=e217]: Terminal Integration
+            - text: ": Operates directly within the developer's CLI environment"
+            - link "README.md 105" [ref=e218] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L105-L105
+              - generic [ref=e219]:
+                - img [ref=e220]
+                - text: README.md
+              - generic [ref=e222]: "105"
+          - listitem [ref=e223]:
+            - strong [ref=e224]: Agentic Coding
+            - text: ": Leverages Qwen3.6's ability to handle repository-level reasoning and front-end workflows"
+            - link "README.md 24-25" [ref=e225] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L24-L25
+              - generic [ref=e226]:
+                - img [ref=e227]
+                - text: README.md
+              - generic [ref=e229]: 24-25
+          - listitem [ref=e230]:
+            - strong [ref=e231]: Optimization
+            - text: ": Specifically tuned to utilize the unique architectural strengths of Qwen3.6, such as the Gated Delta Networks and sparse MoE structure, for high-speed local agentic tasks"
+            - link "README.md 35-36" [ref=e232] [cursor=pointer]:
+              - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L35-L36
+              - generic [ref=e233]:
+                - img [ref=e234]
+                - text: README.md
+              - generic [ref=e236]: 35-36
+        - heading "Qwen Agent Framework Copy link to header" [level=2] [ref=e237]:
+          - text: Qwen Agent Framework
+          - button "Copy link to header" [ref=e238] [cursor=pointer]:
+            - img [ref=e239]
+        - paragraph [ref=e241]:
+          - text: For developers building custom applications, the
+          - strong [ref=e242]: Qwen Agent
+          - text: framework provides the programmatic building blocks to create complex, multi-step agentic systems.
+        - heading "Key Components Copy link to header" [level=3] [ref=e243]:
+          - text: Key Components
+          - button "Copy link to header" [ref=e244] [cursor=pointer]:
+            - img [ref=e245]
+        - paragraph [ref=e247]: The framework allows for the orchestration of Qwen models to interact with external tools and environments.
+        - table [ref=e248]:
+          - rowgroup [ref=e249]:
+            - row "Component Description" [ref=e250]:
+              - columnheader "Component" [ref=e251]
+              - columnheader "Description" [ref=e252]
+          - rowgroup [ref=e253]:
+            - row "Agent Scaffolds Managed structures that handle state, memory, and tool-calling loops README.md 41-42" [ref=e254]:
+              - cell "Agent Scaffolds" [ref=e255]:
+                - strong [ref=e256]: Agent Scaffolds
+              - cell "Managed structures that handle state, memory, and tool-calling loops README.md 41-42" [ref=e257]:
+                - text: Managed structures that handle state, memory, and tool-calling loops
+                - link "README.md 41-42" [ref=e258] [cursor=pointer]:
+                  - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L41-L42
+                  - generic [ref=e259]:
+                    - img [ref=e260]
+                    - text: README.md
+                  - generic [ref=e262]: 41-42
+            - row "Environment Orchestration Support for million-agent environments and asynchronous RL frameworks for task distribution README.md 37-42" [ref=e263]:
+              - cell "Environment Orchestration" [ref=e264]:
+                - strong [ref=e265]: Environment Orchestration
+              - cell "Support for million-agent environments and asynchronous RL frameworks for task distribution README.md 37-42" [ref=e266]:
+                - text: Support for million-agent environments and asynchronous RL frameworks for task distribution
+                - link "README.md 37-42" [ref=e267] [cursor=pointer]:
+                  - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L37-L42
+                  - generic [ref=e268]:
+                    - img [ref=e269]
+                    - text: README.md
+                  - generic [ref=e271]: 37-42
+            - row "Multimodal Handling Utilizes the \"Unified Vision-Language Foundation\" for processing visual and textual tokens in a single stream README.md 33-34" [ref=e272]:
+              - cell "Multimodal Handling" [ref=e273]:
+                - strong [ref=e274]: Multimodal Handling
+              - cell "Utilizes the \"Unified Vision-Language Foundation\" for processing visual and textual tokens in a single stream README.md 33-34" [ref=e275]:
+                - text: Utilizes the "Unified Vision-Language Foundation" for processing visual and textual tokens in a single stream
+                - link "README.md 33-34" [ref=e276] [cursor=pointer]:
+                  - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L33-L34
+                  - generic [ref=e277]:
+                    - img [ref=e278]
+                    - text: README.md
+                  - generic [ref=e280]: 33-34
+        - 'heading "System Architecture: Agentic Coding Flow Copy link to header" [level=3] [ref=e281]':
+          - text: "System Architecture: Agentic Coding Flow"
+          - button "Copy link to header" [ref=e282] [cursor=pointer]:
+            - img [ref=e283]
+        - paragraph [ref=e285]: This diagram maps the high-level "Agentic Coding" capability to the underlying framework components.
+        - paragraph [ref=e286]:
+          - strong [ref=e287]: Qwen Agent Internal Execution Logic
+        - generic [ref=e289] [cursor=pointer]:
+          - document [ref=e291]:
+            - generic [ref=e293]:
+              - generic [ref=e294]:
+                - paragraph [ref=e301]: Code Entity Space
+                - paragraph [ref=e308]: Natural Language Space
+              - generic [ref=e317]:
+                - paragraph [ref=e323]: Iterative Feedback
+                - paragraph [ref=e329]: Call Tool
+                - paragraph [ref=e335]: Execution Result
+                - paragraph [ref=e341]: Final Code/Fix
+              - generic [ref=e342]:
+                - paragraph [ref=e349]: User Coding Requirement
+                - paragraph [ref=e356]: Qwen Agent Framework
+                - paragraph [ref=e363]: Qwen3.6-35B-A3B / 27B
+                - paragraph [ref=e370]: Tool/Environment Registry
+                - paragraph [ref=e377]: Repository-Level Reasoning
+          - generic [ref=e378]:
+            - button "Zoom in" [ref=e379]:
+              - img [ref=e380]
+            - button "Zoom out" [ref=e382]:
+              - img [ref=e383]
+            - img [ref=e386]
+        - paragraph [ref=e388]:
+          - text: "Sources:"
+          - link "README.md 22-26" [ref=e389] [cursor=pointer]:
+            - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L22-L26
+            - generic [ref=e390]:
+              - img [ref=e391]
+              - text: README.md
+            - generic [ref=e393]: 22-26
+          - link "README.md 41-42" [ref=e394] [cursor=pointer]:
+            - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L41-L42
+            - generic [ref=e395]:
+              - img [ref=e396]
+              - text: README.md
+            - generic [ref=e398]: 41-42
+        - heading "Summary of Access Methods Copy link to header" [level=2] [ref=e399]:
+          - text: Summary of Access Methods
+          - button "Copy link to header" [ref=e400] [cursor=pointer]:
+            - img [ref=e401]
+        - table [ref=e403]:
+          - rowgroup [ref=e404]:
+            - row "Interface Best For Primary Feature" [ref=e405]:
+              - columnheader "Interface" [ref=e406]
+              - columnheader "Best For" [ref=e407]
+              - columnheader "Primary Feature" [ref=e408]
+          - rowgroup [ref=e409]:
+            - row "Qwen Studio Individual Users Web UI, Thinking Preservation README.md 91-95" [ref=e410]:
+              - cell "Qwen Studio" [ref=e411]:
+                - strong [ref=e412]: Qwen Studio
+              - cell "Individual Users" [ref=e413]
+              - cell "Web UI, Thinking Preservation README.md 91-95" [ref=e414]:
+                - text: Web UI, Thinking Preservation
+                - link "README.md 91-95" [ref=e415] [cursor=pointer]:
+                  - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L91-L95
+                  - generic [ref=e416]:
+                    - img [ref=e417]
+                    - text: README.md
+                  - generic [ref=e419]: 91-95
+            - row "Model Studio API Enterprise Developers OpenAI/Anthropic Compatibility README.md 99-102" [ref=e420]:
+              - cell "Model Studio API" [ref=e421]:
+                - strong [ref=e422]: Model Studio API
+              - cell "Enterprise Developers" [ref=e423]
+              - cell "OpenAI/Anthropic Compatibility README.md 99-102" [ref=e424]:
+                - text: OpenAI/Anthropic Compatibility
+                - link "README.md 99-102" [ref=e425] [cursor=pointer]:
+                  - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L99-L102
+                  - generic [ref=e426]:
+                    - img [ref=e427]
+                    - text: README.md
+                  - generic [ref=e429]: 99-102
+            - row "Qwen Code CLI Power Users Terminal-based Agentic Coding README.md 103-105" [ref=e430]:
+              - cell "Qwen Code" [ref=e431]:
+                - strong [ref=e432]: Qwen Code
+              - cell "CLI Power Users" [ref=e433]
+              - cell "Terminal-based Agentic Coding README.md 103-105" [ref=e434]:
+                - text: Terminal-based Agentic Coding
+                - link "README.md 103-105" [ref=e435] [cursor=pointer]:
+                  - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L103-L105
+                  - generic [ref=e436]:
+                    - img [ref=e437]
+                    - text: README.md
+                  - generic [ref=e439]: 103-105
+            - row "Qwen Agent App Developers Programmatic Framework, Multi-agent Orchestration README.md 41-42" [ref=e440]:
+              - cell "Qwen Agent" [ref=e441]:
+                - strong [ref=e442]: Qwen Agent
+              - cell "App Developers" [ref=e443]
+              - cell "Programmatic Framework, Multi-agent Orchestration README.md 41-42" [ref=e444]:
+                - text: Programmatic Framework, Multi-agent Orchestration
+                - link "README.md 41-42" [ref=e445] [cursor=pointer]:
+                  - /url: https://github.com/QwenLM/Qwen3.6/blob/f1443092/README.md?plain=1#L41-L42
+                  - generic [ref=e446]:
+                    - img [ref=e447]
+                    - text: README.md
+                  - generic [ref=e449]: 41-42
+      - generic [ref=e451]:
+        - generic [ref=e453]:
+          - button "Dismiss" [ref=e454]:
+            - img [ref=e455]
+            - generic [ref=e457]: Dismiss
+          - paragraph [ref=e458]: Refresh this wiki
+          - button "Enter email to refresh" [ref=e459]
+        - heading "On this page" [level=3] [ref=e460]
+        - list [ref=e461]:
+          - listitem [ref=e462]:
+            - link "Official Interfaces and APIs" [ref=e463] [cursor=pointer]:
+              - /url: "#official-interfaces-and-apis"
+          - listitem [ref=e464]:
+            - link "Qwen Studio" [ref=e465] [cursor=pointer]:
+              - /url: "#qwen-studio"
+          - listitem [ref=e466]:
+            - link "Alibaba Cloud Model Studio API" [ref=e467] [cursor=pointer]:
+              - /url: "#alibaba-cloud-model-studio-api"
+          - listitem [ref=e468]:
+            - link "Compatibility and Integration" [ref=e469] [cursor=pointer]:
+              - /url: "#compatibility-and-integration"
+          - listitem [ref=e470]:
+            - link "Data Flow for API Requests" [ref=e471] [cursor=pointer]:
+              - /url: "#data-flow-for-api-requests"
+          - listitem [ref=e472]:
+            - link "Qwen Code" [ref=e473] [cursor=pointer]:
+              - /url: "#qwen-code"
+          - listitem [ref=e474]:
+            - link "Qwen Agent Framework" [ref=e475] [cursor=pointer]:
+              - /url: "#qwen-agent-framework"
+          - listitem [ref=e476]:
+            - link "Key Components" [ref=e477] [cursor=pointer]:
+              - /url: "#key-components"
+          - listitem [ref=e478]:
+            - 'link "System Architecture: Agentic Coding Flow" [ref=e479] [cursor=pointer]':
+              - /url: "#system-architecture-agentic-coding-flow"
+          - listitem [ref=e480]:
+            - link "Summary of Access Methods" [ref=e481] [cursor=pointer]:
+              - /url: "#summary-of-access-methods"
+      - generic [ref=e482]:
+        - generic [ref=e485]:
+          - generic:
+            - generic: Ask Devin about QwenLM/Qwen3.6
+          - textbox [active] [ref=e486]
+        - generic [ref=e487]:
+          - button "Fast" [ref=e489] [cursor=pointer]:
+            - generic [ref=e490]:
+              - img
+              - generic [ref=e491]: Fast
+            - img
+          - button [disabled] [ref=e493]:
+            - img [ref=e494]
+  - alert [ref=e496]

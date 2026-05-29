@@ -1,0 +1,344 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fissues%2F22130
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,899" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113569 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,049" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e149]:
+      - region "Header" [ref=e151]:
+        - generic [ref=e152]:
+          - 'heading "Misc. bug: model parameter in preset config is not resolved from huggingface cache #22130" [level=1] [ref=e154]':
+            - text: "Misc. bug: model parameter in preset config is not resolved from huggingface cache"
+            - generic [ref=e156]: "#22130"
+          - generic [ref=e158]:
+            - button "New issue" [ref=e160] [cursor=pointer]:
+              - generic [ref=e162]: New issue
+            - button "Copy link" [ref=e163] [cursor=pointer]:
+              - img [ref=e164]
+      - generic [ref=e172]:
+        - img "Issue" [ref=e173]
+        - text: Open
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - generic [ref=e180]:
+            - link "@fillg1's profile" [ref=e182] [cursor=pointer]:
+              - /url: https://github.com/fillg1
+              - img "@fillg1" [ref=e183]
+            - generic [ref=e184]:
+              - heading "Description" [level=2] [ref=e185]
+              - generic [ref=e187]:
+                - generic [ref=e189]:
+                  - generic [ref=e190]:
+                    - link "fillg1" [ref=e192] [cursor=pointer]:
+                      - /url: https://github.com/fillg1
+                    - generic [ref=e193]:
+                      - text: opened
+                      - link "on Apr 19, 2026on Apr 19" [ref=e194] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/22130#issue-4291719510
+                        - generic "Apr 19, 2026, 2:56 PM EDT" [ref=e195]: on Apr 19, 2026on Apr 19
+                  - button "Issue body actions" [ref=e199] [cursor=pointer]:
+                    - img [ref=e200]
+                - generic [ref=e202]:
+                  - generic [ref=e204]:
+                    - heading "Name and Version" [level=3] [ref=e205]
+                    - paragraph [ref=e206]:
+                      - text: "ggml_cuda_init: found 1 ROCm devices (Total VRAM: 126976 MiB):"
+                      - text: "Device 0: Radeon 8060S Graphics, gfx1151 (0x1151), VMM: no, Wave Size: 32, VRAM: 126976 MiB"
+                      - text: "version: 8845 ("
+                      - link "037bfe3" [ref=e207] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/commit/037bfe38d0297001869df87150286952ae94cb1c
+                      - text: )
+                      - text: built with GNU 15.2.1 for Linux x86_64
+                    - heading "Operating systems" [level=3] [ref=e208]
+                    - paragraph [ref=e209]: Linux
+                    - heading "Which llama.cpp modules do you know to be affected?" [level=3] [ref=e210]
+                    - paragraph [ref=e211]: llama-server
+                    - heading "Command line" [level=3] [ref=e212]
+                    - generic [ref=e213]:
+                      - generic [ref=e214]: lama-server -kvu --no-mmap -ngl 999 -fa 1 --host 0.0.0.0 --models-preset config.ini
+                      - button "Copy code to clipboard" [ref=e216] [cursor=pointer]:
+                        - img [ref=e217]
+                    - heading "Problem description & steps to reproduce" [level=3] [ref=e220]
+                    - paragraph [ref=e221]: I am using a presets model configuration file and I want to have two different configurations for the same model eg.
+                    - generic [ref=e222]:
+                      - code [ref=e224]: "[qwen3.6-35b-a3b-coding] model = unsloth/Qwen3.6-35B-A3B-GGUF:Q8_K_XL image-min-tokens = 1024 temp = 0.6 top-p = 0.95 top-k = 20 min-p = 0.0 presence-penalty = 0.0 repeat-penalty = 1.0 c = 262144 [qwen3.6-35b-a3b-general] model = unsloth/Qwen3.6-35B-A3B-GGUF:Q8_K_XL alias = qwen3.6-35b-a3b image-min-tokens = 1024 temp = 1.0 top-p = 0.95 top-k = 20 min-p = 0.0 presence-penalty = 1.5 repeat-penalty = 1.0 c = 262144"
+                      - button "Copy code to clipboard" [ref=e226] [cursor=pointer]:
+                        - img [ref=e227]
+                    - paragraph [ref=e230]:
+                      - text: usually my models stay in the huggingface
+                      - code [ref=e231]: cache ~/.cache/huggingface/
+                      - text: ", so I can reference with their \"huggingface path or id\""
+                      - code [ref=e232]: unsloth/Qwen3.6-35B-A3B-GGUF:Q8_K_XL
+                      - text: . This works in the section name, but not for the model attribute as above
+                    - paragraph [ref=e233]: I would expect that the model attribute is used either as an relative path to model storage or relativ to the hugging face cache , as this other section from my config works
+                    - generic [ref=e234]:
+                      - code [ref=e236]: "[unsloth/Qwen3.5-35B-A3B-GGUF:Q8_K_XL] alias = qwen3.5-35b-a3b image-min-tokens = 1024 temp = 0.6 top-p = 0.95 top-k = 20 min-p = 0.0 presence-penalty = 0.0 repeat-penalty = 1.0"
+                      - button "Copy code to clipboard" [ref=e238] [cursor=pointer]:
+                        - img [ref=e239]
+                    - heading "First Bad Commit" [level=3] [ref=e242]
+                    - paragraph [ref=e243]:
+                      - emphasis [ref=e244]: No response
+                    - heading "Relevant log output" [level=3] [ref=e245]
+                    - group [ref=e246]:
+                      - generic "Logs" [ref=e247] [cursor=pointer]
+                  - generic:
+                    - toolbar "Reactions"
+          - generic [ref=e249]:
+            - generic [ref=e250]:
+              - heading "Activity" [level=2] [ref=e251]
+              - region "Events" [ref=e253]:
+                - generic [ref=e260]:
+                  - img [ref=e264]
+                  - generic [ref=e268]:
+                    - link "fillg1" [ref=e270] [cursor=pointer]:
+                      - /url: /fillg1
+                      - generic [ref=e271]: fillg1
+                    - text: added
+                    - link "bug-unconfirmed" [ref=e273] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22bug-unconfirmed%22
+                      - generic [ref=e275]: bug-unconfirmed
+                    - link "on Apr 19, 2026on Apr 19" [ref=e277] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp/issues/22130#event-24654533437
+                      - generic "Apr 19, 2026, 2:56 PM EDT" [ref=e278]: on Apr 19, 2026on Apr 19
+                - generic [ref=e282]:
+                  - img [ref=e286]
+                  - generic [ref=e290]:
+                    - link "fillg1" [ref=e292] [cursor=pointer]:
+                      - /url: /fillg1
+                      - generic [ref=e293]: fillg1
+                    - text: changed the title
+                    - deletion [ref=e295]:
+                      - generic [ref=e296]: "[-]"
+                      - text: "Misc. bug:"
+                      - generic [ref=e297]: "[/-]"
+                    - insertion [ref=e299]:
+                      - generic [ref=e300]: "[+]"
+                      - text: "Misc. bug: model parameter in preset config is not resolved from huggingface cache"
+                      - generic [ref=e301]: "[/+]"
+                    - link "on Apr 19, 2026on Apr 19" [ref=e302] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp/issues/22130#event-24659892694
+                      - generic "Apr 19, 2026, 10:40 PM EDT" [ref=e303]: on Apr 19, 2026on Apr 19
+                - generic [ref=e307]:
+                  - img [ref=e311]
+                  - generic [ref=e315]:
+                    - link "github-actions" [ref=e317] [cursor=pointer]:
+                      - /url: /apps/github-actions
+                      - generic [ref=e318]: github-actions
+                    - text: added
+                    - link "stale" [ref=e320] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                      - generic [ref=e322]: stale
+                    - link "on May 20, 2026last week" [ref=e324] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp/issues/22130#event-25785174286
+                      - generic "May 20, 2026, 10:42 PM EDT" [ref=e325]: on May 20, 2026last week
+            - generic [ref=e326]:
+              - link "Sign up for free" [ref=e327] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ggml-org/llama.cpp/issues/22130
+                - generic [ref=e329]: Sign up for free
+              - generic [ref=e330]:
+                - strong [ref=e331]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e332] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ggml-org/llama.cpp/issues/22130
+        - generic [ref=e334]:
+          - heading "Metadata" [level=2] [ref=e335]
+          - generic [ref=e337]:
+            - generic [ref=e339]:
+              - generic [ref=e340]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e341]: No one assigned
+            - generic [ref=e342]:
+              - generic [ref=e344]:
+                - heading "Labels" [level=3]
+              - generic [ref=e346]:
+                - link "bug-unconfirmed" [ref=e347] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22bug-unconfirmed%22
+                  - generic [ref=e349]: bug-unconfirmed
+                - link "stale" [ref=e351] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                  - generic [ref=e353]: stale
+            - generic [ref=e356]:
+              - generic [ref=e357]:
+                - heading "Type" [level=3]
+              - generic [ref=e358]: No type
+            - generic [ref=e359]:
+              - generic [ref=e361]:
+                - heading "Fields" [level=3] [ref=e362]
+                - link "Give feedback" [ref=e363] [cursor=pointer]:
+                  - /url: https://github.com/orgs/community/discussions/189141
+              - generic [ref=e365]: No fields configured for issues without a type.
+            - generic [ref=e367]:
+              - generic [ref=e368]:
+                - heading "Projects" [level=3]
+              - generic [ref=e369]: No projects
+            - generic [ref=e371]:
+              - generic [ref=e372]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e373]: No milestone
+            - generic [ref=e375]:
+              - generic [ref=e376]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e377]: None yet
+            - generic [ref=e379]:
+              - generic [ref=e380]:
+                - heading "Development" [level=3]
+              - generic [ref=e381]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e382]
+            - list
+  - contentinfo [ref=e383]:
+    - heading "Footer" [level=2] [ref=e384]
+    - generic [ref=e385]:
+      - generic [ref=e386]:
+        - link "GitHub Homepage" [ref=e387] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e388]
+        - generic [ref=e390]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e391]:
+        - heading "Footer navigation" [level=3] [ref=e392]
+        - list "Footer navigation" [ref=e393]:
+          - listitem [ref=e394]:
+            - link "Terms" [ref=e395] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e396]:
+            - link "Privacy" [ref=e397] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e398]:
+            - link "Security" [ref=e399] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e400]:
+            - link "Status" [ref=e401] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e402]:
+            - link "Community" [ref=e403] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e404]:
+            - link "Docs" [ref=e405] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e406]:
+            - link "Contact" [ref=e407] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e408]:
+            - button "Manage cookies" [ref=e410] [cursor=pointer]
+          - listitem [ref=e411]:
+            - button "Do not share my personal information" [ref=e413] [cursor=pointer]

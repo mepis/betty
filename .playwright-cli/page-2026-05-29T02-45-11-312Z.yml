@@ -1,0 +1,2016 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - 'link "Introducing Unsloth Studio: a new web UI for local AI🦥" [ref=e5] [cursor=pointer]':
+      - /url: /docs/new/studio
+      - img [ref=e6]
+      - generic [ref=e8]:
+        - text: "Introducing Unsloth Studio: a new web UI for local AI"
+        - generic [ref=e9]:
+          - generic [ref=e10]: 🦥
+          - img [ref=e11]
+    - button "Close" [ref=e13] [cursor=pointer]:
+      - img [ref=e14]
+  - banner [ref=e16]:
+    - generic [ref=e19]:
+      - link "Logo" [ref=e21] [cursor=pointer]:
+        - /url: /docs
+        - img "Logo" [ref=e22]
+      - generic [ref=e24]:
+        - generic [ref=e26]:
+          - img [ref=e28]
+          - textbox "Ask or search" [ref=e30]:
+            - /placeholder: Ask or search…
+          - generic [ref=e32]:
+            - generic [ref=e34]: Ctrl
+            - generic [ref=e35]: k
+        - alert [ref=e36]
+      - generic [ref=e37]:
+        - link "Reddit" [ref=e38] [cursor=pointer]:
+          - /url: https://www.reddit.com/r/unsloth/
+        - link "Discord" [ref=e39] [cursor=pointer]:
+          - /url: https://discord.gg/unsloth
+        - button "More" [ref=e41] [cursor=pointer]:
+          - generic [ref=e42]: More
+          - img [ref=e43]
+          - img [ref=e45]
+        - button "🇺🇸 English" [ref=e47] [cursor=pointer]:
+          - generic [ref=e48]: 🇺🇸 English
+          - img [ref=e50]
+  - generic [ref=e53]:
+    - complementary [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - list [ref=e58]:
+            - listitem [ref=e59]:
+              - button "Get Started" [expanded] [ref=e61] [cursor=pointer]:
+                - generic [ref=e62]: Get Started
+                - generic:
+                  - img
+              - list [ref=e65]:
+                - listitem [ref=e66]:
+                  - link "🦥 Homepage" [ref=e67] [cursor=pointer]:
+                    - /url: /docs
+                    - generic [ref=e68]: 🦥
+                    - text: Homepage
+                - listitem [ref=e69]:
+                  - link "⭐ Beginner? Start here!" [ref=e70] [cursor=pointer]:
+                    - /url: /docs/get-started/fine-tuning-for-beginners
+                    - generic [ref=e71]: ⭐
+                    - text: Beginner? Start here!
+                    - button [ref=e72]:
+                      - img [ref=e73]
+                - listitem [ref=e75]:
+                  - link "📒 Unsloth Notebooks" [ref=e76] [cursor=pointer]:
+                    - /url: /docs/get-started/unsloth-notebooks
+                    - generic [ref=e77]: 📒
+                    - text: Unsloth Notebooks
+                - listitem [ref=e78]:
+                  - link "🔮 All Our Models" [ref=e79] [cursor=pointer]:
+                    - /url: /docs/get-started/unsloth-model-catalog
+                    - generic [ref=e80]: 🔮
+                    - text: All Our Models
+                - listitem [ref=e81]:
+                  - link "📥 Installation" [ref=e82] [cursor=pointer]:
+                    - /url: /docs/get-started/install
+                    - generic [ref=e83]: 📥
+                    - text: Installation
+                    - button [ref=e84]:
+                      - img [ref=e85]
+                - listitem [ref=e87]:
+                  - link "🧬 Fine-tuning Guide" [ref=e88] [cursor=pointer]:
+                    - /url: /docs/get-started/fine-tuning-llms-guide
+                    - generic [ref=e89]: 🧬
+                    - text: Fine-tuning Guide
+                    - button [ref=e90]:
+                      - img [ref=e91]
+                - listitem [ref=e93]:
+                  - link "💡 Reinforcement Learning Guide" [ref=e94] [cursor=pointer]:
+                    - /url: /docs/get-started/reinforcement-learning-rl-guide
+                    - generic [ref=e95]: 💡
+                    - text: Reinforcement Learning Guide
+                    - button [ref=e96]:
+                      - img [ref=e97]
+            - listitem [ref=e99]:
+              - button "New" [expanded] [ref=e101] [cursor=pointer]:
+                - generic [ref=e102]: New
+                - generic:
+                  - img
+              - list [ref=e105]:
+                - listitem [ref=e106]:
+                  - link "🦥 Introducing Unsloth Studio" [ref=e107] [cursor=pointer]:
+                    - /url: /docs/new/studio
+                    - generic [ref=e108]: 🦥
+                    - text: Introducing Unsloth Studio
+                    - button [ref=e109]:
+                      - img [ref=e110]
+                - listitem [ref=e112]:
+                  - link "Unsloth API endpoint" [ref=e113] [cursor=pointer]:
+                    - /url: /docs/basics/api
+                    - img [ref=e114]
+                    - text: Unsloth API endpoint
+                - listitem [ref=e116]:
+                  - link "Unsloth Updates" [ref=e117] [cursor=pointer]:
+                    - /url: /docs/new/changelog
+                    - img [ref=e118]
+                    - text: Unsloth Updates
+            - listitem [ref=e120]:
+              - button "Models" [expanded] [ref=e122] [cursor=pointer]:
+                - generic [ref=e123]: Models
+                - generic:
+                  - img
+              - list [ref=e126]:
+                - listitem [ref=e127]:
+                  - link "💜 Qwen3.6" [ref=e128] [cursor=pointer]:
+                    - /url: /docs/models/qwen3.6
+                    - generic [ref=e129]: 💜
+                    - text: Qwen3.6
+                - listitem [ref=e130]:
+                  - link "✨ Gemma 4" [ref=e131] [cursor=pointer]:
+                    - /url: /docs/models/gemma-4
+                    - generic [ref=e132]: ✨
+                    - text: Gemma 4
+                    - button [ref=e133]:
+                      - img [ref=e134]
+                - listitem [ref=e136]:
+                  - link "💜 Qwen3.5" [ref=e137] [cursor=pointer]:
+                    - /url: /docs/models/qwen3.5
+                    - generic [ref=e138]: 💜
+                    - text: Qwen3.5
+                    - button [ref=e139]:
+                      - img [ref=e140]
+                - listitem [ref=e142]:
+                  - link "🥝 Kimi K2.6" [ref=e143] [cursor=pointer]:
+                    - /url: /docs/models/kimi-k2.6
+                    - generic [ref=e144]: 🥝
+                    - text: Kimi K2.6
+                - listitem [ref=e145]:
+                  - link "🧩 NVIDIA Nemotron 3 Omni" [ref=e146] [cursor=pointer]:
+                    - /url: /docs/models/nemotron-3-nano-omni
+                    - generic [ref=e147]: 🧩
+                    - text: NVIDIA Nemotron 3 Omni
+                - listitem [ref=e148]:
+                  - link "🚀 Complete LLM Directory" [ref=e149] [cursor=pointer]:
+                    - /url: /docs/models/tutorials
+                    - generic [ref=e150]: 🚀
+                    - text: Complete LLM Directory
+                    - button [ref=e151]:
+                      - img [ref=e152]
+            - listitem [ref=e154]:
+              - button "Basics" [expanded] [ref=e156] [cursor=pointer]:
+                - generic [ref=e157]: Basics
+                - generic:
+                  - img
+              - list [ref=e160]:
+                - listitem [ref=e161]:
+                  - link "Unsloth API" [ref=e162] [cursor=pointer]:
+                    - /url: /docs/basics/api
+                    - img [ref=e163]
+                    - text: Unsloth API
+                    - button [ref=e165]:
+                      - img [ref=e166]
+                - listitem [ref=e168]:
+                  - link "🖥️ Inference & Deployment" [ref=e169] [cursor=pointer]:
+                    - /url: /docs/basics/inference-and-deployment
+                    - generic [ref=e170]: 🖥️
+                    - text: Inference & Deployment
+                    - button [ref=e171]:
+                      - img [ref=e172]
+                - listitem [ref=e174]:
+                  - link "Claude Code" [ref=e175] [cursor=pointer]:
+                    - /url: /docs/basics/claude-code
+                    - img [ref=e176]
+                    - text: Claude Code
+                - listitem [ref=e178]:
+                  - link "OpenAI Codex" [ref=e179] [cursor=pointer]:
+                    - /url: /docs/basics/codex
+                    - img [ref=e180]
+                    - text: OpenAI Codex
+                - listitem [ref=e182]:
+                  - link "Multi-GPU Training" [ref=e183] [cursor=pointer]:
+                    - /url: /docs/basics/multi-gpu-training-with-unsloth
+                    - img [ref=e184]
+                    - text: Multi-GPU Training
+                    - button [ref=e186]:
+                      - img [ref=e187]
+                - listitem [ref=e189]:
+                  - link "🔎 Embedding Fine-tuning" [ref=e190] [cursor=pointer]:
+                    - /url: /docs/basics/embedding-finetuning
+                    - generic [ref=e191]: 🔎
+                    - text: Embedding Fine-tuning
+                - listitem [ref=e192]:
+                  - link "💎 Faster MoE Training" [ref=e193] [cursor=pointer]:
+                    - /url: /docs/basics/faster-moe
+                    - generic [ref=e194]: 💎
+                    - text: Faster MoE Training
+                - listitem [ref=e195]:
+                  - link "🔊 Text-to-Speech Fine-tuning" [ref=e196] [cursor=pointer]:
+                    - /url: /docs/basics/text-to-speech-tts-fine-tuning
+                    - generic [ref=e197]: 🔊
+                    - text: Text-to-Speech Fine-tuning
+                - listitem [ref=e198]:
+                  - link "🦥 Dynamic 2.0 GGUFs" [ref=e199] [cursor=pointer]:
+                    - /url: /docs/basics/unsloth-dynamic-2.0-ggufs
+                    - generic [ref=e200]: 🦥
+                    - text: Dynamic 2.0 GGUFs
+                    - button [ref=e201]:
+                      - img [ref=e202]
+                - listitem [ref=e204]:
+                  - link "Tool Calling Guide" [ref=e205] [cursor=pointer]:
+                    - /url: /docs/basics/tool-calling-guide-for-local-llms
+                    - img [ref=e206]
+                    - text: Tool Calling Guide
+                - listitem [ref=e208]:
+                  - link "👁️ Vision Fine-tuning" [ref=e209] [cursor=pointer]:
+                    - /url: /docs/basics/vision-fine-tuning
+                    - generic [ref=e210]: 👁️
+                    - text: Vision Fine-tuning
+                - listitem [ref=e211]:
+                  - link "⚠️ Troubleshooting & FAQs" [ref=e212] [cursor=pointer]:
+                    - /url: /docs/basics/troubleshooting-and-faqs
+                    - generic [ref=e213]: ⚠️
+                    - text: Troubleshooting & FAQs
+                    - button [ref=e214]:
+                      - img [ref=e215]
+                - listitem [ref=e217]:
+                  - link "💬 Chat Templates" [ref=e218] [cursor=pointer]:
+                    - /url: /docs/basics/chat-templates
+                    - generic [ref=e219]: 💬
+                    - text: Chat Templates
+                - listitem [ref=e220]:
+                  - link "🛠️ Unsloth Environment Flags" [ref=e221] [cursor=pointer]:
+                    - /url: /docs/basics/unsloth-environment-flags
+                    - generic [ref=e222]: 🛠️
+                    - text: Unsloth Environment Flags
+                - listitem [ref=e223]:
+                  - link "♻️ Continued Pretraining" [ref=e224] [cursor=pointer]:
+                    - /url: /docs/basics/continued-pretraining
+                    - generic [ref=e225]: ♻️
+                    - text: Continued Pretraining
+                - listitem [ref=e226]:
+                  - link "🏁 Last Checkpoint" [ref=e227] [cursor=pointer]:
+                    - /url: /docs/basics/finetuning-from-last-checkpoint
+                    - generic [ref=e228]: 🏁
+                    - text: Last Checkpoint
+            - listitem [ref=e229]:
+              - button "Integrations" [expanded] [ref=e231] [cursor=pointer]:
+                - generic [ref=e232]: Integrations
+                - generic:
+                  - img
+              - list [ref=e235]:
+                - listitem [ref=e236]:
+                  - link "Claude Code" [ref=e237] [cursor=pointer]:
+                    - /url: /docs/basics/claude-code
+                    - img [ref=e238]
+                    - text: Claude Code
+                - listitem [ref=e240]:
+                  - link "OpenAI Codex" [ref=e241] [cursor=pointer]:
+                    - /url: /docs/basics/codex
+                    - img [ref=e242]
+                    - text: OpenAI Codex
+                - listitem [ref=e244]:
+                  - link "Connect a Provider" [ref=e245] [cursor=pointer]:
+                    - /url: /docs/integrations/connections
+                    - img [ref=e246]
+                    - text: Connect a Provider
+                    - button [ref=e248]:
+                      - img [ref=e249]
+                - listitem [ref=e251]:
+                  - link "OpenClaw" [ref=e252] [cursor=pointer]:
+                    - /url: /docs/integrations/openclaw
+                    - img [ref=e253]
+                    - text: OpenClaw
+                - listitem [ref=e255]:
+                  - link "OpenCode" [ref=e256] [cursor=pointer]:
+                    - /url: /docs/integrations/opencode
+                    - img [ref=e257]
+                    - text: OpenCode
+                - listitem [ref=e259]:
+                  - link "Hermes Agent" [ref=e260] [cursor=pointer]:
+                    - /url: /docs/integrations/hermes-agent
+                    - img [ref=e261]
+                    - text: Hermes Agent
+                - listitem [ref=e263]:
+                  - link "Python SDK" [ref=e264] [cursor=pointer]:
+                    - /url: /docs/integrations/connect-python-sdk-to-unsloth
+                    - img [ref=e265]
+                    - text: Python SDK
+                - listitem [ref=e267]:
+                  - link "Curl & HTTP" [ref=e268] [cursor=pointer]:
+                    - /url: /docs/integrations/connect-curl-and-http-to-unsloth
+                    - img [ref=e269]
+                    - text: Curl & HTTP
+                - listitem [ref=e271]:
+                  - link "VS Code" [ref=e272] [cursor=pointer]:
+                    - /url: /docs/get-started/install/vs-code
+                    - img [ref=e273]
+                    - text: VS Code
+            - listitem [ref=e275]:
+              - button "Blog" [expanded] [ref=e277] [cursor=pointer]:
+                - generic [ref=e278]: Blog
+                - generic:
+                  - img
+              - list [ref=e281]:
+                - listitem [ref=e282]:
+                  - link "⚡ New 3x Faster Training" [ref=e283] [cursor=pointer]:
+                    - /url: /docs/blog/3x-faster-training-packing
+                    - generic [ref=e284]: ⚡
+                    - text: New 3x Faster Training
+                - listitem [ref=e285]:
+                  - link "500K Context Training" [ref=e286] [cursor=pointer]:
+                    - /url: /docs/blog/500k-context-length-fine-tuning
+                    - img [ref=e287]
+                    - text: 500K Context Training
+                - listitem [ref=e289]:
+                  - link "Quantization-Aware Training" [ref=e290] [cursor=pointer]:
+                    - /url: /docs/blog/quantization-aware-training-qat
+                    - img [ref=e291]
+                    - text: Quantization-Aware Training
+                - listitem [ref=e293]:
+                  - link "DGX Station" [ref=e294] [cursor=pointer]:
+                    - /url: /docs/blog/dgx-station
+                    - img [ref=e295]
+                    - text: DGX Station
+                - listitem [ref=e297]:
+                  - link "Unsloth Docker Guide" [ref=e298] [cursor=pointer]:
+                    - /url: /docs/blog/how-to-fine-tune-llms-with-unsloth-and-docker
+                    - img [ref=e299]
+                    - text: Unsloth Docker Guide
+                - listitem [ref=e301]:
+                  - link "DGX Spark and Unsloth" [ref=e302] [cursor=pointer]:
+                    - /url: /docs/blog/fine-tuning-llms-with-nvidia-dgx-spark-and-unsloth
+                    - img [ref=e303]
+                    - text: DGX Spark and Unsloth
+                - listitem [ref=e305]:
+                  - link "Blackwell, RTX 50 and Unsloth" [ref=e306] [cursor=pointer]:
+                    - /url: /docs/blog/fine-tuning-llms-with-blackwell-rtx-50-series-and-unsloth
+                    - img [ref=e307]
+                    - text: Blackwell, RTX 50 and Unsloth
+          - button "Scroll back":
+            - img
+          - button "Scroll further":
+            - img
+        - link "Powered by GitBook" [ref=e309] [cursor=pointer]:
+          - /url: https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=xhOjnexMCB3dmuQFQ2Zq&utm_content=site_mXXTe
+          - img [ref=e310]
+          - generic [ref=e312]: Powered by GitBook
+    - generic [ref=e314]:
+      - complementary [ref=e315]:
+        - generic [ref=e316]:
+          - button "On this page" [ref=e318] [cursor=pointer]:
+            - img [ref=e319]
+            - text: On this page
+          - generic [ref=e321]:
+            - list [ref=e323]:
+              - listitem [ref=e324]:
+                - link "⚙️ Usage Guide" [ref=e325] [cursor=pointer]:
+                  - /url: "#usage-guide"
+                  - generic [ref=e326]: ⚙️ Usage Guide
+              - listitem [ref=e327]:
+                - link "Recommended Settings" [ref=e328] [cursor=pointer]:
+                  - /url: "#recommended-settings"
+              - listitem [ref=e329]:
+                - link "Qwen3.6 Inference Tutorials:" [ref=e330] [cursor=pointer]:
+                  - /url: "#qwen3.6-inference-tutorials"
+              - listitem [ref=e331]:
+                - link "🦥 Unsloth Studio Guide" [ref=e332] [cursor=pointer]:
+                  - /url: "#unsloth-studio-guide"
+              - listitem [ref=e333]:
+                - link "⚡ MTP Guide" [ref=e334] [cursor=pointer]:
+                  - /url: "#mtp-guide"
+              - listitem [ref=e335]:
+                - link "🦙 Llama.cpp Guide" [ref=e336] [cursor=pointer]:
+                  - /url: "#llama.cpp-guide"
+              - listitem [ref=e337]:
+                - link "🍎 MLX Dynamic Quants" [ref=e338] [cursor=pointer]:
+                  - /url: "#mlx-dynamic-quants"
+              - listitem [ref=e339]:
+                - 'link "💡 Thinking: Enable/Disable + Preserve Thinking" [ref=e340] [cursor=pointer]':
+                  - /url: "#thinking-enable-disable--preserve-thinking"
+              - listitem [ref=e341]:
+                - link "👨‍💻 OpenAI Codex & Claude Code" [ref=e342] [cursor=pointer]:
+                  - /url: "#claude-codex"
+              - listitem [ref=e343]:
+                - link "📊 Benchmarks" [ref=e344] [cursor=pointer]:
+                  - /url: "#benchmarks"
+              - listitem [ref=e345]:
+                - link "Unsloth GGUF Benchmarks" [ref=e346] [cursor=pointer]:
+                  - /url: "#unsloth-gguf-benchmarks"
+              - listitem [ref=e347]:
+                - link "MTP Benchmarks" [ref=e348] [cursor=pointer]:
+                  - /url: "#mtp-benchmarks"
+              - listitem [ref=e349]:
+                - link "Official Qwen Benchmarks" [ref=e350] [cursor=pointer]:
+                  - /url: "#official-qwen-benchmarks"
+            - generic [ref=e353]:
+              - paragraph [ref=e354]: Was this helpful?
+              - generic [ref=e355]:
+                - button "Yes, it was!" [ref=e356] [cursor=pointer]:
+                  - img [ref=e357]
+                - button "Not sure" [ref=e360] [cursor=pointer]:
+                  - img [ref=e361]
+                - button "No" [ref=e364] [cursor=pointer]:
+                  - img [ref=e365]
+          - radiogroup [ref=e370]:
+            - radio "Switch to light theme" [ref=e371] [cursor=pointer]:
+              - img [ref=e372]
+            - radio "Switch to system theme" [ref=e374] [cursor=pointer]:
+              - img [ref=e375]
+            - radio "Switch to dark theme" [ref=e377] [cursor=pointer]:
+              - img [ref=e378]
+      - main [ref=e380]:
+        - generic [ref=e381]:
+          - generic [ref=e383]:
+            - button "Copy" [ref=e384] [cursor=pointer]:
+              - img [ref=e385]
+              - generic [ref=e387]: Copy
+            - button "More" [ref=e388] [cursor=pointer]:
+              - img [ref=e389]
+          - navigation "Breadcrumb" [ref=e391]:
+            - list [ref=e392]:
+              - listitem [ref=e393]:
+                - link "Models" [ref=e394] [cursor=pointer]:
+                  - /url: /docs/models
+          - heading "💜 Qwen3.6 - How to Run Locally" [level=1] [ref=e395]:
+            - generic [ref=e396]: 💜
+            - text: Qwen3.6 - How to Run Locally
+          - paragraph [ref=e397]: Run the new Qwen3.6-27B and 35B-A3B models locally!
+        - generic [ref=e398]:
+          - paragraph [ref=e399]:
+            - text: "Qwen3.6 is Alibaba’s new family of multimodal hybrid-thinking models, including:"
+            - strong [ref=e400]: Qwen3.6-27B
+            - text: and
+            - strong [ref=e401]: 35B-A3B
+            - text: . It delivers top performance for its size, supports 256K context across 201 languages. It excels in agentic coding, vision, chat tasks. Qwen3.6-27B runs on
+            - strong [ref=e402]: 18GB RAM
+            - text: setups and 35B-A3B runs on
+            - strong [ref=e403]: 22GB
+            - text: . You can now run and train the models in
+            - link "Unsloth Studio" [ref=e405] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#unsloth-studio-guide
+            - text: .
+          - note "Success" [ref=e406]:
+            - img [ref=e408]
+            - generic [ref=e410]:
+              - paragraph [ref=e411]:
+                - strong [ref=e412]: "NEW:"
+                - link "Qwen3.6 MTP is here" [ref=e414] [cursor=pointer]:
+                  - /url: /docs/models/qwen3.6#mtp-guide
+                  - strong [ref=e415]: Qwen3.6 MTP is here
+                - strong [ref=e416]: "! MTP enables 1.4-2.2x faster inference without accuracy loss. Run MTP directly in"
+                - link "Unsloth Studio" [ref=e418] [cursor=pointer]:
+                  - /url: /docs/models/qwen3.6#unsloth-studio-mtp-guide
+                  - strong [ref=e419]: Unsloth Studio
+                - strong [ref=e420]: .
+              - paragraph [ref=e421]:
+                - text: We conducted
+                - link "Qwen3.6 GGUF Benchmarks" [ref=e423] [cursor=pointer]:
+                  - /url: /docs/models/qwen3.6#unsloth-gguf-benchmarks
+                - text: to help you pick the best quant.
+          - paragraph [ref=e424]:
+            - link "Run Qwen3.6 Tutorials" [ref=e425] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#qwen3.6-inference-tutorials
+              - generic [ref=e426]: Run Qwen3.6 Tutorials
+            - link "MTP Guide" [ref=e427] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#mtp-guide
+              - generic [ref=e428]: MTP Guide
+          - generic [ref=e429]:
+            - generic [ref=e431]:
+              - paragraph [ref=e432]:
+                - text: Qwen3.6 GGUFs use Unsloth
+                - link "Dynamic 2.0" [ref=e434] [cursor=pointer]:
+                  - /url: /docs/basics/unsloth-dynamic-2.0-ggufs
+                - text: for SOTA quant performance - so quants are calibrated on real world use-case datasets and important layers are upcasted. Thank you Qwen for day zero access.
+              - list [ref=e435]:
+                - listitem [ref=e436]:
+                  - generic [ref=e438]: •
+                  - paragraph [ref=e440]:
+                    - strong [ref=e441]: Developer Role Support
+                    - text: "for Codex, OpenCode and more:"
+                    - strong
+                    - text: Our uploads now support the
+                    - code [ref=e442]: developer role
+                    - text: for agentic coding tools.
+                - listitem [ref=e443]:
+                  - generic [ref=e445]: •
+                  - paragraph [ref=e447]:
+                    - strong [ref=e448]: "Tool calling:"
+                    - text: Like
+                    - link "Qwen3.5" [ref=e450] [cursor=pointer]:
+                      - /url: /docs/models/qwen3.5
+                    - text: ", we improved parsing nested objects to make tool calling succeed more."
+            - generic [ref=e458]:
+              - text: Qwen3.6 running in
+              - link "Unsloth Studio" [ref=e460] [cursor=pointer]:
+                - /url: /docs/models/qwen3.6#unsloth-studio-guide
+              - text: .
+          - heading "Direct link to heading ⚙️ Usage Guide" [level=3] [ref=e461]:
+            - link "Direct link to heading" [ref=e463] [cursor=pointer]:
+              - /url: "#usage-guide"
+              - img [ref=e464]
+            - generic [ref=e466]: ⚙️ Usage Guide
+          - paragraph [ref=e467]:
+            - strong [ref=e468]: "Table: Inference hardware requirements"
+            - text: "(units = total memory: RAM + VRAM, or unified memory)"
+          - generic [ref=e471]:
+            - rowgroup [ref=e472]:
+              - row "Qwen3.6 3-bit 4-bit 6-bit 8-bit BF16" [ref=e473]:
+                - columnheader "Qwen3.6" [ref=e474]
+                - columnheader "3-bit" [ref=e475]
+                - columnheader "4-bit" [ref=e476]
+                - columnheader "6-bit" [ref=e477]
+                - columnheader "8-bit" [ref=e478]
+                - columnheader "BF16" [ref=e479]
+            - table [ref=e480]:
+              - rowgroup [ref=e481]:
+                - row "27B 15 GB 18 GB 24 GB 30 GB 55 GB" [ref=e482]:
+                  - cell "27B" [ref=e483]:
+                    - paragraph [ref=e485]:
+                      - strong [ref=e486]: 27B
+                  - cell "15 GB" [ref=e487]:
+                    - paragraph [ref=e489]: 15 GB
+                  - cell "18 GB" [ref=e490]:
+                    - paragraph [ref=e492]: 18 GB
+                  - cell "24 GB" [ref=e493]:
+                    - paragraph [ref=e495]: 24 GB
+                  - cell "30 GB" [ref=e496]:
+                    - paragraph [ref=e498]: 30 GB
+                  - cell "55 GB" [ref=e499]:
+                    - paragraph [ref=e501]: 55 GB
+                - row "35B-A3B 17 GB 23 GB 30 GB 38 GB 70 GB" [ref=e502]:
+                  - cell "35B-A3B" [ref=e503]:
+                    - paragraph [ref=e505]:
+                      - strong [ref=e506]: 35B-A3B
+                  - cell "17 GB" [ref=e507]:
+                    - paragraph [ref=e509]: 17 GB
+                  - cell "23 GB" [ref=e510]:
+                    - paragraph [ref=e512]: 23 GB
+                  - cell "30 GB" [ref=e513]:
+                    - paragraph [ref=e515]: 30 GB
+                  - cell "38 GB" [ref=e516]:
+                    - paragraph [ref=e518]: 38 GB
+                  - cell "70 GB" [ref=e519]:
+                    - paragraph [ref=e521]: 70 GB
+          - note "Success" [ref=e522]:
+            - img [ref=e524]
+            - paragraph [ref=e527]: For best performance, make sure your total available memory (VRAM + system RAM) exceeds the size of the quantized model file you’re downloading. If it doesn’t, llama.cpp can still run via SSD/HDD offloading, but inference will be slower.
+          - note "Warning" [ref=e528]:
+            - img [ref=e530]
+            - paragraph [ref=e533]: Do NOT use CUDA 13.2 as you may get gibberish outputs. NVIDIA is working on a fix.
+          - paragraph [ref=e534]:
+            - strong [ref=e535]: To train Qwen3.6, you can refer to our previous
+            - link "Qwen3.5 fine-tuning guide" [ref=e537] [cursor=pointer]:
+              - /url: /docs/models/qwen3.5/fine-tune
+              - strong [ref=e538]: Qwen3.5 fine-tuning guide
+            - strong [ref=e539]: .
+          - heading "Direct link to heading Recommended Settings" [level=3] [ref=e540]:
+            - link "Direct link to heading" [ref=e542] [cursor=pointer]:
+              - /url: "#recommended-settings"
+              - img [ref=e543]
+            - generic [ref=e545]: Recommended Settings
+          - list [ref=e546]:
+            - listitem [ref=e547]:
+              - generic [ref=e549]: •
+              - paragraph [ref=e551]:
+                - strong [ref=e552]: "Maximum context window:"
+                - code [ref=e553]: 262,144
+                - text: (can be extended to 1M via YaRN)
+            - listitem [ref=e554]:
+              - generic [ref=e556]: •
+              - paragraph [ref=e558]:
+                - code [ref=e559]: presence_penalty = 0.0 to 2.0
+                - text: default this is off, but to reduce repetitions, you can use this, however using a higher value may result in
+                - strong [ref=e560]: slight decrease in performance
+            - listitem [ref=e561]:
+              - generic [ref=e563]: •
+              - paragraph [ref=e565]:
+                - strong [ref=e566]: Adequate Output Length
+                - text: ":"
+                - code [ref=e567]: 32,768
+                - text: tokens for most queries
+          - note "Information" [ref=e568]:
+            - img [ref=e570]
+            - paragraph [ref=e573]:
+              - text: If you're getting gibberish, your context length might be set too low. Or try using
+              - code [ref=e574]: "--cache-type-k bf16 --cache-type-v bf16"
+              - text: which might help.
+          - paragraph [ref=e575]: "As Qwen3.6 is hybrid reasoning, thinking and non-thinking mode have different settings:"
+          - heading "Direct link to heading Thinking mode:" [level=4] [ref=e576]:
+            - link "Direct link to heading" [ref=e578] [cursor=pointer]:
+              - /url: "#thinking-mode"
+              - img [ref=e579]
+            - generic [ref=e581]: "Thinking mode:"
+          - note "Success" [ref=e582]:
+            - img [ref=e584]
+            - paragraph [ref=e587]:
+              - text: Qwen3.6 now has
+              - link "Preserve Thinking" [ref=e589] [cursor=pointer]:
+                - /url: /docs/models/qwen3.6#turn-on-off-thinking--preserve-thinking
+              - text: .
+          - generic [ref=e592]:
+            - rowgroup [ref=e593]:
+              - row "General tasks Precise coding tasks (e.g. WebDev)" [ref=e594]:
+                - columnheader "General tasks" [ref=e595]
+                - columnheader "Precise coding tasks (e.g. WebDev)" [ref=e596]
+            - table [ref=e597]:
+              - rowgroup [ref=e598]:
+                - row "temperature = 1.0 temperature = 0.6" [ref=e599]:
+                  - cell "temperature = 1.0" [ref=e600]:
+                    - paragraph [ref=e602]: temperature = 1.0
+                  - cell "temperature = 0.6" [ref=e603]:
+                    - paragraph [ref=e605]: temperature = 0.6
+                - row "top_p = 0.95 top_p = 0.95" [ref=e606]:
+                  - cell "top_p = 0.95" [ref=e607]:
+                    - paragraph [ref=e609]: top_p = 0.95
+                  - cell "top_p = 0.95" [ref=e610]:
+                    - paragraph [ref=e612]: top_p = 0.95
+                - row "top_k = 20 top_k = 20" [ref=e613]:
+                  - cell "top_k = 20" [ref=e614]:
+                    - paragraph [ref=e616]: top_k = 20
+                  - cell "top_k = 20" [ref=e617]:
+                    - paragraph [ref=e619]: top_k = 20
+                - row "min_p = 0.0 min_p = 0.0" [ref=e620]:
+                  - cell "min_p = 0.0" [ref=e621]:
+                    - paragraph [ref=e623]: min_p = 0.0
+                  - cell "min_p = 0.0" [ref=e624]:
+                    - paragraph [ref=e626]: min_p = 0.0
+                - row "presence_penalty = 1.5 presence_penalty = 0.0" [ref=e627]:
+                  - cell "presence_penalty = 1.5" [ref=e628]:
+                    - paragraph [ref=e630]: presence_penalty = 1.5
+                  - cell "presence_penalty = 0.0" [ref=e631]:
+                    - paragraph [ref=e633]: presence_penalty = 0.0
+                - row "repeat_penalty = disabled or 1.0 repeat_penalty = disabled or 1.0" [ref=e634]:
+                  - cell "repeat_penalty = disabled or 1.0" [ref=e635]:
+                    - paragraph [ref=e637]: repeat_penalty = disabled or 1.0
+                  - cell "repeat_penalty = disabled or 1.0" [ref=e638]:
+                    - paragraph [ref=e640]: repeat_penalty = disabled or 1.0
+          - generic [ref=e641]:
+            - generic [ref=e643]:
+              - paragraph [ref=e644]: "Thinking mode for general tasks:"
+              - generic [ref=e646]:
+                - button "Copy" [ref=e647] [cursor=pointer]:
+                  - generic [ref=e648]: Copy
+                - code [ref=e650]:
+                  - generic [ref=e652]: temperature=1.0, top_p=0.95, top_k=20, min_p=0.0, presence_penalty=1.5, repetition_penalty=1.0
+            - generic [ref=e654]:
+              - paragraph [ref=e655]: "Thinking mode for precise coding tasks:"
+              - generic [ref=e657]:
+                - button "Copy" [ref=e658] [cursor=pointer]:
+                  - generic [ref=e659]: Copy
+                - code [ref=e661]:
+                  - generic [ref=e663]: temperature=0.6, top_p=0.95, top_k=20, min_p=0.0, presence_penalty=0.0, repetition_penalty=1.0
+          - heading "Direct link to heading Instruct (non-thinking) mode settings:" [level=4] [ref=e664]:
+            - link "Direct link to heading" [ref=e666] [cursor=pointer]:
+              - /url: "#instruct-non-thinking-mode-settings"
+              - img [ref=e667]
+            - generic [ref=e669]: "Instruct (non-thinking) mode settings:"
+          - generic [ref=e672]:
+            - rowgroup [ref=e673]:
+              - row "General tasks Reasoning tasks" [ref=e674]:
+                - columnheader "General tasks" [ref=e675]
+                - columnheader "Reasoning tasks" [ref=e676]
+            - table [ref=e677]:
+              - rowgroup [ref=e678]:
+                - row "temperature = 0.7 temperature = 1.0" [ref=e679]:
+                  - cell "temperature = 0.7" [ref=e680]:
+                    - paragraph [ref=e682]: temperature = 0.7
+                  - cell "temperature = 1.0" [ref=e683]:
+                    - paragraph [ref=e685]: temperature = 1.0
+                - row "top_p = 0.8 top_p = 0.95" [ref=e686]:
+                  - cell "top_p = 0.8" [ref=e687]:
+                    - paragraph [ref=e689]: top_p = 0.8
+                  - cell "top_p = 0.95" [ref=e690]:
+                    - paragraph [ref=e692]: top_p = 0.95
+                - row "top_k = 20 top_k = 20" [ref=e693]:
+                  - cell "top_k = 20" [ref=e694]:
+                    - paragraph [ref=e696]: top_k = 20
+                  - cell "top_k = 20" [ref=e697]:
+                    - paragraph [ref=e699]: top_k = 20
+                - row "min_p = 0.0 min_p = 0.0" [ref=e700]:
+                  - cell "min_p = 0.0" [ref=e701]:
+                    - paragraph [ref=e703]: min_p = 0.0
+                  - cell "min_p = 0.0" [ref=e704]:
+                    - paragraph [ref=e706]: min_p = 0.0
+                - row "presence_penalty = 1.5 presence_penalty = 1.5" [ref=e707]:
+                  - cell "presence_penalty = 1.5" [ref=e708]:
+                    - paragraph [ref=e710]: presence_penalty = 1.5
+                  - cell "presence_penalty = 1.5" [ref=e711]:
+                    - paragraph [ref=e713]: presence_penalty = 1.5
+                - row "repeat_penalty = disabled or 1.0 repeat_penalty = disabled or 1.0" [ref=e714]:
+                  - cell "repeat_penalty = disabled or 1.0" [ref=e715]:
+                    - paragraph [ref=e717]: repeat_penalty = disabled or 1.0
+                  - cell "repeat_penalty = disabled or 1.0" [ref=e718]:
+                    - paragraph [ref=e720]: repeat_penalty = disabled or 1.0
+          - note "Warning" [ref=e721]:
+            - img [ref=e723]
+            - generic [ref=e725]:
+              - paragraph [ref=e726]:
+                - text: To
+                - link "disable thinking / reasoning" [ref=e728] [cursor=pointer]:
+                  - /url: /docs/models/qwen3.6#how-to-enable-or-disable-reasoning-and-thinking
+                - text: ", use"
+                - code [ref=e729]: "--chat-template-kwargs '{\"enable_thinking\":false}'"
+              - paragraph [ref=e730]:
+                - text: If you're on
+                - strong [ref=e731]: Windows
+                - text: "Powershell, use:"
+                - code [ref=e732]: "--chat-template-kwargs \"{\\\"enable_thinking\\\":false}\""
+              - paragraph [ref=e733]: Use 'true' and 'false' interchangeably.
+          - generic [ref=e734]:
+            - generic [ref=e736]:
+              - paragraph [ref=e737]: "Instruct (non-thinking) for general tasks:"
+              - generic [ref=e739]:
+                - button "Copy" [ref=e740] [cursor=pointer]:
+                  - generic [ref=e741]: Copy
+                - code [ref=e743]:
+                  - generic [ref=e745]: temperature=0.7, top_p=0.8, top_k=20, min_p=0.0, presence_penalty=1.5, repetition_penalty=1.0
+            - generic [ref=e747]:
+              - paragraph [ref=e748]: "Instruct (non-thinking) for reasoning tasks:"
+              - generic [ref=e750]:
+                - button "Copy" [ref=e751] [cursor=pointer]:
+                  - generic [ref=e752]: Copy
+                - code [ref=e754]:
+                  - generic [ref=e756]: temperature=1.0, top_p=0.95, top_k=20, min_p=0.0, presence_penalty=1.5, repetition_penalty=1.0
+          - heading "Direct link to heading Qwen3.6 Inference Tutorials:" [level=2] [ref=e757]:
+            - link "Direct link to heading" [ref=e759] [cursor=pointer]:
+              - /url: "#qwen3.6-inference-tutorials"
+              - img [ref=e760]
+            - generic [ref=e762]: "Qwen3.6 Inference Tutorials:"
+          - paragraph [ref=e763]:
+            - text: We'll be using Dynamic 4-bit
+            - code [ref=e764]: UD-Q4_K_XL
+            - text: "GGUF variants for inference workloads. Click below to navigate to designated model instructions:"
+          - paragraph [ref=e765]:
+            - link "Run in Unsloth Studio" [ref=e766] [cursor=pointer]:
+              - /url: /docs/models/qwen3.5#unsloth-studio-guide
+              - generic [ref=e767]: Run in Unsloth Studio
+            - link "Run in llama.cpp" [ref=e768] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#llama.cpp-guides
+              - generic [ref=e769]: Run in llama.cpp
+            - link "MTP Guide" [ref=e770] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#mtp-guide
+              - generic [ref=e771]: MTP Guide
+          - note "Warning" [ref=e772]:
+            - img [ref=e774]
+            - paragraph [ref=e777]: Do NOT use CUDA 13.2 as you may get gibberish outputs. NVIDIA is working on a fix.
+          - heading "Direct link to heading 🦥 Unsloth Studio Guide" [level=3] [ref=e778]:
+            - link "Direct link to heading" [ref=e780] [cursor=pointer]:
+              - /url: "#unsloth-studio-guide"
+              - img [ref=e781]
+            - generic [ref=e783]: 🦥 Unsloth Studio Guide
+          - paragraph [ref=e784]:
+            - text: Qwen3.6 and Qwen3.6 MTP can now be run in
+            - link "Unsloth Studio" [ref=e786] [cursor=pointer]:
+              - /url: /docs/new/studio
+            - text: ", our new open-source web UI for local AI. Unsloth Studio lets you run models locally on"
+            - strong [ref=e787]: MacOS, Windows
+            - text: ", Linux and:"
+          - list [ref=e791]:
+            - listitem [ref=e792]:
+              - generic [ref=e794]: •
+              - paragraph [ref=e796]:
+                - text: Search, download,
+                - link "run GGUFs" [ref=e798] [cursor=pointer]:
+                  - /url: /docs/new/studio#run-models-locally
+                - text: and safetensor models
+            - listitem [ref=e799]:
+              - generic [ref=e801]: •
+              - paragraph [ref=e803]:
+                - link "Self-healing tool calling" [ref=e805] [cursor=pointer]:
+                  - /url: /docs/new/studio#execute-code--heal-tool-calling
+                  - strong [ref=e806]: Self-healing
+                  - text: tool calling
+                - text: +
+                - strong [ref=e807]: web search
+            - listitem [ref=e808]:
+              - generic [ref=e810]: •
+              - paragraph [ref=e812]:
+                - link "Code execution" [ref=e814] [cursor=pointer]:
+                  - /url: /docs/new/studio#run-models-locally
+                  - strong [ref=e815]: Code execution
+                - strong [ref=e816]
+                - text: (Python, Bash)
+            - listitem [ref=e817]:
+              - generic [ref=e819]: •
+              - paragraph [ref=e821]:
+                - link "Automatic inference" [ref=e823] [cursor=pointer]:
+                  - /url: /docs/new/studio#model-arena
+                - text: parameter tuning (temp, top-p, etc.)
+            - listitem [ref=e824]:
+              - generic [ref=e826]: •
+              - paragraph [ref=e828]: Fast CPU + GPU inference via llama.cpp
+            - listitem [ref=e829]:
+              - generic [ref=e831]: •
+              - paragraph [ref=e833]:
+                - link "Train LLMs" [ref=e835] [cursor=pointer]:
+                  - /url: /docs/new/studio#no-code-training
+                - text: 2x faster with 70% less VRAM
+          - generic [ref=e842]:
+            - generic [ref=e843]:
+              - generic [ref=e845]: "1"
+              - generic [ref=e847]:
+                - heading "Direct link to heading Install Unsloth" [level=4] [ref=e848]:
+                  - link "Direct link to heading" [ref=e850] [cursor=pointer]:
+                    - /url: "#install-unsloth"
+                    - img [ref=e851]
+                  - generic [ref=e853]: Install Unsloth
+                - paragraph [ref=e854]: "Run in your terminal:"
+                - paragraph [ref=e855]:
+                  - strong [ref=e856]: "MacOS, Linux, WSL:"
+                - generic [ref=e858]:
+                  - button "Copy" [ref=e859] [cursor=pointer]:
+                    - generic [ref=e860]: Copy
+                  - code [ref=e862]:
+                    - generic [ref=e864]: curl -fsSL https://unsloth.ai/install.sh | sh
+                - paragraph [ref=e865]:
+                  - strong [ref=e866]: "Windows PowerShell:"
+                - generic [ref=e868]:
+                  - button "Copy" [ref=e869] [cursor=pointer]:
+                    - generic [ref=e870]: Copy
+                  - code [ref=e872]:
+                    - generic [ref=e874]: irm https://unsloth.ai/install.ps1 | iex
+                - note "Success" [ref=e875]:
+                  - img [ref=e877]
+                  - paragraph [ref=e880]:
+                    - strong [ref=e881]: Installation will be quick and take approx 20 sec - 1 mins.
+            - generic [ref=e882]:
+              - generic [ref=e884]: "2"
+              - generic [ref=e886]:
+                - heading "Direct link to heading Launch Unsloth" [level=4] [ref=e887]:
+                  - link "Direct link to heading" [ref=e889] [cursor=pointer]:
+                    - /url: "#launch-unsloth"
+                    - img [ref=e890]
+                  - generic [ref=e892]: Launch Unsloth
+                - paragraph [ref=e893]:
+                  - strong [ref=e894]: "MacOS, Linux, WSL and Windows:"
+                - generic [ref=e896]:
+                  - button "Copy" [ref=e897] [cursor=pointer]:
+                    - generic [ref=e898]: Copy
+                  - code [ref=e900]:
+                    - generic [ref=e902]: unsloth studio -H 0.0.0.0 -p 8888
+                - paragraph [ref=e907]:
+                  - text: Then open
+                  - code [ref=e908]: http://127.0.0.1:8888
+                  - text: (or your specific URL) in your browser.
+            - generic [ref=e909]:
+              - generic [ref=e911]: "3"
+              - generic [ref=e913]:
+                - heading "Direct link to heading Search and download Qwen3.6 or Qwen3.6 MTP" [level=4] [ref=e914]:
+                  - link "Direct link to heading" [ref=e916] [cursor=pointer]:
+                    - /url: "#search-and-download-qwen3.6-or-qwen3.6-mtp"
+                    - img [ref=e917]
+                  - generic [ref=e919]: Search and download Qwen3.6 or Qwen3.6 MTP
+                - paragraph [ref=e920]:
+                  - text: On first launch you will need to create a password to secure your account and sign in again later. Then go to the
+                  - link "Studio Chat" [ref=e922] [cursor=pointer]:
+                    - /url: /docs/new/studio/chat
+                  - text: tab and search for Qwen3.6 or Qwen3.6 MTP in the search bar and download your desired model and quant.
+            - generic [ref=e927]:
+              - generic [ref=e929]: "4"
+              - generic [ref=e931]:
+                - heading "Direct link to heading Run Qwen3.6" [level=4] [ref=e932]:
+                  - link "Direct link to heading" [ref=e934] [cursor=pointer]:
+                    - /url: "#run-qwen3.6"
+                    - img [ref=e935]
+                  - generic [ref=e937]: Run Qwen3.6
+                - paragraph [ref=e938]: Inference parameters should be auto-set when using Unsloth Studio, however you can still change it manually. You can also edit the context length, chat template and other settings.
+                - paragraph [ref=e939]:
+                  - text: For more information, you can view our
+                  - link "Unsloth Studio inference guide" [ref=e941] [cursor=pointer]:
+                    - /url: /docs/new/studio/chat
+                  - text: ". Below, the 2-bit Qwen3.6 GGUF made 30+ tool calls, searched 20 sites and executed Python code:"
+                - iframe [ref=e946]:
+                  - generic [ref=f1e6]:
+                    - generic [ref=f1e10]: Your browser does not support HTML5 videos.
+                    - link [ref=f1e12] [cursor=pointer]:
+                      - /url: https://cdn-uploads.huggingface.co/production/uploads/62ecdc18b72a69615d6bd857/9lqVQm1qDX3elt6Uan5Vm.mp4
+                      - img [ref=f1e16]
+          - heading "Direct link to heading ⚡ MTP Guide" [level=3] [ref=e947]:
+            - link "Direct link to heading" [ref=e949] [cursor=pointer]:
+              - /url: "#mtp-guide"
+              - img [ref=e950]
+            - generic [ref=e952]: ⚡ MTP Guide
+          - paragraph [ref=e953]:
+            - text: MTP (Multi Token Prediction)
+            - strong [ref=e954]
+            - text: speculative decoding enables models like Qwen3.6 to have
+            - strong [ref=e955]: ~1.4-2.2x faster generation with
+            - strong [ref=e957]: no change in accuracy
+            - text: . This enables Qwen3.6 27B and 35B-A3B to have
+            - strong [ref=e958]: ">1.4x speed-up"
+            - text: over the original baseline which is especially useful for local models.
+          - paragraph [ref=e959]:
+            - text: Unsloth Qwen3.6 MTP GGUFs are no longer in experimental mode, and llama.cpp has merged MTP support. Run directly in
+            - link "Unsloth Studio’s UI" [ref=e961] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#unsloth-studio-guide
+            - text: or via llama.cpp.
+            - strong [ref=e962]: Qwen3.6 27B MTP now runs at 160 tokens/s generation and Qwen3.6 35B-A3B at 240 tokens/s on a RTX 6000 GPU.
+            - text: See
+            - strong [ref=e963]
+            - link "MTP Benchmarks" [ref=e964] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#mtp-benchmarks
+            - text: .
+          - paragraph [ref=e965]: Unsloth Studio automatically sets the ideal MTP settings optimized for your specific hardware (Mac, CPU, GPU etc.) - you can still change it later.
+          - note "Information" [ref=e966]:
+            - img [ref=e968]
+            - paragraph [ref=e971]:
+              - strong [ref=e972]: MTP uses slightly more VRAM than standard GGUFs
+              - text: ", so plan for ~1 GB additional RAM/VRAM headroom."
+          - paragraph [ref=e973]:
+            - link "Run in Unsloth Studio" [ref=e974] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#unsloth-studio-mtp-guide
+              - generic [ref=e975]: Run in Unsloth Studio
+            - link "Run in llama.cpp" [ref=e976] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#llama.cpp-mtp-guide
+              - generic [ref=e977]: Run in llama.cpp
+          - table [ref=e981]:
+            - rowgroup [ref=e982]:
+              - row "Qwen3.6-27B-MTP-GGUF Qwen3.6-35B-A3B-MTP-GGUF" [ref=e983]:
+                - cell "Qwen3.6-27B-MTP-GGUF" [ref=e984]:
+                  - paragraph [ref=e986]:
+                    - link "Qwen3.6-27B-MTP-GGUF" [ref=e988] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF
+                      - text: Qwen3.6-27B-MTP-GGUF
+                      - img [ref=e989]
+                - cell "Qwen3.6-35B-A3B-MTP-GGUF" [ref=e991]:
+                  - paragraph [ref=e993]:
+                    - link "Qwen3.6-35B-A3B-MTP-GGUF" [ref=e995] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF
+                      - text: Qwen3.6-35B-A3B-MTP-GGUF
+                      - img [ref=e996]
+          - paragraph [ref=e1004]:
+            - text: In practice, MTP predicts several future tokens, then the main model verifies those tokens in parallel. This reduces the number of forward passes needed during generation and make output faster.
+            - strong [ref=e1005]: We found
+            - code [ref=e1006]:
+              - strong [ref=e1007]: "--spec-draft-n-max 2"
+            - strong [ref=e1008]: to work best in most setups.
+            - strong [ref=e1009]: However, do not assume
+            - code [ref=e1010]:
+              - strong [ref=e1011]: "2"
+            - strong [ref=e1012]: is optimal, as performance is hardware-dependent. Try values from
+            - code [ref=e1013]:
+              - strong [ref=e1014]: "1"
+            - strong [ref=e1015]: through
+            - code [ref=e1016]:
+              - strong [ref=e1017]: "6"
+            - strong [ref=e1018]: and use whichever is fastest for your system.
+          - paragraph [ref=e1019]:
+            - text: We also
+            - link "uploaded MTP GGUFs" [ref=e1021] [cursor=pointer]:
+              - /url: https://huggingface.co/unsloth/models?search=mtp
+              - text: uploaded MTP GGUFs
+              - img [ref=e1022]
+            - text: for the
+            - link "Qwen3.5" [ref=e1025] [cursor=pointer]:
+              - /url: /docs/models/qwen3.5
+              - strong [ref=e1026]: Qwen3.5
+            - strong [ref=e1027]: model family
+            - text: "including: 0.8B, 2B, 4B, 9B, 27B, 35B-A3B, 122B-A10B and 397B-A17B. Llama.cpp is continually improving MTP performance, so expect it to get faster overtime!"
+          - paragraph [ref=e1028]:
+            - strong [ref=e1029]: "Table: MTP hardware requirements"
+            - text: "(units = total memory: RAM + VRAM, or unified memory)"
+          - generic [ref=e1032]:
+            - rowgroup [ref=e1033]:
+              - row "Qwen3.6 3-bit 4-bit 6-bit 8-bit BF16" [ref=e1034]:
+                - columnheader "Qwen3.6" [ref=e1035]
+                - columnheader "3-bit" [ref=e1036]
+                - columnheader "4-bit" [ref=e1037]
+                - columnheader "6-bit" [ref=e1038]
+                - columnheader "8-bit" [ref=e1039]
+                - columnheader "BF16" [ref=e1040]
+            - table [ref=e1041]:
+              - rowgroup [ref=e1042]:
+                - row "27B 16 GB 19 GB 25 GB 31 GB 56 GB" [ref=e1043]:
+                  - cell "27B" [ref=e1044]:
+                    - paragraph [ref=e1046]:
+                      - strong [ref=e1047]: 27B
+                  - cell "16 GB" [ref=e1048]:
+                    - paragraph [ref=e1050]: 16 GB
+                  - cell "19 GB" [ref=e1051]:
+                    - paragraph [ref=e1053]: 19 GB
+                  - cell "25 GB" [ref=e1054]:
+                    - paragraph [ref=e1056]: 25 GB
+                  - cell "31 GB" [ref=e1057]:
+                    - paragraph [ref=e1059]: 31 GB
+                  - cell "56 GB" [ref=e1060]:
+                    - paragraph [ref=e1062]: 56 GB
+                - row "35B-A3B 18 GB 24 GB 31 GB 39 GB 71 GB" [ref=e1063]:
+                  - cell "35B-A3B" [ref=e1064]:
+                    - paragraph [ref=e1066]:
+                      - strong [ref=e1067]: 35B-A3B
+                  - cell "18 GB" [ref=e1068]:
+                    - paragraph [ref=e1070]: 18 GB
+                  - cell "24 GB" [ref=e1071]:
+                    - paragraph [ref=e1073]: 24 GB
+                  - cell "31 GB" [ref=e1074]:
+                    - paragraph [ref=e1076]: 31 GB
+                  - cell "39 GB" [ref=e1077]:
+                    - paragraph [ref=e1079]: 39 GB
+                  - cell "71 GB" [ref=e1080]:
+                    - paragraph [ref=e1082]: 71 GB
+          - heading "Direct link to heading 🦥 Unsloth Studio MTP Guide" [level=4] [ref=e1083]:
+            - link "Direct link to heading" [ref=e1085] [cursor=pointer]:
+              - /url: "#unsloth-studio-mtp-guide"
+              - img [ref=e1086]
+            - generic [ref=e1088]: 🦥 Unsloth Studio MTP Guide
+          - paragraph [ref=e1089]: Unsloth Studio automatically sets the ideal MTP settings optimized for your specific hardware (Mac, CPU, GPU etc.) - you can still change it later.
+          - generic [ref=e1090]:
+            - generic [ref=e1091]:
+              - generic [ref=e1093]: "1"
+              - generic [ref=e1095]:
+                - heading "Direct link to heading Install Unsloth" [level=4] [ref=e1096]:
+                  - link "Direct link to heading" [ref=e1098] [cursor=pointer]:
+                    - /url: "#install-unsloth-1"
+                    - img [ref=e1099]
+                  - generic [ref=e1101]: Install Unsloth
+                - paragraph [ref=e1102]: "Run in your terminal:"
+                - paragraph [ref=e1103]:
+                  - strong [ref=e1104]: "MacOS, Linux, WSL:"
+                - generic [ref=e1106]:
+                  - button "Copy" [ref=e1107] [cursor=pointer]:
+                    - generic [ref=e1108]: Copy
+                  - code [ref=e1110]:
+                    - generic [ref=e1112]: curl -fsSL https://unsloth.ai/install.sh | sh
+                - paragraph [ref=e1113]:
+                  - strong [ref=e1114]: "Windows PowerShell:"
+                - generic [ref=e1116]:
+                  - button "Copy" [ref=e1117] [cursor=pointer]:
+                    - generic [ref=e1118]: Copy
+                  - code [ref=e1120]:
+                    - generic [ref=e1122]: irm https://unsloth.ai/install.ps1 | iex
+            - generic [ref=e1123]:
+              - generic [ref=e1125]: "2"
+              - generic [ref=e1127]:
+                - heading "Direct link to heading Launch Unsloth" [level=4] [ref=e1128]:
+                  - link "Direct link to heading" [ref=e1130] [cursor=pointer]:
+                    - /url: "#launch-unsloth-1"
+                    - img [ref=e1131]
+                  - generic [ref=e1133]: Launch Unsloth
+                - paragraph [ref=e1134]:
+                  - strong [ref=e1135]: "MacOS, Linux, WSL and Windows:"
+                - generic [ref=e1137]:
+                  - button "Copy" [ref=e1138] [cursor=pointer]:
+                    - generic [ref=e1139]: Copy
+                  - code [ref=e1141]:
+                    - generic [ref=e1143]: unsloth studio -H 127.0.0.1 -p 8888
+                - paragraph [ref=e1144]:
+                  - text: Then open
+                  - code [ref=e1145]: http://127.0.0.1:8888
+                  - text: (or your specific URL) in your browser.
+            - generic [ref=e1146]:
+              - generic [ref=e1148]: "3"
+              - generic [ref=e1150]:
+                - heading "Direct link to heading Search and download Qwen3.6 MTP" [level=4] [ref=e1151]:
+                  - link "Direct link to heading" [ref=e1153] [cursor=pointer]:
+                    - /url: "#search-and-download-qwen3.6-mtp"
+                    - img [ref=e1154]
+                  - generic [ref=e1156]: Search and download Qwen3.6 MTP
+                - paragraph [ref=e1157]:
+                  - text: On first launch you will need to create a password to secure your account and sign in again later. Then go to the
+                  - link "Studio Chat" [ref=e1159] [cursor=pointer]:
+                    - /url: /docs/new/studio/chat
+                  - text: tab and search for Qwen3.6 MTP in the search bar and download your desired model and quant.
+            - generic [ref=e1164]:
+              - generic [ref=e1166]: "4"
+              - generic [ref=e1168]:
+                - heading "Direct link to heading Run Qwen3.6 MTP" [level=4] [ref=e1169]:
+                  - link "Direct link to heading" [ref=e1171] [cursor=pointer]:
+                    - /url: "#run-qwen3.6-mtp"
+                    - img [ref=e1172]
+                  - generic [ref=e1174]: Run Qwen3.6 MTP
+                - paragraph [ref=e1175]: Inference parameters should be auto-set when using Unsloth Studio, however you can still change it manually. You can also edit the context length, chat template and other settings.
+                - paragraph [ref=e1176]:
+                  - text: For more information, you can view our
+                  - link "Unsloth Studio inference guide" [ref=e1178] [cursor=pointer]:
+                    - /url: /docs/new/studio/chat
+                  - text: ". Below, the 2-bit Qwen3.6 MTP GGUF made 10+ tool calls, searched 10 sites and executed Python code:"
+          - heading "Direct link to heading 🦙 Llama.cpp MTP Guide" [level=4] [ref=e1183]:
+            - link "Direct link to heading" [ref=e1185] [cursor=pointer]:
+              - /url: "#llama.cpp-mtp-guide"
+              - img [ref=e1186]
+            - generic [ref=e1188]: 🦙 Llama.cpp MTP Guide
+          - generic [ref=e1189]:
+            - generic [ref=e1190]:
+              - generic [ref=e1192]: "1"
+              - generic [ref=e1194]:
+                - paragraph [ref=e1195]:
+                  - text: Install the latest version of
+                  - code [ref=e1196]: llama.cpp
+                  - text: "on"
+                  - link "GitHub here" [ref=e1198] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/22673
+                    - strong [ref=e1199]: GitHub here
+                    - img [ref=e1200]
+                  - text: . You can follow the build instructions below as well. Change
+                  - code [ref=e1202]: "-DGGML_CUDA=ON"
+                  - text: to
+                  - code [ref=e1203]: "-DGGML_CUDA=OFF"
+                  - text: if you don't have a GPU or just want CPU inference.
+                  - strong [ref=e1204]: For Apple Mac / Metal devices
+                  - text: ", set"
+                  - code [ref=e1205]: "-DGGML_CUDA=OFF"
+                  - text: then continue as usual - Metal support is on by default.
+                - generic [ref=e1207]:
+                  - button "Copy" [ref=e1208] [cursor=pointer]:
+                    - generic [ref=e1209]: Copy
+                  - code [ref=e1211]:
+                    - generic [ref=e1213]: apt-get update
+                    - generic [ref=e1215]: apt-get install pciutils build-essential cmake curl libcurl4-openssl-dev -y
+                    - generic [ref=e1217]: git clone https://github.com/ggml-org/llama.cpp
+                    - generic [ref=e1219]: cmake llama.cpp -B llama.cpp/build \
+                    - generic [ref=e1221]: "-DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON"
+                    - generic [ref=e1223]: cmake --build llama.cpp/build --config Release -j --clean-first --target llama-cli llama-mtmd-cli llama-server llama-gguf-split
+                    - generic [ref=e1225]: cp llama.cpp/build/bin/llama-* llama.cpp
+            - generic [ref=e1226]:
+              - generic [ref=e1228]: "2"
+              - generic [ref=e1230]:
+                - paragraph [ref=e1231]:
+                  - text: If you want to use
+                  - code [ref=e1232]: llama.cpp
+                  - text: "directly to load models, you can do the below: (:"
+                  - code [ref=e1233]: Q4_K_XL
+                  - text: ) is the quantization type. You can also download via Hugging Face (point 3). This is similar to
+                  - code [ref=e1234]: ollama run
+                  - text: . Use
+                  - code [ref=e1235]: export LLAMA_CACHE="folder"
+                  - text: to force
+                  - code [ref=e1236]: llama.cpp
+                  - text: to save to a specific location. The model has a maximum of 256K context length.
+                - paragraph [ref=e1237]: "Follow one of the commands for the specific models:"
+                - paragraph [ref=e1238]:
+                  - link "27B MTP" [ref=e1239] [cursor=pointer]:
+                    - /url: /docs/models/qwen3.6#mtp-qwen3.6-27b
+                    - generic [ref=e1240]: 27B MTP
+                  - link "35-A3B MTP" [ref=e1241] [cursor=pointer]:
+                    - /url: /docs/models/qwen3.6#mtp-qwen3.6-35b-a3b
+                    - generic [ref=e1242]: 35-A3B MTP
+                - note "Information" [ref=e1243]:
+                  - img [ref=e1245]
+                  - paragraph [ref=e1248]:
+                    - code [ref=e1249]: llama.cpp
+                    - text: changed the args to enable MTP from
+                    - code [ref=e1250]: "--spec-type mtp"
+                    - text: to
+                    - code [ref=e1251]: "--spec-type draft-mtp"
+                    - text: on May 13th 2026. Use this new argument to enable MTP.
+                - heading "Direct link to heading MTP Qwen3.6-27B:" [level=4] [ref=e1252]:
+                  - link "Direct link to heading" [ref=e1254] [cursor=pointer]:
+                    - /url: "#mtp-qwen3.6-27b"
+                    - img [ref=e1255]
+                  - generic [ref=e1257]: "MTP Qwen3.6-27B:"
+                - paragraph [ref=e1258]:
+                  - strong [ref=e1259]: "Thinking mode:"
+                - note "Information" [ref=e1260]:
+                  - img [ref=e1262]
+                  - paragraph [ref=e1265]:
+                    - text: Please see Qwen3.6's new
+                    - link "Preserved Thinking" [ref=e1267] [cursor=pointer]:
+                      - /url: /docs/models/qwen3.6#thinking-enable-disable--preserve-thinking
+                    - text: .
+                - paragraph [ref=e1268]: "General tasks:"
+                - generic [ref=e1270]:
+                  - button "Copy" [ref=e1271] [cursor=pointer]:
+                    - generic [ref=e1272]: Copy
+                  - code [ref=e1274]:
+                    - generic [ref=e1276]: export LLAMA_CACHE="unsloth/Qwen3.6-27B-MTP-GGUF"
+                    - generic [ref=e1278]: ./llama.cpp/llama-cli \
+                    - generic [ref=e1280]: "-hf unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1282]: "--temp 1.0 \\"
+                    - generic [ref=e1284]: "--top-p 0.95 \\"
+                    - generic [ref=e1286]: "--top-k 20 \\"
+                    - generic [ref=e1288]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1290]: "--min-p 0.00 \\"
+                    - generic [ref=e1292]: "--spec-type draft-mtp --spec-draft-n-max 2"
+                - paragraph [ref=e1293]:
+                  - text: "For precise coding tasks, change:"
+                  - code [ref=e1294]: temperature=0.6, presence-penalty=0.0
+                - paragraph [ref=e1295]:
+                  - strong [ref=e1296]: "Non-thinking mode:"
+                - paragraph [ref=e1297]: "General tasks:"
+                - generic [ref=e1299]:
+                  - button "Copy" [ref=e1300] [cursor=pointer]:
+                    - generic [ref=e1301]: Copy
+                  - code [ref=e1303]:
+                    - generic [ref=e1305]: export LLAMA_CACHE="unsloth/Qwen3.6-27B-MTP-GGUF"
+                    - generic [ref=e1307]: ./llama.cpp/llama-server \
+                    - generic [ref=e1309]: "-hf unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1311]: "--temp 0.7 \\"
+                    - generic [ref=e1313]: "--top-p 0.8 \\"
+                    - generic [ref=e1315]: "--top-k 20 \\"
+                    - generic [ref=e1317]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1319]: "--min-p 0.00 \\"
+                    - generic [ref=e1321]: "--spec-type draft-mtp --spec-draft-n-max 2 \\"
+                    - generic [ref=e1323]: "--chat-template-kwargs '{\"enable_thinking\":false}'"
+                - paragraph [ref=e1324]:
+                  - text: "For reasoning tasks, change:"
+                  - code [ref=e1325]: temperature=1.0, top-p=0.95
+                - heading "Direct link to heading MTP Qwen3.6-35B-A3B:" [level=4] [ref=e1326]:
+                  - link "Direct link to heading" [ref=e1328] [cursor=pointer]:
+                    - /url: "#mtp-qwen3.6-35b-a3b"
+                    - img [ref=e1329]
+                  - generic [ref=e1331]: "MTP Qwen3.6-35B-A3B:"
+                - paragraph [ref=e1332]:
+                  - strong [ref=e1333]: "Thinking mode:"
+                - note "Information" [ref=e1334]:
+                  - img [ref=e1336]
+                  - paragraph [ref=e1339]:
+                    - text: Please see Qwen3.6's new
+                    - link "Preserved Thinking" [ref=e1341] [cursor=pointer]:
+                      - /url: /docs/models/qwen3.6#thinking-enable-disable--preserve-thinking
+                    - text: .
+                - paragraph [ref=e1342]: "General tasks:"
+                - generic [ref=e1344]:
+                  - button "Copy" [ref=e1345] [cursor=pointer]:
+                    - generic [ref=e1346]: Copy
+                  - code [ref=e1348]:
+                    - generic [ref=e1350]: export LLAMA_CACHE="unsloth/Qwen3.6-35B-A3B-MTP-GGUF"
+                    - generic [ref=e1352]: ./llama.cpp/llama-cli \
+                    - generic [ref=e1354]: "-hf unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1356]: "--temp 1.0 \\"
+                    - generic [ref=e1358]: "--top-p 0.95 \\"
+                    - generic [ref=e1360]: "--top-k 20 \\"
+                    - generic [ref=e1362]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1364]: "--min-p 0.00 \\"
+                    - generic [ref=e1366]: "--spec-type draft-mtp --spec-draft-n-max 2"
+                - paragraph [ref=e1367]:
+                  - text: "For precise coding tasks, change:"
+                  - code [ref=e1368]: temperature=0.6, presence-penalty=0.0
+                - paragraph [ref=e1369]:
+                  - strong [ref=e1370]: "Non-thinking mode:"
+                - paragraph [ref=e1371]: "General tasks:"
+                - generic [ref=e1373]:
+                  - button "Copy" [ref=e1374] [cursor=pointer]:
+                    - generic [ref=e1375]: Copy
+                  - code [ref=e1377]:
+                    - generic [ref=e1379]: export LLAMA_CACHE="unsloth/Qwen3.6-35B-A3B-MTP-GGUF"
+                    - generic [ref=e1381]: ./llama.cpp/llama-server \
+                    - generic [ref=e1383]: "-hf unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1385]: "--temp 0.7 \\"
+                    - generic [ref=e1387]: "--top-p 0.8 \\"
+                    - generic [ref=e1389]: "--top-k 20 \\"
+                    - generic [ref=e1391]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1393]: "--min-p 0.00 \\"
+                    - generic [ref=e1395]: "--spec-type draft-mtp --spec-draft-n-max 2 \\"
+                    - generic [ref=e1397]: "--chat-template-kwargs '{\"enable_thinking\":false}'"
+                - paragraph [ref=e1398]:
+                  - text: "For reasoning tasks, change:"
+                  - code [ref=e1399]: temperature=1.0, top-p=0.95
+            - generic [ref=e1400]:
+              - generic [ref=e1402]: "3"
+              - generic [ref=e1404]:
+                - paragraph [ref=e1405]:
+                  - text: Download the model via the code below (after installing
+                  - code [ref=e1406]: pip install huggingface_hub hf_transfer
+                  - text: ). You can choose Q4_K_M or other quantized versions like
+                  - code [ref=e1407]: UD-Q4_K_XL
+                  - text: . We recommend using at least 2-bit dynamic quant
+                  - code [ref=e1408]: UD-Q2_K_XL
+                  - text: "to balance size and accuracy. If downloads get stuck, see:"
+                  - link "Hugging Face Hub, XET debugging" [ref=e1409] [cursor=pointer]:
+                    - /url: /docs/basics/troubleshooting-and-faqs/hugging-face-hub-xet-debugging
+                - generic [ref=e1411]:
+                  - button "Copy" [ref=e1412] [cursor=pointer]:
+                    - generic [ref=e1413]: Copy
+                  - code [ref=e1415]:
+                    - generic [ref=e1417]: hf download unsloth/Qwen3.6-35B-A3B-MTP-GGUF \
+                    - generic [ref=e1419]: "--local-dir unsloth/Qwen3.6-35B-A3B-MTP-GGUF \\"
+                    - generic [ref=e1421]: "--include \"*mmproj-F16*\" \\"
+                    - generic [ref=e1423]: "--include \"*UD-Q4_K_XL*\" # Use \"*UD-Q2_K_XL*\" for Dynamic 2bit"
+            - generic [ref=e1424]:
+              - generic [ref=e1426]: "4"
+              - generic [ref=e1428]:
+                - paragraph [ref=e1429]: "Then run the model in conversation mode:"
+                - generic [ref=e1431]:
+                  - button "Copy" [ref=e1432] [cursor=pointer]:
+                    - generic [ref=e1433]: Copy
+                  - code [ref=e1435]:
+                    - generic [ref=e1437]: ./llama.cpp/llama-cli \
+                    - generic [ref=e1439]: "--model unsloth/Qwen3.6-35B-A3B-MTP-GGUF/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf \\"
+                    - generic [ref=e1441]: "--mmproj unsloth/Qwen3.6-35B-A3B-MTP-GGUF/mmproj-F16.gguf \\"
+                    - generic [ref=e1443]: "--temp 1.0 \\"
+                    - generic [ref=e1445]: "--top-p 0.95 \\"
+                    - generic [ref=e1447]: "--min-p 0.00 \\"
+                    - generic [ref=e1449]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1451]: "--top-k 20 \\"
+                    - generic [ref=e1453]: "--spec-type draft-mtp --spec-draft-n-max 2"
+          - heading "Direct link to heading 🦙 Llama.cpp Guide" [level=3] [ref=e1454]:
+            - link "Direct link to heading" [ref=e1456] [cursor=pointer]:
+              - /url: "#llama.cpp-guide"
+              - img [ref=e1457]
+            - generic [ref=e1459]: 🦙 Llama.cpp Guide
+          - paragraph [ref=e1460]:
+            - text: For this guide we will be utilizing Dynamic 4-bit which works great on a 24GB RAM / Mac device for fast inference on
+            - link "llama.cpp" [ref=e1462] [cursor=pointer]:
+              - /url: llama.cpphttps://github.com/ggml-org/llama.cpp
+              - text: llama.cpp
+              - img [ref=e1463]
+            - text: . Because the model is only around 72GB at full F16 precision, we won't need to worry much about performance.
+            - link "See our GGUF collection" [ref=e1466] [cursor=pointer]:
+              - /url: https://huggingface.co/collections/unsloth/qwen36
+              - text: See our GGUF collection
+              - img [ref=e1467]
+            - text: .
+          - paragraph [ref=e1469]:
+            - link "27B" [ref=e1470] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#qwen3.6-27b
+              - generic [ref=e1471]: 27B
+            - link "35-A3B" [ref=e1472] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#qwen3.6-35b-a3b
+              - generic [ref=e1473]: 35-A3B
+          - generic [ref=e1474]:
+            - generic [ref=e1475]:
+              - generic [ref=e1477]: "1"
+              - generic [ref=e1479]:
+                - paragraph [ref=e1480]:
+                  - text: Obtain the latest
+                  - code [ref=e1481]: llama.cpp
+                  - strong [ref=e1482]: "on"
+                  - link "GitHub here" [ref=e1484] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp
+                    - strong [ref=e1485]: GitHub here
+                    - img [ref=e1486]
+                  - text: . You can follow the build instructions below as well. Change
+                  - code [ref=e1488]: "-DGGML_CUDA=ON"
+                  - text: to
+                  - code [ref=e1489]: "-DGGML_CUDA=OFF"
+                  - text: if you don't have a GPU or just want CPU inference.
+                  - strong [ref=e1490]: For Apple Mac / Metal devices
+                  - text: ", set"
+                  - code [ref=e1491]: "-DGGML_CUDA=OFF"
+                  - text: then continue as usual - Metal support is on by default.
+                - generic [ref=e1493]:
+                  - button "Copy" [ref=e1494] [cursor=pointer]:
+                    - generic [ref=e1495]: Copy
+                  - code [ref=e1497]:
+                    - generic [ref=e1499]: apt-get update
+                    - generic [ref=e1501]: apt-get install pciutils build-essential cmake curl libcurl4-openssl-dev -y
+                    - generic [ref=e1503]: git clone https://github.com/ggml-org/llama.cpp
+                    - generic [ref=e1505]: cmake llama.cpp -B llama.cpp/build \
+                    - generic [ref=e1507]: "-DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON"
+                    - generic [ref=e1509]: cmake --build llama.cpp/build --config Release -j --clean-first --target llama-cli llama-mtmd-cli llama-server llama-gguf-split
+                    - generic [ref=e1511]: cp llama.cpp/build/bin/llama-* llama.cpp
+            - generic [ref=e1512]:
+              - generic [ref=e1514]: "2"
+              - generic [ref=e1516]:
+                - paragraph [ref=e1517]:
+                  - text: If you want to use
+                  - code [ref=e1518]: llama.cpp
+                  - text: "directly to load models, you can do the below: (:"
+                  - code [ref=e1519]: Q4_K_XL
+                  - text: ) is the quantization type. You can also download via Hugging Face (point 3). This is similar to
+                  - code [ref=e1520]: ollama run
+                  - text: . Use
+                  - code [ref=e1521]: export LLAMA_CACHE="folder"
+                  - text: to force
+                  - code [ref=e1522]: llama.cpp
+                  - text: to save to a specific location. The model has a maximum of 256K context length.
+                - paragraph [ref=e1523]: "Follow one of the commands for the specific models:"
+                - paragraph [ref=e1524]:
+                  - link "27B" [ref=e1525] [cursor=pointer]:
+                    - /url: /docs/models/qwen3.6#qwen3.5-27b
+                    - generic [ref=e1526]: 27B
+                  - link "35-A3B" [ref=e1527] [cursor=pointer]:
+                    - /url: /docs/models/qwen3.6#qwen3.5-35b-a3b
+                    - generic [ref=e1528]: 35-A3B
+                - heading "Direct link to heading Qwen3.6-27B:" [level=4] [ref=e1529]:
+                  - link "Direct link to heading" [ref=e1531] [cursor=pointer]:
+                    - /url: "#qwen3.6-27b"
+                    - img [ref=e1532]
+                  - generic [ref=e1534]: "Qwen3.6-27B:"
+                - paragraph [ref=e1535]:
+                  - strong [ref=e1536]: "Thinking mode:"
+                - note "Information" [ref=e1537]:
+                  - img [ref=e1539]
+                  - paragraph [ref=e1542]:
+                    - text: Please see Qwen3.6's new
+                    - link "Preserved Thinking" [ref=e1544] [cursor=pointer]:
+                      - /url: /docs/models/qwen3.6#thinking-enable-disable--preserve-thinking
+                    - text: .
+                - paragraph [ref=e1545]: "General tasks:"
+                - generic [ref=e1547]:
+                  - button "Copy" [ref=e1548] [cursor=pointer]:
+                    - generic [ref=e1549]: Copy
+                  - code [ref=e1551]:
+                    - generic [ref=e1553]: export LLAMA_CACHE="unsloth/Qwen3.6-27B-GGUF"
+                    - generic [ref=e1555]: ./llama.cpp/llama-cli \
+                    - generic [ref=e1557]: "-hf unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1559]: "--temp 1.0 \\"
+                    - generic [ref=e1561]: "--top-p 0.95 \\"
+                    - generic [ref=e1563]: "--top-k 20 \\"
+                    - generic [ref=e1565]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1567]: "--min-p 0.00"
+                - paragraph [ref=e1568]:
+                  - text: "For precise coding tasks, change:"
+                  - code [ref=e1569]: temperature=0.6, presence-penalty=0.0
+                - paragraph [ref=e1570]:
+                  - strong [ref=e1571]: "Non-thinking mode:"
+                - paragraph [ref=e1572]: "General tasks:"
+                - generic [ref=e1574]:
+                  - button "Copy" [ref=e1575] [cursor=pointer]:
+                    - generic [ref=e1576]: Copy
+                  - code [ref=e1578]:
+                    - generic [ref=e1580]: export LLAMA_CACHE="unsloth/Qwen3.6-27B-GGUF"
+                    - generic [ref=e1582]: ./llama.cpp/llama-server \
+                    - generic [ref=e1584]: "-hf unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1586]: "--temp 0.7 \\"
+                    - generic [ref=e1588]: "--top-p 0.8 \\"
+                    - generic [ref=e1590]: "--top-k 20 \\"
+                    - generic [ref=e1592]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1594]: "--min-p 0.00 \\"
+                    - generic [ref=e1596]: "--chat-template-kwargs '{\"enable_thinking\":false}'"
+                - paragraph [ref=e1597]:
+                  - text: "For reasoning tasks, change:"
+                  - code [ref=e1598]: temperature=1.0, top-p=0.95
+                - heading "Direct link to heading Qwen3.6-35B-A3B:" [level=4] [ref=e1599]:
+                  - link "Direct link to heading" [ref=e1601] [cursor=pointer]:
+                    - /url: "#qwen3.6-35b-a3b"
+                    - img [ref=e1602]
+                  - generic [ref=e1604]: "Qwen3.6-35B-A3B:"
+                - paragraph [ref=e1605]:
+                  - strong [ref=e1606]: "Thinking mode:"
+                - note "Information" [ref=e1607]:
+                  - img [ref=e1609]
+                  - paragraph [ref=e1612]:
+                    - text: Please see Qwen3.6's new
+                    - link "Preserved Thinking" [ref=e1614] [cursor=pointer]:
+                      - /url: /docs/models/qwen3.6#thinking-enable-disable--preserve-thinking
+                    - text: .
+                - paragraph [ref=e1615]: "General tasks:"
+                - generic [ref=e1617]:
+                  - button "Copy" [ref=e1618] [cursor=pointer]:
+                    - generic [ref=e1619]: Copy
+                  - code [ref=e1621]:
+                    - generic [ref=e1623]: export LLAMA_CACHE="unsloth/Qwen3.6-35B-A3B-GGUF"
+                    - generic [ref=e1625]: ./llama.cpp/llama-cli \
+                    - generic [ref=e1627]: "-hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1629]: "--temp 1.0 \\"
+                    - generic [ref=e1631]: "--top-p 0.95 \\"
+                    - generic [ref=e1633]: "--top-k 20 \\"
+                    - generic [ref=e1635]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1637]: "--min-p 0.00"
+                - paragraph [ref=e1638]:
+                  - text: "For precise coding tasks, change:"
+                  - code [ref=e1639]: temperature=0.6, presence-penalty=0.0
+                - paragraph [ref=e1640]:
+                  - strong [ref=e1641]: "Non-thinking mode:"
+                - paragraph [ref=e1642]: "General tasks:"
+                - generic [ref=e1644]:
+                  - button "Copy" [ref=e1645] [cursor=pointer]:
+                    - generic [ref=e1646]: Copy
+                  - code [ref=e1648]:
+                    - generic [ref=e1650]: export LLAMA_CACHE="unsloth/Qwen3.6-35B-A3B-GGUF"
+                    - generic [ref=e1652]: ./llama.cpp/llama-server \
+                    - generic [ref=e1654]: "-hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_XL \\"
+                    - generic [ref=e1656]: "--temp 0.7 \\"
+                    - generic [ref=e1658]: "--top-p 0.8 \\"
+                    - generic [ref=e1660]: "--top-k 20 \\"
+                    - generic [ref=e1662]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1664]: "--min-p 0.00 \\"
+                    - generic [ref=e1666]: "--chat-template-kwargs '{\"enable_thinking\":false}'"
+                - paragraph [ref=e1667]:
+                  - text: "For reasoning tasks, change:"
+                  - code [ref=e1668]: temperature=1.0, top-p=0.95
+            - generic [ref=e1669]:
+              - generic [ref=e1671]: "3"
+              - generic [ref=e1673]:
+                - paragraph [ref=e1674]:
+                  - text: Download the model via the code below (after installing
+                  - code [ref=e1675]: pip install huggingface_hub hf_transfer
+                  - text: ). You can choose Q4_K_M or other quantized versions like
+                  - code [ref=e1676]: UD-Q4_K_XL
+                  - text: . We recommend using at least 2-bit dynamic quant
+                  - code [ref=e1677]: UD-Q2_K_XL
+                  - text: "to balance size and accuracy. If downloads get stuck, see:"
+                  - link "Hugging Face Hub, XET debugging" [ref=e1678] [cursor=pointer]:
+                    - /url: /docs/basics/troubleshooting-and-faqs/hugging-face-hub-xet-debugging
+                - generic [ref=e1680]:
+                  - button "Copy" [ref=e1681] [cursor=pointer]:
+                    - generic [ref=e1682]: Copy
+                  - code [ref=e1684]:
+                    - generic [ref=e1686]: hf download unsloth/Qwen3.6-35B-A3B-GGUF \
+                    - generic [ref=e1688]: "--local-dir unsloth/Qwen3.6-35B-A3B-GGUF \\"
+                    - generic [ref=e1690]: "--include \"*mmproj-F16*\" \\"
+                    - generic [ref=e1692]: "--include \"*UD-Q4_K_XL*\" # Use \"*UD-Q2_K_XL*\" for Dynamic 2bit"
+            - generic [ref=e1693]:
+              - generic [ref=e1695]: "4"
+              - generic [ref=e1697]:
+                - paragraph [ref=e1698]: "Then run the model in conversation mode:"
+                - generic [ref=e1700]:
+                  - button "Copy" [ref=e1701] [cursor=pointer]:
+                    - generic [ref=e1702]: Copy
+                  - code [ref=e1704]:
+                    - generic [ref=e1706]: ./llama.cpp/llama-cli \
+                    - generic [ref=e1708]: "--model unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf \\"
+                    - generic [ref=e1710]: "--mmproj unsloth/Qwen3.6-35B-A3B-GGUF/mmproj-F16.gguf \\"
+                    - generic [ref=e1712]: "--temp 1.0 \\"
+                    - generic [ref=e1714]: "--top-p 0.95 \\"
+                    - generic [ref=e1716]: "--min-p 0.00 \\"
+                    - generic [ref=e1718]: "--presence-penalty 1.5 \\"
+                    - generic [ref=e1720]: "--top-k 20"
+          - heading "Direct link to heading Llama-server & OpenAI completion library" [level=4] [ref=e1721]:
+            - link "Direct link to heading" [ref=e1723] [cursor=pointer]:
+              - /url: "#llama-server-and-openai-completion-library"
+              - img [ref=e1724]
+            - generic [ref=e1726]: Llama-server & OpenAI completion library
+          - paragraph [ref=e1727]:
+            - text: To deploy Qwen3.6 for production, we use
+            - code [ref=e1728]: llama-server
+            - text: "In a new terminal say via tmux, deploy the model via:"
+          - generic [ref=e1730]:
+            - button "Copy" [ref=e1731] [cursor=pointer]:
+              - generic [ref=e1732]: Copy
+            - code [ref=e1734]:
+              - generic [ref=e1736]: ./llama.cpp/llama-server \
+              - generic [ref=e1738]: "--model unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf \\"
+              - generic [ref=e1740]: "--mmproj unsloth/Qwen3.6-35B-A3B-GGUF/mmproj-F16.gguf \\"
+              - generic [ref=e1742]: "--alias \"unsloth/Qwen3.6-35B-A3B\" \\"
+              - generic [ref=e1744]: "--temp 0.6 \\"
+              - generic [ref=e1746]: "--top-p 0.95 \\"
+              - generic [ref=e1748]: "--ctx-size 16384 \\"
+              - generic [ref=e1750]: "--top-k 20 \\"
+              - generic [ref=e1752]: "--min-p 0.00 \\"
+              - generic [ref=e1754]: "--port 8001"
+          - paragraph [ref=e1755]:
+            - text: Then in a new terminal, after doing
+            - code [ref=e1756]: pip install openai
+            - text: ", do:"
+          - generic [ref=e1758]:
+            - button "Copy" [ref=e1759] [cursor=pointer]:
+              - generic [ref=e1760]: Copy
+            - code [ref=e1762]:
+              - generic [ref=e1764]: from openai import OpenAI
+              - generic [ref=e1766]: import json
+              - generic [ref=e1768]: openai_client = OpenAI(
+              - generic [ref=e1770]: base_url = "http://127.0.0.1:8001/v1",
+              - generic [ref=e1772]: api_key = "sk-no-key-required",
+              - generic [ref=e1774]: )
+              - generic [ref=e1776]: completion = openai_client.chat.completions.create(
+              - generic [ref=e1778]: model = "unsloth/Qwen3.6-35B-A3B",
+              - generic [ref=e1780]: "messages = [{\"role\": \"user\", \"content\": \"Create a Snake game.\"},],"
+              - generic [ref=e1782]: )
+              - generic [ref=e1784]: print(completion.choices[0].message.content)
+          - heading "Direct link to heading 🍎 MLX Dynamic Quants" [level=3] [ref=e1785]:
+            - link "Direct link to heading" [ref=e1787] [cursor=pointer]:
+              - /url: "#mlx-dynamic-quants"
+              - img [ref=e1788]
+            - generic [ref=e1790]: 🍎 MLX Dynamic Quants
+          - paragraph [ref=e1791]: We also uploaded dynamic Qwen3.6 4bit and 8bit quants for MacOS devices! Our MLX quant algorithm is still evolving, and we’re actively refining it wherever improvements can be made.
+          - paragraph [ref=e1792]:
+            - strong [ref=e1793]: "Qwen3.6-27B MLX:"
+          - table [ref=e1797]:
+            - rowgroup [ref=e1798]:
+              - row "3-bit 4-bit MXFP4 NVFP4 6-bit 8-bit" [ref=e1799]:
+                - cell "3-bit" [ref=e1800]:
+                  - paragraph [ref=e1802]:
+                    - link "3-bit" [ref=e1804] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-3bit
+                      - text: 3-bit
+                      - img [ref=e1805]
+                - cell "4-bit" [ref=e1807]:
+                  - paragraph [ref=e1809]:
+                    - link "4-bit" [ref=e1811] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-4bit
+                      - text: 4-bit
+                      - img [ref=e1812]
+                - cell "MXFP4" [ref=e1814]:
+                  - paragraph [ref=e1816]:
+                    - link "MXFP4" [ref=e1818] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-MXFP4
+                      - text: MXFP4
+                      - img [ref=e1819]
+                - cell "NVFP4" [ref=e1821]:
+                  - paragraph [ref=e1823]:
+                    - link "NVFP4" [ref=e1825] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-NVFP4
+                      - text: NVFP4
+                      - img [ref=e1826]
+                - cell "6-bit" [ref=e1828]:
+                  - paragraph [ref=e1830]:
+                    - link "6-bit" [ref=e1832] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-6bit
+                      - text: 6-bit
+                      - img [ref=e1833]
+                - cell "8-bit" [ref=e1835]:
+                  - paragraph [ref=e1837]:
+                    - link "8-bit" [ref=e1839] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-27B-MLX-8bit
+                      - text: 8-bit
+                      - img [ref=e1840]
+          - paragraph [ref=e1842]:
+            - strong [ref=e1843]: "Qwen3.6-35B-A3B MLX:"
+          - table [ref=e1847]:
+            - rowgroup [ref=e1848]:
+              - row "3-bit 4-bit 8-bit" [ref=e1849]:
+                - cell "3-bit" [ref=e1850]:
+                  - paragraph [ref=e1852]:
+                    - link "3-bit" [ref=e1854] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-UD-MLX-3bit
+                      - text: 3-bit
+                      - img [ref=e1855]
+                - cell "4-bit" [ref=e1857]:
+                  - paragraph [ref=e1859]:
+                    - link "4-bit" [ref=e1861] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit
+                      - text: 4-bit
+                      - img [ref=e1862]
+                - cell "8-bit" [ref=e1864]:
+                  - paragraph [ref=e1866]:
+                    - link "8-bit" [ref=e1868] [cursor=pointer]:
+                      - /url: https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MLX-8bit
+                      - text: 8-bit
+                      - img [ref=e1869]
+          - paragraph [ref=e1871]: "To try them out use:"
+          - generic [ref=e1873]:
+            - button "Copy" [ref=e1874] [cursor=pointer]:
+              - generic [ref=e1875]: Copy
+            - code [ref=e1877]:
+              - generic [ref=e1879]: curl -fsSL https://raw.githubusercontent.com/unslothai/unsloth/refs/heads/main/scripts/install_qwen3_6_mlx.sh | sh
+              - generic [ref=e1881]: source ~/.unsloth/unsloth_qwen3_6_mlx/bin/activate
+              - generic [ref=e1883]: python -m mlx_vlm.chat --model unsloth/Qwen3.6-27B-UD-MLX-4bit
+          - paragraph [ref=e1884]: "See below for Qwen3.6-27B KL Divergence (KLD) and Perplexity (PPL) scores (lower is better):"
+          - generic [ref=e1887]:
+            - rowgroup [ref=e1888]:
+              - row "Model Mean KLD Median KLD PPL P90 KLD P99.9 KLD Size" [ref=e1889]:
+                - columnheader "Model" [ref=e1890]
+                - columnheader "Mean KLD" [ref=e1891]
+                - columnheader "Median KLD" [ref=e1892]
+                - columnheader "PPL" [ref=e1893]
+                - columnheader "P90 KLD" [ref=e1894]
+                - columnheader "P99.9 KLD" [ref=e1895]
+                - columnheader "Size" [ref=e1896]
+            - table [ref=e1897]:
+              - rowgroup [ref=e1898]:
+                - row "8-bit 0.0028 0.0003 4.812 0.0019 0.192 34.7 GB" [ref=e1899]:
+                  - cell "8-bit" [ref=e1900]:
+                    - paragraph [ref=e1902]:
+                      - link "8-bit" [ref=e1904] [cursor=pointer]:
+                        - /url: https://huggingface.co/unsloth/Qwen3.6-27B-MLX-8bit
+                        - text: 8-bit
+                        - img [ref=e1905]
+                  - cell "0.0028" [ref=e1907]:
+                    - paragraph [ref=e1909]: "0.0028"
+                  - cell "0.0003" [ref=e1910]:
+                    - paragraph [ref=e1912]: "0.0003"
+                  - cell "4.812" [ref=e1913]:
+                    - paragraph [ref=e1915]: "4.812"
+                  - cell "0.0019" [ref=e1916]:
+                    - paragraph [ref=e1918]: "0.0019"
+                  - cell "0.192" [ref=e1919]:
+                    - paragraph [ref=e1921]: "0.192"
+                  - cell "34.7 GB" [ref=e1922]:
+                    - paragraph [ref=e1924]: 34.7 GB
+                - row "6-bit 0.0037 0.0007 4.809 0.0032 0.343 30.5 GB" [ref=e1925]:
+                  - cell "6-bit" [ref=e1926]:
+                    - paragraph [ref=e1928]:
+                      - link "6-bit" [ref=e1930] [cursor=pointer]:
+                        - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-6bit
+                        - text: 6-bit
+                        - img [ref=e1931]
+                  - cell "0.0037" [ref=e1933]:
+                    - paragraph [ref=e1935]: "0.0037"
+                  - cell "0.0007" [ref=e1936]:
+                    - paragraph [ref=e1938]: "0.0007"
+                  - cell "4.809" [ref=e1939]:
+                    - paragraph [ref=e1941]: "4.809"
+                  - cell "0.0032" [ref=e1942]:
+                    - paragraph [ref=e1944]: "0.0032"
+                  - cell "0.343" [ref=e1945]:
+                    - paragraph [ref=e1947]: "0.343"
+                  - cell "30.5 GB" [ref=e1948]:
+                    - paragraph [ref=e1950]: 30.5 GB
+                - row "4-bit 0.0227 0.0053 4.821 0.0293 2.339 26.2 GB" [ref=e1951]:
+                  - cell "4-bit" [ref=e1952]:
+                    - paragraph [ref=e1954]:
+                      - link "4-bit" [ref=e1956] [cursor=pointer]:
+                        - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-4bit
+                        - text: 4-bit
+                        - img [ref=e1957]
+                  - cell "0.0227" [ref=e1959]:
+                    - paragraph [ref=e1961]: "0.0227"
+                  - cell "0.0053" [ref=e1962]:
+                    - paragraph [ref=e1964]: "0.0053"
+                  - cell "4.821" [ref=e1965]:
+                    - paragraph [ref=e1967]: "4.821"
+                  - cell "0.0293" [ref=e1968]:
+                    - paragraph [ref=e1970]: "0.0293"
+                  - cell "2.339" [ref=e1971]:
+                    - paragraph [ref=e1973]: "2.339"
+                  - cell "26.2 GB" [ref=e1974]:
+                    - paragraph [ref=e1976]: 26.2 GB
+                - row "NVFP4 0.0325 0.0087 4.843 0.0466 3.693 26.2 GB" [ref=e1977]:
+                  - cell "NVFP4" [ref=e1978]:
+                    - paragraph [ref=e1980]:
+                      - link "NVFP4" [ref=e1982] [cursor=pointer]:
+                        - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-NVFP4
+                        - text: NVFP4
+                        - img [ref=e1983]
+                  - cell "0.0325" [ref=e1985]:
+                    - paragraph [ref=e1987]: "0.0325"
+                  - cell "0.0087" [ref=e1988]:
+                    - paragraph [ref=e1990]: "0.0087"
+                  - cell "4.843" [ref=e1991]:
+                    - paragraph [ref=e1993]: "4.843"
+                  - cell "0.0466" [ref=e1994]:
+                    - paragraph [ref=e1996]: "0.0466"
+                  - cell "3.693" [ref=e1997]:
+                    - paragraph [ref=e1999]: "3.693"
+                  - cell "26.2 GB" [ref=e2000]:
+                    - paragraph [ref=e2002]: 26.2 GB
+                - row "MXFP4 0.0479 0.0153 4.902 0.0769 4.035 25.6 GB" [ref=e2003]:
+                  - cell "MXFP4" [ref=e2004]:
+                    - paragraph [ref=e2006]:
+                      - link "MXFP4" [ref=e2008] [cursor=pointer]:
+                        - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-MXFP4
+                        - text: MXFP4
+                        - img [ref=e2009]
+                  - cell "0.0479" [ref=e2011]:
+                    - paragraph [ref=e2013]: "0.0479"
+                  - cell "0.0153" [ref=e2014]:
+                    - paragraph [ref=e2016]: "0.0153"
+                  - cell "4.902" [ref=e2017]:
+                    - paragraph [ref=e2019]: "4.902"
+                  - cell "0.0769" [ref=e2020]:
+                    - paragraph [ref=e2022]: "0.0769"
+                  - cell "4.035" [ref=e2023]:
+                    - paragraph [ref=e2025]: "4.035"
+                  - cell "25.6 GB" [ref=e2026]:
+                    - paragraph [ref=e2028]: 25.6 GB
+                - row "3-bit 0.0734 0.0223 4.976 0.1261 5.529 24.1 GB" [ref=e2029]:
+                  - cell "3-bit" [ref=e2030]:
+                    - paragraph [ref=e2032]:
+                      - link "3-bit" [ref=e2034] [cursor=pointer]:
+                        - /url: https://huggingface.co/unsloth/Qwen3.6-27B-UD-MLX-3bit
+                        - text: 3-bit
+                        - img [ref=e2035]
+                  - cell "0.0734" [ref=e2037]:
+                    - paragraph [ref=e2039]: "0.0734"
+                  - cell "0.0223" [ref=e2040]:
+                    - paragraph [ref=e2042]: "0.0223"
+                  - cell "4.976" [ref=e2043]:
+                    - paragraph [ref=e2045]: "4.976"
+                  - cell "0.1261" [ref=e2046]:
+                    - paragraph [ref=e2048]: "0.1261"
+                  - cell "5.529" [ref=e2049]:
+                    - paragraph [ref=e2051]: "5.529"
+                  - cell "24.1 GB" [ref=e2052]:
+                    - paragraph [ref=e2054]: 24.1 GB
+          - 'heading "Direct link to heading 💡 Thinking: Enable/Disable + Preserve Thinking" [level=3] [ref=e2055]':
+            - link "Direct link to heading" [ref=e2057] [cursor=pointer]:
+              - /url: "#thinking-enable-disable--preserve-thinking"
+              - img [ref=e2058]
+            - generic [ref=e2060]: "💡 Thinking: Enable/Disable + Preserve Thinking"
+          - paragraph [ref=e2061]:
+            - text: Qwen3.6 also has
+            - strong [ref=e2062]: Preserve Thinking
+            - text: "which leaves the thinking trace from the previous conversation. This increases the number of tokens you use, but could increase accuracy in continued conversations. Unsloth Studio has 'Think' and Preserved Thinking toggles for Qwen3.6:"
+          - generic [ref=e2068]:
+            - text: Unsloth Studio has Think toggle by default and a new
+            - link "Preserved Thinking" [ref=e2070] [cursor=pointer]:
+              - /url: /docs/models/qwen3.6#preserved-thinking
+            - text: toggle
+          - paragraph [ref=e2071]:
+            - text: To enable
+            - strong [ref=e2072]: preserve thinking
+            - text: in llama.cpp use (change to 'true' or 'false') '
+            - code [ref=e2073]: preserve_thinking
+            - text: "' instead of '"
+            - code [ref=e2074]: enable_thinking
+            - text: "' or '"
+            - code [ref=e2075]: disable_thinking
+            - text: "'."
+          - generic [ref=e2077]:
+            - button "Copy" [ref=e2078] [cursor=pointer]:
+              - generic [ref=e2079]: Copy
+            - code [ref=e2081]:
+              - generic [ref=e2083]: "--chat-template-kwargs '{\"preserve_thinking\":true}'"
+          - paragraph [ref=e2084]:
+            - text: For normal thinking, you can enable / disable thinking in llama.cpp by following the below commands. Use '
+            - code [ref=e2085]: "true"
+            - text: "' and '"
+            - code [ref=e2086]: "false"
+            - text: "' interchangeably."
+          - generic [ref=e2089]:
+            - rowgroup [ref=e2090]:
+              - 'row "llama-server OS: Enable Thinking Disable Thinking" [ref=e2091]':
+                - columnheader "llama-server OS:" [ref=e2092]
+                - columnheader "Enable Thinking" [ref=e2093]
+                - columnheader "Disable Thinking" [ref=e2094]
+            - table [ref=e2095]:
+              - rowgroup [ref=e2096]:
+                - 'row "Linux, MacOS, WSL: Copy --chat-template-kwargs ''{\"enable_thinking\":true}'' Copy --chat-template-kwargs ''{\"enable_thinking\":false}''" [ref=e2097]':
+                  - cell "Linux, MacOS, WSL:" [ref=e2098]:
+                    - paragraph [ref=e2100]: "Linux, MacOS, WSL:"
+                  - 'cell "Copy --chat-template-kwargs ''{\"enable_thinking\":true}''" [ref=e2101]':
+                    - generic [ref=e2104]:
+                      - button "Copy" [ref=e2105] [cursor=pointer]:
+                        - generic [ref=e2106]: Copy
+                      - code [ref=e2108]:
+                        - generic [ref=e2110]: "--chat-template-kwargs '{\"enable_thinking\":true}'"
+                  - 'cell "Copy --chat-template-kwargs ''{\"enable_thinking\":false}''" [ref=e2111]':
+                    - generic [ref=e2114]:
+                      - button "Copy" [ref=e2115] [cursor=pointer]:
+                        - generic [ref=e2116]: Copy
+                      - code [ref=e2118]:
+                        - generic [ref=e2120]: "--chat-template-kwargs '{\"enable_thinking\":false}'"
+                - 'row "Windows / Powershell: Copy --chat-template-kwargs \"{\\\"enable_thinking\\\":true}\" Copy --chat-template-kwargs \"{\\\"enable_thinking\\\":false}\"" [ref=e2121]':
+                  - cell "Windows / Powershell:" [ref=e2122]:
+                    - paragraph [ref=e2124]: "Windows / Powershell:"
+                  - 'cell "Copy --chat-template-kwargs \"{\\\"enable_thinking\\\":true}\"" [ref=e2125]':
+                    - generic [ref=e2128]:
+                      - button "Copy" [ref=e2129] [cursor=pointer]:
+                        - generic [ref=e2130]: Copy
+                      - code [ref=e2132]:
+                        - generic [ref=e2134]: "--chat-template-kwargs \"{\\\"enable_thinking\\\":true}\""
+                  - 'cell "Copy --chat-template-kwargs \"{\\\"enable_thinking\\\":false}\"" [ref=e2135]':
+                    - generic [ref=e2138]:
+                      - button "Copy" [ref=e2139] [cursor=pointer]:
+                        - generic [ref=e2140]: Copy
+                      - code [ref=e2142]:
+                        - generic [ref=e2144]: "--chat-template-kwargs \"{\\\"enable_thinking\\\":false}\""
+          - paragraph [ref=e2145]: "As an example for Qwen3.6-35B-A3B to enable preserve thinking (default is enabled):"
+          - generic [ref=e2147]:
+            - button "Copy" [ref=e2148] [cursor=pointer]:
+              - generic [ref=e2149]: Copy
+            - code [ref=e2151]:
+              - generic [ref=e2153]: ./llama.cpp/llama-server \
+              - generic [ref=e2155]: "--model unsloth/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-BF16.gguf \\"
+              - generic [ref=e2157]: "--alias \"unsloth/Qwen3.6-35B-A3B-GGUF\" \\"
+              - generic [ref=e2159]: "--temp 0.6 \\"
+              - generic [ref=e2161]: "--top-p 0.95 \\"
+              - generic [ref=e2163]: "--top-k 20 \\"
+              - generic [ref=e2165]: "--min-p 0.00 \\"
+              - generic [ref=e2167]: "--port 8001 \\"
+              - generic [ref=e2169]: "--chat-template-kwargs '{\"preserve_thinking\":true}'"
+          - paragraph [ref=e2170]: "And then in Python:"
+          - generic [ref=e2172]:
+            - button "Copy" [ref=e2173] [cursor=pointer]:
+              - generic [ref=e2174]: Copy
+            - code [ref=e2176]:
+              - generic [ref=e2178]: from openai import OpenAI
+              - generic [ref=e2180]: import json
+              - generic [ref=e2182]: openai_client = OpenAI(
+              - generic [ref=e2184]: base_url = "http://127.0.0.1:8001/v1",
+              - generic [ref=e2186]: api_key = "sk-no-key-required",
+              - generic [ref=e2188]: )
+              - generic [ref=e2190]: completion = openai_client.chat.completions.create(
+              - generic [ref=e2192]: model = "unsloth/Qwen3.6-35B-A3B-GGUF",
+              - generic [ref=e2194]: "messages = [{\"role\": \"user\", \"content\": \"What is 2+2?\"},],"
+              - generic [ref=e2196]: )
+              - generic [ref=e2198]: print(completion.choices[0].message.content)
+              - generic [ref=e2200]: print(completion.choices[0].message.reasoning_content)
+          - heading "Direct link to heading 👨‍💻 OpenAI Codex & Claude Code" [level=3] [ref=e2201]:
+            - link "Direct link to heading" [ref=e2203] [cursor=pointer]:
+              - /url: "#claude-codex"
+              - img [ref=e2204]
+            - generic [ref=e2206]: 👨‍💻 OpenAI Codex & Claude Code
+          - paragraph [ref=e2207]:
+            - text: To run the model via local coding agentic workloads, you can
+            - link "follow our guide" [ref=e2209] [cursor=pointer]:
+              - /url: /docs/basics/claude-code
+            - text: . Just change the model name to your 'Qwen3.6' variant and ensure you follow the correct Qwen3.6 parameters and usage instructions. Use the
+            - code [ref=e2210]: llama-server
+            - text: we just set up just then.
+          - generic [ref=e2211]:
+            - link "Claude Code" [ref=e2214] [cursor=pointer]:
+              - /url: /docs/basics/claude-code
+              - img [ref=e2215]
+              - generic [ref=e2218]: Claude Code
+              - img [ref=e2219]
+            - link "OpenAI Codex" [ref=e2223] [cursor=pointer]:
+              - /url: /docs/basics/codex
+              - img [ref=e2224]
+              - generic [ref=e2227]: OpenAI Codex
+              - img [ref=e2228]
+          - paragraph [ref=e2230]: "After following the instructions for Claude Code for example you will see:"
+          - paragraph [ref=e2235]:
+            - text: We can then ask say
+            - code [ref=e2236]: Create a Python game for Chess
+            - text: ":"
+          - heading "Direct link to heading 📊 Benchmarks" [level=2] [ref=e2245]:
+            - link "Direct link to heading" [ref=e2247] [cursor=pointer]:
+              - /url: "#benchmarks"
+              - img [ref=e2248]
+            - generic [ref=e2250]: 📊 Benchmarks
+          - heading "Direct link to heading Unsloth GGUF Benchmarks" [level=3] [ref=e2251]:
+            - link "Direct link to heading" [ref=e2253] [cursor=pointer]:
+              - /url: "#unsloth-gguf-benchmarks"
+              - img [ref=e2254]
+            - generic [ref=e2256]: Unsloth GGUF Benchmarks
+          - paragraph [ref=e2257]: We conducted Mean KL Divergence benchmarks for Qwen3.6-35-A3B GGUFs across providers to help you pick the best quant.
+          - list [ref=e2258]:
+            - listitem [ref=e2259]:
+              - generic [ref=e2261]: •
+              - paragraph [ref=e2263]: KL Divergence puts nearly all Unsloth GGUFs on the SOTA Pareto frontier
+            - listitem [ref=e2264]:
+              - generic [ref=e2266]: •
+              - paragraph [ref=e2268]: KLD shows how well a quantized model matches the original BF16 output distribution, indicating retained accuracy.
+            - listitem [ref=e2269]:
+              - generic [ref=e2271]: •
+              - paragraph [ref=e2273]: This makes Unsloth the top-performing in 21 of 22 sizes
+            - listitem [ref=e2274]:
+              - generic [ref=e2276]: •
+              - paragraph [ref=e2278]:
+                - text: Only Q6_K was updated for more Dynamic layers and we introduced a new
+                - code [ref=e2279]: UD-IQ4_NL_XL
+                - text: quant
+          - generic [ref=e2285]: 35B-A3B - KLD benchmarks (lower is better)
+          - heading "Direct link to heading MTP Benchmarks" [level=3] [ref=e2286]:
+            - link "Direct link to heading" [ref=e2288] [cursor=pointer]:
+              - /url: "#mtp-benchmarks"
+              - img [ref=e2289]
+            - generic [ref=e2291]: MTP Benchmarks
+          - paragraph [ref=e2292]: We benchmarked the new quants we made for 27B and 35B MoE. In general, dense models are much more accelerated with MTP (1.4-2x) vs MoE models (1.15-1.25x).
+          - paragraph [ref=e2293]: With this, Qwen3.6 27B can now do 140 tokens / s generation with UD-Q2_K_XL and Qwen3.6 35B-A3B 220 tokens / s generation! Some of the throughput numbers are noisy, so don't infer some quants are slower than others.
+          - paragraph [ref=e2298]: In terms of average speedup, we see a 1.4x for dense models at draft tokens = 2 and for the MoE around 1.15 to 1.2x.
+          - paragraph [ref=e2303]: We do not recommend more than 2 draft tokens because the acceptance rate drops precipitously from 83% to 50% with 4 draft tokens, and the forward passes for MTP become less beneficial.
+          - heading "Direct link to heading Official Qwen Benchmarks" [level=3] [ref=e2308]:
+            - link "Direct link to heading" [ref=e2310] [cursor=pointer]:
+              - /url: "#official-qwen-benchmarks"
+              - img [ref=e2311]
+            - generic [ref=e2313]: Official Qwen Benchmarks
+          - heading "Direct link to heading Qwen3.6-27B" [level=4] [ref=e2314]:
+            - link "Direct link to heading" [ref=e2316] [cursor=pointer]:
+              - /url: "#qwen3.6-27b-1"
+              - img [ref=e2317]
+            - generic [ref=e2319]: Qwen3.6-27B
+          - heading "Direct link to heading Qwen3.6-35B-A3B" [level=4] [ref=e2324]:
+            - link "Direct link to heading" [ref=e2326] [cursor=pointer]:
+              - /url: "#qwen3.6-35b-a3b-1"
+              - img [ref=e2327]
+            - generic [ref=e2329]: Qwen3.6-35B-A3B
+        - generic [ref=e2334]:
+          - link "Previous Unsloth Updates" [ref=e2335] [cursor=pointer]:
+            - /url: /docs/new/changelog
+            - generic [ref=e2336]:
+              - generic [ref=e2337]: Previous
+              - generic [ref=e2338]: Unsloth Updates
+            - img [ref=e2339]
+          - link "Next Gemma 4" [ref=e2341] [cursor=pointer]:
+            - /url: /docs/models/gemma-4
+            - generic [ref=e2342]:
+              - generic [ref=e2343]: Next
+              - generic [ref=e2344]: Gemma 4
+            - img [ref=e2345]
+        - paragraph [ref=e2348]:
+          - text: Last updated
+          - time [ref=e2349]: 5 days ago
+  - contentinfo [ref=e2350]:
+    - generic [ref=e2353]:
+      - generic [ref=e2354]:
+        - img "Logo"
+      - generic [ref=e2356]:
+        - navigation [ref=e2358]:
+          - heading "Community" [level=4] [ref=e2359]
+          - list [ref=e2360]:
+            - listitem [ref=e2361]:
+              - link "Reddit r/unsloth" [ref=e2362] [cursor=pointer]:
+                - /url: https://www.reddit.com/r/unsloth/
+            - listitem [ref=e2363]:
+              - link "Twitter (X)" [ref=e2364] [cursor=pointer]:
+                - /url: http://twitter.com/UnslothAI
+            - listitem [ref=e2365]:
+              - link "LinkedIn" [ref=e2366] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/unsloth
+        - navigation [ref=e2368]:
+          - heading "Resources" [level=4] [ref=e2369]
+          - list [ref=e2370]:
+            - listitem [ref=e2371]:
+              - link "Tutorials" [ref=e2372] [cursor=pointer]:
+                - /url: https://unsloth.ai/docs/models/tutorials
+            - listitem [ref=e2373]:
+              - link "Docker" [ref=e2374] [cursor=pointer]:
+                - /url: https://hub.docker.com/r/unsloth/unsloth
+            - listitem [ref=e2375]:
+              - link "Hugging Face" [ref=e2376] [cursor=pointer]:
+                - /url: https://huggingface.co/unsloth
+        - navigation [ref=e2378]:
+          - heading "Company" [level=4] [ref=e2379]
+          - list [ref=e2380]:
+            - listitem [ref=e2381]:
+              - link "Unsloth Studio" [ref=e2382] [cursor=pointer]:
+                - /url: /docs/new/studio
+            - listitem [ref=e2383]:
+              - link "Contact" [ref=e2384] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/danielhanchen/
+            - listitem [ref=e2385]:
+              - link "Events" [ref=e2386] [cursor=pointer]:
+                - /url: https://lu.ma/unsloth
+      - generic [ref=e2387]:
+        - link "X/Twitter" [ref=e2388] [cursor=pointer]:
+          - /url: https://x.com/UnslothAI
+          - img "x-twitter" [ref=e2389]
+        - link "LinkedIn" [ref=e2391] [cursor=pointer]:
+          - /url: https://linkedin.com/company/unsloth
+          - img "linkedin" [ref=e2392]
+        - link "GitHub" [ref=e2394] [cursor=pointer]:
+          - /url: https://github.com/unslothai/unsloth
+          - img [ref=e2395]
+        - link "Discord" [ref=e2397] [cursor=pointer]:
+          - /url: https://discord.com/invite/unsloth
+          - img "discord" [ref=e2398]
+        - link "Bluesky" [ref=e2400] [cursor=pointer]:
+          - /url: https://bsky.app/profile/unsloth.ai
+          - img "bluesky" [ref=e2401]
+        - link "Reddit" [ref=e2403] [cursor=pointer]:
+          - /url: https://reddit.com/r/unsloth
+          - img "reddit" [ref=e2404]
+      - paragraph [ref=e2407]: © Unsloth, 2026
