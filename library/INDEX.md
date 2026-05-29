@@ -7,6 +7,7 @@
 | [llama.cpp CUDA Flags Performance Impact](topics/llama-cuda-flags-performance/) | 2026-05-28 | Complete | llama.cpp, CUDA, GPU, performance, benchmark, ggml |
 | [Optimized llama-server Settings for Qwen3.6-35B-A3B](topics/optimized-llama-server-settings-qwen36-35b/) | 2026-05-28 | Complete | llama.cpp, Qwen, MoE, GPU optimization, quantization |
 | [llama.cpp gRPC Server](topics/llama-cpp-grpc-server/) | 2026-05-29 | Complete | llama.cpp, gRPC, LLM-serving, LocalAI, inference, distributed-inference |
+| [OpenAI Compatible APIs](topics/openai-compatible-apis/) | 2026-05-29 | Complete | openai, api, llm, protocol, llama.cpp, ollama, vllm, litellm, openwebui, mcp, gateway, enterprise |
 
 ## Detail
 
@@ -51,3 +52,17 @@
 - LocalAI is the most production-ready option with authentication, rate limiting, and Kubernetes support
 - CVE-2026-27940 is a critical buffer overflow in the underlying gguf library affecting all llama.cpp-based servers
 - No standalone gRPC server provides built-in authentication — all designed for trusted environments
+
+### OpenAI Compatible APIs
+
+**Date:** 2026-05-29
+**Status:** Complete
+
+**Summary:** Comprehensive research mapping the OpenAI-compatible API ecosystem — from the underlying specification through local server implementations, AI gateway/proxy layers, and frontend integrations. Covers llama.cpp, Ollama, vLLM, LiteLLM, OpenRouter, OpenWebUI, and the emerging Model Context Protocol (MCP).
+
+**Key Findings:**
+- The OpenAI-compatible API is a de facto standard without formal governance; OpenAI maintains an official OpenAPI spec at github.com/openai/openai-openapi
+- Diverse server ecosystem from simple (llama.cpp, Ollama) to production-grade (vLLM, SGLang)
+- Gateway layer (LiteLLM Proxy, OpenRouter) fills critical enterprise gaps in auth, routing, and observability
+- Frontend ecosystem (OpenWebUI, LobeChat) enables plug-and-play local model access
+- MCP emerging as complementary protocol for universal tool integration
