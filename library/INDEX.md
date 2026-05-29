@@ -6,6 +6,7 @@
 |-------|------|--------|------|
 | [llama.cpp CUDA Flags Performance Impact](topics/llama-cuda-flags-performance/) | 2026-05-28 | Complete | llama.cpp, CUDA, GPU, performance, benchmark, ggml |
 | [Optimized llama-server Settings for Qwen3.6-35B-A3B](topics/optimized-llama-server-settings-qwen36-35b/) | 2026-05-28 | Complete | llama.cpp, Qwen, MoE, GPU optimization, quantization |
+| [llama.cpp gRPC Server](topics/llama-cpp-grpc-server/) | 2026-05-29 | Complete | llama.cpp, gRPC, LLM-serving, LocalAI, inference, distributed-inference |
 
 ## Detail
 
@@ -36,3 +37,17 @@
 - Expert mapping scales linearly: ~8GB VRAM per 20 experts
 - Q6_K offers near-Q8 quality with 4GB less VRAM than Q8_0
 - Optimal flags: `--batch-size 1024`, `--cache-reuse 512`, `--flash-attn`, `--n-gqa 8`
+
+### llama.cpp gRPC Server
+
+**Date:** 2026-05-29
+**Status:** Complete
+
+**Summary:** Comprehensive analysis of gRPC-based inference servers built on top of llama.cpp, covering three distinct approaches: a focused standalone server (kherud/grpc-llama.cpp), a multi-model API platform (LocalAI), and a custom distributed inference protocol (llama.cpp RPC server).
+
+**Key Findings:**
+- Three distinct serving approaches serve different use cases: standalone gRPC server, multi-model platform, and distributed inference protocol
+- gRPC outperforms HTTP/REST by 30-50% in latency for inference serving
+- LocalAI is the most production-ready option with authentication, rate limiting, and Kubernetes support
+- CVE-2026-27940 is a critical buffer overflow in the underlying gguf library affecting all llama.cpp-based servers
+- No standalone gRPC server provides built-in authentication — all designed for trusted environments

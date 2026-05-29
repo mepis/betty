@@ -1,0 +1,79 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: steinarvk llama.grpc github
+        - button "Search using an image" [ref=e19] [cursor=pointer]
+    - complementary "Account Rewards and Preferences" [ref=e21]:
+      - button "Microsoft Rewards"
+      - link "Sign in Sign in" [ref=e22] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - button "Sign in" [ref=e25]
+        - generic "Sign in" [ref=e26]
+    - navigation "Search Filter" [ref=e27]:
+      - list [ref=e28]:
+        - listitem [ref=e29]:
+          - link "All" [ref=e30] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e31]:
+          - link "Search" [ref=e32] [cursor=pointer]:
+            - /url: /copilotsearch?q=steinarvk+llama.grpc+github&FORM=CSSCOP
+            - img [ref=e33]
+            - text: Search
+        - listitem [ref=e35]:
+          - link "Images" [ref=e36] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=e6f3b04010071826851e9fbd61b8cf15de4b4746d725096cf322e358dff6bc4aJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=145787de-6112-6d4d-1f9f-90b660a16c49&u=a1L2ltYWdlcy9zZWFyY2g_cT1zdGVpbmFydmsrbGxhbWEuZ3JwYytnaXRodWImRk9STT1IRFJTQzI&ntb=1
+        - listitem [ref=e37]:
+          - link "Videos" [ref=e38] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=fc998180ce747c191b8bd2cb9d2ca7e11722fda7423b71788513896949d5f9beJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=145787de-6112-6d4d-1f9f-90b660a16c49&u=a1L3ZpZGVvcy9zZWFyY2g_cT1zdGVpbmFydmsrbGxhbWEuZ3JwYytnaXRodWImRk9STT1IRFJTQzM&ntb=1
+        - listitem [ref=e39]:
+          - link "Maps" [ref=e40] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=be01789791408339ce7c87dcd8a04accdeca408d3c9c2748f75f7c6ac26a686fJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=145787de-6112-6d4d-1f9f-90b660a16c49&u=a1L21hcHM_cT1zdGVpbmFydmsrbGxhbWEuZ3JwYytnaXRodWImRk9STT1IRFJTQzQ&ntb=1
+        - listitem [ref=e41]:
+          - link "News" [ref=e42] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=fe43d90c07cfb2f9203ea72c90da929d26f25bf97345752782a0f461953b24a1JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=145787de-6112-6d4d-1f9f-90b660a16c49&u=a1L25ld3Mvc2VhcmNoP3E9c3RlaW5hcnZrK2xsYW1hLmdycGMrZ2l0aHViJkZPUk09SERSU0M2&ntb=1
+        - listitem [ref=e43]:
+          - button "More" [ref=e44] [cursor=pointer]:
+            - img [ref=e46]
+            - text: More
+  - contentinfo [ref=e48]:
+    - list [ref=e50]:
+      - listitem [ref=e51]:
+        - link "Privacy" [ref=e52] [cursor=pointer]:
+          - /url: https://www.bing.com/ck/a?!&&p=34e086c9ba3e93b5006b61fcd678d8d16c071bbb5cbfc0893de93d79d07c592cJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=145787de-6112-6d4d-1f9f-90b660a16c49&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+      - listitem [ref=e53]:
+        - link "Terms" [ref=e54] [cursor=pointer]:
+          - /url: https://www.bing.com/ck/a?!&&p=42cb02dc4ef5e9baa93601b33138e1590d48cfb0d84aea9db096005782cc8542JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=145787de-6112-6d4d-1f9f-90b660a16c49&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1
+  - generic [ref=e55]:
+    - generic [ref=e57]:
+      - generic [ref=e59]:
+        - text: Content was generated with AI.
+        - link "How bing delivers search results" [ref=e60] [cursor=pointer]:
+          - /url: https://www.bing.com/ck/a?!&&p=5ec212e15b89c27da45721825b6260cba551bf2993af0a014b211f7c241ac65dJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=145787de-6112-6d4d-1f9f-90b660a16c49&u=a1aHR0cHM6Ly9zdXBwb3J0Lm1pY3Jvc29mdC5jb20vdG9waWMvaG93LWJpbmctZGVsaXZlcnMtc2VhcmNoLXJlc3VsdHMtZDE4ZmM4MTUtYWMzNy00NzIzLWJjNjctOTIyOWNlM2ViNmEzPw&ntb=1
+          - text: Learn more
+      - generic:
+        - list
+    - generic [ref=e61]:
+      - link:
+        - /url: /copilotsearch?q=steinarvk llama.grpc github&form=CSBSBX
+      - generic [ref=e66]:
+        - search [ref=e67]:
+          - textbox "Ask a follow-up" [ref=e68]:
+            - /placeholder: "Ask a follow-up "
+        - button "Send" [ref=e70]:
+          - img [ref=e72]
+  - menu [ref=e75]:
+    - generic [ref=e76]:
+      - menuitem "All" [ref=e77] [cursor=pointer]
+      - menuitem "Past 24 hours" [ref=e78] [cursor=pointer]
+      - menuitem "Past week" [ref=e79] [cursor=pointer]
+      - menuitem "Past month" [ref=e80] [cursor=pointer]
+      - menuitem "Past year" [ref=e81] [cursor=pointer]
