@@ -1,0 +1,18 @@
+[     306ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=G-82KEGWT9X6:0
+[     306ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5618010663098209:0
+[     536ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width. @ https://www.modern-datatools.com/_next/static/chunks/recharts-32a51bf8761df4e6.js:0
+[     536ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width. @ https://www.modern-datatools.com/_next/static/chunks/recharts-32a51bf8761df4e6.js:0
+[     536ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width. @ https://www.modern-datatools.com/_next/static/chunks/recharts-32a51bf8761df4e6.js:0
+[     536ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width. @ https://www.modern-datatools.com/_next/static/chunks/recharts-32a51bf8761df4e6.js:0

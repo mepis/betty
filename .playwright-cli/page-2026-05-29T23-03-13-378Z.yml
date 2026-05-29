@@ -1,0 +1,537 @@
+- main [ref=e2]:
+  - generic [ref=e4]:
+    - link "logo" [ref=e5] [cursor=pointer]:
+      - /url: https://qdrant.tech/
+      - img "logo" [ref=e7]
+    - list [ref=e8]:
+      - listitem [ref=e9]:
+        - link "Develop" [ref=e10] [cursor=pointer]:
+          - /url: https://qdrant.tech/documentation/
+      - listitem [ref=e11]:
+        - link "Deploy" [ref=e12] [cursor=pointer]:
+          - /url: https://qdrant.tech/documentation/deploy-intro/
+      - listitem [ref=e13]:
+        - link "Ecosystem" [ref=e14] [cursor=pointer]:
+          - /url: https://qdrant.tech/documentation/ecosystem/
+      - listitem [ref=e15]:
+        - link "Learn" [ref=e16] [cursor=pointer]:
+          - /url: https://qdrant.tech/learn/
+      - listitem [ref=e17]:
+        - link "API Reference" [ref=e18] [cursor=pointer]:
+          - /url: https://api.qdrant.tech/api-reference
+    - generic [ref=e19]:
+      - button "Search" [ref=e21] [cursor=pointer]
+      - button [ref=e22] [cursor=pointer]
+      - link "Log in" [ref=e23] [cursor=pointer]:
+        - /url: https://cloud.qdrant.io/login?__hstc=265983056.d5b91ad7d569b2c78baa8011d59553da.1780095793312.1780095793312.1780095793312.1&__hssc=265983056.1.1780095793312&__hsfp=97dd48aaab4ec16eeede391435d2a4fd
+      - link "Start Free" [ref=e24] [cursor=pointer]:
+        - /url: https://cloud.qdrant.io/signup?__hstc=265983056.d5b91ad7d569b2c78baa8011d59553da.1780095793312.1780095793312.1780095793312.1&__hssc=265983056.1.1780095793312&__hsfp=97dd48aaab4ec16eeede391435d2a4fd
+  - generic [ref=e27]:
+    - navigation [ref=e30]:
+      - heading "Getting Started" [level=3] [ref=e31]
+      - group [ref=e32]:
+        - generic "Overview" [ref=e33] [cursor=pointer]:
+          - link "Overview" [ref=e34]:
+            - /url: https://qdrant.tech/documentation/overview/
+        - navigation [ref=e35]:
+          - list [ref=e36]:
+            - listitem [ref=e37]:
+              - link "What is Qdrant?" [ref=e38] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/overview/what-is-qdrant/
+            - listitem [ref=e39]:
+              - link "Understanding Vector Search in Qdrant" [ref=e40] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/overview/vector-search/
+      - link "Local Quickstart" [ref=e43] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/quickstart/
+      - link "Cloud Quickstart" [ref=e46] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/cloud-quickstart/
+      - heading "User Manual" [level=3] [ref=e47]
+      - group [ref=e48]:
+        - generic "Manage Data" [ref=e49] [cursor=pointer]:
+          - link "Manage Data" [ref=e50]:
+            - /url: https://qdrant.tech/documentation/manage-data/
+      - group [ref=e51]:
+        - generic "Search" [ref=e52] [cursor=pointer]:
+          - link "Search" [ref=e53]:
+            - /url: https://qdrant.tech/documentation/search/
+      - link "Inference" [ref=e56] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/inference/
+      - group [ref=e57]:
+        - generic "Qdrant Edge" [ref=e58] [cursor=pointer]:
+          - link "Qdrant Edge" [ref=e59]:
+            - /url: https://qdrant.tech/documentation/edge/
+      - link "Qdrant Web UI" [ref=e62] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/web-ui/
+      - link "API & SDKs" [ref=e65] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/interfaces/
+      - heading "Qdrant Tools" [level=3] [ref=e66]
+      - group [ref=e67]:
+        - generic "FastEmbed" [ref=e68] [cursor=pointer]:
+          - link "FastEmbed" [ref=e69]:
+            - /url: https://qdrant.tech/documentation/fastembed/
+      - link "Qdrant MCP Server" [ref=e72] [cursor=pointer]:
+        - /url: https://github.com/qdrant/mcp-server-qdrant
+      - heading "Tutorials" [level=3] [ref=e73]
+      - link "Overview" [ref=e76] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/tutorials-lp-overview/
+      - group [ref=e77]:
+        - generic "Basics" [ref=e78] [cursor=pointer]:
+          - link "Basics" [ref=e79]:
+            - /url: https://qdrant.tech/documentation/tutorials-basics/
+      - group [ref=e80]:
+        - generic "Search Engineering" [ref=e81] [cursor=pointer]:
+          - link "Search Engineering" [ref=e82]:
+            - /url: https://qdrant.tech/documentation/tutorials-search-engineering/
+      - group [ref=e83]:
+        - generic "Operations & Scale" [ref=e84] [cursor=pointer]:
+          - link "Operations & Scale" [ref=e85]:
+            - /url: https://qdrant.tech/documentation/tutorials-operations/
+      - group [ref=e86]:
+        - generic "Develop & Implement" [ref=e87] [cursor=pointer]:
+          - link "Develop & Implement" [ref=e88]:
+            - /url: https://qdrant.tech/documentation/tutorials-develop/
+      - heading "Support" [level=3] [ref=e89]
+      - link "Release Notes" [ref=e92] [cursor=pointer]:
+        - /url: https://github.com/qdrant/qdrant/releases
+      - group [ref=e93]:
+        - generic "FAQ" [ref=e94] [cursor=pointer]:
+          - link "FAQ" [ref=e95]:
+            - /url: https://qdrant.tech/documentation/faq/qdrant-fundamentals/
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - list [ref=e99]:
+          - listitem [ref=e100]:
+            - link "Documentation" [ref=e101] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/
+          - listitem [ref=e102]
+          - listitem [ref=e103]: Overview
+        - article [ref=e104]:
+          - status [ref=e105]:
+            - text: ⓘ Qdrant offers a bi-weekly "Getting Started" live webinar with experts. Register for an upcoming session
+            - link "here" [ref=e106] [cursor=pointer]:
+              - /url: https://tinyurl.com/qdrant-onboarding
+            - text: "!"
+          - heading "Anchor Qdrant Overview" [level=1] [ref=e107]:
+            - link "Anchor" [ref=e108] [cursor=pointer]:
+              - /url: "#qdrant-overview"
+              - text: 
+            - text: Qdrant Overview
+          - heading "Anchor Welcome!" [level=2] [ref=e109]:
+            - link "Anchor" [ref=e110] [cursor=pointer]:
+              - /url: "#welcome"
+              - text: 
+            - text: Welcome!
+          - paragraph [ref=e111]:
+            - text: Whether you’re getting started with Qdrant Open-Source or Cloud, this brief primer will help you with understanding an overview of the platform.
+            - strong [ref=e112]: It’s highly recommended you read this overview before starting your development with Qdrant!
+          - heading "Anchor Retrieval Process" [level=2] [ref=e113]:
+            - link "Anchor" [ref=e114] [cursor=pointer]:
+              - /url: "#retrieval-process"
+              - text: 
+            - text: Retrieval Process
+          - paragraph [ref=e115]:
+            - text: Vector search is a transformative information retrieval technique that goes beyond keyword matching to find data based on semantic meaning. It begins with
+            - strong [ref=e116]: embedding models
+            - text: ", which convert unstructured data (text, images, audio) into"
+            - strong [ref=e117]: dense vector embeddings
+            - text: ", fixed-length lists of numbers that represent the data’s conceptual essence. These vectors are mapped into a high-dimensional"
+            - strong [ref=e118]: vector space
+            - text: ", where items with similar meanings are positioned closely together. This spatial organization allows a search for “climate change” to retrieve documents about “global warming,” even if the exact words differ."
+          - paragraph [ref=e119]:
+            - img "Workflow Overview" [ref=e120]
+          - paragraph [ref=e121]:
+            - text: While dense vectors excel at capturing context, they can sometimes miss specific technical terms or unique identifiers. To bridge this gap, Qdrant also utilizes
+            - strong [ref=e122]: sparse vectors
+            - text: designed to capture precise
+            - strong [ref=e123]: lexical matches
+            - text: for specific keywords. Learn more in
+            - link "this guide" [ref=e124] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/text-search/
+            - text: .
+          - paragraph [ref=e125]:
+            - text: The process of generating embeddings from unstructured data is called
+            - link "inference" [ref=e126] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/inference/
+            - text: . On Qdrant Cloud, you can use
+            - link "Cloud Inference" [ref=e127] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/cloud/inference/
+            - text: to let Qdrant generate embeddings on the server side. Alternatively, you can use a library like
+            - link "FastEmbed" [ref=e128] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/fastembed/
+            - text: to generate embeddings on the client side.
+          - paragraph [ref=e129]:
+            - text: The search process itself revolves into the concept of
+            - strong [ref=e130]: Top-K
+            - text: retrieval. When a user submits a request, it is instantly transformed into a
+            - strong [ref=e131]: query vector
+            - text: . The engine then calculates the similarity between this query vector and document vectors, returning the “Top-K” closest matches, where K is a user-defined number representing the desired volume of results. This allows developers to fine-tune the balance between the breadth of the search and the precision of the answers.
+          - paragraph [ref=e132]:
+            - img "Retrieval Process" [ref=e133]
+          - paragraph [ref=e134]:
+            - text: To deliver the most robust search experience, Qdrant enables
+            - strong [ref=e135]: Hybrid Retrieval
+            - text: with semantic and lexical search, which you can learn more about
+            - link "here" [ref=e136] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/hybrid-queries/
+            - text: .
+          - heading "Anchor Architecture" [level=2] [ref=e137]:
+            - link "Anchor" [ref=e138] [cursor=pointer]:
+              - /url: "#architecture"
+              - text: 
+            - text: Architecture
+          - paragraph [ref=e139]:
+            - text: Qdrants operates in a client-server architecture, providing official
+            - link "client libraries" [ref=e140] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/interfaces/#client-libraries
+            - text: for Python, JavaScript/TypeScript, Rust, Go, .NET, and Java. However, Qdrant exposes HTTP and gRPC
+            - link "interfaces" [ref=e141] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/interfaces/#client-libraries
+            - text: to facilitate integration with virtually any programming language.
+          - heading "Anchor Data Structure" [level=2] [ref=e142]:
+            - link "Anchor" [ref=e143] [cursor=pointer]:
+              - /url: "#data-structure"
+              - text: 
+            - text: Data Structure
+          - paragraph [ref=e144]:
+            - img [ref=e145]
+          - paragraph [ref=e146]: "Qdrant collections are designed for horizontal and vertical scaling. You can learn about the details in the above diagram from links below:"
+          - list [ref=e147]:
+            - listitem [ref=e148]:
+              - link "Collections" [ref=e149] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/collections/
+            - listitem [ref=e150]:
+              - link "Points" [ref=e151] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/points/
+            - listitem [ref=e152]:
+              - link "Indexing" [ref=e153] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/indexing/
+            - listitem [ref=e154]:
+              - link "Storage" [ref=e155] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/storage/
+            - listitem [ref=e156]:
+              - link "Distributed Deployment" [ref=e157] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/distributed_deployment/
+            - listitem [ref=e158]:
+              - link "Strict Mode" [ref=e159] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/ops-configuration/administration/#strict-mode
+          - heading "Anchor Deployments" [level=2] [ref=e160]:
+            - link "Anchor" [ref=e161] [cursor=pointer]:
+              - /url: "#deployments"
+              - text: 
+            - text: Deployments
+          - paragraph [ref=e162]:
+            - text: "Qdrant supports multiple deployment models to match different infrastructure and operational needs. The right option depends on your security constraints and operational model: Qdrant-managed infrastructure ("
+            - link "Managed Cloud" [ref=e163] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/cloud/
+            - text: ), shared responsibility with your own clusters (
+            - link "Hybrid Cloud" [ref=e164] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/hybrid-cloud/
+            - text: ), or full ownership and independence (
+            - link "Private Cloud" [ref=e165] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/private-cloud/
+            - text: or
+            - link "Open Source" [ref=e166] [cursor=pointer]:
+              - /url: https://github.com/qdrant/qdrant
+            - text: ).
+          - table [ref=e168]:
+            - rowgroup [ref=e169]:
+              - row "Feature Benefits OSS Managed Hybrid Private" [ref=e170]:
+                - columnheader "Feature" [ref=e171]
+                - columnheader "Benefits" [ref=e172]
+                - columnheader "OSS" [ref=e173]
+                - columnheader "Managed" [ref=e174]
+                - columnheader "Hybrid" [ref=e175]
+                - columnheader "Private" [ref=e176]
+            - rowgroup [ref=e177]:
+              - row "Deployment Choose how and where to deploy your Qdrant vector database based on your infrastructure needs. ✅ ✅ ✅ ✅" [ref=e178]:
+                - cell "Deployment" [ref=e179]
+                - cell "Choose how and where to deploy your Qdrant vector database based on your infrastructure needs." [ref=e180]
+                - cell "✅" [ref=e181]
+                - cell "✅" [ref=e182]
+                - cell "✅" [ref=e183]
+                - cell "✅" [ref=e184]
+              - row "High Availability Automatic failover and replication to ensure your vector search is always available. ❌ ✅ ✅ ✅" [ref=e185]:
+                - cell "High Availability" [ref=e186]
+                - cell "Automatic failover and replication to ensure your vector search is always available." [ref=e187]
+                - cell "❌" [ref=e188]
+                - cell "✅" [ref=e189]
+                - cell "✅" [ref=e190]
+                - cell "✅" [ref=e191]
+              - row "Zero-Downtime Upgrades Upgrade your Qdrant database without any service interruption using replication. ❌ ✅ ✅ ✅" [ref=e192]:
+                - cell "Zero-Downtime Upgrades" [ref=e193]
+                - cell "Upgrade your Qdrant database without any service interruption using replication." [ref=e194]
+                - cell "❌" [ref=e195]
+                - cell "✅" [ref=e196]
+                - cell "✅" [ref=e197]
+                - cell "✅" [ref=e198]
+              - row "Monitoring & Alerting Built-in monitoring and alerting to observe the health and performance of your clusters. ❌ ✅ ✅ ❌" [ref=e199]:
+                - cell "Monitoring & Alerting" [ref=e200]
+                - cell "Built-in monitoring and alerting to observe the health and performance of your clusters." [ref=e201]
+                - cell "❌" [ref=e202]
+                - cell "✅" [ref=e203]
+                - cell "✅" [ref=e204]
+                - cell "❌" [ref=e205]
+              - row "Central Management UI A unified console to create, configure, and manage all your Qdrant database clusters. ❌ ✅ ✅ ❌" [ref=e206]:
+                - cell "Central Management UI" [ref=e207]
+                - cell "A unified console to create, configure, and manage all your Qdrant database clusters." [ref=e208]
+                - cell "❌" [ref=e209]
+                - cell "✅" [ref=e210]
+                - cell "✅" [ref=e211]
+                - cell "❌" [ref=e212]
+              - row "Horizontal & Vertical Scaling Scale your clusters up, down, or out with automatic shard rebalancing and resharding support. ❌ ✅ ✅ ✅" [ref=e213]:
+                - cell "Horizontal & Vertical Scaling" [ref=e214]
+                - cell "Scale your clusters up, down, or out with automatic shard rebalancing and resharding support." [ref=e215]
+                - cell "❌" [ref=e216]
+                - cell "✅" [ref=e217]
+                - cell "✅" [ref=e218]
+                - cell "✅" [ref=e219]
+              - row "Backups & Disaster Recovery Automated backups and restore functionality to ensure data durability and graceful recovery. ❌ ✅ ✅ ✅" [ref=e220]:
+                - cell "Backups & Disaster Recovery" [ref=e221]
+                - cell "Automated backups and restore functionality to ensure data durability and graceful recovery." [ref=e222]
+                - cell "❌" [ref=e223]
+                - cell "✅" [ref=e224]
+                - cell "✅" [ref=e225]
+                - cell "✅" [ref=e226]
+              - row "Data Privacy & Control Keep all user data within your own infrastructure and network, not accessible by external parties. ✅ ❌ ✅ ✅" [ref=e227]:
+                - cell "Data Privacy & Control" [ref=e228]
+                - cell "Keep all user data within your own infrastructure and network, not accessible by external parties." [ref=e229]
+                - cell "✅" [ref=e230]
+                - cell "❌" [ref=e231]
+                - cell "✅" [ref=e232]
+                - cell "✅" [ref=e233]
+              - row "Multi-Cloud & On-Premises Deploy on AWS, GCP, Azure, on-premises, or edge locations based on your requirements. ✅ ❌ ✅ ✅" [ref=e234]:
+                - cell "Multi-Cloud & On-Premises" [ref=e235]
+                - cell "Deploy on AWS, GCP, Azure, on-premises, or edge locations based on your requirements." [ref=e236]
+                - cell "✅" [ref=e237]
+                - cell "❌" [ref=e238]
+                - cell "✅" [ref=e239]
+                - cell "✅" [ref=e240]
+              - row "Enterprise Support Access to Qdrant’s enterprise support services for production deployments. ❌ ✅ ✅ ✅" [ref=e241]:
+                - cell "Enterprise Support" [ref=e242]
+                - cell "Access to Qdrant’s enterprise support services for production deployments." [ref=e243]
+                - cell "❌" [ref=e244]
+                - cell "✅" [ref=e245]
+                - cell "✅" [ref=e246]
+                - cell "✅" [ref=e247]
+              - row "No Infrastructure Management Qdrant fully manages your infrastructure, so you can focus on building your application. ❌ ✅ ❌ ❌" [ref=e248]:
+                - cell "No Infrastructure Management" [ref=e249]
+                - cell "Qdrant fully manages your infrastructure, so you can focus on building your application." [ref=e250]
+                - cell "❌" [ref=e251]
+                - cell "✅" [ref=e252]
+                - cell "❌" [ref=e253]
+                - cell "❌" [ref=e254]
+          - heading "Anchor Scaling Considerations" [level=2] [ref=e255]:
+            - link "Anchor" [ref=e256] [cursor=pointer]:
+              - /url: "#scaling-considerations"
+              - text: 
+            - text: Scaling Considerations
+          - paragraph [ref=e257]: The default configuration of Qdrant is sensible when you are starting to work on a POC or your side project. However, when transitioning to production and experiencing the growth of data size and concurrent users, your expectations regarding high availability, latency, or throughput will change. If you foresee scaling the service, you should build your system ready for these kinds of challenges from the outset. There are a few common scenarios you should be aware of, especially if you are taking your first steps with Qdrant, anticipate rapid growth soon, and want to make your system future-proof.
+          - heading "Anchor Memory Requirements" [level=3] [ref=e258]:
+            - link "Anchor" [ref=e259] [cursor=pointer]:
+              - /url: "#memory-requirements"
+              - text: 
+            - text: Memory Requirements
+          - paragraph [ref=e260]: "Memory is a critical resource when scaling vector search. By default, Qdrant stores vectors in RAM for maximum search performance, but as collections grow to millions of vectors, keeping everything in memory becomes expensive. Qdrant lets you control the memory usage by offloading data to disk, and you can enable that mechanism at any time, even on an existing collection:"
+          - list [ref=e261]:
+            - listitem [ref=e262]: Frequently accessed vectors naturally stay cached, while others are read from disk only when needed, if you store vectors on disk
+            - listitem [ref=e263]: Graph traversal may require IO operations if you store the HNSW index on disk
+          - paragraph [ref=e264]: Put both on disk only when RAM is severely constrained, and ensure you have fast NVMe storage.
+          - heading "Anchor Filtering" [level=3] [ref=e265]:
+            - link "Anchor" [ref=e266] [cursor=pointer]:
+              - /url: "#filtering"
+              - text: 
+            - text: Filtering
+          - paragraph [ref=e267]:
+            - text: Vector search alone can provide a decent search experience to your users; however, semantic similarity is rarely the only factor you have to consider. Embeddings won’t capture attributes such as price, and typically, a filter on a specific payload attribute has to be applied. To make that filtering effective, there are some specific Qdrant mechanisms you should be aware of, including with
+            - strong [ref=e268]: payload indexes
+            - text: .
+          - heading "Anchor Payload Indexes" [level=3] [ref=e269]:
+            - link "Anchor" [ref=e270] [cursor=pointer]:
+              - /url: "#payload-indexes"
+              - text: 
+            - text: Payload Indexes
+          - paragraph [ref=e271]: The payload index is a helper data structure that enables effective filtering on a particular payload attribute. It’s a concept familiar from relational databases, where we create an index on a column that we often filter by. Similarly, in Qdrant, you should also make a payload index on a field used for filtering.
+          - paragraph [ref=e272]: A unique aspect of the payload index is that it extends the HNSW graph, allowing filtering criteria to be applied during the semantic search phase. That means it’s a single-pass graph traversal, rather than pre- or post-filtering, which both have some drawbacks.
+          - paragraph [ref=e273]:
+            - emphasis [ref=e274]:
+              - img "HNSW Graph with Filtering" [ref=e275]
+          - paragraph [ref=e276]:
+            - text: The fact that a payload index extends the HNSW graph means it’s more efficient to create it before indexing the data, as the optimizer will need to build the graph once. However, in some cases, you may already have a collection with a lot of vectors and recognize a need to filter by a specific attribute. In such cases, you can still create a payload index, yet
+            - strong [ref=e277]: it won’t immediately affect the HNSW graph
+            - text: .
+          - status [ref=e278]:
+            - text: ⓘ The HNSW graph will only get created once the optimizer will run the segment reconstruction, and it might be triggered by
+            - link "modifying the parameters of HNSW" [ref=e279] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/collections/#update-collection-parameters
+            - text: ", such as temporarily setting up m=0 and then back to the original value (m=16 by default)."
+          - paragraph [ref=e280]:
+            - link "ACORN" [ref=e281] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/search/#acorn-search-algorithm
+            - text: is an additional mechanism that can improve the search accuracy if you have multiple high cardinality filters in your search operations.
+          - heading "Anchor Scaling" [level=3] [ref=e282]:
+            - link "Anchor" [ref=e283] [cursor=pointer]:
+              - /url: "#scaling"
+              - text: 
+            - text: Scaling
+          - paragraph [ref=e284]:
+            - text: Vertical scaling has natural limits - eventually, you’ll hit the maximum capacity of available hardware, and single-node deployments lack redundancy. Optimize scaling with
+            - strong [ref=e285]: sharding
+            - text: ","
+            - strong [ref=e286]: replication
+            - text: ", and"
+            - strong [ref=e287]: segment configuration
+            - text: options.
+          - heading "Anchor Sharding" [level=4] [ref=e288]:
+            - link "Anchor" [ref=e289] [cursor=pointer]:
+              - /url: "#sharding"
+              - text: 
+            - text: Sharding
+          - paragraph [ref=e290]: Qdrant uses sharding to split collections across multiple nodes, where each shard is an independent store of points. A common recommendation is to start with 12 shards, which provides flexibility to scale from 1 node up to 2, 3, 6, or 12 nodes without resharding. However, this approach can limit throughput on small clusters since each node manages multiple shards.
+          - paragraph [ref=e291]:
+            - text: For optimal throughput, set
+            - code [ref=e292]: shard_number
+            - text: equal to your node count (read more here). If you want to have better control over sharding, Qdrant supports
+            - link "custom shards" [ref=e293] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/distributed_deployment/#user-defined-sharding
+            - text: .
+          - heading "Anchor Replication" [level=4] [ref=e294]:
+            - link "Anchor" [ref=e295] [cursor=pointer]:
+              - /url: "#replication"
+              - text: 
+            - text: Replication
+          - paragraph [ref=e296]:
+            - text: The replication factor determines how many copies of each shard exist.
+            - strong [ref=e297]: For production systems, a replication factor of at least 2 is strongly recommended
+            - text: .
+          - paragraph [ref=e298]:
+            - 'img "Choosing a Replication Factor: RF=1 causes operational problems: node restarts make parts of your collection unavailable, and data loss is permanent without backups. Use RF=1 only for non-production workloads, development environments, or when data can be easily regenerated. RF=2 provides the optimal balance for most production deployments: data remains available during single-node failures, read operations benefit from load balancing, and rolling updates work without downtime. RF>2 is a throughput optimization for read-heavy workloads. More replicas distribute read operations across more nodes, increasing cluster throughput. The cost is proportionally increased storage and higher write overhead." [ref=e299]'
+          - heading "Anchor Segment Configuration" [level=4] [ref=e300]:
+            - link "Anchor" [ref=e301] [cursor=pointer]:
+              - /url: "#segment-configuration"
+              - text: 
+            - text: Segment Configuration
+          - paragraph [ref=e302]:
+            - text: Each shard stores data in multiple
+            - link "segments" [ref=e303] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/storage/
+            - text: . A segment stores all the data structures of a subset of the points in a shard. Fewer segments create larger segments with better search throughput, as larger HNSW indexes require fewer comparisons. However, larger segments take longer to build and recreate, slowing writes and optimization. More segments mean faster indexing but lower search performance since queries scan more segments. Read more on segment configuration.
+          - status [ref=e304]: ⓘ In Qdrant Cloud, replication factor changes are applied automatically, and shard rebalancing is available. In self-hosted deployments, you must manually create or drop replicas and move shards between nodes as you scale.
+          - heading "Anchor Safety" [level=3] [ref=e305]:
+            - link "Anchor" [ref=e306] [cursor=pointer]:
+              - /url: "#safety"
+              - text: 
+            - text: Safety
+          - paragraph [ref=e307]:
+            - text: Some of the collection-level operations may degrade performance of the Qdrant cluster. Qdrant’s
+            - link "strict mode" [ref=e308] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/ops-configuration/administration/#strict-mode
+            - text: "prevents inefficient usage patterns through multiple controls: it may block filtering and updates on non-indexed payload fields, limit query result sizes and timeout durations, restrict the complexity and number of filter conditions, cap payload index counts, constrain batch upsert sizes, enforce maximum collection storage limits (for vectors, payloads, and point counts), and implement rate limiting for read and write operations to prevent system overload."
+          - status [ref=e309]: ⓘ Qdrant Cloud disables filtering and updating by a non-indexed payload attribute by default, and also restricts the maximum number of payload indexes to 100\. You may consider disabling it temporarily if you want to execute some one-time queries on unindexed payload attributes, but in general you should need to do that.
+          - paragraph [ref=e310]: The OSS version does not enforce anything, but please consider enabling and configuring strict mode settings according to the application needs. Otherwise, some of the API calls may impact the performance of your cluster by using Qdrant in a suboptimal way.
+          - heading "Anchor Getting Help" [level=2] [ref=e311]:
+            - link "Anchor" [ref=e312] [cursor=pointer]:
+              - /url: "#getting-help"
+              - text: 
+            - text: Getting Help
+          - paragraph [ref=e313]:
+            - text: If you’re new to Qdrant, start with the free
+            - link "Essentials Course" [ref=e314] [cursor=pointer]:
+              - /url: https://qdrant.tech/course/essentials/
+              - strong [ref=e315]: Essentials Course
+            - text: ", which covers core concepts and best practices. For questions, troubleshooting, and community support, join the"
+            - link "Discord Community" [ref=e316] [cursor=pointer]:
+              - /url: https://qdrant.to/discord
+              - strong [ref=e317]: Discord Community
+            - text: "- it’s the best place to get help from both Qdrant users and the core team. Paid customers have access to the"
+            - link "Support Portal" [ref=e318] [cursor=pointer]:
+              - /url: https://qdrant.to/cloud
+              - strong [ref=e319]: Support Portal
+            - text: through the Qdrant Cloud Console, for direct technical assistance and priority response times.
+        - generic [ref=e320]:
+          - heading "Was this page useful?" [level=5] [ref=e321]
+          - generic [ref=e322]:
+            - button "Thumb up icon Yes" [ref=e323] [cursor=pointer]:
+              - img "Thumb up icon" [ref=e324]
+              - text: "Yes"
+            - button "Thumb down icon No" [ref=e325] [cursor=pointer]:
+              - img "Thumb down icon" [ref=e326]
+              - text: "No"
+      - generic [ref=e327]:
+        - paragraph [ref=e328]: "On this page:"
+        - navigation [ref=e329]:
+          - list [ref=e330]:
+            - listitem [ref=e331]:
+              - link "Qdrant Overview" [ref=e332] [cursor=pointer]:
+                - /url: "#qdrant-overview"
+              - list [ref=e333]:
+                - listitem [ref=e334]:
+                  - link "Welcome!" [ref=e335] [cursor=pointer]:
+                    - /url: "#welcome"
+                - listitem [ref=e336]:
+                  - link "Retrieval Process" [ref=e337] [cursor=pointer]:
+                    - /url: "#retrieval-process"
+                - listitem [ref=e338]:
+                  - link "Architecture" [ref=e339] [cursor=pointer]:
+                    - /url: "#architecture"
+                - listitem [ref=e340]:
+                  - link "Data Structure" [ref=e341] [cursor=pointer]:
+                    - /url: "#data-structure"
+                - listitem [ref=e342]:
+                  - link "Deployments" [ref=e343] [cursor=pointer]:
+                    - /url: "#deployments"
+                - listitem [ref=e344]:
+                  - link "Scaling Considerations" [ref=e345] [cursor=pointer]:
+                    - /url: "#scaling-considerations"
+                  - list [ref=e346]:
+                    - listitem [ref=e347]:
+                      - link "Memory Requirements" [ref=e348] [cursor=pointer]:
+                        - /url: "#memory-requirements"
+                    - listitem [ref=e349]:
+                      - link "Filtering" [ref=e350] [cursor=pointer]:
+                        - /url: "#filtering"
+                    - listitem [ref=e351]:
+                      - link "Payload Indexes" [ref=e352] [cursor=pointer]:
+                        - /url: "#payload-indexes"
+                    - listitem [ref=e353]:
+                      - link "Scaling" [ref=e354] [cursor=pointer]:
+                        - /url: "#scaling"
+                    - listitem [ref=e355]:
+                      - link "Safety" [ref=e356] [cursor=pointer]:
+                        - /url: "#safety"
+                - listitem [ref=e357]:
+                  - link "Getting Help" [ref=e358] [cursor=pointer]:
+                    - /url: "#getting-help"
+        - list [ref=e359]:
+          - listitem [ref=e360]:
+            - link "View as Markdown" [ref=e361] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/overview/index.md
+              - img [ref=e362]
+              - text: View as Markdown
+          - listitem [ref=e365]:
+            - link "Edit on Github" [ref=e366] [cursor=pointer]:
+              - /url: https://github.com/qdrant/landing_page/tree/master/qdrant-landing/content/documentation/overview/_index.md
+              - img [ref=e367]
+              - text: Edit on Github
+          - listitem [ref=e370]:
+            - link "Create an issue" [ref=e371] [cursor=pointer]:
+              - /url: https://github.com/qdrant/landing_page/issues/new/choose
+              - img [ref=e372]
+              - text: Create an issue
+      - generic [ref=e375]:
+        - generic [ref=e376]:
+          - heading "Ready to get started with Qdrant?" [level=4] [ref=e377]
+          - link "Start Free" [ref=e378] [cursor=pointer]:
+            - /url: https://qdrant.to/cloud/
+        - generic [ref=e380]:
+          - generic [ref=e381]: © 2026 Qdrant.
+          - generic [ref=e382]:
+            - link "Terms" [ref=e383] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/terms_and_conditions/
+            - link "Privacy Policy" [ref=e384] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/privacy-policy/
+            - link "Impressum" [ref=e385] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/impressum/
+            - link "Recruitment Privacy Policy" [ref=e386] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/recruitment-privacy-policy/
+            - link "Cookie Consent" [ref=e387] [cursor=pointer]:
+              - /url: "#"

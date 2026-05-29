@@ -1,0 +1,7 @@
+[     495ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://cdn.cookielaw.org/scripttemplates/otSDKStub.js:0
+[     898ms] [WARNING] Unrecognized feature: 'web-share'. @ https://qdrant.tech/blog/qdrant-1.13.x/:85
+[    1356ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://googleads.g.doubleclick.net/pagead/id:0
+[    1356ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.doubleclick.net/instream/ad_status.js:0
+[    1493ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtm.js?id=GTM-M35C8G6&l=dataLayer:0
+[    2116ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=AW-10862264272:0
+[    2121ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://snap.licdn.com/li.lms-analytics/insight.min.js:0

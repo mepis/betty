@@ -1,0 +1,1489 @@
+- main [ref=e2]:
+  - generic [ref=e4]:
+    - link "logo" [ref=e5] [cursor=pointer]:
+      - /url: https://qdrant.tech/
+      - img "logo" [ref=e7]
+    - list [ref=e8]:
+      - listitem [ref=e9]:
+        - link "Develop" [ref=e10] [cursor=pointer]:
+          - /url: https://qdrant.tech/documentation/
+      - listitem [ref=e11]:
+        - link "Deploy" [ref=e12] [cursor=pointer]:
+          - /url: https://qdrant.tech/documentation/deploy-intro/
+      - listitem [ref=e13]:
+        - link "Ecosystem" [ref=e14] [cursor=pointer]:
+          - /url: https://qdrant.tech/documentation/ecosystem/
+      - listitem [ref=e15]:
+        - link "Learn" [ref=e16] [cursor=pointer]:
+          - /url: https://qdrant.tech/learn/
+      - listitem [ref=e17]:
+        - link "API Reference" [ref=e18] [cursor=pointer]:
+          - /url: https://api.qdrant.tech/api-reference
+    - generic [ref=e19]:
+      - button "Search" [ref=e21] [cursor=pointer]
+      - button [ref=e22] [cursor=pointer]
+      - link "Log in" [ref=e23] [cursor=pointer]:
+        - /url: https://cloud.qdrant.io/login
+      - link "Start Free" [ref=e24] [cursor=pointer]:
+        - /url: https://cloud.qdrant.io/signup
+  - generic [ref=e27]:
+    - navigation [ref=e30]:
+      - heading "Getting Started" [level=3] [ref=e31]
+      - group [ref=e32]:
+        - generic "Overview" [ref=e33] [cursor=pointer]:
+          - link "Overview" [ref=e34]:
+            - /url: https://qdrant.tech/documentation/overview/
+      - link "Local Quickstart" [ref=e37] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/quickstart/
+      - link "Cloud Quickstart" [ref=e40] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/cloud-quickstart/
+      - heading "User Manual" [level=3] [ref=e41]
+      - group [ref=e42]:
+        - generic "Manage Data" [ref=e43] [cursor=pointer]:
+          - link "Manage Data" [ref=e44]:
+            - /url: https://qdrant.tech/documentation/manage-data/
+      - group [ref=e45]:
+        - generic "Search" [ref=e46] [cursor=pointer]:
+          - link "Search" [ref=e47]:
+            - /url: https://qdrant.tech/documentation/search/
+        - navigation [ref=e48]:
+          - list [ref=e49]:
+            - listitem [ref=e50]:
+              - link "Search" [ref=e51] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/search/
+            - listitem [ref=e52]:
+              - link "Filtering" [ref=e53] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/filtering/
+            - listitem [ref=e54]:
+              - link "Hybrid Queries" [ref=e55] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/hybrid-queries/
+            - listitem [ref=e56]:
+              - link "Explore" [ref=e57] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/explore/
+            - listitem [ref=e58]:
+              - link "Text Search" [ref=e59] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/text-search/
+            - listitem [ref=e60]:
+              - link "Search Relevance" [ref=e61] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/search-relevance/
+            - listitem [ref=e62]:
+              - link "Low-Latency Search" [ref=e63] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/low-latency-search/
+      - link "Inference" [ref=e66] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/inference/
+      - group [ref=e67]:
+        - generic "Qdrant Edge" [ref=e68] [cursor=pointer]:
+          - link "Qdrant Edge" [ref=e69]:
+            - /url: https://qdrant.tech/documentation/edge/
+      - link "Qdrant Web UI" [ref=e72] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/web-ui/
+      - link "API & SDKs" [ref=e75] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/interfaces/
+      - heading "Qdrant Tools" [level=3] [ref=e76]
+      - group [ref=e77]:
+        - generic "FastEmbed" [ref=e78] [cursor=pointer]:
+          - link "FastEmbed" [ref=e79]:
+            - /url: https://qdrant.tech/documentation/fastembed/
+      - link "Qdrant MCP Server" [ref=e82] [cursor=pointer]:
+        - /url: https://github.com/qdrant/mcp-server-qdrant
+      - heading "Tutorials" [level=3] [ref=e83]
+      - link "Overview" [ref=e86] [cursor=pointer]:
+        - /url: https://qdrant.tech/documentation/tutorials-lp-overview/
+      - group [ref=e87]:
+        - generic "Basics" [ref=e88] [cursor=pointer]:
+          - link "Basics" [ref=e89]:
+            - /url: https://qdrant.tech/documentation/tutorials-basics/
+      - group [ref=e90]:
+        - generic "Search Engineering" [ref=e91] [cursor=pointer]:
+          - link "Search Engineering" [ref=e92]:
+            - /url: https://qdrant.tech/documentation/tutorials-search-engineering/
+      - group [ref=e93]:
+        - generic "Operations & Scale" [ref=e94] [cursor=pointer]:
+          - link "Operations & Scale" [ref=e95]:
+            - /url: https://qdrant.tech/documentation/tutorials-operations/
+      - group [ref=e96]:
+        - generic "Develop & Implement" [ref=e97] [cursor=pointer]:
+          - link "Develop & Implement" [ref=e98]:
+            - /url: https://qdrant.tech/documentation/tutorials-develop/
+      - heading "Support" [level=3] [ref=e99]
+      - link "Release Notes" [ref=e102] [cursor=pointer]:
+        - /url: https://github.com/qdrant/qdrant/releases
+      - group [ref=e103]:
+        - generic "FAQ" [ref=e104] [cursor=pointer]:
+          - link "FAQ" [ref=e105]:
+            - /url: https://qdrant.tech/documentation/faq/qdrant-fundamentals/
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - list [ref=e109]:
+          - listitem [ref=e110]:
+            - link "Documentation" [ref=e111] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/
+          - listitem [ref=e112]
+          - listitem [ref=e113]:
+            - link "Search" [ref=e114] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/
+          - listitem [ref=e115]
+          - listitem [ref=e116]: Search
+        - article [ref=e117]:
+          - heading "Anchor Similarity search" [level=1] [ref=e118]:
+            - link "Anchor" [ref=e119] [cursor=pointer]:
+              - /url: "#similarity-search"
+              - text: 
+            - text: Similarity search
+          - paragraph [ref=e120]: Searching for the nearest vectors is at the core of many representational learning applications. Modern neural networks are trained to transform objects into vectors so that objects close in the real world appear close in vector space. It could be, for example, texts with similar meanings, visually similar pictures, or songs of the same genre.
+          - figure "This is how vector similarity works" [ref=e121]:
+            - img "This is how vector similarity works" [ref=e122]
+            - paragraph [ref=e124]: This is how vector similarity works
+          - heading "Anchor Query API" [level=2] [ref=e125]:
+            - link "Anchor" [ref=e126] [cursor=pointer]:
+              - /url: "#query-api"
+              - text: 
+            - text: Query API
+          - paragraph [ref=e127]:
+            - emphasis [ref=e128]: Available as of v1.10.0
+          - paragraph [ref=e129]:
+            - text: Qdrant provides a single interface for all kinds of search and exploration requests - the
+            - code [ref=e130]: Query API
+            - text: . Here is a reference list of what kind of queries you can perform with the
+            - code [ref=e131]: Query API
+            - text: "in Qdrant:"
+          - paragraph [ref=e132]:
+            - text: Depending on the
+            - code [ref=e133]: query
+            - text: parameter, Qdrant might prefer different strategies for the search.
+          - table [ref=e135]:
+            - rowgroup [ref=e136]:
+              - row [ref=e137]:
+                - columnheader [ref=e138]
+                - columnheader [ref=e139]
+            - rowgroup [ref=e140]:
+              - row "Nearest Neighbors Search Vector Similarity Search, also known as k-NN" [ref=e141]:
+                - cell "Nearest Neighbors Search" [ref=e142]
+                - cell "Vector Similarity Search, also known as k-NN" [ref=e143]
+              - row "Search By Id Search by an already stored vector - skip embedding model inference" [ref=e144]:
+                - cell "Search By Id" [ref=e145]
+                - cell "Search by an already stored vector - skip embedding model inference" [ref=e146]
+              - row "Recommendations Provide positive and negative examples" [ref=e147]:
+                - cell "Recommendations" [ref=e148]:
+                  - link "Recommendations" [ref=e149] [cursor=pointer]:
+                    - /url: https://qdrant.tech/documentation/search/explore/#recommendation-api
+                - cell "Provide positive and negative examples" [ref=e150]
+              - row "Discovery Search Guide the search using context as a one-shot training set" [ref=e151]:
+                - cell "Discovery Search" [ref=e152]:
+                  - link "Discovery Search" [ref=e153] [cursor=pointer]:
+                    - /url: https://qdrant.tech/documentation/search/explore/#discovery-api
+                - cell "Guide the search using context as a one-shot training set" [ref=e154]
+              - row "Scroll Get all points with optional filtering" [ref=e155]:
+                - cell "Scroll" [ref=e156]:
+                  - link "Scroll" [ref=e157] [cursor=pointer]:
+                    - /url: https://qdrant.tech/documentation/manage-data/points/#scroll-points
+                - cell "Get all points with optional filtering" [ref=e158]
+              - row "Grouping Group results by a certain field" [ref=e159]:
+                - cell "Grouping" [ref=e160]:
+                  - link "Grouping" [ref=e161] [cursor=pointer]:
+                    - /url: https://qdrant.tech/documentation/search/search/#grouping-api
+                - cell "Group results by a certain field" [ref=e162]
+              - row "Order By Order points by payload key" [ref=e163]:
+                - cell "Order By" [ref=e164]:
+                  - link "Order By" [ref=e165] [cursor=pointer]:
+                    - /url: https://qdrant.tech/documentation/manage-data/points/#order-points-by-payload-key
+                - cell "Order points by payload key" [ref=e166]
+              - row "Hybrid Search Combine multiple queries to get better results" [ref=e167]:
+                - cell "Hybrid Search" [ref=e168]:
+                  - link "Hybrid Search" [ref=e169] [cursor=pointer]:
+                    - /url: https://qdrant.tech/documentation/search/hybrid-queries/#hybrid-search
+                - cell "Combine multiple queries to get better results" [ref=e170]
+              - row "Multi-Stage Search Optimize performance for large embeddings" [ref=e171]:
+                - cell "Multi-Stage Search" [ref=e172]:
+                  - link "Multi-Stage Search" [ref=e173] [cursor=pointer]:
+                    - /url: https://qdrant.tech/documentation/search/hybrid-queries/#multi-stage-queries
+                - cell "Optimize performance for large embeddings" [ref=e174]
+              - row "Random Sampling Get random points from the collection" [ref=e175]:
+                - cell "Random Sampling" [ref=e176]:
+                  - link "Random Sampling" [ref=e177] [cursor=pointer]:
+                    - /url: "#random-sampling"
+                - cell "Get random points from the collection" [ref=e178]
+          - paragraph [ref=e179]:
+            - strong [ref=e180]: Nearest Neighbors Search
+          - generic [ref=e182]:
+            - generic [ref=e185]: http
+            - generic [ref=e188]: python
+            - generic [ref=e191]: typescript
+            - generic [ref=e194]: rust
+            - generic [ref=e197]: java
+            - generic [ref=e200]: csharp
+            - generic [ref=e203]: go
+          - generic [ref=e205]:
+            - code [ref=e207]:
+              - generic [ref=e209]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e211]: "{"
+              - generic [ref=e213]: "\"query\": [0.2, 0.1, 0.9, 0.7] // <--- Dense vector"
+              - generic [ref=e215]: "}"
+            - button "Copy to clipboard" [ref=e216] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e217]
+          - paragraph [ref=e218]:
+            - strong [ref=e219]: Search By Id
+          - generic [ref=e221]:
+            - generic [ref=e224]: http
+            - generic [ref=e227]: python
+            - generic [ref=e230]: typescript
+            - generic [ref=e233]: rust
+            - generic [ref=e236]: java
+            - generic [ref=e239]: csharp
+            - generic [ref=e242]: go
+          - generic [ref=e244]:
+            - code [ref=e246]:
+              - generic [ref=e248]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e250]: "{"
+              - generic [ref=e252]: "\"query\": \"43cf51e2-8777-4f52-bc74-c2cbde0c8b04\" // <--- point id"
+              - generic [ref=e254]: "}"
+            - button "Copy to clipboard" [ref=e255] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e256]
+          - heading "Anchor Metrics" [level=2] [ref=e257]:
+            - link "Anchor" [ref=e258] [cursor=pointer]:
+              - /url: "#metrics"
+              - text: 
+            - text: Metrics
+          - paragraph [ref=e259]: There are many ways to estimate the similarity of vectors with each other. In Qdrant terms, these ways are called metrics. The choice of metric depends on the vectors obtained and, in particular, on the neural network encoder training method.
+          - paragraph [ref=e260]: "Qdrant supports these most popular types of metrics:"
+          - list [ref=e261]:
+            - listitem [ref=e262]:
+              - text: "Dot product:"
+              - code [ref=e263]: Dot
+              - text: "-"
+              - link "https://en.wikipedia.org/wiki/Dot_product" [ref=e264] [cursor=pointer]:
+                - /url: https://en.wikipedia.org/wiki/Dot_product
+            - listitem [ref=e265]:
+              - text: "Cosine similarity:"
+              - code [ref=e266]: Cosine
+              - text: "-"
+              - link "https://en.wikipedia.org/wiki/Cosine_similarity" [ref=e267] [cursor=pointer]:
+                - /url: https://en.wikipedia.org/wiki/Cosine_similarity
+            - listitem [ref=e268]:
+              - text: "Euclidean distance:"
+              - code [ref=e269]: Euclid
+              - text: "-"
+              - link "https://en.wikipedia.org/wiki/Euclidean_distance" [ref=e270] [cursor=pointer]:
+                - /url: https://en.wikipedia.org/wiki/Euclidean_distance
+            - listitem [ref=e271]:
+              - text: "Manhattan distance:"
+              - code [ref=e272]: Manhattan
+              - text: "*-"
+              - link "https://en.wikipedia.org/wiki/Taxicab_geometry" [ref=e273] [cursor=pointer]:
+                - /url: https://en.wikipedia.org/wiki/Taxicab_geometry
+              - superscript [ref=e275]: "*Available as of v1.7"
+          - paragraph [ref=e276]: The most typical metric used in similarity learning models is the cosine metric.
+          - paragraph [ref=e277]:
+            - img "Embeddings" [ref=e278]
+          - paragraph [ref=e279]: Qdrant counts this metric in 2 steps, due to which a higher search speed is achieved. The first step is to normalize the vector when adding it to the collection. It happens only once for each vector.
+          - paragraph [ref=e280]: The second step is the comparison of vectors. In this case, it becomes equivalent to dot production - a very fast operation due to SIMD.
+          - paragraph [ref=e281]:
+            - text: Depending on the query configuration, Qdrant might prefer different strategies for the search. Read more about it in the
+            - link "query planning" [ref=e282] [cursor=pointer]:
+              - /url: "#query-planning"
+            - text: section.
+          - heading "Anchor Search API" [level=2] [ref=e283]:
+            - link "Anchor" [ref=e284] [cursor=pointer]:
+              - /url: "#search-api"
+              - text: 
+            - text: Search API
+          - paragraph [ref=e285]: Let’s look at an example of a search query.
+          - paragraph [ref=e286]:
+            - text: REST API - API Schema definition is available
+            - link "here" [ref=e287] [cursor=pointer]:
+              - /url: https://api.qdrant.tech/api-reference/search/query-points
+          - generic [ref=e289]:
+            - generic [ref=e292]: http
+            - generic [ref=e295]: python
+            - generic [ref=e298]: typescript
+            - generic [ref=e301]: rust
+            - generic [ref=e304]: java
+            - generic [ref=e307]: csharp
+            - generic [ref=e310]: go
+          - generic [ref=e312]:
+            - code [ref=e314]:
+              - generic [ref=e316]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e318]: "{"
+              - generic [ref=e320]: "\"query\": [0.2, 0.1, 0.9, 0.79],"
+              - generic [ref=e322]: "\"filter\": {"
+              - generic [ref=e324]: "\"must\": ["
+              - generic [ref=e326]: "{"
+              - generic [ref=e328]: "\"key\": \"city\","
+              - generic [ref=e330]: "\"match\": {"
+              - generic [ref=e332]: "\"value\": \"London\""
+              - generic [ref=e334]: "}"
+              - generic [ref=e336]: "}"
+              - generic [ref=e338]: "]"
+              - generic [ref=e340]: "},"
+              - generic [ref=e342]: "\"params\": {"
+              - generic [ref=e344]: "\"hnsw_ef\": 128,"
+              - generic [ref=e346]: "\"exact\": false"
+              - generic [ref=e348]: "},"
+              - generic [ref=e350]: "\"limit\": 3"
+              - generic [ref=e352]: "}"
+            - button "Copy to clipboard" [ref=e353] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e354]
+          - paragraph [ref=e355]:
+            - text: In this example, we are looking for vectors similar to vector
+            - code [ref=e356]: "[0.2, 0.1, 0.9, 0.7]"
+            - text: . Parameter
+            - code [ref=e357]: limit
+            - text: (or its alias -
+            - code [ref=e358]: top
+            - text: ) specifies the amount of most similar results we would like to retrieve.
+          - paragraph [ref=e359]:
+            - text: Values under the key
+            - code [ref=e360]: params
+            - text: "specify custom parameters for the search. Currently, it could be:"
+          - list [ref=e361]:
+            - listitem [ref=e362]:
+              - code [ref=e363]: hnsw_ef
+              - text: "- value that specifies"
+              - code [ref=e364]: ef
+              - text: parameter of the HNSW algorithm.
+            - listitem [ref=e365]:
+              - code [ref=e366]: exact
+              - text: "- option to not use the approximate search (ANN). If set to true, the search may run for a long as it performs a full scan to retrieve exact results."
+            - listitem [ref=e367]:
+              - code [ref=e368]: indexed_only
+              - text: "- With this option you can disable the search in those segments where vector index is not built yet. This may be useful if you want to minimize the impact to the search performance whilst the collection is also being updated. Using this option may lead to a partial result if the collection is not fully indexed yet, consider using it only if eventual consistency is acceptable for your use case."
+            - listitem [ref=e369]:
+              - code [ref=e370]: quantization
+              - text: "- parameters related to quantization. See"
+              - link "Searching with Quantization" [ref=e371] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/quantization/#searching-with-quantization
+              - text: guide.
+            - listitem [ref=e372]:
+              - code [ref=e373]: acorn
+              - text: "- parameters related to the"
+              - link "ACORN search algorithm" [ref=e374] [cursor=pointer]:
+                - /url: "#acorn-search-algorithm"
+              - text: .
+          - paragraph [ref=e375]:
+            - text: Since the
+            - code [ref=e376]: filter
+            - text: parameter is specified, the search is performed only among those points that satisfy the filter condition. See details of possible filters and their work in the
+            - link "filtering" [ref=e377] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/filtering/
+            - text: section.
+          - status [ref=e378]:
+            - text: ⓘ For performant filtering, create
+            - link "payload indexes" [ref=e379] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/indexing/#payload-index
+            - text: for the fields you plan to filter on. For best results, create payload indexes before ingesting data. Refer to
+            - link "Create a Payload Index" [ref=e380] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/indexing/#create-a-payload-index
+            - text: for more information.
+          - paragraph [ref=e381]: Example result of this API would be
+          - generic [ref=e382]:
+            - code [ref=e384]:
+              - generic [ref=e386]: "{"
+              - generic [ref=e388]: "\"result\": ["
+              - generic [ref=e390]: "{ \"id\": 10, \"score\": 0.81 },"
+              - generic [ref=e392]: "{ \"id\": 14, \"score\": 0.75 },"
+              - generic [ref=e394]: "{ \"id\": 11, \"score\": 0.73 }"
+              - generic [ref=e396]: "],"
+              - generic [ref=e398]: "\"status\": \"ok\","
+              - generic [ref=e400]: "\"time\": 0.001"
+              - generic [ref=e402]: "}"
+            - button "Copy to clipboard" [ref=e403] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e404]
+          - paragraph [ref=e405]:
+            - text: The
+            - code [ref=e406]: result
+            - text: contains ordered by
+            - code [ref=e407]: score
+            - text: list of found point ids.
+          - paragraph [ref=e408]:
+            - text: Note that payload and vector data is missing in these results by default. See
+            - link "payload and vector in the result" [ref=e409] [cursor=pointer]:
+              - /url: "#payload-and-vector-in-the-result"
+            - text: on how to include it.
+          - paragraph [ref=e410]: "If the collection was created with multiple vectors, the name of the vector to use for searching should be provided:"
+          - generic [ref=e412]:
+            - generic [ref=e415]: http
+            - generic [ref=e418]: python
+            - generic [ref=e421]: typescript
+            - generic [ref=e424]: rust
+            - generic [ref=e427]: java
+            - generic [ref=e430]: csharp
+            - generic [ref=e433]: go
+          - generic [ref=e435]:
+            - code [ref=e437]:
+              - generic [ref=e439]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e441]: "{"
+              - generic [ref=e443]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e445]: "\"using\": \"image\","
+              - generic [ref=e447]: "\"limit\": 3"
+              - generic [ref=e449]: "}"
+            - button "Copy to clipboard" [ref=e450] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e451]
+          - paragraph [ref=e452]: Search is processing only among vectors with the same name.
+          - paragraph [ref=e453]: "If the collection was created with sparse vectors, the name of the sparse vector to use for searching should be provided:"
+          - paragraph [ref=e454]: You can still use payload filtering and other features of the search API with sparse vectors.
+          - paragraph [ref=e455]: "There are however important differences between dense and sparse vector search:"
+          - table [ref=e457]:
+            - rowgroup [ref=e458]:
+              - row "Index Sparse Query Dense Query" [ref=e459]:
+                - columnheader "Index" [ref=e460]
+                - columnheader "Sparse Query" [ref=e461]
+                - columnheader "Dense Query" [ref=e462]
+            - rowgroup [ref=e463]:
+              - row "Scoring Metric Default is Dot product, no need to specify it Distance has supported metrics e.g. Dot, Cosine" [ref=e464]:
+                - cell "Scoring Metric" [ref=e465]
+                - cell "Default is Dot product, no need to specify it" [ref=e466]:
+                  - text: Default is
+                  - code [ref=e467]: Dot product
+                  - text: ", no need to specify it"
+                - cell "Distance has supported metrics e.g. Dot, Cosine" [ref=e468]:
+                  - code [ref=e469]: Distance
+                  - text: has supported metrics e.g. Dot, Cosine
+              - row "Search Type Always exact in Qdrant HNSW is an approximate NN" [ref=e470]:
+                - cell "Search Type" [ref=e471]
+                - cell "Always exact in Qdrant" [ref=e472]
+                - cell "HNSW is an approximate NN" [ref=e473]
+              - row "Return Behaviour Returns only vectors with non-zero values in the same indices as the query vector Returns limit vectors" [ref=e474]:
+                - cell "Return Behaviour" [ref=e475]
+                - cell "Returns only vectors with non-zero values in the same indices as the query vector" [ref=e476]
+                - cell "Returns limit vectors" [ref=e477]:
+                  - text: Returns
+                  - code [ref=e478]: limit
+                  - text: vectors
+          - paragraph [ref=e479]: In general, the speed of the search is proportional to the number of non-zero values in the query vector.
+          - generic [ref=e481]:
+            - generic [ref=e484]: http
+            - generic [ref=e487]: python
+            - generic [ref=e490]: typescript
+            - generic [ref=e493]: rust
+            - generic [ref=e496]: java
+            - generic [ref=e499]: csharp
+            - generic [ref=e502]: go
+          - generic [ref=e504]:
+            - code [ref=e506]:
+              - generic [ref=e508]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e510]: "{"
+              - generic [ref=e512]: "\"query\": {"
+              - generic [ref=e514]: "\"indices\": [1, 3, 5, 7],"
+              - generic [ref=e516]: "\"values\": [0.1, 0.2, 0.3, 0.4]"
+              - generic [ref=e518]: "},"
+              - generic [ref=e520]: "\"using\": \"text\""
+              - generic [ref=e522]: "}"
+            - button "Copy to clipboard" [ref=e523] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e524]
+          - heading "Anchor Filtering results by score" [level=3] [ref=e525]:
+            - link "Anchor" [ref=e526] [cursor=pointer]:
+              - /url: "#filtering-results-by-score"
+              - text: 
+            - text: Filtering results by score
+          - paragraph [ref=e527]:
+            - text: In addition to payload filtering, it might be useful to filter out results with a low similarity score. For example, if you know the minimal acceptance score for your model and do not want any results which are less similar than the threshold. In this case, you can use
+            - code [ref=e528]: score_threshold
+            - text: parameter of the search query. It will exclude all results with a score worse than the given.
+          - status [ref=e529]: ⓘ This parameter may exclude lower or higher scores depending on the used metric. For example, higher scores of Euclidean metric are considered more distant and, therefore, will be excluded.
+          - heading "Anchor Payload and vector in the result" [level=3] [ref=e530]:
+            - link "Anchor" [ref=e531] [cursor=pointer]:
+              - /url: "#payload-and-vector-in-the-result"
+              - text: 
+            - text: Payload and vector in the result
+          - paragraph [ref=e532]:
+            - text: By default, retrieval methods do not return any stored information such as payload and vectors. Additional parameters
+            - code [ref=e533]: with_vectors
+            - text: and
+            - code [ref=e534]: with_payload
+            - text: alter this behavior.
+          - paragraph [ref=e535]: "Example:"
+          - generic [ref=e537]:
+            - generic [ref=e540]: http
+            - generic [ref=e543]: python
+            - generic [ref=e546]: typescript
+            - generic [ref=e549]: rust
+            - generic [ref=e552]: java
+            - generic [ref=e555]: csharp
+            - generic [ref=e558]: go
+          - generic [ref=e560]:
+            - code [ref=e562]:
+              - generic [ref=e564]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e566]: "{"
+              - generic [ref=e568]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e570]: "\"with_vectors\": true,"
+              - generic [ref=e572]: "\"with_payload\": true"
+              - generic [ref=e574]: "}"
+            - button "Copy to clipboard" [ref=e575] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e576]
+          - paragraph [ref=e577]:
+            - text: You can use
+            - code [ref=e578]: with_payload
+            - text: to scope to or filter a specific payload subset. You can even specify an array of items to include, such as
+            - code [ref=e579]: city
+            - text: ","
+            - code [ref=e580]: village
+            - text: ", and"
+            - code [ref=e581]: town
+            - text: ":"
+          - generic [ref=e583]:
+            - generic [ref=e586]: http
+            - generic [ref=e589]: python
+            - generic [ref=e592]: typescript
+            - generic [ref=e595]: rust
+            - generic [ref=e598]: java
+            - generic [ref=e601]: csharp
+            - generic [ref=e604]: go
+          - generic [ref=e606]:
+            - code [ref=e608]:
+              - generic [ref=e610]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e612]: "{"
+              - generic [ref=e614]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e616]: "\"with_payload\": [\"city\", \"village\", \"town\"]"
+              - generic [ref=e618]: "}"
+            - button "Copy to clipboard" [ref=e619] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e620]
+          - paragraph [ref=e621]:
+            - text: Or use
+            - code [ref=e622]: include
+            - text: or
+            - code [ref=e623]: exclude
+            - text: explicitly. For example, to exclude
+            - code [ref=e624]: city
+            - text: ":"
+          - generic [ref=e626]:
+            - generic [ref=e629]: http
+            - generic [ref=e632]: python
+            - generic [ref=e635]: typescript
+            - generic [ref=e638]: rust
+            - generic [ref=e641]: java
+            - generic [ref=e644]: csharp
+            - generic [ref=e647]: go
+          - generic [ref=e649]:
+            - code [ref=e651]:
+              - generic [ref=e653]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e655]: "{"
+              - generic [ref=e657]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e659]: "\"with_payload\": {"
+              - generic [ref=e661]: "\"exclude\": [\"city\"]"
+              - generic [ref=e663]: "}"
+              - generic [ref=e665]: "}"
+            - button "Copy to clipboard" [ref=e666] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e667]
+          - paragraph [ref=e668]: "It is possible to target nested fields using a dot notation:"
+          - list [ref=e669]:
+            - listitem [ref=e670]:
+              - code [ref=e671]: payload.nested_field
+              - text: "- for a nested field"
+            - listitem [ref=e672]:
+              - code [ref=e673]: payload.nested_array[].sub_field
+              - text: "- for projecting nested fields within an array"
+          - paragraph [ref=e674]: Accessing array elements by index is currently not supported.
+          - heading "Anchor ACORN Search Algorithm" [level=3] [ref=e675]:
+            - link "Anchor" [ref=e676] [cursor=pointer]:
+              - /url: "#acorn-search-algorithm"
+              - text: 
+            - text: ACORN Search Algorithm
+          - paragraph [ref=e677]:
+            - emphasis [ref=e678]: Available as of v1.16.0
+          - paragraph [ref=e679]:
+            - text: For filtered vector search, you are recommended to create a
+            - link "payload index" [ref=e680] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/indexing/#payload-index
+            - text: for the fields you want to filter by. During the search, Qdrant will use a combined
+            - link "filterable index" [ref=e681] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/indexing/#filterable-hnsw-index
+            - text: . However, when combining multiple strict payload filters, this mechanism might not provide sufficient accuracy. In such cases, you can use the ACORN search algorithm.
+          - paragraph [ref=e682]:
+            - text: It is an extension to the regular HNSW search algorithm, based on the ACORN-1 algorithm described in the paper
+            - 'link "ACORN: Performant and Predicate-Agnostic Search Over Vector Embeddings and Structured Data" [ref=e683] [cursor=pointer]':
+              - /url: https://arxiv.org/abs/2403.04871
+            - text: . During graph traversal, it explores not just direct neighbors (first hop), but also neighbors of neighbors (second hop) when direct neighbors are filtered out. This improves search accuracy at the cost of performance.
+          - paragraph [ref=e684]: "Enable it as follows:"
+          - generic [ref=e686]:
+            - generic [ref=e689]: http
+            - generic [ref=e692]: python
+            - generic [ref=e695]: typescript
+            - generic [ref=e698]: rust
+            - generic [ref=e701]: java
+            - generic [ref=e704]: csharp
+            - generic [ref=e707]: go
+          - generic [ref=e709]:
+            - code [ref=e711]:
+              - generic [ref=e713]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e715]: "{"
+              - generic [ref=e717]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e719]: "\"params\": {"
+              - generic [ref=e721]: "\"acorn\": {"
+              - generic [ref=e723]: "\"enable\": true,"
+              - generic [ref=e725]: "\"max_selectivity\": 0.4"
+              - generic [ref=e727]: "}"
+              - generic [ref=e729]: "},"
+              - generic [ref=e731]: "\"limit\": 10"
+              - generic [ref=e733]: "}"
+            - button "Copy to clipboard" [ref=e734] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e735]
+          - paragraph [ref=e736]:
+            - text: ACORN is disabled by default. Once enabled via the
+            - code [ref=e737]: enable
+            - text: flag, it activates conditionally when estimated filter selectivity is below the threshold. The optional
+            - code [ref=e738]: max_selectivity
+            - text: value controls this threshold;
+            - code [ref=e739]: "0.0"
+            - text: means ACORN will never be used,
+            - code [ref=e740]: "1.0"
+            - text: means it will always be used. The default value is
+            - code [ref=e741]: "0.4"
+            - text: ". Selectivity is estimated as:"
+            - generic [ref=e742]:
+              - generic [ref=e743]:
+                - generic [ref=e744]:
+                  - generic [ref=e745]: E
+                  - generic [ref=e746]: s
+                  - generic [ref=e747]: t
+                  - generic [ref=e748]: i
+                  - generic [ref=e749]: m
+                  - generic [ref=e750]: a
+                  - generic [ref=e751]: t
+                  - generic [ref=e752]: e
+                  - generic [ref=e753]: d
+                  - generic [ref=e754]: f
+                  - generic [ref=e755]: i
+                  - generic [ref=e756]: l
+                  - generic [ref=e757]: t
+                  - generic [ref=e758]: e
+                  - generic [ref=e759]: r
+                  - generic [ref=e760]: s
+                  - generic [ref=e761]: e
+                  - generic [ref=e762]: l
+                  - generic [ref=e763]: e
+                  - generic [ref=e764]: c
+                  - generic [ref=e765]: t
+                  - generic [ref=e766]: i
+                  - generic [ref=e767]: v
+                  - generic [ref=e768]: i
+                  - generic [ref=e769]: t
+                  - generic [ref=e770]: "y"
+                - generic [ref=e772]: =
+                - generic [ref=e774]:
+                  - generic [ref=e776]:
+                    - generic [ref=e777]: E
+                    - generic [ref=e778]: s
+                    - generic [ref=e779]: t
+                    - generic [ref=e780]: i
+                    - generic [ref=e781]: m
+                    - generic [ref=e782]: a
+                    - generic [ref=e783]: t
+                    - generic [ref=e784]: e
+                    - generic [ref=e785]: d
+                    - generic [ref=e786]: "n"
+                    - generic [ref=e787]: u
+                    - generic [ref=e788]: m
+                    - generic [ref=e789]: b
+                    - generic [ref=e790]: e
+                    - generic [ref=e791]: r
+                    - generic [ref=e792]: o
+                    - generic [ref=e793]: f
+                    - generic [ref=e794]: p
+                    - generic [ref=e795]: o
+                    - generic [ref=e796]: i
+                    - generic [ref=e797]: "n"
+                    - generic [ref=e798]: t
+                    - generic [ref=e799]: s
+                    - generic [ref=e800]: s
+                    - generic [ref=e801]: a
+                    - generic [ref=e802]: t
+                    - generic [ref=e803]: i
+                    - generic [ref=e804]: s
+                    - generic [ref=e805]: f
+                    - generic [ref=e806]: "y"
+                    - generic [ref=e807]: i
+                    - generic [ref=e808]: "n"
+                    - generic [ref=e809]: g
+                    - generic [ref=e810]: t
+                    - generic [ref=e811]: h
+                    - generic [ref=e812]: e
+                    - generic [ref=e813]: f
+                    - generic [ref=e814]: i
+                    - generic [ref=e815]: l
+                    - generic [ref=e816]: t
+                    - generic [ref=e817]: e
+                    - generic [ref=e818]: r
+                    - generic [ref=e819]: s
+                  - generic [ref=e825]:
+                    - generic [ref=e826]: T
+                    - generic [ref=e827]: o
+                    - generic [ref=e828]: t
+                    - generic [ref=e829]: a
+                    - generic [ref=e830]: l
+                    - generic [ref=e831]: "n"
+                    - generic [ref=e832]: u
+                    - generic [ref=e833]: m
+                    - generic [ref=e834]: b
+                    - generic [ref=e835]: e
+                    - generic [ref=e836]: r
+                    - generic [ref=e837]: o
+                    - generic [ref=e838]: f
+                    - generic [ref=e839]: p
+                    - generic [ref=e840]: o
+                    - generic [ref=e841]: i
+                    - generic [ref=e842]: "n"
+                    - generic [ref=e843]: t
+                    - generic [ref=e844]: s
+              - math [ref=e846]:
+                - generic [ref=e847]: Estimated filter selectivity
+                - generic [ref=e848]: =
+                - generic [ref=e849]:
+                  - generic [ref=e850]: Estimated number of points satisfying the filters
+                  - generic [ref=e851]: Total number of points
+            - text: Since ACORN is significantly slower (approximately 2-10x in typical scenarios) but improves recall for restrictive filters, tuning this parameter is about deciding when the accuracy improvement justifies the performance cost.
+          - heading "Anchor Batch search API" [level=2] [ref=e852]:
+            - link "Anchor" [ref=e853] [cursor=pointer]:
+              - /url: "#batch-search-api"
+              - text: 
+            - text: Batch search API
+          - paragraph [ref=e854]: The batch search API enables to perform multiple search requests via a single request.
+          - paragraph [ref=e855]:
+            - text: Its semantic is straightforward,
+            - code [ref=e856]: "n"
+            - text: batched search requests are equivalent to
+            - code [ref=e857]: "n"
+            - text: singular search requests.
+          - paragraph [ref=e858]: This approach has several advantages. Logically, fewer network connections are required which can be very beneficial on its own.
+          - paragraph [ref=e859]:
+            - text: More importantly, batched requests will be efficiently processed via the query planner which can detect and optimize requests if they have the same
+            - code [ref=e860]: filter
+            - text: .
+          - paragraph [ref=e861]: This can have a great effect on latency for non trivial filters as the intermediary results can be shared among the request.
+          - paragraph [ref=e862]: In order to use it, simply pack together your search requests. All the regular attributes of a search request are of course available.
+          - generic [ref=e864]:
+            - generic [ref=e867]: http
+            - generic [ref=e870]: python
+            - generic [ref=e873]: typescript
+            - generic [ref=e876]: rust
+            - generic [ref=e879]: java
+            - generic [ref=e882]: csharp
+            - generic [ref=e885]: go
+          - generic [ref=e887]:
+            - code [ref=e889]:
+              - generic [ref=e891]: "POST /collections/{collection_name}/points/query/batch"
+              - generic [ref=e893]: "{"
+              - generic [ref=e895]: "\"searches\": ["
+              - generic [ref=e897]: "{"
+              - generic [ref=e899]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e901]: "\"filter\": {"
+              - generic [ref=e903]: "\"must\": ["
+              - generic [ref=e905]: "{"
+              - generic [ref=e907]: "\"key\": \"city\","
+              - generic [ref=e909]: "\"match\": {"
+              - generic [ref=e911]: "\"value\": \"London\""
+              - generic [ref=e913]: "}"
+              - generic [ref=e915]: "}"
+              - generic [ref=e917]: "]"
+              - generic [ref=e919]: "},"
+              - generic [ref=e921]: "\"limit\": 3"
+              - generic [ref=e923]: "},"
+              - generic [ref=e925]: "{"
+              - generic [ref=e927]: "\"query\": [0.5, 0.3, 0.2, 0.3],"
+              - generic [ref=e929]: "\"filter\": {"
+              - generic [ref=e931]: "\"must\": ["
+              - generic [ref=e933]: "{"
+              - generic [ref=e935]: "\"key\": \"city\","
+              - generic [ref=e937]: "\"match\": {"
+              - generic [ref=e939]: "\"value\": \"London\""
+              - generic [ref=e941]: "}"
+              - generic [ref=e943]: "}"
+              - generic [ref=e945]: "]"
+              - generic [ref=e947]: "},"
+              - generic [ref=e949]: "\"limit\": 3"
+              - generic [ref=e951]: "}"
+              - generic [ref=e953]: "]"
+              - generic [ref=e955]: "}"
+            - button "Copy to clipboard" [ref=e956] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e957]
+          - paragraph [ref=e958]: The result of this API contains one array per search requests.
+          - generic [ref=e959]:
+            - code [ref=e961]:
+              - generic [ref=e963]: "{"
+              - generic [ref=e965]: "\"result\": ["
+              - generic [ref=e967]: "["
+              - generic [ref=e969]: "{ \"id\": 10, \"score\": 0.81 },"
+              - generic [ref=e971]: "{ \"id\": 14, \"score\": 0.75 },"
+              - generic [ref=e973]: "{ \"id\": 11, \"score\": 0.73 }"
+              - generic [ref=e975]: "],"
+              - generic [ref=e977]: "["
+              - generic [ref=e979]: "{ \"id\": 1, \"score\": 0.92 },"
+              - generic [ref=e981]: "{ \"id\": 3, \"score\": 0.89 },"
+              - generic [ref=e983]: "{ \"id\": 9, \"score\": 0.75 }"
+              - generic [ref=e985]: "]"
+              - generic [ref=e987]: "],"
+              - generic [ref=e989]: "\"status\": \"ok\","
+              - generic [ref=e991]: "\"time\": 0.001"
+              - generic [ref=e993]: "}"
+            - button "Copy to clipboard" [ref=e994] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e995]
+          - heading "Anchor Query by ID" [level=2] [ref=e996]:
+            - link "Anchor" [ref=e997] [cursor=pointer]:
+              - /url: "#query-by-id"
+              - text: 
+            - text: Query by ID
+          - paragraph [ref=e998]:
+            - text: Whenever you need to use a vector as an input, you can always use a
+            - link "point ID" [ref=e999] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/points/#point-ids
+            - text: instead.
+          - generic [ref=e1001]:
+            - generic [ref=e1004]: http
+            - generic [ref=e1007]: python
+            - generic [ref=e1010]: typescript
+            - generic [ref=e1013]: rust
+            - generic [ref=e1016]: java
+            - generic [ref=e1019]: csharp
+            - generic [ref=e1022]: go
+          - generic [ref=e1024]:
+            - code [ref=e1026]:
+              - generic [ref=e1028]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e1030]: "{"
+              - generic [ref=e1032]: "\"query\": \"43cf51e2-8777-4f52-bc74-c2cbde0c8b04\" // <--- point id"
+              - generic [ref=e1034]: "}"
+            - button "Copy to clipboard" [ref=e1035] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1036]
+          - paragraph [ref=e1037]: The above example will fetch the default vector from the point with this id, and use it as the query vector.
+          - paragraph [ref=e1038]:
+            - text: If the
+            - code [ref=e1039]: using
+            - text: parameter is also specified, Qdrant will use the vector with that name.
+          - paragraph [ref=e1040]:
+            - text: It is also possible to reference an ID from a different collection, by setting the
+            - code [ref=e1041]: lookup_from
+            - text: parameter.
+          - generic [ref=e1043]:
+            - generic [ref=e1046]: http
+            - generic [ref=e1049]: python
+            - generic [ref=e1052]: typescript
+            - generic [ref=e1055]: rust
+            - generic [ref=e1058]: java
+            - generic [ref=e1061]: csharp
+            - generic [ref=e1064]: go
+          - generic [ref=e1066]:
+            - code [ref=e1068]:
+              - generic [ref=e1070]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e1072]: "{"
+              - generic [ref=e1074]: "\"query\": \"43cf51e2-8777-4f52-bc74-c2cbde0c8b04\", // <--- point id"
+              - generic [ref=e1076]: "\"using\": \"512d-vector\","
+              - generic [ref=e1078]: "\"lookup_from\": {"
+              - generic [ref=e1080]: "\"collection\": \"another_collection\", // <--- other collection name"
+              - generic [ref=e1082]: "\"vector\": \"image-512\" // <--- vector name in the other collection"
+              - generic [ref=e1084]: "}"
+              - generic [ref=e1086]: "}"
+            - button "Copy to clipboard" [ref=e1087] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1088]
+          - paragraph [ref=e1089]:
+            - text: In the case above, Qdrant will fetch the
+            - code [ref=e1090]: "\"image-512\""
+            - text: vector from the specified point id in the collection
+            - code [ref=e1091]: another_collection
+            - text: .
+          - status [ref=e1092]:
+            - text: ⓘ The fetched vector(s) must match the characteristics of the
+            - code [ref=e1093]: using
+            - text: vector, otherwise, an error will be returned.
+          - heading "Anchor Pagination" [level=2] [ref=e1094]:
+            - link "Anchor" [ref=e1095] [cursor=pointer]:
+              - /url: "#pagination"
+              - text: 
+            - text: Pagination
+          - paragraph [ref=e1096]:
+            - text: Search and
+            - link "recommendation" [ref=e1097] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/explore/#recommendation-api
+            - text: "APIs allow to skip first results of the search and return only the result starting from some specified offset:"
+          - paragraph [ref=e1098]: "Example:"
+          - generic [ref=e1100]:
+            - generic [ref=e1103]: http
+            - generic [ref=e1106]: python
+            - generic [ref=e1109]: typescript
+            - generic [ref=e1112]: rust
+            - generic [ref=e1115]: java
+            - generic [ref=e1118]: csharp
+            - generic [ref=e1121]: go
+          - generic [ref=e1123]:
+            - code [ref=e1125]:
+              - generic [ref=e1127]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e1129]: "{"
+              - generic [ref=e1131]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e1133]: "\"with_vectors\": true,"
+              - generic [ref=e1135]: "\"with_payload\": true,"
+              - generic [ref=e1137]: "\"limit\": 10,"
+              - generic [ref=e1139]: "\"offset\": 100"
+              - generic [ref=e1141]: "}"
+            - button "Copy to clipboard" [ref=e1142] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1143]
+          - paragraph [ref=e1144]: Is equivalent to retrieving the 11th page with 10 records per page.
+          - alert [ref=e1145]: ⚠ Large offset values may cause performance issues
+          - paragraph [ref=e1146]: Vector-based retrieval in general and HNSW index in particular, are not designed to be paginated. It is impossible to retrieve Nth closest vector without retrieving the first N vectors first.
+          - paragraph [ref=e1147]: However, using the offset parameter saves the resources by reducing network traffic and the number of times the storage is accessed.
+          - paragraph [ref=e1148]:
+            - text: Using an
+            - code [ref=e1149]: offset
+            - text: parameter, will require to internally retrieve
+            - code [ref=e1150]: offset + limit
+            - text: points, but only access payload and vector from the storage those points which are going to be actually returned.
+          - heading "Anchor Grouping API" [level=2] [ref=e1151]:
+            - link "Anchor" [ref=e1152] [cursor=pointer]:
+              - /url: "#grouping-api"
+              - text: 
+            - text: Grouping API
+          - paragraph [ref=e1153]: It is possible to group results by a certain field. This is useful when you have multiple points for the same item, and you want to avoid redundancy of the same item in the results.
+          - paragraph [ref=e1154]:
+            - text: For example, if you have a large document split into multiple chunks, and you want to search or
+            - link "recommend" [ref=e1155] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/explore/#recommendation-api
+            - text: on a per-document basis, you can group the results by the document ID.
+          - paragraph [ref=e1156]: "Consider having points with the following payloads:"
+          - generic [ref=e1157]:
+            - code [ref=e1159]:
+              - generic [ref=e1161]: "["
+              - generic [ref=e1163]: "{"
+              - generic [ref=e1165]: "\"id\": 0,"
+              - generic [ref=e1167]: "\"payload\": {"
+              - generic [ref=e1169]: "\"chunk_part\": 0,"
+              - generic [ref=e1171]: "\"document_id\": \"a\""
+              - generic [ref=e1173]: "},"
+              - generic [ref=e1175]: "\"vector\": [0.91]"
+              - generic [ref=e1177]: "},"
+              - generic [ref=e1179]: "{"
+              - generic [ref=e1181]: "\"id\": 1,"
+              - generic [ref=e1183]: "\"payload\": {"
+              - generic [ref=e1185]: "\"chunk_part\": 1,"
+              - generic [ref=e1187]: "\"document_id\": [\"a\", \"b\"]"
+              - generic [ref=e1189]: "},"
+              - generic [ref=e1191]: "\"vector\": [0.8]"
+              - generic [ref=e1193]: "},"
+              - generic [ref=e1195]: "{"
+              - generic [ref=e1197]: "\"id\": 2,"
+              - generic [ref=e1199]: "\"payload\": {"
+              - generic [ref=e1201]: "\"chunk_part\": 2,"
+              - generic [ref=e1203]: "\"document_id\": \"a\""
+              - generic [ref=e1205]: "},"
+              - generic [ref=e1207]: "\"vector\": [0.2]"
+              - generic [ref=e1209]: "},"
+              - generic [ref=e1211]: "{"
+              - generic [ref=e1213]: "\"id\": 3,"
+              - generic [ref=e1215]: "\"payload\": {"
+              - generic [ref=e1217]: "\"chunk_part\": 0,"
+              - generic [ref=e1219]: "\"document_id\": 123"
+              - generic [ref=e1221]: "},"
+              - generic [ref=e1223]: "\"vector\": [0.79]"
+              - generic [ref=e1225]: "},"
+              - generic [ref=e1227]: "{"
+              - generic [ref=e1229]: "\"id\": 4,"
+              - generic [ref=e1231]: "\"payload\": {"
+              - generic [ref=e1233]: "\"chunk_part\": 1,"
+              - generic [ref=e1235]: "\"document_id\": 123"
+              - generic [ref=e1237]: "},"
+              - generic [ref=e1239]: "\"vector\": [0.75]"
+              - generic [ref=e1241]: "},"
+              - generic [ref=e1243]: "{"
+              - generic [ref=e1245]: "\"id\": 5,"
+              - generic [ref=e1247]: "\"payload\": {"
+              - generic [ref=e1249]: "\"chunk_part\": 0,"
+              - generic [ref=e1251]: "\"document_id\": -10"
+              - generic [ref=e1253]: "},"
+              - generic [ref=e1255]: "\"vector\": [0.6]"
+              - generic [ref=e1257]: "}"
+              - generic [ref=e1259]: "]"
+            - button "Copy to clipboard" [ref=e1260] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1261]
+          - paragraph [ref=e1262]:
+            - text: With the
+            - emphasis [ref=e1263]:
+              - strong [ref=e1264]: groups
+            - text: API, you will be able to get the best
+            - emphasis [ref=e1265]: "N"
+            - text: points for each document, assuming that the payload of the points contains the document ID. Of course there will be times where the best
+            - emphasis [ref=e1266]: "N"
+            - text: points cannot be fulfilled due to lack of points or a big distance with respect to the query. In every case, the
+            - code [ref=e1267]: group_size
+            - text: is a best-effort parameter, akin to the
+            - code [ref=e1268]: limit
+            - text: parameter.
+          - heading "Anchor Search groups" [level=3] [ref=e1269]:
+            - link "Anchor" [ref=e1270] [cursor=pointer]:
+              - /url: "#search-groups"
+              - text: 
+            - text: Search groups
+          - paragraph [ref=e1271]:
+            - text: REST API (
+            - link "Schema" [ref=e1272] [cursor=pointer]:
+              - /url: https://api.qdrant.tech/api-reference/search/query-points-groups
+            - text: "):"
+          - generic [ref=e1274]:
+            - generic [ref=e1277]: http
+            - generic [ref=e1280]: python
+            - generic [ref=e1283]: typescript
+            - generic [ref=e1286]: rust
+            - generic [ref=e1289]: java
+            - generic [ref=e1292]: csharp
+            - generic [ref=e1295]: go
+          - generic [ref=e1297]:
+            - code [ref=e1299]:
+              - generic [ref=e1301]: "POST /collections/{collection_name}/points/query/groups"
+              - generic [ref=e1303]: "{"
+              - generic [ref=e1305]: // Same as in the regular query API
+              - generic [ref=e1307]: "\"query\": [1.1],"
+              - generic [ref=e1309]: // Grouping parameters
+              - generic [ref=e1311]: "\"group_by\": \"document_id\", // Path of the field to group by"
+              - generic [ref=e1313]: "\"limit\": 4, // Max amount of groups"
+              - generic [ref=e1315]: "\"group_size\": 2 // Max amount of points per group"
+              - generic [ref=e1317]: "}"
+            - button "Copy to clipboard" [ref=e1318] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1319]
+          - paragraph [ref=e1320]:
+            - text: The output of a
+            - emphasis [ref=e1321]:
+              - strong [ref=e1322]: groups
+            - text: "call looks like this:"
+          - generic [ref=e1323]:
+            - code [ref=e1325]:
+              - generic [ref=e1327]: "{"
+              - generic [ref=e1329]: "\"result\": {"
+              - generic [ref=e1331]: "\"groups\": ["
+              - generic [ref=e1333]: "{"
+              - generic [ref=e1335]: "\"id\": \"a\","
+              - generic [ref=e1337]: "\"hits\": ["
+              - generic [ref=e1339]: "{ \"id\": 0, \"score\": 0.91 },"
+              - generic [ref=e1341]: "{ \"id\": 1, \"score\": 0.85 }"
+              - generic [ref=e1343]: "]"
+              - generic [ref=e1345]: "},"
+              - generic [ref=e1347]: "{"
+              - generic [ref=e1349]: "\"id\": \"b\","
+              - generic [ref=e1351]: "\"hits\": ["
+              - generic [ref=e1353]: "{ \"id\": 1, \"score\": 0.85 }"
+              - generic [ref=e1355]: "]"
+              - generic [ref=e1357]: "},"
+              - generic [ref=e1359]: "{"
+              - generic [ref=e1361]: "\"id\": 123,"
+              - generic [ref=e1363]: "\"hits\": ["
+              - generic [ref=e1365]: "{ \"id\": 3, \"score\": 0.79 },"
+              - generic [ref=e1367]: "{ \"id\": 4, \"score\": 0.75 }"
+              - generic [ref=e1369]: "]"
+              - generic [ref=e1371]: "},"
+              - generic [ref=e1373]: "{"
+              - generic [ref=e1375]: "\"id\": -10,"
+              - generic [ref=e1377]: "\"hits\": ["
+              - generic [ref=e1379]: "{ \"id\": 5, \"score\": 0.6 }"
+              - generic [ref=e1381]: "]"
+              - generic [ref=e1383]: "}"
+              - generic [ref=e1385]: "]"
+              - generic [ref=e1387]: "},"
+              - generic [ref=e1389]: "\"status\": \"ok\","
+              - generic [ref=e1391]: "\"time\": 0.001"
+              - generic [ref=e1393]: "}"
+            - button "Copy to clipboard" [ref=e1394] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1395]
+          - paragraph [ref=e1396]: The groups are ordered by the score of the top point in the group. Inside each group the points are sorted too.
+          - paragraph [ref=e1397]:
+            - text: If the
+            - code [ref=e1398]: group_by
+            - text: field of a point is an array (e.g.
+            - code [ref=e1399]: "\"document_id\": [\"a\", \"b\"]"
+            - text: ), the point can be included in multiple groups (e.g.
+            - code [ref=e1400]: "\"document_id\": \"a\""
+            - text: and
+            - code [ref=e1401]: "document_id: \"b\""
+            - text: ).
+          - status [ref=e1402]: "ⓘ This feature relies heavily on the `group_by` key provided. To improve performance, make sure to create a dedicated index for it."
+          - paragraph [ref=e1403]:
+            - strong [ref=e1404]: Limitations
+            - text: ":"
+          - list [ref=e1405]:
+            - listitem [ref=e1406]:
+              - text: Only
+              - link "keyword" [ref=e1407] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/payload/#keyword
+              - text: and
+              - link "integer" [ref=e1408] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/payload/#integer
+              - text: payload values are supported for the
+              - code [ref=e1409]: group_by
+              - text: parameter. Payload values with other types will be ignored.
+            - listitem [ref=e1410]:
+              - text: At the moment, pagination is not enabled when using
+              - strong [ref=e1411]: groups
+              - text: ", so the"
+              - code [ref=e1412]: offset
+              - text: parameter is not allowed.
+          - heading "Anchor Lookup in groups" [level=3] [ref=e1413]:
+            - link "Anchor" [ref=e1414] [cursor=pointer]:
+              - /url: "#lookup-in-groups"
+              - text: 
+            - text: Lookup in groups
+          - paragraph [ref=e1415]: When the points in a group share large fields like titles, abstracts, or full document vectors, copying that data onto every point inflates storage and forces you to rewrite every chunk whenever a shared field changes.
+          - paragraph [ref=e1416]:
+            - code [ref=e1417]: with_lookup
+            - text: solves this. Store the shared data once in a separate collection, then attach it to each group at query time using the
+            - link "groups API" [ref=e1418] [cursor=pointer]:
+              - /url: "#grouping-api"
+            - text: .
+          - paragraph [ref=e1419]:
+            - img "Group id matches point id" [ref=e1420]
+          - status [ref=e1421]: ⓘ Store only document-level metadata (e.g., titles, abstracts) in the lookup collection, not chunks or duplicated data.
+          - paragraph [ref=e1422]:
+            - text: Set up the two collections.
+            - code [ref=e1423]: chunks
+            - text: holds one point per chunk with its own vector.
+            - code [ref=e1424]: documents
+            - text: holds one point per document with payload only. The payload index on
+            - code [ref=e1425]: document_id
+            - text: lets
+            - code [ref=e1426]: group_by
+            - text: work on that field.
+          - generic [ref=e1428]:
+            - generic [ref=e1431]: http
+            - generic [ref=e1434]: python
+            - generic [ref=e1437]: typescript
+            - generic [ref=e1440]: rust
+            - generic [ref=e1443]: java
+            - generic [ref=e1446]: csharp
+            - generic [ref=e1449]: go
+          - generic [ref=e1451]:
+            - code [ref=e1453]:
+              - generic [ref=e1455]: PUT /collections/chunks
+              - generic [ref=e1457]: "{"
+              - generic [ref=e1459]: "\"vectors\": {"
+              - generic [ref=e1461]: "\"size\": 4,"
+              - generic [ref=e1463]: "\"distance\": \"Cosine\""
+              - generic [ref=e1465]: "}"
+              - generic [ref=e1467]: "}"
+              - generic [ref=e1470]: PUT /collections/chunks/index
+              - generic [ref=e1472]: "{"
+              - generic [ref=e1474]: "\"field_name\": \"document_id\","
+              - generic [ref=e1476]: "\"field_schema\": \"integer\""
+              - generic [ref=e1478]: "}"
+              - generic [ref=e1481]: PUT /collections/documents
+              - generic [ref=e1483]: "{"
+              - generic [ref=e1485]: "\"vectors\": {}"
+              - generic [ref=e1487]: "}"
+            - button "Copy to clipboard" [ref=e1488] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1489]
+          - paragraph [ref=e1490]:
+            - text: Ingest both collections, with
+            - code [ref=e1491]: documents
+            - text: populated before any query that uses
+            - code [ref=e1492]: with_lookup
+            - text: .
+          - generic [ref=e1494]:
+            - generic [ref=e1497]: http
+            - generic [ref=e1500]: python
+            - generic [ref=e1503]: typescript
+            - generic [ref=e1506]: rust
+            - generic [ref=e1509]: java
+            - generic [ref=e1512]: csharp
+            - generic [ref=e1515]: go
+          - generic [ref=e1517]:
+            - code [ref=e1519]:
+              - generic [ref=e1521]: PUT /collections/documents/points
+              - generic [ref=e1523]: "{"
+              - generic [ref=e1525]: "\"points\": ["
+              - generic [ref=e1527]: "{"
+              - generic [ref=e1529]: "\"id\": 200,"
+              - generic [ref=e1531]: "\"vector\": {},"
+              - generic [ref=e1533]: "\"payload\": {\"title\": \"Document A\", \"text\": \"This is document A\"}"
+              - generic [ref=e1535]: "},"
+              - generic [ref=e1537]: "{"
+              - generic [ref=e1539]: "\"id\": 201,"
+              - generic [ref=e1541]: "\"vector\": {},"
+              - generic [ref=e1543]: "\"payload\": {\"title\": \"Document B\", \"text\": \"This is document B\"}"
+              - generic [ref=e1545]: "}"
+              - generic [ref=e1547]: "]"
+              - generic [ref=e1549]: "}"
+              - generic [ref=e1552]: PUT /collections/chunks/points
+              - generic [ref=e1554]: "{"
+              - generic [ref=e1556]: "\"points\": ["
+              - generic [ref=e1558]: "{"
+              - generic [ref=e1560]: "\"id\": 0,"
+              - generic [ref=e1562]: "\"vector\": [0.1, 0.2, 0.3, 0.4],"
+              - generic [ref=e1564]: "\"payload\": {\"document_id\": 200}"
+              - generic [ref=e1566]: "},"
+              - generic [ref=e1568]: "{"
+              - generic [ref=e1570]: "\"id\": 1,"
+              - generic [ref=e1572]: "\"vector\": [0.5, 0.6, 0.7, 0.8],"
+              - generic [ref=e1574]: "\"payload\": {\"document_id\": [200, 201]}"
+              - generic [ref=e1576]: "}"
+              - generic [ref=e1578]: "]"
+              - generic [ref=e1580]: "}"
+            - button "Copy to clipboard" [ref=e1581] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1582]
+          - paragraph [ref=e1583]: "The lookup is a plain join by point id, not a vector search:"
+          - list [ref=e1584]:
+            - listitem [ref=e1585]:
+              - text: The
+              - code [ref=e1586]: documents
+              - text: collection must already contain a point whose id matches the
+              - code [ref=e1587]: group_by
+              - text: value from each chunk.
+            - listitem [ref=e1588]:
+              - text: The id types must match. A string
+              - code [ref=e1589]: group_by
+              - text: value against integer point ids returns an empty
+              - code [ref=e1590]: lookup
+              - text: field with no error.
+            - listitem [ref=e1591]:
+              - text: Group ids without a matching point in
+              - code [ref=e1592]: documents
+              - text: get an empty
+              - code [ref=e1593]: lookup
+              - text: field.
+          - paragraph [ref=e1594]:
+            - text: Query the
+            - code [ref=e1595]: chunks
+            - text: collection with
+            - code [ref=e1596]: group_by="document_id"
+            - text: and
+            - code [ref=e1597]: with_lookup
+            - text: pointing at the
+            - code [ref=e1598]: documents
+            - text: "collection:"
+          - generic [ref=e1600]:
+            - generic [ref=e1603]: http
+            - generic [ref=e1606]: python
+            - generic [ref=e1609]: typescript
+            - generic [ref=e1612]: rust
+            - generic [ref=e1615]: java
+            - generic [ref=e1618]: csharp
+            - generic [ref=e1621]: go
+          - generic [ref=e1623]:
+            - code [ref=e1625]:
+              - generic [ref=e1627]: POST /collections/chunks/points/query/groups
+              - generic [ref=e1629]: "{"
+              - generic [ref=e1631]: // Same as in the regular query API
+              - generic [ref=e1633]: "\"query\": [0.2, 0.1, 0.9, 0.7],"
+              - generic [ref=e1636]: // Grouping parameters
+              - generic [ref=e1638]: "\"group_by\": \"document_id\","
+              - generic [ref=e1640]: "\"limit\": 2,"
+              - generic [ref=e1642]: "\"group_size\": 2,"
+              - generic [ref=e1645]: // Lookup parameters
+              - generic [ref=e1647]: "\"with_lookup\": {"
+              - generic [ref=e1649]: // Name of the collection to look up points in
+              - generic [ref=e1651]: "\"collection\": \"documents\","
+              - generic [ref=e1654]: // Options for specifying what to bring from the payload
+              - generic [ref=e1656]: // of the looked up point, true by default
+              - generic [ref=e1658]: "\"with_payload\": [\"title\", \"text\"],"
+              - generic [ref=e1661]: // Options for specifying what to bring from the vector(s)
+              - generic [ref=e1663]: // of the looked up point, false by default
+              - generic [ref=e1665]: "\"with_vectors\": false"
+              - generic [ref=e1667]: "}"
+              - generic [ref=e1669]: "}"
+            - button "Copy to clipboard" [ref=e1670] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1671]
+          - paragraph [ref=e1672]:
+            - text: You can also pass
+            - code [ref=e1673]: with_lookup="documents"
+            - text: as a shorthand. It uses the server defaults (
+            - code [ref=e1674]: with_payload=True
+            - text: ","
+            - code [ref=e1675]: with_vectors=False
+            - text: ), so the documents’ vectors are not returned. Use the explicit
+            - code [ref=e1676]: WithLookup(...)
+            - text: form when you need those vectors back.
+          - paragraph [ref=e1677]:
+            - text: The looked-up result appears under
+            - code [ref=e1678]: lookup
+            - text: in each group. Below, chunk id 1 shows up in both groups because its
+            - code [ref=e1679]: document_id
+            - text: payload is an array (
+            - code [ref=e1680]: "[200, 201]"
+            - text: ), placing the chunk into every matching group.
+          - generic [ref=e1681]:
+            - code [ref=e1683]:
+              - generic [ref=e1685]: "{"
+              - generic [ref=e1687]: "\"result\": {"
+              - generic [ref=e1689]: "\"groups\": ["
+              - generic [ref=e1691]: "{"
+              - generic [ref=e1693]: "\"id\": 200,"
+              - generic [ref=e1695]: "\"hits\": ["
+              - generic [ref=e1697]: "{ \"id\": 0, \"score\": 0.91 },"
+              - generic [ref=e1699]: "{ \"id\": 1, \"score\": 0.85 }"
+              - generic [ref=e1701]: "],"
+              - generic [ref=e1703]: "\"lookup\": {"
+              - generic [ref=e1705]: "\"id\": 200,"
+              - generic [ref=e1707]: "\"payload\": {"
+              - generic [ref=e1709]: "\"title\": \"Document A\","
+              - generic [ref=e1711]: "\"text\": \"This is document A\""
+              - generic [ref=e1713]: "}"
+              - generic [ref=e1715]: "}"
+              - generic [ref=e1717]: "},"
+              - generic [ref=e1719]: "{"
+              - generic [ref=e1721]: "\"id\": 201,"
+              - generic [ref=e1723]: "\"hits\": ["
+              - generic [ref=e1725]: "{ \"id\": 1, \"score\": 0.85 }"
+              - generic [ref=e1727]: "],"
+              - generic [ref=e1729]: "\"lookup\": {"
+              - generic [ref=e1731]: "\"id\": 201,"
+              - generic [ref=e1733]: "\"payload\": {"
+              - generic [ref=e1735]: "\"title\": \"Document B\","
+              - generic [ref=e1737]: "\"text\": \"This is document B\""
+              - generic [ref=e1739]: "}"
+              - generic [ref=e1741]: "}"
+              - generic [ref=e1743]: "}"
+              - generic [ref=e1745]: "]"
+              - generic [ref=e1747]: "},"
+              - generic [ref=e1749]: "\"status\": \"ok\","
+              - generic [ref=e1751]: "\"time\": 0.001"
+              - generic [ref=e1753]: "}"
+            - button "Copy to clipboard" [ref=e1754] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1755]
+          - paragraph [ref=e1756]:
+            - text: For a collection of 20 000 documents with around 24 chunks each, duplicating ~3 KB of document-level data on every chunk adds up to ~1.4 GB. Storing those fields once per document in the
+            - code [ref=e1757]: documents
+            - text: collection brings that down to ~60 MB. The split pays off when the shared fields are large or change often, since updating one point in
+            - code [ref=e1758]: documents
+            - text: shows up under every chunk’s group at query time.
+          - heading "Anchor Random Sampling" [level=2] [ref=e1759]:
+            - link "Anchor" [ref=e1760] [cursor=pointer]:
+              - /url: "#random-sampling"
+              - text: 
+            - text: Random Sampling
+          - paragraph [ref=e1761]:
+            - emphasis [ref=e1762]: Available as of v1.11.0
+          - paragraph [ref=e1763]: In some cases it might be useful to retrieve a random sample of points from the collection. This can be useful for debugging, testing, or for providing entry points for exploration.
+          - paragraph [ref=e1764]:
+            - text: Random sampling API is a part of
+            - link "Universal Query API" [ref=e1765] [cursor=pointer]:
+              - /url: "#query-api"
+            - text: and can be used in the same way as regular search API.
+          - generic [ref=e1767]:
+            - generic [ref=e1770]: http
+            - generic [ref=e1773]: python
+            - generic [ref=e1776]: typescript
+            - generic [ref=e1779]: rust
+            - generic [ref=e1782]: java
+            - generic [ref=e1785]: csharp
+            - generic [ref=e1788]: go
+          - generic [ref=e1790]:
+            - code [ref=e1792]:
+              - generic [ref=e1794]: "POST /collections/{collection_name}/points/query"
+              - generic [ref=e1796]: "{"
+              - generic [ref=e1798]: "\"query\": {"
+              - generic [ref=e1800]: "\"sample\": \"random\""
+              - generic [ref=e1802]: "}"
+              - generic [ref=e1804]: "}"
+            - button "Copy to clipboard" [ref=e1805] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e1806]
+          - heading "Anchor Query planning" [level=2] [ref=e1807]:
+            - link "Anchor" [ref=e1808] [cursor=pointer]:
+              - /url: "#query-planning"
+              - text: 
+            - text: Query planning
+          - paragraph [ref=e1809]: Depending on the filter used in the search - there are several possible scenarios for query execution. Qdrant chooses one of the query execution options depending on the available indexes, the complexity of the conditions and the cardinality of the filtering result. This process is called query planning.
+          - paragraph [ref=e1810]: "The strategy selection process relies heavily on heuristics and can vary from release to release. However, the general principles are:"
+          - list [ref=e1811]:
+            - listitem [ref=e1812]:
+              - text: planning is performed for each segment independently (see
+              - link "storage" [ref=e1813] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/storage/
+              - text: for more information about segments)
+            - listitem [ref=e1814]: prefer a full scan if the amount of points is below a threshold
+            - listitem [ref=e1815]: estimate the cardinality of a filtered result before selecting a strategy
+            - listitem [ref=e1816]:
+              - text: retrieve points using payload index (see
+              - link "indexing" [ref=e1817] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/indexing/
+              - text: ) if cardinality is below threshold
+            - listitem [ref=e1818]: use filterable vector index if the cardinality is above a threshold
+            - listitem [ref=e1819]: use ACORN when the selectivity (ratio) is low, but the cardinality (an amount) is still high
+          - paragraph [ref=e1820]:
+            - text: You can adjust the threshold using a
+            - link "configuration file" [ref=e1821] [cursor=pointer]:
+              - /url: https://github.com/qdrant/qdrant/blob/master/config/config.yaml
+            - text: ", as well as independently for each collection."
+        - generic [ref=e1822]:
+          - heading "Was this page useful?" [level=5] [ref=e1823]
+          - generic [ref=e1824]:
+            - button "Thumb up icon Yes" [ref=e1825] [cursor=pointer]:
+              - img "Thumb up icon" [ref=e1826]
+              - text: "Yes"
+            - button "Thumb down icon No" [ref=e1827] [cursor=pointer]:
+              - img "Thumb down icon" [ref=e1828]
+              - text: "No"
+      - generic [ref=e1829]:
+        - paragraph [ref=e1830]: "On this page:"
+        - navigation [ref=e1831]:
+          - list [ref=e1832]:
+            - listitem [ref=e1833]:
+              - link "Similarity search" [ref=e1834] [cursor=pointer]:
+                - /url: "#similarity-search"
+              - list [ref=e1835]:
+                - listitem [ref=e1836]:
+                  - link "Query API" [ref=e1837] [cursor=pointer]:
+                    - /url: "#query-api"
+                - listitem [ref=e1838]:
+                  - link "Metrics" [ref=e1839] [cursor=pointer]:
+                    - /url: "#metrics"
+                - listitem [ref=e1840]:
+                  - link "Search API" [ref=e1841] [cursor=pointer]:
+                    - /url: "#search-api"
+                  - list [ref=e1842]:
+                    - listitem [ref=e1843]:
+                      - link "Filtering results by score" [ref=e1844] [cursor=pointer]:
+                        - /url: "#filtering-results-by-score"
+                    - listitem [ref=e1845]:
+                      - link "Payload and vector in the result" [ref=e1846] [cursor=pointer]:
+                        - /url: "#payload-and-vector-in-the-result"
+                    - listitem [ref=e1847]:
+                      - link "ACORN Search Algorithm" [ref=e1848] [cursor=pointer]:
+                        - /url: "#acorn-search-algorithm"
+                - listitem [ref=e1849]:
+                  - link "Batch search API" [ref=e1850] [cursor=pointer]:
+                    - /url: "#batch-search-api"
+                - listitem [ref=e1851]:
+                  - link "Query by ID" [ref=e1852] [cursor=pointer]:
+                    - /url: "#query-by-id"
+                - listitem [ref=e1853]:
+                  - link "Pagination" [ref=e1854] [cursor=pointer]:
+                    - /url: "#pagination"
+                - listitem [ref=e1855]:
+                  - link "Grouping API" [ref=e1856] [cursor=pointer]:
+                    - /url: "#grouping-api"
+                  - list [ref=e1857]:
+                    - listitem [ref=e1858]:
+                      - link "Search groups" [ref=e1859] [cursor=pointer]:
+                        - /url: "#search-groups"
+                    - listitem [ref=e1860]:
+                      - link "Lookup in groups" [ref=e1861] [cursor=pointer]:
+                        - /url: "#lookup-in-groups"
+                - listitem [ref=e1862]:
+                  - link "Random Sampling" [ref=e1863] [cursor=pointer]:
+                    - /url: "#random-sampling"
+                - listitem [ref=e1864]:
+                  - link "Query planning" [ref=e1865] [cursor=pointer]:
+                    - /url: "#query-planning"
+        - list [ref=e1866]:
+          - listitem [ref=e1867]:
+            - link "View as Markdown" [ref=e1868] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/search/search/index.md
+              - img [ref=e1869]
+              - text: View as Markdown
+          - listitem [ref=e1872]:
+            - link "Edit on Github" [ref=e1873] [cursor=pointer]:
+              - /url: https://github.com/qdrant/landing_page/tree/master/qdrant-landing/content/documentation/search/search.md
+              - img [ref=e1874]
+              - text: Edit on Github
+          - listitem [ref=e1877]:
+            - link "Create an issue" [ref=e1878] [cursor=pointer]:
+              - /url: https://github.com/qdrant/landing_page/issues/new/choose
+              - img [ref=e1879]
+              - text: Create an issue
+      - generic [ref=e1882]:
+        - generic [ref=e1883]:
+          - heading "Ready to get started with Qdrant?" [level=4] [ref=e1884]
+          - link "Start Free" [ref=e1885] [cursor=pointer]:
+            - /url: https://qdrant.to/cloud/
+        - generic [ref=e1887]:
+          - generic [ref=e1888]: © 2026 Qdrant.
+          - generic [ref=e1889]:
+            - link "Terms" [ref=e1890] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/terms_and_conditions/
+            - link "Privacy Policy" [ref=e1891] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/privacy-policy/
+            - link "Impressum" [ref=e1892] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/impressum/
+            - link "Recruitment Privacy Policy" [ref=e1893] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal/recruitment-privacy-policy/
+            - link "Cookie Consent" [ref=e1894] [cursor=pointer]:
+              - /url: "#"

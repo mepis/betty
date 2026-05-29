@@ -9,6 +9,7 @@
 | [llama.cpp gRPC Server](topics/llama-cpp-grpc-server/) | 2026-05-29 | Complete | llama.cpp, gRPC, LLM-serving, LocalAI, inference, distributed-inference |
 | [OpenAI Compatible APIs](topics/openai-compatible-apis/) | 2026-05-29 | Complete | openai, api, llm, protocol, llama.cpp, ollama, vllm, litellm, openwebui, mcp, gateway, enterprise |
 | [LLM Harness](topics/llm-harness/) | 2026-05-29 | Complete | llm, agent-harness, orchestration, security, taxonomy, etclovg, mcp, a2a, data-governance, prism |
+| [Qdrant](topics/qdrant/) | 2026-05-29 | Complete | vector-database, qdrant, rust, hybrid-search, hnsw, distributed, embeddings |
 | [RAG Systems](topics/rag-systems/) | 2026-05-29 | Complete | rag, retrieval, embeddings, vector-databases, llm, architecture, evaluation, frameworks |
 
 ## Detail
@@ -99,3 +100,18 @@ Retrieval-Augmented Generation (RAG) is the dominant paradigm for grounding larg
 - BGE-M3 and Voyage-3 are top embedding models for RAG
 - RAGAS provides standardized evaluation without human annotation
 - Agentic and programmatic RAG represent the next frontier
+
+---
+
+## Qdrant
+
+**Date:** 2026-05-29
+
+Qdrant is a vector database written in Rust that provides disk-based storage, strong payload filtering, hybrid search with sparse vectors, and a balance of managed (Qdrant Cloud) and self-hosted deployment options. It is particularly well-suited for production RAG systems that require complex payload filtering and cost-efficient scaling.
+
+**Key findings:**
+- Disk-based storage enables ~10x lower hardware costs than in-memory alternatives
+- Unified indexing (v1.13+) eliminates filtered search performance penalty
+- Sparse vector support enables hybrid search via Reciprocal Rank Fusion
+- Free tier supports up to 8M vectors (with binary quantization)
+- ACORN algorithm (v1.16+) improves filtered search accuracy

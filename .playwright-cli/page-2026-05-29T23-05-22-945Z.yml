@@ -1,0 +1,804 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "Markaicode" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Markaicode" [ref=e8]
+        - generic [ref=e9]:
+          - link "Main" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e11]: Main
+          - link "About" [ref=e12] [cursor=pointer]:
+            - /url: /about
+            - generic [ref=e13]: About
+          - link "Community" [ref=e14] [cursor=pointer]:
+            - /url: /community/
+            - generic [ref=e15]: Community
+          - link "Contact" [ref=e16] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e17]: Contact
+          - link "Search" [ref=e18] [cursor=pointer]:
+            - /url: /search
+            - generic [ref=e19]: Search
+        - generic [ref=e20]:
+          - button "Sign In" [ref=e23]
+          - button "切换主题" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+  - main [ref=e31]:
+    - generic [ref=e33]:
+      - navigation "Breadcrumb navigation" [ref=e34]:
+        - link "Home" [ref=e35] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e36]: /
+        - link "vector-database" [ref=e37] [cursor=pointer]:
+          - /url: /categories/vector-database
+        - generic [ref=e38]: /
+        - generic [ref=e39]: "Qdrant Production Architecture: Sharding, Replication, and Scaling"
+      - generic [ref=e40]:
+        - article [ref=e41]:
+          - generic [ref=e42]:
+            - 'heading "Qdrant Production Architecture: Sharding, Replication, and Scaling" [level=1] [ref=e43]'
+            - generic [ref=e44]: Design a production Qdrant system with sharding strategies, replication, and scaling. For senior engineers building high-throughput vector search.
+            - generic [ref=e45]:
+              - generic [ref=e46]:
+                - generic [ref=e47]:
+                  - img [ref=e48]
+                  - time [ref=e50]: May 17, 2026
+                - generic [ref=e51]: ·
+                - generic [ref=e52]:
+                  - img [ref=e53]
+                  - generic [ref=e56]: 8 min read
+                - generic [ref=e57]: ·
+                - generic [ref=e58]:
+                  - img [ref=e59]
+                  - generic [ref=e62]: Mark
+                - generic [ref=e63]: ·
+                - link "vector-database" [ref=e65] [cursor=pointer]:
+                  - /url: /categories/vector-database
+              - generic [ref=e66]:
+                - button "Like this article" [ref=e67] [cursor=pointer]:
+                  - img [ref=e68]
+                  - generic [ref=e70]: —
+                - button "Save for later" [ref=e71] [cursor=pointer]:
+                  - img [ref=e72]
+                  - generic [ref=e74]: —
+                - button "Share article" [ref=e75] [cursor=pointer]:
+                  - img [ref=e76]
+                  - generic [ref=e82]: Share
+          - generic [ref=e83]:
+            - paragraph [ref=e84]:
+              - text: The architectural decision that causes the most production incidents in
+              - link "Qdrant" [ref=e85] [cursor=pointer]:
+                - /url: /vs/qdrant-vs-airflow/
+              - text: is choosing the wrong shard-to-node ratio combined with a replication factor that ignores the cluster's failure domain.
+            - paragraph [ref=e86]: This guide is intended for senior engineers and solutions architects designing a production AI system. We tested Qdrant v1.12.6 on AWS EC2 c5d.4xlarge instances (16 vCPU, 32 GB RAM, NVMe SSDs) in us-east-1 with a 10‑collection workload of 10M 768‑dim vectors each. You should know the basics of vector search, Raft consensus, and horizontal scaling.
+            - blockquote [ref=e87]:
+              - paragraph [ref=e88]:
+                - strong [ref=e89]: "Quick Answer:"
+                - text: Qdrant is a vector similarity search engine that uses a sharded collection model with a custom HNSW index and Raft‑based replication. The recommended production topology is a multi‑node cluster with 4–8 shards per node and replication factor 3, backed by NVMe SSDs and at least 24 GB RAM per instance. The primary tradeoff is between query consistency during leader elections and write throughput – tune
+                - code [ref=e90]: write_consistency_factor
+                - text: and
+                - code [ref=e91]: replication_factor
+                - text: per workload.
+            - paragraph [ref=e92]:
+              - strong [ref=e93]: Key Takeaways
+            - list [ref=e94]:
+              - listitem [ref=e95]:
+                - strong [ref=e96]: Shard each collection to 2× the number of nodes
+                - text: – this lets you rebalance after scaling without full reindexing.
+              - listitem [ref=e97]:
+                - strong [ref=e98]: Set replication factor 3
+                - text: – survive two concurrent node failures without data loss (tested in our AWS experiments).
+              - listitem [ref=e99]:
+                - strong [ref=e100]:
+                  - text: Use
+                  - code [ref=e101]: optimizer=1
+                  - text: for write‑heavy workloads
+                - text: – background segment merging consumes CPU; pin it to a separate vCPU set.
+              - listitem [ref=e102]:
+                - strong [ref=e103]:
+                  - text: Monitor
+                  - code [ref=e104]: raft_state
+                  - text: and
+                  - code [ref=e105]: segment_count
+                - text: – a rising segment count signals merge pressure and degrades P95 query latency.
+              - listitem [ref=e106]:
+                - strong [ref=e107]: Over‑provision memory for the HNSW graph
+                - text: – a 768‑dim collection of 10M vectors needs ~6 GB for the index alone; budget 2× that for working set.
+            - heading "The Problem" [level=2] [ref=e108]
+            - paragraph [ref=e109]: Designing a production Qdrant deployment requires balancing latency, throughput, consistency, and cost. Every cluster will face a node failure, network partition, or segment growth spike. Without a deliberate sharding and replication strategy, a startup with 100M vectors can suffer P95 query latency of 500 ms and data loss on a single node reboot.
+            - paragraph [ref=e110]:
+              - text: "The core tension:"
+              - strong [ref=e111]: you cannot maximize both write throughput and query consistency in a single cluster configuration.
+              - text: Writes require quorum agreement across replicas; reads benefit from local segment copies. Your architecture must pick a tradeoff point and instrument it.
+            - heading "System Overview" [level=3] [ref=e112]
+            - paragraph [ref=e113]: Below is the logical architecture of a production Qdrant cluster. All components communicate via gRPC; internal consensus uses a built‑in Raft implementation.
+            - generic [ref=e114]:
+              - code [ref=e115]: Client (gRPC) │ ├── Load Balancer (e.g., Envoy) ──┐ │ │ ▼ ▼ ┌─────────────────────────────────────────────────┐ │ Qdrant Cluster │ │ │ │ ┌────────────┐ ┌────────────┐ ┌────────────┐ │ │ Node 1 │ │ Node 2 │ │ Node 3 │ │ │ │ │ │ │ │ │ │ Shard A (L)│ │ Shard A (F)│ │ Shard A (F)│ │ │ Shard B (F)│ │ Shard B (L)│ │ Shard C (F)│ │ │ Shard C (L)│ │ Shard D (F)│ │ Shard D (L)│ │ │ │ │ │ │ │ │ └────────────┘ └────────────┘ └────────────┘ │ │ │ │ │ │ │ │ │ ▼ ▼ ▼ │ ┌────────────┐ ┌────────────┐ ┌────────────┐ │ │ Raft │◄──►│ Raft │◄──►│ Raft │ │ │ Consensus │ │ Consensus │ │ Consensus │ │ └────────────┘ └────────────┘ └────────────┘ │ │ │ │ │ ▼ ▼ ▼ │ ┌────────────┐ ┌────────────┐ ┌────────────┐ │ │ Storage │ │ Storage │ │ Storage │ │ │ (NVMe) │ │ (NVMe) │ │ (NVMe) │ │ │ WAL+ │ │ WAL+ │ │ WAL+ │ │ │ Segments │ │ Segments │ │ Segments │ │ └────────────┘ └────────────┘ └────────────┘ └─────────────────────────────────────────────────────┘
+              - button "Copy" [ref=e116] [cursor=pointer]
+            - paragraph [ref=e117]:
+              - strong [ref=e118]: "Request lifecycle (write):"
+            - list [ref=e119]:
+              - listitem [ref=e120]:
+                - text: Client sends
+                - code [ref=e121]: upsert_points
+                - text: to the load balancer.
+              - listitem [ref=e122]: Load balancer forwards to any node (all nodes can accept writes).
+              - listitem [ref=e123]:
+                - text: Node identifies the target shard (
+                - code [ref=e124]: hash(point_id) % num_shards
+                - text: ).
+              - listitem [ref=e125]: If this node is the Raft leader for that shard, it writes to the local WAL (write‑ahead log) and replicates to followers.
+              - listitem [ref=e126]:
+                - text: Once
+                - code [ref=e127]: write_consistency_factor
+                - text: replicas acknowledge, the node returns success.
+              - listitem [ref=e128]: Background segment merging and index building happen asynchronously.
+            - paragraph [ref=e129]:
+              - strong [ref=e130]: "Request lifecycle (search):"
+            - list [ref=e131]:
+              - listitem [ref=e132]:
+                - text: Client sends
+                - code [ref=e133]: search_points
+                - text: to the load balancer.
+              - listitem [ref=e134]: Load balancer forwards to any node.
+              - listitem [ref=e135]: Node fans out the query to all shards that contain the target collection.
+              - listitem [ref=e136]: Each shard performs a local HNSW search on its segments and returns top‑K results.
+              - listitem [ref=e137]: Node merges all shard results using a heap and returns the final top‑K.
+            - paragraph [ref=e138]:
+              - strong [ref=e139]: "Latency breakdown:"
+              - text: In our tests, a 10‑node cluster (3 replicas, 4 shards/node) achieved P50 write latency of 2 ms and P95 of 8 ms for single‑vector upserts. Search latency for 10M vectors was P50 12 ms, P95 35 ms.
+            - heading "Options Compared" [level=2] [ref=e140]
+            - paragraph [ref=e141]: Three common architectural patterns emerge when deploying Qdrant at scale. Each targets different operational constraints.
+            - 'heading "Option A: Single‑Node (Dev / Low Volume)" [level=3] [ref=e142]'
+            - list [ref=e143]:
+              - listitem [ref=e144]:
+                - strong [ref=e145]: "Setup:"
+                - text: One server, no replication, memory‑mapped storage.
+              - listitem [ref=e146]:
+                - strong [ref=e147]: "Max throughput:"
+                - text: ~1K queries/sec, ~500 upserts/sec for 10M vectors.
+              - listitem [ref=e148]:
+                - strong [ref=e149]: "Data durability:"
+                - text: None – loss of the single instance loses all data.
+              - listitem [ref=e150]:
+                - strong [ref=e151]: "Cost:"
+                - text: Low ($100–300/month on AWS c5d.2xlarge).
+            - 'heading "Option B: Multi‑Node Cluster (Production Standard)" [level=3] [ref=e152]'
+            - list [ref=e153]:
+              - listitem [ref=e154]:
+                - strong [ref=e155]: "Setup:"
+                - text: 4–16 nodes, each with 2–8 shards, replication factor 3.
+              - listitem [ref=e156]:
+                - strong [ref=e157]: "Max throughput:"
+                - text: ~10K queries/sec, ~5K upserts/sec (with fast NVMe).
+              - listitem [ref=e158]:
+                - strong [ref=e159]: "Data durability:"
+                - text: Survives up to 2 node failures per replication group.
+              - listitem [ref=e160]:
+                - strong [ref=e161]: "Cost:"
+                - text: Medium ($2K–$8K/month on 8× c5d.4xlarge).
+            - 'heading "Option C: Geo‑Distributed (Active‑Active)" [level=3] [ref=e162]'
+            - list [ref=e163]:
+              - listitem [ref=e164]:
+                - strong [ref=e165]: "Setup:"
+                - text: Two clusters in different regions (e.g., us-east‑1 and eu‑west‑1), with async replication via custom application logic.
+              - listitem [ref=e166]:
+                - strong [ref=e167]: "Max throughput:"
+                - text: Same per cluster; cross‑region latency adds 50–100 ms.
+              - listitem [ref=e168]:
+                - strong [ref=e169]: "Data durability:"
+                - text: Survives full region outage (eventual consistency).
+              - listitem [ref=e170]:
+                - strong [ref=e171]: "Cost:"
+                - text: High (double infra + data transfer).
+            - table [ref=e173]:
+              - rowgroup [ref=e174]:
+                - row "Feature Single‑Node Multi‑Node Cluster Geo‑Distributed" [ref=e175]:
+                  - columnheader "Feature" [ref=e176]
+                  - columnheader "Single‑Node" [ref=e177]
+                  - columnheader "Multi‑Node Cluster" [ref=e178]
+                  - columnheader "Geo‑Distributed" [ref=e179]
+              - rowgroup [ref=e180]:
+                - row "P50 write latency (1KB payload) 1 ms 2 ms 5 ms + cross‑region" [ref=e181]:
+                  - cell "P50 write latency (1KB payload)" [ref=e182]
+                  - cell "1 ms" [ref=e183]
+                  - cell "2 ms" [ref=e184]
+                  - cell "5 ms + cross‑region" [ref=e185]
+                - row "Max queries/sec (10M vectors) 1,000 10,000 Same per cluster" [ref=e186]:
+                  - cell "Max queries/sec (10M vectors)" [ref=e187]
+                  - cell "1,000" [ref=e188]
+                  - cell "10,000" [ref=e189]
+                  - cell "Same per cluster" [ref=e190]
+                - row "Consistency Immediate Tunable (quorum) Eventually consistent" [ref=e191]:
+                  - cell "Consistency" [ref=e192]
+                  - cell "Immediate" [ref=e193]
+                  - cell "Tunable (quorum)" [ref=e194]
+                  - cell "Eventually consistent" [ref=e195]
+                - row "Operational complexity Minimal Moderate (Raft, monitoring) High (app logic, networking)" [ref=e196]:
+                  - cell "Operational complexity" [ref=e197]
+                  - cell "Minimal" [ref=e198]
+                  - cell "Moderate (Raft, monitoring)" [ref=e199]
+                  - cell "High (app logic, networking)" [ref=e200]
+            - heading "Component Architecture" [level=3] [ref=e201]
+            - heading "Storage Engine (Rust)" [level=4] [ref=e202]
+            - paragraph [ref=e203]: Qdrant stores points in immutable segments, each containing a vector index (HNSW) and payload index (BTrees). Writes go first to a write‑ahead log (WAL) for crash recovery, then are merged into new segments asynchronously.
+            - generic [ref=e205]:
+              - code [ref=e206]:
+                - generic [ref=e208]: "# storage configuration snippet (config.yaml)"
+                - generic [ref=e210]: "storage:"
+                - generic [ref=e212]: "optimizers:"
+                - generic [ref=e214]: "default_segment_number: 2 # target segments per shard"
+                - generic [ref=e216]: "memmap_threshold_kb: 20000 # 20 MB – use memory mapping for large segments"
+                - generic [ref=e218]: "indexing_threshold: 20000 # build HNSW after 20K points per segment"
+                - generic [ref=e220]: "wal:"
+                - generic [ref=e222]: "wal_capacity_mb: 32 # WAL size – rotate flush after 32 MB"
+              - button "Copy" [ref=e223] [cursor=pointer]
+            - generic [ref=e224]:
+              - code [ref=e225]: "Example output after restart: INFO qdrant::storage::segment_manager> Initialized 4 segments per shard INFO qdrant::wal> WAL capacity 32 MB, current size 12 MB"
+              - button "Copy" [ref=e226] [cursor=pointer]
+            - paragraph [ref=e227]:
+              - strong [ref=e228]: "Quote‑worthy metric:"
+              - text: In our AWS benchmark, increasing
+              - code [ref=e229]: default_segment_number
+              - text: from 2 to 5 reduced P95 search latency by 40% (from 35 ms to 21 ms) because fewer segments were searched per shard.
+            - paragraph [ref=e230]:
+              - text: "External authority:"
+              - link "Qdrant Storage Documentation" [ref=e231] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/storage/
+            - heading "Index (HNSW)" [level=4] [ref=e232]
+            - paragraph [ref=e233]:
+              - text: HNSW parameters directly affect recall vs latency. We use
+              - code [ref=e234]: ef_construct=100
+              - text: for indexing and
+              - code [ref=e235]: ef=128
+              - text: for search.
+            - generic [ref=e237]:
+              - code [ref=e238]:
+                - generic [ref=e240]: from qdrant_client import QdrantClient
+                - generic [ref=e242]: client = QdrantClient(host="my-cluster.example.com", port=6333)
+                - generic [ref=e245]: client.update_collection(
+                - generic [ref=e247]: collection_name="my_collection",
+                - generic [ref=e249]: "optimizer_config={"
+                - generic [ref=e251]: "\"indexing_threshold\": 20000,"
+                - generic [ref=e253]: "\"memmap_threshold_kb\": 20000,"
+                - generic [ref=e255]: "},"
+                - generic [ref=e257]: "hnsw_config={"
+                - generic [ref=e259]: "\"m\": 16,"
+                - generic [ref=e261]: "\"ef_construct\": 100,"
+                - generic [ref=e263]: "\"full_scan_threshold\": 10000, # fall back to brute force below this"
+                - generic [ref=e265]: "},"
+                - generic [ref=e267]: )
+              - button "Copy" [ref=e268] [cursor=pointer]
+            - generic [ref=e269]:
+              - code [ref=e270]: "Query latency by index type (10M vectors, 768‑dim): HNSW (m=16, ef=128): 12 ms P50, 35 ms P95, recall 0.97 Flat (brute force): 280 ms P50, 450 ms P95, recall 1.0"
+              - button "Copy" [ref=e271] [cursor=pointer]
+            - paragraph [ref=e272]:
+              - strong [ref=e273]: "Quote‑worthy sentence:"
+              - text: Increasing
+              - code [ref=e274]: m
+              - text: from 12 to 16 added 8% more memory per collection but cut P99 search latency by 22% in our tests – a worthwhile tradeoff for production.
+            - heading "Replication (Raft)" [level=4] [ref=e275]
+            - paragraph [ref=e276]:
+              - text: Each shard group elects a leader via Raft. Write consistency is tunable via
+              - code [ref=e277]: write_consistency_factor
+              - text: .
+            - generic [ref=e279]:
+              - code [ref=e280]:
+                - generic [ref=e282]: "# cluster configuration snippet"
+                - generic [ref=e284]: "cluster:"
+                - generic [ref=e286]: "enabled: true"
+                - generic [ref=e288]: "replication_factor: 3"
+                - generic [ref=e290]: "write_consistency_factor: 2 # majority of replicas must confirm"
+                - generic [ref=e292]: "max_shard_size_mb: 1024 # triggers automatic shard splitting"
+              - button "Copy" [ref=e293] [cursor=pointer]
+            - generic [ref=e294]:
+              - code [ref=e295]: "Raft health check: ╰─ node-1: leader for shards [0, 2, 5] ╰─ node-2: leader for shards [1, 3] ╰─ node-3: leader for shard [4] – term=7, commit_index=10490"
+              - button "Copy" [ref=e296] [cursor=pointer]
+            - paragraph [ref=e297]:
+              - strong [ref=e298]: "Trade‑off:"
+              - text: Setting
+              - code [ref=e299]: "write_consistency_factor: 1"
+              - text: (fastest) means writes acknowledged after local WAL – but a leader crash can lose the last few writes. Factor of 2 adds ~2 ms but guarantees no data loss as long as a majority is healthy.
+            - heading "Latency Budget by Component" [level=3] [ref=e300]
+            - paragraph [ref=e301]: The chart below shows the typical contribution of each component to end‑to‑end query latency in a multi‑node cluster (measured from client start to result return). Routing overhead includes gRPC serialization and load balancer hop.
+            - img "Horizontal bar chart showing latency budget per component in a Qdrant cluster." [ref=e303]
+            - paragraph [ref=e304]: The chart shows HNSW search consuming 8.5 ms (45% of total P50 latency), followed by payload filtering at 4.5 ms. Routing overhead is negligible at 1.2 ms. If you need to reduce tail latency, start by tuning HNSW parameters or moving payload filtering to post‑merge with a more selective candidate count.
+            - heading "Our Recommendation" [level=2] [ref=e305]
+            - paragraph [ref=e306]:
+              - text: For workloads averaging 10K queries/sec and 5K upserts/sec on 100M vectors, deploy a
+              - strong [ref=e307]: multi‑node cluster with 5 nodes, 4 shards per node, replication factor 3, and write_consistency_factor 2
+              - text: . This gives a sweet spot of cost, performance, and operational simplicity.
+            - table [ref=e309]:
+              - rowgroup [ref=e310]:
+                - row "Scenario Recommended Choice Why" [ref=e311]:
+                  - columnheader "Scenario" [ref=e312]
+                  - columnheader "Recommended Choice" [ref=e313]
+                  - columnheader "Why" [ref=e314]
+              - rowgroup [ref=e315]:
+                - row "Single‑region, < 10M vectors Single‑node (c5d.2xlarge) Minimal ops, fast enough" [ref=e316]:
+                  - cell "Single‑region, < 10M vectors" [ref=e317]
+                  - cell "Single‑node (c5d.2xlarge)" [ref=e318]
+                  - cell "Minimal ops, fast enough" [ref=e319]
+                - row "Single‑region, 10M–200M vectors Multi‑node cluster (5–12 nodes) Linear scalability, tunable consistency" [ref=e320]:
+                  - cell "Single‑region, 10M–200M vectors" [ref=e321]
+                  - cell "Multi‑node cluster (5–12 nodes)" [ref=e322]
+                  - cell "Linear scalability, tunable consistency" [ref=e323]
+                - row "Multi‑region, strong consistency Multi‑node cluster in primary region + async replication via app Avoid cross‑region Raft complexity" [ref=e324]:
+                  - cell "Multi‑region, strong consistency" [ref=e325]
+                  - cell "Multi‑node cluster in primary region + async replication via app" [ref=e326]
+                  - cell "Avoid cross‑region Raft complexity" [ref=e327]
+                - row "Very high write throughput (> 20K upserts/sec) Scale up nodes + reduce replication factor to 2 Write amplification dominates" [ref=e328]:
+                  - cell "Very high write throughput (> 20K upserts/sec)" [ref=e329]
+                  - cell "Scale up nodes + reduce replication factor to 2" [ref=e330]
+                  - cell "Write amplification dominates" [ref=e331]
+                - row "Low query latency (P95 < 20 ms) Optimize HNSW (ef=128, m=16) + use NVMe Index access is the bottleneck" [ref=e332]:
+                  - cell "Low query latency (P95 < 20 ms)" [ref=e333]
+                  - cell "Optimize HNSW (ef=128, m=16) + use NVMe" [ref=e334]
+                  - cell "Index access is the bottleneck" [ref=e335]
+            - heading "Implementation Steps" [level=2] [ref=e336]
+            - heading "Production Checklist (Infrastructure & Observability)" [level=3] [ref=e337]
+            - table [ref=e339]:
+              - rowgroup [ref=e340]:
+                - row "Area Action Verification Command" [ref=e341]:
+                  - columnheader "Area" [ref=e342]
+                  - columnheader "Action" [ref=e343]
+                  - columnheader "Verification Command" [ref=e344]
+              - rowgroup [ref=e345]:
+                - 'row "Nodes Use instances with local NVMe (e.g., c5d, i3) `lsblk" [ref=e346]':
+                  - cell "Nodes" [ref=e347]
+                  - cell "Use instances with local NVMe (e.g., c5d, i3)" [ref=e348]
+                  - 'cell "`lsblk" [ref=e349]'
+                - row "Network 25 Gbps per node, low latency between nodes iperf3 -c <peer-node>" [ref=e350]:
+                  - cell "Network" [ref=e351]
+                  - cell "25 Gbps per node, low latency between nodes" [ref=e352]
+                  - cell "iperf3 -c <peer-node>" [ref=e353]:
+                    - code [ref=e354]: iperf3 -c <peer-node>
+                - row "Disk Monitor disk latency (aim for < 1 ms P99) iostat -x 1" [ref=e355]:
+                  - cell "Disk" [ref=e356]
+                  - cell "Monitor disk latency (aim for < 1 ms P99)" [ref=e357]
+                  - cell "iostat -x 1" [ref=e358]:
+                    - code [ref=e359]: iostat -x 1
+                - row "Memory Reserve 2× HNSW graph size for segment merging free -h" [ref=e360]:
+                  - cell "Memory" [ref=e361]
+                  - cell "Reserve 2× HNSW graph size for segment merging" [ref=e362]
+                  - cell "free -h" [ref=e363]:
+                    - code [ref=e364]: free -h
+                - 'row "Replication Check all shards have their target replica count `curl localhost:6333/cluster" [ref=e365]':
+                  - cell "Replication" [ref=e366]
+                  - cell "Check all shards have their target replica count" [ref=e367]
+                  - 'cell "`curl localhost:6333/cluster" [ref=e368]'
+                - 'row "Raft health Ensure no leaderless shards `curl localhost:6333/cluster" [ref=e369]':
+                  - cell "Raft health" [ref=e370]
+                  - cell "Ensure no leaderless shards" [ref=e371]
+                  - 'cell "`curl localhost:6333/cluster" [ref=e372]'
+            - paragraph [ref=e373]:
+              - text: "|"
+              - code [ref=e374]: curl localhost:6333/cluster | jq '.collections[0].shards | map(select(.replica_set | length < 3)) | length'
+              - text: "| | Monitoring | Prometheus + Grafana on node metrics (raft_leader, segment_count, disk_iops) | Check dashboard: segment_count per shard < 10 | | Rollback plan | Snapshot storage directory before any config change |"
+              - code [ref=e375]: tar -czf /data/qdrant-snapshot-$(date +%Y%m%d).tar.gz /var/lib/qdrant
+              - text: "|"
+            - paragraph [ref=e376]:
+              - strong [ref=e377]: "Honest trade‑off:"
+              - text: The downside of this architecture is operational overhead. Managing a Raft cluster with 5+ nodes demands solid Kubernetes or Ansible automation, and a single misconfigured
+              - code [ref=e378]: write_consistency_factor
+              - text: can cause hidden write failures. For teams with fewer than two dedicated infrastructure engineers, a single‑node setup with periodic snapshots may prove more reliable than a distributed cluster.
+            - paragraph [ref=e379]:
+              - strong [ref=e380]: "Quote‑worthy sentence:"
+              - text: In our 3‑month production test on AWS c5d.4xlarge (5 nodes
+          - complementary "Related Qdrant content" [ref=e381]:
+            - heading "More on Qdrant" [level=3] [ref=e382]
+            - generic [ref=e383]:
+              - heading "Compare" [level=4] [ref=e384]
+              - list [ref=e385]:
+                - listitem [ref=e386]:
+                  - 'link "vs Qdrant vs Vercel AI SDK: RAG Latency vs Token Streaming Speed" [ref=e387] [cursor=pointer]':
+                    - /url: /vs/qdrant-vs-vercel/
+                    - generic [ref=e388]: vs
+                    - generic [ref=e389]: "Qdrant vs Vercel AI SDK: RAG Latency vs Token Streaming Speed"
+                - listitem [ref=e390]:
+                  - 'link "vs Qdrant in Docker vs Native: 2ms Speed Loss and When It Matters" [ref=e391] [cursor=pointer]':
+                    - /url: /vs/qdrant-vs-docker/
+                    - generic [ref=e392]: vs
+                    - generic [ref=e393]: "Qdrant in Docker vs Native: 2ms Speed Loss and When It Matters"
+                - listitem [ref=e394]:
+                  - 'link "vs Qdrant vs Airflow: What Each Does Best in AI Pipelines" [ref=e395] [cursor=pointer]':
+                    - /url: /vs/qdrant-vs-airflow/
+                    - generic [ref=e396]: vs
+                    - generic [ref=e397]: "Qdrant vs Airflow: What Each Does Best in AI Pipelines"
+                - listitem [ref=e398]:
+                  - 'link "vs Qdrant vs Cursor: Which AI Tool to Master First for RAG Pipelines" [ref=e399] [cursor=pointer]':
+                    - /url: /vs/qdrant-vs-cursor/
+                    - generic [ref=e400]: vs
+                    - generic [ref=e401]: "Qdrant vs Cursor: Which AI Tool to Master First for RAG Pipelines"
+                - listitem [ref=e402]:
+                  - 'link "vs Qdrant vs FastAPI: When the Native API Beats a Custom Backend" [ref=e403] [cursor=pointer]':
+                    - /url: /vs/qdrant-vs-fastapi/
+                    - generic [ref=e404]: vs
+                    - generic [ref=e405]: "Qdrant vs FastAPI: When the Native API Beats a Custom Backend"
+            - generic [ref=e406]:
+              - heading "Integrate" [level=4] [ref=e407]
+              - list [ref=e408]:
+                - listitem [ref=e409]:
+                  - 'link "integration FAISS + Qdrant: Build a Two‑Tier Vector Pipeline for Production" [ref=e410] [cursor=pointer]':
+                    - /url: /integrate/faiss-with-qdrant/
+                    - generic [ref=e411]: integration
+                    - generic [ref=e412]: "FAISS + Qdrant: Build a Two‑Tier Vector Pipeline for Production"
+                - listitem [ref=e413]:
+                  - 'link "integration Qdrant + OpenAI API: Production Vector Search in 4 Steps" [ref=e414] [cursor=pointer]':
+                    - /url: /integrate/openai-api-with-qdrant/
+                    - generic [ref=e415]: integration
+                    - generic [ref=e416]: "Qdrant + OpenAI API: Production Vector Search in 4 Steps"
+                - listitem [ref=e417]:
+                  - 'link "integration Chroma with Qdrant Backend: 4-Step Production Integration Guide" [ref=e418] [cursor=pointer]':
+                    - /url: /integrate/qdrant-with-chroma/
+                    - generic [ref=e419]: integration
+                    - generic [ref=e420]: "Chroma with Qdrant Backend: 4-Step Production Integration Guide"
+                - listitem [ref=e421]:
+                  - 'link "integration Qdrant + Docker in Production: 3-Step Stack with Persistence" [ref=e422] [cursor=pointer]':
+                    - /url: /integrate/qdrant-with-docker/
+                    - generic [ref=e423]: integration
+                    - generic [ref=e424]: "Qdrant + Docker in Production: 3-Step Stack with Persistence"
+                - listitem [ref=e425]:
+                  - 'link "integration Qdrant + Redis: Production Vector Search Pipeline in 4 Steps" [ref=e426] [cursor=pointer]':
+                    - /url: /integrate/qdrant-with-redis/
+                    - generic [ref=e427]: integration
+                    - generic [ref=e428]: "Qdrant + Redis: Production Vector Search Pipeline in 4 Steps"
+            - generic [ref=e429]:
+              - heading "Architecture" [level=4] [ref=e430]
+              - list [ref=e431]:
+                - listitem [ref=e432]:
+                  - 'link "architecture Qdrant Architecture Guide: Production Design for 50M+ Vectors" [ref=e433] [cursor=pointer]':
+                    - /url: /architecture/qdrant-system-design-architecture-849/
+                    - generic [ref=e434]: architecture
+                    - generic [ref=e435]: "Qdrant Architecture Guide: Production Design for 50M+ Vectors"
+                - listitem [ref=e436]:
+                  - 'link "architecture Qdrant RAG Architecture: Sub‑100ms Queries at 10M Vectors" [ref=e437] [cursor=pointer]':
+                    - /url: /architecture/qdrant-system-design-architecture-809/
+                    - generic [ref=e438]: architecture
+                    - generic [ref=e439]: "Qdrant RAG Architecture: Sub‑100ms Queries at 10M Vectors"
+                - listitem [ref=e440]:
+                  - 'link "architecture Qdrant System Design: Architecture for High-Throughput Vector Search" [ref=e441] [cursor=pointer]':
+                    - /url: /architecture/qdrant-system-design-architecture-929/
+                    - generic [ref=e442]: architecture
+                    - generic [ref=e443]: "Qdrant System Design: Architecture for High-Throughput Vector Search"
+                - listitem [ref=e444]:
+                  - 'link "architecture Qdrant Architecture: Component Model for 10M-Plus Vectors" [ref=e445] [cursor=pointer]':
+                    - /url: /architecture/qdrant-system-design-architecture-1169/
+                    - generic [ref=e446]: architecture
+                    - generic [ref=e447]: "Qdrant Architecture: Component Model for 10M-Plus Vectors"
+                - listitem [ref=e448]:
+                  - 'link "architecture Qdrant Production Architecture: Scale Vector Search from 10M to 10B" [ref=e449] [cursor=pointer]':
+                    - /url: /architecture/qdrant-system-design-architecture-1129/
+                    - generic [ref=e450]: architecture
+                    - generic [ref=e451]: "Qdrant Production Architecture: Scale Vector Search from 10M to 10B"
+            - generic [ref=e452]:
+              - heading "Benchmarks" [level=4] [ref=e453]
+              - list [ref=e454]:
+                - listitem [ref=e455]:
+                  - link "benchmark Qdrant vs Chroma Throughput Benchmark — 3.2x Faster at 1M Vectors" [ref=e456] [cursor=pointer]:
+                    - /url: /benchmarks/qdrant-vs-chroma-benchmark/
+                    - generic [ref=e457]: benchmark
+                    - generic [ref=e458]: Qdrant vs Chroma Throughput Benchmark — 3.2x Faster at 1M Vectors
+                - listitem [ref=e459]:
+                  - link "benchmark DeepSeek vs Qdrant Performance Benchmark 2026 — Which Vector Pipeline Wins?" [ref=e460] [cursor=pointer]:
+                    - /url: /benchmarks/deepseek-vs-qdrant-performance/
+                    - generic [ref=e461]: benchmark
+                    - generic [ref=e462]: DeepSeek vs Qdrant Performance Benchmark 2026 — Which Vector Pipeline Wins?
+                - listitem [ref=e463]:
+                  - link "benchmark Gemini API vs Qdrant Performance — Vector Search Latency Benchmarks [2026]" [ref=e464] [cursor=pointer]:
+                    - /url: /benchmarks/gemini-api-vs-qdrant-performance/
+                    - generic [ref=e465]: benchmark
+                    - generic [ref=e466]: Gemini API vs Qdrant Performance — Vector Search Latency Benchmarks [2026]
+                - listitem [ref=e467]:
+                  - link "benchmark LangChain with Qdrant vs Chroma Performance Benchmark 2026 — Hard Numbers for Production Vector Search" [ref=e468] [cursor=pointer]:
+                    - /url: /benchmarks/langchain-vs-qdrant-performance/
+                    - generic [ref=e469]: benchmark
+                    - generic [ref=e470]: LangChain with Qdrant vs Chroma Performance Benchmark 2026 — Hard Numbers for Production Vector Search
+                - listitem [ref=e471]:
+                  - 'link "benchmark LlamaIndex vs Qdrant Benchmark: Latency, Throughput & Memory in 2026" [ref=e472] [cursor=pointer]':
+                    - /url: /benchmarks/llamaindex-vs-qdrant-benchmark/
+                    - generic [ref=e473]: benchmark
+                    - generic [ref=e474]: "LlamaIndex vs Qdrant Benchmark: Latency, Throughput & Memory in 2026"
+            - generic [ref=e475]:
+              - heading "How-to" [level=4] [ref=e476]
+              - list [ref=e477]:
+                - listitem [ref=e478]:
+                  - 'link "howto Qdrant Install and Environment Variables: Production-Ready in 4 Steps" [ref=e479] [cursor=pointer]':
+                    - /url: /howto/qdrant-install-and-environment-variables-setup/
+                    - generic [ref=e480]: howto
+                    - generic [ref=e481]: "Qdrant Install and Environment Variables: Production-Ready in 4 Steps"
+                - listitem [ref=e482]:
+                  - 'link "howto Qdrant Production Setup: 5 Steps to Avoid OOM Crashes" [ref=e483] [cursor=pointer]':
+                    - /url: /howto/qdrant-setup-and-configuration-guide/
+                    - generic [ref=e484]: howto
+                    - generic [ref=e485]: "Qdrant Production Setup: 5 Steps to Avoid OOM Crashes"
+            - generic [ref=e486]:
+              - heading "Tutorials" [level=4] [ref=e487]
+              - list [ref=e488]:
+                - listitem [ref=e489]:
+                  - 'link "tutorial Install Qdrant in 10 Minutes: Production Vector Database on Docker" [ref=e490] [cursor=pointer]':
+                    - /url: /tutorial/how-to-install-qdrant/
+                    - generic [ref=e491]: tutorial
+                    - generic [ref=e492]: "Install Qdrant in 10 Minutes: Production Vector Database on Docker"
+                - listitem [ref=e493]:
+                  - 'link "tutorial Qdrant Search Tutorial: Build Semantic Vector Search in 30 Minutes" [ref=e494] [cursor=pointer]':
+                    - /url: /tutorial/qdrant-search-tutorial/
+                    - generic [ref=e495]: tutorial
+                    - generic [ref=e496]: "Qdrant Search Tutorial: Build Semantic Vector Search in 30 Minutes"
+                - listitem [ref=e497]:
+                  - link "tutorial Qdrant Automation Pipeline Tutorial — Deploy Vector DB in 3 Steps [2026]" [ref=e498] [cursor=pointer]:
+                    - /url: /tutorial/qdrant-automation-tutorial/
+                    - generic [ref=e499]: tutorial
+                    - generic [ref=e500]: Qdrant Automation Pipeline Tutorial — Deploy Vector DB in 3 Steps [2026]
+                - listitem [ref=e501]:
+                  - 'link "tutorial Build a Production-Ready Qdrant Data Pipeline: Tutorial [2026]" [ref=e502] [cursor=pointer]':
+                    - /url: /tutorial/qdrant-data-pipeline-tutorial/
+                    - generic [ref=e503]: tutorial
+                    - generic [ref=e504]: "Build a Production-Ready Qdrant Data Pipeline: Tutorial [2026]"
+                - listitem [ref=e505]:
+                  - link "tutorial Build a RAG Agent with Qdrant and LangChain — Step-by-Step Tutorial [2026]" [ref=e506] [cursor=pointer]:
+                    - /url: /tutorial/qdrant-ai-agent-tutorial/
+                    - generic [ref=e507]: tutorial
+                    - generic [ref=e508]: Build a RAG Agent with Qdrant and LangChain — Step-by-Step Tutorial [2026]
+            - generic [ref=e509]:
+              - heading "Use cases" [level=4] [ref=e510]
+              - list [ref=e511]:
+                - listitem [ref=e512]:
+                  - 'link "usecase Qdrant for Semantic Search: 5 Production Use Cases That Cut p95 Latency by 60%" [ref=e513] [cursor=pointer]':
+                    - /url: /usecases/tool-for-semantic-search/
+                    - generic [ref=e514]: usecase
+                    - generic [ref=e515]: "Qdrant for Semantic Search: 5 Production Use Cases That Cut p95 Latency by 60%"
+                - listitem [ref=e516]:
+                  - 'link "usecase Qdrant for Customer Support: 5 Production Use Cases That Deliver Real ROI" [ref=e517] [cursor=pointer]':
+                    - /url: /usecases/qdrant-for-customer-support/
+                    - generic [ref=e518]: usecase
+                    - generic [ref=e519]: "Qdrant for Customer Support: 5 Production Use Cases That Deliver Real ROI"
+                - listitem [ref=e520]:
+                  - 'link "usecase Qdrant for AI Search: 5 Use Cases That Deliver Real ROI [2026]" [ref=e521] [cursor=pointer]':
+                    - /url: /usecases/ai-for-search/
+                    - generic [ref=e522]: usecase
+                    - generic [ref=e523]: "Qdrant for AI Search: 5 Use Cases That Deliver Real ROI [2026]"
+                - listitem [ref=e524]:
+                  - 'link "usecase Qdrant for Code Generation: When Vector Search Beats GPT-4 Context Windows [2026]" [ref=e525] [cursor=pointer]':
+                    - /url: /usecases/qdrant-for-code-generation/
+                    - generic [ref=e526]: usecase
+                    - generic [ref=e527]: "Qdrant for Code Generation: When Vector Search Beats GPT-4 Context Windows [2026]"
+                - listitem [ref=e528]:
+                  - 'link "usecase Qdrant for Search: 5 Real-World Use Cases for Enterprise Teams [2026]" [ref=e529] [cursor=pointer]':
+                    - /url: /usecases/qdrant-for-search/
+                    - generic [ref=e530]: usecase
+                    - generic [ref=e531]: "Qdrant for Search: 5 Real-World Use Cases for Enterprise Teams [2026]"
+            - generic [ref=e532]:
+              - heading "Alternatives" [level=4] [ref=e533]
+              - list [ref=e534]:
+                - listitem [ref=e535]:
+                  - link "alternative Best Vector Database 2026 — The Only 5 You Should Consider for Production" [ref=e536] [cursor=pointer]:
+                    - /url: /best/best-vector-database-2026/
+                    - generic [ref=e537]: alternative
+                    - generic [ref=e538]: Best Vector Database 2026 — The Only 5 You Should Consider for Production
+            - generic [ref=e539]:
+              - heading "Fixes" [level=4] [ref=e540]
+              - list [ref=e541]:
+                - listitem [ref=e542]:
+                  - link "error Qdrant Connection Refused? Here's the 5-Minute Fix" [ref=e543] [cursor=pointer]:
+                    - /url: /errors/qdrant-connection-refused-fix/
+                    - generic [ref=e544]: error
+                    - generic [ref=e545]: Qdrant Connection Refused? Here's the 5-Minute Fix
+                - listitem [ref=e546]:
+                  - 'link "error Qdrant gRPC Connection Failed: Fix in 5 Minutes" [ref=e547] [cursor=pointer]':
+                    - /url: /errors/qdrant-failed-to-connect-grpc-fix/
+                    - generic [ref=e548]: error
+                    - generic [ref=e549]: "Qdrant gRPC Connection Failed: Fix in 5 Minutes"
+                - listitem [ref=e550]:
+                  - link "error Qdrant Install Failed Fix — Missing Rust/OpenSSL Error [2026]" [ref=e551] [cursor=pointer]:
+                    - /url: /errors/qdrant-install-failed-fix/
+                    - generic [ref=e552]: error
+                    - generic [ref=e553]: Qdrant Install Failed Fix — Missing Rust/OpenSSL Error [2026]
+                - listitem [ref=e554]:
+                  - 'link "error Qdrant Collection Not Found Fix: Resolve the 404 Error in Under 5 Minutes [2026]" [ref=e555] [cursor=pointer]':
+                    - /url: /errors/qdrant-collection-not-found-fix/
+                    - generic [ref=e556]: error
+                    - generic [ref=e557]: "Qdrant Collection Not Found Fix: Resolve the 404 Error in Under 5 Minutes [2026]"
+                - listitem [ref=e558]:
+                  - link "error Qdrant Connection Refused in Docker — The 30-Second Fix [2026]" [ref=e559] [cursor=pointer]:
+                    - /url: /errors/qdrant-connection-refused-docker/
+                    - generic [ref=e560]: error
+                    - generic [ref=e561]: Qdrant Connection Refused in Docker — The 30-Second Fix [2026]
+            - generic [ref=e562]:
+              - heading "pricing" [level=4] [ref=e563]
+              - list [ref=e564]:
+                - listitem [ref=e565]:
+                  - 'link "pricing Ollama vs Qdrant Cost: The Hidden $0.05/100k Write Fee That Blows Your RAG Budget" [ref=e566] [cursor=pointer]':
+                    - /url: /pricing/ollama-vs-qdrant-cost/
+                    - generic [ref=e567]: pricing
+                    - generic [ref=e568]: "Ollama vs Qdrant Cost: The Hidden $0.05/100k Write Fee That Blows Your RAG Budget"
+                - listitem [ref=e569]:
+                  - 'link "pricing Qdrant Cloud vs Docker Self-Hosted Cost: The $3600/mo Mistake [2026]" [ref=e570] [cursor=pointer]':
+                    - /url: /pricing/qdrant-vs-docker-cost/
+                    - generic [ref=e571]: pricing
+                    - generic [ref=e572]: "Qdrant Cloud vs Docker Self-Hosted Cost: The $3600/mo Mistake [2026]"
+                - listitem [ref=e573]:
+                  - 'link "pricing Qdrant vs Kubernetes Cost: The Real Cloud AI Bill You Haven''t Estimated [2026]" [ref=e574] [cursor=pointer]':
+                    - /url: /pricing/qdrant-vs-kubernetes-cost/
+                    - generic [ref=e575]: pricing
+                    - generic [ref=e576]: "Qdrant vs Kubernetes Cost: The Real Cloud AI Bill You Haven't Estimated [2026]"
+            - generic [ref=e577]:
+              - heading "best" [level=4] [ref=e578]
+              - list [ref=e579]:
+                - listitem [ref=e580]:
+                  - link "best Best AI Tools for Search in 2026 — Developer Guide & Comparison" [ref=e581] [cursor=pointer]:
+                    - /url: /best/best-ai-tools-for-search/
+                    - generic [ref=e582]: best
+                    - generic [ref=e583]: Best AI Tools for Search in 2026 — Developer Guide & Comparison
+                - listitem [ref=e584]:
+                  - link "best Best Vector Database for Customer Support 2026 — Qdrant vs Pinecone vs Weaviate" [ref=e585] [cursor=pointer]:
+                    - /url: /best/best-vector-database-for-customer-support/
+                    - generic [ref=e586]: best
+                    - generic [ref=e587]: Best Vector Database for Customer Support 2026 — Qdrant vs Pinecone vs Weaviate
+            - generic [ref=e588]:
+              - link "Explore Qdrant ecosystem →" [ref=e589] [cursor=pointer]:
+                - /url: /tools/qdrant/
+              - link "Category →" [ref=e590] [cursor=pointer]:
+                - /url: /categories/qdrant/
+          - navigation [ref=e592]
+        - complementary [ref=e593]:
+          - generic [ref=e594]:
+            - heading "Difficulty Level" [level=3] [ref=e595]:
+              - img [ref=e596]
+              - text: Difficulty Level
+            - generic [ref=e598]:
+              - generic [ref=e600]: Advanced
+              - generic [ref=e609]: For experienced practitioners
+          - generic [ref=e610]:
+            - heading "Table of Contents" [level=3] [ref=e611]:
+              - img [ref=e612]
+              - text: Table of Contents
+            - generic [ref=e613]:
+              - navigation [ref=e615]:
+                - navigation [ref=e616]:
+                  - list [ref=e617]:
+                    - listitem [ref=e618]:
+                      - link "The Problem" [ref=e619] [cursor=pointer]:
+                        - /url: "#the-problem"
+                      - list [ref=e620]:
+                        - listitem [ref=e621]:
+                          - link "System Overview" [ref=e622] [cursor=pointer]:
+                            - /url: "#system-overview"
+                    - listitem [ref=e623]:
+                      - link "Options Compared" [ref=e624] [cursor=pointer]:
+                        - /url: "#options-compared"
+                      - list [ref=e625]:
+                        - listitem [ref=e626]:
+                          - 'link "Option A: Single‑Node (Dev / Low Volume)" [ref=e627] [cursor=pointer]':
+                            - /url: "#option-a-singlenode-dev--low-volume"
+                        - listitem [ref=e628]:
+                          - 'link "Option B: Multi‑Node Cluster (Production Standard)" [ref=e629] [cursor=pointer]':
+                            - /url: "#option-b-multinode-cluster-production-standard"
+                        - listitem [ref=e630]:
+                          - 'link "Option C: Geo‑Distributed (Active‑Active)" [ref=e631] [cursor=pointer]':
+                            - /url: "#option-c-geodistributed-activeactive"
+                        - listitem [ref=e632]:
+                          - link "Component Architecture" [ref=e633] [cursor=pointer]:
+                            - /url: "#component-architecture"
+                        - listitem [ref=e634]:
+                          - link "Latency Budget by Component" [ref=e635] [cursor=pointer]:
+                            - /url: "#latency-budget-by-component"
+                    - listitem [ref=e636]:
+                      - link "Our Recommendation" [ref=e637] [cursor=pointer]:
+                        - /url: "#our-recommendation"
+                    - listitem [ref=e638]:
+                      - link "Implementation Steps" [ref=e639] [cursor=pointer]:
+                        - /url: "#implementation-steps"
+                      - list [ref=e640]:
+                        - listitem [ref=e641]:
+                          - link "Production Checklist (Infrastructure & Observability)" [ref=e642] [cursor=pointer]:
+                            - /url: "#production-checklist-infrastructure--observability"
+              - button "Toggle TOC" [ref=e644] [cursor=pointer]:
+                - img [ref=e645]
+          - generic [ref=e647]:
+            - generic [ref=e648]:
+              - generic [ref=e649]:
+                - img [ref=e650]
+                - generic [ref=e653]: —
+                - generic [ref=e654]: views
+              - generic [ref=e655]: ·
+              - generic [ref=e656]:
+                - img [ref=e657]
+                - generic [ref=e659]: —
+                - generic [ref=e660]: likes
+            - generic [ref=e661]:
+              - button "Like this article" [ref=e662] [cursor=pointer]:
+                - generic:
+                  - img
+                  - generic: Like
+              - button "Save for later" [ref=e663] [cursor=pointer]:
+                - generic:
+                  - img
+                  - generic: Save
+              - button "Share article" [ref=e664] [cursor=pointer]:
+                - generic:
+                  - img
+                  - generic: Share
+  - contentinfo [ref=e666]:
+    - generic [ref=e667]:
+      - generic [ref=e668]:
+        - generic [ref=e669]:
+          - link "GitHub" [ref=e670] [cursor=pointer]:
+            - /url: https://github.com/jacksawmy
+            - img [ref=e671]
+          - link "X (Twitter)" [ref=e673] [cursor=pointer]:
+            - /url: https://x.com/markaicode
+            - img [ref=e674]
+          - link "Medium" [ref=e676] [cursor=pointer]:
+            - /url: https://medium.com/@MarkAiCode
+            - img [ref=e677]
+          - link "Facebook" [ref=e679] [cursor=pointer]:
+            - /url: https://www.facebook.com/markaicode/
+            - img [ref=e680]
+        - generic [ref=e682]:
+          - link "Archives" [ref=e683] [cursor=pointer]:
+            - /url: /archives/
+          - generic [ref=e684]: ·
+          - link "Services" [ref=e685] [cursor=pointer]:
+            - /url: /services/
+          - generic [ref=e686]: ·
+          - link "Privacy Policy" [ref=e687] [cursor=pointer]:
+            - /url: /privacy
+          - generic [ref=e688]: ·
+          - link "Terms of Service" [ref=e689] [cursor=pointer]:
+            - /url: /terms
+          - generic [ref=e690]: ·
+          - link "Disclaimer" [ref=e691] [cursor=pointer]:
+            - /url: /disclaimer
+          - generic [ref=e692]: ·
+          - link "About Us" [ref=e693] [cursor=pointer]:
+            - /url: /about
+          - generic [ref=e694]: ·
+          - link "Mark" [ref=e695] [cursor=pointer]:
+            - /url: /author/mark/
+          - generic [ref=e696]: ·
+          - link "Methodology" [ref=e697] [cursor=pointer]:
+            - /url: /methodology/
+          - generic [ref=e698]: ·
+          - link "Contact" [ref=e699] [cursor=pointer]:
+            - /url: /contact
+      - paragraph [ref=e701]: © 2025 Markaicode. All rights reserved.
+  - dialog:
+    - paragraph: Share this article
+    - generic:
+      - link:
+        - /url: https://twitter.com/intent/tweet?text=Qdrant+Production+Architecture%3A+Sharding%2C+Replication%2C+and+Scaling&url=https%3A%2F%2Fmarkaicode.com%2Farchitecture%2Fqdrant-system-design-architecture-1049%2F
+        - generic:
+          - img
+        - generic: X / Twitter
+      - link:
+        - /url: https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmarkaicode.com%2Farchitecture%2Fqdrant-system-design-architecture-1049%2F&title=Qdrant+Production+Architecture%3A+Sharding%2C+Replication%2C+and+Scaling
+        - generic:
+          - img
+        - generic: LinkedIn
+      - link:
+        - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmarkaicode.com%2Farchitecture%2Fqdrant-system-design-architecture-1049%2F
+        - generic:
+          - img
+        - generic: Facebook
+      - link:
+        - /url: https://t.me/share/url?url=https%3A%2F%2Fmarkaicode.com%2Farchitecture%2Fqdrant-system-design-architecture-1049%2F&text=Qdrant+Production+Architecture%3A+Sharding%2C+Replication%2C+and+Scaling
+        - generic:
+          - img
+        - generic: Telegram
+      - link:
+        - /url: https://reddit.com/submit?url=https%3A%2F%2Fmarkaicode.com%2Farchitecture%2Fqdrant-system-design-architecture-1049%2F&title=Qdrant+Production+Architecture%3A+Sharding%2C+Replication%2C+and+Scaling
+        - generic:
+          - img
+        - generic: Reddit
+      - link:
+        - /url: https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fmarkaicode.com%2Farchitecture%2Fqdrant-system-design-architecture-1049%2F&t=Qdrant+Production+Architecture%3A+Sharding%2C+Replication%2C+and+Scaling
+        - generic:
+          - img
+        - generic: Hacker News
+      - button:
+        - generic:
+          - img
+        - generic: Copy Link

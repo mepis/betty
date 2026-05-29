@@ -1,0 +1,802 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Superteams.ai" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Superteams.ai logo" [ref=e6]
+        - generic [ref=e7]: superteams.ai
+      - navigation "Main navigation" [ref=e8]:
+        - button "Solutions" [ref=e10] [cursor=pointer]:
+          - text: Solutions
+          - img [ref=e11]
+        - link "Case Studies" [ref=e13] [cursor=pointer]:
+          - /url: /case-studies
+        - link "Blog" [ref=e14] [cursor=pointer]:
+          - /url: /blog
+        - link "About" [ref=e15] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e16]:
+        - link "Log in" [ref=e17] [cursor=pointer]:
+          - /url: https://cloud.nextneural.ai
+        - link "NextNeural" [ref=e18] [cursor=pointer]:
+          - /url: https://www.nextneural.ai
+          - text: NextNeural
+          - img [ref=e19]
+        - link "Book a call" [ref=e21] [cursor=pointer]:
+          - /url: /book-a-call
+          - text: Book a call
+          - img [ref=e22]
+  - generic [ref=e25]:
+    - generic [ref=e27]:
+      - img [ref=e28]
+      - text: R&D-First AI Teams
+    - heading "Build your AI stack. Own the advantage." [level=1] [ref=e30]:
+      - generic [ref=e31]: Build your AI stack.
+      - generic [ref=e32]:
+        - text: Own the
+        - emphasis [ref=e33]: advantage.
+    - paragraph [ref=e34]: Superteams embeds elite AI researchers and engineers directly into your team — so you ship production-grade AI without the 18-month hiring cycle.
+    - generic [ref=e35]:
+      - link "Book a Strategy Call" [ref=e36] [cursor=pointer]:
+        - /url: "#offerings"
+        - text: Book a Strategy Call
+        - img [ref=e37]
+      - link "See how it works" [ref=e39] [cursor=pointer]:
+        - /url: "#how-it-works"
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]: 55%
+        - generic [ref=e43]: Faster release cycles
+      - generic [ref=e44]:
+        - generic [ref=e45]: 30 days
+        - generic [ref=e46]: From kickoff to prod
+      - generic [ref=e47]:
+        - generic [ref=e48]: $100K+
+        - generic [ref=e49]: Avg. hiring cost saved
+      - generic [ref=e50]:
+        - generic [ref=e51]: 2×
+        - generic [ref=e52]: Conversion uplift
+  - generic [ref=e54]:
+    - paragraph [ref=e55]: Trusted by fast-moving teams in AI infrastructure, SaaS & deep tech
+    - generic [ref=e57]:
+      - img "Qdrant" [ref=e59]
+      - img "Timescale" [ref=e61]
+      - img "FalkorDB" [ref=e63]
+      - img "E2E Networks" [ref=e65]
+      - img "Astria" [ref=e67]
+      - img "Bevolve" [ref=e69]
+      - img "TryThat.ai" [ref=e71]
+      - img "Awareye" [ref=e73]
+      - img "ALtrr" [ref=e75]
+      - img "Qdrant" [ref=e77]
+      - img "Timescale" [ref=e79]
+      - img "FalkorDB" [ref=e81]
+      - img "E2E Networks" [ref=e83]
+      - img "Astria" [ref=e85]
+      - img "Bevolve" [ref=e87]
+      - img "TryThat.ai" [ref=e89]
+      - img "Awareye" [ref=e91]
+      - img "ALtrr" [ref=e93]
+    - generic [ref=e95]:
+      - generic [ref=e96]: Backed & supported by
+      - generic [ref=e97]:
+        - img "AWS Activate" [ref=e99]
+        - img "Google Cloud" [ref=e101]
+        - img "Microsoft for Startups" [ref=e103]
+        - img "Point One Capital" [ref=e105]
+  - generic [ref=e107]:
+    - generic [ref=e108]:
+      - generic [ref=e109]: The Problem
+      - heading "Enterprise AI stalls. Yours does not have to." [level=2] [ref=e110]:
+        - text: Enterprise AI stalls.
+        - text: Yours does not have to.
+      - paragraph [ref=e111]: Most companies trying to build serious AI capability run into the same three walls. We are built to knock all three down.
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - generic [ref=e114]: "01"
+        - img [ref=e117]
+        - heading "18 months to hire" [level=3] [ref=e120]
+        - paragraph [ref=e121]: A senior ML engineer takes 6 months to source and another year to onboard into your stack. Your roadmap cannot wait.
+      - generic [ref=e122]:
+        - generic [ref=e123]: "02"
+        - img [ref=e126]
+        - heading "Generic tools create lock-in" [level=3] [ref=e129]
+        - paragraph [ref=e130]: Stitching together off-the-shelf AI APIs is fast until it is not. Vendor dependency, cost spikes, zero differentiation.
+      - generic [ref=e131]:
+        - generic [ref=e132]: "03"
+        - img [ref=e135]
+        - heading "Agencies ship demos, not systems" [level=3] [ref=e138]
+        - paragraph [ref=e139]: Most AI shops hand you a prototype and disappear. No architecture ownership, no knowledge transfer, no internal capacity built.
+    - paragraph [ref=e142]:
+      - strong [ref=e143]: Superteams is the alternative.
+      - text: An embedded, R&D-first team that moves at your speed, builds to your architecture, and leaves your org stronger — not dependent.
+  - generic [ref=e145]:
+    - generic [ref=e146]:
+      - generic [ref=e147]: How It Works
+      - heading "Not outsourcing. Embedded." [level=2] [ref=e148]:
+        - text: Not outsourcing.
+        - text: Embedded.
+      - paragraph [ref=e149]: Three phases. One continuous loop. Your AI stack gets built while your team grows alongside it.
+    - generic [ref=e150]:
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - img [ref=e156]
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e164]: "01"
+              - generic [ref=e165]: Embed
+            - heading "We join your team, not a client list" [level=3] [ref=e166]
+            - paragraph [ref=e167]: Your dedicated Superteam — researchers, engineers, product builders — integrates into your existing workflow. Slack, standups, your stack. Not a vendor relationship. An extension of your org.
+            - generic [ref=e168]:
+              - img [ref=e169]
+              - text: Kickoff in 72 hours. No procurement overhead.
+        - generic [ref=e171]:
+          - img [ref=e175]
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - generic [ref=e183]: "02"
+              - generic [ref=e184]: Build
+            - heading "Research-grade engineering, production-ready delivery" [level=3] [ref=e185]
+            - paragraph [ref=e186]: We do not just implement — we think. Every architectural decision is grounded in current research. RAG pipelines, fine-tuned models, agent orchestration, MLOps — built to your requirements, not a template.
+            - generic [ref=e187]:
+              - img [ref=e188]
+              - text: You own all IP. Full documentation, always.
+        - generic [ref=e190]:
+          - img [ref=e194]
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - generic [ref=e199]: "03"
+              - generic [ref=e200]: Transfer
+            - heading "Leave you stronger, not dependent" [level=3] [ref=e201]
+            - paragraph [ref=e202]: Every engagement ends with your internal team owning what was built. Code, docs, architecture decisions, evaluation frameworks — we train your people and hand over the keys so you compound on the work.
+            - generic [ref=e203]:
+              - img [ref=e204]
+              - text: Knowledge transfer is built into every sprint.
+      - generic [ref=e206]:
+        - generic [ref=e207]: Why it is different
+        - heading "R&D-first means we make the right bets" [level=3] [ref=e208]
+        - paragraph [ref=e209]: Most engineering teams know how to build. We know what to build — and why. Our team stays current with research so you do not have to.
+        - generic [ref=e210]:
+          - generic [ref=e211]:
+            - generic [ref=e212]: Typical agency
+            - generic [ref=e213]: Superteams
+          - generic [ref=e214]:
+            - generic [ref=e215]:
+              - img [ref=e216]
+              - text: Engineers only
+            - generic [ref=e218]:
+              - img [ref=e219]
+              - text: Researchers + Engineers
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - img [ref=e223]
+              - text: Template-first
+            - generic [ref=e225]:
+              - img [ref=e226]
+              - text: Architecture-first
+          - generic [ref=e228]:
+            - generic [ref=e229]:
+              - img [ref=e230]
+              - text: You own nothing
+            - generic [ref=e232]:
+              - img [ref=e233]
+              - text: You own everything
+          - generic [ref=e235]:
+            - generic [ref=e236]:
+              - img [ref=e237]
+              - text: Handoff & disappear
+            - generic [ref=e239]:
+              - img [ref=e240]
+              - text: Embedded & transfers
+        - link "See engagement options" [ref=e242] [cursor=pointer]:
+          - /url: "#offerings"
+          - text: See engagement options
+          - img [ref=e243]
+  - generic [ref=e246]:
+    - generic [ref=e247]:
+      - generic [ref=e248]: What We Build
+      - heading "The full AI stack, engineered end-to-end." [level=2] [ref=e249]:
+        - text: The full AI stack,
+        - text: engineered end-to-end.
+      - paragraph [ref=e250]: Four capability pillars — each one you can engage on independently, or we build the whole stack together.
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - img [ref=e255]
+        - generic [ref=e257]:
+          - heading "Knowledge & Retrieval" [level=3] [ref=e258]
+          - paragraph [ref=e259]: RAG · Vector DBs · Enterprise Search
+        - paragraph [ref=e260]: Production RAG systems that actually work — semantic search, hybrid retrieval, reranking, and knowledge graph integration. Built for your data, not a demo.
+        - list [ref=e261]:
+          - listitem [ref=e262]:
+            - img [ref=e263]
+            - text: Multi-modal document ingestion
+          - listitem [ref=e265]:
+            - img [ref=e266]
+            - text: Hybrid BM25 + vector search
+          - listitem [ref=e268]:
+            - img [ref=e269]
+            - text: Query routing & reranking
+          - listitem [ref=e271]:
+            - img [ref=e272]
+            - text: Evaluation-driven iteration
+        - link "View solution" [ref=e274] [cursor=pointer]:
+          - /url: /solutions/vector-rag
+          - text: View solution
+          - img [ref=e275]
+      - generic [ref=e277]:
+        - img [ref=e280]
+        - generic [ref=e283]:
+          - heading "AI Agents & Automation" [level=3] [ref=e284]
+          - paragraph [ref=e285]: Agentic Workflows · Copilots · Orchestration
+        - paragraph [ref=e286]: Purpose-built AI agents that integrate with your systems. Sales assistants, internal copilots, autonomous process automation — grounded in your data, guardrailed for production.
+        - list [ref=e287]:
+          - listitem [ref=e288]:
+            - img [ref=e289]
+            - text: Multi-agent orchestration
+          - listitem [ref=e291]:
+            - img [ref=e292]
+            - text: Tool use & function calling
+          - listitem [ref=e294]:
+            - img [ref=e295]
+            - text: Memory & state management
+          - listitem [ref=e297]:
+            - img [ref=e298]
+            - text: Human-in-the-loop design
+        - link "View solution" [ref=e300] [cursor=pointer]:
+          - /url: /solutions/ai-agents
+          - text: View solution
+          - img [ref=e301]
+      - generic [ref=e303]:
+        - img [ref=e306]
+        - generic [ref=e311]:
+          - heading "Model Layer" [level=3] [ref=e312]
+          - paragraph [ref=e313]: Fine-tuning · Evals · Private Deployment
+        - paragraph [ref=e314]: From model selection to fine-tuning and private deployment. We help you choose the right foundation, adapt it to your domain, and serve it reliably without blowing your inference budget.
+        - list [ref=e315]:
+          - listitem [ref=e316]:
+            - img [ref=e317]
+            - text: Domain-specific fine-tuning
+          - listitem [ref=e319]:
+            - img [ref=e320]
+            - text: RLHF & RLAIF pipelines
+          - listitem [ref=e322]:
+            - img [ref=e323]
+            - text: Model distillation & quantization
+          - listitem [ref=e325]:
+            - img [ref=e326]
+            - text: Private cloud deployment
+        - link "View solution" [ref=e328] [cursor=pointer]:
+          - /url: /solutions/llm-training
+          - text: View solution
+          - img [ref=e329]
+      - generic [ref=e331]:
+        - img [ref=e334]
+        - generic [ref=e336]:
+          - heading "MLOps & Observability" [level=3] [ref=e337]
+          - paragraph [ref=e338]: Monitoring · Cost Control · Compliance
+        - paragraph [ref=e339]: Ship AI with confidence. Latency monitoring, cost tracking, drift detection, and evaluation harnesses that let you iterate fast without flying blind.
+        - list [ref=e340]:
+          - listitem [ref=e341]:
+            - img [ref=e342]
+            - text: LLM observability & tracing
+          - listitem [ref=e344]:
+            - img [ref=e345]
+            - text: Automated eval pipelines
+          - listitem [ref=e347]:
+            - img [ref=e348]
+            - text: Cost & token optimization
+          - listitem [ref=e350]:
+            - img [ref=e351]
+            - text: Compliance-ready logging
+        - link "View solution" [ref=e353] [cursor=pointer]:
+          - /url: /solutions/ai-agents
+          - text: View solution
+          - img [ref=e354]
+    - paragraph [ref=e356]:
+      - text: Not sure where to start?
+      - link "Our AI Stack Audit maps it out for you →" [ref=e357] [cursor=pointer]:
+        - /url: "#offerings"
+  - generic [ref=e359]:
+    - generic [ref=e360]:
+      - generic [ref=e361]:
+        - img [ref=e362]
+        - text: Products Shipped
+      - heading "Seven full-stack AI products. Running in production." [level=2] [ref=e364]:
+        - text: Seven full-stack AI products.
+        - text: Running in production.
+      - paragraph [ref=e365]: Not prototypes or pilots — complete systems built end-to-end, handed off to clients, and running across seven verticals.
+    - generic [ref=e366]:
+      - link "Storage & Infrastructure AI-Powered Storage Platform Multi-platform AI storage with bidirectional sync, cloud integration, Windows/iOS/Linux apps, and org-level RBAC — launched as a complete product from scratch. Windows App iOS App Linux ISO Web App Org RBAC Bidirectional Sync Read case study 4 months brief to production" [ref=e367] [cursor=pointer]:
+        - /url: /case-studies/storage-platform
+        - generic [ref=e369]:
+          - generic [ref=e371]: Storage & Infrastructure
+          - heading "AI-Powered Storage Platform" [level=3] [ref=e372]
+          - paragraph [ref=e373]: Multi-platform AI storage with bidirectional sync, cloud integration, Windows/iOS/Linux apps, and org-level RBAC — launched as a complete product from scratch.
+          - generic [ref=e374]:
+            - generic [ref=e375]:
+              - generic [ref=e376]: Windows App
+              - generic [ref=e377]: iOS App
+              - generic [ref=e378]: Linux ISO
+              - generic [ref=e379]: Web App
+              - generic [ref=e380]: Org RBAC
+              - generic [ref=e381]: Bidirectional Sync
+            - generic [ref=e382]:
+              - text: Read case study
+              - img [ref=e383]
+        - generic [ref=e386]:
+          - generic [ref=e387]: 4 months
+          - generic [ref=e388]: brief to production
+      - link "Voice AI <500ms Low-Latency Voice Agent Real-time voice AI connected to user databases — accessible via telephone and click-to-call with modern TTS/STT. TTS / STT Telephony Click-to-Call DB Connected Read case study" [ref=e389] [cursor=pointer]:
+        - /url: /case-studies/voice-ai-agent
+        - generic [ref=e391]:
+          - generic [ref=e392]:
+            - generic [ref=e393]: Voice AI
+            - generic [ref=e394]: <500ms
+          - heading "Low-Latency Voice Agent" [level=3] [ref=e395]
+          - paragraph [ref=e396]: Real-time voice AI connected to user databases — accessible via telephone and click-to-call with modern TTS/STT.
+          - generic [ref=e397]:
+            - generic [ref=e398]:
+              - generic [ref=e399]: TTS / STT
+              - generic [ref=e400]: Telephony
+              - generic [ref=e401]: Click-to-Call
+              - generic [ref=e402]: DB Connected
+            - generic [ref=e403]:
+              - text: Read case study
+              - img [ref=e404]
+      - link "FinTech · Accounting AI Financial AI Platform Connects four major accounting systems and surfaces CFO-level AI queries, auto-reconciliation, invoice parsing, bank statement sync — all with a zero-day close goal. Zoho Books Tally QuickBooks Xero Auto-Reconciliation Zero-Day Close Read case study 4 ERPs natively integrated" [ref=e406] [cursor=pointer]:
+        - /url: /case-studies/financial-ai
+        - generic [ref=e408]:
+          - generic [ref=e410]: FinTech · Accounting AI
+          - heading "Financial AI Platform" [level=3] [ref=e411]
+          - paragraph [ref=e412]: Connects four major accounting systems and surfaces CFO-level AI queries, auto-reconciliation, invoice parsing, bank statement sync — all with a zero-day close goal.
+          - generic [ref=e413]:
+            - generic [ref=e414]:
+              - generic [ref=e415]: Zoho Books
+              - generic [ref=e416]: Tally
+              - generic [ref=e417]: QuickBooks
+              - generic [ref=e418]: Xero
+              - generic [ref=e419]: Auto-Reconciliation
+              - generic [ref=e420]: Zero-Day Close
+            - generic [ref=e421]:
+              - text: Read case study
+              - img [ref=e422]
+        - generic [ref=e425]:
+          - generic [ref=e426]: 4 ERPs
+          - generic [ref=e427]: natively integrated
+      - link "ESG & Climate 50+ AI-Powered ESG Platform Measures emissions directly from invoices, auto-generates compliance reports, and surfaces AI-driven sustainability recommendations. Invoice Parsing TCFD CSRD GRI AI Recommendations Read case study" [ref=e428] [cursor=pointer]:
+        - /url: /case-studies/28-faster-esg-reporting-with-superteams-agentic-ai-team
+        - generic [ref=e430]:
+          - generic [ref=e431]:
+            - generic [ref=e432]: ESG & Climate
+            - generic [ref=e433]: 50+
+          - heading "AI-Powered ESG Platform" [level=3] [ref=e434]
+          - paragraph [ref=e435]: Measures emissions directly from invoices, auto-generates compliance reports, and surfaces AI-driven sustainability recommendations.
+          - generic [ref=e436]:
+            - generic [ref=e437]:
+              - generic [ref=e438]: Invoice Parsing
+              - generic [ref=e439]: TCFD
+              - generic [ref=e440]: CSRD
+              - generic [ref=e441]: GRI
+              - generic [ref=e442]: AI Recommendations
+            - generic [ref=e443]:
+              - text: Read case study
+              - img [ref=e444]
+      - link "Builder AI Open + SaaS Builder AI Platform Connect a database or document store and use open-source or platform models to generate sites, reports, and decks — plus advanced agents for CRM and support. DB Connect Doc Store Reports Presentations CRM Agent Support Bot Read case study" [ref=e446] [cursor=pointer]:
+        - /url: /case-studies/builder-ai-platform
+        - generic [ref=e448]:
+          - generic [ref=e449]:
+            - generic [ref=e450]: Builder AI
+            - generic [ref=e451]: Open + SaaS
+          - heading "Builder AI Platform" [level=3] [ref=e452]
+          - paragraph [ref=e453]: Connect a database or document store and use open-source or platform models to generate sites, reports, and decks — plus advanced agents for CRM and support.
+          - generic [ref=e454]:
+            - generic [ref=e455]:
+              - generic [ref=e456]: DB Connect
+              - generic [ref=e457]: Doc Store
+              - generic [ref=e458]: Reports
+              - generic [ref=e459]: Presentations
+              - generic [ref=e460]: CRM Agent
+              - generic [ref=e461]: Support Bot
+            - generic [ref=e462]:
+              - text: Read case study
+              - img [ref=e463]
+      - link "Real Estate · Generative AI Agent-assembled Image-to-Video Tour Generator Users select a set of property images and the agent orchestrates them into a polished listing tour video — ready to publish. Diffusion Pipeline Agent Orchestration Listing Video Read case study" [ref=e465] [cursor=pointer]:
+        - /url: /case-studies/image-to-video-tours
+        - generic [ref=e467]:
+          - generic [ref=e468]:
+            - generic [ref=e469]: Real Estate · Generative AI
+            - generic [ref=e470]: Agent-assembled
+          - heading "Image-to-Video Tour Generator" [level=3] [ref=e471]
+          - paragraph [ref=e472]: Users select a set of property images and the agent orchestrates them into a polished listing tour video — ready to publish.
+          - generic [ref=e473]:
+            - generic [ref=e474]:
+              - generic [ref=e475]: Diffusion Pipeline
+              - generic [ref=e476]: Agent Orchestration
+              - generic [ref=e477]: Listing Video
+            - generic [ref=e478]:
+              - text: Read case study
+              - img [ref=e479]
+      - link "Real Estate · Conversational AI Text + Voice AI Real Estate Broker Platform A full-stack AI broker — finds matching properties, generates structured comparisons, enables shortlisting and booking — entirely through text and voice chat. AI Broker Property Matching Voice Chat Comparison Engine Booking Read case study" [ref=e481] [cursor=pointer]:
+        - /url: /case-studies/re-broker
+        - generic [ref=e483]:
+          - generic [ref=e484]:
+            - generic [ref=e485]: Real Estate · Conversational AI
+            - generic [ref=e486]: Text + Voice
+          - heading "AI Real Estate Broker Platform" [level=3] [ref=e487]
+          - paragraph [ref=e488]: A full-stack AI broker — finds matching properties, generates structured comparisons, enables shortlisting and booking — entirely through text and voice chat.
+          - generic [ref=e489]:
+            - generic [ref=e490]:
+              - generic [ref=e491]: AI Broker
+              - generic [ref=e492]: Property Matching
+              - generic [ref=e493]: Voice Chat
+              - generic [ref=e494]: Comparison Engine
+              - generic [ref=e495]: Booking
+            - generic [ref=e496]:
+              - text: Read case study
+              - img [ref=e497]
+    - generic [ref=e499]:
+      - paragraph [ref=e500]: Each of these was built with an embedded team — scoped, architected, shipped, and handed off with full documentation and IP ownership.
+      - link "Start your build" [ref=e501] [cursor=pointer]:
+        - /url: mailto:founders@superteams.ai
+        - text: Start your build
+        - img [ref=e502]
+  - generic [ref=e505]:
+    - generic [ref=e506]:
+      - generic [ref=e507]: Engagement Options
+      - heading "Three ways to work with us." [level=2] [ref=e508]:
+        - text: Three ways to
+        - text: work with us.
+      - paragraph [ref=e509]: Start where you are. Every engagement is scoped to your stage, team, and goals — no forced packages.
+    - generic [ref=e510]:
+      - generic [ref=e511]:
+        - generic [ref=e512]:
+          - generic [ref=e513]: Start here.
+          - heading "AI Stack Audit" [level=3] [ref=e514]
+          - generic [ref=e515]:
+            - generic [ref=e516]: Fixed fee
+            - generic [ref=e517]: · 2 weeks
+        - paragraph [ref=e518]: A sharp, actionable assessment of your current AI architecture, gaps, and the highest-leverage things to build next.
+        - list [ref=e519]:
+          - listitem [ref=e520]:
+            - img [ref=e521]
+            - text: Architecture review & gap analysis
+          - listitem [ref=e523]:
+            - img [ref=e524]
+            - text: Model & tooling recommendations
+          - listitem [ref=e526]:
+            - img [ref=e527]
+            - text: Prioritised 90-day AI roadmap
+          - listitem [ref=e529]:
+            - img [ref=e530]
+            - text: Team capability assessment
+          - listitem [ref=e532]:
+            - img [ref=e533]
+            - text: Written report + 60-min debrief
+        - paragraph [ref=e535]: Best for teams unsure where to start or wanting an outside view before committing.
+        - link "Get an Audit" [ref=e536] [cursor=pointer]:
+          - /url: mailto:founders@superteams.ai
+          - text: Get an Audit
+          - img [ref=e537]
+      - generic [ref=e539]:
+        - generic [ref=e540]: Most popular
+        - generic [ref=e541]:
+          - generic [ref=e542]: The core offering.
+          - heading "Embedded R&D Team" [level=3] [ref=e543]
+          - generic [ref=e544]:
+            - generic [ref=e545]: Monthly retainer
+            - generic [ref=e546]: · 3–12 months
+        - paragraph [ref=e547]: Your dedicated Superteam — researchers, engineers, PM — embedded directly into your workflow. Builds, ships, and transfers.
+        - list [ref=e548]:
+          - listitem [ref=e549]:
+            - img [ref=e550]
+            - text: Dedicated 2–5 person embedded team
+          - listitem [ref=e552]:
+            - img [ref=e553]
+            - text: Weekly sprints in your stack & tools
+          - listitem [ref=e555]:
+            - img [ref=e556]
+            - text: Full IP ownership from day one
+          - listitem [ref=e558]:
+            - img [ref=e559]
+            - text: Docs & knowledge transfer every sprint
+          - listitem [ref=e561]:
+            - img [ref=e562]
+            - text: Monthly architecture reviews
+          - listitem [ref=e564]:
+            - img [ref=e565]
+            - text: Access to research bench
+        - paragraph [ref=e567]: Best for companies actively building AI and needing research-grade execution fast.
+        - link "Book a Strategy Call" [ref=e568] [cursor=pointer]:
+          - /url: /book-a-call
+          - text: Book a Strategy Call
+          - img [ref=e569]
+      - generic [ref=e571]:
+        - generic [ref=e572]:
+          - generic [ref=e573]: End-to-end.
+          - heading "AI Transformation" [level=3] [ref=e574]
+          - generic [ref=e575]:
+            - generic [ref=e576]: Project-based
+            - generic [ref=e577]: · Scoped together
+        - paragraph [ref=e578]: Strategy + build + transfer. For companies going from AI-curious to AI-native. We build your stack and upskill your people.
+        - list [ref=e579]:
+          - listitem [ref=e580]:
+            - img [ref=e581]
+            - text: Everything in Embedded R&D Team
+          - listitem [ref=e583]:
+            - img [ref=e584]
+            - text: AI strategy & roadmap workshop
+          - listitem [ref=e586]:
+            - img [ref=e587]
+            - text: Team training & upskilling
+          - listitem [ref=e589]:
+            - img [ref=e590]
+            - text: Custom eval & observability setup
+          - listitem [ref=e592]:
+            - img [ref=e593]
+            - text: Hiring advisory for your AI org
+        - paragraph [ref=e595]: Best for companies making a serious long-term investment in proprietary AI.
+        - link "Let's scope it" [ref=e596] [cursor=pointer]:
+          - /url: mailto:founders@superteams.ai
+          - text: Let's scope it
+          - img [ref=e597]
+    - paragraph [ref=e599]:
+      - text: All engagements include full IP ownership, documentation, and a dedicated Slack channel.
+      - link "Questions? Email us directly." [ref=e600] [cursor=pointer]:
+        - /url: mailto:founders@superteams.ai
+  - generic [ref=e602]:
+    - generic [ref=e603]:
+      - generic [ref=e604]: What Teams Say
+      - heading "Don't take our word for it." [level=2] [ref=e605]
+      - paragraph [ref=e606]: From AI infrastructure companies to SaaS startups — in their own words.
+    - generic [ref=e607]:
+      - generic [ref=e608]:
+        - img [ref=e610]
+        - paragraph [ref=e612]: "\"Superteams actually understands the technology. That's genuinely rare. They come in, read the room, and produce work that holds up to scrutiny from our engineering team.\""
+        - generic [ref=e613]:
+          - img "Dan Shalev" [ref=e614]
+          - generic [ref=e615]:
+            - strong [ref=e616]: Dan Shalev
+            - generic [ref=e617]: Co-founder, FalkorDB
+          - img "FalkorDB" [ref=e618]
+      - generic [ref=e619]:
+        - img [ref=e621]
+        - paragraph [ref=e623]: "\"The technical depth they bring is what sets them apart. I have worked with agencies before — Superteams is operating at a completely different level.\""
+        - generic [ref=e624]:
+          - img "Sriman Kota" [ref=e625]
+          - generic [ref=e626]:
+            - strong [ref=e627]: Sriman Kota
+            - generic [ref=e628]: Co-founder, Bevolve
+          - img "Bevolve" [ref=e629]
+      - generic [ref=e630]:
+        - img [ref=e632]
+        - paragraph [ref=e634]: "\"Professionalism throughout. They could articulate our product better than most people on our own team. That says a lot.\""
+        - generic [ref=e635]:
+          - img "David Myriel" [ref=e636]
+          - generic [ref=e637]:
+            - strong [ref=e638]: David Myriel
+            - generic [ref=e639]: Partner Manager, Qdrant
+          - img "Qdrant" [ref=e640]
+      - generic [ref=e641]:
+        - img [ref=e643]
+        - paragraph [ref=e645]: "\"Superteams is understanding and quick to pivot in their approach to a solution if they feel that the first approach is not working. Overall, a very supportive company to work with.\""
+        - generic [ref=e646]:
+          - img "Prasoon Mishra" [ref=e647]
+          - generic [ref=e648]:
+            - strong [ref=e649]: Prasoon Mishra
+            - generic [ref=e650]: COO, TryThat.ai
+          - img "TryThat.ai" [ref=e651]
+  - generic [ref=e653]:
+    - generic [ref=e654]:
+      - generic [ref=e655]: Case Studies
+      - heading "The work speaks for itself." [level=2] [ref=e656]:
+        - text: The work speaks
+        - text: for itself.
+      - paragraph [ref=e657]: Three of our recent builds — full-stack AI products shipped end-to-end, across finance, infrastructure, and real estate.
+    - generic [ref=e658]:
+      - generic [ref=e659]:
+        - generic [ref=e660]: 4 mo.
+        - generic [ref=e661]: Storage platform, brief to production
+      - generic [ref=e662]:
+        - generic [ref=e663]: 4 ERPs
+        - generic [ref=e664]: Accounting systems integrated
+      - generic [ref=e665]:
+        - generic [ref=e666]: 7+
+        - generic [ref=e667]: Full-stack vertical products shipped
+      - generic [ref=e668]:
+        - generic [ref=e669]: $100K+
+        - generic [ref=e670]: Avg. hiring cost saved per build
+    - generic [ref=e671]:
+      - 'link "4 mo. brief to production Windows, iOS, Linux & Web apps shipped Bidirectional sync + cloud integration Org RBAC and user management layer Shipped in 4 months Storage & Infrastructure · Full-Stack Product Read case study From brief to production AI storage platform — in four months. A client needed a complete AI-powered storage platform — connecting devices, cloud, and mobile with bidirectional sync, multi-OS clients (Windows installer, iOS app, Linux ISO), and enterprise RBAC. We embedded, scoped, and shipped the full product in four months: zero to production across every platform simultaneously. Windows App iOS App Linux ISO Web App Cloud Sync Org RBAC" [ref=e672] [cursor=pointer]':
+        - /url: /case-studies/storage-platform
+        - generic [ref=e673]:
+          - generic [ref=e674]:
+            - generic [ref=e675]: 4 mo.
+            - generic [ref=e676]: brief to production
+          - list [ref=e677]:
+            - listitem [ref=e678]:
+              - img [ref=e679]
+              - text: Windows, iOS, Linux & Web apps shipped
+            - listitem [ref=e681]:
+              - img [ref=e682]
+              - text: Bidirectional sync + cloud integration
+            - listitem [ref=e684]:
+              - img [ref=e685]
+              - text: Org RBAC and user management layer
+          - generic [ref=e687]: Shipped in 4 months
+        - generic [ref=e689]:
+          - generic [ref=e690]:
+            - generic [ref=e691]: Storage & Infrastructure · Full-Stack Product
+            - generic [ref=e692]:
+              - text: Read case study
+              - img [ref=e693]
+          - heading "From brief to production AI storage platform — in four months." [level=3] [ref=e695]
+          - paragraph [ref=e696]: "A client needed a complete AI-powered storage platform — connecting devices, cloud, and mobile with bidirectional sync, multi-OS clients (Windows installer, iOS app, Linux ISO), and enterprise RBAC. We embedded, scoped, and shipped the full product in four months: zero to production across every platform simultaneously."
+          - generic [ref=e697]:
+            - generic [ref=e698]: Windows App
+            - generic [ref=e699]: iOS App
+            - generic [ref=e700]: Linux ISO
+            - generic [ref=e701]: Web App
+            - generic [ref=e702]: Cloud Sync
+            - generic [ref=e703]: Org RBAC
+        - generic: "01"
+      - 'link "4 ERPs integrated Zoho Books, Tally, QuickBooks & Xero synced AI auto-reconciliation, matching & invoice parsing CFO-level queries for every stakeholder in the org Zero-day close target FinTech · Accounting AI Read case study AI that reads your books across every accounting system — and closes them. A financial platform needed AI that could connect to all four dominant accounting systems and give every stakeholder — from CFO to accountant — natural-language query access, automatic reconciliation, invoice parsing, and bank statement sync back to source. Goal: zero-day close. We built the full data pipeline and AI layer from the ground up. Zoho Books Tally QuickBooks Xero Bank Sync Invoice Parsing Auto-Reconcile" [ref=e704] [cursor=pointer]':
+        - /url: /case-studies/financial-ai
+        - generic [ref=e705]:
+          - generic [ref=e706]:
+            - generic [ref=e707]: "4"
+            - generic [ref=e708]: ERPs integrated
+          - list [ref=e709]:
+            - listitem [ref=e710]:
+              - img [ref=e711]
+              - text: Zoho Books, Tally, QuickBooks & Xero synced
+            - listitem [ref=e713]:
+              - img [ref=e714]
+              - text: AI auto-reconciliation, matching & invoice parsing
+            - listitem [ref=e716]:
+              - img [ref=e717]
+              - text: CFO-level queries for every stakeholder in the org
+          - generic [ref=e719]: Zero-day close target
+        - generic [ref=e721]:
+          - generic [ref=e722]:
+            - generic [ref=e723]: FinTech · Accounting AI
+            - generic [ref=e724]:
+              - text: Read case study
+              - img [ref=e725]
+          - heading "AI that reads your books across every accounting system — and closes them." [level=3] [ref=e727]
+          - paragraph [ref=e728]: "A financial platform needed AI that could connect to all four dominant accounting systems and give every stakeholder — from CFO to accountant — natural-language query access, automatic reconciliation, invoice parsing, and bank statement sync back to source. Goal: zero-day close. We built the full data pipeline and AI layer from the ground up."
+          - generic [ref=e729]:
+            - generic [ref=e730]: Zoho Books
+            - generic [ref=e731]: Tally
+            - generic [ref=e732]: QuickBooks
+            - generic [ref=e733]: Xero
+            - generic [ref=e734]: Bank Sync
+            - generic [ref=e735]: Invoice Parsing
+            - generic [ref=e736]: Auto-Reconcile
+        - generic: "02"
+      - link "1 platform, full journey Text and voice chat from a single interface Property matching, structured comparisons, shortlisting End-to-end booking completed within the conversation Text + Voice natively Real Estate · Conversational AI Read case study An AI broker that finds, compares, and books — by text and voice. A real estate platform wanted users to engage with an AI that could act as a full broker — not just a search box. We built a conversational system that accepts text and voice input, queries live property databases, generates side-by-side comparisons, lets users shortlist, and completes bookings — all within the same chat session. Voice AI Property DB NL-to-SQL Comparison Engine Booking Flow" [ref=e737] [cursor=pointer]:
+        - /url: /case-studies/re-broker
+        - generic [ref=e738]:
+          - generic [ref=e739]:
+            - generic [ref=e740]: "1"
+            - generic [ref=e741]: platform, full journey
+          - list [ref=e742]:
+            - listitem [ref=e743]:
+              - img [ref=e744]
+              - text: Text and voice chat from a single interface
+            - listitem [ref=e746]:
+              - img [ref=e747]
+              - text: Property matching, structured comparisons, shortlisting
+            - listitem [ref=e749]:
+              - img [ref=e750]
+              - text: End-to-end booking completed within the conversation
+          - generic [ref=e752]: Text + Voice natively
+        - generic [ref=e754]:
+          - generic [ref=e755]:
+            - generic [ref=e756]: Real Estate · Conversational AI
+            - generic [ref=e757]:
+              - text: Read case study
+              - img [ref=e758]
+          - heading "An AI broker that finds, compares, and books — by text and voice." [level=3] [ref=e760]
+          - paragraph [ref=e761]: A real estate platform wanted users to engage with an AI that could act as a full broker — not just a search box. We built a conversational system that accepts text and voice input, queries live property databases, generates side-by-side comparisons, lets users shortlist, and completes bookings — all within the same chat session.
+          - generic [ref=e762]:
+            - generic [ref=e763]: Voice AI
+            - generic [ref=e764]: Property DB
+            - generic [ref=e765]: NL-to-SQL
+            - generic [ref=e766]: Comparison Engine
+            - generic [ref=e767]: Booking Flow
+        - generic: "03"
+    - generic [ref=e768]:
+      - paragraph [ref=e769]: We have documented builds across fintech, real estate, climate tech, voice AI, storage infrastructure, and more.
+      - link "View all case studies" [ref=e770] [cursor=pointer]:
+        - /url: /case-studies
+        - text: View all case studies
+        - img [ref=e771]
+  - generic [ref=e774]:
+    - generic [ref=e775]: Ready to build?
+    - heading "Your AI stack won't build itself. Let's change that." [level=2] [ref=e776]:
+      - text: Your AI stack won't build itself.
+      - text: Let's change that.
+    - paragraph [ref=e777]: Book a 30-minute strategy call. We will map out your AI opportunities, identify the highest-leverage starting point, and tell you exactly what an engagement looks like — no fluff, no obligation.
+    - generic [ref=e778]:
+      - link "Book a Strategy Call" [ref=e779] [cursor=pointer]:
+        - /url: /book-a-call
+        - text: Book a Strategy Call
+        - img [ref=e780]
+      - link "Email us directly" [ref=e782] [cursor=pointer]:
+        - /url: mailto:founders@superteams.ai
+    - paragraph [ref=e783]: Usually responds within 24 hours
+  - contentinfo [ref=e784]:
+    - generic [ref=e785]:
+      - generic [ref=e786]:
+        - generic [ref=e787]:
+          - link "Superteams.ai logo superteams.ai" [ref=e788] [cursor=pointer]:
+            - /url: /
+            - img "Superteams.ai logo" [ref=e790]
+            - generic [ref=e791]: superteams.ai
+          - paragraph [ref=e792]: R&D-first AI teams embedded into your organisation. Build the AI stack your competitors cannot replicate.
+          - generic [ref=e793]:
+            - paragraph [ref=e794]: Stay in the loop
+            - generic [ref=e795]:
+              - textbox "your@email.com" [ref=e796]
+              - button "Subscribe" [ref=e797] [cursor=pointer]
+          - generic [ref=e798]:
+            - link "LinkedIn" [ref=e799] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/aisuperteams/
+              - img [ref=e800]
+            - link "Twitter" [ref=e802] [cursor=pointer]:
+              - /url: https://twitter.com/superteams_ai
+              - img [ref=e803]
+        - generic [ref=e805]:
+          - generic [ref=e806]:
+            - heading "Solutions" [level=4] [ref=e807]
+            - list [ref=e808]:
+              - listitem [ref=e809]:
+                - link "LLM Training & Fine-Tuning" [ref=e810] [cursor=pointer]:
+                  - /url: /solutions/llm-training
+              - listitem [ref=e811]:
+                - link "Vector Search & RAG" [ref=e812] [cursor=pointer]:
+                  - /url: /solutions/vector-rag
+              - listitem [ref=e813]:
+                - link "AI Agents & Automation" [ref=e814] [cursor=pointer]:
+                  - /url: /solutions/ai-agents
+          - generic [ref=e815]:
+            - heading "Company" [level=4] [ref=e816]
+            - list [ref=e817]:
+              - listitem [ref=e818]:
+                - link "About" [ref=e819] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e820]:
+                - link "Blog" [ref=e821] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e822]:
+                - link "Case Studies" [ref=e823] [cursor=pointer]:
+                  - /url: /case-studies
+              - listitem [ref=e824]:
+                - link "AI Glossary" [ref=e825] [cursor=pointer]:
+                  - /url: /glossaries
+              - listitem [ref=e826]:
+                - link "Contact" [ref=e827] [cursor=pointer]:
+                  - /url: /contact
+          - generic [ref=e828]:
+            - heading "Work With Us" [level=4] [ref=e829]
+            - list [ref=e830]:
+              - listitem [ref=e831]:
+                - link "Hire AI Talent" [ref=e832] [cursor=pointer]:
+                  - /url: /hire
+              - listitem [ref=e833]:
+                - link "Open Positions" [ref=e834] [cursor=pointer]:
+                  - /url: /career
+              - listitem [ref=e835]:
+                - link "Book a Call" [ref=e836] [cursor=pointer]:
+                  - /url: /book-a-call
+          - generic [ref=e837]:
+            - heading "Get in touch" [level=4] [ref=e838]
+            - link "Book a call" [ref=e839] [cursor=pointer]:
+              - /url: /book-a-call
+      - generic [ref=e841]:
+        - paragraph [ref=e842]: © 2026 Superteams.ai. A product of Superstellar Media Labs Pvt Ltd.
+        - generic [ref=e843]:
+          - link "Privacy Policy" [ref=e844] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms of Service" [ref=e845] [cursor=pointer]:
+            - /url: /terms-of-service

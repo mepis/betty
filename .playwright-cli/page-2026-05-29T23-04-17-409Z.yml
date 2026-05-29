@@ -1,0 +1,773 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - img [ref=e7]
+        - text: Hear from Slack, Adobe, Hubspot, Arize, Google DeepMind, Qualcomm & more at Vector Space Day
+        - link "Join us June 11 in San Francisco for agents, retrieval, & robotics" [ref=e10] [cursor=pointer]:
+          - /url: https://qdrant.tech/vector-space-day-sf-26/
+      - generic [ref=e11]:
+        - link "logo" [ref=e12] [cursor=pointer]:
+          - /url: https://qdrant.tech/
+          - img "logo" [ref=e14]
+        - list [ref=e15]:
+          - listitem [ref=e16]:
+            - generic [ref=e17]: Products
+          - listitem [ref=e18]:
+            - generic [ref=e19]: Solutions
+          - listitem [ref=e20]:
+            - generic [ref=e21]: Developers
+          - listitem [ref=e22]:
+            - generic [ref=e23]: Resources
+          - listitem [ref=e24]:
+            - generic [ref=e25]: Company
+          - listitem [ref=e26]:
+            - link "Pricing" [ref=e27] [cursor=pointer]:
+              - /url: https://qdrant.tech/pricing/
+        - generic [ref=e28]:
+          - link "Log in" [ref=e29] [cursor=pointer]:
+            - /url: https://cloud.qdrant.io/login?__hstc=265983056.d83d9bfb4228750fa66a3131c7fe9a2d.1780095857273.1780095857273.1780095857273.1&__hssc=265983056.1.1780095857273&__hsfp=97dd48aaab4ec16eeede391435d2a4fd
+          - link "Get Started" [ref=e30] [cursor=pointer]:
+            - /url: https://cloud.qdrant.io/signup?__hstc=265983056.d83d9bfb4228750fa66a3131c7fe9a2d.1780095857273.1780095857273.1780095857273.1&__hssc=265983056.1.1780095857273&__hsfp=97dd48aaab4ec16eeede391435d2a4fd
+    - progressbar [ref=e31]: "0"
+    - article [ref=e33]:
+      - generic [ref=e34]:
+        - heading "Qdrant 1.13 - GPU Indexing, Strict Mode & New Storage Engine" [level=1] [ref=e35]
+        - generic [ref=e36]:
+          - paragraph [ref=e37]: David Myriel
+          - generic [ref=e38]: ·
+          - paragraph [ref=e39]: January 23, 2025
+        - img "Qdrant 1.13 - GPU Indexing, Strict Mode & New Storage Engine" [ref=e41]
+      - list [ref=e44]:
+        - listitem [ref=e45]:
+          - link "Home" [ref=e46] [cursor=pointer]:
+            - /url: https://qdrant.tech/
+        - listitem [ref=e47]: /
+        - listitem [ref=e48]:
+          - link "Blog" [ref=e49] [cursor=pointer]:
+            - /url: https://qdrant.tech/blog/
+        - listitem [ref=e50]: /
+        - listitem [ref=e51]: Qdrant 1.13 - GPU Indexing, Strict Mode & New Storage Engine
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - paragraph [ref=e54]: "On this page:"
+          - navigation [ref=e55]:
+            - list [ref=e56]:
+              - listitem [ref=e57]:
+                - list [ref=e58]:
+                  - listitem [ref=e59]:
+                    - link "GPU Accelerated Indexing" [ref=e60] [cursor=pointer]:
+                      - /url: "#gpu-accelerated-indexing"
+                    - list [ref=e61]:
+                      - listitem [ref=e62]:
+                        - link "Benchmarks on Common GPUs" [ref=e63] [cursor=pointer]:
+                          - /url: "#benchmarks-on-common-gpus"
+                      - listitem [ref=e64]:
+                        - link "Instructions & Documentation" [ref=e65] [cursor=pointer]:
+                          - /url: "#instructions--documentation"
+                  - listitem [ref=e66]:
+                    - link "Strict Mode for Operational Control" [ref=e67] [cursor=pointer]:
+                      - /url: "#strict-mode-for-operational-control"
+                    - list [ref=e68]:
+                      - listitem [ref=e69]:
+                        - link "Enable Strict Mode" [ref=e70] [cursor=pointer]:
+                          - /url: "#enable-strict-mode"
+                  - listitem [ref=e71]:
+                    - link "HNSW Graph Compression" [ref=e72] [cursor=pointer]:
+                      - /url: "#hnsw-graph-compression"
+                  - listitem [ref=e73]:
+                    - link "Filter by Named Vectors" [ref=e74] [cursor=pointer]:
+                      - /url: "#filter-by-named-vectors"
+                    - list [ref=e75]:
+                      - listitem [ref=e76]:
+                        - link "Create a Collection with Named Vectors" [ref=e77] [cursor=pointer]:
+                          - /url: "#create-a-collection-with-named-vectors"
+                      - listitem [ref=e78]:
+                        - link "Sample Request" [ref=e79] [cursor=pointer]:
+                          - /url: "#sample-request"
+                  - listitem [ref=e80]:
+                    - link "Custom Storage Engine" [ref=e81] [cursor=pointer]:
+                      - /url: "#custom-storage-engine"
+                    - list [ref=e82]:
+                      - listitem [ref=e83]:
+                        - link "Our New Storage Architecture" [ref=e84] [cursor=pointer]:
+                          - /url: "#our-new-storage-architecture"
+                  - listitem [ref=e85]:
+                    - link "Get Started with Qdrant" [ref=e86] [cursor=pointer]:
+                      - /url: "#get-started-with-qdrant"
+          - list [ref=e87]:
+            - listitem [ref=e88]:
+              - link "Share on X" [ref=e89] [cursor=pointer]:
+                - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fqdrant.tech%2Fblog%2Fqdrant-1.13.x%2F&text=Qdrant%201.13%20-%20GPU%20Indexing,%20Strict%20Mode%20&%20New%20Storage%20Engine
+                - img [ref=e90]
+                - text: Share on X
+            - listitem [ref=e94]:
+              - link "Share on LinkedIn" [ref=e95] [cursor=pointer]:
+                - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fqdrant.tech%2Fblog%2Fqdrant-1.13.x%2F
+                - img [ref=e96]
+                - text: Share on LinkedIn
+        - generic [ref=e99]:
+          - paragraph [ref=e100]:
+            - link "Qdrant 1.13.0 is out!" [ref=e101] [cursor=pointer]:
+              - /url: https://github.com/qdrant/qdrant/releases/tag/v1.13.0
+              - strong [ref=e102]: Qdrant 1.13.0 is out!
+            - text: "Let’s look at the main features for this version:"
+          - paragraph [ref=e103]:
+            - strong [ref=e104]: "GPU Accelerated Indexing:"
+            - text: Fast HNSW indexing with architecture-free GPU support.
+            - strong [ref=e105]: "Strict Mode:"
+            - text: Enforce operation restrictions on collections for enhanced control.
+          - paragraph [ref=e106]:
+            - strong [ref=e107]: "HNSW Graph Compression:"
+            - text: Reduce storage use via HNSW Delta Encoding.
+            - strong [ref=e108]: "Named Vector Filtering:"
+            - text: New
+            - code [ref=e109]: has_vector
+            - text: filtering condition for named vectors.
+            - strong [ref=e110]: "Custom Storage:"
+            - text: For constant-time reads/writes of payloads and sparse vectors.
+          - heading "Anchor GPU Accelerated Indexing" [level=2] [ref=e111]:
+            - link "Anchor" [ref=e112] [cursor=pointer]:
+              - /url: "#gpu-accelerated-indexing"
+              - text: 
+            - text: GPU Accelerated Indexing
+          - paragraph [ref=e113]:
+            - img "gpu-accelerated-indexing" [ref=e114]
+          - paragraph [ref=e115]:
+            - text: We are making it easier for you to handle even
+            - strong [ref=e116]: the most demanding workloads
+            - text: .
+          - paragraph [ref=e117]:
+            - text: Qdrant now supports GPU-accelerated HNSW indexing
+            - strong [ref=e118]: on all major GPU vendors, including NVIDIA, AMD and Intel
+            - text: . This new feature reduces indexing times, making it a game-changer for projects where speed truly matters.
+          - blockquote [ref=e119]:
+            - paragraph [ref=e120]: Indexing over GPU now delivers speeds up to 10x faster than CPU-based methods for the equivalent hardware price.
+          - paragraph [ref=e121]:
+            - text: Our custom implementation of GPU-accelerated HNSW indexing
+            - strong [ref=e122]: is built entirely in-house
+            - text: . Unlike solutions that depend on third-party libraries, our approach is vendor-agnostic, meaning it works seamlessly with any modern GPU that supports
+            - strong [ref=e123]: Vulkan API
+            - text: . This ensures broad compatibility and flexibility for a wide range of systems.
+          - paragraph [ref=e124]:
+            - emphasis [ref=e125]: "Here is a picture of us, running Qdrant with GPU support on a SteamDeck (AMD Van Gogh GPU):"
+          - figure "Qdrant on SteamDeck with integrated AMD GPU" [ref=e126]:
+            - img "Qdrant on SteamDeck" [ref=e127]
+            - paragraph [ref=e129]: Qdrant on SteamDeck with integrated AMD GPU
+          - paragraph [ref=e130]: This experiment didn’t require any changes to the codebase, and everything worked right out of the box with our AMD Docker image.
+          - blockquote [ref=e131]:
+            - paragraph [ref=e132]: As of right now this solution supports only on-premises deployments, but we will introduce support for Qdrant Cloud shortly.
+          - heading "Anchor Benchmarks on Common GPUs" [level=3] [ref=e133]:
+            - link "Anchor" [ref=e134] [cursor=pointer]:
+              - /url: "#benchmarks-on-common-gpus"
+              - text: 
+            - text: Benchmarks on Common GPUs
+          - paragraph [ref=e135]:
+            - strong [ref=e136]: Qdrant doesn’t require high-end GPUs
+            - text: "to achieve significant performance improvements. The table below compares indexing times and instance costs for 1 million vectors (1536-dimensional) across common GPU machines:"
+          - table [ref=e138]:
+            - rowgroup [ref=e139]:
+              - row "Configuration Indexing time (s) Price per Instance (USD/month)" [ref=e140]:
+                - columnheader "Configuration" [ref=e141]:
+                  - strong [ref=e142]: Configuration
+                - columnheader "Indexing time (s)" [ref=e143]:
+                  - strong [ref=e144]: Indexing time (s)
+                - columnheader "Price per Instance (USD/month)" [ref=e145]:
+                  - strong [ref=e146]: Price per Instance (USD/month)
+            - rowgroup [ref=e147]:
+              - row "AMD Radeon Pro V520 33.1 $394.20 (CPU + GPU)" [ref=e148]:
+                - cell "AMD Radeon Pro V520" [ref=e149]
+                - cell "33.1" [ref=e150]
+                - cell "$394.20 (CPU + GPU)" [ref=e151]
+              - row "Nvidia T4 19.1 $277.40 (CPU) + $255.50(GPU) = $532.90" [ref=e152]:
+                - cell "Nvidia T4" [ref=e153]
+                - cell "19.1" [ref=e154]
+                - cell "$277.40 (CPU) + $255.50(GPU) = $532.90" [ref=e155]
+              - row "Nvidia L4 12.4 $214.32 (CPU) + $408.83(GPU) = $624.15" [ref=e156]:
+                - cell "Nvidia L4" [ref=e157]
+                - cell "12.4" [ref=e158]
+                - cell "$214.32 (CPU) + $408.83(GPU) = $624.15" [ref=e159]
+              - row "8 CPU Cores 97.5 $195.67" [ref=e160]:
+                - cell "8 CPU Cores" [ref=e161]
+                - cell "97.5" [ref=e162]
+                - cell "$195.67" [ref=e163]
+              - row "4 CPU Cores 221.9 $107.16" [ref=e164]:
+                - cell "4 CPU Cores" [ref=e165]
+                - cell "221.9" [ref=e166]
+                - cell "$107.16" [ref=e167]
+          - paragraph [ref=e168]:
+            - emphasis [ref=e169]: Quoted prices are from Google Cloud Platform (NVIDIA) and AWS (AMD)
+          - paragraph [ref=e170]:
+            - strong [ref=e171]: "Additional Benefits:"
+          - list [ref=e172]:
+            - listitem [ref=e173]:
+              - strong [ref=e174]: "Multi-GPU Support:"
+              - text: Index segments concurrently to handle large-scale workloads.
+            - listitem [ref=e175]:
+              - strong [ref=e176]: "Hardware Flexibility:"
+              - text: Doesn’t require high-end GPUs to achieve significant performance improvements.
+            - listitem [ref=e177]:
+              - strong [ref=e178]: "Full Feature Support:"
+              - text: GPU indexing supports
+              - strong [ref=e179]: all quantization options and datatypes
+              - text: implemented in Qdrant.
+            - listitem [ref=e180]:
+              - strong [ref=e181]: "Large-Scale Benefits:"
+              - text: Fast indexing unlocks larger size of segments, which leads to
+              - strong [ref=e182]: higher RPS on the same hardware
+              - text: .
+          - heading "Anchor Instructions & Documentation" [level=3] [ref=e183]:
+            - link "Anchor" [ref=e184] [cursor=pointer]:
+              - /url: "#instructions--documentation"
+              - text: 
+            - link "Instructions & Documentation" [ref=e185] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/ops-configuration/running-with-gpu/
+          - paragraph [ref=e186]:
+            - text: The setup is simple, with pre-configured Docker images
+            - link "(check Docker Registry)" [ref=e187] [cursor=pointer]:
+              - /url: https://hub.docker.com/r/qdrant/qdrant/tags
+              - strong [ref=e188]: (check Docker Registry)
+            - text: for GPU environments like NVIDIA and AMD. We’ve made it so you can enable GPU indexing with minimal configuration changes.
+          - blockquote [ref=e189]:
+            - paragraph [ref=e190]: "Note: Logs will clearly indicate GPU detection and usage for transparency."
+          - paragraph [ref=e191]:
+            - emphasis [ref=e192]:
+              - text: Read more about this feature in the
+              - link "GPU Indexing Documentation" [ref=e193] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/ops-configuration/running-with-gpu/
+                - strong [ref=e194]: GPU Indexing Documentation
+          - heading "Anchor Interview With the Creator of GPU Indexing" [level=4] [ref=e195]:
+            - link "Anchor" [ref=e196] [cursor=pointer]:
+              - /url: "#interview-with-the-creator-of-gpu-indexing"
+              - text: 
+            - text: Interview With the Creator of GPU Indexing
+          - paragraph [ref=e197]:
+            - text: We interviewed
+            - strong [ref=e198]: Qdrant’s own Ivan Pleshkov from the Core development team
+            - text: . Ivan created the new GPU indexing feature with an innovative approach he brings from the gaming industry. Listen in to hear about his vision and challenges while building the feature.
+          - iframe [ref=e199]:
+            - generic [active] [ref=f1e1]:
+              - generic "YouTube Video Player" [ref=f1e3]
+              - generic [ref=f1e5]:
+                - generic:
+                  - generic:
+                    - button "Play video" [ref=f1e10] [cursor=pointer]
+                    - button "Hide player controls" [ref=f1e12] [cursor=pointer]
+                    - generic [ref=f1e14]:
+                      - generic [ref=f1e19]:
+                        - generic [ref=f1e20]:
+                          - 'link "GPU-Accelerated HNSW Vector Indexing - Ivan Pleshkov | Vector Space Talks #023" [ref=f1e21] [cursor=pointer]':
+                            - /url: https://www.youtube.com/watch?v=HkVhWvaUfoQ
+                          - link "Qdrant Vector Search" [ref=f1e22] [cursor=pointer]:
+                            - /url: /channel/UC6ftm8PwH1RU_LM1jwG0LQA
+                            - generic [ref=f1e23]: Qdrant Vector Search
+                        - generic [ref=f1e24]:
+                          - button [ref=f1e25] [cursor=pointer]
+                          - generic [ref=f1e27]:
+                            - generic: Qdrant Vector Search
+                            - generic: 11.4K subscribers
+                      - generic [ref=f1e28]:
+                        - button "Share" [ref=f1e31] [cursor=pointer]:
+                          - generic [ref=f1e35]:
+                            - img
+                        - link "Watch on YouTube" [ref=f1e42] [cursor=pointer]:
+                          - /url: https://www.youtube.com/watch?v=HkVhWvaUfoQ
+                          - generic [ref=f1e45]:
+                            - text: Watch on
+                            - img [ref=f1e47]:
+                              - generic [ref=f1e49]:
+                                - img
+          - heading "Anchor Strict Mode for Operational Control" [level=2] [ref=e200]:
+            - link "Anchor" [ref=e201] [cursor=pointer]:
+              - /url: "#strict-mode-for-operational-control"
+              - text: 
+            - text: Strict Mode for Operational Control
+          - paragraph [ref=e202]:
+            - img "strict-mode" [ref=e203]
+          - paragraph [ref=e204]:
+            - strong [ref=e205]: Strict Mode
+            - text: ensures consistent performance in distributed deployments by enforcing operational controls. It limits computationally intensive operations like unindexed filtering, batch sizes, and search parameters (
+            - code [ref=e206]: hnsw_ef
+            - text: ","
+            - code [ref=e207]: oversampling
+            - text: ) This prevents inefficient usage that could overload your system.
+          - paragraph [ref=e208]:
+            - text: Additional safeguards, including limits on
+            - strong [ref=e209]: payload sizes
+            - text: ","
+            - strong [ref=e210]: filter conditions
+            - text: ", and"
+            - strong [ref=e211]: timeouts
+            - text: ", keep high-demand applications fast and reliable. This feature is configured via"
+            - code [ref=e212]: strict_mode_config
+            - text: ", and it allows collection-level customization while maintaining backward compatibility."
+          - blockquote [ref=e213]:
+            - paragraph [ref=e214]:
+              - text: New collections will default to
+              - strong [ref=e215]: Strict Mode
+              - text: ", ensuring compliance by design and balancing workloads across tenants."
+          - paragraph [ref=e216]:
+            - text: This feature also enhances usability by providing
+            - strong [ref=e217]: detailed error messages
+            - text: when requests exceed defined limits. The system will give you clear guidance on resolution steps.
+          - paragraph [ref=e218]:
+            - strong [ref=e219]: Strict Mode
+            - text: solves the “
+            - emphasis [ref=e220]: noisy neighbor
+            - text: ” problem and optimizes resource allocation, making multi-tenancy work nicely in serverless mode.
+          - heading "Anchor Enable Strict Mode" [level=3] [ref=e221]:
+            - link "Anchor" [ref=e222] [cursor=pointer]:
+              - /url: "#enable-strict-mode"
+              - text: 
+            - text: Enable Strict Mode
+          - paragraph [ref=e223]:
+            - text: To configure
+            - strong [ref=e224]: Strict Mode
+            - text: ", refer to the"
+            - link "schema definitions" [ref=e225] [cursor=pointer]:
+              - /url: https://api.qdrant.tech/api-reference/collections/create-collection#request.body.strict_mode_config
+              - strong [ref=e226]: schema definitions
+            - text: for all available
+            - code [ref=e227]: strict_mode_config
+            - text: parameters.
+          - paragraph [ref=e228]: When a defined limit is crossed, Qdrant responds with a client-side error that includes details about the specific limit exceeded. This can make troubleshooting much simpler.
+          - blockquote [ref=e229]:
+            - paragraph [ref=e230]:
+              - text: The
+              - code [ref=e231]: enabled
+              - text: field in the configuration acts as a dynamic toggle, allowing you to activate or deactivate Strict Mode as needed.
+          - paragraph [ref=e232]:
+            - text: In this example we enable
+            - strong [ref=e233]: Strict Mode
+            - text: when creating a collection to activate the
+            - code [ref=e234]: unindexed_filtering_retrieve
+            - text: "limit:"
+          - generic [ref=e236]:
+            - generic [ref=e239]: http
+            - generic [ref=e242]: bash
+            - generic [ref=e245]: python
+            - generic [ref=e248]: typescript
+            - generic [ref=e251]: rust
+            - generic [ref=e254]: java
+            - generic [ref=e257]: csharp
+            - generic [ref=e260]: go
+          - generic [ref=e262]:
+            - code [ref=e264]:
+              - generic [ref=e266]: "PUT /collections/{collection_name}"
+              - generic [ref=e268]: "{"
+              - generic [ref=e270]: "\"strict_mode_config\": {"
+              - generic [ref=e272]: "\"enabled\": true,"
+              - generic [ref=e274]: "\"unindexed_filtering_retrieve\": true"
+              - generic [ref=e276]: "}"
+              - generic [ref=e278]: "}"
+            - button "Copy to clipboard" [ref=e279] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e280]
+          - blockquote [ref=e281]:
+            - paragraph [ref=e282]:
+              - text: You may also use the
+              - code [ref=e283]: PATCH
+              - text: request to enable Strict Mode on an existing collection.
+          - paragraph [ref=e284]:
+            - emphasis [ref=e285]:
+              - text: Read more about Strict Mode in the
+              - link "Database Administration Guide" [ref=e286] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/ops-configuration/administration/#strict-mode
+                - strong [ref=e287]: Database Administration Guide
+          - heading "Anchor HNSW Graph Compression" [level=2] [ref=e288]:
+            - link "Anchor" [ref=e289] [cursor=pointer]:
+              - /url: "#hnsw-graph-compression"
+              - text: 
+            - text: HNSW Graph Compression
+          - paragraph [ref=e290]:
+            - img "hnsw-graph-compression" [ref=e291]
+          - paragraph [ref=e292]:
+            - text: "We’re always looking for ways to make your search experience faster and more efficient. That’s why we are introducing a new optimization method for our HNSW graph technology:"
+            - link "Delta Encoding" [ref=e293] [cursor=pointer]:
+              - /url: https://en.wikipedia.org/wiki/Delta_encoding
+              - strong [ref=e294]: Delta Encoding
+            - text: . This improvement makes your searches lighter on memory without sacrificing speed.
+          - paragraph [ref=e295]:
+            - strong [ref=e296]: Delta Encoding
+            - text: is a clever way to compress data by storing only the differences (or “deltas”) between values. It’s commonly used in search engines (
+            - emphasis [ref=e297]: for the classical inverted index
+            - text: ) to save space and improve performance. We’ve now
+            - link "adapted this technique" [ref=e298] [cursor=pointer]:
+              - /url: https://github.com/qdrant/qdrant/pull/5487
+              - strong [ref=e299]: adapted this technique
+            - text: for the HNSW graph structure that powers Qdrant’s search.
+          - paragraph [ref=e300]:
+            - text: In contrast with traditional compression algorithms, like gzip or lz4,
+            - strong [ref=e301]: Delta Encoding
+            - text: requires very little CPU overhead for decompression, which makes it a perfect fit for the HNSW graph links.
+          - blockquote [ref=e302]:
+            - paragraph [ref=e303]:
+              - text: Our experiments didn’t observe any measurable performance degradation. However, the memory footprint of the HNSW graph was
+              - strong [ref=e304]: reduced by up to 30%
+              - text: .
+          - paragraph [ref=e305]:
+            - emphasis [ref=e306]:
+              - text: For more general info, read about
+              - link "Indexing and Data Structures in Qdrant" [ref=e307] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/indexing/
+                - strong [ref=e308]: Indexing and Data Structures in Qdrant
+          - heading "Anchor Filter by Named Vectors" [level=2] [ref=e309]:
+            - link "Anchor" [ref=e310] [cursor=pointer]:
+              - /url: "#filter-by-named-vectors"
+              - text: 
+            - text: Filter by Named Vectors
+          - paragraph [ref=e311]:
+            - img "filter-named-vectors" [ref=e312]
+          - paragraph [ref=e313]: In Qdrant, you can store multiple vectors of different sizes and types in a single data point. This is useful when you have to representing data with multiple embeddings, such as image, text, or video features.
+          - blockquote [ref=e314]:
+            - paragraph [ref=e315]:
+              - text: We previously introduced this feature as
+              - link "Named Vectors" [ref=e316] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/manage-data/vectors/#named-vectors
+                - strong [ref=e317]: Named Vectors
+              - text: . Now, you can filter points by checking if a specific named vector exists.
+          - paragraph [ref=e318]:
+            - text: This makes it easy to search for points based on the presence of specific vectors. For example,
+            - emphasis [ref=e319]: if your collection includes image and text vectors, you can filter for points that only have the image vector defined
+            - text: .
+          - heading "Anchor Create a Collection with Named Vectors" [level=3] [ref=e320]:
+            - link "Anchor" [ref=e321] [cursor=pointer]:
+              - /url: "#create-a-collection-with-named-vectors"
+              - text: 
+            - text: Create a Collection with Named Vectors
+          - paragraph [ref=e322]:
+            - text: Upon collection
+            - link "creation" [ref=e323] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/manage-data/collections/#collection-with-multiple-vectors
+            - text: ", you define named vector types, such as"
+            - code [ref=e324]: image
+            - text: or
+            - code [ref=e325]: text
+            - text: ":"
+          - generic [ref=e326]:
+            - code [ref=e328]:
+              - generic [ref=e330]: "PUT /collections/{collection_name}"
+              - generic [ref=e332]: "{"
+              - generic [ref=e334]: "\"vectors\": {"
+              - generic [ref=e336]: "\"image\": {"
+              - generic [ref=e338]: "\"size\": 4,"
+              - generic [ref=e340]: "\"distance\": \"Dot\""
+              - generic [ref=e342]: "},"
+              - generic [ref=e344]: "\"text\": {"
+              - generic [ref=e346]: "\"size\": 8,"
+              - generic [ref=e348]: "\"distance\": \"Cosine\""
+              - generic [ref=e350]: "}"
+              - generic [ref=e352]: "},"
+              - generic [ref=e354]: "\"sparse_vectors\": {"
+              - generic [ref=e356]: "\"sparse-image\": {},"
+              - generic [ref=e358]: "\"sparse-text\": {},"
+              - generic [ref=e360]: "},"
+              - generic [ref=e362]: "}"
+            - button "Copy to clipboard" [ref=e363] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e364]
+          - heading "Anchor Sample Request" [level=3] [ref=e365]:
+            - link "Anchor" [ref=e366] [cursor=pointer]:
+              - /url: "#sample-request"
+              - text: 
+            - text: Sample Request
+          - paragraph [ref=e367]:
+            - text: Some points might include both
+            - strong [ref=e368]: image
+            - text: and
+            - strong [ref=e369]: text
+            - text: vectors, while others might include just one. With this new feature, you can easily filter for points that specifically have the
+            - strong [ref=e370]: image
+            - text: vector defined.
+          - generic [ref=e372]:
+            - generic [ref=e375]: http
+            - generic [ref=e378]: python
+            - generic [ref=e381]: typescript
+            - generic [ref=e384]: rust
+            - generic [ref=e387]: java
+            - generic [ref=e390]: csharp
+            - generic [ref=e393]: go
+          - generic [ref=e395]:
+            - code [ref=e397]:
+              - generic [ref=e399]: "POST /collections/{collection_name}/points/scroll"
+              - generic [ref=e401]: "{"
+              - generic [ref=e403]: "\"filter\": {"
+              - generic [ref=e405]: "\"must\": ["
+              - generic [ref=e407]: "{ \"has_vector\": \"image\" }"
+              - generic [ref=e409]: "]"
+              - generic [ref=e411]: "}"
+              - generic [ref=e413]: "}"
+            - button "Copy to clipboard" [ref=e414] [cursor=pointer]:
+              - tooltip "Copy to clipboard" [ref=e415]
+          - paragraph [ref=e416]: This feature makes it easier to manage and query collections with heterogeneous data. It will give you more flexibility and control over your vector search workflows.
+          - paragraph [ref=e417]:
+            - emphasis [ref=e418]:
+              - text: To dive deeper into filtering by named vectors, check out the
+              - link "Filtering Documentation" [ref=e419] [cursor=pointer]:
+                - /url: https://qdrant.tech/documentation/search/filtering/#has-vector
+                - strong [ref=e420]: Filtering Documentation
+          - heading "Anchor Custom Storage Engine" [level=2] [ref=e421]:
+            - link "Anchor" [ref=e422] [cursor=pointer]:
+              - /url: "#custom-storage-engine"
+              - text: 
+            - text: Custom Storage Engine
+          - paragraph [ref=e423]:
+            - img "custom-storage-engine" [ref=e424]
+          - paragraph [ref=e425]:
+            - text: When Qdrant started, we used
+            - strong [ref=e426]: RocksDB
+            - text: as the storage backend for payloads and sparse vectors. RocksDB, known for its versatility and ability to handle random reads and writes, seemed like a solid choice. But as our needs evolved, its “
+            - emphasis [ref=e427]: general-purpose
+            - text: ” design began to show cracks.
+          - blockquote [ref=e428]:
+            - paragraph [ref=e429]: RocksDB is built to handle arbitrary keys and values of any size, but this flexibility comes at a cost.
+          - paragraph [ref=e430]:
+            - text: A key example is compaction, a process that reorganizes data on disk to maintain performance.
+            - strong [ref=e431]: Under heavy write loads, compaction can become a bottleneck
+            - text: ", causing significant slowdowns. For Qdrant, this meant huge latency spikes at random moments causing timeout errors during large uploads—a frustrating roadblock."
+          - paragraph [ref=e432]:
+            - text: To solve this, we built a
+            - strong [ref=e433]: custom storage backend
+            - text: optimized for our specific use case. Unlike RocksDB, our system delivers consistent performance by ensuring reads and writes require a constant number of disk operations, regardless of data size. As a result, you will get faster and reliable performance - free from latency-spikes.
+          - heading "Anchor Our New Storage Architecture" [level=3] [ref=e434]:
+            - link "Anchor" [ref=e435] [cursor=pointer]:
+              - /url: "#our-new-storage-architecture"
+              - text: 
+            - text: Our New Storage Architecture
+          - paragraph [ref=e436]:
+            - text: "There are four elements: the"
+            - strong [ref=e437]: Data Layer
+            - text: ","
+            - strong [ref=e438]: Mask Layer
+            - text: ","
+            - strong [ref=e439]: the Region
+            - text: and
+            - strong [ref=e440]: Tracker Layer
+            - text: .
+          - figure "Qdrant’s New Storage Backend" [ref=e441]:
+            - img "Qdrant's New Storage Backend" [ref=e442]
+            - paragraph [ref=e444]: Qdrant’s New Storage Backend
+          - paragraph [ref=e445]:
+            - strong [ref=e446]: The Data Layer
+            - text: consists of fixed-size blocks that store the actual data. The block size is a configurable parameter that can be adjusted based on the workload. Each record occupies the required number of blocks. If the data size exceeds the block size, it is split into multiple blocks. If the data size is smaller than the block size, it still occupies an entire block.
+          - paragraph [ref=e447]:
+            - strong [ref=e448]: The Mask Layer
+            - text: contains a bitmask that indicates which blocks are occupied and which are free. The size of the mask corresponds to the number of blocks in the Data Layer. For instance, if we have 64 blocks of 128 bytes each, the bitmask will allocate 1 bit for every block in the Data Layer resulting in 8 bytes. This results in an overhead of 1/1024 of the Data Layer size, because each byte in the mask covers 1024 bytes of blocked storage. The bitmask is stored on disk and does not need to be loaded into memory.
+          - paragraph [ref=e449]:
+            - strong [ref=e450]: The Region
+            - text: is an additional structure which tracks gaps in regions of the bitmask. This is to get an even smaller overhead against the data, which can be loaded into memory easily. Each region summarizes 1KB of bits in the bitmask, which represents a millionth scale of the Data Layer size, or 6 KB of RAM per GB of data.
+          - paragraph [ref=e451]:
+            - strong [ref=e452]: The Tracker Layer
+            - text: is in charge of fast lookups, it directly links the IDs of the points to the place where the data is located.
+          - heading "Anchor Get Started with Qdrant" [level=2] [ref=e453]:
+            - link "Anchor" [ref=e454] [cursor=pointer]:
+              - /url: "#get-started-with-qdrant"
+              - text: 
+            - text: Get Started with Qdrant
+          - paragraph [ref=e455]:
+            - img "get-started" [ref=e456]
+          - paragraph [ref=e457]:
+            - text: The easiest way to reach that
+            - strong [ref=e458]: Hello World
+            - text: moment is to
+            - link "try vector search in a live cluster" [ref=e459] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/cloud-quickstart/
+              - strong [ref=e460]: try vector search in a live cluster
+            - text: . Our
+            - strong [ref=e461]: interactive tutorial
+            - text: will show you how to create a cluster, add data and try some filtering clauses.
+          - paragraph [ref=e462]:
+            - strong [ref=e463]: "New features, like named vector filtering, can be tested in the Qdrant Dashboard:"
+          - paragraph [ref=e464]:
+            - img "qdrant-filtering-tutorial" [ref=e465]
+    - generic [ref=e470]:
+      - heading "Get Started with Qdrant Free" [level=3] [ref=e471]
+      - link "Get Started" [ref=e472] [cursor=pointer]:
+        - /url: https://cloud.qdrant.io/signup?__hstc=265983056.d83d9bfb4228750fa66a3131c7fe9a2d.1780095857273.1780095857273.1780095857273.1&__hssc=265983056.1.1780095857273&__hsfp=97dd48aaab4ec16eeede391435d2a4fd
+  - contentinfo [ref=e475]:
+    - generic [ref=e478]:
+      - link "Qdrant Logo" [ref=e480] [cursor=pointer]:
+        - /url: https://qdrant.tech/
+        - img "Qdrant Logo" [ref=e481]
+      - generic [ref=e482]:
+        - link [ref=e483] [cursor=pointer]:
+          - /url: https://github.com/qdrant/qdrant
+          - img [ref=e484]
+        - link [ref=e487] [cursor=pointer]:
+          - /url: https://qdrant.to/linkedin
+          - img [ref=e488]
+        - link [ref=e491] [cursor=pointer]:
+          - /url: https://qdrant.to/twitter
+          - img [ref=e492]
+        - link [ref=e496] [cursor=pointer]:
+          - /url: https://qdrant.to/discord
+          - img [ref=e497]
+        - link [ref=e499] [cursor=pointer]:
+          - /url: https://www.youtube.com/channel/UC6ftm8PwH1RU_LM1jwG0LQA
+          - img [ref=e500]
+    - navigation [ref=e504]:
+      - generic [ref=e505]:
+        - paragraph [ref=e506]: Products
+        - list [ref=e507]:
+          - listitem [ref=e508]:
+            - link "Qdrant Vector Database" [ref=e509] [cursor=pointer]:
+              - /url: https://qdrant.tech/qdrant-vector-database/
+          - listitem [ref=e510]:
+            - link "Qdrant Cloud" [ref=e511] [cursor=pointer]:
+              - /url: https://qdrant.tech/cloud/
+          - listitem [ref=e512]:
+            - link "Qdrant Hybrid Cloud" [ref=e513] [cursor=pointer]:
+              - /url: https://qdrant.tech/hybrid-cloud/
+          - listitem [ref=e514]:
+            - link "Qdrant Enterprise Solutions" [ref=e515] [cursor=pointer]:
+              - /url: https://qdrant.tech/enterprise-solutions/
+          - listitem [ref=e516]:
+            - link "Qdrant Cloud Inference" [ref=e517] [cursor=pointer]:
+              - /url: https://qdrant.tech/cloud-inference/
+          - listitem [ref=e518]:
+            - link "Qdrant Edge (Beta)" [ref=e519] [cursor=pointer]:
+              - /url: https://qdrant.tech/edge/
+          - listitem [ref=e520]:
+            - link "Pricing" [ref=e521] [cursor=pointer]:
+              - /url: https://qdrant.tech/pricing/
+      - generic [ref=e522]:
+        - paragraph [ref=e523]: Use Cases
+        - list [ref=e524]:
+          - listitem [ref=e525]:
+            - link "Advanced Search" [ref=e526] [cursor=pointer]:
+              - /url: https://qdrant.tech/advanced-search/
+          - listitem [ref=e527]:
+            - link "Recommendation Systems" [ref=e528] [cursor=pointer]:
+              - /url: https://qdrant.tech/recommendations/
+          - listitem [ref=e529]:
+            - link "Retrieval Augmented Generation" [ref=e530] [cursor=pointer]:
+              - /url: https://qdrant.tech/rag/
+          - listitem [ref=e531]:
+            - link "Data Analysis & Anomaly Detection" [ref=e532] [cursor=pointer]:
+              - /url: https://qdrant.tech/data-analysis-anomaly-detection/
+          - listitem [ref=e533]:
+            - link "AI Agents" [ref=e534] [cursor=pointer]:
+              - /url: https://qdrant.tech/ai-agents/
+      - generic [ref=e535]:
+        - paragraph [ref=e536]: Industries
+        - list [ref=e537]:
+          - listitem [ref=e538]:
+            - link "E-commerce" [ref=e539] [cursor=pointer]:
+              - /url: https://qdrant.tech/e-commerce/
+          - listitem [ref=e540]:
+            - link "Legal Tech" [ref=e541] [cursor=pointer]:
+              - /url: https://qdrant.tech/legal-tech/
+          - listitem [ref=e542]:
+            - link "Hospitality & Travel" [ref=e543] [cursor=pointer]:
+              - /url: https://qdrant.tech/hospitality-and-travel/
+          - listitem [ref=e544]:
+            - link "HR Tech" [ref=e545] [cursor=pointer]:
+              - /url: https://qdrant.tech/hr-tech/
+          - listitem [ref=e546]:
+            - link "Healthcare Tech" [ref=e547] [cursor=pointer]:
+              - /url: https://qdrant.tech/healthcare/
+      - generic [ref=e548]:
+        - paragraph [ref=e549]: Developers
+        - list [ref=e550]:
+          - listitem [ref=e551]:
+            - link "Documentation" [ref=e552] [cursor=pointer]:
+              - /url: https://qdrant.tech/documentation/
+          - listitem [ref=e553]:
+            - link "Community" [ref=e554] [cursor=pointer]:
+              - /url: https://qdrant.tech/community/
+          - listitem [ref=e555]:
+            - link "GitHub" [ref=e556] [cursor=pointer]:
+              - /url: https://github.com/qdrant/qdrant
+          - listitem [ref=e557]:
+            - link "Roadmap" [ref=e558] [cursor=pointer]:
+              - /url: https://qdrant.to/roadmap
+          - listitem [ref=e559]:
+            - link "Change Log" [ref=e560] [cursor=pointer]:
+              - /url: https://github.com/qdrant/qdrant/releases
+          - listitem [ref=e561]:
+            - link "Status Page" [ref=e562] [cursor=pointer]:
+              - /url: https://status.qdrant.io/?__hstc=265983056.d83d9bfb4228750fa66a3131c7fe9a2d.1780095857273.1780095857273.1780095857273.1&__hssc=265983056.1.1780095857273&__hsfp=97dd48aaab4ec16eeede391435d2a4fd
+          - listitem [ref=e563]:
+            - link "Certification" [ref=e564] [cursor=pointer]:
+              - /url: http://train.qdrant.dev/
+      - generic [ref=e565]:
+        - paragraph [ref=e566]: Resources
+        - list [ref=e567]:
+          - listitem [ref=e568]:
+            - link "Blog" [ref=e569] [cursor=pointer]:
+              - /url: https://qdrant.tech/blog/
+          - listitem [ref=e570]:
+            - link "Benchmarks" [ref=e571] [cursor=pointer]:
+              - /url: https://qdrant.tech/benchmarks/
+          - listitem [ref=e572]:
+            - link "Articles" [ref=e573] [cursor=pointer]:
+              - /url: https://qdrant.tech/articles/
+          - listitem [ref=e574]:
+            - link "Startup Program" [ref=e575] [cursor=pointer]:
+              - /url: https://qdrant.tech/qdrant-for-startups/
+          - listitem [ref=e576]:
+            - link "Demos" [ref=e577] [cursor=pointer]:
+              - /url: https://qdrant.tech/demo/
+          - listitem [ref=e578]:
+            - link "Bug Bounty" [ref=e579] [cursor=pointer]:
+              - /url: https://qdrant.tech/security/bug-bounty-program/
+      - generic [ref=e580]:
+        - paragraph [ref=e581]: Company
+        - list [ref=e582]:
+          - listitem [ref=e583]:
+            - link "About Us" [ref=e584] [cursor=pointer]:
+              - /url: https://qdrant.tech/about-us/
+          - listitem [ref=e585]:
+            - link "Customers" [ref=e586] [cursor=pointer]:
+              - /url: https://qdrant.tech/customers/
+          - listitem [ref=e587]:
+            - link "Partners" [ref=e588] [cursor=pointer]:
+              - /url: https://qdrant.tech/partners/
+          - listitem [ref=e589]:
+            - link "Careers" [ref=e590] [cursor=pointer]:
+              - /url: https://qdrant.to/jobs
+          - listitem [ref=e591]:
+            - link "Contact Us" [ref=e592] [cursor=pointer]:
+              - /url: https://qdrant.tech/contact-us/
+    - generic [ref=e595]:
+      - generic [ref=e596]:
+        - paragraph [ref=e597]: Sign up for Qdrant updates
+        - paragraph [ref=e598]: We'll occasionally send you best practices for using vector data and similarity search, as well as product news.
+      - generic [ref=e601]:
+        - textbox "Email*" [ref=e604]:
+          - /placeholder: Enter your email
+        - paragraph [ref=e607]:
+          - text: By submitting, you agree to subscribe to Qdrant's updates. You can withdraw your consent anytime. More details are in the
+          - link "Privacy Policy" [ref=e608] [cursor=pointer]:
+            - /url: https://qdrant.tech/legal/privacy-policy/
+          - text: .
+        - iframe [ref=e613]:
+          - generic [ref=f7e4]:
+            - text: protected by
+            - strong [ref=f7e5]: reCAPTCHA
+        - button "Subscribe" [ref=e616] [cursor=pointer]
+    - generic [ref=e619]:
+      - generic [ref=e620]:
+        - generic [ref=e621]: © 2026 Qdrant.
+        - generic [ref=e622]:
+          - link "SOC2" [ref=e623] [cursor=pointer]:
+            - /url: http://qdrant.to/trust-center
+            - img "SOC2" [ref=e624]
+          - link "heyData GDPR" [ref=e625] [cursor=pointer]:
+            - /url: https://heydata.eu/
+            - img "heyData GDPR" [ref=e626]
+          - link "GDPR" [ref=e627] [cursor=pointer]:
+            - /url: https://qdrant.tech/#
+            - img "GDPR" [ref=e628]
+          - link "HIPAA" [ref=e629] [cursor=pointer]:
+            - /url: https://qdrant.tech/#
+            - img "HIPAA" [ref=e630]
+      - generic [ref=e631]:
+        - link "Terms" [ref=e632] [cursor=pointer]:
+          - /url: https://qdrant.tech/legal/terms_and_conditions/
+        - link "Privacy Policy" [ref=e633] [cursor=pointer]:
+          - /url: https://qdrant.tech/legal/privacy-policy/
+        - link "Impressum" [ref=e634] [cursor=pointer]:
+          - /url: https://qdrant.tech/legal/impressum/
+        - link "Recruitment Privacy Policy" [ref=e635] [cursor=pointer]:
+          - /url: https://qdrant.tech/legal/recruitment-privacy-policy/
+        - link "Cookie Consent" [ref=e636] [cursor=pointer]:
+          - /url: "#"
