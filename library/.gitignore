@@ -1,0 +1,10 @@
+# Browser automation snapshots
+playwright-cli-snapshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# OS files
+.DS_Store
+Thumbs.db
