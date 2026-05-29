@@ -1,0 +1,2048 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Back to arXiv" [ref=e4] [cursor=pointer]:
+      - /url: https://arxiv.org/
+      - generic [ref=e5]: Back to arXiv
+    - banner [ref=e6]:
+      - paragraph [ref=e7]:
+        - text: This is
+        - strong [ref=e8]: experimental HTML
+        - text: to improve accessibility. We invite you to report rendering errors.
+        - generic [ref=e9]: Use Alt+Y to toggle on accessible reporting links and Alt+Shift+Y to toggle off.
+        - text: Learn more
+        - link "about this project" [ref=e10] [cursor=pointer]:
+          - /url: https://info.arxiv.org/about/accessible_HTML.html
+        - text: and
+        - link "help improve conversions" [ref=e11] [cursor=pointer]:
+          - /url: https://info.arxiv.org/help/submit_latex_best_practices.html
+        - text: .
+    - navigation [ref=e12]:
+      - link "Why HTML?" [ref=e13] [cursor=pointer]:
+        - /url: https://info.arxiv.org/about/accessible_HTML.html
+      - link "Report Issue" [ref=e14] [cursor=pointer]:
+        - /url: "#myForm"
+      - link "Back to Abstract" [ref=e15] [cursor=pointer]:
+        - /url: https://arxiv.org/abs/2506.21605v1
+      - link "Download PDF" [ref=e16] [cursor=pointer]:
+        - /url: https://arxiv.org/pdf/2506.21605v1
+      - 'link "Color scheme: System preference. Click to switch to light mode." [ref=e17] [cursor=pointer]':
+        - /url: javascript:toggleColorScheme()
+        - generic "Switch to light mode" [ref=e18]:
+          - img [ref=e19]
+  - generic [ref=e21]:
+    - navigation "Table of Contents" [ref=e22]:
+      - generic [ref=e23] [cursor=pointer]:
+        - img
+      - list [ref=e24]:
+        - listitem [ref=e25]:
+          - link "Abstract" [ref=e26] [cursor=pointer]:
+            - /url: https://arxiv.org/html/2506.21605#abstract
+            - generic [ref=e27]: Abstract
+        - listitem [ref=e28]:
+          - link "1 Introduction" [ref=e29] [cursor=pointer]:
+            - /url: https://arxiv.org/html/2506.21605v1#S1
+            - generic [ref=e30]:
+              - generic [ref=e31]: "1"
+              - text: Introduction
+        - listitem [ref=e32]:
+          - link "2 Related Works" [ref=e33] [cursor=pointer]:
+            - /url: https://arxiv.org/html/2506.21605v1#S2
+            - generic [ref=e34]:
+              - generic [ref=e35]: "2"
+              - text: Related Works
+        - listitem [ref=e36]:
+          - link "3 Dataset Construction" [ref=e37] [cursor=pointer]:
+            - /url: https://arxiv.org/html/2506.21605v1#S3
+            - generic [ref=e38]:
+              - generic [ref=e39]: "3"
+              - text: Dataset Construction
+        - listitem [ref=e40]:
+          - link "4 Benchmark" [ref=e41] [cursor=pointer]:
+            - /url: https://arxiv.org/html/2506.21605v1#S4
+            - generic [ref=e42]:
+              - generic [ref=e43]: "4"
+              - text: Benchmark
+        - listitem [ref=e44]:
+          - link "5 Conclusion" [ref=e45] [cursor=pointer]:
+            - /url: https://arxiv.org/html/2506.21605v1#S5
+            - generic [ref=e46]:
+              - generic [ref=e47]: "5"
+              - text: Conclusion
+        - listitem [ref=e48]:
+          - link "References" [ref=e49] [cursor=pointer]:
+            - /url: https://arxiv.org/html/2506.21605#bib
+            - generic [ref=e50]: References
+    - generic [ref=e51]:
+      - status "Conversion errors have been found" [ref=e52]:
+        - button "Dismiss alert" [ref=e53] [cursor=pointer]:
+          - img [ref=e55]
+        - paragraph [ref=e58]:
+          - text: HTML conversions
+          - link "sometimes display errors" [ref=e59] [cursor=pointer]:
+            - /url: https://info.dev.arxiv.org/about/accessibility_html_error_messages.html
+          - text: due to content that did not convert correctly from the source. This paper uses the following packages that are not yet supported by the HTML conversion tool. Feedback on these issues are not necessary; they are known and are being worked on.
+        - list [ref=e60]:
+          - listitem [ref=e61]: "failed: bigstrut"
+          - listitem [ref=e62]: "failed: inconsolata"
+        - paragraph [ref=e63]:
+          - text: "Authors: achieve the best HTML results from your LaTeX submissions by following these"
+          - link "best practices" [ref=e64] [cursor=pointer]:
+            - /url: https://info.arxiv.org/help/submit_latex_best_practices.html
+          - text: .
+      - generic [ref=e65]:
+        - 'link "License: arXiv.org perpetual non-exclusive license" [ref=e66] [cursor=pointer]':
+          - /url: https://info.arxiv.org/help/license/index.html#licenses-available
+        - generic [ref=e67]: arXiv:2506.21605v1 [cs.CL] 20 Jun 2025
+      - article [ref=e68]:
+        - 'heading "MemBench: Towards More Comprehensive Evaluation on the Memory of LLM-based Agents" [level=1] [ref=e69]'
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - text: Haoran Tan
+            - superscript [ref=e74]: "1"
+            - superscript [ref=e76]: "1"
+            - superscript [ref=e78]: "3"
+            - superscript [ref=e80]: "4"
+          - text: ","
+          - generic [ref=e81]:
+            - text: Zeyu Zhang
+            - superscript [ref=e82]: "1"
+            - superscript [ref=e84]: "1"
+            - superscript [ref=e86]: "3"
+            - superscript [ref=e88]: "4"
+          - text: ","
+          - generic [ref=e89]:
+            - text: Chen Ma
+            - superscript [ref=e90]: "1"
+            - superscript [ref=e92]: "3"
+            - superscript [ref=e94]: "4"
+          - text: ","
+          - generic [ref=e95]:
+            - text: Xu Chen
+            - superscript [ref=e96]: "1"
+            - superscript [ref=e98]: "2"
+            - superscript [ref=e100]: "3"
+            - superscript [ref=e102]: "4"
+          - text: ","
+          - generic [ref=e103]:
+            - text: Quanyu Dai
+            - superscript [ref=e104]: "2"
+            - superscript [ref=e106]: "2"
+          - text: ","
+          - generic [ref=e107]:
+            - text: Zhenhua Dong
+            - superscript [ref=e108]: "2"
+          - superscript [ref=e109]: "1"
+          - text: Gaoling School of Artificial, Renmin University of China, Beijing, China,
+          - superscript [ref=e110]: "2"
+          - text: Huawei Noah’s Ark Lab
+          - generic [ref=e111]: "{tanhaoran1321,zeyuzhang,xu.chen}@ruc.edu.cn,"
+          - text: daiquanyu@huawei.com
+        - generic [ref=e112]:
+          - heading "Abstract" [level=6] [ref=e113]
+          - paragraph [ref=e114]:
+            - text: Recent works have highlighted the significance of memory mechanisms in LLM-based agents, which enable them to store observed information and adapt to dynamic environments. However, evaluating their memory capabilities still remains challenges. Previous evaluations are commonly limited by the diversity of memory levels and interactive scenarios. They also lack comprehensive metrics to reflect the memory capabilities from multiple aspects. To address these problems, in this paper, we construct a more comprehensive dataset and benchmark to evaluate the memory capability of LLM-based agents. Our dataset incorporates factual memory and reflective memory as different levels, and proposes participation and observation as various interactive scenarios.
+            - generic [ref=e115]:
+              - text: Based on our dataset, we present a benchmark, named MemBench, to evaluate the memory capability of LLM-based agents from multiple aspects, including their effectiveness, efficiency, and capacity. To benefit the research community, we release our dataset and project at
+              - link "https://github.com/import-myself/Membench" [ref=e116] [cursor=pointer]:
+                - /url: https://github.com/import-myself/Membench
+              - text: .
+        - generic [ref=e118]:
+          - paragraph [ref=e119]: "MemBench: Towards More Comprehensive Evaluation on the Memory of LLM-based Agents"
+          - paragraph [ref=e120]:
+            - generic [ref=e121]:
+              - generic [ref=e124]:
+                - text: Haoran Tan
+                - superscript [ref=e125]: "1"
+                - superscript [ref=e127]: "1"
+                - superscript [ref=e129]: "3"
+                - superscript [ref=e131]: "4"
+                - text: ", Zeyu Zhang"
+                - superscript [ref=e132]: "1"
+                - superscript [ref=e134]: "1"
+                - superscript [ref=e136]: "3"
+                - superscript [ref=e138]: "4"
+                - text: ", Chen Ma"
+                - superscript [ref=e139]: "1"
+                - superscript [ref=e141]: "3"
+                - superscript [ref=e143]: "4"
+                - text: ", Xu Chen"
+                - superscript [ref=e144]: "1"
+                - superscript [ref=e146]: "2"
+                - superscript [ref=e148]: "3"
+                - superscript [ref=e150]: "4"
+                - text: ","
+              - generic [ref=e152]:
+                - generic [ref=e153]:
+                  - text: Quanyu Dai
+                  - superscript [ref=e154]: "2"
+                  - superscript [ref=e156]: "2"
+                - text: ","
+                - generic [ref=e157]:
+                  - text: Zhenhua Dong
+                  - superscript [ref=e158]: "2"
+              - generic [ref=e160]:
+                - superscript [ref=e161]: "1"
+                - text: Gaoling School of Artificial, Renmin University of China, Beijing, China,
+              - generic [ref=e163]:
+                - superscript [ref=e164]: "2"
+                - text: Huawei Noah’s Ark Lab
+              - generic [ref=e166]: "{tanhaoran1321,zeyuzhang,xu.chen}@ruc.edu.cn, daiquanyu@huawei.com"
+        - generic [ref=e167]:
+          - heading "1 Introduction" [level=2] [ref=e168]:
+            - generic [ref=e169]: "1"
+            - text: Introduction
+          - paragraph [ref=e171]:
+            - text: In recent years, large language models (LLMs) have demonstrated remarkable capabilities in processing natural languages and performing complex tasks across various domains
+            - generic [ref=e172]:
+              - text: Zhao et al. (
+              - link "2023" [ref=e173] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib28
+              - text: ); Wu et al. (
+              - link "2024b" [ref=e174] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib20
+              - text: )
+            - text: . However, vanilla LLMs typically operate in static scenarios, without interacting with external environments, thereby limiting their potential advancement toward artificial general intelligence (AGI). To address this limitation, many recent works propose LLM-based agents with extra modules besides the foundation models, enabling them to interact with environments with autonomous learning and dynamic adaptation
+            - generic [ref=e175]:
+              - text: Wang et al. (
+              - link "2024a" [ref=e176] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib17
+              - text: ); Xi et al. (
+              - link "2025" [ref=e177] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib21
+              - text: )
+            - text: . Among them, the memory module serves as an essential foundation for saving critical information and accumulating experiences. It empowers LLM-based agents to better meet the demands of dynamic tasks, as well as evolve within their environments continuously
+            - generic [ref=e178]:
+              - text: Zhang et al. (
+              - link "2024a" [ref=e179] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib25
+              - text: )
+            - text: .
+          - paragraph [ref=e181]:
+            - text: Some previous studies evaluate the memory capability of LLM-based agents in a subjective way, which adopts human evaluators or LLMs to score the memory process
+            - generic [ref=e182]:
+              - text: Zhong et al. (
+              - link "2024" [ref=e183] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib29
+              - text: )
+            - text: . Other studies focus on the evaluation in an indirect way
+            - generic [ref=e184]:
+              - text: Packer et al. (
+              - link "2023" [ref=e185] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib11
+              - text: )
+            - text: . They measure the task performances of agents conditional on different memory mechanisms, where a better memory mechanism generally leads to better performances. Recently, some studies introduce long-term dialogue datasets, which can be used to evaluate the long-term memory capabilities of LLM-based agents objectively
+            - generic [ref=e186]:
+              - text: Wu et al. (
+              - link "2024a" [ref=e187] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib19
+              - text: )
+            - text: .
+          - paragraph [ref=e189]: However, previous works have some limitations on evaluating the memory capability of LLM-based agents. First of all, most of them provide insufficient evaluation of the different levels of memory capabilities, which primarily focus on factual memory while neglecting reflective memory. Here, we define the factual memory as a low-level type of memory that involves information that is explicitly provided. In contrast, the reflective memory stands a higher level, which is not explicitly stated but can be implicitly reflected. For example, a user’s taste preferences represent reflective memory, while their preference for specific dishes is factual memory. Second, most of them are limited to participation scenarios, where the agent interacts with the user from a first-person perspective. However, in the agent’s daily usage, there are also observation scenarios, where the agent observes and records the user’s messages from a third-person perspective. Moreover, most of them are just focusing on the effectiveness of memory mechanisms without considering their efficiency and capacity, which is also significant in real-world applications.
+          - paragraph [ref=e191]: "To address these limitations, we propose a more comprehensive dataset and benchmark to evaluate the memory capability of LLM-based agents. The major features of our dataset and benchmark are presented as follows:"
+          - paragraph [ref=e193]: Multi-scenario Dataset. To evaluate the agent’s memory capabilities across different scenarios, our dataset includes data from two common usage scenarios. The first is the participation scenario, where the agent interacts with the user. The second is the observation scenario, where the agent is assumed as the role of an observer and required to record the information provided by the user.
+          - paragraph [ref=e195]: Multi-level Memory Content. Our dataset focuses on both factual memory and reflective memory, enabling a comprehensive evaluation of the memory capability of LLM-based agents. It allows for the evaluation of memory capabilities in tasks including information extraction, cross-session reasoning, knowledge updating, temporal reasoning, as well as reflective summarization.
+          - paragraph [ref=e197]: Multi-metric Evaluation. Based on our dataset, we introduce a multi-metric benchmark to evaluate the memory capabilities of LLM-based agents. To provide a comprehensive and obvious assessment of the various aspects of the agent’s memory performance, we offer four evaluation metrics, including accuracy, recall, capacity, and temporal efficiency.
+          - paragraph [ref=e199]:
+            - text: In summary, we introduce a dataset featuring multi-scenario and multi-level content, which is distinctively different from previous datasets. Additionally, we introduce a more comprehensive benchmark with mutli-metric evaluations. To benefit the research community, we have released our dataset and project at Github repository
+            - superscript [ref=e201]: "*"
+            - text: . In the following parts, we provide the related works in Section
+            - link "2" [ref=e202] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2506.21605v1#S2
+            - text: . We illustrate the process of data construction in Section
+            - link "3" [ref=e203] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2506.21605v1#S3
+            - text: ", and present the benchmark with analyses in Section"
+            - link "4" [ref=e204] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2506.21605v1#S4
+            - text: . Finally, we draw conclusions of our paper in Section
+            - link "5" [ref=e205] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2506.21605v1#S5
+            - text: .
+        - generic [ref=e206]:
+          - heading "2 Related Works" [level=2] [ref=e207]:
+            - generic [ref=e208]: "2"
+            - text: Related Works
+          - paragraph [ref=e210]:
+            - text: In recent years, LLM-based agents have been widely applied in many fields, such as recommendation
+            - generic [ref=e211]:
+              - text: Wu et al. (
+              - link "2024b" [ref=e212] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib20
+              - text: )
+            - text: ", finance"
+            - generic [ref=e213]:
+              - text: Ding et al. (
+              - link "2024" [ref=e214] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib4
+              - text: )
+            - text: and personal assistants
+            - generic [ref=e215]:
+              - text: Li et al. (
+              - link "2024" [ref=e216] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib8
+              - text: )
+            - text: ", because of their great capabilities in solving complex tasks and interactive scenarios"
+            - generic [ref=e217]:
+              - text: Wang et al. (
+              - link "2024a" [ref=e218] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib17
+              - text: )
+            - text: . Among the various abilities of agents to solve problems, memory is one of the most important, which is responsible to store observed information and recall relevant experiences, in order to support LLM inference
+            - generic [ref=e219]:
+              - text: Zhang et al. (
+              - link "2024a" [ref=e220] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib25
+              - text: )
+            - text: . The evaluation on the memory capability of LLM-based agents is a critical problem for developing advanced memory.
+          - paragraph [ref=e222]:
+            - text: Previous datasets used for memory evaluation mainly come from dialogue datasets designed to evaluate chat assistants, focusing on assessing the factual memory capabilities of the assistant. LoCoMo
+            - generic [ref=e223]:
+              - text: (Maharana et al.,
+              - link "2024" [ref=e224] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib9
+              - text: )
+            - text: constructs long-term conversations with LLM-expanded personalized descriptions and temporal event graphs, creating conversations for multiple evaluation tasks. LongMemEval
+            - generic [ref=e225]:
+              - text: (Wu et al.,
+              - link "2024a" [ref=e226] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib19
+              - text: )
+            - text: builds a user-assistant interaction dataset with attribute ontology and timestamped history.
+            - generic [ref=e227]:
+              - text: Xu et al. (
+              - link "2022" [ref=e228] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib22
+              - text: )
+            - text: adapts PersonaChat
+            - generic [ref=e229]:
+              - text: (Zhang et al.,
+              - link "2019" [ref=e230] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib24
+              - text: )
+            - text: through translation and role-playing, with annotated personalization usage and partial information visibility.
+            - generic [ref=e231]:
+              - text: Bai et al. (
+              - link "2023" [ref=e232] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib2
+              - text: )
+            - text: propose a bilingual benchmark in English and Chinese, covering comprehensive tasks like Q&A, summarization, and code completion.
+            - generic [ref=e233]:
+              - text: An et al. (
+              - link "2023" [ref=e234] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib1
+              - text: )
+            - text: provide a dataset designed to evaluate long-context language models across diverse domains and input lengths. PerLTQA
+            - generic [ref=e235]:
+              - text: Du et al. (
+              - link "2024" [ref=e236] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib5
+              - text: )
+            - text: generates character profiles and events with ChatGPT and Wikipedia, creating profiles, events, and QA pairs after manual validation.
+          - 'figure "Table 1: The comparision among different datasets. PS indicates Participation Scenario. OS indicates Observation Scenario. FM indicates Factual Memory. RM indicates Reflective Memory." [ref=e237]':
+            - generic [ref=e238]:
+              - generic [ref=e239]: "Table 1:"
+              - text: The comparision among different datasets. PS indicates Participation Scenario. OS indicates Observation Scenario. FM indicates Factual Memory. RM indicates Reflective Memory.
+            - table [ref=e242]:
+              - rowgroup [ref=e243]:
+                - row "Datasets Profiles Scenarios Levels \\bigstrut" [ref=e244]:
+                  - cell "Datasets" [ref=e245]:
+                    - generic [ref=e247]: Datasets
+                  - cell "Profiles" [ref=e248]:
+                    - generic [ref=e250]: Profiles
+                  - cell "Scenarios" [ref=e251]:
+                    - generic [ref=e253]: Scenarios
+                  - cell "Levels \\bigstrut" [ref=e254]:
+                    - generic [ref=e256]: Levels \bigstrut
+                - row "PerLTQA PS FM \\bigstrut[t]" [ref=e257]:
+                  - cell "PerLTQA" [ref=e258]:
+                    - generic [ref=e260]: PerLTQA
+                  - cell [ref=e261]:
+                    - math [ref=e264]:
+                      - generic [ref=e266]: ✓
+                  - cell "PS" [ref=e267]:
+                    - generic [ref=e269]: PS
+                  - cell "FM \\bigstrut[t]" [ref=e270]:
+                    - generic [ref=e272]: FM \bigstrut[t]
+                - row "LoCoMo PS FM" [ref=e273]:
+                  - cell "LoCoMo" [ref=e274]:
+                    - generic [ref=e276]: LoCoMo
+                  - cell [ref=e277]:
+                    - math [ref=e280]:
+                      - generic [ref=e282]: ×
+                  - cell "PS" [ref=e283]:
+                    - generic [ref=e285]: PS
+                  - cell "FM" [ref=e286]:
+                    - generic [ref=e288]: FM
+                - row "LongMemEval PS FM" [ref=e289]:
+                  - cell "LongMemEval" [ref=e290]:
+                    - generic [ref=e292]: LongMemEval
+                  - cell [ref=e293]:
+                    - math [ref=e296]:
+                      - generic [ref=e298]: ×
+                  - cell "PS" [ref=e299]:
+                    - generic [ref=e301]: PS
+                  - cell "FM" [ref=e302]:
+                    - generic [ref=e304]: FM
+                - row "MemBench PS & OS FM & RM \\bigstrut[b]" [ref=e305]:
+                  - cell "MemBench" [ref=e306]:
+                    - generic [ref=e308]: MemBench
+                  - cell [ref=e309]:
+                    - math [ref=e312]:
+                      - generic [ref=e314]: ✓
+                  - cell "PS & OS" [ref=e315]:
+                    - generic [ref=e317]: PS & OS
+                  - cell "FM & RM \\bigstrut[b]" [ref=e318]:
+                    - generic [ref=e320]: FM & RM \bigstrut[b]
+          - paragraph [ref=e322]:
+            - text: As we have shown in Table
+            - link "1" [ref=e323] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2506.21605v1#S2.T1
+            - text: ", most of these datasets lack diverse scenarios, focusing only on participation scenarios (PS) and overlooking the agent’s observation scenarios (OS). Additionally, they only focus on factual memory (FM), neglecting reflective memory (RM). Some works do not include the profiles of users. Previous studies typically use these datasets in long-context evaluation methods that do not align with the agent’s memory process. Moreover, the evaluation metrics used with these datasets are not comprehensive."
+          - paragraph [ref=e325]: Compared with previous works, our work is the first study that emphasizes reflective memory, puts forward observation scenarios, adopts evaluation methods that are better suited to the agent’s memory process, with more comprehensive metrics.
+          - 'figure "Figure 1: An example of generating dialogue data. First, the event \"Build Start 2024\" is extracted with the time \"next week Mon 7:00 PM,\" which is then used to generate evidence dialogues and questions. It’s merged with dialogues generated from other attributes to form a complete dialogue, and an answer is generated based on the provided time label \"2024-10-07 Monday 19:00\"." [ref=e326]':
+            - img "Refer to caption" [ref=e327]
+            - generic [ref=e328]:
+              - generic [ref=e329]: "Figure 1:"
+              - text: An example of generating dialogue data. First, the event "Build Start 2024" is extracted with the time "next week Mon 7:00 PM," which is then used to generate evidence dialogues and questions. It’s merged with dialogues generated from other attributes to form a complete dialogue, and an answer is generated based on the provided time label "2024-10-07 Monday 19:00".
+        - generic [ref=e330]:
+          - heading "3 Dataset Construction" [level=2] [ref=e331]:
+            - generic [ref=e332]: "3"
+            - text: Dataset Construction
+          - generic [ref=e333]:
+            - heading "3.1 Pipeline of Data Generation" [level=3] [ref=e334]:
+              - generic [ref=e335]: "3.1"
+              - text: Pipeline of Data Generation
+            - paragraph [ref=e337]:
+              - text: Inspired by MemSim
+              - generic [ref=e338]:
+                - text: Zhang et al. (
+                - link "2024b" [ref=e339] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib26
+                - text: )
+              - text: ", we expand the dataset for memory evaluation based on this framework. Building upon the question types of factual memory included in Memsim, we extend the evaluation of the ability for memory knowledge updating and extracting information from the assistant’s response in single or multi-session. In addition, we incorporate reflective memory generation methods and extend observation scenario to participation scenario. The dataset creation process is as follows and as shown in Figure"
+              - link "1" [ref=e340] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S2.F1
+              - text: .
+            - paragraph [ref=e342]:
+              - text: User’s Relation Graph Sampling. Following the approach of Memsim, we create a relation graph composed of user profiles and their related entities including individuals, events, places, and items. Based on Memsim’s method for sampling attributes related to factual memory, we propose a method for sampling of high-level attributes related to reflective memory. To better fit the distribution of high-level attributes in the real world, we leverage user-item relationship pairs and relevant ratings from three recommendation datasets, including MovieLens
+              - generic [ref=e343]:
+                - text: (Harper and Konstan,
+                - link "2015" [ref=e344] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib7
+                - text: )
+              - text: ", Food"
+              - generic [ref=e345]:
+                - text: (Majumder et al.,
+                - link "2019" [ref=e346] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib10
+                - text: )
+              - text: ", and Goodreads"
+              - generic [ref=e347]:
+                - text: (Wan and McAuley,
+                - link "2018" [ref=e348] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib14
+                - text: ; Wan et al.,
+                - link "2019" [ref=e349] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib15
+                - text: )
+              - text: . We extract each user’s high-level preferences in each recommendation dataset by identifying the most frequent category of items with which he or she likes or rates positively. If there is no category information, we utilize LLMs(GPT-4o-mini) to summarize the high-level preferences corresponding to these positive relation items. We assign high-level preference attributes using either random matching or matching based on identical attributes, and then we obtain the user’s relation graph shown in Figure
+              - link "2" [ref=e350] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S3.F2
+              - text: . At the same time, we construct three one-to-many mappings between high-level preferences and low-level factual attributes with LLMs or the item-category relationships from the recommendation datasets.
+            - 'figure "Figure 2: A user relation graph is composed of a user’s profile and his or her associated entities including individuals, events, items and places." [ref=e351]':
+              - img "Refer to caption" [ref=e352]
+              - generic [ref=e353]:
+                - generic [ref=e354]: "Figure 2:"
+                - text: A user relation graph is composed of a user’s profile and his or her associated entities including individuals, events, items and places.
+            - paragraph [ref=e356]: Memory Dataset Construction. Memsim provides a data creation process for the observation scenario. We expand it to the participation scenario using the self-dialogue method. When selecting high-level preference attributes, we should choose multiple low-level preference attributes from the mapping dictionary and use these low-level preference attributes to generate the corresponding evidence dialogues. For example, a user might say, "I like the movie Star Wars". To ensure fluency of the conversation, the specific discussions about the low-level preferences, such as the discussion about content of the movie, are inserted between the key dialogues to form a complete conversation. Finally, the remaining relevant attributes are used to generate multi-turn dialogues. The evidence dialogues will be inserted into them to form a complete session. We introduce a time-based session division approach, where the timestamp within a session is assigned continuously to each turn dialogue, typically with short intervals, such as one minute. The timestamp across different sessions maintains a sequential order, but the time gap between two adjacent sessions is typically longer, such as one day.
+            - 'figure "Figure 3: An overview of part categories of data used to test different abilities." [ref=e357]':
+              - img "Refer to caption" [ref=e358]
+              - generic [ref=e359]:
+                - generic [ref=e360]: "Figure 3:"
+                - text: An overview of part categories of data used to test different abilities.
+            - 'figure "Figure 4: The details of the category distribution and answer distribution in the dataset." [ref=e361]':
+              - generic [ref=e362]:
+                - figure "(a) The distribution of different types of questions in the participation dataset." [ref=e364]:
+                  - img "Refer to caption" [ref=e365]
+                  - generic [ref=e366]:
+                    - generic [ref=e367]: (a)
+                    - text: The distribution of different types of questions in the participation dataset.
+                - generic [ref=e369]:
+                  - figure "(b) The distribution of different types of questions in the participation dataset." [ref=e370]:
+                    - img "Refer to caption" [ref=e371]
+                    - generic [ref=e372]:
+                      - generic [ref=e373]: (b)
+                      - text: The distribution of different types of questions in the participation dataset.
+                  - img [ref=e374]
+                - figure "(c) The distribution of the number of different round locations of key evidence dialogue turn within a session." [ref=e376]:
+                  - img "Refer to caption" [ref=e377]
+                  - generic [ref=e378]:
+                    - generic [ref=e379]: (c)
+                    - text: The distribution of the number of different round locations of key evidence dialogue turn within a session.
+              - generic [ref=e380]:
+                - generic [ref=e381]: "Figure 4:"
+                - text: The details of the category distribution and answer distribution in the dataset.
+          - generic [ref=e382]:
+            - heading "3.2 Multi-scenario Memory" [level=3] [ref=e383]:
+              - generic [ref=e384]: "3.2"
+              - text: Multi-scenario Memory
+            - paragraph [ref=e386]: "The interactive scenarios of the agent can be categorized into two types, including the participation scenario and the observation scenario. In the participation scenario, the agent interacts with the user, while in the observation scenario, the agent serves only as an observer, recording user-inputted messages. In the participation scenario, other modules of the agent, such as the reasoning module, will affect the memory module. However, in the observation scenario, the agent does not perform actions and thus does not influence memory. These two scenarios cannot be considered the same. Therefore, we provide the following two types of datasets:"
+            - paragraph [ref=e388]: Participation Memory Scenario. The participation memory scenario is represented by the dialogue between the user and the agent, which is the agent’s typical usage scenario. To eliminate the influence of other modules of the agent, we predefine the agent’s responses to the user’s expressions. In the user-agent dialogue interaction, the agent’s memory not only needs to remember the message expressed by the user but also needs to store the message of the agent’s responses, such as the agent’s reply when the user requests a recommendation. In our dataset, the data for participation scenario dataset consists of sessions composed of many turns in dialogues.
+            - paragraph [ref=e390]: Observation Memory Scenario. The observation memory scenario is represented by the flow of message input from the user to the agent. In this process, the agent passively receives the user’s message flow over time and does not interact with the user. This scenario focuses on the agent’s role as an observer, where the agent only needs to remember the message expressed by the user without taking any action. In our dataset, the data for observation scenario dataset consists of message lists composed of many messages.
+          - generic [ref=e391]:
+            - heading "3.3 Multi-level Memory" [level=3] [ref=e392]:
+              - generic [ref=e393]: "3.3"
+              - text: Multi-level Memory
+            - paragraph [ref=e395]: "In the daily usage of LLM-based agents, we expect it to have factual memory capabilities, while also hoping that its memory mechanism can summarize and reason at higher levels to generate reflective memory. Reflective memory enables the agent to gain a more comprehensive understanding of the user, thereby improving the satisfaction of subsequent interactions. From this perspective, we divide the types of memory data and questions in our dataset into two categories:"
+            - paragraph [ref=e397]:
+              - text: Factual Memory. It refers to the specific factual attributes of the users or the entities associated with them, such as their relative’s age or occupation, the time details of events and so on. This information will be expressed in daily dialogues between users and agents. Asking questions about these attributes can test various memory abilities of the agent. For example, in dialogues, the user may not directly express the time of an event but might use indirect references, such as "next Monday", we can evaluate the agent’s ability to extract information and instantly convert time-related information by asking it the exact time of the day of the month of the event. In addition, we can also evaluate its ability to update knowledge based on different expressions of the same attribute over time. Furthermore, by designing questions that require the integration of multiple entities’ attributes for answers, we evaluate the agent’s memory capability in terms of its memory reasoning abilities in both single-session and multi-session contexts. These question examples are shown in Figure
+              - link "3" [ref=e398] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S3.F3
+              - text: .
+            - paragraph [ref=e400]: Reflective Memory. Reflective memory refers to the extraction and summarization of high-level preferences based on the user’s expression of low-level preferences, including some factual attributes in the dialogue. For example, the user’s taste preferences are inferred from his expressions of liking for different dishes. To enhance the credibility of the answers, our memory content is reinforced through multiple expressions of different factual preferences or attributes to strengthen the understanding of the agent. We can evaluate the agent’s memory mechanism’s ability to extract and summarize preferences at different levels.
+          - generic [ref=e401]:
+            - heading "3.4 Multi-metric Evaluation" [level=3] [ref=e402]:
+              - generic [ref=e403]: "3.4"
+              - text: Multi-metric Evaluation
+            - paragraph [ref=e405]: In order to more comprehensively assess the memory mechanism of the agent, we employ a total of four evaluation metrics as follows.
+            - paragraph [ref=e407]: Memory Accuracy. To avoid misjudgments caused by the agent’s flexible expression of answers, in our evaluation dataset, all questions are set as multiple-choice questions. After the agent completes the memory process, both the questions and options will be submitted to the agent. The accuracy score of the memory is calculated by comparing the agent’s choice with the true choice.
+            - paragraph [ref=e409]: Memory Recall. For retrieval-based memory mechanisms, the accuracy of retrieval is also an important metric that needs to be measured. It not only reflects the agent’s ability to effectively store and organize memory content, but also indicates the agent’s efficient use of memory when answering questions. In the process of creating dialogues, we first generate key evidence dialogues for answering questions, which enables the measurement of retrieval accuracy.
+            - paragraph [ref=e411]: Memory Capacity. We consider that the agent’s memory mechanism might have a capacity limit, which is reflected in a sharp decline in accuracy when the amount of memory content reaches a certain point. This critical threshold represents the capacity of the memory. This phenomenon might not exist, because, for example, when evaluating the retrieval-based memory mechanisms, their accuracy depends on the effectiveness of retrieval.
+            - paragraph [ref=e413]: Memory Efficiency. Regarding the design of the agent’s memory mechanism, we need to focus not only on the accuracy and completeness of the memory but also on efficiency. Some memory mechanisms may result in excessively high processing time costs for the agent, which could be unacceptable in practical applications.
+          - generic [ref=e414]:
+            - heading "3.5 Dataset Statistics" [level=3] [ref=e415]:
+              - generic [ref=e416]: "3.5"
+              - text: Dataset Statistics
+            - 'figure "Table 2: The statistics of our dataset. TPT indicates the average number of tokens per trajectory. PS indicates Participation Scenario. OS indicates Observation Scenario. RM indicates Reflective Memory. FM indicates Factual Memory" [ref=e417]':
+              - generic [ref=e418]:
+                - generic [ref=e419]: "Table 2:"
+                - text: The statistics of our dataset. TPT indicates the average number of tokens per trajectory. PS indicates Participation Scenario. OS indicates Observation Scenario. RM indicates Reflective Memory. FM indicates Factual Memory
+              - table [ref=e422]:
+                - rowgroup [ref=e423]:
+                  - 'row "Data Type # Session # Question # Trajectory TPT \\bigstrut" [ref=e424]':
+                    - cell "Data Type" [ref=e425]
+                    - cell "# Session" [ref=e426]
+                    - cell "# Question" [ref=e427]
+                    - cell "# Trajectory" [ref=e428]
+                    - cell "TPT \\bigstrut" [ref=e429]
+                  - row "PS-RM 3.5k 3.5k 3.5k 2,195 \\bigstrut[t]" [ref=e430]:
+                    - cell "PS-RM" [ref=e431]
+                    - cell "3.5k" [ref=e432]
+                    - cell "3.5k" [ref=e433]
+                    - cell "3.5k" [ref=e434]
+                    - cell "2,195 \\bigstrut[t]" [ref=e435]
+                  - row "PS-FM 51k 39k 8k 10,285" [ref=e436]:
+                    - cell "PS-FM" [ref=e437]
+                    - cell "51k" [ref=e438]
+                    - cell "39k" [ref=e439]
+                    - cell "8k" [ref=e440]
+                    - cell "10,285" [ref=e441]
+                  - row "OS-RM 2k 2k 2k 745" [ref=e442]:
+                    - cell "OS-RM" [ref=e443]
+                    - cell "2k" [ref=e444]
+                    - cell "2k" [ref=e445]
+                    - cell "2k" [ref=e446]
+                    - cell "745" [ref=e447]
+                  - row "OS-FM 8.5k 8.5k 8.5k 617 \\bigstrut[b]" [ref=e448]:
+                    - cell "OS-FM" [ref=e449]
+                    - cell "8.5k" [ref=e450]
+                    - cell "8.5k" [ref=e451]
+                    - cell "8.5k" [ref=e452]
+                    - cell "617 \\bigstrut[b]" [ref=e453]
+            - paragraph [ref=e455]:
+              - text: "The dataset consists of two parts: (1) 500 graphs composed of user profiles and profiles of entities associated with users, and (2) multiple dialogues between users and assistants, multiple users’ messages, and corresponding questions. The quantity is shown in Table"
+              - link "2" [ref=e456] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S3.T2
+              - text: . In order to better simulate the distribution of the location of answer in real-world conversation, the key evidence rounds in a session are almost evenly distributed in each round in a session. As shown in Figure
+              - link "4" [ref=e457] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S3.F4
+              - text: ", we can see the quantity distribution of different categories and the quantity distribution of key evidence rounds in the session."
+        - generic [ref=e458]:
+          - heading "4 Benchmark" [level=2] [ref=e459]:
+            - generic [ref=e460]: "4"
+            - text: Benchmark
+          - paragraph [ref=e462]:
+            - text: In this section, we create a benchmark based on our dataset to evaluate the memory capabilities of LLM-based personal agents. To better evaluate the upper bounds of the agent’s memory mechanism capabilities, we also utilize the News dataset
+            - generic [ref=e463]:
+              - text: DataGuy and Amoako (
+              - link "2022" [ref=e464] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#bib.bib3
+              - text: )
+            - text: to generate a large amount of dialogues and messages serving as noise memory content that is irrelevant to the questions. We ensures that the content of noise data does not contain factual conflicts with memory messages, or dialogues in our evaluation dataset. It also allows us to control the difficulty of the evaluation by adjusting the proportion of noise data.
+          - 'figure "Table 3: The results of different memory mechanisms on factual memory dataset. The read time (RT) and write time (WT) are presented in seconds per operation." [ref=e465]':
+            - generic [ref=e466]:
+              - generic [ref=e467]: "Table 3:"
+              - text: The results of different memory mechanisms on factual memory dataset. The read time (RT) and write time (WT) are presented in seconds per operation.
+            - table [ref=e470]:
+              - rowgroup [ref=e471]:
+                - row "Method Participation-Accuracy Paticipation-Efficiency Observation-Accuracy Observation-Efficiency \\bigstrut" [ref=e472]:
+                  - cell "Method" [ref=e473]
+                  - cell "Participation-Accuracy" [ref=e474]
+                  - cell "Paticipation-Efficiency" [ref=e475]
+                  - cell "Observation-Accuracy" [ref=e476]
+                  - cell "Observation-Efficiency \\bigstrut" [ref=e477]
+                - row "10k 100k RT WT 1k 100k RT WT \\bigstrut" [ref=e478]:
+                  - cell "10k" [ref=e479]
+                  - cell "100k" [ref=e480]
+                  - cell "RT" [ref=e481]
+                  - cell "WT" [ref=e482]
+                  - cell "1k" [ref=e483]
+                  - cell "100k" [ref=e484]
+                  - cell "RT" [ref=e485]
+                  - cell "WT \\bigstrut" [ref=e486]
+                - row "FullMemory 0.647 0.489 0.001 <0.001 0.786 0.631 <0.001 <0.001 \\bigstrut[t]" [ref=e487]:
+                  - cell "FullMemory" [ref=e488]
+                  - cell "0.647" [ref=e489]
+                  - cell "0.489" [ref=e490]
+                  - cell "0.001" [ref=e491]
+                  - cell "<0.001" [ref=e492]
+                  - cell "0.786" [ref=e493]
+                  - cell "0.631" [ref=e494]
+                  - cell "<0.001" [ref=e495]
+                  - cell "<0.001 \\bigstrut[t]" [ref=e496]
+                - row "RecentMemory 0.639 0.422 0.001 <0.001 0.8 0.512 <0.001 <0.001" [ref=e497]:
+                  - cell "RecentMemory" [ref=e498]
+                  - cell "0.639" [ref=e499]
+                  - cell "0.422" [ref=e500]
+                  - cell "0.001" [ref=e501]
+                  - cell "<0.001" [ref=e502]
+                  - cell "0.8" [ref=e503]
+                  - cell "0.512" [ref=e504]
+                  - cell "<0.001" [ref=e505]
+                  - cell "<0.001" [ref=e506]
+                - row "RetrievalMemmory 0.692 0.833 0.041 0.058 0.883 0.933 0.024 0.026" [ref=e507]:
+                  - cell "RetrievalMemmory" [ref=e508]
+                  - cell "0.692" [ref=e509]
+                  - cell "0.833" [ref=e510]
+                  - cell "0.041" [ref=e511]
+                  - cell "0.058" [ref=e512]
+                  - cell "0.883" [ref=e513]
+                  - cell "0.933" [ref=e514]
+                  - cell "0.024" [ref=e515]
+                  - cell "0.026" [ref=e516]
+                - row "GenerativeAgent 0.478 0.455 0.045 6.116 0.779 0.476 0.031 6.239" [ref=e517]:
+                  - cell "GenerativeAgent" [ref=e518]
+                  - cell "0.478" [ref=e519]
+                  - cell "0.455" [ref=e520]
+                  - cell "0.045" [ref=e521]
+                  - cell "6.116" [ref=e522]
+                  - cell "0.779" [ref=e523]
+                  - cell "0.476" [ref=e524]
+                  - cell "0.031" [ref=e525]
+                  - cell "6.239" [ref=e526]
+                - row "MemoryBank 0.442 0.456 0.035 8.047 0.721 0.488 0.037 18.243" [ref=e527]:
+                  - cell "MemoryBank" [ref=e528]
+                  - cell "0.442" [ref=e529]
+                  - cell "0.456" [ref=e530]
+                  - cell "0.035" [ref=e531]
+                  - cell "8.047" [ref=e532]
+                  - cell "0.721" [ref=e533]
+                  - cell "0.488" [ref=e534]
+                  - cell "0.037" [ref=e535]
+                  - cell "18.243" [ref=e536]
+                - row "MemGPT 0.455 0.411 4.549 0.106 0.789 0.488 1.541 2.480" [ref=e537]:
+                  - cell "MemGPT" [ref=e538]
+                  - cell "0.455" [ref=e539]
+                  - cell "0.411" [ref=e540]
+                  - cell "4.549" [ref=e541]
+                  - cell "0.106" [ref=e542]
+                  - cell "0.789" [ref=e543]
+                  - cell "0.488" [ref=e544]
+                  - cell "1.541" [ref=e545]
+                  - cell "2.480" [ref=e546]
+                - row "SCMemory 0.355 0.444 1.531 2.276 0.529 0.429 0.085 0.535 \\bigstrut[b]" [ref=e547]:
+                  - cell "SCMemory" [ref=e548]
+                  - cell "0.355" [ref=e549]
+                  - cell "0.444" [ref=e550]
+                  - cell "1.531" [ref=e551]
+                  - cell "2.276" [ref=e552]
+                  - cell "0.529" [ref=e553]
+                  - cell "0.429" [ref=e554]
+                  - cell "0.085" [ref=e555]
+                  - cell "0.535 \\bigstrut[b]" [ref=e556]
+                - row "Method Participation-Recall@10 Observation-Recall@10 \\bigstrut" [ref=e557]:
+                  - cell "Method" [ref=e558]
+                  - cell "Participation-Recall@10" [ref=e559]
+                  - cell "Observation-Recall@10 \\bigstrut" [ref=e560]
+                - row "10k 100k 10k 100k \\bigstrut" [ref=e561]:
+                  - cell "10k" [ref=e562]
+                  - cell "100k" [ref=e563]
+                  - cell "10k" [ref=e564]
+                  - cell "100k \\bigstrut" [ref=e565]
+                - row "RetrievalMemmory 0.776 0.749 0.847 0.769 \\bigstrut" [ref=e566]:
+                  - cell "RetrievalMemmory" [ref=e567]
+                  - cell "0.776" [ref=e568]
+                  - cell "0.749" [ref=e569]
+                  - cell "0.847" [ref=e570]
+                  - cell "0.769 \\bigstrut" [ref=e571]
+          - 'figure "Table 4: The results of different mechanisms on reflective memory dataset. The read time (RT) and write time (WT) are presented in seconds per operation." [ref=e572]':
+            - generic [ref=e573]:
+              - generic [ref=e574]: "Table 4:"
+              - text: The results of different mechanisms on reflective memory dataset. The read time (RT) and write time (WT) are presented in seconds per operation.
+            - table [ref=e577]:
+              - rowgroup [ref=e578]:
+                - row "Method Participation-Accuracy Paticipation-Efficiency Observation-Accuracy Observation-Efficiency \\bigstrut" [ref=e579]:
+                  - cell "Method" [ref=e580]
+                  - cell "Participation-Accuracy" [ref=e581]
+                  - cell "Paticipation-Efficiency" [ref=e582]
+                  - cell "Observation-Accuracy" [ref=e583]
+                  - cell "Observation-Efficiency \\bigstrut" [ref=e584]
+                - row "10k 100k RT WT 1k 100k RT WT \\bigstrut" [ref=e585]:
+                  - cell "10k" [ref=e586]
+                  - cell "100k" [ref=e587]
+                  - cell "RT" [ref=e588]
+                  - cell "WT" [ref=e589]
+                  - cell "1k" [ref=e590]
+                  - cell "100k" [ref=e591]
+                  - cell "RT" [ref=e592]
+                  - cell "WT \\bigstrut" [ref=e593]
+                - row "FullMemory 0.733 0.533 <0.001 <0.001 0.883 0.333 <0.001 <0.001 \\bigstrut[t]" [ref=e594]:
+                  - cell "FullMemory" [ref=e595]
+                  - cell "0.733" [ref=e596]
+                  - cell "0.533" [ref=e597]
+                  - cell "<0.001" [ref=e598]
+                  - cell "<0.001" [ref=e599]
+                  - cell "0.883" [ref=e600]
+                  - cell "0.333" [ref=e601]
+                  - cell "<0.001" [ref=e602]
+                  - cell "<0.001 \\bigstrut[t]" [ref=e603]
+                - row "RecentMemory 0.700 0.333 <0.001 <0.001 0.867 0.400 <0.001 <0.001" [ref=e604]:
+                  - cell "RecentMemory" [ref=e605]
+                  - cell "0.700" [ref=e606]
+                  - cell "0.333" [ref=e607]
+                  - cell "<0.001" [ref=e608]
+                  - cell "<0.001" [ref=e609]
+                  - cell "0.867" [ref=e610]
+                  - cell "0.400" [ref=e611]
+                  - cell "<0.001" [ref=e612]
+                  - cell "<0.001" [ref=e613]
+                - row "RetrievalMemmory 0.692 0.833 0.036 0.057 0.883 0.933 0.026 0.028" [ref=e614]:
+                  - cell "RetrievalMemmory" [ref=e615]
+                  - cell "0.692" [ref=e616]
+                  - cell "0.833" [ref=e617]
+                  - cell "0.036" [ref=e618]
+                  - cell "0.057" [ref=e619]
+                  - cell "0.883" [ref=e620]
+                  - cell "0.933" [ref=e621]
+                  - cell "0.026" [ref=e622]
+                  - cell "0.028" [ref=e623]
+                - row "GenerativeAgent 0.742 0.333 0.028 6.064 0.883 0.200 0.030 6.019" [ref=e624]:
+                  - cell "GenerativeAgent" [ref=e625]
+                  - cell "0.742" [ref=e626]
+                  - cell "0.333" [ref=e627]
+                  - cell "0.028" [ref=e628]
+                  - cell "6.064" [ref=e629]
+                  - cell "0.883" [ref=e630]
+                  - cell "0.200" [ref=e631]
+                  - cell "0.030" [ref=e632]
+                  - cell "6.019" [ref=e633]
+                - row "MemoryBank 0.692 0.400 0.033 15.705 0.900 0.333 0.032 12.827" [ref=e634]:
+                  - cell "MemoryBank" [ref=e635]
+                  - cell "0.692" [ref=e636]
+                  - cell "0.400" [ref=e637]
+                  - cell "0.033" [ref=e638]
+                  - cell "15.705" [ref=e639]
+                  - cell "0.900" [ref=e640]
+                  - cell "0.333" [ref=e641]
+                  - cell "0.032" [ref=e642]
+                  - cell "12.827" [ref=e643]
+                - row "MemGPT 0.733 0.367 1.042 <0.001 0.883 0.200 0.921 <0.001" [ref=e644]:
+                  - cell "MemGPT" [ref=e645]
+                  - cell "0.733" [ref=e646]
+                  - cell "0.367" [ref=e647]
+                  - cell "1.042" [ref=e648]
+                  - cell "<0.001" [ref=e649]
+                  - cell "0.883" [ref=e650]
+                  - cell "0.200" [ref=e651]
+                  - cell "0.921" [ref=e652]
+                  - cell "<0.001" [ref=e653]
+                - row "SCMemory 0.542 0.267 0.036 0.057 0.783 0.333 0.025 0.028 \\bigstrut[b]" [ref=e654]:
+                  - cell "SCMemory" [ref=e655]
+                  - cell "0.542" [ref=e656]
+                  - cell "0.267" [ref=e657]
+                  - cell "0.036" [ref=e658]
+                  - cell "0.057" [ref=e659]
+                  - cell "0.783" [ref=e660]
+                  - cell "0.333" [ref=e661]
+                  - cell "0.025" [ref=e662]
+                  - cell "0.028 \\bigstrut[b]" [ref=e663]
+          - generic [ref=e664]:
+            - heading "4.1 Experimental Settings" [level=3] [ref=e665]:
+              - generic [ref=e666]: "4.1"
+              - text: Experimental Settings
+            - paragraph [ref=e668]:
+              - text: To better align with the memory process of agents in real-world scenarios, particularly the flow of time, we simulate the interaction process between the user and the agent to input the content that needs to be remembered. At time
+              - math [ref=e669]:
+                - generic [ref=e671]: t
+              - text: ", we input the user’s statement from the"
+              - math [ref=e672]:
+                - generic [ref=e674]: t
+              - text: "-th round, while content from the previous"
+              - math [ref=e675]:
+                - generic [ref=e677]:
+                  - generic [ref=e678]: t
+                  - generic [ref=e679]: −
+                  - generic [ref=e680]: "1"
+              - text: round and earlier can only be recalled through memory. In the participation memory scenario, at the
+              - math [ref=e681]:
+                - generic [ref=e683]: t
+              - text: "-th round, the agent not only needs to remember the user’s messages but also needs to remember the response it has generated, which is predefined by us. Meanwhile, in the observation scenario, the agent only needs to remember the user’s messages."
+            - paragraph [ref=e685]: To set different levels of difficulty, we utilize the noise dataset to randomly insert some noise sessions into the adjacent sessions. By controlling the proportion, we create a dataset with an average length of over 100k tokens for each individual test. Due to the large number of datasets we have created and the complexity of the agent’s memory mechanism design, we perform uniform sampling on each subset of the two different sized datasets as the final tests in this paper. In the dataset of ordinary size, we extract 120 reflective memory and 360 factual memory data in participation test data (each session has about 10K tokens), as well as 60 reflective memory data and 280 factual memory data in observation test data (each message list has about 1K tokens), formulating as Sub-dataset 1. For the 100k dataset, we extract 30 reflective memory data and 90 factual memory data in participation test data (each session has about 100K tokens), as well as 15 reflective and 84 factual memory data in observation test data (each message list has about 10K tokens), denoted as Sub-dataset 2.
+            - paragraph [ref=e687]:
+              - text: To eliminate the influence of other memory mechanism designs on the agent in the evaluation results, we make no modifications to the agent’s action modules or other components.Based on MemEngine
+              - generic [ref=e688]:
+                - text: (Zhang et al.,
+                - link "2025" [ref=e689] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib27
+                - text: )
+              - text: ", we implement seven memory mechanisms, using Qwen2.5-7B as the base model for the agent applications on our benchmark, including FullMemory, RetrievalMemory, RecentMemory, GenerativeAgent"
+              - generic [ref=e690]:
+                - text: Park et al. (
+                - link "2023" [ref=e691] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib12
+                - text: )
+              - text: ", MemoryBank"
+              - generic [ref=e692]:
+                - text: Zhong et al. (
+                - link "2024" [ref=e693] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib29
+                - text: )
+              - text: ", MemGPT"
+              - generic [ref=e694]:
+                - text: Packer et al. (
+                - link "2023" [ref=e695] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib11
+                - text: )
+              - text: ", and Self-Controlled Memory (SCMemory)"
+              - generic [ref=e696]:
+                - text: Wang et al. (
+                - link "2023" [ref=e697] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib16
+                - text: )
+              - text: . In our experiments, all methods that involve retrieval use the multilingual-e5-small
+              - generic [ref=e698]:
+                - text: Wang et al. (
+                - link "2024b" [ref=e699] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib18
+                - text: )
+              - text: for retrieval.
+          - generic [ref=e700]:
+            - heading "4.2 Evaluations on Factual Memory" [level=3] [ref=e701]:
+              - generic [ref=e702]: "4.2"
+              - text: Evaluations on Factual Memory
+            - paragraph [ref=e704]:
+              - text: The test results for factual memory are shown in Table
+              - link "3" [ref=e705] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S4.T3
+              - text: . FullMemory, RetrievalMemory, and RecentMemory perform better than other memory mechanisms on Sub-dataset 1. However, on Sub-dataset 2, FullMemory and RecentMemory exhibit a certain degree of decline, as the target message may fall outside the memory window. Due to the smaller window size of RecentMemory, the decline is more obvious. Other designed memory mechanisms did not show significantly superior performance in our evaluation, which might be due to flaws in these memory mechanisms. Additionally, it is important to note the time consumed by these memory mechanisms when reading and writing each round of message, especially MemGPT, which takes a longer time to read information, and MemoryBank, which takes longer to write information.
+            - 'figure "Figure 5: The accuracy of SCMemory(top-left), MemGPT(top-right), GenerativeAgent(bottom-left) and RecentMemory(bottom-right) as the memory token increases." [ref=e706]':
+              - generic [ref=e707]:
+                - figure [ref=e709]:
+                  - img "Refer to caption" [ref=e710]
+                - figure [ref=e712]:
+                  - img "Refer to caption" [ref=e713]
+                - figure [ref=e715]:
+                  - img "Refer to caption" [ref=e716]
+                - figure [ref=e718]:
+                  - img "Refer to caption" [ref=e719]
+              - generic [ref=e720]:
+                - generic [ref=e721]: "Figure 5:"
+                - text: The accuracy of SCMemory(top-left), MemGPT(top-right), GenerativeAgent(bottom-left) and RecentMemory(bottom-right) as the memory token increases.
+            - paragraph [ref=e723]: The previous evaluation works are not focusing on the design of agent memory mechanisms and solely provided factual memory datasets, so it could not adequately discuss the agent’s ability to summarize reflective memory. In the following part, we evaluate on the reflective memory.
+            - 'figure "Table 5: The results of memory mechanisms with different LLMs on our sub-dataset 1. The read time (RT) and write time (WT) are presented in seconds per operation. For the reflective memory, P-Accuracy means the accuracy under the participant scenario, and O-Accuracy refers to the accuracy under the observation scenario." [ref=e724]':
+              - generic [ref=e725]:
+                - generic [ref=e726]: "Table 5:"
+                - text: The results of memory mechanisms with different LLMs on our sub-dataset 1. The read time (RT) and write time (WT) are presented in seconds per operation. For the reflective memory, P-Accuracy means the accuracy under the participant scenario, and O-Accuracy refers to the accuracy under the observation scenario.
+              - table [ref=e729]:
+                - rowgroup [ref=e730]:
+                  - row "Method Factual-Participation Factual-Observation Reflective Memory \\bigstrut" [ref=e731]:
+                    - cell "Method" [ref=e732]
+                    - cell "Factual-Participation" [ref=e733]
+                    - cell "Factual-Observation" [ref=e734]
+                    - cell "Reflective Memory \\bigstrut" [ref=e735]
+                  - row "Accuracy RT WT Accuracy RT WT P-Accuracy O-Accuracy \\bigstrut" [ref=e736]:
+                    - cell "Accuracy" [ref=e737]:
+                      - generic [ref=e739]: Accuracy
+                    - cell "RT" [ref=e740]
+                    - cell "WT" [ref=e741]
+                    - cell "Accuracy" [ref=e742]:
+                      - generic [ref=e744]: Accuracy
+                    - cell "RT" [ref=e745]
+                    - cell "WT" [ref=e746]
+                    - cell "P-Accuracy" [ref=e747]:
+                      - generic [ref=e749]: P-Accuracy
+                    - cell "O-Accuracy \\bigstrut" [ref=e750]:
+                      - generic [ref=e752]: O-Accuracy \bigstrut
+                  - row "Qwen2.5-7B-Instruct \\bigstrut" [ref=e753]:
+                    - cell "Qwen2.5-7B-Instruct \\bigstrut" [ref=e754]
+                  - row "FullMemory 0.647 0.001 <0.001 0.786 <0.001 <0.001 0.733 0.883 \\bigstrut[t]" [ref=e755]:
+                    - cell "FullMemory" [ref=e756]
+                    - cell "0.647" [ref=e757]:
+                      - generic [ref=e759]: "0.647"
+                    - cell "0.001" [ref=e760]
+                    - cell "<0.001" [ref=e761]
+                    - cell "0.786" [ref=e762]:
+                      - generic [ref=e764]: "0.786"
+                    - cell "<0.001" [ref=e765]
+                    - cell "<0.001" [ref=e766]
+                    - cell "0.733" [ref=e767]:
+                      - generic [ref=e769]: "0.733"
+                    - cell "0.883 \\bigstrut[t]" [ref=e770]:
+                      - generic [ref=e772]: 0.883 \bigstrut[t]
+                  - row "RecentMemory 0.639 0.001 <0.001 0.800 <0.001 <0.001 0.700 0.867" [ref=e773]:
+                    - cell "RecentMemory" [ref=e774]
+                    - cell "0.639" [ref=e775]:
+                      - generic [ref=e777]: "0.639"
+                    - cell "0.001" [ref=e778]
+                    - cell "<0.001" [ref=e779]
+                    - cell "0.800" [ref=e780]:
+                      - generic [ref=e782]: "0.800"
+                    - cell "<0.001" [ref=e783]
+                    - cell "<0.001" [ref=e784]
+                    - cell "0.700" [ref=e785]:
+                      - generic [ref=e787]: "0.700"
+                    - cell "0.867" [ref=e788]:
+                      - generic [ref=e790]: "0.867"
+                  - row "RetrievalMemmory 0.692 0.041 0.058 0.883 0.024 0.026 0.692 0.883" [ref=e791]:
+                    - cell "RetrievalMemmory" [ref=e792]
+                    - cell "0.692" [ref=e793]:
+                      - generic [ref=e795]: "0.692"
+                    - cell "0.041" [ref=e796]
+                    - cell "0.058" [ref=e797]
+                    - cell "0.883" [ref=e798]:
+                      - generic [ref=e800]: "0.883"
+                    - cell "0.024" [ref=e801]
+                    - cell "0.026" [ref=e802]
+                    - cell "0.692" [ref=e803]:
+                      - generic [ref=e805]: "0.692"
+                    - cell "0.883" [ref=e806]:
+                      - generic [ref=e808]: "0.883"
+                  - row "GenerativeAgent 0.478 0.045 6.116 0.779 0.031 6.239 0.742 0.883 \\bigstrut[b]" [ref=e809]:
+                    - cell "GenerativeAgent" [ref=e810]
+                    - cell "0.478" [ref=e811]:
+                      - generic [ref=e813]: "0.478"
+                    - cell "0.045" [ref=e814]
+                    - cell "6.116" [ref=e815]
+                    - cell "0.779" [ref=e816]:
+                      - generic [ref=e818]: "0.779"
+                    - cell "0.031" [ref=e819]
+                    - cell "6.239" [ref=e820]
+                    - cell "0.742" [ref=e821]:
+                      - generic [ref=e823]: "0.742"
+                    - cell "0.883 \\bigstrut[b]" [ref=e824]:
+                      - generic [ref=e826]: 0.883 \bigstrut[b]
+                  - row "GPT-4o-mini \\bigstrut" [ref=e827]:
+                    - cell "GPT-4o-mini \\bigstrut" [ref=e828]
+                  - row "FullMemory 0.736 0.001 <0.001 0.864 <0.001 <0.001 0.783 0.883 \\bigstrut[t]" [ref=e829]:
+                    - cell "FullMemory" [ref=e830]
+                    - cell "0.736" [ref=e831]:
+                      - generic [ref=e833]: "0.736"
+                    - cell "0.001" [ref=e834]
+                    - cell "<0.001" [ref=e835]
+                    - cell "0.864" [ref=e836]:
+                      - generic [ref=e838]: "0.864"
+                    - cell "<0.001" [ref=e839]
+                    - cell "<0.001" [ref=e840]
+                    - cell "0.783" [ref=e841]:
+                      - generic [ref=e843]: "0.783"
+                    - cell "0.883 \\bigstrut[t]" [ref=e844]:
+                      - generic [ref=e846]: 0.883 \bigstrut[t]
+                  - row "RecentMemory 0.697 0.001 <0.001 0.864 <0.001 <0.001 0.758 0.900" [ref=e847]:
+                    - cell "RecentMemory" [ref=e848]
+                    - cell "0.697" [ref=e849]:
+                      - generic [ref=e851]: "0.697"
+                    - cell "0.001" [ref=e852]
+                    - cell "<0.001" [ref=e853]
+                    - cell "0.864" [ref=e854]:
+                      - generic [ref=e856]: "0.864"
+                    - cell "<0.001" [ref=e857]
+                    - cell "<0.001" [ref=e858]
+                    - cell "0.758" [ref=e859]:
+                      - generic [ref=e861]: "0.758"
+                    - cell "0.900" [ref=e862]:
+                      - generic [ref=e864]: "0.900"
+                  - row "RetrievalMemmory 0.633 0.003 0.031 0.857 0.023 0.023 0.767 0.900" [ref=e865]:
+                    - cell "RetrievalMemmory" [ref=e866]
+                    - cell "0.633" [ref=e867]:
+                      - generic [ref=e869]: "0.633"
+                    - cell "0.003" [ref=e870]
+                    - cell "0.031" [ref=e871]
+                    - cell "0.857" [ref=e872]:
+                      - generic [ref=e874]: "0.857"
+                    - cell "0.023" [ref=e875]
+                    - cell "0.023" [ref=e876]
+                    - cell "0.767" [ref=e877]:
+                      - generic [ref=e879]: "0.767"
+                    - cell "0.900" [ref=e880]:
+                      - generic [ref=e882]: "0.900"
+                  - row "GenerativeAgent 0.592 0.107 0.970 0.846 0.030 0.998 0.758 0.900 \\bigstrut[b]" [ref=e883]:
+                    - cell "GenerativeAgent" [ref=e884]
+                    - cell "0.592" [ref=e885]:
+                      - generic [ref=e887]: "0.592"
+                    - cell "0.107" [ref=e888]
+                    - cell "0.970" [ref=e889]
+                    - cell "0.846" [ref=e890]:
+                      - generic [ref=e892]: "0.846"
+                    - cell "0.030" [ref=e893]
+                    - cell "0.998" [ref=e894]
+                    - cell "0.758" [ref=e895]:
+                      - generic [ref=e897]: "0.758"
+                    - cell "0.900 \\bigstrut[b]" [ref=e898]:
+                      - generic [ref=e900]: 0.900 \bigstrut[b]
+                  - row "Meta-Llama-3.1-8B-Instruct \\bigstrut" [ref=e901]:
+                    - cell "Meta-Llama-3.1-8B-Instruct \\bigstrut" [ref=e902]
+                  - row "FullMemory 0.519 0.001 <0.001 0.779 <0.001 <0.001 0.708 0.817 \\bigstrut[t]" [ref=e903]:
+                    - cell "FullMemory" [ref=e904]
+                    - cell "0.519" [ref=e905]:
+                      - generic [ref=e907]: "0.519"
+                    - cell "0.001" [ref=e908]
+                    - cell "<0.001" [ref=e909]
+                    - cell "0.779" [ref=e910]:
+                      - generic [ref=e912]: "0.779"
+                    - cell "<0.001" [ref=e913]
+                    - cell "<0.001" [ref=e914]
+                    - cell "0.708" [ref=e915]:
+                      - generic [ref=e917]: "0.708"
+                    - cell "0.817 \\bigstrut[t]" [ref=e918]:
+                      - generic [ref=e920]: 0.817 \bigstrut[t]
+                  - row "RecentMemory 0.461 0.001 <0.001 0.779 <0.001 <0.001 0.683 0.850" [ref=e921]:
+                    - cell "RecentMemory" [ref=e922]
+                    - cell "0.461" [ref=e923]:
+                      - generic [ref=e925]: "0.461"
+                    - cell "0.001" [ref=e926]
+                    - cell "<0.001" [ref=e927]
+                    - cell "0.779" [ref=e928]:
+                      - generic [ref=e930]: "0.779"
+                    - cell "<0.001" [ref=e931]
+                    - cell "<0.001" [ref=e932]
+                    - cell "0.683" [ref=e933]:
+                      - generic [ref=e935]: "0.683"
+                    - cell "0.850" [ref=e936]:
+                      - generic [ref=e938]: "0.850"
+                  - row "RetrievalMemmory 0.500 0.050 0.062 0.700 0.044 0.049 0.733 0.833" [ref=e939]:
+                    - cell "RetrievalMemmory" [ref=e940]
+                    - cell "0.500" [ref=e941]:
+                      - generic [ref=e943]: "0.500"
+                    - cell "0.050" [ref=e944]
+                    - cell "0.062" [ref=e945]
+                    - cell "0.700" [ref=e946]:
+                      - generic [ref=e948]: "0.700"
+                    - cell "0.044" [ref=e949]
+                    - cell "0.049" [ref=e950]
+                    - cell "0.733" [ref=e951]:
+                      - generic [ref=e953]: "0.733"
+                    - cell "0.833" [ref=e954]:
+                      - generic [ref=e956]: "0.833"
+                  - row "GenerativeAgent 0.430 0.036 6.551 0.725 0.065 12.322 0.725 0.850 \\bigstrut[b]" [ref=e957]:
+                    - cell "GenerativeAgent" [ref=e958]
+                    - cell "0.430" [ref=e959]:
+                      - generic [ref=e961]: "0.430"
+                    - cell "0.036" [ref=e962]
+                    - cell "6.551" [ref=e963]
+                    - cell "0.725" [ref=e964]:
+                      - generic [ref=e966]: "0.725"
+                    - cell "0.065" [ref=e967]
+                    - cell "12.322" [ref=e968]
+                    - cell "0.725" [ref=e969]:
+                      - generic [ref=e971]: "0.725"
+                    - cell "0.850 \\bigstrut[b]" [ref=e972]:
+                      - generic [ref=e974]: 0.850 \bigstrut[b]
+                  - row "glm-4-9b-chat \\bigstrut" [ref=e975]:
+                    - cell "glm-4-9b-chat \\bigstrut" [ref=e976]
+                  - row "FullMemory 0.475 0.001 <0.001 0.775 <0.001 <0.001 0.658 0.850 \\bigstrut[t]" [ref=e977]:
+                    - cell "FullMemory" [ref=e978]
+                    - cell "0.475" [ref=e979]:
+                      - generic [ref=e981]: "0.475"
+                    - cell "0.001" [ref=e982]
+                    - cell "<0.001" [ref=e983]
+                    - cell "0.775" [ref=e984]:
+                      - generic [ref=e986]: "0.775"
+                    - cell "<0.001" [ref=e987]
+                    - cell "<0.001" [ref=e988]
+                    - cell "0.658" [ref=e989]:
+                      - generic [ref=e991]: "0.658"
+                    - cell "0.850 \\bigstrut[t]" [ref=e992]:
+                      - generic [ref=e994]: 0.850 \bigstrut[t]
+                  - row "RecentMemory 0.539 0.001 <0.001 0.746 <0.001 <0.001 0.708 0.850" [ref=e995]:
+                    - cell "RecentMemory" [ref=e996]
+                    - cell "0.539" [ref=e997]:
+                      - generic [ref=e999]: "0.539"
+                    - cell "0.001" [ref=e1000]
+                    - cell "<0.001" [ref=e1001]
+                    - cell "0.746" [ref=e1002]:
+                      - generic [ref=e1004]: "0.746"
+                    - cell "<0.001" [ref=e1005]
+                    - cell "<0.001" [ref=e1006]
+                    - cell "0.708" [ref=e1007]:
+                      - generic [ref=e1009]: "0.708"
+                    - cell "0.850" [ref=e1010]:
+                      - generic [ref=e1012]: "0.850"
+                  - row "RetrievalMemmory 0.483 0.032 0.037 0.739 0.025 0.025 0.742 0.800" [ref=e1013]:
+                    - cell "RetrievalMemmory" [ref=e1014]
+                    - cell "0.483" [ref=e1015]:
+                      - generic [ref=e1017]: "0.483"
+                    - cell "0.032" [ref=e1018]
+                    - cell "0.037" [ref=e1019]
+                    - cell "0.739" [ref=e1020]:
+                      - generic [ref=e1022]: "0.739"
+                    - cell "0.025" [ref=e1023]
+                    - cell "0.025" [ref=e1024]
+                    - cell "0.742" [ref=e1025]:
+                      - generic [ref=e1027]: "0.742"
+                    - cell "0.800" [ref=e1028]:
+                      - generic [ref=e1030]: "0.800"
+                  - row "GenerativeAgent 0.439 0.050 0.165 0.718 0.030 0.111 0.675 0.900 \\bigstrut[b]" [ref=e1031]:
+                    - cell "GenerativeAgent" [ref=e1032]
+                    - cell "0.439" [ref=e1033]:
+                      - generic [ref=e1035]: "0.439"
+                    - cell "0.050" [ref=e1036]
+                    - cell "0.165" [ref=e1037]
+                    - cell "0.718" [ref=e1038]:
+                      - generic [ref=e1040]: "0.718"
+                    - cell "0.030" [ref=e1041]
+                    - cell "0.111" [ref=e1042]
+                    - cell "0.675" [ref=e1043]:
+                      - generic [ref=e1045]: "0.675"
+                    - cell "0.900 \\bigstrut[b]" [ref=e1046]:
+                      - generic [ref=e1048]: 0.900 \bigstrut[b]
+          - generic [ref=e1049]:
+            - heading "4.3 Evaluations on Reflective Memory" [level=3] [ref=e1050]:
+              - generic [ref=e1051]: "4.3"
+              - text: Evaluations on Reflective Memory
+            - paragraph [ref=e1053]:
+              - text: The test results for reflective memory are shown in Table
+              - link "4" [ref=e1054] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S4.T4
+              - text: . It can be observed that GenerativeAgent, MemGPT, and MemoryBank performed very well on Sub-dataset 1, but their performance significantly declines on Sub-dataset 2. Only the retrieval-based RetrievalMemory achieved the remaining good results. It is likely due to the limited context window of the models or the incorporation of forgetting mechanisms in these memory systems, which leads to the loss of important memories. However, these findings still suggest that well-designed memory mechanisms are capable of effectively capturing reflective memory. How to maintain this ability after prolonged interactions may pose a challenging research problem.
+          - generic [ref=e1055]:
+            - heading "4.4 Evaluations on Memory Capacity" [level=3] [ref=e1056]:
+              - generic [ref=e1057]: "4.4"
+              - text: Evaluations on Memory Capacity
+            - paragraph [ref=e1059]:
+              - text: To explore the capacity of the agent’s memory mechanism, we test the answering accuracy of each round after the key evidence turns on the observation scenario in Sub-dataset 2(100k). In order to observe the changes in the accuracy of MemGPT and Self-Controlled Memory with the number of tokens increases, we drew Figure
+              - link "5" [ref=e1060] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S4.F5
+              - text: . From the results, we can observe that both memory mechanisms exhibit a sharp decline, which may be due to the upper limit of memory performance retention capacity for these memory mechanisms in Qwen2.5-7B-Instruct
+              - generic [ref=e1061]:
+                - text: Yang et al. (
+                - link "2024" [ref=e1062] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib23
+                - text: ); Team (
+                - link "2024" [ref=e1063] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib13
+                - text: )
+              - text: .
+          - generic [ref=e1064]:
+            - heading "4.5 Comparison of Different Inference Models" [level=3] [ref=e1065]:
+              - generic [ref=e1066]: "4.5"
+              - text: Comparison of Different Inference Models
+            - paragraph [ref=e1068]:
+              - text: In practical applications of agents, different models may be selected for different memory mechanisms. Therefore, we evaluate the performance of several common models across various memory mechanisms. Specifically, we selected Qwen2.5-7B-Instruct, gpt-4o-mini, Meta-Llama-3.1-8B-Instruct and glm-4b-chat
+              - generic [ref=e1069]:
+                - text: GLM et al. (
+                - link "2024" [ref=e1070] [cursor=pointer]:
+                  - /url: https://arxiv.org/html/2506.21605v1#bib.bib6
+                - text: )
+              - text: for evaluation. The results are shown in Table
+              - link "5" [ref=e1071] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#S4.T5
+              - text: . Under the same context window length, the choice of base model significantly affects the agents’ performence. In most cases, GPT-4o-mini performs as the best model compared to others. Although the factual memory capability of Meta-Llama-3.1-8B-Instruct is notably inferior to that of other models, its reflective memory ability is still relatively good. Interestingly, for GenerativeAgent, choosing GPT-4o-mini as the base model results in a significantly higher time consumption compared to other models in our experiments. However, in most cases, the time consumption differences between the three models are not substantial.
+        - generic [ref=e1072]:
+          - heading "5 Conclusion" [level=2] [ref=e1073]:
+            - generic [ref=e1074]: "5"
+            - text: Conclusion
+          - paragraph [ref=e1076]: This paper provides a more comprehensive and scalable dataset for evaluating LLM-based agent’s memory mechanisms. It includes a dataset with multi-scenarios (both participation and observation), and multi-level memory content include reflective memory and factual memory. Based on this dataset, we constructed a time-aware evaluation framework that simulates the daily interactions between users and agents with multi-metric include accuracy, recall, capacity and temporal efficiency. We evaluate the performance of seven common memory mechanisms in agents on our benchmark.
+        - generic [ref=e1077]:
+          - heading "Limitations" [level=2] [ref=e1078]
+          - paragraph [ref=e1080]: The dataset proposed in this paper consists of a graph formed by the profiles of users and relevant entities, enabling further exploration of the agent’s memory mechanism. Our evaluation method is limited by an assessment of memory for structured data. However, by comparing the construction of relevant entity profiles or the capture of specific attribute information in the agent’s memory during user-agent interactions, we can investigate the agent’s ability to structure memory. In addition, there are still many areas to explore in reflective memory, such as users’ emotional memory.
+        - generic [ref=e1081]:
+          - heading "Ethics Statement" [level=2] [ref=e1082]
+          - paragraph [ref=e1084]: The data used in this article to construct the dataset includes data from publicly available, authorized datasets. All publicly available data are used in accordance with their respective licenses for research purposes. The LLM-generated content may pose risks, including the potential for unintended biases or harmful output. Although we have taken steps to minimize these risks, we encourage users to apply the dataset responsibly to avoid ethical risks.
+        - generic [ref=e1085]:
+          - heading "Acknowledgments" [level=2] [ref=e1086]
+          - paragraph [ref=e1088]:
+            - text: This work is supported in part by National Natural Science Foundation of China (No. 62422215 and No. 62472427), Major Innovation & Planning Interdisciplinary Platform for the “DoubleFirst Class” Initiative, Renmin University of China, Public Computing Cloud, Renmin University of China, fund for building world-class universities (disciplines) of Renmin University of China. This work is also sponsored by Huawei Innovation Research Programs. We gratefully acknowledge the support from Mindspore
+            - superscript [ref=e1090]: †
+            - text: ", CANN(Compute Architecture for Neural Networks) and Ascend AI Processor used for this research."
+        - generic [ref=e1091]:
+          - heading "References" [level=2] [ref=e1092]
+          - list [ref=e1093]:
+            - listitem [ref=e1094]:
+              - generic [ref=e1095]:
+                - text: An et al. (2023)
+                - button "Back to the article" [ref=e1096] [cursor=pointer]: ↑
+              - generic [ref=e1097]: Chenxin An, Shansan Gong, Ming Zhong, Mukai Li, Jun Zhang, Lingpeng Kong, and Xipeng Qiu. 2023.
+              - generic [ref=e1098]: "L-eval: Instituting standardized evaluation for long context language models."
+              - generic [ref=e1099]:
+                - emphasis [ref=e1100]: arXiv preprint arXiv:2307.11088
+                - text: .
+            - listitem [ref=e1101]:
+              - generic [ref=e1102]:
+                - text: Bai et al. (2023)
+                - button "Back to the article" [ref=e1103] [cursor=pointer]: ↑
+              - generic [ref=e1104]: Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu, Jiankai Tang, Zhidian Huang, Zhengxiao Du, Xiao Liu, Aohan Zeng, Lei Hou, et al. 2023.
+              - generic [ref=e1105]: "Longbench: A bilingual, multitask benchmark for long context understanding."
+              - generic [ref=e1106]:
+                - emphasis [ref=e1107]: arXiv preprint arXiv:2308.14508
+                - text: .
+            - listitem [ref=e1108]:
+              - generic [ref=e1109]:
+                - text: DataGuy and Amoako (2022)
+                - button "Back to the article" [ref=e1110] [cursor=pointer]: ↑
+              - generic [ref=e1111]: DataGuy and Gordon Amoako. 2022.
+              - generic [ref=e1112]:
+                - link "twitter-news" [ref=e1113] [cursor=pointer]:
+                  - /url: https://doi.org/10.34740/KAGGLE/DSV/4086173
+                - text: .
+            - listitem [ref=e1114]:
+              - generic [ref=e1115]:
+                - text: Ding et al. (2024)
+                - button "Back to the article" [ref=e1116] [cursor=pointer]: ↑
+              - generic [ref=e1117]: Han Ding, Yinheng Li, Junhao Wang, and Hang Chen. 2024.
+              - generic [ref=e1118]: "Large language model agent in financial trading: A survey."
+              - generic [ref=e1119]:
+                - emphasis [ref=e1120]: arXiv preprint arXiv:2408.06361
+                - text: .
+            - listitem [ref=e1121]:
+              - generic [ref=e1122]:
+                - text: Du et al. (2024)
+                - button "Back to the article" [ref=e1123] [cursor=pointer]: ↑
+              - generic [ref=e1124]: Yiming Du, Hongru Wang, Zhengyi Zhao, Bin Liang, Baojun Wang, Wanjun Zhong, Zezhong Wang, and Kam-Fai Wong. 2024.
+              - generic [ref=e1125]: "Perltqa: A personal long-term memory dataset for memory classification, retrieval, and synthesis in question answering."
+              - generic [ref=e1126]:
+                - emphasis [ref=e1127]: arXiv preprint arXiv:2402.16288
+                - text: .
+            - listitem [ref=e1128]:
+              - generic [ref=e1129]:
+                - text: GLM et al. (2024)
+                - button "Back to the article" [ref=e1130] [cursor=pointer]: ↑
+              - generic [ref=e1131]: Team GLM, Aohan Zeng, Bin Xu, Bowen Wang, Chenhui Zhang, Da Yin, Diego Rojas, Guanyu Feng, Hanlin Zhao, Hanyu Lai, Hao Yu, Hongning Wang, Jiadai Sun, Jiajie Zhang, Jiale Cheng, Jiayi Gui, Jie Tang, Jing Zhang, Juanzi Li, Lei Zhao, Lindong Wu, Lucen Zhong, Mingdao Liu, Minlie Huang, Peng Zhang, Qinkai Zheng, Rui Lu, Shuaiqi Duan, Shudan Zhang, Shulin Cao, Shuxun Yang, Weng Lam Tam, Wenyi Zhao, Xiao Liu, Xiao Xia, Xiaohan Zhang, Xiaotao Gu, Xin Lv, Xinghan Liu, Xinyi Liu, Xinyue Yang, Xixuan Song, Xunkai Zhang, Yifan An, Yifan Xu, Yilin Niu, Yuantao Yang, Yueyan Li, Yushi Bai, Yuxiao Dong, Zehan Qi, Zhaoyu Wang, Zhen Yang, Zhengxiao Du, Zhenyu Hou, and Zihan Wang. 2024.
+              - generic [ref=e1132]:
+                - 'link "Chatglm: A family of large language models from glm-130b to glm-4 all tools" [ref=e1133] [cursor=pointer]':
+                  - /url: https://arxiv.org/abs/2406.12793
+                - text: .
+              - generic [ref=e1134]:
+                - emphasis [ref=e1135]: Preprint
+                - text: ", arXiv:2406.12793."
+            - listitem [ref=e1136]:
+              - generic [ref=e1137]:
+                - text: Harper and Konstan (2015)
+                - button "Back to the article" [ref=e1138] [cursor=pointer]: ↑
+              - generic [ref=e1139]: F Maxwell Harper and Joseph A Konstan. 2015.
+              - generic [ref=e1140]: "The movielens datasets: History and context."
+              - generic [ref=e1141]:
+                - emphasis [ref=e1142]: Acm transactions on interactive intelligent systems (tiis)
+                - text: ", 5(4):1–19."
+            - listitem [ref=e1143]:
+              - generic [ref=e1144]:
+                - text: Li et al. (2024)
+                - button "Back to the article" [ref=e1145] [cursor=pointer]: ↑
+              - generic [ref=e1146]: Yuanchun Li, Hao Wen, Weijun Wang, Xiangyu Li, Yizhen Yuan, Guohong Liu, Jiacheng Liu, Wenxing Xu, Xiang Wang, Yi Sun, et al. 2024.
+              - generic [ref=e1147]: "Personal llm agents: Insights and survey about the capability, efficiency and security."
+              - generic [ref=e1148]:
+                - emphasis [ref=e1149]: arXiv preprint arXiv:2401.05459
+                - text: .
+            - listitem [ref=e1150]:
+              - generic [ref=e1151]:
+                - text: Maharana et al. (2024)
+                - button "Back to the article" [ref=e1152] [cursor=pointer]: ↑
+              - generic [ref=e1153]: Adyasha Maharana, Dong-Ho Lee, Sergey Tulyakov, Mohit Bansal, Francesco Barbieri, and Yuwei Fang. 2024.
+              - generic [ref=e1154]: Evaluating very long-term conversational memory of llm agents.
+              - generic [ref=e1155]:
+                - emphasis [ref=e1156]: arXiv preprint arXiv:2402.17753
+                - text: .
+            - listitem [ref=e1157]:
+              - generic [ref=e1158]:
+                - text: Majumder et al. (2019)
+                - button "Back to the article" [ref=e1159] [cursor=pointer]: ↑
+              - generic [ref=e1160]: Bodhisattwa Prasad Majumder, Shuyang Li, Jianmo Ni, and Julian McAuley. 2019.
+              - generic [ref=e1161]: Generating personalized recipes from historical user preferences.
+              - generic [ref=e1162]:
+                - emphasis [ref=e1163]: arXiv preprint arXiv:1909.00105
+                - text: .
+            - listitem [ref=e1164]:
+              - generic [ref=e1165]:
+                - text: Packer et al. (2023)
+                - button "Back to the article" [ref=e1166] [cursor=pointer]: ↑
+              - generic [ref=e1167]: Charles Packer, Sarah Wooders, Kevin Lin, Vivian Fang, Shishir G Patil, Ion Stoica, and Joseph E Gonzalez. 2023.
+              - generic [ref=e1168]: "Memgpt: Towards llms as operating systems."
+              - generic [ref=e1169]:
+                - emphasis [ref=e1170]: arXiv preprint arXiv:2310.08560
+                - text: .
+            - listitem [ref=e1171]:
+              - generic [ref=e1172]:
+                - text: Park et al. (2023)
+                - button "Back to the article" [ref=e1173] [cursor=pointer]: ↑
+              - generic [ref=e1174]: Joon Sung Park, Joseph O’Brien, Carrie Jun Cai, Meredith Ringel Morris, Percy Liang, and Michael S Bernstein. 2023.
+              - generic [ref=e1175]: "Generative agents: Interactive simulacra of human behavior."
+              - generic [ref=e1176]:
+                - text: In
+                - emphasis [ref=e1177]: Proceedings of the 36th annual acm symposium on user interface software and technology
+                - text: ", pages 1–22."
+            - listitem [ref=e1178]:
+              - generic [ref=e1179]:
+                - text: Team (2024)
+                - button "Back to the article" [ref=e1180] [cursor=pointer]: ↑
+              - generic [ref=e1181]: Qwen Team. 2024.
+              - generic [ref=e1182]:
+                - 'link "Qwen2.5: A party of foundation models" [ref=e1183] [cursor=pointer]':
+                  - /url: https://qwenlm.github.io/blog/qwen2.5/
+                - text: .
+            - listitem [ref=e1184]:
+              - generic [ref=e1185]:
+                - text: Wan and McAuley (2018)
+                - button "Back to the article" [ref=e1186] [cursor=pointer]: ↑
+              - generic [ref=e1187]: Mengting Wan and Julian J. McAuley. 2018.
+              - generic [ref=e1188]:
+                - link "Item recommendation on monotonic behavior chains" [ref=e1189] [cursor=pointer]:
+                  - /url: https://doi.org/10.1145/3240323.3240369
+                - text: .
+              - generic [ref=e1190]:
+                - text: In
+                - emphasis [ref=e1191]: Proceedings of the 12th ACM Conference on Recommender Systems, RecSys 2018, Vancouver, BC, Canada, October 2-7, 2018
+                - text: ", pages 86–94. ACM."
+            - listitem [ref=e1192]:
+              - generic [ref=e1193]:
+                - text: Wan et al. (2019)
+                - button "Back to the article" [ref=e1194] [cursor=pointer]: ↑
+              - generic [ref=e1195]: Mengting Wan, Rishabh Misra, Ndapa Nakashole, and Julian J. McAuley. 2019.
+              - generic [ref=e1196]:
+                - link "Fine-grained spoiler detection from large-scale review corpora" [ref=e1197] [cursor=pointer]:
+                  - /url: https://doi.org/10.18653/V1/P19-1248
+                - text: .
+              - generic [ref=e1198]:
+                - text: In
+                - emphasis [ref=e1199]: "Proceedings of the 57th Conference of the Association for Computational Linguistics, ACL 2019, Florence, Italy, July 28- August 2, 2019, Volume 1: Long Papers"
+                - text: ", pages 2605–2610. Association for Computational Linguistics."
+            - listitem [ref=e1200]:
+              - generic [ref=e1201]:
+                - text: Wang et al. (2023)
+                - button "Back to the article" [ref=e1202] [cursor=pointer]: ↑
+              - generic [ref=e1203]: Bing Wang, Xinnian Liang, Jian Yang, Hui Huang, Shuangzhi Wu, Peihao Wu, Lu Lu, Zejun Ma, and Zhoujun Li. 2023.
+              - generic [ref=e1204]: Enhancing large language model with self-controlled memory framework.
+              - generic [ref=e1205]:
+                - emphasis [ref=e1206]: arXiv preprint arXiv:2304.13343
+                - text: .
+            - listitem [ref=e1207]:
+              - generic [ref=e1208]:
+                - text: Wang et al. (2024a)
+                - button "Back to the article" [ref=e1209] [cursor=pointer]: ↑
+              - generic [ref=e1210]: Lei Wang, Chen Ma, Xueyang Feng, Zeyu Zhang, Hao Yang, Jingsen Zhang, Zhiyuan Chen, Jiakai Tang, Xu Chen, Yankai Lin, et al. 2024a.
+              - generic [ref=e1211]: A survey on large language model based autonomous agents.
+              - generic [ref=e1212]:
+                - emphasis [ref=e1213]: Frontiers of Computer Science
+                - text: ", 18(6):186345."
+            - listitem [ref=e1214]:
+              - generic [ref=e1215]:
+                - text: Wang et al. (2024b)
+                - button "Back to the article" [ref=e1216] [cursor=pointer]: ↑
+              - generic [ref=e1217]: Liang Wang, Nan Yang, Xiaolong Huang, Linjun Yang, Rangan Majumder, and Furu Wei. 2024b.
+              - generic [ref=e1218]: "Multilingual e5 text embeddings: A technical report."
+              - generic [ref=e1219]:
+                - emphasis [ref=e1220]: arXiv preprint arXiv:2402.05672
+                - text: .
+            - listitem [ref=e1221]:
+              - generic [ref=e1222]:
+                - text: Wu et al. (2024a)
+                - button "Back to the article" [ref=e1223] [cursor=pointer]: ↑
+              - generic [ref=e1224]: Di Wu, Hongwei Wang, Wenhao Yu, Yuwei Zhang, Kai-Wei Chang, and Dong Yu. 2024a.
+              - generic [ref=e1225]: "Longmemeval: Benchmarking chat assistants on long-term interactive memory."
+              - generic [ref=e1226]:
+                - emphasis [ref=e1227]: arXiv preprint arXiv:2410.10813
+                - text: .
+            - listitem [ref=e1228]:
+              - generic [ref=e1229]:
+                - text: Wu et al. (2024b)
+                - button "Back to the article" [ref=e1230] [cursor=pointer]: ↑
+              - generic [ref=e1231]: Likang Wu, Zhi Zheng, Zhaopeng Qiu, Hao Wang, Hongchao Gu, Tingjia Shen, Chuan Qin, Chen Zhu, Hengshu Zhu, Qi Liu, et al. 2024b.
+              - generic [ref=e1232]: A survey on large language models for recommendation.
+              - generic [ref=e1233]:
+                - emphasis [ref=e1234]: World Wide Web
+                - text: ", 27(5):60."
+            - listitem [ref=e1235]:
+              - generic [ref=e1236]:
+                - text: Xi et al. (2025)
+                - button "Back to the article" [ref=e1237] [cursor=pointer]: ↑
+              - generic [ref=e1238]: Zhiheng Xi, Wenxiang Chen, Xin Guo, Wei He, Yiwen Ding, Boyang Hong, Ming Zhang, Junzhe Wang, Senjie Jin, Enyu Zhou, et al. 2025.
+              - generic [ref=e1239]: "The rise and potential of large language model based agents: A survey."
+              - generic [ref=e1240]:
+                - emphasis [ref=e1241]: Science China Information Sciences
+                - text: ", 68(2):121101."
+            - listitem [ref=e1242]:
+              - generic [ref=e1243]:
+                - text: Xu et al. (2022)
+                - button "Back to the article" [ref=e1244] [cursor=pointer]: ↑
+              - generic [ref=e1245]: Xinchao Xu, Zhibin Gou, Wenquan Wu, Zheng-Yu Niu, Hua Wu, Haifeng Wang, and Shihang Wang. 2022.
+              - generic [ref=e1246]: Long time no see! open-domain conversation with long-term persona memory.
+              - generic [ref=e1247]:
+                - emphasis [ref=e1248]: arXiv preprint arXiv:2203.05797
+                - text: .
+            - listitem [ref=e1249]:
+              - generic [ref=e1250]:
+                - text: Yang et al. (2024)
+                - button "Back to the article" [ref=e1251] [cursor=pointer]: ↑
+              - generic [ref=e1252]: An Yang, Baosong Yang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Zhou, Chengpeng Li, Chengyuan Li, Dayiheng Liu, Fei Huang, Guanting Dong, Haoran Wei, Huan Lin, Jialong Tang, Jialin Wang, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Ma, Jin Xu, Jingren Zhou, Jinze Bai, Jinzheng He, Junyang Lin, Kai Dang, Keming Lu, Keqin Chen, Kexin Yang, Mei Li, Mingfeng Xue, Na Ni, Pei Zhang, Peng Wang, Ru Peng, Rui Men, Ruize Gao, Runji Lin, Shijie Wang, Shuai Bai, Sinan Tan, Tianhang Zhu, Tianhao Li, Tianyu Liu, Wenbin Ge, Xiaodong Deng, Xiaohuan Zhou, Xingzhang Ren, Xinyu Zhang, Xipin Wei, Xuancheng Ren, Yang Fan, Yang Yao, Yichang Zhang, Yu Wan, Yunfei Chu, Yuqiong Liu, Zeyu Cui, Zhenru Zhang, and Zhihao Fan. 2024.
+              - generic [ref=e1253]: Qwen2 technical report.
+              - generic [ref=e1254]:
+                - emphasis [ref=e1255]: arXiv preprint arXiv:2407.10671
+                - text: .
+            - listitem [ref=e1256]:
+              - generic [ref=e1257]:
+                - text: Zhang et al. (2019)
+                - button "Back to the article" [ref=e1258] [cursor=pointer]: ↑
+              - generic [ref=e1259]: Wei-Nan Zhang, Qingfu Zhu, Yifa Wang, Yanyan Zhao, and Ting Liu. 2019.
+              - generic [ref=e1260]: Neural personalized response generation as domain adaptation.
+              - generic [ref=e1261]:
+                - emphasis [ref=e1262]: World Wide Web
+                - text: ", 22:1427–1446."
+            - listitem [ref=e1263]:
+              - generic [ref=e1264]:
+                - text: Zhang et al. (2024a)
+                - button "Back to the article" [ref=e1265] [cursor=pointer]: ↑
+              - generic [ref=e1266]: Zeyu Zhang, Xiaohe Bo, Chen Ma, Rui Li, Xu Chen, Quanyu Dai, Jieming Zhu, Zhenhua Dong, and Ji-Rong Wen. 2024a.
+              - generic [ref=e1267]: A survey on the memory mechanism of large language model based agents.
+              - generic [ref=e1268]:
+                - emphasis [ref=e1269]: arXiv preprint arXiv:2404.13501
+                - text: .
+            - listitem [ref=e1270]:
+              - generic [ref=e1271]:
+                - text: Zhang et al. (2024b)
+                - button "Back to the article" [ref=e1272] [cursor=pointer]: ↑
+              - generic [ref=e1273]: Zeyu Zhang, Quanyu Dai, Luyu Chen, Zeren Jiang, Rui Li, Jieming Zhu, Xu Chen, Yi Xie, Zhenhua Dong, and Ji-Rong Wen. 2024b.
+              - generic [ref=e1274]: "Memsim: A bayesian simulator for evaluating memory of llm-based personal assistants."
+              - generic [ref=e1275]:
+                - emphasis [ref=e1276]: arXiv preprint arXiv:2409.20163
+                - text: .
+            - listitem [ref=e1277]:
+              - generic [ref=e1278]:
+                - text: Zhang et al. (2025)
+                - button "Back to the article" [ref=e1279] [cursor=pointer]: ↑
+              - generic [ref=e1280]: Zeyu Zhang, Quanyu Dai, Xu Chen, Rui Li, Zhongyang Li, and Zhenhua Dong. 2025.
+              - generic [ref=e1281]: "Memengine: A unified and modular library for developing advanced memory of llm-based agents."
+              - generic [ref=e1282]:
+                - text: In
+                - emphasis [ref=e1283]: Companion Proceedings of the ACM on Web Conference 2025
+                - text: ", pages 821–824."
+            - listitem [ref=e1284]:
+              - generic [ref=e1285]:
+                - text: Zhao et al. (2023)
+                - button "Back to the article" [ref=e1286] [cursor=pointer]: ↑
+              - generic [ref=e1287]: Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, et al. 2023.
+              - generic [ref=e1288]: A survey of large language models.
+              - generic [ref=e1289]:
+                - emphasis [ref=e1290]: arXiv preprint arXiv:2303.18223
+                - text: .
+            - listitem [ref=e1291]:
+              - generic [ref=e1292]:
+                - text: Zhong et al. (2024)
+                - button "Back to the article" [ref=e1293] [cursor=pointer]: ↑
+              - generic [ref=e1294]: Wanjun Zhong, Lianghong Guo, Qiqi Gao, He Ye, and Yanlin Wang. 2024.
+              - generic [ref=e1295]: "Memorybank: Enhancing large language models with long-term memory."
+              - generic [ref=e1296]:
+                - text: In
+                - emphasis [ref=e1297]: Proceedings of the AAAI Conference on Artificial Intelligence
+                - text: ", volume 38, pages 19724–19731."
+        - generic [ref=e1298]:
+          - heading "Appendix A Case Studies" [level=2] [ref=e1299]:
+            - generic [ref=e1300]: Appendix A
+            - text: Case Studies
+          - generic [ref=e1301]:
+            - heading "A.1 User Relation Graph Example" [level=3] [ref=e1302]:
+              - generic [ref=e1303]: A.1
+              - text: User Relation Graph Example
+            - paragraph [ref=e1305]: In this section, we present examples of the components of our dataset, including the user graph and test cases. For the user graph, we show profile examples of the user itself, related individuals, events, items, and places.
+            - paragraph [ref=e1307]: "UserProfile: \"gender\": \"Male\", \"relationship\": \"self\", \"name\": \"James Smith\", \"age\": \"30 years old\", \"height\": \"164 cm\", \"birthday\": \"08.13\", \"hometown\": \"San Francisco, CA\", \"work location\": \"Boston, MA\", \"education\": \"Associate Degree\", \"occupation\": \"Police Officer\", \"position\": \"Community Policing Officer\", \"company name\": \"Boston Law Enforcement Agency\", \"hobby\": \"Climbing\", \"character\": \"Friendly\", \"contact number\": \"4150430511\", \"email address\": \"james.smith@bostonlawenforcement.gov\", \"ssn\": \"914610199408130162\", \"passport number\": \"PUP4822676\", \"bank account\": \"6222022865544246\", \"driver license\": \"914EAPRDV5F\", \"highlevel preference\": [\"movie genre preference\": (\"Comedy\", \"Romance\", \"Action\", \"Drama\", \"Thriller\"), \"taste preference\": \"Umami and Sweet\", \"book preference\": \"Humor\"]."
+            - paragraph [ref=e1309]: "RelativeRoleProfile.\"gender\":\"Male\", \"relationship\":\"Brother\",\"name\": \"Ethan Cooper\",\"age\": \"28 years old\",\"height\": \"165cm\",\"birthday\": \"01/20\",\"hometown\": \"Boston, MA\", \"work location\": \"Los Angeles, CA\", \"education\": \"Associate Degree\", \"occupation\": \"Electrician\", \"position\": \"Electrical Maintenance Technician\", \"company name\": \"SparkLight Electric Services\", \"hobby\": \"Running\", \"character\": \"Thoughtful\", \"contact number\": \"20103787263\",\"email address\": \"ethan.cooper@sparklightelectric.com\""
+            - paragraph [ref=e1311]: "ColleagueRoleProfile. \"gender\": \"Male\", \"relationship\": \"boss\", \"name\": \"Nolan Hayes\", \"age\": \"39 years old\",\"height\": \"170cm\",\"birthday\": \"03/24\",\"hometown\": \"Philadelphia, PA\",\"work location\": \"Boston, MA\",\"education\": \"Associate Degree\",\"occupation\": \"Police Officer\",\"position\": \"Police Sergeant\",\"company name\": \"Boston Law Enforcement Agency\", \"hobby\": \"Attending Concerts\",\"character\": \"Empathetic\", \"contact number\": \"30503926075\",\"email address\": \"nolan.hayes@bostonlawagency.gov\""
+            - paragraph [ref=e1313]: "WorkEventProfile. \"event type\": \"Company Team Building\", \"main content\": \"Community engagement workshop for team bonding.\", \"location\": \"Los Angeles, CA\", \"time\": \"the week after next Sat 9:00 AM\", \"event name\": \"Team Connect\", \"scale\": \"one hundred people\", \"duration\": \"eight day\""
+            - paragraph [ref=e1315]: "RestEventProfile.\"event type\": \"Community Fair\", \"main content\": \"Join us at the Community Fair for climbing challenges, equipment demos, and safety workshops! Engage with fellow enthusiasts, explore local climbing spots, and enjoy inspiring talks from seasoned climbers. Perfect for all skill levels and climbing enthusiasts!\", \"location\": \"Miami, FL\", \"time\": \"2024-10-12 19:00\", \"event name\": \"Climb Fest\", \"scale\": \"nine hundred people\", duration\": \"three day\""
+            - paragraph [ref=e1317]: "ItemProfile: \"relationship\": \"Own\", \"item type\": \"Laundry Detergent\", \"item name\": \"Arm & Hammer Liquid Detergent\", \"item review\": \"As a police officer, I’m always on the go, and I need products that can keep up with my busy lifestyle. I’ve been using Arm & Hammer Liquid Detergent for a while now, and I have to say, it’s been a game changer for me. Not only does it tackle tough stains from my uniforms and gear with ease, but it also leaves my clothes smelling fresh and clean. The added baking soda really helps to neutralize odors, which is a must when you’re working in various environments. Plus, I appreciate that it’s available in eco-friendly options, making it easier to care for the planet while looking after my laundry. Definitely a solid choice for anyone looking for effective and reliable detergent!\""
+            - paragraph [ref=e1319]: "PlaceProfile. Place example: \"relationship\": \"Visited\",\"place type\": \"Mall\", \"place name\": \"The Grove\", \"place review\": \"I recently visited The Grove and I have to say, it was a really refreshing experience. The vibe there is incredibly friendly and welcoming, just like the community I strive to serve as a police officer. The shops and restaurants offer a great variety, and I especially enjoyed grabbing a bite at one of the local eateries. The layout is easy to navigate, making it a perfect spot to relax and enjoy some fresh air.As someone who loves climbing, I appreciated the green spaces where you can unwind and enjoy nature. It’s a fantastic place to spend time with family or friends. The only downside I found was that it got a bit crowded during peak hours, but that’s to be expected in such a popular location. Overall, I’d highly recommend The Grove to anyone looking for a fun and friendly outing!\""
+            - 'figure "Table 6: Overview of Factual Memory questions." [ref=e1320]':
+              - generic [ref=e1321]:
+                - generic [ref=e1322]: "Table 6:"
+                - text: Overview of Factual Memory questions.
+              - table [ref=e1325]:
+                - rowgroup [ref=e1326]:
+                  - row "Types Descriptions" [ref=e1327]:
+                    - cell "Types" [ref=e1328]
+                    - cell "Descriptions" [ref=e1329]
+                  - row "Single-hop Rely on one message to answer the question directly." [ref=e1330]:
+                    - cell "Single-hop" [ref=e1331]
+                    - cell "Rely on one message to answer the question directly." [ref=e1332]
+                  - row "Multi-hop Require multiple messages to answer the question jointly." [ref=e1333]:
+                    - cell "Multi-hop" [ref=e1334]
+                    - cell "Require multiple messages to answer the question jointly." [ref=e1335]
+                  - row "Comparative Compare two entities on a shared attribute with multiple messages." [ref=e1336]:
+                    - cell "Comparative" [ref=e1337]
+                    - cell "Compare two entities on a shared attribute with multiple messages." [ref=e1338]
+                  - row "Aggregative Aggregate messages about more than two entities on a common attribute." [ref=e1339]:
+                    - cell "Aggregative" [ref=e1340]
+                    - cell "Aggregate messages about more than two entities on a common attribute." [ref=e1341]
+                  - row "Post-processing Involve extra reasoning steps to answer with multiple messages." [ref=e1342]:
+                    - cell "Post-processing" [ref=e1343]
+                    - cell "Involve extra reasoning steps to answer with multiple messages." [ref=e1344]
+                  - row "Knoewledge-updating The basis for answering questions will be updated over time with different messages." [ref=e1345]:
+                    - cell "Knoewledge-updating" [ref=e1346]
+                    - cell "The basis for answering questions will be updated over time with different messages." [ref=e1347]
+                  - row "Single-session-assistant Rely on a single message from the assistant to directly answer the question." [ref=e1348]:
+                    - cell "Single-session-assistant" [ref=e1349]
+                    - cell "Rely on a single message from the assistant to directly answer the question." [ref=e1350]
+                  - row "Multi-session-assistant Require Multiple messages from the assistant to collectively answer the question." [ref=e1351]:
+                    - cell "Multi-session-assistant" [ref=e1352]
+                    - cell "Require Multiple messages from the assistant to collectively answer the question." [ref=e1353]
+            - 'figure "Table 7: Overview of Reflective Memory questions." [ref=e1354]':
+              - generic [ref=e1355]:
+                - generic [ref=e1356]: "Table 7:"
+                - text: Overview of Reflective Memory questions.
+              - table [ref=e1359]:
+                - rowgroup [ref=e1360]:
+                  - row "Types Descriptions" [ref=e1361]:
+                    - cell "Types" [ref=e1362]
+                    - cell "Descriptions" [ref=e1363]
+                  - row "Preference Rely on multiple messages to actively express the user’s lower-level preferences." [ref=e1364]:
+                    - cell "Preference" [ref=e1365]
+                    - cell "Rely on multiple messages to actively express the user’s lower-level preferences." [ref=e1366]
+                  - row "Emotion Rely on multiple consecutive messages within a specific time to express the user’s emotional state." [ref=e1367]:
+                    - cell "Emotion" [ref=e1368]
+                    - cell "Rely on multiple consecutive messages within a specific time to express the user’s emotional state." [ref=e1369]
+          - generic [ref=e1370]:
+            - heading "A.2 FM-RM Directionary Example" [level=3] [ref=e1371]:
+              - generic [ref=e1372]: A.2
+              - text: FM-RM Directionary Example
+            - paragraph [ref=e1374]: When creating the correspondence between factual memory attribute and reflective memory attribute, we simultaneously created a dictionary mapping the two. Below, we provide examples from each category of reflective memory.
+            - paragraph [ref=e1376]: "Movie. \"Action\": [\"Star Wars (1977)\",\"Godfather, The (1972)\",\"Raiders of the Lost Ark (1981)\",\"Titanic (1997)\",\"Empire Strikes Back, The (1980)\",\"Boot, Das (1981)\",\"Godfather: Part II, The (1974)\",\"African Queen, The (1951)\",\"Princess Bride, The (1987)\",\"Braveheart (1995)\", \"Glory (1989)\", \"Fugitive, The (1993)\",\"Alien (1979)\",\"Return of the Jedi (1983)\",\"Terminator 2: Judgment Day (1991)\", \"Butch Cassidy and the Sundance Kid (1969)\",\"Aliens (1986)\",\"Magnificent Seven, The (1954)\",\"Terminator, The (1984)\",\"Apollo 13 (1995)\",\"Indiana Jones and the Last Crusade (1989)\",\"Die Hard (1988)\",\"Hunt for Red October, The (1990)\",\"Good, The Bad and The Ugly, The (1966)\",\"Blues Brothers, The (1980)\",\"Ben-Hur (1959)\", \"Cyrano de Bergerac (1990)\", \"Star Trek: The Wrath of Khan (1982)\",\"In the Line of Fire (1993)\", \"Adventures of Robin Hood, The (1938)\",\"Jaws (1975)\",\"Face/Off (1997)\",\"Men in Black (1997)\",\"Diva (1981)\",\"Jurassic Park (1993)\",\"Rock, The (1996)\",\"Full Metal Jacket (1987)\", \"Perfect World, A (1993)\",\"Star Trek: First Contact (1996)\",\"Speed (1994)\",\"Air Force One (1997)\", \"Crying Game, The (1992)\", \"True Romance (1993)\",\"Abyss, The (1989)\",\"Clear and Present Danger (1994)\",\"Heat (1995)\",\"True Lies (1994)\",\"Get Shorty (1995)\",\"Last of the Mohicans, The (1992)\",\"Supercop (1992)\"]"
+            - paragraph [ref=e1378]: "Food. \"Sweet\": [\"Candy\", \"Honey\", \"Fruit\", \"Maple Syrup Pancakes\", \"Baklava\", \"Chocolate Cake\", \"Custard\", \"Jelly\", \"Pecan Pie\", \"Apple Pie\", \"Brownies\", \"Banana Bread\", \"Donuts\", \"Rice Krispies\"]"
+            - paragraph [ref=e1380]: "Book.\"Health & Fitness\": [\"What to Expect When You’re Expecting (Revised Edition)\", \"Make the Connection: Ten Steps to a Better Body and a Better Life\", \"The South Beach Diet: The Delicious, Doctor-Designed, Foolproof Plan for Fast and Healthy Weight Loss\", \"Dr. Atkins’ New Diet Revolution\", \"Dr. Atkins’ New Diet Revolution\", \"Prescription for Nutritional Healing: A Practical A-Z Reference to Drug-Free Remedies Using Vitamins, Minerals, Herbs & Food Supplements\", \"8 Weeks to Optimum Health\", \"Body for Life: 12 Weeks to Mental and Physical Strength\", \"Your Pregnancy: Week by Week (Your Pregnancy Series)\", \"Fat Land: How Americans Became the Fattest People in the World\"]"
+          - generic [ref=e1381]:
+            - heading "A.3 Question Description" [level=3] [ref=e1382]:
+              - generic [ref=e1383]: A.3
+              - text: Question Description
+            - paragraph [ref=e1385]:
+              - text: In Tab
+              - link "6" [ref=e1386] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#A1.T6
+              - text: ", we provide an explanation for each type of Factual Memory questions. In Tab"
+              - link "7" [ref=e1387] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#A1.T7
+              - text: ", we provide an explanation for each type of Reflective Memory questions."
+          - generic [ref=e1388]:
+            - heading "A.4 Participation Example" [level=3] [ref=e1389]:
+              - generic [ref=e1390]: A.4
+              - text: Participation Example
+            - paragraph [ref=e1392]: In this section, we provide more detailed examples from the participation scenarios in our dataset. To make the presentation clearer, we have only listed the key evidence dialogue rounds necessary for answering the questions and omitted any unnecessary information.
+            - paragraph [ref=e1394]: "The detailed examples are as follows:"
+            - paragraph [ref=e1396]: Single Hop
+            - paragraph [ref=e1398]: "User: My niece runs a company called TechInnovate Systems LLC."
+            - paragraph [ref=e1400]: Assistant:…
+            - paragraph [ref=e1402]: "Question: What is the name of my niece’s company?"
+            - paragraph [ref=e1404]: "Answer: TechInnovate Systems LLC"
+            - paragraph [ref=e1406]: Multi Hop
+            - paragraph [ref=e1408]: "User: My sister’s name is Amelia Brooks, and she’s always been a real standout with her creativity and charm."
+            - paragraph [ref=e1410]: Assistant:…
+            - paragraph [ref=e1412]: "User: My sister’s birthday is coming up on December 11th."
+            - paragraph [ref=e1414]: Assistant:…
+            - paragraph [ref=e1416]: "Question: What is the birthday of someone named Amelia Brooks?"
+            - paragraph [ref=e1418]: "Answer: 12/11"
+            - paragraph [ref=e1420]: Knowledge Updating
+            - paragraph [ref=e1422]: "User:The Policing Forum lasts for four days, and I can’t wait to see what they have in store during that time. Assistant:"
+            - paragraph [ref=e1424]: "User: I just realized I need to correct myself—Policing Forum only lasts for one day. Assistant:…"
+            - paragraph [ref=e1426]: "Question: How long does the Policing Forum last?"
+            - paragraph [ref=e1428]: "Answer: one day"
+            - paragraph [ref=e1430]: Post Processing
+            - paragraph [ref=e1432]: "User: My subordinate has this cool hobby of collecting antiques."
+            - paragraph [ref=e1434]: Assistant:…
+            - paragraph [ref=e1436]: "User: My subordinate’s email address is maya.carter@bostonlaw.gov."
+            - paragraph [ref=e1438]: Assistant:…
+            - paragraph [ref=e1440]: "Question: What are the main interests and hobbies of the individual with the email address maya.carter@bostonlaw.gov?"
+            - paragraph [ref=e1442]: "Answer: Gather historical items and appreciate their value"
+            - paragraph [ref=e1444]: Single session assistant
+            - paragraph [ref=e1446]: "user: I’m looking for a great movie to watch, aside from the ones I’ve mentioned earlier."
+            - paragraph [ref=e1448]: "assistant: I’m all about Return of the Jedi; it’s such an iconic film with those thrilling space battles and unforgettable characters that make it a must-see!"
+            - paragraph [ref=e1450]: "user: I’m looking for a fantastic movie to watch, aside from the ones I’ve mentioned earlier."
+            - paragraph [ref=e1452]: "assistant: I recommend the Jurassic Park from 1993; it’s such an incredible film with its groundbreaking special effects and thrilling adventure that really grabs my attention!"
+            - paragraph [ref=e1454]: "Question: What movies have you recommended to me before?"
+            - paragraph [ref=e1456]: "Answer: [\"Return of the Jedi (1983)\",\"Jurassic Park (1993)\"]"
+            - paragraph [ref=e1458]: Comparative
+            - paragraph [ref=e1460]: "User: My niece, Clara Jennings, is 28 years old."
+            - paragraph [ref=e1462]: "Assistant: …"
+            - paragraph [ref=e1464]: "User: My Uncle Landon Pierce is 27 years old."
+            - paragraph [ref=e1466]: "Assistant: …"
+            - paragraph [ref=e1468]: "Question: Who is older, Clara Jennings or Landon Pierce?"
+            - paragraph [ref=e1470]: "Answer: Clara Jennings"
+            - paragraph [ref=e1472]: Aggregative
+            - paragraph [ref=e1474]: "User: My brother Ethan Cooper hails from Boston, MA"
+            - paragraph [ref=e1476]: Assistant:…
+            - paragraph [ref=e1478]: "User: My sister, Amelia Brooks, is from Washington, DC."
+            - paragraph [ref=e1480]: Assistant:…
+            - paragraph [ref=e1482]: "User: My niece, Clara Jennings, is from Jacksonville, FL."
+            - paragraph [ref=e1484]: Assistant:…
+            - paragraph [ref=e1486]: "User: My uncle, Landon Pierce, hails from Philadelphia, PA."
+            - paragraph [ref=e1488]: Assistant:…
+            - paragraph [ref=e1490]: "User: Sophie Turner, my aunt, is from Chicago, IL."
+            - paragraph [ref=e1492]: Assistant:…
+            - paragraph [ref=e1494]: "User: My boss, Nolan Hayes, is from Philadelphia, PA."
+            - paragraph [ref=e1496]: Assistant:…
+            - paragraph [ref=e1498]: "User: Maya Carter, who works under me, is from Los Angeles, CA."
+            - paragraph [ref=e1500]: Assistant:…
+            - paragraph [ref=e1502]: User:My coworker, Maxwell Turner, is from Indianapolis, IN.
+            - paragraph [ref=e1504]: Assistant:…
+            - paragraph [ref=e1506]: "Question: How many people live in Philadelphia, PA?"
+            - paragraph [ref=e1508]: "Answer: 2 people"
+            - paragraph [ref=e1510]: Multi session assistant
+            - paragraph [ref=e1512]: "User: I’m looking for a great movie to watch, excluding the ones mentioned earlier."
+            - paragraph [ref=e1514]: "Assistant: I definitely think Alien (1979) is a must-see; it’s an intense blend of science fiction and horror that really keeps you on the edge of your seat!"
+            - paragraph [ref=e1516]: "User: I’m looking for a great movie to watch, aside from the ones I mentioned earlier."
+            - paragraph [ref=e1518]: "Assistant: \"I’m all about The Fugitive from 1993; it’s a thrilling ride that really keeps you on the edge of your seat!"
+            - paragraph [ref=e1520]: "User: I’m looking for a delicious dish to try, aside from the ones mentioned earlier."
+            - paragraph [ref=e1522]: "Assistant: I’m a big fan of Apple Pie; it’s such a delightful treat that everyone should definitely give it a try!"
+            - paragraph [ref=e1524]: "User: I’m looking for a good book to read, excluding the ones mentioned earlier."
+            - paragraph [ref=e1526]: "Assistant: I really think Naked is a fantastic read; it’s definitely worth checking out!"
+            - paragraph [ref=e1528]: "User: I’m looking for a good book to read, aside from the ones mentioned earlier."
+            - paragraph [ref=e1530]: "Assistant: I really think everyone should check out Politically Correct Bedtime Stories: Modern Tales for Our Life and Times; it offers a hilarious twist on classic tales that resonate with today’s issues."
+            - paragraph [ref=e1532]: "Question: What movies, books and dishes have you recommended to me?"
+            - paragraph [ref=e1534]: "Answer: [\"Alien (1979)\",\"Fugitive, The (1993)\",\"Apple Pie\",\"Naked\",\"Politically Correct Bedtime Stories: Modern Tales for Our Life and Times\"]"
+            - paragraph [ref=e1536]: Multi session highlevel preference
+            - paragraph [ref=e1538]: "User: I’m a big fan of prosciutto and melon; there’s just something about that sweet and savory combination that I can’t resist!"
+            - paragraph [ref=e1540]: Assistant:…
+            - paragraph [ref=e1542]: "User: I’m a fan of Prosciutto and Melon, but I also really enjoy Salted Maple Ice Cream; it’s a unique treat that hits the spot!"
+            - paragraph [ref=e1544]: "Assistant: …"
+            - paragraph [ref=e1546]: "User: I really love Salted Maple Ice Cream, and Pecan Praline is another favorite of mine!"
+            - paragraph [ref=e1548]: "Assistant: …"
+            - paragraph [ref=e1550]: "User: I really enjoy Pecan Praline, but I also have a soft spot for Salted Butter Toffee; there’s something so satisfying about that perfect blend of sweet and salty."
+            - paragraph [ref=e1552]: "Assistant: …"
+            - paragraph [ref=e1554]: "User: I really love Salted Peanut Butter Cookies, just like I enjoy Salted Butter Toffee."
+            - paragraph [ref=e1556]: Assistant:…
+            - paragraph [ref=e1558]: "Question: According to the dishes I mentioned, Which flavor I might prefer?"
+            - paragraph [ref=e1560]: "Answer: Sweet and Salty"
+          - generic [ref=e1561]:
+            - heading "A.5 Observation Example" [level=3] [ref=e1562]:
+              - generic [ref=e1563]: A.5
+              - text: Observation Example
+            - paragraph [ref=e1565]: The only difference between the data for participation and the data here is the absence of responses from "assistant," so specific examples are not provided here.
+        - generic [ref=e1566]:
+          - heading "Appendix B Detail Data Statics" [level=2] [ref=e1567]:
+            - generic [ref=e1568]: Appendix B
+            - text: Detail Data Statics
+          - paragraph [ref=e1570]:
+            - text: In Tab
+            - link "8" [ref=e1571] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2506.21605v1#A2.T8
+            - text: ", we provide the detail statistics of Participation dataset. In Tab"
+            - link "9" [ref=e1572] [cursor=pointer]:
+              - /url: https://arxiv.org/html/2506.21605v1#A2.T9
+            - text: ", we provide the detail statistics of Observation dataset."
+          - 'figure "Table 8: The detail statistics of our Participation dataset. RM indicates Reflective Memory. FM indicates Factual Memory. The types we have include ssh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update), ssa(signle-session-assistant), msa(multi-session-assistant)." [ref=e1573]':
+            - generic [ref=e1574]:
+              - generic [ref=e1575]: "Table 8:"
+              - text: The detail statistics of our Participation dataset. RM indicates Reflective Memory. FM indicates Factual Memory. The types we have include ssh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update), ssa(signle-session-assistant), msa(multi-session-assistant).
+            - table [ref=e1578]:
+              - rowgroup [ref=e1579]:
+                - 'row "Data Type # Session # Question # Trajectory \\bigstrut" [ref=e1580]':
+                  - cell "Data Type" [ref=e1581]
+                  - cell "# Session" [ref=e1582]
+                  - cell "# Question" [ref=e1583]
+                  - cell "# Trajectory \\bigstrut" [ref=e1584]
+                - row "RM-Pr 3.0k 3.0k 3.0k \\bigstrut[t]" [ref=e1585]:
+                  - cell "RM-Pr" [ref=e1586]
+                  - cell "3.0k" [ref=e1587]
+                  - cell "3.0k" [ref=e1588]
+                  - cell "3.0k \\bigstrut[t]" [ref=e1589]
+                - row "RM-Em 0.5k 0.5k 0.5k" [ref=e1590]:
+                  - cell "RM-Em" [ref=e1591]
+                  - cell "0.5k" [ref=e1592]
+                  - cell "0.5k" [ref=e1593]
+                  - cell "0.5k" [ref=e1594]
+                - row "FM-sh 8k 8k 1k" [ref=e1595]:
+                  - cell "FM-sh" [ref=e1596]
+                  - cell "8k" [ref=e1597]
+                  - cell "8k" [ref=e1598]
+                  - cell "1k" [ref=e1599]
+                - row "FM-mh 8k 8k 1k \\bigstrut[b]" [ref=e1600]:
+                  - cell "FM-mh" [ref=e1601]
+                  - cell "8k" [ref=e1602]
+                  - cell "8k" [ref=e1603]
+                  - cell "1k \\bigstrut[b]" [ref=e1604]
+                - row "FM-comp 8k 4k 1k" [ref=e1605]:
+                  - cell "FM-comp" [ref=e1606]
+                  - cell "8k" [ref=e1607]
+                  - cell "4k" [ref=e1608]
+                  - cell "1k" [ref=e1609]
+                - row "FM-agg 8k 1k 1k" [ref=e1610]:
+                  - cell "FM-agg" [ref=e1611]
+                  - cell "8k" [ref=e1612]
+                  - cell "1k" [ref=e1613]
+                  - cell "1k" [ref=e1614]
+                - row "FM-ku 8k 8k 1k" [ref=e1615]:
+                  - cell "FM-ku" [ref=e1616]
+                  - cell "8k" [ref=e1617]
+                  - cell "8k" [ref=e1618]
+                  - cell "1k" [ref=e1619]
+                - row "FM-pp 8k 8k 1k" [ref=e1620]:
+                  - cell "FM-pp" [ref=e1621]
+                  - cell "8k" [ref=e1622]
+                  - cell "8k" [ref=e1623]
+                  - cell "1k" [ref=e1624]
+                - row "FM-ssa 1.5k 1.5k 1.5k" [ref=e1625]:
+                  - cell "FM-ssa" [ref=e1626]
+                  - cell "1.5k" [ref=e1627]
+                  - cell "1.5k" [ref=e1628]
+                  - cell "1.5k" [ref=e1629]
+                - row "FM-msa 1.5k 0.5k 0.5k" [ref=e1630]:
+                  - cell "FM-msa" [ref=e1631]
+                  - cell "1.5k" [ref=e1632]
+                  - cell "0.5k" [ref=e1633]
+                  - cell "0.5k" [ref=e1634]
+          - 'figure "Table 9: The detail statistics of our Participation dataset. RM indicates Reflective Memory. FM indicates Factual Memory. The types we have include sh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update)." [ref=e1635]':
+            - generic [ref=e1636]:
+              - generic [ref=e1637]: "Table 9:"
+              - text: The detail statistics of our Participation dataset. RM indicates Reflective Memory. FM indicates Factual Memory. The types we have include sh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update).
+            - table [ref=e1640]:
+              - rowgroup [ref=e1641]:
+                - 'row "Data Type # Session # Question # Trajectory \\bigstrut" [ref=e1642]':
+                  - cell "Data Type" [ref=e1643]
+                  - cell "# Session" [ref=e1644]
+                  - cell "# Question" [ref=e1645]
+                  - cell "# Trajectory \\bigstrut" [ref=e1646]
+                - row "RM-Pr 1.5k 1.5k 1.5k \\bigstrut[t]" [ref=e1647]:
+                  - cell "RM-Pr" [ref=e1648]
+                  - cell "1.5k" [ref=e1649]
+                  - cell "1.5k" [ref=e1650]
+                  - cell "1.5k \\bigstrut[t]" [ref=e1651]
+                - row "RM-Em 0.5k 0.5k 0.5k" [ref=e1652]:
+                  - cell "RM-Em" [ref=e1653]
+                  - cell "0.5k" [ref=e1654]
+                  - cell "0.5k" [ref=e1655]
+                  - cell "0.5k" [ref=e1656]
+                - row "FM-sh 1.5k 1.5k 1.5k" [ref=e1657]:
+                  - cell "FM-sh" [ref=e1658]
+                  - cell "1.5k" [ref=e1659]
+                  - cell "1.5k" [ref=e1660]
+                  - cell "1.5k" [ref=e1661]
+                - row "FM-mh 1.5k 1.5k 1.5k \\bigstrut[b]" [ref=e1662]:
+                  - cell "FM-mh" [ref=e1663]
+                  - cell "1.5k" [ref=e1664]
+                  - cell "1.5k" [ref=e1665]
+                  - cell "1.5k \\bigstrut[b]" [ref=e1666]
+                - row "FM-comp 1.5k 1.5k 1.5k" [ref=e1667]:
+                  - cell "FM-comp" [ref=e1668]
+                  - cell "1.5k" [ref=e1669]
+                  - cell "1.5k" [ref=e1670]
+                  - cell "1.5k" [ref=e1671]
+                - row "FM-agg 1.5k 1.5k 1.5k" [ref=e1672]:
+                  - cell "FM-agg" [ref=e1673]
+                  - cell "1.5k" [ref=e1674]
+                  - cell "1.5k" [ref=e1675]
+                  - cell "1.5k" [ref=e1676]
+                - row "FM-pp 1.5k 1.5k 1.5k" [ref=e1677]:
+                  - cell "FM-pp" [ref=e1678]
+                  - cell "1.5k" [ref=e1679]
+                  - cell "1.5k" [ref=e1680]
+                  - cell "1.5k" [ref=e1681]
+                - row "FM-ku 1k 1k 1k" [ref=e1682]:
+                  - cell "FM-ku" [ref=e1683]
+                  - cell "1k" [ref=e1684]
+                  - cell "1k" [ref=e1685]
+                  - cell "1k" [ref=e1686]
+        - generic [ref=e1687]:
+          - heading "Appendix C Data Creation Prompt" [level=2] [ref=e1688]:
+            - generic [ref=e1689]: Appendix C
+            - text: Data Creation Prompt
+          - generic [ref=e1690]:
+            - heading "C.1 Profile Prompt" [level=3] [ref=e1691]:
+              - generic [ref=e1692]: C.1
+              - text: Profile Prompt
+            - paragraph [ref=e1694]: "Flavour Reflective Memory Attribute Please choose user’s taste from [Tastes] according to the dishes he likes below. [Dishes]:{Dishes} [Tastes]: [\"Sweet\", \"Sour\", \"Spicy\", \"Salty\", \"Umami\", \"Bitter\", \"Sweet and Salty\", \"Sweet and Sour\", \"Salty and Umami\", \"Sour and Spicy\", \"Sweet, Salty, and Spicy\", \"Sour and Salty\", \"Sour, Sweet, and Salty\", \"Salty, Umami, and Spicy\", \"Numbing and Spicy\", \"Creamy and Sweet\", \"Umami and Sweet\", \"Bitter and Sweet\", \"Astringent\", \"Numbing\", \"Rich and Fatty\", \"Cool\", \"Warm and Spicy\"] example output:{{’taste’: ’sweet’}}"
+          - generic [ref=e1695]:
+            - heading "C.2 Self-dialogue Prompt" [level=3] [ref=e1696]:
+              - generic [ref=e1697]: C.2
+              - text: Self-dialogue Prompt
+            - paragraph [ref=e1699]: "Role Dialogue Generation Prompt. Please generate a {round_length}-round interactive conversion between the user and assistant, with a total of {sentence_length} sentences. The dialogue’s main content should based on the given information about the user’s {entity}. Ensure that no information beyond what is provided is introduced in the dialogue. **Note that the user cannot ask the assistant for information because the assistant does not know the information.** Note that the assistant is the user’s personal assistant, so it should only respond passively to the user’s dialogue, but it can reply with varied content. Please return the conversation in a JSON list format as shown in the example, ensuring that the result can be directly parsed by json.loads. **Every json must includes both user and assistant with their words! Every json’s format is {{\"user\": user’s words, \"assistant\": assistant’s words}}** #[Information]: {information}"
+            - paragraph [ref=e1701]: "#example: [{{\"user\": \"I wanted to talk to you about my cousin, Ethan Parker. He’s 39 years old.\", \"assistant\": \"Certainly! Ethan is 39. Is there something specific you’d like to discuss about him?\"}}, {{\"user\": \"Well, he’s actually pretty short for a guy, only 162 cm. He always jokes about it, though.\", \"assistant\": \"It sounds like Ethan has a good sense of humor about his height. That’s always a great quality!\"}}, {{\"user\": \"Yes, he really does. It’s one of the things that makes him so fun to be around.\", \"assistant\": \"I can imagine! Having a cousin with a lighthearted attitude must make family gatherings enjoyable.\"}}, {{\"user\": \"Definitely. And since we’re so close in age, it feels like he’s more of a friend than just family.\", \"assistant\": \"That sounds wonderful. It must be special to have that kind of bond with your cousin.\"}} {{\"user\": \"It really is. We’ve shared a lot of memories growing up together.\", \"assistant\": \"Those shared memories must make your relationship even stronger. It sounds like Ethan has been a big part of your life.\"}}]"
+            - paragraph [ref=e1703]: "Event Dialogue Generation Prompt. Please generate a {round_length}-round interactive conversion between the user and assistant, with a total of {sentence_length} sentences. The dialogue’s main content should based on the given information about the {event_name}. Ensure that no information beyond what is provided is introduced in the dialogue. Note that the assistant is the user’s personal assistant, so it should only respond passively to the user’s dialogue, but it can reply with varied content. Note that the user cannot ask the assistant for information because the assistant does not know the information. You can start with user saying I’m going to attend {event_name} Please return the conversation in a JSON list format as shown in the example, ensuring that the result can be directly parsed by json.loads. #[Information]: {information}"
+            - paragraph [ref=e1705]: "#example: [{{\"user\": \"I wanted to talk to you about my cousin, Ethan Parker. He’s 39 years old.\", \"assistant\": \"Certainly! Ethan is 39. Is there something specific you’d like to discuss about him?\"}}, {{\"user\": \"Well, he’s actually pretty short for a guy, only 162 cm. He always jokes about it, though.\", \"assistant\": \"It sounds like Ethan has a good sense of humor about his height. That’s always a great quality!\"}}, {{\"user\": \"Yes, he really does. It’s one of the things that makes him so fun to be around.\", \"assistant\": \"I can imagine! Having a cousin with a lighthearted attitude must make family gatherings enjoyable.\"}}, {{\"user\": \"Definitely. And since we’re so close in age, it feels like he’s more of a friend than just family.\", \"assistant\": \"That sounds wonderful. It must be special to have that kind of bond with your cousin.\"}} {{\"user\": \"It really is. We’ve shared a lot of memories growing up together.\", \"assistant\": \"Those shared memories must make your relationship even stronger. It sounds like Ethan has been a big part of your life.\"}}]"
+          - generic [ref=e1706]:
+            - heading "C.3 Observation Prompt" [level=3] [ref=e1707]:
+              - generic [ref=e1708]: C.3
+              - text: Observation Prompt
+            - paragraph [ref=e1710]: "Role Message Prompt. [User Message]: {message} Please rewrite the above user message into a colloquial declarative sentence. Ensure it is smooth and free of grammatical errors, without changing the original information. Only output the rewritten user message, without including the original message. Do not output any other description. Output example: Lucas Grant, who is my boss, has a Master’s degree. \"\"\""
+            - paragraph [ref=e1712]: "Event Message Prompt. [User Message]: {message} Please rewrite the above user message into a colloquial declarative sentence. Ensure it is smooth and free of grammatical errors, without changing the original information, and avoid using ’you’. Don’t forget use I , me or my Only output the rewritten user message, without including the original message. Do not output any other description. Output example: Climb Fest draws a crowd of around nine hundred people."
+        - generic [ref=e1713]:
+          - heading "Appendix D Result Details" [level=2] [ref=e1714]:
+            - generic [ref=e1715]: Appendix D
+            - text: Result Details
+          - generic [ref=e1716]:
+            - heading "D.1 Reflective Result" [level=3] [ref=e1717]:
+              - generic [ref=e1718]: D.1
+              - text: Reflective Result
+            - paragraph [ref=e1720]:
+              - text: In Tab
+              - link "10" [ref=e1721] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#A4.T10
+              - text: ", we show the detailed results of our 10k-Reflective memory dataset."
+            - 'figure "Table 10: The results of different mechanisms on different types of our 10k-Reflective memory dataset." [ref=e1722]':
+              - generic [ref=e1723]:
+                - generic [ref=e1724]: "Table 10:"
+                - text: The results of different mechanisms on different types of our 10k-Reflective memory dataset.
+              - table [ref=e1727]:
+                - rowgroup [ref=e1728]:
+                  - row "Method Participation-Accuracy Observation-Accuracy \\bigstrut" [ref=e1729]:
+                    - cell "Method" [ref=e1730]
+                    - cell "Participation-Accuracy" [ref=e1731]
+                    - cell "Observation-Accuracy \\bigstrut" [ref=e1732]
+                  - row "preference emotion preference emotion \\bigstrut" [ref=e1733]:
+                    - cell "preference" [ref=e1734]
+                    - cell "emotion" [ref=e1735]
+                    - cell "preference" [ref=e1736]
+                    - cell "emotion \\bigstrut" [ref=e1737]
+                  - row "FullMemory 0.733 0.593 0.883 0.630 \\bigstrut[t]" [ref=e1738]:
+                    - cell "FullMemory" [ref=e1739]
+                    - cell "0.733" [ref=e1740]
+                    - cell "0.593" [ref=e1741]
+                    - cell "0.883" [ref=e1742]
+                    - cell "0.630 \\bigstrut[t]" [ref=e1743]
+                  - row "RecentMemory 0.700 0.481 0.867 0.556" [ref=e1744]:
+                    - cell "RecentMemory" [ref=e1745]
+                    - cell "0.700" [ref=e1746]
+                    - cell "0.481" [ref=e1747]
+                    - cell "0.867" [ref=e1748]
+                    - cell "0.556" [ref=e1749]
+                  - row "RetrievalMemmory 0.692 0.556 0.883 0.593" [ref=e1750]:
+                    - cell "RetrievalMemmory" [ref=e1751]
+                    - cell "0.692" [ref=e1752]
+                    - cell "0.556" [ref=e1753]
+                    - cell "0.883" [ref=e1754]
+                    - cell "0.593" [ref=e1755]
+                  - row "GenerativeAgent 0.742 0.412 0.883 0.676" [ref=e1756]:
+                    - cell "GenerativeAgent" [ref=e1757]
+                    - cell "0.742" [ref=e1758]
+                    - cell "0.412" [ref=e1759]
+                    - cell "0.883" [ref=e1760]
+                    - cell "0.676" [ref=e1761]
+                  - row "MemoryBank 0.692 0.296 0.900 0.481" [ref=e1762]:
+                    - cell "MemoryBank" [ref=e1763]
+                    - cell "0.692" [ref=e1764]
+                    - cell "0.296" [ref=e1765]
+                    - cell "0.900" [ref=e1766]
+                    - cell "0.481" [ref=e1767]
+                  - row "MemGPT 0.733 0.471 0.883 0.556" [ref=e1768]:
+                    - cell "MemGPT" [ref=e1769]
+                    - cell "0.733" [ref=e1770]
+                    - cell "0.471" [ref=e1771]
+                    - cell "0.883" [ref=e1772]
+                    - cell "0.556" [ref=e1773]
+                  - row "SCMemory 0.542 0.294 0.783 0.333 \\bigstrut[b]" [ref=e1774]:
+                    - cell "SCMemory" [ref=e1775]
+                    - cell "0.542" [ref=e1776]
+                    - cell "0.294" [ref=e1777]
+                    - cell "0.783" [ref=e1778]
+                    - cell "0.333 \\bigstrut[b]" [ref=e1779]
+          - generic [ref=e1780]:
+            - heading "D.2 Facutal Result" [level=3] [ref=e1781]:
+              - generic [ref=e1782]: D.2
+              - text: Facutal Result
+            - paragraph [ref=e1784]:
+              - text: In Tab
+              - link "11" [ref=e1785] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#A4.T11
+              - text: ", we show the detailed results of our 10k-Factual-Partipation memory dataset. In Tab"
+              - link "12" [ref=e1786] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2506.21605v1#A4.T12
+              - text: ", we show the detailed results of our 10k-Factual-Observation memory dataset."
+            - 'figure "Table 11: The results of different mechanisms on different types of our 10k-Factual-Participation dataset. Including sh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update), ssa(signle-session-assistant), msa(multi-session-assistant)." [ref=e1787]':
+              - generic [ref=e1788]:
+                - generic [ref=e1789]: "Table 11:"
+                - text: The results of different mechanisms on different types of our 10k-Factual-Participation dataset. Including sh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update), ssa(signle-session-assistant), msa(multi-session-assistant).
+              - table [ref=e1792]:
+                - rowgroup [ref=e1793]:
+                  - row "Method Participation-Accuracy \\bigstrut" [ref=e1794]:
+                    - cell "Method" [ref=e1795]
+                    - cell "Participation-Accuracy \\bigstrut" [ref=e1796]
+                  - row "sh mh comp agg pp ku ssa msa \\bigstrut" [ref=e1797]:
+                    - cell [ref=e1798]
+                    - cell "sh" [ref=e1799]
+                    - cell "mh" [ref=e1800]
+                    - cell "comp" [ref=e1801]
+                    - cell "agg" [ref=e1802]
+                    - cell "pp" [ref=e1803]
+                    - cell "ku" [ref=e1804]
+                    - cell "ssa" [ref=e1805]
+                    - cell "msa \\bigstrut" [ref=e1806]
+                  - row "FullMemory 0.825 0.8 0.55 0.275 0.625 0.75 0.7 0.55 \\bigstrut[t]" [ref=e1807]:
+                    - cell "FullMemory" [ref=e1808]
+                    - cell "0.825" [ref=e1809]
+                    - cell "0.8" [ref=e1810]
+                    - cell "0.55" [ref=e1811]
+                    - cell "0.275" [ref=e1812]
+                    - cell "0.625" [ref=e1813]
+                    - cell "0.75" [ref=e1814]
+                    - cell "0.7" [ref=e1815]
+                    - cell "0.55 \\bigstrut[t]" [ref=e1816]
+                  - row "RecentMemory 0.85 0.75 0.425 0.45 0.65 0.725 0.717 0.5" [ref=e1817]:
+                    - cell "RecentMemory" [ref=e1818]
+                    - cell "0.85" [ref=e1819]
+                    - cell "0.75" [ref=e1820]
+                    - cell "0.425" [ref=e1821]
+                    - cell "0.45" [ref=e1822]
+                    - cell "0.65" [ref=e1823]
+                    - cell "0.725" [ref=e1824]
+                    - cell "0.717" [ref=e1825]
+                    - cell "0.5" [ref=e1826]
+                  - row "RetrievalMemmory 0.875 0.775 0.55 0.275 0.475 0.675 0.4 0.3" [ref=e1827]:
+                    - cell "RetrievalMemmory" [ref=e1828]
+                    - cell "0.875" [ref=e1829]
+                    - cell "0.775" [ref=e1830]
+                    - cell "0.55" [ref=e1831]
+                    - cell "0.275" [ref=e1832]
+                    - cell "0.475" [ref=e1833]
+                    - cell "0.675" [ref=e1834]
+                    - cell "0.4" [ref=e1835]
+                    - cell "0.3" [ref=e1836]
+                  - row "GenerativeAgent 0.75 0.675 0.3 0.35 0.525 0.525 0.267 0.55" [ref=e1837]:
+                    - cell "GenerativeAgent" [ref=e1838]
+                    - cell "0.75" [ref=e1839]
+                    - cell "0.675" [ref=e1840]
+                    - cell "0.3" [ref=e1841]
+                    - cell "0.35" [ref=e1842]
+                    - cell "0.525" [ref=e1843]
+                    - cell "0.525" [ref=e1844]
+                    - cell "0.267" [ref=e1845]
+                    - cell "0.55" [ref=e1846]
+                  - row "MemoryBank 0.575 0.7 0.25 0.25 0.475 0.55 0.417 0.4" [ref=e1847]:
+                    - cell "MemoryBank" [ref=e1848]
+                    - cell "0.575" [ref=e1849]
+                    - cell "0.7" [ref=e1850]
+                    - cell "0.25" [ref=e1851]
+                    - cell "0.25" [ref=e1852]
+                    - cell "0.475" [ref=e1853]
+                    - cell "0.55" [ref=e1854]
+                    - cell "0.417" [ref=e1855]
+                    - cell "0.4" [ref=e1856]
+                  - row "MemGPT 0.625 0.625 0.275 0.225 0.45 0.625 0.367 0.45" [ref=e1857]:
+                    - cell "MemGPT" [ref=e1858]
+                    - cell "0.625" [ref=e1859]
+                    - cell "0.625" [ref=e1860]
+                    - cell "0.275" [ref=e1861]
+                    - cell "0.225" [ref=e1862]
+                    - cell "0.45" [ref=e1863]
+                    - cell "0.625" [ref=e1864]
+                    - cell "0.367" [ref=e1865]
+                    - cell "0.45" [ref=e1866]
+                  - row "SCMemory 0.575 0.475 0.05 0.275 0.525 0.475 0.217 0.1 \\bigstrut[b]" [ref=e1867]:
+                    - cell "SCMemory" [ref=e1868]
+                    - cell "0.575" [ref=e1869]
+                    - cell "0.475" [ref=e1870]
+                    - cell "0.05" [ref=e1871]
+                    - cell "0.275" [ref=e1872]
+                    - cell "0.525" [ref=e1873]
+                    - cell "0.475" [ref=e1874]
+                    - cell "0.217" [ref=e1875]
+                    - cell "0.1 \\bigstrut[b]" [ref=e1876]
+            - 'figure "Table 12: The results of different mechanisms on different types of our 10k-Factual-Observation memory dataset. Including sh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update)." [ref=e1877]':
+              - generic [ref=e1878]:
+                - generic [ref=e1879]: "Table 12:"
+                - text: The results of different mechanisms on different types of our 10k-Factual-Observation memory dataset. Including sh(sigle-hop), mh(multi-hop), comp(comparative), agg(aggregative), pp(post-processing), ku(knowledge-update).
+              - table [ref=e1882]:
+                - rowgroup [ref=e1883]:
+                  - row "Method Observation-Accuracy \\bigstrut" [ref=e1884]:
+                    - cell "Method" [ref=e1885]
+                    - cell "Observation-Accuracy \\bigstrut" [ref=e1886]
+                  - row "sh mh comp agg pp ku \\bigstrut" [ref=e1887]:
+                    - cell [ref=e1888]
+                    - cell "sh" [ref=e1889]
+                    - cell "mh" [ref=e1890]
+                    - cell "comp" [ref=e1891]
+                    - cell "agg" [ref=e1892]
+                    - cell "pp" [ref=e1893]
+                    - cell "ku \\bigstrut" [ref=e1894]
+                  - row "FullMemory 0.92 0.92 0.667 0.233 0.82 0.6 \\bigstrut[t]" [ref=e1895]:
+                    - cell "FullMemory" [ref=e1896]
+                    - cell "0.92" [ref=e1897]
+                    - cell "0.92" [ref=e1898]
+                    - cell "0.667" [ref=e1899]
+                    - cell "0.233" [ref=e1900]
+                    - cell "0.82" [ref=e1901]
+                    - cell "0.6 \\bigstrut[t]" [ref=e1902]
+                  - row "RecentMemory 0.92 0.92 0.667 0.367 0.82 0.65" [ref=e1903]:
+                    - cell "RecentMemory" [ref=e1904]
+                    - cell "0.92" [ref=e1905]
+                    - cell "0.92" [ref=e1906]
+                    - cell "0.667" [ref=e1907]
+                    - cell "0.367" [ref=e1908]
+                    - cell "0.82" [ref=e1909]
+                    - cell "0.65" [ref=e1910]
+                  - row "RetrievalMemmory 0.92 0.92 0.633 0.367 0.78 0.45" [ref=e1911]:
+                    - cell "RetrievalMemmory" [ref=e1912]
+                    - cell "0.92" [ref=e1913]
+                    - cell "0.92" [ref=e1914]
+                    - cell "0.633" [ref=e1915]
+                    - cell "0.367" [ref=e1916]
+                    - cell "0.78" [ref=e1917]
+                    - cell "0.45" [ref=e1918]
+                  - row "GenerativeAgent 0.88 0.94 0.7 0.3 0.82 0.4" [ref=e1919]:
+                    - cell "GenerativeAgent" [ref=e1920]
+                    - cell "0.88" [ref=e1921]
+                    - cell "0.94" [ref=e1922]
+                    - cell "0.7" [ref=e1923]
+                    - cell "0.3" [ref=e1924]
+                    - cell "0.82" [ref=e1925]
+                    - cell "0.4" [ref=e1926]
+                  - row "MemoryBank 0.8 0.78 0.633 0.233 0.800 0.6" [ref=e1927]:
+                    - cell "MemoryBank" [ref=e1928]
+                    - cell "0.8" [ref=e1929]
+                    - cell "0.78" [ref=e1930]
+                    - cell "0.633" [ref=e1931]
+                    - cell "0.233" [ref=e1932]
+                    - cell "0.800" [ref=e1933]
+                    - cell "0.6" [ref=e1934]
+                  - row "MemGPT 0.94 0.92 0.667 0.233 0.82 0.600" [ref=e1935]:
+                    - cell "MemGPT" [ref=e1936]
+                    - cell "0.94" [ref=e1937]
+                    - cell "0.92" [ref=e1938]
+                    - cell "0.667" [ref=e1939]
+                    - cell "0.233" [ref=e1940]
+                    - cell "0.82" [ref=e1941]
+                    - cell "0.600" [ref=e1942]
+                  - row "SCMemory 0.46 0.68 0.133 0.133 0.78 0.65 \\bigstrut[b]" [ref=e1943]:
+                    - cell "SCMemory" [ref=e1944]
+                    - cell "0.46" [ref=e1945]
+                    - cell "0.68" [ref=e1946]
+                    - cell "0.133" [ref=e1947]
+                    - cell "0.133" [ref=e1948]
+                    - cell "0.78" [ref=e1949]
+                    - cell "0.65 \\bigstrut[b]" [ref=e1950]
+  - button "Report Issue" [ref=e1951] [cursor=pointer]
+  - button "Report Issue for Selection" [ref=e1952] [cursor=pointer]
+  - generic [ref=e1954]:
+    - text: Generated by
+    - link "L A T E xml [LOGO]" [ref=e1955] [cursor=pointer]:
+      - /url: https://math.nist.gov/~BMiller/LaTeXML/
+      - generic [ref=e1956]: L A T E
+      - text: xml
+      - img "[LOGO]" [ref=e1957]
+  - contentinfo [ref=e1958]:
+    - generic [ref=e1959]:
+      - heading "Instructions for reporting errors" [level=2] [ref=e1960]
+      - paragraph [ref=e1961]: "We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the methods listed below:"
+      - list [ref=e1962]:
+        - listitem [ref=e1963]: Click the "Report Issue" button.
+        - listitem [ref=e1964]:
+          - text: Open a report feedback form via keyboard, use "
+          - strong [ref=e1965]: Ctrl + ?
+          - text: "\"."
+        - listitem [ref=e1966]: Make a text selection and click the "Report Issue for Selection" button near your cursor.
+        - listitem [ref=e1967]: You can use Alt+Y to toggle on and Alt+Shift+Y to toggle off accessible reporting links at each section.
+      - paragraph [ref=e1968]:
+        - text: Our team has already identified
+        - link "the following issues" [ref=e1969] [cursor=pointer]:
+          - /url: https://github.com/arXiv/html_feedback/issues
+        - text: . We appreciate your time reviewing and reporting rendering errors we may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability should not be a barrier to accessing research. Thank you for your continued support in championing open access for all.
+      - paragraph [ref=e1970]:
+        - text: Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a
+        - link "list of packages that need conversion" [ref=e1971] [cursor=pointer]:
+          - /url: https://github.com/brucemiller/LaTeXML/wiki/Porting-LaTeX-packages-for-LaTeXML
+        - text: ", and welcome"
+        - link "developer contributions" [ref=e1972] [cursor=pointer]:
+          - /url: https://github.com/brucemiller/LaTeXML/issues
+        - text: .
+  - text: beta

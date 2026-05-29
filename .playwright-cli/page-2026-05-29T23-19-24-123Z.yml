@@ -1,0 +1,454 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Skip to main content" [ref=e4] [cursor=pointer]:
+      - /url: "#content"
+    - generic [ref=e5]:
+      - link "Cornell University" [ref=e7] [cursor=pointer]:
+        - /url: https://www.cornell.edu/
+        - img "Cornell University" [ref=e8]
+      - link "Learn about arXiv becoming an independent nonprofit." [ref=e10] [cursor=pointer]:
+        - /url: https://tech.cornell.edu/arxiv/
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - text: We gratefully acknowledge support from the Simons Foundation,
+          - link "member institutions" [ref=e13] [cursor=pointer]:
+            - /url: https://info.arxiv.org/about/ourmembers.html
+          - text: ", and all contributors."
+        - link "Donate" [ref=e14] [cursor=pointer]:
+          - /url: https://info.arxiv.org/about/donate.html
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - link "arxiv logo" [ref=e17] [cursor=pointer]:
+          - /url: /
+          - img "arxiv logo" [ref=e18]
+        - generic [ref=e19]: ">"
+        - link "cs" [ref=e20] [cursor=pointer]:
+          - /url: /list/cs/recent
+        - generic [ref=e21]: ">"
+        - text: arXiv:2602.06052
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - textbox "Search term or terms" [ref=e26]:
+            - /placeholder: Search...
+          - paragraph [ref=e27]:
+            - link "Help" [ref=e28] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help
+            - text: "|"
+            - link "Advanced Search" [ref=e29] [cursor=pointer]:
+              - /url: https://arxiv.org/search/advanced
+        - combobox "Field to search" [ref=e31]:
+          - option "All fields" [selected]
+          - option "Title"
+          - option "Author"
+          - option "Abstract"
+          - option "Comments"
+          - option "Journal reference"
+          - option "ACM classification"
+          - option "MSC classification"
+          - option "Report number"
+          - option "arXiv identifier"
+          - option "DOI"
+          - option "ORCID"
+          - option "arXiv author ID"
+          - option "Help pages"
+          - option "Full text"
+        - button "Search" [ref=e32] [cursor=pointer]
+  - main [ref=e33]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - heading "Computer Science > Computation and Language" [level=1] [ref=e38]
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - text: "[Submitted on 14 Jan 2026 ("
+            - link "v1" [ref=e42] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2602.06052v1
+            - text: ), last revised 10 Feb 2026 (this version, v3)]
+          - 'heading "Rethinking Memory Mechanisms of Foundation Agents in the Second Half: A Survey" [level=1] [ref=e43]'
+          - generic [ref=e44]:
+            - link "Wei-Chieh Huang" [ref=e45] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Huang,+W
+            - text: ","
+            - link "Weizhi Zhang" [ref=e46] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zhang,+W
+            - text: ","
+            - link "Yueqing Liang" [ref=e47] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Liang,+Y
+            - text: ","
+            - link "Yuanchen Bei" [ref=e48] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Bei,+Y
+            - text: ","
+            - link "Yankai Chen" [ref=e49] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Chen,+Y
+            - text: ","
+            - link "Tao Feng" [ref=e50] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Feng,+T
+            - text: ","
+            - link "Xinyu Pan" [ref=e51] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Pan,+X
+            - text: ","
+            - link "Zhen Tan" [ref=e52] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Tan,+Z
+            - text: ","
+            - link "Yu Wang" [ref=e53] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+Y
+            - text: ","
+            - link "Tianxin Wei" [ref=e54] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wei,+T
+            - text: ","
+            - link "Shanglin Wu" [ref=e55] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wu,+S
+            - text: ","
+            - link "Ruiyao Xu" [ref=e56] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Xu,+R
+            - text: ","
+            - link "Liangwei Yang" [ref=e57] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Yang,+L
+            - text: ","
+            - link "Rui Yang" [ref=e58] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Yang,+R
+            - text: ","
+            - link "Wooseong Yang" [ref=e59] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Yang,+W
+            - text: ","
+            - link "Chin-Yuan Yeh" [ref=e60] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Yeh,+C
+            - text: ","
+            - link "Hanrong Zhang" [ref=e61] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zhang,+H
+            - text: ","
+            - link "Haozhen Zhang" [ref=e62] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zhang,+H
+            - text: ","
+            - link "Siqi Zhu" [ref=e63] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zhu,+S
+            - text: ","
+            - link "Henry Peng Zou" [ref=e64] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zou,+H+P
+            - text: ","
+            - link "Wanjia Zhao" [ref=e65] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zhao,+W
+            - text: ","
+            - link "Song Wang" [ref=e66] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+S
+            - text: ","
+            - link "Wujiang Xu" [ref=e67] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Xu,+W
+            - text: ","
+            - link "Zixuan Ke" [ref=e68] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Ke,+Z
+            - text: ","
+            - link "Zheng Hui" [ref=e69] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Hui,+Z
+            - text: ","
+            - link "Dawei Li" [ref=e70] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Li,+D
+            - text: ","
+            - link "Yaozu Wu" [ref=e71] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wu,+Y
+            - text: ","
+            - link "Langzhou He" [ref=e72] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=He,+L
+            - text: ","
+            - link "Chen Wang" [ref=e73] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+C
+            - text: ","
+            - link "Xiongxiao Xu" [ref=e74] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Xu,+X
+            - text: ","
+            - link "Baixiang Huang" [ref=e75] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Huang,+B
+            - text: ","
+            - link "Juntao Tan" [ref=e76] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Tan,+J
+            - text: ","
+            - link "Shelby Heinecke" [ref=e77] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Heinecke,+S
+            - text: ","
+            - link "Huan Wang" [ref=e78] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+H
+            - text: ","
+            - link "Caiming Xiong" [ref=e79] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Xiong,+C
+            - text: ","
+            - link "Ahmed A. Metwally" [ref=e80] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Metwally,+A+A
+            - text: ","
+            - link "Jun Yan" [ref=e81] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Yan,+J
+            - text: ","
+            - link "Chen-Yu Lee" [ref=e82] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Lee,+C
+            - text: ","
+            - link "Hanqing Zeng" [ref=e83] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zeng,+H
+            - text: ","
+            - link "Yinglong Xia" [ref=e84] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Xia,+Y
+            - text: ","
+            - link "Xiaokai Wei" [ref=e85] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wei,+X
+            - text: ","
+            - link "Ali Payani" [ref=e86] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Payani,+A
+            - text: ","
+            - link "Yu Wang" [ref=e87] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+Y
+            - text: ","
+            - link "Haitong Ma" [ref=e88] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Ma,+H
+            - text: ","
+            - link "Wenya Wang" [ref=e89] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+W
+            - text: ","
+            - link "Chenguang Wang" [ref=e90] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+C
+            - text: ","
+            - link "Yu Zhang" [ref=e91] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zhang,+Y
+            - text: ","
+            - link "Xin Wang" [ref=e92] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+X
+            - text: ","
+            - link "Yongfeng Zhang" [ref=e93] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zhang,+Y
+            - text: ","
+            - link "Jiaxuan You" [ref=e94] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=You,+J
+            - text: ","
+            - link "Hanghang Tong" [ref=e95] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Tong,+H
+            - text: ","
+            - link "Xiao Luo" [ref=e96] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Luo,+X
+            - text: ","
+            - link "Xue Liu" [ref=e97] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Liu,+X
+            - text: ","
+            - link "Yizhou Sun" [ref=e98] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Sun,+Y
+            - text: ","
+            - link "Wei Wang" [ref=e99] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Wang,+W
+            - text: ","
+            - link "Julian McAuley" [ref=e100] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=McAuley,+J
+            - text: ","
+            - link "James Zou" [ref=e101] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Zou,+J
+            - text: ","
+            - link "Jiawei Han" [ref=e102] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Han,+J
+            - text: ","
+            - link "Philip S. Yu" [ref=e103] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Yu,+P+S
+            - text: ","
+            - link "Kai Shu" [ref=e104] [cursor=pointer]:
+              - /url: https://arxiv.org/search/cs?searchtype=author&query=Shu,+K
+          - blockquote [ref=e105]: "The research of artificial intelligence is undergoing a paradigm shift from prioritizing model innovations over benchmark scores towards emphasizing problem definition and rigorous real-world evaluation. As the field enters the \"second half,\" the central challenge becomes real utility in long-horizon, dynamic, and user-dependent environments, where agents face context explosion and must continuously accumulate, manage, and selectively reuse large volumes of information across extended interactions. Memory, with hundreds of papers released this year, therefore emerges as the critical solution to fill the utility gap. In this survey, we provide a unified view of foundation agent memory along three dimensions: memory substrate (internal and external), cognitive mechanism (episodic, semantic, sensory, working, and procedural), and memory subject (agent- and user-centric). We then analyze how memory is instantiated and operated under different agent topologies and highlight learning policies over memory operations. Finally, we review evaluation benchmarks and metrics for assessing memory utility, and outline various open challenges and future directions."
+          - table "Additional metadata" [ref=e107]:
+            - rowgroup [ref=e108]:
+              - 'row "Subjects: Computation and Language (cs.CL); Artificial Intelligence (cs.AI)" [ref=e109]':
+                - cell "Subjects:" [ref=e110]
+                - cell "Computation and Language (cs.CL); Artificial Intelligence (cs.AI)" [ref=e111]
+              - 'row "Cite as: arXiv:2602.06052 [cs.CL]" [ref=e112]':
+                - cell "Cite as:" [ref=e113]
+                - cell "arXiv:2602.06052 [cs.CL]" [ref=e114]:
+                  - generic [ref=e115]:
+                    - link "arXiv:2602.06052" [ref=e116] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.06052
+                    - text: "[cs.CL]"
+              - row "(or arXiv:2602.06052v3 [cs.CL] for this version)" [ref=e117]:
+                - cell [ref=e118]
+                - cell "(or arXiv:2602.06052v3 [cs.CL] for this version)" [ref=e119]:
+                  - text: (or
+                  - generic [ref=e120]:
+                    - link "arXiv:2602.06052v3" [ref=e121] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.06052v3
+                    - text: "[cs.CL]"
+                  - text: for this version)
+              - row "https://doi.org/10.48550/arXiv.2602.06052 Focus to learn more" [ref=e122]:
+                - cell [ref=e123]
+                - cell "https://doi.org/10.48550/arXiv.2602.06052 Focus to learn more" [ref=e124]:
+                  - link "https://doi.org/10.48550/arXiv.2602.06052" [ref=e125] [cursor=pointer]:
+                    - /url: https://doi.org/10.48550/arXiv.2602.06052
+                  - button "Focus to learn more" [ref=e127]:
+                    - generic [ref=e129]: Focus to learn more
+        - generic [ref=e130]:
+          - heading "Submission history" [level=2] [ref=e131]
+          - text: "From: Weizhi Zhang ["
+          - link "view email" [ref=e132] [cursor=pointer]:
+            - /url: /show-email/40609915/2602.06052
+          - text: "]"
+          - strong [ref=e133]:
+            - link "[v1]" [ref=e134] [cursor=pointer]:
+              - /url: /abs/2602.06052v1
+          - text: Wed, 14 Jan 2026 07:38:38 UTC (24,370 KB)
+          - strong [ref=e135]:
+            - link "[v2]" [ref=e136] [cursor=pointer]:
+              - /url: /abs/2602.06052v2
+          - text: Mon, 9 Feb 2026 18:53:33 UTC (8,325 KB)
+          - strong [ref=e137]: "[v3]"
+          - text: Tue, 10 Feb 2026 07:16:39 UTC (8,325 KB)
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - heading "Access Paper:" [level=2] [ref=e140]
+          - list [ref=e141]:
+            - listitem [ref=e142]:
+              - link "View PDF" [ref=e143] [cursor=pointer]:
+                - /url: /pdf/2602.06052
+            - listitem [ref=e144]:
+              - link "HTML (experimental)" [ref=e145] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2602.06052v3
+            - listitem [ref=e146]:
+              - link "TeX Source" [ref=e147] [cursor=pointer]:
+                - /url: /src/2602.06052
+          - link "view license" [ref=e149] [cursor=pointer]:
+            - /url: http://arxiv.org/licenses/nonexclusive-distrib/1.0/
+        - generic [ref=e150]:
+          - heading "Current browse context:" [level=3] [ref=e151]
+          - generic [ref=e152]: cs.CL
+          - generic [ref=e153]:
+            - link "< prev" [ref=e155] [cursor=pointer]:
+              - /url: /prevnext?id=2602.06052&function=prev&context=cs.CL
+            - text: "|"
+            - link "next >" [ref=e157] [cursor=pointer]:
+              - /url: /prevnext?id=2602.06052&function=next&context=cs.CL
+          - generic [ref=e158]:
+            - link "new" [ref=e159] [cursor=pointer]:
+              - /url: /list/cs.CL/new
+            - text: "|"
+            - link "recent" [ref=e160] [cursor=pointer]:
+              - /url: /list/cs.CL/recent
+            - text: "|"
+            - link "2026-02" [ref=e161] [cursor=pointer]:
+              - /url: /list/cs.CL/2026-02
+          - generic [ref=e162]:
+            - text: "Change to browse by:"
+            - generic [ref=e163]:
+              - link "cs" [ref=e164] [cursor=pointer]:
+                - /url: /abs/2602.06052?context=cs
+              - link "cs.AI" [ref=e165] [cursor=pointer]:
+                - /url: /abs/2602.06052?context=cs.AI
+        - generic [ref=e166]:
+          - heading "References & Citations" [level=3] [ref=e167]
+          - list [ref=e168]:
+            - listitem [ref=e169]:
+              - link "NASA ADS" [ref=e170] [cursor=pointer]:
+                - /url: https://ui.adsabs.harvard.edu/abs/arXiv:2602.06052
+            - listitem [ref=e171]:
+              - link "Google Scholar" [ref=e172] [cursor=pointer]:
+                - /url: https://scholar.google.com/scholar_lookup?arxiv_id=2602.06052
+            - listitem [ref=e173]:
+              - link "Semantic Scholar" [ref=e174] [cursor=pointer]:
+                - /url: https://api.semanticscholar.org/arXiv:2602.06052
+        - button "export BibTeX citation" [ref=e176]
+        - generic [ref=e177]:
+          - heading "Bookmark" [level=3] [ref=e179]
+          - link "BibSonomy" [ref=e180] [cursor=pointer]:
+            - /url: "http://www.bibsonomy.org/BibtexHandler?requTask=upload&url=https://arxiv.org/abs/2602.06052&description=Rethinking Memory Mechanisms of Foundation Agents in the Second Half: A Survey"
+            - img "BibSonomy" [ref=e181]
+          - link "Reddit" [ref=e182] [cursor=pointer]:
+            - /url: "https://reddit.com/submit?url=https://arxiv.org/abs/2602.06052&title=Rethinking Memory Mechanisms of Foundation Agents in the Second Half: A Survey"
+            - img "Reddit" [ref=e183]
+      - tablist "arXivLabs tools" [ref=e185]:
+        - radio "Bibliographic Tools" [checked] [ref=e186]
+        - tab "Bibliographic Tools" [selected] [ref=e187] [cursor=pointer]
+        - tabpanel "Bibliographic Tools" [ref=e188]:
+          - heading "Bibliographic and Citation Tools" [level=1] [ref=e189]
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - generic [ref=e193]:
+                - checkbox "Bibliographic Explorer Toggle"
+                - generic [ref=e195]: Bibliographic Explorer Toggle
+              - generic [ref=e196]:
+                - text: Bibliographic Explorer
+                - emphasis [ref=e197]:
+                  - text: (
+                  - link "What is the Explorer?" [ref=e198] [cursor=pointer]:
+                    - /url: https://info.arxiv.org/labs/showcase.html#arxiv-bibliographic-explorer
+                  - text: )
+            - generic [ref=e199]:
+              - generic [ref=e201]:
+                - checkbox "Connected Papers"
+                - generic [ref=e203]: Connected Papers Toggle
+              - generic [ref=e204]:
+                - text: Connected Papers
+                - emphasis [ref=e205]:
+                  - text: (
+                  - link "What is Connected Papers?" [ref=e206] [cursor=pointer]:
+                    - /url: https://www.connectedpapers.com/about
+                  - text: )
+            - generic [ref=e207]:
+              - generic [ref=e209]:
+                - checkbox "Litmaps"
+                - generic [ref=e211]: Litmaps Toggle
+              - generic [ref=e212]:
+                - text: Litmaps
+                - emphasis [ref=e213]:
+                  - text: (
+                  - link "What is Litmaps?" [ref=e214] [cursor=pointer]:
+                    - /url: https://www.litmaps.co/
+                  - text: )
+            - generic [ref=e215]:
+              - generic [ref=e217]:
+                - checkbox "scite Smart Citations"
+                - generic [ref=e219]: scite.ai Toggle
+              - generic [ref=e220]:
+                - text: scite Smart Citations
+                - emphasis [ref=e221]:
+                  - text: (
+                  - link "What are Smart Citations?" [ref=e222] [cursor=pointer]:
+                    - /url: https://www.scite.ai/
+                  - text: )
+        - radio "Code, Data, Media" [ref=e226]
+        - tab "Code, Data, Media" [ref=e227] [cursor=pointer]
+        - radio "Demos" [ref=e228]
+        - tab "Demos" [ref=e229] [cursor=pointer]
+        - radio "Related Papers" [ref=e230]
+        - tab "Related Papers" [ref=e231] [cursor=pointer]
+        - radio "About arXivLabs" [ref=e232]
+        - tab "About arXivLabs" [ref=e233] [cursor=pointer]
+      - generic [ref=e234]:
+        - link "Which authors of this paper are endorsers?" [ref=e235] [cursor=pointer]:
+          - /url: /auth/show-endorsers/2602.06052
+        - text: "|"
+        - link "Disable MathJax" [ref=e236] [cursor=pointer]:
+          - /url: javascript:setMathjaxCookie()
+        - text: (
+        - link "What is MathJax?" [ref=e237] [cursor=pointer]:
+          - /url: https://info.arxiv.org/help/mathjax.html
+        - text: )
+  - contentinfo [ref=e238]:
+    - navigation "Secondary" [ref=e239]:
+      - generic [ref=e241]:
+        - list [ref=e243]:
+          - listitem [ref=e244]:
+            - link "About" [ref=e245] [cursor=pointer]:
+              - /url: https://info.arxiv.org/about
+          - listitem [ref=e246]:
+            - link "Help" [ref=e247] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help
+        - list [ref=e249]:
+          - listitem [ref=e250]:
+            - link "Contact" [ref=e252] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/contact.html
+          - listitem [ref=e253]:
+            - link "Subscribe" [ref=e255] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/subscribe
+      - generic [ref=e257]:
+        - list [ref=e259]:
+          - listitem [ref=e260]:
+            - link "Copyright" [ref=e261] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/license/index.html
+          - listitem [ref=e262]:
+            - link "Privacy Policy" [ref=e263] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/policies/privacy_policy.html
+        - list [ref=e265]:
+          - listitem [ref=e266]:
+            - link "Web Accessibility Assistance" [ref=e267] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/web_accessibility.html
+          - listitem [ref=e268]:
+            - paragraph [ref=e269]:
+              - link "arXiv Operational Status" [ref=e270] [cursor=pointer]:
+                - /url: https://status.arxiv.org
+                - text: arXiv Operational Status

@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: "\"agent memory\" architecture LLM AI survey 2025"
+    - complementary "Account Rewards and Preferences" [ref=e17]:
+      - button "Microsoft Rewards"
+      - link "Sign in" [ref=e18] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - generic "Sign in" [ref=e19]
+    - navigation "Search Filter" [ref=e20]:
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "All" [ref=e23] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e24]:
+          - link "Images" [ref=e25] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=cb097a1e299ae4ba001f2e7d0401d0b6aa653f95d8ca8ea6200aee30e92c4a35JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=13c78c79-5fe7-674e-2cfa-9b115e3066e0&u=a1L2ltYWdlcy9zZWFyY2g_cT0lMjJhZ2VudCttZW1vcnklMjIrYXJjaGl0ZWN0dXJlK0xMTStBSStzdXJ2ZXkrMjAyNSZGT1JNPUhEUlNDMg&ntb=1
+        - listitem [ref=e26]:
+          - link "Videos" [ref=e27] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=c2510cf849c8d03c86358c17aa447a362727e81f41d10acd202351999d90eb66JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=13c78c79-5fe7-674e-2cfa-9b115e3066e0&u=a1L3ZpZGVvcy9zZWFyY2g_cT0lMjJhZ2VudCttZW1vcnklMjIrYXJjaGl0ZWN0dXJlK0xMTStBSStzdXJ2ZXkrMjAyNSZGT1JNPUhEUlNDMw&ntb=1
+        - listitem [ref=e28]:
+          - link "Maps" [ref=e29] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=96ba3d89a43a39c1c35ecb8a587ac631e70773f1c00a203caf5325172e971088JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=13c78c79-5fe7-674e-2cfa-9b115e3066e0&u=a1L21hcHM_cT0lMjJhZ2VudCttZW1vcnklMjIrYXJjaGl0ZWN0dXJlK0xMTStBSStzdXJ2ZXkrMjAyNSZGT1JNPUhEUlNDNA&ntb=1
+        - listitem [ref=e30]:
+          - link "News" [ref=e31] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=089df1e2fa3fe9078fa950863904ec297939040e8521ac9d4e93eed2bebbda7aJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=13c78c79-5fe7-674e-2cfa-9b115e3066e0&u=a1L25ld3Mvc2VhcmNoP3E9JTIyYWdlbnQrbWVtb3J5JTIyK2FyY2hpdGVjdHVyZStMTE0rQUkrc3VydmV5KzIwMjUmRk9STT1IRFJTQzY&ntb=1
+        - listitem [ref=e32]:
+          - link "Shopping" [ref=e33] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=bc09ee2c8c7b5a2b0a4f027eafb8dbbbe549b2cdd9fb68d854eab6c9a8fe45e3JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=13c78c79-5fe7-674e-2cfa-9b115e3066e0&u=a1L3Nob3AvdG9waWNzP3E9JTIyYWdlbnQrbWVtb3J5JTIyK2FyY2hpdGVjdHVyZStMTE0rQUkrc3VydmV5KzIwMjUmRk9STT1TSE9QVEI&ntb=1
+        - listitem [ref=e34]:
+          - button "More" [ref=e35] [cursor=pointer]:
+            - img [ref=e37]
+            - text: More
+  - contentinfo [ref=e39]:
+    - generic [ref=e40]:
+      - list:
+        - listitem [ref=e41]:
+          - link "Privacy" [ref=e42] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=02c15ccb3724edcd6d4a6dce93260761cb6cbb04d0a81c84ef7115c1cab80b32JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=13c78c79-5fe7-674e-2cfa-9b115e3066e0&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+        - listitem [ref=e43]:
+          - link "Terms" [ref=e44] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=eb3c48e3fe9e1978e6946f5f59272cf3cbbbd32bcf11e190afe7740c2faf3e30JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=13c78c79-5fe7-674e-2cfa-9b115e3066e0&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1

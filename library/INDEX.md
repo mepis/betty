@@ -11,6 +11,7 @@
 | [LLM Harness](topics/llm-harness/) | 2026-05-29 | Complete | llm, agent-harness, orchestration, security, taxonomy, etclovg, mcp, a2a, data-governance, prism |
 | [Qdrant](topics/qdrant/) | 2026-05-29 | Complete | vector-database, qdrant, rust, hybrid-search, hnsw, distributed, embeddings |
 | [RAG Systems](topics/rag-systems/) | 2026-05-29 | Complete | rag, retrieval, embeddings, vector-databases, llm, architecture, evaluation, frameworks |
+| [Agent Memory Strategies](topics/agent-memory-strategies/) | 2026-05-29 | Complete | agent-memory, llm-architecture, memory-benchmarks, privacy-security, multi-agent-systems |
 
 ## Detail
 
@@ -100,6 +101,22 @@ Retrieval-Augmented Generation (RAG) is the dominant paradigm for grounding larg
 - BGE-M3 and Voyage-3 are top embedding models for RAG
 - RAGAS provides standardized evaluation without human annotation
 - Agentic and programmatic RAG represent the next frontier
+
+---
+
+## Agent Memory Strategies
+
+**Date:** 2026-05-29
+
+Agent memory strategies encompass the architectures, mechanisms, and frameworks that enable AI agents to store, retrieve, manage, and evolve their memories over time. This research covers memory taxonomy (episodic, semantic, procedural, working), long-term memory architectures (vector stores, knowledge graphs, hybrid), retrieval strategies, memory management (forgetting, compression, conflict resolution, privacy), production frameworks (Mem0, Zep, LangGraph Store), evaluation benchmarks (MemBench, Memora, Evo-Memory, LOCCO), self-evolving memory systems (ReMe), and privacy/security concerns (MEXTRA attack, MemPot, A-MemGuard).
+
+**Key findings:**
+- Hybrid vector-graph architectures are becoming the standard for long-term memory
+- Memory management (forgetting, conflict resolution) is as important as storage and retrieval
+- Production frameworks (Mem0, Zep, LangGraph Store) provide mature, configurable solutions
+- Dedicated benchmarks now measure memory quality independently of downstream task performance
+- Self-evolving memory systems (ReMe) significantly outperform static memory agents
+- Privacy attacks (MEXTRA) demonstrate real risks requiring dedicated defense mechanisms
 
 ---
 

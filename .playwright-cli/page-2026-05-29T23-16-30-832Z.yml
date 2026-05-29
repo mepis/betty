@@ -1,0 +1,54 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: LLM long-term memory agent strategies vector store knowledge graph 2025
+        - button "Search using an image" [ref=e19] [cursor=pointer]
+    - complementary "Account Rewards and Preferences" [ref=e21]:
+      - button "Microsoft Rewards"
+      - link "Sign in" [ref=e22] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - generic "Sign in" [ref=e23]
+    - navigation "Search Filter" [ref=e24]:
+      - list [ref=e25]:
+        - listitem [ref=e26]:
+          - link "All" [ref=e27] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e28]:
+          - link "Search" [ref=e29] [cursor=pointer]:
+            - /url: /copilotsearch?q=LLM+long-term+memory+agent+strategies+vector+store+knowledge+graph+2025&FORM=CSSCOP
+            - img [ref=e30]
+            - text: Search
+        - listitem [ref=e32]:
+          - link "Images" [ref=e33] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=520ad1c4a5a93d2981c47763b42153f4f1ae06ab7b69cfb37c9fd34d5045a08cJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=2096a54e-66cd-6f0e-2107-b226671a6e4d&u=a1L2ltYWdlcy9zZWFyY2g_cT1MTE0rbG9uZy10ZXJtK21lbW9yeSthZ2VudCtzdHJhdGVnaWVzK3ZlY3RvcitzdG9yZStrbm93bGVkZ2UrZ3JhcGgrMjAyNSZGT1JNPUhEUlNDMg&ntb=1
+        - listitem [ref=e34]:
+          - link "Videos" [ref=e35] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=fe75b77c2a1cf0eddac9844ec36de2dfb7e0845e7d11f0dccd0e6451a46990d6JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=2096a54e-66cd-6f0e-2107-b226671a6e4d&u=a1L3ZpZGVvcy9zZWFyY2g_cT1MTE0rbG9uZy10ZXJtK21lbW9yeSthZ2VudCtzdHJhdGVnaWVzK3ZlY3RvcitzdG9yZStrbm93bGVkZ2UrZ3JhcGgrMjAyNSZGT1JNPUhEUlNDMw&ntb=1
+        - listitem [ref=e36]:
+          - link "Maps" [ref=e37] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=4250209de22dc0d0ceac6c5f77e7234175230e2a2795826da7a95ac50b4cd535JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=2096a54e-66cd-6f0e-2107-b226671a6e4d&u=a1L21hcHM_cT1MTE0rbG9uZy10ZXJtK21lbW9yeSthZ2VudCtzdHJhdGVnaWVzK3ZlY3RvcitzdG9yZStrbm93bGVkZ2UrZ3JhcGgrMjAyNSZGT1JNPUhEUlNDNA&ntb=1
+        - listitem [ref=e38]:
+          - link "News" [ref=e39] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=4de5ab53ac9f8e74606b4436cc73edf520f4b191c302adcfc489bcbef08dcae0JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=2096a54e-66cd-6f0e-2107-b226671a6e4d&u=a1L25ld3Mvc2VhcmNoP3E9TExNK2xvbmctdGVybSttZW1vcnkrYWdlbnQrc3RyYXRlZ2llcyt2ZWN0b3Irc3RvcmUra25vd2xlZGdlK2dyYXBoKzIwMjUmRk9STT1IRFJTQzY&ntb=1
+        - listitem [ref=e40]:
+          - button "More" [ref=e41] [cursor=pointer]:
+            - img [ref=e43]
+            - text: More
+  - contentinfo [ref=e45]:
+    - generic [ref=e46]:
+      - list:
+        - listitem [ref=e47]:
+          - link "Privacy" [ref=e48] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=c35042b27f9711da831383f6fe246b0d9fdfe58801665764cc4ad5e04cd27afaJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=2096a54e-66cd-6f0e-2107-b226671a6e4d&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+        - listitem [ref=e49]:
+          - link "Terms" [ref=e50] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=656ce5837d758aeb79358b077e0fe0af0b6e953c75fa9269bb1911f8ea8004dcJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=2096a54e-66cd-6f0e-2107-b226671a6e4d&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1

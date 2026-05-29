@@ -1,0 +1,3089 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "arXiv logo Back to arXiv" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img "arXiv logo" [ref=e5]
+      - generic [ref=e6]: Back to arXiv
+    - navigation [ref=e7]:
+      - link "Why HTML?" [ref=e8] [cursor=pointer]:
+        - /url: https://info.arxiv.org/about/accessible_HTML.html
+      - link "Report Issue" [ref=e9] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e10]: Report Issue
+      - link "Back to abstract page" [ref=e11] [cursor=pointer]:
+        - /url: /abs/2603.11768v1
+        - generic [ref=e12]: Back to Abstract
+      - link "Download PDF" [ref=e13] [cursor=pointer]:
+        - /url: /pdf/2603.11768v1
+        - generic [ref=e14]: Download PDF
+      - link "Toggle navigation" [ref=e15] [cursor=pointer]:
+        - /url: javascript:toggleNavTOC();
+      - link "Disable reading mode, show header and footer" [ref=e16] [cursor=pointer]:
+        - /url: javascript:toggleReadingMode();
+      - button "Toggle color scheme" [ref=e18] [cursor=pointer]
+  - navigation [ref=e20]:
+    - navigation [ref=e21]:
+      - list [ref=e22]:
+        - listitem [ref=e23]:
+          - link "Abstract" [ref=e24] [cursor=pointer]:
+            - /url: "#abstract1"
+        - listitem [ref=e25]:
+          - link "1 Introduction" [ref=e26] [cursor=pointer]:
+            - /url: "#S1"
+            - generic [ref=e27]:
+              - generic [ref=e28]: "1"
+              - text: Introduction
+        - listitem [ref=e29]:
+          - link "2 From Static to Adaptive Memory Systems" [ref=e30] [cursor=pointer]:
+            - /url: "#S2"
+            - generic [ref=e31]:
+              - generic [ref=e32]: "2"
+              - text: From Static to Adaptive Memory Systems
+        - listitem [ref=e33]:
+          - 'link "3 What Evolves: Content, Structure, and Policy" [ref=e34] [cursor=pointer]':
+            - /url: "#S3"
+            - generic [ref=e35]:
+              - generic [ref=e36]: "3"
+              - text: "What Evolves: Content, Structure, and Policy"
+        - listitem [ref=e37]:
+          - 'link "4 How Memory Evolves: Reflection, Reinforcement, and Consolidation" [ref=e38] [cursor=pointer]':
+            - /url: "#S4"
+            - generic [ref=e39]:
+              - generic [ref=e40]: "4"
+              - text: "How Memory Evolves: Reflection, Reinforcement, and Consolidation"
+        - listitem [ref=e41]:
+          - 'link "5 Why Memory Fails: Drift, Efficiency, Validity, and Safety" [ref=e42] [cursor=pointer]':
+            - /url: "#S5"
+            - generic [ref=e43]:
+              - generic [ref=e44]: "5"
+              - text: "Why Memory Fails: Drift, Efficiency, Validity, and Safety"
+        - listitem [ref=e45]:
+          - 'link "6 Stability and Safety Governed Memory (SSGM): Design Principles and Research Agenda" [ref=e46] [cursor=pointer]':
+            - /url: "#S6"
+            - generic [ref=e47]:
+              - generic [ref=e48]: "6"
+              - text: "Stability and Safety Governed Memory (SSGM): Design Principles and Research Agenda"
+        - listitem [ref=e49]:
+          - link "7 Conclusion" [ref=e50] [cursor=pointer]:
+            - /url: "#S7"
+            - generic [ref=e51]:
+              - generic [ref=e52]: "7"
+              - text: Conclusion
+        - listitem [ref=e53]:
+          - link "References" [ref=e54] [cursor=pointer]:
+            - /url: "#bib"
+  - generic [ref=e55]:
+    - generic [ref=e56]:
+      - 'link "License: arXiv.org perpetual non-exclusive license" [ref=e57] [cursor=pointer]':
+        - /url: https://info.arxiv.org/help/license/index.html#licenses-available
+      - generic [ref=e58]: arXiv:2603.11768v1 [cs.AI] 12 Mar 2026
+    - article [ref=e60]:
+      - 'heading "Governing Evolving Memory in LLM Agents: Risks, Mechanisms, and the Stability and Safety Governed Memory (SSGM) Framework" [level=1] [ref=e61]'
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - text: Chingkwun Lam, Jiaxin Li, Lingfei Zhang, Kuo Zhao
+          - text: College of Intelligent Science and Engineering, Jinan University
+          - generic [ref=e65]: zhaokuo@jnu.edu.cn
+        - generic [ref=e66]: Corresponding author.
+      - generic [ref=e67]:
+        - heading "Abstract" [level=6] [ref=e68]
+        - paragraph [ref=e69]: Long-term memory has emerged as a foundational component of autonomous Large Language Model (LLM) agents, enabling continuous adaptation, lifelong multimodal learning, and sophisticated reasoning. However, as memory systems transition from static retrieval databases to dynamic, agentic mechanisms, critical concerns regarding memory governance, semantic drift, and privacy vulnerabilities have surfaced. While recent surveys have focused extensively on memory retrieval efficiency, they largely overlook the emergent risks of memory corruption in highly dynamic environments. To address these emerging challenges, we propose the Stability and Safety-Governed Memory (SSGM) framework, a conceptual governance architecture. SSGM decouples memory evolution from execution by enforcing consistency verification, temporal decay modeling, and dynamic access control prior to any memory consolidation. Through formal analysis and architectural decomposition, we show how SSGM can mitigate topology-induced knowledge leakage where sensitive contexts are solidified into long-term storage, and help prevent semantic drift where knowledge degrades through iterative summarization. Ultimately, this work provides a comprehensive taxonomy of memory corruption risks and establishes a robust governance paradigm for deploying safe, persistent, and reliable agentic memory systems.
+      - generic [ref=e70]:
+        - heading "1 Introduction" [level=2] [ref=e71]:
+          - generic [ref=e72]: "1"
+          - text: Introduction
+        - paragraph [ref=e74]:
+          - text: Large Language Model (LLM) agents have demonstrated impressive reasoning and interaction capabilities across diverse domains
+          - generic [ref=e75]:
+            - text: (Matarazzo and Torlone,
+            - link "2025" [ref=e76] [cursor=pointer]:
+              - /url: "#bib.bib19"
+            - text: )
+          - text: ; yet, in the absence of specialized mechanisms, they remain fundamentally stateless. Standard LLMs rely on a fixed-length context window that prevents indefinite information retention
+          - generic [ref=e77]:
+            - text: (Zhong et al.,
+            - link "2024" [ref=e78] [cursor=pointer]:
+              - /url: "#bib.bib50"
+            - text: ; Yousuf et al.,
+            - link "2025" [ref=e79] [cursor=pointer]:
+              - /url: "#bib.bib42"
+            - text: ; OpenAI,
+            - link "2023" [ref=e80] [cursor=pointer]:
+              - /url: "#bib.bib21"
+            - text: )
+          - text: . While early solutions employed Retrieval-Augmented Generation (RAG) to provide a static knowledge base
+          - generic [ref=e81]:
+            - text: (Lewis et al.,
+            - link "2020" [ref=e82] [cursor=pointer]:
+              - /url: "#bib.bib17"
+            - text: ; Gao et al.,
+            - link "2023" [ref=e83] [cursor=pointer]:
+              - /url: "#bib.bib8"
+            - text: )
+          - text: ", modern autonomous agents demand a more dynamic capability: the ability to learn from experience, update their world models, and refine their strategies over time"
+          - generic [ref=e84]:
+            - text: (Xi et al.,
+            - link "2023" [ref=e85] [cursor=pointer]:
+              - /url: "#bib.bib37"
+            - text: ; Wang et al.,
+            - link "2023" [ref=e86] [cursor=pointer]:
+              - /url: "#bib.bib35"
+            - text: )
+          - text: .
+        - paragraph [ref=e88]:
+          - text: This necessity has driven a paradigm shift from static memory storage to adaptive, self-refining memory systems. Recent architectures treat memory operations not as passive retrieval tasks but as active decision-making processes. For instance, Memory-R1 employs reinforcement learning to train specialized sub-agents that autonomously decide when to add, update, or delete memory units based on task feedback
+          - generic [ref=e89]:
+            - text: (Yan et al.,
+            - link "2026" [ref=e90] [cursor=pointer]:
+              - /url: "#bib.bib40"
+            - text: )
+          - text: . Similarly, frameworks like Mem0 and AtomMem introduce dynamic consolidation mechanisms that continuously optimize the storage structure via atomic operations
+          - generic [ref=e91]:
+            - text: (Chhikara et al.,
+            - link "2025" [ref=e92] [cursor=pointer]:
+              - /url: "#bib.bib5"
+            - text: ; Huo et al.,
+            - link "2026" [ref=e93] [cursor=pointer]:
+              - /url: "#bib.bib14"
+            - text: )
+          - text: . In these systems, memory is no longer an immutable log but a mutable asset that evolves alongside the agent
+          - generic [ref=e94]:
+            - text: (Zhang et al.,
+            - link "2026b" [ref=e95] [cursor=pointer]:
+              - /url: "#bib.bib47"
+            - text: ; Luo et al.,
+            - link "2026" [ref=e96] [cursor=pointer]:
+              - /url: "#bib.bib48"
+            - text: )
+          - text: .
+        - 'figure "Figure 1: The Lifecycle of Memory Evolution and Emergent Risks. Unlike static RAG, evolving memory systems introduce a feedback loop where errors can accumulate. We identify three critical failure points: (1) Memory Poisoning during input ingestion, (2) Semantic Drift during consolidation updates, and (3) Conflict/Hallucination during retrieval. SSGM aims to govern these interfaces." [ref=e97]':
+          - img "Refer to caption" [ref=e98]
+          - generic [ref=e99]:
+            - generic [ref=e100]: "Figure 1:"
+            - text: "The Lifecycle of Memory Evolution and Emergent Risks. Unlike static RAG, evolving memory systems introduce a feedback loop where errors can accumulate. We identify three critical failure points: (1) Memory Poisoning during input ingestion, (2) Semantic Drift during consolidation updates, and (3) Conflict/Hallucination during retrieval. SSGM aims to govern these interfaces."
+        - paragraph [ref=e102]:
+          - text: However, granting agents the autonomy to rewrite their own memory introduces the stability-plasticity dilemma into artificial systems. Without robust governance, the continuous refinement of memory creates significant risks. An agent may gradually distort facts through repeated summarization (semantic drift), reinforce suboptimal workflows (procedural drift)
+          - generic [ref=e103]:
+            - text: (Han et al.,
+            - link "2025" [ref=e104] [cursor=pointer]:
+              - /url: "#bib.bib10"
+            - text: ; Rath,
+            - link "2026" [ref=e105] [cursor=pointer]:
+              - /url: "#bib.bib27"
+            - text: )
+          - text: ", or inadvertently internalize hallucinations and malicious injections as valid knowledge"
+          - generic [ref=e106]:
+            - text: (Wang et al.,
+            - link "2025" [ref=e107] [cursor=pointer]:
+              - /url: "#bib.bib38"
+            - text: ; Greshake et al.,
+            - link "2023" [ref=e108] [cursor=pointer]:
+              - /url: "#bib.bib9"
+            - text: )
+          - text: . Unlike static RAG systems, where errors are isolated to a single retrieval step, errors in evolving memory systems are cumulative and persistent. As delineated in Figure
+          - link "1" [ref=e109] [cursor=pointer]:
+            - /url: "#S1.F1"
+          - text: ", this creates a compounding failure loop across three critical interfaces: input ingestion (poisoning), memory consolidation (drift), and memory retrieval (hallucination). Figure"
+          - link "1" [ref=e110] [cursor=pointer]:
+            - /url: "#S1.F1"
+          - text: presents this coarse-grained lifecycle risk loop, which is later refined into the four-dimensional failure taxonomy in Table
+          - link "2" [ref=e111] [cursor=pointer]:
+            - /url: "#S5.T2"
+          - text: . As noted in recent surveys
+          - generic [ref=e112]:
+            - text: (Hu et al.,
+            - link "2025" [ref=e113] [cursor=pointer]:
+              - /url: "#bib.bib11"
+            - text: ; Luo et al.,
+            - link "2026" [ref=e114] [cursor=pointer]:
+              - /url: "#bib.bib48"
+            - text: )
+          - text: ", while the mechanisms of memory update are well-studied, the protocols for ensuring their long-term correctness and safety remain underexplored."
+        - generic [ref=e115]:
+          - paragraph [ref=e116]: "To address this gap, this paper proposes the Stability- and Safety-Governed Memory (SSGM) framework. We argue that for LLM agents to be reliable in high-stakes environments, memory evolution must be decoupled from memory governance. Our contributions are fourfold:"
+          - list [ref=e117]:
+            - listitem [ref=e118]:
+              - text: "1."
+              - paragraph [ref=e120]:
+                - text: "Taxonomy of Evolution: We categorize memory evolution along three dimensions: content abstraction, structural reorganization (e.g., from lists to Zettelkasten-style graphs"
+                - generic [ref=e121]:
+                  - text: (Xu et al.,
+                  - link "2025" [ref=e122] [cursor=pointer]:
+                    - /url: "#bib.bib39"
+                  - text: ; Jiang et al.,
+                  - link "2026" [ref=e123] [cursor=pointer]:
+                    - /url: "#bib.bib15"
+                  - text: )
+                - text: ), and policy optimization.
+            - listitem [ref=e124]:
+              - text: "2."
+              - paragraph [ref=e126]: "Failure Analysis: We identify and formalize key failure modes in adaptive memory, specifically distinguishing between intrinsic drift (e.g., knowledge conflict) and extrinsic threats (e.g., memory poisoning)."
+            - listitem [ref=e127]:
+              - text: "3."
+              - paragraph [ref=e129]: "The SSGM Framework: We synthesize design principles for a governed memory architecture that integrates consistency verification and ground-truth anchoring to mitigate the risks of uncontrolled evolution."
+            - listitem [ref=e130]:
+              - text: "4."
+              - paragraph [ref=e132]: "Fundamental Trade-offs: We establish a formal discussion on the three fundamental trade-offs inherent in agentic memory—the latency-safety trade-off, the stability-plasticity conflict, and the scalability of graph structures—setting the stage for future research."
+      - generic [ref=e133]:
+        - heading "2 From Static to Adaptive Memory Systems" [level=2] [ref=e134]:
+          - generic [ref=e135]: "2"
+          - text: From Static to Adaptive Memory Systems
+        - paragraph [ref=e137]:
+          - text: Initial iterations of LLM-based agent systems either lacked long-term memory entirely or relied on simplistic approaches to maintain context. For example, some agents maintained a sequential log of recent dialogue and instructions, truncating or discarding older content upon the saturation of the context window
+          - generic [ref=e138]:
+            - text: (Press et al.,
+            - link "2021" [ref=e139] [cursor=pointer]:
+              - /url: "#bib.bib24"
+            - text: )
+          - text: "; others utilized vector-similarity search within a database of past interactions to retrieve relevant segments on demand. These strategies constitute a paradigm of static memory: the agent does not alter its memory usage adaptively based on interaction outcomes, and the rules for storage and retrieval are predetermined by developers. A classic example is the Generative Agents framework"
+          - generic [ref=e140]:
+            - text: (Park et al.,
+            - link "2023" [ref=e141] [cursor=pointer]:
+              - /url: "#bib.bib23"
+            - text: )
+          - text: ", where simulated characters stored factual observations and reflections, retrieving them via a fixed relevance-and-recency scoring heuristic. While effective to a degree, this design required extensive manual tuning of storage and summarization criteria, and the system could not learn from memory management errors. Similarly, MemoryBank"
+          - generic [ref=e142]:
+            - text: (Zhong et al.,
+            - link "2024" [ref=e143] [cursor=pointer]:
+              - /url: "#bib.bib50"
+            - text: )
+          - text: and related systems summarized or discarded observations using fixed schedules or manually crafted triggers, illustrating the resource-intensive and suboptimal nature of heuristic memory management.
+        - paragraph [ref=e145]:
+          - text: The limitations of static approaches motivated the development of adaptive memory mechanisms. A crucial insight involved framing memory management as a decision problem amenable to learning or operating system-like management. MemGPT
+          - generic [ref=e146]:
+            - text: (Packer et al.,
+            - link "2024" [ref=e147] [cursor=pointer]:
+              - /url: "#bib.bib22"
+            - text: )
+          - text: pioneered the concept of treating context as a limited resource, employing an OS-inspired paging mechanism to transfer information between “main context” (RAM) and “external context” (disk) based on immediate task requirements. This represented a fundamental shift from simple sliding windows. The Tensor Brain
+          - generic [ref=e148]:
+            - text: (Tresp et al.,
+            - link "2023" [ref=e149] [cursor=pointer]:
+              - /url: "#bib.bib32"
+            - text: )
+          - text: constituted another early effort, introducing a neural architecture for differentiable episodic, semantic, and working memory. More recently, Memory-R1 explicitly formulates memory operations as actions to be optimized by a learned policy
+          - generic [ref=e150]:
+            - text: (Yan et al.,
+            - link "2026" [ref=e151] [cursor=pointer]:
+              - /url: "#bib.bib40"
+            - text: )
+          - text: .
+        - paragraph [ref=e153]:
+          - text: "Other systems incorporate adaptivity via alternative mechanisms: MemAct"
+          - generic [ref=e154]:
+            - text: (Zhang et al.,
+            - link "2026b" [ref=e155] [cursor=pointer]:
+              - /url: "#bib.bib47"
+            - text: )
+          - text: enables the agent to embed memory-related actions into its chain-of-thought prompting
+          - generic [ref=e156]:
+            - text: (Wei et al.,
+            - link "2022" [ref=e157] [cursor=pointer]:
+              - /url: "#bib.bib36"
+            - text: ; Yao et al.,
+            - link "2023" [ref=e158] [cursor=pointer]:
+              - /url: "#bib.bib41"
+            - text: )
+          - text: . If the agent detects uncertainty regarding a detail, it can explicitly issue a “lookup memory” or “store memory” action. Over multiple reasoning sessions, the agent refines the timing of these actions via feedback. Similarly, Nemori
+          - generic [ref=e159]:
+            - text: (Nan et al.,
+            - link "2025" [ref=e160] [cursor=pointer]:
+              - /url: "#bib.bib20"
+            - text: )
+          - text: "draws upon cognitive science to introduce a self-organizing memory policy: the agent internalizes rules for maintaining consistency and organization (such as periodically reconciling new information with old) without external supervision, thereby gradually improving memory coherence."
+        - 'figure "Table 1: Taxonomy of Evolving Memory Systems. We categorize recent systems by their storage structure, the policy governing memory evolution, mechanisms for maintaining stability, and safety provisions. Newly integrated approaches like HippoRAG, DarwinMem, and VideoARM emphasize the shift towards neurobiology, adaptive policies, and multimodal environments." [ref=e161]':
+          - table [ref=e164]:
+            - rowgroup [ref=e165]:
+              - row "System Memory Structure Evolution Policy Refinement & Stability Safety & Access Target Domain" [ref=e166]:
+                - cell "System" [ref=e167]
+                - cell "Memory Structure" [ref=e168]
+                - cell "Evolution Policy" [ref=e169]
+                - cell "Refinement & Stability" [ref=e170]
+                - cell "Safety & Access" [ref=e171]
+                - cell "Target Domain" [ref=e172]
+              - row "Adaptive & Learning-Based Systems" [ref=e173]:
+                - cell "Adaptive & Learning-Based Systems" [ref=e174]
+              - row "Memory-R1 (Yan et al., 2026 ) Flat Vector DB RL (PPO) Feedback-driven Updates – Open-Domain QA" [ref=e175]:
+                - cell "Memory-R1 (Yan et al., 2026 )" [ref=e176]:
+                  - text: Memory-R1
+                  - generic [ref=e177]:
+                    - text: (Yan et al.,
+                    - link "2026" [ref=e178] [cursor=pointer]:
+                      - /url: "#bib.bib40"
+                    - text: )
+                - cell "Flat Vector DB" [ref=e179]
+                - cell "RL (PPO)" [ref=e180]
+                - cell "Feedback-driven Updates" [ref=e181]
+                - cell "–" [ref=e182]
+                - cell "Open-Domain QA" [ref=e183]
+              - row "MemAgent (Yu et al., 2025 ) Semantic Slots RL (DAPO) Selective Overwriting – Long-Context QA" [ref=e184]:
+                - cell "MemAgent (Yu et al., 2025 )" [ref=e185]:
+                  - text: MemAgent
+                  - generic [ref=e186]:
+                    - text: (Yu et al.,
+                    - link "2025" [ref=e187] [cursor=pointer]:
+                      - /url: "#bib.bib43"
+                    - text: )
+                - cell "Semantic Slots" [ref=e188]
+                - cell "RL (DAPO)" [ref=e189]
+                - cell "Selective Overwriting" [ref=e190]
+                - cell "–" [ref=e191]
+                - cell "Long-Context QA" [ref=e192]
+              - row "AtomMem (Huo et al., 2026 ) Vector + Buffer Atomic Ops Needle-in-Haystack Training – Multi-Turn Reasoning" [ref=e193]:
+                - cell "AtomMem (Huo et al., 2026 )" [ref=e194]:
+                  - text: AtomMem
+                  - generic [ref=e195]:
+                    - text: (Huo et al.,
+                    - link "2026" [ref=e196] [cursor=pointer]:
+                      - /url: "#bib.bib14"
+                    - text: )
+                - cell "Vector + Buffer" [ref=e197]
+                - cell "Atomic Ops" [ref=e198]
+                - cell "Needle-in-Haystack Training" [ref=e199]
+                - cell "–" [ref=e200]
+                - cell "Multi-Turn Reasoning" [ref=e201]
+              - row "LEGOMem (Han et al., 2025 ) Procedural Graph Failure-driven Rule Verification – Workflow Automation" [ref=e202]:
+                - cell "LEGOMem (Han et al., 2025 )" [ref=e203]:
+                  - text: LEGOMem
+                  - generic [ref=e204]:
+                    - text: (Han et al.,
+                    - link "2025" [ref=e205] [cursor=pointer]:
+                      - /url: "#bib.bib10"
+                    - text: )
+                - cell "Procedural Graph" [ref=e206]
+                - cell "Failure-driven" [ref=e207]
+                - cell "Rule Verification" [ref=e208]
+                - cell "–" [ref=e209]
+                - cell "Workflow Automation" [ref=e210]
+              - row "AgentSM (Biswal et al., 2026 ) SQL-based Knowledge Agentic Tuning Schema Evolution Strict Schema Constraints Text-to-SQL (Enterprise)" [ref=e211]:
+                - cell "AgentSM (Biswal et al., 2026 )" [ref=e212]:
+                  - text: AgentSM
+                  - generic [ref=e213]:
+                    - text: (Biswal et al.,
+                    - link "2026" [ref=e214] [cursor=pointer]:
+                      - /url: "#bib.bib3"
+                    - text: )
+                - cell "SQL-based Knowledge" [ref=e215]
+                - cell "Agentic Tuning" [ref=e216]
+                - cell "Schema Evolution" [ref=e217]
+                - cell "Strict Schema Constraints" [ref=e218]
+                - cell "Text-to-SQL (Enterprise)" [ref=e219]
+              - row "AWM (Zheng and others, 2024 ) Workflow Rules Skill Induction Trace Compression – Procedural Execution" [ref=e220]:
+                - cell "AWM (Zheng and others, 2024 )" [ref=e221]:
+                  - text: AWM
+                  - generic [ref=e222]:
+                    - text: (Zheng and others,
+                    - link "2024" [ref=e223] [cursor=pointer]:
+                      - /url: "#bib.bib49"
+                    - text: )
+                - cell "Workflow Rules" [ref=e224]
+                - cell "Skill Induction" [ref=e225]
+                - cell "Trace Compression" [ref=e226]
+                - cell "–" [ref=e227]
+                - cell "Procedural Execution" [ref=e228]
+              - row "DarwinMem (Mi et al., 2026 ) Evolutionary Pool Training-Free Survival of the Fittest – GUI Agent Evolution" [ref=e229]:
+                - cell "DarwinMem (Mi et al., 2026 )" [ref=e230]:
+                  - text: DarwinMem
+                  - generic [ref=e231]:
+                    - text: (Mi et al.,
+                    - link "2026" [ref=e232] [cursor=pointer]:
+                      - /url: "#bib.bib51"
+                    - text: )
+                - cell "Evolutionary Pool" [ref=e233]
+                - cell "Training-Free" [ref=e234]
+                - cell "Survival of the Fittest" [ref=e235]
+                - cell "–" [ref=e236]
+                - cell "GUI Agent Evolution" [ref=e237]
+              - row "Astraea (Ni et al., 2025 ) KV Cache State-Aware Sched. JCT Lifecycle Optim. – Agentic Workflows" [ref=e238]:
+                - cell "Astraea (Ni et al., 2025 )" [ref=e239]:
+                  - text: Astraea
+                  - generic [ref=e240]:
+                    - text: (Ni et al.,
+                    - link "2025" [ref=e241] [cursor=pointer]:
+                      - /url: "#bib.bib55"
+                    - text: )
+                - cell "KV Cache" [ref=e242]
+                - cell "State-Aware Sched." [ref=e243]
+                - cell "JCT Lifecycle Optim." [ref=e244]
+                - cell "–" [ref=e245]
+                - cell "Agentic Workflows" [ref=e246]
+              - row "Graph-Based & Cognitive Architectures" [ref=e247]:
+                - cell "Graph-Based & Cognitive Architectures" [ref=e248]
+              - row "HiMem (Zhang et al., 2026a ) Hierarchical LLM-Reasoning Reconsolidation Precision-Recall Balance Long-Horizon Agents" [ref=e249]:
+                - cell "HiMem (Zhang et al., 2026a )" [ref=e250]:
+                  - text: HiMem
+                  - generic [ref=e251]:
+                    - text: (Zhang et al.,
+                    - link "2026a" [ref=e252] [cursor=pointer]:
+                      - /url: "#bib.bib46"
+                    - text: )
+                - cell "Hierarchical" [ref=e253]
+                - cell "LLM-Reasoning" [ref=e254]
+                - cell "Reconsolidation" [ref=e255]
+                - cell "Precision-Recall Balance" [ref=e256]
+                - cell "Long-Horizon Agents" [ref=e257]
+              - row "A-MEM (Xu et al., 2025 ) Zettelkasten Graph Self-Organizing Dynamic Linking – General Agents" [ref=e258]:
+                - cell "A-MEM (Xu et al., 2025 )" [ref=e259]:
+                  - text: A-MEM
+                  - generic [ref=e260]:
+                    - text: (Xu et al.,
+                    - link "2025" [ref=e261] [cursor=pointer]:
+                      - /url: "#bib.bib39"
+                    - text: )
+                - cell "Zettelkasten Graph" [ref=e262]
+                - cell "Self-Organizing" [ref=e263]
+                - cell "Dynamic Linking" [ref=e264]
+                - cell "–" [ref=e265]
+                - cell "General Agents" [ref=e266]
+              - row "MemoRAG (Qian and others, 2024 ) Global Memory Graph Insight Extraction Memory-Enhanced Retrieval – Long Context QA" [ref=e267]:
+                - cell "MemoRAG (Qian and others, 2024 )" [ref=e268]:
+                  - text: MemoRAG
+                  - generic [ref=e269]:
+                    - text: (Qian and others,
+                    - link "2024" [ref=e270] [cursor=pointer]:
+                      - /url: "#bib.bib25"
+                    - text: )
+                - cell "Global Memory Graph" [ref=e271]
+                - cell "Insight Extraction" [ref=e272]
+                - cell "Memory-Enhanced Retrieval" [ref=e273]
+                - cell "–" [ref=e274]
+                - cell "Long Context QA" [ref=e275]
+              - row "LiCoMemory (Huang et al., 2025 ) Lightweight KG Consistency Checks Semantic Decay Fact Verification Multi-Turn Reasoning" [ref=e276]:
+                - cell "LiCoMemory (Huang et al., 2025 )" [ref=e277]:
+                  - text: LiCoMemory
+                  - generic [ref=e278]:
+                    - text: (Huang et al.,
+                    - link "2025" [ref=e279] [cursor=pointer]:
+                      - /url: "#bib.bib13"
+                    - text: )
+                - cell "Lightweight KG" [ref=e280]
+                - cell "Consistency Checks" [ref=e281]
+                - cell "Semantic Decay" [ref=e282]
+                - cell "Fact Verification" [ref=e283]
+                - cell "Multi-Turn Reasoning" [ref=e284]
+              - row "HippoRAG (Gutiérrez et al., 2024 ) Neurobiological Graph Spreading Act. Pathway Consolidation – Open-Domain QA" [ref=e285]:
+                - cell "HippoRAG (Gutiérrez et al., 2024 )" [ref=e286]:
+                  - text: HippoRAG
+                  - generic [ref=e287]:
+                    - text: (Gutiérrez et al.,
+                    - link "2024" [ref=e288] [cursor=pointer]:
+                      - /url: "#bib.bib52"
+                    - text: )
+                - cell "Neurobiological Graph" [ref=e289]
+                - cell "Spreading Act." [ref=e290]
+                - cell "Pathway Consolidation" [ref=e291]
+                - cell "–" [ref=e292]
+                - cell "Open-Domain QA" [ref=e293]
+              - row "Forgetful/Faithful (Alqithami, 2025 ) Typed Node Schema Budgeted Forgetting Coherence Preserved -Privacy Privacy-Aware Agents" [ref=e294]:
+                - cell "Forgetful/Faithful (Alqithami, 2025 )" [ref=e295]:
+                  - text: Forgetful/Faithful
+                  - generic [ref=e296]:
+                    - text: (Alqithami,
+                    - link "2025" [ref=e297] [cursor=pointer]:
+                      - /url: "#bib.bib57"
+                    - text: )
+                - cell "Typed Node Schema" [ref=e298]
+                - cell "Budgeted Forgetting" [ref=e299]
+                - cell "Coherence Preserved" [ref=e300]
+                - cell "-Privacy" [ref=e301]:
+                  - math [ref=e302]:
+                    - generic [ref=e304]:
+                      - generic [ref=e305]: (
+                      - generic [ref=e306]: ϵ
+                      - generic [ref=e307]: ","
+                      - generic [ref=e308]: δ
+                      - generic [ref=e309]: )
+                  - text: "-Privacy"
+                - cell "Privacy-Aware Agents" [ref=e310]
+              - row "E-mem (Wang et al., 2026 ) Episodic Context Reconstruction Context Reconstruction Traceability Long-Horizon Tasks" [ref=e311]:
+                - cell "E-mem (Wang et al., 2026 )" [ref=e312]:
+                  - text: E-mem
+                  - generic [ref=e313]:
+                    - text: (Wang et al.,
+                    - link "2026" [ref=e314] [cursor=pointer]:
+                      - /url: "#bib.bib34"
+                    - text: )
+                - cell "Episodic Context" [ref=e315]
+                - cell "Reconstruction" [ref=e316]
+                - cell "Context Reconstruction" [ref=e317]
+                - cell "Traceability" [ref=e318]
+                - cell "Long-Horizon Tasks" [ref=e319]
+              - row "Zep (Rasmussen et al., 2025 ) Temporal KG Incremental Extraction Entity Resolution – Conversational AI" [ref=e320]:
+                - cell "Zep (Rasmussen et al., 2025 )" [ref=e321]:
+                  - text: Zep
+                  - generic [ref=e322]:
+                    - text: (Rasmussen et al.,
+                    - link "2025" [ref=e323] [cursor=pointer]:
+                      - /url: "#bib.bib26"
+                    - text: )
+                - cell "Temporal KG" [ref=e324]
+                - cell "Incremental Extraction" [ref=e325]
+                - cell "Entity Resolution" [ref=e326]
+                - cell "–" [ref=e327]
+                - cell "Conversational AI" [ref=e328]
+              - row "Multimodal & Collaborative Systems" [ref=e329]:
+                - cell "Multimodal & Collaborative Systems" [ref=e330]
+              - row "TeleMem (Chen et al., 2025 ) Object-Centric Graph User-driven Trigger Physical Scene Updates Privacy Filtering Embodied AI / IoT" [ref=e331]:
+                - cell "TeleMem (Chen et al., 2025 )" [ref=e332]:
+                  - text: TeleMem
+                  - generic [ref=e333]:
+                    - text: (Chen et al.,
+                    - link "2025" [ref=e334] [cursor=pointer]:
+                      - /url: "#bib.bib4"
+                    - text: )
+                - cell "Object-Centric Graph" [ref=e335]
+                - cell "User-driven Trigger" [ref=e336]
+                - cell "Physical Scene Updates" [ref=e337]
+                - cell "Privacy Filtering" [ref=e338]
+                - cell "Embodied AI / IoT" [ref=e339]
+              - row "VideoARM (Yin et al., 2025 ) Hierarchical Multi. Adaptive Loop Multi-level Clue Updates – Long-Form Video" [ref=e340]:
+                - cell "VideoARM (Yin et al., 2025 )" [ref=e341]:
+                  - text: VideoARM
+                  - generic [ref=e342]:
+                    - text: (Yin et al.,
+                    - link "2025" [ref=e343] [cursor=pointer]:
+                      - /url: "#bib.bib56"
+                    - text: )
+                - cell "Hierarchical Multi." [ref=e344]
+                - cell "Adaptive Loop" [ref=e345]
+                - cell "Multi-level Clue Updates" [ref=e346]
+                - cell "–" [ref=e347]
+                - cell "Long-Form Video" [ref=e348]
+              - row "WorldMM (Yeo et al., 2025 ) Spatiotemporal Mem Dynamic Retrieval Video State Tracking – Long Video Reasoning" [ref=e349]:
+                - cell "WorldMM (Yeo et al., 2025 )" [ref=e350]:
+                  - text: WorldMM
+                  - generic [ref=e351]:
+                    - text: (Yeo et al.,
+                    - link "2025" [ref=e352] [cursor=pointer]:
+                      - /url: "#bib.bib53"
+                    - text: )
+                - cell "Spatiotemporal Mem" [ref=e353]
+                - cell "Dynamic Retrieval" [ref=e354]
+                - cell "Video State Tracking" [ref=e355]
+                - cell "–" [ref=e356]
+                - cell "Long Video Reasoning" [ref=e357]
+              - row "MemVerse (Liu et al., 2025b ) Multimodal Vector Continual Learning Cross-Modal Alignment – Lifelong Learning" [ref=e358]:
+                - cell "MemVerse (Liu et al., 2025b )" [ref=e359]:
+                  - text: MemVerse
+                  - generic [ref=e360]:
+                    - text: (Liu et al.,
+                    - link "2025b" [ref=e361] [cursor=pointer]:
+                      - /url: "#bib.bib54"
+                    - text: )
+                - cell "Multimodal Vector" [ref=e362]
+                - cell "Continual Learning" [ref=e363]
+                - cell "Cross-Modal Alignment" [ref=e364]
+                - cell "–" [ref=e365]
+                - cell "Lifelong Learning" [ref=e366]
+              - row "Collab. Mem (Rezazadeh et al., 2025 ) Distributed Vector Consensus Voting Cross-User Deduplication Dynamic ACLs Multi-User Collab" [ref=e367]:
+                - cell "Collab. Mem (Rezazadeh et al., 2025 )" [ref=e368]:
+                  - text: Collab. Mem
+                  - generic [ref=e369]:
+                    - text: (Rezazadeh et al.,
+                    - link "2025" [ref=e370] [cursor=pointer]:
+                      - /url: "#bib.bib28"
+                    - text: )
+                - cell "Distributed Vector" [ref=e371]
+                - cell "Consensus Voting" [ref=e372]
+                - cell "Cross-User Deduplication" [ref=e373]
+                - cell "Dynamic ACLs" [ref=e374]
+                - cell "Multi-User Collab" [ref=e375]
+              - row "Topology Matters (Liu et al., 2025a ) Multi-Agent Network MAMA Framework Leakage Plateau Anal. Centrality Const. Multi-Agent Privacy" [ref=e376]:
+                - cell "Topology Matters (Liu et al., 2025a )" [ref=e377]:
+                  - text: Topology Matters
+                  - generic [ref=e378]:
+                    - text: (Liu et al.,
+                    - link "2025a" [ref=e379] [cursor=pointer]:
+                      - /url: "#bib.bib58"
+                    - text: )
+                - cell "Multi-Agent Network" [ref=e380]
+                - cell "MAMA Framework" [ref=e381]
+                - cell "Leakage Plateau Anal." [ref=e382]
+                - cell "Centrality Const." [ref=e383]
+                - cell "Multi-Agent Privacy" [ref=e384]
+              - row "MIRIX (Wang and Chen, 2025 ) Shared Multi-Agent Space Collaborative Reflection Procedural Alignment Agent Role Boundaries Multi-Agent Systems" [ref=e385]:
+                - cell "MIRIX (Wang and Chen, 2025 )" [ref=e386]:
+                  - text: MIRIX
+                  - generic [ref=e387]:
+                    - text: (Wang and Chen,
+                    - link "2025" [ref=e388] [cursor=pointer]:
+                      - /url: "#bib.bib33"
+                    - text: )
+                - cell "Shared Multi-Agent Space" [ref=e389]
+                - cell "Collaborative Reflection" [ref=e390]
+                - cell "Procedural Alignment" [ref=e391]
+                - cell "Agent Role Boundaries" [ref=e392]
+                - cell "Multi-Agent Systems" [ref=e393]
+          - generic [ref=e394]:
+            - generic [ref=e395]: "Table 1:"
+            - text: Taxonomy of Evolving Memory Systems. We categorize recent systems by their storage structure, the policy governing memory evolution, mechanisms for maintaining stability, and safety provisions. Newly integrated approaches like HippoRAG, DarwinMem, and VideoARM emphasize the shift towards neurobiology, adaptive policies, and multimodal environments.
+      - generic [ref=e396]:
+        - 'heading "3 What Evolves: Content, Structure, and Policy" [level=2] [ref=e397]':
+          - generic [ref=e398]: "3"
+          - text: "What Evolves: Content, Structure, and Policy"
+        - paragraph [ref=e400]: "Memory in LLM agents evolves along multiple dimensions. We categorize the major facets as: (1) the content of memory, comprising stored information and its level of detail; (2) the structure of memory, referring to the organization and representation of knowledge; and (3) the policy for memory management, namely the decision-making process that determines how memory is utilized and updated. While these facets are interrelated, examining them separately clarifies how modern systems transcend the limitations of static memory."
+        - generic [ref=e401]:
+          - heading "3.1 Evolving Memory Content (What is Stored)" [level=3] [ref=e402]:
+            - generic [ref=e403]: "3.1"
+            - text: Evolving Memory Content (What is Stored)
+          - paragraph [ref=e405]: The most direct form of memory evolution occurs in the content itself. Unlike a static transcript, adaptive agents continually modify memory units. This process involves adding new facts, updating existing units, summarizing detailed events into high-level conclusions, or deleting information deemed irrelevant or obsolete. By altering the content of stored information, the knowledge base becomes a dynamic resource that changes over time.
+          - paragraph [ref=e407]:
+            - text: A common pattern is summarization and abstraction. An agent may replace a detailed episode with a brief synopsis once confidence is established that fine-grained details are no longer requisite. This was observed in early experiments with Generative Agents
+            - generic [ref=e408]:
+              - text: (Park et al.,
+              - link "2023" [ref=e409] [cursor=pointer]:
+                - /url: "#bib.bib23"
+              - text: )
+            - text: . More recently, systems have expanded content evolution to include multimodal and procedural knowledge. For instance, VideoARM
+            - generic [ref=e410]:
+              - text: (Yin et al.,
+              - link "2025" [ref=e411] [cursor=pointer]:
+                - /url: "#bib.bib56"
+              - text: )
+            - text: dynamically constructs hierarchical memory to reason over long-form videos without exhaustive preprocessing, while WorldMM
+            - generic [ref=e412]:
+              - text: (Yeo et al.,
+              - link "2025" [ref=e413] [cursor=pointer]:
+                - /url: "#bib.bib53"
+              - text: )
+            - text: continuously tracks spatiotemporal states. Similarly, TeleMem
+            - generic [ref=e414]:
+              - text: (Chen et al.,
+              - link "2025" [ref=e415] [cursor=pointer]:
+                - /url: "#bib.bib4"
+              - text: )
+            - text: maintains evolving object-centric graphs that track the changing states of physical environments, while LEGOMem
+            - generic [ref=e416]:
+              - text: (Han et al.,
+              - link "2025" [ref=e417] [cursor=pointer]:
+                - /url: "#bib.bib10"
+              - text: )
+            - text: synthesizes successful execution traces into procedural rules. To further structure this, frameworks like Agent Workflow Memory (AWM)
+            - generic [ref=e418]:
+              - text: (Zheng and others,
+              - link "2024" [ref=e419] [cursor=pointer]:
+                - /url: "#bib.bib49"
+              - text: )
+            - text: demonstrate how episodic traces can be systematically compressed into reusable workflow rules, enhancing procedural memory while mitigating the noise of raw logs. This shift from purely textual facts to procedural content increases the complexity of maintaining consistency, as errors in procedural memory can lead to cascading failures in task execution.
+        - generic [ref=e420]:
+          - heading "3.2 Evolving Memory Structure (How Knowledge is Organized)" [level=3] [ref=e421]:
+            - generic [ref=e422]: "3.2"
+            - text: Evolving Memory Structure (How Knowledge is Organized)
+          - paragraph [ref=e424]:
+            - text: The structuring of memory dramatically influences retrieval effectiveness and the reasoning capabilities of the agent
+            - generic [ref=e425]:
+              - text: (Luo et al.,
+              - link "2026" [ref=e426] [cursor=pointer]:
+                - /url: "#bib.bib48"
+              - text: )
+            - text: . Grouping related facts or linking causes and effects facilitates inferences that are difficult to derive from unstructured data. Many agent memory systems draw inspiration from databases or cognitive metaphors such as knowledge graphs and semantic networks.
+          - paragraph [ref=e428]:
+            - text: Recent advancements have introduced self-organizing structures. A-MEM
+            - generic [ref=e429]:
+              - text: (Xu et al.,
+              - link "2025" [ref=e430] [cursor=pointer]:
+                - /url: "#bib.bib39"
+              - text: )
+            - text: adopts the Zettelkasten method, treating memories as atomic notes that dynamically evolve by establishing links with related concepts, effectively creating a “living” graph of knowledge. Drawing directly from neurobiology, HippoRAG
+            - generic [ref=e431]:
+              - text: (Gutiérrez et al.,
+              - link "2024" [ref=e432] [cursor=pointer]:
+                - /url: "#bib.bib52"
+              - text: )
+            - text: utilizes a spreading activation mechanism over knowledge graphs to mimic human associative recall, drastically improving multi-hop reasoning performance. To bridge the gap between static retrieval and cognitive synthesis, MemoRAG
+            - generic [ref=e433]:
+              - text: (Qian and others,
+              - link "2024" [ref=e434] [cursor=pointer]:
+                - /url: "#bib.bib25"
+              - text: )
+            - text: builds a global memory graph over long contexts, enabling agents to extract structural insights before generating answers. Similarly, HiMem
+            - generic [ref=e435]:
+              - text: (Zhang et al.,
+              - link "2026a" [ref=e436] [cursor=pointer]:
+                - /url: "#bib.bib46"
+              - text: )
+            - text: implements a hierarchical structure where episodic details are continuously distilled into semantic knowledge through a process of reconsolidation. ChatDB
+            - generic [ref=e437]:
+              - text: (Hu et al.,
+              - link "2023" [ref=e438] [cursor=pointer]:
+                - /url: "#bib.bib12"
+              - text: )
+            - text: treats memory as a symbolic SQL database, allowing the agent to execute complex queries rather than relying solely on semantic search; the structure evolves as the agent defines new tables or schemas.
+        - generic [ref=e439]:
+          - heading "3.3 Evolving Memory Policy (How Memory is Managed)" [level=3] [ref=e440]:
+            - generic [ref=e441]: "3.3"
+            - text: Evolving Memory Policy (How Memory is Managed)
+          - paragraph [ref=e443]:
+            - generic [ref=e444]:
+              - text: Table
+              - link "1" [ref=e445] [cursor=pointer]:
+                - /url: "#S2.T1"
+              - text: provides a comprehensive taxonomy
+            - text: of these evolving systems, categorizing them by their structural approach (from vector databases to hierarchical graphs) and their evolution policies. Notably, as shown in the table, newer frameworks like AtomMem
+            - generic [ref=e446]:
+              - text: (Huo et al.,
+              - link "2026" [ref=e447] [cursor=pointer]:
+                - /url: "#bib.bib14"
+              - text: )
+            - text: and MemAgent
+            - generic [ref=e448]:
+              - text: (Yu et al.,
+              - link "2025" [ref=e449] [cursor=pointer]:
+                - /url: "#bib.bib43"
+              - text: )
+            - text: employ Reinforcement Learning (RL) to learn optimal memory policies. By framing memory operations (add, update, delete, retrieve) as atomic actions, these agents optimize their memory management strategies to maximize long-term task rewards. Conversely, DarwinMem
+            - generic [ref=e450]:
+              - text: (Mi et al.,
+              - link "2026" [ref=e451] [cursor=pointer]:
+                - /url: "#bib.bib51"
+              - text: )
+            - text: proves that memory policies can also be optimized without parameter updates, employing a training-free “survival of the fittest” evolutionary pool to adapt GUI agents across tasks.
+      - generic [ref=e452]:
+        - 'heading "4 How Memory Evolves: Reflection, Reinforcement, and Consolidation" [level=2] [ref=e453]':
+          - generic [ref=e454]: "4"
+          - text: "How Memory Evolves: Reflection, Reinforcement, and Consolidation"
+        - paragraph [ref=e456]: Having identified what changes in evolving memory, we now examine how these changes are effected.
+        - generic [ref=e457]:
+          - heading "4.1 Reflection and Self-Supervised Memory Updates" [level=3] [ref=e458]:
+            - generic [ref=e459]: "4.1"
+            - text: Reflection and Self-Supervised Memory Updates
+          - paragraph [ref=e461]:
+            - text: Reflection involves an agent examining its own actions or outcomes and generating analyses or lessons, which then inform future decisions
+            - generic [ref=e462]:
+              - text: (Sumers et al.,
+              - link "2023" [ref=e463] [cursor=pointer]:
+                - /url: "#bib.bib31"
+              - text: )
+            - text: . In Reflexion
+            - generic [ref=e464]:
+              - text: (Shinn et al.,
+              - link "2023" [ref=e465] [cursor=pointer]:
+                - /url: "#bib.bib30"
+              - text: )
+            - text: ", the agent prompts itself: “If the solution was wrong, explain the error.” The generated reflection is stored as a memory. This reflective loop has become a cornerstone of agent improvement"
+            - generic [ref=e466]:
+              - text: (Madaan et al.,
+              - link "2023" [ref=e467] [cursor=pointer]:
+                - /url: "#bib.bib18"
+              - text: ; Wang et al.,
+              - link "2023" [ref=e468] [cursor=pointer]:
+                - /url: "#bib.bib35"
+              - text: )
+            - text: .
+            - generic [ref=e469]:
+              - text: MemR
+              - superscript [ref=e470]: "3"
+            - generic [ref=e471]:
+              - text: (Du et al.,
+              - link "2025" [ref=e472] [cursor=pointer]:
+                - /url: "#bib.bib6"
+              - text: )
+            - text: extends this by employing reflective reasoning during the retrieval process itself, refining queries iteratively to bridge the gap between user intent and stored knowledge.
+        - generic [ref=e473]:
+          - heading "4.2 Reinforcement Learning and Outcome-Driven Memory Optimization" [level=3] [ref=e474]:
+            - generic [ref=e475]: "4.2"
+            - text: Reinforcement Learning and Outcome-Driven Memory Optimization
+          - generic [ref=e476]:
+            - paragraph [ref=e477]:
+              - text: While reflection relies on self-supervision, Reinforcement Learning (RL) offers a direct method to optimize memory behavior toward explicit objectives. Formally, the memory management problem can be modeled as a Partially Observable Markov Decision Process (POMDP). At time
+              - math [ref=e478]:
+                - generic [ref=e480]: t
+              - text: ", the agent receives an observation"
+              - math [ref=e481]:
+                - generic [ref=e483]:
+                  - generic [ref=e484]: o
+                  - generic [ref=e485]: t
+              - text: (e.g., a user query), maintains an internal memory state
+              - math [ref=e486]:
+                - generic [ref=e488]:
+                  - generic [ref=e489]: M
+                  - generic [ref=e490]: t
+              - text: ", and occupies a latent decision state"
+              - math [ref=e491]:
+                - generic [ref=e493]:
+                  - generic [ref=e494]: s
+                  - generic [ref=e495]: t
+              - text: that summarizes the observation, the current memory, and the task context. The policy
+              - math [ref=e496]:
+                - generic [ref=e498]:
+                  - generic [ref=e499]:
+                    - generic [ref=e500]: π
+                    - generic [ref=e501]: θ
+                  - generic [ref=e502]:
+                    - generic [ref=e503]: (
+                    - generic [ref=e504]:
+                      - generic [ref=e505]:
+                        - generic [ref=e506]: a
+                        - generic [ref=e507]: t
+                      - generic [ref=e508]: ∣
+                      - generic [ref=e509]:
+                        - generic [ref=e510]:
+                          - generic [ref=e511]: o
+                          - generic [ref=e512]: t
+                        - generic [ref=e513]: ","
+                        - generic [ref=e514]:
+                          - generic [ref=e515]: M
+                          - generic [ref=e516]: t
+                    - generic [ref=e517]: )
+              - text: selects an action
+              - math [ref=e518]:
+                - generic [ref=e520]:
+                  - generic [ref=e521]:
+                    - generic [ref=e522]: a
+                    - generic [ref=e523]: t
+                  - generic [ref=e524]: ∈
+                  - generic [ref=e525]: 𝒜
+              - text: ", where the global action space contains both task-level actions and memory-management actions. We explicitly define the memory-action subset as follows:"
+            - table [ref=e526]:
+              - rowgroup [ref=e527]:
+                - row "(1)" [ref=e528]:
+                  - cell [ref=e529]
+                  - cell [ref=e530]:
+                    - math [ref=e531]:
+                      - generic [ref=e533]:
+                        - generic [ref=e534]:
+                          - generic [ref=e536]:
+                            - generic [ref=e537]:
+                              - generic [ref=e538]: 𝒜
+                              - generic [ref=e539]: mem
+                            - generic [ref=e540]: =
+                            - generic [ref=e541]: "{"
+                          - generic [ref=e543]:
+                            - generic [ref=e544]:
+                              - generic [ref=e545]:
+                                - generic [ref=e546]: Add
+                                - generic [ref=e547]:
+                                  - generic [ref=e548]: (
+                                  - generic [ref=e549]: c
+                                  - generic [ref=e550]: )
+                              - generic [ref=e551]: ","
+                              - generic [ref=e552]:
+                                - generic [ref=e553]: Update
+                                - generic [ref=e554]:
+                                  - generic [ref=e555]: (
+                                  - generic [ref=e556]:
+                                    - generic [ref=e557]: i
+                                    - generic [ref=e558]: d
+                                    - generic [ref=e559]: x
+                                  - generic [ref=e560]: ","
+                                  - generic [ref=e561]: v
+                                  - generic [ref=e562]: )
+                            - generic [ref=e563]: ","
+                        - generic [ref=e567]:
+                          - generic [ref=e568]: Delete
+                          - generic [ref=e569]:
+                            - generic [ref=e570]: (
+                            - generic [ref=e571]: i
+                            - generic [ref=e572]: d
+                            - generic [ref=e573]: x
+                            - generic [ref=e574]: )
+                          - generic [ref=e575]: ","
+                          - generic [ref=e576]: Retrieve
+                          - generic [ref=e577]:
+                            - generic [ref=e578]: (
+                            - generic [ref=e579]: q
+                            - generic [ref=e580]: )
+                          - generic [ref=e581]: "}"
+                  - cell [ref=e582]
+                  - cell "(1)" [ref=e583]:
+                    - generic [ref=e584]: (1)
+            - paragraph [ref=e585]:
+              - text: where
+              - math [ref=e586]:
+                - generic [ref=e588]: c
+              - text: denotes the content to be stored,
+              - math [ref=e589]:
+                - generic [ref=e591]:
+                  - generic [ref=e592]: i
+                  - generic [ref=e593]: d
+                  - generic [ref=e594]: x
+              - text: denotes the index or key of an existing memory item,
+              - math [ref=e595]:
+                - generic [ref=e597]: v
+              - text: denotes the replacement or updated value written to that indexed item, and
+              - math [ref=e598]:
+                - generic [ref=e600]: q
+              - text: denotes the retrieval query used to access previously stored memory. Intuitively, Eq. (1) defines the discrete action subspace through which the agent treats memory management as an explicit decision process rather than as a fixed backend routine.
+          - generic [ref=e601]:
+            - paragraph [ref=e602]:
+              - text: The agent optimizes parameters
+              - math [ref=e603]:
+                - generic [ref=e605]: θ
+              - text: "to maximize the expected discounted return:"
+            - table [ref=e606]:
+              - rowgroup [ref=e607]:
+                - row "(2)" [ref=e608]:
+                  - cell [ref=e609]
+                  - cell [ref=e610]:
+                    - math [ref=e611]:
+                      - generic [ref=e613]:
+                        - generic [ref=e614]:
+                          - generic [ref=e615]: J
+                          - generic [ref=e616]:
+                            - generic [ref=e617]: (
+                            - generic [ref=e618]: θ
+                            - generic [ref=e619]: )
+                        - generic [ref=e620]: =
+                        - generic [ref=e621]:
+                          - generic [ref=e622]:
+                            - generic [ref=e623]: 𝔼
+                            - generic [ref=e624]:
+                              - generic [ref=e625]: τ
+                              - generic [ref=e626]: ∼
+                              - generic [ref=e627]:
+                                - generic [ref=e628]: π
+                                - generic [ref=e629]: θ
+                          - generic [ref=e630]:
+                            - generic [ref=e631]: "["
+                            - generic [ref=e632]:
+                              - generic [ref=e633]:
+                                - generic [ref=e634]: ∑
+                                - generic [ref=e635]:
+                                  - generic [ref=e636]: t
+                                  - generic [ref=e637]: =
+                                  - generic [ref=e638]: "0"
+                                - generic [ref=e639]: T
+                              - generic [ref=e640]:
+                                - generic [ref=e641]:
+                                  - generic [ref=e642]: γ
+                                  - generic [ref=e643]: t
+                                - generic [ref=e644]: r
+                                - generic [ref=e645]:
+                                  - generic [ref=e646]: (
+                                  - generic [ref=e647]:
+                                    - generic [ref=e648]: s
+                                    - generic [ref=e649]: t
+                                  - generic [ref=e650]: ","
+                                  - generic [ref=e651]:
+                                    - generic [ref=e652]: a
+                                    - generic [ref=e653]: t
+                                  - generic [ref=e654]: )
+                            - generic [ref=e655]: "]"
+                  - cell [ref=e656]
+                  - cell "(2)" [ref=e657]:
+                    - generic [ref=e658]: (2)
+            - paragraph [ref=e659]:
+              - text: where
+              - math [ref=e660]:
+                - generic [ref=e662]: τ
+              - text: denotes a trajectory induced by the policy
+              - math [ref=e663]:
+                - generic [ref=e665]:
+                  - generic [ref=e666]: π
+                  - generic [ref=e667]: θ
+              - text: ","
+              - math [ref=e668]:
+                - generic [ref=e670]: T
+              - text: denotes the horizon length of the interaction episode,
+              - math [ref=e671]:
+                - generic [ref=e673]:
+                  - generic [ref=e674]: γ
+                  - generic [ref=e675]: ∈
+                  - generic [ref=e676]:
+                    - generic [ref=e677]: "["
+                    - generic [ref=e678]: "0"
+                    - generic [ref=e679]: ","
+                    - generic [ref=e680]: "1"
+                    - generic [ref=e681]: )
+              - text: is the discount factor that balances immediate and long-term reward,
+              - math [ref=e682]:
+                - generic [ref=e684]:
+                  - generic [ref=e685]: s
+                  - generic [ref=e686]: t
+              - text: denotes the latent decision state at time
+              - math [ref=e687]:
+                - generic [ref=e689]: t
+              - text: ", and"
+              - math [ref=e690]:
+                - generic [ref=e692]:
+                  - generic [ref=e693]: r
+                  - generic [ref=e694]:
+                    - generic [ref=e695]: (
+                    - generic [ref=e696]:
+                      - generic [ref=e697]: s
+                      - generic [ref=e698]: t
+                    - generic [ref=e699]: ","
+                    - generic [ref=e700]:
+                      - generic [ref=e701]: a
+                      - generic [ref=e702]: t
+                    - generic [ref=e703]: )
+              - text: denotes the reward assigned to taking action
+              - math [ref=e704]:
+                - generic [ref=e706]:
+                  - generic [ref=e707]: a
+                  - generic [ref=e708]: t
+              - text: in state
+              - math [ref=e709]:
+                - generic [ref=e711]:
+                  - generic [ref=e712]: s
+                  - generic [ref=e713]: t
+              - text: ". Intuitively, Eq. (2) formalizes the objective of learning a memory policy that optimizes long-term utility: a memory write that incurs slight short-term cost may still be preferred if it substantially improves future reasoning or retrieval. Memory-R1"
+              - generic [ref=e714]:
+                - text: (Yan et al.,
+                - link "2026" [ref=e715] [cursor=pointer]:
+                  - /url: "#bib.bib40"
+                - text: )
+              - text: utilizes this formulation via Proximal Policy Optimization (PPO). MemAgent
+              - generic [ref=e716]:
+                - text: (Yu et al.,
+                - link "2025" [ref=e717] [cursor=pointer]:
+                  - /url: "#bib.bib43"
+                - text: )
+              - text: further refines this by using Group Relative Policy Optimization (GRPO) to handle the sparse rewards associated with long-term memory benefits.
+        - generic [ref=e718]:
+          - heading "4.3 Memory Consolidation and Forgetting" [level=3] [ref=e719]:
+            - generic [ref=e720]: "4.3"
+            - text: Memory Consolidation and Forgetting
+          - paragraph [ref=e722]:
+            - text: The third key mechanism is consolidation and forgetting, analogous to biological processes
+            - generic [ref=e723]:
+              - text: (Tresp et al.,
+              - link "2023" [ref=e724] [cursor=pointer]:
+                - /url: "#bib.bib32"
+              - text: )
+            - text: . Without management, the memory size
+            - math [ref=e725]:
+              - generic [ref=e727]:
+                - generic [ref=e728]: "|"
+                - generic [ref=e729]: ℳ
+                - generic [ref=e730]: "|"
+            - text: grows linearly, causing retrieval latency.
+            - generic [ref=e731]:
+              - text: Alqithami (
+              - link "2025" [ref=e732] [cursor=pointer]:
+                - /url: "#bib.bib57"
+              - text: )
+            - text: formalizes this through “forgetting-by-design”, demonstrating via the FiFA benchmark that bounded, budget-aware forgetting policies (e.g., Priority Decay) not only reduce computational cost but actively preserve narrative coherence and privacy without sacrificing functionality.
+          - generic [ref=e733]:
+            - heading "Temporal Decay and Freshness Governance" [level=4] [ref=e734]
+            - generic [ref=e735]:
+              - paragraph [ref=e736]:
+                - text: To mitigate the risk of temporal obsolescence, where stale facts contradict recent updates, governance mechanisms must incorporate time-aware forgetting. Inspired by cognitive decay theories,
+                - generic [ref=e737]:
+                  - text: Huang et al. (
+                  - link "2025" [ref=e738] [cursor=pointer]:
+                    - /url: "#bib.bib13"
+                  - text: )
+                - text: propose a Weibull-based decay function to model the relevance
+                - math [ref=e739]:
+                  - generic [ref=e741]:
+                    - generic [ref=e742]: w
+                    - generic [ref=e743]:
+                      - generic [ref=e744]: (
+                      - generic [ref=e745]:
+                        - generic [ref=e746]: Δ
+                        - generic [ref=e747]: τ
+                      - generic [ref=e748]: )
+                - text: "of a memory unit over time:"
+              - table [ref=e749]:
+                - rowgroup [ref=e750]:
+                  - row "(3)" [ref=e751]:
+                    - cell [ref=e752]
+                    - cell [ref=e753]:
+                      - math [ref=e754]:
+                        - generic [ref=e756]:
+                          - generic [ref=e757]:
+                            - generic [ref=e758]: w
+                            - generic [ref=e759]:
+                              - generic [ref=e760]: (
+                              - generic [ref=e761]:
+                                - generic [ref=e762]: Δ
+                                - generic [ref=e763]: τ
+                              - generic [ref=e764]: )
+                          - generic [ref=e765]: =
+                          - generic [ref=e766]:
+                            - generic [ref=e767]: exp
+                            - generic: ⁡
+                            - generic [ref=e768]:
+                              - generic [ref=e769]: (
+                              - generic [ref=e770]:
+                                - generic [ref=e771]: −
+                                - generic [ref=e772]:
+                                  - generic [ref=e773]:
+                                    - generic [ref=e774]: (
+                                    - generic [ref=e775]:
+                                      - generic [ref=e776]:
+                                        - generic [ref=e777]: Δ
+                                        - generic [ref=e778]: τ
+                                      - generic [ref=e779]: η
+                                    - generic [ref=e780]: )
+                                  - generic [ref=e781]: κ
+                              - generic [ref=e782]: )
+                    - cell [ref=e783]
+                    - cell "(3)" [ref=e784]:
+                      - generic [ref=e785]: (3)
+              - paragraph [ref=e786]:
+                - text: where
+                - math [ref=e787]:
+                  - generic [ref=e789]:
+                    - generic [ref=e790]: Δ
+                    - generic [ref=e791]: τ
+                - text: denotes the elapsed time (e.g., measured in conversational turns or absolute hours) since the last successful retrieval of the memory unit,
+                - math [ref=e792]:
+                  - generic [ref=e794]: η
+                - text: is the scale parameter controlling the characteristic time scale of decay, and
+                - math [ref=e795]:
+                  - generic [ref=e797]: κ
+                - text: is the shape parameter controlling the curvature of the forgetting profile. Intuitively, Eq. (3) assigns lower relevance scores to stale memory entries, thereby allowing the system to downweight or discard items that are less likely to remain valid. The Weibull form is more expressive than a simple exponential decay because the shape parameter can represent faster early decay or more delayed forgetting under different domains. In the SSGM framework, memory items are pruned or archived whenever their temporal relevance falls below a unified freshness threshold
+                - math [ref=e798]:
+                  - generic [ref=e800]:
+                    - generic [ref=e801]: θ
+                    - generic [ref=e802]: fresh
+                - text: ", thereby reducing the attack surface for stale reasoning and memory-induced hallucination."
+            - paragraph [ref=e804]:
+              - text: Furthermore, E-mem
+              - generic [ref=e805]:
+                - text: (Wang et al.,
+                - link "2026" [ref=e806] [cursor=pointer]:
+                  - /url: "#bib.bib34"
+                - text: )
+              - text: shifts from simple retrieval to Episodic Context Reconstruction, where the agent actively reconstructs the context from fragmented traces rather than retrieving pre-stored blocks, ensuring higher fidelity to the original experience.
+      - generic [ref=e807]:
+        - 'heading "5 Why Memory Fails: Drift, Efficiency, Validity, and Safety" [level=2] [ref=e808]':
+          - generic [ref=e809]: "5"
+          - text: "Why Memory Fails: Drift, Efficiency, Validity, and Safety"
+        - paragraph [ref=e811]:
+          - text: Evolving memory empowers LLM agents but also introduces a spectrum of potential failure modes. As illustrated in Table
+          - link "2" [ref=e812] [cursor=pointer]:
+            - /url: "#S5.T2"
+          - text: ", we categorize these failures into four distinct dimensions: Stability, Validity, Efficiency, and Safety."
+        - 'figure "Table 2: Comprehensive Taxonomy of Evolving Memory Failures. We expand the taxonomy to include Efficiency failures (Latency, Bloat), which are critical in long-horizon agents. Validity failures now explicitly distinguish between hallucination and temporal obsolescence (fact conflict over time), citing recent evidence from Rasmussen et al. ( 2025 )." [ref=e813]':
+          - table [ref=e816]:
+            - rowgroup [ref=e817]:
+              - row "Category Failure Mode Mechanism & Manifestation Representative Contexts SSGM Mitigation Strategy" [ref=e818]:
+                - columnheader "Category" [ref=e819]
+                - columnheader "Failure Mode" [ref=e820]
+                - columnheader "Mechanism & Manifestation" [ref=e821]
+                - columnheader "Representative Contexts" [ref=e822]
+                - columnheader "SSGM Mitigation Strategy" [ref=e823]
+            - rowgroup [ref=e824]:
+              - row "Stability Semantic Drift Iterative summarization causes gradual nuance loss Recursive Summarization (Park et al., 2023 ) Ground Truth Anchoring ( )" [ref=e825]:
+                - cell "Stability" [ref=e826]
+                - cell "Semantic Drift" [ref=e827]
+                - cell "Iterative summarization causes gradual nuance loss" [ref=e828]
+                - cell "Recursive Summarization (Park et al., 2023 )" [ref=e829]:
+                  - text: Recursive Summarization
+                  - generic [ref=e830]:
+                    - text: (Park et al.,
+                    - link "2023" [ref=e831] [cursor=pointer]:
+                      - /url: "#bib.bib23"
+                    - text: )
+                - cell "Ground Truth Anchoring ( )" [ref=e832]:
+                  - text: Ground Truth Anchoring (
+                  - math [ref=e833]:
+                    - generic [ref=e835]: ℛ
+                  - text: )
+              - row "Procedural Drift Reinforcement of suboptimal/outdated workflows Workflow Automation (Han et al., 2025 ; Fang et al., 2025 ) Rule Verification" [ref=e836]:
+                - cell "Procedural Drift" [ref=e837]
+                - cell "Reinforcement of suboptimal/outdated workflows" [ref=e838]
+                - cell "Workflow Automation (Han et al., 2025 ; Fang et al., 2025 )" [ref=e839]:
+                  - text: Workflow Automation
+                  - generic [ref=e840]:
+                    - text: (Han et al.,
+                    - link "2025" [ref=e841] [cursor=pointer]:
+                      - /url: "#bib.bib10"
+                    - text: ; Fang et al.,
+                    - link "2025" [ref=e842] [cursor=pointer]:
+                      - /url: "#bib.bib7"
+                    - text: )
+                - cell "Rule Verification" [ref=e843]
+              - row "Goal/Role Drift Alignment shift due to accumulated interaction bias Long-term Role-play (Yuen et al., 2026 ) Role Partitioning" [ref=e844]:
+                - cell "Goal/Role Drift" [ref=e845]
+                - cell "Alignment shift due to accumulated interaction bias" [ref=e846]
+                - cell "Long-term Role-play (Yuen et al., 2026 )" [ref=e847]:
+                  - text: Long-term Role-play
+                  - generic [ref=e848]:
+                    - text: (Yuen et al.,
+                    - link "2026" [ref=e849] [cursor=pointer]:
+                      - /url: "#bib.bib44"
+                    - text: )
+                - cell "Role Partitioning" [ref=e850]
+              - row "Validity Memory Hallucination Retrieval of non-existent or fabricated facts Open-domain QA (Du et al., 2025 ) Consistency Verifier (TMS)" [ref=e851]:
+                - cell "Validity" [ref=e852]
+                - cell "Memory Hallucination" [ref=e853]
+                - cell "Retrieval of non-existent or fabricated facts" [ref=e854]
+                - cell "Open-domain QA (Du et al., 2025 )" [ref=e855]:
+                  - text: Open-domain QA
+                  - generic [ref=e856]:
+                    - text: (Du et al.,
+                    - link "2025" [ref=e857] [cursor=pointer]:
+                      - /url: "#bib.bib6"
+                    - text: )
+                - cell "Consistency Verifier (TMS)" [ref=e858]
+              - row "Temporal Obsolescence Conflict between stale memories and new states User Personalization (Rasmussen et al., 2025 ) Weibull Decay Function" [ref=e859]:
+                - cell "Temporal Obsolescence" [ref=e860]
+                - cell "Conflict between stale memories and new states" [ref=e861]
+                - cell "User Personalization (Rasmussen et al., 2025 )" [ref=e862]:
+                  - text: User Personalization
+                  - generic [ref=e863]:
+                    - text: (Rasmussen et al.,
+                    - link "2025" [ref=e864] [cursor=pointer]:
+                      - /url: "#bib.bib26"
+                    - text: )
+                - cell "Weibull Decay Function" [ref=e865]
+              - row "Efficiency Retrieval Latency Search time scales linearly/quadratically with history Real-time Interaction (Chhikara et al., 2025 ) Hierarchical Indexing" [ref=e866]:
+                - cell "Efficiency" [ref=e867]
+                - cell "Retrieval Latency" [ref=e868]
+                - cell "Search time scales linearly/quadratically with history" [ref=e869]
+                - cell "Real-time Interaction (Chhikara et al., 2025 )" [ref=e870]:
+                  - text: Real-time Interaction
+                  - generic [ref=e871]:
+                    - text: (Chhikara et al.,
+                    - link "2025" [ref=e872] [cursor=pointer]:
+                      - /url: "#bib.bib5"
+                    - text: )
+                - cell "Hierarchical Indexing" [ref=e873]
+              - row "Index Bloat Accumulation of redundant/noisy episodic logs Infinite Context (Sarin et al., 2025 ) Active Forgetting / Pruning" [ref=e874]:
+                - cell "Index Bloat" [ref=e875]
+                - cell "Accumulation of redundant/noisy episodic logs" [ref=e876]
+                - cell "Infinite Context (Sarin et al., 2025 )" [ref=e877]:
+                  - text: Infinite Context
+                  - generic [ref=e878]:
+                    - text: (Sarin et al.,
+                    - link "2025" [ref=e879] [cursor=pointer]:
+                      - /url: "#bib.bib29"
+                    - text: )
+                - cell "Active Forgetting / Pruning" [ref=e880]
+              - row "Safety Memory Poisoning Injection of malicious instructions into storage User Instruction Tuning (Greshake et al., 2023 ) Write Filtering (Firewall)" [ref=e881]:
+                - cell "Safety" [ref=e882]
+                - cell "Memory Poisoning" [ref=e883]
+                - cell "Injection of malicious instructions into storage" [ref=e884]
+                - cell "User Instruction Tuning (Greshake et al., 2023 )" [ref=e885]:
+                  - text: User Instruction Tuning
+                  - generic [ref=e886]:
+                    - text: (Greshake et al.,
+                    - link "2023" [ref=e887] [cursor=pointer]:
+                      - /url: "#bib.bib9"
+                    - text: )
+                - cell "Write Filtering (Firewall)" [ref=e888]
+              - row "Privacy Leakage Unauthorized cross-session/cross-user retrieval Multi-tenant Agents (Rezazadeh et al., 2025 ) Provenance & ACLs" [ref=e889]:
+                - cell "Privacy Leakage" [ref=e890]
+                - cell "Unauthorized cross-session/cross-user retrieval" [ref=e891]
+                - cell "Multi-tenant Agents (Rezazadeh et al., 2025 )" [ref=e892]:
+                  - text: Multi-tenant Agents
+                  - generic [ref=e893]:
+                    - text: (Rezazadeh et al.,
+                    - link "2025" [ref=e894] [cursor=pointer]:
+                      - /url: "#bib.bib28"
+                    - text: )
+                - cell "Provenance & ACLs" [ref=e895]
+          - generic [ref=e896]:
+            - generic [ref=e897]: "Table 2:"
+            - text: Comprehensive Taxonomy of Evolving Memory Failures. We expand the taxonomy to include Efficiency failures (Latency, Bloat), which are critical in long-horizon agents. Validity failures now explicitly distinguish between hallucination and temporal obsolescence (fact conflict over time), citing recent evidence from
+            - generic [ref=e898]:
+              - text: Rasmussen et al. (
+              - link "2025" [ref=e899] [cursor=pointer]:
+                - /url: "#bib.bib26"
+              - text: )
+            - text: .
+        - generic [ref=e900]:
+          - heading "5.1 Semantic Drift and Gradual Deviation" [level=3] [ref=e901]:
+            - generic [ref=e902]: "5.1"
+            - text: Semantic Drift and Gradual Deviation
+          - paragraph [ref=e904]:
+            - text: Memory drift refers to the phenomenon where the knowledge stored by an agent gradually deviates from ground truth (conceptually visualized in Figure
+            - link "2" [ref=e905] [cursor=pointer]:
+              - /url: "#S5.F2"
+            - text: ", which specifically illustrates preference-intensity drift under repeated lossy summarization). Drift is not monolithic; it manifests in several forms."
+          - paragraph [ref=e907]:
+            - text: Semantic drift is primarily driven by lossy compression algorithms, such as iterative summarization. As information is re-encoded multiple times (e.g., from raw text to summary to higher-level reflection), nuanced details are stripped away, leading to a gradual distortion of the ground truth
+            - generic [ref=e908]:
+              - text: (Park et al.,
+              - link "2023" [ref=e909] [cursor=pointer]:
+                - /url: "#bib.bib23"
+              - text: )
+            - text: . Figure
+            - link "2" [ref=e910] [cursor=pointer]:
+              - /url: "#S5.F2"
+            - text: "provides an intuitive example of this process: a mild user preference can be progressively intensified through repeated rewriting, eventually causing a concrete preference violation. As contrasted in Figure"
+            - link "3" [ref=e911] [cursor=pointer]:
+              - /url: "#S5.F3"
+            - text: ", while a naive pipeline exacerbates this nuance loss by repeatedly overwriting the active memory, an anchored approach periodically reconciles the mutable state with an immutable episodic ledger (formally denoted as"
+            - math [ref=e912]:
+              - generic [ref=e914]:
+                - generic [ref=e915]: 𝒦
+                - generic [ref=e916]: ledger
+            - text: later in Section 6.2) to preserve original fidelity. Figure
+            - link "3" [ref=e917] [cursor=pointer]:
+              - /url: "#S5.F3"
+            - text: abstracts the causal mechanism behind this process, whereas Figure
+            - link "2" [ref=e918] [cursor=pointer]:
+              - /url: "#S5.F2"
+            - text: visualizes its concrete symptom at the level of a user preference.
+          - 'figure "Figure 2: An Illustrative Case of Semantic Drift. Iterative summarization gradually distorts a specific user preference through lossy compression and semantic intensification. For example, an originally mild preference (e.g., “I like mild spicy food”) may be progressively rewritten as “likes spicy food” and later “loves very spicy food,” ultimately causing a preference violation (e.g., suggesting ghost pepper wings)." [ref=e919]':
+            - img "Refer to caption" [ref=e920]
+            - generic [ref=e921]:
+              - generic [ref=e922]: "Figure 2:"
+              - text: An Illustrative Case of Semantic Drift. Iterative summarization gradually distorts a specific user preference through lossy compression and semantic intensification. For example, an originally mild preference (e.g., “I like mild spicy food”) may be progressively rewritten as “likes spicy food” and later “loves very spicy food,” ultimately causing a preference violation (e.g., suggesting ghost pepper wings).
+          - paragraph [ref=e924]:
+            - text: Procedural drift refers to the degradation of the skills or strategies of an agent as it reinforces suboptimal execution paths
+            - generic [ref=e925]:
+              - text: (Han et al.,
+              - link "2025" [ref=e926] [cursor=pointer]:
+                - /url: "#bib.bib10"
+              - text: )
+            - text: . For instance, an agent might “learn” a convoluted workaround for a simple API call and rigidify this into its procedural memory, blocking future optimization.
+          - paragraph [ref=e928]:
+            - text: Finally, Goal drift represents a subtle misalignment where the behavior of the agent shifts away from original instructions due to accumulated biases in its memory
+            - generic [ref=e929]:
+              - text: (Rath,
+              - link "2026" [ref=e930] [cursor=pointer]:
+                - /url: "#bib.bib27"
+              - text: )
+            - text: .
+          - generic [ref=e931]:
+            - paragraph [ref=e932]:
+              - text: We can formalize semantic drift
+              - math [ref=e933]:
+                - generic [ref=e935]: δ
+              - text: at time
+              - math [ref=e936]:
+                - generic [ref=e938]: T
+              - text: as the divergence between the embedding representation
+              - math [ref=e939]:
+                - generic [ref=e941]:
+                  - generic [ref=e942]: E
+                  - generic [ref=e943]:
+                    - generic [ref=e944]: (
+                    - generic [ref=e945]:
+                      - generic [ref=e946]: M
+                      - generic [ref=e947]: T
+                    - generic [ref=e948]: )
+              - text: of the current memory and the embedding of the ground-truth reference ledger
+              - math [ref=e949]:
+                - generic [ref=e951]:
+                  - generic [ref=e952]: 𝒦
+                  - generic [ref=e953]: "true"
+              - text: ":"
+            - table [ref=e954]:
+              - rowgroup [ref=e955]:
+                - row "(4)" [ref=e956]:
+                  - cell [ref=e957]
+                  - cell [ref=e958]:
+                    - math [ref=e959]:
+                      - generic [ref=e961]:
+                        - generic [ref=e962]:
+                          - generic [ref=e963]: δ
+                          - generic [ref=e964]:
+                            - generic [ref=e965]: (
+                            - generic [ref=e966]:
+                              - generic [ref=e967]: M
+                              - generic [ref=e968]: T
+                            - generic [ref=e969]: ","
+                            - generic [ref=e970]:
+                              - generic [ref=e971]: 𝒦
+                              - generic [ref=e972]: "true"
+                            - generic [ref=e973]: )
+                        - generic [ref=e974]: =
+                        - generic [ref=e975]:
+                          - generic [ref=e976]: "1"
+                          - generic [ref=e977]: −
+                          - generic [ref=e978]:
+                            - generic [ref=e979]: sim
+                            - generic [ref=e980]:
+                              - generic [ref=e981]: (
+                              - generic [ref=e982]:
+                                - generic [ref=e983]: E
+                                - generic [ref=e984]:
+                                  - generic [ref=e985]: (
+                                  - generic [ref=e986]:
+                                    - generic [ref=e987]: M
+                                    - generic [ref=e988]: T
+                                  - generic [ref=e989]: )
+                              - generic [ref=e990]: ","
+                              - generic [ref=e991]:
+                                - generic [ref=e992]: E
+                                - generic [ref=e993]:
+                                  - generic [ref=e994]: (
+                                  - generic [ref=e995]:
+                                    - generic [ref=e996]: 𝒦
+                                    - generic [ref=e997]: "true"
+                                  - generic [ref=e998]: )
+                              - generic [ref=e999]: )
+                  - cell [ref=e1000]
+                  - cell "(4)" [ref=e1001]:
+                    - generic [ref=e1002]: (4)
+            - paragraph [ref=e1003]:
+              - text: where
+              - math [ref=e1004]:
+                - generic [ref=e1006]:
+                  - generic [ref=e1007]: M
+                  - generic [ref=e1008]: T
+              - text: denotes the memory state after
+              - math [ref=e1009]:
+                - generic [ref=e1011]: T
+              - text: update steps,
+              - math [ref=e1012]:
+                - generic [ref=e1014]:
+                  - generic [ref=e1015]: 𝒦
+                  - generic [ref=e1016]: "true"
+              - text: denotes the idealized ground-truth semantic target,
+              - math [ref=e1017]:
+                - generic [ref=e1019]:
+                  - generic [ref=e1020]:
+                    - generic [ref=e1021]: E
+                    - generic [ref=e1022]:
+                      - generic [ref=e1023]: (
+                      - generic [ref=e1024]: ⋅
+                      - generic [ref=e1025]: )
+                  - generic [ref=e1026]: ∈
+                  - generic [ref=e1027]:
+                    - generic [ref=e1028]: ℝ
+                    - generic [ref=e1029]: d
+              - text: denotes a fixed semantic embedding model projecting the memory into a
+              - math [ref=e1030]:
+                - generic [ref=e1032]: d
+              - text: "-dimensional continuous space, and"
+              - math [ref=e1033]:
+                - generic [ref=e1035]:
+                  - generic [ref=e1036]: sim
+                  - generic [ref=e1037]:
+                    - generic [ref=e1038]: (
+                    - generic [ref=e1039]: ⋅
+                    - generic [ref=e1040]: ","
+                    - generic [ref=e1041]: ⋅
+                    - generic [ref=e1042]: )
+              - text: "denotes cosine similarity in the embedding space. Intuitively, Eq. (4) uses embedding-space divergence as a tractable proxy for semantic corruption: the larger the distance between the current memory representation and the reference ledger, the larger the estimated drift. In practice,"
+              - math [ref=e1043]:
+                - generic [ref=e1045]:
+                  - generic [ref=e1046]: 𝒦
+                  - generic [ref=e1047]: "true"
+              - text: may be approximated by an immutable ledger of raw observations, which preserves details that may be lost in iterative summarization.
+        - generic [ref=e1048]:
+          - 'heading "5.2 Validity Failures: Hallucination and Obsolescence" [level=3] [ref=e1049]':
+            - generic [ref=e1050]: "5.2"
+            - text: "Validity Failures: Hallucination and Obsolescence"
+          - paragraph [ref=e1052]:
+            - text: Closely related to drift is the problem of Validity. This manifests primarily as Memory Hallucination, where the agent stores hallucinated content as truth. Distinct from hallucination is temporal obsolescence, a failure mode highlighted by
+            - generic [ref=e1053]:
+              - text: Rasmussen et al. (
+              - link "2025" [ref=e1054] [cursor=pointer]:
+                - /url: "#bib.bib26"
+              - text: )
+            - text: in temporal knowledge graphs. Here, stored information is factually correct but outdated. Without mechanisms to resolve conflicting timestamps (as addressed by LiCoMemory’s decay function), agents may retrieve and act upon stale data.
+        - generic [ref=e1055]:
+          - 'heading "5.3 Systemic Failures: Efficiency and Safety" [level=3] [ref=e1056]':
+            - generic [ref=e1057]: "5.3"
+            - text: "Systemic Failures: Efficiency and Safety"
+          - paragraph [ref=e1059]:
+            - text: Beyond correctness, evolving memory systems face Efficiency and Safety challenges. As memory logs expand, Retrieval Latency can scale linearly or quadratically
+            - generic [ref=e1060]:
+              - text: (Chhikara et al.,
+              - link "2025" [ref=e1061] [cursor=pointer]:
+                - /url: "#bib.bib5"
+              - text: )
+            - text: . Astraea
+            - generic [ref=e1062]:
+              - text: (Ni et al.,
+              - link "2025" [ref=e1063] [cursor=pointer]:
+                - /url: "#bib.bib55"
+              - text: )
+            - text: reveals that isolated segment retrieval causes severe Head-of-Line blocking, advocating for state-aware scheduling that optimizes the global request lifecycle during agentic memory operations.
+          - paragraph [ref=e1065]:
+            - text: On the safety front, Memory Poisoning remains a critical risk
+            - generic [ref=e1066]:
+              - text: (Greshake et al.,
+              - link "2023" [ref=e1067] [cursor=pointer]:
+                - /url: "#bib.bib9"
+              - text: )
+            - text: . Additionally, in multi-user environments, Privacy Leakage becomes a concern. Topology Matters
+            - generic [ref=e1068]:
+              - text: (Liu et al.,
+              - link "2025a" [ref=e1069] [cursor=pointer]:
+                - /url: "#bib.bib58"
+              - text: )
+            - text: highlights that the network structure of multi-agent systems intrinsically governs memory leakage, finding that fully connected graphs maximize vulnerability. Therefore, without rigorous Access Control Lists (ACLs), as implemented in Collaborative Memory
+            - generic [ref=e1070]:
+              - text: (Rezazadeh et al.,
+              - link "2025" [ref=e1071] [cursor=pointer]:
+                - /url: "#bib.bib28"
+              - text: )
+            - text: ", agents may inadvertently retrieve cross-session memories, leaking sensitive data to unauthorized parties."
+          - 'figure "Figure 3: Logical Mechanism of Memory Drift vs. Anchored Stability. The left path illustrates how naive iterative summarization causes semantic drift (loss of nuance). The right path demonstrates the SSGM approach, where periodic reconciliation ( ℛ ) with an immutable anchor log ( 𝒦 ledger ) bounds the distortion relative to the ground truth ( 𝒦 true )." [ref=e1072]':
+            - img "Refer to caption" [ref=e1073]
+            - generic [ref=e1074]:
+              - generic [ref=e1075]: "Figure 3:"
+              - text: Logical Mechanism of Memory Drift vs. Anchored Stability. The left path illustrates how naive iterative summarization causes semantic drift (loss of nuance). The right path demonstrates the SSGM approach, where periodic reconciliation (
+              - math [ref=e1076]:
+                - generic [ref=e1078]: ℛ
+              - text: ) with an immutable anchor log (
+              - math [ref=e1079]:
+                - generic [ref=e1081]:
+                  - generic [ref=e1082]: 𝒦
+                  - generic [ref=e1083]: ledger
+              - text: ) bounds the distortion relative to the ground truth (
+              - math [ref=e1084]:
+                - generic [ref=e1086]:
+                  - generic [ref=e1087]: 𝒦
+                  - generic [ref=e1088]: "true"
+              - text: ).
+      - generic [ref=e1089]:
+        - 'heading "6 Stability and Safety Governed Memory (SSGM): Design Principles and Research Agenda" [level=2] [ref=e1090]':
+          - generic [ref=e1091]: "6"
+          - text: "Stability and Safety Governed Memory (SSGM): Design Principles and Research Agenda"
+        - paragraph [ref=e1093]:
+          - text: Current memory systems predominantly prioritize adaptability—the ability of an agent to rapidly learn and incorporate new context—over stability and safety. In unrestricted architectures, the agent interacts directly with the storage medium, acting as both the sole generator and validator of its evolving knowledge base. As established in Section 4, this unconstrained autonomy is the primary catalyst for semantic drift, catastrophic forgetting, and susceptibility to adversarial memory poisoning
+          - generic [ref=e1094]:
+            - text: (Greshake et al.,
+            - link "2023" [ref=e1095] [cursor=pointer]:
+              - /url: "#bib.bib9"
+            - text: )
+          - text: .
+        - paragraph [ref=e1097]:
+          - text: To bridge this critical gap, we formulate the Stability- and Safety-Governed Memory (SSGM) framework. Rather than a specific software implementation, SSGM provides a rigorous theoretical architecture and a set of design principles. At its core, SSGM proposes that robust memory systems must structurally decouple the generative cognitive policy of the agent from the underlying memory substrate through an active, intercepting Governance Middleware. Figure
+          - link "4" [ref=e1098] [cursor=pointer]:
+            - /url: "#S6.F4"
+          - text: operationalizes the mechanism abstracted in Figure
+          - link "3" [ref=e1099] [cursor=pointer]:
+            - /url: "#S5.F3"
+          - text: as a full governed architecture, where Eq. (5), Eq. (6), and Eq. (7) correspond respectively to constrained retrieval, gated writing, and asynchronous reconciliation.
+        - 'figure "Figure 4: The conceptual architecture of the SSGM framework, featuring a decoupled left-to-right processing pipeline. The Governance Middleware intercepts memory interactions between the LLM Agent and the Memory Substrate. The upper pathway governs memory consolidation (Write Validation) to ensure logical consistency and mitigate drift, while the lower pathway manages memory retrieval (Read Filtering) by enforcing access scopes and temporal relevance. The right-side dual-memory substrate further supports reversible reconciliation by pairing a mutable active graph with an immutable episodic log." [ref=e1100]':
+          - img "Refer to caption" [ref=e1101]
+          - generic [ref=e1102]:
+            - generic [ref=e1103]: "Figure 4:"
+            - text: The conceptual architecture of the SSGM framework, featuring a decoupled left-to-right processing pipeline. The Governance Middleware intercepts memory interactions between the LLM Agent and the Memory Substrate. The upper pathway governs memory consolidation (Write Validation) to ensure logical consistency and mitigate drift, while the lower pathway manages memory retrieval (Read Filtering) by enforcing access scopes and temporal relevance. The right-side dual-memory substrate further supports reversible reconciliation by pairing a mutable active graph with an immutable episodic log.
+        - generic [ref=e1104]:
+          - heading "6.1 Design Principles of Governed Memory" [level=3] [ref=e1105]:
+            - generic [ref=e1106]: "6.1"
+            - text: Design Principles of Governed Memory
+          - paragraph [ref=e1108]:
+            - text: As illustrated in Figure
+            - link "4" [ref=e1109] [cursor=pointer]:
+              - /url: "#S6.F4"
+            - text: ", SSGM replaces direct memory access with a set of governed gates. We articulate four foundational design principles necessary for engineering reliable, long-horizon agents:"
+          - generic [ref=e1110]:
+            - 'heading "Principle 1: Pre-Consolidation Validation" [level=4] [ref=e1111]'
+            - paragraph [ref=e1113]:
+              - text: In biological systems, the hippocampus does not instantly commit every perception to the neocortex; information undergoes significant filtering and reality monitoring
+              - generic [ref=e1114]:
+                - text: (Tresp et al.,
+                - link "2023" [ref=e1115] [cursor=pointer]:
+                  - /url: "#bib.bib32"
+                - text: )
+              - text: . Similarly, in SSGM, memory updates should never be committed passively. When the agent generates a memory delta (
+              - math [ref=e1116]:
+                - generic [ref=e1118]:
+                  - generic [ref=e1119]: Δ
+                  - generic [ref=e1120]: M
+              - text: ), it must pass through a Write Validation Gate (depicted as the upper consolidation pathway in Figure
+              - link "4" [ref=e1121] [cursor=pointer]:
+                - /url: "#S6.F4"
+              - text: ). This mechanism acts as a Truth Maintenance System (TMS) that retrieves established core facts (
+              - math [ref=e1122]:
+                - generic [ref=e1124]:
+                  - generic [ref=e1125]: M
+                  - generic [ref=e1126]: core
+              - text: ") to execute a strict logical contradiction check: if the condition"
+              - math [ref=e1127]:
+                - generic [ref=e1129]:
+                  - generic [ref=e1130]:
+                    - generic [ref=e1131]:
+                      - generic [ref=e1132]: Δ
+                      - generic [ref=e1133]: M
+                    - generic [ref=e1134]: ∧
+                    - generic [ref=e1135]:
+                      - generic [ref=e1136]: M
+                      - generic [ref=e1137]: core
+                  - generic [ref=e1138]: ⊧
+                  - generic [ref=e1139]: ⊥
+              - text: evaluates to true, the update is rejected. By bounding updates with formal Natural Language Inference (NLI) checks, the system actively prevents hallucination cascades from permanently corrupting the semantic graph
+              - generic [ref=e1140]:
+                - text: (Xu et al.,
+                - link "2025" [ref=e1141] [cursor=pointer]:
+                  - /url: "#bib.bib39"
+                - text: )
+              - text: .
+          - generic [ref=e1142]:
+            - 'heading "Principle 2: Temporal and Provenance Grounding" [level=4] [ref=e1143]'
+            - paragraph [ref=e1145]:
+              - text: Not all stored information retains its validity indefinitely. Unrestricted retrieval often pulls stale or maliciously injected instructions, leading to temporal obsolescence
+              - generic [ref=e1146]:
+                - text: (Rasmussen et al.,
+                - link "2025" [ref=e1147] [cursor=pointer]:
+                  - /url: "#bib.bib26"
+                - text: )
+              - text: . SSGM advocates for a Read Filtering Gate (illustrated in the lower retrieval pathway in Figure
+              - link "4" [ref=e1148] [cursor=pointer]:
+                - /url: "#S6.F4"
+              - text: ) that evaluates candidate contexts based on two axes. First, it requires cryptographic provenance (
+              - math [ref=e1149]:
+                - generic [ref=e1151]:
+                  - generic [ref=e1152]: σ
+                  - generic [ref=e1153]:
+                    - generic [ref=e1154]: (
+                    - generic [ref=e1155]: μ
+                    - generic [ref=e1156]: )
+              - text: ) to ensure the memory unit was generated by a trusted source rather than an adversarial prompt. Second, it applies a cognitive decay function, such as the Weibull distribution
+              - math [ref=e1157]:
+                - generic [ref=e1159]:
+                  - generic [ref=e1160]:
+                    - generic [ref=e1161]: w
+                    - generic [ref=e1162]:
+                      - generic [ref=e1163]: (
+                      - generic [ref=e1164]:
+                        - generic [ref=e1165]: Δ
+                        - generic [ref=e1166]: τ
+                      - generic [ref=e1167]: )
+                  - generic [ref=e1168]: =
+                  - generic [ref=e1169]:
+                    - generic [ref=e1170]: exp
+                    - generic: ⁡
+                    - generic [ref=e1171]:
+                      - generic [ref=e1172]: (
+                      - generic [ref=e1173]:
+                        - generic [ref=e1174]: −
+                        - generic [ref=e1175]:
+                          - generic [ref=e1176]:
+                            - generic [ref=e1177]: (
+                            - generic [ref=e1178]:
+                              - generic [ref=e1179]:
+                                - generic [ref=e1180]: Δ
+                                - generic [ref=e1181]: τ
+                              - generic [ref=e1182]: /
+                              - generic [ref=e1183]: η
+                            - generic [ref=e1184]: )
+                          - generic [ref=e1185]: κ
+                      - generic [ref=e1186]: )
+              - text: proposed by
+              - generic [ref=e1187]:
+                - text: Huang et al. (
+                - link "2025" [ref=e1188] [cursor=pointer]:
+                  - /url: "#bib.bib13"
+                - text: )
+              - text: . Memories falling below a dynamic relevance threshold are pruned before reaching the agent’s context window, ensuring the agent reasons exclusively over fresh, high-confidence data.
+          - generic [ref=e1189]:
+            - 'heading "Principle 3: Access-Scoped Retrieval" [level=4] [ref=e1190]'
+            - paragraph [ref=e1192]:
+              - text: The shift towards multi-agent
+              - generic [ref=e1193]:
+                - text: (Wang and Chen,
+                - link "2025" [ref=e1194] [cursor=pointer]:
+                  - /url: "#bib.bib33"
+                - text: )
+              - text: and multi-tenant systems exposes critical privacy vulnerabilities. As demonstrated by
+              - generic [ref=e1195]:
+                - text: Liu et al. (
+                - link "2025a" [ref=e1196] [cursor=pointer]:
+                  - /url: "#bib.bib58"
+                - text: )
+              - text: ", fully connected memory networks maximize the risk of topology-induced knowledge leakage. SSGM dictates that retrieval mechanisms must not rely solely on semantic similarity. Instead, the Read Filtering Gate must inject identity-based constraints (e.g., Attribute-Based Access Control, ABAC) directly into the query execution layer"
+              - generic [ref=e1197]:
+                - text: (Rezazadeh et al.,
+                - link "2025" [ref=e1198] [cursor=pointer]:
+                  - /url: "#bib.bib28"
+                - text: )
+              - text: . This ensures strict isolation of memory sub-graphs, preventing the cross-contamination of agent personas or sensitive user data.
+          - generic [ref=e1199]:
+            - 'heading "Principle 4: Reversible Reconciliation" [level=4] [ref=e1200]'
+            - paragraph [ref=e1202]:
+              - text: To effectively bound long-term semantic drift, the underlying storage substrate must be dual-track. Drawing inspiration from human episodic and semantic memory divisions
+              - generic [ref=e1203]:
+                - text: (Alqithami,
+                - link "2025" [ref=e1204] [cursor=pointer]:
+                  - /url: "#bib.bib57"
+                - text: )
+              - text: ", SSGM pairs a rapidly updatable Mutable Active Graph (for fast, semantic reasoning) with an append-only Immutable Episodic Log (acting as the operational source of truth). This dual structure enables asynchronous reconciliation, allowing the system to periodically “replay” and correct drifted concepts against the raw interaction trace, effectively offering a rollback mechanism if severe agent behavioral degradation occurs"
+              - generic [ref=e1205]:
+                - text: (Rath,
+                - link "2026" [ref=e1206] [cursor=pointer]:
+                  - /url: "#bib.bib27"
+                - text: )
+              - text: .
+        - generic [ref=e1207]:
+          - heading "6.2 Formalizing the SSGM Framework" [level=3] [ref=e1208]:
+            - generic [ref=e1209]: "6.2"
+            - text: Formalizing the SSGM Framework
+          - paragraph [ref=e1211]:
+            - text: To provide a rigorous theoretical account of SSGM, we formulate the agent’s memory evolution as a controlled state transition. Let
+            - math [ref=e1212]:
+              - generic [ref=e1214]:
+                - generic [ref=e1215]: M
+                - generic [ref=e1216]:
+                  - generic [ref=e1217]: t
+                  - generic [ref=e1218]: −
+                  - generic [ref=e1219]: "1"
+            - text: denote the mutable memory state at time
+            - math [ref=e1220]:
+              - generic [ref=e1222]:
+                - generic [ref=e1223]: t
+                - generic [ref=e1224]: −
+                - generic [ref=e1225]: "1"
+            - text: ", let"
+            - math [ref=e1226]:
+              - generic [ref=e1228]:
+                - generic [ref=e1229]: M
+                - generic [ref=e1230]: core
+            - text: denote the set of protected core facts used for contradiction checking, let
+            - math [ref=e1231]:
+              - generic [ref=e1233]:
+                - generic [ref=e1234]: 𝒦
+                - generic [ref=e1235]: ledger
+            - text: denote the append-only immutable ledger of raw observations, and let
+            - math [ref=e1236]:
+              - generic [ref=e1238]:
+                - generic [ref=e1239]: 𝒦
+                - generic [ref=e1240]: "true"
+            - text: denote the idealized semantic target that the system seeks to approximate.The read–write lifecycle in SSGM is then governed by constrained retrieval, gated writing, and periodic reconciliation.
+          - generic [ref=e1241]:
+            - paragraph [ref=e1242]:
+              - text: "The Read Phase (Constrained Retrieval): Unlike naive Retrieval-Augmented Generation (RAG), which relies only on semantic Top-"
+              - math [ref=e1243]:
+                - generic [ref=e1245]: K
+              - text: retrieval, the retrieved context
+              - math [ref=e1246]:
+                - generic [ref=e1248]:
+                  - generic [ref=e1249]: C
+                  - generic [ref=e1250]: t
+              - text: given a query
+              - math [ref=e1251]:
+                - generic [ref=e1253]:
+                  - generic [ref=e1254]: q
+                  - generic [ref=e1255]: t
+              - text: "in SSGM is defined by jointly enforcing semantic relevance, access control, and temporal freshness:"
+            - table [ref=e1256]:
+              - rowgroup [ref=e1257]:
+                - row "(5)" [ref=e1258]:
+                  - cell [ref=e1259]
+                  - cell [ref=e1260]:
+                    - math [ref=e1261]:
+                      - generic [ref=e1263]:
+                        - generic [ref=e1266]:
+                          - generic [ref=e1267]:
+                            - generic [ref=e1268]: C
+                            - generic [ref=e1269]: t
+                          - generic [ref=e1270]: =
+                          - generic [ref=e1271]:
+                            - generic [ref=e1272]: "{"
+                            - generic [ref=e1273]: μ
+                            - generic [ref=e1274]: ∈
+                            - generic [ref=e1275]: Top-
+                            - generic [ref=e1276]: K
+                            - generic [ref=e1277]:
+                              - generic [ref=e1278]: (
+                              - generic [ref=e1279]:
+                                - generic [ref=e1280]: q
+                                - generic [ref=e1281]: t
+                              - generic [ref=e1282]: ","
+                              - generic [ref=e1283]:
+                                - generic [ref=e1284]: M
+                                - generic [ref=e1285]:
+                                  - generic [ref=e1286]: t
+                                  - generic [ref=e1287]: −
+                                  - generic [ref=e1288]: "1"
+                              - generic [ref=e1289]: )
+                            - generic [ref=e1290]: ∣
+                            - generic [ref=e1291]: ACL
+                            - generic [ref=e1292]:
+                              - generic [ref=e1293]: (
+                              - generic [ref=e1294]: μ
+                              - generic [ref=e1295]: ","
+                              - generic [ref=e1296]:
+                                - generic [ref=e1297]: u
+                                - generic [ref=e1298]: id
+                              - generic [ref=e1299]: )
+                        - generic [ref=e1302]:
+                          - generic [ref=e1303]: ∧
+                          - generic [ref=e1304]:
+                            - generic [ref=e1305]: (
+                            - generic [ref=e1306]: w
+                            - generic [ref=e1307]:
+                              - generic [ref=e1308]: (
+                              - generic [ref=e1309]: Δ
+                              - generic [ref=e1310]:
+                                - generic [ref=e1311]: τ
+                                - generic [ref=e1312]: μ
+                              - generic [ref=e1313]: )
+                            - generic [ref=e1314]: ≥
+                            - generic [ref=e1315]:
+                              - generic [ref=e1316]: θ
+                              - generic [ref=e1317]: fresh
+                            - generic [ref=e1318]: )
+                          - generic [ref=e1319]: "}"
+                  - cell [ref=e1320]
+                  - cell "(5)" [ref=e1321]:
+                    - generic [ref=e1322]: (5)
+            - paragraph [ref=e1323]:
+              - text: where
+              - math [ref=e1324]:
+                - generic [ref=e1326]: μ
+              - text: denotes a candidate memory unit,
+              - math [ref=e1327]:
+                - generic [ref=e1329]:
+                  - generic [ref=e1330]: Top-
+                  - generic [ref=e1331]: K
+                  - generic [ref=e1332]:
+                    - generic [ref=e1333]: (
+                    - generic [ref=e1334]:
+                      - generic [ref=e1335]: q
+                      - generic [ref=e1336]: t
+                    - generic [ref=e1337]: ","
+                    - generic [ref=e1338]:
+                      - generic [ref=e1339]: M
+                      - generic [ref=e1340]:
+                        - generic [ref=e1341]: t
+                        - generic [ref=e1342]: −
+                        - generic [ref=e1343]: "1"
+                    - generic [ref=e1344]: )
+              - text: denotes the set of the top-
+              - math [ref=e1345]:
+                - generic [ref=e1347]: K
+              - text: semantically retrieved items from the current memory state with respect to query
+              - math [ref=e1348]:
+                - generic [ref=e1350]:
+                  - generic [ref=e1351]: q
+                  - generic [ref=e1352]: t
+              - text: ","
+              - math [ref=e1353]:
+                - generic [ref=e1355]:
+                  - generic [ref=e1356]: u
+                  - generic [ref=e1357]: id
+              - text: denotes the identity of the requesting user or agent,
+              - math [ref=e1358]:
+                - generic [ref=e1360]:
+                  - generic [ref=e1361]: ACL
+                  - generic [ref=e1362]:
+                    - generic [ref=e1363]: (
+                    - generic [ref=e1364]: μ
+                    - generic [ref=e1365]: ","
+                    - generic [ref=e1366]:
+                      - generic [ref=e1367]: u
+                      - generic [ref=e1368]: id
+                    - generic [ref=e1369]: )
+              - text: denotes an access-control predicate that returns true only when
+              - math [ref=e1370]:
+                - generic [ref=e1372]:
+                  - generic [ref=e1373]: u
+                  - generic [ref=e1374]: id
+              - text: is permitted to read memory unit
+              - math [ref=e1375]:
+                - generic [ref=e1377]: μ
+              - text: ","
+              - math [ref=e1378]:
+                - generic [ref=e1380]:
+                  - generic [ref=e1381]: Δ
+                  - generic [ref=e1382]:
+                    - generic [ref=e1383]: τ
+                    - generic [ref=e1384]: μ
+              - text: denotes the elapsed time since the last valid use of
+              - math [ref=e1385]:
+                - generic [ref=e1387]: μ
+              - text: ", and"
+              - math [ref=e1388]:
+                - generic [ref=e1390]:
+                  - generic [ref=e1391]: θ
+                  - generic [ref=e1392]: fresh
+              - text: "denotes the global freshness threshold. Intuitively, Eq. (5) implements a two-stage read path: semantic retrieval first proposes candidates, and governance then filters them to prevent both privacy leakage and stale-memory activation."
+          - generic [ref=e1393]:
+            - paragraph [ref=e1394]:
+              - text: "The Write Phase (Gated Transition): In an unconstrained system, the next memory state would be produced by directly unioning the agent-generated update with the existing memory, i.e.,"
+              - math [ref=e1395]:
+                - generic [ref=e1397]:
+                  - generic [ref=e1398]:
+                    - generic [ref=e1399]: M
+                    - generic [ref=e1400]: t
+                  - generic [ref=e1401]: =
+                  - generic [ref=e1402]:
+                    - generic [ref=e1403]:
+                      - generic [ref=e1404]: M
+                      - generic [ref=e1405]:
+                        - generic [ref=e1406]: t
+                        - generic [ref=e1407]: −
+                        - generic [ref=e1408]: "1"
+                    - generic [ref=e1409]: ∪
+                    - generic [ref=e1410]:
+                      - generic [ref=e1411]: Agent
+                      - generic [ref=e1412]:
+                        - generic [ref=e1413]: (
+                        - generic [ref=e1414]:
+                          - generic [ref=e1415]: C
+                          - generic [ref=e1416]: t
+                        - generic [ref=e1417]: )
+              - text: ". In SSGM, this transition is intercepted by a write-governance operator:"
+            - table [ref=e1418]:
+              - rowgroup [ref=e1419]:
+                - row "(6)" [ref=e1420]:
+                  - cell [ref=e1421]
+                  - cell [ref=e1422]:
+                    - math [ref=e1423]:
+                      - generic [ref=e1425]:
+                        - generic [ref=e1426]:
+                          - generic [ref=e1427]: M
+                          - generic [ref=e1428]: t
+                        - generic [ref=e1429]: =
+                        - generic [ref=e1430]:
+                          - generic [ref=e1431]:
+                            - generic [ref=e1432]: M
+                            - generic [ref=e1433]:
+                              - generic [ref=e1434]: t
+                              - generic [ref=e1435]: −
+                              - generic [ref=e1436]: "1"
+                          - generic [ref=e1437]: ∪
+                          - generic [ref=e1438]:
+                            - generic [ref=e1439]:
+                              - generic [ref=e1440]: 𝒢
+                              - generic [ref=e1441]: write
+                            - generic [ref=e1442]:
+                              - generic [ref=e1443]: (
+                              - generic [ref=e1444]:
+                                - generic [ref=e1445]: Agent
+                                - generic [ref=e1446]:
+                                  - generic [ref=e1447]: (
+                                  - generic [ref=e1448]:
+                                    - generic [ref=e1449]: C
+                                    - generic [ref=e1450]: t
+                                  - generic [ref=e1451]: )
+                              - generic [ref=e1452]: ","
+                              - generic [ref=e1453]:
+                                - generic [ref=e1454]: M
+                                - generic [ref=e1455]: core
+                              - generic [ref=e1456]: )
+                  - cell [ref=e1457]
+                  - cell "(6)" [ref=e1458]:
+                    - generic [ref=e1459]: (6)
+            - paragraph [ref=e1460]:
+              - text: where
+              - math [ref=e1461]:
+                - generic [ref=e1463]:
+                  - generic [ref=e1464]: Agent
+                  - generic [ref=e1465]:
+                    - generic [ref=e1466]: (
+                    - generic [ref=e1467]:
+                      - generic [ref=e1468]: C
+                      - generic [ref=e1469]: t
+                    - generic [ref=e1470]: )
+              - text: denotes the candidate memory delta proposed by the agent after reasoning over
+              - math [ref=e1471]:
+                - generic [ref=e1473]:
+                  - generic [ref=e1474]: C
+                  - generic [ref=e1475]: t
+              - text: ", and"
+              - math [ref=e1476]:
+                - generic [ref=e1478]:
+                  - generic [ref=e1479]:
+                    - generic [ref=e1480]:
+                      - generic [ref=e1481]: 𝒢
+                      - generic [ref=e1482]: write
+                    - generic [ref=e1483]:
+                      - generic [ref=e1484]: (
+                      - generic [ref=e1485]:
+                        - generic [ref=e1486]: Δ
+                        - generic [ref=e1487]: M
+                      - generic [ref=e1488]: ","
+                      - generic [ref=e1489]:
+                        - generic [ref=e1490]: M
+                        - generic [ref=e1491]: core
+                      - generic [ref=e1492]: )
+                  - generic [ref=e1493]: =
+                  - generic [ref=e1494]:
+                    - generic [ref=e1495]: Δ
+                    - generic [ref=e1496]: M
+              - text: if
+              - math [ref=e1497]:
+                - generic [ref=e1499]:
+                  - generic [ref=e1500]:
+                    - generic [ref=e1501]:
+                      - generic [ref=e1502]: Δ
+                      - generic [ref=e1503]: M
+                    - generic [ref=e1504]: ∧
+                    - generic [ref=e1505]:
+                      - generic [ref=e1506]: M
+                      - generic [ref=e1507]: core
+                  - generic [ref=e1508]: ⊧̸
+                  - generic [ref=e1509]: ⊥
+              - text: ", and"
+              - math [ref=e1510]:
+                - generic [ref=e1512]: ∅
+              - text: otherwise. Here,
+              - math [ref=e1513]:
+                - generic [ref=e1515]:
+                  - generic [ref=e1516]: Δ
+                  - generic [ref=e1517]: M
+              - text: denotes the candidate update set and
+              - math [ref=e1518]:
+                - generic [ref=e1520]:
+                  - generic [ref=e1521]: ⊧
+                  - generic [ref=e1522]: ⊥
+              - text: "denotes the logical entailment of contradiction. Intuitively, Eq. (6) turns memory writing into a guarded transition: the system only admits updates that do not conflict with protected core facts, thereby preventing hallucinated or inconsistent statements from being consolidated into long-term memory."
+          - generic [ref=e1523]:
+            - paragraph [ref=e1524]:
+              - text: "Reconciliation (Drift Bounding): To prevent the cumulative drift of admitted updates from diverging as"
+              - math [ref=e1525]:
+                - generic [ref=e1527]:
+                  - generic [ref=e1528]: T
+                  - generic [ref=e1529]: →
+                  - generic [ref=e1530]: ∞
+              - text: ", the asynchronous reconciliation operator"
+              - math [ref=e1531]:
+                - generic [ref=e1533]: ℛ
+              - text: "periodically re-aligns the mutable memory against the immutable ledger:"
+            - table [ref=e1534]:
+              - rowgroup [ref=e1535]:
+                - row "(7)" [ref=e1536]:
+                  - cell [ref=e1537]
+                  - cell [ref=e1538]:
+                    - math [ref=e1539]:
+                      - generic [ref=e1541]:
+                        - generic [ref=e1542]:
+                          - generic [ref=e1543]: M
+                          - generic [ref=e1544]: clean
+                        - generic [ref=e1545]: ←
+                        - generic [ref=e1546]:
+                          - generic [ref=e1547]:
+                            - generic [ref=e1548]: arg
+                            - generic: ⁡
+                            - generic [ref=e1549]:
+                              - generic [ref=e1550]:
+                                - generic [ref=e1551]: min
+                                - generic [ref=e1552]: M
+                              - generic: ⁡
+                              - generic [ref=e1553]: 𝔼
+                          - generic [ref=e1554]:
+                            - generic [ref=e1555]: "["
+                            - generic [ref=e1556]:
+                              - generic [ref=e1557]: δ
+                              - generic [ref=e1558]:
+                                - generic [ref=e1559]: (
+                                - generic [ref=e1560]:
+                                  - generic [ref=e1561]: ℛ
+                                  - generic [ref=e1562]:
+                                    - generic [ref=e1563]: (
+                                    - generic [ref=e1564]: M
+                                    - generic [ref=e1565]: ","
+                                    - generic [ref=e1566]:
+                                      - generic [ref=e1567]: 𝒦
+                                      - generic [ref=e1568]: ledger
+                                    - generic [ref=e1569]: )
+                                - generic [ref=e1570]: ","
+                                - generic [ref=e1571]:
+                                  - generic [ref=e1572]: 𝒦
+                                  - generic [ref=e1573]: "true"
+                                - generic [ref=e1574]: )
+                            - generic [ref=e1575]: "]"
+                  - cell [ref=e1576]
+                  - cell "(7)" [ref=e1577]:
+                    - generic [ref=e1578]: (7)
+            - paragraph [ref=e1579]:
+              - text: where
+              - math [ref=e1580]:
+                - generic [ref=e1582]: M
+              - text: ranges over candidate cleaned memory states,
+              - math [ref=e1583]:
+                - generic [ref=e1585]:
+                  - generic [ref=e1586]: ℛ
+                  - generic [ref=e1587]:
+                    - generic [ref=e1588]: (
+                    - generic [ref=e1589]: M
+                    - generic [ref=e1590]: ","
+                    - generic [ref=e1591]:
+                      - generic [ref=e1592]: 𝒦
+                      - generic [ref=e1593]: ledger
+                    - generic [ref=e1594]: )
+              - text: denotes the reconciled memory obtained by replaying or correcting
+              - math [ref=e1595]:
+                - generic [ref=e1597]: M
+              - text: using the immutable ledger,
+              - math [ref=e1598]:
+                - generic [ref=e1600]:
+                  - generic [ref=e1601]: δ
+                  - generic [ref=e1602]:
+                    - generic [ref=e1603]: (
+                    - generic [ref=e1604]: ⋅
+                    - generic [ref=e1605]: ","
+                    - generic [ref=e1606]: ⋅
+                    - generic [ref=e1607]: )
+              - text: is the semantic-drift measure defined in Eq. (4), and the expectation is taken over the stochasticity of task trajectories, noisy summaries, or reconciliation decisions. Intuitively, Eq. (7) states that the system repeatedly searches for a cleaned memory state
+              - math [ref=e1608]:
+                - generic [ref=e1610]:
+                  - generic [ref=e1611]: M
+                  - generic [ref=e1612]: clean
+              - text: "whose reconciled form is, in expectation, as close as possible to the desired semantic target. This objective makes the distinction among the three reference objects explicit:"
+              - math [ref=e1613]:
+                - generic [ref=e1615]:
+                  - generic [ref=e1616]: M
+                  - generic [ref=e1617]: core
+              - text: protects critical facts during writing,
+              - math [ref=e1618]:
+                - generic [ref=e1620]:
+                  - generic [ref=e1621]: 𝒦
+                  - generic [ref=e1622]: ledger
+              - text: is the operational raw trace used for correction, and
+              - math [ref=e1623]:
+                - generic [ref=e1625]:
+                  - generic [ref=e1626]: 𝒦
+                  - generic [ref=e1627]: "true"
+              - text: is the ideal target used for evaluation.
+          - paragraph [ref=e1629]:
+            - text: Theorem 1 (Bounded Semantic Drift).
+            - generic [ref=e1630]:
+              - text: Assume that each valid summarization or consolidation step introduces at most
+              - math [ref=e1631]:
+                - generic [ref=e1633]:
+                  - generic [ref=e1634]: ϵ
+                  - generic [ref=e1635]: step
+              - text: semantic error before reconciliation, and assume that the reconciliation operator
+              - math [ref=e1636]:
+                - generic [ref=e1638]: ℛ
+              - text: restores the mutable memory to a state whose residual error is bounded by a constant independent of the total horizon. In a naive system, the expected drift at time
+              - math [ref=e1639]:
+                - generic [ref=e1641]: T
+              - text: scales as
+              - math [ref=e1642]:
+                - generic [ref=e1644]:
+                  - generic [ref=e1645]: O
+                  - generic [ref=e1646]:
+                    - generic [ref=e1647]: (
+                    - generic [ref=e1648]:
+                      - generic [ref=e1649]: T
+                      - generic [ref=e1650]: ⋅
+                      - generic [ref=e1651]:
+                        - generic [ref=e1652]: ϵ
+                        - generic [ref=e1653]: step
+                    - generic [ref=e1654]: )
+              - text: . Under the SSGM framework, if reconciliation is executed every
+              - math [ref=e1655]:
+                - generic [ref=e1657]: "N"
+              - text: steps, the expected semantic drift is upper-bounded by
+              - math [ref=e1658]:
+                - generic [ref=e1660]:
+                  - generic [ref=e1661]: O
+                  - generic [ref=e1662]:
+                    - generic [ref=e1663]: (
+                    - generic [ref=e1664]:
+                      - generic [ref=e1665]: "N"
+                      - generic [ref=e1666]: ⋅
+                      - generic [ref=e1667]:
+                        - generic [ref=e1668]: ϵ
+                        - generic [ref=e1669]: step
+                    - generic [ref=e1670]: )
+              - text: ", ensuring stability even when"
+              - math [ref=e1671]:
+                - generic [ref=e1673]:
+                  - generic [ref=e1674]: T
+                  - generic [ref=e1675]: ≫
+                  - generic [ref=e1676]: "N"
+              - text: .
+          - paragraph [ref=e1678]:
+            - text: Proof Sketch. In an unconstrained update process without Eq. (7), per-step errors accumulate additively, yielding
+            - math [ref=e1679]:
+              - generic [ref=e1681]:
+                - generic [ref=e1682]:
+                  - generic [ref=e1683]: 𝔼
+                  - generic [ref=e1684]:
+                    - generic [ref=e1685]: "["
+                    - generic [ref=e1686]:
+                      - generic [ref=e1687]: δ
+                      - generic [ref=e1688]:
+                        - generic [ref=e1689]: (
+                        - generic [ref=e1690]:
+                          - generic [ref=e1691]: M
+                          - generic [ref=e1692]: T
+                        - generic [ref=e1693]: )
+                    - generic [ref=e1694]: "]"
+                - generic [ref=e1695]: ≤
+                - generic [ref=e1696]:
+                  - generic [ref=e1697]:
+                    - generic [ref=e1698]: ∑
+                    - generic [ref=e1699]:
+                      - generic [ref=e1700]: t
+                      - generic [ref=e1701]: =
+                      - generic [ref=e1702]: "1"
+                    - generic [ref=e1703]: T
+                  - generic [ref=e1704]:
+                    - generic [ref=e1705]: ϵ
+                    - generic [ref=e1706]: step
+                - generic [ref=e1707]: =
+                - generic [ref=e1708]:
+                  - generic [ref=e1709]: T
+                  - generic [ref=e1710]: ⋅
+                  - generic [ref=e1711]:
+                    - generic [ref=e1712]: ϵ
+                    - generic [ref=e1713]: step
+            - text: . Under SSGM, reconciliation is invoked every
+            - math [ref=e1714]:
+              - generic [ref=e1716]: "N"
+            - text: steps, so error can accumulate for at most one reconciliation window before being corrected. For any
+            - math [ref=e1717]:
+              - generic [ref=e1719]:
+                - generic [ref=e1720]: T
+                - generic [ref=e1721]: =
+                - generic [ref=e1722]:
+                  - generic [ref=e1723]:
+                    - generic [ref=e1724]: m
+                    - generic [ref=e1725]: "N"
+                  - generic [ref=e1726]: +
+                  - generic [ref=e1727]: r
+            - text: with
+            - math [ref=e1728]:
+              - generic [ref=e1730]:
+                - generic [ref=e1731]: "0"
+                - generic [ref=e1732]: ≤
+                - generic [ref=e1733]: r
+                - generic [ref=e1734]: <
+                - generic [ref=e1735]: "N"
+            - text: ", the unreconciled portion contributes at most"
+            - math [ref=e1736]:
+              - generic [ref=e1738]:
+                - generic [ref=e1739]:
+                  - generic [ref=e1740]: r
+                  - generic [ref=e1741]: ⋅
+                  - generic [ref=e1742]:
+                    - generic [ref=e1743]: ϵ
+                    - generic [ref=e1744]: step
+                - generic [ref=e1745]: <
+                - generic [ref=e1746]:
+                  - generic [ref=e1747]: "N"
+                  - generic [ref=e1748]: ⋅
+                  - generic [ref=e1749]:
+                    - generic [ref=e1750]: ϵ
+                    - generic [ref=e1751]: step
+            - text: ", up to the bounded residual reconciliation error. Hence the dominant growth term is bounded by the window size"
+            - math [ref=e1752]:
+              - generic [ref=e1754]: "N"
+            - text: ", not by the full horizon"
+            - math [ref=e1755]:
+              - generic [ref=e1757]: T
+            - text: .
+        - generic [ref=e1758]:
+          - heading "6.3 Testable Research Hypotheses and Evaluation Protocols" [level=3] [ref=e1759]:
+            - generic [ref=e1760]: "6.3"
+            - text: Testable Research Hypotheses and Evaluation Protocols
+          - paragraph [ref=e1762]:
+            - text: The formalization of SSGM establishes a new paradigm for evaluating agent memory. Moving beyond simplistic metrics like Recall@K
+            - generic [ref=e1763]:
+              - text: (Ai et al.,
+              - link "2025" [ref=e1764] [cursor=pointer]:
+                - /url: "#bib.bib2"
+              - text: )
+            - text: ", we propose three testable research hypotheses that should guide future empirical evaluations in the NLP community:"
+          - paragraph [ref=e1766]:
+            - text: "H1: Governance Gates Statistically Bound Drift Magnitude. Based on Theorem 1, we hypothesize that agents equipped with"
+            - math [ref=e1767]:
+              - generic [ref=e1769]:
+                - generic [ref=e1770]: 𝒢
+                - generic [ref=e1771]: write
+            - text: and
+            - math [ref=e1772]:
+              - generic [ref=e1774]: ℛ
+            - text: will exhibit an asymptotic upper limit on drift magnitude (
+            - math [ref=e1775]:
+              - generic [ref=e1777]:
+                - generic [ref=e1778]: δ
+                - generic [ref=e1779]:
+                  - generic [ref=e1780]: (
+                  - generic [ref=e1781]:
+                    - generic [ref=e1782]: M
+                    - generic [ref=e1783]: T
+                  - generic [ref=e1784]: ","
+                  - generic [ref=e1785]:
+                    - generic [ref=e1786]: 𝒦
+                    - generic [ref=e1787]: "true"
+                  - generic [ref=e1788]: )
+            - text: ) over infinite-horizon tasks (e.g.,
+            - math [ref=e1789]:
+              - generic [ref=e1791]:
+                - generic [ref=e1792]: T
+                - generic [ref=e1793]: ">"
+                - generic [ref=e1794]: "100"
+            - text: "turns), whereas baseline agents will demonstrate approximately linear drift accumulation. Evaluation Protocol: This can be robustly tested using established benchmarks like LongMemEval"
+            - generic [ref=e1795]:
+              - text: (Wu et al.,
+              - link "2025" [ref=e1796] [cursor=pointer]:
+                - /url: "#bib.bib59"
+              - text: )
+            - text: ", utilizing LLM-as-a-Judge and metrics like BERTScore to quantify the fidelity of the final memory graph against the ground-truth text over extended timesteps."
+          - paragraph [ref=e1798]:
+            - text: "H2: Access-Scoped Retrieval Lowers Adversarial Leakage Risk. We hypothesize that enforcing the constrained retrieval rule in Eq. (5) will dramatically lower the successful injection rate of cross-tenant adversarial prompts without degrading the primary task success rate. Evaluation Protocol: Researchers should simulate multi-user role-playing scenarios and measure the “Leakage Plateau”"
+            - generic [ref=e1799]:
+              - text: (Liu et al.,
+              - link "2025a" [ref=e1800] [cursor=pointer]:
+                - /url: "#bib.bib58"
+              - text: )
+            - text: when adversarial data is deliberately injected into neighboring graph nodes.
+          - paragraph [ref=e1802]:
+            - text: "H3: The Latency vs. Coherence Trade-off. Integrating strict logical contradiction checks into the critical path of Eq. (6) will yield a measurable increase in memory write latency. Evaluation Protocol: Future studies must quantify this trade-off, potentially demonstrating that asynchronous governance protocols (e.g., executing"
+            - math [ref=e1803]:
+              - generic [ref=e1805]: ℛ
+            - text: during idle periods) can achieve high coherence (low
+            - math [ref=e1806]:
+              - generic [ref=e1808]: δ
+            - text: ) without compromising the immediate conversational fluidity
+            - generic [ref=e1809]:
+              - text: (Zhang et al.,
+              - link "2025" [ref=e1810] [cursor=pointer]:
+                - /url: "#bib.bib45"
+              - text: )
+            - text: .
+      - generic [ref=e1811]:
+        - heading "7 Conclusion" [level=2] [ref=e1812]:
+          - generic [ref=e1813]: "7"
+          - text: Conclusion
+        - paragraph [ref=e1815]: The transition from static context windows to evolving, self-refining memory represents a pivotal leap in agentic AI. However, as demonstrated in this survey, this autonomy comes with the peril of memory corruption—ranging from subtle semantic drift to catastrophic poisoning. We argue that the prevailing focus on “retrieval accuracy” is insufficient; the next generation of memory systems must prioritize memory integrity and safety.
+        - paragraph [ref=e1817]: The SSGM framework proposed in this paper serves as a conceptual foundation for rigorous memory governance. By decoupling the cognitive policy from the memory substrate via validation and filtering gates, we can build agents that are adaptable yet robust. Beyond proposing SSGM, this work also provides a taxonomy of evolving memory systems, a structured analysis of failure modes, and a framing of the core trade-offs that will shape future governed memory designs. Looking forward, the community must focus on standardized safety benchmarks (like MemoryBench) that stress-test memory stability under adversarial drift, machine unlearning protocols to surgically remove toxic memories, and evaluating the hypotheses defined in our research agenda. Ultimately, solving the memory-governance problem is a prerequisite for deploying lifelong learning agents in high-stakes, real-world environments.
+      - generic [ref=e1818]:
+        - heading "Limitations" [level=2] [ref=e1819]
+        - paragraph [ref=e1821]: "While SSGM provides a blueprint for reliable memory, it introduces three fundamental trade-offs that warrant future investigation:"
+        - paragraph [ref=e1823]:
+          - text: "1. The Latency-Safety Trade-off: The proposed governance layer introduces a “System 2” verification step into the memory loop. Validating consistency and provenance for every update incurs significant latency, potentially rendering the agent unresponsive in real-time scenarios. Future work must explore asynchronous governance, where memory is optimistically updated but periodically “sanitized” in the background"
+          - generic [ref=e1824]:
+            - text: (Zhang et al.,
+            - link "2025" [ref=e1825] [cursor=pointer]:
+              - /url: "#bib.bib45"
+            - text: )
+          - text: .
+        - paragraph [ref=e1827]: "2. The Stability-Plasticity Conflict: Strict consistency filtering may lead to knowledge ossification. If the governance layer aggressively rejects information that conflicts with established memory, the agent may fail to adapt to legitimate environmental changes (e.g., a user changing their address). Designing “conflict resolution protocols” that can distinguish between drift and update remains an open algorithmic challenge."
+        - paragraph [ref=e1829]:
+          - text: "3. Scalability of Graph Structures: While graph-based memories (e.g., Zep, MAGMA) offer superior reasoning capabilities, maintaining a consistent graph at scale is non-trivial. As interaction history grows, the complexity of graph traversal and entity resolution can degrade retrieval performance, necessitating more efficient graph pruning and compression algorithms"
+          - generic [ref=e1830]:
+            - text: (Jiang et al.,
+            - link "2026" [ref=e1831] [cursor=pointer]:
+              - /url: "#bib.bib15"
+            - text: )
+          - text: .
+      - generic [ref=e1832]:
+        - heading "References" [level=2] [ref=e1833]
+        - list [ref=e1834]:
+          - listitem [ref=e1835]:
+            - generic [ref=e1836]: Q. Ai, Y. Tang, C. Wang, J. Long, W. Su, and Y. Liu (2025)
+            - generic [ref=e1837]: "MemoryBench: a benchmark for memory and continual learning in llm systems."
+            - generic [ref=e1838]: arXiv preprint arXiv:2510.17281.
+            - generic [ref=e1839]:
+              - text: "Cited by:"
+              - link "§6.3" [ref=e1840] [cursor=pointer]:
+                - /url: "#S6.SS3.p1.1"
+              - text: .
+          - listitem [ref=e1841]:
+            - generic [ref=e1842]: S. Alqithami (2025)
+            - generic [ref=e1843]: "Forgetful but faithful: a cognitive memory architecture and benchmark for privacy-aware generative agents."
+            - generic [ref=e1844]: arXiv preprint arXiv:2512.12856.
+            - generic [ref=e1845]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e1846] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.1.2"
+              - text: ","
+              - link "§4.3" [ref=e1847] [cursor=pointer]:
+                - /url: "#S4.SS3.p1.1"
+              - text: ","
+              - link "§6.1" [ref=e1848] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px4.p1.1"
+              - text: .
+          - listitem [ref=e1849]:
+            - generic [ref=e1850]: A. Biswal, C. Lei, X. Qin, A. Li, B. Narayanaswamy, and T. Kraska (2026)
+            - generic [ref=e1851]: "AgentSM: semantic memory for agentic text-to-SQL."
+            - generic [ref=e1852]: arXiv preprint arXiv:2601.15709.
+            - generic [ref=e1853]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e1854] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.8.7.1"
+              - text: .
+          - listitem [ref=e1855]:
+            - generic [ref=e1856]: C. Chen, M. Guan, X. Lin, L. Lin, J. Li, Q. Wang, X. Chen, J. Luo, C. Sun, D. Zhang, and X. Li (2025)
+            - generic [ref=e1857]: "TeleMem: building long-term and multimodal memory for agentic AI."
+            - generic [ref=e1858]: arXiv preprint arXiv:2501.07722.
+            - generic [ref=e1859]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e1860] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.21.20.1"
+              - text: ","
+              - link "§3.1" [ref=e1861] [cursor=pointer]:
+                - /url: "#S3.SS1.p2.1"
+              - text: .
+          - listitem [ref=e1862]:
+            - generic [ref=e1863]: P. Chhikara, D. Khant, S. Aryan, T. Singh, and D. Yadav (2025)
+            - generic [ref=e1864]: "Mem0: building production-ready ai agents with scalable long-term memory."
+            - generic [ref=e1865]: arXiv preprint arXiv:2504.19413.
+            - generic [ref=e1866]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1867] [cursor=pointer]:
+                - /url: "#S1.p2.1"
+              - text: ","
+              - link "§5.3" [ref=e1868] [cursor=pointer]:
+                - /url: "#S5.SS3.p1.1"
+              - text: ","
+              - link "Table 2" [ref=e1869] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.7.5.4"
+              - text: .
+          - listitem [ref=e1870]:
+            - generic [ref=e1871]: X. Du, L. Li, D. Zhang, and L. Song (2025)
+            - generic [ref=e1872]:
+              - generic [ref=e1873]:
+                - text: MemR
+                - superscript [ref=e1874]: "3"
+                - text: ": memory retrieval via reflective reasoning for llm agents"
+              - text: .
+            - generic [ref=e1875]: arXiv preprint arXiv:2512.20237.
+            - generic [ref=e1876]:
+              - text: "Cited by:"
+              - link "§4.1" [ref=e1877] [cursor=pointer]:
+                - /url: "#S4.SS1.p1.1"
+              - text: ","
+              - link "Table 2" [ref=e1878] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.5.3.4"
+              - text: .
+          - listitem [ref=e1879]:
+            - generic [ref=e1880]: R. Fang, Y. Liang, X. Wang, J. Wu, S. Qiao, P. Xie, F. Huang, H. Chen, and N. Zhang (2025)
+            - generic [ref=e1881]: "Memp: exploring agent procedural memory."
+            - generic [ref=e1882]: arXiv preprint arXiv:2508.06433.
+            - generic [ref=e1883]:
+              - text: "Cited by:"
+              - link "Table 2" [ref=e1884] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.3.1.3"
+              - text: .
+          - listitem [ref=e1885]:
+            - generic [ref=e1886]: Y. Gao, Y. Xiong, X. Gao, K. Jia, J. Pan, Y. Bi, Y. Dai, J. Sun, H. Wang, and H. Wang (2023)
+            - generic [ref=e1887]: "Retrieval-augmented generation for large language models: a survey."
+            - generic [ref=e1888]: arXiv preprint arXiv:2312.10997 2 (1).
+            - generic [ref=e1889]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1890] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: .
+          - listitem [ref=e1891]:
+            - generic [ref=e1892]: K. Greshake, S. Abdelnabi, S. Mishra, C. Endres, T. Holz, and M. Fritz (2023)
+            - generic [ref=e1893]: "Not what you’ve signed up for: compromising real-world llm-integrated applications with indirect prompt injection."
+            - generic [ref=e1894]: In Proceedings of the 16th ACM Workshop on Artificial Intelligence and Security,
+            - generic [ref=e1895]: pp. 79–90.
+            - generic [ref=e1896]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1897] [cursor=pointer]:
+                - /url: "#S1.p3.1"
+              - text: ","
+              - link "§5.3" [ref=e1898] [cursor=pointer]:
+                - /url: "#S5.SS3.p2.1"
+              - text: ","
+              - link "Table 2" [ref=e1899] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.9.7.4"
+              - text: ","
+              - link "§6" [ref=e1900] [cursor=pointer]:
+                - /url: "#S6.p1.1"
+              - text: .
+          - listitem [ref=e1901]:
+            - generic [ref=e1902]: B. J. Gutiérrez, Y. Shu, Y. Gu, M. Yasunaga, and Y. Su (2024)
+            - generic [ref=e1903]: "HippoRAG: neurobiologically inspired long-term memory for large language models."
+            - generic [ref=e1904]: In Advances in Neural Information Processing Systems,
+            - generic [ref=e1905]: Vol. 37.
+            - generic [ref=e1906]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e1907] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.17.16.1"
+              - text: ","
+              - link "§3.2" [ref=e1908] [cursor=pointer]:
+                - /url: "#S3.SS2.p2.1"
+              - text: .
+          - listitem [ref=e1909]:
+            - generic [ref=e1910]: D. Han, C. Couturier, D. M. Diaz, X. Zhang, V. Rühle, and S. Rajmohan (2025)
+            - generic [ref=e1911]: "Legomem: modular procedural memory for multi-agent llm systems for workflow automation."
+            - generic [ref=e1912]: arXiv preprint arXiv:2510.04851.
+            - generic [ref=e1913]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1914] [cursor=pointer]:
+                - /url: "#S1.p3.1"
+              - text: ","
+              - link "Table 1" [ref=e1915] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.7.6.1"
+              - text: ","
+              - link "§3.1" [ref=e1916] [cursor=pointer]:
+                - /url: "#S3.SS1.p2.1"
+              - text: ","
+              - link "§5.1" [ref=e1917] [cursor=pointer]:
+                - /url: "#S5.SS1.p3.1"
+              - text: ","
+              - link "Table 2" [ref=e1918] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.3.1.3"
+              - text: .
+          - listitem [ref=e1919]:
+            - generic [ref=e1920]: C. Hu, J. Fu, C. Du, S. Luo, J. Zhao, and H. Zhao (2023)
+            - generic [ref=e1921]: "Chatdb: augmenting llms with databases as their symbolic memory."
+            - generic [ref=e1922]: arXiv preprint arXiv:2306.03901.
+            - generic [ref=e1923]:
+              - text: "Cited by:"
+              - link "§3.2" [ref=e1924] [cursor=pointer]:
+                - /url: "#S3.SS2.p2.1"
+              - text: .
+          - listitem [ref=e1925]:
+            - generic [ref=e1926]: Y. Hu, S. Liu, Y. Yue, G. Zhang, B. Liu, F. Zhu, J. Lin, H. Guo, S. Dou, Z. Xi, et al. (2025)
+            - generic [ref=e1927]: Memory in the age of ai agents.
+            - generic [ref=e1928]: arXiv preprint arXiv:2512.13564.
+            - generic [ref=e1929]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1930] [cursor=pointer]:
+                - /url: "#S1.p3.1"
+              - text: .
+          - listitem [ref=e1931]:
+            - generic [ref=e1932]: Z. Huang, Z. Tian, Q. Guo, F. Zhang, Y. Zhou, D. Jiang, Z. Xie, and X. Zhou (2025)
+            - generic [ref=e1933]: "Licomemory: lightweight and cognitive agentic memory for efficient long-term reasoning."
+            - generic [ref=e1934]: arXiv preprint arXiv:2511.01448.
+            - generic [ref=e1935]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e1936] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.16.15.1"
+              - text: ","
+              - link "§4.3" [ref=e1937] [cursor=pointer]:
+                - /url: "#S4.SS3.SSS0.Px1.p1.1"
+              - text: ","
+              - link "§6.1" [ref=e1938] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px2.p1.2"
+              - text: .
+          - listitem [ref=e1939]:
+            - generic [ref=e1940]: Y. Huo, Y. Lu, Z. Zhang, H. Chen, and Y. Lin (2026)
+            - generic [ref=e1941]: "AtomMem: learnable dynamic agentic memory with atomic memory operation."
+            - generic [ref=e1942]: arXiv preprint arXiv:2601.08323.
+            - generic [ref=e1943]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1944] [cursor=pointer]:
+                - /url: "#S1.p2.1"
+              - text: ","
+              - link "Table 1" [ref=e1945] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.6.5.1"
+              - text: ","
+              - link "§3.3" [ref=e1946] [cursor=pointer]:
+                - /url: "#S3.SS3.p1.1"
+              - text: .
+          - listitem [ref=e1947]:
+            - generic [ref=e1948]: D. Jiang, Y. Li, G. Li, and B. Li (2026)
+            - generic [ref=e1949]: "MAGMA: a multi-graph based agentic memory architecture for ai agents."
+            - generic [ref=e1950]: arXiv preprint arXiv:2601.03236.
+            - generic [ref=e1951]:
+              - text: "Cited by:"
+              - link "item 1" [ref=e1952] [cursor=pointer]:
+                - /url: "#S1.I1.i1.p1.1"
+              - text: ","
+              - link "Limitations" [ref=e1953] [cursor=pointer]:
+                - /url: "#Sx1.p4.1"
+              - text: .
+          - listitem [ref=e1954]:
+            - generic [ref=e1955]: P. Lewis, E. Perez, A. Piktus, F. Petroni, V. Karpukhin, N. Goyal, H. Küttler, M. Lewis, W. Yih, T. Rocktäschel, et al. (2020)
+            - generic [ref=e1956]: Retrieval-augmented generation for knowledge-intensive nlp tasks.
+            - generic [ref=e1957]: In Advances in neural information processing systems,
+            - generic [ref=e1958]: Vol. 33, pp. 9459–9474.
+            - generic [ref=e1959]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1960] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: .
+          - listitem [ref=e1961]:
+            - generic [ref=e1962]: J. Liu, D. Cao, Y. Wei, T. Su, Y. Liang, Y. Dong, Y. Liu, Y. Zhao, and X. Hu (2025a)
+            - generic [ref=e1963]: "Topology matters: measuring memory leakage in multi-agent llms."
+            - generic [ref=e1964]: arXiv preprint arXiv:2512.04668.
+            - generic [ref=e1965]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e1966] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.26.25.1"
+              - text: ","
+              - link "§5.3" [ref=e1967] [cursor=pointer]:
+                - /url: "#S5.SS3.p2.1"
+              - text: ","
+              - link "§6.1" [ref=e1968] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px3.p1.1"
+              - text: ","
+              - link "§6.3" [ref=e1969] [cursor=pointer]:
+                - /url: "#S6.SS3.p3.1"
+              - text: .
+          - listitem [ref=e1970]:
+            - generic [ref=e1971]: J. Liu, Y. Sun, W. Cheng, H. Lei, Y. Chen, L. Wen, X. Yang, D. Fu, P. Cai, N. Deng, Y. Yu, S. Hu, B. Shi, and D. Wang (2025b)
+            - generic [ref=e1972]: "MemVerse: multimodal memory for lifelong learning agents."
+            - generic [ref=e1973]: arXiv preprint arXiv:2512.03627.
+            - generic [ref=e1974]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e1975] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.24.23.1"
+              - text: .
+          - listitem [ref=e1976]:
+            - generic [ref=e1977]: J. Luo, Y. Tian, C. Cao, Z. Luo, H. Lin, K. Li, C. Kong, R. Yang, and J. Ma (2026)
+            - generic [ref=e1978]: "From storage to experience: a survey on the evolution of llm agent memory mechanisms."
+            - generic [ref=e1979]: Preprints.
+            - generic [ref=e1980]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1981] [cursor=pointer]:
+                - /url: "#S1.p2.1"
+              - text: ","
+              - link "§1" [ref=e1982] [cursor=pointer]:
+                - /url: "#S1.p3.1"
+              - text: ","
+              - link "§3.2" [ref=e1983] [cursor=pointer]:
+                - /url: "#S3.SS2.p1.1"
+              - text: .
+          - listitem [ref=e1984]:
+            - generic [ref=e1985]: A. Madaan, N. Tandon, P. Gupta, S. Hallinan, L. Gao, S. Wiegreffe, U. Alon, N. Dziri, S. Prabhumoye, Y. Yang, et al. (2023)
+            - generic [ref=e1986]: "Self-refine: iterative refinement with self-feedback."
+            - generic [ref=e1987]: In Advances in Neural Information Processing Systems,
+            - generic [ref=e1988]: Vol. 36, pp. 46534–46594.
+            - generic [ref=e1989]:
+              - text: "Cited by:"
+              - link "§4.1" [ref=e1990] [cursor=pointer]:
+                - /url: "#S4.SS1.p1.1"
+              - text: .
+          - listitem [ref=e1991]:
+            - generic [ref=e1992]: A. Matarazzo and R. Torlone (2025)
+            - generic [ref=e1993]: A survey on large language models with some insights on their capabilities and limitations.
+            - generic [ref=e1994]: arXiv preprint arXiv:2501.04040.
+            - generic [ref=e1995]:
+              - text: "Cited by:"
+              - link "§1" [ref=e1996] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: .
+          - listitem [ref=e1997]:
+            - generic [ref=e1998]: H. Mi, Y. Feng, W. Lu, S. Cao, J. Li, Y. Li, X. Zhang, H. Luo, S. Peng, H. Cui, T. Tian, J. Fang, H. Chai, and N. Tan (2026)
+            - generic [ref=e1999]: "Darwinian memory: a training-free self-regulating memory system for gui agent evolution."
+            - generic [ref=e2000]: arXiv preprint arXiv:2601.22528.
+            - generic [ref=e2001]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2002] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.10.9.1"
+              - text: ","
+              - link "§3.3" [ref=e2003] [cursor=pointer]:
+                - /url: "#S3.SS3.p1.1"
+              - text: .
+          - listitem [ref=e2004]:
+            - generic [ref=e2005]: J. Nan, W. Ma, W. Wu, and Y. Chen (2025)
+            - generic [ref=e2006]: "Nemori: self-organizing agent memory inspired by cognitive science."
+            - generic [ref=e2007]: arXiv preprint arXiv:2508.03341.
+            - generic [ref=e2008]:
+              - text: "Cited by:"
+              - link "§2" [ref=e2009] [cursor=pointer]:
+                - /url: "#S2.p3.1"
+              - text: .
+          - listitem [ref=e2010]:
+            - generic [ref=e2011]: H. Ni, J. Zhang, G. Li, Z. Wang, R. Wu, C. Zhang, and H. Tan (2025)
+            - generic [ref=e2012]: "Astraea: a state-aware scheduling engine for llm-powered agents."
+            - generic [ref=e2013]: arXiv preprint arXiv:2512.14142.
+            - generic [ref=e2014]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2015] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.11.10.1"
+              - text: ","
+              - link "§5.3" [ref=e2016] [cursor=pointer]:
+                - /url: "#S5.SS3.p1.1"
+              - text: .
+          - listitem [ref=e2017]:
+            - generic [ref=e2018]: OpenAI (2023)
+            - generic [ref=e2019]: GPT-4 system card.
+            - generic [ref=e2020]: Technical report
+            - generic [ref=e2021]: OpenAI.
+            - generic [ref=e2022]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2023] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: .
+          - listitem [ref=e2024]:
+            - generic [ref=e2025]: C. Packer, S. Wooders, K. Lin, V. Fang, S. G. Patil, I. Stoica, and J. E. Gonzalez (2024)
+            - generic [ref=e2026]: "MemGPT: towards llms as operating systems."
+            - generic [ref=e2027]: arXiv preprint arXiv:2310.08560.
+            - generic [ref=e2028]:
+              - text: "Cited by:"
+              - link "§2" [ref=e2029] [cursor=pointer]:
+                - /url: "#S2.p2.1"
+              - text: .
+          - listitem [ref=e2030]:
+            - generic [ref=e2031]: J. S. Park, J. O’Brien, C. J. Cai, M. R. Morris, P. Liang, and M. S. Bernstein (2023)
+            - generic [ref=e2032]: "Generative agents: interactive simulacra of human behavior."
+            - generic [ref=e2033]: In Proceedings of the 36th annual acm symposium on user interface software and technology,
+            - generic [ref=e2034]: pp. 1–22.
+            - generic [ref=e2035]:
+              - text: "Cited by:"
+              - link "§2" [ref=e2036] [cursor=pointer]:
+                - /url: "#S2.p1.1"
+              - text: ","
+              - link "§3.1" [ref=e2037] [cursor=pointer]:
+                - /url: "#S3.SS1.p2.1"
+              - text: ","
+              - link "§5.1" [ref=e2038] [cursor=pointer]:
+                - /url: "#S5.SS1.p2.1"
+              - text: ","
+              - link "Table 2" [ref=e2039] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.1.5"
+              - text: .
+          - listitem [ref=e2040]:
+            - generic [ref=e2041]: O. Press, N. A. Smith, and M. Lewis (2021)
+            - generic [ref=e2042]: "Train short, test long: attention with linear biases enables input length extrapolation."
+            - generic [ref=e2043]: arXiv preprint arXiv:2108.12409.
+            - generic [ref=e2044]:
+              - text: "Cited by:"
+              - link "§2" [ref=e2045] [cursor=pointer]:
+                - /url: "#S2.p1.1"
+              - text: .
+          - listitem [ref=e2046]:
+            - generic [ref=e2047]: H. Qian et al. (2024)
+            - generic [ref=e2048]: "MemoRAG: boosting long context processing with global memory-enhanced retrieval augmentation."
+            - generic [ref=e2049]: In Proceedings of the ACM Web Conference 2025,
+            - generic [ref=e2050]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2051] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.15.14.1"
+              - text: ","
+              - link "§3.2" [ref=e2052] [cursor=pointer]:
+                - /url: "#S3.SS2.p2.1"
+              - text: .
+          - listitem [ref=e2053]:
+            - generic [ref=e2054]: P. Rasmussen, P. Paliychuk, T. Beauvais, J. Ryan, and D. Chalef (2025)
+            - generic [ref=e2055]: "Zep: a temporal knowledge graph architecture for agent memory."
+            - generic [ref=e2056]: arXiv preprint arXiv:2501.13956.
+            - generic [ref=e2057]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2058] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.19.18.1"
+              - text: ","
+              - link "§5.2" [ref=e2059] [cursor=pointer]:
+                - /url: "#S5.SS2.p1.1"
+              - text: ","
+              - link "Table 2" [ref=e2060] [cursor=pointer]:
+                - /url: "#S5.T2"
+              - text: ","
+              - link "Table 2" [ref=e2061] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.6.4.3"
+              - text: ","
+              - link "§6.1" [ref=e2062] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px2.p1.2"
+              - text: .
+          - listitem [ref=e2063]:
+            - generic [ref=e2064]: A. Rath (2026)
+            - generic [ref=e2065]: "Agent drift: quantifying behavioral degradation in multi-agent llm systems over extended interactions."
+            - generic [ref=e2066]: arXiv preprint arXiv:2601.04170.
+            - generic [ref=e2067]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2068] [cursor=pointer]:
+                - /url: "#S1.p3.1"
+              - text: ","
+              - link "§5.1" [ref=e2069] [cursor=pointer]:
+                - /url: "#S5.SS1.p4.1"
+              - text: ","
+              - link "§6.1" [ref=e2070] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px4.p1.1"
+              - text: .
+          - listitem [ref=e2071]:
+            - generic [ref=e2072]: A. Rezazadeh, Z. Li, A. Lou, Y. Zhao, W. Wei, and Y. Bao (2025)
+            - generic [ref=e2073]: "Collaborative memory: multi-user memory sharing in llm agents with dynamic access control."
+            - generic [ref=e2074]: arXiv preprint arXiv:2505.18279.
+            - generic [ref=e2075]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2076] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.25.24.1"
+              - text: ","
+              - link "§5.3" [ref=e2077] [cursor=pointer]:
+                - /url: "#S5.SS3.p2.1"
+              - text: ","
+              - link "Table 2" [ref=e2078] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.10.8.3"
+              - text: ","
+              - link "§6.1" [ref=e2079] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px3.p1.1"
+              - text: .
+          - listitem [ref=e2080]:
+            - generic [ref=e2081]: S. Sarin, L. Singh, B. Sarmah, and D. Mehta (2025)
+            - generic [ref=e2082]: "Memoria: a scalable agentic memory framework for personalized conversational ai."
+            - generic [ref=e2083]: In 2025 5th International Conference on AI-ML-Systems,
+            - generic [ref=e2084]: pp. 32–39.
+            - generic [ref=e2085]:
+              - text: "Cited by:"
+              - link "Table 2" [ref=e2086] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.8.6.3"
+              - text: .
+          - listitem [ref=e2087]:
+            - generic [ref=e2088]: N. Shinn, F. Cassano, A. Gopinath, K. Narasimhan, and S. Yao (2023)
+            - generic [ref=e2089]: "Reflexion: language agents with verbal reinforcement learning."
+            - generic [ref=e2090]: In Advances in Neural Information Processing Systems,
+            - generic [ref=e2091]: Vol. 36, pp. 8634–8652.
+            - generic [ref=e2092]:
+              - text: "Cited by:"
+              - link "§4.1" [ref=e2093] [cursor=pointer]:
+                - /url: "#S4.SS1.p1.1"
+              - text: .
+          - listitem [ref=e2094]:
+            - generic [ref=e2095]: T. Sumers, S. Yao, K. R. Narasimhan, and T. L. Griffiths (2023)
+            - generic [ref=e2096]: Cognitive architectures for language agents.
+            - generic [ref=e2097]: Transactions on Machine Learning Research.
+            - generic [ref=e2098]:
+              - text: "Cited by:"
+              - link "§4.1" [ref=e2099] [cursor=pointer]:
+                - /url: "#S4.SS1.p1.1"
+              - text: .
+          - listitem [ref=e2100]:
+            - generic [ref=e2101]: V. Tresp, S. Sharifzadeh, H. Li, D. Konopatzki, and Y. Ma (2023)
+            - generic [ref=e2102]: "The tensor brain: a unified theory of perception, memory, and semantic decoding."
+            - generic [ref=e2103]: Neural Computation 35 (2), pp. 156–227.
+            - generic [ref=e2104]:
+              - text: "Cited by:"
+              - link "§2" [ref=e2105] [cursor=pointer]:
+                - /url: "#S2.p2.1"
+              - text: ","
+              - link "§4.3" [ref=e2106] [cursor=pointer]:
+                - /url: "#S4.SS3.p1.1"
+              - text: ","
+              - link "§6.1" [ref=e2107] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px1.p1.3"
+              - text: .
+          - listitem [ref=e2108]:
+            - generic [ref=e2109]: B. Wang, W. He, S. Zeng, Z. Xiang, Y. Xing, J. Tang, and P. He (2025)
+            - generic [ref=e2110]: Unveiling privacy risks in llm agent memory.
+            - generic [ref=e2111]: In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics,
+            - generic [ref=e2112]: pp. 25241–25260.
+            - generic [ref=e2113]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2114] [cursor=pointer]:
+                - /url: "#S1.p3.1"
+              - text: .
+          - listitem [ref=e2115]:
+            - generic [ref=e2116]: G. Wang, Y. Xie, Y. Jiang, A. Mandlekar, C. Xiao, Y. Zhu, L. Fan, and A. Anandkumar (2023)
+            - generic [ref=e2117]: "Voyager: an open-ended embodied agent with large language models."
+            - generic [ref=e2118]: arXiv preprint arXiv:2305.16291.
+            - generic [ref=e2119]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2120] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: ","
+              - link "§4.1" [ref=e2121] [cursor=pointer]:
+                - /url: "#S4.SS1.p1.1"
+              - text: .
+          - listitem [ref=e2122]:
+            - generic [ref=e2123]: K. Wang, Y. Lin, J. Lou, Z. Zhou, B. Suvonov, and J. Li (2026)
+            - generic [ref=e2124]: "E-mem: multi-agent based episodic context reconstruction for llm agent memory."
+            - generic [ref=e2125]: arXiv preprint arXiv:2601.21714.
+            - generic [ref=e2126]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2127] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.18.17.1"
+              - text: ","
+              - link "§4.3" [ref=e2128] [cursor=pointer]:
+                - /url: "#S4.SS3.SSS0.Px1.p2.1"
+              - text: .
+          - listitem [ref=e2129]:
+            - generic [ref=e2130]: Y. Wang and X. Chen (2025)
+            - generic [ref=e2131]: "MIRIX: multi-agent memory system for llm-based agents."
+            - generic [ref=e2132]: arXiv preprint arXiv:2507.07957.
+            - generic [ref=e2133]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2134] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.27.26.1"
+              - text: ","
+              - link "§6.1" [ref=e2135] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px3.p1.1"
+              - text: .
+          - listitem [ref=e2136]:
+            - generic [ref=e2137]: J. Wei, X. Wang, D. Schuurmans, M. Bosma, F. Xia, E. Chi, Q. V. Le, D. Zhou, et al. (2022)
+            - generic [ref=e2138]: Chain-of-thought prompting elicits reasoning in large language models.
+            - generic [ref=e2139]: In Advances in neural information processing systems,
+            - generic [ref=e2140]: Vol. 35, pp. 24824–24837.
+            - generic [ref=e2141]:
+              - text: "Cited by:"
+              - link "§2" [ref=e2142] [cursor=pointer]:
+                - /url: "#S2.p3.1"
+              - text: .
+          - listitem [ref=e2143]:
+            - generic [ref=e2144]: D. Wu, H. Wang, W. Yu, Y. Zhang, K. Chang, and D. Yu (2025)
+            - generic [ref=e2145]: "LongMemEval: benchmarking chat assistants on long-term interactive memory."
+            - generic [ref=e2146]:
+              - text: "External Links:"
+              - generic [ref=e2147]:
+                - text: 2410.10813,
+                - link "Link" [ref=e2148] [cursor=pointer]:
+                  - /url: https://arxiv.org/abs/2410.10813
+            - generic [ref=e2149]:
+              - text: "Cited by:"
+              - link "§6.3" [ref=e2150] [cursor=pointer]:
+                - /url: "#S6.SS3.p2.4"
+              - text: .
+          - listitem [ref=e2151]:
+            - generic [ref=e2152]: Z. Xi, W. Chen, X. Guo, W. He, Y. Ding, B. Hong, M. Zhang, J. Wang, S. Jin, E. Zhou, et al. (2023)
+            - generic [ref=e2153]: "The rise and potential of large language model based agents: a survey."
+            - generic [ref=e2154]: arXiv preprint arXiv:2309.07864.
+            - generic [ref=e2155]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2156] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: .
+          - listitem [ref=e2157]:
+            - generic [ref=e2158]: W. Xu, K. Mei, H. Gao, J. Tan, Z. Liang, and Y. Zhang (2025)
+            - generic [ref=e2159]: "A-mem: agentic memory for llm agents."
+            - generic [ref=e2160]: In Advances in Neural Information Processing Systems,
+            - generic [ref=e2161]:
+              - text: "Cited by:"
+              - link "item 1" [ref=e2162] [cursor=pointer]:
+                - /url: "#S1.I1.i1.p1.1"
+              - text: ","
+              - link "Table 1" [ref=e2163] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.14.13.1"
+              - text: ","
+              - link "§3.2" [ref=e2164] [cursor=pointer]:
+                - /url: "#S3.SS2.p2.1"
+              - text: ","
+              - link "§6.1" [ref=e2165] [cursor=pointer]:
+                - /url: "#S6.SS1.SSS0.Px1.p1.3"
+              - text: .
+          - listitem [ref=e2166]:
+            - generic [ref=e2167]: S. Yan, X. Yang, Z. Huang, E. Nie, Z. Ding, Z. Li, X. Ma, J. Bi, K. Kersting, J. Z. Pan, et al. (2026)
+            - generic [ref=e2168]: "Memory-r1: enhancing large language model agents to manage and utilize memories via reinforcement learning."
+            - generic [ref=e2169]: arXiv preprint arXiv:2508.19828.
+            - generic [ref=e2170]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2171] [cursor=pointer]:
+                - /url: "#S1.p2.1"
+              - text: ","
+              - link "Table 1" [ref=e2172] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.4.3.1"
+              - text: ","
+              - link "§2" [ref=e2173] [cursor=pointer]:
+                - /url: "#S2.p2.1"
+              - text: ","
+              - link "§4.2" [ref=e2174] [cursor=pointer]:
+                - /url: "#S4.SS2.p2.10"
+              - text: .
+          - listitem [ref=e2175]:
+            - generic [ref=e2176]: S. Yao, J. Zhao, D. Yu, N. Du, I. Shafran, K. Narasimhan, and Y. Cao (2023)
+            - generic [ref=e2177]: "ReAct: synergizing reasoning and acting in language models."
+            - generic [ref=e2178]: In International Conference on Learning Representations (ICLR),
+            - generic [ref=e2179]:
+              - text: "Cited by:"
+              - link "§2" [ref=e2180] [cursor=pointer]:
+                - /url: "#S2.p3.1"
+              - text: .
+          - listitem [ref=e2181]:
+            - generic [ref=e2182]: W. Yeo, K. Kim, J. Yoon, and S. J. Hwang (2025)
+            - generic [ref=e2183]: "WorldMM: dynamic multimodal memory agent for long video reasoning."
+            - generic [ref=e2184]: arXiv preprint arXiv:2512.02425.
+            - generic [ref=e2185]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2186] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.23.22.1"
+              - text: ","
+              - link "§3.1" [ref=e2187] [cursor=pointer]:
+                - /url: "#S3.SS1.p2.1"
+              - text: .
+          - listitem [ref=e2188]:
+            - generic [ref=e2189]: Y. Yin, Q. Meng, M. Chen, J. Ding, Z. Shao, and Z. Yu (2025)
+            - generic [ref=e2190]: "VideoARM: agentic reasoning over hierarchical memory for long-form video understanding."
+            - generic [ref=e2191]: arXiv preprint arXiv:2512.12360.
+            - generic [ref=e2192]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2193] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.22.21.1"
+              - text: ","
+              - link "§3.1" [ref=e2194] [cursor=pointer]:
+                - /url: "#S3.SS1.p2.1"
+              - text: .
+          - listitem [ref=e2195]:
+            - generic [ref=e2196]: R. B. Yousuf, A. Khatri, S. Xu, M. Sharma, and N. Ramakrishnan (2025)
+            - generic [ref=e2197]: Can an llm induce a graph? investigating memory drift and context length.
+            - generic [ref=e2198]: arXiv preprint arXiv:2510.03611.
+            - generic [ref=e2199]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2200] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: .
+          - listitem [ref=e2201]:
+            - generic [ref=e2202]: H. Yu, T. Chen, J. Feng, J. Chen, W. Dai, Q. Yu, Y. Zhang, W. Ma, J. Liu, M. Wang, and H. Zhou (2025)
+            - generic [ref=e2203]: "MemAgent: reshaping long-context llm with multi-conv rl-based memory agent."
+            - generic [ref=e2204]: arXiv preprint arXiv:2507.02259.
+            - generic [ref=e2205]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2206] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.5.4.1"
+              - text: ","
+              - link "§3.3" [ref=e2207] [cursor=pointer]:
+                - /url: "#S3.SS3.p1.1"
+              - text: ","
+              - link "§4.2" [ref=e2208] [cursor=pointer]:
+                - /url: "#S4.SS2.p2.10"
+              - text: .
+          - listitem [ref=e2209]:
+            - generic [ref=e2210]: S. Yuen, F. G. Medina, T. Su, Y. Du, and A. J. Sobey (2026)
+            - generic [ref=e2211]: "Intrinsic memory agents: heterogeneous multi-agent llm systems through structured contextual memory."
+            - generic [ref=e2212]: arXiv preprint arXiv:2508.08997.
+            - generic [ref=e2213]:
+              - text: "Cited by:"
+              - link "Table 2" [ref=e2214] [cursor=pointer]:
+                - /url: "#S5.T2.1.1.4.2.3"
+              - text: .
+          - listitem [ref=e2215]:
+            - generic [ref=e2216]: J. Zhang, M. Fu, G. Wan, M. Yu, K. Wang, and S. Yan (2025)
+            - generic [ref=e2217]: "G-memory: tracing hierarchical memory for multi-agent systems."
+            - generic [ref=e2218]: arXiv preprint arXiv:2506.07398.
+            - generic [ref=e2219]:
+              - text: "Cited by:"
+              - link "§6.3" [ref=e2220] [cursor=pointer]:
+                - /url: "#S6.SS3.p4.2"
+              - text: ","
+              - link "Limitations" [ref=e2221] [cursor=pointer]:
+                - /url: "#Sx1.p2.1"
+              - text: .
+          - listitem [ref=e2222]:
+            - generic [ref=e2223]: N. Zhang, X. Yang, Z. Tan, W. Deng, and W. Wang (2026a)
+            - generic [ref=e2224]: "HiMem: hierarchical long-term memory for llm long-horizon agents."
+            - generic [ref=e2225]: arXiv preprint arXiv:2601.06377.
+            - generic [ref=e2226]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2227] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.13.12.1"
+              - text: ","
+              - link "§3.2" [ref=e2228] [cursor=pointer]:
+                - /url: "#S3.SS2.p2.1"
+              - text: .
+          - listitem [ref=e2229]:
+            - generic [ref=e2230]: Y. Zhang, J. Shu, Y. Ma, X. Lin, S. Wu, and J. Sang (2026b)
+            - generic [ref=e2231]: "Memory as action: autonomous context curation for long-horizon agentic tasks."
+            - generic [ref=e2232]: arXiv preprint arXiv:2510.12635.
+            - generic [ref=e2233]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2234] [cursor=pointer]:
+                - /url: "#S1.p2.1"
+              - text: ","
+              - link "§2" [ref=e2235] [cursor=pointer]:
+                - /url: "#S2.p3.1"
+              - text: .
+          - listitem [ref=e2236]:
+            - generic [ref=e2237]: B. Zheng et al. (2024)
+            - generic [ref=e2238]: Agent workflow memory.
+            - generic [ref=e2239]: arXiv preprint arXiv:2409.07429.
+            - generic [ref=e2240]:
+              - text: "Cited by:"
+              - link "Table 1" [ref=e2241] [cursor=pointer]:
+                - /url: "#S2.T1.1.1.9.8.1"
+              - text: ","
+              - link "§3.1" [ref=e2242] [cursor=pointer]:
+                - /url: "#S3.SS1.p2.1"
+              - text: .
+          - listitem [ref=e2243]:
+            - generic [ref=e2244]: W. Zhong, L. Guo, Q. Gao, H. Ye, and Y. Wang (2024)
+            - generic [ref=e2245]: "MemoryBank: enhancing large language models with long-term memory."
+            - generic [ref=e2246]: In Proceedings of the AAAI Conference on Artificial Intelligence,
+            - generic [ref=e2247]: Vol. 38, pp. 19724–19731.
+            - generic [ref=e2248]:
+              - text: "Cited by:"
+              - link "§1" [ref=e2249] [cursor=pointer]:
+                - /url: "#S1.p1.1"
+              - text: ","
+              - link "§2" [ref=e2250] [cursor=pointer]:
+                - /url: "#S2.p1.1"
+              - text: .
+  - contentinfo [ref=e2251]:
+    - generic [ref=e2252]:
+      - text: Experimental support, please
+      - link "view the build logs" [ref=e2253] [cursor=pointer]:
+        - /url: ./2603.11768v1/__stdout.txt
+      - text: for errors. Generated by
+      - link "L A T E xml [LOGO]" [ref=e2254] [cursor=pointer]:
+        - /url: https://math.nist.gov/~BMiller/LaTeXML/
+        - generic [ref=e2255]: L A T E
+        - text: xml
+        - img "[LOGO]" [ref=e2256]
+      - text: .
+    - generic [ref=e2257]:
+      - heading "Instructions for reporting errors" [level=2] [ref=e2258]
+      - paragraph [ref=e2259]: "We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the methods listed below:"
+      - list [ref=e2260]:
+        - listitem [ref=e2261]: Click the "Report Issue" button, located in the page header.
+      - paragraph [ref=e2262]:
+        - strong [ref=e2263]: "Tip:"
+        - text: You can select the relevant text first, to include it in your report.
+      - paragraph [ref=e2264]:
+        - text: Our team has already identified
+        - link "the following issues" [ref=e2265] [cursor=pointer]:
+          - /url: https://github.com/arXiv/html_feedback/issues
+        - text: . We appreciate your time reviewing and reporting rendering errors we may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability should not be a barrier to accessing research. Thank you for your continued support in championing open access for all.
+      - paragraph [ref=e2266]:
+        - text: Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a
+        - link "list of packages that need conversion" [ref=e2267] [cursor=pointer]:
+          - /url: https://github.com/brucemiller/LaTeXML/wiki/Porting-LaTeX-packages-for-LaTeXML
+        - text: ", and welcome"
+        - link "developer contributions" [ref=e2268] [cursor=pointer]:
+          - /url: https://github.com/brucemiller/LaTeXML/issues
+        - text: .
+  - generic [ref=e2269]: BETA

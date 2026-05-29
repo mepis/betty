@@ -1,0 +1,209 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - navigation [ref=e6]:
+        - link [ref=e7] [cursor=pointer]:
+          - /url: /?q=agent+memory+architecture+LLM+long-term+strategies+2025&t=web&drawer=products
+          - img [ref=e9]
+        - generic [ref=e11]:
+          - link [ref=e14] [cursor=pointer]:
+            - /url: https://www.qwant.com
+            - img [ref=e15]
+          - link "Junior" [ref=e21] [cursor=pointer]:
+            - /url: https://www.qwantjunior.com
+            - img [ref=e22]
+            - generic [ref=e25]: Junior
+          - separator [ref=e26]
+          - link [ref=e29] [cursor=pointer]:
+            - /url: https://shdw.me/qwant-tool
+            - img [ref=e30]
+      - generic:
+        - generic:
+          - button:
+            - generic:
+              - img
+          - generic:
+            - link "Qwant Search":
+              - /url: https://www.qwant.com
+              - img
+              - generic: Qwant Search
+            - link "Qwant Junior":
+              - /url: https://www.qwantjunior.com
+              - img
+              - generic: Qwant Junior
+            - separator
+            - link "Shadow Drive":
+              - /url: https://shdw.me/qwant-tool
+              - img
+              - generic: Shadow Drive
+            - generic:
+              - link "Get 20GB of free storage! Keep your private files safe and secure with Shadow Drive, the cloud storage solution from Qwant’s partner, designed and hosted in Europe.":
+                - /url: https://shdw.me/qwant-tool
+                - generic: Get 20GB of free storage!
+                - generic: Keep your private files safe and secure with Shadow Drive, the cloud storage solution from Qwant’s partner, designed and hosted in Europe.
+              - generic:
+                - link "Discover":
+                  - /url: https://shdw.me/qwant-tool
+                  - generic: Discover
+      - main [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e35]:
+            - link "Qwant" [ref=e36] [cursor=pointer]:
+              - /url: /
+              - img "Qwant" [ref=e37]
+            - generic [ref=e46]:
+              - searchbox "Enter your search term" [ref=e48]: agent memory architecture LLM long-term strategies 2025
+              - generic [ref=e49]:
+                - button [ref=e50] [cursor=pointer]:
+                  - img [ref=e52]
+                - separator [ref=e54]
+              - button "Search the web" [ref=e55] [cursor=pointer]:
+                - img [ref=e57]
+            - link "Show menu" [ref=e60] [cursor=pointer]:
+              - /url: /?q=agent+memory+architecture+LLM+long-term+strategies+2025&t=web&drawer=settings
+              - img [ref=e61]
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - link "All" [ref=e65] [cursor=pointer]:
+                - /url: /?t=web&q=agent+memory+architecture+LLM+long-term+strategies+2025
+                - generic [ref=e66]: All
+              - link "Images" [ref=e67] [cursor=pointer]:
+                - /url: /?t=images&q=agent+memory+architecture+LLM+long-term+strategies+2025
+                - generic [ref=e68]: Images
+              - link "Videos" [ref=e69] [cursor=pointer]:
+                - /url: /?t=videos&q=agent+memory+architecture+LLM+long-term+strategies+2025
+                - generic [ref=e70]: Videos
+              - link "News" [ref=e71] [cursor=pointer]:
+                - /url: /?t=news&q=agent+memory+architecture+LLM+long-term+strategies+2025
+                - generic [ref=e72]: News
+              - link "Shopping" [ref=e73] [cursor=pointer]:
+                - /url: /?t=shopping&q=agent+memory+architecture+LLM+long-term+strategies+2025
+                - generic [ref=e74]: Shopping
+              - generic [ref=e75]:
+                - separator [ref=e76]
+                - button "Filters" [ref=e77] [cursor=pointer]:
+                  - generic [ref=e78]: Filters
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - button "United States":
+                        - generic:
+                          - generic: United States
+                          - img
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: Qwant is temporarily unavailable
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - text: Please check your connection or
+                - link "refresh page" [ref=e92] [cursor=pointer]:
+                  - /url: /?q=agent+memory+architecture+LLM+long-term+strategies+2025&t=web
+                - text: .
+              - generic [ref=e93]: (HTTP 403)
+          - link "Relaunch your search" [ref=e94] [cursor=pointer]:
+            - /url: /?q=agent+memory+architecture+LLM+long-term+strategies+2025&t=web
+            - generic: Relaunch your search
+        - generic [ref=e97]:
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: Qwant extension
+              - button "close" [ref=e103] [cursor=pointer]:
+                - img
+            - generic [ref=e104]: Install Qwant as your default search engine.
+          - link "Add to Chrome" [ref=e105] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/detail/qwant-the-search-engine/kplfenefaakjhjkklghidleljeocgdap
+            - generic: Add to Chrome
+    - contentinfo [ref=e106]:
+      - generic "Footer" [ref=e107]:
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - img "Qwant" [ref=e110]
+            - generic [ref=e113]:
+              - generic [ref=e114]:
+                - text: The search engine that values you
+                - text: as a user, not as a product
+              - link "Discover the service" [ref=e115] [cursor=pointer]:
+                - /url: https://about.qwant.com/en/
+                - generic: Discover the service
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - generic [ref=e118]: About Qwant
+              - list [ref=e119]:
+                - listitem [ref=e120] [cursor=pointer]:
+                  - generic [ref=e121]: Better Web
+                - listitem [ref=e122] [cursor=pointer]:
+                  - generic [ref=e123]: Join Us
+                - listitem [ref=e124] [cursor=pointer]:
+                  - generic [ref=e125]: Help Center
+                - listitem [ref=e126] [cursor=pointer]:
+                  - generic [ref=e127]: Contact Us
+            - generic [ref=e128]:
+              - generic [ref=e129]: Services
+              - list [ref=e130]:
+                - listitem [ref=e131] [cursor=pointer]:
+                  - img [ref=e133]
+                  - generic [ref=e137]: Search
+                - listitem [ref=e138] [cursor=pointer]:
+                  - img [ref=e140]
+                  - generic [ref=e143]: Junior
+            - generic [ref=e144]:
+              - generic [ref=e145]: Follow us
+              - list [ref=e146]:
+                - listitem "Instagram" [ref=e147] [cursor=pointer]:
+                  - img [ref=e148]
+                - listitem "Facebook" [ref=e150] [cursor=pointer]:
+                  - img [ref=e151]
+                - listitem "X (ex-Twitter)" [ref=e153] [cursor=pointer]:
+                  - img [ref=e154]
+                - listitem "TikTok" [ref=e156] [cursor=pointer]:
+                  - img [ref=e157]
+                - listitem "LinkedIn" [ref=e159] [cursor=pointer]:
+                  - img [ref=e160]
+                - listitem "Discord" [ref=e162] [cursor=pointer]:
+                  - img [ref=e163]
+            - generic [ref=e166]:
+              - generic [ref=e167]: Apps
+              - list [ref=e168]:
+                - link "Download the app" [ref=e169] [cursor=pointer]:
+                  - /url: https://play.google.com/store/apps/details?id=com.qwant.liberty&utm_campaign=w2m&utm_source=qwantcom&utm_medium=badge
+                  - img "Button with link to Android Play Store" [ref=e170]
+                - link "Download the app" [ref=e171] [cursor=pointer]:
+                  - /url: https://itunes.apple.com/us/app/qwant/id924470452
+                  - img "Button with link to Apple Store" [ref=e172]
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - generic [ref=e178]:
+              - listitem [ref=e179] [cursor=pointer]:
+                - generic [ref=e180]: Privacy
+              - listitem [ref=e181] [cursor=pointer]:
+                - generic [ref=e182]: Terms of Service
+              - listitem [ref=e183] [cursor=pointer]:
+                - generic [ref=e184]: Legal notices
+              - listitem [ref=e185] [cursor=pointer]:
+                - generic [ref=e186]: Ranking
+              - generic [ref=e187] [cursor=pointer]: Report
+              - listitem [ref=e188] [cursor=pointer]:
+                - generic [ref=e189]: Cookie management
+            - generic [ref=e190]: © 2026 Qwant. All rights reserved.
+          - button "Share your feedback" [ref=e192] [cursor=pointer]:
+            - generic: Share your feedback
+  - iframe [ref=e194]:
+    - generic [ref=f3e2]:
+      - img [ref=f3e6]
+      - paragraph [ref=f3e9]: Access is temporarily restricted
+      - generic [ref=f3e11]:
+        - generic [ref=f3e12]:
+          - paragraph [ref=f3e13]: We detected unusual activity from your device or network.
+          - paragraph [ref=f3e14]: "Reasons may include:"
+          - list [ref=f3e15]:
+            - listitem [ref=f3e16]: "- Rapid taps or clicks"
+            - listitem [ref=f3e17]: "- JavaScript disabled or not working"
+            - listitem [ref=f3e18]: "- Automated (bot) activity on your network (IP 72.23.55.186)"
+            - listitem [ref=f3e19]: "- Use of developer or inspection tools"
+        - generic [ref=f3e20]:
+          - paragraph [ref=f3e21]:
+            - text: Need help?
+            - button "Submit feedback." [ref=f3e22] [cursor=pointer]
+          - paragraph [ref=f3e23]: "ID: 95ae553c-66a9-a5c3-1691-ff1655886705"
