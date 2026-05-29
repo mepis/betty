@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - button "Don't show this again" [ref=e5] [cursor=pointer]:
+        - img [ref=e6]
+      - paragraph [ref=e9]:
+        - strong [ref=e10]: Ragas Office Hours
+        - text: "- If you need help setting up Evals for your AI application, sign up for our Office Hours"
+        - link "here" [ref=e11] [cursor=pointer]:
+          - /url: https://cal.com/team/vibrantlabs/office-hours
+        - text: .
+  - banner [ref=e12]:
+    - navigation "Header" [ref=e13]:
+      - link "Ragas" [ref=e14] [cursor=pointer]:
+        - /url: https://docs.ragas.io/en/stable/
+        - img "logo" [ref=e15]
+      - generic [ref=e19]: Ragas
+      - generic [ref=e20]:
+        - radio "Switch to light mode"
+        - generic "Switch to light mode" [ref=e21] [cursor=pointer]:
+          - img [ref=e22]
+        - radio "Switch to dark mode"
+        - radio "Switch to system preference"
+      - dialog [ref=e24]:
+        - search [ref=e25]:
+          - generic [ref=e26]:
+            - textbox "Search" [ref=e27]
+            - generic:
+              - img
+            - navigation "Search":
+              - button "Clear":
+                - img
+          - generic [ref=e30]: Initializing search
+      - link "vibrantlabsai/ragas 14.1k 1.4k" [ref=e32] [cursor=pointer]:
+        - /url: https://github.com/vibrantlabsai/ragas
+        - img [ref=e34]
+        - generic [ref=e36]:
+          - text: vibrantlabsai/ragas
+          - list [ref=e37]:
+            - listitem [ref=e38]: 14.1k
+            - listitem [ref=e39]: 1.4k
+  - generic [ref=e40]:
+    - navigation "Tabs" [ref=e41]:
+      - list [ref=e43]:
+        - listitem [ref=e44]:
+          - link:
+            - /url: https://docs.ragas.io/en/stable/
+        - listitem [ref=e45]:
+          - link "🚀 Get Started" [ref=e46] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/getstarted/
+        - listitem [ref=e47]:
+          - link "📚 Core Concepts" [ref=e48] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/concepts/
+        - listitem [ref=e49]:
+          - link "🛠️ How-to Guides" [ref=e50] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/howtos/
+        - listitem [ref=e51]:
+          - link "📖 References" [ref=e52] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/references/
+        - listitem [ref=e53]:
+          - link "❤️ Community" [ref=e54] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/community/
+    - main [ref=e55]:
+      - generic [ref=e56]:
+        - navigation "Navigation" [ref=e60]:
+          - list [ref=e61]
+        - generic [ref=e63]:
+          - generic:
+            - navigation "Table of contents"
+        - article [ref=e65]:
+          - generic [ref=e66]:
+            - heading "404 - Not found" [level=1] [ref=e67]
+            - generic [ref=e68]:
+              - button "Copy entire page content to clipboard for LLM usage" [ref=e69] [cursor=pointer]:
+                - img [ref=e70]
+                - generic [ref=e72]: Copy page
+              - button "Copy options menu" [ref=e73] [cursor=pointer]:
+                - img [ref=e74]
+      - button "Back to top":
+        - img
+        - text: Back to top
+    - contentinfo [ref=e76]:
+      - generic [ref=e79]:
+        - text: Made with
+        - link "Material for MkDocs Insiders" [ref=e80] [cursor=pointer]:
+          - /url: https://squidfunk.github.io/mkdocs-material/

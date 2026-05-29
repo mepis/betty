@@ -1,0 +1,354 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#list-of-available-metrics
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - button "Don't show this again" [ref=e6] [cursor=pointer]:
+        - img [ref=e7]
+      - paragraph [ref=e10]:
+        - strong [ref=e11]: Ragas Office Hours
+        - text: "- If you need help setting up Evals for your AI application, sign up for our Office Hours"
+        - link "here" [ref=e12] [cursor=pointer]:
+          - /url: https://cal.com/team/vibrantlabs/office-hours
+        - text: .
+  - banner [ref=e13]:
+    - navigation "Header" [ref=e14]:
+      - link "Ragas" [ref=e15] [cursor=pointer]:
+        - /url: https://docs.ragas.io/en/stable/
+        - img "logo" [ref=e16]
+      - generic [ref=e18]:
+        - generic [ref=e20]: Ragas
+        - generic:
+          - generic: List of available metrics
+      - generic [ref=e21]:
+        - radio "Switch to light mode"
+        - generic "Switch to light mode" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+        - radio "Switch to dark mode"
+        - radio "Switch to system preference"
+      - dialog [ref=e25]:
+        - search [ref=e26]:
+          - generic [ref=e27]:
+            - textbox "Search" [ref=e28]
+            - generic:
+              - img
+            - navigation "Search":
+              - button "Clear":
+                - img
+          - generic [ref=e31]: Type to start searching
+      - link "vibrantlabsai/ragas 14.1k 1.4k" [ref=e33] [cursor=pointer]:
+        - /url: https://github.com/vibrantlabsai/ragas
+        - img [ref=e35]
+        - generic [ref=e37]:
+          - text: vibrantlabsai/ragas
+          - list [ref=e38]:
+            - listitem [ref=e39]: 14.1k
+            - listitem [ref=e40]: 1.4k
+  - generic [ref=e41]:
+    - navigation "Tabs" [ref=e42]:
+      - list [ref=e44]:
+        - listitem [ref=e45]:
+          - link:
+            - /url: https://docs.ragas.io/en/stable/
+        - listitem [ref=e46]:
+          - link "🚀 Get Started" [ref=e47] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/getstarted/
+        - listitem [ref=e48]:
+          - link "📚 Core Concepts" [ref=e49] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/concepts/
+        - listitem [ref=e50]:
+          - link "🛠️ How-to Guides" [ref=e51] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/howtos/
+        - listitem [ref=e52]:
+          - link "📖 References" [ref=e53] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/references/
+        - listitem [ref=e54]:
+          - link "❤️ Community" [ref=e55] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/community/
+    - main [ref=e56]:
+      - generic [ref=e57]:
+        - navigation "Navigation" [ref=e61]:
+          - list [ref=e62]:
+            - listitem [ref=e63]:
+              - link "📚 Core Concepts" [ref=e65] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/
+                - generic [ref=e66]: 📚 Core Concepts
+              - navigation [ref=e67]:
+                - list [ref=e68]:
+                  - listitem [ref=e69]:
+                    - link "Experimentation" [ref=e70] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/experimentation/
+                      - generic [ref=e71]: Experimentation
+                  - listitem [ref=e72]:
+                    - link "Datasets" [ref=e73] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/datasets/
+                      - generic [ref=e74]: Datasets
+                  - listitem [ref=e75]:
+                    - link "Metrics" [ref=e77] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/metrics/
+                      - generic [ref=e78]: Metrics
+                    - navigation [ref=e79]:
+                      - list [ref=e80]:
+                        - listitem [ref=e81]:
+                          - link "Overview" [ref=e82] [cursor=pointer]:
+                            - /url: https://docs.ragas.io/en/stable/concepts/metrics/overview/
+                            - generic [ref=e83]: Overview
+                        - listitem [ref=e84]:
+                          - link "Available Metrics" [ref=e86] [cursor=pointer]:
+                            - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
+                            - generic [ref=e87]: Available Metrics
+                          - navigation [ref=e90]:
+                            - list [ref=e91]:
+                              - listitem [ref=e92]:
+                                - generic [ref=e94]: Retrieval Augmented Generation
+                              - listitem [ref=e96]:
+                                - generic [ref=e98]: Nvidia Metrics
+                              - listitem [ref=e100]:
+                                - generic [ref=e102]: Agents or Tool Use Cases
+                              - listitem [ref=e104]:
+                                - generic [ref=e106]: Natural Language Comparison
+                              - listitem [ref=e108]:
+                                - generic [ref=e110]: SQL
+                              - listitem [ref=e112]:
+                                - generic [ref=e114]: General Purpose
+                              - listitem [ref=e116]:
+                                - generic [ref=e118]: Other Tasks
+                  - listitem [ref=e120]:
+                    - link "Test Data Generation" [ref=e122] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/test_data_generation/
+                      - generic [ref=e123]: Test Data Generation
+                    - navigation [ref=e124]:
+                      - list [ref=e125]:
+                        - listitem [ref=e126]:
+                          - generic [ref=e128]: RAG
+                        - listitem [ref=e130]:
+                          - generic [ref=e132]: Agents or tool use
+                  - listitem [ref=e134]:
+                    - link "Components" [ref=e136] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/components/
+                      - generic [ref=e137]: Components
+                    - navigation [ref=e138]:
+                      - list [ref=e139]:
+                        - listitem [ref=e140]:
+                          - generic [ref=e142]: General
+                        - listitem [ref=e144]:
+                          - generic [ref=e146]: Evaluation
+        - navigation "Table of contents" [ref=e151]:
+          - generic [ref=e152]: Table of contents
+          - list [ref=e153]:
+            - listitem [ref=e154]:
+              - link "Retrieval Augmented Generation" [ref=e155] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#retrieval-augmented-generation
+                - generic [ref=e156]: Retrieval Augmented Generation
+            - listitem [ref=e157]:
+              - link "Nvidia Metrics" [ref=e158] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#nvidia-metrics
+                - generic [ref=e159]: Nvidia Metrics
+            - listitem [ref=e160]:
+              - link "Agents or Tool use cases" [ref=e161] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#agents-or-tool-use-cases
+                - generic [ref=e162]: Agents or Tool use cases
+            - listitem [ref=e163]:
+              - link "Natural Language Comparison" [ref=e164] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#natural-language-comparison
+                - generic [ref=e165]: Natural Language Comparison
+            - listitem [ref=e166]:
+              - link "SQL" [ref=e167] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#sql
+                - generic [ref=e168]: SQL
+            - listitem [ref=e169]:
+              - link "General purpose" [ref=e170] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#general-purpose
+                - generic [ref=e171]: General purpose
+            - listitem [ref=e172]:
+              - link "Other tasks" [ref=e173] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#other-tasks
+                - generic [ref=e174]: Other tasks
+        - generic [ref=e175]:
+          - navigation "Navigation" [ref=e176]:
+            - list [ref=e177]:
+              - listitem:
+                - link:
+                  - /url: https://docs.ragas.io/en/stable/
+              - listitem [ref=e178]:
+                - link "📚 Core Concepts" [ref=e179] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/
+                  - generic [ref=e180]: 📚 Core Concepts
+              - listitem [ref=e181]:
+                - link "Metrics" [ref=e182] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/
+                  - generic [ref=e183]: Metrics
+              - listitem [ref=e184]:
+                - link "Available Metrics" [ref=e185] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
+                  - generic [ref=e186]: Available Metrics
+          - article [ref=e187]:
+            - generic [ref=e188]:
+              - heading "List of available metrics" [level=1] [ref=e189]
+              - generic [ref=e190]:
+                - button "Copy entire page content to clipboard for LLM usage" [ref=e191] [cursor=pointer]:
+                  - img [ref=e192]
+                  - generic [ref=e194]: Copy page
+                - button "Copy options menu" [ref=e195] [cursor=pointer]:
+                  - img [ref=e196]
+            - paragraph [ref=e198]: Ragas provides a set of evaluation metrics that can be used to measure the performance of your LLM application. These metrics are designed to help you objectively measure the performance of your application. Metrics are available for different applications and tasks, such as RAG and Agentic workflows.
+            - paragraph [ref=e199]: Each metric are essentially paradigms that are designed to evaluate a particular aspect of the application. LLM Based metrics might use one or more LLM calls to arrive at the score or result. One can also modify or write your own metrics using ragas.
+            - heading "Retrieval Augmented Generation" [level=2] [ref=e200]
+            - list [ref=e201]:
+              - listitem [ref=e202]:
+                - link "Context Precision" [ref=e203] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_precision/
+              - listitem [ref=e204]:
+                - link "Context Recall" [ref=e205] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_recall/
+              - listitem [ref=e206]:
+                - link "Context Entities Recall" [ref=e207] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_entities_recall/
+              - listitem [ref=e208]:
+                - link "Noise Sensitivity" [ref=e209] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/noise_sensitivity/
+              - listitem [ref=e210]:
+                - link "Response Relevancy" [ref=e211] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/answer_relevance/
+              - listitem [ref=e212]:
+                - link "Faithfulness" [ref=e213] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/
+              - listitem [ref=e214]:
+                - link "Multimodal Faithfulness" [ref=e215] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/multi_modal_faithfulness/
+              - listitem [ref=e216]:
+                - link "Multimodal Relevance" [ref=e217] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/multi_modal_relevance/
+            - heading "Nvidia Metrics" [level=2] [ref=e218]
+            - list [ref=e219]:
+              - listitem [ref=e220]:
+                - link "Answer Accuracy" [ref=e221] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/nvidia_metrics/#answer-accuracy
+              - listitem [ref=e222]:
+                - link "Context Relevance" [ref=e223] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/nvidia_metrics/#context-relevance
+              - listitem [ref=e224]:
+                - link "Response Groundedness" [ref=e225] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/nvidia_metrics/#response-groundedness
+            - heading "Agents or Tool use cases" [level=2] [ref=e226]
+            - list [ref=e227]:
+              - listitem [ref=e228]:
+                - link "Topic adherence" [ref=e229] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/agents/#topic-adherence
+              - listitem [ref=e230]:
+                - link "Tool call Accuracy" [ref=e231] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/agents/#tool-call-accuracy
+              - listitem [ref=e232]:
+                - link "Tool Call F1" [ref=e233] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/agents/#tool-call-f1
+              - listitem [ref=e234]:
+                - link "Agent Goal Accuracy" [ref=e235] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/agents/#agent-goal-accuracy
+            - heading "Natural Language Comparison" [level=2] [ref=e236]
+            - list [ref=e237]:
+              - listitem [ref=e238]:
+                - link "Factual Correctness" [ref=e239] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/factual_correctness/
+              - listitem [ref=e240]:
+                - link "Semantic Similarity" [ref=e241] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/semantic_similarity/
+              - listitem [ref=e242]:
+                - link "Non LLM String Similarity" [ref=e243] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/traditional/#non-llm-string-similarity
+              - listitem [ref=e244]:
+                - link "BLEU Score" [ref=e245] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/traditional/#bleu-score
+              - listitem [ref=e246]:
+                - link "CHRF Score" [ref=e247] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/traditional/#chrf-score
+              - listitem [ref=e248]:
+                - link "ROUGE Score" [ref=e249] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/traditional/#rouge-score
+              - listitem [ref=e250]:
+                - link "String Presence" [ref=e251] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/traditional/#string-presence
+              - listitem [ref=e252]:
+                - link "Exact Match" [ref=e253] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/traditional/#exact-match
+            - heading "SQL" [level=2] [ref=e254]
+            - list [ref=e255]:
+              - listitem [ref=e256]:
+                - link "Execution based Datacompy Score" [ref=e257] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/sql/#execution-based-metrics
+              - listitem [ref=e258]:
+                - link "SQL query Equivalence" [ref=e259] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/sql/#sql-query-semantic-equivalence
+            - heading "General purpose" [level=2] [ref=e260]
+            - list [ref=e261]:
+              - listitem [ref=e262]:
+                - link "Aspect critic" [ref=e263] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/general_purpose/#aspect-critic
+              - listitem [ref=e264]:
+                - link "Simple Criteria Scoring" [ref=e265] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/general_purpose/#simple-criteria-scoring
+              - listitem [ref=e266]:
+                - link "Rubrics based scoring" [ref=e267] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/general_purpose/#rubrics-based-scoring
+              - listitem [ref=e268]:
+                - link "Instance specific rubrics scoring" [ref=e269] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/general_purpose/#instance-specific-rubrics-scoring
+            - heading "Other tasks" [level=2] [ref=e270]
+            - list [ref=e271]:
+              - listitem [ref=e272]:
+                - link "Summarization" [ref=e273] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/summarization_score/
+            - complementary [ref=e274]:
+              - generic [ref=e275]:
+                - generic "Last update" [ref=e276]:
+                  - img [ref=e277]
+                - generic "December 9, 2025 19:23:03 UTC" [ref=e279]: December 9, 2025
+              - generic [ref=e280]:
+                - generic "Created" [ref=e281]:
+                  - img [ref=e282]
+                - generic "December 9, 2025 19:23:03 UTC" [ref=e284]: December 9, 2025
+              - generic [ref=e285]:
+                - generic "Contributors" [ref=e286]:
+                  - img [ref=e287]
+                - generic [ref=e289]: GitHub
+                - navigation [ref=e290]:
+                  - link "anistark" [ref=e291] [cursor=pointer]:
+                    - /url: https://github.com/anistark
+                    - img "anistark" [ref=e292]
+                  - link "web-flow" [ref=e293] [cursor=pointer]:
+                    - /url: https://github.com/web-flow
+                    - img "web-flow" [ref=e294]
+                  - link "sahusiddharth" [ref=e295] [cursor=pointer]:
+                    - /url: https://github.com/sahusiddharth
+                    - img "sahusiddharth" [ref=e296]
+                  - link "shahules786" [ref=e297] [cursor=pointer]:
+                    - /url: https://github.com/shahules786
+                    - img "shahules786" [ref=e298]
+                  - link "+2" [ref=e299] [cursor=pointer]:
+                    - /url: https://github.com/vibrantlabsai/ragas/blob/master/docs/concepts/metrics/available_metrics/index.md
+      - button "Back to top":
+        - img
+        - text: Back to top
+    - contentinfo [ref=e300]:
+      - navigation "Footer" [ref=e301]:
+        - 'link "Previous: Overview" [ref=e302] [cursor=pointer]':
+          - /url: https://docs.ragas.io/en/stable/concepts/metrics/overview/
+          - img [ref=e304]
+          - generic [ref=e306]:
+            - text: Previous
+            - generic [ref=e307]: Overview
+        - 'link "Next: Context Precision" [ref=e308] [cursor=pointer]':
+          - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_precision/
+          - generic [ref=e309]:
+            - text: Next
+            - generic [ref=e310]: Context Precision
+          - img [ref=e312]
+      - generic [ref=e316]:
+        - text: Made with
+        - link "Material for MkDocs Insiders" [ref=e317] [cursor=pointer]:
+          - /url: https://squidfunk.github.io/mkdocs-material/
+  - banner [ref=e319] [cursor=pointer]:
+    - img "Read the Docs" [ref=e320]
+    - generic [ref=e321]:
+      - img [ref=e322]
+      - text: stable
+    - img [ref=e325]

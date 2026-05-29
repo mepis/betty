@@ -1,0 +1,697 @@
+- generic [active] [ref=e1]:
+  - dialog "This website uses cookies" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - img "logo" [ref=e7]
+        - link "Cookiebot by Usercentrics - opens in a new window" [ref=e8] [cursor=pointer]:
+          - /url: https://www.cookiebot.com/en/what-is-behind-powered-by-cookiebot/?utm_source=banner_cb&utm_medium=referral&utm_content=v2
+          - img [ref=e9]
+      - tabpanel "Consent" [ref=e36]:
+        - generic [ref=e38]:
+          - heading "This website uses cookies" [level=2] [ref=e39]
+          - paragraph [ref=e41]:
+            - text: We use cookies to enable basic website functionalities, personalize content and ads, and analyze our traffic
+            - emphasis [ref=e43]: .
+            - text: By clicking “Accept All”, you agree to the storing and use of data as described in our
+            - link "Privacy Policy" [ref=e44] [cursor=pointer]:
+              - /url: https://weaviate.io/privacy#10-cookie-policy-of-weaviate-bv
+            - text: .
+        - link "Show details" [ref=e47] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e51]:
+        - button "Allow all" [ref=e52] [cursor=pointer]
+        - button "Customize" [ref=e53] [cursor=pointer]: Customize
+        - button "Deny" [ref=e55] [cursor=pointer]
+  - iframe [ref=e56]:
+    
+  - generic [ref=e57]:
+    - link "← Back to Blogs" [ref=e58] [cursor=pointer]:
+      - /url: /blog
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e59] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - banner [ref=e60]:
+      - link "Introducing Weaviate Agent Skills – Read our Blog" [ref=e62] [cursor=pointer]:
+        - /url: /blog/weaviate-agent-skills
+      - button "Close" [ref=e63] [cursor=pointer]:
+        - img [ref=e64]
+    - navigation "Main" [ref=e67]:
+      - generic [ref=e68]:
+        - link [ref=e70] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e72]:
+          - button "Product" [ref=e74] [cursor=pointer]
+          - button "Solutions" [ref=e76] [cursor=pointer]
+          - button "Developers" [ref=e78] [cursor=pointer]
+          - button "Company" [ref=e80] [cursor=pointer]
+          - link "Pricing" [ref=e81] [cursor=pointer]:
+            - /url: /pricing
+          - link "GitHub" [ref=e82] [cursor=pointer]:
+            - /url: https://github.com/weaviate/weaviate
+            - img "GitHub" [ref=e83]
+          - link " Login" [ref=e85] [cursor=pointer]:
+            - /url: /go/console
+            - generic [ref=e86]: 
+            - text: Login
+          - link "Try Now" [ref=e87] [cursor=pointer]:
+            - /url: /go/console
+          - link "Contact" [ref=e88] [cursor=pointer]:
+            - /url: /contact
+          - button "Switch between dark and light mode (currently light mode)" [ref=e90] [cursor=pointer]:
+            - img [ref=e91]
+    - generic [ref=e95]:
+      - main [ref=e96]:
+        - article [ref=e97]:
+          - generic [ref=e98]:
+            - heading "Advanced RAG Techniques" [level=1] [ref=e99]
+            - generic [ref=e100]:
+              - time [ref=e101]: July 25, 2024
+              - text: · 12 min read
+            - generic [ref=e104]:
+              - link "Zain Hasan" [ref=e105] [cursor=pointer]:
+                - /url: https://github.com/zainhas
+                - img "Zain Hasan" [ref=e106]
+              - generic [ref=e107]:
+                - link "Zain Hasan" [ref=e109] [cursor=pointer]:
+                  - /url: https://github.com/zainhas
+                  - generic [ref=e110]: Zain Hasan
+                - generic "Developer Advocate" [ref=e111]
+          - generic [ref=e112]:
+            - paragraph [ref=e113]:
+              - img "AdvancedRAG" [ref=e114]
+            - paragraph [ref=e115]: "In this post we’ll dig into Retrieval-Augmented Generation (RAG) and show you practical tips and tricks to improve every part of the RAG pipeline! We’ll start by considering a a practical example: building a chatbot to emulate or assist a human doctor."
+            - paragraph [ref=e116]: Consider the typical North American doctor. After over a decade of education and treating around 100,000 patients, they have a pretty vast, intricate knowledge base. When diagnosing a patient, they retrieve relevant information from this extensive experience to provide accurate and context-specific advice.
+            - paragraph [ref=e117]: To create a chatbot using RAG that mimics this process, we need to replicate several key functions of a human doctor. First, we must establish a knowledge base equivalent to a doctor's decade of study and patient interactions. This knowledge base should allow efficient searching, retrieving only the most pertinent information based on the patient's current issue.
+            - paragraph [ref=e118]: Next, our system must be capable of reasoning over the retrieved information, akin to a doctor discerning the relevant details for a specific case. Explainability is also crucial, particularly in regulated fields where understanding the reasoning behind a diagnosis or treatment recommendation is as important as the recommendation itself.
+            - paragraph [ref=e119]: Moreover, the entire process must operate in real time. The system should handle patient queries, retrieve and reason over relevant knowledge, and provide actionable suggestions or diagnoses promptly.
+            - paragraph [ref=e120]: The simplest approach might involve feeding patient information into a language model, which then generates responses based on pre-trained medical data. Enhancements include fine-tuning the model on specialized medical literature and employing advanced prompt engineering techniques to improve performance.
+            - paragraph [ref=e121]: However, the more sophisticated RAG approach involves integrating a comprehensive knowledge base—such as medical histories and literature—into a retrieval system. By indexing and querying this extensive database, we can supply the language model with precise, relevant information to augment its generation capabilities
+            - paragraph [ref=e122]:
+              - img "RAG" [ref=e123]
+            - paragraph [ref=e124]: "This is the simple RAG framework and for our purposes we will break this down into a three step process: indexing, retrieval and generation."
+            - paragraph [ref=e125]:
+              - img "RAGlabelled" [ref=e126]
+            - paragraph [ref=e127]: Throughout this post, we'll explore each component of the RAG stack and discuss how to refine and enhance them, using open-source libraries and resources. Whether you’re developing a chatbot for healthcare or other applications, these techniques are generally applicable and will help improve most RAG setups!
+            - paragraph [ref=e128]: Let's start!🚀
+            - paragraph [ref=e129]: Effective indexing is critical for any RAG system. The first step involves how we ingest, chunk, and store the data. Let's explore some techniques to index data into a database, focusing on various methods for chunking text and leveraging metadata.
+            - heading "Chunking TextDirect link to Chunking Text" [level=3] [ref=e130]:
+              - text: Chunking Text
+              - link "Direct link to Chunking Text" [ref=e131] [cursor=pointer]:
+                - /url: "#chunking-text"
+                - text: "#"
+            - heading "1. Simple Chunking:Direct link to 1. Simple Chunking:" [level=4] [ref=e132]:
+              - text: "1. Simple Chunking:"
+              - link "Direct link to 1. Simple Chunking:" [ref=e133] [cursor=pointer]:
+                - /url: "#1-simple-chunking"
+                - text: "#"
+            - list [ref=e134]:
+              - listitem [ref=e135]:
+                - strong [ref=e136]: Overview
+                - text: ": This method involves breaking documents into fixed-size chunks with some overlap. This ensures that each chunk retains context from the previous chunk."
+              - listitem [ref=e137]:
+                - strong [ref=e138]: Implementation
+                - text: ": You can specify a chunk size (e.g., 35 characters) and an overlap size to maintain context across chunks. This approach works well for straightforward documents but might not be ideal for more complex texts and does not take advantage of the document structure at all."
+              - listitem [ref=e139]:
+                - strong [ref=e140]: Pros and Cons
+                - text: ": Simple to implement but may break semantic units, leading to incoherent chunks and poorer retrieval performance."
+            - paragraph [ref=e141]:
+              - img "textsplit" [ref=e142]
+              - link "Greg Kamradt (Data Indy)" [ref=e143] [cursor=pointer]:
+                - /url: https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb
+              - text: "- Text Splitting"
+            - heading "2. Semantic Chunking:Direct link to 2. Semantic Chunking:" [level=4] [ref=e144]:
+              - text: "2. Semantic Chunking:"
+              - link "Direct link to 2. Semantic Chunking:" [ref=e145] [cursor=pointer]:
+                - /url: "#2-semantic-chunking"
+                - text: "#"
+            - list [ref=e146]:
+              - listitem [ref=e147]:
+                - paragraph [ref=e148]:
+                  - strong [ref=e149]: Overview
+                  - text: ": Semantic chunking involves dividing text based on meaning rather than fixed sizes. This technique ensures that each chunk represents a coherent piece of information."
+              - listitem [ref=e150]:
+                - paragraph [ref=e151]:
+                  - strong [ref=e152]: Implementation
+                  - text: ": Calculate the cosine distance between sentence embeddings. If two sentences are semantically similar (below a certain threshold), they belong in the same chunk. This creates variable-length chunks based on the content's semantic structure."
+              - listitem [ref=e153]:
+                - paragraph [ref=e154]:
+                  - strong [ref=e155]: Pros and Cons
+                  - text: ": Produces more coherent and contextually meaningful chunks, improving retrieval accuracy but requires forward passes through a BERT based encoder model which is more computationally intensive then simple chunking."
+            - paragraph [ref=e156]:
+              - img "semchunk" [ref=e157]
+              - link "Greg Kamradt (Data Indy)" [ref=e158] [cursor=pointer]:
+                - /url: https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb
+              - text: "- Semantic Chunking"
+            - heading "3. Language Model-Based Chunking:Direct link to 3. Language Model-Based Chunking:" [level=4] [ref=e159]:
+              - text: "3. Language Model-Based Chunking:"
+              - link "Direct link to 3. Language Model-Based Chunking:" [ref=e160] [cursor=pointer]:
+                - /url: "#3-language-model-based-chunking"
+                - text: "#"
+            - list [ref=e161]:
+              - listitem [ref=e162]:
+                - strong [ref=e163]: Overview
+                - text: ": This advanced method uses a language model to create self-contained propositions from text, ensuring that each chunk is semantically complete."
+              - listitem [ref=e164]:
+                - strong [ref=e165]: Implementation
+                - text: ": A language model (e.g., a 7-billion parameter model) processes the text, breaking it into propositions that make sense independently. The model then combines these propositions into chunks, balancing semantic completeness and context. This method is computationally intensive but provides the highest accuracy."
+              - listitem [ref=e166]:
+                - strong [ref=e167]: Pros and Cons
+                - text: ": Adapts to text nuances and results in high-quality chunks, but computationally intensive and may require fine-tuning for specific applications."
+            - paragraph [ref=e168]:
+              - img "llmchunking" [ref=e169]
+              - 'link "Dense X Retrieval: What Retrieval Granularity Should We Use?" [ref=e170] [cursor=pointer]':
+                - /url: https://arxiv.org/abs/2312.06648
+            - paragraph [ref=e171]:
+              - text: "Model:"
+              - link "https://huggingface.co/chentong00/propositionizer-wiki-flan-t5-large" [ref=e172] [cursor=pointer]:
+                - /url: https://huggingface.co/chentong00/propositionizer-wiki-flan-t5-large
+            - heading "Leveraging MetadataDirect link to Leveraging Metadata" [level=3] [ref=e173]:
+              - text: Leveraging Metadata
+              - link "Direct link to Leveraging Metadata" [ref=e174] [cursor=pointer]:
+                - /url: "#leveraging-metadata"
+                - text: "#"
+            - heading "1. Adding and Filtering Based on Metadata:Direct link to 1. Adding and Filtering Based on Metadata:" [level=4] [ref=e175]:
+              - text: "1. Adding and Filtering Based on Metadata:"
+              - link "Direct link to 1. Adding and Filtering Based on Metadata:" [ref=e176] [cursor=pointer]:
+                - /url: "#1-adding-and-filtering-based-on-metadata"
+                - text: "#"
+            - list [ref=e177]:
+              - listitem [ref=e178]:
+                - paragraph [ref=e179]:
+                  - strong [ref=e180]: Overview
+                  - text: ": Metadata provides additional context that can significantly improve retrieval accuracy. By incorporating metadata like dates, patient age, and preconditions, you can filter irrelevant information during searches. Filtering helps in narrowing down the search space, making the retrieval process more efficient and relevant."
+              - listitem [ref=e181]:
+                - paragraph [ref=e182]:
+                  - strong [ref=e183]: Implementation
+                  - text: ": When indexing data, store metadata alongside the vectorized text. For instance, if indexing patient records, include metadata such as age, date of visit, and specific conditions. Use this metadata to filter search results, ensuring the system only retrieves relevant information."
+            - paragraph [ref=e184]: For example, if a query relates to pediatric patients, filter out records of patients over 18 years old before performing the semantic search. This reduces the noise in retrieval results and enhances the relevance of the output.
+            - paragraph [ref=e185]:
+              - img "filters" [ref=e186]
+              - link "MyScale" [ref=e187] [cursor=pointer]:
+                - /url: https://medium.com/@myscale/optimizing-filtered-vector-search-in-myscale-77675aaa849c
+            - heading "2. Using GLiNER to Generate Metadata for ChunksDirect link to 2. Using GLiNER to Generate Metadata for Chunks" [level=4] [ref=e188]:
+              - text: 2. Using GLiNER to Generate Metadata for Chunks
+              - link "Direct link to 2. Using GLiNER to Generate Metadata for Chunks" [ref=e189] [cursor=pointer]:
+                - /url: "#2-using-gliner-to-generate-metadata-for-chunks"
+                - text: "#"
+            - paragraph [ref=e190]: You might not always have extensive metadata to augment your chunks with but using the GLiNER (Generalized Linear Named Entity Recognizer) model you can generate metadata from chunks on the go! GLiNER is a robust BERT based model that can be used to tag and label chunks during the ingestion phase to create metadata on the go. This can significantly improving the retrieval process.
+            - list [ref=e191]:
+              - listitem [ref=e192]:
+                - paragraph [ref=e193]:
+                  - strong [ref=e194]: Autolabeling with GLiNER
+                  - text: ":"
+                - paragraph [ref=e195]:
+                  - strong [ref=e196]: Implementation
+                  - text: ": You can simply provide each chunk into GLiNER along with the tags you want to identify in the chunk. If the tags are found in the chunk text it will identify them if nothing matches with high confidence then tags wont be produced, reducing false positives!"
+                - paragraph [ref=e197]:
+                  - strong [ref=e198]: Pros and Cons
+                  - text: ": Works quite well for general use but might require finetuning for niche and domain specific datasets and applications."
+              - listitem [ref=e199]:
+                - paragraph [ref=e200]:
+                  - strong [ref=e201]: Query Parsing and Filtering
+                  - text: ":"
+                - paragraph [ref=e202]:
+                  - strong [ref=e203]: Implementation
+                  - text: ": Another use for GLiNER is to parse incoming queries and match them against labeled metadata to filter results."
+                - paragraph [ref=e204]:
+                  - strong [ref=e205]: Pros and Cons
+                  - text: ": Enhances retrieval accuracy by ensuring contextual relevance but adds an extra processing step."
+            - paragraph [ref=e206]:
+              - img "gliner" [ref=e207]
+              - 'link "GLiNER: Generalist Model for Named Entity Recognition using Bidirectional Transformer" [ref=e208] [cursor=pointer]':
+                - /url: https://arxiv.org/abs/2311.08526
+              - text: "Demo:"
+              - link "https://huggingface.co/spaces/urchade/gliner_multiv2.1" [ref=e209] [cursor=pointer]:
+                - /url: https://huggingface.co/spaces/urchade/gliner_multiv2.1
+            - paragraph [ref=e210]: These techniques lay the groundwork for a robust RAG system, enabling efficient retrieval from large datasets. The choice of chunking method and the use of metadata will depend on the specific requirements and characteristics of your dataset.
+            - heading "Retrieval" [level=1] [ref=e211]
+            - paragraph [ref=e212]: "Now let's discuss the R part of the RAG setup! How can we enhance retrieval recall from a vector database? This process is all about retrieving as many of the documents relevant to a query, significantly improving the chances the LLM can then produce high quality results. Here are several techniques to achieve this:"
+            - heading "1. Hybrid searchDirect link to 1. Hybrid search" [level=3] [ref=e213]:
+              - text: 1. Hybrid search
+              - link "Direct link to 1. Hybrid search" [ref=e214] [cursor=pointer]:
+                - /url: "#1-hybrid-search"
+                - text: "#"
+            - paragraph [ref=e215]: Vector search which captures the semantic meaning of the query and keyword search which identifies exact matches for specific terms. Hybrid search combines the strengths of vector search and keyword search to enhance retrieval accuracy. In fields like medicine, many terms and concepts are not semantically understood but are instead specific keywords such as medication names, anatomical terms, disease names, and diagnoses.
+            - paragraph [ref=e216]: Pure vector search might miss these critical keywords, whereas keyword-based search ensures that specific, important terms are considered. By integrating both methods, hybrid search allows for a more comprehensive retrieval process.
+            - paragraph [ref=e217]: These search, vector and keyword, methods run in parallel, and the results are then merged and ranked according to a weighted system. For instance, using Weaviate, you can adjust the alpha parameter to balance the importance of vector versus keyword search results, creating a combined, ranked list of documents. This balances precision and recall, improving overall retrieval quality but requires careful tuning of weighting parameters.
+            - paragraph [ref=e218]:
+              - img "hybsearch" [ref=e219]
+            - heading "2. Query rewritingDirect link to 2. Query rewriting" [level=3] [ref=e220]:
+              - text: 2. Query rewriting
+              - link "Direct link to 2. Query rewriting" [ref=e221] [cursor=pointer]:
+                - /url: "#2-query-rewriting"
+                - text: "#"
+            - paragraph [ref=e222]: Query rewriting acknowledges that human queries may not be optimized for vector databases or language models. By leveraging a language model to rewrite queries, the retrieval process can be significantly improved.
+            - list [ref=e223]:
+              - listitem [ref=e224]:
+                - strong [ref=e225]: Query Rewriting for Vector Databases
+                - text: ": The patient's initial query is transformed into a more database-friendly format. For example, \"My left shoulder hurts and I have numbness in my thumb and index finger\" might be rewritten as \"Pain left shoulder. Numbness. Numbness index finger.\""
+              - listitem [ref=e226]:
+                - strong [ref=e227]: Prompt Rewriting for Language Models
+                - text: ": This involves the automatic and interactive automatic construction of prompts to optimize interaction with the language model, enhancing the quality and accuracy of the generated results. Frameworks like"
+                - link "DSPy" [ref=e228] [cursor=pointer]:
+                  - /url: https://github.com/stanfordnlp/dspy
+                - text: help with this process.
+            - paragraph [ref=e229]: These rewritten queries and prompts ensure that the search process better understands and retrieves relevant documents and the language model is prompted optimally. Query rewriting can be achieved as demonstrated below.
+            - paragraph [ref=e230]:
+              - img "rewrite" [ref=e231]
+              - link "Query Rewriting - Ma et al. 2023" [ref=e232] [cursor=pointer]:
+                - /url: https://arxiv.org/abs/2305.14283
+            - heading "3. Fine-Tuning Embedding ModelsDirect link to 3. Fine-Tuning Embedding Models" [level=3] [ref=e233]:
+              - text: 3. Fine-Tuning Embedding Models
+              - link "Direct link to 3. Fine-Tuning Embedding Models" [ref=e234] [cursor=pointer]:
+                - /url: "#3-fine-tuning-embedding-models"
+                - text: "#"
+            - paragraph [ref=e235]: "While pre-trained embedding models provide a good starting point, fine-tuning these models on your specific dataset can dramatically improve retrieval performance. This involves:"
+            - list [ref=e236]:
+              - listitem [ref=e237]:
+                - paragraph [ref=e238]:
+                  - strong [ref=e239]: Selecting Appropriate Models
+                  - text: ": For specialized fields like medicine, choose models pre-trained on relevant data. For this particular examples I chose to use the MedCPT family of query and document encoders that have been pre-trained by an unprecedented scale of 255M query-article pairs from PubMed search logs."
+              - listitem [ref=e240]:
+                - paragraph [ref=e241]:
+                  - strong [ref=e242]: Fine-Tuning with Positive and Negative Object Pairs
+                  - text: ": You can further improve the performance of these models by collecting your own data and creating pairs of similar (positive) and dissimilar (negative) examples, and fine-tune the model to better understand these distinctions. This helps the model learn domain-specific relationships and semantics, improving retrieval performance but requires carefully curated training data."
+            - paragraph [ref=e243]: These techniques, when combined, create a robust retrieval system that enhances the overall relevance of objects that when eventually given to a LLM improve generation quality.
+            - heading "Generation" [level=1] [ref=e244]
+            - paragraph [ref=e245]: "Lastly, let's discuss how you can improve control the generation quality of a Language Model (LLM). Here the name of the game is again to make sure the context you give to your LLM is as relevant to the prompt as possible, irrelevant data could trigger hallucinations. Here are some tips to achieve better generation results:"
+            - heading "1. Autocut to Remove Irrelevant InformationDirect link to 1. Autocut to Remove Irrelevant Information" [level=3] [ref=e246]:
+              - text: 1. Autocut to Remove Irrelevant Information
+              - link "Direct link to 1. Autocut to Remove Irrelevant Information" [ref=e247] [cursor=pointer]:
+                - /url: "#1-autocut-to-remove-irrelevant-information"
+                - text: "#"
+            - paragraph [ref=e248]: "Autocut is a method to filter out irrelevant information retrieved from the database, which can otherwise mislead the LLM and cause hallucinations. Here's how it works:"
+            - list [ref=e249]:
+              - listitem [ref=e250]:
+                - paragraph [ref=e251]:
+                  - strong [ref=e252]: Retrieve and Score Similarity
+                  - text: ": When a query is made, multiple objects are retrieved along with their similarity scores."
+              - listitem [ref=e253]:
+                - paragraph [ref=e254]:
+                  - strong [ref=e255]: Identify and Cut Off
+                  - text: ": Using the similarity scores, identify a cutoff point where the scores drop significantly. Objects beyond this point are considered less relevant and are automatically excluded."
+            - paragraph [ref=e256]: For example, if you retrieve six objects, the similarity scores might drop sharply after the fourth object. By examining the rate of change of the similarity scores, you can determine which objects to exclude, ensuring only the most relevant information is fed to the LLM.
+            - paragraph [ref=e257]:
+              - img "Autocut" [ref=e258]
+              - link "AutoCut" [ref=e259] [cursor=pointer]:
+                - /url: https://docs.weaviate.io/weaviate/api/graphql/additional-operators#autocut
+            - heading "2. Reranking Retrieved ObjectsDirect link to 2. Reranking Retrieved Objects" [level=3] [ref=e260]:
+              - text: 2. Reranking Retrieved Objects
+              - link "Direct link to 2. Reranking Retrieved Objects" [ref=e261] [cursor=pointer]:
+                - /url: "#2-reranking-retrieved-objects"
+                - text: "#"
+            - paragraph [ref=e262]: "Reranking involves using a secondary, more sophisticated model to reassess and reorder the initially retrieved objects based on their relevance to the query. This process enhances the quality of the final retrieved set. Here’s how it works:"
+            - list [ref=e263]:
+              - listitem [ref=e264]:
+                - strong [ref=e265]: Overfetch
+                - text: ": Initially retrieve more objects than needed."
+              - listitem [ref=e266]:
+                - strong [ref=e267]: Apply Ranker Model
+                - text: ": Use a high-latency, heavy model, typically a cross encoder, to re-evaluate the relevance of each retrieved object. This model considers the query and each retrieved object pairwise to reassess their similarity."
+              - listitem [ref=e268]:
+                - strong [ref=e269]: Reorder Results
+                - text: ": Based on the new assessment, reorder the objects to reflect the most relevant results at the top."
+            - paragraph [ref=e270]: This method ensures that the most relevant documents are prioritized, improving the overall quality of the data provided to the LLM.
+            - paragraph [ref=e271]:
+              - img "Rerank" [ref=e272]
+              - link "AutoCut" [ref=e273] [cursor=pointer]:
+                - /url: https://docs.weaviate.io/weaviate/search/rerank
+            - heading "3. Fine-Tuning the LLMDirect link to 3. Fine-Tuning the LLM" [level=3] [ref=e274]:
+              - text: 3. Fine-Tuning the LLM
+              - link "Direct link to 3. Fine-Tuning the LLM" [ref=e275] [cursor=pointer]:
+                - /url: "#3-fine-tuning-the-llm"
+                - text: "#"
+            - paragraph [ref=e276]: "Fine-tuning the LLM on domain-specific data can significantly enhance its performance within that domain. For instance, using a model like Meditron 70B, which is a fine-tuned version of LLaMA 2 70b specifically for medical data using both:"
+            - list [ref=e277]:
+              - listitem [ref=e278]:
+                - strong [ref=e279]: Unsupervised Fine-Tuning
+                - text: ": Continue pre-training the model on a large corpus of domain-specific text (e.g., PubMed literature)."
+              - listitem [ref=e280]:
+                - strong [ref=e281]: Supervised Fine-Tuning
+                - text: ": Further refine the model using supervised learning on domain-specific tasks (e.g., medical multiple-choice questions)."
+            - paragraph [ref=e282]: This specialized training helps the model perform exceptionally well in the targeted domain, outperforming both its base model and larger, less specialized models like GPT-3.5 in specific tasks.
+            - heading "SummaryDirect link to Summary" [level=2] [ref=e283]:
+              - text: Summary
+              - link "Direct link to Summary" [ref=e284] [cursor=pointer]:
+                - /url: "#summary"
+                - text: "#"
+            - paragraph [ref=e285]: Improving retrieval and generation in Retrieval-Augmented Generation (RAG) systems is crucial for enhancing the performance and reliability of AI applications.
+            - paragraph [ref=e286]: The techniques discussed above range from low-investment, high-return methods like query rewriting and reranking, to more intensive processes like embedding and LLM fine-tuning. The choice of technique depends on the specific requirements and constraints of your application.
+            - paragraph [ref=e287]:
+              - text: To make these techniques accessible, we’ve developed Verba, an open-source chatbot that integrates many of these improvements. Check it out on
+              - link "GitHub" [ref=e288] [cursor=pointer]:
+                - /url: https://github.com/weaviate/Verba
+              - text: . You can take this further by customizing and indexing with your data. You can also checkout the latest and greatest with Verba in the video below!
+            - iframe [ref=e289]:
+              - generic [active] [ref=f5e1]:
+                - generic "YouTube Video Player" [ref=f5e3]
+                - generic [ref=f5e5]:
+                  - generic:
+                    - generic:
+                      - button "Play video" [ref=f5e10] [cursor=pointer]
+                      - button "Hide player controls" [ref=f5e12] [cursor=pointer]
+                      - generic [ref=f5e14]:
+                        - generic [ref=f5e19]:
+                          - generic [ref=f5e20]:
+                            - link "Open Source RAG running LLMs locally with Ollama" [ref=f5e21] [cursor=pointer]:
+                              - /url: https://www.youtube.com/watch?v=swKKRdLBhas
+                            - link "Weaviate vector database" [ref=f5e22] [cursor=pointer]:
+                              - /url: /channel/UCJKT6kJ3IFYybWnL7jbXxhQ
+                              - generic [ref=f5e23]: Weaviate vector database
+                          - generic [ref=f5e24]:
+                            - button [ref=f5e25] [cursor=pointer]
+                            - generic [ref=f5e27]:
+                              - generic: Weaviate vector database
+                              - generic: 13.9K subscribers
+                        - generic [ref=f5e28]:
+                          - button "Share" [ref=f5e31] [cursor=pointer]:
+                            - generic [ref=f5e35]:
+                              - img
+                          - link "Watch on YouTube" [ref=f5e42] [cursor=pointer]:
+                            - /url: https://www.youtube.com/watch?v=swKKRdLBhas
+                            - generic [ref=f5e45]:
+                              - text: Watch on
+                              - img [ref=f5e47]:
+                                - generic [ref=f5e49]:
+                                  - img
+            - heading "Ready to start building?Direct link to Ready to start building?" [level=2] [ref=e290]:
+              - text: Ready to start building?
+              - link "Direct link to Ready to start building?" [ref=e291] [cursor=pointer]:
+                - /url: "#ready-to-start-building"
+                - text: "#"
+            - paragraph [ref=e292]:
+              - text: Check out the
+              - link "Quickstart tutorial" [ref=e293] [cursor=pointer]:
+                - /url: https://docs.weaviate.io/weaviate/quickstart
+              - text: ", or build amazing apps with a free trial of"
+              - link "Weaviate Cloud (WCD)" [ref=e294] [cursor=pointer]:
+                - /url: https://console.weaviate.cloud/
+              - text: .
+            - generic [ref=e297]:
+              - generic [ref=e298]:
+                - link "GitHub" [ref=e300] [cursor=pointer]:
+                  - /url: https://github.com/weaviate/weaviate
+                  - paragraph [ref=e302]: GitHub
+                - link "Forum" [ref=e304] [cursor=pointer]:
+                  - /url: https://forum.weaviate.io/
+                  - paragraph [ref=e306]: Forum
+                - link "X (Twitter)" [ref=e308] [cursor=pointer]:
+                  - /url: https://twitter.com/weaviate_io
+                  - paragraph [ref=e310]: X (Twitter)
+              - generic [ref=e311]:
+                - heading "Don't want to miss another blog post?" [level=2] [ref=e312]
+                - generic [ref=e313]:
+                  - paragraph [ref=e314]: Sign up for our bi-weekly newsletter to stay updated!
+                  - text: By submitting, I agree to the
+                  - link "Terms of Service" [ref=e315] [cursor=pointer]:
+                    - /url: /service
+                  - text: and
+                  - link "Privacy Policy" [ref=e316] [cursor=pointer]:
+                    - /url: /privacy
+                  - text: .
+                - iframe [ref=e318]:
+                  - generic [ref=f6e3]:
+                    - generic [ref=f6e4]:
+                      - generic [ref=f6e5]: Email
+                      - textbox "Enter your email" [ref=f6e6]
+                    - button "Subscribe" [ref=f6e8] [cursor=pointer]
+            - iframe [ref=e320]:
+              - generic [active] [ref=f7e1]:
+                - main [ref=f7e3]:
+                  - generic [ref=f7e4]:
+                    - generic [ref=f7e5]:
+                      - heading "1 reaction" [level=4] [ref=f7e6]:
+                        - link "1 reaction" [ref=f7e7] [cursor=pointer]:
+                          - /url: https://github.com/weaviate/weaviate-io/discussions/2941
+                      - generic [ref=f7e8]:
+                        - group [ref=f7e9]:
+                          - generic "Add reactions" [ref=f7e10] [cursor=pointer]:
+                            - img [ref=f7e11]
+                        - button "You must be signed in to add reactions." [disabled] [ref=f7e14]:
+                          - generic [ref=f7e15]: ❤️
+                          - generic "1 person reacted with Love emoji" [ref=f7e16]: "1"
+                    - generic [ref=f7e17]:
+                      - generic [ref=f7e19]:
+                        - heading "0 comments" [level=4] [ref=f7e20]:
+                          - link "0 comments" [ref=f7e21] [cursor=pointer]:
+                            - /url: https://github.com/weaviate/weaviate-io/discussions/2941
+                        - emphasis [ref=f7e22]:
+                          - text: – powered by
+                          - link "giscus" [ref=f7e23] [cursor=pointer]:
+                            - /url: https://giscus.app
+                      - generic [ref=f7e24]:
+                        - generic [ref=f7e25]:
+                          - generic [ref=f7e26]:
+                            - button "Write" [ref=f7e27] [cursor=pointer]
+                            - button "Preview" [ref=f7e28] [cursor=pointer]
+                          - button "Enable fixed-width (monospace) font in the editor" [ref=f7e30] [cursor=pointer]:
+                            - img [ref=f7e31]
+                        - generic [ref=f7e34]:
+                          - textbox "Sign in to comment" [disabled] [ref=f7e35]
+                          - link "Styling with Markdown is supported" [ref=f7e37] [cursor=pointer]:
+                            - /url: https://guides.github.com/features/mastering-markdown/
+                            - img [ref=f7e38]
+                        - link "Sign in with GitHub" [ref=f7e42] [cursor=pointer]:
+                          - /url: /api/oauth/authorize?redirect_uri=https%3A%2F%2Fweaviate.io%2Fblog%2Fadvanced-rag
+                          - img [ref=f7e43]
+                          - text: Sign in with GitHub
+                - alert [ref=f7e45]
+          - generic [ref=e321]:
+            - generic [ref=e323]:
+              - text: "Tags:"
+              - list [ref=e324]:
+                - listitem [ref=e325]:
+                  - link "how-to" [ref=e326] [cursor=pointer]:
+                    - /url: /blog/tags/how-to
+                - listitem [ref=e327]:
+                  - link "concepts" [ref=e328] [cursor=pointer]:
+                    - /url: /blog/tags/concepts
+            - link "Edit this page" [ref=e331] [cursor=pointer]:
+              - /url: https://github.com/weaviate/weaviate-io/tree/main/blog/2024-07-25-advanced-rag/index.mdx
+              - img [ref=e332]
+              - text: Edit this page
+        - navigation "Blog post page navigation" [ref=e336]:
+          - link "Newer post « Launching into the Production Era" [ref=e337] [cursor=pointer]:
+            - /url: /blog/launching-into-production
+            - generic [ref=e338]: Newer post
+            - generic [ref=e339]: « Launching into the Production Era
+          - link "Older post JS June Recap. Our month of JavaScript »" [ref=e340] [cursor=pointer]:
+            - /url: /blog/javascript-june-recap
+            - generic [ref=e341]: Older post
+            - generic [ref=e342]: JS June Recap. Our month of JavaScript »
+      - list [ref=e345]:
+        - listitem [ref=e346]:
+          - link "Chunking Text" [ref=e347] [cursor=pointer]:
+            - /url: "#chunking-text"
+        - listitem [ref=e348]:
+          - link "Leveraging Metadata" [ref=e349] [cursor=pointer]:
+            - /url: "#leveraging-metadata"
+        - listitem [ref=e350]:
+          - link "1. Hybrid search" [ref=e351] [cursor=pointer]:
+            - /url: "#1-hybrid-search"
+        - listitem [ref=e352]:
+          - link "2. Query rewriting" [ref=e353] [cursor=pointer]:
+            - /url: "#2-query-rewriting"
+        - listitem [ref=e354]:
+          - link "3. Fine-Tuning Embedding Models" [ref=e355] [cursor=pointer]:
+            - /url: "#3-fine-tuning-embedding-models"
+        - listitem [ref=e356]:
+          - link "1. Autocut to Remove Irrelevant Information" [ref=e357] [cursor=pointer]:
+            - /url: "#1-autocut-to-remove-irrelevant-information"
+        - listitem [ref=e358]:
+          - link "2. Reranking Retrieved Objects" [ref=e359] [cursor=pointer]:
+            - /url: "#2-reranking-retrieved-objects"
+        - listitem [ref=e360]:
+          - link "3. Fine-Tuning the LLM" [ref=e361] [cursor=pointer]:
+            - /url: "#3-fine-tuning-the-llm"
+        - listitem [ref=e362]:
+          - link "Summary" [ref=e363] [cursor=pointer]:
+            - /url: "#summary"
+        - listitem [ref=e364]:
+          - link "Ready to start building?" [ref=e365] [cursor=pointer]:
+            - /url: "#ready-to-start-building"
+    - contentinfo [ref=e366]:
+      - generic [ref=e367]:
+        - generic [ref=e368]:
+          - generic [ref=e369]:
+            - generic [ref=e370]: Product
+            - list [ref=e371]:
+              - listitem [ref=e372]:
+                - link "Vector Database" [ref=e373] [cursor=pointer]:
+                  - /url: /platform
+              - listitem [ref=e374]:
+                - link "Products" [ref=e375] [cursor=pointer]:
+                  - /url: /product
+              - listitem [ref=e376]:
+                - link "Pricing" [ref=e377] [cursor=pointer]:
+                  - /url: /pricing
+              - listitem [ref=e378]:
+                - link "Weaviate Cloud" [ref=e379] [cursor=pointer]:
+                  - /url: https://console.weaviate.cloud/
+              - listitem [ref=e380]:
+                - link "Deployment" [ref=e381] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e382]:
+                - link "Shared Cloud" [ref=e383] [cursor=pointer]:
+                  - /url: /deployment/shared
+              - listitem [ref=e384]:
+                - link "Dedicated Cloud" [ref=e385] [cursor=pointer]:
+                  - /url: /deployment/dedicated
+              - listitem [ref=e386]:
+                - link "Enablement" [ref=e387] [cursor=pointer]:
+                  - /url: /deployment/enablement
+              - listitem [ref=e388]:
+                - link "Trust" [ref=e389] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e390]:
+                - link "Security" [ref=e391] [cursor=pointer]:
+                  - /url: /security
+              - listitem [ref=e392]:
+                - link "Terms & Policies" [ref=e393] [cursor=pointer]:
+                  - /url: /service
+              - listitem [ref=e394]:
+                - link "Report a Vulnerability" [ref=e395] [cursor=pointer]:
+                  - /url: /security-report
+              - listitem [ref=e396]:
+                - link "Cookie Settings" [ref=e397] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e398]:
+            - generic [ref=e399]: Use Cases
+            - list [ref=e400]:
+              - listitem [ref=e401]:
+                - link "RAG" [ref=e402] [cursor=pointer]:
+                  - /url: /rag
+              - listitem [ref=e403]:
+                - link "Hybrid Search" [ref=e404] [cursor=pointer]:
+                  - /url: /hybrid-search
+              - listitem [ref=e405]:
+                - link "Agentic AI" [ref=e406] [cursor=pointer]:
+                  - /url: /agentic-ai
+              - listitem [ref=e407]:
+                - link "Cost Performance Optimization" [ref=e408] [cursor=pointer]:
+                  - /url: /cost-performance-optimization
+              - listitem [ref=e409]:
+                - link "Examples" [ref=e410] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e411]:
+                - link "Demos" [ref=e412] [cursor=pointer]:
+                  - /url: /community/demos
+          - generic [ref=e413]:
+            - generic [ref=e414]: Learn
+            - list [ref=e415]:
+              - listitem [ref=e416]:
+                - link "Learning Center" [ref=e417] [cursor=pointer]:
+                  - /url: /learn
+              - listitem [ref=e418]:
+                - link "Blog" [ref=e419] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e420]:
+                - link "Academy" [ref=e421] [cursor=pointer]:
+                  - /url: https://academy.weaviate.io/
+              - listitem [ref=e422]:
+                - link "Knowledge Cards" [ref=e423] [cursor=pointer]:
+                  - /url: /learn/knowledgecards
+              - listitem [ref=e424]:
+                - link "Paper Reviews" [ref=e425] [cursor=pointer]:
+                  - /url: /papers
+              - listitem [ref=e426]:
+                - link "Podcasts" [ref=e427] [cursor=pointer]:
+                  - /url: /podcast
+              - listitem [ref=e428]:
+                - link "Build" [ref=e429] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e430]:
+                - link "Weaviate Database Docs" [ref=e431] [cursor=pointer]:
+                  - /url: https://docs.weaviate.io/weaviate
+              - listitem [ref=e432]:
+                - link "Weaviate Cloud Docs" [ref=e433] [cursor=pointer]:
+                  - /url: https://docs.weaviate.io/cloud
+              - listitem [ref=e434]:
+                - link "Weaviate Deployment Docs" [ref=e435] [cursor=pointer]:
+                  - /url: https://docs.weaviate.io/deploy
+              - listitem [ref=e436]:
+                - link "Weaviate Agents Docs" [ref=e437] [cursor=pointer]:
+                  - /url: https://docs.weaviate.io/agents
+              - listitem [ref=e438]:
+                - link "GitHub" [ref=e439] [cursor=pointer]:
+                  - /url: https://github.com/weaviate/weaviate
+              - listitem [ref=e440]:
+                - link "LLM / Agent guides" [ref=e441] [cursor=pointer]:
+                  - /url: https://weaviate.io/llms.txt
+              - listitem [ref=e442]:
+                - link "Engage" [ref=e443] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e444]:
+                - link "Events & Webinars" [ref=e445] [cursor=pointer]:
+                  - /url: /community/events
+              - listitem [ref=e446]:
+                - link "Weaviate Hero Program" [ref=e447] [cursor=pointer]:
+                  - /url: /community
+              - listitem [ref=e448]:
+                - link "Forum" [ref=e449] [cursor=pointer]:
+                  - /url: https://forum.weaviate.io/
+          - generic [ref=e450]:
+            - generic [ref=e451]: About
+            - list [ref=e452]:
+              - listitem [ref=e453]:
+                - link "Company" [ref=e454] [cursor=pointer]:
+                  - /url: /company/about-us
+              - listitem [ref=e455]:
+                - link "Careers" [ref=e456] [cursor=pointer]:
+                  - /url: /company/careers
+              - listitem [ref=e457]:
+                - link "Remote" [ref=e458] [cursor=pointer]:
+                  - /url: /company/remote
+              - listitem [ref=e459]:
+                - link "Playbook" [ref=e460] [cursor=pointer]:
+                  - /url: /company/playbook
+              - listitem [ref=e461]:
+                - link "Investors" [ref=e462] [cursor=pointer]:
+                  - /url: /company/investors
+              - listitem [ref=e463]:
+                - link "Contact Us" [ref=e464] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e465]:
+                - link "Partners" [ref=e466] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e467]:
+                - link "Overview" [ref=e468] [cursor=pointer]:
+                  - /url: /partners
+              - listitem [ref=e469]:
+                - link "AWS" [ref=e470] [cursor=pointer]:
+                  - /url: /partners/aws
+              - listitem [ref=e471]:
+                - link "Google Cloud" [ref=e472] [cursor=pointer]:
+                  - /url: /partners/gcp
+              - listitem [ref=e473]:
+                - link "Snowflake" [ref=e474] [cursor=pointer]:
+                  - /url: /partners/snowflake
+              - listitem [ref=e475]:
+                - link "Databricks" [ref=e476] [cursor=pointer]:
+                  - /url: /partners/databricks
+              - listitem [ref=e477]:
+                - link "Become a Partner" [ref=e478] [cursor=pointer]:
+                  - /url: /partners
+          - generic [ref=e479]:
+            - generic [ref=e480]: Follow Us
+            - list [ref=e481]:
+              - listitem [ref=e482]:
+                - link "GitHub" [ref=e483] [cursor=pointer]:
+                  - /url: https://github.com/weaviate/weaviate
+              - listitem [ref=e484]:
+                - link "X" [ref=e485] [cursor=pointer]:
+                  - /url: https://x.com/weaviate_io
+              - listitem [ref=e486]:
+                - link "Instagram" [ref=e487] [cursor=pointer]:
+                  - /url: https://instagram.com/weaviate.io
+              - listitem [ref=e488]:
+                - link "YouTube" [ref=e489] [cursor=pointer]:
+                  - /url: https://youtube.com/@Weaviate
+              - listitem [ref=e490]:
+                - link "LinkedIn" [ref=e491] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/weaviate-io
+        - generic [ref=e493]: Copyright © 2026 Weaviate, B.V. Built with Docusaurus.
+  - button "Project Logo Ask AI" [ref=e494] [cursor=pointer]:
+    - generic [ref=e497]:
+      - img "Project Logo" [ref=e498]
+      - paragraph [ref=e499]: Ask AI

@@ -1,0 +1,154 @@
+[     121ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=None:0
+[     346ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://px.ads.linkedin.com/collect/?pid=6758089&fmt=gif:0
+[     346ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtm.js?id=GTM-WS8CG676:0
+[     346ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.hotjar.com/c/hotjar-3237492.js?sv=6:0
+[     350ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.clarity.ms/tag/orzk1oie18:0
+[     405ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://snap.licdn.com/li.lms-analytics/insight.min.js:0
+[     655ms] [WARNING] Unrecognized feature: 'web-share'. @ https://weaviate.io/blog/advanced-rag:197
+[     776ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://x.clearbitjs.com/v1/pk_a3c0f3319a4418be0789e1d6f1db45cf/forms.js?page_path=%2Fblog%2Fadvanced-rag:0
+[     848ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447:0
+[     873ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at pr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344622)
+    at Vc (https://weaviate.io/assets/js/main.4a944e9c.js:2:379954)
+    at ys (https://weaviate.io/assets/js/main.4a944e9c.js:2:404784)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404524)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at ul
+    at div
+    at Ue (https://weaviate.…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     873ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at div
+    at Ue (https://weaviate.io/assets/…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     873ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at a
+    at https://weaviate.io/assets/js/mai…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     873ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at a
+    at p (https://weaviate.io/assets/js/…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at a
+    at https://weaviate.io/assets/js/mai…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at a
+    at https://weaviate.io/assets/js/mai…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at a
+    at https://weaviate.io/assets/js/mai…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at div
+    at Qe (https://weaviate.io/assets/…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at div
+    at be (https://weaviate.io/assets/…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at div
+    at jt (https://weaviate.io/assets/…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at div
+    at Y (https://weaviate.io/assets/j…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at dr (https://weaviate.io/assets/js/main.4a944e9c.js:2:344162)
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416905)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at hs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404435)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399516)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: 
+    at footer
+    at Kt (https://weaviate.io/asse…/weaviate.io/assets/js/main.4a944e9c.js:2:433698), digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[     874ms] [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #423; visit https://reactjs.org/docs/error-decoder.html?invariant=423 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at wl (https://weaviate.io/assets/js/main.4a944e9c.js:2:416591)
+    at xs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404463)
+    at ms (https://weaviate.io/assets/js/main.4a944e9c.js:2:404391)
+    at bs (https://weaviate.io/assets/js/main.4a944e9c.js:2:404254)
+    at os (https://weaviate.io/assets/js/main.4a944e9c.js:2:401089)
+    at as (https://weaviate.io/assets/js/main.4a944e9c.js:2:399644)
+    at w (https://weaviate.io/assets/js/main.4a944e9c.js:2:467352)
+    at MessagePort.T (https://weaviate.io/assets/js/main.4a944e9c.js:2:467884) {componentStack: , digest: null} @ https://weaviate.io/assets/js/main.4a944e9c.js:1
+[    1006ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447:0
+[    1006ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtm.js?id=GTM-WJXL7FH:0
+[    1221ms] [LOG] %c EvalError
+    at mR (https://client.px-cloud.net/PXeBumDLwe/main.min.js:2:62273)
+    at oU (https://client.px-cloud.net/PXeBumDLwe/main.min.js:2:66975)
+    at Iw (https://client.px-cloud.net/PXeBumDLwe/main.min.js:2:220284)
+    at Iu (https://client.px-cloud.net/PXeBumDLwe/main.min.js:2:219905)
+    at https://client.px-cloud.net/PXeBumDLwe/main.min.js:2:221625
+    at https://client.px-cloud.net/PXeBumDLwe/main.min.js:2:221631
+    at https://client.px-cloud.net/PXeBumDLwe/main.min.js:2:222096 @ https://client.px-cloud.net/PXeBumDLwe/main.min.js:1
+[    1300ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://googleads.g.doubleclick.net/pagead/id:0
+[    1303ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.doubleclick.net/instream/ad_status.js:0
+[   21418ms] [WARNING] [.WebGL-0x3cec0014c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ https://embeds.beehiiv.com/15b21ebd-decd-433b-ada8-2d405e345f2e?slim=true:0
+[   21509ms] [WARNING] [.WebGL-0x3cec0014ec00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ https://embeds.beehiiv.com/15b21ebd-decd-433b-ada8-2d405e345f2e?slim=true:0

@@ -9,6 +9,7 @@
 | [llama.cpp gRPC Server](topics/llama-cpp-grpc-server/) | 2026-05-29 | Complete | llama.cpp, gRPC, LLM-serving, LocalAI, inference, distributed-inference |
 | [OpenAI Compatible APIs](topics/openai-compatible-apis/) | 2026-05-29 | Complete | openai, api, llm, protocol, llama.cpp, ollama, vllm, litellm, openwebui, mcp, gateway, enterprise |
 | [LLM Harness](topics/llm-harness/) | 2026-05-29 | Complete | llm, agent-harness, orchestration, security, taxonomy, etclovg, mcp, a2a, data-governance, prism |
+| [RAG Systems](topics/rag-systems/) | 2026-05-29 | Complete | rag, retrieval, embeddings, vector-databases, llm, architecture, evaluation, frameworks |
 
 ## Detail
 
@@ -83,3 +84,18 @@
 - Protocol fragmentation: MCP (Anthropic) and A2A (Google) competing standards
 - OpenAI introduced "Model-Native Harnesses" in May 2026
 - 50+ open-source projects mapped across the harness ecosystem
+
+---
+
+## RAG Systems
+
+**Date:** 2026-05-29
+
+Retrieval-Augmented Generation (RAG) is the dominant paradigm for grounding large language models in proprietary, up-to-date, and verifiable knowledge. This research covers the full RAG ecosystem: pipeline architecture, chunking strategies, embedding models, vector databases, advanced patterns (agentic RAG, graph RAG, hybrid search), evaluation frameworks (RAGAS, eRAG), tooling (LangChain, LlamaIndex, DSPy), and production deployment considerations.
+
+**Key findings:**
+- Component selection matters more than framework choice
+- Hybrid search (BM25 + vector) improves recall by 15–25 points
+- BGE-M3 and Voyage-3 are top embedding models for RAG
+- RAGAS provides standardized evaluation without human annotation
+- Agentic and programmatic RAG represent the next frontier

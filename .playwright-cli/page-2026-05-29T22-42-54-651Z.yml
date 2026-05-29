@@ -1,0 +1,54 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: RAG retrieval augmented generation advanced patterns hybrid graph re-ranking 2025
+        - button "Search using an image" [ref=e19] [cursor=pointer]
+    - complementary "Account Rewards and Preferences" [ref=e21]:
+      - button "Microsoft Rewards"
+      - link "Sign in" [ref=e22] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - generic "Sign in" [ref=e23]
+    - navigation "Search Filter" [ref=e24]:
+      - list [ref=e25]:
+        - listitem [ref=e26]:
+          - link "All" [ref=e27] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e28]:
+          - link "Search" [ref=e29] [cursor=pointer]:
+            - /url: /copilotsearch?q=RAG+retrieval+augmented+generation+advanced+patterns+hybrid+graph+re-ranking+2025&FORM=CSSCOP
+            - img [ref=e30]
+            - text: Search
+        - listitem [ref=e32]:
+          - link "Images" [ref=e33] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=05032800c245fdff7cc1f48745950f885e6824221ff2ba87d3da75a38794c866JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0faf492c-d25a-6cee-3c1a-5e44d35b6dcd&u=a1L2ltYWdlcy9zZWFyY2g_cT1SQUcrcmV0cmlldmFsK2F1Z21lbnRlZCtnZW5lcmF0aW9uK2FkdmFuY2VkK3BhdHRlcm5zK2h5YnJpZCtncmFwaCtyZS1yYW5raW5nKzIwMjUmRk9STT1IRFJTQzI&ntb=1
+        - listitem [ref=e34]:
+          - link "Videos" [ref=e35] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=0dc0178ff9d6bf31c9a1aca036ae80bf47bb09de5a68695dcca8bfd6b68aa0c5JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0faf492c-d25a-6cee-3c1a-5e44d35b6dcd&u=a1L3ZpZGVvcy9zZWFyY2g_cT1SQUcrcmV0cmlldmFsK2F1Z21lbnRlZCtnZW5lcmF0aW9uK2FkdmFuY2VkK3BhdHRlcm5zK2h5YnJpZCtncmFwaCtyZS1yYW5raW5nKzIwMjUmRk9STT1IRFJTQzM&ntb=1
+        - listitem [ref=e36]:
+          - link "Maps" [ref=e37] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=5d54be9651198ac7e073ccad8a4f1d4ddd319f439e8d8a7d16c6fe13d90aac73JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0faf492c-d25a-6cee-3c1a-5e44d35b6dcd&u=a1L21hcHM_cT1SQUcrcmV0cmlldmFsK2F1Z21lbnRlZCtnZW5lcmF0aW9uK2FkdmFuY2VkK3BhdHRlcm5zK2h5YnJpZCtncmFwaCtyZS1yYW5raW5nKzIwMjUmRk9STT1IRFJTQzQ&ntb=1
+        - listitem [ref=e38]:
+          - link "News" [ref=e39] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=11225bcdcdbd2c263c1a38a7cad36ad31e9ca92e43d8fb58d1931ab2c06280dfJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0faf492c-d25a-6cee-3c1a-5e44d35b6dcd&u=a1L25ld3Mvc2VhcmNoP3E9UkFHK3JldHJpZXZhbCthdWdtZW50ZWQrZ2VuZXJhdGlvbithZHZhbmNlZCtwYXR0ZXJucytoeWJyaWQrZ3JhcGgrcmUtcmFua2luZysyMDI1JkZPUk09SERSU0M2&ntb=1
+        - listitem [ref=e40]:
+          - button "More" [ref=e41] [cursor=pointer]:
+            - img [ref=e43]
+            - text: More
+  - contentinfo [ref=e45]:
+    - generic [ref=e46]:
+      - list:
+        - listitem [ref=e47]:
+          - link "Privacy" [ref=e48] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=1068686a5fb3e6bd49405ba2c2f276c153e081573b2fc7ab9e9522414e7387c0JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0faf492c-d25a-6cee-3c1a-5e44d35b6dcd&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+        - listitem [ref=e49]:
+          - link "Terms" [ref=e50] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=d3e7384f8162f275c3a7445a65ed8bab114c0ed5120068963e8e3aa6347a97fdJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=0faf492c-d25a-6cee-3c1a-5e44d35b6dcd&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1

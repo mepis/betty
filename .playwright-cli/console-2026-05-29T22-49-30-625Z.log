@@ -1,0 +1,9 @@
+[     315ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/latest/concepts/metrics/index/:0
+[     503ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=G-XWJT601CLX:0
+[     666ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/stable/_static/js/header_border.js:18
+[     666ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/stable/_static/js/header_border.js:18
+[     818ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
+[     948ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
+[     993ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://docs.ragas.io/_/addons/?client-version=0.49.0&api-version=1:0
+[     994ms] [ERROR] Error hitting addons API endpoint @ https://docs.ragas.io/_/static/javascript/readthedocs-addons.js:18
+[    1387ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.cr-relay.com/v1/site/af0e3230-e3f4-4e7d-8790-28b56c38d8a9/batch:0

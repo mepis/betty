@@ -1,0 +1,257 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: https://docs.ragas.io/en/stable/concepts/#core-concepts
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - button "Don't show this again" [ref=e6] [cursor=pointer]:
+        - img [ref=e7]
+      - paragraph [ref=e10]:
+        - strong [ref=e11]: Ragas Office Hours
+        - text: "- If you need help setting up Evals for your AI application, sign up for our Office Hours"
+        - link "here" [ref=e12] [cursor=pointer]:
+          - /url: https://cal.com/team/vibrantlabs/office-hours
+        - text: .
+  - banner [ref=e13]:
+    - navigation "Header" [ref=e14]:
+      - link "Ragas" [ref=e15] [cursor=pointer]:
+        - /url: https://docs.ragas.io/en/stable/
+        - img "logo" [ref=e16]
+      - generic [ref=e18]:
+        - generic [ref=e20]: Ragas
+        - generic:
+          - generic: 📚 Core Concepts
+      - generic [ref=e21]:
+        - radio "Switch to light mode"
+        - generic "Switch to light mode" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+        - radio "Switch to dark mode"
+        - radio "Switch to system preference"
+      - dialog [ref=e25]:
+        - search [ref=e26]:
+          - generic [ref=e27]:
+            - textbox "Search" [ref=e28]
+            - generic:
+              - img
+            - navigation "Search":
+              - button "Clear":
+                - img
+          - generic [ref=e31]: Type to start searching
+      - link "vibrantlabsai/ragas 14.1k 1.4k" [ref=e33] [cursor=pointer]:
+        - /url: https://github.com/vibrantlabsai/ragas
+        - img [ref=e35]
+        - generic [ref=e37]:
+          - text: vibrantlabsai/ragas
+          - list [ref=e38]:
+            - listitem [ref=e39]: 14.1k
+            - listitem [ref=e40]: 1.4k
+  - generic [ref=e41]:
+    - navigation "Tabs" [ref=e42]:
+      - list [ref=e44]:
+        - listitem [ref=e45]:
+          - link:
+            - /url: https://docs.ragas.io/en/stable/
+        - listitem [ref=e46]:
+          - link "🚀 Get Started" [ref=e47] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/getstarted/
+        - listitem [ref=e48]:
+          - link "📚 Core Concepts" [ref=e49] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/concepts/
+        - listitem [ref=e50]:
+          - link "🛠️ How-to Guides" [ref=e51] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/howtos/
+        - listitem [ref=e52]:
+          - link "📖 References" [ref=e53] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/references/
+        - listitem [ref=e54]:
+          - link "❤️ Community" [ref=e55] [cursor=pointer]:
+            - /url: https://docs.ragas.io/en/stable/community/
+    - main [ref=e56]:
+      - generic [ref=e57]:
+        - navigation "Navigation" [ref=e61]:
+          - list [ref=e62]:
+            - listitem [ref=e63]:
+              - link "📚 Core Concepts" [ref=e65] [cursor=pointer]:
+                - /url: https://docs.ragas.io/en/stable/concepts/
+                - generic [ref=e66]: 📚 Core Concepts
+              - navigation [ref=e67]:
+                - list [ref=e68]:
+                  - listitem [ref=e69]:
+                    - link "Experimentation" [ref=e70] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/experimentation/
+                      - generic [ref=e71]: Experimentation
+                  - listitem [ref=e72]:
+                    - link "Datasets" [ref=e73] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/datasets/
+                      - generic [ref=e74]: Datasets
+                  - listitem [ref=e75]:
+                    - link "Metrics" [ref=e77] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/metrics/
+                      - generic [ref=e78]: Metrics
+                    - navigation [ref=e79]:
+                      - list [ref=e80]:
+                        - listitem [ref=e81]:
+                          - link "Overview" [ref=e82] [cursor=pointer]:
+                            - /url: https://docs.ragas.io/en/stable/concepts/metrics/overview/
+                            - generic [ref=e83]: Overview
+                        - listitem [ref=e84]:
+                          - link "Available Metrics" [ref=e86] [cursor=pointer]:
+                            - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
+                            - generic [ref=e87]: Available Metrics
+                  - listitem [ref=e90]:
+                    - link "Test Data Generation" [ref=e92] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/test_data_generation/
+                      - generic [ref=e93]: Test Data Generation
+                    - navigation [ref=e94]:
+                      - list [ref=e95]:
+                        - listitem [ref=e96]:
+                          - generic [ref=e98]: RAG
+                        - listitem [ref=e100]:
+                          - generic [ref=e102]: Agents or tool use
+                  - listitem [ref=e104]:
+                    - link "Components" [ref=e106] [cursor=pointer]:
+                      - /url: https://docs.ragas.io/en/stable/concepts/components/
+                      - generic [ref=e107]: Components
+                    - navigation [ref=e108]:
+                      - list [ref=e109]:
+                        - listitem [ref=e110]:
+                          - generic [ref=e112]: General
+                        - listitem [ref=e114]:
+                          - generic [ref=e116]: Evaluation
+        - generic [ref=e119]:
+          - generic:
+            - navigation "Table of contents"
+        - generic [ref=e120]:
+          - navigation "Navigation" [ref=e121]:
+            - list [ref=e122]:
+              - listitem:
+                - link:
+                  - /url: https://docs.ragas.io/en/stable/
+              - listitem [ref=e123]:
+                - link "📚 Core Concepts" [ref=e124] [cursor=pointer]:
+                  - /url: https://docs.ragas.io/en/stable/concepts/
+                  - generic [ref=e125]: 📚 Core Concepts
+          - article [ref=e126]:
+            - generic [ref=e127]:
+              - heading "📚 Core Concepts" [level=1] [ref=e128]
+              - generic [ref=e129]:
+                - button "Copy entire page content to clipboard for LLM usage" [ref=e130] [cursor=pointer]:
+                  - img [ref=e131]
+                  - generic [ref=e133]: Copy page
+                - button "Copy options menu" [ref=e134] [cursor=pointer]:
+                  - img [ref=e135]
+            - list [ref=e138]:
+              - listitem [ref=e139]:
+                - paragraph [ref=e140]:
+                  - img [ref=e142]
+                  - link "Experimentation" [ref=e144] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/experimentation/
+                    - strong [ref=e145]: Experimentation
+                - separator [ref=e146]
+                - paragraph [ref=e147]: Learn how to systematically evaluate your AI applications using experiments.
+                - paragraph [ref=e148]: Track changes, measure improvements, and compare results across different versions of your application.
+              - listitem [ref=e149]:
+                - paragraph [ref=e150]:
+                  - img [ref=e152]
+                  - link "Datasets" [ref=e154] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/datasets/
+                    - strong [ref=e155]: Datasets
+                - separator [ref=e156]
+                - paragraph [ref=e157]: Understand how to create, manage, and use evaluation datasets.
+                - paragraph [ref=e158]: Learn about dataset structure, storage backends, and best practices for maintaining your test data.
+              - listitem [ref=e159]:
+                - paragraph [ref=e160]:
+                  - text: ":"
+                  - img [ref=e162]
+                  - link "Ragas Metrics" [ref=e164] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/metrics/
+                    - strong [ref=e165]: Ragas Metrics
+                - separator [ref=e166]
+                - paragraph [ref=e167]:
+                  - text: Use our library of
+                  - link "available metrics" [ref=e168] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/
+                  - text: or create
+                  - link "custom metrics" [ref=e169] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/metrics/overview/
+                  - text: tailored to your use case.
+                - paragraph [ref=e170]:
+                  - text: Metrics for evaluating
+                  - link "RAG" [ref=e171] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#retrieval-augmented-generation
+                  - text: ","
+                  - link "Agentic workflows" [ref=e172] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#agents-or-tool-use-cases
+                  - text: and
+                  - link "more.." [ref=e173] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#list-of-available-metrics
+                  - text: .
+              - listitem [ref=e174]:
+                - paragraph [ref=e175]:
+                  - img [ref=e177]
+                  - link "Test Data Generation" [ref=e179] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/test_data_generation/
+                    - strong [ref=e180]: Test Data Generation
+                - separator [ref=e181]
+                - paragraph [ref=e182]: Generate high-quality datasets for comprehensive testing.
+                - paragraph [ref=e183]:
+                  - text: Algorithms for synthesizing data to test
+                  - link "RAG" [ref=e184] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/test_data_generation/rag/
+                  - text: ","
+                  - link "Agentic workflows" [ref=e185] [cursor=pointer]:
+                    - /url: https://docs.ragas.io/en/stable/concepts/test_data_generation/agents/
+            - complementary [ref=e186]:
+              - generic [ref=e187]:
+                - generic "Last update" [ref=e188]:
+                  - img [ref=e189]
+                - generic "December 9, 2025 19:23:03 UTC" [ref=e191]: December 9, 2025
+              - generic [ref=e192]:
+                - generic "Created" [ref=e193]:
+                  - img [ref=e194]
+                - generic "December 9, 2025 19:23:03 UTC" [ref=e196]: December 9, 2025
+              - generic [ref=e197]:
+                - generic "Contributors" [ref=e198]:
+                  - img [ref=e199]
+                - generic [ref=e201]: GitHub
+                - navigation [ref=e202]:
+                  - link "sanjeed5" [ref=e203] [cursor=pointer]:
+                    - /url: https://github.com/sanjeed5
+                    - img "sanjeed5" [ref=e204]
+                  - link "web-flow" [ref=e205] [cursor=pointer]:
+                    - /url: https://github.com/web-flow
+                    - img "web-flow" [ref=e206]
+                  - link "sahusiddharth" [ref=e207] [cursor=pointer]:
+                    - /url: https://github.com/sahusiddharth
+                    - img "sahusiddharth" [ref=e208]
+                  - link "shahules786" [ref=e209] [cursor=pointer]:
+                    - /url: https://github.com/shahules786
+                    - img "shahules786" [ref=e210]
+                  - link "+2" [ref=e211] [cursor=pointer]:
+                    - /url: https://github.com/vibrantlabsai/ragas/blob/master/docs/concepts/index.md
+      - button "Back to top":
+        - img
+        - text: Back to top
+    - contentinfo [ref=e212]:
+      - navigation "Footer" [ref=e213]:
+        - 'link "Previous: Evaluate an AI Agent" [ref=e214] [cursor=pointer]':
+          - /url: https://docs.ragas.io/en/stable/tutorials/agent/
+          - img [ref=e216]
+          - generic [ref=e218]:
+            - text: Previous
+            - generic [ref=e219]: Evaluate an AI Agent
+        - 'link "Next: Experimentation" [ref=e220] [cursor=pointer]':
+          - /url: https://docs.ragas.io/en/stable/concepts/experimentation/
+          - generic [ref=e221]:
+            - text: Next
+            - generic [ref=e222]: Experimentation
+          - img [ref=e224]
+      - generic [ref=e228]:
+        - text: Made with
+        - link "Material for MkDocs Insiders" [ref=e229] [cursor=pointer]:
+          - /url: https://squidfunk.github.io/mkdocs-material/
+  - banner [ref=e231] [cursor=pointer]:
+    - img "Read the Docs" [ref=e232]
+    - generic [ref=e233]:
+      - img [ref=e234]
+      - text: stable
+    - img [ref=e237]

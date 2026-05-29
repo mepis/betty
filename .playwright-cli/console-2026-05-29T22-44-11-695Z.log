@@ -1,0 +1,8 @@
+[     732ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447:0
+[     909ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://log.cookieyes.com/api/v1/log:0
+[    1040ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtm.js?id=GTM-TNSCGVBH:0
+[    1041ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://cdn.usefathom.com/script.js:0
+[    1063ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://cdn.segment.com/v1/projects/KIC0Lcb5C9ssRY79dUKPOK8Wq6wLHiUP/settings:0
+[    1063ms] [ERROR] Failed to fetch @ https://www.meilisearch.com/_next/static/chunks/06sx-52soab8b.js:0
+[    4322ms] [WARNING] The resource https://js-eu1.hs-scripts.com/25945010.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://www.meilisearch.com/blog/rag-evaluation:0
+[    4322ms] [WARNING] The resource https://www.meilisearch.com/_next/static/chunks/128xo00hk-314.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://www.meilisearch.com/blog/rag-evaluation:0
