@@ -1,0 +1,474 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "OpenCode" [ref=e7] [cursor=pointer]:
+          - /url: /docs/
+          - generic [ref=e8]: OpenCode
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - link [ref=e11] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - img [ref=e12]
+            - link [ref=e14] [cursor=pointer]:
+              - /url: https://opencode.ai/discord
+              - img [ref=e15]
+          - button "Search" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: Search
+            - generic [ref=e20]:
+              - generic [ref=e21]: Ctrl
+              - generic [ref=e22]: K
+    - navigation "Main":
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "Intro" [ref=e28] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=e29]:
+          - link "Config" [ref=e30] [cursor=pointer]:
+            - /url: /docs/config/
+        - listitem [ref=e31]:
+          - link "Providers" [ref=e32] [cursor=pointer]:
+            - /url: /docs/providers/
+        - listitem [ref=e33]:
+          - link "Network" [ref=e34] [cursor=pointer]:
+            - /url: /docs/network/
+        - listitem [ref=e35]:
+          - link "Enterprise" [ref=e36] [cursor=pointer]:
+            - /url: /docs/enterprise/
+        - listitem [ref=e37]:
+          - link "Troubleshooting" [ref=e38] [cursor=pointer]:
+            - /url: /docs/troubleshooting/
+        - listitem [ref=e39]:
+          - link "Windows" [ref=e40] [cursor=pointer]:
+            - /url: /docs/windows-wsl
+        - listitem [ref=e41]:
+          - group [ref=e42]:
+            - generic "Usage" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: Usage
+              - img [ref=e45]
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Go" [ref=e49] [cursor=pointer]:
+                  - /url: /docs/go/
+              - listitem [ref=e50]:
+                - link "TUI" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/tui/
+              - listitem [ref=e52]:
+                - link "CLI" [ref=e53] [cursor=pointer]:
+                  - /url: /docs/cli/
+              - listitem [ref=e54]:
+                - link "Web" [ref=e55] [cursor=pointer]:
+                  - /url: /docs/web/
+              - listitem [ref=e56]:
+                - link "IDE" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/ide/
+              - listitem [ref=e58]:
+                - link "Zen" [ref=e59] [cursor=pointer]:
+                  - /url: /docs/zen/
+              - listitem [ref=e60]:
+                - link "Share" [ref=e61] [cursor=pointer]:
+                  - /url: /docs/share/
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/github/
+              - listitem [ref=e64]:
+                - link "GitLab" [ref=e65] [cursor=pointer]:
+                  - /url: /docs/gitlab/
+        - listitem [ref=e66]:
+          - group [ref=e67]:
+            - generic "Configure" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: Configure
+              - img [ref=e70]
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - link "Tools" [ref=e74] [cursor=pointer]:
+                  - /url: /docs/tools/
+              - listitem [ref=e75]:
+                - link "Rules" [ref=e76] [cursor=pointer]:
+                  - /url: /docs/rules/
+              - listitem [ref=e77]:
+                - link "Agents" [ref=e78] [cursor=pointer]:
+                  - /url: /docs/agents/
+              - listitem [ref=e79]:
+                - link "Models" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/models/
+              - listitem [ref=e81]:
+                - link "Themes" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/themes/
+              - listitem [ref=e83]:
+                - link "Keybinds" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/keybinds/
+              - listitem [ref=e85]:
+                - link "Commands" [ref=e86] [cursor=pointer]:
+                  - /url: /docs/commands/
+              - listitem [ref=e87]:
+                - link "Formatters" [ref=e88] [cursor=pointer]:
+                  - /url: /docs/formatters/
+              - listitem [ref=e89]:
+                - link "Permissions" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/permissions/
+              - listitem [ref=e91]:
+                - link "LSP Servers" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/lsp/
+              - listitem [ref=e93]:
+                - link "MCP servers" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/mcp-servers/
+              - listitem [ref=e95]:
+                - link "ACP Support" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/acp/
+              - listitem [ref=e97]:
+                - link "Agent Skills" [ref=e98] [cursor=pointer]:
+                  - /url: /docs/skills/
+              - listitem [ref=e99]:
+                - link "Custom Tools" [ref=e100] [cursor=pointer]:
+                  - /url: /docs/custom-tools/
+        - listitem [ref=e101]:
+          - group [ref=e102]:
+            - generic "Develop" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: Develop
+              - img [ref=e105]
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "SDK" [ref=e109] [cursor=pointer]:
+                  - /url: /docs/sdk/
+              - listitem [ref=e110]:
+                - link "Server" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/server/
+              - listitem [ref=e112]:
+                - link "Plugins" [ref=e113] [cursor=pointer]:
+                  - /url: /docs/plugins/
+              - listitem [ref=e114]:
+                - link "Ecosystem" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/ecosystem/
+    - generic [ref=e117]:
+      - complementary [ref=e118]:
+        - navigation "On this page" [ref=e123]:
+          - heading "On this page" [level=2] [ref=e124]
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "Overview" [ref=e127] [cursor=pointer]:
+                - /url: "#_top"
+            - listitem [ref=e128]:
+              - link "Creating a tool" [ref=e129] [cursor=pointer]:
+                - /url: "#creating-a-tool"
+              - list [ref=e130]:
+                - listitem [ref=e131]:
+                  - link "Location" [ref=e132] [cursor=pointer]:
+                    - /url: "#location"
+                - listitem [ref=e133]:
+                  - link "Structure" [ref=e134] [cursor=pointer]:
+                    - /url: "#structure"
+                - listitem [ref=e135]:
+                  - link "Arguments" [ref=e136] [cursor=pointer]:
+                    - /url: "#arguments"
+                - listitem [ref=e137]:
+                  - link "Context" [ref=e138] [cursor=pointer]:
+                    - /url: "#context"
+            - listitem [ref=e139]:
+              - link "Examples" [ref=e140] [cursor=pointer]:
+                - /url: "#examples"
+              - list [ref=e141]:
+                - listitem [ref=e142]:
+                  - link "Write a tool in Python" [ref=e143] [cursor=pointer]:
+                    - /url: "#write-a-tool-in-python"
+      - main [ref=e145]:
+        - generic [ref=e147]:
+          - heading "Custom Tools" [level=1] [ref=e148]
+          - paragraph [ref=e149]: Create tools the LLM can call in opencode.
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - paragraph [ref=e153]:
+              - text: Custom tools are functions you create that the LLM can call during conversations. They work alongside opencode’s
+              - link "built-in tools" [ref=e154] [cursor=pointer]:
+                - /url: /docs/tools
+              - text: like
+              - code [ref=e155]: "`read`"
+              - text: ","
+              - code [ref=e156]: "`write`"
+              - text: ", and"
+              - code [ref=e157]: "`bash`"
+              - text: .
+            - separator [ref=e158]
+            - heading "Creating a tool" [level=2] [ref=e159]:
+              - link "Creating a tool" [ref=e160]:
+                - /url: "#creating-a-tool"
+            - paragraph [ref=e161]:
+              - text: Tools are defined as
+              - strong [ref=e162]: TypeScript
+              - text: or
+              - strong [ref=e163]: JavaScript
+              - text: files. However, the tool definition can invoke scripts written in
+              - strong [ref=e164]: any language
+              - text: — TypeScript or JavaScript is only used for the tool definition itself.
+            - separator [ref=e165]
+            - heading "Location" [level=3] [ref=e166]:
+              - link "Location" [ref=e167]:
+                - /url: "#location"
+            - paragraph [ref=e168]: "They can be defined:"
+            - list [ref=e169]:
+              - listitem [ref=e170]:
+                - text: Locally by placing them in the
+                - code [ref=e171]: "`.opencode/tools/`"
+                - text: directory of your project.
+              - listitem [ref=e172]:
+                - text: Or globally, by placing them in
+                - code [ref=e173]: "`~/.config/opencode/tools/`"
+                - text: .
+            - separator [ref=e174]
+            - heading "Structure" [level=3] [ref=e175]:
+              - link "Structure" [ref=e176]:
+                - /url: "#structure"
+            - paragraph [ref=e177]:
+              - text: The easiest way to create tools is using the
+              - code [ref=e178]: "`tool()`"
+              - text: helper which provides type-safety and validation.
+            - figure ".opencode/tools/database.ts" [ref=e180]:
+              - generic [ref=e182]: .opencode/tools/database.ts
+              - code [ref=e184]:
+                - generic [ref=e186]: "import { tool } from \"@opencode-ai/plugin\""
+                - generic [ref=e190]: "export default tool({"
+                - generic [ref=e192]: "description: \"Query the project database\","
+                - generic [ref=e195]: "args: {"
+                - generic [ref=e198]: "query: tool.schema.string().describe(\"SQL query to execute\"),"
+                - generic [ref=e201]: "},"
+                - generic [ref=e204]: "async execute(args) {"
+                - generic [ref=e206]: // Your database logic here
+                - generic [ref=e208]: "return `Executed query: ${args.query}`"
+                - generic [ref=e210]: "},"
+                - generic [ref=e213]: "})"
+              - button "Copy to clipboard" [ref=e215] [cursor=pointer]
+            - paragraph [ref=e217]:
+              - text: The
+              - strong [ref=e218]: filename
+              - text: becomes the
+              - strong [ref=e219]: tool name
+              - text: . The above creates a
+              - code [ref=e220]: "`database`"
+              - text: tool.
+            - separator [ref=e221]
+            - heading "Multiple tools per file" [level=4] [ref=e222]:
+              - link "Multiple tools per file" [ref=e223]:
+                - /url: "#multiple-tools-per-file"
+            - paragraph [ref=e224]:
+              - text: You can also export multiple tools from a single file. Each export becomes
+              - strong [ref=e225]: a separate tool
+              - text: with the name
+              - strong [ref=e226]:
+                - code [ref=e227]: "`<filename>_<exportname>`"
+              - text: ":"
+            - figure ".opencode/tools/math.ts" [ref=e229]:
+              - generic [ref=e231]: .opencode/tools/math.ts
+              - code [ref=e233]:
+                - generic [ref=e235]: "import { tool } from \"@opencode-ai/plugin\""
+                - generic [ref=e239]: "export const add = tool({"
+                - generic [ref=e241]: "description: \"Add two numbers\","
+                - generic [ref=e244]: "args: {"
+                - generic [ref=e247]: "a: tool.schema.number().describe(\"First number\"),"
+                - generic [ref=e250]: "b: tool.schema.number().describe(\"Second number\"),"
+                - generic [ref=e253]: "},"
+                - generic [ref=e256]: "async execute(args) {"
+                - generic [ref=e258]: return (args.a + args.b).toString()
+                - generic [ref=e260]: "},"
+                - generic [ref=e263]: "})"
+                - generic [ref=e267]: "export const multiply = tool({"
+                - generic [ref=e269]: "description: \"Multiply two numbers\","
+                - generic [ref=e272]: "args: {"
+                - generic [ref=e275]: "a: tool.schema.number().describe(\"First number\"),"
+                - generic [ref=e278]: "b: tool.schema.number().describe(\"Second number\"),"
+                - generic [ref=e281]: "},"
+                - generic [ref=e284]: "async execute(args) {"
+                - generic [ref=e286]: return (args.a * args.b).toString()
+                - generic [ref=e288]: "},"
+                - generic [ref=e291]: "})"
+              - button "Copy to clipboard" [ref=e293] [cursor=pointer]
+            - paragraph [ref=e295]:
+              - text: "This creates two tools:"
+              - code [ref=e296]: "`math_add`"
+              - text: and
+              - code [ref=e297]: "`math_multiply`"
+              - text: .
+            - separator [ref=e298]
+            - heading "Name collisions with built-in tools" [level=4] [ref=e299]:
+              - link "Name collisions with built-in tools" [ref=e300]:
+                - /url: "#name-collisions-with-built-in-tools"
+            - paragraph [ref=e301]: Custom tools are keyed by tool name. If a custom tool uses the same name as a built-in tool, the custom tool takes precedence.
+            - paragraph [ref=e302]:
+              - text: For example, this file replaces the built-in
+              - code [ref=e303]: "`bash`"
+              - text: "tool:"
+            - figure ".opencode/tools/bash.ts" [ref=e305]:
+              - generic [ref=e307]: .opencode/tools/bash.ts
+              - code [ref=e309]:
+                - generic [ref=e311]: "import { tool } from \"@opencode-ai/plugin\""
+                - generic [ref=e315]: "export default tool({"
+                - generic [ref=e317]: "description: \"Restricted bash wrapper\","
+                - generic [ref=e320]: "args: {"
+                - generic [ref=e323]: "command: tool.schema.string(),"
+                - generic [ref=e326]: "},"
+                - generic [ref=e329]: "async execute(args) {"
+                - generic [ref=e331]: "return `blocked: ${args.command}`"
+                - generic [ref=e333]: "},"
+                - generic [ref=e336]: "})"
+              - button "Copy to clipboard" [ref=e338] [cursor=pointer]
+            - complementary "Note" [ref=e340]:
+              - paragraph [ref=e341]:
+                - img [ref=e342]
+                - text: Note
+              - paragraph [ref=e345]:
+                - text: Prefer unique names unless you intentionally want to replace a built-in tool. If you want to disable a built in tool but not override it, use
+                - link "permissions" [ref=e346] [cursor=pointer]:
+                  - /url: /docs/permissions
+                - text: .
+            - separator [ref=e347]
+            - heading "Arguments" [level=3] [ref=e348]:
+              - link "Arguments" [ref=e349]:
+                - /url: "#arguments"
+            - paragraph [ref=e350]:
+              - text: You can use
+              - code [ref=e351]: "`tool.schema`"
+              - text: ", which is just"
+              - link "Zod" [ref=e352] [cursor=pointer]:
+                - /url: https://zod.dev
+              - text: ", to define argument types."
+            - figure [ref=e354]:
+              - code [ref=e356]:
+                - generic [ref=e358]: "args: {"
+                - generic [ref=e360]:
+                  - text: "query:"
+                  - mark [ref=e361]: tool.schema
+                  - text: .string().describe("SQL query to execute")
+                - generic [ref=e363]: "}"
+              - button "Copy to clipboard" [ref=e365] [cursor=pointer]
+            - paragraph [ref=e367]:
+              - text: You can also import
+              - link "Zod" [ref=e368] [cursor=pointer]:
+                - /url: https://zod.dev
+              - text: "directly and return a plain object:"
+            - figure [ref=e370]:
+              - code [ref=e372]:
+                - generic [ref=e374]: "import { z } from \"zod\""
+                - generic [ref=e378]: "export default {"
+                - generic [ref=e380]: "description: \"Tool description\","
+                - generic [ref=e383]: "args: {"
+                - generic [ref=e386]: "param: z.string().describe(\"Parameter description\"),"
+                - generic [ref=e389]: "},"
+                - generic [ref=e392]: "async execute(args, context) {"
+                - generic [ref=e394]: // Tool implementation
+                - generic [ref=e396]: return "result"
+                - generic [ref=e398]: "},"
+                - generic [ref=e401]: "}"
+              - button "Copy to clipboard" [ref=e403] [cursor=pointer]
+            - separator [ref=e405]
+            - heading "Context" [level=3] [ref=e406]:
+              - link "Context" [ref=e407]:
+                - /url: "#context"
+            - paragraph [ref=e408]: "Tools receive context about the current session:"
+            - figure ".opencode/tools/project.ts" [ref=e410]:
+              - generic [ref=e412]: .opencode/tools/project.ts
+              - code [ref=e414]:
+                - generic [ref=e416]: "import { tool } from \"@opencode-ai/plugin\""
+                - generic [ref=e420]: "export default tool({"
+                - generic [ref=e422]: "description: \"Get project information\","
+                - generic [ref=e425]: "args: {},"
+                - generic [ref=e428]: "async execute(args, context) {"
+                - generic [ref=e430]: // Access context information
+                - generic [ref=e432]: "const { agent, sessionID, messageID, directory, worktree } = context"
+                - generic [ref=e434]: "return `Agent: ${agent}, Session: ${sessionID}, Message: ${messageID}, Directory: ${directory}, Worktree: ${worktree}`"
+                - generic [ref=e436]: "},"
+                - generic [ref=e439]: "})"
+              - button "Copy to clipboard" [ref=e441] [cursor=pointer]
+            - paragraph [ref=e443]:
+              - text: Use
+              - code [ref=e444]: "`context.directory`"
+              - text: for the session working directory. Use
+              - code [ref=e445]: "`context.worktree`"
+              - text: for the git worktree root.
+            - separator [ref=e446]
+            - heading "Examples" [level=2] [ref=e447]:
+              - link "Examples" [ref=e448]:
+                - /url: "#examples"
+            - heading "Write a tool in Python" [level=3] [ref=e449]:
+              - link "Write a tool in Python" [ref=e450]:
+                - /url: "#write-a-tool-in-python"
+            - paragraph [ref=e451]: You can write your tools in any language you want. Here’s an example that adds two numbers using Python.
+            - paragraph [ref=e452]: "First, create the tool as a Python script:"
+            - figure ".opencode/tools/add.py" [ref=e454]:
+              - generic [ref=e456]: .opencode/tools/add.py
+              - code [ref=e458]:
+                - generic [ref=e460]: import sys
+                - generic [ref=e464]: a = int(sys.argv[1])
+                - generic [ref=e466]: b = int(sys.argv[2])
+                - generic [ref=e468]: print(a + b)
+              - button "Copy to clipboard" [ref=e470] [cursor=pointer]
+            - paragraph [ref=e472]: "Then create the tool definition that invokes it:"
+            - figure ".opencode/tools/python-add.ts" [ref=e474]:
+              - generic [ref=e476]: .opencode/tools/python-add.ts
+              - code [ref=e478]:
+                - generic [ref=e480]: "import { tool } from \"@opencode-ai/plugin\""
+                - generic [ref=e482]: import path from "path"
+                - generic [ref=e486]: "export default tool({"
+                - generic [ref=e488]: "description: \"Add two numbers using Python\","
+                - generic [ref=e491]: "args: {"
+                - generic [ref=e494]: "a: tool.schema.number().describe(\"First number\"),"
+                - generic [ref=e497]: "b: tool.schema.number().describe(\"Second number\"),"
+                - generic [ref=e500]: "},"
+                - generic [ref=e503]: "async execute(args, context) {"
+                - generic [ref=e505]: const script = path.join(context.worktree, ".opencode/tools/add.py")
+                - generic [ref=e507]: "const result = await Bun.$`python3 ${script} ${args.a} ${args.b}`.text()"
+                - generic [ref=e509]: return result.trim()
+                - generic [ref=e511]: "},"
+                - generic [ref=e514]: "})"
+              - button "Copy to clipboard" [ref=e516] [cursor=pointer]
+            - paragraph [ref=e518]:
+              - text: Here we are using the
+              - 'link "`Bun.$`" [ref=e519] [cursor=pointer]':
+                - /url: https://bun.com/docs/runtime/shell
+                - code [ref=e520]: "`Bun.$`"
+              - text: utility to run the Python script.
+          - generic [ref=e522]:
+            - generic [ref=e523]:
+              - link "Edit page" [ref=e524] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/edit/dev/packages/web/src/content/docs/custom-tools.mdx
+                - img [ref=e525]
+                - text: Edit page
+              - link "Found a bug? Open an issue" [ref=e527] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues/new
+                - img [ref=e528]
+                - text: Found a bug? Open an issue
+              - link "Join our Discord community" [ref=e530] [cursor=pointer]:
+                - /url: https://opencode.ai/discord
+                - img [ref=e531]
+                - text: Join our Discord community
+              - generic [ref=e534]:
+                - generic [ref=e535]: Select language
+                - img
+                - combobox "Select language" [ref=e536] [cursor=pointer]:
+                  - option "English" [selected]
+                  - option "العربية"
+                  - option "Bosanski"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Español"
+                  - option "Français"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어"
+                  - option "Norsk Bokmål"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Русский"
+                  - option "ไทย"
+                  - option "Türkçe"
+                  - option "简体中文"
+                  - option "繁體中文"
+                - img
+            - generic [ref=e537]:
+              - paragraph [ref=e538]:
+                - text: ©
+                - link "Anomaly" [ref=e539] [cursor=pointer]:
+                  - /url: https://anoma.ly
+              - paragraph [ref=e540]:
+                - text: "Last updated:"
+                - time [ref=e541]: May 29, 2026

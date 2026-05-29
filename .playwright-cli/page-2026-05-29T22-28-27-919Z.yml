@@ -1,0 +1,5 @@
+- generic [active] [ref=e1]:
+  - heading "Access Denied" [level=1] [ref=e2]
+  - text: You don't have permission to access "http://preprints.org/manuscript/202601.0754/v1" on this server.
+  - paragraph [ref=e3]: "Reference #18.51deda17.1780093707.3aa770a5"
+  - paragraph [ref=e4]: https://errors.edgesuite.net/18.51deda17.1780093707.3aa770a5

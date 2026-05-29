@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: "\"OpenAI compatible\" API protocol limitations missing features function calling vision 2025"
+    - complementary "Account Rewards and Preferences" [ref=e17]:
+      - button "Microsoft Rewards"
+      - link "Sign in" [ref=e18] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - generic "Sign in" [ref=e19]
+    - navigation "Search Filter" [ref=e20]:
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "All" [ref=e23] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e24]:
+          - link "Images" [ref=e25] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=09ab69c473703d7d047214b22b244e4559a848e0843ed2a0e9fec4887b1320b3JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=3dd4c3d2-5de5-6be2-2075-d4ba5cb66a25&u=a1L2ltYWdlcy9zZWFyY2g_cT0lMjJPcGVuQUkrY29tcGF0aWJsZSUyMitBUEkrcHJvdG9jb2wrbGltaXRhdGlvbnMrbWlzc2luZytmZWF0dXJlcytmdW5jdGlvbitjYWxsaW5nK3Zpc2lvbisyMDI1JkZPUk09SERSU0My&ntb=1
+        - listitem [ref=e26]:
+          - link "Videos" [ref=e27] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=cf89f8adcab857bb005c78397fb7e9f795164ca86207f8c70c30b33e91c0a4d8JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=3dd4c3d2-5de5-6be2-2075-d4ba5cb66a25&u=a1L3ZpZGVvcy9zZWFyY2g_cT0lMjJPcGVuQUkrY29tcGF0aWJsZSUyMitBUEkrcHJvdG9jb2wrbGltaXRhdGlvbnMrbWlzc2luZytmZWF0dXJlcytmdW5jdGlvbitjYWxsaW5nK3Zpc2lvbisyMDI1JkZPUk09SERSU0Mz&ntb=1
+        - listitem [ref=e28]:
+          - link "Maps" [ref=e29] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=3eb92e31b72044a4964768b2d8716118424fe1b475928536deb0d99ecca5c153JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=3dd4c3d2-5de5-6be2-2075-d4ba5cb66a25&u=a1L21hcHM_cT0lMjJPcGVuQUkrY29tcGF0aWJsZSUyMitBUEkrcHJvdG9jb2wrbGltaXRhdGlvbnMrbWlzc2luZytmZWF0dXJlcytmdW5jdGlvbitjYWxsaW5nK3Zpc2lvbisyMDI1JkZPUk09SERSU0M0&ntb=1
+        - listitem [ref=e30]:
+          - link "News" [ref=e31] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=08c71af353457811940524d35bd2f3dd5e1bed081e506cedcac0b27a8c4f5692JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=3dd4c3d2-5de5-6be2-2075-d4ba5cb66a25&u=a1L25ld3Mvc2VhcmNoP3E9JTIyT3BlbkFJK2NvbXBhdGlibGUlMjIrQVBJK3Byb3RvY29sK2xpbWl0YXRpb25zK21pc3NpbmcrZmVhdHVyZXMrZnVuY3Rpb24rY2FsbGluZyt2aXNpb24rMjAyNSZGT1JNPUhEUlNDNg&ntb=1
+        - listitem [ref=e32]:
+          - link "Shopping" [ref=e33] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=852c0b4fc7264e7974c05ef420ab85f90850a325b52b698252dd3c3f4a594633JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=3dd4c3d2-5de5-6be2-2075-d4ba5cb66a25&u=a1L3Nob3AvdG9waWNzP3E9JTIyT3BlbkFJK2NvbXBhdGlibGUlMjIrQVBJK3Byb3RvY29sK2xpbWl0YXRpb25zK21pc3NpbmcrZmVhdHVyZXMrZnVuY3Rpb24rY2FsbGluZyt2aXNpb24rMjAyNSZGT1JNPVNIT1BUQg&ntb=1
+        - listitem [ref=e34]:
+          - button "More" [ref=e35] [cursor=pointer]:
+            - img [ref=e37]
+            - text: More
+  - contentinfo [ref=e39]:
+    - generic [ref=e40]:
+      - list:
+        - listitem [ref=e41]:
+          - link "Privacy" [ref=e42] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=c57ecbf5bc4d10a1822487a3a96910af0804d4ef014dae7e5d51b05054b90786JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=3dd4c3d2-5de5-6be2-2075-d4ba5cb66a25&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+        - listitem [ref=e43]:
+          - link "Terms" [ref=e44] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=719a902c8fda456fbe650616dde72e9fd1237b529e2f8c106e8ccc6c5b257fc4JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=3dd4c3d2-5de5-6be2-2075-d4ba5cb66a25&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1

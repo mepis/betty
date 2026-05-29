@@ -8,6 +8,7 @@
 | [Optimized llama-server Settings for Qwen3.6-35B-A3B](topics/optimized-llama-server-settings-qwen36-35b/) | 2026-05-28 | Complete | llama.cpp, Qwen, MoE, GPU optimization, quantization |
 | [llama.cpp gRPC Server](topics/llama-cpp-grpc-server/) | 2026-05-29 | Complete | llama.cpp, gRPC, LLM-serving, LocalAI, inference, distributed-inference |
 | [OpenAI Compatible APIs](topics/openai-compatible-apis/) | 2026-05-29 | Complete | openai, api, llm, protocol, llama.cpp, ollama, vllm, litellm, openwebui, mcp, gateway, enterprise |
+| [LLM Harness](topics/llm-harness/) | 2026-05-29 | Complete | llm, agent-harness, orchestration, security, taxonomy, etclovg, mcp, a2a, data-governance, prism |
 
 ## Detail
 
@@ -66,3 +67,19 @@
 - Gateway layer (LiteLLM Proxy, OpenRouter) fills critical enterprise gaps in auth, routing, and observability
 - Frontend ecosystem (OpenWebUI, LobeChat) enables plug-and-play local model access
 - MCP emerging as complementary protocol for universal tool integration
+
+### LLM Harness
+
+**Date:** 2026-05-29
+**Status:** Complete
+
+**Summary:** Comprehensive research into the LLM harness ecosystem — the structural backbone that orchestrates LLM agent execution. Covers the ETCLOVG taxonomy, full-stack and specialized harnesses, multi-agent systems, protocol standardization (MCP, A2A), safety frameworks (PRISM, Microsoft AGT), and the critical data governance gap.
+
+**Key Findings:**
+- "Agent = Model + Harness" — harness quality matters more than model quality (13.7-point Terminal Bench gain with zero model changes)
+- ETCLOVG taxonomy provides 7-layer framework: Execution, Tools, Context, Lifecycle, Observation, Validation, Guardrails
+- Data governance is the biggest gap: uncertified data causes 60-80% of agent failures in production
+- PRISM zero-fork defense-in-depth and Microsoft AGT address OWASP agentic AI risks
+- Protocol fragmentation: MCP (Anthropic) and A2A (Google) competing standards
+- OpenAI introduced "Model-Native Harnesses" in May 2026
+- 50+ open-source projects mapped across the harness ecosystem

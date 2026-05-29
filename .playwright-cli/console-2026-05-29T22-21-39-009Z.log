@@ -1,0 +1,2 @@
+[       7ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://100.91.131.108/searxng/search?q=OpenAI+compatible+API+future+standards+OpenAPI+specification+formalization+protocol+evolution+2025+2026&format=json:0
+[      15ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://100.91.131.108/favicon.ico:0

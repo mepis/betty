@@ -1,0 +1,530 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "OpenCode" [ref=e7] [cursor=pointer]:
+          - /url: /docs/
+          - generic [ref=e8]: OpenCode
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - link [ref=e11] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - img [ref=e12]
+            - link [ref=e14] [cursor=pointer]:
+              - /url: https://opencode.ai/discord
+              - img [ref=e15]
+          - button "Search" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: Search
+            - generic [ref=e20]:
+              - generic [ref=e21]: Ctrl
+              - generic [ref=e22]: K
+    - navigation "Main":
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "Intro" [ref=e28] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=e29]:
+          - link "Config" [ref=e30] [cursor=pointer]:
+            - /url: /docs/config/
+        - listitem [ref=e31]:
+          - link "Providers" [ref=e32] [cursor=pointer]:
+            - /url: /docs/providers/
+        - listitem [ref=e33]:
+          - link "Network" [ref=e34] [cursor=pointer]:
+            - /url: /docs/network/
+        - listitem [ref=e35]:
+          - link "Enterprise" [ref=e36] [cursor=pointer]:
+            - /url: /docs/enterprise/
+        - listitem [ref=e37]:
+          - link "Troubleshooting" [ref=e38] [cursor=pointer]:
+            - /url: /docs/troubleshooting/
+        - listitem [ref=e39]:
+          - link "Windows" [ref=e40] [cursor=pointer]:
+            - /url: /docs/windows-wsl
+        - listitem [ref=e41]:
+          - group [ref=e42]:
+            - generic "Usage" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: Usage
+              - img [ref=e45]
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Go" [ref=e49] [cursor=pointer]:
+                  - /url: /docs/go/
+              - listitem [ref=e50]:
+                - link "TUI" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/tui/
+              - listitem [ref=e52]:
+                - link "CLI" [ref=e53] [cursor=pointer]:
+                  - /url: /docs/cli/
+              - listitem [ref=e54]:
+                - link "Web" [ref=e55] [cursor=pointer]:
+                  - /url: /docs/web/
+              - listitem [ref=e56]:
+                - link "IDE" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/ide/
+              - listitem [ref=e58]:
+                - link "Zen" [ref=e59] [cursor=pointer]:
+                  - /url: /docs/zen/
+              - listitem [ref=e60]:
+                - link "Share" [ref=e61] [cursor=pointer]:
+                  - /url: /docs/share/
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/github/
+              - listitem [ref=e64]:
+                - link "GitLab" [ref=e65] [cursor=pointer]:
+                  - /url: /docs/gitlab/
+        - listitem [ref=e66]:
+          - group [ref=e67]:
+            - generic "Configure" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: Configure
+              - img [ref=e70]
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - link "Tools" [ref=e74] [cursor=pointer]:
+                  - /url: /docs/tools/
+              - listitem [ref=e75]:
+                - link "Rules" [ref=e76] [cursor=pointer]:
+                  - /url: /docs/rules/
+              - listitem [ref=e77]:
+                - link "Agents" [ref=e78] [cursor=pointer]:
+                  - /url: /docs/agents/
+              - listitem [ref=e79]:
+                - link "Models" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/models/
+              - listitem [ref=e81]:
+                - link "Themes" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/themes/
+              - listitem [ref=e83]:
+                - link "Keybinds" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/keybinds/
+              - listitem [ref=e85]:
+                - link "Commands" [ref=e86] [cursor=pointer]:
+                  - /url: /docs/commands/
+              - listitem [ref=e87]:
+                - link "Formatters" [ref=e88] [cursor=pointer]:
+                  - /url: /docs/formatters/
+              - listitem [ref=e89]:
+                - link "Permissions" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/permissions/
+              - listitem [ref=e91]:
+                - link "LSP Servers" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/lsp/
+              - listitem [ref=e93]:
+                - link "MCP servers" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/mcp-servers/
+              - listitem [ref=e95]:
+                - link "ACP Support" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/acp/
+              - listitem [ref=e97]:
+                - link "Agent Skills" [ref=e98] [cursor=pointer]:
+                  - /url: /docs/skills/
+              - listitem [ref=e99]:
+                - link "Custom Tools" [ref=e100] [cursor=pointer]:
+                  - /url: /docs/custom-tools/
+        - listitem [ref=e101]:
+          - group [ref=e102]:
+            - generic "Develop" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: Develop
+              - img [ref=e105]
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "SDK" [ref=e109] [cursor=pointer]:
+                  - /url: /docs/sdk/
+              - listitem [ref=e110]:
+                - link "Server" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/server/
+              - listitem [ref=e112]:
+                - link "Plugins" [ref=e113] [cursor=pointer]:
+                  - /url: /docs/plugins/
+              - listitem [ref=e114]:
+                - link "Ecosystem" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/ecosystem/
+    - generic [ref=e117]:
+      - complementary [ref=e118]:
+        - navigation "On this page" [ref=e123]:
+          - heading "On this page" [level=2] [ref=e124]
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "Overview" [ref=e127] [cursor=pointer]:
+                - /url: "#_top"
+            - listitem [ref=e128]:
+              - link "Place files" [ref=e129] [cursor=pointer]:
+                - /url: "#place-files"
+            - listitem [ref=e130]:
+              - link "Understand discovery" [ref=e131] [cursor=pointer]:
+                - /url: "#understand-discovery"
+            - listitem [ref=e132]:
+              - link "Write frontmatter" [ref=e133] [cursor=pointer]:
+                - /url: "#write-frontmatter"
+            - listitem [ref=e134]:
+              - link "Validate names" [ref=e135] [cursor=pointer]:
+                - /url: "#validate-names"
+            - listitem [ref=e136]:
+              - link "Follow length rules" [ref=e137] [cursor=pointer]:
+                - /url: "#follow-length-rules"
+            - listitem [ref=e138]:
+              - link "Use an example" [ref=e139] [cursor=pointer]:
+                - /url: "#use-an-example"
+            - listitem [ref=e140]:
+              - link "Recognize tool description" [ref=e141] [cursor=pointer]:
+                - /url: "#recognize-tool-description"
+            - listitem [ref=e142]:
+              - link "Configure permissions" [ref=e143] [cursor=pointer]:
+                - /url: "#configure-permissions"
+            - listitem [ref=e144]:
+              - link "Override per agent" [ref=e145] [cursor=pointer]:
+                - /url: "#override-per-agent"
+            - listitem [ref=e146]:
+              - link "Disable the skill tool" [ref=e147] [cursor=pointer]:
+                - /url: "#disable-the-skill-tool"
+            - listitem [ref=e148]:
+              - link "Troubleshoot loading" [ref=e149] [cursor=pointer]:
+                - /url: "#troubleshoot-loading"
+      - main [ref=e151]:
+        - generic [ref=e153]:
+          - heading "Agent Skills" [level=1] [ref=e154]
+          - paragraph [ref=e155]: Define reusable behavior via SKILL.md definitions
+        - generic [ref=e157]:
+          - generic [ref=e158]:
+            - paragraph [ref=e159]:
+              - text: Agent skills let OpenCode discover reusable instructions from your repo or home directory. Skills are loaded on-demand via the native
+              - code [ref=e160]: "`skill`"
+              - text: tool—agents see available skills and can load the full content when needed.
+            - separator [ref=e161]
+            - heading "Place files" [level=2] [ref=e162]:
+              - link "Place files" [ref=e163]:
+                - /url: "#place-files"
+            - paragraph [ref=e164]:
+              - text: Create one folder per skill name and put a
+              - code [ref=e165]: "`SKILL.md`"
+              - text: "inside it. OpenCode searches these locations:"
+            - list [ref=e166]:
+              - listitem [ref=e167]:
+                - text: "Project config:"
+                - code [ref=e168]: "`.opencode/skills/<name>/SKILL.md`"
+              - listitem [ref=e169]:
+                - text: "Global config:"
+                - code [ref=e170]: "`~/.config/opencode/skills/<name>/SKILL.md`"
+              - listitem [ref=e171]:
+                - text: "Project Claude-compatible:"
+                - code [ref=e172]: "`.claude/skills/<name>/SKILL.md`"
+              - listitem [ref=e173]:
+                - text: "Global Claude-compatible:"
+                - code [ref=e174]: "`~/.claude/skills/<name>/SKILL.md`"
+              - listitem [ref=e175]:
+                - text: "Project agent-compatible:"
+                - code [ref=e176]: "`.agents/skills/<name>/SKILL.md`"
+              - listitem [ref=e177]:
+                - text: "Global agent-compatible:"
+                - code [ref=e178]: "`~/.agents/skills/<name>/SKILL.md`"
+            - separator [ref=e179]
+            - heading "Understand discovery" [level=2] [ref=e180]:
+              - link "Understand discovery" [ref=e181]:
+                - /url: "#understand-discovery"
+            - paragraph [ref=e182]:
+              - text: For project-local paths, OpenCode walks up from your current working directory until it reaches the git worktree. It loads any matching
+              - code [ref=e183]: "`skills/*/SKILL.md`"
+              - text: in
+              - code [ref=e184]: "`.opencode/`"
+              - text: and any matching
+              - code [ref=e185]: "`.claude/skills/*/SKILL.md`"
+              - text: or
+              - code [ref=e186]: "`.agents/skills/*/SKILL.md`"
+              - text: along the way.
+            - paragraph [ref=e187]:
+              - text: Global definitions are also loaded from
+              - code [ref=e188]: "`~/.config/opencode/skills/*/SKILL.md`"
+              - text: ","
+              - code [ref=e189]: "`~/.claude/skills/*/SKILL.md`"
+              - text: ", and"
+              - code [ref=e190]: "`~/.agents/skills/*/SKILL.md`"
+              - text: .
+            - separator [ref=e191]
+            - heading "Write frontmatter" [level=2] [ref=e192]:
+              - link "Write frontmatter" [ref=e193]:
+                - /url: "#write-frontmatter"
+            - paragraph [ref=e194]:
+              - text: Each
+              - code [ref=e195]: "`SKILL.md`"
+              - text: "must start with YAML frontmatter. Only these fields are recognized:"
+            - list [ref=e196]:
+              - listitem [ref=e197]:
+                - code [ref=e198]: "`name`"
+                - text: (required)
+              - listitem [ref=e199]:
+                - code [ref=e200]: "`description`"
+                - text: (required)
+              - listitem [ref=e201]:
+                - code [ref=e202]: "`license`"
+                - text: (optional)
+              - listitem [ref=e203]:
+                - code [ref=e204]: "`compatibility`"
+                - text: (optional)
+              - listitem [ref=e205]:
+                - code [ref=e206]: "`metadata`"
+                - text: (optional, string-to-string map)
+            - paragraph [ref=e207]: Unknown frontmatter fields are ignored.
+            - separator [ref=e208]
+            - heading "Validate names" [level=2] [ref=e209]:
+              - link "Validate names" [ref=e210]:
+                - /url: "#validate-names"
+            - paragraph [ref=e211]:
+              - code [ref=e212]: "`name`"
+              - text: "must:"
+            - list [ref=e213]:
+              - listitem [ref=e214]: Be 1–64 characters
+              - listitem [ref=e215]: Be lowercase alphanumeric with single hyphen separators
+              - listitem [ref=e216]:
+                - text: Not start or end with
+                - code [ref=e217]: "`-`"
+              - listitem [ref=e218]:
+                - text: Not contain consecutive
+                - code [ref=e219]: "`--`"
+              - listitem [ref=e220]:
+                - text: Match the directory name that contains
+                - code [ref=e221]: "`SKILL.md`"
+            - paragraph [ref=e222]: "Equivalent regex:"
+            - figure [ref=e224]:
+              - code [ref=e226]:
+                - generic [ref=e228]: ^[a-z0-9]+(-[a-z0-9]+)*$
+              - button "Copy to clipboard" [ref=e230] [cursor=pointer]
+            - separator [ref=e232]
+            - heading "Follow length rules" [level=2] [ref=e233]:
+              - link "Follow length rules" [ref=e234]:
+                - /url: "#follow-length-rules"
+            - paragraph [ref=e235]:
+              - code [ref=e236]: "`description`"
+              - text: must be 1-1024 characters. Keep it specific enough for the agent to choose correctly.
+            - separator [ref=e237]
+            - heading "Use an example" [level=2] [ref=e238]:
+              - link "Use an example" [ref=e239]:
+                - /url: "#use-an-example"
+            - paragraph [ref=e240]:
+              - text: Create
+              - code [ref=e241]: "`.opencode/skills/git-release/SKILL.md`"
+              - text: "like this:"
+            - figure [ref=e243]:
+              - code [ref=e245]:
+                - generic [ref=e247]: "---"
+                - generic [ref=e249]: "name: git-release"
+                - generic [ref=e251]: "description: Create consistent releases and changelogs"
+                - generic [ref=e253]: "license: MIT"
+                - generic [ref=e255]: "compatibility: opencode"
+                - generic [ref=e257]: "metadata:"
+                - generic [ref=e259]: "audience: maintainers"
+                - generic [ref=e261]: "workflow: github"
+                - generic [ref=e263]: "---"
+                - generic [ref=e267]: "## What I do"
+                - generic [ref=e271]: "- Draft release notes from merged PRs"
+                - generic [ref=e273]: "- Propose a version bump"
+                - generic [ref=e275]: "- Provide a copy-pasteable `gh release create` command"
+                - generic [ref=e279]: "## When to use me"
+                - generic [ref=e283]: Use this when you are preparing a tagged release.
+                - generic [ref=e285]: Ask clarifying questions if the target versioning scheme is unclear.
+              - button "Copy to clipboard" [ref=e287] [cursor=pointer]
+            - separator [ref=e289]
+            - heading "Recognize tool description" [level=2] [ref=e290]:
+              - link "Recognize tool description" [ref=e291]:
+                - /url: "#recognize-tool-description"
+            - paragraph [ref=e292]:
+              - text: OpenCode lists available skills in the
+              - code [ref=e293]: "`skill`"
+              - text: "tool description. Each entry includes the skill name and description:"
+            - figure [ref=e295]:
+              - code [ref=e297]:
+                - generic [ref=e299]: <available_skills>
+                - generic [ref=e301]: <skill>
+                - generic [ref=e304]: <name>git-release</name>
+                - generic [ref=e307]: <description>Create consistent releases and changelogs</description>
+                - generic [ref=e310]: </skill>
+                - generic [ref=e313]: </available_skills>
+              - button "Copy to clipboard" [ref=e315] [cursor=pointer]
+            - paragraph [ref=e317]: "The agent loads a skill by calling the tool:"
+            - figure [ref=e319]:
+              - code [ref=e321]:
+                - generic [ref=e323]: "skill({ name: \"git-release\" })"
+              - button "Copy to clipboard" [ref=e325] [cursor=pointer]
+            - separator [ref=e327]
+            - heading "Configure permissions" [level=2] [ref=e328]:
+              - link "Configure permissions" [ref=e329]:
+                - /url: "#configure-permissions"
+            - paragraph [ref=e330]:
+              - text: Control which skills agents can access using pattern-based permissions in
+              - code [ref=e331]: "`opencode.json`"
+              - text: ":"
+            - figure [ref=e333]:
+              - code [ref=e335]:
+                - generic [ref=e337]: "{"
+                - generic [ref=e339]: "\"permission\": {"
+                - generic [ref=e341]: "\"skill\": {"
+                - generic [ref=e343]: "\"*\": \"allow\","
+                - generic [ref=e345]: "\"pr-review\": \"allow\","
+                - generic [ref=e347]: "\"internal-*\": \"deny\","
+                - generic [ref=e349]: "\"experimental-*\": \"ask\""
+                - generic [ref=e351]: "}"
+                - generic [ref=e354]: "}"
+                - generic [ref=e357]: "}"
+              - button "Copy to clipboard" [ref=e359] [cursor=pointer]
+            - table [ref=e361]:
+              - rowgroup [ref=e362]:
+                - row "Permission Behavior" [ref=e363]:
+                  - columnheader "Permission" [ref=e364]
+                  - columnheader "Behavior" [ref=e365]
+              - rowgroup [ref=e366]:
+                - 'row "`allow` Skill loads immediately" [ref=e367]':
+                  - 'cell "`allow`" [ref=e368]':
+                    - code [ref=e369]: "`allow`"
+                  - cell "Skill loads immediately" [ref=e370]
+                - 'row "`deny` Skill hidden from agent, access rejected" [ref=e371]':
+                  - 'cell "`deny`" [ref=e372]':
+                    - code [ref=e373]: "`deny`"
+                  - cell "Skill hidden from agent, access rejected" [ref=e374]
+                - 'row "`ask` User prompted for approval before loading" [ref=e375]':
+                  - 'cell "`ask`" [ref=e376]':
+                    - code [ref=e377]: "`ask`"
+                  - cell "User prompted for approval before loading" [ref=e378]
+            - paragraph [ref=e379]:
+              - text: "Patterns support wildcards:"
+              - code [ref=e380]: "`internal-*`"
+              - text: matches
+              - code [ref=e381]: "`internal-docs`"
+              - text: ","
+              - code [ref=e382]: "`internal-tools`"
+              - text: ", etc."
+            - separator [ref=e383]
+            - heading "Override per agent" [level=2] [ref=e384]:
+              - link "Override per agent" [ref=e385]:
+                - /url: "#override-per-agent"
+            - paragraph [ref=e386]: Give specific agents different permissions than the global defaults.
+            - paragraph [ref=e387]:
+              - strong [ref=e388]: For custom agents
+              - text: "(in agent frontmatter):"
+            - figure [ref=e390]:
+              - code [ref=e392]:
+                - generic [ref=e394]: "---"
+                - generic [ref=e396]: "permission:"
+                - generic [ref=e398]: "skill:"
+                - generic [ref=e400]: "\"documents-*\": \"allow\""
+                - generic [ref=e402]: "---"
+              - button "Copy to clipboard" [ref=e404] [cursor=pointer]
+            - paragraph [ref=e406]:
+              - strong [ref=e407]: For built-in agents
+              - text: (in
+              - code [ref=e408]: "`opencode.json`"
+              - text: "):"
+            - figure [ref=e410]:
+              - code [ref=e412]:
+                - generic [ref=e414]: "{"
+                - generic [ref=e416]: "\"agent\": {"
+                - generic [ref=e418]: "\"plan\": {"
+                - generic [ref=e420]: "\"permission\": {"
+                - generic [ref=e422]: "\"skill\": {"
+                - generic [ref=e424]: "\"internal-*\": \"allow\""
+                - generic [ref=e426]: "}"
+                - generic [ref=e429]: "}"
+                - generic [ref=e432]: "}"
+                - generic [ref=e435]: "}"
+                - generic [ref=e438]: "}"
+              - button "Copy to clipboard" [ref=e440] [cursor=pointer]
+            - separator [ref=e442]
+            - heading "Disable the skill tool" [level=2] [ref=e443]:
+              - link "Disable the skill tool" [ref=e444]:
+                - /url: "#disable-the-skill-tool"
+            - paragraph [ref=e445]: "Completely disable skills for agents that shouldn’t use them:"
+            - paragraph [ref=e446]:
+              - strong [ref=e447]: For custom agents
+              - text: ":"
+            - figure [ref=e449]:
+              - code [ref=e451]:
+                - generic [ref=e453]: "---"
+                - generic [ref=e455]: "tools:"
+                - generic [ref=e457]: "skill: false"
+                - generic [ref=e459]: "---"
+              - button "Copy to clipboard" [ref=e461] [cursor=pointer]
+            - paragraph [ref=e463]:
+              - strong [ref=e464]: For built-in agents
+              - text: ":"
+            - figure [ref=e466]:
+              - code [ref=e468]:
+                - generic [ref=e470]: "{"
+                - generic [ref=e472]: "\"agent\": {"
+                - generic [ref=e474]: "\"plan\": {"
+                - generic [ref=e476]: "\"tools\": {"
+                - generic [ref=e478]: "\"skill\": false"
+                - generic [ref=e480]: "}"
+                - generic [ref=e483]: "}"
+                - generic [ref=e486]: "}"
+                - generic [ref=e489]: "}"
+              - button "Copy to clipboard" [ref=e491] [cursor=pointer]
+            - paragraph [ref=e493]:
+              - text: When disabled, the
+              - code [ref=e494]: "`<available_skills>`"
+              - text: section is omitted entirely.
+            - separator [ref=e495]
+            - heading "Troubleshoot loading" [level=2] [ref=e496]:
+              - link "Troubleshoot loading" [ref=e497]:
+                - /url: "#troubleshoot-loading"
+            - paragraph [ref=e498]: "If a skill does not show up:"
+            - list [ref=e499]:
+              - listitem [ref=e500]:
+                - text: Verify
+                - code [ref=e501]: "`SKILL.md`"
+                - text: is spelled in all caps
+              - listitem [ref=e502]:
+                - text: Check that frontmatter includes
+                - code [ref=e503]: "`name`"
+                - text: and
+                - code [ref=e504]: "`description`"
+              - listitem [ref=e505]: Ensure skill names are unique across all locations
+              - listitem [ref=e506]:
+                - text: Check permissions—skills with
+                - code [ref=e507]: "`deny`"
+                - text: are hidden from agents
+          - generic [ref=e509]:
+            - generic [ref=e510]:
+              - link "Edit page" [ref=e511] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/edit/dev/packages/web/src/content/docs/skills.mdx
+                - img [ref=e512]
+                - text: Edit page
+              - link "Found a bug? Open an issue" [ref=e514] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues/new
+                - img [ref=e515]
+                - text: Found a bug? Open an issue
+              - link "Join our Discord community" [ref=e517] [cursor=pointer]:
+                - /url: https://opencode.ai/discord
+                - img [ref=e518]
+                - text: Join our Discord community
+              - generic [ref=e521]:
+                - generic [ref=e522]: Select language
+                - img
+                - combobox "Select language" [ref=e523] [cursor=pointer]:
+                  - option "English" [selected]
+                  - option "العربية"
+                  - option "Bosanski"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Español"
+                  - option "Français"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어"
+                  - option "Norsk Bokmål"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Русский"
+                  - option "ไทย"
+                  - option "Türkçe"
+                  - option "简体中文"
+                  - option "繁體中文"
+                - img
+            - generic [ref=e524]:
+              - paragraph [ref=e525]:
+                - text: ©
+                - link "Anomaly" [ref=e526] [cursor=pointer]:
+                  - /url: https://anoma.ly
+              - paragraph [ref=e527]:
+                - text: "Last updated:"
+                - time [ref=e528]: May 29, 2026

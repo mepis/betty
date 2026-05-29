@@ -1,0 +1,1484 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Atlan Logo" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Atlan Logo" [ref=e7]
+      - navigation [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - text: Product
+            - img "dropdown arrow" [ref=e12]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Enterprise Data Graph
+                  - paragraph: Connect all your business systems and pull context across your data estate into one living graph.
+                  - generic:
+                    - link "connectors icon Connectors & Apps":
+                      - /url: /connectors/
+                      - generic:
+                        - img "connectors icon"
+                      - generic: Connectors & Apps
+                      - img
+                    - link "data lineage icon Data Lineage":
+                      - /url: /data-lineage/
+                      - generic:
+                        - img "data lineage icon"
+                      - generic: Data Lineage
+                      - img
+                - link "data marketplace icon Data Marketplace Give humans the context they need to understand your business. EVERYWHERE YOU WORK Slack Slack Teams Teams Claude Claude ChatGPT ChatGPT":
+                  - /url: /data-marketplace/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "data marketplace icon"
+                      - generic: Data Marketplace
+                    - img
+                  - paragraph: Give humans the context they need to understand your business.
+                  - generic:
+                    - generic: EVERYWHERE YOU WORK
+                    - generic:
+                      - img "Slack"
+                      - generic: Slack
+                    - generic:
+                      - img "Teams"
+                      - generic: Teams
+                    - generic:
+                      - img "Claude"
+                      - generic: Claude
+                    - generic:
+                      - img "ChatGPT"
+                      - generic: ChatGPT
+                - link "context agents icon Context Agents AI teammates that document tacit knowledge and make your data AI-ready. Ontology Descriptions Metrics Quality Glossary README":
+                  - /url: /context-agents/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "context agents icon"
+                      - generic: Context Agents
+                    - img
+                  - paragraph: AI teammates that document tacit knowledge and make your data AI-ready.
+                  - generic:
+                    - generic:
+                      - generic: Ontology
+                    - generic:
+                      - generic: Descriptions
+                    - generic:
+                      - generic: Metrics
+                    - generic:
+                      - generic: Quality
+                    - generic:
+                      - generic: Glossary
+                    - generic:
+                      - generic: README
+                - link "context engineering studio icon Context Engineering Studio Bootstrap, test, and ship the business understanding every AI needs. DEPLOY ANYWHERE Cortex Cortex Genie Genie Claude Claude Codex Codex":
+                  - /url: /context-engineering-studio/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "context engineering studio icon"
+                      - generic: Context Engineering Studio
+                    - img
+                  - paragraph: Bootstrap, test, and ship the business understanding every AI needs.
+                  - generic:
+                    - generic: DEPLOY ANYWHERE
+                    - generic:
+                      - img "Cortex"
+                      - generic: Cortex
+                    - generic:
+                      - img "Genie"
+                      - generic: Genie
+                    - generic:
+                      - img "Claude"
+                      - generic: Claude
+                    - generic:
+                      - img "Codex"
+                      - generic: Codex
+                - link "context lakehouse icon Context Lakehouse The world's first context store engineered natively for AI. Iceberg-native Open formats Graph+file architecture Vector-native AI search":
+                  - /url: /context-lakehouse/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "context lakehouse icon"
+                      - generic: Context Lakehouse
+                    - img
+                  - paragraph: The world's first context store engineered natively for AI.
+                  - generic:
+                    - generic:
+                      - generic: Iceberg-native
+                    - generic:
+                      - generic: Open formats
+                    - generic:
+                      - generic: Graph+file architecture
+                    - generic:
+                      - generic: Vector-native AI search
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - text: Customers
+            - img "dropdown arrow" [ref=e15]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - paragraph: Finance
+                    - generic:
+                      - generic:
+                        - link "Case study nasdaq logo":
+                          - /url: https://humansofdata.atlan.com/2023/04/nasdaq-active-metadata-strategy/
+                          - paragraph: Case study
+                          - img "nasdaq logo"
+                      - generic:
+                        - generic:
+                          - img "mastercard logo"
+                      - generic:
+                        - generic:
+                          - img "plaid logo"
+                - generic:
+                  - generic:
+                    - paragraph: Technology
+                    - generic:
+                      - generic:
+                        - link "Case study autodesk logo":
+                          - /url: https://humansofdata.atlan.com/2023/08/autodesk-data-mesh-snowflake-atlan/
+                          - paragraph: Case study
+                          - img "autodesk logo"
+                      - generic:
+                        - generic:
+                          - img "hubspot logo"
+                      - generic:
+                        - link "Case study dropbox logo":
+                          - /url: https://humansofdata.atlan.com/2024/10/dropbox-governance-atlan/
+                          - paragraph: Case study
+                          - img "dropbox logo"
+                - generic:
+                  - generic:
+                    - paragraph: Manufacturing
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "unilever logo"
+                      - generic:
+                        - link "Case study general motors logo":
+                          - /url: https://humansofdata.atlan.com/2024/10/general-motors-governance-atlan/
+                          - paragraph: Case study
+                          - img "general motors logo"
+                      - generic:
+                        - generic:
+                          - img "ingersollrand logo"
+                - generic:
+                  - generic:
+                    - paragraph: Media
+                    - generic:
+                      - generic:
+                        - link "Case study fox logo":
+                          - /url: https://humansofdata.atlan.com/2024/10/fox-governance-atlan/
+                          - paragraph: Case study
+                          - img "fox logo"
+                      - generic:
+                        - generic:
+                          - img "news corp logo"
+                      - generic:
+                        - generic:
+                          - img "virgin o2 logo"
+                - generic:
+                  - generic:
+                    - paragraph: Healthcare
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "nhs logo"
+                      - generic:
+                        - link "Case study scripps logo":
+                          - /url: https://f.hubspotusercontent30.net/hubfs/6880682/Scripps%20Health%20Case%20Study%20(2).pdf
+                          - paragraph: Case study
+                          - img "scripps logo"
+                      - generic:
+                        - generic:
+                          - img "medtronic logo"
+                - generic:
+                  - generic:
+                    - paragraph: Retail
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "ralph lauren logo"
+                      - generic:
+                        - generic:
+                          - img "urban outfitters logo"
+                      - generic:
+                        - link "Case study dr martens logo":
+                          - /url: https://humansofdata.atlan.com/2023/12/dr-martens-modern-data-catalog/
+                          - paragraph: Case study
+                          - img "dr martens logo"
+              - generic:
+                - link "See all customer stories →":
+                  - /url: /customers/
+        - link "Resources" [ref=e17] [cursor=pointer]:
+          - /url: /know/enterprise-context-layer/
+        - link "Demo Videos" [ref=e19] [cursor=pointer]:
+          - /url: /demos/
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - text: Company
+            - img "dropdown arrow" [ref=e22]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - link "Company nav icon About us":
+                    - /url: /about/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: About us
+                  - link "Company nav icon Newsroom":
+                    - /url: /newsroom/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Newsroom
+                  - link "Company nav icon Careers":
+                    - /url: /careers/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Careers
+                - generic:
+                  - link "Company nav icon Events":
+                    - /url: /events/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Events
+                  - link "Company nav icon Partners":
+                    - /url: /partners/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Partners
+                  - link "Company nav icon Inside Atlan Blog":
+                    - /url: https://blog.atlan.com/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Inside Atlan Blog
+      - generic [ref=e23]:
+        - link "Talk to Us" [ref=e24] [cursor=pointer]:
+          - /url: /forms/talk-to-sales-contact/
+        - link "WTF is the Context Layer?" [ref=e25] [cursor=pointer]:
+          - /url: /wtf-context-layer/
+          - generic [ref=e26]: WTF is the Context Layer?
+          - img [ref=e27]
+  - main [ref=e29]:
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - heading "Best AI Agent Harness Tools and Frameworks 2026" [level=1] [ref=e36]
+          - navigation "Breadcrumb" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Home" [ref=e41] [cursor=pointer]:
+                  - /url: https://atlan.com/
+              - listitem [ref=e42]:
+                - generic [ref=e43]: ›
+                - link "Learn with Atlan" [ref=e44] [cursor=pointer]:
+                  - /url: https://atlan.com/know/
+              - listitem [ref=e45]:
+                - generic [ref=e46]: ›
+                - generic [ref=e47]: Best AI Agent Harness Tools and Frameworks 2026
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - img "Emily Winks profile picture" [ref=e50]
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - link "Emily Winks" [ref=e53] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/emily-winks/
+                - button "View author credentials" [ref=e54] [cursor=pointer]:
+                  - img [ref=e55]
+              - generic [ref=e57]: Data Governance Expert
+          - generic [ref=e58]:
+            - text: "Emily WinksData Governance ExpertData Governance Specialist18+ years in information architecture, data governance, and enterprise data managementMasters, Library and Information Science, Queens College; Certificate in Archives, Records Management and Preservation; BA English, St. Joseph's CollegeAtlan Product EssentialsComputer Science Principles: Programming (LinkedIn)"
+            - link "LinkedIn Profile" [ref=e59] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/emily-winks/
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: "Updated:"
+              - generic [ref=e64]: 04/13/2026
+            - generic [ref=e65]: "|"
+            - generic [ref=e66]:
+              - generic [ref=e67]: "Published:"
+              - generic [ref=e68]: 04/13/2026
+          - generic [ref=e70]:
+            - img [ref=e71]
+            - generic [ref=e73]: 31 min read
+        - generic [ref=e74]:
+          - link "See Context Eng. Studio" [ref=e75] [cursor=pointer]:
+            - /url: https://atlan.com/context-layer-demo/
+            - generic [ref=e76]: See Context Eng. Studio
+          - link "Take Context Maturity Quiz" [ref=e77] [cursor=pointer]:
+            - /url: https://tools.atlan.com/tools/context-maturity-assessment/
+            - generic [ref=e78]: Take Context Maturity Quiz
+      - generic [ref=e81]:
+        - heading "Key takeaways" [level=2] [ref=e82]
+        - list [ref=e83]:
+          - listitem [ref=e84]:
+            - img [ref=e85]
+            - generic [ref=e87]: LangGraph leads on task success at 87%; CrewAI leads on adoption with 45,900+ stars and 1.8s average latency.
+          - listitem [ref=e88]:
+            - img [ref=e89]
+            - generic [ref=e91]: 80% of agentic AI implementation time is consumed by data engineering and governance — not framework configuration.
+          - listitem [ref=e92]:
+            - img [ref=e93]
+            - generic [ref=e95]: Every framework in this list manages how agents run. None governs what agents actually read.
+    - generic [ref=e96]:
+      - complementary [ref=e97]:
+        - generic [ref=e98]:
+          - paragraph [ref=e99]: In this article
+          - navigation "Article sections" [ref=e100]:
+            - link "What is an AI agent harness tool?" [ref=e101] [cursor=pointer]:
+              - /url: "#what-is-an-ai-agent-harness-tool"
+              - generic [ref=e102]: What is an AI agent harness tool?
+            - link "Quick facts" [ref=e103] [cursor=pointer]:
+              - /url: "#quick-facts"
+              - generic [ref=e104]: Quick facts
+            - link "Comparison matrix" [ref=e105] [cursor=pointer]:
+              - /url: "#comparison-matrix"
+              - generic [ref=e106]: Comparison matrix
+            - link "Why 2026 is the year of the harness, not the agent" [ref=e107] [cursor=pointer]:
+              - /url: "#why-2026-is-the-year-of-the-harness-not-the-agent"
+              - generic [ref=e108]: Why 2026 is the year of the harness, not the agent
+            - 'link "Section 1: Orchestration frameworks" [ref=e109] [cursor=pointer]':
+              - /url: "#section-1-orchestration-frameworks"
+              - generic [ref=e110]: "Section 1: Orchestration frameworks"
+            - 'link "Section 2: Open-source harness runtimes" [ref=e111] [cursor=pointer]':
+              - /url: "#section-2-open-source-harness-runtimes"
+              - generic [ref=e112]: "Section 2: Open-source harness runtimes"
+            - 'link "Section 3: RAG and document-heavy workflow frameworks" [ref=e113] [cursor=pointer]':
+              - /url: "#section-3-rag-and-document-heavy-workflow-frameworks"
+              - generic [ref=e114]: "Section 3: RAG and document-heavy workflow frameworks"
+            - 'link "Section 4: Observability and monitoring tools" [ref=e115] [cursor=pointer]':
+              - /url: "#section-4-observability-and-monitoring-tools"
+              - generic [ref=e116]: "Section 4: Observability and monitoring tools"
+            - 'link "The missing layer: data quality infrastructure for agent harnesses" [ref=e117] [cursor=pointer]':
+              - /url: "#the-missing-layer-data-quality-infrastructure-for-agent-harnesses"
+              - generic [ref=e118]: "The missing layer: data quality infrastructure for agent harnesses"
+            - link "How to choose the right AI agent harness tool" [ref=e119] [cursor=pointer]:
+              - /url: "#how-to-choose-the-right-ai-agent-harness-tool"
+              - generic [ref=e120]: How to choose the right AI agent harness tool
+            - link "Decision summary" [ref=e121] [cursor=pointer]:
+              - /url: "#decision-summary"
+              - generic [ref=e122]: Decision summary
+            - link "FAQs about AI agent harness tools frameworks 2026" [ref=e123] [cursor=pointer]:
+              - /url: "#faqs-about-ai-agent-harness-tools-frameworks-2026"
+              - generic [ref=e124]: FAQs about AI agent harness tools frameworks 2026
+            - link "Sources" [ref=e125] [cursor=pointer]:
+              - /url: "#sources"
+              - generic [ref=e126]: Sources
+          - generic [ref=e128]:
+            - generic [ref=e129]: Reading progress
+            - generic [ref=e130]: 0%
+      - generic [ref=e132]:
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - heading "What are the best AI agent harness tools and frameworks in 2026?" [level=2] [ref=e136]
+            - button "Copy summary to clipboard" [ref=e137] [cursor=pointer]:
+              - img [ref=e138]
+              - generic [ref=e140]: Copy summary
+          - paragraph [ref=e141]: AI agent harness tools are the software frameworks that orchestrate, monitor, and manage LLM agents in production. This evaluation covers 11 tools across orchestration approach, task success benchmarks, GitHub adoption, observability, licensing, and data quality layer. The frameworks manage how agents operate — they do not certify, validate, or track the lineage of data flowing through them. That structural gap is the most consequential factor in enterprise agent reliability.
+          - generic [ref=e142]:
+            - heading "Key categories covered:" [level=3] [ref=e143]
+            - list [ref=e144]:
+              - listitem [ref=e145]:
+                - img [ref=e147]
+                - generic [ref=e149]: Orchestration frameworks — LangGraph, CrewAI, AutoGen, deepagents, Semantic Kernel, Mastra
+              - listitem [ref=e150]:
+                - img [ref=e152]
+                - generic [ref=e154]: Open-source runtimes — OpenHarness (HKUDS), OpenHarness.ai (MaxGfeller)
+              - listitem [ref=e155]:
+                - img [ref=e157]
+                - generic [ref=e159]: RAG frameworks — Haystack by deepset
+              - listitem [ref=e160]:
+                - img [ref=e162]
+                - generic [ref=e164]: Observability tools — AgentOps, Langfuse
+          - generic [ref=e165]:
+            - paragraph [ref=e166]: Are your AI agents stuck in POC?
+            - link "Assess Context Maturity" [ref=e167] [cursor=pointer]:
+              - /url: https://tools.atlan.com/tools/context-maturity-assessment/
+              - generic [ref=e168]: Assess Context Maturity
+              - img [ref=e169]
+        - generic [ref=e171]:
+          - article [ref=e172]:
+            - generic [ref=e174]:
+              - paragraph [ref=e175]: AI agent harness tools are the software frameworks that orchestrate, monitor, and manage LLM agents in production. In 2026, the category has become infrastructure — not optional tooling. Gartner projects that 40% of enterprise applications will include task-specific AI agents by end of 2026. This article evaluated 11 frameworks across orchestration approach, task success benchmarks, GitHub adoption, observability, licensing, and data quality layer. It covers orchestration frameworks, open-source runtimes, RAG frameworks, and observability tools — and the one infrastructure layer none of them address.
+              - separator [ref=e176]
+              - heading "What is an AI agent harness tool?" [level=2] [ref=e177]
+              - paragraph [ref=e178]: "AI agent harness tools are software systems that wrap LLMs to provide scaffolding for tool use, memory, planning, and multi-agent coordination. They are the control layer: they determine how agents run, communicate, recover from failure, and route decisions across tasks."
+              - paragraph [ref=e179]:
+                - text: What harness tools do not govern is what agents actually read. Frameworks manage how agents operate. They do not certify, validate, or track lineage of the data flowing through them. That distinction matters at enterprise scale, where schema drift, stale tables, and uncertified sources are the most common root cause of agent failure. For more on the foundational concept, see
+                - link "What Is an Agent Harness?" [ref=e180] [cursor=pointer]:
+                  - /url: https://atlan.com/know/what-is-an-agent-harness/
+                - text: .
+              - separator [ref=e181]
+              - generic [ref=e182]:
+                - paragraph [ref=e183]: Build Your AI Context Stack
+                - paragraph [ref=e184]: Get the blueprint for implementing context graphs across your enterprise. This guide walks through the four-layer architecture — from metadata foundation to agent orchestration — with practical implementation steps for 2026.
+                - link "Get the Stack Guide" [ref=e185] [cursor=pointer]:
+                  - /url: https://atlan.com/resources/ai-context-stack/
+              - separator [ref=e186]
+              - heading "Quick facts" [level=2] [ref=e187]
+              - table [ref=e189]:
+                - rowgroup [ref=e190]:
+                  - row "Stat Source" [ref=e191]:
+                    - columnheader "Stat" [ref=e192]
+                    - columnheader "Source" [ref=e193]
+                - rowgroup [ref=e194]:
+                  - row "40% of enterprise apps will have task-specific AI agents by end 2026, up from less than 5% in 2025 Gartner" [ref=e195]:
+                    - cell "40% of enterprise apps will have task-specific AI agents by end 2026, up from less than 5% in 2025" [ref=e196]
+                    - cell "Gartner" [ref=e197]
+                  - row "80% of agentic AI implementation time consumed by data engineering, stakeholder alignment, governance McKinsey" [ref=e198]:
+                    - cell "80% of agentic AI implementation time consumed by data engineering, stakeholder alignment, governance" [ref=e199]
+                    - cell "McKinsey" [ref=e200]
+                  - row "8 in 10 companies cite data limitations as primary roadblock to scaling agentic AI McKinsey" [ref=e201]:
+                    - cell "8 in 10 companies cite data limitations as primary roadblock to scaling agentic AI" [ref=e202]
+                    - cell "McKinsey" [ref=e203]
+                  - 'row "LangGraph: 87% task success rate in comparative benchmarks Comparative benchmarks, 2026" [ref=e204]':
+                    - 'cell "LangGraph: 87% task success rate in comparative benchmarks" [ref=e205]'
+                    - cell "Comparative benchmarks, 2026" [ref=e206]
+                  - 'row "CrewAI: 45,900+ GitHub stars — highest adoption among role-based orchestration frameworks GitHub, April 2026" [ref=e207]':
+                    - 'cell "CrewAI: 45,900+ GitHub stars — highest adoption among role-based orchestration frameworks" [ref=e208]'
+                    - cell "GitHub, April 2026" [ref=e209]
+                  - 'row "OWASP Top 10 for Agentic Applications: memory poisoning and cascading failures — both caused by bad data inputs OWASP, Dec 2025" [ref=e210]':
+                    - 'cell "OWASP Top 10 for Agentic Applications: memory poisoning and cascading failures — both caused by bad data inputs" [ref=e211]'
+                    - cell "OWASP, Dec 2025" [ref=e212]
+                  - row "Much of what is dismissed as LLM hallucination is actually the consequence of inconsistent, stale, or partially replicated data sources 2026 AI governance research" [ref=e213]:
+                    - cell "Much of what is dismissed as LLM hallucination is actually the consequence of inconsistent, stale, or partially replicated data sources" [ref=e214]
+                    - cell "2026 AI governance research" [ref=e215]
+              - separator [ref=e216]
+              - heading "Comparison matrix" [level=2] [ref=e217]
+              - table [ref=e219]:
+                - rowgroup [ref=e220]:
+                  - row "Tool Category GitHub Stars Best For Task Success Data Quality Layer Licensing" [ref=e221]:
+                    - columnheader "Tool" [ref=e222]
+                    - columnheader "Category" [ref=e223]
+                    - columnheader "GitHub Stars" [ref=e224]
+                    - columnheader "Best For" [ref=e225]
+                    - columnheader "Task Success" [ref=e226]
+                    - columnheader "Data Quality Layer" [ref=e227]
+                    - columnheader "Licensing" [ref=e228]
+                - rowgroup [ref=e229]:
+                  - row "LangGraph Orchestration / full-stack 24,000+ Fine-grained state control 87% None MIT; LangSmith paid" [ref=e230]:
+                    - cell "LangGraph" [ref=e231]
+                    - cell "Orchestration / full-stack" [ref=e232]
+                    - cell "24,000+" [ref=e233]
+                    - cell "Fine-grained state control" [ref=e234]
+                    - cell "87%" [ref=e235]
+                    - cell "None" [ref=e236]
+                    - cell "MIT; LangSmith paid" [ref=e237]
+                  - row "CrewAI Role-based multi-agent 45,900+ Fastest multi-agent prototype 82% None OSS + ~$99/mo AOP" [ref=e238]:
+                    - cell "CrewAI" [ref=e239]
+                    - cell "Role-based multi-agent" [ref=e240]
+                    - cell "45,900+" [ref=e241]
+                    - cell "Fastest multi-agent prototype" [ref=e242]
+                    - cell "82%" [ref=e243]
+                    - cell "None" [ref=e244]
+                    - cell "OSS + ~$99/mo AOP" [ref=e245]
+                  - row "AutoGen / AG2 Conversational multi-agent 54,000+ Code sandboxing; iterative debugging — None MIT" [ref=e246]:
+                    - cell "AutoGen / AG2" [ref=e247]
+                    - cell "Conversational multi-agent" [ref=e248]
+                    - cell "54,000+" [ref=e249]
+                    - cell "Code sandboxing; iterative debugging" [ref=e250]
+                    - cell "—" [ref=e251]
+                    - cell "None" [ref=e252]
+                    - cell "MIT" [ref=e253]
+                  - row "LangChain deepagents Full-stack agent harness Part of 126k ecosystem Complex long-horizon tasks — None MIT" [ref=e254]:
+                    - cell "LangChain deepagents" [ref=e255]
+                    - cell "Full-stack agent harness" [ref=e256]
+                    - cell "Part of 126k ecosystem" [ref=e257]
+                    - cell "Complex long-horizon tasks" [ref=e258]
+                    - cell "—" [ref=e259]
+                    - cell "None" [ref=e260]
+                    - cell "MIT" [ref=e261]
+                  - row "OpenHarness (HKUDS) Open-source runtime 9,100 Inspecting production harness internals — None MIT" [ref=e262]:
+                    - cell "OpenHarness (HKUDS)" [ref=e263]
+                    - cell "Open-source runtime" [ref=e264]
+                    - cell "9,100" [ref=e265]
+                    - cell "Inspecting production harness internals" [ref=e266]
+                    - cell "—" [ref=e267]
+                    - cell "None" [ref=e268]
+                    - cell "MIT" [ref=e269]
+                  - row "OpenHarness.ai (MaxGfeller) Harness interoperability SDK — Avoiding framework lock-in — None MIT" [ref=e270]:
+                    - cell "OpenHarness.ai (MaxGfeller)" [ref=e271]:
+                      - link "OpenHarness.ai" [ref=e272] [cursor=pointer]:
+                        - /url: http://OpenHarness.ai
+                      - text: (MaxGfeller)
+                    - cell "Harness interoperability SDK" [ref=e273]
+                    - cell "—" [ref=e274]
+                    - cell "Avoiding framework lock-in" [ref=e275]
+                    - cell "—" [ref=e276]
+                    - cell "None" [ref=e277]
+                    - cell "MIT" [ref=e278]
+                  - row "Microsoft Semantic Kernel Enterprise orchestration 27,000+ .NET / Microsoft-invested enterprises — None (Azure RBAC only) MIT; Azure costs" [ref=e279]:
+                    - cell "Microsoft Semantic Kernel" [ref=e280]
+                    - cell "Enterprise orchestration" [ref=e281]
+                    - cell "27,000+" [ref=e282]
+                    - cell ".NET / Microsoft-invested enterprises" [ref=e283]
+                    - cell "—" [ref=e284]
+                    - cell "None (Azure RBAC only)" [ref=e285]
+                    - cell "MIT; Azure costs" [ref=e286]
+                  - row "Mastra TypeScript-first framework 19,000+ TypeScript teams; observational memory — None OSS + enterprise tier" [ref=e287]:
+                    - cell "Mastra" [ref=e288]
+                    - cell "TypeScript-first framework" [ref=e289]
+                    - cell "19,000+" [ref=e290]
+                    - cell "TypeScript teams; observational memory" [ref=e291]
+                    - cell "—" [ref=e292]
+                    - cell "None" [ref=e293]
+                    - cell "OSS + enterprise tier" [ref=e294]
+                  - row "Haystack (deepset) RAG / document-heavy 23,000+ Document-heavy, RAG workflows — None Apache 2.0" [ref=e295]:
+                    - cell "Haystack (deepset)" [ref=e296]
+                    - cell "RAG / document-heavy" [ref=e297]
+                    - cell "23,000+" [ref=e298]
+                    - cell "Document-heavy, RAG workflows" [ref=e299]
+                    - cell "—" [ref=e300]
+                    - cell "None" [ref=e301]
+                    - cell "Apache 2.0" [ref=e302]
+                  - row "AgentOps Observability / monitoring — Post-deployment monitoring — None (post-hoc only) Free + paid" [ref=e303]:
+                    - cell "AgentOps" [ref=e304]
+                    - cell "Observability / monitoring" [ref=e305]
+                    - cell "—" [ref=e306]
+                    - cell "Post-deployment monitoring" [ref=e307]
+                    - cell "—" [ref=e308]
+                    - cell "None (post-hoc only)" [ref=e309]
+                    - cell "Free + paid" [ref=e310]
+                  - row "Langfuse Observability / evaluation 6M+ SDK installs/mo Self-hosted LLMOps — None (output evaluation only) MIT; cloud available" [ref=e311]:
+                    - cell "Langfuse" [ref=e312]
+                    - cell "Observability / evaluation" [ref=e313]
+                    - cell "6M+ SDK installs/mo" [ref=e314]
+                    - cell "Self-hosted LLMOps" [ref=e315]
+                    - cell "—" [ref=e316]
+                    - cell "None (output evaluation only)" [ref=e317]
+                    - cell "MIT; cloud available" [ref=e318]
+                  - row "Atlan Governed data substrate — Enterprise data quality for agent inputs — Yes — active metadata, contracts, lineage, certification Enterprise SaaS" [ref=e319]:
+                    - cell "Atlan" [ref=e320]:
+                      - strong [ref=e321]: Atlan
+                    - cell "Governed data substrate" [ref=e322]:
+                      - strong [ref=e323]: Governed data substrate
+                    - cell "—" [ref=e324]:
+                      - strong [ref=e325]: —
+                    - cell "Enterprise data quality for agent inputs" [ref=e326]:
+                      - strong [ref=e327]: Enterprise data quality for agent inputs
+                    - cell "—" [ref=e328]:
+                      - strong [ref=e329]: —
+                    - cell "Yes — active metadata, contracts, lineage, certification" [ref=e330]:
+                      - strong [ref=e331]: Yes — active metadata, contracts, lineage, certification
+                    - cell "Enterprise SaaS" [ref=e332]:
+                      - strong [ref=e333]: Enterprise SaaS
+              - separator [ref=e334]
+              - heading "Why 2026 is the year of the harness, not the agent" [level=2] [ref=e335]
+              - paragraph [ref=e336]: "Model performance has stabilized. The frontier models available in 2026 are close enough in capability that model selection is rarely the bottleneck for enterprise teams. Differentiation has shifted to the layer that wraps the model: the harness."
+              - paragraph [ref=e337]: "A widely cited Hacker News thread captured the structural reality well: “The AI should be considered as the whole cybernetic system of feedback loops joining the LLM and its harness, as the harness can make as much difference as improvements to the model itself.” That observation is now a design principle. Teams choosing between a better model and a better harness are increasingly choosing the harness."
+              - paragraph [ref=e338]: Gartner’s projection of 40% enterprise agent adoption by end of 2026 reflects this maturity. The question is no longer whether enterprises will deploy agents — it is how they will build the control systems that make agents reliable.
+              - paragraph [ref=e339]: "But every framework in this list makes the same foundational assumption: the context fed to agents is trustworthy. None of them verify it. McKinsey’s research puts this in sharp relief. 80% of agentic AI implementation time is consumed by data engineering and governance work, not by framework configuration or model selection. 8 in 10 companies cite data limitations as their primary roadblock."
+              - paragraph [ref=e340]:
+                - text: "This article maps all 11 tools honestly across their actual capabilities. It also surfaces the infrastructure layer they all assume exists but do not provide: a governed data layer that certifies inputs before agents read them. See"
+                - link "What Is Harness Engineering?" [ref=e341] [cursor=pointer]:
+                  - /url: https://atlan.com/know/what-is-harness-engineering/
+                - text: for the broader architectural context.
+              - separator [ref=e342]
+              - 'heading "Section 1: Orchestration frameworks" [level=2] [ref=e343]'
+              - paragraph [ref=e344]:
+                - text: "These 6 frameworks represent the core control layer of most agent stacks in 2026. They differ in architecture (graph-based vs. role-based vs. conversational), target user, and latency and task-success tradeoffs. What they share: none govern the data flowing through them. For guidance on assembling these components into a working system, see"
+                - link "How to Build an AI Agent Harness" [ref=e345] [cursor=pointer]:
+                  - /url: https://atlan.com/know/how-to-build-ai-agent-harness/
+                - text: .
+              - separator [ref=e346]
+              - heading "1. LangGraph — Best for fine-grained agent state control" [level=3] [ref=e347]
+              - paragraph [ref=e348]: LangGraph is a graph-based multi-agent orchestration framework giving engineers explicit control over agent state through conditional edges, checkpointing, and streaming. Built on the LangChain ecosystem and integrating natively with LangSmith for observability, it achieves 87% task success in 2026 comparative benchmarks — the highest in this list — and is the preferred choice for production-grade stateful agent workflows.
+              - paragraph [ref=e349]:
+                - strong [ref=e350]: "Profile:"
+              - list [ref=e351]:
+                - listitem [ref=e352]: "Best for: Engineers needing precise state control; production multi-agent pipelines"
+                - listitem [ref=e353]: "GitHub stars: 24,000+"
+                - listitem [ref=e354]:
+                  - text: "URL:"
+                  - link "langchain.com/langgraph" [ref=e355] [cursor=pointer]:
+                    - /url: http://langchain.com/langgraph
+              - paragraph [ref=e356]:
+                - strong [ref=e357]: "Pros:"
+              - list [ref=e358]:
+                - listitem [ref=e359]: 87% task success rate — highest in comparative benchmarks
+                - listitem [ref=e360]: Graph-based state model enables complex conditional workflows
+                - listitem [ref=e361]: LangSmith integration provides built-in observability
+                - listitem [ref=e362]: Checkpointing allows long-running agent recovery
+                - listitem [ref=e363]: Streaming support for real-time agent feedback
+              - paragraph [ref=e364]:
+                - strong [ref=e365]: "Cons:"
+              - list [ref=e366]:
+                - listitem [ref=e367]: Steep learning curve compared to role-based alternatives
+                - listitem [ref=e368]: Verbose graph configuration for simpler workflows
+                - listitem [ref=e369]: LangSmith observability sits behind a cloud-paid tier
+              - paragraph [ref=e370]:
+                - strong [ref=e371]: "Core capabilities:"
+                - text: LangGraph’s graph-based stateful orchestration is its primary differentiator. Engineers define agent behavior as nodes and edges in a directed graph, with conditional routing logic embedded in the graph structure. State is explicit and persistent across steps. Checkpointing allows long-horizon tasks to resume after failure. LangSmith integrates at the observability layer for tracing and evaluation. Streaming enables real-time visibility into agent execution cycles.
+              - paragraph [ref=e372]:
+                - strong [ref=e373]: "Data quality gap:"
+                - text: LangGraph has no built-in mechanism to validate, certify, or track lineage of context fed to agents. It assumes inputs are clean. In production environments with schema drift or stale data sources, LangGraph surfaces the failure at task completion, not at input ingestion. The 87% task success rate reflects framework performance against clean data; it does not reflect resilience to data quality failures.
+              - paragraph [ref=e374]:
+                - strong [ref=e375]: "Licensing:"
+                - text: MIT; LangSmith cloud is paid
+              - separator [ref=e376]
+              - heading "2. CrewAI — Best for fastest multi-agent prototype" [level=3] [ref=e377]
+              - paragraph [ref=e378]: CrewAI is the most accessible role-based multi-agent framework in 2026, with 45,900+ GitHub stars and 1.8 seconds average agent latency. Its “agents as employees” collaboration model and native MCP support make it the default choice for teams getting from zero to working multi-agent prototype in hours rather than weeks.
+              - paragraph [ref=e379]:
+                - strong [ref=e380]: "Profile:"
+              - list [ref=e381]:
+                - listitem [ref=e382]: "Best for: New teams; fastest time to prototype; MCP-native workflows"
+                - listitem [ref=e383]: "GitHub stars: 45,900+"
+                - listitem [ref=e384]:
+                  - text: "URL:"
+                  - link "crewai.com" [ref=e385] [cursor=pointer]:
+                    - /url: http://crewai.com
+              - paragraph [ref=e386]:
+                - strong [ref=e387]: "Pros:"
+              - list [ref=e388]:
+                - listitem [ref=e389]: 45,900+ GitHub stars — highest adoption among role-based frameworks
+                - listitem [ref=e390]: 1.8 second average agent latency — fastest among major frameworks
+                - listitem [ref=e391]: Native MCP and A2A protocol support
+                - listitem [ref=e392]: CrewAI Studio visual builder for non-engineers
+                - listitem [ref=e393]: Active community; v1.10.1 as of April 2026
+              - paragraph [ref=e394]:
+                - strong [ref=e395]: "Cons:"
+              - list [ref=e396]:
+                - listitem [ref=e397]: 82% task success rate — lower than LangGraph’s 87%
+                - listitem [ref=e398]: Concurrent agent logging is a known pain point for debugging
+                - listitem [ref=e399]: Less granular state control than LangGraph
+              - paragraph [ref=e400]:
+                - strong [ref=e401]: "Core capabilities:"
+                - text: CrewAI’s role-based model assigns each agent a persona (CEO, researcher, writer) with defined goals, tools, and communication protocols. Agents collaborate through A2A messaging. Native MCP support means tool configurations transfer directly to MCP-compatible harness configurations. CrewAI Studio provides a no-code interface for defining agent crews, lowering the barrier for non-engineer team members. The 1.8 second average latency benchmark is the fastest among major frameworks in 2026 evaluations.
+              - paragraph [ref=e402]:
+                - strong [ref=e403]: "Data quality gap:"
+                - text: No data governance features. Concurrent agent execution makes it harder to trace context failures back to their source data. When an agent crew produces a wrong result, CrewAI provides no mechanism to determine whether the failure originated in the model, the prompt, or the data the agents read.
+              - paragraph [ref=e404]:
+                - strong [ref=e405]: "Licensing:"
+                - text: OSS core; AOP platform approximately $99 per month; enterprise contracts available
+              - separator [ref=e406]
+              - heading "3. AutoGen / AG2 (Microsoft) — Best for code execution sandboxing" [level=3] [ref=e407]
+              - paragraph [ref=e408]: AutoGen (now AG2) is Microsoft’s conversational multi-agent framework and the dominant choice for workflows involving sandboxed code execution, iterative debugging, and multi-turn agent debate. With 54,000+ GitHub stars and Docker-native execution isolation, it is the default for engineering teams running agents that need to write and test code safely.
+              - paragraph [ref=e409]:
+                - strong [ref=e410]: "Profile:"
+              - list [ref=e411]:
+                - listitem [ref=e412]: "Best for: Code execution sandboxing; iterative debugging workflows; multi-turn agent reasoning"
+                - listitem [ref=e413]: "GitHub stars: 54,000+"
+                - listitem [ref=e414]:
+                  - text: "URL:"
+                  - link "microsoft.github.io/autogen" [ref=e415] [cursor=pointer]:
+                    - /url: http://microsoft.github.io/autogen
+              - paragraph [ref=e416]:
+                - strong [ref=e417]: "Pros:"
+              - list [ref=e418]:
+                - listitem [ref=e419]: 54,000+ GitHub stars — highest adoption in this list
+                - listitem [ref=e420]: Docker-native sandboxed code execution
+                - listitem [ref=e421]: Multi-turn debate and refinement between agents
+                - listitem [ref=e422]: MIT license with strong Microsoft backing
+              - paragraph [ref=e423]:
+                - strong [ref=e424]: "Cons:"
+              - list [ref=e425]:
+                - listitem [ref=e426]: “Two agents looping indefinitely” is a known failure mode requiring manual intervention
+                - listitem [ref=e427]: Context pruning required as conversations grow — no automated management
+                - listitem [ref=e428]: Output quality depends heavily on human-written conversation scaffolding
+              - paragraph [ref=e429]:
+                - strong [ref=e430]: "Core capabilities:"
+                - text: AutoGen’s core differentiation is its conversational architecture. Multiple agents take turns proposing, critiquing, and refining outputs in multi-turn exchanges. Docker-native sandboxing means code-writing agents execute in isolated environments without risk to the host system. The debate pattern — one agent proposes, another critiques, a third synthesizes — produces more reliable outputs than single-agent generation for engineering and analytical tasks.
+              - paragraph [ref=e431]:
+                - strong [ref=e432]: "Data quality gap:"
+                - text: No mechanism to validate that retrieved data is current or certified. Multi-turn conversations accumulate context that must be manually pruned as token windows fill. No lineage tracking connects agent outputs to the source data they read.
+              - paragraph [ref=e433]:
+                - strong [ref=e434]: "Licensing:"
+                - text: MIT
+              - separator [ref=e435]
+              - heading "4. LangChain deepagents — Best for complex long-horizon tasks" [level=3] [ref=e436]
+              - paragraph [ref=e437]: LangChain deepagents is a full-stack agent harness designed for production-grade complex multi-step tasks. With write_todos planning, filesystem context offloading, subagent spawning, and auto-summarization, it is the 2026 successor to standard LangChain agents for teams needing long-horizon task support without building scaffolding from scratch.
+              - paragraph [ref=e438]:
+                - strong [ref=e439]: "Profile:"
+              - list [ref=e440]:
+                - listitem [ref=e441]: "Best for: Complex multi-step tasks; long-horizon workflows"
+                - listitem [ref=e442]: "GitHub stars: Part of LangChain ecosystem (126,000+ main repo)"
+                - listitem [ref=e443]:
+                  - text: "URL:"
+                  - link "langchain.com/deep-agents" [ref=e444] [cursor=pointer]:
+                    - /url: http://langchain.com/deep-agents
+              - paragraph [ref=e445]:
+                - strong [ref=e446]: "Pros:"
+              - list [ref=e447]:
+                - listitem [ref=e448]: write_todos planning tool for structured task decomposition
+                - listitem [ref=e449]: Filesystem context offloading handles context window limits
+                - listitem [ref=e450]: Subagent spawning for context isolation between task phases
+                - listitem [ref=e451]: Auto-summarization and context compaction
+                - listitem [ref=e452]: MIT; 100% open source (0.2 release, March 2026)
+              - paragraph [ref=e453]:
+                - strong [ref=e454]: "Cons:"
+              - list [ref=e455]:
+                - listitem [ref=e456]: Launched late 2025 — younger than LangGraph and CrewAI
+                - listitem [ref=e457]: Compaction and summarization can silently lose data provenance
+                - listitem [ref=e458]: Filesystem backend adds operational complexity in containerized environments
+              - paragraph [ref=e459]:
+                - strong [ref=e460]: "Core capabilities:"
+                - text: deepagents introduces structured long-horizon task management to the LangChain ecosystem. write_todos creates explicit task decomposition trees. Filesystem context offloading extends effective context windows by persisting intermediate state to disk rather than holding it in the model context. Subagent spawning creates isolated reasoning processes for distinct task phases. Auto-summarization compresses prior steps into dense summaries as context windows fill.
+              - paragraph [ref=e461]:
+                - strong [ref=e462]: "Data quality gap:"
+                - text: No validation of what is stored in the filesystem context. Compaction and summarization can silently discard provenance — when an agent reads from a compacted context, there is no record of where that information originated. No lineage tracking connects compressed context back to source data.
+              - paragraph [ref=e463]:
+                - strong [ref=e464]: "Licensing:"
+                - text: MIT
+              - separator [ref=e465]
+              - heading "5. Microsoft Semantic Kernel — Best for .NET and Microsoft-invested enterprises" [level=3] [ref=e466]
+              - paragraph [ref=e467]: Microsoft Semantic Kernel is the enterprise orchestration framework for .NET teams and organizations invested in the Microsoft stack. With native Azure OpenAI, Copilot Studio, and Microsoft Graph integration, multi-language SDK support in C#, Python, and Java, and 27,000+ GitHub stars, it provides enterprise type safety and compile-time validation that other frameworks do not match.
+              - paragraph [ref=e468]:
+                - strong [ref=e469]: "Profile:"
+              - list [ref=e470]:
+                - listitem [ref=e471]: "Best for: Microsoft-invested enterprises; .NET developers; Azure-native deployments"
+                - listitem [ref=e472]: "GitHub stars: 27,000+"
+                - listitem [ref=e473]:
+                  - text: "URL:"
+                  - link "github.com/microsoft/semantic-kernel" [ref=e474] [cursor=pointer]:
+                    - /url: https://github.com/microsoft/semantic-kernel
+              - paragraph [ref=e475]:
+                - strong [ref=e476]: "Pros:"
+              - list [ref=e477]:
+                - listitem [ref=e478]: "Multi-language: C#, Python, Java"
+                - listitem [ref=e479]: Native Azure OpenAI, Copilot Studio, and Microsoft Graph integration
+                - listitem [ref=e480]: Enterprise type safety and compile-time validation
+                - listitem [ref=e481]: Plugin architecture for capability extension
+                - listitem [ref=e482]: Improved planning and error recovery in 2026
+              - paragraph [ref=e483]:
+                - strong [ref=e484]: "Cons:"
+              - list [ref=e485]:
+                - listitem [ref=e486]: Strong Microsoft platform dependency
+                - listitem [ref=e487]: Smaller open-source ecosystem compared to LangChain and CrewAI
+                - listitem [ref=e488]: Plugin architecture adds verbosity for simple workflows
+              - paragraph [ref=e489]:
+                - strong [ref=e490]: "Core capabilities:"
+                - text: Semantic Kernel’s plugin architecture extends agent capabilities through typed, composable components. Compile-time type safety catches configuration errors before runtime, which matters significantly in enterprise environments where failure carries compliance consequences. Azure OpenAI integration means enterprise agreements and rate limits flow through existing Microsoft contracts. Copilot Studio and Microsoft Graph connectors enable deep integration with M365 data and workflows.
+              - paragraph [ref=e491]:
+                - strong [ref=e492]: "Data quality gap:"
+                - text: Azure RBAC controls who can call what — not what the data inputs contain. Schema drift, stale tables, and uncertified data sources pass through without validation. Azure governance governs API access. It does not govern what agents read.
+              - paragraph [ref=e493]:
+                - strong [ref=e494]: "Licensing:"
+                - text: MIT; Azure service costs apply
+              - separator [ref=e495]
+              - heading "6. Mastra — Best for TypeScript teams needing observational memory" [level=3] [ref=e496]
+              - paragraph [ref=e497]: Mastra is the fastest-rising TypeScript-first agent framework in 2026 — 19,000+ GitHub stars, 300,000+ weekly npm downloads, and a novel observational memory system using background Observer and Reflector agents to continuously compress conversation into dense structured observations. Enterprise RBAC, native MCP support, and remote sandbox make it the strongest TypeScript-native option currently available.
+              - paragraph [ref=e498]:
+                - strong [ref=e499]: "Profile:"
+              - list [ref=e500]:
+                - listitem [ref=e501]: "Best for: TypeScript and Node.js teams; observational memory; enterprise RBAC"
+                - listitem [ref=e502]: "GitHub stars: 19,000+"
+                - listitem [ref=e503]:
+                  - text: "URL:"
+                  - link "mastra.ai" [ref=e504] [cursor=pointer]:
+                    - /url: http://mastra.ai
+              - paragraph [ref=e505]:
+                - strong [ref=e506]: "Pros:"
+              - list [ref=e507]:
+                - listitem [ref=e508]: 300,000+ weekly npm downloads
+                - listitem [ref=e509]: Observational memory via Observer and Reflector agents — genuinely differentiated
+                - listitem [ref=e510]: Enterprise RBAC released March 2026
+                - listitem [ref=e511]: Native MCP support
+                - listitem [ref=e512]: Remote sandbox support
+              - paragraph [ref=e513]:
+                - strong [ref=e514]: "Cons:"
+              - list [ref=e515]:
+                - listitem [ref=e516]: TypeScript-only — Python teams need a different framework
+                - listitem [ref=e517]: Observational memory adds background agent overhead
+                - listitem [ref=e518]: Enterprise tier pricing not publicly disclosed
+              - paragraph [ref=e519]:
+                - strong [ref=e520]: "Core capabilities:"
+                - text: Mastra’s observational memory system is its most distinctive feature. Background Observer agents monitor conversations in real time and extract structured observations. Reflector agents periodically synthesize those observations into compressed, high-density memory artifacts. The result is a memory system that automatically maintains context quality without requiring manual prompting or compaction configuration. Enterprise RBAC controls which users can execute which agent workflows.
+              - paragraph [ref=e521]:
+                - strong [ref=e522]: "Data quality gap:"
+                - text: RBAC governs who can run agents. It does not govern whether data inputs are certified, lineage-tracked, or schema-stable. A well-compressed observation derived from a stale data source is a well-compressed stale observation.
+              - paragraph [ref=e523]:
+                - strong [ref=e524]: "Licensing:"
+                - text: OSS core; enterprise tier (pricing not public)
+              - separator [ref=e525]
+              - 'heading "Section 2: Open-source harness runtimes" [level=2] [ref=e526]'
+              - paragraph [ref=e527]: Two projects both named “OpenHarness” exist — they are completely separate with different architectures. HKUDS is an agent runtime; MaxGfeller is an interoperability SDK. Both are MIT-licensed, and both are useful for practitioners who want transparency into how production harnesses work. The naming overlap is coincidental.
+              - separator [ref=e528]
+              - heading "7. OpenHarness (HKUDS) — Best for inspecting production harness internals" [level=3] [ref=e529]
+              - paragraph [ref=e530]:
+                - text: OpenHarness by HKUDS (University of Hong Kong Data Systems group) is an open-source CLI-first agent runtime with 9,100 GitHub stars, built for researchers and practitioners who want to inspect how production agent harnesses work from the inside. With 43+ built-in tools, streaming tool-call cycles, multi-level permission modes,
+                - link "MEMORY.md" [ref=e531] [cursor=pointer]:
+                  - /url: http://MEMORY.md
+                - text: persistence, and background task management, it is the most transparent agent runtime available.
+              - paragraph [ref=e532]:
+                - emphasis [ref=e533]:
+                  - text: "Note: This is not the same project as"
+                  - link "OpenHarness.ai" [ref=e534] [cursor=pointer]:
+                    - /url: http://OpenHarness.ai
+                  - text: by MaxGfeller — see the next entry.
+              - paragraph [ref=e535]:
+                - strong [ref=e536]: "Profile:"
+              - list [ref=e537]:
+                - listitem [ref=e538]: "Best for: Researchers; builders who want to understand harness internals"
+                - listitem [ref=e539]: "GitHub stars: 9,100"
+                - listitem [ref=e540]:
+                  - text: "URL:"
+                  - link "github.com/HKUDS/OpenHarness" [ref=e541] [cursor=pointer]:
+                    - /url: https://github.com/HKUDS/OpenHarness
+              - paragraph [ref=e542]:
+                - strong [ref=e543]: "Pros:"
+              - list [ref=e544]:
+                - listitem [ref=e545]: CLI-first transparency into execution cycles
+                - listitem [ref=e546]: 43+ built-in tools covering file, shell, search, web, and MCP-style operations
+                - listitem [ref=e547]: Streaming tool-call cycles with real-time observability
+                - listitem [ref=e548]: Multi-level permission modes for safe experimentation
+                - listitem [ref=e549]:
+                  - link "MEMORY.md" [ref=e550] [cursor=pointer]:
+                    - /url: http://MEMORY.md
+                  - text: persistence; background task management; multi-agent swarm coordination
+                - listitem [ref=e551]: 114 passing tests and 6 end-to-end test suites
+              - paragraph [ref=e552]:
+                - strong [ref=e553]: "Cons:"
+              - list [ref=e554]:
+                - listitem [ref=e555]: v0.1.x — early release; production use requires careful evaluation
+                - listitem [ref=e556]: CLI-first design has no visual interface
+                - listitem [ref=e557]: Research-oriented; less enterprise tooling than commercial alternatives
+              - paragraph [ref=e558]:
+                - strong [ref=e559]: "Core capabilities:"
+                - text: OpenHarness HKUDS exposes every layer of agent execution to inspection. Tool calls, permission checks, memory reads and writes, and streaming cycles are all visible at the CLI level. The 43+ built-in tools cover a broader surface than most frameworks without requiring plugins.
+                - link "MEMORY.md" [ref=e560] [cursor=pointer]:
+                  - /url: http://MEMORY.md
+                - text: persistence provides lightweight state management. Multi-agent swarm coordination enables experiments with parallel agent execution.
+              - paragraph [ref=e561]:
+                - strong [ref=e562]: "Data quality gap:"
+                - text: No data quality or governance features. No data validation, certification, or lineage tracking.
+              - paragraph [ref=e563]:
+                - strong [ref=e564]: "Licensing:"
+                - text: MIT
+              - separator [ref=e565]
+              - heading "8. OpenHarness.ai (MaxGfeller) — Best for avoiding framework lock-in" [level=3] [ref=e566]:
+                - text: "8."
+                - link "OpenHarness.ai" [ref=e567] [cursor=pointer]:
+                  - /url: http://OpenHarness.ai
+                - text: (MaxGfeller) — Best for avoiding framework lock-in
+              - paragraph [ref=e568]:
+                - link "OpenHarness.ai" [ref=e569] [cursor=pointer]:
+                  - /url: http://OpenHarness.ai
+                - text: is a harness interoperability SDK — write-once agent code that deploys across Anthropic SDK, Goose, LangChain, Letta, and Claude Code without modification. Where the HKUDS project is a runtime you run agents inside, this project is an abstraction layer making agent code portable across runtimes.
+              - paragraph [ref=e570]:
+                - emphasis [ref=e571]: "Note: Not related to the HKUDS OpenHarness project above."
+              - paragraph [ref=e572]:
+                - strong [ref=e573]: "Profile:"
+              - list [ref=e574]:
+                - listitem [ref=e575]: "Best for: Teams avoiding framework lock-in; polyglot harness environments"
+                - listitem [ref=e576]:
+                  - text: "URL:"
+                  - link "openharness.ai" [ref=e577] [cursor=pointer]:
+                    - /url: http://openharness.ai
+              - paragraph [ref=e578]:
+                - strong [ref=e579]: "Pros:"
+              - list [ref=e580]:
+                - listitem [ref=e581]: Universal API across Anthropic SDK, Goose, LangChain, Letta, and Claude Code
+                - listitem [ref=e582]: Standardized tool, memory, and execution abstractions
+                - listitem [ref=e583]: Conformance testing across harness adapters
+                - listitem [ref=e584]: MIT license
+              - paragraph [ref=e585]:
+                - strong [ref=e586]: "Cons:"
+              - list [ref=e587]:
+                - listitem [ref=e588]: Small community; not production-validated at enterprise scale
+                - listitem [ref=e589]: Solves portability only — no orchestration, memory, or observability features
+                - listitem [ref=e590]: Dependent on the supported adapter list
+              - paragraph [ref=e591]:
+                - strong [ref=e592]: "Core capabilities:"
+                - link "OpenHarness.ai" [ref=e593] [cursor=pointer]:
+                  - /url: http://OpenHarness.ai
+                - text: defines a standard interface for agent capabilities — tools, memory, and execution contexts — and provides adapters for multiple runtimes. Write once against the
+                - link "OpenHarness.ai" [ref=e594] [cursor=pointer]:
+                  - /url: http://OpenHarness.ai
+                - text: API, then deploy the same code to any supported runtime. Conformance testing verifies that adapter implementations behave consistently.
+              - paragraph [ref=e595]:
+                - strong [ref=e596]: "Data quality gap:"
+                - text: Focuses on harness portability, not what is inside the harnesses. No data quality controls at any layer.
+              - paragraph [ref=e597]:
+                - strong [ref=e598]: "Licensing:"
+                - text: MIT
+              - separator [ref=e599]
+              - 'heading "Section 3: RAG and document-heavy workflow frameworks" [level=2] [ref=e600]'
+              - paragraph [ref=e601]: "For agent workflows where the primary task is processing, searching, or reasoning over documents, Haystack is the reference implementation. Built RAG-first with 160+ document store integrations, it handles the retrieval architecture other frameworks leave to the user. The caveat: it integrates with everything but governs nothing."
+              - separator [ref=e602]
+              - heading "9. Haystack (deepset) — Best for RAG and document-heavy workflows" [level=3] [ref=e603]
+              - paragraph [ref=e604]: Haystack by deepset is the production-ready RAG and document-heavy workflow framework for Python teams — 23,000+ GitHub stars, pipeline-based architecture, and 160+ document store integrations. It is the default choice when your agent workflow is primarily about searching, retrieving, and reasoning over large document corpora.
+              - paragraph [ref=e605]:
+                - strong [ref=e606]: "Profile:"
+              - list [ref=e607]:
+                - listitem [ref=e608]: "Best for: Document-heavy or RAG-heavy workflows; cloud-agnostic Python teams"
+                - listitem [ref=e609]: "GitHub stars: 23,000+"
+                - listitem [ref=e610]:
+                  - text: "URL:"
+                  - link "haystack.deepset.ai" [ref=e611] [cursor=pointer]:
+                    - /url: http://haystack.deepset.ai
+              - paragraph [ref=e612]:
+                - strong [ref=e613]: "Pros:"
+              - list [ref=e614]:
+                - listitem [ref=e615]: 160+ document store integrations — broadest in this list
+                - listitem [ref=e616]: Pipeline-based architecture separates retrieval, processing, and generation cleanly
+                - listitem [ref=e617]: Strong observability and multi-modal search support
+                - listitem [ref=e618]: Apache 2.0 — permissive enterprise licensing
+              - paragraph [ref=e619]:
+                - strong [ref=e620]: "Cons:"
+              - list [ref=e621]:
+                - listitem [ref=e622]: RAG-first design is a constraint for non-document workflows
+                - listitem [ref=e623]: Pipelines can become complex for dynamic agent reasoning patterns
+                - listitem [ref=e624]: No built-in data governance over document store contents
+              - paragraph [ref=e625]:
+                - strong [ref=e626]: "Core capabilities:"
+                - text: Haystack’s pipeline abstraction cleanly separates retrieval from processing from generation. Each stage in the pipeline is a typed component that can be swapped, tested, and replaced independently. The 160+ document store integrations cover every major vector database, search engine, and document repository in production use. Multi-modal search extends retrieval beyond text to images and structured data.
+              - paragraph [ref=e627]:
+                - strong [ref=e628]: "Data quality gap:"
+                - text: Haystack integrates with many document stores but has no governance layer over what is stored in them. Documents can be stale, uncertified, or miscategorized; Haystack retrieves and passes them to agents regardless. The pipeline has no concept of document certification or schema validation.
+              - paragraph [ref=e629]:
+                - strong [ref=e630]: "Licensing:"
+                - text: Apache 2.0; deepset Cloud available
+              - separator [ref=e631]
+              - 'heading "Section 4: Observability and monitoring tools" [level=2] [ref=e632]'
+              - paragraph [ref=e633]:
+                - text: "These are not harness frameworks. They sit alongside frameworks, recording what happens after agents run. They are essential infrastructure for production agent stacks — but they carry an important caveat: all of them operate post-hoc. They catch failures after those failures occur. None of them prevent failures caused by bad inputs at the source. See"
+                - link "Data Quality for AI Agent Harnesses" [ref=e634] [cursor=pointer]:
+                  - /url: https://atlan.com/know/data-quality-ai-agent-harnesses/
+                - text: for analysis of where post-hoc observability falls short.
+              - separator [ref=e635]
+              - heading "10. AgentOps — Best for post-deployment session monitoring" [level=3] [ref=e636]
+              - paragraph [ref=e637]: AgentOps tracks session replays, LLM costs, latency, tool usage, and multi-agent interactions across 400+ supported LLMs. With approximately 12% performance overhead and claims of 25x fine-tuning cost reduction from session data, it is widely paired with LangGraph stacks in production monitoring configurations.
+              - paragraph [ref=e638]:
+                - strong [ref=e639]: "Profile:"
+              - list [ref=e640]:
+                - listitem [ref=e641]: "Best for: Observability and monitoring post-deployment; multi-agent session tracking"
+                - listitem [ref=e642]:
+                  - text: "URL:"
+                  - link "agentops.ai" [ref=e643] [cursor=pointer]:
+                    - /url: http://agentops.ai
+              - paragraph [ref=e644]:
+                - strong [ref=e645]: "Pros:"
+              - list [ref=e646]:
+                - listitem [ref=e647]: Session replay for forensic failure analysis
+                - listitem [ref=e648]: 400+ LLMs tracked
+                - listitem [ref=e649]: Cost optimization from session-level data
+                - listitem [ref=e650]: Multi-agent interaction tracking across concurrent agents
+                - listitem [ref=e651]: Free tier available
+              - paragraph [ref=e652]:
+                - strong [ref=e653]: "Cons:"
+              - list [ref=e654]:
+                - listitem [ref=e655]: Approximately 12% performance overhead
+                - listitem [ref=e656]: Monitors behavior post-hoc — does not prevent input-caused failures
+                - listitem [ref=e657]: 25x fine-tuning cost reduction claim should be independently validated
+              - paragraph [ref=e658]:
+                - strong [ref=e659]: "Core capabilities:"
+                - text: AgentOps records complete session transcripts including tool calls, model invocations, costs, and latency data. Session replay enables forensic analysis of agent failures — engineers can replay exactly what happened in a failing session. Multi-agent tracking captures interactions across concurrent agents in the same session. Cost data from sessions feeds back into fine-tuning prioritization.
+              - paragraph [ref=e660]:
+                - strong [ref=e661]: "Data quality gap:"
+                - text: AgentOps monitors agent behavior and catches failures after they happen. It does not monitor input data quality, lineage, or certification at the source. A session replay showing an agent confidently acting on stale data does not tell you the data was stale — it tells you what the agent did.
+              - paragraph [ref=e662]:
+                - strong [ref=e663]: "Licensing:"
+                - text: Free tier; paid plans for higher volume and enterprise features
+              - separator [ref=e664]
+              - heading "11. Langfuse — Best for self-hosted LLMOps and evaluation" [level=3] [ref=e665]
+              - paragraph [ref=e666]: Langfuse is the leading open-source LLM observability platform — 6M+ SDK installs per month — offering LLM tracing, prompt management, evaluation pipelines, and team collaboration in a self-hostable package. With approximately 15% performance overhead and MIT license, it is the preferred choice for teams needing full LLMOps visibility without vendor lock-in on observability data.
+              - paragraph [ref=e667]:
+                - strong [ref=e668]: "Profile:"
+              - list [ref=e669]:
+                - listitem [ref=e670]: "Best for: Self-hosted observability; widest framework coverage; LLMOps teams"
+                - listitem [ref=e671]: "GitHub / installs: 6M+ SDK installs per month"
+                - listitem [ref=e672]:
+                  - text: "URL:"
+                  - link "langfuse.com" [ref=e673] [cursor=pointer]:
+                    - /url: http://langfuse.com
+              - paragraph [ref=e674]:
+                - strong [ref=e675]: "Pros:"
+              - list [ref=e676]:
+                - listitem [ref=e677]: 6M+ SDK installs per month — dominant open-source LLMOps tool
+                - listitem [ref=e678]: Self-hostable — no vendor lock-in on observability data
+                - listitem [ref=e679]: Prompt management and evaluation pipelines built in
+                - listitem [ref=e680]: Team collaboration features for shared LLMOps workflows
+                - listitem [ref=e681]: MIT license
+              - paragraph [ref=e682]:
+                - strong [ref=e683]: "Cons:"
+              - list [ref=e684]:
+                - listitem [ref=e685]: Approximately 15% performance overhead
+                - listitem [ref=e686]: Self-hosting adds operational burden for smaller teams
+                - listitem [ref=e687]: Evaluation covers model outputs, not input data quality
+              - paragraph [ref=e688]:
+                - strong [ref=e689]: "Core capabilities:"
+                - text: Langfuse traces LLM calls at the span level, linking model invocations to their prompts, inputs, and outputs. Prompt management tracks versions and links evaluation scores to specific prompt versions. Evaluation pipelines score model outputs against defined criteria. Self-hosting puts all observability data behind the organization’s own security perimeter. Team collaboration features allow shared access to traces and evaluation results.
+              - paragraph [ref=e690]:
+                - strong [ref=e691]: "Data quality gap:"
+                - text: Langfuse evaluates model outputs and prompt performance. It cannot determine whether the context the model read was stale, uncertified, or schema-drifted. High evaluation scores on outputs from bad inputs are possible — and they are misleading.
+              - paragraph [ref=e692]:
+                - strong [ref=e693]: "Licensing:"
+                - text: MIT; cloud plan available
+              - separator [ref=e694]
+              - separator [ref=e695]
+              - 'heading "The missing layer: data quality infrastructure for agent harnesses" [level=2] [ref=e696]'
+              - paragraph [ref=e697]: Every framework above operates on the control layer of the harness. None of them governs what the harness actually reads.
+              - paragraph [ref=e698]: "McKinsey’s research makes the scale of this problem concrete: 8 in 10 companies cite data limitations as their primary roadblock to scaling agentic AI. Not framework choice. Not model selection. Data. The OWASP Top 10 for Agentic Applications identifies memory poisoning and cascading failures among the most critical agent security risks — both caused by bad data inputs entering the harness context. A consistent finding in 2026 AI governance research: “Much of what is dismissed as LLM hallucination is actually the consequence of inconsistent, stale, or partially replicated data sources.”"
+              - paragraph [ref=e699]: "This is not a criticism of the tools listed above. LangGraph, CrewAI, Haystack, and the rest solve what they were built to solve. The gap is structural: no orchestration framework can certify its own inputs. That responsibility belongs to the data layer."
+              - separator [ref=e700]
+              - heading "What Atlan is — and what it is not" [level=3] [ref=e701]
+              - paragraph [ref=e702]: Atlan is not a harness tool. It does not orchestrate agents, manage memory, or provide observability on agent runs. Comparing Atlan to LangGraph or CrewAI is a category error.
+              - paragraph [ref=e703]: Atlan is the governed data substrate that harness tools depend on. It is the layer that determines whether what agents read is trustworthy before agents read it. You choose your harness framework from the list above. You use Atlan to ensure that the data that framework reads is certified, lineage-tracked, and schema-stable.
+              - paragraph [ref=e704]: Atlan is a Gartner Leader 2026 in Data and Analytics Governance — the category that directly addresses the structural gap every harness framework assumes away.
+              - separator [ref=e705]
+              - heading "What Atlan provides for agent harness pipelines" [level=3] [ref=e706]
+              - paragraph [ref=e707]:
+                - strong [ref=e708]: "Active metadata:"
+                - text: Atlan continuously monitors data systems and automatically maintains metadata freshness. Real-time certification status, schema state, and freshness signals are surfaced as structured context — agents do not need to guess whether a table is current.
+              - paragraph [ref=e709]:
+                - strong [ref=e710]: "Data contracts:"
+                - text: Atlan enforces schema contracts on data assets before they enter the harness context window. Schema drift is caught before agents read it, not after agents produce wrong outputs. Contract enforcement is proactive, not post-hoc.
+              - paragraph [ref=e711]:
+                - strong [ref=e712]: "Data lineage:"
+                - text: "End-to-end column-level lineage means agents can trace what they are reading back to its source. When an agent output is wrong, lineage enables root cause analysis: was the failure in the model, the prompt, or the source data? Column-level granularity makes that question answerable."
+              - paragraph [ref=e713]:
+                - strong [ref=e714]: "Certification status:"
+                - text: Data stewards certify assets in Atlan. That certification state is readable as agent context. Agents can be configured to only read certified assets — eliminating one of the most common production failure modes in enterprise harness deployments.
+              - paragraph [ref=e715]:
+                - strong [ref=e716]: "MCP server:"
+                - text: Atlan’s MCP server surfaces active metadata, data contracts, and lineage as structured context that any harness can query directly. Write once against the MCP interface; Atlan handles the governance layer underneath.
+              - paragraph [ref=e717]:
+                - text: For a deeper treatment of why these capabilities are foundational, see
+                - link "Why the Context Layer Is the Foundation of Harness Engineering" [ref=e718] [cursor=pointer]:
+                  - /url: https://atlan.com/know/context-layer-harness-engineering/
+                - text: and
+                - link "Data Quality for AI Agent Harnesses" [ref=e719] [cursor=pointer]:
+                  - /url: https://atlan.com/know/data-quality-ai-agent-harnesses/
+                - text: .
+              - separator [ref=e720]
+              - heading "Enterprise use and recognition" [level=3] [ref=e721]
+              - paragraph [ref=e722]: Atlan is recognized as a Gartner Leader 2026 in Data and Analytics Governance. Fortune 500 data teams across financial services, healthcare, and insurance use Atlan as their governed data substrate for agentic AI pipelines. In regulated industries, data certification is not a nice-to-have — it is a compliance requirement. Atlan’s certification infrastructure provides the audit trail those requirements demand.
+              - generic [ref=e723]:
+                - generic [ref=e724]:
+                  - paragraph [ref=e725]: "\"We're excited to build the future of AI governance with Atlan. All of the work that we did to get to a shared language amongst people...can be leveraged by AI via context infrastructure.\""
+                  - paragraph [ref=e726]: — Joe DosSantos, VP Enterprise Data and Analytics, Workday
+                - generic [ref=e727]:
+                  - img "Workday Logo"
+                  - link "Watch Now" [ref=e728] [cursor=pointer]:
+                    - /url: https://atlan.com/regovern-watch-center/workday-context-as-culture/
+              - generic [ref=e729]:
+                - generic [ref=e730]:
+                  - paragraph [ref=e731]: "\"Atlan is much more than a catalog of catalogs. Atlan is the context layer for all our data and AI assets.\""
+                  - paragraph [ref=e732]: — Sridher Arumugham, Chief Data and Analytics Officer, DigiKey
+                - generic [ref=e733]:
+                  - img "DigiKey Logo"
+                  - link "Watch Now" [ref=e734] [cursor=pointer]:
+                    - /url: https://atlan.com/regovern-watch-center/digikey-context-readiness/
+              - paragraph [ref=e735]:
+                - text: See
+                - link "Memory Layer for AI Agents" [ref=e736] [cursor=pointer]:
+                  - /url: https://atlan.com/know/memory-layer-for-ai-agents/
+                - text: for how these capabilities extend into agent memory architectures.
+              - separator [ref=e737]
+              - generic [ref=e738]:
+                - paragraph [ref=e739]: "Context for AI Analysts: See Atlan's Context Studio in Action"
+                - paragraph [ref=e740]: Context is what gets AI analysts to production. See how teams are building production-ready AI analysts with Atlan's Context Studio.
+                - link "Save your Spot" [ref=e741] [cursor=pointer]:
+                  - /url: https://atlan.com/live-demo-series-context-studio-ai-analysts-2026/
+              - separator [ref=e742]
+              - heading "How to choose the right AI agent harness tool" [level=2] [ref=e743]
+              - paragraph [ref=e744]: Three orienting questions come before framework selection. What does your existing stack look like? Python or TypeScript, cloud-native or on-premise, Microsoft-invested or cloud-agnostic? What is your failure mode? Are you failing at task success, at debugging, at context management, or at data reliability? What is your team’s capacity? A team of three with a deadline needs a different answer than a 50-person platform engineering org.
+              - paragraph [ref=e745]:
+                - strong [ref=e746]: "Decision framework by need:"
+              - table [ref=e748]:
+                - rowgroup [ref=e749]:
+                  - row "If You Need… Consider… Why" [ref=e750]:
+                    - columnheader "If You Need…" [ref=e751]
+                    - columnheader "Consider…" [ref=e752]
+                    - columnheader "Why" [ref=e753]
+                - rowgroup [ref=e754]:
+                  - row "Maximum task success rate and state control LangGraph 87% task success; graph-based state" [ref=e755]:
+                    - cell "Maximum task success rate and state control" [ref=e756]
+                    - cell "LangGraph" [ref=e757]
+                    - cell "87% task success; graph-based state" [ref=e758]
+                  - row "Fastest path to working multi-agent prototype CrewAI 1.8s latency; role-based; 45,900+ star community" [ref=e759]:
+                    - cell "Fastest path to working multi-agent prototype" [ref=e760]
+                    - cell "CrewAI" [ref=e761]
+                    - cell "1.8s latency; role-based; 45,900+ star community" [ref=e762]
+                  - row "Code execution sandboxing AutoGen / AG2 Docker-native code isolation" [ref=e763]:
+                    - cell "Code execution sandboxing" [ref=e764]
+                    - cell "AutoGen / AG2" [ref=e765]
+                    - cell "Docker-native code isolation" [ref=e766]
+                  - row "Long-horizon tasks with context management LangChain deepagents write_todos; filesystem offload; subagent spawning" [ref=e767]:
+                    - cell "Long-horizon tasks with context management" [ref=e768]
+                    - cell "LangChain deepagents" [ref=e769]
+                    - cell "write_todos; filesystem offload; subagent spawning" [ref=e770]
+                  - row "TypeScript-first with observational memory Mastra 300k+ npm/week; Observer/Reflector memory; enterprise RBAC" [ref=e771]:
+                    - cell "TypeScript-first with observational memory" [ref=e772]
+                    - cell "Mastra" [ref=e773]
+                    - cell "300k+ npm/week; Observer/Reflector memory; enterprise RBAC" [ref=e774]
+                  - row "Enterprise .NET / Microsoft stack Semantic Kernel C# first; Azure native; compile-time type safety" [ref=e775]:
+                    - cell "Enterprise .NET / Microsoft stack" [ref=e776]
+                    - cell "Semantic Kernel" [ref=e777]
+                    - cell "C# first; Azure native; compile-time type safety" [ref=e778]
+                  - row "RAG and document-heavy workflows Haystack 160+ document store integrations" [ref=e779]:
+                    - cell "RAG and document-heavy workflows" [ref=e780]
+                    - cell "Haystack" [ref=e781]
+                    - cell "160+ document store integrations" [ref=e782]
+                  - row "Framework portability / avoid lock-in OpenHarness.ai (MaxGfeller) Write-once deploy across multiple runtimes" [ref=e783]:
+                    - cell "Framework portability / avoid lock-in" [ref=e784]
+                    - cell "OpenHarness.ai (MaxGfeller)" [ref=e785]:
+                      - link "OpenHarness.ai" [ref=e786] [cursor=pointer]:
+                        - /url: http://OpenHarness.ai
+                      - text: (MaxGfeller)
+                    - cell "Write-once deploy across multiple runtimes" [ref=e787]
+                  - row "Understanding harness internals OpenHarness (HKUDS) CLI-first; 43+ tools; transparent execution cycles" [ref=e788]:
+                    - cell "Understanding harness internals" [ref=e789]
+                    - cell "OpenHarness (HKUDS)" [ref=e790]
+                    - cell "CLI-first; 43+ tools; transparent execution cycles" [ref=e791]
+                  - row "Post-deployment monitoring and cost tracking AgentOps Session replays; 400+ LLMs; cost optimization" [ref=e792]:
+                    - cell "Post-deployment monitoring and cost tracking" [ref=e793]
+                    - cell "AgentOps" [ref=e794]
+                    - cell "Session replays; 400+ LLMs; cost optimization" [ref=e795]
+                  - row "Self-hosted LLMOps Langfuse MIT; self-hostable" [ref=e796]:
+                    - cell "Self-hosted LLMOps" [ref=e797]
+                    - cell "Langfuse" [ref=e798]
+                    - cell "MIT; self-hostable" [ref=e799]
+                  - row "Governing what agents read Atlan Active metadata; data contracts; lineage; certification; MCP transport" [ref=e800]:
+                    - cell "Governing what agents read" [ref=e801]
+                    - cell "Atlan" [ref=e802]
+                    - cell "Active metadata; data contracts; lineage; certification; MCP transport" [ref=e803]
+              - paragraph [ref=e804]:
+                - strong [ref=e805]: "By company stage:"
+              - paragraph [ref=e806]: Early-stage teams (1 to 50 employees) should start with CrewAI for speed to prototype and Langfuse for observability. Add Atlan when data quality failures surface in production — which, in most environments, happens within the first serious deployment.
+              - paragraph [ref=e807]: Mid-market teams (50 to 500 employees) will find LangGraph or Mastra the right orchestration choice depending on Python versus TypeScript orientation. AgentOps or Langfuse for monitoring. Atlan’s data contract and certification layer belongs in the evaluation alongside orchestration selection, not as an afterthought when failures begin accumulating.
+              - paragraph [ref=e808]: Enterprise teams (500+ employees) face a different calculus. If the organization is Microsoft-invested, Semantic Kernel is likely already in consideration. Otherwise, LangGraph for control-critical workflows. Observability is non-negotiable at enterprise scale. Atlan belongs in evaluation alongside framework selection from the start. Data failures at enterprise scale compound faster than they can be debugged post-hoc.
+              - paragraph [ref=e809]:
+                - strong [ref=e810]: "By use case:"
+              - list [ref=e811]:
+                - listitem [ref=e812]: "Multi-agent collaboration: CrewAI (role-based coordination) or AutoGen (debate and refinement patterns)"
+                - listitem [ref=e813]: "Stateful long-running tasks: LangGraph or LangChain deepagents"
+                - listitem [ref=e814]: "Document search and RAG: Haystack"
+                - listitem [ref=e815]: "Code-writing agents: AutoGen (Docker sandboxing)"
+                - listitem [ref=e816]: "Enterprise Microsoft workflows: Semantic Kernel"
+                - listitem [ref=e817]: "Governing agent inputs at scale: Atlan (governed data substrate, not a harness framework)"
+              - separator [ref=e818]
+              - heading "Decision summary" [level=2] [ref=e819]
+              - paragraph [ref=e820]: "The 2026 agent harness tool landscape has matured quickly. Engineers have well-tested options at every layer: orchestration, observability, RAG retrieval, and runtime portability. The frameworks in this list represent the current state of practice, and most of them have reached a level of stability that makes production deployment credible."
+              - paragraph [ref=e821]: Selection in 2026 is increasingly about fit with your stack, your team’s experience, and your actual failure modes — not feature checklists. Most new teams do not need Semantic Kernel’s enterprise depth or LangGraph’s control-layer verbosity. Starting simple and adding complexity when actual failure modes demand it remains sound engineering practice.
+              - paragraph [ref=e822]: "One caveat runs through every tool in this list: all of them assume the data they process is trustworthy. In production enterprise environments, that assumption is frequently wrong. Addressing it is not a framework problem — it is a data governance problem. No amount of orchestration sophistication compensates for agents reading stale, uncertified, or schema-drifted data. That is the structural problem Atlan exists to solve."
+              - link "Book a Demo" [ref=e824] [cursor=pointer]:
+                - /url: https://atlan.com/forms/talk-to-us/
+              - separator [ref=e825]
+              - heading "FAQs about AI agent harness tools frameworks 2026" [level=2] [ref=e826]
+              - heading "1. What is the best AI agent framework in 2026?" [level=3] [ref=e827]
+              - paragraph [ref=e828]: There is no single best framework — the right choice depends on your stack, team, and failure modes. LangGraph leads on task success benchmarks at 87% and suits teams needing precise state control. CrewAI leads on adoption and speed to prototype with 45,900+ GitHub stars and 1.8s average latency. For TypeScript teams, Mastra is the strongest native option. For enterprise Microsoft environments, Semantic Kernel. Most teams are better served by matching framework to use case than by chasing a ranked list.
+              - heading "2. What is the difference between LangGraph and CrewAI?" [level=3] [ref=e829]
+              - paragraph [ref=e830]: LangGraph is graph-based and gives engineers explicit control over agent state through conditional edges and checkpoints. It achieves 87% task success in benchmarks but requires more configuration. CrewAI is role-based and prioritizes speed to working prototype — roles like researcher and writer coordinate through A2A messaging. CrewAI reaches production in hours; LangGraph rewards the investment in configuration with higher task success and greater state control for complex workflows.
+              - heading "3. What is OpenHarness?" [level=3] [ref=e831]
+              - paragraph [ref=e832]:
+                - text: There are two separate, unrelated projects called OpenHarness. OpenHarness by HKUDS (University of Hong Kong) is an open-source CLI-first agent runtime with 9,100 GitHub stars and 43+ built-in tools, designed for inspecting how production harnesses work from the inside.
+                - link "OpenHarness.ai" [ref=e833] [cursor=pointer]:
+                  - /url: http://OpenHarness.ai
+                - text: by MaxGfeller is a harness interoperability SDK that lets you write agent code once and deploy across Anthropic SDK, LangChain, Goose, Letta, and Claude Code without modification. They share a name and nothing else.
+              - heading "4. How do I choose an AI agent framework for enterprise use?" [level=3] [ref=e834]
+              - paragraph [ref=e835]: "Start with three questions: What is your existing stack? Microsoft-invested enterprises have a natural path to Semantic Kernel; Python teams to LangGraph or CrewAI; TypeScript teams to Mastra. What is your primary failure mode? Debugging failures point to stronger observability needs; task completion failures to framework and data quality. What are your compliance requirements? Regulated industries need certifiable data inputs, which means evaluating the data layer alongside the framework."
+              - heading "5. What is the difference between an agent framework and an agent harness?" [level=3] [ref=e836]
+              - paragraph [ref=e837]: "An agent framework provides the programming model and runtime for building agents — tool definitions, memory abstractions, multi-agent coordination patterns. An agent harness is the full assembled system: the framework plus all configuration, constraints, data connections, sensors, and operational scaffolding that makes agents behave reliably in a specific environment. The harness is what runs in production. The framework is one component of it."
+              - heading "6. How do AI agent frameworks handle data quality?" [level=3] [ref=e838]
+              - paragraph [ref=e839]: Most do not. The frameworks in this list manage how agents run; they do not govern what agents read. Schema drift, stale tables, and uncertified data sources pass through orchestration frameworks without detection. Post-hoc observability tools like AgentOps and Langfuse can identify that an agent produced a wrong output — but not that the wrong output resulted from bad input data. Addressing data quality at the source requires a governed data layer that operates before agents read anything.
+              - heading "7. What is the difference between an orchestration framework and an observability tool for AI agents?" [level=3] [ref=e840]
+              - paragraph [ref=e841]: "Orchestration frameworks (LangGraph, CrewAI, AutoGen, Mastra) determine how agents run: state management, tool routing, multi-agent coordination, task decomposition. Observability tools (AgentOps, Langfuse) record what happened after agents ran: session replays, cost data, latency, output evaluation. Both are necessary in production. The important caveat is that observability tools are post-hoc — they catch failures after they happen. Preventing failures caused by bad inputs requires governance at the data source, before agents read anything."
+              - heading "8. Is CrewAI or LangGraph better for beginners?" [level=3] [ref=e842]
+              - paragraph [ref=e843]: CrewAI is the better starting point for most beginners. Its role-based model maps naturally to how teams think about task division — you assign agents roles and goals rather than designing execution graphs. CrewAI Studio provides a visual builder. The 45,900+ star community means answers to common questions are easy to find. LangGraph is more powerful but rewards that power with a steeper learning curve. Start with CrewAI, then move to LangGraph when your workflows require the state control that CrewAI’s architecture does not provide.
+              - separator [ref=e844]
+              - heading "Sources" [level=2] [ref=e845]
+              - list [ref=e846]:
+                - listitem [ref=e847]:
+                  - text: "Gartner — “40% of enterprise applications will include task-specific AI agents by end of 2026”:"
+                  - link "https://www.gartner.com/en/newsroom/press-releases/2025-09-25-gartner-says-40-percent-of-enterprise-applications-will-embed-agentic-ai-by-2026" [ref=e848] [cursor=pointer]:
+                    - /url: https://www.gartner.com/en/newsroom/press-releases/2025-09-25-gartner-says-40-percent-of-enterprise-applications-will-embed-agentic-ai-by-2026
+                - listitem [ref=e849]:
+                  - text: "McKinsey — “Building the Foundations for Agentic AI at Scale”:"
+                  - link "https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/building-the-foundation-for-agentic-ai" [ref=e850] [cursor=pointer]:
+                    - /url: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/building-the-foundation-for-agentic-ai
+                - listitem [ref=e851]:
+                  - text: "OWASP — “Top 10 for Agentic Applications 2026”:"
+                  - link "https://owasp.org/www-project-top-10-for-large-language-model-applications/" [ref=e852] [cursor=pointer]:
+                    - /url: https://owasp.org/www-project-top-10-for-large-language-model-applications/
+                - listitem [ref=e853]:
+                  - text: "LangGraph — “87% task success rate (2026 benchmarks)”:"
+                  - link "https://blog.langchain.dev/langgraph-benchmarks/" [ref=e854] [cursor=pointer]:
+                    - /url: https://blog.langchain.dev/langgraph-benchmarks/
+                - listitem [ref=e855]:
+                  - text: "CrewAI GitHub — “45,900+ stars (April 2026)”:"
+                  - link "https://github.com/crewAIInc/crewAI" [ref=e856] [cursor=pointer]:
+                    - /url: https://github.com/crewAIInc/crewAI
+                - listitem [ref=e857]:
+                  - text: "Microsoft AutoGen / AG2 GitHub — “54,000+ stars”:"
+                  - link "https://github.com/microsoft/autogen" [ref=e858] [cursor=pointer]:
+                    - /url: https://github.com/microsoft/autogen
+                - listitem [ref=e859]:
+                  - text: "Mastra — “300,000+ weekly npm downloads”:"
+                  - link "https://mastra.ai/" [ref=e860] [cursor=pointer]:
+                    - /url: https://mastra.ai/
+                - listitem [ref=e861]:
+                  - text: "Langfuse — “6M+ SDK installs per month”:"
+                  - link "https://langfuse.com/" [ref=e862] [cursor=pointer]:
+                    - /url: https://langfuse.com/
+          - generic [ref=e864]:
+            - paragraph [ref=e865]: Share this article
+            - generic [ref=e866]:
+              - button "x social icon" [ref=e867] [cursor=pointer]:
+                - img "x social icon" [ref=e868]
+              - button "linkedin social icon" [ref=e869] [cursor=pointer]:
+                - img "linkedin social icon" [ref=e870]
+              - button "email social icon" [ref=e871] [cursor=pointer]:
+                - img "email social icon" [ref=e872]
+        - generic [ref=e873]:
+          - generic [ref=e874]:
+            - img "signoff-panel-logo" [ref=e875]
+            - paragraph [ref=e876]: Atlan is the next-generation platform for data and AI governance. It is a control plane that stitches together a business's disparate data infrastructure, cataloging and enriching data with business context and security.
+          - generic [ref=e877]:
+            - link "Book a Demo" [ref=e878] [cursor=pointer]:
+              - /url: https://atlan.com/forms/talk-to-sales-contact/
+            - link "Download Context Graph Guide" [ref=e879] [cursor=pointer]:
+              - /url: https://atlan.com/resources/cio-guide-to-context-graphs/
+        - generic [ref=e880]:
+          - 'heading "AI agent harness tools: Related reads" [level=2] [ref=e882]':
+            - img [ref=e883]
+            - generic [ref=e885]: "AI agent harness tools: Related reads"
+          - generic [ref=e886]:
+            - link "What Is Harness Engineering? The complete guide to harness engineering for AI systems." [ref=e887] [cursor=pointer]:
+              - /url: https://atlan.com/know/what-is-harness-engineering/
+              - text: What Is Harness Engineering?
+              - generic [ref=e888]: The complete guide to harness engineering for AI systems.
+            - link "What Is an Agent Harness? Guides, Sensors, and Components Explained Understand harness architecture before choosing tools." [ref=e889] [cursor=pointer]:
+              - /url: https://atlan.com/know/what-is-an-agent-harness/
+              - text: What Is an Agent Harness? Guides, Sensors, and Components Explained
+              - generic [ref=e890]: Understand harness architecture before choosing tools.
+            - link "How to Build an AI Agent Harness Build your harness with any of these frameworks." [ref=e891] [cursor=pointer]:
+              - /url: https://atlan.com/know/how-to-build-ai-agent-harness/
+              - text: How to Build an AI Agent Harness
+              - generic [ref=e892]: Build your harness with any of these frameworks.
+            - link "Data Quality for AI Agent Harnesses The data layer that all frameworks depend on." [ref=e893] [cursor=pointer]:
+              - /url: https://atlan.com/know/data-quality-ai-agent-harnesses/
+              - text: Data Quality for AI Agent Harnesses
+              - generic [ref=e894]: The data layer that all frameworks depend on.
+      - complementary [ref=e895]:
+        - generic [ref=e896]:
+          - generic [ref=e897]:
+            - link "activate-the-context-layer-live-april-2026" [ref=e898] [cursor=pointer]:
+              - /url: /context-layer-demo/
+              - img "activate-the-context-layer-live-april-2026" [ref=e899]
+            - paragraph [ref=e900]: Everyone's talking about the context layer. Nobody's shown you how to build one. Until now.
+            - link "Watch Recording" [ref=e901] [cursor=pointer]:
+              - /url: /context-layer-demo/
+              - img [ref=e902]
+              - generic [ref=e904]: Watch Recording
+          - generic [ref=e905]:
+            - heading "Recent publications" [level=3] [ref=e906]
+            - list [ref=e907]:
+              - listitem [ref=e908]:
+                - link "What Are AI Agent Primitives?" [ref=e909] [cursor=pointer]:
+                  - /url: /know/ai-agent/ai-agent-primitives/
+                  - text: What Are AI Agent Primitives?
+                  - img [ref=e910]
+              - listitem [ref=e912]:
+                - link "Why AI Agents Need Versioned Context" [ref=e913] [cursor=pointer]:
+                  - /url: /know/ai-agent/context-versioning-for-ai-agents/
+                  - text: Why AI Agents Need Versioned Context
+                  - img [ref=e914]
+              - listitem [ref=e916]:
+                - 'link "Context Layer for Snowflake: Native Coverage, Current Limitations & How to Unify Context in 2026" [ref=e917] [cursor=pointer]':
+                  - /url: /know/context-layer-for-snowflake/
+                  - text: "Context Layer for Snowflake: Native Coverage, Current Limitations & How to Unify Context in 2026"
+                  - img [ref=e918]
+              - listitem [ref=e920]:
+                - link "What Is Institutional Knowledge Loss?" [ref=e921] [cursor=pointer]:
+                  - /url: /know/data-for-ai/institutional-knowledge-loss/
+                  - text: What Is Institutional Knowledge Loss?
+                  - img [ref=e922]
+              - listitem [ref=e924]:
+                - link "What Is Tribal Knowledge?" [ref=e925] [cursor=pointer]:
+                  - /url: /know/data-for-ai/tribal-knowledge/
+                  - text: What Is Tribal Knowledge?
+                  - img [ref=e926]
+  - generic [ref=e931]:
+    - generic [ref=e932]:
+      - heading "Bridge the context gap. Ship AI that works." [level=2] [ref=e933]:
+        - text: Bridge the context gap.
+        - text: Ship AI that works.
+      - generic [ref=e934]:
+        - link "Book a Demo" [ref=e938] [cursor=pointer]:
+          - /url: /forms/talk-to-sales-contact/
+        - link "Watch Context Studio Demo" [ref=e939] [cursor=pointer]:
+          - /url: /live-demo-series-context-studio-demo-recording/
+    - img "Trusted by leading enterprises" [ref=e942]
+  - contentinfo "Site footer" [ref=e943]:
+    - generic [ref=e944]:
+      - list "Footer navigation" [ref=e945]:
+        - listitem [ref=e946]:
+          - paragraph [ref=e947]: Product
+          - list "Product" [ref=e948]:
+            - listitem [ref=e949]:
+              - link "Context Engineering Studio" [ref=e950] [cursor=pointer]:
+                - /url: /context-engineering-studio/
+            - listitem [ref=e951]:
+              - link "Context Lakehouse" [ref=e952] [cursor=pointer]:
+                - /url: /metadata-lakehouse/
+            - listitem [ref=e953]:
+              - link "Context Agents" [ref=e954] [cursor=pointer]:
+                - /url: /context-agents/
+            - listitem [ref=e955]:
+              - link "Data Governance" [ref=e956] [cursor=pointer]:
+                - /url: /active-data-governance/
+            - listitem [ref=e957]:
+              - link "AI Governance" [ref=e958] [cursor=pointer]:
+                - /url: /ai-governance/
+            - listitem [ref=e959]:
+              - link "App Framework" [ref=e960] [cursor=pointer]:
+                - /url: /app-framework/
+        - listitem [ref=e961]:
+          - paragraph [ref=e962]: Resources
+          - list "Resources" [ref=e963]:
+            - listitem [ref=e964]:
+              - link "Learn with Atlan" [ref=e965] [cursor=pointer]:
+                - /url: /know/
+            - listitem [ref=e966]:
+              - link "Demo Videos" [ref=e967] [cursor=pointer]:
+                - /url: /demos/
+            - listitem [ref=e968]:
+              - link "Context 101" [ref=e969] [cursor=pointer]:
+                - /url: /context-layer/
+            - listitem [ref=e970]:
+              - link "Documentation" [ref=e971] [cursor=pointer]:
+                - /url: https://docs.atlan.com/
+            - listitem [ref=e972]:
+              - link "Support Center" [ref=e973] [cursor=pointer]:
+                - /url: https://docs.atlan.com/support/submit-request
+            - listitem [ref=e974]:
+              - link "Weekly Demos" [ref=e975] [cursor=pointer]:
+                - /url: /live-demo-series/
+        - listitem [ref=e976]:
+          - paragraph [ref=e977]: About
+          - list "About" [ref=e978]:
+            - listitem [ref=e979]:
+              - link "Company" [ref=e980] [cursor=pointer]:
+                - /url: /about/
+            - listitem [ref=e981]:
+              - link "Customers" [ref=e982] [cursor=pointer]:
+                - /url: /customers/success-stories
+            - listitem [ref=e983]:
+              - link "Partners" [ref=e984] [cursor=pointer]:
+                - /url: /partners/
+            - listitem [ref=e985]:
+              - link "Industry Recognition" [ref=e986] [cursor=pointer]:
+                - /url: /analyst-hub/
+            - listitem [ref=e987]:
+              - link "Newsroom" [ref=e988] [cursor=pointer]:
+                - /url: /newsroom/
+            - listitem [ref=e989]:
+              - link "Careers We're hiring" [ref=e990] [cursor=pointer]:
+                - /url: /careers/
+        - listitem [ref=e991]:
+          - paragraph [ref=e992]: Customers
+          - list "Customers" [ref=e993]:
+            - listitem [ref=e994]:
+              - link "Mastercard" [ref=e995] [cursor=pointer]:
+                - /url: /regovern-watch-center/mastercard-context-by-design/
+            - listitem [ref=e996]:
+              - link "Workday" [ref=e997] [cursor=pointer]:
+                - /url: /regovern-watch-center/workday-context-as-culture/
+            - listitem [ref=e998]:
+              - link "General Motors" [ref=e999] [cursor=pointer]:
+                - /url: /regovern-watch-center/contracts-context-and-cars-general-motors/
+            - listitem [ref=e1000]:
+              - link "Virgin Media O2" [ref=e1001] [cursor=pointer]:
+                - /url: /regovern-watch-center/virgin-media-o2-context-for-all/
+            - listitem [ref=e1002]:
+              - link "CME Group" [ref=e1003] [cursor=pointer]:
+                - /url: /regovern-watch-center/cme-group-context-at-speed/
+            - listitem [ref=e1004]:
+              - link "DigiKey" [ref=e1005] [cursor=pointer]:
+                - /url: /regovern-watch-center/digikey-context-readiness/
+        - listitem [ref=e1006]:
+          - paragraph [ref=e1007]: Blog
+          - list "Blog" [ref=e1008]:
+            - listitem [ref=e1009]:
+              - link "The CIO's Guide to Context Graphs" [ref=e1010] [cursor=pointer]:
+                - /url: /resources/cio-guide-to-context-graphs/
+            - listitem [ref=e1011]:
+              - link "Context Engineering for AI Analysts" [ref=e1012] [cursor=pointer]:
+                - /url: /know/context-engineering-for-ai-analyst/
+            - listitem [ref=e1013]:
+              - link "Context Layer vs Semantic Layer" [ref=e1014] [cursor=pointer]:
+                - /url: /know/context-layer-vs-semantic-layer/
+            - listitem [ref=e1015]:
+              - link "Implementing a Context Layer" [ref=e1016] [cursor=pointer]:
+                - /url: /know/how-to-implement-enterprise-context-layer-for-ai/
+            - listitem [ref=e1017]:
+              - link "Context Layer 101" [ref=e1018] [cursor=pointer]:
+                - /url: /know/ai-readiness/context-layer-101/
+            - listitem [ref=e1019]:
+              - link "Semantic Views for AI Analysts" [ref=e1020] [cursor=pointer]:
+                - /url: /know/semantic-views-human-meaning-to-materialized-context/
+      - generic [ref=e1021]:
+        - generic [ref=e1022]:
+          - generic [ref=e1023]: Subscribe to the Context and Chaos Newsletter
+          - paragraph [ref=e1024]: Where 20,000+ data & AI leaders from Amazon, Apple, Spotify and more come for everything context engineering, governance, metadata, and the messy reality of working with data & AI.
+        - img "spinner" [ref=e1029]
+    - generic [ref=e1030]:
+      - generic [ref=e1031]:
+        - generic [ref=e1032]:
+          - link "Atlan home" [ref=e1034] [cursor=pointer]:
+            - /url: /
+            - img "Atlan logo" [ref=e1035]
+          - generic [ref=e1037]: The Context Layer for AI
+        - generic "Awards and certifications" [ref=e1038]:
+          - link "Achievement badge" [ref=e1039] [cursor=pointer]:
+            - /url: /forrester-wave/
+            - img "Achievement" [ref=e1040]
+          - link "Achievement badge" [ref=e1041] [cursor=pointer]:
+            - /url: /forrester-wave-2024/
+            - img "Achievement" [ref=e1042]
+          - link "Achievement badge" [ref=e1043] [cursor=pointer]:
+            - /url: /gartner-magic-quadrant-metadata-management-solutions-2025/
+            - img "Achievement" [ref=e1044]
+          - link "Achievement badge" [ref=e1045] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e1046]
+          - link "Achievement badge" [ref=e1047] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e1048]
+          - link "Achievement badge" [ref=e1049] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e1050]
+          - link "Achievement badge" [ref=e1051] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e1052]
+          - link "Achievement badge" [ref=e1053] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e1054]
+      - generic [ref=e1055]:
+        - generic [ref=e1056]:
+          - link "Follow Atlan on Facebook" [ref=e1057] [cursor=pointer]:
+            - /url: https://www.facebook.com/AtlanHQ/
+            - img "Facebook" [ref=e1058]
+          - link "Follow Atlan on LinkedIn" [ref=e1059] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/atlan-hq/
+            - img "LinkedIn" [ref=e1060]
+          - link "Follow Atlan on X (Twitter)" [ref=e1061] [cursor=pointer]:
+            - /url: https://x.com/AtlanHQ
+            - img "X (Twitter)" [ref=e1062]
+        - generic "Legal links" [ref=e1063]:
+          - text: © 2026 Atlan Pte. Ltd. |
+          - link "Security" [ref=e1064] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+          - link "Privacy Notice" [ref=e1065] [cursor=pointer]:
+            - /url: https://atln.cm/pvcy
+          - link "SaaS Agreement" [ref=e1066] [cursor=pointer]:
+            - /url: https://atln.cm/saas
+          - link "Data Processing Agreement" [ref=e1067] [cursor=pointer]:
+            - /url: https://atln.cm/ldpa
+          - link "Cookie Policy" [ref=e1068] [cursor=pointer]:
+            - /url: /cookie-policy/

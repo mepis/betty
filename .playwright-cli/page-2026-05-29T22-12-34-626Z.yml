@@ -1,0 +1,657 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "OpenCode" [ref=e7] [cursor=pointer]:
+          - /url: /docs/
+          - generic [ref=e8]: OpenCode
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - link [ref=e11] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - img [ref=e12]
+            - link [ref=e14] [cursor=pointer]:
+              - /url: https://opencode.ai/discord
+              - img [ref=e15]
+          - button "Search" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: Search
+            - generic [ref=e20]:
+              - generic [ref=e21]: Ctrl
+              - generic [ref=e22]: K
+    - navigation "Main":
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "Intro" [ref=e28] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=e29]:
+          - link "Config" [ref=e30] [cursor=pointer]:
+            - /url: /docs/config/
+        - listitem [ref=e31]:
+          - link "Providers" [ref=e32] [cursor=pointer]:
+            - /url: /docs/providers/
+        - listitem [ref=e33]:
+          - link "Network" [ref=e34] [cursor=pointer]:
+            - /url: /docs/network/
+        - listitem [ref=e35]:
+          - link "Enterprise" [ref=e36] [cursor=pointer]:
+            - /url: /docs/enterprise/
+        - listitem [ref=e37]:
+          - link "Troubleshooting" [ref=e38] [cursor=pointer]:
+            - /url: /docs/troubleshooting/
+        - listitem [ref=e39]:
+          - link "Windows" [ref=e40] [cursor=pointer]:
+            - /url: /docs/windows-wsl
+        - listitem [ref=e41]:
+          - group [ref=e42]:
+            - generic "Usage" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: Usage
+              - img [ref=e45]
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Go" [ref=e49] [cursor=pointer]:
+                  - /url: /docs/go/
+              - listitem [ref=e50]:
+                - link "TUI" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/tui/
+              - listitem [ref=e52]:
+                - link "CLI" [ref=e53] [cursor=pointer]:
+                  - /url: /docs/cli/
+              - listitem [ref=e54]:
+                - link "Web" [ref=e55] [cursor=pointer]:
+                  - /url: /docs/web/
+              - listitem [ref=e56]:
+                - link "IDE" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/ide/
+              - listitem [ref=e58]:
+                - link "Zen" [ref=e59] [cursor=pointer]:
+                  - /url: /docs/zen/
+              - listitem [ref=e60]:
+                - link "Share" [ref=e61] [cursor=pointer]:
+                  - /url: /docs/share/
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/github/
+              - listitem [ref=e64]:
+                - link "GitLab" [ref=e65] [cursor=pointer]:
+                  - /url: /docs/gitlab/
+        - listitem [ref=e66]:
+          - group [ref=e67]:
+            - generic "Configure" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: Configure
+              - img [ref=e70]
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - link "Tools" [ref=e74] [cursor=pointer]:
+                  - /url: /docs/tools/
+              - listitem [ref=e75]:
+                - link "Rules" [ref=e76] [cursor=pointer]:
+                  - /url: /docs/rules/
+              - listitem [ref=e77]:
+                - link "Agents" [ref=e78] [cursor=pointer]:
+                  - /url: /docs/agents/
+              - listitem [ref=e79]:
+                - link "Models" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/models/
+              - listitem [ref=e81]:
+                - link "Themes" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/themes/
+              - listitem [ref=e83]:
+                - link "Keybinds" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/keybinds/
+              - listitem [ref=e85]:
+                - link "Commands" [ref=e86] [cursor=pointer]:
+                  - /url: /docs/commands/
+              - listitem [ref=e87]:
+                - link "Formatters" [ref=e88] [cursor=pointer]:
+                  - /url: /docs/formatters/
+              - listitem [ref=e89]:
+                - link "Permissions" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/permissions/
+              - listitem [ref=e91]:
+                - link "LSP Servers" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/lsp/
+              - listitem [ref=e93]:
+                - link "MCP servers" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/mcp-servers/
+              - listitem [ref=e95]:
+                - link "ACP Support" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/acp/
+              - listitem [ref=e97]:
+                - link "Agent Skills" [ref=e98] [cursor=pointer]:
+                  - /url: /docs/skills/
+              - listitem [ref=e99]:
+                - link "Custom Tools" [ref=e100] [cursor=pointer]:
+                  - /url: /docs/custom-tools/
+        - listitem [ref=e101]:
+          - group [ref=e102]:
+            - generic "Develop" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: Develop
+              - img [ref=e105]
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "SDK" [ref=e109] [cursor=pointer]:
+                  - /url: /docs/sdk/
+              - listitem [ref=e110]:
+                - link "Server" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/server/
+              - listitem [ref=e112]:
+                - link "Plugins" [ref=e113] [cursor=pointer]:
+                  - /url: /docs/plugins/
+              - listitem [ref=e114]:
+                - link "Ecosystem" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/ecosystem/
+    - generic [ref=e117]:
+      - complementary [ref=e118]:
+        - navigation "On this page" [ref=e123]:
+          - heading "On this page" [level=2] [ref=e124]
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "Overview" [ref=e127] [cursor=pointer]:
+                - /url: "#_top"
+            - listitem [ref=e128]:
+              - link "Install" [ref=e129] [cursor=pointer]:
+                - /url: "#install"
+            - listitem [ref=e130]:
+              - link "Configure" [ref=e131] [cursor=pointer]:
+                - /url: "#configure"
+            - listitem [ref=e132]:
+              - link "Initialize" [ref=e133] [cursor=pointer]:
+                - /url: "#initialize"
+            - listitem [ref=e134]:
+              - link "Usage" [ref=e135] [cursor=pointer]:
+                - /url: "#usage"
+              - list [ref=e136]:
+                - listitem [ref=e137]:
+                  - link "Ask questions" [ref=e138] [cursor=pointer]:
+                    - /url: "#ask-questions"
+                - listitem [ref=e139]:
+                  - link "Add features" [ref=e140] [cursor=pointer]:
+                    - /url: "#add-features"
+                - listitem [ref=e141]:
+                  - link "Make changes" [ref=e142] [cursor=pointer]:
+                    - /url: "#make-changes"
+                - listitem [ref=e143]:
+                  - link "Undo changes" [ref=e144] [cursor=pointer]:
+                    - /url: "#undo-changes"
+            - listitem [ref=e145]:
+              - link "Share" [ref=e146] [cursor=pointer]:
+                - /url: "#share"
+            - listitem [ref=e147]:
+              - link "Customize" [ref=e148] [cursor=pointer]:
+                - /url: "#customize"
+      - main [ref=e150]:
+        - generic [ref=e152]:
+          - heading "Intro" [level=1] [ref=e153]
+          - paragraph [ref=e154]: Get started with OpenCode.
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - paragraph [ref=e158]:
+              - link "OpenCode" [ref=e159] [cursor=pointer]:
+                - /url: /
+                - strong [ref=e160]: OpenCode
+              - text: is an open source AI coding agent. It’s available as a terminal-based interface, desktop app, or IDE extension.
+            - paragraph [ref=e161]:
+              - img "OpenCode TUI with the opencode theme" [ref=e162]
+            - paragraph [ref=e163]: Let’s get started.
+            - separator [ref=e164]
+            - heading "Prerequisites" [level=4] [ref=e165]:
+              - link "Prerequisites" [ref=e166]:
+                - /url: "#prerequisites"
+            - paragraph [ref=e167]: "To use OpenCode in your terminal, you’ll need:"
+            - list [ref=e168]:
+              - listitem [ref=e169]:
+                - paragraph [ref=e170]: "A modern terminal emulator like:"
+                - list [ref=e171]:
+                  - listitem [ref=e172]:
+                    - link "WezTerm" [ref=e173] [cursor=pointer]:
+                      - /url: https://wezterm.org
+                    - text: ", cross-platform"
+                  - listitem [ref=e174]:
+                    - link "Alacritty" [ref=e175] [cursor=pointer]:
+                      - /url: https://alacritty.org
+                    - text: ", cross-platform"
+                  - listitem [ref=e176]:
+                    - link "Ghostty" [ref=e177] [cursor=pointer]:
+                      - /url: https://ghostty.org
+                    - text: ", Linux and macOS"
+                  - listitem [ref=e178]:
+                    - link "Kitty" [ref=e179] [cursor=pointer]:
+                      - /url: https://sw.kovidgoyal.net/kitty/
+                    - text: ", Linux and macOS"
+              - listitem [ref=e180]:
+                - paragraph [ref=e181]: API keys for the LLM providers you want to use.
+            - separator [ref=e182]
+            - heading "Install" [level=2] [ref=e183]:
+              - link "Install" [ref=e184]:
+                - /url: "#install"
+            - paragraph [ref=e185]: The easiest way to install OpenCode is through the install script.
+            - figure "Terminal window" [ref=e187]:
+              - generic [ref=e190]: Terminal window
+              - code [ref=e192]:
+                - generic [ref=e194]: curl -fsSL https://opencode.ai/install | bash
+              - button "Copy to clipboard" [ref=e196] [cursor=pointer]
+            - paragraph [ref=e198]: "You can also install it with the following commands:"
+            - list [ref=e199]:
+              - listitem [ref=e200]:
+                - paragraph [ref=e201]:
+                  - strong [ref=e202]: Using Node.js
+                - generic [ref=e203]:
+                  - tablist [ref=e205]:
+                    - tab "npm" [selected] [ref=e206] [cursor=pointer]
+                    - tab "Bun" [ref=e207] [cursor=pointer]
+                    - tab "pnpm" [ref=e208] [cursor=pointer]
+                    - tab "Yarn" [ref=e209] [cursor=pointer]
+                  - tabpanel "npm" [ref=e210]:
+                    - figure "Terminal window" [ref=e212]:
+                      - generic [ref=e215]: Terminal window
+                      - code [ref=e217]:
+                        - generic [ref=e219]: npm install -g opencode-ai
+                      - button "Copy to clipboard" [ref=e221] [cursor=pointer]
+              - listitem [ref=e223]:
+                - paragraph [ref=e224]:
+                  - strong [ref=e225]: Using Homebrew on macOS and Linux
+                - figure "Terminal window" [ref=e227]:
+                  - generic [ref=e230]: Terminal window
+                  - code [ref=e232]:
+                    - generic [ref=e234]: brew install anomalyco/tap/opencode
+                  - button "Copy to clipboard" [ref=e236] [cursor=pointer]
+                - blockquote [ref=e238]:
+                  - paragraph [ref=e239]:
+                    - text: We recommend using the OpenCode tap for the most up to date releases. The official
+                    - code [ref=e240]: "`brew install opencode`"
+                    - text: formula is maintained by the Homebrew team and is updated less frequently.
+              - listitem [ref=e241]:
+                - paragraph [ref=e242]:
+                  - strong [ref=e243]: Installing on Arch Linux
+                - figure "Terminal window" [ref=e245]:
+                  - generic [ref=e248]: Terminal window
+                  - code [ref=e250]:
+                    - generic [ref=e252]: "sudo pacman -S opencode # Arch Linux (Stable)"
+                    - generic [ref=e254]: "paru -S opencode-bin # Arch Linux (Latest from AUR)"
+                  - button "Copy to clipboard" [ref=e256] [cursor=pointer]
+            - heading "Windows" [level=4] [ref=e258]:
+              - link "Windows" [ref=e259]:
+                - /url: "#windows"
+            - 'complementary "Recommended: Use WSL" [ref=e260]':
+              - paragraph [ref=e261]:
+                - img [ref=e262]
+                - text: "Recommended: Use WSL"
+              - paragraph [ref=e266]:
+                - text: For the best experience on Windows, we recommend using
+                - link "Windows Subsystem for Linux (WSL)" [ref=e267] [cursor=pointer]:
+                  - /url: /docs/windows-wsl
+                - text: . It provides better performance and full compatibility with OpenCode’s features.
+            - list [ref=e268]:
+              - listitem [ref=e269]:
+                - paragraph [ref=e270]:
+                  - strong [ref=e271]: Using Chocolatey
+                - figure "Terminal window" [ref=e273]:
+                  - generic [ref=e276]: Terminal window
+                  - code [ref=e278]:
+                    - generic [ref=e280]: choco install opencode
+                  - button "Copy to clipboard" [ref=e282] [cursor=pointer]
+              - listitem [ref=e284]:
+                - paragraph [ref=e285]:
+                  - strong [ref=e286]: Using Scoop
+                - figure "Terminal window" [ref=e288]:
+                  - generic [ref=e291]: Terminal window
+                  - code [ref=e293]:
+                    - generic [ref=e295]: scoop install opencode
+                  - button "Copy to clipboard" [ref=e297] [cursor=pointer]
+              - listitem [ref=e299]:
+                - paragraph [ref=e300]:
+                  - strong [ref=e301]: Using NPM
+                - figure "Terminal window" [ref=e303]:
+                  - generic [ref=e306]: Terminal window
+                  - code [ref=e308]:
+                    - generic [ref=e310]: npm install -g opencode-ai
+                  - button "Copy to clipboard" [ref=e312] [cursor=pointer]
+              - listitem [ref=e314]:
+                - paragraph [ref=e315]:
+                  - strong [ref=e316]: Using Mise
+                - figure "Terminal window" [ref=e318]:
+                  - generic [ref=e321]: Terminal window
+                  - code [ref=e323]:
+                    - generic [ref=e325]: mise use -g github:anomalyco/opencode
+                  - button "Copy to clipboard" [ref=e327] [cursor=pointer]
+              - listitem [ref=e329]:
+                - paragraph [ref=e330]:
+                  - strong [ref=e331]: Using Docker
+                - figure "Terminal window" [ref=e333]:
+                  - generic [ref=e336]: Terminal window
+                  - code [ref=e338]:
+                    - generic [ref=e340]: docker run -it --rm ghcr.io/anomalyco/opencode
+                  - button "Copy to clipboard" [ref=e342] [cursor=pointer]
+            - paragraph [ref=e344]: Support for installing OpenCode on Windows using Bun is currently in progress.
+            - paragraph [ref=e345]:
+              - text: You can also grab the binary from the
+              - link "Releases" [ref=e346] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/releases
+              - text: .
+            - separator [ref=e347]
+            - heading "Configure" [level=2] [ref=e348]:
+              - link "Configure" [ref=e349]:
+                - /url: "#configure"
+            - paragraph [ref=e350]: With OpenCode you can use any LLM provider by configuring their API keys.
+            - paragraph [ref=e351]:
+              - text: If you are new to using LLM providers, we recommend using
+              - link "OpenCode Zen" [ref=e352] [cursor=pointer]:
+                - /url: /docs/zen
+              - text: . It’s a curated list of models that have been tested and verified by the OpenCode team.
+            - list [ref=e353]:
+              - listitem [ref=e354]:
+                - paragraph [ref=e355]:
+                  - text: Run the
+                  - code [ref=e356]: "`/connect`"
+                  - text: command in the TUI, select opencode, and head to
+                  - link "opencode.ai/auth" [ref=e357] [cursor=pointer]:
+                    - /url: https://opencode.ai/auth
+                  - text: .
+                - figure [ref=e359]:
+                  - code [ref=e361]:
+                    - generic [ref=e363]: /connect
+                  - button "Copy to clipboard" [ref=e365] [cursor=pointer]
+              - listitem [ref=e367]:
+                - paragraph [ref=e368]: Sign in, add your billing details, and copy your API key.
+              - listitem [ref=e369]:
+                - paragraph [ref=e370]: Paste your API key.
+                - figure [ref=e372]:
+                  - code [ref=e374]:
+                    - generic [ref=e376]: ┌ API key
+                    - generic [ref=e378]: │
+                    - generic [ref=e380]: │
+                    - generic [ref=e382]: └ enter
+                  - button "Copy to clipboard" [ref=e384] [cursor=pointer]
+            - paragraph [ref=e386]:
+              - text: Alternatively, you can select one of the other providers.
+              - link "Learn more" [ref=e387] [cursor=pointer]:
+                - /url: /docs/providers#directory
+              - text: .
+            - separator [ref=e388]
+            - heading "Initialize" [level=2] [ref=e389]:
+              - link "Initialize" [ref=e390]:
+                - /url: "#initialize"
+            - paragraph [ref=e391]: Now that you’ve configured a provider, you can navigate to a project that you want to work on.
+            - figure "Terminal window" [ref=e393]:
+              - generic [ref=e396]: Terminal window
+              - code [ref=e398]:
+                - generic [ref=e400]: cd /path/to/project
+              - button "Copy to clipboard" [ref=e402] [cursor=pointer]
+            - paragraph [ref=e404]: And run OpenCode.
+            - figure "Terminal window" [ref=e406]:
+              - generic [ref=e409]: Terminal window
+              - code [ref=e411]:
+                - generic [ref=e413]: opencode
+              - button "Copy to clipboard" [ref=e415] [cursor=pointer]
+            - paragraph [ref=e417]: Next, initialize OpenCode for the project by running the following command.
+            - figure [ref=e419]:
+              - code [ref=e421]:
+                - generic [ref=e423]: /init
+              - button "Copy to clipboard" [ref=e425] [cursor=pointer]
+            - paragraph [ref=e427]:
+              - text: This will get OpenCode to analyze your project and create an
+              - code [ref=e428]: "`AGENTS.md`"
+              - text: file in the project root.
+            - complementary "Tip" [ref=e429]:
+              - paragraph [ref=e430]:
+                - img [ref=e431]
+                - text: Tip
+              - paragraph [ref=e435]:
+                - text: You should commit your project’s
+                - code [ref=e436]: "`AGENTS.md`"
+                - text: file to Git.
+            - paragraph [ref=e437]: This helps OpenCode understand the project structure and the coding patterns used.
+            - separator [ref=e438]
+            - heading "Usage" [level=2] [ref=e439]:
+              - link "Usage" [ref=e440]:
+                - /url: "#usage"
+            - paragraph [ref=e441]: You are now ready to use OpenCode to work on your project. Feel free to ask it anything!
+            - paragraph [ref=e442]: If you are new to using an AI coding agent, here are some examples that might help.
+            - separator [ref=e443]
+            - heading "Ask questions" [level=3] [ref=e444]:
+              - link "Ask questions" [ref=e445]:
+                - /url: "#ask-questions"
+            - paragraph [ref=e446]: You can ask OpenCode to explain the codebase to you.
+            - complementary "Tip" [ref=e447]:
+              - paragraph [ref=e448]:
+                - img [ref=e449]
+                - text: Tip
+              - paragraph [ref=e453]:
+                - text: Use the
+                - code [ref=e454]: "`@`"
+                - text: key to fuzzy search for files in the project.
+            - figure [ref=e456]:
+              - code [ref=e458]:
+                - generic [ref=e460]:
+                  - text: How is authentication handled in
+                  - mark [ref=e461]: "@packages/functions/src/api/index.ts"
+              - button "Copy to clipboard" [ref=e463] [cursor=pointer]
+            - paragraph [ref=e465]: This is helpful if there’s a part of the codebase that you didn’t work on.
+            - separator [ref=e466]
+            - heading "Add features" [level=3] [ref=e467]:
+              - link "Add features" [ref=e468]:
+                - /url: "#add-features"
+            - paragraph [ref=e469]: You can ask OpenCode to add new features to your project. Though we first recommend asking it to create a plan.
+            - list [ref=e470]:
+              - listitem [ref=e471]:
+                - paragraph [ref=e472]:
+                  - strong [ref=e473]: Create a plan
+                - paragraph [ref=e474]:
+                  - text: OpenCode has a
+                  - emphasis [ref=e475]: Plan mode
+                  - text: that disables its ability to make changes and instead suggest
+                  - emphasis [ref=e476]: how
+                  - text: it’ll implement the feature.
+                - paragraph [ref=e477]:
+                  - text: Switch to it using the
+                  - strong [ref=e478]: Tab
+                  - text: key. You’ll see an indicator for this in the lower right corner.
+                - figure [ref=e480]:
+                  - code [ref=e482]:
+                    - generic [ref=e484]: <TAB>
+                  - button "Copy to clipboard" [ref=e486] [cursor=pointer]
+                - paragraph [ref=e488]: Now let’s describe what we want it to do.
+                - figure [ref=e490]:
+                  - code [ref=e492]:
+                    - generic [ref=e494]: When a user deletes a note, we'd like to flag it as deleted in the database.
+                    - generic [ref=e496]: Then create a screen that shows all the recently deleted notes.
+                    - generic [ref=e498]: From this screen, the user can undelete a note or permanently delete it.
+                  - button "Copy to clipboard" [ref=e500] [cursor=pointer]
+                - paragraph [ref=e502]: You want to give OpenCode enough details to understand what you want. It helps to talk to it like you are talking to a junior developer on your team.
+                - complementary "Tip" [ref=e503]:
+                  - paragraph [ref=e504]:
+                    - img [ref=e505]
+                    - text: Tip
+                  - paragraph [ref=e509]: Give OpenCode plenty of context and examples to help it understand what you want.
+              - listitem [ref=e510]:
+                - paragraph [ref=e511]:
+                  - strong [ref=e512]: Iterate on the plan
+                - paragraph [ref=e513]: Once it gives you a plan, you can give it feedback or add more details.
+                - figure [ref=e515]:
+                  - code [ref=e517]:
+                    - generic [ref=e519]: We'd like to design this new screen using a design I've used before.
+                    - generic [ref=e521]: "[Image #1] Take a look at this image and use it as a reference."
+                  - button "Copy to clipboard" [ref=e523] [cursor=pointer]
+                - complementary "Tip" [ref=e525]:
+                  - paragraph [ref=e526]:
+                    - img [ref=e527]
+                    - text: Tip
+                  - paragraph [ref=e531]: Drag and drop images into the terminal to add them to the prompt.
+                - paragraph [ref=e532]: OpenCode can scan any images you give it and add them to the prompt. You can do this by dragging and dropping an image into the terminal.
+              - listitem [ref=e533]:
+                - paragraph [ref=e534]:
+                  - strong [ref=e535]: Build the feature
+                - paragraph [ref=e536]:
+                  - text: Once you feel comfortable with the plan, switch back to
+                  - emphasis [ref=e537]: Build mode
+                  - text: by hitting the
+                  - strong [ref=e538]: Tab
+                  - text: key again.
+                - figure [ref=e540]:
+                  - code [ref=e542]:
+                    - generic [ref=e544]: <TAB>
+                  - button "Copy to clipboard" [ref=e546] [cursor=pointer]
+                - paragraph [ref=e548]: And asking it to make the changes.
+                - figure [ref=e550]:
+                  - code [ref=e552]:
+                    - generic [ref=e554]: Sounds good! Go ahead and make the changes.
+                  - button "Copy to clipboard" [ref=e556] [cursor=pointer]
+            - separator [ref=e558]
+            - heading "Make changes" [level=3] [ref=e559]:
+              - link "Make changes" [ref=e560]:
+                - /url: "#make-changes"
+            - paragraph [ref=e561]: For more straightforward changes, you can ask OpenCode to directly build it without having to review the plan first.
+            - figure [ref=e563]:
+              - code [ref=e565]:
+                - generic [ref=e567]: We need to add authentication to the /settings route. Take a look at how this is
+                - generic [ref=e569]:
+                  - text: handled in the /notes route in
+                  - mark [ref=e570]: "@packages/functions/src/notes.ts"
+                  - text: and implement
+                - generic [ref=e572]:
+                  - text: the same logic in
+                  - mark [ref=e573]: "@packages/functions/src/settings.ts"
+              - button "Copy to clipboard" [ref=e575] [cursor=pointer]
+            - paragraph [ref=e577]: You want to make sure you provide a good amount of detail so OpenCode makes the right changes.
+            - separator [ref=e578]
+            - heading "Undo changes" [level=3] [ref=e579]:
+              - link "Undo changes" [ref=e580]:
+                - /url: "#undo-changes"
+            - paragraph [ref=e581]: Let’s say you ask OpenCode to make some changes.
+            - figure [ref=e583]:
+              - code [ref=e585]:
+                - generic [ref=e587]:
+                  - text: Can you refactor the function in
+                  - mark [ref=e588]: "@packages/functions/src/api/index.ts"
+                  - text: "?"
+              - button "Copy to clipboard" [ref=e590] [cursor=pointer]
+            - paragraph [ref=e592]:
+              - text: But you realize that it is not what you wanted. You
+              - strong [ref=e593]: can undo
+              - text: the changes using the
+              - code [ref=e594]: "`/undo`"
+              - text: command.
+            - figure [ref=e596]:
+              - code [ref=e598]:
+                - generic [ref=e600]: /undo
+              - button "Copy to clipboard" [ref=e602] [cursor=pointer]
+            - paragraph [ref=e604]: OpenCode will now revert the changes you made and show your original message again.
+            - figure [ref=e606]:
+              - code [ref=e608]:
+                - generic [ref=e610]:
+                  - text: Can you refactor the function in
+                  - mark [ref=e611]: "@packages/functions/src/api/index.ts"
+                  - text: "?"
+              - button "Copy to clipboard" [ref=e613] [cursor=pointer]
+            - paragraph [ref=e615]: From here you can tweak the prompt and ask OpenCode to try again.
+            - complementary "Tip" [ref=e616]:
+              - paragraph [ref=e617]:
+                - img [ref=e618]
+                - text: Tip
+              - paragraph [ref=e622]:
+                - text: You can run
+                - code [ref=e623]: "`/undo`"
+                - text: multiple times to undo multiple changes.
+            - paragraph [ref=e624]:
+              - text: Or you
+              - strong [ref=e625]: can redo
+              - text: the changes using the
+              - code [ref=e626]: "`/redo`"
+              - text: command.
+            - figure [ref=e628]:
+              - code [ref=e630]:
+                - generic [ref=e632]: /redo
+              - button "Copy to clipboard" [ref=e634] [cursor=pointer]
+            - separator [ref=e636]
+            - heading "Share" [level=2] [ref=e637]:
+              - link "Share" [ref=e638]:
+                - /url: "#share"
+            - paragraph [ref=e639]:
+              - text: The conversations that you have with OpenCode can be
+              - link "shared with your team" [ref=e640] [cursor=pointer]:
+                - /url: /docs/share
+              - text: .
+            - figure [ref=e642]:
+              - code [ref=e644]:
+                - generic [ref=e646]: /share
+              - button "Copy to clipboard" [ref=e648] [cursor=pointer]
+            - paragraph [ref=e650]: This will create a link to the current conversation and copy it to your clipboard.
+            - complementary "Note" [ref=e651]:
+              - paragraph [ref=e652]:
+                - img [ref=e653]
+                - text: Note
+              - paragraph [ref=e656]: Conversations are not shared by default.
+            - paragraph [ref=e657]:
+              - text: Here’s an
+              - link "example conversation" [ref=e658] [cursor=pointer]:
+                - /url: https://opencode.ai/s/4XP1fce5
+              - text: with OpenCode.
+            - separator [ref=e659]
+            - heading "Customize" [level=2] [ref=e660]:
+              - link "Customize" [ref=e661]:
+                - /url: "#customize"
+            - paragraph [ref=e662]: And that’s it! You are now a pro at using OpenCode.
+            - paragraph [ref=e663]:
+              - text: To make it your own, we recommend
+              - link "picking a theme" [ref=e664] [cursor=pointer]:
+                - /url: /docs/themes
+              - text: ","
+              - link "customizing the keybinds" [ref=e665] [cursor=pointer]:
+                - /url: /docs/keybinds
+              - text: ","
+              - link "configuring code formatters" [ref=e666] [cursor=pointer]:
+                - /url: /docs/formatters
+              - text: ","
+              - link "creating custom commands" [ref=e667] [cursor=pointer]:
+                - /url: /docs/commands
+              - text: ", or playing around with the"
+              - link "OpenCode config" [ref=e668] [cursor=pointer]:
+                - /url: /docs/config
+              - text: .
+          - generic [ref=e670]:
+            - generic [ref=e671]:
+              - link "Edit page" [ref=e672] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/edit/dev/packages/web/src/content/docs/index.mdx
+                - img [ref=e673]
+                - text: Edit page
+              - link "Found a bug? Open an issue" [ref=e675] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues/new
+                - img [ref=e676]
+                - text: Found a bug? Open an issue
+              - link "Join our Discord community" [ref=e678] [cursor=pointer]:
+                - /url: https://opencode.ai/discord
+                - img [ref=e679]
+                - text: Join our Discord community
+              - generic [ref=e682]:
+                - generic [ref=e683]: Select language
+                - img
+                - combobox "Select language" [ref=e684] [cursor=pointer]:
+                  - option "English" [selected]
+                  - option "العربية"
+                  - option "Bosanski"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Español"
+                  - option "Français"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어"
+                  - option "Norsk Bokmål"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Русский"
+                  - option "ไทย"
+                  - option "Türkçe"
+                  - option "简体中文"
+                  - option "繁體中文"
+                - img
+            - generic [ref=e685]:
+              - paragraph [ref=e686]:
+                - text: ©
+                - link "Anomaly" [ref=e687] [cursor=pointer]:
+                  - /url: https://anoma.ly
+              - paragraph [ref=e688]:
+                - text: "Last updated:"
+                - time [ref=e689]: May 29, 2026

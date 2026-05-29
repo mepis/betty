@@ -1,0 +1,356 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - link "n1n.ai" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - img [ref=e8]
+    - generic [ref=e12]:
+      - link "Home" [ref=e13] [cursor=pointer]:
+        - /url: https://n1n.ai
+      - link "Browse" [ref=e14] [cursor=pointer]:
+        - /url: /blog
+      - link "Console" [ref=e15] [cursor=pointer]:
+        - /url: https://api.n1n.ai/console
+      - link "Models" [ref=e16] [cursor=pointer]:
+        - /url: https://api.n1n.ai/pricing
+      - link "Pricing" [ref=e17] [cursor=pointer]:
+        - /url: https://api.n1n.ai/pricing
+      - button "Explore" [ref=e19]
+      - link "Contact" [ref=e20] [cursor=pointer]:
+        - /url: https://api.n1n.ai/customersupport
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - link "Switch to Chinese" [ref=e23] [cursor=pointer]:
+          - /url: /zh
+          - img [ref=e24]
+          - generic [ref=e27]: 中文
+        - link "Login" [ref=e28] [cursor=pointer]:
+          - /url: https://api.n1n.ai/login
+        - link "Sign Up" [ref=e29] [cursor=pointer]:
+          - /url: https://api.n1n.ai/register
+      - button "Search" [ref=e30]:
+        - img [ref=e31]
+  - main [ref=e33]:
+    - article [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e39]:
+          - 'heading "OpenAI Agents SDK 0.14 Deep Dive: Sandbox Agents and Model-Native Harness" [level=1] [ref=e40]'
+          - time [ref=e42]: May 11, 2026
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - term [ref=e45]: Authors
+            - definition [ref=e46]:
+              - list [ref=e47]:
+                - listitem [ref=e48]:
+                  - img "avatar" [ref=e51]
+                  - generic [ref=e52]:
+                    - term [ref=e53]: Name
+                    - definition [ref=e54]: Nino
+                    - term [ref=e55]: Occupation
+                    - definition [ref=e56]: Senior Tech Editor
+          - generic [ref=e58]:
+            - paragraph [ref=e59]:
+              - text: The release of the OpenAI Agents SDK 0.14 marks a definitive shift in how developers build and deploy autonomous systems. Moving beyond the simple 'prompt-and-tool' loops of 2025, this version introduces a robust infrastructure layer designed for long-horizon tasks and secure code execution. As the industry moves toward more complex agentic workflows, platforms like
+              - link "n1n.ai" [ref=e60] [cursor=pointer]:
+                - /url: https://n1n.ai
+              - text: are becoming essential for developers who require high-speed, stable access to the underlying models like OpenAI o3 and Claude 3.5 Sonnet that drive these agents.
+            - heading "The Evolution of Agent Runtimes" [level=3] [ref=e61]:
+              - img [ref=e63] [cursor=pointer]
+              - text: The Evolution of Agent Runtimes
+            - paragraph [ref=e66]:
+              - text: In early 2025, agents were largely restricted by their environment. If a model generated Python code to analyze a dataset, the developer had to manually manage the execution environment, often risking security or session persistence. SDK 0.14 solves this by introducing the
+              - strong [ref=e67]: Model-Native Harness
+              - text: . This is not just a wrapper; it is a compute-aware control plane that allows models to directly interact with filesystems, shells, and patches through a standardized interface.
+            - paragraph [ref=e68]: "This release pivots on three primary pillars:"
+            - list [ref=e69]:
+              - listitem [ref=e70]:
+                - strong [ref=e71]: Model-Native Harness
+                - text: ": A dedicated memory and filesystem orchestrator that holds credentials safely while the model makes decisions."
+              - listitem [ref=e72]:
+                - strong [ref=e73]: Native Sandbox Agents
+                - text: ": An isolated compute layer where model-generated code executes without access to the host environment."
+              - listitem [ref=e74]:
+                - strong [ref=e75]: Subagent Pattern
+                - text: ": A hierarchical orchestration model where a parent agent can spawn multiple child agents in parallel sandboxes."
+            - 'heading "Comparative Analysis: 0.13.x vs. 0.14.0" [level=3] [ref=e76]':
+              - img [ref=e78] [cursor=pointer]
+              - text: "Comparative Analysis: 0.13.x vs. 0.14.0"
+            - paragraph [ref=e81]: The following table outlines the significant operational shifts introduced in this version. For teams scaling their RAG (Retrieval-Augmented Generation) pipelines, these changes represent a move toward production-grade stability.
+            - table [ref=e83]:
+              - rowgroup [ref=e84]:
+                - row "Axis 0.13.x and Earlier 0.14.0 (Current) Operational Impact" [ref=e85]:
+                  - columnheader "Axis" [ref=e86]
+                  - columnheader "0.13.x and Earlier" [ref=e87]
+                  - columnheader "0.14.0 (Current)" [ref=e88]
+                  - columnheader "Operational Impact" [ref=e89]
+              - rowgroup [ref=e90]:
+                - row "Execution Model Function-call loop Model-Native Harness Model drives the OS surface directly" [ref=e91]:
+                  - cell "Execution Model" [ref=e92]:
+                    - strong [ref=e93]: Execution Model
+                  - cell "Function-call loop" [ref=e94]
+                  - cell "Model-Native Harness" [ref=e95]
+                  - cell "Model drives the OS surface directly" [ref=e96]
+                - row "Code Execution External containers (DIY) Native Sandbox Agents Standardized compute layer" [ref=e97]:
+                  - cell "Code Execution" [ref=e98]:
+                    - strong [ref=e99]: Code Execution
+                  - cell "External containers (DIY)" [ref=e100]
+                  - cell "Native Sandbox Agents" [ref=e101]
+                  - cell "Standardized compute layer" [ref=e102]
+                - row "Credentials Co-located with model env Harness/Compute separation Blocks lateral movement from injections" [ref=e103]:
+                  - cell "Credentials" [ref=e104]:
+                    - strong [ref=e105]: Credentials
+                  - cell "Co-located with model env" [ref=e106]
+                  - cell "Harness/Compute separation" [ref=e107]
+                  - cell "Blocks lateral movement from injections" [ref=e108]
+                - row "Persistence Session loss on restart Checkpoint & Rehydration Resumes long-horizon tasks" [ref=e109]:
+                  - cell "Persistence" [ref=e110]:
+                    - strong [ref=e111]: Persistence
+                  - cell "Session loss on restart" [ref=e112]
+                  - cell "Checkpoint & Rehydration" [ref=e113]
+                  - cell "Resumes long-horizon tasks" [ref=e114]
+                - row "Parallelism Serial primary agent Parallel Subagents Concurrent execution across sandboxes" [ref=e115]:
+                  - cell "Parallelism" [ref=e116]:
+                    - strong [ref=e117]: Parallelism
+                  - cell "Serial primary agent" [ref=e118]
+                  - cell "Parallel Subagents" [ref=e119]
+                  - cell "Concurrent execution across sandboxes" [ref=e120]
+                - row "MCP Support Optional dependency First-class built-in Externalized tool graphs" [ref=e121]:
+                  - cell "MCP Support" [ref=e122]:
+                    - strong [ref=e123]: MCP Support
+                  - cell "Optional dependency" [ref=e124]
+                  - cell "First-class built-in" [ref=e125]
+                  - cell "Externalized tool graphs" [ref=e126]
+            - heading "The Six Axes of the 0.14 Runtime" [level=3] [ref=e127]:
+              - img [ref=e129] [cursor=pointer]
+              - text: The Six Axes of the 0.14 Runtime
+            - paragraph [ref=e132]:
+              - text: To understand how to implement these agents effectively, we must look at the six axes of the new runtime. When you obtain your API keys from
+              - link "n1n.ai" [ref=e133] [cursor=pointer]:
+                - /url: https://n1n.ai
+              - text: ", you can plug them into this harness to begin building."
+            - list [ref=e134]:
+              - listitem [ref=e135]:
+                - strong [ref=e136]: The Harness
+                - text: ": Owned by the SDK, this acts as the memory and filesystem orchestrator. It is the only component that holds sensitive credentials."
+              - listitem [ref=e137]:
+                - strong [ref=e138]: The Model
+                - text: ": Whether using OpenAI o3, DeepSeek-V3, or Claude 3.5 Sonnet, the model acts as the decision-maker. In 0.14, the model never has direct access to the sandbox."
+              - listitem [ref=e139]:
+                - strong [ref=e140]: Sandbox Client
+                - text: ": This is the adapter (e.g.,"
+                - code [ref=e141]: "`UnixLocalSandboxClient`"
+                - text: ) that delegates code execution to the compute layer.
+              - listitem [ref=e142]:
+                - strong [ref=e143]: Compute Layer
+                - text: ": The actual environment where shell commands and patches are applied. This is isolated from the Harness."
+              - listitem [ref=e144]:
+                - strong [ref=e145]: MCP Servers
+                - text: ": The Model Context Protocol (MCP) is now the default way to externalize tools, allowing agents to share tool definitions with other platforms like Cursor or LangChain."
+              - listitem [ref=e146]:
+                - strong [ref=e147]: Persistence
+                - text: ": The SDK now handles checkpoints and snapshots, ensuring that if a container expires, the agent can rehydrate its state and continue."
+            - 'heading "Implementation: Local Development with UnixLocalSandboxClient" [level=3] [ref=e148]':
+              - img [ref=e150] [cursor=pointer]
+              - text: "Implementation: Local Development with UnixLocalSandboxClient"
+            - paragraph [ref=e153]:
+              - text: For local development, the
+              - code [ref=e154]: "`UnixLocalSandboxClient`"
+              - text: is a game-changer. It allows for a Docker-free loop that is significantly faster for debugging. Below is a standard implementation for a repository inspector agent.
+            - code [ref=e157]:
+              - generic [ref=e158]: from agents import Runner
+              - generic [ref=e159]: from agents.sandbox import SandboxAgent, Manifest, UnixLocalSandboxClient
+              - generic [ref=e161]: "# 1. Define the initial state of the workspace"
+              - generic [ref=e162]: "manifest = Manifest.from_dict({"
+              - generic [ref=e163]: "\"files\": {"
+              - generic [ref=e164]: "\"ANALYSIS.md\": \"# Project Analysis\\nInitial state.\\n\","
+              - generic [ref=e165]: "},"
+              - generic [ref=e166]: "})"
+              - generic [ref=e168]: "# 2. Initialize the Sandbox Agent"
+              - generic [ref=e169]: "# Ensure your environment variables are configured with keys from n1n.ai"
+              - generic [ref=e170]: agent = SandboxAgent(
+              - generic [ref=e171]: name="code-architect",
+              - generic [ref=e172]: instructions=(
+              - generic [ref=e173]: "\"Analyze the codebase and apply improvements. \""
+              - generic [ref=e174]: "\"Use apply_patch for all code modifications.\""
+              - generic [ref=e175]: ),
+              - generic [ref=e176]: default_manifest=manifest,
+              - generic [ref=e177]: )
+              - generic [ref=e179]: "# 3. Execute the run"
+              - generic [ref=e180]: result = Runner.run_sync(
+              - generic [ref=e181]: agent,
+              - generic [ref=e182]: "\"Update ANALYSIS.md with a summary of the current directory structure.\","
+              - generic [ref=e183]: sandbox=UnixLocalSandboxClient(),
+              - generic [ref=e184]: )
+              - generic [ref=e186]:
+                - text: print(
+                - generic [ref=e187]:
+                  - text: "f\"Agent Output:"
+                  - generic [ref=e188]: "{result.final_output}"
+                  - text: "\""
+                - text: )
+            - 'heading "Advanced Features: Subagents and Codex-Style Tools" [level=3] [ref=e189]':
+              - img [ref=e191] [cursor=pointer]
+              - text: "Advanced Features: Subagents and Codex-Style Tools"
+            - paragraph [ref=e194]:
+              - text: One of the most powerful additions is the
+              - strong [ref=e195]: Subagent pattern
+              - text: ". In complex DevSecOps or RAG workflows, a single agent often becomes overwhelmed by context. By spawning subagents, a parent agent can delegate specific tasks—such as 'Review PR #101' and 'Run Security Scan'—to independent children. Each child runs in its own sandbox, preventing file pollution and improving reliability."
+            - paragraph [ref=e196]:
+              - text: Furthermore, the introduction of
+              - code [ref=e197]: "`apply_patch`"
+              - text: (inspired by OpenAI Codex) replaces the inefficient 'full-file rewrite' method. Instead of the model sending back 500 lines of code for a 2-line change, it sends a diff. This reduces token consumption and minimizes the risk of the model hallucinating changes in unrelated parts of the file.
+            - heading "The 4-Week Migration Strategy" [level=3] [ref=e198]:
+              - img [ref=e200] [cursor=pointer]
+              - text: The 4-Week Migration Strategy
+            - paragraph [ref=e203]: "For enterprises moving from legacy frameworks or earlier SDK versions, a structured migration is necessary. Based on internal validations, we recommend the following timeline:"
+            - list [ref=e204]:
+              - listitem [ref=e205]:
+                - strong [ref=e206]: "Week 1: Local Devloop Optimization"
+                - text: ": Transition to"
+                - code [ref=e207]: "`UnixLocalSandboxClient`"
+                - text: and establish an
+                - code [ref=e208]: "`AGENTS.md`"
+                - text: file in your repositories to define agent personas.
+              - listitem [ref=e209]:
+                - strong [ref=e210]: "Week 2: Sandbox Adapter Evaluation"
+                - text: ": Test external providers like Daytona, E2B, or Vercel for cost and latency. Compare benchmarks against your specific workloads."
+              - listitem [ref=e211]:
+                - strong [ref=e212]: "Week 3: Subagent Implementation"
+                - text: ": Refactor serial loops into parallel subagent workflows, especially for bulk processing tasks like PR reviews."
+              - listitem [ref=e213]:
+                - strong [ref=e214]: "Week 4: MCP Externalization"
+                - text: ": Move internal tool logic (Jira, GitHub, Notion) into standalone MCP servers to decouple tools from the agent logic."
+            - heading "Security and Operational Integrity" [level=3] [ref=e215]:
+              - img [ref=e217] [cursor=pointer]
+              - text: Security and Operational Integrity
+            - paragraph [ref=e220]:
+              - text: The 0.14 SDK significantly reduces the 'blast radius' of prompt injections. Because the compute plane (where code runs) is physically separated from the control plane (where API keys reside), a malicious injection that gains shell access cannot steal your
+              - link "n1n.ai" [ref=e221] [cursor=pointer]:
+                - /url: https://n1n.ai
+              - text: credentials or move laterally into your corporate network.
+            - paragraph [ref=e222]: However, operators must still enforce strict outbound network policies at the sandbox provider level. Using tools like OpenTelemetry to monitor both the harness calls and sandbox execution is vital for maintaining an audit trail and managing costs.
+            - heading "Conclusion" [level=3] [ref=e223]:
+              - img [ref=e225] [cursor=pointer]
+              - text: Conclusion
+            - paragraph [ref=e228]: The OpenAI Agents SDK 0.14 is a milestone in the path toward autonomous AI infrastructure. It acknowledges that an agent is not just a model—it is a combination of decision-making, secure compute, and persistent state. By standardizing these components, OpenAI has lowered the barrier to entry for building production-grade agents.
+            - paragraph [ref=e229]: As you begin your journey with SDK 0.14, remember that the quality of your agent's decisions depends on the underlying model. For the most reliable and high-performance LLM access, always use a trusted aggregator.
+            - paragraph [ref=e230]:
+              - text: Get a free API key at
+              - link "n1n.ai" [ref=e231] [cursor=pointer]:
+                - /url: https://n1n.ai
+            - generic [ref=e232]:
+              - text: "Source:"
+              - link "https://dev.to/x4nent/openai-agents-sdk-014-sandbox-agents-model-native-harness-subagents-codex-style-filesystem-2ohg" [ref=e233] [cursor=pointer]:
+                - /url: https://dev.to/x4nent/openai-agents-sdk-014-sandbox-agents-model-native-harness-subagents-codex-style-filesystem-2ohg
+          - generic [ref=e234]:
+            - generic [ref=e235]:
+              - generic [ref=e236]:
+                - heading "Tags" [level=2] [ref=e237]
+                - generic [ref=e238]:
+                  - link "AI Tutorials" [ref=e239] [cursor=pointer]:
+                    - /url: /tags/ai-tutorials
+                  - link "LLM API" [ref=e240] [cursor=pointer]:
+                    - /url: /tags/llm-api
+                  - link "OpenAI Agents" [ref=e241] [cursor=pointer]:
+                    - /url: /tags/openai-agents
+                  - link "LLM Infrastructure" [ref=e242] [cursor=pointer]:
+                    - /url: /tags/llm-infrastructure
+                  - link "Sandbox Agents" [ref=e243] [cursor=pointer]:
+                    - /url: /tags/sandbox-agents
+                  - link "MCP Protocol" [ref=e244] [cursor=pointer]:
+                    - /url: /tags/mcp-protocol
+                  - link "Agentic Workflows" [ref=e245] [cursor=pointer]:
+                    - /url: /tags/agentic-workflows
+              - generic [ref=e246]:
+                - generic [ref=e247]:
+                  - heading "Previous Article" [level=2] [ref=e248]
+                  - link "Building a Multi-Agent CNC Manufacturability System on AMD MI300X" [ref=e250] [cursor=pointer]:
+                    - /url: /blog/building-multi-agent-cnc-manufacturability-system-amd-mi300x-2026-05-11
+                - generic [ref=e251]:
+                  - heading "Next Article" [level=2] [ref=e252]
+                  - link "Advanced Strategies for LLM Cost Optimization and API Bill Reduction" [ref=e254] [cursor=pointer]:
+                    - /url: /blog/llm-cost-optimization-guide-2026-05-11
+            - link "Back to the blog" [ref=e256] [cursor=pointer]:
+              - /url: /blog
+              - text: ← Back to the blog
+  - generic [ref=e258]:
+    - generic [ref=e259]:
+      - heading "Ready to get started?" [level=2] [ref=e260]
+      - paragraph [ref=e261]: Access the world's most powerful AI models with a single key. Simple, reliable, and scalable.
+      - generic [ref=e262]:
+        - link "Get Started" [ref=e263] [cursor=pointer]:
+          - /url: https://api.n1n.ai/login
+          - text: Get Started
+          - img [ref=e264]
+        - link "Contact Sales" [ref=e266] [cursor=pointer]:
+          - /url: https://api.n1n.ai/customersupport
+    - generic [ref=e267]:
+      - generic [ref=e268]:
+        - generic [ref=e269]:
+          - link "n1n.ai" [ref=e271] [cursor=pointer]:
+            - /url: /
+            - img [ref=e272]
+          - paragraph [ref=e276]: Leading API aggregation service for LLMs. Stable, high-speed access to Gemini, OpenAI, Claude, and more.
+          - generic [ref=e277]:
+            - generic "Twitter" [ref=e278]:
+              - img [ref=e279]
+            - generic "GitHub" [ref=e281]:
+              - img [ref=e282]
+            - generic "Discord" [ref=e284]:
+              - img [ref=e285]
+        - generic [ref=e288]:
+          - heading "Product" [level=3] [ref=e289]
+          - list [ref=e290]:
+            - listitem [ref=e291]:
+              - link "API Pricing" [ref=e292] [cursor=pointer]:
+                - /url: https://api.n1n.ai/pricing
+            - listitem [ref=e293]:
+              - link "LLM Models" [ref=e294] [cursor=pointer]:
+                - /url: https://api.n1n.ai/pricing
+            - listitem [ref=e295]:
+              - link "API Reference" [ref=e296] [cursor=pointer]:
+                - /url: https://docs.n1n.ai/en/openai-api-chat-create
+            - listitem [ref=e297]:
+              - link "API Status" [ref=e298] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e299]:
+          - heading "Resources" [level=3] [ref=e300]
+          - list [ref=e301]:
+            - listitem [ref=e302]:
+              - link "Documentation" [ref=e303] [cursor=pointer]:
+                - /url: https://docs.n1n.ai
+            - listitem [ref=e304]:
+              - link "Blog" [ref=e305] [cursor=pointer]:
+                - /url: https://explore.n1n.ai
+            - listitem [ref=e306]:
+              - link "Community" [ref=e307] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e308]:
+              - link "Help Center" [ref=e309] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e310]:
+          - heading "Company" [level=3] [ref=e311]
+          - list [ref=e312]:
+            - listitem [ref=e313]:
+              - link "About Us" [ref=e314] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e315]:
+              - link "Careers" [ref=e316] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e317]:
+              - link "Legal" [ref=e318] [cursor=pointer]:
+                - /url: https://docs.n1n.ai/en/user-agreement-en
+            - listitem [ref=e319]:
+              - link "Contact" [ref=e320] [cursor=pointer]:
+                - /url: https://api.n1n.ai/customersupport
+      - generic [ref=e321]:
+        - paragraph [ref=e322]: © 2025 n1n | All rights reserved.
+        - generic [ref=e323]:
+          - link "Privacy Policy" [ref=e324] [cursor=pointer]:
+            - /url: https://docs.n1n.ai/en/privacy-policy-en
+          - link "Terms of Service" [ref=e325] [cursor=pointer]:
+            - /url: https://docs.n1n.ai/en/user-agreement-en
+  - generic:
+    - button "Nino Gift":
+      - generic:
+        - img "Nino Gift"
+    - generic: Get Rewards

@@ -1,0 +1,2779 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - banner [ref=e7]:
+        - button "Open Navigation Menu" [ref=e10] [cursor=pointer]:
+          - img [ref=e11]
+        - heading "Forbes Logo" [level=1] [ref=e14]:
+          - link "Forbes Logo" [ref=e15] [cursor=pointer]:
+            - /url: https://www.forbes.com
+            - img [ref=e16]
+        - generic [ref=e19]:
+          - 'link "Subscribe: Less than $2/wk" [ref=e20] [cursor=pointer]':
+            - /url: https://account.forbes.com/subscribe?eventSource=header&redirect=https://www.forbes.com/404-home/
+          - generic [ref=e21]:
+            - button "5+" [ref=e22] [cursor=pointer]:
+              - generic [ref=e23]:
+                - img [ref=e24]
+                - generic [ref=e27]: 5+
+              - img [ref=e29]
+            - generic [ref=e31]:
+              - generic [ref=e32]:
+                - img [ref=e34]
+                - button "Close Notifications Panel" [ref=e36] [cursor=pointer]:
+                  - img [ref=e37]
+              - generic [ref=e41]:
+                - button "My Account" [ref=e42] [cursor=pointer]
+                - button "Notifications" [ref=e43] [cursor=pointer]
+                - button [ref=e44] [cursor=pointer]:
+                  - img [ref=e45]
+              - generic [ref=e47]:
+                - generic [ref=e48]:
+                  - generic [ref=e53]:
+                    - generic [ref=e56]: BREAKING
+                    - paragraph [ref=e57]:
+                      - link "Five Acts Pull Out Of Trump’s ‘Great American State Fair’—Bret Michaels The Latest" [ref=e58] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/antoniopequenoiv/2026/05/29/five-of-nine-acts-have-pulled-out-of-trumps-great-american-state-fair-bret-michaels-the-latest/?ctpv=notifications-breakingnews
+                    - time [ref=e61]: 13h ago
+                  - generic [ref=e66]:
+                    - generic [ref=e69]: DAILY COVER STORY
+                    - paragraph [ref=e70]:
+                      - link "The World’s Most Valuable Soccer Teams 2026" [ref=e71] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/justinteitelbaum/2026/05/29/the-worlds-most-valuable-soccer-teams-2026/?ctpv=notifications-dailycoverstory
+                    - time [ref=e74]: 17h ago
+                  - generic [ref=e79]:
+                    - generic [ref=e82]: FORBES DAILY
+                    - paragraph [ref=e83]:
+                      - link "Robinhood users can now trade stocks using AI agents." [ref=e84] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/daniellechemtob/2026/05/28/forbes-daily-users-can-now-use-ai-to-trade-stocks-on-robinhood/?ctpv=notifications-forbesdaily
+                    - time [ref=e87]: 1d ago
+                  - generic [ref=e92]:
+                    - generic [ref=e95]: DAILY COVER STORY
+                    - paragraph [ref=e96]:
+                      - link "AI And The End Of Recessions As We Know Them" [ref=e97] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/brandonkochkodin/2026/05/28/ai-and-the-end-of-recessions-as-we-know-them/?ctpv=notifications-dailycoverstory
+                    - time [ref=e100]: 2d ago
+                  - generic [ref=e105]:
+                    - generic [ref=e108]: BREAKING
+                    - paragraph [ref=e109]:
+                      - link "Micron CEO Sanjay Mehrotra Becomes A Billionaire Amid Trillion-Dollar Memory Chipmaker Boom" [ref=e110] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/aliciapark/2026/05/27/micron-ceo-sanjay-mehrotra-becomes-a-billionaire-amid-trillion-dollar-memory-chipmaker-boom/?ctpv=notifications-breakingnews
+                    - time [ref=e113]: 2d ago
+                  - generic [ref=e118]:
+                    - generic [ref=e121]: FORBES DAILY
+                    - paragraph [ref=e122]:
+                      - link "Micron Technology Is The Latest $1 Trillion Chipmaker" [ref=e123] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/daniellechemtob/2026/05/27/forbes-daily-micron-technology-is-the-latest-1-trillion-chipmaker/?ctpv=notifications-forbesdaily
+                    - time [ref=e126]: 2d ago
+                  - generic [ref=e131]:
+                    - generic [ref=e134]: DAILY COVER STORY
+                    - paragraph [ref=e135]:
+                      - link "Investing Superstar Yasmin Razavi Turned A $75 Million Check Into A $3 Billion AI Windfall" [ref=e136] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/iainmartin/2026/05/27/investing-superstar-yasmin-razavi-turned-a-75-million-check-into-a-3-billion-ai-windfall/?ctpv=notifications-dailycoverstory
+                    - time [ref=e139]: 3d ago
+                  - generic [ref=e144]:
+                    - generic [ref=e147]: BREAKING
+                    - paragraph [ref=e148]:
+                      - link "Ebola Outbreak At Risk Of Becoming ‘Deadliest On Record,’ Humanitarian Group Warns (Live Updates)" [ref=e149] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/maryroeloffs/2026/05/26/ebola-outbreak-at-risk-of-becoming-deadliest-on-record-humanitarian-group-warns-live-updates/?ctpv=notifications-breakingnews
+                    - time [ref=e152]: 3d ago
+                  - generic [ref=e157]:
+                    - generic [ref=e160]: FORBES DAILY
+                    - paragraph [ref=e161]:
+                      - link "Private colleges are on shaky financial footing amid enrollment declines." [ref=e162] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/daniellechemtob/2026/05/26/forbes-daily-private-colleges-are-on-shaky-financial-footing/?ctpv=notifications-forbesdaily
+                    - time [ref=e165]: 3d ago
+                  - generic [ref=e170]:
+                    - generic [ref=e173]: DAILY COVER STORY
+                    - paragraph [ref=e174]:
+                      - 'link "America’s Top Architects: New York’s 1100 Architect Goes Bold Near Boston" [ref=e175] [cursor=pointer]':
+                        - /url: http://www.forbes.com/sites/fredalbert/2026/05/23/americas-top-architects-new-yorks-1100-architect-goes-bold-near-boston/?ctpv=notifications-dailycoverstory
+                    - time [ref=e178]: 4d ago
+                  - generic [ref=e183]:
+                    - generic [ref=e186]: BREAKING
+                    - paragraph [ref=e187]:
+                      - link "Anthropic Billionaire Cofounder Joins Pope Leo, Warns AI Job Losses Will Spark \"Moral Imperative Of Historic Proportions\"" [ref=e188] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/aliciapark/2026/05/25/anthropic-billionaire-cofounder-joins-pope-leo-warns-ai-job-losses-will-spark-moral-imperative-of-historic-proportions/?ctpv=notifications-breakingnews
+                    - time [ref=e191]: 4d ago
+                - generic [ref=e192]:
+                  - generic [ref=e193]:
+                    - heading "Get Custom Alerts With Member Perks" [level=3] [ref=e194]
+                    - button "Sign In or Create a Free Account" [ref=e195] [cursor=pointer]
+                  - generic [ref=e196]:
+                    - img [ref=e198]
+                    - paragraph [ref=e215]: Powered by Forbes AI
+      - generic [ref=e216]:
+        - generic [ref=e218]:
+          - list [ref=e221]:
+            - listitem [ref=e222]:
+              - link "Billionaires" [ref=e223] [cursor=pointer]:
+                - /url: https://www.forbes.com/worlds-billionaires/
+            - listitem [ref=e224]:
+              - link "Money" [ref=e225] [cursor=pointer]:
+                - /url: https://www.forbes.com/money/
+            - listitem [ref=e226]:
+              - link "Innovation" [ref=e227] [cursor=pointer]:
+                - /url: https://www.forbes.com/innovation/
+            - listitem [ref=e228]:
+              - link "Lifestyle" [ref=e229] [cursor=pointer]:
+                - /url: https://www.forbes.com/lifestyle/
+            - listitem [ref=e230]:
+              - link "Business" [ref=e231] [cursor=pointer]:
+                - /url: https://www.forbes.com/business
+            - listitem [ref=e232]:
+              - link "Leadership" [ref=e233] [cursor=pointer]:
+                - /url: https://www.forbes.com/leadership/
+          - list [ref=e236]:
+            - listitem [ref=e237]:
+              - link "Newsletters" [ref=e238] [cursor=pointer]:
+                - /url: https://account.forbes.com/newsletters/
+            - listitem [ref=e239]:
+              - link "Games" [ref=e240] [cursor=pointer]:
+                - /url: https://www.forbes.com/games/
+            - listitem [ref=e241]:
+              - link "Vetted" [ref=e242] [cursor=pointer]:
+                - /url: https://www.forbes.com/vetted/
+            - listitem [ref=e243]:
+              - link "Lists" [ref=e244] [cursor=pointer]:
+                - /url: https://www.forbes.com/lists/list-directory/
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - heading "We can't find the page that you are looking for..." [level=1] [ref=e247]
+            - paragraph [ref=e248]: The URL may be incorrect or the page might have been moved.
+          - generic [ref=e249]:
+            - textbox "Search Forbes for news, articles & more..." [ref=e250]
+            - button [disabled] [ref=e251] [cursor=pointer]:
+              - img [ref=e252]
+          - generic [ref=e255]:
+            - generic [ref=e258]:
+              - button "Michael Jackson's earnings" [ref=e261] [cursor=pointer]
+              - button "Who owns the most bitcoin?" [ref=e264] [cursor=pointer]
+              - button "When was Forbes magazine founded?" [ref=e267] [cursor=pointer]
+              - button "What is DeepSeek?" [ref=e270] [cursor=pointer]
+              - button "America's Top Colleges 2025" [ref=e273] [cursor=pointer]
+              - button "What is Elon Musk's net worth?" [ref=e276] [cursor=pointer]
+            - button "Previous search prompt" [ref=e277] [cursor=pointer]:
+              - img [ref=e278]
+          - button [ref=e280] [cursor=pointer]:
+            - img [ref=e281]
+    - generic [ref=e284]:
+      - generic [ref=e288]:
+        - generic [ref=e289]:
+          - img [ref=e290]
+          - text: Trending
+        - generic [ref=e293]:
+          - generic [ref=e295]:
+            - link "Universal Music Group Rejects $65B Bid" [ref=e298] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/tylerroush/2026/05/29/universal-music-group-rejects-bill-ackmans-65-billion-bid-that-undervalues-firm/
+            - link "New Horror Movie Could Beat ‘Mandalorian’" [ref=e301] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/maryroeloffs/2026/05/29/new-horror-movie-with-20-year-old-director-could-beat-mandalorian-at-the-box-office/
+            - link "This Startup Is Building ChatGPT For Catholics" [ref=e304] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/sofiachierchio/2026/05/29/this-startup-is-building-chatgpt-for-catholics/
+            - link "Treasury Launches Trump Accounts App" [ref=e307] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/kellyphillipserb/2026/05/29/treasury-launches-trump-accounts-app-as-funding-date-approaches/
+            - link "Real-Time Billionaires List" [ref=e310] [cursor=pointer]:
+              - /url: https://www.forbes.com/real-time-billionaires/
+          - generic [ref=e311]:
+            - link "Universal Music Group Rejects $65B Bid" [ref=e314] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/tylerroush/2026/05/29/universal-music-group-rejects-bill-ackmans-65-billion-bid-that-undervalues-firm/
+            - link "New Horror Movie Could Beat ‘Mandalorian’" [ref=e317] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/maryroeloffs/2026/05/29/new-horror-movie-with-20-year-old-director-could-beat-mandalorian-at-the-box-office/
+            - link "This Startup Is Building ChatGPT For Catholics" [ref=e320] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/sofiachierchio/2026/05/29/this-startup-is-building-chatgpt-for-catholics/
+            - link "Treasury Launches Trump Accounts App" [ref=e323] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/kellyphillipserb/2026/05/29/treasury-launches-trump-accounts-app-as-funding-date-approaches/
+            - link "Real-Time Billionaires List" [ref=e326] [cursor=pointer]:
+              - /url: https://www.forbes.com/real-time-billionaires/
+      - button "U.S. Edition" [ref=e331]:
+        - button "U.S. Edition" [ref=e332] [cursor=pointer]:
+          - generic [ref=e333]: U.S. Edition
+          - img [ref=e334]
+      - generic [ref=e337]:
+        - generic [ref=e339]:
+          - generic [ref=e342]:
+            - generic [ref=e344]: The Daily Brief
+            - generic [ref=e345]:
+              - generic [ref=e346]:
+                - text: Tune in to learn about
+                - link "Alito Family Ethics" [ref=e347] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/alisondurkee/2026/05/28/bessent-defends-justice-alitos-son-working-for-trumps-treasury-department/
+                - text: ","
+                - link "Trump Legal Battles" [ref=e348] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/alisondurkee/2026/05/28/trumps-e-jean-carroll-investigation-comes-amid-last-ditch-effort-to-get-out-of-paying-100-million/
+                - text: and
+                - link "Higher Education Choices" [ref=e349] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/lisachambers/2026/05/28/5-tips-for-picking-a-college-and-a-major-in-the-age-of-ai/
+                - text: .
+              - generic [ref=e350]:
+                - text: Sourced from articles by
+                - generic [ref=e351]:
+                  - button "Show Daily Brief Authors" [ref=e352] [cursor=pointer]:
+                    - img "Alison Durkee" [ref=e353]
+                  - button "Show Daily Brief Authors" [ref=e355] [cursor=pointer]:
+                    - img "Alison Durkee" [ref=e356]
+                  - button "Show Daily Brief Authors" [ref=e358] [cursor=pointer]:
+                    - img "Lisa Chambers" [ref=e359]
+              - generic [ref=e363]:
+                - button [disabled]:
+                  - img
+                - generic [ref=e366]: "--:-- / --:--"
+              - generic [ref=e367]:
+                - text: The Brief is generated by AI with editorial review.
+                - link "Learn more" [ref=e368] [cursor=pointer]:
+                  - /url: https://www.forbes.com/sites/forbesdigitalgroup/article/forbes-ai-audio-learn-more/
+                - text: .
+          - generic [ref=e370]:
+            - generic [ref=e371]:
+              - button "Popular" [ref=e372] [cursor=pointer]
+              - button "Breaking News" [ref=e373] [cursor=pointer]
+            - generic [ref=e375]:
+              - generic [ref=e376]:
+                - generic [ref=e378]: "1."
+                - generic [ref=e379]:
+                  - link "Michael Dell’s Net Worth Surges Up $35 Billion From Dell’s Best Day Ever—Passing Zuckerberg As 6th Richest" [ref=e381] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/tylerroush/2026/05/29/michael-dell-earns-35-billion-from-dells-best-day-ever-passing-zuckerberg-as-6th-richest/
+                    - generic [ref=e382]: Michael Dell’s Net Worth Surges Up $35 Billion From Dell’s Best Day Ever—Passing Zuckerberg As 6th Richest
+                  - button "save article" [ref=e383] [cursor=pointer]:
+                    - img [ref=e384]
+              - generic [ref=e386]:
+                - generic [ref=e388]: "2."
+                - generic [ref=e389]:
+                  - link "Five Acts Pull Out Of Trump’s ‘Great American State Fair’—Bret Michaels The Latest" [ref=e391] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/antoniopequenoiv/2026/05/29/five-of-nine-acts-have-pulled-out-of-trumps-great-american-state-fair-bret-michaels-the-latest/
+                    - generic [ref=e392]: Five Acts Pull Out Of Trump’s ‘Great American State Fair’—Bret Michaels The Latest
+                  - button "save article" [ref=e393] [cursor=pointer]:
+                    - img [ref=e394]
+              - generic [ref=e396]:
+                - generic [ref=e398]: "3."
+                - generic [ref=e399]:
+                  - link "Meet The Snake That Can Kill You In Under An Hour — A Herpetologist Explains" [ref=e401] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/scotttravers/2026/05/29/meet-the-snake-that-can-kill-you-in-under-an-hour---a-herpetologist-explains/
+                    - generic [ref=e402]: Meet The Snake That Can Kill You In Under An Hour — A Herpetologist Explains
+                  - button "save article" [ref=e403] [cursor=pointer]:
+                    - img [ref=e404]
+              - generic [ref=e406]:
+                - generic [ref=e408]: "4."
+                - generic [ref=e409]:
+                  - link "The World’s Best Tequila—According To The 2026 Agavos Awards" [ref=e411] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/bradjaphe/2026/05/29/the-worlds-best-tequila-according-to-the-2026-agavos-awards/
+                    - generic [ref=e412]: The World’s Best Tequila—According To The 2026 Agavos Awards
+                  - button "save article" [ref=e413] [cursor=pointer]:
+                    - img [ref=e414]
+              - generic [ref=e416]:
+                - generic [ref=e418]: "5."
+                - generic [ref=e419]:
+                  - link "U.S. Troops Invited To White House UFC Fight—If They Look Good Enough" [ref=e421] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/maryroeloffs/2026/05/29/us-troops-invited-to-white-house-ufc-fight-if-they-look-good-enough/
+                    - generic [ref=e422]: U.S. Troops Invited To White House UFC Fight—If They Look Good Enough
+                  - button "save article" [ref=e423] [cursor=pointer]:
+                    - img [ref=e424]
+              - generic [ref=e426]:
+                - generic [ref=e428]: "6."
+                - generic [ref=e429]:
+                  - link "WWE SmackDown Results, Winners And Spoilers On May 29, 2026" [ref=e431] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/alfredkonuwa/2026/05/29/wwe-smackdown-results-winners-and-spoilers-on-may-29-2026/
+                    - generic [ref=e432]: WWE SmackDown Results, Winners And Spoilers On May 29, 2026
+                  - button "save article" [ref=e433] [cursor=pointer]:
+                    - img [ref=e434]
+              - generic [ref=e436]:
+                - generic [ref=e438]: "7."
+                - generic [ref=e439]:
+                  - link "Talarico Sharply Slips In Betting Odds Against Paxton As Texas Senate Race Turns Heated" [ref=e441] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/antoniopequenoiv/2026/05/28/talarico-sharply-slips-in-betting-odds-against-paxton-as-texas-senate-race-turns-heated/
+                    - generic [ref=e442]: Talarico Sharply Slips In Betting Odds Against Paxton As Texas Senate Race Turns Heated
+                  - button "save article" [ref=e443] [cursor=pointer]:
+                    - img [ref=e444]
+        - generic [ref=e447]:
+          - generic [ref=e449]:
+            - generic [ref=e454]:
+              - link "This Startup Is Building ChatGPT For Catholics" [ref=e455] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/sofiachierchio/2026/05/29/this-startup-is-building-chatgpt-for-catholics/
+                - img "This Startup Is Building ChatGPT For Catholics" [ref=e456]
+              - generic [ref=e457]:
+                - link "Daily cover story" [ref=e459] [cursor=pointer]:
+                  - /url: /innovation/
+                - generic [ref=e460]:
+                  - heading "This Startup Is Building ChatGPT For Catholics" [level=3] [ref=e461]:
+                    - link "This Startup Is Building ChatGPT For Catholics" [ref=e462] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/sofiachierchio/2026/05/29/this-startup-is-building-chatgpt-for-catholics/
+                  - link "Longbeard founder Matthew Harvey Sanders built a chatbot to answer questions from church documents. Now he’s training an AI model to help people navigate Catholic doctrine, moral dilemmas and spiritual life." [ref=e463] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/sofiachierchio/2026/05/29/this-startup-is-building-chatgpt-for-catholics/
+                    - paragraph [ref=e464]: Longbeard founder Matthew Harvey Sanders built a chatbot to answer questions from church documents. Now he’s training an AI model to help people navigate Catholic doctrine, moral dilemmas and spiritual life.
+                  - generic [ref=e466]:
+                    - paragraph [ref=e467]:
+                      - text: By
+                      - link "Sofia Chierchio" [ref=e468] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/sofiachierchio/
+                      - text: ","
+                    - paragraph [ref=e469]: Fellow
+            - generic [ref=e471]:
+              - generic [ref=e474]:
+                - link "Michael Dell’s Net Worth Surges Up $35 Billion From Dell’s Best Day Ever—Passing Zuckerberg As 6th Richest" [ref=e475] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/tylerroush/2026/05/29/michael-dell-earns-35-billion-from-dells-best-day-ever-passing-zuckerberg-as-6th-richest/
+                  - img "Michael Dell’s Net Worth Surges Up $35 Billion From Dell’s Best Day Ever—Passing Zuckerberg As 6th Richest" [ref=e476]
+                - generic [ref=e477]:
+                  - link "Billionaires" [ref=e479] [cursor=pointer]:
+                    - /url: /business/
+                  - generic [ref=e480]:
+                    - heading "Michael Dell’s Net Worth Surges Up $35 Billion From Dell’s Best Day Ever—Passing Zuckerberg As 6th Richest" [level=3] [ref=e481]:
+                      - link "Michael Dell’s Net Worth Surges Up $35 Billion From Dell’s Best Day Ever—Passing Zuckerberg As 6th Richest" [ref=e482] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/tylerroush/2026/05/29/michael-dell-earns-35-billion-from-dells-best-day-ever-passing-zuckerberg-as-6th-richest/
+                    - generic [ref=e484]:
+                      - paragraph [ref=e485]:
+                        - text: By
+                        - link "Ty Roush" [ref=e486] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/tylerroush/
+                        - text: ","
+                      - paragraph [ref=e487]: Forbes Staff
+              - generic [ref=e490]:
+                - link "Trump Making ‘Final Determination’ On Iran Deal" [ref=e491] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/saradorn/2026/05/29/trump-making-final-determination-on-iran-deal/
+                  - img "Trump Making ‘Final Determination’ On Iran Deal" [ref=e492]
+                - generic [ref=e493]:
+                  - link "Politics" [ref=e495] [cursor=pointer]:
+                    - /url: /business/
+                  - generic [ref=e496]:
+                    - heading "Trump Making ‘Final Determination’ On Iran Deal" [level=3] [ref=e497]:
+                      - link "Trump Making ‘Final Determination’ On Iran Deal" [ref=e498] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/saradorn/2026/05/29/trump-making-final-determination-on-iran-deal/
+                    - generic [ref=e500]:
+                      - paragraph [ref=e501]:
+                        - text: By
+                        - link "Sara Dorn" [ref=e502] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/saradorn/
+                        - text: ","
+                      - paragraph [ref=e503]: Forbes Staff
+          - generic [ref=e505]:
+            - generic [ref=e508]:
+              - link "Universal Music Group Rejects Bill Ackman’s $65 Billion Bid That ‘Undervalues’ Firm" [ref=e509] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/tylerroush/2026/05/29/universal-music-group-rejects-bill-ackmans-65-billion-bid-that-undervalues-firm/
+                - img "Universal Music Group Rejects Bill Ackman’s $65 Billion Bid That ‘Undervalues’ Firm" [ref=e510]
+              - generic [ref=e511]:
+                - link "Business" [ref=e513] [cursor=pointer]:
+                  - /url: /business/
+                - generic [ref=e514]:
+                  - heading "Universal Music Group Rejects Bill Ackman’s $65 Billion Bid That ‘Undervalues’ Firm" [level=3] [ref=e515]:
+                    - link "Universal Music Group Rejects Bill Ackman’s $65 Billion Bid That ‘Undervalues’ Firm" [ref=e516] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/tylerroush/2026/05/29/universal-music-group-rejects-bill-ackmans-65-billion-bid-that-undervalues-firm/
+                  - generic [ref=e518]:
+                    - paragraph [ref=e519]:
+                      - text: By
+                      - link "Ty Roush" [ref=e520] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/tylerroush/
+                      - text: ","
+                    - paragraph [ref=e521]: Forbes Staff
+            - generic [ref=e524]:
+              - link "The World’s Most Valuable Soccer Teams 2026" [ref=e525] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/justinteitelbaum/2026/05/29/the-worlds-most-valuable-soccer-teams-2026/
+                - img "The World’s Most Valuable Soccer Teams 2026" [ref=e526]
+              - generic [ref=e527]:
+                - link "SportsMoney" [ref=e529] [cursor=pointer]:
+                  - /url: /sportsmoney/
+                - generic [ref=e530]:
+                  - heading "The World’s Most Valuable Soccer Teams 2026" [level=3] [ref=e531]:
+                    - link "The World’s Most Valuable Soccer Teams 2026" [ref=e532] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/justinteitelbaum/2026/05/29/the-worlds-most-valuable-soccer-teams-2026/
+                  - generic [ref=e533]:
+                    - generic [ref=e534]:
+                      - paragraph [ref=e535]:
+                        - text: By
+                        - link "Justin Teitelbaum" [ref=e536] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/justinteitelbaum/
+                        - text: ","
+                      - paragraph [ref=e537]: Forbes Staff
+                    - generic [ref=e538]:
+                      - paragraph [ref=e539]:
+                        - text: and
+                        - link "Brett Knight" [ref=e540] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/brettknight/
+                        - text: ","
+                      - paragraph [ref=e541]: Assistant Managing Editor
+      - generic [ref=e553]:
+        - generic [ref=e556]:
+          - generic [ref=e559]:
+            - generic [ref=e562]:
+              - link "SportsMoney" [ref=e564] [cursor=pointer]:
+                - /url: /sportsmoney/
+              - heading "The World’s 10 Highest-Paid Athletes 2026" [level=3] [ref=e565]:
+                - link "The World’s 10 Highest-Paid Athletes 2026" [ref=e566] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/brettknight/2026/05/22/the-worlds-10-highest-paid-athletes-2026/
+              - link "Read The Full Story" [ref=e567] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/brettknight/2026/05/22/the-worlds-10-highest-paid-athletes-2026/
+            - link "The World’s 10 Highest-Paid Athletes 2026" [ref=e569] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/brettknight/2026/05/22/the-worlds-10-highest-paid-athletes-2026/
+              - img "The World’s 10 Highest-Paid Athletes 2026" [ref=e570]
+          - generic [ref=e573]:
+            - generic [ref=e576]:
+              - link "Forbes 250" [ref=e578] [cursor=pointer]:
+                - /url: /science/
+              - heading "Musk, Ellison And Altman Among America’s Greatest Innovators" [level=3] [ref=e579]:
+                - link "Musk, Ellison And Altman Among America’s Greatest Innovators" [ref=e580] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/alexknapp/2026/02/11/forbes-250-americas-greatest-innovators/
+              - link "Read The Full Story" [ref=e581] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/alexknapp/2026/02/11/forbes-250-americas-greatest-innovators/
+            - link "Musk, Ellison And Altman Among America’s Greatest Innovators" [ref=e583] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/alexknapp/2026/02/11/forbes-250-americas-greatest-innovators/
+              - img "Musk, Ellison And Altman Among America’s Greatest Innovators" [ref=e584]
+          - generic [ref=e587]:
+            - generic [ref=e590]:
+              - link "Arizona Commerce Authority BRANDVOICE | Paid Program" [ref=e592] [cursor=pointer]:
+                - /url: https://www.forbes.com/sites/arizona-commerce-authority/
+              - heading "4 Ways Arizona’s Innovation Ecosystem Is Accelerating AI Growth In The U.S." [level=3] [ref=e593]:
+                - link "4 Ways Arizona’s Innovation Ecosystem Is Accelerating AI Growth In The U.S." [ref=e594] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/arizona-commerce-authority/2026/04/16/4-ways-arizonas-innovation-ecosystem-is-accelerating-ai-growth-in-the-us/
+              - link "Read The Full Story" [ref=e595] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/arizona-commerce-authority/2026/04/16/4-ways-arizonas-innovation-ecosystem-is-accelerating-ai-growth-in-the-us/
+            - link "4 Ways Arizona’s Innovation Ecosystem Is Accelerating AI Growth In The U.S." [ref=e597] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/arizona-commerce-authority/2026/04/16/4-ways-arizonas-innovation-ecosystem-is-accelerating-ai-growth-in-the-us/
+              - img "4 Ways Arizona’s Innovation Ecosystem Is Accelerating AI Growth In The U.S." [ref=e598]
+          - generic [ref=e601]:
+            - generic [ref=e604]:
+              - link "Dell Technologies BRANDVOICE | Paid Program" [ref=e606] [cursor=pointer]:
+                - /url: https://www.forbes.com/sites/delltechnologies/
+              - 'heading "From Data To Discovery: How Research-Driven Organizations Are Shaping The Next Decade Of Breakthrough Innovation" [level=3] [ref=e607]':
+                - 'link "From Data To Discovery: How Research-Driven Organizations Are Shaping The Next Decade Of Breakthrough Innovation" [ref=e608] [cursor=pointer]':
+                  - /url: http://www.forbes.com/sites/delltechnologies/2026/04/29/from-data-to-discovery-how-research-driven-organizations-are-shaping-the-next-decade-of-breakthrough-innovation/
+              - link "Read The Full Story" [ref=e609] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/delltechnologies/2026/04/29/from-data-to-discovery-how-research-driven-organizations-are-shaping-the-next-decade-of-breakthrough-innovation/
+            - 'link "From Data To Discovery: How Research-Driven Organizations Are Shaping The Next Decade Of Breakthrough Innovation" [ref=e611] [cursor=pointer]':
+              - /url: http://www.forbes.com/sites/delltechnologies/2026/04/29/from-data-to-discovery-how-research-driven-organizations-are-shaping-the-next-decade-of-breakthrough-innovation/
+              - 'img "From Data To Discovery: How Research-Driven Organizations Are Shaping The Next Decade Of Breakthrough Innovation" [ref=e612]'
+          - generic [ref=e615]:
+            - generic [ref=e618]:
+              - link "Midas Seed List" [ref=e620] [cursor=pointer]:
+                - /url: https://www.forbes.com/lists/
+              - heading "The Midas Seed List" [level=3] [ref=e621]:
+                - link "The Midas Seed List" [ref=e622] [cursor=pointer]:
+                  - /url: https://www.forbes.com/lists/midas-seed/
+              - link "Read The Full Story" [ref=e623] [cursor=pointer]:
+                - /url: https://www.forbes.com/lists/midas-seed/
+            - link "The Midas Seed List" [ref=e625] [cursor=pointer]:
+              - /url: https://www.forbes.com/lists/midas-seed/
+              - img "The Midas Seed List" [ref=e626]
+          - generic [ref=e629]:
+            - generic [ref=e632]:
+              - link "Investing" [ref=e634] [cursor=pointer]:
+                - /url: /investing/
+              - heading "A Money Windfall Guide For Millennials And Gen X" [level=3] [ref=e635]:
+                - link "A Money Windfall Guide For Millennials And Gen X" [ref=e636] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/cicelyjones/2026/03/02/a-money-windfall-guide-for-millennials-and-gen-x/
+              - link "Read The Full Story" [ref=e637] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/cicelyjones/2026/03/02/a-money-windfall-guide-for-millennials-and-gen-x/
+            - link "A Money Windfall Guide For Millennials And Gen X" [ref=e639] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/cicelyjones/2026/03/02/a-money-windfall-guide-for-millennials-and-gen-x/
+              - img "A Money Windfall Guide For Millennials And Gen X" [ref=e640]
+          - generic [ref=e643]:
+            - generic [ref=e646]:
+              - link "U.S. Bank BRANDVOICE | Paid Program" [ref=e648] [cursor=pointer]:
+                - /url: https://www.forbes.com/sites/usbank/
+              - heading "Turning Pressure Into Progress For Your Small Business" [level=3] [ref=e649]:
+                - link "Turning Pressure Into Progress For Your Small Business" [ref=e650] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/usbank/2026/05/11/turning-pressure-into-progress-for-your-small-business/
+              - link "Read The Full Story" [ref=e651] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/usbank/2026/05/11/turning-pressure-into-progress-for-your-small-business/
+            - link "Turning Pressure Into Progress For Your Small Business" [ref=e653] [cursor=pointer]:
+              - /url: http://www.forbes.com/sites/usbank/2026/05/11/turning-pressure-into-progress-for-your-small-business/
+              - img "Turning Pressure Into Progress For Your Small Business" [ref=e654]
+          - generic [ref=e657]:
+            - generic [ref=e660]:
+              - link "Forbes 30 Under 30 Europe 2026" [ref=e662] [cursor=pointer]:
+                - /url: https://www.forbes.com/30-under-30/2026/europe/
+              - heading "Meet The Newest Forbes 30 Under 30 Europe" [level=3] [ref=e663]:
+                - link "Meet The Newest Forbes 30 Under 30 Europe" [ref=e664] [cursor=pointer]:
+                  - /url: https://www.forbes.com/30-under-30/2026/europe/
+              - link "Read The Full Story" [ref=e665] [cursor=pointer]:
+                - /url: https://www.forbes.com/30-under-30/2026/europe/
+            - link "Meet The Newest Forbes 30 Under 30 Europe" [ref=e667] [cursor=pointer]:
+              - /url: https://www.forbes.com/30-under-30/2026/europe/
+              - img "Meet The Newest Forbes 30 Under 30 Europe" [ref=e668]
+          - generic [ref=e671]:
+            - generic [ref=e672]: MORE FROM FORBES
+            - generic [ref=e673]:
+              - generic [ref=e676]:
+                - link "Billionaire Reid Hoffman Blasts Trump’s E. Jean Carroll Probe As He Becomes A Target" [ref=e677] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/alisondurkee/2026/05/29/billionaire-reid-hoffman-blasts-trumps-e-jean-carroll-probe-as-he-becomes-a-target/
+                  - img "Billionaire Reid Hoffman Blasts Trump’s E. Jean Carroll Probe As He Becomes A Target" [ref=e678]
+                - generic [ref=e680]:
+                  - heading "Billionaire Reid Hoffman Blasts Trump’s E. Jean Carroll Probe As He Becomes A Target" [level=3] [ref=e681]:
+                    - link "Billionaire Reid Hoffman Blasts Trump’s E. Jean Carroll Probe As He Becomes A Target" [ref=e682] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/alisondurkee/2026/05/29/billionaire-reid-hoffman-blasts-trumps-e-jean-carroll-probe-as-he-becomes-a-target/
+                  - generic [ref=e684]:
+                    - paragraph [ref=e685]:
+                      - text: By
+                      - link "Alison Durkee" [ref=e686] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/alisondurkee/
+                      - text: ","
+                    - paragraph [ref=e687]: Forbes Staff
+              - generic [ref=e690]:
+                - link "Here Are Donald Trump’s 10 Best Stock Trades Of 2026" [ref=e691] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/kylemullins/2026/05/28/here-are-donald-trumps-10-best-stock-trades-of-2026/
+                  - img "Here Are Donald Trump’s 10 Best Stock Trades Of 2026" [ref=e692]
+                - generic [ref=e694]:
+                  - heading "Here Are Donald Trump’s 10 Best Stock Trades Of 2026" [level=3] [ref=e695]:
+                    - link "Here Are Donald Trump’s 10 Best Stock Trades Of 2026" [ref=e696] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/kylemullins/2026/05/28/here-are-donald-trumps-10-best-stock-trades-of-2026/
+                  - generic [ref=e698]:
+                    - paragraph [ref=e699]:
+                      - text: By
+                      - link "Kyle Khan-Mullins" [ref=e700] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/kylemullins/
+                      - text: ","
+                    - paragraph [ref=e701]: Forbes Staff
+              - generic [ref=e704]:
+                - link "Inside The Murky Market Selling Pre-IPO SpaceX And OpenAI Shares" [ref=e705] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/phoebeliu/2026/05/26/inside-the-murky-market-selling-pre-ipo-spacex-and-openai-shares/
+                  - img "Inside The Murky Market Selling Pre-IPO SpaceX And OpenAI Shares" [ref=e706]
+                - generic [ref=e708]:
+                  - heading "Inside The Murky Market Selling Pre-IPO SpaceX And OpenAI Shares" [level=3] [ref=e709]:
+                    - link "Inside The Murky Market Selling Pre-IPO SpaceX And OpenAI Shares" [ref=e710] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/phoebeliu/2026/05/26/inside-the-murky-market-selling-pre-ipo-spacex-and-openai-shares/
+                  - generic [ref=e712]:
+                    - paragraph [ref=e713]:
+                      - text: By
+                      - link "Phoebe Liu" [ref=e714] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/phoebeliu/
+                      - text: ","
+                    - paragraph [ref=e715]: Reporter
+              - generic [ref=e718]:
+                - link "Moomoo Parent Futu’s Nasdaq Shares Plunge Nearly 28% On China Probe" [ref=e719] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/russellflannery/2026/05/24/moomoo-parent-futus-nasdaq-shares-plunge-nearly-28-on-china-probe/
+                  - img "Moomoo Parent Futu’s Nasdaq Shares Plunge Nearly 28% On China Probe" [ref=e720]
+                - generic [ref=e722]:
+                  - heading "Moomoo Parent Futu’s Nasdaq Shares Plunge Nearly 28% On China Probe" [level=3] [ref=e723]:
+                    - link "Moomoo Parent Futu’s Nasdaq Shares Plunge Nearly 28% On China Probe" [ref=e724] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/russellflannery/2026/05/24/moomoo-parent-futus-nasdaq-shares-plunge-nearly-28-on-china-probe/
+                  - generic [ref=e726]:
+                    - paragraph [ref=e727]:
+                      - text: By
+                      - link "Russell Flannery" [ref=e728] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/russellflannery/
+                      - text: ","
+                    - paragraph [ref=e729]: Senior Contributor
+        - generic [ref=e730]:
+          - button "Previous slide" [disabled]:
+            - img
+          - button "Next slide" [ref=e731] [cursor=pointer]:
+            - img [ref=e732]
+      - generic [ref=e737]: Advertisement
+      - generic [ref=e739]:
+        - generic [ref=e741]:
+          - heading "Billionaires" [level=2] [ref=e743]:
+            - link "Billionaires" [ref=e744] [cursor=pointer]:
+              - /url: https://www.forbes.com/billionaires/
+          - generic [ref=e746]:
+            - generic [ref=e749]:
+              - link "Trump’s Tax Immunity Could Save Him More Than $600 Million" [ref=e750] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/danalexander/2026/05/21/trumps-tax-immunity-could-save-him-more-than-600-million/
+                - img "Trump’s Tax Immunity Could Save Him More Than $600 Million" [ref=e751]
+              - generic [ref=e752]:
+                - link "Billionaires" [ref=e754] [cursor=pointer]:
+                  - /url: /worlds-billionaires/
+                - generic [ref=e755]:
+                  - heading "Trump’s Tax Immunity Could Save Him More Than $600 Million" [level=3] [ref=e756]:
+                    - link "Trump’s Tax Immunity Could Save Him More Than $600 Million" [ref=e757] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/danalexander/2026/05/21/trumps-tax-immunity-could-save-him-more-than-600-million/
+                  - link "The president secures a get-out-of-jail-free card for tax improprieties, just as he’s hauling in record amounts of cash." [ref=e758] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/danalexander/2026/05/21/trumps-tax-immunity-could-save-him-more-than-600-million/
+                    - paragraph [ref=e759]: The president secures a get-out-of-jail-free card for tax improprieties, just as he’s hauling in record amounts of cash.
+                  - generic [ref=e761]:
+                    - paragraph [ref=e762]:
+                      - text: By
+                      - link "Dan Alexander" [ref=e763] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/danalexander/
+                      - text: ","
+                    - paragraph [ref=e764]: Senior Editor
+            - generic [ref=e766]:
+              - generic [ref=e769]:
+                - link "Billionaire David Teoh’s $1.1 Billion Singapore Mobile Deal Terminated Amid Regulatory Scrutiny" [ref=e770] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/yessarrosendar/2026/05/19/billionaire-david-teohs-11-billion-singapore-mobile-deal-set-to-lapse-amid-regulatory-breach/
+                  - img "Billionaire David Teoh’s $1.1 Billion Singapore Mobile Deal Terminated Amid Regulatory Scrutiny" [ref=e771]
+                - generic [ref=e772]:
+                  - link "Asia" [ref=e774] [cursor=pointer]:
+                    - /url: /asia/
+                  - generic [ref=e775]:
+                    - heading "Billionaire David Teoh’s $1.1 Billion Singapore Mobile Deal Terminated Amid Regulatory Scrutiny" [level=3] [ref=e776]:
+                      - link "Billionaire David Teoh’s $1.1 Billion Singapore Mobile Deal Terminated Amid Regulatory Scrutiny" [ref=e777] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/yessarrosendar/2026/05/19/billionaire-david-teohs-11-billion-singapore-mobile-deal-set-to-lapse-amid-regulatory-breach/
+                    - generic [ref=e779]:
+                      - paragraph [ref=e780]:
+                        - text: By
+                        - link "Yessar Rosendar" [ref=e781] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/yessarrosendar/
+                        - text: ","
+                      - paragraph [ref=e782]: Forbes Staff
+              - generic [ref=e786]:
+                - link "Billionaires" [ref=e788] [cursor=pointer]:
+                  - /url: /worlds-billionaires/
+                - generic [ref=e789]:
+                  - heading "How Eric Trump Created A Myth Around His Kids-Cancer Charity" [level=3] [ref=e790]:
+                    - link "How Eric Trump Created A Myth Around His Kids-Cancer Charity" [ref=e791] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/danalexander/2026/05/18/how-eric-trump-created-a-myth-around-his-kids-cancer-charity/
+                  - generic [ref=e793]:
+                    - paragraph [ref=e794]:
+                      - text: By
+                      - link "Dan Alexander" [ref=e795] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/danalexander/
+                      - text: ","
+                    - paragraph [ref=e796]: Senior Editor
+        - generic [ref=e798]:
+          - generic [ref=e799]:
+            - heading "Money & Markets" [level=2] [ref=e800]
+            - generic [ref=e801]: "Last Updated: 5/29/2026 04:00 PM EDT"
+          - generic [ref=e803]:
+            - generic [ref=e807]:
+              - generic [ref=e809]:
+                - generic [ref=e812]:
+                  - img [ref=e814]
+                  - link "Berkshire Hathaway BRK.B" [ref=e816] [cursor=pointer]:
+                    - /url: /companies/berkshire-hathaway/
+                    - heading "Berkshire Hathaway" [level=4] [ref=e817]
+                    - generic [ref=e818]: BRK.B
+                  - generic [ref=e819]:
+                    - heading "$474.48" [level=4] [ref=e820]
+                    - generic [ref=e821]:
+                      - text: "-2.94"
+                      - generic [ref=e822]: (-0.62%)
+                - generic [ref=e825]:
+                  - img [ref=e827]
+                  - link "JPMorgan Chase JPM" [ref=e829] [cursor=pointer]:
+                    - /url: /companies/jpmorganchase/
+                    - heading "JPMorgan Chase" [level=4] [ref=e830]
+                    - generic [ref=e831]: JPM
+                  - generic [ref=e832]:
+                    - heading "$299.31" [level=4] [ref=e833]
+                    - generic [ref=e834]:
+                      - text: "+2.58"
+                      - generic [ref=e835]: (0.87%)
+                - generic [ref=e838]:
+                  - img [ref=e840]
+                  - link "Visa V" [ref=e842] [cursor=pointer]:
+                    - /url: /companies/visa/
+                    - heading "Visa" [level=4] [ref=e843]
+                    - generic [ref=e844]: V
+                  - generic [ref=e845]:
+                    - heading "$326.36" [level=4] [ref=e846]
+                    - generic [ref=e847]:
+                      - text: "+1.41"
+                      - generic [ref=e848]: (0.43%)
+                - generic [ref=e851]:
+                  - img [ref=e853]
+                  - link "Eli Lilly & Co LLY" [ref=e855] [cursor=pointer]:
+                    - /url: /companies/eli-lilly/
+                    - heading "Eli Lilly & Co" [level=4] [ref=e856]
+                    - generic [ref=e857]: LLY
+                  - generic [ref=e858]:
+                    - heading "$1,105.00" [level=4] [ref=e859]
+                    - generic [ref=e860]:
+                      - text: "-21.80"
+                      - generic [ref=e861]: (-1.94%)
+                - generic [ref=e864]:
+                  - img [ref=e866]
+                  - link "Mastercard MA" [ref=e868] [cursor=pointer]:
+                    - /url: /companies/mastercard/
+                    - heading "Mastercard" [level=4] [ref=e869]
+                    - generic [ref=e870]: MA
+                  - generic [ref=e871]:
+                    - heading "$493.98" [level=4] [ref=e872]
+                    - generic [ref=e873]:
+                      - text: "+0.23"
+                      - generic [ref=e874]: (0.05%)
+                - generic [ref=e877]:
+                  - img [ref=e879]
+                  - link "Exxon Mobil XOM" [ref=e881] [cursor=pointer]:
+                    - /url: /companies/exxon-mobil/
+                    - heading "Exxon Mobil" [level=4] [ref=e882]
+                    - generic [ref=e883]: XOM
+                  - generic [ref=e884]:
+                    - heading "$145.26" [level=4] [ref=e885]
+                    - generic [ref=e886]:
+                      - text: "-1.70"
+                      - generic [ref=e887]: (-1.16%)
+                - generic [ref=e890]:
+                  - img [ref=e892]
+                  - link "Costco Wholesale Corp COST" [ref=e894] [cursor=pointer]:
+                    - /url: /companies/costco-wholesale/
+                    - heading "Costco Wholesale Corp" [level=4] [ref=e895]
+                    - generic [ref=e896]: COST
+                  - generic [ref=e897]:
+                    - heading "$956.32" [level=4] [ref=e898]
+                    - generic [ref=e899]:
+                      - text: "-38.88"
+                      - generic [ref=e900]: (-3.91%)
+                - generic [ref=e903]:
+                  - img [ref=e905]
+                  - link "Johnson & Johnson JNJ" [ref=e907] [cursor=pointer]:
+                    - /url: /companies/johnson-johnson/
+                    - heading "Johnson & Johnson" [level=4] [ref=e908]
+                    - generic [ref=e909]: JNJ
+                  - generic [ref=e910]:
+                    - heading "$225.33" [level=4] [ref=e911]
+                    - generic [ref=e912]:
+                      - text: "-5.47"
+                      - generic [ref=e913]: (-2.37%)
+                - generic [ref=e916]:
+                  - img [ref=e918]
+                  - link "Procter & Gamble PG" [ref=e920] [cursor=pointer]:
+                    - /url: /companies/procter-gamble/
+                    - heading "Procter & Gamble" [level=4] [ref=e921]
+                    - generic [ref=e922]: PG
+                  - generic [ref=e923]:
+                    - heading "$143.56" [level=4] [ref=e924]
+                    - generic [ref=e925]:
+                      - text: "-2.35"
+                      - generic [ref=e926]: (-1.61%)
+                - generic [ref=e929]:
+                  - img [ref=e931]
+                  - link "Home Depot HD" [ref=e933] [cursor=pointer]:
+                    - /url: /companies/the-home-depot/
+                    - heading "Home Depot" [level=4] [ref=e934]
+                    - generic [ref=e935]: HD
+                  - generic [ref=e936]:
+                    - heading "$317.14" [level=4] [ref=e937]
+                    - generic [ref=e938]:
+                      - text: "-4.07"
+                      - generic [ref=e939]: (-1.27%)
+                - generic [ref=e942]:
+                  - img [ref=e944]
+                  - link "Bank of America BAC" [ref=e946] [cursor=pointer]:
+                    - /url: /companies/bank-of-america/
+                    - heading "Bank of America" [level=4] [ref=e947]
+                    - generic [ref=e948]: BAC
+                  - generic [ref=e949]:
+                    - heading "$51.60" [level=4] [ref=e950]
+                    - generic [ref=e951]:
+                      - text: "+0.83"
+                      - generic [ref=e952]: (1.64%)
+                - generic [ref=e955]:
+                  - img [ref=e957]
+                  - link "AbbVie Inc. ABBV" [ref=e959] [cursor=pointer]:
+                    - /url: /companies/abbvie/
+                    - heading "AbbVie Inc." [level=4] [ref=e960]
+                    - generic [ref=e961]: ABBV
+                  - generic [ref=e962]:
+                    - heading "$217.72" [level=4] [ref=e963]
+                    - generic [ref=e964]:
+                      - text: "-0.91"
+                      - generic [ref=e965]: (-0.42%)
+                - generic [ref=e968]:
+                  - img [ref=e970]
+                  - link "Palantir Technologies Inc. PLTR" [ref=e972] [cursor=pointer]:
+                    - /url: /companies/palantir-technologies/
+                    - heading "Palantir Technologies Inc." [level=4] [ref=e973]
+                    - generic [ref=e974]: PLTR
+                  - generic [ref=e975]:
+                    - heading "$156.54" [level=4] [ref=e976]
+                    - generic [ref=e977]:
+                      - text: "+13.20"
+                      - generic [ref=e978]: (9.21%)
+                - generic [ref=e981]:
+                  - img [ref=e983]
+                  - link "Coca-Cola KO" [ref=e985] [cursor=pointer]:
+                    - /url: /companies/coca-cola/
+                    - heading "Coca-Cola" [level=4] [ref=e986]
+                    - generic [ref=e987]: KO
+                  - generic [ref=e988]:
+                    - heading "$79.01" [level=4] [ref=e989]
+                    - generic [ref=e990]:
+                      - text: "-1.40"
+                      - generic [ref=e991]: (-1.74%)
+                - generic [ref=e994]:
+                  - img [ref=e996]
+                  - link "Philip Morris International PM" [ref=e998] [cursor=pointer]:
+                    - /url: /companies/philip-morris-international/
+                    - heading "Philip Morris International" [level=4] [ref=e999]
+                    - generic [ref=e1000]: PM
+                  - generic [ref=e1001]:
+                    - heading "$177.38" [level=4] [ref=e1002]
+                    - generic [ref=e1003]:
+                      - text: "-1.19"
+                      - generic [ref=e1004]: (-0.67%)
+                - generic [ref=e1007]:
+                  - img [ref=e1009]
+                  - link "UnitedHealth Group UNH" [ref=e1011] [cursor=pointer]:
+                    - /url: /companies/unitedhealth-group/
+                    - heading "UnitedHealth Group" [level=4] [ref=e1012]
+                    - generic [ref=e1013]: UNH
+                  - generic [ref=e1014]:
+                    - heading "$380.31" [level=4] [ref=e1015]
+                    - generic [ref=e1016]:
+                      - text: "-2.22"
+                      - generic [ref=e1017]: (-0.58%)
+                - generic [ref=e1020]:
+                  - img [ref=e1022]
+                  - link "IBM IBM" [ref=e1024] [cursor=pointer]:
+                    - /url: /companies/ibm/
+                    - heading "IBM" [level=4] [ref=e1025]
+                    - generic [ref=e1026]: IBM
+                  - generic [ref=e1027]:
+                    - heading "$297.80" [level=4] [ref=e1028]
+                    - generic [ref=e1029]:
+                      - text: "+33.58"
+                      - generic [ref=e1030]: (12.71%)
+                - generic [ref=e1033]:
+                  - img [ref=e1035]
+                  - link "Cisco Systems, Inc. CSCO" [ref=e1037] [cursor=pointer]:
+                    - /url: /companies/cisco-systems/
+                    - heading "Cisco Systems, Inc." [level=4] [ref=e1038]
+                    - generic [ref=e1039]: CSCO
+                  - generic [ref=e1040]:
+                    - heading "$120.42" [level=4] [ref=e1041]
+                    - generic [ref=e1042]:
+                      - text: "+1.78"
+                      - generic [ref=e1043]: (1.50%)
+                - generic [ref=e1046]:
+                  - img [ref=e1048]
+                  - link "T-Mobile US TMUS" [ref=e1050] [cursor=pointer]:
+                    - /url: /companies/metropcs-communications/
+                    - heading "T-Mobile US" [level=4] [ref=e1051]
+                    - generic [ref=e1052]: TMUS
+                  - generic [ref=e1053]:
+                    - heading "$187.53" [level=4] [ref=e1054]
+                    - generic [ref=e1055]:
+                      - text: "-0.46"
+                      - generic [ref=e1056]: (-0.24%)
+                - generic [ref=e1059]:
+                  - img [ref=e1061]
+                  - link "Wells Fargo & Co. WFC" [ref=e1063] [cursor=pointer]:
+                    - /url: /companies/wells-fargo/
+                    - heading "Wells Fargo & Co." [level=4] [ref=e1064]
+                    - generic [ref=e1065]: WFC
+                  - generic [ref=e1066]:
+                    - heading "$77.54" [level=4] [ref=e1067]
+                    - generic [ref=e1068]:
+                      - text: "+0.89"
+                      - generic [ref=e1069]: (1.16%)
+                - generic [ref=e1072]:
+                  - img [ref=e1074]
+                  - link "General Electric GE" [ref=e1076] [cursor=pointer]:
+                    - /url: /companies/ge-aerospace/
+                    - heading "General Electric" [level=4] [ref=e1077]
+                    - generic [ref=e1078]: GE
+                  - generic [ref=e1079]:
+                    - heading "$323.76" [level=4] [ref=e1080]
+                    - generic [ref=e1081]:
+                      - text: "+2.94"
+                      - generic [ref=e1082]: (0.92%)
+                - generic [ref=e1085]:
+                  - img [ref=e1087]
+                  - link "Salesforce CRM" [ref=e1089] [cursor=pointer]:
+                    - /url: /companies/salesforce/
+                    - heading "Salesforce" [level=4] [ref=e1090]
+                    - generic [ref=e1091]: CRM
+                  - generic [ref=e1092]:
+                    - heading "$191.10" [level=4] [ref=e1093]
+                    - generic [ref=e1094]:
+                      - text: "+14.93"
+                      - generic [ref=e1095]: (8.47%)
+                - generic [ref=e1098]:
+                  - img [ref=e1100]
+                  - link "Chevron CVX" [ref=e1102] [cursor=pointer]:
+                    - /url: /companies/chevron/
+                    - heading "Chevron" [level=4] [ref=e1103]
+                    - generic [ref=e1104]: CVX
+                  - generic [ref=e1105]:
+                    - heading "$182.46" [level=4] [ref=e1106]
+                    - generic [ref=e1107]:
+                      - text: "-0.57"
+                      - generic [ref=e1108]: (-0.31%)
+                - generic [ref=e1111]:
+                  - img [ref=e1113]
+                  - link "Abbott Laboratories ABT" [ref=e1115] [cursor=pointer]:
+                    - /url: /companies/abbott-laboratories/
+                    - heading "Abbott Laboratories" [level=4] [ref=e1116]
+                    - generic [ref=e1117]: ABT
+                  - generic [ref=e1118]:
+                    - heading "$85.60" [level=4] [ref=e1119]
+                    - generic [ref=e1120]:
+                      - text: "-0.70"
+                      - generic [ref=e1121]: (-0.81%)
+                - generic [ref=e1124]:
+                  - img [ref=e1126]
+                  - link "Morgan Stanley MS" [ref=e1128] [cursor=pointer]:
+                    - /url: /companies/morgan-stanley/
+                    - heading "Morgan Stanley" [level=4] [ref=e1129]
+                    - generic [ref=e1130]: MS
+                  - generic [ref=e1131]:
+                    - heading "$208.00" [level=4] [ref=e1132]
+                    - generic [ref=e1133]:
+                      - text: "+4.21"
+                      - generic [ref=e1134]: (2.07%)
+                - generic [ref=e1137]:
+                  - img [ref=e1139]
+                  - link "American Express AXP" [ref=e1141] [cursor=pointer]:
+                    - /url: /companies/american-express/
+                    - heading "American Express" [level=4] [ref=e1142]
+                    - generic [ref=e1143]: AXP
+                  - generic [ref=e1144]:
+                    - heading "$316.47" [level=4] [ref=e1145]
+                    - generic [ref=e1146]:
+                      - text: "+1.35"
+                      - generic [ref=e1147]: (0.43%)
+                - generic [ref=e1150]:
+                  - img [ref=e1152]
+                  - link "Walt Disney DIS" [ref=e1154] [cursor=pointer]:
+                    - /url: /companies/the-walt-disney-company/
+                    - heading "Walt Disney" [level=4] [ref=e1155]
+                    - generic [ref=e1156]: DIS
+                  - generic [ref=e1157]:
+                    - heading "$101.83" [level=4] [ref=e1158]
+                    - generic [ref=e1159]:
+                      - text: "-1.90"
+                      - generic [ref=e1160]: (-1.83%)
+                - generic [ref=e1163]:
+                  - img [ref=e1165]
+                  - link "Uber Technologies, Inc. UBER" [ref=e1167] [cursor=pointer]:
+                    - /url: /companies/uber/
+                    - heading "Uber Technologies, Inc." [level=4] [ref=e1168]
+                    - generic [ref=e1169]: UBER
+                  - generic [ref=e1170]:
+                    - heading "$70.40" [level=4] [ref=e1171]
+                    - generic [ref=e1172]:
+                      - text: "-0.52"
+                      - generic [ref=e1173]: (-0.73%)
+                - generic [ref=e1176]:
+                  - img [ref=e1178]
+                  - link "NVIDIA Corporation NVDA" [ref=e1180] [cursor=pointer]:
+                    - /url: /companies/nvidia/
+                    - heading "NVIDIA Corporation" [level=4] [ref=e1181]
+                    - generic [ref=e1182]: NVDA
+                  - generic [ref=e1183]:
+                    - heading "$211.14" [level=4] [ref=e1184]
+                    - generic [ref=e1185]:
+                      - text: "-3.11"
+                      - generic [ref=e1186]: (-1.45%)
+                - generic [ref=e1189]:
+                  - img [ref=e1191]
+                  - link "Tesla TSLA" [ref=e1193] [cursor=pointer]:
+                    - /url: /companies/tesla/
+                    - heading "Tesla" [level=4] [ref=e1194]
+                    - generic [ref=e1195]: TSLA
+                  - generic [ref=e1196]:
+                    - heading "$435.79" [level=4] [ref=e1197]
+                    - generic [ref=e1198]:
+                      - text: "-6.31"
+                      - generic [ref=e1199]: (-1.43%)
+              - generic [ref=e1200]:
+                - generic [ref=e1203]:
+                  - img [ref=e1205]
+                  - link "Berkshire Hathaway BRK.B" [ref=e1207] [cursor=pointer]:
+                    - /url: /companies/berkshire-hathaway/
+                    - heading "Berkshire Hathaway" [level=4] [ref=e1208]
+                    - generic [ref=e1209]: BRK.B
+                  - generic [ref=e1210]:
+                    - heading "$474.48" [level=4] [ref=e1211]
+                    - generic [ref=e1212]:
+                      - text: "-2.94"
+                      - generic [ref=e1213]: (-0.62%)
+                - generic [ref=e1216]:
+                  - img [ref=e1218]
+                  - link "JPMorgan Chase JPM" [ref=e1220] [cursor=pointer]:
+                    - /url: /companies/jpmorganchase/
+                    - heading "JPMorgan Chase" [level=4] [ref=e1221]
+                    - generic [ref=e1222]: JPM
+                  - generic [ref=e1223]:
+                    - heading "$299.31" [level=4] [ref=e1224]
+                    - generic [ref=e1225]:
+                      - text: "+2.58"
+                      - generic [ref=e1226]: (0.87%)
+                - generic [ref=e1229]:
+                  - img [ref=e1231]
+                  - link "Visa V" [ref=e1233] [cursor=pointer]:
+                    - /url: /companies/visa/
+                    - heading "Visa" [level=4] [ref=e1234]
+                    - generic [ref=e1235]: V
+                  - generic [ref=e1236]:
+                    - heading "$326.36" [level=4] [ref=e1237]
+                    - generic [ref=e1238]:
+                      - text: "+1.41"
+                      - generic [ref=e1239]: (0.43%)
+                - generic [ref=e1242]:
+                  - img [ref=e1244]
+                  - link "Eli Lilly & Co LLY" [ref=e1246] [cursor=pointer]:
+                    - /url: /companies/eli-lilly/
+                    - heading "Eli Lilly & Co" [level=4] [ref=e1247]
+                    - generic [ref=e1248]: LLY
+                  - generic [ref=e1249]:
+                    - heading "$1,105.00" [level=4] [ref=e1250]
+                    - generic [ref=e1251]:
+                      - text: "-21.80"
+                      - generic [ref=e1252]: (-1.94%)
+                - generic [ref=e1255]:
+                  - img [ref=e1257]
+                  - link "Mastercard MA" [ref=e1259] [cursor=pointer]:
+                    - /url: /companies/mastercard/
+                    - heading "Mastercard" [level=4] [ref=e1260]
+                    - generic [ref=e1261]: MA
+                  - generic [ref=e1262]:
+                    - heading "$493.98" [level=4] [ref=e1263]
+                    - generic [ref=e1264]:
+                      - text: "+0.23"
+                      - generic [ref=e1265]: (0.05%)
+                - generic [ref=e1268]:
+                  - img [ref=e1270]
+                  - link "Exxon Mobil XOM" [ref=e1272] [cursor=pointer]:
+                    - /url: /companies/exxon-mobil/
+                    - heading "Exxon Mobil" [level=4] [ref=e1273]
+                    - generic [ref=e1274]: XOM
+                  - generic [ref=e1275]:
+                    - heading "$145.26" [level=4] [ref=e1276]
+                    - generic [ref=e1277]:
+                      - text: "-1.70"
+                      - generic [ref=e1278]: (-1.16%)
+                - generic [ref=e1281]:
+                  - img [ref=e1283]
+                  - link "Costco Wholesale Corp COST" [ref=e1285] [cursor=pointer]:
+                    - /url: /companies/costco-wholesale/
+                    - heading "Costco Wholesale Corp" [level=4] [ref=e1286]
+                    - generic [ref=e1287]: COST
+                  - generic [ref=e1288]:
+                    - heading "$956.32" [level=4] [ref=e1289]
+                    - generic [ref=e1290]:
+                      - text: "-38.88"
+                      - generic [ref=e1291]: (-3.91%)
+                - generic [ref=e1294]:
+                  - img [ref=e1296]
+                  - link "Johnson & Johnson JNJ" [ref=e1298] [cursor=pointer]:
+                    - /url: /companies/johnson-johnson/
+                    - heading "Johnson & Johnson" [level=4] [ref=e1299]
+                    - generic [ref=e1300]: JNJ
+                  - generic [ref=e1301]:
+                    - heading "$225.33" [level=4] [ref=e1302]
+                    - generic [ref=e1303]:
+                      - text: "-5.47"
+                      - generic [ref=e1304]: (-2.37%)
+                - generic [ref=e1307]:
+                  - img [ref=e1309]
+                  - link "Procter & Gamble PG" [ref=e1311] [cursor=pointer]:
+                    - /url: /companies/procter-gamble/
+                    - heading "Procter & Gamble" [level=4] [ref=e1312]
+                    - generic [ref=e1313]: PG
+                  - generic [ref=e1314]:
+                    - heading "$143.56" [level=4] [ref=e1315]
+                    - generic [ref=e1316]:
+                      - text: "-2.35"
+                      - generic [ref=e1317]: (-1.61%)
+                - generic [ref=e1320]:
+                  - img [ref=e1322]
+                  - link "Home Depot HD" [ref=e1324] [cursor=pointer]:
+                    - /url: /companies/the-home-depot/
+                    - heading "Home Depot" [level=4] [ref=e1325]
+                    - generic [ref=e1326]: HD
+                  - generic [ref=e1327]:
+                    - heading "$317.14" [level=4] [ref=e1328]
+                    - generic [ref=e1329]:
+                      - text: "-4.07"
+                      - generic [ref=e1330]: (-1.27%)
+                - generic [ref=e1333]:
+                  - img [ref=e1335]
+                  - link "Bank of America BAC" [ref=e1337] [cursor=pointer]:
+                    - /url: /companies/bank-of-america/
+                    - heading "Bank of America" [level=4] [ref=e1338]
+                    - generic [ref=e1339]: BAC
+                  - generic [ref=e1340]:
+                    - heading "$51.60" [level=4] [ref=e1341]
+                    - generic [ref=e1342]:
+                      - text: "+0.83"
+                      - generic [ref=e1343]: (1.64%)
+                - generic [ref=e1346]:
+                  - img [ref=e1348]
+                  - link "AbbVie Inc. ABBV" [ref=e1350] [cursor=pointer]:
+                    - /url: /companies/abbvie/
+                    - heading "AbbVie Inc." [level=4] [ref=e1351]
+                    - generic [ref=e1352]: ABBV
+                  - generic [ref=e1353]:
+                    - heading "$217.72" [level=4] [ref=e1354]
+                    - generic [ref=e1355]:
+                      - text: "-0.91"
+                      - generic [ref=e1356]: (-0.42%)
+                - generic [ref=e1359]:
+                  - img [ref=e1361]
+                  - link "Palantir Technologies Inc. PLTR" [ref=e1363] [cursor=pointer]:
+                    - /url: /companies/palantir-technologies/
+                    - heading "Palantir Technologies Inc." [level=4] [ref=e1364]
+                    - generic [ref=e1365]: PLTR
+                  - generic [ref=e1366]:
+                    - heading "$156.54" [level=4] [ref=e1367]
+                    - generic [ref=e1368]:
+                      - text: "+13.20"
+                      - generic [ref=e1369]: (9.21%)
+                - generic [ref=e1372]:
+                  - img [ref=e1374]
+                  - link "Coca-Cola KO" [ref=e1376] [cursor=pointer]:
+                    - /url: /companies/coca-cola/
+                    - heading "Coca-Cola" [level=4] [ref=e1377]
+                    - generic [ref=e1378]: KO
+                  - generic [ref=e1379]:
+                    - heading "$79.01" [level=4] [ref=e1380]
+                    - generic [ref=e1381]:
+                      - text: "-1.40"
+                      - generic [ref=e1382]: (-1.74%)
+                - generic [ref=e1385]:
+                  - img [ref=e1387]
+                  - link "Philip Morris International PM" [ref=e1389] [cursor=pointer]:
+                    - /url: /companies/philip-morris-international/
+                    - heading "Philip Morris International" [level=4] [ref=e1390]
+                    - generic [ref=e1391]: PM
+                  - generic [ref=e1392]:
+                    - heading "$177.38" [level=4] [ref=e1393]
+                    - generic [ref=e1394]:
+                      - text: "-1.19"
+                      - generic [ref=e1395]: (-0.67%)
+                - generic [ref=e1398]:
+                  - img [ref=e1400]
+                  - link "UnitedHealth Group UNH" [ref=e1402] [cursor=pointer]:
+                    - /url: /companies/unitedhealth-group/
+                    - heading "UnitedHealth Group" [level=4] [ref=e1403]
+                    - generic [ref=e1404]: UNH
+                  - generic [ref=e1405]:
+                    - heading "$380.31" [level=4] [ref=e1406]
+                    - generic [ref=e1407]:
+                      - text: "-2.22"
+                      - generic [ref=e1408]: (-0.58%)
+                - generic [ref=e1411]:
+                  - img [ref=e1413]
+                  - link "IBM IBM" [ref=e1415] [cursor=pointer]:
+                    - /url: /companies/ibm/
+                    - heading "IBM" [level=4] [ref=e1416]
+                    - generic [ref=e1417]: IBM
+                  - generic [ref=e1418]:
+                    - heading "$297.80" [level=4] [ref=e1419]
+                    - generic [ref=e1420]:
+                      - text: "+33.58"
+                      - generic [ref=e1421]: (12.71%)
+                - generic [ref=e1424]:
+                  - img [ref=e1426]
+                  - link "Cisco Systems, Inc. CSCO" [ref=e1428] [cursor=pointer]:
+                    - /url: /companies/cisco-systems/
+                    - heading "Cisco Systems, Inc." [level=4] [ref=e1429]
+                    - generic [ref=e1430]: CSCO
+                  - generic [ref=e1431]:
+                    - heading "$120.42" [level=4] [ref=e1432]
+                    - generic [ref=e1433]:
+                      - text: "+1.78"
+                      - generic [ref=e1434]: (1.50%)
+                - generic [ref=e1437]:
+                  - img [ref=e1439]
+                  - link "T-Mobile US TMUS" [ref=e1441] [cursor=pointer]:
+                    - /url: /companies/metropcs-communications/
+                    - heading "T-Mobile US" [level=4] [ref=e1442]
+                    - generic [ref=e1443]: TMUS
+                  - generic [ref=e1444]:
+                    - heading "$187.53" [level=4] [ref=e1445]
+                    - generic [ref=e1446]:
+                      - text: "-0.46"
+                      - generic [ref=e1447]: (-0.24%)
+                - generic [ref=e1450]:
+                  - img [ref=e1452]
+                  - link "Wells Fargo & Co. WFC" [ref=e1454] [cursor=pointer]:
+                    - /url: /companies/wells-fargo/
+                    - heading "Wells Fargo & Co." [level=4] [ref=e1455]
+                    - generic [ref=e1456]: WFC
+                  - generic [ref=e1457]:
+                    - heading "$77.54" [level=4] [ref=e1458]
+                    - generic [ref=e1459]:
+                      - text: "+0.89"
+                      - generic [ref=e1460]: (1.16%)
+                - generic [ref=e1463]:
+                  - img [ref=e1465]
+                  - link "General Electric GE" [ref=e1467] [cursor=pointer]:
+                    - /url: /companies/ge-aerospace/
+                    - heading "General Electric" [level=4] [ref=e1468]
+                    - generic [ref=e1469]: GE
+                  - generic [ref=e1470]:
+                    - heading "$323.76" [level=4] [ref=e1471]
+                    - generic [ref=e1472]:
+                      - text: "+2.94"
+                      - generic [ref=e1473]: (0.92%)
+                - generic [ref=e1476]:
+                  - img [ref=e1478]
+                  - link "Salesforce CRM" [ref=e1480] [cursor=pointer]:
+                    - /url: /companies/salesforce/
+                    - heading "Salesforce" [level=4] [ref=e1481]
+                    - generic [ref=e1482]: CRM
+                  - generic [ref=e1483]:
+                    - heading "$191.10" [level=4] [ref=e1484]
+                    - generic [ref=e1485]:
+                      - text: "+14.93"
+                      - generic [ref=e1486]: (8.47%)
+                - generic [ref=e1489]:
+                  - img [ref=e1491]
+                  - link "Chevron CVX" [ref=e1493] [cursor=pointer]:
+                    - /url: /companies/chevron/
+                    - heading "Chevron" [level=4] [ref=e1494]
+                    - generic [ref=e1495]: CVX
+                  - generic [ref=e1496]:
+                    - heading "$182.46" [level=4] [ref=e1497]
+                    - generic [ref=e1498]:
+                      - text: "-0.57"
+                      - generic [ref=e1499]: (-0.31%)
+                - generic [ref=e1502]:
+                  - img [ref=e1504]
+                  - link "Abbott Laboratories ABT" [ref=e1506] [cursor=pointer]:
+                    - /url: /companies/abbott-laboratories/
+                    - heading "Abbott Laboratories" [level=4] [ref=e1507]
+                    - generic [ref=e1508]: ABT
+                  - generic [ref=e1509]:
+                    - heading "$85.60" [level=4] [ref=e1510]
+                    - generic [ref=e1511]:
+                      - text: "-0.70"
+                      - generic [ref=e1512]: (-0.81%)
+                - generic [ref=e1515]:
+                  - img [ref=e1517]
+                  - link "Morgan Stanley MS" [ref=e1519] [cursor=pointer]:
+                    - /url: /companies/morgan-stanley/
+                    - heading "Morgan Stanley" [level=4] [ref=e1520]
+                    - generic [ref=e1521]: MS
+                  - generic [ref=e1522]:
+                    - heading "$208.00" [level=4] [ref=e1523]
+                    - generic [ref=e1524]:
+                      - text: "+4.21"
+                      - generic [ref=e1525]: (2.07%)
+                - generic [ref=e1528]:
+                  - img [ref=e1530]
+                  - link "American Express AXP" [ref=e1532] [cursor=pointer]:
+                    - /url: /companies/american-express/
+                    - heading "American Express" [level=4] [ref=e1533]
+                    - generic [ref=e1534]: AXP
+                  - generic [ref=e1535]:
+                    - heading "$316.47" [level=4] [ref=e1536]
+                    - generic [ref=e1537]:
+                      - text: "+1.35"
+                      - generic [ref=e1538]: (0.43%)
+                - generic [ref=e1541]:
+                  - img [ref=e1543]
+                  - link "Walt Disney DIS" [ref=e1545] [cursor=pointer]:
+                    - /url: /companies/the-walt-disney-company/
+                    - heading "Walt Disney" [level=4] [ref=e1546]
+                    - generic [ref=e1547]: DIS
+                  - generic [ref=e1548]:
+                    - heading "$101.83" [level=4] [ref=e1549]
+                    - generic [ref=e1550]:
+                      - text: "-1.90"
+                      - generic [ref=e1551]: (-1.83%)
+                - generic [ref=e1554]:
+                  - img [ref=e1556]
+                  - link "Uber Technologies, Inc. UBER" [ref=e1558] [cursor=pointer]:
+                    - /url: /companies/uber/
+                    - heading "Uber Technologies, Inc." [level=4] [ref=e1559]
+                    - generic [ref=e1560]: UBER
+                  - generic [ref=e1561]:
+                    - heading "$70.40" [level=4] [ref=e1562]
+                    - generic [ref=e1563]:
+                      - text: "-0.52"
+                      - generic [ref=e1564]: (-0.73%)
+                - generic [ref=e1567]:
+                  - img [ref=e1569]
+                  - link "NVIDIA Corporation NVDA" [ref=e1571] [cursor=pointer]:
+                    - /url: /companies/nvidia/
+                    - heading "NVIDIA Corporation" [level=4] [ref=e1572]
+                    - generic [ref=e1573]: NVDA
+                  - generic [ref=e1574]:
+                    - heading "$211.14" [level=4] [ref=e1575]
+                    - generic [ref=e1576]:
+                      - text: "-3.11"
+                      - generic [ref=e1577]: (-1.45%)
+                - generic [ref=e1580]:
+                  - img [ref=e1582]
+                  - link "Tesla TSLA" [ref=e1584] [cursor=pointer]:
+                    - /url: /companies/tesla/
+                    - heading "Tesla" [level=4] [ref=e1585]
+                    - generic [ref=e1586]: TSLA
+                  - generic [ref=e1587]:
+                    - heading "$435.79" [level=4] [ref=e1588]
+                    - generic [ref=e1589]:
+                      - text: "-6.31"
+                      - generic [ref=e1590]: (-1.43%)
+            - generic [ref=e1592]:
+              - generic [ref=e1596]:
+                - link "Fintech" [ref=e1598] [cursor=pointer]:
+                  - /url: /fintech/
+                - generic [ref=e1599]:
+                  - heading "Class Action Claims Administrator Agrees To Stop Taking Vendor Rebates After Kickback Scrutiny" [level=3] [ref=e1600]:
+                    - link "Class Action Claims Administrator Agrees To Stop Taking Vendor Rebates After Kickback Scrutiny" [ref=e1601] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/jeffkauflin/2026/05/29/class-action-claims-administrator-agrees-to-stop-taking-vendor-rebates-after-kickback-scrutiny/
+                  - generic [ref=e1603]:
+                    - paragraph [ref=e1604]:
+                      - text: By
+                      - link "Jeff Kauflin" [ref=e1605] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/jeffkauflin/
+                      - text: ","
+                    - paragraph [ref=e1606]: Senior Editor
+              - generic [ref=e1610]:
+                - link "Small Business" [ref=e1612] [cursor=pointer]:
+                  - /url: /small-business/
+                - generic [ref=e1613]:
+                  - 'heading "New AI Warning: Don’t Discuss Your Legal Problems With Claude Or ChatGPT" [level=3] [ref=e1614]':
+                    - 'link "New AI Warning: Don’t Discuss Your Legal Problems With Claude Or ChatGPT" [ref=e1615] [cursor=pointer]':
+                      - /url: http://www.forbes.com/sites/johnschroyer/2026/05/28/new-ai-warning-dont-discuss-your-legal-problems-with-claude-or-chatgpt/
+                  - generic [ref=e1617]:
+                    - paragraph [ref=e1618]:
+                      - text: By
+                      - link "John Schroyer" [ref=e1619] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/johnschroyer/
+                      - text: ","
+                    - paragraph [ref=e1620]: Staff Writer
+              - generic [ref=e1624]:
+                - link "Education" [ref=e1626] [cursor=pointer]:
+                  - /url: /education/
+                - generic [ref=e1627]:
+                  - heading "5 Tips For Picking A College And A Major In The Age Of AI" [level=3] [ref=e1628]:
+                    - link "5 Tips For Picking A College And A Major In The Age Of AI" [ref=e1629] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/lisachambers/2026/05/28/5-tips-for-picking-a-college-and-a-major-in-the-age-of-ai/
+                  - generic [ref=e1631]:
+                    - paragraph [ref=e1632]:
+                      - text: By
+                      - link "Lisa Chambers" [ref=e1633] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/lisachambers/
+                      - text: ","
+                    - paragraph [ref=e1634]: Staff Writer
+              - generic [ref=e1638]:
+                - link "Money" [ref=e1640] [cursor=pointer]:
+                  - /url: /money/
+                - generic [ref=e1641]:
+                  - heading "AI And The End Of Recessions As We Know Them" [level=3] [ref=e1642]:
+                    - link "AI And The End Of Recessions As We Know Them" [ref=e1643] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/brandonkochkodin/2026/05/28/ai-and-the-end-of-recessions-as-we-know-them/
+                  - generic [ref=e1645]:
+                    - paragraph [ref=e1646]:
+                      - text: By
+                      - link "Brandon Kochkodin" [ref=e1647] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/brandonkochkodin/
+                      - text: ","
+                    - paragraph [ref=e1648]: Senior Writer
+      - generic [ref=e1652]:
+        - heading "Forbes Vetted" [level=2] [ref=e1654]
+        - generic [ref=e1656]:
+          - generic [ref=e1659]:
+            - 'link "Best Father’s Day Gifts 2026: 37 Thoughtful Ideas For Any Kind Of Dad" [ref=e1660] [cursor=pointer]':
+              - /url: http://www.forbes.com/sites/forbes-personal-shopper/2026/05/27/best-fathers-day-gift/
+              - 'img "Best Father’s Day Gifts 2026: 37 Thoughtful Ideas For Any Kind Of Dad" [ref=e1661]'
+            - generic [ref=e1662]:
+              - link "Forbes Vetted" [ref=e1664] [cursor=pointer]:
+                - /url: /vetted/
+              - generic [ref=e1665]:
+                - 'heading "Best Father’s Day Gifts 2026: 37 Thoughtful Ideas For Any Kind Of Dad" [level=3] [ref=e1666]':
+                  - 'link "Best Father’s Day Gifts 2026: 37 Thoughtful Ideas For Any Kind Of Dad" [ref=e1667] [cursor=pointer]':
+                    - /url: http://www.forbes.com/sites/forbes-personal-shopper/2026/05/27/best-fathers-day-gift/
+                - link "From gourmet food to gaming consoles, we curated the best Father's Day gift ideas to treat Dad this year. Here are our editors' top picks that will arrive before June 21." [ref=e1668] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/forbes-personal-shopper/2026/05/27/best-fathers-day-gift/
+                  - paragraph [ref=e1669]: From gourmet food to gaming consoles, we curated the best Father's Day gift ideas to treat Dad this year. Here are our editors' top picks that will arrive before June 21.
+                - generic [ref=e1670]:
+                  - generic [ref=e1671]:
+                    - paragraph [ref=e1672]:
+                      - text: By
+                      - link "Jennifer Ferrise" [ref=e1673] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/jennifer-ferrise/
+                      - text: ","
+                    - paragraph [ref=e1674]: Senior Editor
+                  - generic [ref=e1675]:
+                    - paragraph [ref=e1676]:
+                      - text: and
+                      - link "Fran Sales" [ref=e1677] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/fransales/
+                      - text: ","
+                    - paragraph [ref=e1678]: Commerce Writer
+          - generic [ref=e1680]:
+            - generic [ref=e1683]:
+              - 'link "The Best Portable ACs Of 2026: 5 Units Proven To Stand Up To Heatwaves" [ref=e1684] [cursor=pointer]':
+                - /url: http://www.forbes.com/sites/forbes-personal-shopper/article/best-portable-air-conditioner/
+                - 'img "The Best Portable ACs Of 2026: 5 Units Proven To Stand Up To Heatwaves" [ref=e1685]'
+              - generic [ref=e1686]:
+                - link "Forbes Vetted" [ref=e1688] [cursor=pointer]:
+                  - /url: /vetted/
+                - generic [ref=e1689]:
+                  - 'heading "The Best Portable ACs Of 2026: 5 Units Proven To Stand Up To Heatwaves" [level=3] [ref=e1690]':
+                    - 'link "The Best Portable ACs Of 2026: 5 Units Proven To Stand Up To Heatwaves" [ref=e1691] [cursor=pointer]':
+                      - /url: http://www.forbes.com/sites/forbes-personal-shopper/article/best-portable-air-conditioner/
+                  - generic [ref=e1692]:
+                    - generic [ref=e1693]:
+                      - paragraph [ref=e1694]:
+                        - text: By
+                        - link "Kelly O'Sullivan" [ref=e1695] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/kellyosullivan/
+                        - text: ","
+                      - paragraph [ref=e1696]: Home & Kitchen Editor
+                    - generic [ref=e1697]:
+                      - paragraph [ref=e1698]:
+                        - text: and
+                        - link "Fran Sales" [ref=e1699] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/fransales/
+                        - text: ","
+                      - paragraph [ref=e1700]: Commerce Writer
+            - generic [ref=e1704]:
+              - link "Forbes Vetted" [ref=e1706] [cursor=pointer]:
+                - /url: /vetted/
+              - generic [ref=e1707]:
+                - heading "The Forbes Vetted Reset Your Sleep Quiz" [level=3] [ref=e1708]:
+                  - link "The Forbes Vetted Reset Your Sleep Quiz" [ref=e1709] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/forbes-personal-shopper/2026/05/04/forbes-vetted-sleep-quiz-sleep-week/
+                - generic [ref=e1711]:
+                  - paragraph [ref=e1712]:
+                    - text: By
+                    - link "Forbes Vetted Editors" [ref=e1713] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/forbes-finds/
+                    - text: ","
+                  - paragraph [ref=e1714]: Writer
+            - generic [ref=e1718]:
+              - link "Forbes Vetted" [ref=e1720] [cursor=pointer]:
+                - /url: /vetted/
+              - generic [ref=e1721]:
+                - heading "I Talked To Dietitians To Find The Best Protein Powders Of 2026" [level=3] [ref=e1722]:
+                  - link "I Talked To Dietitians To Find The Best Protein Powders Of 2026" [ref=e1723] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/forbes-personal-shopper/article/best-protein-powder/
+                - generic [ref=e1724]:
+                  - generic [ref=e1725]:
+                    - paragraph [ref=e1726]:
+                      - text: By
+                      - link "Cam Vigliotta" [ref=e1727] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/cam-Vigliotta/
+                      - text: ","
+                    - paragraph [ref=e1728]: Gear Editor
+                  - generic [ref=e1729]:
+                    - paragraph [ref=e1730]:
+                      - text: and
+                      - link "Brinda Ayer" [ref=e1731] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/brinda-ayer/
+                      - text: ","
+                    - paragraph [ref=e1732]: Forbes Staff
+            - generic [ref=e1736]:
+              - link "Forbes Vetted" [ref=e1738] [cursor=pointer]:
+                - /url: /vetted/
+              - generic [ref=e1739]:
+                - 'heading "Oura Ring 5 Launch: Preorder Its Thinnest And Most Intelligent Smart Ring" [level=3] [ref=e1740]':
+                  - 'link "Oura Ring 5 Launch: Preorder Its Thinnest And Most Intelligent Smart Ring" [ref=e1741] [cursor=pointer]':
+                    - /url: http://www.forbes.com/sites/forbes-personal-shopper/2026/05/28/oura-ring-5-launch/
+                - generic [ref=e1743]:
+                  - paragraph [ref=e1744]:
+                    - text: By
+                    - link "Rebecca Isaacs" [ref=e1745] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/rebecca-isaacs/
+                    - text: ","
+                  - paragraph [ref=e1746]: Tech & Electronics Editor
+      - generic [ref=e1748]:
+        - generic [ref=e1750]:
+          - heading "Education" [level=2] [ref=e1752]
+          - generic [ref=e1754]:
+            - generic [ref=e1758]:
+              - link "Business" [ref=e1760] [cursor=pointer]:
+                - /url: /business/
+              - generic [ref=e1761]:
+                - 'heading "The New Ivies: 20 Great Employer-Friendly Colleges Embracing AI" [level=3] [ref=e1762]':
+                  - 'link "The New Ivies: 20 Great Employer-Friendly Colleges Embracing AI" [ref=e1763] [cursor=pointer]':
+                    - /url: http://www.forbes.com/sites/aliciapark/2026/04/08/the-new-ivies-20-great-employer-friendly-colleges-embracing-ai/
+                - generic [ref=e1765]:
+                  - paragraph [ref=e1766]:
+                    - text: By
+                    - link "Alicia Park" [ref=e1767] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/aliciapark/
+                    - text: ","
+                  - paragraph [ref=e1768]: Reporter
+            - generic [ref=e1772]:
+              - link "Money" [ref=e1774] [cursor=pointer]:
+                - /url: /money/
+              - generic [ref=e1775]:
+                - heading "Forbes’ Top 25 Public Colleges" [level=3] [ref=e1776]:
+                  - link "Forbes’ Top 25 Public Colleges" [ref=e1777] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/fionariley/2025/08/26/forbes-top-25-public-colleges/
+                - generic [ref=e1779]:
+                  - paragraph [ref=e1780]:
+                    - text: By
+                    - link "Fiona Riley" [ref=e1781] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/fionariley/
+                    - text: ","
+                  - paragraph [ref=e1782]: Contributor
+            - generic [ref=e1786]:
+              - link "Education" [ref=e1788] [cursor=pointer]:
+                - /url: /education/
+              - generic [ref=e1789]:
+                - heading "The Ivy League Conferred 43 Honorary Degrees This Spring. Here’s Who Got Them" [level=3] [ref=e1790]:
+                  - link "The Ivy League Conferred 43 Honorary Degrees This Spring. Here’s Who Got Them" [ref=e1791] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/michaeltnietzel/2026/05/29/the-ivy-league-conferred-43-honorary-degrees-this-spring-heres-who-got-them/
+                - generic [ref=e1793]:
+                  - paragraph [ref=e1794]:
+                    - text: By
+                    - link "Michael T. Nietzel" [ref=e1795] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/michaeltnietzel/
+                    - text: ","
+                  - paragraph [ref=e1796]: Senior Contributor
+            - generic [ref=e1800]:
+              - link "Education" [ref=e1802] [cursor=pointer]:
+                - /url: /education/
+              - generic [ref=e1803]:
+                - heading "Michigan State President Exits For Clemson, Cites Board Dysfunction On Way Out" [level=3] [ref=e1804]:
+                  - link "Michigan State President Exits For Clemson, Cites Board Dysfunction On Way Out" [ref=e1805] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/michaeltnietzel/2026/05/28/michigan-state-president-exits-for-clemson-cites-board-dysfunction-on-way-out/
+                - generic [ref=e1807]:
+                  - paragraph [ref=e1808]:
+                    - text: By
+                    - link "Michael T. Nietzel" [ref=e1809] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/michaeltnietzel/
+                    - text: ","
+                  - paragraph [ref=e1810]: Senior Contributor
+        - generic [ref=e1812]:
+          - heading "Lifestyle" [level=2] [ref=e1814]
+          - generic [ref=e1816]:
+            - generic [ref=e1819]:
+              - link "This Research-Driven Skincare Brand Erases Signs Of Aging—And Save Lives" [ref=e1820] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/celiashatzman/2026/05/29/this-research-driven-skincare-brand-erases-signs-of-aging-and-save-lives/
+                - img "This Research-Driven Skincare Brand Erases Signs Of Aging—And Save Lives" [ref=e1821]
+              - generic [ref=e1822]:
+                - link "Style & Beauty" [ref=e1824] [cursor=pointer]:
+                  - /url: /style-beauty/
+                - generic [ref=e1825]:
+                  - heading "This Research-Driven Skincare Brand Erases Signs Of Aging—And Save Lives" [level=3] [ref=e1826]:
+                    - link "This Research-Driven Skincare Brand Erases Signs Of Aging—And Save Lives" [ref=e1827] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/celiashatzman/2026/05/29/this-research-driven-skincare-brand-erases-signs-of-aging-and-save-lives/
+                  - link "The science behind Sweet Chemistry provides the technology for impressively efficacious anti-aging skincare products—and the potential to save thousands of lives by healing organs." [ref=e1828] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/celiashatzman/2026/05/29/this-research-driven-skincare-brand-erases-signs-of-aging-and-save-lives/
+                    - paragraph [ref=e1829]: The science behind Sweet Chemistry provides the technology for impressively efficacious anti-aging skincare products—and the potential to save thousands of lives by healing organs.
+                  - generic [ref=e1831]:
+                    - paragraph [ref=e1832]:
+                      - text: By
+                      - link "Celia Shatzman" [ref=e1833] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/celiashatzman/
+                      - text: ","
+                    - paragraph [ref=e1834]: Senior Contributor
+            - generic [ref=e1836]:
+              - generic [ref=e1839]:
+                - link "52 All-American Summer Getaways, Richard Branson’s Mallorca Resort And More Travel News" [ref=e1840] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/passport/2026/05/29/52-all-american-summer-getaways-richard-bransons-mallorca-resort-and-more-travel-news/
+                  - img "52 All-American Summer Getaways, Richard Branson’s Mallorca Resort And More Travel News" [ref=e1841]
+                - generic [ref=e1842]:
+                  - link "Travel" [ref=e1844] [cursor=pointer]:
+                    - /url: /travel/
+                  - generic [ref=e1845]:
+                    - heading "52 All-American Summer Getaways, Richard Branson’s Mallorca Resort And More Travel News" [level=3] [ref=e1846]:
+                      - link "52 All-American Summer Getaways, Richard Branson’s Mallorca Resort And More Travel News" [ref=e1847] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/passport/2026/05/29/52-all-american-summer-getaways-richard-bransons-mallorca-resort-and-more-travel-news/
+                    - generic [ref=e1849]:
+                      - paragraph [ref=e1850]:
+                        - text: By
+                        - link "Passport by ForbesLife" [ref=e1851] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/passport/
+                        - text: ","
+                      - paragraph [ref=e1852]: Forbes Staff
+              - generic [ref=e1856]:
+                - link "Forbes Travel Guide" [ref=e1858] [cursor=pointer]:
+                  - /url: /forbes-travel-guide/
+                - generic [ref=e1859]:
+                  - heading "5 Must-Try NYC Cocktails" [level=3] [ref=e1860]:
+                    - link "5 Must-Try NYC Cocktails" [ref=e1861] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/forbestravelguide/2026/05/29/5-must-try-nyc-cocktails/
+                  - generic [ref=e1863]:
+                    - paragraph [ref=e1864]:
+                      - text: By
+                      - link "Spencer Whaley" [ref=e1865] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/forbestravelguide/
+                      - text: ","
+                    - paragraph [ref=e1866]: Contributor
+              - generic [ref=e1871]:
+                - 'heading "New York Restaurants June 2026: Where To Go" [level=3] [ref=e1872]':
+                  - 'link "New York Restaurants June 2026: Where To Go" [ref=e1873] [cursor=pointer]':
+                    - /url: http://www.forbes.com/sites/restaurants-go-consider-stop/2026/05/29/new-york-restaurants-june-2026-where-to-go/
+                - generic [ref=e1875]:
+                  - paragraph [ref=e1876]:
+                    - text: By
+                    - link "Steve Forbes" [ref=e1877] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/steveforbes/
+                    - text: ","
+                  - paragraph [ref=e1878]: Forbes Staff
+      - generic [ref=e1882]:
+        - heading "Forbes Featured" [level=2] [ref=e1884]
+        - generic [ref=e1886]:
+          - heading "2026 America's Top Wealth Advisors List" [level=3] [ref=e1892]:
+            - link "2026 America's Top Wealth Advisors List" [ref=e1893] [cursor=pointer]:
+              - /url: https://www.forbes.com/lists/top-wealth-advisors/
+          - generic [ref=e1897]:
+            - link "Blood Cancer United BRANDVOICE | Paid Program" [ref=e1899] [cursor=pointer]:
+              - /url: https://www.forbes.com/sites/bloodcancerunited/
+            - generic [ref=e1900]:
+              - heading "Uniting To Advance Blood Cancer Research" [level=3] [ref=e1901]:
+                - link "Uniting To Advance Blood Cancer Research" [ref=e1902] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/bloodcancerunited/2026/05/13/uniting-to-advance-blood-cancer-research/
+              - generic [ref=e1904]:
+                - paragraph [ref=e1905]:
+                  - text: By
+                  - link "Blood Cancer United" [ref=e1906] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/bloodcancerunited/people/bloodcancerunited/
+                  - text: ","
+                - paragraph [ref=e1907]: Brand Contributor
+          - generic [ref=e1911]:
+            - link "Dell Technologies BRANDVOICE | Paid Program" [ref=e1913] [cursor=pointer]:
+              - /url: https://www.forbes.com/sites/delltechnologies/
+            - generic [ref=e1914]:
+              - 'heading "The Transformative Impact Of AI Agents On Retail: Navigating Power Dynamics And The Rise Of AI Agent Optimization" [level=3] [ref=e1915]':
+                - 'link "The Transformative Impact Of AI Agents On Retail: Navigating Power Dynamics And The Rise Of AI Agent Optimization" [ref=e1916] [cursor=pointer]':
+                  - /url: http://www.forbes.com/sites/delltechnologies/2026/04/23/the-transformative-impact-of-ai-agents-on-retail-navigating-power-dynamics-and-the-rise-of-ai-agent-optimization/
+              - generic [ref=e1918]:
+                - paragraph [ref=e1919]:
+                  - text: By
+                  - link "Cindy Carlson" [ref=e1920] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/delltechnologies/people/cindycarlson/
+                  - text: ","
+                - paragraph [ref=e1921]: Brand Contributor
+          - heading "2026 Best-In-State Top Wealth Advisors List" [level=3] [ref=e1927]:
+            - link "2026 Best-In-State Top Wealth Advisors List" [ref=e1928] [cursor=pointer]:
+              - /url: https://www.forbes.com/lists/best-in-state-wealth-advisors/
+      - generic [ref=e1930]:
+        - generic [ref=e1932]:
+          - heading "Healthcare" [level=2] [ref=e1934]
+          - generic [ref=e1936]:
+            - generic [ref=e1940]:
+              - link "Healthcare" [ref=e1942] [cursor=pointer]:
+                - /url: /healthcare/
+              - generic [ref=e1943]:
+                - heading "UnitedHealthcare Reduces Most Prior Approvals For Pediatric Patients" [level=3] [ref=e1944]:
+                  - link "UnitedHealthcare Reduces Most Prior Approvals For Pediatric Patients" [ref=e1945] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/brucejapsen/2026/05/29/unitedhealthcare-reduces-most-prior-approvals-for-pediatric-patients/
+                - generic [ref=e1947]:
+                  - paragraph [ref=e1948]:
+                    - text: By
+                    - link "Bruce Japsen" [ref=e1949] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/brucejapsen/
+                    - text: ","
+                  - paragraph [ref=e1950]: Senior Contributor
+            - generic [ref=e1954]:
+              - link "Newsletters" [ref=e1956] [cursor=pointer]:
+                - /url: /newsletters-old/
+              - generic [ref=e1957]:
+                - heading "Eli Lilly’s $4 Billion Vaccine Bet" [level=3] [ref=e1958]:
+                  - link "Eli Lilly’s $4 Billion Vaccine Bet" [ref=e1959] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/innovationrx/2026/05/27/the-ebola-epidemic-is-spreading/
+                - generic [ref=e1960]:
+                  - generic [ref=e1961]:
+                    - paragraph [ref=e1962]:
+                      - text: By
+                      - link "Amy Feldman" [ref=e1963] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/amyfeldman/
+                      - text: ","
+                    - paragraph [ref=e1964]: Senior Editor
+                  - generic [ref=e1965]:
+                    - paragraph [ref=e1966]:
+                      - text: and
+                      - link "Alex Knapp" [ref=e1967] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/alexknapp/
+                      - text: ","
+                    - paragraph [ref=e1968]: Senior Editor
+            - generic [ref=e1972]:
+              - link "Healthcare" [ref=e1974] [cursor=pointer]:
+                - /url: /healthcare/
+              - generic [ref=e1975]:
+                - heading "Health Groups Launch ‘One Nation, Overcharged’ Campaign As Affordability Grips U.S." [level=3] [ref=e1976]:
+                  - link "Health Groups Launch ‘One Nation, Overcharged’ Campaign As Affordability Grips U.S." [ref=e1977] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/brucejapsen/2026/05/27/as-affordability-grips-us-health-groups-launch-one-nation-overcharged-campaign/
+                - generic [ref=e1979]:
+                  - paragraph [ref=e1980]:
+                    - text: By
+                    - link "Bruce Japsen" [ref=e1981] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/brucejapsen/
+                    - text: ","
+                  - paragraph [ref=e1982]: Senior Contributor
+            - generic [ref=e1986]:
+              - link "Healthcare" [ref=e1988] [cursor=pointer]:
+                - /url: /healthcare/
+              - generic [ref=e1989]:
+                - heading "Co-Pays For GLP-1 Weight Loss Drugs To Rise If They’re Even Covered" [level=3] [ref=e1990]:
+                  - link "Co-Pays For GLP-1 Weight Loss Drugs To Rise If They’re Even Covered" [ref=e1991] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/brucejapsen/2026/05/24/co-pays-for-glp-1-weight-loss-drugs-to-rise-if-theyre-even-covered/
+                - generic [ref=e1993]:
+                  - paragraph [ref=e1994]:
+                    - text: By
+                    - link "Bruce Japsen" [ref=e1995] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/brucejapsen/
+                    - text: ","
+                  - paragraph [ref=e1996]: Senior Contributor
+        - generic [ref=e1998]:
+          - heading "Innovation" [level=2] [ref=e2000]
+          - generic [ref=e2002]:
+            - generic [ref=e2005]:
+              - link "Meet The Doctor-Turned-Entrepreneur Using AI To Save Lives" [ref=e2006] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/zinnialee/2026/05/27/meet-the-doctor-turned-entrepreneur-using-ai-to-save-lives/
+                - img "Meet The Doctor-Turned-Entrepreneur Using AI To Save Lives" [ref=e2007]
+              - generic [ref=e2008]:
+                - link "Asia" [ref=e2010] [cursor=pointer]:
+                  - /url: /asia/
+                - generic [ref=e2011]:
+                  - heading "Meet The Doctor-Turned-Entrepreneur Using AI To Save Lives" [level=3] [ref=e2012]:
+                    - link "Meet The Doctor-Turned-Entrepreneur Using AI To Save Lives" [ref=e2013] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/zinnialee/2026/05/27/meet-the-doctor-turned-entrepreneur-using-ai-to-save-lives/
+                  - link "Aengus Tran traded medical practice to build AI software that delivers quick and accurate diagnoses of X-rays and scans. Now, the 32-year-old CEO of Sydney-based Harrison.ai and a 30 Under 30 Asia alum, is targeting America’s overstretched healthcare system." [ref=e2014] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/zinnialee/2026/05/27/meet-the-doctor-turned-entrepreneur-using-ai-to-save-lives/
+                    - paragraph [ref=e2015]: Aengus Tran traded medical practice to build AI software that delivers quick and accurate diagnoses of X-rays and scans. Now, the 32-year-old CEO of Sydney-based Harrison.ai and a 30 Under 30 Asia alum, is targeting America’s overstretched healthcare system.
+                  - generic [ref=e2017]:
+                    - paragraph [ref=e2018]:
+                      - text: By
+                      - link "Zinnia Lee" [ref=e2019] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/zinnialee/
+                      - text: ","
+                    - paragraph [ref=e2020]: Forbes Staff
+            - generic [ref=e2022]:
+              - generic [ref=e2025]:
+                - link "Boom Times For The Battery Energy Storage Market" [ref=e2026] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/current-climate/2026/05/26/boom-times-for-energy-storage-batteries/
+                  - img "Boom Times For The Battery Energy Storage Market" [ref=e2027]
+                - generic [ref=e2028]:
+                  - link "Newsletters" [ref=e2030] [cursor=pointer]:
+                    - /url: /newsletters-old/
+                  - generic [ref=e2031]:
+                    - heading "Boom Times For The Battery Energy Storage Market" [level=3] [ref=e2032]:
+                      - link "Boom Times For The Battery Energy Storage Market" [ref=e2033] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/current-climate/2026/05/26/boom-times-for-energy-storage-batteries/
+                    - generic [ref=e2035]:
+                      - paragraph [ref=e2036]:
+                        - text: By
+                        - link "Alan Ohnsman" [ref=e2037] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/alanohnsman/
+                        - text: ","
+                      - paragraph [ref=e2038]: Senior Editor
+              - generic [ref=e2042]:
+                - link "Innovation" [ref=e2044] [cursor=pointer]:
+                  - /url: /innovation/
+                - generic [ref=e2045]:
+                  - heading "How To Fact Check AI, According To Tech Experts" [level=3] [ref=e2046]:
+                    - link "How To Fact Check AI, According To Tech Experts" [ref=e2047] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/technology/article/how-to-fact-check-ai/
+                  - generic [ref=e2049]:
+                    - paragraph [ref=e2050]:
+                      - text: By
+                      - link "Joe McKendrick" [ref=e2051] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/joemckendrick/
+                      - text: ","
+                    - paragraph [ref=e2052]: Senior Contributor
+              - generic [ref=e2056]:
+                - link "Hollywood & Entertainment" [ref=e2058] [cursor=pointer]:
+                  - /url: /hollywood-entertainment/
+                - generic [ref=e2059]:
+                  - 'heading "No Off-Season: Inside ‘Heated Rivalry’ And Its Growing Cultural Footprint" [level=3] [ref=e2060]':
+                    - 'link "No Off-Season: Inside ‘Heated Rivalry’ And Its Growing Cultural Footprint" [ref=e2061] [cursor=pointer]':
+                      - /url: http://www.forbes.com/sites/oliviashalhoup/2026/05/19/heated-rivalry-fandom-season-2/
+                  - generic [ref=e2063]:
+                    - paragraph [ref=e2064]:
+                      - text: By
+                      - link "Olivia Shalhoup" [ref=e2065] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/oliviashalhoup/
+                      - text: ","
+                    - paragraph [ref=e2066]: Contributor
+      - generic [ref=e2070]: Advertisement
+      - generic [ref=e2074]:
+        - heading "News Break" [level=2] [ref=e2076]
+        - generic [ref=e2078]:
+          - generic [ref=e2080]:
+            - generic [ref=e2081]:
+              - text: Quote Of The Day
+              - paragraph [ref=e2082]: "“One of the biggest questions founders need to ask is: 'Is this good for me, or is this good for the business?' Those are two very different things.”"
+              - generic [ref=e2083]:
+                - generic [ref=e2084]: Jaclyn Johnson,
+                - generic [ref=e2085]: Founder of Create & Cultivate
+            - generic [ref=e2086]:
+              - list [ref=e2087]:
+                - listitem [ref=e2088]:
+                  - link "Share this page on facebook (opens in a new window)" [ref=e2089] [cursor=pointer]:
+                    - /url: https://www.facebook.com/dialog/feed?app_id=123694841080850&link=https%3A%2F%2Fwww.forbes.com%2Fquote-of-the-day%2F6a1991b4ed3a6d0dda5b89d9%3Futm_source=facebook%26utm_medium=qotd%26utm_campaign=6a1991b4ed3a6d0dda5b89d9&quote=Quote%20Of%20The%20Day%20via%20@Forbes
+                    - img [ref=e2090]
+                - listitem [ref=e2092]:
+                  - link "Share this page on x (opens in a new window)" [ref=e2093] [cursor=pointer]:
+                    - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.forbes.com/quote-of-the-day%2F6a1991b4ed3a6d0dda5b89d9%3Futm_source=twitter%26utm_medium=qotd%26utm_campaign=6a1991b4ed3a6d0dda5b89d9&text=Quote%20Of%20The%20Day%20via%20@Forbes
+                    - img [ref=e2094]
+                - listitem [ref=e2096]:
+                  - link "Share this page on linkedin (opens in a new window)" [ref=e2097] [cursor=pointer]:
+                    - /url: https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.forbes.com%2Fquote-of-the-day%2F6a1991b4ed3a6d0dda5b89d9%3Futm_source%3Dlinkedin%26utm_medium%3Dqotd%26utm_campaign%3D6a1991b4ed3a6d0dda5b89d9&summary%3DQuote%20Of%20The%20Day%20via%20@Forbes
+                    - img [ref=e2098]
+                - listitem [ref=e2100]:
+                  - link "Share this page on email (opens in a new window)" [ref=e2101] [cursor=pointer]:
+                    - /url: "mailto:?subject=Forbes%20Quote%20Of%20The%20Day&body=“One of the biggest questions founders need to ask is: 'Is this good for me, or is this good for the business?' Those are two very different things.”%0A-Jaclyn Johnson,%20Founder of Create & Cultivate%0Ahttp:%2F%2Fwww.forbes.com%2Fquote-of-the-day%2F6a1991b4ed3a6d0dda5b89d9%2F%3Futm_source=email%26utm_medium=qotd%26utm_campaign=6a1991b4ed3a6d0dda5b89d9"
+                    - img [ref=e2102]
+              - link "See More Quotes" [ref=e2104] [cursor=pointer]:
+                - /url: https://www.forbes.com/quotes/
+                - text: See More Quotes
+                - img [ref=e2105]
+          - generic [ref=e2108]:
+            - heading "Billionaire Updates" [level=3] [ref=e2112]
+            - generic [ref=e2113]:
+              - generic [ref=e2114]:
+                - paragraph [ref=e2115]: Dell has a net worth of $244.40B, which increased by $34.28B in the last day.
+                - link "Michael Dell Michael Dell Real Time Net Worth as of 5/29/2026 $244.40B +$34.28B" [ref=e2116] [cursor=pointer]:
+                  - /url: https://www.forbes.com/profile/michael-dell/
+                  - generic [ref=e2117]:
+                    - generic [ref=e2118]:
+                      - img "Michael Dell" [ref=e2119]
+                      - paragraph [ref=e2120]: Michael Dell
+                    - generic [ref=e2121]:
+                      - paragraph [ref=e2122]: Real Time Net Worth as of 5/29/2026
+                      - generic [ref=e2124]:
+                        - generic [ref=e2125]: $244.40B
+                        - generic [ref=e2126]: +$34.28B
+              - generic [ref=e2128]:
+                - paragraph [ref=e2129]: Ellison has a net worth of $276.16B, which increased by $23.33B in the last day.
+                - link "Larry Ellison Larry Ellison Real Time Net Worth as of 5/29/2026 $276.16B +$23.33B" [ref=e2130] [cursor=pointer]:
+                  - /url: https://www.forbes.com/profile/larry-ellison/
+                  - generic [ref=e2131]:
+                    - generic [ref=e2132]:
+                      - img "Larry Ellison" [ref=e2133]
+                      - paragraph [ref=e2134]: Larry Ellison
+                    - generic [ref=e2135]:
+                      - paragraph [ref=e2136]: Real Time Net Worth as of 5/29/2026
+                      - generic [ref=e2138]:
+                        - generic [ref=e2139]: $276.16B
+                        - generic [ref=e2140]: +$23.33B
+          - generic [ref=e2142]:
+            - generic [ref=e2143]:
+              - heading "LIVE POLL" [level=2] [ref=e2145]
+              - paragraph [ref=e2146]: 10 Responses
+            - heading "How loyal are you to your current phone brand?" [level=3] [ref=e2147]
+            - generic [ref=e2148]:
+              - button "I have no brand preference at all" [ref=e2149] [cursor=pointer]:
+                - img [ref=e2151]
+                - paragraph [ref=e2153]: I have no brand preference at all
+              - button "Not loyal I buy the best phone available" [ref=e2154] [cursor=pointer]:
+                - img [ref=e2156]
+                - paragraph [ref=e2158]: Not loyal I buy the best phone available
+              - button "Somewhat loyal I prefer it but could switch" [ref=e2159] [cursor=pointer]:
+                - img [ref=e2161]
+                - paragraph [ref=e2163]: Somewhat loyal I prefer it but could switch
+              - button "Very loyal I'll always stick with it" [ref=e2164] [cursor=pointer]:
+                - img [ref=e2166]
+                - paragraph [ref=e2168]: Very loyal I'll always stick with it
+            - button "Submit Vote" [disabled] [ref=e2169] [cursor=pointer]
+            - 'link "Read More: iPhone 17 Buyers: Apple Has Bad Samsung Trade-In News" [ref=e2171] [cursor=pointer]':
+              - /url: http://www.forbes.com/sites/jaymcgregor/2026/05/28/apple-removes-samsung-galaxy-s24-from-iphone-17-trade-in/
+      - generic [ref=e2175]:
+        - heading "Games" [level=2] [ref=e2177]
+        - generic [ref=e2180]:
+          - link "new Mini Crossword Mini Crossword Quick solve. Big win. Play Now" [ref=e2181] [cursor=pointer]:
+            - /url: https://www.forbes.com/games/mini-crossword/
+            - generic [ref=e2182]: new
+            - img "Mini Crossword" [ref=e2183]
+            - generic [ref=e2184]:
+              - heading "Mini Crossword" [level=2] [ref=e2185]
+              - heading "Quick solve. Big win." [level=4] [ref=e2186]:
+                - text: Quick solve.
+                - text: Big win.
+            - button "Play Now" [ref=e2187]
+          - link "Frase Frase Unscramble The Anagram To Reveal The Phrase. Play Now" [ref=e2188] [cursor=pointer]:
+            - /url: https://www.forbes.com/games/frase/
+            - img "Frase" [ref=e2189]
+            - generic [ref=e2190]:
+              - heading "Frase" [level=2] [ref=e2191]
+              - heading "Unscramble The Anagram To Reveal The Phrase." [level=4] [ref=e2192]
+            - button "Play Now" [ref=e2193]
+          - generic [ref=e2194]:
+            - link "Pinpoint Pinpoint Guess The Category Play Now" [ref=e2195] [cursor=pointer]:
+              - /url: https://www.forbes.com/games/pinpoint/
+              - img "Pinpoint" [ref=e2197]
+              - generic [ref=e2198]:
+                - heading "Pinpoint" [level=2] [ref=e2199]
+                - heading "Guess The Category" [level=4] [ref=e2200]
+                - button "Play Now" [ref=e2201]
+            - link "Queens Queens Crown Each Region Play Now" [ref=e2202] [cursor=pointer]:
+              - /url: https://www.forbes.com/games/queens/
+              - img "Queens" [ref=e2204]
+              - generic [ref=e2205]:
+                - heading "Queens" [level=2] [ref=e2206]
+                - heading "Crown Each Region" [level=4] [ref=e2207]
+                - button "Play Now" [ref=e2208]
+            - link "Crossclimb Crossclimb Unlock A Trivia Ladder Play Now" [ref=e2209] [cursor=pointer]:
+              - /url: https://www.forbes.com/games/crossclimb/
+              - img "Crossclimb" [ref=e2211]
+              - generic [ref=e2212]:
+                - heading "Crossclimb" [level=2] [ref=e2213]
+                - heading "Unlock A Trivia Ladder" [level=4] [ref=e2214]
+                - button "Play Now" [ref=e2215]
+      - generic [ref=e2219]: Advertisement
+      - generic [ref=e2224]:
+        - generic [ref=e2225]:
+          - heading "Forbes Shorts" [level=2] [ref=e2227]
+          - link "See Forbes Videos" [ref=e2229] [cursor=pointer]:
+            - /url: https://www.forbes.com/video/
+            - text: See Forbes Videos
+            - img [ref=e2230]
+        - generic [ref=e2233]:
+          - generic [ref=e2235]:
+            - generic [ref=e2238]:
+              - button "YoutubeShortsImage Plank Firm" [ref=e2239] [cursor=pointer]:
+                - generic [ref=e2240]:
+                  - img "YoutubeShortsImage" [ref=e2241]
+                  - img [ref=e2243]
+                - heading "Plank Firm" [level=3] [ref=e2246]
+              - generic [ref=e2247]:
+                - generic [ref=e2248]:
+                  - img [ref=e2250]
+                  - paragraph [ref=e2253]: 285 views
+                - button "open share menu" [ref=e2255] [cursor=pointer]:
+                  - img [ref=e2256]
+            - generic [ref=e2260]:
+              - button "YoutubeShortsImage Caesars—A Las Vegas Landmark—Will Be Sold For Nearly $6 Billion" [ref=e2261] [cursor=pointer]:
+                - generic [ref=e2262]:
+                  - img "YoutubeShortsImage" [ref=e2263]
+                  - img [ref=e2265]
+                - heading "Caesars—A Las Vegas Landmark—Will Be Sold For Nearly $6 Billion" [level=3] [ref=e2268]
+              - generic [ref=e2269]:
+                - generic [ref=e2270]:
+                  - img [ref=e2272]
+                  - paragraph [ref=e2275]: 908 views
+                - button "open share menu" [ref=e2277] [cursor=pointer]:
+                  - img [ref=e2278]
+            - generic [ref=e2282]:
+              - button "YoutubeShortsImage Micron CEO Becomes A Billionaire Amid Trillion-Dollar Memory Chipmaker Boom" [ref=e2283] [cursor=pointer]:
+                - generic [ref=e2284]:
+                  - img "YoutubeShortsImage" [ref=e2285]
+                  - img [ref=e2287]
+                - heading "Micron CEO Becomes A Billionaire Amid Trillion-Dollar Memory Chipmaker Boom" [level=3] [ref=e2290]
+              - generic [ref=e2291]:
+                - generic [ref=e2292]:
+                  - img [ref=e2294]
+                  - paragraph [ref=e2297]: 4.5K views
+                - button "open share menu" [ref=e2299] [cursor=pointer]:
+                  - img [ref=e2300]
+            - generic [ref=e2304]:
+              - button "YoutubeShortsImage Robinhood Will Allow Users’ AI Agents To Trade Stocks" [ref=e2305] [cursor=pointer]:
+                - generic [ref=e2306]:
+                  - img "YoutubeShortsImage" [ref=e2307]
+                  - img [ref=e2309]
+                - heading "Robinhood Will Allow Users’ AI Agents To Trade Stocks" [level=3] [ref=e2312]
+              - generic [ref=e2313]:
+                - generic [ref=e2314]:
+                  - img [ref=e2316]
+                  - paragraph [ref=e2319]: 2.4K views
+                - button "open share menu" [ref=e2321] [cursor=pointer]:
+                  - img [ref=e2322]
+            - generic [ref=e2326]:
+              - button "YoutubeShortsImage Bookshop.org Wants To Become The Anti-Amazon" [ref=e2327] [cursor=pointer]:
+                - generic [ref=e2328]:
+                  - img "YoutubeShortsImage" [ref=e2329]
+                  - img [ref=e2331]
+                - heading "Bookshop.org Wants To Become The Anti-Amazon" [level=3] [ref=e2334]
+              - generic [ref=e2335]:
+                - generic [ref=e2336]:
+                  - img [ref=e2338]
+                  - paragraph [ref=e2341]: 2.1K views
+                - button "open share menu" [ref=e2343] [cursor=pointer]:
+                  - img [ref=e2344]
+            - generic [ref=e2348]:
+              - button "YoutubeShortsImage Micron Joins The Trillion-Dollar Club After Surging 18% Tuesday" [ref=e2349] [cursor=pointer]:
+                - generic [ref=e2350]:
+                  - img "YoutubeShortsImage" [ref=e2351]
+                  - img [ref=e2353]
+                - heading "Micron Joins The Trillion-Dollar Club After Surging 18% Tuesday" [level=3] [ref=e2356]
+              - generic [ref=e2357]:
+                - generic [ref=e2358]:
+                  - img [ref=e2360]
+                  - paragraph [ref=e2363]: 6K views
+                - button "open share menu" [ref=e2365] [cursor=pointer]:
+                  - img [ref=e2366]
+            - generic [ref=e2370]:
+              - button "YoutubeShortsImage Nyjah Huston Talks Shop" [ref=e2371] [cursor=pointer]:
+                - generic [ref=e2372]:
+                  - img "YoutubeShortsImage" [ref=e2373]
+                  - img [ref=e2375]
+                - heading "Nyjah Huston Talks Shop" [level=3] [ref=e2378]
+              - generic [ref=e2379]:
+                - generic [ref=e2380]:
+                  - img [ref=e2382]
+                  - paragraph [ref=e2385]: 3.8K views
+                - button "open share menu" [ref=e2387] [cursor=pointer]:
+                  - img [ref=e2388]
+            - generic [ref=e2392]:
+              - 'button "YoutubeShortsImage Ferrari’s First EV Divides The Internet: Here’s Why Sports Car Fans Hate The Luce" [ref=e2393] [cursor=pointer]':
+                - generic [ref=e2394]:
+                  - img "YoutubeShortsImage" [ref=e2395]
+                  - img [ref=e2397]
+                - 'heading "Ferrari’s First EV Divides The Internet: Here’s Why Sports Car Fans Hate The Luce" [level=3] [ref=e2400]'
+              - generic [ref=e2401]:
+                - generic [ref=e2402]:
+                  - img [ref=e2404]
+                  - paragraph [ref=e2407]: 9.1K views
+                - button "open share menu" [ref=e2409] [cursor=pointer]:
+                  - img [ref=e2410]
+            - generic [ref=e2414]:
+              - button "YoutubeShortsImage Nolah Evolution" [ref=e2415] [cursor=pointer]:
+                - generic [ref=e2416]:
+                  - img "YoutubeShortsImage" [ref=e2417]
+                  - img [ref=e2419]
+                - heading "Nolah Evolution" [level=3] [ref=e2422]
+              - generic [ref=e2423]:
+                - generic [ref=e2424]:
+                  - img [ref=e2426]
+                  - paragraph [ref=e2429]: 832 views
+                - button "open share menu" [ref=e2431] [cursor=pointer]:
+                  - img [ref=e2432]
+            - generic [ref=e2436]:
+              - button "YoutubeShortsImage U.S. Will Invest $2 Billion In Quantum Computing Firms And Take Equity" [ref=e2437] [cursor=pointer]:
+                - generic [ref=e2438]:
+                  - img "YoutubeShortsImage" [ref=e2439]
+                  - img [ref=e2441]
+                - heading "U.S. Will Invest $2 Billion In Quantum Computing Firms And Take Equity" [level=3] [ref=e2444]
+              - generic [ref=e2445]:
+                - generic [ref=e2446]:
+                  - img [ref=e2448]
+                  - paragraph [ref=e2451]: 17.8K views
+                - button "open share menu" [ref=e2453] [cursor=pointer]:
+                  - img [ref=e2454]
+            - generic [ref=e2458]:
+              - button "YoutubeShortsImage Elon Musk’s SpaceX Files For Highly Anticipated IPO" [ref=e2459] [cursor=pointer]:
+                - generic [ref=e2460]:
+                  - img "YoutubeShortsImage" [ref=e2461]
+                  - img [ref=e2463]
+                - heading "Elon Musk’s SpaceX Files For Highly Anticipated IPO" [level=3] [ref=e2466]
+              - generic [ref=e2467]:
+                - generic [ref=e2468]:
+                  - img [ref=e2470]
+                  - paragraph [ref=e2473]: 27.7K views
+                - button "open share menu" [ref=e2475] [cursor=pointer]:
+                  - img [ref=e2476]
+            - generic [ref=e2480]:
+              - 'button "YoutubeShortsImage Alvin Wang Graylin: Using AI Without Outsourcing Human Thought" [ref=e2481] [cursor=pointer]':
+                - generic [ref=e2482]:
+                  - img "YoutubeShortsImage" [ref=e2483]
+                  - img [ref=e2485]
+                - 'heading "Alvin Wang Graylin: Using AI Without Outsourcing Human Thought" [level=3] [ref=e2488]'
+              - generic [ref=e2489]:
+                - generic [ref=e2490]:
+                  - img [ref=e2492]
+                  - paragraph [ref=e2495]: 2.9K views
+                - button "open share menu" [ref=e2497] [cursor=pointer]:
+                  - img [ref=e2498]
+            - generic [ref=e2502]:
+              - button "YoutubeShortsImage Jack Dangermond On Building A “Nervous System For The Planet”" [ref=e2503] [cursor=pointer]:
+                - generic [ref=e2504]:
+                  - img "YoutubeShortsImage" [ref=e2505]
+                  - img [ref=e2507]
+                - heading "Jack Dangermond On Building A “Nervous System For The Planet”" [level=3] [ref=e2510]
+              - generic [ref=e2511]:
+                - generic [ref=e2512]:
+                  - img [ref=e2514]
+                  - paragraph [ref=e2517]: 2.6K views
+                - button "open share menu" [ref=e2519] [cursor=pointer]:
+                  - img [ref=e2520]
+            - generic [ref=e2524]:
+              - button "YoutubeShortsImage Caleb Simpson Talks Shop" [ref=e2525] [cursor=pointer]:
+                - generic [ref=e2526]:
+                  - img "YoutubeShortsImage" [ref=e2527]
+                  - img [ref=e2529]
+                - heading "Caleb Simpson Talks Shop" [level=3] [ref=e2532]
+              - generic [ref=e2533]:
+                - generic [ref=e2534]:
+                  - img [ref=e2536]
+                  - paragraph [ref=e2539]: 2.3K views
+                - button "open share menu" [ref=e2541] [cursor=pointer]:
+                  - img [ref=e2542]
+            - generic [ref=e2546]:
+              - button "YoutubeShortsImage Len Bosack On Why Innovation Requires The Freedom To Fail" [ref=e2547] [cursor=pointer]:
+                - generic [ref=e2548]:
+                  - img "YoutubeShortsImage" [ref=e2549]
+                  - img [ref=e2551]
+                - heading "Len Bosack On Why Innovation Requires The Freedom To Fail" [level=3] [ref=e2554]
+              - generic [ref=e2555]:
+                - generic [ref=e2556]:
+                  - img [ref=e2558]
+                  - paragraph [ref=e2561]: 2.8K views
+                - button "open share menu" [ref=e2563] [cursor=pointer]:
+                  - img [ref=e2564]
+            - generic [ref=e2568]:
+              - button "YoutubeShortsImage Leesa Sapira Chill Hybrid" [ref=e2569] [cursor=pointer]:
+                - generic [ref=e2570]:
+                  - img "YoutubeShortsImage" [ref=e2571]
+                  - img [ref=e2573]
+                - heading "Leesa Sapira Chill Hybrid" [level=3] [ref=e2576]
+              - generic [ref=e2577]:
+                - generic [ref=e2578]:
+                  - img [ref=e2580]
+                  - paragraph [ref=e2583]: 825 views
+                - button "open share menu" [ref=e2585] [cursor=pointer]:
+                  - img [ref=e2586]
+            - generic [ref=e2590]:
+              - button "YoutubeShortsImage Cinnamon Sipper On Why The Next Frontier Of AI Is Understanding The Physical World" [ref=e2591] [cursor=pointer]:
+                - generic [ref=e2592]:
+                  - img "YoutubeShortsImage" [ref=e2593]
+                  - img [ref=e2595]
+                - heading "Cinnamon Sipper On Why The Next Frontier Of AI Is Understanding The Physical World" [level=3] [ref=e2598]
+              - generic [ref=e2599]:
+                - generic [ref=e2600]:
+                  - img [ref=e2602]
+                  - paragraph [ref=e2605]: 7.3K views
+                - button "open share menu" [ref=e2607] [cursor=pointer]:
+                  - img [ref=e2608]
+            - generic [ref=e2612]:
+              - button "YoutubeShortsImage Mark Cuban Deletes Profanity-Laced Post Firing Back At Critics Over Trump White House Appearance" [ref=e2613] [cursor=pointer]:
+                - generic [ref=e2614]:
+                  - img "YoutubeShortsImage" [ref=e2615]
+                  - img [ref=e2617]
+                - heading "Mark Cuban Deletes Profanity-Laced Post Firing Back At Critics Over Trump White House Appearance" [level=3] [ref=e2620]
+              - generic [ref=e2621]:
+                - generic [ref=e2622]:
+                  - img [ref=e2624]
+                  - paragraph [ref=e2627]: 1.9K views
+                - button "open share menu" [ref=e2629] [cursor=pointer]:
+                  - img [ref=e2630]
+            - generic [ref=e2634]:
+              - button "YoutubeShortsImage How Qualcomm’s Sudeepto Roy Thinks About AI Agents" [ref=e2635] [cursor=pointer]:
+                - generic [ref=e2636]:
+                  - img "YoutubeShortsImage" [ref=e2637]
+                  - img [ref=e2639]
+                - heading "How Qualcomm’s Sudeepto Roy Thinks About AI Agents" [level=3] [ref=e2642]
+              - generic [ref=e2643]:
+                - generic [ref=e2644]:
+                  - img [ref=e2646]
+                  - paragraph [ref=e2649]: 807 views
+                - button "open share menu" [ref=e2651] [cursor=pointer]:
+                  - img [ref=e2652]
+            - generic [ref=e2656]:
+              - button "YoutubeShortsImage SpaceX Could Face ‘Musk Effect’ With Major Risks After IPO" [ref=e2657] [cursor=pointer]:
+                - generic [ref=e2658]:
+                  - img "YoutubeShortsImage" [ref=e2659]
+                  - img [ref=e2661]
+                - heading "SpaceX Could Face ‘Musk Effect’ With Major Risks After IPO" [level=3] [ref=e2664]
+              - generic [ref=e2665]:
+                - generic [ref=e2666]:
+                  - img [ref=e2668]
+                  - paragraph [ref=e2671]: 2.1K views
+                - button "open share menu" [ref=e2673] [cursor=pointer]:
+                  - img [ref=e2674]
+          - tablist "Slider Pagination" [ref=e2676]
+        - generic [ref=e2686]:
+          - button [disabled] [ref=e2687]:
+            - img [ref=e2689]
+          - button [ref=e2691] [cursor=pointer]:
+            - img [ref=e2693]
+      - generic [ref=e2698]:
+        - heading "Reviews" [level=2] [ref=e2700]
+        - generic [ref=e2702]:
+          - generic [ref=e2706]:
+            - link "Forbes Vetted" [ref=e2708] [cursor=pointer]:
+              - /url: /vetted/
+            - generic [ref=e2709]:
+              - 'heading "Best Automatic Litter Boxes 2026: These 3 Models Won Over My Cats" [level=3] [ref=e2710]':
+                - 'link "Best Automatic Litter Boxes 2026: These 3 Models Won Over My Cats" [ref=e2711] [cursor=pointer]':
+                  - /url: http://www.forbes.com/sites/forbes-personal-shopper/article/best-automatic-litter-boxes/
+              - generic [ref=e2712]:
+                - generic [ref=e2713]:
+                  - paragraph [ref=e2714]:
+                    - text: By
+                    - link "Lindsay Boyers" [ref=e2715] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/LindsayBoyers/
+                    - text: ","
+                  - paragraph [ref=e2716]: Director, Commerce Strategy & Optimization
+                - generic [ref=e2717]:
+                  - paragraph [ref=e2718]:
+                    - text: and
+                    - link "Claire Epting" [ref=e2719] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/claire-epting/
+                    - text: ","
+                  - paragraph [ref=e2720]: Updates Writer
+          - generic [ref=e2724]:
+            - link "Forbes Vetted" [ref=e2726] [cursor=pointer]:
+              - /url: /vetted/
+            - generic [ref=e2727]:
+              - 'heading "The Best Bunk Beds Of 2026: Editor Favorites For Style And Saving Space" [level=3] [ref=e2728]':
+                - 'link "The Best Bunk Beds Of 2026: Editor Favorites For Style And Saving Space" [ref=e2729] [cursor=pointer]':
+                  - /url: http://www.forbes.com/sites/forbes-personal-shopper/article/best-bunk-bed/
+              - generic [ref=e2731]:
+                - paragraph [ref=e2732]:
+                  - text: By
+                  - link "Alicia Betz" [ref=e2733] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/aliciabetz/
+                  - text: ","
+                - paragraph [ref=e2734]: Commerce Writer, Baby & Kids
+          - generic [ref=e2738]:
+            - link "Forbes Vetted" [ref=e2740] [cursor=pointer]:
+              - /url: /vetted/
+            - generic [ref=e2741]:
+              - 'heading "Eight Sleep Pod 5 Review: Game-Changing Cooling And Tracking Abilities" [level=3] [ref=e2742]':
+                - 'link "Eight Sleep Pod 5 Review: Game-Changing Cooling And Tracking Abilities" [ref=e2743] [cursor=pointer]':
+                  - /url: http://www.forbes.com/sites/forbes-personal-shopper/2026/05/28/eight-sleep-pod-5-review/
+              - generic [ref=e2745]:
+                - paragraph [ref=e2746]:
+                  - text: By
+                  - link "McKenzie Dillon" [ref=e2747] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/forbes-personal-shopper/people/mdillonforbescom/
+                  - text: ","
+                - paragraph [ref=e2748]: Mattress & Sleep Editor
+          - generic [ref=e2752]:
+            - link "Hollywood & Entertainment" [ref=e2754] [cursor=pointer]:
+              - /url: /hollywood-entertainment/
+            - generic [ref=e2755]:
+              - heading "‘Backrooms’ Rotten Tomatoes Reviews Open Door To A Glowing Reception" [level=3] [ref=e2756]:
+                - link "‘Backrooms’ Rotten Tomatoes Reviews Open Door To A Glowing Reception" [ref=e2757] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/timlammers/2026/05/28/backrooms-rotten-tomatoes-reviews-open-door-to-a-glowing-reception/
+              - generic [ref=e2759]:
+                - paragraph [ref=e2760]:
+                  - text: By
+                  - link "Tim Lammers" [ref=e2761] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/timlammers/
+                  - text: ","
+                - paragraph [ref=e2762]: Contributor
+      - generic [ref=e2764]:
+        - generic [ref=e2766]:
+          - heading "Leadership" [level=2] [ref=e2768]:
+            - link "Leadership" [ref=e2769] [cursor=pointer]:
+              - /url: https://www.forbes.com/leadership/
+          - generic [ref=e2771]:
+            - generic [ref=e2774]:
+              - link "The AI Risks CISOs Aren’t Talking About Enough" [ref=e2775] [cursor=pointer]:
+                - /url: http://www.forbes.com/sites/cio/2026/05/28/the-ai-risks-cisos-arent-talking-about-enough/
+                - img "The AI Risks CISOs Aren’t Talking About Enough" [ref=e2776]
+              - generic [ref=e2777]:
+                - link "Newsletters" [ref=e2779] [cursor=pointer]:
+                  - /url: /newsletters-old/
+                - generic [ref=e2780]:
+                  - heading "The AI Risks CISOs Aren’t Talking About Enough" [level=3] [ref=e2781]:
+                    - link "The AI Risks CISOs Aren’t Talking About Enough" [ref=e2782] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/cio/2026/05/28/the-ai-risks-cisos-arent-talking-about-enough/
+                  - 'link "Also In The Forbes CIO Newsletter: Pope Leo XIV Makes A Bold Proclamation On AI’s Threat To Human Dignity, And President Trump Decides Not To Sign An Order Regulating AI" [ref=e2783] [cursor=pointer]':
+                    - /url: http://www.forbes.com/sites/cio/2026/05/28/the-ai-risks-cisos-arent-talking-about-enough/
+                    - paragraph [ref=e2784]: "Also In The Forbes CIO Newsletter: Pope Leo XIV Makes A Bold Proclamation On AI’s Threat To Human Dignity, And President Trump Decides Not To Sign An Order Regulating AI"
+                  - generic [ref=e2785]:
+                    - generic [ref=e2786]:
+                      - paragraph [ref=e2787]:
+                        - text: By
+                        - link "Megan Poinski" [ref=e2788] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/meganpoinski/
+                        - text: ","
+                      - paragraph [ref=e2789]: Forbes Staff
+                    - generic [ref=e2790]:
+                      - paragraph [ref=e2791]:
+                        - text: and
+                        - link "CIO" [ref=e2792] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/cio/
+                        - text: ","
+                      - paragraph [ref=e2793]: Forbes Staff
+            - generic [ref=e2795]:
+              - generic [ref=e2798]:
+                - link "Explore The Forbes 30 Under 30 Asia 2026" [ref=e2799] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/ranawehbe/2026/05/27/explore-the-forbes-30-under-30-asia-2026/
+                  - img "Explore The Forbes 30 Under 30 Asia 2026" [ref=e2800]
+                - generic [ref=e2801]:
+                  - link "Asia" [ref=e2803] [cursor=pointer]:
+                    - /url: /asia/
+                  - generic [ref=e2804]:
+                    - heading "Explore The Forbes 30 Under 30 Asia 2026" [level=3] [ref=e2805]:
+                      - link "Explore The Forbes 30 Under 30 Asia 2026" [ref=e2806] [cursor=pointer]:
+                        - /url: http://www.forbes.com/sites/ranawehbe/2026/05/27/explore-the-forbes-30-under-30-asia-2026/
+                    - generic [ref=e2808]:
+                      - paragraph [ref=e2809]:
+                        - text: By
+                        - link "Rana Wehbe Watson" [ref=e2810] [cursor=pointer]:
+                          - /url: https://www.forbes.com/sites/ranawehbe/
+                        - text: ","
+                      - paragraph [ref=e2811]: Editorial Director
+              - generic [ref=e2815]:
+                - link "Asia" [ref=e2817] [cursor=pointer]:
+                  - /url: /asia/
+                - generic [ref=e2818]:
+                  - 'heading "From Bhanvitha Mandava To Tarmo Peltokoski: Meet The 30 Under 30 Asia Rising Stars Shining On The Global Stage" [level=3] [ref=e2819]':
+                    - 'link "From Bhanvitha Mandava To Tarmo Peltokoski: Meet The 30 Under 30 Asia Rising Stars Shining On The Global Stage" [ref=e2820] [cursor=pointer]':
+                      - /url: http://www.forbes.com/sites/ranawehbe/2026/05/27/from-bhanvitha-mandava-to-tarmo-peltokoski-meet-the-30-under-30-asia-rising-stars-shining-on-the-global-stage/
+                  - generic [ref=e2822]:
+                    - paragraph [ref=e2823]:
+                      - text: By
+                      - link "Rana Wehbe Watson" [ref=e2824] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/ranawehbe/
+                      - text: ","
+                    - paragraph [ref=e2825]: Editorial Director
+              - generic [ref=e2829]:
+                - link "Asia" [ref=e2831] [cursor=pointer]:
+                  - /url: /asia/
+                - generic [ref=e2832]:
+                  - 'heading "From Art And Science To Current Affairs: The 30 Under 30 Asia Content Creators Using Their Platforms To Educate And Entertain" [level=3] [ref=e2833]':
+                    - 'link "From Art And Science To Current Affairs: The 30 Under 30 Asia Content Creators Using Their Platforms To Educate And Entertain" [ref=e2834] [cursor=pointer]':
+                      - /url: http://www.forbes.com/sites/ardianwibisono/2026/05/27/from-art-and-science-to-current-affairs-the-30-under-30-asia-content-creators-using-their-platforms-to-educate-and-entertain/
+                  - generic [ref=e2836]:
+                    - paragraph [ref=e2837]:
+                      - text: By
+                      - link "Ardian Wibisono" [ref=e2838] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/ardianwibisono/
+                      - text: ","
+                    - paragraph [ref=e2839]: Forbes Staff
+        - generic [ref=e2841]:
+          - heading "Careers" [level=2] [ref=e2843]
+          - generic [ref=e2845]:
+            - generic [ref=e2849]:
+              - link "Careers" [ref=e2851] [cursor=pointer]:
+                - /url: /careers/
+              - generic [ref=e2852]:
+                - heading "How Employers And Workers Can Prevent An Unemployment Crisis" [level=3] [ref=e2853]:
+                  - link "How Employers And Workers Can Prevent An Unemployment Crisis" [ref=e2854] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/courtney-connley-hampton/2026/05/26/how-employers-and-workers-can-prevent-an-unemployment-crisis/
+                - generic [ref=e2855]:
+                  - generic [ref=e2856]:
+                    - paragraph [ref=e2857]:
+                      - text: By
+                      - link "Courtney Connley-Hampton" [ref=e2858] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/courtney-connley-hampton/
+                      - text: ","
+                    - paragraph [ref=e2859]: Writer
+                  - generic [ref=e2860]:
+                    - paragraph [ref=e2861]:
+                      - text: and
+                      - link "Careers" [ref=e2862] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/careersnewsletter/
+                      - text: ","
+                    - paragraph [ref=e2863]: Forbes Staff
+            - generic [ref=e2867]:
+              - link "Careers" [ref=e2869] [cursor=pointer]:
+                - /url: /careers/
+              - generic [ref=e2870]:
+                - heading "Fewer Entry-Level Jobs? Here’s How Grads Can Stand Out" [level=3] [ref=e2871]:
+                  - link "Fewer Entry-Level Jobs? Here’s How Grads Can Stand Out" [ref=e2872] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/courtney-connley-hampton/2026/05/19/fewer-entry-level-jobs-heres-how-grads-can-stand-out/
+                - generic [ref=e2873]:
+                  - generic [ref=e2874]:
+                    - paragraph [ref=e2875]:
+                      - text: By
+                      - link "Courtney Connley-Hampton" [ref=e2876] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/courtney-connley-hampton/
+                      - text: ","
+                    - paragraph [ref=e2877]: Writer
+                  - generic [ref=e2878]:
+                    - paragraph [ref=e2879]:
+                      - text: and
+                      - link "Careers" [ref=e2880] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/careersnewsletter/
+                      - text: ","
+                    - paragraph [ref=e2881]: Forbes Staff
+            - generic [ref=e2885]:
+              - link "Careers" [ref=e2887] [cursor=pointer]:
+                - /url: /careers/
+              - generic [ref=e2888]:
+                - heading "5 Signs A Leader On Your Team Needs Executive Coaching" [level=3] [ref=e2889]:
+                  - link "5 Signs A Leader On Your Team Needs Executive Coaching" [ref=e2890] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/markmurphy/2026/05/19/five-signs-a-leader-on-your-team-needs-executive-coaching/
+                - generic [ref=e2892]:
+                  - paragraph [ref=e2893]:
+                    - text: By
+                    - link "Mark Murphy" [ref=e2894] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/markmurphy/
+                    - text: ","
+                  - paragraph [ref=e2895]: Senior Contributor
+            - generic [ref=e2899]:
+              - link "Careers" [ref=e2901] [cursor=pointer]:
+                - /url: /careers/
+              - generic [ref=e2902]:
+                - heading "5 Small-Talk Strategies That Actually Build Relationships" [level=3] [ref=e2903]:
+                  - link "5 Small-Talk Strategies That Actually Build Relationships" [ref=e2904] [cursor=pointer]:
+                    - /url: http://www.forbes.com/sites/andymolinsky/2026/05/18/5-small-talk-strategies-that-actually-build-relationships/
+                - generic [ref=e2906]:
+                  - paragraph [ref=e2907]:
+                    - text: By
+                    - link "Andy Molinsky" [ref=e2908] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/andymolinsky/
+                    - text: ","
+                  - paragraph [ref=e2909]: Contributor
+      - generic [ref=e2913]:
+        - heading "AI" [level=2] [ref=e2915]
+        - generic [ref=e2917]:
+          - generic [ref=e2921]:
+            - link "Newsletters" [ref=e2923] [cursor=pointer]:
+              - /url: /newsletters-old/
+            - generic [ref=e2924]:
+              - 'heading "Warning: Anthropic’s Mythos Can Break Software It’s Trying To Fix" [level=3] [ref=e2925]':
+                - 'link "Warning: Anthropic’s Mythos Can Break Software It’s Trying To Fix" [ref=e2926] [cursor=pointer]':
+                  - /url: http://www.forbes.com/sites/the-wiretap/2026/05/19/anthropic-mythos-can-break-code-its-trying-to-fix/
+              - generic [ref=e2928]:
+                - paragraph [ref=e2929]:
+                  - text: By
+                  - link "Thomas Brewster" [ref=e2930] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/thomasbrewster/
+                  - text: ","
+                - paragraph [ref=e2931]: Forbes Staff
+          - generic [ref=e2935]:
+            - link "Innovation" [ref=e2937] [cursor=pointer]:
+              - /url: /innovation/
+            - generic [ref=e2938]:
+              - heading "AI Chipmaker Cerebras’ CEO Is Now Worth $3.4 Billion After Long-Awaited IPO" [level=3] [ref=e2939]:
+                - link "AI Chipmaker Cerebras’ CEO Is Now Worth $3.4 Billion After Long-Awaited IPO" [ref=e2940] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/richardnieva/2026/05/14/cerebras-ipo-andrew-feldman/
+              - generic [ref=e2942]:
+                - paragraph [ref=e2943]:
+                  - text: By
+                  - link "Richard Nieva" [ref=e2944] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/richardnieva/
+                  - text: ","
+                - paragraph [ref=e2945]: Senior Writer
+          - generic [ref=e2949]:
+            - link "Newsletters" [ref=e2951] [cursor=pointer]:
+              - /url: /newsletters-old/
+            - generic [ref=e2952]:
+              - heading "FBI Investigates DJI Drone Flight Over Washington Navy Base" [level=3] [ref=e2953]:
+                - link "FBI Investigates DJI Drone Flight Over Washington Navy Base" [ref=e2954] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/the-wiretap/2026/05/12/dji-drone-over-washington-navy-base/
+              - generic [ref=e2956]:
+                - paragraph [ref=e2957]:
+                  - text: By
+                  - link "Thomas Brewster" [ref=e2958] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/thomasbrewster/
+                  - text: ","
+                - paragraph [ref=e2959]: Forbes Staff
+          - generic [ref=e2963]:
+            - link "Newsletters" [ref=e2965] [cursor=pointer]:
+              - /url: /newsletters-old/
+            - generic [ref=e2966]:
+              - heading "Cops Use Apple Data And Car Bluetooth To Identify Crypto Robbery Suspect" [level=3] [ref=e2967]:
+                - link "Cops Use Apple Data And Car Bluetooth To Identify Crypto Robbery Suspect" [ref=e2968] [cursor=pointer]:
+                  - /url: http://www.forbes.com/sites/the-wiretap/2026/05/05/apple-subpoena-and-car-bluetooth-help-cops-unmask-crypto-robber-suspect/
+              - generic [ref=e2970]:
+                - paragraph [ref=e2971]:
+                  - text: By
+                  - link "Thomas Brewster" [ref=e2972] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/thomasbrewster/
+                  - text: ","
+                - paragraph [ref=e2973]: Forbes Staff
+      - generic [ref=e2977]:
+        - heading "Forbes Advisor" [level=2] [ref=e2979]
+        - generic [ref=e2981]:
+          - generic [ref=e2984]:
+            - 'link "10 Best Travel Insurance Companies: Expert-Rated" [ref=e2985] [cursor=pointer]':
+              - /url: https://www.forbes.com/advisor/travel-insurance/best-travel-insurance/
+              - 'img "10 Best Travel Insurance Companies: Expert-Rated" [ref=e2986]'
+            - generic [ref=e2987]:
+              - link "Forbes Advisor" [ref=e2989] [cursor=pointer]:
+                - /url: https://www.forbes.com/advisor/
+              - 'heading "10 Best Travel Insurance Companies: Expert-Rated" [level=3] [ref=e2991]':
+                - 'link "10 Best Travel Insurance Companies: Expert-Rated" [ref=e2992] [cursor=pointer]':
+                  - /url: https://www.forbes.com/advisor/travel-insurance/best-travel-insurance/
+          - generic [ref=e2994]:
+            - generic [ref=e2997]:
+              - 'link "The American Express Platinum Review: Worth The Splurge Or Just A Shiny Hunk Of Metal?" [ref=e2998] [cursor=pointer]':
+                - /url: https://www.forbes.com/advisor/credit-cards/reviews/american-express-platinum/?utm_campaign=amex_platinum_forbes
+                - 'img "The American Express Platinum Review: Worth The Splurge Or Just A Shiny Hunk Of Metal?" [ref=e2999]'
+              - generic [ref=e3000]:
+                - link "Forbes Advisor" [ref=e3002] [cursor=pointer]:
+                  - /url: https://www.forbes.com/advisor/
+                - 'heading "The American Express Platinum Review: Worth The Splurge Or Just A Shiny Hunk Of Metal?" [level=3] [ref=e3004]':
+                  - 'link "The American Express Platinum Review: Worth The Splurge Or Just A Shiny Hunk Of Metal?" [ref=e3005] [cursor=pointer]':
+                    - /url: https://www.forbes.com/advisor/credit-cards/reviews/american-express-platinum/?utm_campaign=amex_platinum_forbes
+            - generic [ref=e3009]:
+              - link "Forbes Advisor" [ref=e3011] [cursor=pointer]:
+                - /url: https://www.forbes.com/advisor/
+              - 'heading "American Express Business Platinum Card Review: Ultimate Business Travel Card?" [level=3] [ref=e3013]':
+                - 'link "American Express Business Platinum Card Review: Ultimate Business Travel Card?" [ref=e3014] [cursor=pointer]':
+                  - /url: https://www.forbes.com/advisor/credit-cards/reviews/business-platinum-card-from-american-express/?utm_campaign=amex_platinum_forbes
+            - generic [ref=e3018]:
+              - link "Forbes Advisor" [ref=e3020] [cursor=pointer]:
+                - /url: https://www.forbes.com/advisor/
+              - heading "7 Best Car Insurance Companies" [level=3] [ref=e3022]:
+                - link "7 Best Car Insurance Companies" [ref=e3023] [cursor=pointer]:
+                  - /url: https://www.forbes.com/advisor/car-insurance/best-car-insurance-companies/
+            - generic [ref=e3027]:
+              - link "Forbes Advisor" [ref=e3029] [cursor=pointer]:
+                - /url: https://www.forbes.com/advisor/
+              - heading "Best Pet Insurance Companies" [level=3] [ref=e3031]:
+                - link "Best Pet Insurance Companies" [ref=e3032] [cursor=pointer]:
+                  - /url: https://www.forbes.com/advisor/pet-insurance/best-pet-insurance/
+    - contentinfo [ref=e3033]:
+      - generic [ref=e3034]:
+        - link "Forbes Homepage Link" [ref=e3035] [cursor=pointer]:
+          - /url: https://www.forbes.com/
+          - img [ref=e3036]
+        - generic [ref=e3038]:
+          - link "Billionaires" [ref=e3039] [cursor=pointer]:
+            - /url: https://www.forbes.com/worlds-billionaires/
+          - link "Innovation" [ref=e3040] [cursor=pointer]:
+            - /url: https://www.forbes.com/innovation/
+          - link "Leadership" [ref=e3041] [cursor=pointer]:
+            - /url: https://www.forbes.com/leadership/
+          - link "Money" [ref=e3042] [cursor=pointer]:
+            - /url: https://www.forbes.com/money/
+          - link "Business" [ref=e3043] [cursor=pointer]:
+            - /url: https://www.forbes.com/business/
+          - link "Small Business" [ref=e3044] [cursor=pointer]:
+            - /url: https://www.forbes.com/small-business/
+          - link "Lifestyle" [ref=e3045] [cursor=pointer]:
+            - /url: https://www.forbes.com/lifestyle/
+          - link "Vetted" [ref=e3046] [cursor=pointer]:
+            - /url: https://www.forbes.com/vetted/
+          - link "Real Estate" [ref=e3047] [cursor=pointer]:
+            - /url: https://www.forbes.com/real-estate/
+          - link "Lists" [ref=e3048] [cursor=pointer]:
+            - /url: https://www.forbes.com/lists/list-directory/
+          - link "Advisor" [ref=e3049] [cursor=pointer]:
+            - /url: https://www.forbes.com/advisor/
+      - generic [ref=e3050]:
+        - generic [ref=e3051]:
+          - generic [ref=e3053]:
+            - paragraph [ref=e3054]: Subscribe to Daily Newsletter
+            - paragraph [ref=e3055]: Our best stories, exclusive reporting and Forbes perspectives on the day’s top news.
+            - generic [ref=e3056]:
+              - generic [ref=e3058]:
+                - textbox [ref=e3059]:
+                  - /placeholder: " "
+                - generic: Email Address
+              - button "Sign Up" [disabled] [ref=e3060]
+            - generic [ref=e3061]:
+              - text: By signing up, you agree to receive this newsletter, other updates about Forbes and its affiliates’ offerings, our
+              - link "Terms of Service" [ref=e3062] [cursor=pointer]:
+                - /url: https://www.forbes.com/terms-and-conditions
+              - text: (including resolving disputes on an individual basis via arbitration), and you acknowledge our
+              - link "Privacy Statement" [ref=e3063] [cursor=pointer]:
+                - /url: https://www.forbes.com/privacy
+              - text: . Forbes is protected by reCAPTCHA, and the Google
+              - link "Privacy Policy" [ref=e3064] [cursor=pointer]:
+                - /url: https://policies.google.com/privacy
+              - text: and
+              - link "Terms of Service" [ref=e3065] [cursor=pointer]:
+                - /url: https://policies.google.com/terms
+              - text: apply.
+          - generic [ref=e3066]:
+            - link "Forbes Magazine Cover" [ref=e3067] [cursor=pointer]:
+              - /url: https://www.forbes.com/forbes-magazine/
+              - img "Forbes Magazine Cover" [ref=e3068]
+            - link "Forbes Magazine Cover" [ref=e3069] [cursor=pointer]:
+              - /url: https://www.forbes.com/forbesasia/
+              - img "Forbes Magazine Cover" [ref=e3070]
+            - link "Forbes Magazine Cover" [ref=e3071] [cursor=pointer]:
+              - /url: https://www.forbes.com/forbeslife/
+              - img "Forbes Magazine Cover" [ref=e3072]
+          - generic [ref=e3073]:
+            - 'link "Forbes Magazine: 1-Year for $20" [ref=e3074] [cursor=pointer]':
+              - /url: https://subs.forbesmagazine.com/pubs/B4/FRB/Forbesmag-1-year-for-20.jsp?cds_page_id=246818&cds_mag_code=FRB&id=1759171750877&lsid=52721349108081726&vid=1
+              - text: "Forbes Magazine: 1-Year for $20"
+              - img [ref=e3076]
+            - link "Subscriber Services" [ref=e3078] [cursor=pointer]:
+              - /url: http://www.forbesmagazine.com/
+              - text: Subscriber Services
+              - img [ref=e3080]
+            - link "Gift Subscription" [ref=e3082] [cursor=pointer]:
+              - /url: https://subs.forbesmagazine.com/loc/FRB/IZEG101
+              - text: Gift Subscription
+              - img [ref=e3084]
+          - generic [ref=e3086]:
+            - heading "Forbes Books" [level=2] [ref=e3087]
+            - generic [ref=e3088]:
+              - link "Forbes Book Cover" [ref=e3089] [cursor=pointer]:
+                - /url: https://amzn.to/4sWrjN6
+                - img "Forbes Book Cover" [ref=e3090]
+              - link "Forbes Book Cover" [ref=e3091] [cursor=pointer]:
+                - /url: https://amzn.to/47F8zsU
+                - img "Forbes Book Cover" [ref=e3092]
+              - link "Forbes Book Cover" [ref=e3093] [cursor=pointer]:
+                - /url: https://amzn.to/4dxLzj9
+                - img "Forbes Book Cover" [ref=e3094]
+              - link "Forbes Book Cover" [ref=e3095] [cursor=pointer]:
+                - /url: https://amzn.to/41OWwWj
+                - img "Forbes Book Cover" [ref=e3096]
+          - generic [ref=e3097]:
+            - heading "Connect with Us" [level=2] [ref=e3098]
+            - generic [ref=e3099]:
+              - link "footer connect with us button" [ref=e3100] [cursor=pointer]:
+                - /url: https://www.facebook.com/forbes/
+                - img [ref=e3102]
+              - link "footer connect with us button" [ref=e3104] [cursor=pointer]:
+                - /url: https://x.com/Forbes
+                - img [ref=e3106]
+              - link "footer connect with us button" [ref=e3108] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/forbes-magazine
+                - img [ref=e3110]
+              - link "footer connect with us button" [ref=e3112] [cursor=pointer]:
+                - /url: mailto:readers@forbes.com
+                - img [ref=e3114]
+        - generic [ref=e3116]:
+          - generic [ref=e3117]:
+            - heading "Company Info" [level=2] [ref=e3118]
+            - generic [ref=e3119]:
+              - link "Editorial Values And Standards" [ref=e3121] [cursor=pointer]:
+                - /url: https://www.forbes.com/sites/forbesstaff/article/forbes-editorial-values-and-standards/
+              - link "Advertise" [ref=e3123] [cursor=pointer]:
+                - /url: https://www.forbes.com/connect/media-kit/
+              - link "Forbes Careers" [ref=e3125] [cursor=pointer]:
+                - /url: https://www.forbes.com/careers-at-forbes/
+              - link "Forbes Press Room" [ref=e3127] [cursor=pointer]:
+                - /url: https://www.forbes.com/pr/
+              - link "Forbes Licensing & Syndication" [ref=e3129] [cursor=pointer]:
+                - /url: https://www.forbes.com/connect/content-partnerships/
+              - link "Forbes Quote of the Day" [ref=e3131] [cursor=pointer]:
+                - /url: https://www.forbes.com/quotes/
+              - link "Contact Us" [ref=e3133] [cursor=pointer]:
+                - /url: https://www.forbes.com/contact/
+              - 'link "Machine Readable File: Transparency in Coverage" [ref=e3135] [cursor=pointer]':
+                - /url: https://health1.aetna.com/app/public/#/one/insurerCode=AETNACVS_I&brandCode=ALICSI/machine-readable-transparency-in-coverage?searchTerm=110323819&lock=true
+              - link "Sitemap" [ref=e3137] [cursor=pointer]:
+                - /url: https://www.forbes.com/fdc/sitemap.html
+              - link "Send Us Feedback" [ref=e3139] [cursor=pointer]:
+                - /url: mailto:feedback@forbes.com
+              - link "Send a Secure Tip to Forbes" [ref=e3141] [cursor=pointer]:
+                - /url: https://www.forbes.com/tips/
+              - link "Who We Are" [ref=e3143] [cursor=pointer]:
+                - /url: https://www.forbes.com/connect/who-we-are/
+          - generic [ref=e3144]:
+            - heading "Products" [level=2] [ref=e3145]
+            - generic [ref=e3146]:
+              - link "Forbes Magazine" [ref=e3148] [cursor=pointer]:
+                - /url: https://www.forbesmagazine.com/
+              - link "Forbes Books" [ref=e3150] [cursor=pointer]:
+                - /url: https://forbesbooks.com/
+              - link "Forbes Books Audio" [ref=e3152] [cursor=pointer]:
+                - /url: https://forbesbooksaudio.com/
+              - link "Forbes Insights" [ref=e3154] [cursor=pointer]:
+                - /url: https://www.forbes.com/connect/content-solutions/forbes-insights/
+              - link "Reprints, Permissions & Licensing" [ref=e3156] [cursor=pointer]:
+                - /url: http://forbesreprints.magreprints.com/
+              - link "Forbes Newsfeeds" [ref=e3158] [cursor=pointer]:
+                - /url: https://www.forbes.com/connect/content-partnerships/
+              - link "Forbes Vetted" [ref=e3160] [cursor=pointer]:
+                - /url: https://www.forbes.com/vetted/
+              - link "Forbes Advisor" [ref=e3162] [cursor=pointer]:
+                - /url: https://www.forbes.com/advisor/
+              - link "Forbes Global Properties" [ref=e3164] [cursor=pointer]:
+                - /url: https://www.forbesglobalproperties.com/
+              - link "Forbes Global Talent" [ref=e3166] [cursor=pointer]:
+                - /url: https://forbesglobaltalent.com/
+              - link "Forbes Custom" [ref=e3168] [cursor=pointer]:
+                - /url: https://www.forbes.com/connect/forbes-custom/
+              - link "Forbes Accolades" [ref=e3170] [cursor=pointer]:
+                - /url: https://www.forbes.com/accolades/
+          - generic [ref=e3171]:
+            - heading "Forbes Councils" [level=2] [ref=e3172]
+            - generic [ref=e3173]:
+              - link "Forbes Agency Council" [ref=e3175] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbesagencycouncil
+              - link "Forbes Business Council" [ref=e3177] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbesbusinesscouncil
+              - link "Forbes Business Development Council" [ref=e3179] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbesbizdevcouncil
+              - link "Forbes Coaches Council" [ref=e3181] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbescoachescouncil
+              - link "Forbes Communications Council" [ref=e3183] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbescommunicationscouncil
+              - link "Forbes Finance Council" [ref=e3185] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbesfinancecouncil
+              - link "Forbes Human Resources Council" [ref=e3187] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbeshumanresourcescouncil
+              - link "Forbes Nonprofit Council" [ref=e3189] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbesnonprofitcouncil
+              - link "Forbes Technology Council" [ref=e3191] [cursor=pointer]:
+                - /url: https://councils.forbes.com/forbestechcouncil
+          - generic [ref=e3192]:
+            - heading "Conferences" [level=2] [ref=e3193]
+            - link "ForbesLive Events" [ref=e3196] [cursor=pointer]:
+              - /url: https://www.forbes.com/connect/events-2/
+          - generic [ref=e3197]:
+            - heading "Education" [level=2] [ref=e3198]
+            - link "University of Arizona Global Campus" [ref=e3201] [cursor=pointer]:
+              - /url: https://www.uagc.edu/forbes-school-of-business-and-technology
+          - generic [ref=e3202]:
+            - heading "Forbes Licensees" [level=2] [ref=e3203]
+            - generic [ref=e3204]:
+              - link "Forbes Africa" [ref=e3206] [cursor=pointer]:
+                - /url: http://www.forbesafrica.com/
+              - link "Forbes Afrique" [ref=e3208] [cursor=pointer]:
+                - /url: https://www.forbesafrique.com/
+              - link "Forbes Argentina" [ref=e3210] [cursor=pointer]:
+                - /url: http://www.forbesargentina.com/
+              - link "Forbes Australia" [ref=e3212] [cursor=pointer]:
+                - /url: https://www.forbes.com.au/
+              - link "Forbes Austria" [ref=e3214] [cursor=pointer]:
+                - /url: https://www.forbes.at/
+              - link "Forbes Belgium" [ref=e3216] [cursor=pointer]:
+                - /url: https://www.forbes.be/
+              - link "Forbes Bosnia and Herzegovina" [ref=e3218] [cursor=pointer]:
+                - /url: https://forbes.n1info.ba/
+              - link "Forbes Brazil" [ref=e3220] [cursor=pointer]:
+                - /url: https://www.forbes.com.br
+              - link "Forbes Bulgaria" [ref=e3222] [cursor=pointer]:
+                - /url: http://forbesbulgaria.com/
+              - link "Forbes Central America" [ref=e3224] [cursor=pointer]:
+                - /url: https://forbescentroamerica.com/
+              - link "Forbes Chile" [ref=e3226] [cursor=pointer]:
+                - /url: https://forbes.cl/
+              - link "Forbes China" [ref=e3228] [cursor=pointer]:
+                - /url: https://www.forbeschina.com
+              - link "Forbes Colombia" [ref=e3230] [cursor=pointer]:
+                - /url: https://forbes.co/
+              - link "Forbes Croatia" [ref=e3232] [cursor=pointer]:
+                - /url: https://forbes.n1info.hr/
+              - link "Forbes Czech Republic" [ref=e3234] [cursor=pointer]:
+                - /url: http://www.forbes.cz/
+              - link "Forbes Dominican Republic" [ref=e3236] [cursor=pointer]:
+                - /url: https://forbes.do/
+              - link "Forbes Ecuador" [ref=e3238] [cursor=pointer]:
+                - /url: https://www.forbes.com.ec/
+              - link "Forbes Georgia" [ref=e3240] [cursor=pointer]:
+                - /url: http://forbes.ge
+              - link "Forbes Greece" [ref=e3242] [cursor=pointer]:
+                - /url: https://www.capital.gr/forbes
+              - link "Forbes Hungary" [ref=e3244] [cursor=pointer]:
+                - /url: https://forbes.hu/
+              - link "Forbes India" [ref=e3246] [cursor=pointer]:
+                - /url: http://www.forbesindia.com/
+              - link "Forbes Israel" [ref=e3248] [cursor=pointer]:
+                - /url: https://forbes.co.il/
+              - link "Forbes Italy" [ref=e3250] [cursor=pointer]:
+                - /url: https://www.forbes.it
+              - link "Forbes Japan" [ref=e3252] [cursor=pointer]:
+                - /url: http://forbesjapan.com/
+              - link "Forbes Kazakhstan" [ref=e3254] [cursor=pointer]:
+                - /url: http://forbes.kz/
+              - link "Forbes Korea" [ref=e3256] [cursor=pointer]:
+                - /url: https://jmagazine.joins.com/forbes
+              - link "Forbes Lusophone Africa" [ref=e3258] [cursor=pointer]:
+                - /url: https://www.forbesafricalusofona.com/
+              - link "Forbes Luxembourg" [ref=e3260] [cursor=pointer]:
+                - /url: https://www.forbes.lu/
+              - link "Forbes Mexico" [ref=e3262] [cursor=pointer]:
+                - /url: https://forbes.com.mx/
+              - link "Forbes Middle East (English)" [ref=e3264] [cursor=pointer]:
+                - /url: http://www.forbesmiddleeast.com/
+              - link "Forbes Middle East (Arabic)" [ref=e3266] [cursor=pointer]:
+                - /url: https://www.forbesmiddleeast.com/ar
+              - link "Forbes Moldova" [ref=e3268] [cursor=pointer]:
+                - /url: https://www.forbes.ro/forbes-moldova
+              - link "Forbes Montenegro" [ref=e3270] [cursor=pointer]:
+                - /url: https://forbes.vijesti.me/
+              - link "Forbes Paraguay" [ref=e3272] [cursor=pointer]:
+                - /url: https://www.forbes.com.py/
+              - link "Forbes Peru" [ref=e3274] [cursor=pointer]:
+                - /url: https://forbes.pe/
+              - link "Forbes Poland" [ref=e3276] [cursor=pointer]:
+                - /url: http://www.forbes.pl/
+              - link "Forbes Portugal" [ref=e3278] [cursor=pointer]:
+                - /url: https://www.forbespt.com/
+              - link "Forbes Romania" [ref=e3280] [cursor=pointer]:
+                - /url: http://www.forbes.ro/
+              - link "Forbes Serbia" [ref=e3282] [cursor=pointer]:
+                - /url: https://forbes.n1info.rs/
+              - link "Forbes Slovakia" [ref=e3284] [cursor=pointer]:
+                - /url: http://www.forbes.sk/
+              - link "Forbes Slovenia" [ref=e3286] [cursor=pointer]:
+                - /url: https://forbes.n1info.si/
+              - link "Forbes Spain" [ref=e3288] [cursor=pointer]:
+                - /url: http://forbes.es/
+              - link "Forbes Switzerland" [ref=e3290] [cursor=pointer]:
+                - /url: https://forbes.swiss/
+              - link "Forbes Thailand" [ref=e3292] [cursor=pointer]:
+                - /url: http://www.forbesthailand.com/
+              - link "Forbes Turkey" [ref=e3294] [cursor=pointer]:
+                - /url: http://forbes.com.tr/
+              - link "Forbes Ukraine" [ref=e3296] [cursor=pointer]:
+                - /url: https://forbes.ua/
+              - link "Forbes Uruguay" [ref=e3298] [cursor=pointer]:
+                - /url: https://www.forbesuruguay.com
+              - link "Forbes Vietnam" [ref=e3300] [cursor=pointer]:
+                - /url: https://forbes.vn/
+      - generic [ref=e3301]:
+        - generic [ref=e3302]: © 2026 Forbes Media LLC. All Rights Reserved.
+        - list [ref=e3303]:
+          - listitem [ref=e3304]:
+            - link "Terms of Service" [ref=e3305] [cursor=pointer]:
+              - /url: https://www.forbes.com/terms/
+          - listitem [ref=e3306]:
+            - link "Privacy Statement" [ref=e3307] [cursor=pointer]:
+              - /url: https://www.forbes.com/fdc/privacy.html
+          - listitem [ref=e3308]:
+            - img [ref=e3309]
+            - link "Your Privacy Choices" [ref=e3318] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e3319]:
+            - link "Cookie Preferences" [ref=e3321] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e3322]:
+            - link "Digital Terms of Sale" [ref=e3323] [cursor=pointer]:
+              - /url: https://www.forbes.com/digital-terms-of-sale
+          - listitem [ref=e3324]:
+            - link "Market Data by Morningstar" [ref=e3325] [cursor=pointer]:
+              - /url: http://corporate.morningstar.com/us/asp/subject.aspx?xmlfile=5501.xml
+          - listitem [ref=e3326]:
+            - link "AdChoices" [ref=e3327] [cursor=pointer]:
+              - /url: https://youradchoices.com/control
+          - listitem [ref=e3328]:
+            - link "To report security issues email us at security@forbes.com" [ref=e3329] [cursor=pointer]:
+              - /url: mailto:security@forbes.com?subject=Reporting a Security Issue on Forbes.com
+  - alert [ref=e3330]

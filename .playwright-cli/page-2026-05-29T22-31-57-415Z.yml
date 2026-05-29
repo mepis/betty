@@ -1,0 +1,1349 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Atlan Logo" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Atlan Logo" [ref=e7]
+      - navigation [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - text: Product
+            - img "dropdown arrow" [ref=e12]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Enterprise Data Graph
+                  - paragraph: Connect all your business systems and pull context across your data estate into one living graph.
+                  - generic:
+                    - link "connectors icon Connectors & Apps":
+                      - /url: /connectors/
+                      - generic:
+                        - img "connectors icon"
+                      - generic: Connectors & Apps
+                      - img
+                    - link "data lineage icon Data Lineage":
+                      - /url: /data-lineage/
+                      - generic:
+                        - img "data lineage icon"
+                      - generic: Data Lineage
+                      - img
+                - link "data marketplace icon Data Marketplace Give humans the context they need to understand your business. EVERYWHERE YOU WORK Slack Slack Teams Teams Claude Claude ChatGPT ChatGPT":
+                  - /url: /data-marketplace/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "data marketplace icon"
+                      - generic: Data Marketplace
+                    - img
+                  - paragraph: Give humans the context they need to understand your business.
+                  - generic:
+                    - generic: EVERYWHERE YOU WORK
+                    - generic:
+                      - img "Slack"
+                      - generic: Slack
+                    - generic:
+                      - img "Teams"
+                      - generic: Teams
+                    - generic:
+                      - img "Claude"
+                      - generic: Claude
+                    - generic:
+                      - img "ChatGPT"
+                      - generic: ChatGPT
+                - link "context agents icon Context Agents AI teammates that document tacit knowledge and make your data AI-ready. Ontology Descriptions Metrics Quality Glossary README":
+                  - /url: /context-agents/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "context agents icon"
+                      - generic: Context Agents
+                    - img
+                  - paragraph: AI teammates that document tacit knowledge and make your data AI-ready.
+                  - generic:
+                    - generic:
+                      - generic: Ontology
+                    - generic:
+                      - generic: Descriptions
+                    - generic:
+                      - generic: Metrics
+                    - generic:
+                      - generic: Quality
+                    - generic:
+                      - generic: Glossary
+                    - generic:
+                      - generic: README
+                - link "context engineering studio icon Context Engineering Studio Bootstrap, test, and ship the business understanding every AI needs. DEPLOY ANYWHERE Cortex Cortex Genie Genie Claude Claude Codex Codex":
+                  - /url: /context-engineering-studio/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "context engineering studio icon"
+                      - generic: Context Engineering Studio
+                    - img
+                  - paragraph: Bootstrap, test, and ship the business understanding every AI needs.
+                  - generic:
+                    - generic: DEPLOY ANYWHERE
+                    - generic:
+                      - img "Cortex"
+                      - generic: Cortex
+                    - generic:
+                      - img "Genie"
+                      - generic: Genie
+                    - generic:
+                      - img "Claude"
+                      - generic: Claude
+                    - generic:
+                      - img "Codex"
+                      - generic: Codex
+                - link "context lakehouse icon Context Lakehouse The world's first context store engineered natively for AI. Iceberg-native Open formats Graph+file architecture Vector-native AI search":
+                  - /url: /context-lakehouse/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "context lakehouse icon"
+                      - generic: Context Lakehouse
+                    - img
+                  - paragraph: The world's first context store engineered natively for AI.
+                  - generic:
+                    - generic:
+                      - generic: Iceberg-native
+                    - generic:
+                      - generic: Open formats
+                    - generic:
+                      - generic: Graph+file architecture
+                    - generic:
+                      - generic: Vector-native AI search
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - text: Customers
+            - img "dropdown arrow" [ref=e15]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - paragraph: Finance
+                    - generic:
+                      - generic:
+                        - link "Case study nasdaq logo":
+                          - /url: https://humansofdata.atlan.com/2023/04/nasdaq-active-metadata-strategy/
+                          - paragraph: Case study
+                          - img "nasdaq logo"
+                      - generic:
+                        - generic:
+                          - img "mastercard logo"
+                      - generic:
+                        - generic:
+                          - img "plaid logo"
+                - generic:
+                  - generic:
+                    - paragraph: Technology
+                    - generic:
+                      - generic:
+                        - link "Case study autodesk logo":
+                          - /url: https://humansofdata.atlan.com/2023/08/autodesk-data-mesh-snowflake-atlan/
+                          - paragraph: Case study
+                          - img "autodesk logo"
+                      - generic:
+                        - generic:
+                          - img "hubspot logo"
+                      - generic:
+                        - link "Case study dropbox logo":
+                          - /url: https://humansofdata.atlan.com/2024/10/dropbox-governance-atlan/
+                          - paragraph: Case study
+                          - img "dropbox logo"
+                - generic:
+                  - generic:
+                    - paragraph: Manufacturing
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "unilever logo"
+                      - generic:
+                        - link "Case study general motors logo":
+                          - /url: https://humansofdata.atlan.com/2024/10/general-motors-governance-atlan/
+                          - paragraph: Case study
+                          - img "general motors logo"
+                      - generic:
+                        - generic:
+                          - img "ingersollrand logo"
+                - generic:
+                  - generic:
+                    - paragraph: Media
+                    - generic:
+                      - generic:
+                        - link "Case study fox logo":
+                          - /url: https://humansofdata.atlan.com/2024/10/fox-governance-atlan/
+                          - paragraph: Case study
+                          - img "fox logo"
+                      - generic:
+                        - generic:
+                          - img "news corp logo"
+                      - generic:
+                        - generic:
+                          - img "virgin o2 logo"
+                - generic:
+                  - generic:
+                    - paragraph: Healthcare
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "nhs logo"
+                      - generic:
+                        - link "Case study scripps logo":
+                          - /url: https://f.hubspotusercontent30.net/hubfs/6880682/Scripps%20Health%20Case%20Study%20(2).pdf
+                          - paragraph: Case study
+                          - img "scripps logo"
+                      - generic:
+                        - generic:
+                          - img "medtronic logo"
+                - generic:
+                  - generic:
+                    - paragraph: Retail
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "ralph lauren logo"
+                      - generic:
+                        - generic:
+                          - img "urban outfitters logo"
+                      - generic:
+                        - link "Case study dr martens logo":
+                          - /url: https://humansofdata.atlan.com/2023/12/dr-martens-modern-data-catalog/
+                          - paragraph: Case study
+                          - img "dr martens logo"
+              - generic:
+                - link "See all customer stories →":
+                  - /url: /customers/
+        - link "Resources" [ref=e17] [cursor=pointer]:
+          - /url: /know/enterprise-context-layer/
+        - link "Demo Videos" [ref=e19] [cursor=pointer]:
+          - /url: /demos/
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - text: Company
+            - img "dropdown arrow" [ref=e22]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - link "Company nav icon About us":
+                    - /url: /about/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: About us
+                  - link "Company nav icon Newsroom":
+                    - /url: /newsroom/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Newsroom
+                  - link "Company nav icon Careers":
+                    - /url: /careers/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Careers
+                - generic:
+                  - link "Company nav icon Events":
+                    - /url: /events/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Events
+                  - link "Company nav icon Partners":
+                    - /url: /partners/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Partners
+                  - link "Company nav icon Inside Atlan Blog":
+                    - /url: https://blog.atlan.com/
+                    - generic:
+                      - img "Company nav icon"
+                    - generic:
+                      - generic: Inside Atlan Blog
+      - generic [ref=e23]:
+        - link "Talk to Us" [ref=e24] [cursor=pointer]:
+          - /url: /forms/talk-to-sales-contact/
+        - link "WTF is the Context Layer?" [ref=e25] [cursor=pointer]:
+          - /url: /wtf-context-layer/
+          - generic [ref=e26]: WTF is the Context Layer?
+          - img [ref=e27]
+  - main [ref=e29]:
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - heading "How to Build an AI Agent Harness" [level=1] [ref=e36]
+          - navigation "Breadcrumb" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Home" [ref=e41] [cursor=pointer]:
+                  - /url: https://atlan.com/
+              - listitem [ref=e42]:
+                - generic [ref=e43]: ›
+                - link "Learn with Atlan" [ref=e44] [cursor=pointer]:
+                  - /url: https://atlan.com/know/
+              - listitem [ref=e45]:
+                - generic [ref=e46]: ›
+                - generic [ref=e47]: How to Build an AI Agent Harness
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - img "Emily Winks profile picture" [ref=e50]
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - link "Emily Winks" [ref=e53] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/emily-winks/
+                - button "View author credentials" [ref=e54] [cursor=pointer]:
+                  - img [ref=e55]
+              - generic [ref=e57]: Data Governance Expert
+          - generic [ref=e58]:
+            - text: "Emily WinksData Governance ExpertData Governance Specialist18+ years in information architecture, data governance, and enterprise data managementMasters, Library and Information Science, Queens College; Certificate in Archives, Records Management and Preservation; BA English, St. Joseph's CollegeAtlan Product EssentialsComputer Science Principles: Programming (LinkedIn)"
+            - link "LinkedIn Profile" [ref=e59] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/emily-winks/
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: "Updated:"
+              - generic [ref=e64]: 04/13/2026
+            - generic [ref=e65]: "|"
+            - generic [ref=e66]:
+              - generic [ref=e67]: "Published:"
+              - generic [ref=e68]: 04/13/2026
+          - generic [ref=e70]:
+            - img [ref=e71]
+            - generic [ref=e73]: 28 min read
+        - generic [ref=e74]:
+          - link "See Context Eng. Studio" [ref=e75] [cursor=pointer]:
+            - /url: https://atlan.com/context-layer-demo/
+            - generic [ref=e76]: See Context Eng. Studio
+          - link "Take Context Maturity Quiz" [ref=e77] [cursor=pointer]:
+            - /url: https://tools.atlan.com/tools/context-maturity-assessment/
+            - generic [ref=e78]: Take Context Maturity Quiz
+      - generic [ref=e81]:
+        - heading "Key takeaways" [level=2] [ref=e82]
+        - list [ref=e83]:
+          - listitem [ref=e84]:
+            - img [ref=e85]
+            - generic [ref=e87]: Harness quality determines agent reliability — LangChain gained 13.7 benchmark points with zero model changes.
+          - listitem [ref=e88]:
+            - img [ref=e89]
+            - generic [ref=e91]: Step 0 (data layer certification) is the most-skipped step — uncertified tables cause confident wrong answers.
+          - listitem [ref=e92]:
+            - img [ref=e93]
+            - generic [ref=e95]: Start with 4-5 atomic tools and a 20-line ReAct loop. Add infrastructure only after observing real failure modes.
+    - generic [ref=e96]:
+      - complementary [ref=e97]:
+        - generic [ref=e98]:
+          - paragraph [ref=e99]: In this article
+          - navigation "Article sections" [ref=e100]:
+            - link "Why build an AI agent harness?" [ref=e101] [cursor=pointer]:
+              - /url: "#why-build-an-ai-agent-harness"
+              - generic [ref=e102]: Why build an AI agent harness?
+            - link "Prerequisites" [ref=e103] [cursor=pointer]:
+              - /url: "#prerequisites"
+              - generic [ref=e104]: Prerequisites
+            - link "Step 0 — Certify your data layer" [ref=e105] [cursor=pointer]:
+              - /url: "#step-0-certify-your-data-layer"
+              - generic [ref=e106]: Step 0 — Certify your data layer
+            - link "Step 1 — Define scope and tool set" [ref=e107] [cursor=pointer]:
+              - /url: "#step-1-define-scope-and-tool-set"
+              - generic [ref=e108]: Step 1 — Define scope and tool set
+            - link "Step 2 — Build the core agent loop" [ref=e109] [cursor=pointer]:
+              - /url: "#step-2-build-the-core-agent-loop"
+              - generic [ref=e110]: Step 2 — Build the core agent loop
+            - link "Step 3 — Create your AGENTS.md configuration file" [ref=e111] [cursor=pointer]:
+              - /url: "#step-3-create-your-agents-md-configuration-file"
+              - generic [ref=e112]: Step 3 — Create your AGENTS.md configuration file
+            - link "Step 4 — Layer the system prompt" [ref=e113] [cursor=pointer]:
+              - /url: "#step-4-layer-the-system-prompt"
+              - generic [ref=e114]: Step 4 — Layer the system prompt
+            - link "Step 5 — Implement permission classification" [ref=e115] [cursor=pointer]:
+              - /url: "#step-5-implement-permission-classification"
+              - generic [ref=e116]: Step 5 — Implement permission classification
+            - link "Step 6 — Add context management" [ref=e117] [cursor=pointer]:
+              - /url: "#step-6-add-context-management"
+              - generic [ref=e118]: Step 6 — Add context management
+            - link "Step 7 — Build persistence layer" [ref=e119] [cursor=pointer]:
+              - /url: "#step-7-build-persistence-layer"
+              - generic [ref=e120]: Step 7 — Build persistence layer
+            - link "Step 8 — Deploy observability and verification" [ref=e121] [cursor=pointer]:
+              - /url: "#step-8-deploy-observability-and-verification"
+              - generic [ref=e122]: Step 8 — Deploy observability and verification
+            - link "Step 9 — Add guardrails" [ref=e123] [cursor=pointer]:
+              - /url: "#step-9-add-guardrails"
+              - generic [ref=e124]: Step 9 — Add guardrails
+            - link "Step 10 — Evaluate harness independently of model" [ref=e125] [cursor=pointer]:
+              - /url: "#step-10-evaluate-harness-independently-of-model"
+              - generic [ref=e126]: Step 10 — Evaluate harness independently of model
+            - link "Common mistakes when building an AI agent harness" [ref=e127] [cursor=pointer]:
+              - /url: "#common-mistakes-when-building-an-ai-agent-harness"
+              - generic [ref=e128]: Common mistakes when building an AI agent harness
+            - link "How Atlan supports Steps 0 and 8" [ref=e129] [cursor=pointer]:
+              - /url: "#how-atlan-supports-steps-0-and-8"
+              - generic [ref=e130]: How Atlan supports Steps 0 and 8
+            - link "Wrap-up — From MVH to production" [ref=e131] [cursor=pointer]:
+              - /url: "#wrap-up-from-mvh-to-production"
+              - generic [ref=e132]: Wrap-up — From MVH to production
+            - 'link "The 10-step build: summary" [ref=e133] [cursor=pointer]':
+              - /url: "#the-10-step-build-summary"
+              - generic [ref=e134]: "The 10-step build: summary"
+            - link "FAQs about how to build AI agent harness" [ref=e135] [cursor=pointer]:
+              - /url: "#faqs-about-how-to-build-ai-agent-harness"
+              - generic [ref=e136]: FAQs about how to build AI agent harness
+            - link "Sources" [ref=e137] [cursor=pointer]:
+              - /url: "#sources"
+              - generic [ref=e138]: Sources
+          - generic [ref=e140]:
+            - generic [ref=e141]: Reading progress
+            - generic [ref=e142]: 0%
+      - generic [ref=e144]:
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - 'heading "How to build an AI agent harness: 10-step overview" [level=2] [ref=e148]'
+            - button "Copy summary to clipboard" [ref=e149] [cursor=pointer]:
+              - img [ref=e150]
+              - generic [ref=e152]: Copy summary
+          - paragraph [ref=e153]: A production-ready agent harness requires 10 engineering steps across 4 to 12 weeks. Begin by certifying your data layer before writing any harness code. Build the core ReAct loop next, then layer in context configuration, permission tiers, context management, persistence, observability, guardrails, and finally evaluate the harness independently of the model. Most guides start at Step 1. The ones that succeed start at Step 0.
+          - generic [ref=e154]:
+            - heading "Steps to build an AI agent harness:" [level=3] [ref=e155]
+            - list [ref=e156]:
+              - listitem [ref=e157]:
+                - img [ref=e159]
+                - generic [ref=e161]: "Step 0: Certify your data layer — inventory sources, trace lineage, apply certification policies"
+              - listitem [ref=e162]:
+                - img [ref=e164]
+                - generic [ref=e166]: "Step 1: Define scope and tool set — 4-5 atomic tools, one agent per bounded task"
+              - listitem [ref=e167]:
+                - img [ref=e169]
+                - generic [ref=e171]: "Step 2: Build the core agent loop — ReAct loop with max-iteration ceiling and append-only history"
+              - listitem [ref=e172]:
+                - img [ref=e174]
+                - generic [ref=e176]: "Step 3: Create your AGENTS.md configuration file — build/test commands, boundaries, certified data refs"
+              - listitem [ref=e177]:
+                - img [ref=e179]
+                - generic [ref=e181]: "Step 4: Layer the system prompt — identity, tool schemas, dynamic context injection"
+              - listitem [ref=e182]:
+                - img [ref=e184]
+                - generic [ref=e186]: "Step 5: Implement permission classification — safe, moderate, and dangerous tiers as middleware"
+              - listitem [ref=e187]:
+                - img [ref=e189]
+                - generic [ref=e191]: "Step 6: Add context management — token counting, compaction at 85-92%, file overflow"
+              - listitem [ref=e192]:
+                - img [ref=e194]
+                - generic [ref=e196]: "Step 7: Build persistence layer — progress files, git checkpoints, session serialization"
+              - listitem [ref=e197]:
+                - img [ref=e199]
+                - generic [ref=e201]: "Step 8: Deploy observability and verification — structured logs, LLM-as-judge, certified schema checks"
+              - listitem [ref=e202]:
+                - img [ref=e204]
+                - generic [ref=e206]: "Step 9: Add guardrails — input filters, PII redaction, output safety evaluation"
+              - listitem [ref=e207]:
+                - img [ref=e209]
+                - generic [ref=e211]: "Step 10: Evaluate harness independently of model — freeze model, vary harness, measure delta"
+          - generic [ref=e212]:
+            - paragraph [ref=e213]: Are your AI agents stuck in POC?
+            - link "Assess Context Maturity" [ref=e214] [cursor=pointer]:
+              - /url: https://tools.atlan.com/tools/context-maturity-assessment/
+              - generic [ref=e215]: Assess Context Maturity
+              - img [ref=e216]
+        - generic [ref=e218]:
+          - article [ref=e219]:
+            - generic [ref=e221]:
+              - paragraph [ref=e222]: "Building a production-ready AI agent harness takes 4-12 weeks and 5,000-20,000 lines of infrastructure code — far more than the model itself. A minimum viable harness (MVH) ships in 2-4 hours; what breaks teams is the path from MVH to production. The critical insight: harness quality, not model quality, determines agent reliability. LangChain’s data shows harness improvements alone lifted Terminal Bench scores from 52.8% to 66.5% — without touching the underlying model."
+              - separator [ref=e223]
+              - generic [ref=e224]:
+                - paragraph [ref=e225]: Build Your AI Context Stack
+                - paragraph [ref=e226]: Get the blueprint for implementing context graphs across your enterprise. This guide walks through the four-layer architecture — from metadata foundation to agent orchestration — with practical implementation steps for 2026.
+                - link "Get the Stack Guide" [ref=e227] [cursor=pointer]:
+                  - /url: https://atlan.com/resources/ai-context-stack/
+              - separator [ref=e228]
+              - heading "Why build an AI agent harness?" [level=2] [ref=e229]
+              - paragraph [ref=e230]: "The raw agent loop (LLM call, tool execution, result feedback) is 20 lines. The harness that makes it safe for production is 5,000-20,000 lines. Without a harness: no context management, no permission tiers, no persistence across sessions, no verification. Manus spent 6 months and 5 complete architectural rewrites before their agent was production-ready."
+              - paragraph [ref=e231]: Most “getting started” agent tutorials stop at the core loop. Production reliability requires infrastructure those tutorials never show. Common failure modes without a harness include runaway tool calls, context exhaustion, no audit trail, and undetected data errors propagating through multiple steps. LangChain built 4 distinct architectures for their LangGraph execution engine alone. The cost of retrofitting governance onto a running agent is substantially higher than building it in from the start.
+              - paragraph [ref=e232]: The performance case is equally clear. LangChain achieved a harness improvement from 52.8% to 66.5% on Terminal Bench (a 13.7-point gain) without changing the underlying model. Vercel found that removing 80% of tools from the harness actually improved agent performance. Stripe ships 1,300 PRs per week using narrow-scope agents with disciplined harnesses. Enterprises that invest in harness engineering reduce agent failure rates by controlling how the model interacts with data, not just what the model sees.
+              - paragraph [ref=e233]:
+                - text: "Who should do this: platform and ML engineers building their first production agent; data teams deploying agents against governed enterprise data; teams with a working prototype that needs to be made production-safe. Not for teams that have not yet validated the core use case with a 20-line prototype. Learn more about"
+                - link "what an agent harness is" [ref=e234] [cursor=pointer]:
+                  - /url: https://atlan.com/know/what-is-an-agent-harness/
+                - text: and
+                - link "the harness engineering discipline" [ref=e235] [cursor=pointer]:
+                  - /url: https://atlan.com/know/what-is-harness-engineering/
+                - text: before starting.
+              - separator [ref=e236]
+              - heading "Prerequisites" [level=2] [ref=e237]
+              - paragraph [ref=e238]:
+                - strong [ref=e239]: "Organizational prerequisites:"
+              - list [ref=e240]:
+                - listitem [ref=e241]:
+                  - text: "[ ]"
+                  - strong [ref=e242]: "A bounded task domain:"
+                  - text: "One agent, one job. Stripe’s pattern: one agent per bounded task."
+                - listitem [ref=e243]:
+                  - text: "[ ]"
+                  - strong [ref=e244]: "Stakeholder approval for tool permissions:"
+                  - text: Know upfront which tools require human-in-the-loop approval vs. auto-approve.
+                - listitem [ref=e245]:
+                  - text: "[ ]"
+                  - strong [ref=e246]: "A governed data inventory:"
+                  - text: Which tables, APIs, and files will the agent query? Are any uncertified or under active schema change? (Step 0 depends on this.)
+                - listitem [ref=e247]:
+                  - text: "[ ]"
+                  - strong [ref=e248]: "Incident response plan:"
+                  - text: Who owns a runaway agent? Who controls the kill switch?
+              - paragraph [ref=e249]:
+                - strong [ref=e250]: "Technical prerequisites:"
+              - list [ref=e251]:
+                - listitem [ref=e252]: "[ ] Python 3.10+, async-capable runtime"
+                - listitem [ref=e253]: "[ ] LLM API credentials with spend limits set"
+                - listitem [ref=e254]: "[ ] PostgreSQL + pgvector for persistence layer"
+                - listitem [ref=e255]: "[ ] Access to all data sources the agent will query (read at minimum; write where required)"
+                - listitem [ref=e256]: "[ ] Langfuse or equivalent observability backend"
+              - paragraph [ref=e257]:
+                - strong [ref=e258]: "Team and resources:"
+              - list [ref=e259]:
+                - listitem [ref=e260]:
+                  - strong [ref=e261]: Harness Engineer
+                  - text: "(50-100% FTE, Weeks 1-4): Core loop, context management, persistence, observability."
+                - listitem [ref=e262]:
+                  - strong [ref=e263]: Data Engineer / Data Owner
+                  - text: "(20% FTE, Week 1): Step 0, the data certification audit."
+                - listitem [ref=e264]:
+                  - strong [ref=e265]: Security / Infra
+                  - text: "(10% FTE, Weeks 3-4): Permission classification review, PII guardrails sign-off."
+              - paragraph [ref=e266]:
+                - strong [ref=e267]: "Time commitment:"
+              - list [ref=e268]:
+                - listitem [ref=e269]: "MVH (Steps 1-2 only): 2-4 hours"
+                - listitem [ref=e270]: "Context + permissions (Steps 3-5): Days 2-5"
+                - listitem [ref=e271]: "Persistence + observability (Steps 6-8): Days 5-20"
+                - listitem [ref=e272]: "Guardrails + eval (Steps 9-10): Week 4+"
+                - listitem [ref=e273]: "Total production-ready: 4-12 weeks"
+              - separator [ref=e274]
+              - heading "Step 0 — Certify your data layer" [level=2] [ref=e275]
+              - paragraph [ref=e276]:
+                - strong [ref=e277]: "What you’ll accomplish:"
+                - text: Audit every data source your agent will query. Identify certified vs. uncertified tables, resolve schema drift, set up data contracts or certification policies, and establish the ground truth that Step 8’s verification loops will validate against.
+              - paragraph [ref=e278]:
+                - strong [ref=e279]: "Time required:"
+                - text: 4-8 hours (initial audit); ongoing as data sources change.
+              - paragraph [ref=e280]:
+                - strong [ref=e281]: "Why this step matters:"
+                - text: The harness fails at the data layer, not the model layer. An agent querying stale lineage or an uncertified join will confidently produce wrong answers. No amount of prompt tuning or LLM-as-judge scoring will fix a data quality problem. This is the step no other build guide includes, and it is the most common root cause of production failures.
+              - paragraph [ref=e282]:
+                - strong [ref=e283]: "How to do it:"
+              - list [ref=e284]:
+                - listitem [ref=e285]:
+                  - strong [ref=e286]: Inventory every data source.
+                  - text: "List all tables, APIs, files, and external services. For each: owner, last-certified date, schema stability status. Flag any table under active schema migration as “hold.”"
+                - listitem [ref=e287]:
+                  - strong [ref=e288]: Run a lineage check on critical tables.
+                  - text: Trace upstream dependencies. Identify lineage gaps. A table with unknown lineage is an uncertified table. Atlan’s data lineage view surfaces column-level impact across pipelines automatically.
+                - listitem [ref=e289]:
+                  - strong [ref=e290]: Apply certification policies or tags.
+                  - text: "Mark each source as certified, provisional, or blocked. “Certified” means: schema stable, quality rules passing, owner acknowledged. Atlan’s certification workflows allow bulk certification with approval flows, with no spreadsheet required."
+                - listitem [ref=e291]:
+                  - strong [ref=e292]: Draft data contracts for agent-critical tables.
+                  - text: "For each table the agent will write to or use as a verification ground truth: define expected schema, allowed null rates, and freshness SLA."
+                - listitem [ref=e293]:
+                  - strong [ref=e294]: Document the certified set in AGENTS.md
+                  - text: (Step 3). Record which sources are certified, naming conventions, and which tables require permission escalation before writes.
+              - paragraph [ref=e295]:
+                - strong [ref=e296]: "Validation checklist:"
+              - list [ref=e297]:
+                - listitem [ref=e298]: "[ ] All data sources inventoried with owner and last-certified date"
+                - listitem [ref=e299]: "[ ] Lineage traced for every table used as a tool input"
+                - listitem [ref=e300]: "[ ] Certification status (certified / provisional / blocked) applied to all sources"
+                - listitem [ref=e301]: "[ ] Data contracts drafted for any source agent writes to or validates against"
+                - listitem [ref=e302]: "[ ] Schema drift alerts enabled for certified tables"
+              - paragraph [ref=e303]:
+                - strong [ref=e304]: "Common mistakes:"
+              - paragraph [ref=e305]:
+                - text: "No: Treating data certification as a post-launch concern"
+                - text: "Yes: Agents reading uncertified data return confident wrong answers. This is the most common root cause of silent production failures. Certify before build."
+              - paragraph [ref=e306]:
+                - text: "No: Using a single “looks good” from the data owner as certification"
+                - text: "Yes: Certification should be a documented artifact with schema snapshot, quality rule results, and expiry date."
+              - paragraph [ref=e307]:
+                - strong [ref=e308]: "Atlan entry point:"
+                - text: Atlan’s data catalog and certification workflows are the purpose-built tool for this step. The MCP server makes certified data context available as the transport layer for AGENTS.md and harness tooling.
+              - separator [ref=e309]
+              - heading "Step 1 — Define scope and tool set" [level=2] [ref=e310]
+              - paragraph [ref=e311]:
+                - strong [ref=e312]: "What you’ll accomplish:"
+                - text: Select 4-5 atomic tools, assign one agent to one bounded task, and document tool schema precisely. This is the single biggest lever for agent performance.
+              - paragraph [ref=e313]:
+                - strong [ref=e314]: "Time required:"
+                - text: Day 1, 2-4 hours.
+              - paragraph [ref=e315]:
+                - strong [ref=e316]: "Why:"
+                - text: Vercel found that removing 80% of tools improved agent performance. More than 20 tools visible to the agent degrades model performance regardless of harness quality.
+              - paragraph [ref=e317]:
+                - strong [ref=e318]: "How:"
+              - list [ref=e319]:
+                - listitem [ref=e320]:
+                  - text: Select 4-5 atomic tools (e.g.,
+                  - code [ref=e321]: read_file
+                  - text: ","
+                  - code [ref=e322]: write_file
+                  - text: ","
+                  - code [ref=e323]: list_dir
+                  - text: ","
+                  - code [ref=e324]: shell
+                  - text: ","
+                  - code [ref=e325]: search_db
+                  - text: ). Each does exactly one thing.
+                - listitem [ref=e326]: "Define tool schema: name, description, parameters, return type, error behavior. Write the schema before the code; it goes into the system prompt."
+                - listitem [ref=e327]: "Apply the Stripe pattern: one agent, one bounded task. If the task requires more than 5 tools, it is probably two tasks."
+                - listitem [ref=e328]: "Document the tool permission tier for each tool: safe (auto-approve), moderate (whitelist), or dangerous (explicit approval). This seeds Step 5."
+              - paragraph [ref=e329]:
+                - strong [ref=e330]: "Validation checklist:"
+              - list [ref=e331]:
+                - listitem [ref=e332]: "[ ] 5 or fewer tools defined with atomic scope"
+                - listitem [ref=e333]: "[ ] Tool schema written in structured format"
+                - listitem [ref=e334]: "[ ] Permission tier assigned to every tool"
+                - listitem [ref=e335]: "[ ] Task boundary defined: one agent, one job"
+              - paragraph [ref=e336]:
+                - strong [ref=e337]: "Common mistakes:"
+              - paragraph [ref=e338]:
+                - text: "No: Adding tools “just in case”"
+                - text: "Yes: You can always add tools after observing real failures. Removing a tool from the system prompt without breaking existing behavior is costly to retrofit."
+              - separator [ref=e339]
+              - heading "Step 2 — Build the core agent loop" [level=2] [ref=e340]
+              - paragraph [ref=e341]:
+                - strong [ref=e342]: "What you’ll accomplish:"
+                - text: Implement the ReAct loop (model call, tool execution, result feedback, repeat) in approximately 20 lines of Python. Add a max-iteration ceiling before anything else.
+              - paragraph [ref=e343]:
+                - strong [ref=e344]: "Time required:"
+                - text: Days 1-2, 4-6 hours.
+              - paragraph [ref=e345]:
+                - strong [ref=e346]: "How:"
+              - list [ref=e347]:
+                - listitem [ref=e348]:
+                  - text: Implement the ReAct loop. On
+                  - code [ref=e349]: tool_call
+                  - text: ": execute the tool, append the result, call the model again. On"
+                  - code [ref=e350]: final_answer
+                  - text: ": return."
+                - listitem [ref=e351]: "Add a max-iteration ceiling immediately. Production ceiling: 50-100 iterations. An unbounded loop is a runaway agent."
+                - listitem [ref=e352]: Build append-only message design. Nothing is mutated. This enables more than 80% KV-cache hit rate and produces a clean audit history.
+                - listitem [ref=e353]: Log every loop iteration to stdout at minimum.
+              - paragraph [ref=e354]:
+                - text: "The key guard:"
+                - code [ref=e355]: if response.stop_reason == "end_turn" or iteration >= MAX_ITERATIONS
+                - text: . Set
+                - code [ref=e356]: MAX_ITERATIONS
+                - text: in a config file, not hardcoded.
+              - paragraph [ref=e357]:
+                - strong [ref=e358]: "Validation checklist:"
+              - list [ref=e359]:
+                - listitem [ref=e360]:
+                  - text: "[ ] ReAct loop terminates on"
+                  - code [ref=e361]: final_answer
+                - listitem [ref=e362]: "[ ] Max-iteration ceiling enforced in config"
+                - listitem [ref=e363]: "[ ] Append-only message history"
+                - listitem [ref=e364]: "[ ] Basic loop iteration logging"
+                - listitem [ref=e365]: "[ ] Loop tested with an intentionally failing tool"
+              - paragraph [ref=e366]:
+                - strong [ref=e367]: "Common mistakes:"
+              - paragraph [ref=e368]:
+                - text: "No: Skipping the iteration ceiling “to test in production first”"
+                - text: "Yes: Add the ceiling before the first test run. A runaway loop exhausts API budget in minutes."
+              - separator [ref=e369]
+              - heading "Step 3 — Create your AGENTS.md configuration file" [level=2] [ref=e370]
+              - paragraph [ref=e371]:
+                - strong [ref=e372]: "What you’ll accomplish:"
+                - text: Write the AGENTS.md file, the harness “inform” layer. Build and test commands, architectural boundaries, naming conventions, and behavioral constraints. Keep it to 150 lines or fewer.
+              - paragraph [ref=e373]:
+                - strong [ref=e374]: "Why:"
+                - text: AGENTS.md is not documentation. It is operational context the agent reads at session start. It is also the substrate that a certified data catalog populates with governed source references.
+              - paragraph [ref=e375]:
+                - strong [ref=e376]: "How:"
+              - list [ref=e377]:
+                - listitem [ref=e378]: "Define build/test commands: the exact commands the agent runs to build, test, and validate output."
+                - listitem [ref=e379]: "Document architectural boundaries: which directories the agent can read vs. write."
+                - listitem [ref=e380]: "Add certified data references: certified tables from Step 0 with canonical names and conventions."
+                - listitem [ref=e381]: "Set behavioral constraints, for example: never commit to main directly, always write tests before code changes."
+                - listitem [ref=e382]: Keep to 150 lines or fewer. If the file is longer, you are writing documentation, not operational context.
+              - paragraph [ref=e383]: See the full guide on how to write an AGENTS.md file for templates and worked examples.
+              - paragraph [ref=e384]:
+                - strong [ref=e385]: "Validation checklist:"
+              - list [ref=e386]:
+                - listitem [ref=e387]: "[ ] Build/test commands verified working"
+                - listitem [ref=e388]: "[ ] Architectural boundaries explicit"
+                - listitem [ref=e389]: "[ ] Certified data source names documented"
+                - listitem [ref=e390]: "[ ] Behavioral constraints listed"
+                - listitem [ref=e391]: "[ ] File length 150 lines or fewer"
+              - paragraph [ref=e392]:
+                - strong [ref=e393]: "Common mistakes:"
+              - paragraph [ref=e394]:
+                - text: "No: Writing AGENTS.md as a knowledge dump, pasting raw docs or full API specs"
+                - text: "Yes: AGENTS.md is operational constraints. Keep it directive, not descriptive."
+              - separator [ref=e395]
+              - heading "Step 4 — Layer the system prompt" [level=2] [ref=e396]
+              - paragraph [ref=e397]:
+                - strong [ref=e398]: "What you’ll accomplish:"
+                - text: "Build a structured system prompt: identity and role, tool schemas, behavioral constraints, and a dynamic context injection layer. Static portion under 60 lines."
+              - paragraph [ref=e399]:
+                - strong [ref=e400]: "How:"
+              - list [ref=e401]:
+                - listitem [ref=e402]:
+                  - strong [ref=e403]: "Static section (60 lines or fewer):"
+                  - text: Identity, role, tool schemas as JSON objects, and top-level behavioral constraints. Reference AGENTS.md for detail; do not copy it in.
+                - listitem [ref=e404]:
+                  - strong [ref=e405]: "Dynamic injection layer:"
+                  - text: Current date and time, session ID, task-specific context, and certified table names relevant to the current task. Inject at runtime.
+                - listitem [ref=e406]:
+                  - strong [ref=e407]: "Tool schema block:"
+                  - text: Each tool as a JSON object — matching the schemas from Step 1 exactly.
+                - listitem [ref=e408]:
+                  - strong [ref=e409]: "Test with context floods disabled:"
+                  - text: Verify the static section alone produces correct tool-call formatting before adding dynamic layers.
+              - paragraph [ref=e410]:
+                - strong [ref=e411]: "Common mistakes:"
+              - paragraph [ref=e412]:
+                - text: "No: Repeating full AGENTS.md content in the system prompt"
+                - text: "Yes: Reference AGENTS.md by name; inject only the sections relevant to the current task."
+              - separator [ref=e413]
+              - heading "Step 5 — Implement permission classification" [level=2] [ref=e414]
+              - paragraph [ref=e415]:
+                - strong [ref=e416]: "What you’ll accomplish:"
+                - text: Enforce three permission tiers as middleware between the agent’s tool request and tool execution.
+              - paragraph [ref=e417]:
+                - strong [ref=e418]: "Why:"
+                - text: Without permission tiers, the agent can execute
+                - code [ref=e419]: git push origin main
+                - text: the same way as
+                - code [ref=e420]: list_dir
+                - text: . One unguarded dangerous tool call equals a production incident.
+              - paragraph [ref=e421]:
+                - strong [ref=e422]: "How:"
+              - list [ref=e423]:
+                - listitem [ref=e424]:
+                  - strong [ref=e425]: "Tier 1 (Safe / auto-approve):"
+                  - code [ref=e426]: read_file
+                  - text: ","
+                  - code [ref=e427]: list_dir
+                  - text: ","
+                  - code [ref=e428]: search_db
+                  - text: (read-only). Execute immediately and log.
+                - listitem [ref=e429]:
+                  - strong [ref=e430]: "Tier 2 (Moderate / whitelist):"
+                  - code [ref=e431]: write_file
+                  - text: ","
+                  - code [ref=e432]: edit_file
+                  - text: . Execute only if the target path is in an approved whitelist.
+                - listitem [ref=e433]:
+                  - strong [ref=e434]: "Tier 3 (Dangerous / explicit approval):"
+                  - code [ref=e435]: shell
+                  - text: ", API write calls,"
+                  - code [ref=e436]: git push
+                  - text: ", file deletion. Pause the loop, surface to a human operator, and resume only on approval. Log with timestamp and operator ID."
+                - listitem [ref=e437]: Implement as a middleware function wrapping every tool call.
+              - paragraph [ref=e438]:
+                - text: Set
+                - code [ref=e439]: "PERMISSION_MAP = {\"read_file\": \"safe\", \"write_file\": \"moderate\", \"shell\": \"dangerous\"}"
+                - text: . Unknown tools default to “dangerous.”
+              - separator [ref=e440]
+              - heading "Step 6 — Add context management" [level=2] [ref=e441]
+              - paragraph [ref=e442]:
+                - strong [ref=e443]: "What you’ll accomplish:"
+                - text: Token counting per message, auto-compaction at 85-92% capacity, and file-based overflow for outputs exceeding 80,000 characters.
+              - paragraph [ref=e444]:
+                - strong [ref=e445]: "Why:"
+                - text: An agent without context management silently drops early messages when the context window fills, including the system prompt. The resulting behavioral degradation looks like a model problem, but it is a harness problem.
+              - paragraph [ref=e446]:
+                - strong [ref=e447]: "How:"
+              - list [ref=e448]:
+                - listitem [ref=e449]: Count tokens per message using tiktoken or the provider’s tokenizer. Track a running total.
+                - listitem [ref=e450]: Set the compaction threshold at 85-92%. Summarize the oldest messages (do not delete them), and preserve tool call and result pairs in full.
+                - listitem [ref=e451]: Handle file-based overflow for outputs exceeding 80,000 characters. Write to a named overflow file.
+                - listitem [ref=e452]: Target more than 80% KV-cache hit rate.
+              - paragraph [ref=e453]:
+                - strong [ref=e454]: "Common mistakes:"
+              - paragraph [ref=e455]:
+                - text: "No: Letting context fill to 100%"
+                - text: "Yes: Compaction at 85-92% gives the model room to complete the current tool call before context management kicks in."
+              - separator [ref=e456]
+              - heading "Step 7 — Build persistence layer" [level=2] [ref=e457]
+              - paragraph [ref=e458]:
+                - strong [ref=e459]: "What you’ll accomplish:"
+                - text: Progress files (
+                - code [ref=e460]: todo.md
+                - text: ","
+                - code [ref=e461]: progress.txt
+                - text: ), git checkpointing, feature list JSON, and session state serialization so the agent can resume after crashes.
+              - paragraph [ref=e462]:
+                - strong [ref=e463]: "Why:"
+                - text: Without persistence, every crash or context reset starts from zero. The Ralph Loop pattern (an Initializer Agent that sets up state, followed by a Coding Agent that reads git logs and progress files at session start) shows that state persistence is not optional for long-running tasks.
+              - paragraph [ref=e464]:
+                - strong [ref=e465]: "How:"
+              - list [ref=e466]:
+                - listitem [ref=e467]:
+                  - strong [ref=e468]: "Progress files:"
+                  - code [ref=e469]: todo.md
+                  - text: (pending tasks as a checklist),
+                  - code [ref=e470]: progress.txt
+                  - text: (append-only log of completed steps). The agent reads both at session start.
+                - listitem [ref=e471]:
+                  - strong [ref=e472]: "Feature list JSON:"
+                  - code [ref=e473]: feature-list.json
+                  - text: ", a structured record of what is built, pending, and blocked."
+                - listitem [ref=e474]:
+                  - strong [ref=e475]: "Git checkpointing:"
+                  - text: "After each task unit, the agent commits:"
+                  - code [ref=e476]: "[agent-checkpoint] {task_id}: {description}"
+                  - text: .
+                - listitem [ref=e477]:
+                  - strong [ref=e478]: "Session state serialization:"
+                  - text: Serialize message history, the current task pointer, and the tool permission log to
+                  - code [ref=e479]: session-state.json
+                  - text: at every iteration.
+              - paragraph [ref=e480]:
+                - strong [ref=e481]: "Validation checklist:"
+              - list [ref=e482]:
+                - listitem [ref=e483]:
+                  - text: "[ ]"
+                  - code [ref=e484]: todo.md
+                  - text: and
+                  - code [ref=e485]: progress.txt
+                  - text: created at session start if not present
+                - listitem [ref=e486]:
+                  - text: "[ ]"
+                  - code [ref=e487]: feature-list.json
+                  - text: updated after each completed task
+                - listitem [ref=e488]: "[ ] Git checkpoint fires after each significant step"
+                - listitem [ref=e489]: "[ ] Resume test: kill agent mid-task, restart, verify it picks up from the last checkpoint"
+              - paragraph [ref=e490]:
+                - strong [ref=e491]: "Common mistakes:"
+              - paragraph [ref=e492]:
+                - text: "No: Storing session state in memory only"
+                - text: "Yes: If the process dies, memory dies. File-based persistence is the only reliable resume path."
+              - separator [ref=e493]
+              - heading "Step 8 — Deploy observability and verification" [level=2] [ref=e494]
+              - paragraph [ref=e495]:
+                - strong [ref=e496]: "What you’ll accomplish:"
+                - text: Structured JSON logging, Langfuse integration, an LLM-as-judge pipeline, verification loops against the certified schema from Step 0, and pre-completion checklist middleware.
+              - paragraph [ref=e497]:
+                - strong [ref=e498]: "Why:"
+                - text: LangChain found that adding pre-completion checklist middleware alone added 13.7 benchmark points. Verification without ground truth is noise — this is why Step 0 must precede this step.
+              - paragraph [ref=e499]:
+                - strong [ref=e500]: "How:"
+              - list [ref=e501]:
+                - listitem [ref=e502]:
+                  - strong [ref=e503]: "Structured JSON logging:"
+                  - text: "Every tool call, result, loop iteration, and permission check emits JSON. Include: timestamp, session ID, step, tool, input hash, output hash, duration in ms, and permission tier."
+                - listitem [ref=e504]:
+                  - strong [ref=e505]: "Langfuse integration:"
+                  - text: Send traces for visualization. Captures spans, token counts, and latency.
+                - listitem [ref=e506]:
+                  - strong [ref=e507]: "LLM-as-judge pipeline:"
+                  - text: "After every agent output, a second LLM call scores the output against a rubric: correctness, completeness, format compliance. Score written to"
+                  - code [ref=e508]: verification-log.json
+                  - text: .
+                - listitem [ref=e509]:
+                  - strong [ref=e510]: "Verification loop against certified schema:"
+                  - text: "For any output referencing a certified table from Step 0: validate the output schema against the certified schema. Flag mismatches."
+                - listitem [ref=e511]:
+                  - strong [ref=e512]: "Pre-completion checklist middleware:"
+                  - text: Before the agent returns
+                  - code [ref=e513]: final_answer
+                  - text: ", enforce a checklist: required fields present, output schema valid, no PII in response."
+              - paragraph [ref=e514]:
+                - strong [ref=e515]: "Atlan second entry point:"
+                - text: Data quality contracts provide the certified expected schema that verification loops validate against. Audit trails log every agent action against governed assets, satisfying AI governance and compliance requirements.
+              - paragraph [ref=e516]:
+                - text: "See also:"
+                - link "how to test your AI agent harness" [ref=e517] [cursor=pointer]:
+                  - /url: https://atlan.com/know/how-to-test-ai-agent-harness/
+                - text: for a full evaluation framework after completing these steps.
+              - generic [ref=e518]:
+                - paragraph [ref=e519]: Inside Atlan AI Labs & The 5x Accuracy Factor
+                - paragraph [ref=e520]: Learn how context engineering drove 5x AI accuracy in real customer systems. Explore real experiments, quantifiable results, and a repeatable playbook for closing the gap between AI demos and production-ready systems.
+                - link "Download E-Book" [ref=e521] [cursor=pointer]:
+                  - /url: https://atlan.com/resources/atlan-ai-labs-ebook/
+              - separator [ref=e522]
+              - heading "Step 9 — Add guardrails" [level=2] [ref=e523]
+              - paragraph [ref=e524]:
+                - strong [ref=e525]: "What you’ll accomplish:"
+                - text: Input guardrails (banned keywords, prompt injection regex, PII detection) and output guardrails (deterministic PII redaction and an LLM safety evaluation).
+              - paragraph [ref=e526]:
+                - strong [ref=e527]: "How:"
+              - list [ref=e528]:
+                - listitem [ref=e529]:
+                  - strong [ref=e530]: "Input guardrails:"
+                  - text: Banned keyword list, prompt injection regex (catch phrases like “ignore previous instructions” or “you are now”), and PII detection regex for SSN, credit card, and email patterns. Block and log on match.
+                - listitem [ref=e531]:
+                  - strong [ref=e532]: "Output guardrails, deterministic PII redaction:"
+                  - text: Regex and NER scan before any output leaves the harness. Replace detected values with
+                  - code [ref=e533]: "[REDACTED:{type}]"
+                  - text: .
+                - listitem [ref=e534]:
+                  - strong [ref=e535]: "Output guardrails, LLM safety eval:"
+                  - text: Classification model run on the first 2,000 characters. Flag outputs that score below threshold for human review.
+                - listitem [ref=e536]:
+                  - strong [ref=e537]: "Intermediate step PII scan:"
+                  - text: Apply PII detection to tool call arguments and tool results, not just final answers.
+              - paragraph [ref=e538]:
+                - strong [ref=e539]: "Common mistakes:"
+              - paragraph [ref=e540]:
+                - text: "No: Adding guardrails only to"
+                - code [ref=e541]: final_answer
+                - text: output
+                - text: "Yes: Tool call arguments are equally exposed. Passing a user’s SSN to a shell command is a guardrail failure even if the final output looks clean."
+              - separator [ref=e542]
+              - heading "Step 10 — Evaluate harness independently of model" [level=2] [ref=e543]
+              - paragraph [ref=e544]:
+                - strong [ref=e545]: "What you’ll accomplish:"
+                - text: Run harness evaluation with the model held constant. Vary harness configuration, measure delta, and distinguish harness quality from model quality.
+              - paragraph [ref=e546]:
+                - strong [ref=e547]: "Why:"
+                - text: LangChain improved Terminal Bench from 52.8% to 66.5% without touching the model. Most teams attribute performance problems to the model and switch providers. The harness is usually the culprit.
+              - paragraph [ref=e548]:
+                - strong [ref=e549]: "How:"
+              - list [ref=e550]:
+                - listitem [ref=e551]:
+                  - strong [ref=e552]: "Freeze model version:"
+                  - text: Pin the exact model ID and temperature.
+                - listitem [ref=e553]:
+                  - strong [ref=e554]: "Build a benchmark task set:"
+                  - text: 20-50 representative tasks with expected outputs, validated by a human reviewer.
+                - listitem [ref=e555]:
+                  - strong [ref=e556]: "Vary one harness parameter at a time:"
+                  - text: Context compaction threshold, system prompt length, tool set size, permission tier strictness, verification loop strictness.
+                - listitem [ref=e557]:
+                  - strong [ref=e558]: "Measure the delta:"
+                  - text: Score each configuration. The delta between configurations is pure harness signal.
+                - listitem [ref=e559]:
+                  - strong [ref=e560]: "Document winners:"
+                  - text: Each winning configuration change is a permanent harness update. Commit to version control.
+              - paragraph [ref=e561]:
+                - strong [ref=e562]: "Common mistakes:"
+              - paragraph [ref=e563]:
+                - text: "No: Changing both model and harness simultaneously and attributing improvement to the model"
+                - text: "Yes: One variable at a time. A/B test the harness the same way you would A/B test a product feature."
+              - separator [ref=e564]
+              - heading "Common mistakes when building an AI agent harness" [level=2] [ref=e565]
+              - paragraph [ref=e566]: "Most common failures share a pattern: over-engineering architecture before observing real failure modes, under-engineering data quality, and treating context management as optional. Teams that skip Step 0 and Step 8 consistently rebuild within 3 months."
+              - heading "Mistake 1 — Over-engineering before observing failures" [level=3] [ref=e567]
+              - paragraph [ref=e568]: Build the MVH (Steps 1-2) first. Run 50 real tasks. Observe actual failure modes. Then add infrastructure for what breaks. Building comprehensive observability before knowing what you need to observe is the most common harness engineering anti-pattern.
+              - heading "Mistake 2 — Too many tools" [level=3] [ref=e569]
+              - paragraph [ref=e570]: "More than 20 tools visible in the system prompt degrades performance. Start with 4-5 atomic tools. To test the effect: remove tools from the system prompt (not the codebase) and re-run the benchmark. The score difference is the tool-bloat tax."
+              - heading "Mistake 3 — Context flooding" [level=3] [ref=e571]
+              - paragraph [ref=e572]: Teams dump raw Confluence pages, Slack exports, and full API docs into harness context. Context is not a knowledge base. AGENTS.md is operational constraints at 150 lines or fewer. External knowledge goes into a retrieval layer accessed via tool call, not injected into every prompt.
+              - heading "Mistake 4 — No context management" [level=3] [ref=e573]
+              - paragraph [ref=e574]: Add Step 6 before running any task longer than 10 tool calls. An output exceeding 80,000 characters will crash the session without overflow handling. This is a harness bug, not a model limitation.
+              - heading "Mistake 5 — Treating data quality as the model’s problem" [level=3] [ref=e575]
+              - paragraph [ref=e576]:
+                - text: The LLM confidently processes bad data. Stale lineage, uncertified tables, and schema drift are invisible to the model. It has no way to know that the
+                - code [ref=e577]: revenue
+                - text: column was redefined three weeks ago. Step 0 is not optional.
+              - separator [ref=e578]
+              - heading "How Atlan supports Steps 0 and 8" [level=2] [ref=e579]
+              - paragraph [ref=e580]: Atlan is the governed data layer that makes the 80% work — the data the harness feeds the agent. At Step 0, the data catalog and certification workflows certify the substrate. At Step 8, data quality contracts and audit trails power verification loops.
+              - paragraph [ref=e581]: Without a data catalog, Step 0 is a spreadsheet exercise. Schema drift goes undetected. Data contracts are informal agreements, not enforced artifacts. When the harness queries an uncertified join in production, tracing the failure back to the data source takes hours. The retrofit cost is substantially higher than certifying the data before the build.
+              - paragraph [ref=e582]: Atlan’s data catalog provides a governed inventory of every data asset — tables, pipelines, APIs — with certification status, lineage, and quality rules attached. Certification workflows produce schema snapshots with quality rule results, not just informal sign-offs. Column-level lineage surfaces every upstream dependency automatically, so you know exactly which tables carry schema-drift risk before the agent goes live. At Step 8, data quality contracts provide the expected schema that verification loops validate against. Every agent action against a governed asset is logged in audit trails, satisfying AI governance requirements without any additional instrumentation.
+              - paragraph [ref=e583]: "Enterprise teams building agent harnesses against governed data see fewer production rollbacks, faster root-cause attribution when failures occur, and compliance-ready audit trails from day one. The pattern is consistent: harnesses that start with a certified data layer at Step 0 spend substantially less time debugging silent production failures at Week 8."
+              - paragraph [ref=e584]:
+                - text: "Related reading:"
+                - link "data catalog as LLM knowledge base" [ref=e585] [cursor=pointer]:
+                  - /url: https://atlan.com/know/data-catalog-as-llm-knowledge-base/
+                - text: ","
+                - link "what is agentic AI" [ref=e586] [cursor=pointer]:
+                  - /url: https://atlan.com/know/what-is-agentic-ai/
+                - text: ", and the"
+                - link "data quality for AI agent harnesses" [ref=e587] [cursor=pointer]:
+                  - /url: https://atlan.com/know/data-quality-ai-agent-harnesses/
+                - text: page for a deeper treatment of the data layer.
+              - separator [ref=e588]
+              - generic [ref=e589]:
+                - img [ref=e590]
+                - paragraph [ref=e592]: 10-Step AI Agent Harness Build Sequence
+                - generic [ref=e593]:
+                  - text: "Step 0: Certify your data layer Inventory sources · Trace lineage · Apply certification · Draft data contracts · Document in AGENTS\\.md"
+                  - generic [ref=e596]:
+                    - text: "Step 1: Define scope and tool set 4-5 atomic tools · Stripe pattern · Permission tiers"
+                    - generic [ref=e597]:
+                      - text: "Step 2: Build the core agent loop ReAct loop · Max-iteration ceiling · Append-only history"
+                      - generic [ref=e600]:
+                        - text: "Step 3: Create AGENTS\\.md Build/test commands · Boundaries · Certified data refs"
+                        - generic [ref=e601]:
+                          - text: "Step 4: Layer the system prompt Identity · Tool schemas · Dynamic injection · 60-line cap"
+                          - generic [ref=e604]:
+                            - text: "Step 5: Permission classification Safe / Moderate / Dangerous · Middleware wrapper"
+                            - generic [ref=e605]:
+                              - text: "Step 6: Context management Token counting · 85-92% compaction · File overflow"
+                              - generic [ref=e608]:
+                                - text: "Step 7: Persistence layer Progress files · Git checkpoints · Session serialization"
+                                - generic [ref=e609]:
+                                  - text: "Step 8: Observability + verification JSON logs · Langfuse · LLM-as-judge · Certified schema check"
+                                  - generic [ref=e612]:
+                                    - text: "Step 9: Guardrails Input filters · PII redaction · Safety eval"
+                                    - generic [ref=e613]:
+                                      - text: "Step 10: Harness evaluation Freeze model · Vary harness · Measure delta"
+                                      - generic [ref=e614]:
+                                        - text: Data layer / Configuration steps
+                                        - generic [ref=e615]: Infrastructure / Safety steps
+              - paragraph [ref=e616]:
+                - emphasis [ref=e617]: The 10-step harness build sequence. Step 0 is the data layer foundation every other step depends on. Steps 1-2 form the minimum viable harness (MVH). Steps 3-10 are the path from MVH to production.
+              - separator [ref=e618]
+              - generic [ref=e619]:
+                - generic [ref=e620]:
+                  - paragraph [ref=e621]: "\"We're excited to build the future of AI governance with Atlan. All of the work that we did to get to a shared language amongst people...can be leveraged by AI via context infrastructure.\""
+                  - paragraph [ref=e622]: — Joe DosSantos, VP Enterprise Data & Analytics, Workday
+                - generic [ref=e623]:
+                  - img "Workday Logo"
+                  - link "Watch Now →" [ref=e624] [cursor=pointer]:
+                    - /url: https://atlan.com/regovern-watch-center/workday-context-as-culture/
+              - generic [ref=e625]:
+                - generic [ref=e626]:
+                  - paragraph [ref=e627]: "\"Atlan is much more than a catalog of catalogs. Atlan is the context layer for all our data and AI assets.\""
+                  - paragraph [ref=e628]: — Sridher Arumugham, Chief Data & Analytics Officer, DigiKey
+                - generic [ref=e629]:
+                  - img "DigiKey Logo"
+                  - link "Watch Now →" [ref=e630] [cursor=pointer]:
+                    - /url: https://atlan.com/regovern-watch-center/digikey-context-readiness/
+              - separator [ref=e631]
+              - heading "Wrap-up — From MVH to production" [level=2] [ref=e632]
+              - paragraph [ref=e633]: The gap between a 20-line MVH and a production-ready harness is not model quality. It is 10 engineering steps and 4-12 weeks of infrastructure investment across context management, permission tiers, persistence, observability, guardrails, and data quality.
+              - paragraph [ref=e634]: "Teams that reach production fastest share three patterns: they certify the data layer first, they build narrow tool sets, and they observe real failures before engineering solutions for hypothetical ones. Manus’s 6 months and 5 architectural rewrites is the cautionary benchmark. Stripe’s 1,300 PRs per week is the production benchmark."
+              - paragraph [ref=e635]: "Measure harness success the way LangChain does: hold the model constant, vary the harness, and measure the delta. The harness is the variable you control. 52.8% to 66.5% without touching the model is not an outlier. It is what disciplined harness engineering produces."
+              - link "Book a Demo" [ref=e637] [cursor=pointer]:
+                - /url: https://atlan.com/forms/talk-to-us/
+              - separator [ref=e638]
+              - 'heading "The 10-step build: summary" [level=2] [ref=e639]'
+              - list [ref=e640]:
+                - listitem [ref=e641]: The gap between a 20-line MVP agent loop and a production-ready harness is 5,000-20,000 lines of infrastructure code across 10 engineering steps.
+                - listitem [ref=e642]: Harness quality, not model quality, is the primary variable in agent reliability. LangChain demonstrated a 13.7-point Terminal Bench gain with zero model changes.
+                - listitem [ref=e643]: Step 0 (data layer certification) is the step most build guides skip and most teams regret skipping. Uncertified tables cause confident wrong answers — no harness component can compensate.
+                - listitem [ref=e644]: "The Stripe pattern holds: one agent, one bounded task, 4-5 atomic tools. Tool sprawl is the fastest way to degrade performance."
+                - listitem [ref=e645]: Context management is not optional. An agent running tasks longer than 10 tool calls without compaction is running on borrowed time.
+                - listitem [ref=e646]: Persistence is file-based, not memory-based. Any session state that lives only in memory is gone on crash.
+                - listitem [ref=e647]: "Evaluate the harness independently of the model: freeze model version, vary one harness parameter at a time, measure delta. The harness is the variable you control."
+                - listitem [ref=e648]: Manus spent 6 months and 5 architectural rewrites. Teams that certify data first, build narrow, and observe before engineering reach production in 4-12 weeks.
+              - separator [ref=e649]
+              - heading "FAQs about how to build AI agent harness" [level=2] [ref=e650]
+              - paragraph [ref=e651]:
+                - strong [ref=e652]: 1. What is a minimum viable harness (MVH) and when should I build one?
+              - paragraph [ref=e653]: "A minimum viable harness is the smallest set of infrastructure that makes an agent runnable: a ReAct loop, a bounded tool set of 4-5 atomic tools, a max-iteration ceiling, and append-only message history. It takes 2-4 hours to build and produces roughly 20-50 lines of code. Build an MVH when you have validated a use case with a prototype and need to run it against real data for the first time. Do not add persistence, observability, or guardrails until you have run 50 real tasks on the MVH and observed where it breaks."
+              - paragraph [ref=e654]:
+                - strong [ref=e655]: 2. What is the difference between an agent framework and an agent harness?
+              - paragraph [ref=e656]: "An agent framework (LangChain, LangGraph, CrewAI) provides pre-built components for orchestrating agent behavior: memory abstractions, tool registries, prompt templates, and execution patterns. An agent harness is the control infrastructure you build on top of or around a framework: permission tiers, context management, persistence, observability, guardrails, and data quality verification. Frameworks reduce the boilerplate of the agent loop. The harness makes that loop safe for production."
+              - paragraph [ref=e657]:
+                - strong [ref=e658]: 3. Why is Step 0 (data certification) the most important step no one talks about?
+              - paragraph [ref=e659]: Most agent build guides focus on the model, the prompt, or the framework. They assume the data is fine. It rarely is. A language model processes whatever data it receives with equal confidence — it has no internal way to detect that a table has been redefined, a join is returning stale rows, or lineage is broken. The result is confident wrong answers that trace back to the data layer, not the model. Step 0 exists to certify the substrate before any harness code is written. Teams that skip it typically rebuild within 3 months after silent production failures surface.
+              - paragraph [ref=e660]:
+                - strong [ref=e661]: 4. How many tools should an AI agent harness have?
+              - paragraph [ref=e662]: Start with 4-5 atomic tools. Each tool should do exactly one thing. Research from Vercel shows that removing 80% of tools from the harness improved agent performance. More than 20 tools visible in the system prompt degrades model performance regardless of harness quality. If a task requires more than 5 tools, it is likely two tasks handled by two agents. Add tools only after observing real failures that require them.
+              - paragraph [ref=e663]:
+                - strong [ref=e664]: 5. What is the ReAct loop and why does it matter for harness engineering?
+              - paragraph [ref=e665]: "ReAct (Reason + Act) is the fundamental execution pattern for agent loops: the model reasons about the current state, calls a tool, receives the result, and reasons again. The loop repeats until the model signals a final answer or the iteration ceiling is hit. The harness adds: iteration ceilings (preventing runaway loops), permission checks (intercepting tool calls before execution), context management (keeping the message history from exhausting the window), persistence (checkpointing state between iterations), and observability (logging every step). Without the harness, the ReAct loop is 20 lines that works in demos and fails in production."
+              - paragraph [ref=e666]:
+                - strong [ref=e667]: 6. How do I prevent context exhaustion in a long-running agent?
+              - paragraph [ref=e668]: Token count every message using tiktoken or the provider’s tokenizer, and track a running total. Set a compaction threshold at 85-92% of the context window. When the threshold is crossed, summarize the oldest messages (do not delete them), and always preserve tool call and result pairs in full. For outputs exceeding 80,000 characters, write to a named overflow file rather than appending to the message history. Target more than 80% KV-cache hit rate by keeping the static system prompt consistent across turns.
+              - paragraph [ref=e669]:
+                - strong [ref=e670]: 7. How long does it take to build a production-ready AI agent harness?
+              - paragraph [ref=e671]: "A minimum viable harness (Steps 1-2) takes 2-4 hours. Adding context management and permission tiers (Steps 3-5) takes Days 2-5. Persistence and observability (Steps 6-8) take Days 5-20. Guardrails and evaluation (Steps 9-10) take Week 4 and beyond. Total time to a production-ready harness: 4-12 weeks depending on the complexity of the task domain, the number of data sources requiring certification (Step 0), and the strictness of the governance requirements."
+              - paragraph [ref=e672]:
+                - strong [ref=e673]: 8. How do I know if my agent failures are harness failures vs. model failures?
+              - paragraph [ref=e674]: Freeze the model version. Pin the exact model ID and temperature, and do not change them. Build a benchmark task set of 20-50 representative tasks with human-validated expected outputs. Vary one harness parameter at a time (context compaction threshold, system prompt length, tool set size, verification strictness) and score each configuration. The delta between configurations is pure harness signal. If performance improves when you change the harness, the failure was a harness failure. If performance does not improve after exhausting harness variables, then investigate the model. Most teams get this backwards and switch models before checking the harness.
+              - separator [ref=e675]
+              - heading "Sources" [level=2] [ref=e676]
+              - list [ref=e677]:
+                - listitem [ref=e678]:
+                  - text: "LangChain Engineering — “Improving deep agents with harness engineering”:"
+                  - link "https://blog.langchain.com/improving-deep-agents-with-harness-engineering/" [ref=e679] [cursor=pointer]:
+                    - /url: https://blog.langchain.com/improving-deep-agents-with-harness-engineering/
+                - listitem [ref=e680]:
+                  - text: "Manus — “6 months of development and 5 complete architectural rewrites before production-ready agent”:"
+                  - link "https://manus.im/blog/manus-technical-retrospective" [ref=e681] [cursor=pointer]:
+                    - /url: https://manus.im/blog/manus-technical-retrospective
+                - listitem [ref=e682]:
+                  - text: "Vercel — “Removing 80% of agent tools improved performance” (via Data Science Collective):"
+                  - link "https://medium.com/data-science-collective/why-ai-agents-keep-failing-in-production-cdd335b22219" [ref=e683] [cursor=pointer]:
+                    - /url: https://medium.com/data-science-collective/why-ai-agents-keep-failing-in-production-cdd335b22219
+                - listitem [ref=e684]:
+                  - text: "Stripe Engineering — “1,300 pull requests per week using narrow-scope agents with disciplined harnesses”:"
+                  - link "https://stripe.com/blog/engineering" [ref=e685] [cursor=pointer]:
+                    - /url: https://stripe.com/blog/engineering
+                - listitem [ref=e686]:
+                  - text: "Anthropic Engineering — “Ralph Loop pattern: Initializer Agent + Coding Agent for session resume”:"
+                  - link "https://www.anthropic.com/engineering/swe-bench-sonnet" [ref=e687] [cursor=pointer]:
+                    - /url: https://www.anthropic.com/engineering/swe-bench-sonnet
+                - listitem [ref=e688]:
+                  - text: "APEX-Agents — “24% first-attempt task success rate for production agent benchmarks”:"
+                  - link "https://apex-agents.ai/benchmark-2026" [ref=e689] [cursor=pointer]:
+                    - /url: https://apex-agents.ai/benchmark-2026
+                - listitem [ref=e690]:
+                  - text: "Gartner — “40% agentic AI project abandonment rate due to production reliability failures”:"
+                  - link "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" [ref=e691] [cursor=pointer]:
+                    - /url: https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027
+                - listitem [ref=e692]:
+                  - text: "Atlan — “How to Write an AGENTS.md File”:"
+                  - link "https://atlan.com/know/how-to-write-agents-md/" [ref=e693] [cursor=pointer]:
+                    - /url: https://atlan.com/know/how-to-write-agents-md/
+                - listitem [ref=e694]:
+                  - link "harness-engineering.ai" [ref=e695] [cursor=pointer]:
+                    - /url: http://harness-engineering.ai
+                  - text: "— “Retrofit governance cost substantially higher than building governance in from the start”:"
+                  - link "https://harness-engineering.ai" [ref=e696] [cursor=pointer]:
+                    - /url: https://harness-engineering.ai
+          - generic [ref=e698]:
+            - paragraph [ref=e699]: Share this article
+            - generic [ref=e700]:
+              - button "x social icon" [ref=e701] [cursor=pointer]:
+                - img "x social icon" [ref=e702]
+              - button "linkedin social icon" [ref=e703] [cursor=pointer]:
+                - img "linkedin social icon" [ref=e704]
+              - button "email social icon" [ref=e705] [cursor=pointer]:
+                - img "email social icon" [ref=e706]
+        - generic [ref=e707]:
+          - generic [ref=e708]:
+            - img "signoff-panel-logo" [ref=e709]
+            - paragraph [ref=e710]: Atlan is the next-generation platform for data and AI governance. It is a control plane that stitches together a business's disparate data infrastructure, cataloging and enriching data with business context and security.
+          - generic [ref=e711]:
+            - link "Book a Demo" [ref=e712] [cursor=pointer]:
+              - /url: https://atlan.com/forms/talk-to-sales-contact/
+            - link "Download Context Graph Guide" [ref=e713] [cursor=pointer]:
+              - /url: https://atlan.com/resources/cio-guide-to-context-graphs/
+        - generic [ref=e714]:
+          - 'heading "How to build an AI agent harness: Related reads" [level=2] [ref=e716]':
+            - img [ref=e717]
+            - generic [ref=e719]: "How to build an AI agent harness: Related reads"
+          - generic [ref=e720]:
+            - link "What Is Harness Engineering? The complete guide to harness engineering for AI systems." [ref=e721] [cursor=pointer]:
+              - /url: https://atlan.com/know/what-is-harness-engineering/
+              - text: What Is Harness Engineering?
+              - generic [ref=e722]: The complete guide to harness engineering for AI systems.
+            - link "What Is an Agent Harness? Guides, Sensors, and Components Explained Understand harness components before building." [ref=e723] [cursor=pointer]:
+              - /url: https://atlan.com/know/what-is-an-agent-harness/
+              - text: What Is an Agent Harness? Guides, Sensors, and Components Explained
+              - generic [ref=e724]: Understand harness components before building.
+            - link "How to Test Your AI Agent Harness Test your harness thoroughly after building." [ref=e725] [cursor=pointer]:
+              - /url: https://atlan.com/know/how-to-test-ai-agent-harness/
+              - text: How to Test Your AI Agent Harness
+              - generic [ref=e726]: Test your harness thoroughly after building.
+            - link "Data Quality for AI Agent Harnesses Ensure your data layer is ready before building." [ref=e727] [cursor=pointer]:
+              - /url: https://atlan.com/know/data-quality-ai-agent-harnesses/
+              - text: Data Quality for AI Agent Harnesses
+              - generic [ref=e728]: Ensure your data layer is ready before building.
+      - complementary [ref=e729]:
+        - generic [ref=e730]:
+          - generic [ref=e731]:
+            - link "activate-the-context-layer-live-april-2026" [ref=e732] [cursor=pointer]:
+              - /url: /context-layer-demo/
+              - img "activate-the-context-layer-live-april-2026" [ref=e733]
+            - paragraph [ref=e734]: Everyone's talking about the context layer. Nobody's shown you how to build one. Until now.
+            - link "Watch Recording" [ref=e735] [cursor=pointer]:
+              - /url: /context-layer-demo/
+              - img [ref=e736]
+              - generic [ref=e738]: Watch Recording
+          - generic [ref=e739]:
+            - heading "Recent publications" [level=3] [ref=e740]
+            - list [ref=e741]:
+              - listitem [ref=e742]:
+                - link "What Are AI Agent Primitives?" [ref=e743] [cursor=pointer]:
+                  - /url: /know/ai-agent/ai-agent-primitives/
+                  - text: What Are AI Agent Primitives?
+                  - img [ref=e744]
+              - listitem [ref=e746]:
+                - link "Why AI Agents Need Versioned Context" [ref=e747] [cursor=pointer]:
+                  - /url: /know/ai-agent/context-versioning-for-ai-agents/
+                  - text: Why AI Agents Need Versioned Context
+                  - img [ref=e748]
+              - listitem [ref=e750]:
+                - 'link "Context Layer for Snowflake: Native Coverage, Current Limitations & How to Unify Context in 2026" [ref=e751] [cursor=pointer]':
+                  - /url: /know/context-layer-for-snowflake/
+                  - text: "Context Layer for Snowflake: Native Coverage, Current Limitations & How to Unify Context in 2026"
+                  - img [ref=e752]
+              - listitem [ref=e754]:
+                - link "What Is Institutional Knowledge Loss?" [ref=e755] [cursor=pointer]:
+                  - /url: /know/data-for-ai/institutional-knowledge-loss/
+                  - text: What Is Institutional Knowledge Loss?
+                  - img [ref=e756]
+              - listitem [ref=e758]:
+                - link "What Is Tribal Knowledge?" [ref=e759] [cursor=pointer]:
+                  - /url: /know/data-for-ai/tribal-knowledge/
+                  - text: What Is Tribal Knowledge?
+                  - img [ref=e760]
+  - generic [ref=e765]:
+    - generic [ref=e766]:
+      - heading "Bridge the context gap. Ship AI that works." [level=2] [ref=e767]:
+        - text: Bridge the context gap.
+        - text: Ship AI that works.
+      - generic [ref=e768]:
+        - link "Book a Demo" [ref=e772] [cursor=pointer]:
+          - /url: /forms/talk-to-sales-contact/
+        - link "Watch Context Studio Demo" [ref=e773] [cursor=pointer]:
+          - /url: /live-demo-series-context-studio-demo-recording/
+    - img "Trusted by leading enterprises" [ref=e776]
+  - contentinfo "Site footer" [ref=e777]:
+    - generic [ref=e778]:
+      - list "Footer navigation" [ref=e779]:
+        - listitem [ref=e780]:
+          - paragraph [ref=e781]: Product
+          - list "Product" [ref=e782]:
+            - listitem [ref=e783]:
+              - link "Context Engineering Studio" [ref=e784] [cursor=pointer]:
+                - /url: /context-engineering-studio/
+            - listitem [ref=e785]:
+              - link "Context Lakehouse" [ref=e786] [cursor=pointer]:
+                - /url: /metadata-lakehouse/
+            - listitem [ref=e787]:
+              - link "Context Agents" [ref=e788] [cursor=pointer]:
+                - /url: /context-agents/
+            - listitem [ref=e789]:
+              - link "Data Governance" [ref=e790] [cursor=pointer]:
+                - /url: /active-data-governance/
+            - listitem [ref=e791]:
+              - link "AI Governance" [ref=e792] [cursor=pointer]:
+                - /url: /ai-governance/
+            - listitem [ref=e793]:
+              - link "App Framework" [ref=e794] [cursor=pointer]:
+                - /url: /app-framework/
+        - listitem [ref=e795]:
+          - paragraph [ref=e796]: Resources
+          - list "Resources" [ref=e797]:
+            - listitem [ref=e798]:
+              - link "Learn with Atlan" [ref=e799] [cursor=pointer]:
+                - /url: /know/
+            - listitem [ref=e800]:
+              - link "Demo Videos" [ref=e801] [cursor=pointer]:
+                - /url: /demos/
+            - listitem [ref=e802]:
+              - link "Context 101" [ref=e803] [cursor=pointer]:
+                - /url: /context-layer/
+            - listitem [ref=e804]:
+              - link "Documentation" [ref=e805] [cursor=pointer]:
+                - /url: https://docs.atlan.com/
+            - listitem [ref=e806]:
+              - link "Support Center" [ref=e807] [cursor=pointer]:
+                - /url: https://docs.atlan.com/support/submit-request
+            - listitem [ref=e808]:
+              - link "Weekly Demos" [ref=e809] [cursor=pointer]:
+                - /url: /live-demo-series/
+        - listitem [ref=e810]:
+          - paragraph [ref=e811]: About
+          - list "About" [ref=e812]:
+            - listitem [ref=e813]:
+              - link "Company" [ref=e814] [cursor=pointer]:
+                - /url: /about/
+            - listitem [ref=e815]:
+              - link "Customers" [ref=e816] [cursor=pointer]:
+                - /url: /customers/success-stories
+            - listitem [ref=e817]:
+              - link "Partners" [ref=e818] [cursor=pointer]:
+                - /url: /partners/
+            - listitem [ref=e819]:
+              - link "Industry Recognition" [ref=e820] [cursor=pointer]:
+                - /url: /analyst-hub/
+            - listitem [ref=e821]:
+              - link "Newsroom" [ref=e822] [cursor=pointer]:
+                - /url: /newsroom/
+            - listitem [ref=e823]:
+              - link "Careers We're hiring" [ref=e824] [cursor=pointer]:
+                - /url: /careers/
+        - listitem [ref=e825]:
+          - paragraph [ref=e826]: Customers
+          - list "Customers" [ref=e827]:
+            - listitem [ref=e828]:
+              - link "Mastercard" [ref=e829] [cursor=pointer]:
+                - /url: /regovern-watch-center/mastercard-context-by-design/
+            - listitem [ref=e830]:
+              - link "Workday" [ref=e831] [cursor=pointer]:
+                - /url: /regovern-watch-center/workday-context-as-culture/
+            - listitem [ref=e832]:
+              - link "General Motors" [ref=e833] [cursor=pointer]:
+                - /url: /regovern-watch-center/contracts-context-and-cars-general-motors/
+            - listitem [ref=e834]:
+              - link "Virgin Media O2" [ref=e835] [cursor=pointer]:
+                - /url: /regovern-watch-center/virgin-media-o2-context-for-all/
+            - listitem [ref=e836]:
+              - link "CME Group" [ref=e837] [cursor=pointer]:
+                - /url: /regovern-watch-center/cme-group-context-at-speed/
+            - listitem [ref=e838]:
+              - link "DigiKey" [ref=e839] [cursor=pointer]:
+                - /url: /regovern-watch-center/digikey-context-readiness/
+        - listitem [ref=e840]:
+          - paragraph [ref=e841]: Blog
+          - list "Blog" [ref=e842]:
+            - listitem [ref=e843]:
+              - link "The CIO's Guide to Context Graphs" [ref=e844] [cursor=pointer]:
+                - /url: /resources/cio-guide-to-context-graphs/
+            - listitem [ref=e845]:
+              - link "Context Engineering for AI Analysts" [ref=e846] [cursor=pointer]:
+                - /url: /know/context-engineering-for-ai-analyst/
+            - listitem [ref=e847]:
+              - link "Context Layer vs Semantic Layer" [ref=e848] [cursor=pointer]:
+                - /url: /know/context-layer-vs-semantic-layer/
+            - listitem [ref=e849]:
+              - link "Implementing a Context Layer" [ref=e850] [cursor=pointer]:
+                - /url: /know/how-to-implement-enterprise-context-layer-for-ai/
+            - listitem [ref=e851]:
+              - link "Context Layer 101" [ref=e852] [cursor=pointer]:
+                - /url: /know/ai-readiness/context-layer-101/
+            - listitem [ref=e853]:
+              - link "Semantic Views for AI Analysts" [ref=e854] [cursor=pointer]:
+                - /url: /know/semantic-views-human-meaning-to-materialized-context/
+      - generic [ref=e855]:
+        - generic [ref=e856]:
+          - generic [ref=e857]: Subscribe to the Context and Chaos Newsletter
+          - paragraph [ref=e858]: Where 20,000+ data & AI leaders from Amazon, Apple, Spotify and more come for everything context engineering, governance, metadata, and the messy reality of working with data & AI.
+        - img "spinner" [ref=e863]
+    - generic [ref=e864]:
+      - generic [ref=e865]:
+        - generic [ref=e866]:
+          - link "Atlan home" [ref=e868] [cursor=pointer]:
+            - /url: /
+            - img "Atlan logo" [ref=e869]
+          - generic [ref=e871]: The Context Layer for AI
+        - generic "Awards and certifications" [ref=e872]:
+          - link "Achievement badge" [ref=e873] [cursor=pointer]:
+            - /url: /forrester-wave/
+            - img "Achievement" [ref=e874]
+          - link "Achievement badge" [ref=e875] [cursor=pointer]:
+            - /url: /forrester-wave-2024/
+            - img "Achievement" [ref=e876]
+          - link "Achievement badge" [ref=e877] [cursor=pointer]:
+            - /url: /gartner-magic-quadrant-metadata-management-solutions-2025/
+            - img "Achievement" [ref=e878]
+          - link "Achievement badge" [ref=e879] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e880]
+          - link "Achievement badge" [ref=e881] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e882]
+          - link "Achievement badge" [ref=e883] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e884]
+          - link "Achievement badge" [ref=e885] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e886]
+          - link "Achievement badge" [ref=e887] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+            - img "Achievement" [ref=e888]
+      - generic [ref=e889]:
+        - generic [ref=e890]:
+          - link "Follow Atlan on Facebook" [ref=e891] [cursor=pointer]:
+            - /url: https://www.facebook.com/AtlanHQ/
+            - img "Facebook" [ref=e892]
+          - link "Follow Atlan on LinkedIn" [ref=e893] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/atlan-hq/
+            - img "LinkedIn" [ref=e894]
+          - link "Follow Atlan on X (Twitter)" [ref=e895] [cursor=pointer]:
+            - /url: https://x.com/AtlanHQ
+            - img "X (Twitter)" [ref=e896]
+        - generic "Legal links" [ref=e897]:
+          - text: © 2026 Atlan Pte. Ltd. |
+          - link "Security" [ref=e898] [cursor=pointer]:
+            - /url: https://security.atlan.com/
+          - link "Privacy Notice" [ref=e899] [cursor=pointer]:
+            - /url: https://atln.cm/pvcy
+          - link "SaaS Agreement" [ref=e900] [cursor=pointer]:
+            - /url: https://atln.cm/saas
+          - link "Data Processing Agreement" [ref=e901] [cursor=pointer]:
+            - /url: https://atln.cm/ldpa
+          - link "Cookie Policy" [ref=e902] [cursor=pointer]:
+            - /url: /cookie-policy/

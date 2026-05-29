@@ -1,0 +1,266 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Skip to main content" [ref=e4] [cursor=pointer]:
+      - /url: "#content"
+    - generic [ref=e5]:
+      - link "Cornell University" [ref=e7] [cursor=pointer]:
+        - /url: https://www.cornell.edu/
+        - img "Cornell University" [ref=e8]
+      - link "Learn about arXiv becoming an independent nonprofit." [ref=e10] [cursor=pointer]:
+        - /url: https://tech.cornell.edu/arxiv/
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - text: We gratefully acknowledge support from the Simons Foundation,
+          - link "member institutions" [ref=e13] [cursor=pointer]:
+            - /url: https://info.arxiv.org/about/ourmembers.html
+          - text: ", and all contributors."
+        - link "Donate" [ref=e14] [cursor=pointer]:
+          - /url: https://info.arxiv.org/about/donate.html
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - link "arxiv logo" [ref=e17] [cursor=pointer]:
+          - /url: /
+          - img "arxiv logo" [ref=e18]
+        - generic [ref=e19]: ">"
+        - link "math" [ref=e20] [cursor=pointer]:
+          - /url: /list/math/recent
+        - generic [ref=e21]: ">"
+        - text: arXiv:2508.11523
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - textbox "Search term or terms" [ref=e26]:
+            - /placeholder: Search...
+          - paragraph [ref=e27]:
+            - link "Help" [ref=e28] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help
+            - text: "|"
+            - link "Advanced Search" [ref=e29] [cursor=pointer]:
+              - /url: https://arxiv.org/search/advanced
+        - combobox "Field to search" [ref=e31]:
+          - option "All fields" [selected]
+          - option "Title"
+          - option "Author"
+          - option "Abstract"
+          - option "Comments"
+          - option "Journal reference"
+          - option "ACM classification"
+          - option "MSC classification"
+          - option "Report number"
+          - option "arXiv identifier"
+          - option "DOI"
+          - option "ORCID"
+          - option "arXiv author ID"
+          - option "Help pages"
+          - option "Full text"
+        - button "Search" [ref=e32] [cursor=pointer]
+  - main [ref=e33]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - heading "Mathematics > Combinatorics" [level=1] [ref=e38]
+        - generic [ref=e40]:
+          - generic [ref=e41]: "[Submitted on 15 Aug 2025]"
+          - heading "Design switching on graphs" [level=1] [ref=e42]
+          - generic [ref=e43]:
+            - link "Ferdinand Ihringer" [ref=e44] [cursor=pointer]:
+              - /url: https://arxiv.org/search/math?searchtype=author&query=Ihringer,+F
+            - text: ","
+            - link "Robin Simoens" [ref=e45] [cursor=pointer]:
+              - /url: https://arxiv.org/search/math?searchtype=author&query=Simoens,+R
+          - blockquote [ref=e46]: We show that each (r, lambda)-design yields a class of switching methods that can be used produce cospectral graphs. We use this to explain several specific switching methods such as Godsil-McKay (GM) switching and Wang-Qiu-Hu (WQH) switching.
+          - table "Additional metadata" [ref=e48]:
+            - rowgroup [ref=e49]:
+              - 'row "Subjects: Combinatorics (math.CO)" [ref=e50]':
+                - cell "Subjects:" [ref=e51]
+                - cell "Combinatorics (math.CO)" [ref=e52]
+              - 'row "Cite as: arXiv:2508.11523 [math.CO]" [ref=e53]':
+                - cell "Cite as:" [ref=e54]
+                - cell "arXiv:2508.11523 [math.CO]" [ref=e55]:
+                  - generic [ref=e56]:
+                    - link "arXiv:2508.11523" [ref=e57] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2508.11523
+                    - text: "[math.CO]"
+              - row "(or arXiv:2508.11523v1 [math.CO] for this version)" [ref=e58]:
+                - cell [ref=e59]
+                - cell "(or arXiv:2508.11523v1 [math.CO] for this version)" [ref=e60]:
+                  - text: (or
+                  - generic [ref=e61]:
+                    - link "arXiv:2508.11523v1" [ref=e62] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2508.11523v1
+                    - text: "[math.CO]"
+                  - text: for this version)
+              - row "https://doi.org/10.48550/arXiv.2508.11523 Focus to learn more" [ref=e63]:
+                - cell [ref=e64]
+                - cell "https://doi.org/10.48550/arXiv.2508.11523 Focus to learn more" [ref=e65]:
+                  - link "https://doi.org/10.48550/arXiv.2508.11523" [ref=e66] [cursor=pointer]:
+                    - /url: https://doi.org/10.48550/arXiv.2508.11523
+                  - button "Focus to learn more" [ref=e68]:
+                    - generic [ref=e70]: Focus to learn more
+        - generic [ref=e71]:
+          - heading "Submission history" [level=2] [ref=e72]
+          - text: "From: Robin Simoens ["
+          - link "view email" [ref=e73] [cursor=pointer]:
+            - /url: /show-email/b0f077e6/2508.11523
+          - text: "]"
+          - strong [ref=e74]: "[v1]"
+          - text: Fri, 15 Aug 2025 15:03:44 UTC (29 KB)
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - heading "Access Paper:" [level=2] [ref=e77]
+          - list [ref=e78]:
+            - listitem [ref=e79]:
+              - link "View PDF" [ref=e80] [cursor=pointer]:
+                - /url: /pdf/2508.11523
+            - listitem [ref=e81]:
+              - link "HTML (experimental)" [ref=e82] [cursor=pointer]:
+                - /url: https://arxiv.org/html/2508.11523v1
+            - listitem [ref=e83]:
+              - link "TeX Source" [ref=e84] [cursor=pointer]:
+                - /url: /src/2508.11523
+          - link "view license" [ref=e86] [cursor=pointer]:
+            - /url: http://creativecommons.org/licenses/by/4.0/
+            - generic [ref=e87]: view license
+        - generic [ref=e88]:
+          - heading "Current browse context:" [level=3] [ref=e89]
+          - generic [ref=e90]: math.CO
+          - generic [ref=e91]:
+            - link "< prev" [ref=e93] [cursor=pointer]:
+              - /url: /prevnext?id=2508.11523&function=prev&context=math.CO
+            - text: "|"
+            - link "next >" [ref=e95] [cursor=pointer]:
+              - /url: /prevnext?id=2508.11523&function=next&context=math.CO
+          - generic [ref=e96]:
+            - link "new" [ref=e97] [cursor=pointer]:
+              - /url: /list/math.CO/new
+            - text: "|"
+            - link "recent" [ref=e98] [cursor=pointer]:
+              - /url: /list/math.CO/recent
+            - text: "|"
+            - link "2025-08" [ref=e99] [cursor=pointer]:
+              - /url: /list/math.CO/2025-08
+          - generic [ref=e100]:
+            - text: "Change to browse by:"
+            - link "math" [ref=e102] [cursor=pointer]:
+              - /url: /abs/2508.11523?context=math
+        - generic [ref=e103]:
+          - heading "References & Citations" [level=3] [ref=e104]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - link "NASA ADS" [ref=e107] [cursor=pointer]:
+                - /url: https://ui.adsabs.harvard.edu/abs/arXiv:2508.11523
+            - listitem [ref=e108]:
+              - link "Google Scholar" [ref=e109] [cursor=pointer]:
+                - /url: https://scholar.google.com/scholar_lookup?arxiv_id=2508.11523
+            - listitem [ref=e110]:
+              - link "Semantic Scholar" [ref=e111] [cursor=pointer]:
+                - /url: https://api.semanticscholar.org/arXiv:2508.11523
+        - button "export BibTeX citation" [ref=e113]
+        - generic [ref=e114]:
+          - heading "Bookmark" [level=3] [ref=e116]
+          - link "BibSonomy" [ref=e117] [cursor=pointer]:
+            - /url: http://www.bibsonomy.org/BibtexHandler?requTask=upload&url=https://arxiv.org/abs/2508.11523&description=Design switching on graphs
+            - img "BibSonomy" [ref=e118]
+          - link "Reddit" [ref=e119] [cursor=pointer]:
+            - /url: https://reddit.com/submit?url=https://arxiv.org/abs/2508.11523&title=Design switching on graphs
+            - img "Reddit" [ref=e120]
+      - tablist "arXivLabs tools" [ref=e122]:
+        - radio "Bibliographic Tools" [checked] [ref=e123]
+        - tab "Bibliographic Tools" [selected] [ref=e124] [cursor=pointer]
+        - tabpanel "Bibliographic Tools" [ref=e125]:
+          - heading "Bibliographic and Citation Tools" [level=1] [ref=e126]
+          - generic [ref=e127]:
+            - generic [ref=e128]:
+              - generic [ref=e130]:
+                - checkbox "Bibliographic Explorer Toggle"
+                - generic [ref=e132]: Bibliographic Explorer Toggle
+              - generic [ref=e133]:
+                - text: Bibliographic Explorer
+                - emphasis [ref=e134]:
+                  - text: (
+                  - link "What is the Explorer?" [ref=e135] [cursor=pointer]:
+                    - /url: https://info.arxiv.org/labs/showcase.html#arxiv-bibliographic-explorer
+                  - text: )
+            - generic [ref=e136]:
+              - generic [ref=e138]:
+                - checkbox "Connected Papers"
+                - generic [ref=e140]: Connected Papers Toggle
+              - generic [ref=e141]:
+                - text: Connected Papers
+                - emphasis [ref=e142]:
+                  - text: (
+                  - link "What is Connected Papers?" [ref=e143] [cursor=pointer]:
+                    - /url: https://www.connectedpapers.com/about
+                  - text: )
+            - generic [ref=e144]:
+              - generic [ref=e146]:
+                - checkbox "Litmaps"
+                - generic [ref=e148]: Litmaps Toggle
+              - generic [ref=e149]:
+                - text: Litmaps
+                - emphasis [ref=e150]:
+                  - text: (
+                  - link "What is Litmaps?" [ref=e151] [cursor=pointer]:
+                    - /url: https://www.litmaps.co/
+                  - text: )
+            - generic [ref=e152]:
+              - generic [ref=e154]:
+                - checkbox "scite Smart Citations"
+                - generic [ref=e156]: scite.ai Toggle
+              - generic [ref=e157]:
+                - text: scite Smart Citations
+                - emphasis [ref=e158]:
+                  - text: (
+                  - link "What are Smart Citations?" [ref=e159] [cursor=pointer]:
+                    - /url: https://www.scite.ai/
+                  - text: )
+        - radio "Code, Data, Media" [ref=e163]
+        - tab "Code, Data, Media" [ref=e164] [cursor=pointer]
+        - radio "Demos" [ref=e165]
+        - tab "Demos" [ref=e166] [cursor=pointer]
+        - radio "Related Papers" [ref=e167]
+        - tab "Related Papers" [ref=e168] [cursor=pointer]
+        - radio "About arXivLabs" [ref=e169]
+        - tab "About arXivLabs" [ref=e170] [cursor=pointer]
+      - generic [ref=e171]:
+        - link "Which authors of this paper are endorsers?" [ref=e172] [cursor=pointer]:
+          - /url: /auth/show-endorsers/2508.11523
+        - text: "|"
+        - link "Disable MathJax" [ref=e173] [cursor=pointer]:
+          - /url: javascript:setMathjaxCookie()
+        - text: (
+        - link "What is MathJax?" [ref=e174] [cursor=pointer]:
+          - /url: https://info.arxiv.org/help/mathjax.html
+        - text: )
+  - contentinfo [ref=e175]:
+    - navigation "Secondary" [ref=e176]:
+      - generic [ref=e178]:
+        - list [ref=e180]:
+          - listitem [ref=e181]:
+            - link "About" [ref=e182] [cursor=pointer]:
+              - /url: https://info.arxiv.org/about
+          - listitem [ref=e183]:
+            - link "Help" [ref=e184] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help
+        - list [ref=e186]:
+          - listitem [ref=e187]:
+            - link "Contact" [ref=e189] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/contact.html
+          - listitem [ref=e190]:
+            - link "Subscribe" [ref=e192] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/subscribe
+      - generic [ref=e194]:
+        - list [ref=e196]:
+          - listitem [ref=e197]:
+            - link "Copyright" [ref=e198] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/license/index.html
+          - listitem [ref=e199]:
+            - link "Privacy Policy" [ref=e200] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/policies/privacy_policy.html
+        - list [ref=e202]:
+          - listitem [ref=e203]:
+            - link "Web Accessibility Assistance" [ref=e204] [cursor=pointer]:
+              - /url: https://info.arxiv.org/help/web_accessibility.html
+          - listitem [ref=e205]:
+            - paragraph [ref=e206]:
+              - link "arXiv Operational Status" [ref=e207] [cursor=pointer]:
+                - /url: https://status.arxiv.org
+                - text: arXiv Operational Status

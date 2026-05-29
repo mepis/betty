@@ -1,0 +1,739 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "OpenCode" [ref=e7] [cursor=pointer]:
+          - /url: /docs/
+          - generic [ref=e8]: OpenCode
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - link [ref=e11] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - img [ref=e12]
+            - link [ref=e14] [cursor=pointer]:
+              - /url: https://opencode.ai/discord
+              - img [ref=e15]
+          - button "Search" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: Search
+            - generic [ref=e20]:
+              - generic [ref=e21]: Ctrl
+              - generic [ref=e22]: K
+    - navigation "Main":
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "Intro" [ref=e28] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=e29]:
+          - link "Config" [ref=e30] [cursor=pointer]:
+            - /url: /docs/config/
+        - listitem [ref=e31]:
+          - link "Providers" [ref=e32] [cursor=pointer]:
+            - /url: /docs/providers/
+        - listitem [ref=e33]:
+          - link "Network" [ref=e34] [cursor=pointer]:
+            - /url: /docs/network/
+        - listitem [ref=e35]:
+          - link "Enterprise" [ref=e36] [cursor=pointer]:
+            - /url: /docs/enterprise/
+        - listitem [ref=e37]:
+          - link "Troubleshooting" [ref=e38] [cursor=pointer]:
+            - /url: /docs/troubleshooting/
+        - listitem [ref=e39]:
+          - link "Windows" [ref=e40] [cursor=pointer]:
+            - /url: /docs/windows-wsl
+        - listitem [ref=e41]:
+          - group [ref=e42]:
+            - generic "Usage" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: Usage
+              - img [ref=e45]
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Go" [ref=e49] [cursor=pointer]:
+                  - /url: /docs/go/
+              - listitem [ref=e50]:
+                - link "TUI" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/tui/
+              - listitem [ref=e52]:
+                - link "CLI" [ref=e53] [cursor=pointer]:
+                  - /url: /docs/cli/
+              - listitem [ref=e54]:
+                - link "Web" [ref=e55] [cursor=pointer]:
+                  - /url: /docs/web/
+              - listitem [ref=e56]:
+                - link "IDE" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/ide/
+              - listitem [ref=e58]:
+                - link "Zen" [ref=e59] [cursor=pointer]:
+                  - /url: /docs/zen/
+              - listitem [ref=e60]:
+                - link "Share" [ref=e61] [cursor=pointer]:
+                  - /url: /docs/share/
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/github/
+              - listitem [ref=e64]:
+                - link "GitLab" [ref=e65] [cursor=pointer]:
+                  - /url: /docs/gitlab/
+        - listitem [ref=e66]:
+          - group [ref=e67]:
+            - generic "Configure" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: Configure
+              - img [ref=e70]
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - link "Tools" [ref=e74] [cursor=pointer]:
+                  - /url: /docs/tools/
+              - listitem [ref=e75]:
+                - link "Rules" [ref=e76] [cursor=pointer]:
+                  - /url: /docs/rules/
+              - listitem [ref=e77]:
+                - link "Agents" [ref=e78] [cursor=pointer]:
+                  - /url: /docs/agents/
+              - listitem [ref=e79]:
+                - link "Models" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/models/
+              - listitem [ref=e81]:
+                - link "Themes" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/themes/
+              - listitem [ref=e83]:
+                - link "Keybinds" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/keybinds/
+              - listitem [ref=e85]:
+                - link "Commands" [ref=e86] [cursor=pointer]:
+                  - /url: /docs/commands/
+              - listitem [ref=e87]:
+                - link "Formatters" [ref=e88] [cursor=pointer]:
+                  - /url: /docs/formatters/
+              - listitem [ref=e89]:
+                - link "Permissions" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/permissions/
+              - listitem [ref=e91]:
+                - link "LSP Servers" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/lsp/
+              - listitem [ref=e93]:
+                - link "MCP servers" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/mcp-servers/
+              - listitem [ref=e95]:
+                - link "ACP Support" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/acp/
+              - listitem [ref=e97]:
+                - link "Agent Skills" [ref=e98] [cursor=pointer]:
+                  - /url: /docs/skills/
+              - listitem [ref=e99]:
+                - link "Custom Tools" [ref=e100] [cursor=pointer]:
+                  - /url: /docs/custom-tools/
+        - listitem [ref=e101]:
+          - group [ref=e102]:
+            - generic "Develop" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: Develop
+              - img [ref=e105]
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "SDK" [ref=e109] [cursor=pointer]:
+                  - /url: /docs/sdk/
+              - listitem [ref=e110]:
+                - link "Server" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/server/
+              - listitem [ref=e112]:
+                - link "Plugins" [ref=e113] [cursor=pointer]:
+                  - /url: /docs/plugins/
+              - listitem [ref=e114]:
+                - link "Ecosystem" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/ecosystem/
+    - generic [ref=e117]:
+      - complementary [ref=e118]:
+        - navigation "On this page" [ref=e123]:
+          - heading "On this page" [level=2] [ref=e124]
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "Overview" [ref=e127] [cursor=pointer]:
+                - /url: "#_top"
+            - listitem [ref=e128]:
+              - link "Configure" [ref=e129] [cursor=pointer]:
+                - /url: "#configure"
+            - listitem [ref=e130]:
+              - link "Built-in" [ref=e131] [cursor=pointer]:
+                - /url: "#built-in"
+              - list [ref=e132]:
+                - listitem [ref=e133]:
+                  - link "bash" [ref=e134] [cursor=pointer]:
+                    - /url: "#bash"
+                - listitem [ref=e135]:
+                  - link "edit" [ref=e136] [cursor=pointer]:
+                    - /url: "#edit"
+                - listitem [ref=e137]:
+                  - link "write" [ref=e138] [cursor=pointer]:
+                    - /url: "#write"
+                - listitem [ref=e139]:
+                  - link "read" [ref=e140] [cursor=pointer]:
+                    - /url: "#read"
+                - listitem [ref=e141]:
+                  - link "grep" [ref=e142] [cursor=pointer]:
+                    - /url: "#grep"
+                - listitem [ref=e143]:
+                  - link "glob" [ref=e144] [cursor=pointer]:
+                    - /url: "#glob"
+                - listitem [ref=e145]:
+                  - link "lsp (experimental)" [ref=e146] [cursor=pointer]:
+                    - /url: "#lsp-experimental"
+                - listitem [ref=e147]:
+                  - link "apply_patch" [ref=e148] [cursor=pointer]:
+                    - /url: "#apply_patch"
+                - listitem [ref=e149]:
+                  - link "skill" [ref=e150] [cursor=pointer]:
+                    - /url: "#skill"
+                - listitem [ref=e151]:
+                  - link "todowrite" [ref=e152] [cursor=pointer]:
+                    - /url: "#todowrite"
+                - listitem [ref=e153]:
+                  - link "webfetch" [ref=e154] [cursor=pointer]:
+                    - /url: "#webfetch"
+                - listitem [ref=e155]:
+                  - link "websearch" [ref=e156] [cursor=pointer]:
+                    - /url: "#websearch"
+                - listitem [ref=e157]:
+                  - link "question" [ref=e158] [cursor=pointer]:
+                    - /url: "#question"
+            - listitem [ref=e159]:
+              - link "Custom tools" [ref=e160] [cursor=pointer]:
+                - /url: "#custom-tools"
+            - listitem [ref=e161]:
+              - link "MCP servers" [ref=e162] [cursor=pointer]:
+                - /url: "#mcp-servers"
+            - listitem [ref=e163]:
+              - link "Internals" [ref=e164] [cursor=pointer]:
+                - /url: "#internals"
+              - list [ref=e165]:
+                - listitem [ref=e166]:
+                  - link "Ignore patterns" [ref=e167] [cursor=pointer]:
+                    - /url: "#ignore-patterns"
+      - main [ref=e169]:
+        - generic [ref=e171]:
+          - heading "Tools" [level=1] [ref=e172]
+          - paragraph [ref=e173]: Manage the tools an LLM can use.
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - paragraph [ref=e177]:
+              - text: Tools allow the LLM to perform actions in your codebase. OpenCode comes with a set of built-in tools, but you can extend it with
+              - link "custom tools" [ref=e178] [cursor=pointer]:
+                - /url: /docs/custom-tools
+              - text: or
+              - link "MCP servers" [ref=e179] [cursor=pointer]:
+                - /url: /docs/mcp-servers
+              - text: .
+            - paragraph [ref=e180]:
+              - text: By default, all tools are
+              - strong [ref=e181]: enabled
+              - text: and don’t need permission to run. You can control tool behavior through
+              - link "permissions" [ref=e182] [cursor=pointer]:
+                - /url: /docs/permissions
+              - text: .
+            - separator [ref=e183]
+            - heading "Configure" [level=2] [ref=e184]:
+              - link "Configure" [ref=e185]:
+                - /url: "#configure"
+            - paragraph [ref=e186]:
+              - text: Use the
+              - code [ref=e187]: "`permission`"
+              - text: field to control tool behavior. You can allow, deny, or require approval for each tool.
+            - figure "opencode.json" [ref=e189]:
+              - generic [ref=e191]: opencode.json
+              - code [ref=e193]:
+                - generic [ref=e195]: "{"
+                - generic [ref=e197]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e199]: "\"permission\": {"
+                - generic [ref=e201]: "\"edit\": \"deny\","
+                - generic [ref=e203]: "\"bash\": \"ask\","
+                - generic [ref=e205]: "\"webfetch\": \"allow\""
+                - generic [ref=e207]: "}"
+                - generic [ref=e210]: "}"
+              - button "Copy to clipboard" [ref=e212] [cursor=pointer]
+            - paragraph [ref=e214]: "You can also use wildcards to control multiple tools at once. For example, to require approval for all tools from an MCP server:"
+            - figure "opencode.json" [ref=e216]:
+              - generic [ref=e218]: opencode.json
+              - code [ref=e220]:
+                - generic [ref=e222]: "{"
+                - generic [ref=e224]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e226]: "\"permission\": {"
+                - generic [ref=e228]: "\"mymcp_*\": \"ask\""
+                - generic [ref=e230]: "}"
+                - generic [ref=e233]: "}"
+              - button "Copy to clipboard" [ref=e235] [cursor=pointer]
+            - paragraph [ref=e237]:
+              - link "Learn more" [ref=e238] [cursor=pointer]:
+                - /url: /docs/permissions
+              - text: about configuring permissions.
+            - separator [ref=e239]
+            - heading "Built-in" [level=2] [ref=e240]:
+              - link "Built-in" [ref=e241]:
+                - /url: "#built-in"
+            - paragraph [ref=e242]: Here are all the built-in tools available in OpenCode.
+            - separator [ref=e243]
+            - heading "bash" [level=3] [ref=e244]:
+              - link "bash" [ref=e245]:
+                - /url: "#bash"
+            - paragraph [ref=e246]: Execute shell commands in your project environment.
+            - figure "opencode.json" [ref=e248]:
+              - generic [ref=e250]: opencode.json
+              - code [ref=e252]:
+                - generic [ref=e254]: "{"
+                - generic [ref=e256]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e258]: "\"permission\": {"
+                - generic [ref=e260]: "\"bash\": \"allow\""
+                - generic [ref=e262]: "}"
+                - generic [ref=e265]: "}"
+              - button "Copy to clipboard" [ref=e267] [cursor=pointer]
+            - paragraph [ref=e269]:
+              - text: This tool allows the LLM to run terminal commands like
+              - code [ref=e270]: "`npm install`"
+              - text: ","
+              - code [ref=e271]: "`git status`"
+              - text: ", or any other shell command."
+            - separator [ref=e272]
+            - heading "edit" [level=3] [ref=e273]:
+              - link "edit" [ref=e274]:
+                - /url: "#edit"
+            - paragraph [ref=e275]: Modify existing files using exact string replacements.
+            - figure "opencode.json" [ref=e277]:
+              - generic [ref=e279]: opencode.json
+              - code [ref=e281]:
+                - generic [ref=e283]: "{"
+                - generic [ref=e285]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e287]: "\"permission\": {"
+                - generic [ref=e289]: "\"edit\": \"allow\""
+                - generic [ref=e291]: "}"
+                - generic [ref=e294]: "}"
+              - button "Copy to clipboard" [ref=e296] [cursor=pointer]
+            - paragraph [ref=e298]: This tool performs precise edits to files by replacing exact text matches. It’s the primary way the LLM modifies code.
+            - separator [ref=e299]
+            - heading "write" [level=3] [ref=e300]:
+              - link "write" [ref=e301]:
+                - /url: "#write"
+            - paragraph [ref=e302]: Create new files or overwrite existing ones.
+            - figure "opencode.json" [ref=e304]:
+              - generic [ref=e306]: opencode.json
+              - code [ref=e308]:
+                - generic [ref=e310]: "{"
+                - generic [ref=e312]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e314]: "\"permission\": {"
+                - generic [ref=e316]: "\"edit\": \"allow\""
+                - generic [ref=e318]: "}"
+                - generic [ref=e321]: "}"
+              - button "Copy to clipboard" [ref=e323] [cursor=pointer]
+            - paragraph [ref=e325]: Use this to allow the LLM to create new files. It will overwrite existing files if they already exist.
+            - complementary "Note" [ref=e326]:
+              - paragraph [ref=e327]:
+                - img [ref=e328]
+                - text: Note
+              - paragraph [ref=e331]:
+                - text: The
+                - code [ref=e332]: "`write`"
+                - text: tool is controlled by the
+                - code [ref=e333]: "`edit`"
+                - text: permission, which covers all file modifications (
+                - code [ref=e334]: "`edit`"
+                - text: ","
+                - code [ref=e335]: "`write`"
+                - text: ","
+                - code [ref=e336]: "`apply_patch`"
+                - text: ).
+            - separator [ref=e337]
+            - heading "read" [level=3] [ref=e338]:
+              - link "read" [ref=e339]:
+                - /url: "#read"
+            - paragraph [ref=e340]: Read file contents from your codebase.
+            - figure "opencode.json" [ref=e342]:
+              - generic [ref=e344]: opencode.json
+              - code [ref=e346]:
+                - generic [ref=e348]: "{"
+                - generic [ref=e350]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e352]: "\"permission\": {"
+                - generic [ref=e354]: "\"read\": \"allow\""
+                - generic [ref=e356]: "}"
+                - generic [ref=e359]: "}"
+              - button "Copy to clipboard" [ref=e361] [cursor=pointer]
+            - paragraph [ref=e363]: This tool reads files and returns their contents. It supports reading specific line ranges for large files.
+            - separator [ref=e364]
+            - heading "grep" [level=3] [ref=e365]:
+              - link "grep" [ref=e366]:
+                - /url: "#grep"
+            - paragraph [ref=e367]: Search file contents using regular expressions.
+            - figure "opencode.json" [ref=e369]:
+              - generic [ref=e371]: opencode.json
+              - code [ref=e373]:
+                - generic [ref=e375]: "{"
+                - generic [ref=e377]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e379]: "\"permission\": {"
+                - generic [ref=e381]: "\"grep\": \"allow\""
+                - generic [ref=e383]: "}"
+                - generic [ref=e386]: "}"
+              - button "Copy to clipboard" [ref=e388] [cursor=pointer]
+            - paragraph [ref=e390]: Fast content search across your codebase. Supports full regex syntax and file pattern filtering.
+            - separator [ref=e391]
+            - heading "glob" [level=3] [ref=e392]:
+              - link "glob" [ref=e393]:
+                - /url: "#glob"
+            - paragraph [ref=e394]: Find files by pattern matching.
+            - figure "opencode.json" [ref=e396]:
+              - generic [ref=e398]: opencode.json
+              - code [ref=e400]:
+                - generic [ref=e402]: "{"
+                - generic [ref=e404]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e406]: "\"permission\": {"
+                - generic [ref=e408]: "\"glob\": \"allow\""
+                - generic [ref=e410]: "}"
+                - generic [ref=e413]: "}"
+              - button "Copy to clipboard" [ref=e415] [cursor=pointer]
+            - paragraph [ref=e417]:
+              - text: Search for files using glob patterns like
+              - code [ref=e418]: "`**/*.js`"
+              - text: or
+              - code [ref=e419]: "`src/**/*.ts`"
+              - text: . Returns matching file paths sorted by modification time.
+            - separator [ref=e420]
+            - heading "lsp (experimental)" [level=3] [ref=e421]:
+              - link "lsp (experimental)" [ref=e422]:
+                - /url: "#lsp-experimental"
+            - paragraph [ref=e423]: Interact with your configured LSP servers to get code intelligence features like definitions, references, hover info, and call hierarchy.
+            - complementary "Note" [ref=e424]:
+              - paragraph [ref=e425]:
+                - img [ref=e426]
+                - text: Note
+              - paragraph [ref=e429]:
+                - text: This tool is only available when
+                - code [ref=e430]: "`OPENCODE_EXPERIMENTAL_LSP_TOOL=true`"
+                - text: (or
+                - code [ref=e431]: "`OPENCODE_EXPERIMENTAL=true`"
+                - text: ).
+            - figure "opencode.json" [ref=e433]:
+              - generic [ref=e435]: opencode.json
+              - code [ref=e437]:
+                - generic [ref=e439]: "{"
+                - generic [ref=e441]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e443]: "\"permission\": {"
+                - generic [ref=e445]: "\"lsp\": \"allow\""
+                - generic [ref=e447]: "}"
+                - generic [ref=e450]: "}"
+              - button "Copy to clipboard" [ref=e452] [cursor=pointer]
+            - paragraph [ref=e454]:
+              - text: Supported operations include
+              - code [ref=e455]: "`goToDefinition`"
+              - text: ","
+              - code [ref=e456]: "`findReferences`"
+              - text: ","
+              - code [ref=e457]: "`hover`"
+              - text: ","
+              - code [ref=e458]: "`documentSymbol`"
+              - text: ","
+              - code [ref=e459]: "`workspaceSymbol`"
+              - text: ","
+              - code [ref=e460]: "`goToImplementation`"
+              - text: ","
+              - code [ref=e461]: "`prepareCallHierarchy`"
+              - text: ","
+              - code [ref=e462]: "`incomingCalls`"
+              - text: ", and"
+              - code [ref=e463]: "`outgoingCalls`"
+              - text: .
+            - paragraph [ref=e464]:
+              - text: To configure which LSP servers are available for your project, see
+              - link "LSP Servers" [ref=e465] [cursor=pointer]:
+                - /url: /docs/lsp
+              - text: .
+            - separator [ref=e466]
+            - heading "apply_patch" [level=3] [ref=e467]:
+              - link "apply_patch" [ref=e468]:
+                - /url: "#apply_patch"
+            - paragraph [ref=e469]: Apply patches to files.
+            - figure "opencode.json" [ref=e471]:
+              - generic [ref=e473]: opencode.json
+              - code [ref=e475]:
+                - generic [ref=e477]: "{"
+                - generic [ref=e479]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e481]: "\"permission\": {"
+                - generic [ref=e483]: "\"edit\": \"allow\""
+                - generic [ref=e485]: "}"
+                - generic [ref=e488]: "}"
+              - button "Copy to clipboard" [ref=e490] [cursor=pointer]
+            - paragraph [ref=e492]: This tool applies patch files to your codebase. Useful for applying diffs and patches from various sources.
+            - paragraph [ref=e493]:
+              - text: When handling
+              - code [ref=e494]: "`tool.execute.before`"
+              - text: or
+              - code [ref=e495]: "`tool.execute.after`"
+              - text: hooks, check
+              - code [ref=e496]: "`input.tool === \"apply_patch\"`"
+              - text: (not
+              - code [ref=e497]: "`\"patch\"`"
+              - text: ).
+            - paragraph [ref=e498]:
+              - code [ref=e499]: "`apply_patch`"
+              - text: uses
+              - code [ref=e500]: "`output.args.patchText`"
+              - text: instead of
+              - code [ref=e501]: "`output.args.filePath`"
+              - text: . Paths are embedded in marker lines within
+              - code [ref=e502]: "`patchText`"
+              - text: "and are relative to the project root (for example:"
+              - code [ref=e503]: "`*** Add File: src/new-file.ts`"
+              - text: ","
+              - code [ref=e504]: "`*** Update File: src/existing.ts`"
+              - text: ","
+              - code [ref=e505]: "`*** Move to: src/renamed.ts`"
+              - text: ","
+              - code [ref=e506]: "`*** Delete File: src/obsolete.ts`"
+              - text: ).
+            - complementary "Note" [ref=e507]:
+              - paragraph [ref=e508]:
+                - img [ref=e509]
+                - text: Note
+              - paragraph [ref=e512]:
+                - text: The
+                - code [ref=e513]: "`apply_patch`"
+                - text: tool is controlled by the
+                - code [ref=e514]: "`edit`"
+                - text: permission, which covers all file modifications (
+                - code [ref=e515]: "`edit`"
+                - text: ","
+                - code [ref=e516]: "`write`"
+                - text: ","
+                - code [ref=e517]: "`apply_patch`"
+                - text: ).
+            - separator [ref=e518]
+            - heading "skill" [level=3] [ref=e519]:
+              - link "skill" [ref=e520]:
+                - /url: "#skill"
+            - paragraph [ref=e521]:
+              - text: Load a
+              - link "skill" [ref=e522] [cursor=pointer]:
+                - /url: /docs/skills
+              - text: (a
+              - code [ref=e523]: "`SKILL.md`"
+              - text: file) and return its content in the conversation.
+            - figure "opencode.json" [ref=e525]:
+              - generic [ref=e527]: opencode.json
+              - code [ref=e529]:
+                - generic [ref=e531]: "{"
+                - generic [ref=e533]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e535]: "\"permission\": {"
+                - generic [ref=e537]: "\"skill\": \"allow\""
+                - generic [ref=e539]: "}"
+                - generic [ref=e542]: "}"
+              - button "Copy to clipboard" [ref=e544] [cursor=pointer]
+            - separator [ref=e546]
+            - heading "todowrite" [level=3] [ref=e547]:
+              - link "todowrite" [ref=e548]:
+                - /url: "#todowrite"
+            - paragraph [ref=e549]: Manage todo lists during coding sessions.
+            - figure "opencode.json" [ref=e551]:
+              - generic [ref=e553]: opencode.json
+              - code [ref=e555]:
+                - generic [ref=e557]: "{"
+                - generic [ref=e559]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e561]: "\"permission\": {"
+                - generic [ref=e563]: "\"todowrite\": \"allow\""
+                - generic [ref=e565]: "}"
+                - generic [ref=e568]: "}"
+              - button "Copy to clipboard" [ref=e570] [cursor=pointer]
+            - paragraph [ref=e572]: Creates and updates task lists to track progress during complex operations. The LLM uses this to organize multi-step tasks.
+            - complementary "Note" [ref=e573]:
+              - paragraph [ref=e574]:
+                - img [ref=e575]
+                - text: Note
+              - paragraph [ref=e578]:
+                - text: This tool is disabled for subagents by default, but you can enable it manually.
+                - link "Learn more" [ref=e579] [cursor=pointer]:
+                  - /url: /docs/agents/#permissions
+            - separator [ref=e580]
+            - heading "webfetch" [level=3] [ref=e581]:
+              - link "webfetch" [ref=e582]:
+                - /url: "#webfetch"
+            - paragraph [ref=e583]: Fetch web content.
+            - figure "opencode.json" [ref=e585]:
+              - generic [ref=e587]: opencode.json
+              - code [ref=e589]:
+                - generic [ref=e591]: "{"
+                - generic [ref=e593]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e595]: "\"permission\": {"
+                - generic [ref=e597]: "\"webfetch\": \"allow\""
+                - generic [ref=e599]: "}"
+                - generic [ref=e602]: "}"
+              - button "Copy to clipboard" [ref=e604] [cursor=pointer]
+            - paragraph [ref=e606]: Allows the LLM to fetch and read web pages. Useful for looking up documentation or researching online resources.
+            - separator [ref=e607]
+            - heading "websearch" [level=3] [ref=e608]:
+              - link "websearch" [ref=e609]:
+                - /url: "#websearch"
+            - paragraph [ref=e610]: Search the web for information.
+            - complementary "Note" [ref=e611]:
+              - paragraph [ref=e612]:
+                - img [ref=e613]
+                - text: Note
+              - generic [ref=e615]:
+                - paragraph [ref=e616]:
+                  - text: This tool is only available when using the OpenCode provider or when the
+                  - code [ref=e617]: "`OPENCODE_ENABLE_EXA`"
+                  - text: environment variable is set to any truthy value (e.g.,
+                  - code [ref=e618]: "`true`"
+                  - text: or
+                  - code [ref=e619]: "`1`"
+                  - text: ).
+                - paragraph [ref=e620]: "To enable when launching OpenCode:"
+                - figure "Terminal window" [ref=e622]:
+                  - generic [ref=e625]: Terminal window
+                  - code [ref=e627]:
+                    - generic [ref=e629]: OPENCODE_ENABLE_EXA=1 opencode
+                  - button "Copy to clipboard" [ref=e631] [cursor=pointer]
+            - figure "opencode.json" [ref=e634]:
+              - generic [ref=e636]: opencode.json
+              - code [ref=e638]:
+                - generic [ref=e640]: "{"
+                - generic [ref=e642]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e644]: "\"permission\": {"
+                - generic [ref=e646]: "\"websearch\": \"allow\""
+                - generic [ref=e648]: "}"
+                - generic [ref=e651]: "}"
+              - button "Copy to clipboard" [ref=e653] [cursor=pointer]
+            - paragraph [ref=e655]: Performs web searches using Exa AI to find relevant information online. Useful for researching topics, finding current events, or gathering information beyond the training data cutoff.
+            - paragraph [ref=e656]: No API key is required — the tool connects directly to Exa AI’s hosted MCP service without authentication.
+            - complementary "Tip" [ref=e657]:
+              - paragraph [ref=e658]:
+                - img [ref=e659]
+                - text: Tip
+              - paragraph [ref=e663]:
+                - text: Use
+                - code [ref=e664]: "`websearch`"
+                - text: when you need to find information (discovery), and
+                - code [ref=e665]: "`webfetch`"
+                - text: when you need to retrieve content from a specific URL (retrieval).
+            - separator [ref=e666]
+            - heading "question" [level=3] [ref=e667]:
+              - link "question" [ref=e668]:
+                - /url: "#question"
+            - paragraph [ref=e669]: Ask the user questions during execution.
+            - figure "opencode.json" [ref=e671]:
+              - generic [ref=e673]: opencode.json
+              - code [ref=e675]:
+                - generic [ref=e677]: "{"
+                - generic [ref=e679]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e681]: "\"permission\": {"
+                - generic [ref=e683]: "\"question\": \"allow\""
+                - generic [ref=e685]: "}"
+                - generic [ref=e688]: "}"
+              - button "Copy to clipboard" [ref=e690] [cursor=pointer]
+            - paragraph [ref=e692]: "This tool allows the LLM to ask the user questions during a task. It’s useful for:"
+            - list [ref=e693]:
+              - listitem [ref=e694]: Gathering user preferences or requirements
+              - listitem [ref=e695]: Clarifying ambiguous instructions
+              - listitem [ref=e696]: Getting decisions on implementation choices
+              - listitem [ref=e697]: Offering choices about what direction to take
+            - paragraph [ref=e698]: Each question includes a header, the question text, and a list of options. Users can select from the provided options or type a custom answer. When there are multiple questions, users can navigate between them before submitting all answers.
+            - separator [ref=e699]
+            - heading "Custom tools" [level=2] [ref=e700]:
+              - link "Custom tools" [ref=e701]:
+                - /url: "#custom-tools"
+            - paragraph [ref=e702]: Custom tools let you define your own functions that the LLM can call. These are defined in your config file and can execute arbitrary code.
+            - paragraph [ref=e703]:
+              - link "Learn more" [ref=e704] [cursor=pointer]:
+                - /url: /docs/custom-tools
+              - text: about creating custom tools.
+            - separator [ref=e705]
+            - heading "MCP servers" [level=2] [ref=e706]:
+              - link "MCP servers" [ref=e707]:
+                - /url: "#mcp-servers"
+            - paragraph [ref=e708]: MCP (Model Context Protocol) servers allow you to integrate external tools and services. This includes database access, API integrations, and third-party services.
+            - paragraph [ref=e709]:
+              - link "Learn more" [ref=e710] [cursor=pointer]:
+                - /url: /docs/mcp-servers
+              - text: about configuring MCP servers.
+            - separator [ref=e711]
+            - heading "Internals" [level=2] [ref=e712]:
+              - link "Internals" [ref=e713]:
+                - /url: "#internals"
+            - paragraph [ref=e714]:
+              - text: Internally, tools like
+              - code [ref=e715]: "`grep`"
+              - text: and
+              - code [ref=e716]: "`glob`"
+              - text: use
+              - link "ripgrep" [ref=e717] [cursor=pointer]:
+                - /url: https://github.com/BurntSushi/ripgrep
+              - text: under the hood. By default, ripgrep respects
+              - code [ref=e718]: "`.gitignore`"
+              - text: patterns, which means files and directories listed in your
+              - code [ref=e719]: "`.gitignore`"
+              - text: will be excluded from searches and listings.
+            - separator [ref=e720]
+            - heading "Ignore patterns" [level=3] [ref=e721]:
+              - link "Ignore patterns" [ref=e722]:
+                - /url: "#ignore-patterns"
+            - paragraph [ref=e723]:
+              - text: To include files that would normally be ignored, create a
+              - code [ref=e724]: "`.ignore`"
+              - text: file in your project root. This file can explicitly allow certain paths.
+            - figure ".ignore" [ref=e726]:
+              - generic [ref=e728]: .ignore
+              - code [ref=e730]:
+                - generic [ref=e732]: "!node_modules/"
+                - generic [ref=e734]: "!dist/"
+                - generic [ref=e736]: "!build/"
+              - button "Copy to clipboard" [ref=e738] [cursor=pointer]
+            - paragraph [ref=e740]:
+              - text: For example, this
+              - code [ref=e741]: "`.ignore`"
+              - text: file allows ripgrep to search within
+              - code [ref=e742]: "`node_modules/`"
+              - text: ","
+              - code [ref=e743]: "`dist/`"
+              - text: ", and"
+              - code [ref=e744]: "`build/`"
+              - text: directories even if they’re listed in
+              - code [ref=e745]: "`.gitignore`"
+              - text: .
+          - generic [ref=e747]:
+            - generic [ref=e748]:
+              - link "Edit page" [ref=e749] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/edit/dev/packages/web/src/content/docs/tools.mdx
+                - img [ref=e750]
+                - text: Edit page
+              - link "Found a bug? Open an issue" [ref=e752] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues/new
+                - img [ref=e753]
+                - text: Found a bug? Open an issue
+              - link "Join our Discord community" [ref=e755] [cursor=pointer]:
+                - /url: https://opencode.ai/discord
+                - img [ref=e756]
+                - text: Join our Discord community
+              - generic [ref=e759]:
+                - generic [ref=e760]: Select language
+                - img
+                - combobox "Select language" [ref=e761] [cursor=pointer]:
+                  - option "English" [selected]
+                  - option "العربية"
+                  - option "Bosanski"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Español"
+                  - option "Français"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어"
+                  - option "Norsk Bokmål"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Русский"
+                  - option "ไทย"
+                  - option "Türkçe"
+                  - option "简体中文"
+                  - option "繁體中文"
+                - img
+            - generic [ref=e762]:
+              - paragraph [ref=e763]:
+                - text: ©
+                - link "Anomaly" [ref=e764] [cursor=pointer]:
+                  - /url: https://anoma.ly
+              - paragraph [ref=e765]:
+                - text: "Last updated:"
+                - time [ref=e766]: May 29, 2026

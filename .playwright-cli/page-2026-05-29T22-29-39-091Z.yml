@@ -1,0 +1,2768 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FGloriaameng%2FAwesome-Agent-Harness
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=Gloriaameng%2FAwesome-Agent-Harness
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "Gloriaameng" [ref=e70] [cursor=pointer]:
+            - /url: /Gloriaameng
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "Awesome-Agent-Harness" [ref=e73] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2FGloriaameng%2FAwesome-Agent-Harness
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 8" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2FGloriaameng%2FAwesome-Agent-Harness
+                - img [ref=e82]
+                - text: Fork
+                - generic "8" [ref=e84]
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2FGloriaameng%2FAwesome-Agent-Harness
+                - img [ref=e88]
+                - text: Star
+                - generic "250 users starred this repository" [ref=e90]: "250"
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2" [ref=e99] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests" [ref=e106] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+          - listitem [ref=e110]:
+            - link "Actions" [ref=e111] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/actions
+              - img [ref=e112]
+              - generic [ref=e114]: Actions
+          - listitem [ref=e115]:
+            - link "Projects" [ref=e116] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/projects
+              - img [ref=e117]
+              - generic [ref=e119]: Projects
+          - listitem [ref=e120]:
+            - link "Security and quality" [ref=e121] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/security
+              - img [ref=e122]
+              - generic [ref=e124]: Security and quality
+          - listitem [ref=e125]:
+            - link "Insights" [ref=e126] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/pulse
+              - img [ref=e127]
+              - generic [ref=e129]: Insights
+    - generic [ref=e142]:
+      - heading "Gloriaameng/Awesome-Agent-Harness" [level=1] [ref=e144]
+      - generic [ref=e145]:
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - button "main branch" [ref=e152] [cursor=pointer]:
+                - generic [ref=e153]:
+                  - generic [ref=e155]:
+                    - img [ref=e157]
+                    - generic [ref=e160]: main
+                  - generic:
+                    - img
+              - generic [ref=e161]:
+                - link "1 Branch" [ref=e162] [cursor=pointer]:
+                  - /url: /Gloriaameng/Awesome-Agent-Harness/branches
+                  - generic [ref=e163]:
+                    - generic:
+                      - img
+                    - generic [ref=e165]:
+                      - strong [ref=e166]: "1"
+                      - text: Branch
+                - link "0 Tags" [ref=e167] [cursor=pointer]:
+                  - /url: /Gloriaameng/Awesome-Agent-Harness/tags
+                  - generic [ref=e168]:
+                    - generic:
+                      - img
+                    - generic [ref=e170]:
+                      - strong [ref=e171]: "0"
+                      - text: Tags
+            - generic [ref=e172]:
+              - generic [ref=e176]:
+                - img [ref=e178]
+                - combobox "Go to file" [ref=e180]
+              - button "Code" [ref=e181] [cursor=pointer]:
+                - generic [ref=e182]:
+                  - generic:
+                    - img
+                  - generic [ref=e183]: Code
+                  - generic:
+                    - img
+          - generic [ref=e184]:
+            - generic [ref=e185]:
+              - heading "Folders and files" [level=2] [ref=e186]
+              - table "Folders and files" [ref=e187]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e188]:
+                  - row "Latest commit Gloriaameng commits by Gloriaameng update README and README_zh Commit 18cfe53 · May 14, 20262 weeks ago History 37 Commits" [ref=e189]:
+                    - cell "Latest commit Gloriaameng commits by Gloriaameng update README and README_zh Commit 18cfe53 · May 14, 20262 weeks ago History 37 Commits" [ref=e190]:
+                      - generic [ref=e191]:
+                        - heading "Latest commit" [level=2] [ref=e192]
+                        - generic [ref=e193]:
+                          - generic [ref=e195]:
+                            - link "Gloriaameng" [ref=e196] [cursor=pointer]:
+                              - /url: /Gloriaameng
+                              - img "Gloriaameng" [ref=e197]
+                            - link "commits by Gloriaameng" [ref=e198] [cursor=pointer]:
+                              - /url: /Gloriaameng/Awesome-Agent-Harness/commits?author=Gloriaameng
+                              - text: Gloriaameng
+                          - link "update README and README_zh" [ref=e202] [cursor=pointer]:
+                            - /url: /Gloriaameng/Awesome-Agent-Harness/commit/18cfe53b6601147d0c2ca1b83af92edc7f245ff7
+                        - generic [ref=e203]:
+                          - generic [ref=e205]:
+                            - link "Commit 18cfe53" [ref=e206] [cursor=pointer]:
+                              - /url: /Gloriaameng/Awesome-Agent-Harness/commit/18cfe53b6601147d0c2ca1b83af92edc7f245ff7
+                              - text: 18cfe53
+                            - text: ·
+                            - generic "May 14, 2026, 5:27 AM EDT" [ref=e207]: May 14, 20262 weeks ago
+                          - generic [ref=e208]:
+                            - heading "History" [level=2] [ref=e209]
+                            - link "37 Commits" [ref=e210] [cursor=pointer]:
+                              - /url: /Gloriaameng/Awesome-Agent-Harness/commits/main/
+                              - generic [ref=e211]:
+                                - generic:
+                                  - img
+                                - generic [ref=e212]: 37 Commits
+                  - row "assets, (Directory) Add multi-agent coordination topology diagram to §5.8 Apr 3, 2026last month" [ref=e213]:
+                    - cell "assets, (Directory)" [ref=e214]:
+                      - generic [ref=e215]:
+                        - img [ref=e216]
+                        - link "assets, (Directory)" [ref=e221] [cursor=pointer]:
+                          - /url: /Gloriaameng/Awesome-Agent-Harness/tree/main/assets
+                          - text: assets
+                    - cell "Add multi-agent coordination topology diagram to §5.8" [ref=e222]:
+                      - link "Add multi-agent coordination topology diagram to §5.8" [ref=e225] [cursor=pointer]:
+                        - /url: /Gloriaameng/Awesome-Agent-Harness/commit/b045c20bcdce0d5a9894ac8621b6dcbbb79e13dd
+                    - cell "Apr 3, 2026last month" [ref=e226]:
+                      - generic [ref=e227]: Apr 3, 2026last month
+                  - row ".gitignore, (File) Remove .DS_Store and add .gitignore Apr 14, 2026last month" [ref=e228]:
+                    - cell ".gitignore, (File)" [ref=e229]:
+                      - generic [ref=e230]:
+                        - img [ref=e231]
+                        - link ".gitignore, (File)" [ref=e236] [cursor=pointer]:
+                          - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/.gitignore
+                          - text: .gitignore
+                    - cell "Remove .DS_Store and add .gitignore" [ref=e237]:
+                      - link "Remove .DS_Store and add .gitignore" [ref=e240] [cursor=pointer]:
+                        - /url: /Gloriaameng/Awesome-Agent-Harness/commit/29ae07850f050a80e61824a78a17486872ec10f4
+                    - cell "Apr 14, 2026last month" [ref=e241]:
+                      - generic [ref=e242]: Apr 14, 2026last month
+                  - row "Agent_Harness_for_LLM_Agents__A_Survey__v4.pdf, (File) citation updated Apr 14, 2026last month" [ref=e243]:
+                    - cell "Agent_Harness_for_LLM_Agents__A_Survey__v4.pdf, (File)" [ref=e244]:
+                      - generic [ref=e245]:
+                        - img [ref=e246]
+                        - link "Agent_Harness_for_LLM_Agents__A_Survey__v4.pdf, (File)" [ref=e251] [cursor=pointer]:
+                          - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/Agent_Harness_for_LLM_Agents__A_Survey__v4.pdf
+                          - text: Agent_Harness_for_LLM_Agents__A_Survey__v4.pdf
+                    - cell "citation updated" [ref=e252]:
+                      - link "citation updated" [ref=e255] [cursor=pointer]:
+                        - /url: /Gloriaameng/Awesome-Agent-Harness/commit/f85f79acba186db4af917f40ae601b8b2e143786
+                    - cell "Apr 14, 2026last month" [ref=e256]:
+                      - generic [ref=e257]: Apr 14, 2026last month
+                  - row "README.md, (File) update README and README_zh May 14, 20262 weeks ago" [ref=e258]:
+                    - cell "README.md, (File)" [ref=e259]:
+                      - generic [ref=e260]:
+                        - img [ref=e261]
+                        - link "README.md, (File)" [ref=e266] [cursor=pointer]:
+                          - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/README.md
+                          - text: README.md
+                    - cell "update README and README_zh" [ref=e267]:
+                      - link "update README and README_zh" [ref=e270] [cursor=pointer]:
+                        - /url: /Gloriaameng/Awesome-Agent-Harness/commit/18cfe53b6601147d0c2ca1b83af92edc7f245ff7
+                    - cell "May 14, 20262 weeks ago" [ref=e271]:
+                      - generic [ref=e272]: May 14, 20262 weeks ago
+                  - row "README_zh.md, (File) update README and README_zh May 14, 20262 weeks ago" [ref=e273]:
+                    - cell "README_zh.md, (File)" [ref=e274]:
+                      - generic [ref=e275]:
+                        - img [ref=e276]
+                        - link "README_zh.md, (File)" [ref=e281] [cursor=pointer]:
+                          - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/README_zh.md
+                          - text: README_zh.md
+                    - cell "update README and README_zh" [ref=e282]:
+                      - link "update README and README_zh" [ref=e285] [cursor=pointer]:
+                        - /url: /Gloriaameng/Awesome-Agent-Harness/commit/18cfe53b6601147d0c2ca1b83af92edc7f245ff7
+                    - cell "May 14, 20262 weeks ago" [ref=e286]:
+                      - generic [ref=e287]: May 14, 20262 weeks ago
+                  - row "license, (File) Add Creative Commons Attribution 4.0 License Apr 7, 2026last month" [ref=e288]:
+                    - cell "license, (File)" [ref=e289]:
+                      - generic [ref=e290]:
+                        - img [ref=e291]
+                        - link "license, (File)" [ref=e296] [cursor=pointer]:
+                          - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/license
+                          - text: license
+                    - cell "Add Creative Commons Attribution 4.0 License" [ref=e297]:
+                      - link "Add Creative Commons Attribution 4.0 License" [ref=e300] [cursor=pointer]:
+                        - /url: /Gloriaameng/Awesome-Agent-Harness/commit/8f0ace668f3d9fa28b86e3baf6cba076d77a9ff8
+                    - cell "Apr 7, 2026last month" [ref=e301]:
+                      - generic [ref=e302]: Apr 7, 2026last month
+            - generic [ref=e304]:
+              - generic [ref=e305]:
+                - heading "Repository files navigation" [level=2] [ref=e306]
+                - navigation "Repository files" [ref=e307]:
+                  - list [ref=e308]:
+                    - listitem [ref=e309]:
+                      - link "README" [ref=e310] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e312]
+                        - generic [ref=e314]: README
+                    - listitem [ref=e315]:
+                      - link "CC-BY-4.0 license" [ref=e316] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e318]
+                        - generic [ref=e320]: CC-BY-4.0 license
+                - button "Outline" [ref=e321] [cursor=pointer]:
+                  - img [ref=e322]
+              - article [ref=e325]:
+                - generic [ref=e326]:
+                  - paragraph [ref=e327]:
+                    - link "English" [ref=e328] [cursor=pointer]:
+                      - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/README.md
+                    - text: "|"
+                    - link "中文" [ref=e329] [cursor=pointer]:
+                      - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/README_zh.md
+                  - generic [ref=e330]:
+                    - 'heading "Agent Harness for Large Language Model Agents: A Survey" [level=1] [ref=e331]'
+                    - 'link "Permalink: Agent Harness for Large Language Model Agents: A Survey" [ref=e332] [cursor=pointer]':
+                      - /url: "#agent-harness-for-large-language-model-agents-a-survey"
+                      - img [ref=e333]
+                  - paragraph [ref=e335]:
+                    - link "GitHub Stars" [ref=e336] [cursor=pointer]:
+                      - /url: https://github.com/Gloriaameng/LLM-Agent-Harness-Survey/stargazers
+                      - img "GitHub Stars" [ref=e337]
+                    - link "License" [ref=e338] [cursor=pointer]:
+                      - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/LICENSE
+                      - img "License" [ref=e339]
+                    - link "Papers" [ref=e340] [cursor=pointer]:
+                      - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main
+                      - img "Papers" [ref=e341]
+                    - link "Version" [ref=e342] [cursor=pointer]:
+                      - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main
+                      - img "Version" [ref=e343]
+                    - link "HuggingFace" [ref=e344] [cursor=pointer]:
+                      - /url: https://huggingface.co/datasets/GloriaaaM/LLM-Agent-Harness-Survey
+                      - img "HuggingFace" [ref=e345]
+                    - link "DOI" [ref=e346] [cursor=pointer]:
+                      - /url: https://doi.org/10.20944/preprints202604.0428.v3
+                      - img "DOI" [ref=e347]
+                - paragraph [ref=e348]:
+                  - link "H=(E,T,C,S,L,V) Six-Component Architecture" [ref=e349] [cursor=pointer]:
+                    - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/assets/architecture_diagram.png
+                    - img "H=(E,T,C,S,L,V) Six-Component Architecture" [ref=e350]
+                - blockquote [ref=e351]:
+                  - paragraph [ref=e352]:
+                    - text: ⭐
+                    - strong [ref=e353]: This repo is actively maintained. If you find it useful, please star the repo to stay updated and help others find it.
+                - separator [ref=e354]
+                - blockquote [ref=e355]:
+                  - paragraph [ref=e356]:
+                    - strong [ref=e357]: The agent execution harness — not the model — is the primary determinant of agent reliability at scale.
+                    - text: This survey formalizes the harness as a first-class architectural object
+                    - strong [ref=e358]: H = (E, T, C, S, L, V)
+                    - text: ", surveys 110+ papers, blogs and reports across 23 systems, and maps 9 open technical challenges."
+                    - text: 📄
+                    - strong [ref=e359]:
+                      - link "Read the Paper" [ref=e360] [cursor=pointer]:
+                        - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/Agent_Harness_for_LLM_Agents__A_Survey_v3.pdf
+                    - text: 🌐
+                    - strong [ref=e361]:
+                      - link "Preprints Version (v3)" [ref=e362] [cursor=pointer]:
+                        - /url: https://www.preprints.org/manuscript/202604.0428/v3
+                    - text: "✉️ Corrections & suggestions:"
+                    - link "gloriamenng@gmail.com" [ref=e363] [cursor=pointer]:
+                      - /url: mailto:gloriamenng@gmail.com
+                    - text: (Qianyu Meng);
+                    - link "wangyanan@mail.dlut.edu.cn" [ref=e364] [cursor=pointer]:
+                      - /url: mailto:wangyanan@mail.dlut.edu.cn
+                    - text: (Yanan Wang);
+                    - link "chenliyi@xiaohongshu.com" [ref=e365] [cursor=pointer]:
+                      - /url: mailto:chenliyi@xiaohongshu.com
+                    - text: (Liyi Chen)
+                - paragraph [ref=e366]: "If you find this survey useful, please cite:"
+                - generic [ref=e367]:
+                  - generic [ref=e368]:
+                    - text: "@article{meng2026agentharness, title ="
+                    - generic [ref=e369]: "{Agent Harness for Large Language Model Agents: A Survey}"
+                    - text: ", author ="
+                    - generic [ref=e370]: "{Meng, Qianyu and Wang, Yanan and Chen, Liyi and Wu, Wei and"
+                    - text: Li, Yihang and Jiang, Wenyuan and Wang, Qimeng and
+                    - generic [ref=e371]: "Lu, Chengqiang and Gao, Yan and Wu, Yi and Hu, Yao}"
+                    - text: ", year ="
+                    - generic [ref=e372]: "{2026}"
+                    - text: ", doi ="
+                    - generic [ref=e373]: "{10.20944/preprints202604.0428.v3}"
+                    - text: ", url ="
+                    - generic [ref=e374]: "{https://www.preprints.org/manuscript/202604.0428/v3}"
+                    - text: ", publisher ="
+                    - generic [ref=e375]: "{Preprints}"
+                    - text: ", }"
+                  - button "Copy code to clipboard" [ref=e377] [cursor=pointer]:
+                    - img [ref=e378]
+                - separator [ref=e381]
+                - generic [ref=e382]:
+                  - heading "🆕 News & Updates" [level=2] [ref=e383]
+                  - 'link "Permalink: 🆕 News & Updates" [ref=e384] [cursor=pointer]':
+                    - /url: "#-news--updates"
+                    - img [ref=e385]
+                - list [ref=e387]:
+                  - listitem [ref=e388]:
+                    - strong [ref=e389]: "[2026-04-03]"
+                    - text: Initial release
+                  - listitem [ref=e390]:
+                    - strong [ref=e391]: "[2026-04-07]"
+                    - text: Repo updated
+                  - listitem [ref=e392]:
+                    - strong [ref=e393]: "[2026-04-09]"
+                    - text: Preprint released
+                  - listitem [ref=e394]:
+                    - strong [ref=e395]: "[2026-04-14]"
+                    - text: Citation Updated
+                - separator [ref=e396]
+                - generic [ref=e397]:
+                  - heading "Table of Contents" [level=2] [ref=e398]
+                  - 'link "Permalink: Table of Contents" [ref=e399] [cursor=pointer]':
+                    - /url: "#table-of-contents"
+                    - img [ref=e400]
+                - list [ref=e402]:
+                  - listitem [ref=e403]:
+                    - link "Overview" [ref=e404] [cursor=pointer]:
+                      - /url: "#overview"
+                  - listitem [ref=e405]:
+                    - link "Historical Timeline" [ref=e406] [cursor=pointer]:
+                      - /url: "#historical-timeline"
+                  - listitem [ref=e407]:
+                    - link "Harness Completeness Matrix" [ref=e408] [cursor=pointer]:
+                      - /url: "#harness-completeness-matrix"
+                  - listitem [ref=e409]:
+                    - link "Paper List" [ref=e410] [cursor=pointer]:
+                      - /url: "#paper-list"
+                    - list [ref=e411]:
+                      - listitem [ref=e412]:
+                        - link "Historical Lineages" [ref=e413] [cursor=pointer]:
+                          - /url: "#historical-lineages"
+                      - listitem [ref=e414]:
+                        - link "Harness Taxonomy" [ref=e415] [cursor=pointer]:
+                          - /url: "#harness-taxonomy"
+                      - listitem [ref=e416]:
+                        - link "Technical Challenges" [ref=e417] [cursor=pointer]:
+                          - /url: "#technical-challenges"
+                        - list [ref=e418]:
+                          - listitem [ref=e419]:
+                            - link "Security & Sandboxing" [ref=e420] [cursor=pointer]:
+                              - /url: "#security--sandboxing"
+                          - listitem [ref=e421]:
+                            - link "Evaluation & Benchmarking" [ref=e422] [cursor=pointer]:
+                              - /url: "#evaluation--benchmarking"
+                          - listitem [ref=e423]:
+                            - link "Protocol Standardization" [ref=e424] [cursor=pointer]:
+                              - /url: "#protocol-standardization"
+                          - listitem [ref=e425]:
+                            - link "Runtime Context Management" [ref=e426] [cursor=pointer]:
+                              - /url: "#runtime-context-management"
+                          - listitem [ref=e427]:
+                            - link "Tool Use & Registry" [ref=e428] [cursor=pointer]:
+                              - /url: "#tool-use--registry"
+                          - listitem [ref=e429]:
+                            - link "Memory Architecture" [ref=e430] [cursor=pointer]:
+                              - /url: "#memory-architecture"
+                          - listitem [ref=e431]:
+                            - link "Planning & Reasoning" [ref=e432] [cursor=pointer]:
+                              - /url: "#planning--reasoning"
+                          - listitem [ref=e433]:
+                            - link "Multi-Agent Coordination" [ref=e434] [cursor=pointer]:
+                              - /url: "#multi-agent-coordination"
+                          - listitem [ref=e435]:
+                            - link "Compute Economics" [ref=e436] [cursor=pointer]:
+                              - /url: "#compute-economics"
+                      - listitem [ref=e437]:
+                        - link "Emerging Topics" [ref=e438] [cursor=pointer]:
+                          - /url: "#emerging-topics"
+                      - listitem [ref=e439]:
+                        - link "Future Directions" [ref=e440] [cursor=pointer]:
+                          - /url: "#future-directions"
+                  - listitem [ref=e441]:
+                    - link "Citation" [ref=e442] [cursor=pointer]:
+                      - /url: "#citation"
+                  - listitem [ref=e443]:
+                    - link "Update Log" [ref=e444] [cursor=pointer]:
+                      - /url: "#update-log"
+                - separator [ref=e445]
+                - generic [ref=e446]:
+                  - heading "Overview" [level=2] [ref=e447]
+                  - 'link "Permalink: Overview" [ref=e448] [cursor=pointer]':
+                    - /url: "#overview"
+                    - img [ref=e449]
+                - paragraph [ref=e451]:
+                  - text: LLM agents are increasingly deployed in agentic settings where they autonomously plan, use tools, and act in multi-step environments. The dominant narrative attributes agent performance to the underlying model.
+                  - strong [ref=e452]: This survey challenges that assumption.
+                - paragraph [ref=e453]:
+                  - text: We introduce a formal definition of the
+                  - strong [ref=e454]: agent execution harness
+                  - text: "as a six-component tuple:"
+                - table [ref=e456]:
+                  - rowgroup [ref=e457]:
+                    - row "Component Symbol Role" [ref=e458]:
+                      - columnheader "Component" [ref=e459]
+                      - columnheader "Symbol" [ref=e460]
+                      - columnheader "Role" [ref=e461]
+                  - rowgroup [ref=e462]:
+                    - row "Execution Loop E Observe-think-act cycle, termination conditions, error recovery" [ref=e463]:
+                      - cell "Execution Loop" [ref=e464]
+                      - cell "E" [ref=e465]:
+                        - strong [ref=e466]: E
+                      - cell "Observe-think-act cycle, termination conditions, error recovery" [ref=e467]
+                    - row "Tool Registry T Typed tool catalog, routing, monitoring, schema validation" [ref=e468]:
+                      - cell "Tool Registry" [ref=e469]
+                      - cell "T" [ref=e470]:
+                        - strong [ref=e471]: T
+                      - cell "Typed tool catalog, routing, monitoring, schema validation" [ref=e472]
+                    - row "Context Manager C What enters the context window, compaction, retrieval" [ref=e473]:
+                      - cell "Context Manager" [ref=e474]
+                      - cell "C" [ref=e475]:
+                        - strong [ref=e476]: C
+                      - cell "What enters the context window, compaction, retrieval" [ref=e477]
+                    - row "State Store S Persistence across turns/sessions, crash recovery" [ref=e478]:
+                      - cell "State Store" [ref=e479]
+                      - cell "S" [ref=e480]:
+                        - strong [ref=e481]: S
+                      - cell "Persistence across turns/sessions, crash recovery" [ref=e482]
+                    - row "Lifecycle Hooks L Auth, logging, policy enforcement, instrumentation" [ref=e483]:
+                      - cell "Lifecycle Hooks" [ref=e484]
+                      - cell "L" [ref=e485]:
+                        - strong [ref=e486]: L
+                      - cell "Auth, logging, policy enforcement, instrumentation" [ref=e487]
+                    - row "Evaluation Interface V Action trajectories, intermediate states, success signals" [ref=e488]:
+                      - cell "Evaluation Interface" [ref=e489]
+                      - cell "V" [ref=e490]:
+                        - strong [ref=e491]: V
+                      - cell "Action trajectories, intermediate states, success signals" [ref=e492]
+                - paragraph [ref=e493]:
+                  - strong [ref=e494]: "Key empirical evidence that harnesses matter:"
+                - list [ref=e495]:
+                  - listitem [ref=e496]:
+                    - text: "🔥 Pi Research: Grok Code Fast 1 jumped from"
+                    - strong [ref=e497]: 6.7% → 68.3%
+                    - text: on SWE-bench by changing
+                    - emphasis [ref=e498]: only
+                    - text: the harness edit-tool format — model unchanged
+                  - listitem [ref=e499]:
+                    - text: "💀 OpenAI Codex:"
+                    - strong [ref=e500]: 1M lines of code, 0 hand-written
+                    - text: over 5 months — failure attributed not to model capability but to "underspecified environments"
+                  - listitem [ref=e501]:
+                    - text: "⚡ Stripe Minions:"
+                    - strong [ref=e502]: 1,300 PRs/week, 0 human-written code
+                    - text: — harness-first engineering
+                  - listitem [ref=e503]:
+                    - text: "📉 METR: benchmark-passing PRs have a"
+                    - strong [ref=e504]: 24.2pp lower
+                    - text: human merge rate, gap widening at 9.6pp/year — evaluation harness validity crisis
+                  - listitem [ref=e505]:
+                    - text: 💬
+                    - emphasis [ref=e506]: "\"The harness is the chassis; the model is the engine.\""
+                    - text: — practitioner consensus, 2026
+                - paragraph [ref=e507]:
+                  - link "Root Cause Analysis" [ref=e508] [cursor=pointer]:
+                    - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/assets/root_cause_diagram.png
+                    - img "Root Cause Analysis" [ref=e509]
+                - generic [ref=e510]:
+                  - heading "What This Survey Accomplishes" [level=3] [ref=e511]
+                  - 'link "Permalink: What This Survey Accomplishes" [ref=e512] [cursor=pointer]':
+                    - /url: "#what-this-survey-accomplishes"
+                    - img [ref=e513]
+                - paragraph [ref=e515]:
+                  - strong [ref=e516]: "Conceptual contribution:"
+                  - text: We formalize the agent harness as an architectural object with six governable components (E, T, C, S, L, V), elevating it from implicit infrastructure to an explicit research target.
+                - paragraph [ref=e517]:
+                  - strong [ref=e518]: "Empirical scope:"
+                  - text: We systematically review 110+ papers spanning academic research (evaluation benchmarks, security frameworks, memory architectures) and production deployments (Stripe, OpenAI, Cursor, METR), establishing that harness design is a binding constraint on deployed agent reliability.
+                - paragraph [ref=e519]:
+                  - strong [ref=e520]: "Methodological advance:"
+                  - text: We introduce the
+                  - strong [ref=e521]: Harness Completeness Matrix
+                  - text: — a structured assessment framework mapping which of the six components each system implements — enabling direct comparison across heterogeneous agent systems that prior surveys could not evaluate on common terms.
+                - paragraph [ref=e522]:
+                  - strong [ref=e523]: "Open challenges identified:"
+                  - text: "We document nine technical challenges where current research provides partial solutions but no production-grade infrastructure: formal security models, cross-harness portability, protocol interoperability (MCP/A2A), context economics at 1M+ tokens/task, Byzantine fault tolerance in multi-agent systems, and compositional verification."
+                - paragraph [ref=e524]:
+                  - strong [ref=e525]: "Practitioner-academic bridge:"
+                  - text: Unlike prior surveys focused exclusively on model capabilities or isolated components (memory, planning, tool use), we synthesize peer-reviewed research with production deployment reports to show where theory meets practice — and where critical gaps remain.
+                - paragraph [ref=e526]:
+                  - strong [ref=e527]: "Intended audience:"
+                  - text: Researchers designing agent infrastructure, practitioners building production systems, and evaluators seeking to understand why benchmark performance often fails to predict deployment outcomes.
+                - separator [ref=e528]
+                - generic [ref=e529]:
+                  - heading "Historical Timeline" [level=2] [ref=e530]
+                  - 'link "Permalink: Historical Timeline" [ref=e531] [cursor=pointer]':
+                    - /url: "#historical-timeline"
+                    - img [ref=e532]
+                - paragraph [ref=e534]:
+                  - link "Historical Evolution of Agent Harnesses" [ref=e535] [cursor=pointer]:
+                    - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/assets/timeline.png
+                    - img "Historical Evolution of Agent Harnesses" [ref=e536]
+                - table [ref=e538]:
+                  - rowgroup [ref=e539]:
+                    - row "Year Milestone Significance" [ref=e540]:
+                      - columnheader "Year" [ref=e541]
+                      - columnheader "Milestone" [ref=e542]
+                      - columnheader "Significance" [ref=e543]
+                  - rowgroup [ref=e544]:
+                    - row "1997–2005 JUnit, TestNG, xUnit family Software test harness paradigm; standardized observe-assert lifecycle" [ref=e545]:
+                      - cell "1997–2005" [ref=e546]
+                      - cell "JUnit, TestNG, xUnit family" [ref=e547]
+                      - cell "Software test harness paradigm; standardized observe-assert lifecycle" [ref=e548]
+                    - row "2016 OpenAI Gym (Brockman et al.) RL environment harness; step/reset API becomes canonical interface" [ref=e549]:
+                      - cell "2016" [ref=e550]
+                      - cell "OpenAI Gym (Brockman et al.)" [ref=e551]
+                      - cell "RL environment harness; step/reset API becomes canonical interface" [ref=e552]
+                    - row "2022 Nov ChatGPT public release; LangChain emerges LLM-native agent frameworks begin; tool-use as first-class citizen" [ref=e553]:
+                      - cell "2022 Nov" [ref=e554]
+                      - cell "ChatGPT public release; LangChain emerges" [ref=e555]
+                      - cell "LLM-native agent frameworks begin; tool-use as first-class citizen" [ref=e556]
+                    - 'row "2023 ReAct, Toolformer, MemGPT, Reflexion, Voyager, AutoGPT Core agent patterns: reasoning-acting, memory, reflection, skill accumulation" [ref=e557]':
+                      - cell "2023" [ref=e558]
+                      - cell "ReAct, Toolformer, MemGPT, Reflexion, Voyager, AutoGPT" [ref=e559]
+                      - 'cell "Core agent patterns: reasoning-acting, memory, reflection, skill accumulation" [ref=e560]'
+                    - row "2023 CAMEL, ChatDev, Generative Agents Multi-agent coordination; social simulation harnesses" [ref=e561]:
+                      - cell "2023" [ref=e562]
+                      - cell "CAMEL, ChatDev, Generative Agents" [ref=e563]
+                      - cell "Multi-agent coordination; social simulation harnesses" [ref=e564]
+                    - row "2023 AgentBench, SWE-bench Agent evaluation infrastructure emerges" [ref=e565]:
+                      - cell "2023" [ref=e566]
+                      - cell "AgentBench, SWE-bench" [ref=e567]
+                      - cell "Agent evaluation infrastructure emerges" [ref=e568]
+                    - row "2024 MetaGPT, WebArena, ToolLLM, SWE-agent, OSWorld Full-stack harnesses; real-world environment benchmarks" [ref=e569]:
+                      - cell "2024" [ref=e570]
+                      - cell "MetaGPT, WebArena, ToolLLM, SWE-agent, OSWorld" [ref=e571]
+                      - cell "Full-stack harnesses; real-world environment benchmarks" [ref=e572]
+                    - row "2024 CodeAct, LATS, Tree of Thoughts Structured action spaces; search-augmented planning" [ref=e573]:
+                      - cell "2024" [ref=e574]
+                      - cell "CodeAct, LATS, Tree of Thoughts" [ref=e575]
+                      - cell "Structured action spaces; search-augmented planning" [ref=e576]
+                    - row "2024 Nov Anthropic releases MCP protocol First major tool↔harness standardization (2–15ms latency)" [ref=e577]:
+                      - cell "2024 Nov" [ref=e578]
+                      - cell "Anthropic releases MCP protocol" [ref=e579]
+                      - cell "First major tool↔harness standardization (2–15ms latency)" [ref=e580]
+                    - row "2025 HAL, AIOS, LangGraph Benchmark unification (21,730 rollouts); OS-level scheduling (2.1× speedup)" [ref=e581]:
+                      - cell "2025" [ref=e582]
+                      - cell "HAL, AIOS, LangGraph" [ref=e583]
+                      - cell "Benchmark unification (21,730 rollouts); OS-level scheduling (2.1× speedup)" [ref=e584]
+                    - row "2025 Google releases A2A protocol Agent↔agent standardization (50–200ms)" [ref=e585]:
+                      - cell "2025" [ref=e586]
+                      - cell "Google releases A2A protocol" [ref=e587]
+                      - cell "Agent↔agent standardization (50–200ms)" [ref=e588]
+                    - row "2025 MemoryOS, SkillsBench†, AgentBound† Memory OS abstraction; skills-as-context (+16.2pp); safety certification" [ref=e589]:
+                      - cell "2025" [ref=e590]
+                      - cell "MemoryOS, SkillsBench†, AgentBound†" [ref=e591]
+                      - cell "Memory OS abstraction; skills-as-context (+16.2pp); safety certification" [ref=e592]
+                    - row "2026 Jan–Mar AgencyBench†, SandboxEscapeBench†, PRISM†, AEGIS†, SkillFortify†, Schema First† Compute economics; 15–35% escape rates; runtime security; schema discipline" [ref=e593]:
+                      - cell "2026 Jan–Mar" [ref=e594]
+                      - cell "AgencyBench†, SandboxEscapeBench†, PRISM†, AEGIS†, SkillFortify†, Schema First†" [ref=e595]
+                      - cell "Compute economics; 15–35% escape rates; runtime security; schema discipline" [ref=e596]
+                - paragraph [ref=e597]:
+                  - emphasis [ref=e598]: † preprint
+                - separator [ref=e599]
+                - generic [ref=e600]:
+                  - heading "Harness Completeness Matrix" [level=2] [ref=e601]
+                  - 'link "Permalink: Harness Completeness Matrix" [ref=e602] [cursor=pointer]':
+                    - /url: "#harness-completeness-matrix"
+                    - img [ref=e603]
+                - paragraph [ref=e605]:
+                  - strong [ref=e606]: "Legend:"
+                  - text: ✓ full support · ≈ partial · ✗ absent
+                - table [ref=e608]:
+                  - rowgroup [ref=e609]:
+                    - row "Category System E T C S L V" [ref=e610]:
+                      - columnheader "Category" [ref=e611]
+                      - columnheader "System" [ref=e612]
+                      - columnheader "E" [ref=e613]
+                      - columnheader "T" [ref=e614]
+                      - columnheader "C" [ref=e615]
+                      - columnheader "S" [ref=e616]
+                      - columnheader "L" [ref=e617]
+                      - columnheader "V" [ref=e618]
+                  - rowgroup [ref=e619]:
+                    - row "Full-Stack Harnesses Claude Code ✓ ✓ ✓ ✓ ✓ ≈" [ref=e620]:
+                      - cell "Full-Stack Harnesses" [ref=e621]:
+                        - strong [ref=e622]:
+                          - text: Full-Stack
+                          - text: Harnesses
+                      - cell "Claude Code" [ref=e623]
+                      - cell "✓" [ref=e624]
+                      - cell "✓" [ref=e625]
+                      - cell "✓" [ref=e626]
+                      - cell "✓" [ref=e627]
+                      - cell "✓" [ref=e628]
+                      - cell "≈" [ref=e629]
+                    - row "OpenClaw / PRISM ✓ ✓ ✓ ✓ ✓ ✓" [ref=e630]:
+                      - cell "OpenClaw / PRISM" [ref=e631]
+                      - cell "✓" [ref=e632]
+                      - cell "✓" [ref=e633]
+                      - cell "✓" [ref=e634]
+                      - cell "✓" [ref=e635]
+                      - cell "✓" [ref=e636]
+                      - cell "✓" [ref=e637]
+                    - row "AIOS ✓ ✓ ✓ ✓ ✓ ≈" [ref=e638]:
+                      - cell "AIOS" [ref=e639]
+                      - cell "✓" [ref=e640]
+                      - cell "✓" [ref=e641]
+                      - cell "✓" [ref=e642]
+                      - cell "✓" [ref=e643]
+                      - cell "✓" [ref=e644]
+                      - cell "≈" [ref=e645]
+                    - row "OpenHands ✓ ✓ ✓ ✓ ✓ ≈" [ref=e646]:
+                      - cell "OpenHands" [ref=e647]
+                      - cell "✓" [ref=e648]
+                      - cell "✓" [ref=e649]
+                      - cell "✓" [ref=e650]
+                      - cell "✓" [ref=e651]
+                      - cell "✓" [ref=e652]
+                      - cell "≈" [ref=e653]
+                    - row "Multi-Agent Harnesses MetaGPT ✓ ✓ ≈ ≈ ≈ ≈" [ref=e654]:
+                      - cell "Multi-Agent Harnesses" [ref=e655]:
+                        - strong [ref=e656]:
+                          - text: Multi-Agent
+                          - text: Harnesses
+                      - cell "MetaGPT" [ref=e657]
+                      - cell "✓" [ref=e658]
+                      - cell "✓" [ref=e659]
+                      - cell "≈" [ref=e660]
+                      - cell "≈" [ref=e661]
+                      - cell "≈" [ref=e662]
+                      - cell "≈" [ref=e663]
+                    - row "AutoGen ✓ ✓ ≈ ≈ ≈ ≈" [ref=e664]:
+                      - cell "AutoGen" [ref=e665]
+                      - cell "✓" [ref=e666]
+                      - cell "✓" [ref=e667]
+                      - cell "≈" [ref=e668]
+                      - cell "≈" [ref=e669]
+                      - cell "≈" [ref=e670]
+                      - cell "≈" [ref=e671]
+                    - row "ChatDev ✓ ≈ ≈ ≈ ≈ ≈" [ref=e672]:
+                      - cell "ChatDev" [ref=e673]
+                      - cell "✓" [ref=e674]
+                      - cell "≈" [ref=e675]
+                      - cell "≈" [ref=e676]
+                      - cell "≈" [ref=e677]
+                      - cell "≈" [ref=e678]
+                      - cell "≈" [ref=e679]
+                    - row "CAMEL ✓ ≈ ≈ ≈ ✗ ≈" [ref=e680]:
+                      - cell "CAMEL" [ref=e681]
+                      - cell "✓" [ref=e682]
+                      - cell "≈" [ref=e683]
+                      - cell "≈" [ref=e684]
+                      - cell "≈" [ref=e685]
+                      - cell "✗" [ref=e686]
+                      - cell "≈" [ref=e687]
+                    - row "DeerFlow ✓ ✓ ≈ ≈ ≈ ≈" [ref=e688]:
+                      - cell "DeerFlow" [ref=e689]
+                      - cell "✓" [ref=e690]
+                      - cell "✓" [ref=e691]
+                      - cell "≈" [ref=e692]
+                      - cell "≈" [ref=e693]
+                      - cell "≈" [ref=e694]
+                      - cell "≈" [ref=e695]
+                    - row "DeepAgents ✓ ✓ ≈ ≈ ≈ ≈" [ref=e696]:
+                      - cell "DeepAgents" [ref=e697]
+                      - cell "✓" [ref=e698]
+                      - cell "✓" [ref=e699]
+                      - cell "≈" [ref=e700]
+                      - cell "≈" [ref=e701]
+                      - cell "≈" [ref=e702]
+                      - cell "≈" [ref=e703]
+                    - row "General Frameworks LangChain ✓ ✓ ✓ ≈ ≈ ✗" [ref=e704]:
+                      - cell "General Frameworks" [ref=e705]:
+                        - strong [ref=e706]:
+                          - text: General
+                          - text: Frameworks
+                      - cell "LangChain" [ref=e707]
+                      - cell "✓" [ref=e708]
+                      - cell "✓" [ref=e709]
+                      - cell "✓" [ref=e710]
+                      - cell "≈" [ref=e711]
+                      - cell "≈" [ref=e712]
+                      - cell "✗" [ref=e713]
+                    - row "LangGraph ✓ ≈ ≈ ≈ ✗ ✗" [ref=e714]:
+                      - cell "LangGraph" [ref=e715]
+                      - cell "✓" [ref=e716]
+                      - cell "≈" [ref=e717]
+                      - cell "≈" [ref=e718]
+                      - cell "≈" [ref=e719]
+                      - cell "✗" [ref=e720]
+                      - cell "✗" [ref=e721]
+                    - row "LlamaIndex ≈ ✓ ✓ ≈ ✗ ✗" [ref=e722]:
+                      - cell "LlamaIndex" [ref=e723]
+                      - cell "≈" [ref=e724]
+                      - cell "✓" [ref=e725]
+                      - cell "✓" [ref=e726]
+                      - cell "≈" [ref=e727]
+                      - cell "✗" [ref=e728]
+                      - cell "✗" [ref=e729]
+                    - row "Specialized Harnesses SWE-agent ✓ ✓ ✓ ≈ ≈ ✓" [ref=e730]:
+                      - cell "Specialized Harnesses" [ref=e731]:
+                        - strong [ref=e732]:
+                          - text: Specialized
+                          - text: Harnesses
+                      - cell "SWE-agent" [ref=e733]
+                      - cell "✓" [ref=e734]
+                      - cell "✓" [ref=e735]
+                      - cell "✓" [ref=e736]
+                      - cell "≈" [ref=e737]
+                      - cell "≈" [ref=e738]
+                      - cell "✓" [ref=e739]
+                    - row "Capability Modules MemGPT ✗ ✗ ✓ ✓ ✗ ✗" [ref=e740]:
+                      - cell "Capability Modules" [ref=e741]:
+                        - strong [ref=e742]:
+                          - text: Capability
+                          - text: Modules
+                      - cell "MemGPT" [ref=e743]
+                      - cell "✗" [ref=e744]
+                      - cell "✗" [ref=e745]
+                      - cell "✓" [ref=e746]
+                      - cell "✓" [ref=e747]
+                      - cell "✗" [ref=e748]
+                      - cell "✗" [ref=e749]
+                    - row "Voyager ✓ ✓ ≈ ✓ ✗ ≈" [ref=e750]:
+                      - cell "Voyager" [ref=e751]
+                      - cell "✓" [ref=e752]
+                      - cell "✓" [ref=e753]
+                      - cell "≈" [ref=e754]
+                      - cell "✓" [ref=e755]
+                      - cell "✗" [ref=e756]
+                      - cell "≈" [ref=e757]
+                    - row "Reflexion ≈ ✗ ≈ ✓ ✗ ≈" [ref=e758]:
+                      - cell "Reflexion" [ref=e759]
+                      - cell "≈" [ref=e760]
+                      - cell "✗" [ref=e761]
+                      - cell "≈" [ref=e762]
+                      - cell "✓" [ref=e763]
+                      - cell "✗" [ref=e764]
+                      - cell "≈" [ref=e765]
+                    - row "Generative Agents ✓ ✗ ≈ ✓ ✗ ≈" [ref=e766]:
+                      - cell "Generative Agents" [ref=e767]
+                      - cell "✓" [ref=e768]
+                      - cell "✗" [ref=e769]
+                      - cell "≈" [ref=e770]
+                      - cell "✓" [ref=e771]
+                      - cell "✗" [ref=e772]
+                      - cell "≈" [ref=e773]
+                    - row "Concordia ✓ ✗ ≈ ✓ ✗ ≈" [ref=e774]:
+                      - cell "Concordia" [ref=e775]
+                      - cell "✓" [ref=e776]
+                      - cell "✗" [ref=e777]
+                      - cell "≈" [ref=e778]
+                      - cell "✓" [ref=e779]
+                      - cell "✗" [ref=e780]
+                      - cell "≈" [ref=e781]
+                    - row "Evaluation Infrastructure HAL ✓ ✓ ≈ ≈ ≈ ✓" [ref=e782]:
+                      - cell "Evaluation Infrastructure" [ref=e783]:
+                        - strong [ref=e784]:
+                          - text: Evaluation
+                          - text: Infrastructure
+                      - cell "HAL" [ref=e785]
+                      - cell "✓" [ref=e786]
+                      - cell "✓" [ref=e787]
+                      - cell "≈" [ref=e788]
+                      - cell "≈" [ref=e789]
+                      - cell "≈" [ref=e790]
+                      - cell "✓" [ref=e791]
+                    - row "AgentBench ✓ ≈ ≈ ≈ ✗ ✓" [ref=e792]:
+                      - cell "AgentBench" [ref=e793]
+                      - cell "✓" [ref=e794]
+                      - cell "≈" [ref=e795]
+                      - cell "≈" [ref=e796]
+                      - cell "≈" [ref=e797]
+                      - cell "✗" [ref=e798]
+                      - cell "✓" [ref=e799]
+                    - row "OSWorld ✓ ≈ ≈ ≈ ✗ ✓" [ref=e800]:
+                      - cell "OSWorld" [ref=e801]
+                      - cell "✓" [ref=e802]
+                      - cell "≈" [ref=e803]
+                      - cell "≈" [ref=e804]
+                      - cell "≈" [ref=e805]
+                      - cell "✗" [ref=e806]
+                      - cell "✓" [ref=e807]
+                    - row "BrowserGym ✓ ✓ ≈ ≈ ✗ ✓" [ref=e808]:
+                      - cell "BrowserGym" [ref=e809]
+                      - cell "✓" [ref=e810]
+                      - cell "✓" [ref=e811]
+                      - cell "≈" [ref=e812]
+                      - cell "≈" [ref=e813]
+                      - cell "✗" [ref=e814]
+                      - cell "✓" [ref=e815]
+                - separator [ref=e816]
+                - generic [ref=e817]:
+                  - heading "Paper List" [level=2] [ref=e818]
+                  - 'link "Permalink: Paper List" [ref=e819] [cursor=pointer]':
+                    - /url: "#paper-list"
+                    - img [ref=e820]
+                - generic [ref=e822]:
+                  - heading "Historical Lineages" [level=3] [ref=e823]
+                  - 'link "Permalink: Historical Lineages" [ref=e824] [cursor=pointer]':
+                    - /url: "#historical-lineages"
+                    - img [ref=e825]
+                - generic [ref=e827]:
+                  - heading "Software Test Harnesses (1990s–2000s)" [level=4] [ref=e828]
+                  - 'link "Permalink: Software Test Harnesses (1990s–2000s)" [ref=e829] [cursor=pointer]':
+                    - /url: "#software-test-harnesses-1990s2000s"
+                    - img [ref=e830]
+                - list [ref=e832]:
+                  - listitem [ref=e833]:
+                    - text: "JUnit:"
+                    - strong [ref=e834]: "\"JUnit: A Cook's Tour\""
+                    - text: .
+                    - emphasis [ref=e835]: Beck & Gamma.
+                    - text: Java Report, 4(5), May 1999. [
+                    - link "Article" [ref=e836] [cursor=pointer]:
+                      - /url: http://junit.sourceforge.net/doc/cookstour/cookstour.htm
+                    - text: "]"
+                - generic [ref=e837]:
+                  - heading "RL Environment Harnesses (2016–2022)" [level=4] [ref=e838]
+                  - 'link "Permalink: RL Environment Harnesses (2016–2022)" [ref=e839] [cursor=pointer]':
+                    - /url: "#rl-environment-harnesses-20162022"
+                    - img [ref=e840]
+                - list [ref=e842]:
+                  - listitem [ref=e843]:
+                    - text: "OpenAI Gym:"
+                    - strong [ref=e844]: "\"OpenAI Gym\""
+                    - text: .
+                    - emphasis [ref=e845]: Brockman et al.
+                    - text: arXiv 2016. [
+                    - link "Paper" [ref=e846] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/1606.01540
+                    - text: "] ["
+                    - link "Code" [ref=e847] [cursor=pointer]:
+                      - /url: https://github.com/openai/gym
+                    - text: "]"
+                  - listitem [ref=e848]:
+                    - text: "Gymnasium:"
+                    - strong [ref=e849]: "\"Gymnasium: A Standard Interface for Reinforcement Learning Environments\""
+                    - text: .
+                    - emphasis [ref=e850]: Towers et al.
+                    - text: NeurIPS 2025. [
+                    - link "Paper" [ref=e851] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2407.17032
+                    - text: "] ["
+                    - link "Code" [ref=e852] [cursor=pointer]:
+                      - /url: https://github.com/Farama-Foundation/Gymnasium
+                    - text: "]"
+                - generic [ref=e853]:
+                  - heading "Early LLM Agent Frameworks (2023–2024)" [level=4] [ref=e854]
+                  - 'link "Permalink: Early LLM Agent Frameworks (2023–2024)" [ref=e855] [cursor=pointer]':
+                    - /url: "#early-llm-agent-frameworks-20232024"
+                    - img [ref=e856]
+                - list [ref=e858]:
+                  - listitem [ref=e859]:
+                    - text: "ReAct:"
+                    - strong [ref=e860]: "\"ReAct: Synergizing Reasoning and Acting in Language Models\""
+                    - text: .
+                    - emphasis [ref=e861]: Yao et al.
+                    - text: ICLR 2023. [
+                    - link "Paper" [ref=e862] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2210.03629
+                    - text: "] ["
+                    - link "Code" [ref=e863] [cursor=pointer]:
+                      - /url: https://github.com/ysymyth/ReAct
+                    - text: "]"
+                  - listitem [ref=e864]:
+                    - text: "Toolformer:"
+                    - strong [ref=e865]: "\"Toolformer: Language Models Can Teach Themselves to Use Tools\""
+                    - text: .
+                    - emphasis [ref=e866]: Schick et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e867] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2302.04761
+                    - text: "]"
+                  - listitem [ref=e868]:
+                    - text: "AutoGPT:"
+                    - strong [ref=e869]: "\"Auto-GPT: An Autonomous GPT-4 Experiment\""
+                    - text: .
+                    - emphasis [ref=e870]: Gravitas et al.
+                    - text: GitHub 2023. [
+                    - link "Code" [ref=e871] [cursor=pointer]:
+                      - /url: https://github.com/Significant-Gravitas/AutoGPT
+                    - text: "]"
+                  - listitem [ref=e872]:
+                    - text: "BabyAGI:"
+                    - strong [ref=e873]: "\"BabyAGI\""
+                    - text: .
+                    - emphasis [ref=e874]: Nakajima.
+                    - text: GitHub 2023. [
+                    - link "Code" [ref=e875] [cursor=pointer]:
+                      - /url: https://github.com/yoheinakajima/babyagi
+                    - text: "]"
+                  - listitem [ref=e876]:
+                    - text: "HuggingGPT:"
+                    - strong [ref=e877]: "\"HuggingGPT: Solving AI Tasks with ChatGPT and Its Friends in Hugging Face\""
+                    - text: .
+                    - emphasis [ref=e878]: Shen et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e879] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2303.17580
+                    - text: "]"
+                  - listitem [ref=e880]:
+                    - text: "LangChain:"
+                    - strong [ref=e881]: "\"LangChain: Building Applications with LLMs through Composability\""
+                    - text: .
+                    - emphasis [ref=e882]: Chase et al.
+                    - text: GitHub 2022. [
+                    - link "Code" [ref=e883] [cursor=pointer]:
+                      - /url: https://github.com/langchain-ai/langchain
+                    - text: "]"
+                - separator [ref=e884]
+                - generic [ref=e885]:
+                  - heading "Harness Taxonomy" [level=3] [ref=e886]
+                  - 'link "Permalink: Harness Taxonomy" [ref=e887] [cursor=pointer]':
+                    - /url: "#harness-taxonomy"
+                    - img [ref=e888]
+                - paragraph [ref=e890]:
+                  - strong [ref=e891]: "What we classify:"
+                  - text: We categorize agent systems by
+                  - strong [ref=e892]: harness completeness
+                  - text: — which of the six components (E, T, C, S, L, V) each system implements — distinguishing full-stack harnesses (all six components) from specialized frameworks (partial implementations).
+                - paragraph [ref=e893]:
+                  - strong [ref=e894]: "Why it matters:"
+                  - text: Prior taxonomies classified agents by application domain (coding, web navigation, embodied AI) or model architecture (single-agent, multi-agent). These categorizations cannot explain why systems with similar models achieve different reliability outcomes. Our harness-centric taxonomy reveals that production-grade systems converge on full ETCSLV implementations, while research prototypes often implement only 2-3 components.
+                - paragraph [ref=e895]:
+                  - strong [ref=e896]: "Key finding:"
+                  - text: No agent framework can achieve production reliability without implementing
+                  - strong [ref=e897]: all six governance components
+                  - text: . Systems missing L-component (lifecycle hooks) cannot enforce safety policies. Systems missing V-component (evaluation interfaces) cannot debug failures. Systems missing S-component (state persistence) cannot recover from crashes.
+                - generic [ref=e898]:
+                  - heading "Full-Stack Harnesses" [level=4] [ref=e899]
+                  - 'link "Permalink: Full-Stack Harnesses" [ref=e900] [cursor=pointer]':
+                    - /url: "#full-stack-harnesses"
+                    - img [ref=e901]
+                - list [ref=e903]:
+                  - listitem [ref=e904]:
+                    - text: "PRISM/OpenClaw:"
+                    - strong [ref=e905]: "\"OpenClaw PRISM: A Zero-Fork, Defense-in-Depth Runtime Security Layer for Tool-Augmented LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e906]: Li.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e907] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.11853
+                    - text: "]"
+                  - listitem [ref=e908]:
+                    - text: "AIOS:"
+                    - strong [ref=e909]: "\"AIOS: LLM Agent Operating System\""
+                    - text: .
+                    - emphasis [ref=e910]: Mei et al.
+                    - text: COLM 2025. [
+                    - link "Paper" [ref=e911] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2403.16971
+                    - text: "] ["
+                    - link "Code" [ref=e912] [cursor=pointer]:
+                      - /url: https://github.com/agiresearch/AIOS
+                    - text: "]"
+                  - listitem [ref=e913]:
+                    - text: "OpenHands:"
+                    - strong [ref=e914]: "\"OpenHands: An Open Platform for AI Software Developers as Generalist Agents\""
+                    - text: .
+                    - emphasis [ref=e915]: Wang et al.
+                    - text: ICLR 2025. [
+                    - link "Paper" [ref=e916] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2407.16741
+                    - text: "] ["
+                    - link "Code" [ref=e917] [cursor=pointer]:
+                      - /url: https://github.com/All-Hands-AI/OpenHands
+                    - text: "]"
+                  - listitem [ref=e918]:
+                    - text: "SWE-agent:"
+                    - strong [ref=e919]: "\"SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering\""
+                    - text: .
+                    - emphasis [ref=e920]: Yang et al.
+                    - text: NeurIPS 2024. [
+                    - link "Paper" [ref=e921] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2405.15793
+                    - text: "] ["
+                    - link "Code" [ref=e922] [cursor=pointer]:
+                      - /url: https://github.com/SWE-agent/SWE-agent
+                    - text: "]"
+                  - listitem [ref=e923]:
+                    - text: "HAL:"
+                    - strong [ref=e924]: "\"Holistic Agent Leaderboard: The Missing Infrastructure for AI Agent Evaluation\""
+                    - text: .
+                    - emphasis [ref=e925]: Kapoor et al.
+                    - text: ICLR 2026. [
+                    - link "Paper" [ref=e926] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2510.11977
+                    - text: "]"
+                - generic [ref=e927]:
+                  - heading "Multi-Agent Harnesses" [level=4] [ref=e928]
+                  - 'link "Permalink: Multi-Agent Harnesses" [ref=e929] [cursor=pointer]':
+                    - /url: "#multi-agent-harnesses"
+                    - img [ref=e930]
+                - list [ref=e932]:
+                  - listitem [ref=e933]:
+                    - text: "MetaGPT:"
+                    - strong [ref=e934]: "\"MetaGPT: Meta Programming for a Multi-Agent Collaborative Framework\""
+                    - text: .
+                    - emphasis [ref=e935]: Hong et al.
+                    - text: ICLR 2024. [
+                    - link "Paper" [ref=e936] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2308.00352
+                    - text: "] ["
+                    - link "Code" [ref=e937] [cursor=pointer]:
+                      - /url: https://github.com/geekan/MetaGPT
+                    - text: "]"
+                  - listitem [ref=e938]:
+                    - text: "AutoGen:"
+                    - strong [ref=e939]: "\"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation\""
+                    - text: .
+                    - emphasis [ref=e940]: Wu et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e941] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2308.08155
+                    - text: "] ["
+                    - link "Code" [ref=e942] [cursor=pointer]:
+                      - /url: https://github.com/microsoft/autogen
+                    - text: "]"
+                  - listitem [ref=e943]:
+                    - text: "ChatDev:"
+                    - strong [ref=e944]: "\"ChatDev: Communicative Agents for Software Development\""
+                    - text: .
+                    - emphasis [ref=e945]: Qian et al.
+                    - text: ACL 2024. [
+                    - link "Paper" [ref=e946] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2307.07924
+                    - text: "] ["
+                    - link "Code" [ref=e947] [cursor=pointer]:
+                      - /url: https://github.com/OpenBMB/ChatDev
+                    - text: "]"
+                  - listitem [ref=e948]:
+                    - text: "CAMEL:"
+                    - strong [ref=e949]: "\"CAMEL: Communicative Agents for 'Mind' Exploration of Large Language Model Society\""
+                    - text: .
+                    - emphasis [ref=e950]: Li et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e951] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2303.17760
+                    - text: "] ["
+                    - link "Code" [ref=e952] [cursor=pointer]:
+                      - /url: https://github.com/camel-ai/camel
+                    - text: "]"
+                - generic [ref=e953]:
+                  - heading "Frameworks & Modules" [level=4] [ref=e954]
+                  - 'link "Permalink: Frameworks & Modules" [ref=e955] [cursor=pointer]':
+                    - /url: "#frameworks--modules"
+                    - img [ref=e956]
+                - list [ref=e958]:
+                  - listitem [ref=e959]:
+                    - text: "LangGraph:"
+                    - strong [ref=e960]: "\"LangGraph: Build Resilient Language Agents as Graphs\""
+                    - text: .
+                    - emphasis [ref=e961]: LangChain team.
+                    - text: GitHub 2024. [
+                    - link "Code" [ref=e962] [cursor=pointer]:
+                      - /url: https://github.com/langchain-ai/langgraph
+                    - text: "]"
+                  - listitem [ref=e963]:
+                    - text: "CrewAI:"
+                    - strong [ref=e964]: "\"CrewAI: Framework for Orchestrating Role-Playing, Autonomous AI Agents\""
+                    - text: .
+                    - emphasis [ref=e965]: Moura et al.
+                    - text: GitHub 2024. [
+                    - link "Code" [ref=e966] [cursor=pointer]:
+                      - /url: https://github.com/crewAIInc/crewAI
+                    - text: "]"
+                  - listitem [ref=e967]:
+                    - text: "PydanticAI:"
+                    - strong [ref=e968]: "\"PydanticAI: Agent Framework for Production-Grade GenAI Applications\""
+                    - text: .
+                    - emphasis [ref=e969]: Pydantic Team.
+                    - text: GitHub 2024. [
+                    - link "Code" [ref=e970] [cursor=pointer]:
+                      - /url: https://github.com/pydantic/pydantic-ai
+                    - text: "]"
+                  - listitem [ref=e971]:
+                    - text: "smolagents:"
+                    - strong [ref=e972]: "\"smolagents: A Smol Library to Build Great Agentic Systems\""
+                    - text: .
+                    - emphasis [ref=e973]: Roucher et al.
+                    - text: GitHub 2025. [
+                    - link "Code" [ref=e974] [cursor=pointer]:
+                      - /url: https://github.com/huggingface/smolagents
+                    - text: "]"
+                  - listitem [ref=e975]:
+                    - text: "Hermes Agent:"
+                    - strong [ref=e976]: "\"Hermes Agent: Self-Improving AI Agent Framework\""
+                    - text: .
+                    - emphasis [ref=e977]: Nous Research.
+                    - text: GitHub 2026. [
+                    - link "Code" [ref=e978] [cursor=pointer]:
+                      - /url: https://github.com/nousresearch/hermes-agent
+                    - text: "] ["
+                    - link "Docs" [ref=e979] [cursor=pointer]:
+                      - /url: https://hermes-agent.nousresearch.com/docs/
+                    - text: "]"
+                  - listitem [ref=e980]:
+                    - text: "AWS Multi-Agent Orchestrator:"
+                    - strong [ref=e981]: "\"Multi-Agent Orchestrator\""
+                    - text: .
+                    - emphasis [ref=e982]: Amazon Web Services.
+                    - text: GitHub 2024. [
+                    - link "Code" [ref=e983] [cursor=pointer]:
+                      - /url: https://github.com/awslabs/agent-squad
+                    - text: "]"
+                  - listitem [ref=e984]:
+                    - text: "MemGPT:"
+                    - strong [ref=e985]: "\"MemGPT: Towards LLMs as Operating Systems\""
+                    - text: .
+                    - emphasis [ref=e986]: Packer et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e987] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2310.08560
+                    - text: "] ["
+                    - link "Code" [ref=e988] [cursor=pointer]:
+                      - /url: https://github.com/cpacker/MemGPT
+                    - text: "]"
+                  - listitem [ref=e989]:
+                    - text: "Voyager:"
+                    - strong [ref=e990]: "\"Voyager: An Open-Ended Embodied Agent with Large Language Models\""
+                    - text: .
+                    - emphasis [ref=e991]: Wang et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e992] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2305.16291
+                    - text: "] ["
+                    - link "Code" [ref=e993] [cursor=pointer]:
+                      - /url: https://github.com/MineDojo/Voyager
+                    - text: "]"
+                  - listitem [ref=e994]:
+                    - text: "Reflexion:"
+                    - strong [ref=e995]: "\"Reflexion: Language Agents with Verbal Reinforcement Learning\""
+                    - text: .
+                    - emphasis [ref=e996]: Shinn et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e997] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2303.11366
+                    - text: "] ["
+                    - link "Code" [ref=e998] [cursor=pointer]:
+                      - /url: https://github.com/noahshinn/reflexion
+                    - text: "]"
+                  - listitem [ref=e999]:
+                    - text: "Generative Agents:"
+                    - strong [ref=e1000]: "\"Generative Agents: Interactive Simulacra of Human Behavior\""
+                    - text: .
+                    - emphasis [ref=e1001]: Park et al.
+                    - text: UIST 2023. [
+                    - link "Paper" [ref=e1002] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2304.03442
+                    - text: "] ["
+                    - link "Code" [ref=e1003] [cursor=pointer]:
+                      - /url: https://github.com/joonspk-research/generative_agents
+                    - text: "]"
+                  - listitem [ref=e1004]:
+                    - text: "LangChain:"
+                    - strong [ref=e1005]: "\"LangChain: Building Applications with LLMs through Composability\""
+                    - text: .
+                    - emphasis [ref=e1006]: Chase et al.
+                    - text: GitHub 2022. [
+                    - link "Code" [ref=e1007] [cursor=pointer]:
+                      - /url: https://github.com/langchain-ai/langchain
+                    - text: "]"
+                  - listitem [ref=e1008]:
+                    - text: "LlamaIndex:"
+                    - strong [ref=e1009]: "\"LlamaIndex: A Data Framework for LLM Applications\""
+                    - text: .
+                    - emphasis [ref=e1010]: Liu et al.
+                    - text: GitHub 2022. [
+                    - link "Code" [ref=e1011] [cursor=pointer]:
+                      - /url: https://github.com/run-llama/llama_index
+                    - text: "]"
+                  - listitem [ref=e1012]:
+                    - text: "DeerFlow:"
+                    - strong [ref=e1013]: "\"DeerFlow: Distributed Workflow Engine for LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1014]: GitHub 2024.
+                    - text: "["
+                    - link "Code" [ref=e1015] [cursor=pointer]:
+                      - /url: https://github.com/modelscope/DeerFlow
+                    - text: "]"
+                  - listitem [ref=e1016]:
+                    - text: "DeepAgents:"
+                    - strong [ref=e1017]: "\"DeepAgents: Multi-Agent Framework for Deep Learning\""
+                    - text: .
+                    - emphasis [ref=e1018]: GitHub 2024.
+                    - text: "["
+                    - link "Code" [ref=e1019] [cursor=pointer]:
+                      - /url: https://github.com/deepagents/deepagents
+                    - text: "]"
+                - generic [ref=e1020]:
+                  - heading "Evaluation Infrastructure" [level=4] [ref=e1021]
+                  - 'link "Permalink: Evaluation Infrastructure" [ref=e1022] [cursor=pointer]':
+                    - /url: "#evaluation-infrastructure"
+                    - img [ref=e1023]
+                - list [ref=e1025]:
+                  - listitem [ref=e1026]:
+                    - text: "lm-evaluation-harness:"
+                    - strong [ref=e1027]: "\"lm-evaluation-harness\""
+                    - text: .
+                    - emphasis [ref=e1028]: Gao et al.
+                    - text: GitHub 2021. [
+                    - link "Code" [ref=e1029] [cursor=pointer]:
+                      - /url: https://github.com/EleutherAI/lm-evaluation-harness
+                    - text: "]"
+                  - listitem [ref=e1030]:
+                    - text: "API-Bank:"
+                    - strong [ref=e1031]: "\"Api-bank: A comprehensive benchmark for tool-augmented llms\""
+                    - text: .
+                    - emphasis [ref=e1032]: Li et al.
+                    - text: EMNLP 2023. [
+                    - link "Paper" [ref=e1033] [cursor=pointer]:
+                      - /url: https://aclanthology.org/2023.emnlp-main.187/
+                    - text: "]"
+                  - listitem [ref=e1034]:
+                    - text: "AgentBench:"
+                    - strong [ref=e1035]: "\"AgentBench: Evaluating LLMs as Agents\""
+                    - text: .
+                    - emphasis [ref=e1036]: Liu et al.
+                    - text: ICLR 2024. [
+                    - link "Paper" [ref=e1037] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2308.03688
+                    - text: "] ["
+                    - link "Code" [ref=e1038] [cursor=pointer]:
+                      - /url: https://github.com/THUDM/AgentBench
+                    - text: "]"
+                  - listitem [ref=e1039]:
+                    - text: "SWE-bench:"
+                    - strong [ref=e1040]: "\"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\""
+                    - text: .
+                    - emphasis [ref=e1041]: Jimenez et al.
+                    - text: ICLR 2024. [
+                    - link "Paper" [ref=e1042] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2310.06770
+                    - text: "] ["
+                    - link "Code" [ref=e1043] [cursor=pointer]:
+                      - /url: https://github.com/swebench/SWE-bench
+                    - text: "]"
+                  - listitem [ref=e1044]:
+                    - text: "OSWorld:"
+                    - strong [ref=e1045]: "\"OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments\""
+                    - text: .
+                    - emphasis [ref=e1046]: Xie et al.
+                    - text: NeurIPS 2024. [
+                    - link "Paper" [ref=e1047] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2404.07972
+                    - text: "] ["
+                    - link "Code" [ref=e1048] [cursor=pointer]:
+                      - /url: https://github.com/xlang-ai/OSWorld
+                    - text: "]"
+                  - listitem [ref=e1049]:
+                    - text: "WebArena:"
+                    - strong [ref=e1050]: "\"WebArena: A Realistic Web Environment for Building Autonomous Agents\""
+                    - text: .
+                    - emphasis [ref=e1051]: Zhou et al.
+                    - text: ICLR 2024. [
+                    - link "Paper" [ref=e1052] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2307.13854
+                    - text: "] ["
+                    - link "Code" [ref=e1053] [cursor=pointer]:
+                      - /url: https://github.com/web-arena-x/webarena
+                    - text: "]"
+                  - listitem [ref=e1054]:
+                    - text: "GAIA:"
+                    - strong [ref=e1055]: "\"GAIA: A Benchmark for General AI Assistants\""
+                    - text: .
+                    - emphasis [ref=e1056]: Mialon et al.
+                    - text: ICLR 2024. [
+                    - link "Paper" [ref=e1057] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2311.12983
+                    - text: "]"
+                  - listitem [ref=e1058]:
+                    - text: "Mind2Web:"
+                    - strong [ref=e1059]: "\"Mind2Web: Towards a Generalist Agent for the Web\""
+                    - text: .
+                    - emphasis [ref=e1060]: Deng et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e1061] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2306.06070
+                    - text: "]"
+                  - listitem [ref=e1062]:
+                    - text: "AgentBoard:"
+                    - strong [ref=e1063]: "\"AgentBoard: An Analytical Evaluation Board of Multi-Turn LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1064]: Ma et al.
+                    - text: NeurIPS 2024. [
+                    - link "Paper" [ref=e1065] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2401.13178
+                    - text: "]"
+                  - listitem [ref=e1066]:
+                    - text: "InterCode:"
+                    - strong [ref=e1067]: "\"InterCode: Standardizing and Benchmarking Interactive Coding with Execution Feedback\""
+                    - text: .
+                    - emphasis [ref=e1068]: Yang et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e1069] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2306.14898
+                    - text: "]"
+                - separator [ref=e1070]
+                - generic [ref=e1071]:
+                  - heading "Technical Challenges" [level=3] [ref=e1072]
+                  - 'link "Permalink: Technical Challenges" [ref=e1073] [cursor=pointer]':
+                    - /url: "#technical-challenges"
+                    - img [ref=e1074]
+                - paragraph [ref=e1076]:
+                  - strong [ref=e1077]: "Scope:"
+                  - text: We identify nine open research problems where current harness infrastructure provides partial solutions but no production-grade, generalizable frameworks. Each challenge represents a gap between what academic prototypes demonstrate and what deployed systems require.
+                - paragraph [ref=e1078]:
+                  - strong [ref=e1079]: "Evaluation criteria:"
+                  - text: "For each challenge, we assess: (1)"
+                  - strong [ref=e1080]: Academic coverage
+                  - text: — peer-reviewed solutions, if any; (2)
+                  - strong [ref=e1081]: Production maturity
+                  - text: — whether any deployed system has solved it at scale; (3)
+                  - strong [ref=e1082]: Blocking severity
+                  - text: — whether the unsolved problem prevents deployment or merely limits performance.
+                - paragraph [ref=e1083]:
+                  - strong [ref=e1084]: "Cross-cutting theme:"
+                  - text: Most challenges stem from the
+                  - strong [ref=e1085]: composition problem
+                  - text: — individual components (security sandboxes, memory stores, evaluation metrics) work in isolation, but combining them into a coherent harness surfaces emergent failures. Formal verification, portability testing, and protocol interoperability all require compositional reasoning that current research has not addressed.
+                - generic [ref=e1086]:
+                  - heading "Security & Sandboxing" [level=4] [ref=e1087]
+                  - 'link "Permalink: Security & Sandboxing" [ref=e1088] [cursor=pointer]':
+                    - /url: "#security--sandboxing"
+                    - img [ref=e1089]
+                - paragraph [ref=e1091]:
+                  - strong [ref=e1092]: "Challenge:"
+                  - text: Agent sandboxes must prevent malicious tool use while permitting legitimate system access — a harder problem than traditional application sandboxing because agents
+                  - strong [ref=e1093]: intentionally
+                  - text: interact with sensitive resources (file systems, network APIs, shell commands).
+                - paragraph [ref=e1094]:
+                  - strong [ref=e1095]: "State of the art:"
+                  - text: SandboxEscapeBench shows frontier models can escape containers; PRISM demonstrates zero-fork defense-in-depth is possible but requires OS-level instrumentation. No generalizable sandbox exists that works across all agent use cases without manual per-task configuration.
+                - paragraph [ref=e1096]:
+                  - strong [ref=e1097]: "Open problems:"
+                  - text: Compositional security properties (proving agent + harness + environment satisfy a safety specification) remain unsolved. Current defenses are reactive (detecting escapes) rather than preventive (proving impossibility of escape).
+                - blockquote [ref=e1098]:
+                  - paragraph [ref=e1099]:
+                    - strong [ref=e1100]: "Key numbers:"
+                    - text: SandboxEscapeBench — frontier LLMs achieve
+                    - strong [ref=e1101]: 15–35% container escape rates
+                    - text: ; PRISM — 10-hook zero-fork runtime reduces escape to near-zero with <5ms overhead.
+                - list [ref=e1102]:
+                  - listitem [ref=e1103]:
+                    - text: "SandboxEscapeBench†:"
+                    - strong [ref=e1104]: "\"Quantifying Frontier LLM Capabilities for Container Sandbox Escape\""
+                    - text: .
+                    - emphasis [ref=e1105]: Marchand et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1106] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.02277
+                    - text: "]"
+                  - listitem [ref=e1107]:
+                    - text: "InjecAgent:"
+                    - strong [ref=e1108]: "\"InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents\""
+                    - text: .
+                    - emphasis [ref=e1109]: Zhan et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1110] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2403.02691
+                    - text: "]"
+                  - listitem [ref=e1111]:
+                    - text: "ToolHijacker†:"
+                    - strong [ref=e1112]: "\"Prompt Injection Attack to Tool Selection in LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1113]: Shi et al.
+                    - text: NDSS 2026. [
+                    - link "Paper" [ref=e1114] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2504.19793
+                    - text: "]"
+                  - listitem [ref=e1115]:
+                    - text: "Securing MCP†:"
+                    - strong [ref=e1116]: "\"Securing the Model Context Protocol (MCP): Risks, Controls, and Governance\""
+                    - text: .
+                    - emphasis [ref=e1117]: Errico et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1118] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2511.20920
+                    - text: "]"
+                  - listitem [ref=e1119]:
+                    - text: "SHIELDA†:"
+                    - strong [ref=e1120]: "\"SHIELDA: Structured Handling of Exceptions in LLM-Driven Agentic Workflows\""
+                    - text: .
+                    - emphasis [ref=e1121]: Zhou et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1122] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2508.07935
+                    - text: "]"
+                  - listitem [ref=e1123]:
+                    - text: "PALADIN†:"
+                    - strong [ref=e1124]: "\"PALADIN: Self-Correcting Language Model Agents to Cure Tool-Failure Cases\""
+                    - text: .
+                    - emphasis [ref=e1125]: Vuddanti et al.
+                    - text: ICLR 2026. [
+                    - link "Paper" [ref=e1126] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2509.25238
+                    - text: "]"
+                  - listitem [ref=e1127]:
+                    - text: "AgentBound†:"
+                    - strong [ref=e1128]: "\"Securing AI Agent Execution\""
+                    - text: .
+                    - emphasis [ref=e1129]: Bühler et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1130] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2510.21236
+                    - text: "]"
+                  - listitem [ref=e1131]:
+                    - text: "AgentSpec†:"
+                    - strong [ref=e1132]: "\"Agentspec: Customizable runtime enforcement for safe and reliable llm agents\""
+                    - text: .
+                    - emphasis [ref=e1133]: Wang et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1134] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2503.18666
+                    - text: "]"
+                  - listitem [ref=e1135]:
+                    - text: "AgentSys†:"
+                    - strong [ref=e1136]: "\"AgentSys: Secure and Dynamic LLM Agents Through Explicit Hierarchical Memory Management\""
+                    - text: .
+                    - emphasis [ref=e1137]: Wen et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1138] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.07398
+                    - text: "]"
+                  - listitem [ref=e1139]:
+                    - text: "Docker:"
+                    - strong [ref=e1140]: "\"Docker: Lightweight Linux Containers for Consistent Development and Deployment\""
+                    - text: .
+                    - emphasis [ref=e1141]: Merkel.
+                    - text: Linux Journal 2014(239). [
+                    - link "Paper" [ref=e1142] [cursor=pointer]:
+                      - /url: https://www.linuxjournal.com/content/docker-lightweight-linux-containers-consistent-development-and-deployment
+                    - text: "]"
+                  - listitem [ref=e1143]:
+                    - text: "gVisor:"
+                    - strong [ref=e1144]: "\"The True Cost of Containing: A gVisor Case Study\""
+                    - text: .
+                    - emphasis [ref=e1145]: Young et al.
+                    - text: HotCloud '19. [
+                    - link "Paper" [ref=e1146] [cursor=pointer]:
+                      - /url: https://www.usenix.org/conference/hotcloud19/presentation/young
+                    - text: "]"
+                  - listitem [ref=e1147]:
+                    - text: "Firecracker:"
+                    - strong [ref=e1148]: "\"Firecracker: Lightweight Virtualization for Serverless Applications\""
+                    - text: .
+                    - emphasis [ref=e1149]: Agache et al.
+                    - text: NSDI 2020. [
+                    - link "Paper" [ref=e1150] [cursor=pointer]:
+                      - /url: https://www.usenix.org/conference/nsdi20/presentation/agache
+                    - text: "]"
+                  - listitem [ref=e1151]:
+                    - text: "WebAssembly:"
+                    - strong [ref=e1152]: "\"Bringing the Web up to Speed with WebAssembly\""
+                    - text: .
+                    - emphasis [ref=e1153]: Haas et al.
+                    - text: PLDI 2017. [
+                    - link "Paper" [ref=e1154] [cursor=pointer]:
+                      - /url: https://doi.org/10.1145/3062341.3062363
+                    - text: "]"
+                  - listitem [ref=e1155]:
+                    - text: "Indirect Prompt Injection:"
+                    - strong [ref=e1156]: "\"Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection\""
+                    - text: .
+                    - emphasis [ref=e1157]: Greshake et al.
+                    - text: AISec 2023. [
+                    - link "Paper" [ref=e1158] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2302.12173
+                    - text: "]"
+                  - listitem [ref=e1159]:
+                    - text: "Misevolution Risks†:"
+                    - strong [ref=e1160]: "\"Your agent may misevolve: Emergent risks in self-evolving llm agents\""
+                    - text: .
+                    - emphasis [ref=e1161]: Shao et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1162] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2509.26354
+                    - text: "]"
+                  - listitem [ref=e1163]:
+                    - text: "Security Threat Modeling†:"
+                    - strong [ref=e1164]: "\"Security Threat Modeling for Emerging AI-Agent Protocols: A Comparative Analysis of MCP, A2A, Agora, and ANP\""
+                    - text: .
+                    - emphasis [ref=e1165]: Anbiaee et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1166] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.11327
+                    - text: "]"
+                  - listitem [ref=e1167]:
+                    - text: "AgentHarm†:"
+                    - strong [ref=e1168]: "\"AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1169]: Andriushchenko et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1170] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2410.09024
+                    - text: "]"
+                  - listitem [ref=e1171]:
+                    - text: "TrustAgent:"
+                    - strong [ref=e1172]: "\"TrustAgent: Towards Safe and Trustworthy LLM-Based Agents\""
+                    - text: .
+                    - emphasis [ref=e1173]: Hua et al.
+                    - text: EMNLP 2024. [
+                    - link "Paper" [ref=e1174] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2402.01586
+                    - text: "]"
+                  - listitem [ref=e1175]:
+                    - text: "ToolEmu†:"
+                    - strong [ref=e1176]: "\"Identifying the Risks of LM Agents with an LM-Emulated Sandbox\""
+                    - text: .
+                    - emphasis [ref=e1177]: Ruan et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1178] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2309.15817
+                    - text: "]"
+                  - listitem [ref=e1179]:
+                    - text: "Ignore Previous Prompt:"
+                    - strong [ref=e1180]: "\"Ignore Previous Prompt: Attack Techniques For Language Models\""
+                    - text: .
+                    - emphasis [ref=e1181]: Perez & Ribeiro.
+                    - text: NeurIPS ML Safety Workshop 2022. [
+                    - link "Paper" [ref=e1182] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2211.09527
+                    - text: "]"
+                - generic [ref=e1183]:
+                  - heading "Evaluation & Benchmarking" [level=4] [ref=e1184]
+                  - 'link "Permalink: Evaluation & Benchmarking" [ref=e1185] [cursor=pointer]':
+                    - /url: "#evaluation--benchmarking"
+                    - img [ref=e1186]
+                - blockquote [ref=e1188]:
+                  - paragraph [ref=e1189]:
+                    - strong [ref=e1190]: "Key numbers:"
+                    - text: HAL unified
+                    - strong [ref=e1191]: 21,730 rollouts
+                    - text: ", compressing weeks of evaluation to hours; OSWorld reports"
+                    - strong [ref=e1192]: 28% false negative rate
+                    - text: in automated evaluation; METR finds benchmark-passing PRs have
+                    - strong [ref=e1193]: 24.2pp lower
+                    - text: human merge rate, widening at 9.6pp/year.
+                - list [ref=e1194]:
+                  - listitem [ref=e1195]:
+                    - text: "AgencyBench†:"
+                    - strong [ref=e1196]: "\"AgencyBench: Benchmarking the Frontiers of Autonomous Agents in 1M-Token Real-World Contexts\""
+                    - text: .
+                    - emphasis [ref=e1197]: Li et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1198] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2601.11044
+                    - text: "]"
+                  - listitem [ref=e1199]:
+                    - text: "AEGIS†:"
+                    - strong [ref=e1200]: "\"AEGIS: No Tool Call Left Unchecked -- A Pre-Execution Firewall and Audit Layer for AI Agents\""
+                    - text: .
+                    - emphasis [ref=e1201]: Yuan et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1202] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.12621
+                    - text: "]"
+                  - listitem [ref=e1203]:
+                    - text: "Hell or High Water†:"
+                    - strong [ref=e1204]: "\"Hell or High Water: Evaluating Agentic Recovery from External Failures\""
+                    - text: .
+                    - emphasis [ref=e1205]: Wang et al.
+                    - text: COLM 2025. [
+                    - link "Paper" [ref=e1206] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2508.11027
+                    - text: "]"
+                  - listitem [ref=e1207]:
+                    - text: "SearchLLM†:"
+                    - strong [ref=e1208]: "\"Aligning Large Language Models with Searcher Preferences\""
+                    - text: .
+                    - emphasis [ref=e1209]: Wu et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1210] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.10473
+                    - text: "]"
+                  - listitem [ref=e1211]:
+                    - text: "Meta-Harness†:"
+                    - strong [ref=e1212]: "\"Meta-Harness: End-to-End Optimization of Model Harnesses\""
+                    - text: .
+                    - emphasis [ref=e1213]: Lee et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1214] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.28052
+                    - text: "]"
+                  - listitem [ref=e1215]:
+                    - text: "AutoHarness†:"
+                    - strong [ref=e1216]: "\"AutoHarness: improving LLM agents by automatically synthesizing a code harness\""
+                    - text: .
+                    - emphasis [ref=e1217]: Lou et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1218] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.03329
+                    - text: "]"
+                  - listitem [ref=e1219]:
+                    - text: "MASEval†:"
+                    - strong [ref=e1220]: "\"MASEval: Extending Multi-Agent Evaluation from Models to Systems\""
+                    - text: .
+                    - emphasis [ref=e1221]: Emde et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1222] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.08835
+                    - text: "]"
+                  - listitem [ref=e1223]:
+                    - text: "VeRO†:"
+                    - strong [ref=e1224]: "\"VeRO: An Evaluation Harness for Agents to Optimize Agents\""
+                    - text: .
+                    - emphasis [ref=e1225]: Ursekar et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1226] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.22480
+                    - text: "]"
+                  - listitem [ref=e1227]:
+                    - text: "TheAgentCompany†:"
+                    - strong [ref=e1228]: "\"TheAgentCompany: Benchmarking LLM Agents on Consequential Real-World Tasks\""
+                    - text: .
+                    - emphasis [ref=e1229]: Xu et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1230] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2412.14161
+                    - text: "]"
+                  - listitem [ref=e1231]:
+                    - text: "BrowserGym†:"
+                    - strong [ref=e1232]: "\"The BrowserGym Ecosystem for Web Agent Research\""
+                    - text: .
+                    - emphasis [ref=e1233]: Le Sellier De Chezelles et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1234] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2412.05467
+                    - text: "]"
+                  - listitem [ref=e1235]:
+                    - text: "WorkArena†:"
+                    - strong [ref=e1236]: "\"WorkArena: How Capable are Web Agents at Solving Common Knowledge Work Tasks?\""
+                    - text: .
+                    - emphasis [ref=e1237]: Drouin et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1238] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2403.07718
+                    - text: "]"
+                  - listitem [ref=e1239]:
+                    - text: "R-Judge:"
+                    - strong [ref=e1240]: "\"R-Judge: Benchmarking Safety Risk Awareness for LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1241]: Yuan et al.
+                    - text: EMNLP 2024. [
+                    - link "Paper" [ref=e1242] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2401.10019
+                    - text: "]"
+                  - listitem [ref=e1243]:
+                    - text: "R2E:"
+                    - strong [ref=e1244]: "\"R2E: Turning any GitHub Repository into a Programming Agent Environment\""
+                    - text: .
+                    - emphasis [ref=e1245]: Jain et al.
+                    - text: ICML 2024. [
+                    - link "Paper" [ref=e1246] [cursor=pointer]:
+                      - /url: https://proceedings.mlr.press/v235/jain24c.html
+                    - text: "]"
+                  - listitem [ref=e1247]:
+                    - text: "Evaluation Survey:"
+                    - strong [ref=e1248]: "\"Evaluation and Benchmarking of LLM Agents: A Survey\""
+                    - text: .
+                    - emphasis [ref=e1249]: Mohammadi et al.
+                    - text: KDD 2025. [
+                    - link "Paper" [ref=e1250] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2507.21504
+                    - text: "]"
+                  - listitem [ref=e1251]:
+                    - text: "PentestJudge†:"
+                    - strong [ref=e1252]: "\"PentestJudge: Judging Agent Behavior Against Operational Requirements\""
+                    - text: .
+                    - emphasis [ref=e1253]: Caldwell et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1254] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2508.02921
+                    - text: "]"
+                - generic [ref=e1255]:
+                  - heading "Protocol Standardization" [level=4] [ref=e1256]
+                  - 'link "Permalink: Protocol Standardization" [ref=e1257] [cursor=pointer]':
+                    - /url: "#protocol-standardization"
+                    - img [ref=e1258]
+                - blockquote [ref=e1260]:
+                  - paragraph [ref=e1261]:
+                    - strong [ref=e1262]: "Key numbers:"
+                    - text: "MCP (tool↔harness): 2–15ms latency; A2A (agent↔agent): 50–200ms; ACP (intent-level, IBM) — three protocols serve complementary roles."
+                - list [ref=e1263]:
+                  - listitem [ref=e1264]:
+                    - text: "MCP:"
+                    - strong [ref=e1265]: "\"Model Context Protocol\""
+                    - text: .
+                    - emphasis [ref=e1266]: Anthropic.
+                    - text: Technical Report 2024. [
+                    - link "Spec" [ref=e1267] [cursor=pointer]:
+                      - /url: https://modelcontextprotocol.io
+                    - text: "]"
+                  - listitem [ref=e1268]:
+                    - text: "A2A:"
+                    - strong [ref=e1269]: "\"Agent-to-Agent Protocol\""
+                    - text: .
+                    - emphasis [ref=e1270]: Google.
+                    - text: Technical Report 2025. [
+                    - link "Spec" [ref=e1271] [cursor=pointer]:
+                      - /url: https://google.github.io/A2A/
+                    - text: "] ["
+                    - link "Announcement" [ref=e1272] [cursor=pointer]:
+                      - /url: https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/
+                    - text: "]"
+                  - listitem [ref=e1273]:
+                    - text: "Protocol Comparison†:"
+                    - strong [ref=e1274]: "\"A Survey of Agent Interoperability Protocols: Model Context Protocol (MCP), Agent Communication Protocol (ACP), Agent-to-Agent Protocol (A2A), and Agent Network Protocol (ANP)\""
+                    - text: .
+                    - emphasis [ref=e1275]: Ehtesham et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1276] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2505.02279
+                    - text: "]"
+                  - listitem [ref=e1277]:
+                    - text: "Gorilla:"
+                    - strong [ref=e1278]: "\"Gorilla: Large Language Model Connected with Massive APIs\""
+                    - text: .
+                    - emphasis [ref=e1279]: Patil et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e1280] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2305.15334
+                    - text: "] ["
+                    - link "Code" [ref=e1281] [cursor=pointer]:
+                      - /url: https://github.com/ShishirPatil/gorilla
+                    - text: "]"
+                - generic [ref=e1282]:
+                  - heading "Runtime Context Management" [level=4] [ref=e1283]
+                  - 'link "Permalink: Runtime Context Management" [ref=e1284] [cursor=pointer]':
+                    - /url: "#runtime-context-management"
+                    - img [ref=e1285]
+                - blockquote [ref=e1287]:
+                  - paragraph [ref=e1288]:
+                    - strong [ref=e1289]: "Key numbers:"
+                    - text: SkillsBench — curated skill injection yields
+                    - strong [ref=e1290]: +16.2pp
+                    - text: improvement; "Lost in the Middle" effect documented; long-context models shift the problem from
+                    - emphasis [ref=e1291]: retention
+                    - text: to
+                    - emphasis [ref=e1292]: salience
+                    - text: .
+                - list [ref=e1293]:
+                  - listitem [ref=e1294]:
+                    - text: "SkillsBench†:"
+                    - strong [ref=e1295]: "\"SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks\""
+                    - text: .
+                    - emphasis [ref=e1296]: Li et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1297] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.12670
+                    - text: "]"
+                  - listitem [ref=e1298]:
+                    - text: "ReadAgent:"
+                    - strong [ref=e1299]: "\"A Human-Inspired Reading Agent with Gist Memory of Very Long Contexts\""
+                    - text: .
+                    - emphasis [ref=e1300]: Lee et al.
+                    - text: ICML 2024. [
+                    - link "Paper" [ref=e1301] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2402.09727
+                    - text: "]"
+                  - listitem [ref=e1302]:
+                    - text: "MemoryOS:"
+                    - strong [ref=e1303]: "\"Memory OS of AI Agent\""
+                    - text: .
+                    - emphasis [ref=e1304]: Kang et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1305] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2506.06326
+                    - text: "]"
+                  - listitem [ref=e1306]:
+                    - text: "CoALA:"
+                    - strong [ref=e1307]: "\"Cognitive Architectures for Language Agents\""
+                    - text: .
+                    - emphasis [ref=e1308]: Sumers et al.
+                    - text: TMLR 2024. [
+                    - link "Paper" [ref=e1309] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2309.02427
+                    - text: "]"
+                  - listitem [ref=e1310]:
+                    - text: "SkillFortify†:"
+                    - strong [ref=e1311]: "\"Formal Analysis and Supply Chain Security for Agentic AI Skills\""
+                    - text: .
+                    - emphasis [ref=e1312]: Bhardwaj.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1313] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.00195
+                    - text: "]"
+                  - listitem [ref=e1314]:
+                    - text: "Lost in the Middle:"
+                    - strong [ref=e1315]: "\"Lost in the Middle: How Language Models Use Long Contexts\""
+                    - text: .
+                    - emphasis [ref=e1316]: Liu et al.
+                    - text: TACL 2024. [
+                    - link "Paper" [ref=e1317] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2307.03172
+                    - text: "]"
+                  - listitem [ref=e1318]:
+                    - text: "Context Engineering Survey†:"
+                    - strong [ref=e1319]: "\"Context Engineering: A Survey of 1,400 Papers on Effective Context Management for LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1320]: Mei et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1321] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2507.13334
+                    - text: "]"
+                - generic [ref=e1322]:
+                  - heading "Tool Use & Registry" [level=4] [ref=e1323]
+                  - 'link "Permalink: Tool Use & Registry" [ref=e1324] [cursor=pointer]':
+                    - /url: "#tool-use--registry"
+                    - img [ref=e1325]
+                - blockquote [ref=e1327]:
+                  - paragraph [ref=e1328]:
+                    - strong [ref=e1329]: "Key numbers:"
+                    - text: Vercel found removing
+                    - strong [ref=e1330]: 80% of tools
+                    - text: helped more than any model upgrade; Schema First (Sigdel & Baral, 2026) — a controlled pilot showing that schema-based tool contracts reduce
+                    - emphasis [ref=e1331]: interface
+                    - text: misuse but not
+                    - emphasis [ref=e1332]: semantic
+                    - text: misuse, with end-task success at zero across all conditions, suggesting interface design alone is insufficient for tool reliability; CodeAct outperforms on
+                    - strong [ref=e1333]: 17/17 Mint benchmarks
+                    - text: with
+                    - strong [ref=e1334]: −20% turns
+                    - text: .
+                - list [ref=e1335]:
+                  - listitem [ref=e1336]:
+                    - text: "CodeAct:"
+                    - strong [ref=e1337]: "\"Executable Code Actions Elicit Better LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1338]: Wang et al.
+                    - text: ICML 2024. [
+                    - link "Paper" [ref=e1339] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2402.01030
+                    - text: "] ["
+                    - link "Code" [ref=e1340] [cursor=pointer]:
+                      - /url: https://github.com/xingyaoww/code-act
+                    - text: "]"
+                  - listitem [ref=e1341]:
+                    - text: "Schema First†:"
+                    - strong [ref=e1342]: "\"Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Budgeted Performance\""
+                    - text: .
+                    - emphasis [ref=e1343]: Sigdel & Baral.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1344] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.13404
+                    - text: "]"
+                  - listitem [ref=e1345]:
+                    - text: "ToolLLM:"
+                    - strong [ref=e1346]: "\"ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs\""
+                    - text: .
+                    - emphasis [ref=e1347]: Qin et al.
+                    - text: ICLR 2024. [
+                    - link "Paper" [ref=e1348] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2307.16789
+                    - text: "] ["
+                    - link "Code" [ref=e1349] [cursor=pointer]:
+                      - /url: https://github.com/OpenBMB/ToolBench
+                    - text: "]"
+                  - listitem [ref=e1350]:
+                    - text: "ToolSandbox†:"
+                    - strong [ref=e1351]: "\"ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities\""
+                    - text: .
+                    - emphasis [ref=e1352]: Lu et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1353] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2408.04682
+                    - text: "]"
+                  - listitem [ref=e1354]:
+                    - text: "AutoTool†:"
+                    - strong [ref=e1355]: "\"AutoTool: Efficient Tool Selection for Large Language Model Agents\""
+                    - text: .
+                    - emphasis [ref=e1356]: Jia & Li.
+                    - text: AAAI 2026. [
+                    - link "Paper" [ref=e1357] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2511.14650
+                    - text: "]"
+                  - listitem [ref=e1358]:
+                    - text: "Tool Learning Survey:"
+                    - strong [ref=e1359]: "\"Tool Learning with Large Language Models: A Survey\""
+                    - text: .
+                    - emphasis [ref=e1360]: Qu et al.
+                    - text: Frontiers of Computer Science 2024. [
+                    - link "Paper" [ref=e1361] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2405.17935
+                    - text: "]"
+                  - listitem [ref=e1362]:
+                    - text: "GoEX†:"
+                    - strong [ref=e1363]: "\"GoEX: Perspectives and Designs Towards a Runtime for Autonomous LLM Applications\""
+                    - text: .
+                    - emphasis [ref=e1364]: Patil et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1365] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2404.06921
+                    - text: "]"
+                  - listitem [ref=e1366]:
+                    - text: "AgentTuning:"
+                    - strong [ref=e1367]: "\"AgentTuning: Enabling Generalized Agent Abilities for LLMs\""
+                    - text: .
+                    - emphasis [ref=e1368]: Zeng et al.
+                    - text: ACL 2024. [
+                    - link "Paper" [ref=e1369] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2310.12823
+                    - text: "]"
+                - generic [ref=e1370]:
+                  - heading "Memory Architecture" [level=4] [ref=e1371]
+                  - 'link "Permalink: Memory Architecture" [ref=e1372] [cursor=pointer]':
+                    - /url: "#memory-architecture"
+                    - img [ref=e1373]
+                - blockquote [ref=e1375]:
+                  - paragraph [ref=e1376]:
+                    - strong [ref=e1377]: "Key numbers:"
+                    - text: Mem0 achieves
+                    - strong [ref=e1378]: 90% token reduction
+                    - text: "vs full-context; Zep temporal knowledge:"
+                    - strong [ref=e1379]: +18.5% QA accuracy
+                    - text: "; Agent Workflow Memory:"
+                    - strong [ref=e1380]: +14.9%
+                    - text: "on Mind2Web. Six architectural patterns: flat buffer → hierarchical → episodic → semantic → procedural → graph."
+                - list [ref=e1381]:
+                  - listitem [ref=e1382]:
+                    - text: "Agent Workflow Memory (AWM)†:"
+                    - strong [ref=e1383]: "\"Agent Workflow Memory\""
+                    - text: .
+                    - emphasis [ref=e1384]: Wang et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1385] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2409.07429
+                    - text: "]"
+                  - listitem [ref=e1386]:
+                    - text: "Mem0†:"
+                    - strong [ref=e1387]: "\"Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory\""
+                    - text: .
+                    - emphasis [ref=e1388]: Khant et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1389] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2504.19413
+                    - text: "]"
+                  - listitem [ref=e1390]:
+                    - text: "A-MEM†:"
+                    - strong [ref=e1391]: "\"A-MEM: Agentic Memory for LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1392]: Xu et al.
+                    - text: NeurIPS 2025. [
+                    - link "Paper" [ref=e1393] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2502.12110
+                    - text: "]"
+                  - listitem [ref=e1394]:
+                    - text: "MemAct†:"
+                    - strong [ref=e1395]: "\"Memory as Action: Autonomous Context Curation for Long-Horizon Agentic Tasks\""
+                    - text: .
+                    - emphasis [ref=e1396]: Zhang et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1397] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2510.12635
+                    - text: "]"
+                  - listitem [ref=e1398]:
+                    - text: "Memory Survey†:"
+                    - strong [ref=e1399]: "\"Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers\""
+                    - text: .
+                    - emphasis [ref=e1400]: Du.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1401] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.07670
+                    - text: "]"
+                  - listitem [ref=e1402]:
+                    - text: "MemoryBank:"
+                    - strong [ref=e1403]: "\"MemoryBank: Enhancing Large Language Models with Long-Term Memory\""
+                    - text: .
+                    - emphasis [ref=e1404]: Zhong et al.
+                    - text: AAAI 2024. [
+                    - link "Paper" [ref=e1405] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2305.10250
+                    - text: "]"
+                  - listitem [ref=e1406]:
+                    - text: "LoCoMo†:"
+                    - strong [ref=e1407]: "\"Evaluating Very Long-Term Conversational Memory of LLM Agents\""
+                    - text: .
+                    - emphasis [ref=e1408]: Maharana et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1409] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2402.17753
+                    - text: "]"
+                  - listitem [ref=e1410]:
+                    - text: "Memory Mechanisms Survey†:"
+                    - strong [ref=e1411]: "\"A Survey on the Memory Mechanism of Large Language Model Based Agents\""
+                    - text: .
+                    - emphasis [ref=e1412]: Zhang et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1413] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2404.13501
+                    - text: "]"
+                  - listitem [ref=e1414]:
+                    - text: "Evo-Memory†:"
+                    - strong [ref=e1415]: "\"Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory\""
+                    - text: .
+                    - emphasis [ref=e1416]: Wei et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1417] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2511.20857
+                    - text: "]"
+                - generic [ref=e1418]:
+                  - heading "Planning & Reasoning" [level=4] [ref=e1419]
+                  - 'link "Permalink: Planning & Reasoning" [ref=e1420] [cursor=pointer]':
+                    - /url: "#planning--reasoning"
+                    - img [ref=e1421]
+                - blockquote [ref=e1423]:
+                  - paragraph [ref=e1424]:
+                    - strong [ref=e1425]: "Key numbers:"
+                    - text: SWE-agent ACI study shows interface design outweighs model capability as the primary performance determinant. LATS integrates MCTS with language model feedback for state-space search. Plan-on-Graph enables adaptive self-correcting planning on knowledge graphs through guidance, memory, and reflection mechanisms.
+                - list [ref=e1426]:
+                  - listitem [ref=e1427]:
+                    - text: "Tree of Thoughts:"
+                    - strong [ref=e1428]: "\"Tree of Thoughts: Deliberate Problem Solving with Large Language Models\""
+                    - text: .
+                    - emphasis [ref=e1429]: Yao et al.
+                    - text: NeurIPS 2023. [
+                    - link "Paper" [ref=e1430] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2305.10601
+                    - text: "] ["
+                    - link "Code" [ref=e1431] [cursor=pointer]:
+                      - /url: https://github.com/princeton-nlp/tree-of-thought-llm
+                    - text: "]"
+                  - listitem [ref=e1432]:
+                    - text: "LATS:"
+                    - strong [ref=e1433]: "\"Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models\""
+                    - text: .
+                    - emphasis [ref=e1434]: Zhou et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1435] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2310.04406
+                    - text: "] ["
+                    - link "Code" [ref=e1436] [cursor=pointer]:
+                      - /url: https://github.com/lapisrocks/LanguageAgentTreeSearch
+                    - text: "]"
+                  - listitem [ref=e1437]:
+                    - text: "Plan-on-Graph:"
+                    - strong [ref=e1438]: "\"Plan-on-Graph: Self-Correcting Adaptive Planning of Large Language Model on Knowledge Graphs\""
+                    - text: .
+                    - emphasis [ref=e1439]: Chen et al.
+                    - text: NeurIPS 2024. [
+                    - link "Paper" [ref=e1440] [cursor=pointer]:
+                      - /url: https://proceedings.neurips.cc/paper_files/paper/2024/hash/4254e856d01a5e7b7ea050477c3ef9b9-Abstract-Conference.html
+                    - text: "]"
+                  - listitem [ref=e1441]:
+                    - text: "AFlow†:"
+                    - strong [ref=e1442]: "\"AFlow: Automating Agentic Workflow Generation\""
+                    - text: .
+                    - emphasis [ref=e1443]: Zhang et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1444] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2410.10762
+                    - text: "]"
+                  - listitem [ref=e1445]:
+                    - text: "Agent Q†:"
+                    - strong [ref=e1446]: "\"Agent Q: Advanced Reasoning and Learning for Autonomous AI Agents\""
+                    - text: .
+                    - emphasis [ref=e1447]: Putta et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1448] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2408.07199
+                    - text: "]"
+                  - listitem [ref=e1449]:
+                    - text: "OPENDEV†:"
+                    - strong [ref=e1450]: "\"Building Effective AI Coding Agents for the Terminal: Scaffolding, Harness, Context Engineering, and Lessons Learned\""
+                    - text: .
+                    - emphasis [ref=e1451]: Bui.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1452] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.05344
+                    - text: "]"
+                  - listitem [ref=e1453]:
+                    - text: "AOrchestra†:"
+                    - strong [ref=e1454]: "\"AOrchestra: Automating Sub-Agent Creation for Agentic Orchestration\""
+                    - text: .
+                    - emphasis [ref=e1455]: Ruan et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1456] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.03786
+                    - text: "]"
+                  - listitem [ref=e1457]:
+                    - text: "RAP:"
+                    - strong [ref=e1458]: "\"Reasoning with Language Model is Planning with World Model\""
+                    - text: .
+                    - emphasis [ref=e1459]: Hao et al.
+                    - text: EMNLP 2023. [
+                    - link "Paper" [ref=e1460] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2305.14992
+                    - text: "]"
+                  - listitem [ref=e1461]:
+                    - text: "Inner Monologue:"
+                    - strong [ref=e1462]: "\"Inner Monologue: Embodied Reasoning Through Planning with Language Models\""
+                    - text: .
+                    - emphasis [ref=e1463]: Huang et al.
+                    - text: CoRL 2022. [
+                    - link "Paper" [ref=e1464] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2207.05608
+                    - text: "]"
+                  - listitem [ref=e1465]:
+                    - text: "Agent-Oriented Planning:"
+                    - strong [ref=e1466]: "\"Agent-Oriented Planning in Multi-Agent Systems\""
+                    - text: .
+                    - emphasis [ref=e1467]: Li et al.
+                    - text: ICLR 2025. [
+                    - link "Paper" [ref=e1468] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2410.02189
+                    - text: "]"
+                  - listitem [ref=e1469]:
+                    - text: "ExACT†:"
+                    - strong [ref=e1470]: "\"ExACT: Teaching AI Agents to Explore with Reflective-MCTS and Exploratory Learning\""
+                    - text: .
+                    - emphasis [ref=e1471]: Yu et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1472] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2410.02052
+                    - text: "]"
+                - generic [ref=e1473]:
+                  - heading "Multi-Agent Coordination" [level=4] [ref=e1474]
+                  - 'link "Permalink: Multi-Agent Coordination" [ref=e1475] [cursor=pointer]':
+                    - /url: "#multi-agent-coordination"
+                    - img [ref=e1476]
+                - blockquote [ref=e1478]:
+                  - paragraph [ref=e1479]:
+                    - strong [ref=e1480]: "Key numbers:"
+                    - text: AgencyBench — agents achieve
+                    - strong [ref=e1481]: 48.4% success on native SDK harness
+                    - text: vs substantially lower on independent harnesses, demonstrating tight harness-agent coupling. Byzantine fault tolerance remains an open problem for adversarial multi-agent settings.
+                - paragraph [ref=e1482]:
+                  - link "Multi-Agent Coordination Topologies" [ref=e1483] [cursor=pointer]:
+                    - /url: /Gloriaameng/Awesome-Agent-Harness/blob/main/assets/multi_agent_topology.png
+                    - img "Multi-Agent Coordination Topologies" [ref=e1484]
+                - list [ref=e1485]:
+                  - listitem [ref=e1486]:
+                    - text: "AdaptOrch†:"
+                    - strong [ref=e1487]: "\"AdaptOrch: Task-Adaptive Multi-Agent Orchestration in the Era of LLM Performance Convergence\""
+                    - text: .
+                    - emphasis [ref=e1488]: Yu.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1489] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.16873
+                    - text: "]"
+                  - listitem [ref=e1490]:
+                    - text: "SAGA†:"
+                    - strong [ref=e1491]: "\"SAGA: A Security Architecture for Governing AI Agentic Systems\""
+                    - text: .
+                    - emphasis [ref=e1492]: Syros et al.
+                    - text: NDSS 2026. [
+                    - link "Paper" [ref=e1493] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2504.21034
+                    - text: "]"
+                  - listitem [ref=e1494]:
+                    - text: "MAS-FIRE†:"
+                    - strong [ref=e1495]: "\"MAS-FIRE: Fault Injection and Reliability Evaluation for LLM-Based Multi-Agent Systems\""
+                    - text: .
+                    - emphasis [ref=e1496]: Jia et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1497] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2602.19843
+                    - text: "]"
+                  - listitem [ref=e1498]:
+                    - text: "Byzantine fault tolerance†:"
+                    - strong [ref=e1499]: "\"Rethinking the Reliability of Multi-agent System: A Perspective from Byzantine Fault Tolerance\""
+                    - text: .
+                    - emphasis [ref=e1500]: Zheng et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1501] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2511.10400
+                    - text: "]"
+                  - listitem [ref=e1502]:
+                    - text: "Multi-agent baseline study†:"
+                    - strong [ref=e1503]: "\"Rethinking the Value of Multi-Agent Workflow: A Strong Single Agent Baseline\""
+                    - text: .
+                    - emphasis [ref=e1504]: Xu et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1505] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2601.12307
+                    - text: "]"
+                  - listitem [ref=e1506]:
+                    - text: "AgentVerse†:"
+                    - strong [ref=e1507]: "\"AgentVerse: Facilitating Multi-Agent Collaboration and Exploring Emergent Behaviors\""
+                    - text: .
+                    - emphasis [ref=e1508]: Chen et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1509] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2308.10848
+                    - text: "]"
+                  - listitem [ref=e1510]:
+                    - text: "Mixture-of-Agents†:"
+                    - strong [ref=e1511]: "\"Mixture-of-Agents Enhances Large Language Model Capabilities\""
+                    - text: .
+                    - emphasis [ref=e1512]: Wang et al.
+                    - text: arXiv 2024. [
+                    - link "Paper" [ref=e1513] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2406.04692
+                    - text: "]"
+                  - listitem [ref=e1514]:
+                    - text: "Multi-Agent Survey:"
+                    - strong [ref=e1515]: "\"Large Language Model Based Multi-Agents: A Survey of Progress and Challenges\""
+                    - text: .
+                    - emphasis [ref=e1516]: Guo et al.
+                    - text: IJCAI 2024. [
+                    - link "Paper" [ref=e1517] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2402.01680
+                    - text: "]"
+                  - listitem [ref=e1518]:
+                    - text: "Concordia†:"
+                    - strong [ref=e1519]: "\"Generative Agent-Based Modeling with Actions Grounded in Physical, Social, or Digital Space Using Concordia\""
+                    - text: .
+                    - emphasis [ref=e1520]: Vezhnevets et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1521] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2312.03664
+                    - text: "]"
+                - generic [ref=e1522]:
+                  - heading "Compute Economics" [level=4] [ref=e1523]
+                  - 'link "Permalink: Compute Economics" [ref=e1524] [cursor=pointer]':
+                    - /url: "#compute-economics"
+                    - img [ref=e1525]
+                - blockquote [ref=e1527]:
+                  - paragraph [ref=e1528]:
+                    - strong [ref=e1529]: "Key numbers:"
+                    - text: OpenRouter reports
+                    - strong [ref=e1530]: 13T tokens/week
+                    - text: (Feb 2026), doubling every 4 weeks; AgencyBench measures
+                    - strong [ref=e1531]: 1M tokens/task
+                    - text: average; 1000× agent compute growth projected by 2027; AIOS achieves
+                    - strong [ref=e1532]: 2.1× throughput speedup
+                    - text: via proper agent scheduling.
+                - list [ref=e1533]:
+                  - listitem [ref=e1534]:
+                    - text: "State of AI Report:"
+                    - strong [ref=e1535]: "\"State of AI: An Empirical 100 Trillion Token Study with OpenRouter\""
+                    - text: .
+                    - emphasis [ref=e1536]: Aubakirova et al.
+                    - text: Andreessen Horowitz (a16z) and OpenRouter Inc., December 2025. [
+                    - link "Report" [ref=e1537] [cursor=pointer]:
+                      - /url: https://openrouter.ai/state-of-ai
+                    - text: "]"
+                  - listitem [ref=e1538]:
+                    - text: "BentoML Inference Report:"
+                    - strong [ref=e1539]: "\"Beyond Tokens-per-Second: How to Balance Speed, Cost, and Quality in LLM Inference\""
+                    - text: .
+                    - emphasis [ref=e1540]: Yang.
+                    - text: BentoML Blog, January 2026. [
+                    - link "Blog" [ref=e1541] [cursor=pointer]:
+                      - /url: https://www.bentoml.com/blog/beyond-tokens-per-second-how-to-balance-speed-cost-and-quality-in-llm-inference
+                    - text: "]"
+                  - listitem [ref=e1542]:
+                    - text: "H100 Price Spike:"
+                    - strong [ref=e1543]: "\"H100 Price Spike: Understanding the 10% Surge in GPU Rental Costs\""
+                    - text: .
+                    - emphasis [ref=e1544]: Li.
+                    - text: Silicon Data Blog, January 2026. [
+                    - link "Blog" [ref=e1545] [cursor=pointer]:
+                      - /url: https://www.silicondata.com/blog/h100-price-spike
+                    - text: "]"
+                  - listitem [ref=e1546]:
+                    - text: "NVIDIA GTC 2026:"
+                    - strong [ref=e1547]: "\"NVIDIA GTC 2026: Live Updates on What's Next in AI\""
+                    - text: .
+                    - emphasis [ref=e1548]: NVIDIA.
+                    - text: NVIDIA Blog, March 2026. [
+                    - link "Blog" [ref=e1549] [cursor=pointer]:
+                      - /url: https://blogs.nvidia.com/blog/gtc-2026-news/
+                    - text: "]"
+                  - listitem [ref=e1550]:
+                    - text: "Repo2Run†:"
+                    - strong [ref=e1551]: "\"Repo2Run: Automated Building Executable Environment for Code Repository at Scale\""
+                    - text: .
+                    - emphasis [ref=e1552]: Hu et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1553] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2502.13681
+                    - text: "]"
+                  - listitem [ref=e1554]:
+                    - text: "Policy-First†:"
+                    - strong [ref=e1555]: "\"Guardrails as Infrastructure: Policy-First Control for Tool-Orchestrated Workflows\""
+                    - text: .
+                    - emphasis [ref=e1556]: Sigdel & Baral.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1557] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.18059
+                    - text: "]"
+                - separator [ref=e1558]
+                - generic [ref=e1559]:
+                  - heading "Emerging Topics" [level=3] [ref=e1560]
+                  - 'link "Permalink: Emerging Topics" [ref=e1561] [cursor=pointer]':
+                    - /url: "#emerging-topics"
+                    - img [ref=e1562]
+                - list [ref=e1564]:
+                  - listitem [ref=e1565]:
+                    - text: "Harness Engineering for Language Agents†:"
+                    - strong [ref=e1566]: "\"Harness Engineering for Language Agents: The Harness Layer as Control, Agency, and Runtime\""
+                    - text: .
+                    - emphasis [ref=e1567]: He et al.
+                    - text: Preprints 2026. [
+                    - link "Paper" [ref=e1568] [cursor=pointer]:
+                      - /url: https://www.preprints.org
+                    - text: "]"
+                  - listitem [ref=e1569]:
+                    - text: "DeepAgent†:"
+                    - strong [ref=e1570]: "\"Deepagent: A general reasoning agent with scalable toolsets\""
+                    - text: .
+                    - emphasis [ref=e1571]: Li et al.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1572] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2510.21618
+                    - text: "]"
+                  - listitem [ref=e1573]:
+                    - text: "Natural-Language Harnesses†:"
+                    - strong [ref=e1574]: "\"Natural-Language Agent Harnesses\""
+                    - text: .
+                    - emphasis [ref=e1575]: Pan et al.
+                    - text: arXiv 2026. [
+                    - link "Paper" [ref=e1576] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2603.25723
+                    - text: "]"
+                  - listitem [ref=e1577]:
+                    - text: "Self-Evolving Agents Survey†:"
+                    - strong [ref=e1578]: "\"A Survey of Self-Evolving Agents: What, When, How, and Where to Evolve on the Path to Artificial Super Intelligence\""
+                    - text: .
+                    - emphasis [ref=e1579]: Gao et al.
+                    - text: TMLR 2026. [
+                    - link "Paper" [ref=e1580] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2507.21046
+                    - text: "]"
+                  - listitem [ref=e1581]:
+                    - text: "Self-RAG:"
+                    - strong [ref=e1582]: "\"Self-RAG: Learning to Retrieve, Generate, and Critique Through Self-Reflection\""
+                    - text: .
+                    - emphasis [ref=e1583]: Asai et al.
+                    - text: ICLR 2024. [
+                    - link "Paper" [ref=e1584] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2310.11511
+                    - text: "]"
+                  - listitem [ref=e1585]:
+                    - text: "Constitutional AI:"
+                    - strong [ref=e1586]: "\"Constitutional AI: Harmlessness from AI Feedback\""
+                    - text: .
+                    - emphasis [ref=e1587]: Bai et al.
+                    - text: arXiv 2022. [
+                    - link "Paper" [ref=e1588] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2212.08073
+                    - text: "]"
+                  - listitem [ref=e1589]:
+                    - text: "AppAgent†:"
+                    - strong [ref=e1590]: "\"AppAgent: Multimodal Agents as Smartphone Users\""
+                    - text: .
+                    - emphasis [ref=e1591]: Zhang et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1592] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2312.13771
+                    - text: "]"
+                - generic [ref=e1593]:
+                  - heading "Related Surveys" [level=4] [ref=e1594]
+                  - 'link "Permalink: Related Surveys" [ref=e1595] [cursor=pointer]':
+                    - /url: "#related-surveys"
+                    - img [ref=e1596]
+                - list [ref=e1598]:
+                  - listitem [ref=e1599]:
+                    - text: "LLM Agents Survey:"
+                    - strong [ref=e1600]: "\"A Survey on Large Language Model Based Autonomous Agents\""
+                    - text: .
+                    - emphasis [ref=e1601]: Wang et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1602] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2308.11432
+                    - text: "]"
+                  - listitem [ref=e1603]:
+                    - text: "Rise of LLM Agents:"
+                    - strong [ref=e1604]: "\"The Rise and Potential of Large Language Model Based Agents: A Survey\""
+                    - text: .
+                    - emphasis [ref=e1605]: Xi et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1606] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2309.07864
+                    - text: "]"
+                  - listitem [ref=e1607]:
+                    - text: "LLM Survey:"
+                    - strong [ref=e1608]: "\"A Survey of Large Language Models\""
+                    - text: .
+                    - emphasis [ref=e1609]: Zhao et al.
+                    - text: arXiv 2023. [
+                    - link "Paper" [ref=e1610] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2303.18223
+                    - text: "]"
+                  - listitem [ref=e1611]:
+                    - text: "AI Agent Systems†:"
+                    - strong [ref=e1612]: "\"AI Agent Systems: Architectures, Applications, and Evaluation\""
+                    - text: .
+                    - emphasis [ref=e1613]: Xu.
+                    - text: arXiv 2025. [
+                    - link "Paper" [ref=e1614] [cursor=pointer]:
+                      - /url: https://arxiv.org/abs/2601.01743
+                    - text: "]"
+                - generic [ref=e1615]:
+                  - heading "Practitioner Reports & Industry Insights" [level=4] [ref=e1616]
+                  - 'link "Permalink: Practitioner Reports & Industry Insights" [ref=e1617] [cursor=pointer]':
+                    - /url: "#practitioner-reports--industry-insights"
+                    - img [ref=e1618]
+                - blockquote [ref=e1620]:
+                  - paragraph [ref=e1621]: Production deployment experiences from Stripe, OpenAI, Cursor, METR, and other frontier practitioners.
+                - list [ref=e1622]:
+                  - listitem [ref=e1623]:
+                    - text: "Building Effective Agents:"
+                    - strong [ref=e1624]: "\"Building Effective Agents\""
+                    - text: .
+                    - emphasis [ref=e1625]: Anthropic.
+                    - text: Anthropic Engineering Blog, 2026. [
+                    - link "Blog" [ref=e1626] [cursor=pointer]:
+                      - /url: https://www.anthropic.com/engineering
+                    - text: "]"
+                  - listitem [ref=e1627]:
+                    - text: "Demystifying Evals:"
+                    - strong [ref=e1628]: "\"Demystifying Evals for AI Agents\""
+                    - text: .
+                    - emphasis [ref=e1629]: Anthropic.
+                    - text: Anthropic Engineering Blog, 2026. [
+                    - link "Blog" [ref=e1630] [cursor=pointer]:
+                      - /url: https://www.anthropic.com/engineering
+                    - text: "]"
+                  - listitem [ref=e1631]:
+                    - text: "Context Engineering:"
+                    - strong [ref=e1632]: "\"Context Engineering Our Way to Long-Horizon Agents\""
+                    - text: .
+                    - emphasis [ref=e1633]: Chase.
+                    - text: Sequoia Capital Podcast, 2026.
+                  - listitem [ref=e1634]:
+                    - text: "Agent Frameworks, Runtimes, and Harnesses:"
+                    - strong [ref=e1635]: "\"Agent Frameworks, Runtimes, and Harnesses\""
+                    - text: .
+                    - emphasis [ref=e1636]: LangChain.
+                    - text: LangChain Blog, 2025. [
+                    - link "Blog" [ref=e1637] [cursor=pointer]:
+                      - /url: https://blog.langchain.com/agent-frameworks-runtimes-and-harnesses-oh-my/
+                    - text: "]"
+                  - listitem [ref=e1638]:
+                    - text: "We Removed 80% of Our Agent's Tools:"
+                    - strong [ref=e1639]: "\"We Removed 80% of Our Agent's Tools\""
+                    - text: .
+                    - emphasis [ref=e1640]: Qu.
+                    - text: Vercel Engineering Blog, 2025. [
+                    - link "Blog" [ref=e1641] [cursor=pointer]:
+                      - /url: https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools
+                    - text: "]"
+                  - listitem [ref=e1642]:
+                    - text: "Harness Problem:"
+                    - strong [ref=e1643]: "\"I Improved 15 LLMs at Coding in One Afternoon. Only the Harness Changed.\""
+                    - text: .
+                    - emphasis [ref=e1644]: Can.
+                    - text: Personal blog (blog.can.ac), February 2026. [
+                    - link "Blog" [ref=e1645] [cursor=pointer]:
+                      - /url: https://blog.can.ac/2026/02/12/the-harness-problem/
+                    - text: "]"
+                  - listitem [ref=e1646]:
+                    - text: "AI Adoption Journey:"
+                    - strong [ref=e1647]: "\"My AI Adoption Journey\""
+                    - text: .
+                    - emphasis [ref=e1648]: Hashimoto.
+                    - text: Personal blog, February 2026. [
+                    - link "Blog" [ref=e1649] [cursor=pointer]:
+                      - /url: https://mitchellh.com/writing/my-ai-adoption-journey
+                    - text: "]"
+                  - listitem [ref=e1650]:
+                    - text: "The Harness Gap:"
+                    - strong [ref=e1651]: "\"The Harness Gap: AI Coding Output Rose 59% in 2025 While Teams Shipped 7% Less\""
+                    - text: .
+                    - emphasis [ref=e1652]: Zoom In AI.
+                    - text: Medium (Write A Catalyst), March 2026. [
+                    - link "Blog" [ref=e1653] [cursor=pointer]:
+                      - /url: https://medium.com/write-a-catalyst/the-harness-gap-ai-coding-output-rose-59-in-2025-while-teams-shipped-7-less-082d3d07cff8
+                    - text: "]"
+                  - listitem [ref=e1654]:
+                    - text: "Stripe Minions:"
+                    - strong [ref=e1655]: "\"Minions: Stripe's one-shot, end-to-end coding agents\""
+                    - text: .
+                    - emphasis [ref=e1656]: Gray.
+                    - text: Stripe Dev Blog, Feb 2026. [
+                    - link "Blog" [ref=e1657] [cursor=pointer]:
+                      - /url: https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents
+                    - text: "]"
+                  - listitem [ref=e1658]:
+                    - text: "Harness Engineering (OpenAI):"
+                    - strong [ref=e1659]: "\"Harness engineering: leveraging Codex in an agent-first world\""
+                    - text: .
+                    - emphasis [ref=e1660]: Lopopolo.
+                    - text: OpenAI Blog, Feb 2026. [
+                    - link "Blog" [ref=e1661] [cursor=pointer]:
+                      - /url: https://openai.com/index/harness-engineering/
+                    - text: "]"
+                  - listitem [ref=e1662]:
+                    - text: "Self-Driving Codebases:"
+                    - strong [ref=e1663]: "\"Towards self-driving codebases\""
+                    - text: .
+                    - emphasis [ref=e1664]: Lin.
+                    - text: Cursor Blog, Feb 2026. [
+                    - link "Blog" [ref=e1665] [cursor=pointer]:
+                      - /url: https://cursor.com/blog/self-driving-codebases
+                    - text: "]"
+                  - listitem [ref=e1666]:
+                    - text: "METR SWE-bench Analysis:"
+                    - strong [ref=e1667]: "\"Many SWE-bench-Passing PRs Would Not Be Merged into Main\""
+                    - text: .
+                    - emphasis [ref=e1668]: Whitfill et al.
+                    - text: METR Notes, Mar 2026. [
+                    - link "Report" [ref=e1669] [cursor=pointer]:
+                      - /url: https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/
+                    - text: "]"
+                - separator [ref=e1670]
+                - generic [ref=e1671]:
+                  - heading "Future Directions" [level=3] [ref=e1672]
+                  - 'link "Permalink: Future Directions" [ref=e1673] [cursor=pointer]':
+                    - /url: "#future-directions"
+                    - img [ref=e1674]
+                - paragraph [ref=e1676]: "Eight open research directions identified in the survey (no curated paper list — these are forward-looking):"
+                - list [ref=e1677]:
+                  - listitem [ref=e1678]:
+                    - strong [ref=e1679]: Formal Harness Specification Language
+                    - text: — DSL for specifying and verifying H=(E,T,C,S,L,V) components
+                  - listitem [ref=e1680]:
+                    - strong [ref=e1681]: Cross-Harness Benchmark Suite
+                    - text: — portability testing across incompatible harness ecosystems
+                  - listitem [ref=e1682]:
+                    - strong [ref=e1683]: Security Taxonomy & Threat Model
+                    - text: — extension of OWASP Top 10 to agent harness attack surfaces
+                  - listitem [ref=e1684]:
+                    - strong [ref=e1685]: Protocol Interoperability (MCP/A2A)
+                    - text: — bridging tool-level and agent-level protocols
+                  - listitem [ref=e1686]:
+                    - strong [ref=e1687]: Long-Horizon Evaluation Methodology
+                    - text: — metrics that don't degrade under multi-session, multi-day tasks
+                  - listitem [ref=e1688]:
+                    - strong [ref=e1689]: Harness-Aware Fine-Tuning
+                    - text: — training models that are aware of their execution environment
+                  - listitem [ref=e1690]:
+                    - strong [ref=e1691]: Memory Interface Standardization
+                    - text: — portable memory APIs across flat, episodic, and graph stores
+                  - listitem [ref=e1692]:
+                    - strong [ref=e1693]: Harness Transparency Specification
+                    - text: — auditability and explainability for runtime decisions
+                - separator [ref=e1694]
+                - generic [ref=e1695]:
+                  - heading "Citation" [level=2] [ref=e1696]
+                  - 'link "Permalink: Citation" [ref=e1697] [cursor=pointer]':
+                    - /url: "#citation"
+                    - img [ref=e1698]
+                - paragraph [ref=e1700]: See BibTeX at the top of this README.
+                - separator [ref=e1701]
+                - generic [ref=e1702]:
+                  - heading "Update Log" [level=2] [ref=e1703]
+                  - 'link "Permalink: Update Log" [ref=e1704] [cursor=pointer]':
+                    - /url: "#update-log"
+                    - img [ref=e1705]
+                - table [ref=e1708]:
+                  - rowgroup [ref=e1709]:
+                    - row "Version Date Changes" [ref=e1710]:
+                      - columnheader "Version" [ref=e1711]
+                      - columnheader "Date" [ref=e1712]
+                      - columnheader "Changes" [ref=e1713]
+                  - rowgroup [ref=e1714]:
+                    - row "v1 2026-04-03 Initial release" [ref=e1715]:
+                      - cell "v1" [ref=e1716]
+                      - cell "2026-04-03" [ref=e1717]
+                      - cell "Initial release" [ref=e1718]
+                    - row "v2 2026-04-07 Repo updated" [ref=e1719]:
+                      - cell "v2" [ref=e1720]
+                      - cell "2026-04-07" [ref=e1721]
+                      - cell "Repo updated" [ref=e1722]
+                    - row "v3 2026-04-09 Preprint added" [ref=e1723]:
+                      - cell "v3" [ref=e1724]
+                      - cell "2026-04-09" [ref=e1725]
+                      - cell "Preprint added" [ref=e1726]
+                    - row "v4 2026-04-14 Citation Updated" [ref=e1727]:
+                      - cell "v4" [ref=e1728]
+                      - cell "2026-04-14" [ref=e1729]
+                      - cell "Citation Updated" [ref=e1730]
+                - separator [ref=e1731]
+                - paragraph [ref=e1732]:
+                  - text: † denotes preprint, not yet peer-reviewed.
+                  - text: This survey is under active development; the full manuscript will be released soon.
+                  - text: Maintained by Qianyu Meng & Liyi Chen. PRs welcome for missing papers or updated links.
+        - generic [ref=e1736]:
+          - generic [ref=e1739]:
+            - heading "About" [level=2] [ref=e1740]
+            - paragraph [ref=e1741]: "Agent Harness for Large Language Model Agents: A Survey. Survey on LLM agentharnessengineering with a taxonomy. 110+papers, 23 systems analyzed."
+            - heading "Topics" [level=3] [ref=e1742]
+            - generic [ref=e1744]:
+              - link "agent" [ref=e1745] [cursor=pointer]:
+                - /url: /topics/agent
+              - link "awesome-list" [ref=e1746] [cursor=pointer]:
+                - /url: /topics/awesome-list
+              - link "harness" [ref=e1747] [cursor=pointer]:
+                - /url: /topics/harness
+              - link "agent-framework" [ref=e1748] [cursor=pointer]:
+                - /url: /topics/agent-framework
+              - link "llm" [ref=e1749] [cursor=pointer]:
+                - /url: /topics/llm
+              - link "agent-harness" [ref=e1750] [cursor=pointer]:
+                - /url: /topics/agent-harness
+              - link "harness-engineering" [ref=e1751] [cursor=pointer]:
+                - /url: /topics/harness-engineering
+            - heading "Resources" [level=3] [ref=e1752]
+            - link "Readme" [ref=e1754] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e1755]
+              - text: Readme
+            - heading "License" [level=3] [ref=e1757]
+            - link "CC-BY-4.0 license" [ref=e1759] [cursor=pointer]:
+              - /url: "#CC-BY-4.0-1-ov-file"
+              - img [ref=e1760]
+              - text: CC-BY-4.0 license
+            - link "Activity" [ref=e1763] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/activity
+              - img [ref=e1764]
+              - text: Activity
+            - heading "Stars" [level=3] [ref=e1766]
+            - link "250 stars" [ref=e1768] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/stargazers
+              - img [ref=e1769]
+              - strong [ref=e1771]: "250"
+              - text: stars
+            - heading "Watchers" [level=3] [ref=e1772]
+            - link "3 watching" [ref=e1774] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/watchers
+              - img [ref=e1775]
+              - strong [ref=e1777]: "3"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e1778]
+            - link "8 forks" [ref=e1780] [cursor=pointer]:
+              - /url: /Gloriaameng/Awesome-Agent-Harness/forks
+              - img [ref=e1781]
+              - strong [ref=e1783]: "8"
+              - text: forks
+            - link "Report repository" [ref=e1785] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2FGloriaameng%2FAwesome-Agent-Harness&report=Gloriaameng+%28user%29
+          - generic [ref=e1787]:
+            - heading "Releases" [level=2] [ref=e1788]:
+              - link "Releases" [ref=e1789] [cursor=pointer]:
+                - /url: /Gloriaameng/Awesome-Agent-Harness/releases
+            - generic [ref=e1790]: No releases published
+          - generic [ref=e1792]:
+            - heading "Packages" [level=2] [ref=e1793]:
+              - link "Packages" [ref=e1794] [cursor=pointer]:
+                - /url: /users/Gloriaameng/packages?repo_name=Awesome-Agent-Harness
+            - generic [ref=e1795]: No packages published
+          - generic [ref=e1797]:
+            - heading "Contributors 1" [level=2] [ref=e1798]:
+              - link "Contributors 1" [ref=e1799] [cursor=pointer]:
+                - /url: /Gloriaameng/Awesome-Agent-Harness/graphs/contributors
+                - text: Contributors
+                - generic "1" [ref=e1800]
+            - list [ref=e1801]:
+              - listitem [ref=e1802]:
+                - link "@Gloriaameng" [ref=e1803] [cursor=pointer]:
+                  - /url: https://github.com/Gloriaameng
+                  - img "@Gloriaameng" [ref=e1804]
+                - link "Gloriaameng Qianyu Meng" [ref=e1806] [cursor=pointer]:
+                  - /url: https://github.com/Gloriaameng
+                  - strong [ref=e1807]: Gloriaameng
+                  - text: Qianyu Meng
+  - contentinfo [ref=e1809]:
+    - heading "Footer" [level=2] [ref=e1810]
+    - generic [ref=e1811]:
+      - generic [ref=e1812]:
+        - link "GitHub Homepage" [ref=e1813] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1814]
+        - generic [ref=e1816]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1817]:
+        - heading "Footer navigation" [level=3] [ref=e1818]
+        - list "Footer navigation" [ref=e1819]:
+          - listitem [ref=e1820]:
+            - link "Terms" [ref=e1821] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1822]:
+            - link "Privacy" [ref=e1823] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1824]:
+            - link "Security" [ref=e1825] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1826]:
+            - link "Status" [ref=e1827] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1828]:
+            - link "Community" [ref=e1829] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1830]:
+            - link "Docs" [ref=e1831] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1832]:
+            - link "Contact" [ref=e1833] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1834]:
+            - button "Manage cookies" [ref=e1836] [cursor=pointer]
+          - listitem [ref=e1837]:
+            - button "Do not share my personal information" [ref=e1839] [cursor=pointer]
