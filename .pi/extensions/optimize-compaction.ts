@@ -504,8 +504,8 @@ function updateExternalMemory(
 // ============================================================================
 
 export default function (pi: ExtensionAPI) {
-  let pruningConfig: PruningConfig = { ...DEFAULT_PRUNING };
-  let compactionConfig: CompactionConfig = { ...DEFAULT_COMPACTION };
+  const pruningConfig: PruningConfig = { ...DEFAULT_PRUNING };
+  const compactionConfig: CompactionConfig = { ...DEFAULT_COMPACTION };
   let firstUserMessage: string | null = null;
 
   // Capture the first user message

@@ -1,0 +1,265 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fissues%2F21409
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,897" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113565 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,048" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e149]:
+      - region "Header" [ref=e151]:
+        - generic [ref=e152]:
+          - 'heading "Claude_et_Bruno_IA_Portable/cerveau/ #21409" [level=1] [ref=e154]':
+            - text: Claude_et_Bruno_IA_Portable/cerveau/
+            - generic [ref=e156]: "#21409"
+          - generic [ref=e158]:
+            - button "New issue" [ref=e160] [cursor=pointer]:
+              - generic [ref=e162]: New issue
+            - button "Copy link" [ref=e163] [cursor=pointer]:
+              - img [ref=e164]
+      - generic [ref=e172]:
+        - img "Issue, not planned" [ref=e173]
+        - text: Closed as not planned
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - generic [ref=e179]:
+            - link "@Burncastoon23's profile" [ref=e181] [cursor=pointer]:
+              - /url: https://github.com/Burncastoon23
+              - img "@Burncastoon23" [ref=e182]
+            - generic [ref=e183]:
+              - heading "Description" [level=2] [ref=e184]
+              - generic [ref=e186]:
+                - generic [ref=e188]:
+                  - generic [ref=e189]:
+                    - link "Burncastoon23" [ref=e191] [cursor=pointer]:
+                      - /url: https://github.com/Burncastoon23
+                    - generic [ref=e192]:
+                      - text: opened
+                      - link "on Apr 4, 2026on Apr 4" [ref=e193] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/21409#issue-4203437898
+                        - generic "Apr 4, 2026, 12:17 AM EDT" [ref=e194]: on Apr 4, 2026on Apr 4
+                  - button "Issue body actions" [ref=e198] [cursor=pointer]:
+                    - img [ref=e199]
+                - generic [ref=e201]:
+                  - paragraph [ref=e204]: llama-cpp-python puis lanceur_universel.py
+                  - generic:
+                    - toolbar "Reactions"
+          - generic [ref=e206]:
+            - generic [ref=e207]:
+              - heading "Activity" [level=2] [ref=e208]
+              - region "Events" [ref=e210]:
+                - generic [ref=e217]:
+                  - img [ref=e221]
+                  - generic [ref=e225]:
+                    - link "taronaeo" [ref=e227] [cursor=pointer]:
+                      - /url: /taronaeo
+                      - generic [ref=e228]: taronaeo
+                    - text: closed this as
+                    - link "not planned" [ref=e229] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/issues?q=is%3Aissue%20state%3Aclosed%20archived%3Afalse%20reason%3Anot-planned
+                    - link "on Apr 4, 2026on Apr 4" [ref=e230] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp/issues/21409#event-24194598530
+                      - generic "Apr 4, 2026, 3:53 AM EDT" [ref=e231]: on Apr 4, 2026on Apr 4
+            - generic [ref=e232]:
+              - link "Sign up for free" [ref=e233] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ggml-org/llama.cpp/issues/21409
+                - generic [ref=e235]: Sign up for free
+              - generic [ref=e236]:
+                - strong [ref=e237]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e238] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ggml-org/llama.cpp/issues/21409
+        - generic [ref=e240]:
+          - heading "Metadata" [level=2] [ref=e241]
+          - generic [ref=e243]:
+            - generic [ref=e245]:
+              - generic [ref=e246]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e247]: No one assigned
+            - generic [ref=e249]:
+              - generic [ref=e250]:
+                - heading "Labels" [level=3]
+              - generic [ref=e251]: No labels
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - heading "Type" [level=3]
+              - generic [ref=e255]: No type
+            - generic [ref=e256]:
+              - generic [ref=e258]:
+                - heading "Fields" [level=3] [ref=e259]
+                - link "Give feedback" [ref=e260] [cursor=pointer]:
+                  - /url: https://github.com/orgs/community/discussions/189141
+              - generic [ref=e262]: No fields configured for issues without a type.
+            - generic [ref=e264]:
+              - generic [ref=e265]:
+                - heading "Projects" [level=3]
+              - generic [ref=e266]: No projects
+            - generic [ref=e268]:
+              - generic [ref=e269]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e270]: No milestone
+            - generic [ref=e272]:
+              - generic [ref=e273]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e274]: None yet
+            - generic [ref=e276]:
+              - generic [ref=e277]:
+                - heading "Development" [level=3]
+              - generic [ref=e278]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e279]
+            - list
+  - contentinfo [ref=e280]:
+    - heading "Footer" [level=2] [ref=e281]
+    - generic [ref=e282]:
+      - generic [ref=e283]:
+        - link "GitHub Homepage" [ref=e284] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e285]
+        - generic [ref=e287]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e288]:
+        - heading "Footer navigation" [level=3] [ref=e289]
+        - list "Footer navigation" [ref=e290]:
+          - listitem [ref=e291]:
+            - link "Terms" [ref=e292] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e293]:
+            - link "Privacy" [ref=e294] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e295]:
+            - link "Security" [ref=e296] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e297]:
+            - link "Status" [ref=e298] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e299]:
+            - link "Community" [ref=e300] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e301]:
+            - link "Docs" [ref=e302] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e303]:
+            - link "Contact" [ref=e304] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e305]:
+            - button "Manage cookies" [ref=e307] [cursor=pointer]
+          - listitem [ref=e308]:
+            - button "Do not share my personal information" [ref=e310] [cursor=pointer]

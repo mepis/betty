@@ -1,0 +1,796 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F17621
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fdiscussions_fragments%2Fdiscussion_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,897" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113565 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,048" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e145]:
+      - generic [ref=e152]:
+        - 'heading "Optimizing Token Generation in llama.cpp''s CUDA Backend #17621" [level=1] [ref=e153]'
+        - generic [ref=e155]:
+          - link "am17an" [ref=e156] [cursor=pointer]:
+            - /url: /am17an
+          - text: started this conversation in
+          - link "Show and tell" [ref=e157] [cursor=pointer]:
+            - /url: /ggml-org/llama.cpp/discussions/categories/show-and-tell
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - generic [ref=e165]:
+            - generic [ref=e167]:
+              - button "Discussion options" [ref=e172] [cursor=pointer]:
+                - img
+              - button "edited" [ref=e177] [cursor=pointer]:
+                - generic [ref=e179]: edited
+                - generic:
+                  - img
+              - heading "am17an Nov 30, 2025on Nov 30, 2025 Collaborator" [level=2] [ref=e180]:
+                - generic [ref=e181]:
+                  - link "am17an" [ref=e182] [cursor=pointer]:
+                    - /url: /am17an
+                    - img [ref=e183]
+                    - generic [ref=e185]: am17an
+                  - link "Nov 30, 2025on Nov 30, 2025" [ref=e186] [cursor=pointer]:
+                    - /url: "#discussion-9192805"
+                  - generic "This user is a collaborator on this repository." [ref=e188]: Collaborator
+            - generic [ref=e190]:
+              - generic [ref=e191]:
+                - paragraph [ref=e192]: "LLM inference is divided into 2 phases: prompt-processing (PP) and token-generation (TG). Prompt processing is when entire prompt is fed through the model, whereas token-generation is when the model starts outputting one token at a time. These are different workloads, for decoder-only auto-regressive LLMs PP is compute-bound and TG is memory-bound."
+                - paragraph [ref=e193]: This post covers optimizations for TG using kernel fusion and concurrent streams in the CUDA backend for llama.cpp. Other backends also do fusion but differently, and the rest of this post assumes the CUDA backend. This post is lightly technical with links to PRs for people who want to go into further detail.
+                - paragraph [ref=e194]: I ran tests on 4090 and 5090 with baseline as these optimizations disabled.
+                - paragraph [ref=e195]:
+                  - code [ref=e196]: GGML_CUDA_GRAPH_OPT=1 ./llama-bench -m qwen3_30b_qk_m.gguf,gpt_oss_20b-mxfp4.gguf -fa 1 -p 0
+                - table [ref=e198]:
+                  - rowgroup [ref=e199]:
+                    - row "model device size params backend ngl fa test t/s" [ref=e200]:
+                      - columnheader "model" [ref=e201]
+                      - columnheader "device" [ref=e202]
+                      - columnheader "size" [ref=e203]
+                      - columnheader "params" [ref=e204]
+                      - columnheader "backend" [ref=e205]
+                      - columnheader "ngl" [ref=e206]
+                      - columnheader "fa" [ref=e207]
+                      - columnheader "test" [ref=e208]
+                      - columnheader "t/s" [ref=e209]
+                  - rowgroup [ref=e210]:
+                    - row "qwen3moe 30B.A3B Q4_K - Medium RTX 5090 17.28 GiB 30.53 B CUDA 99 1 tg128 352.06 ± 1.76" [ref=e211]:
+                      - cell "qwen3moe 30B.A3B Q4_K - Medium" [ref=e212]
+                      - cell "RTX 5090" [ref=e213]
+                      - cell "17.28 GiB" [ref=e214]
+                      - cell "30.53 B" [ref=e215]
+                      - cell "CUDA" [ref=e216]
+                      - cell "99" [ref=e217]
+                      - cell "1" [ref=e218]
+                      - cell "tg128" [ref=e219]
+                      - cell "352.06 ± 1.76" [ref=e220]
+                    - row "gpt-oss 20B MXFP4 MoE RTX 5090 11.27 GiB 20.91 B CUDA 99 1 tg128 419.14 ± 0.89" [ref=e221]:
+                      - cell "gpt-oss 20B MXFP4 MoE" [ref=e222]
+                      - cell "RTX 5090" [ref=e223]
+                      - cell "11.27 GiB" [ref=e224]
+                      - cell "20.91 B" [ref=e225]
+                      - cell "CUDA" [ref=e226]
+                      - cell "99" [ref=e227]
+                      - cell "1" [ref=e228]
+                      - cell "tg128" [ref=e229]
+                      - cell "419.14 ± 0.89" [ref=e230]
+                    - row "qwen3moe 30B.A3B Q4_K - Medium RTX 4090 17.28 GiB 30.53 B CUDA 99 1 tg128 271.04 ± 0.65" [ref=e231]:
+                      - cell "qwen3moe 30B.A3B Q4_K - Medium" [ref=e232]
+                      - cell "RTX 4090" [ref=e233]
+                      - cell "17.28 GiB" [ref=e234]
+                      - cell "30.53 B" [ref=e235]
+                      - cell "CUDA" [ref=e236]
+                      - cell "99" [ref=e237]
+                      - cell "1" [ref=e238]
+                      - cell "tg128" [ref=e239]
+                      - cell "271.04 ± 0.65" [ref=e240]
+                    - row "gpt-oss 20B MXFP4 MoE RTX 4090 11.27 GiB 20.91 B CUDA 99 1 tg128 271.99 ± 0.53" [ref=e241]:
+                      - cell "gpt-oss 20B MXFP4 MoE" [ref=e242]
+                      - cell "RTX 4090" [ref=e243]
+                      - cell "11.27 GiB" [ref=e244]
+                      - cell "20.91 B" [ref=e245]
+                      - cell "CUDA" [ref=e246]
+                      - cell "99" [ref=e247]
+                      - cell "1" [ref=e248]
+                      - cell "tg128" [ref=e249]
+                      - cell "271.99 ± 0.53" [ref=e250]
+                - paragraph [ref=e251]:
+                  - text: vs baseline
+                  - code [ref=e252]: GGML_CUDA_DISABLE_FUSION=1 GGML_CUDA_GRAPH_OPT=0 ./llama-bench -m qwen3_30b_qk_m.gguf,gpt_oss_20b-mxfp4.gguf -fa 1 -p 0
+                - table [ref=e254]:
+                  - rowgroup [ref=e255]:
+                    - row "model device size params backend ngl fa test t/s" [ref=e256]:
+                      - columnheader "model" [ref=e257]
+                      - columnheader "device" [ref=e258]
+                      - columnheader "size" [ref=e259]
+                      - columnheader "params" [ref=e260]
+                      - columnheader "backend" [ref=e261]
+                      - columnheader "ngl" [ref=e262]
+                      - columnheader "fa" [ref=e263]
+                      - columnheader "test" [ref=e264]
+                      - columnheader "t/s" [ref=e265]
+                  - rowgroup [ref=e266]:
+                    - row "qwen3moe 30B.A3B Q4_K - Medium RTX 5090 17.28 GiB 30.53 B CUDA 99 1 tg128 246.96 ± 0.31" [ref=e267]:
+                      - cell "qwen3moe 30B.A3B Q4_K - Medium" [ref=e268]
+                      - cell "RTX 5090" [ref=e269]
+                      - cell "17.28 GiB" [ref=e270]
+                      - cell "30.53 B" [ref=e271]
+                      - cell "CUDA" [ref=e272]
+                      - cell "99" [ref=e273]
+                      - cell "1" [ref=e274]
+                      - cell "tg128" [ref=e275]
+                      - cell "246.96 ± 0.31" [ref=e276]
+                    - row "gpt-oss 20B MXFP4 MoE RTX 5090 11.27 GiB 20.91 B CUDA 99 1 tg128 329.23 ± 0.16" [ref=e277]:
+                      - cell "gpt-oss 20B MXFP4 MoE" [ref=e278]
+                      - cell "RTX 5090" [ref=e279]
+                      - cell "11.27 GiB" [ref=e280]
+                      - cell "20.91 B" [ref=e281]
+                      - cell "CUDA" [ref=e282]
+                      - cell "99" [ref=e283]
+                      - cell "1" [ref=e284]
+                      - cell "tg128" [ref=e285]
+                      - cell "329.23 ± 0.16" [ref=e286]
+                    - row "qwen3moe 30B.A3B Q4_K - Medium RTX 4090 17.28 GiB 30.53 B CUDA 99 1 tg128 198.39 ± 0.05" [ref=e287]:
+                      - cell "qwen3moe 30B.A3B Q4_K - Medium" [ref=e288]
+                      - cell "RTX 4090" [ref=e289]
+                      - cell "17.28 GiB" [ref=e290]
+                      - cell "30.53 B" [ref=e291]
+                      - cell "CUDA" [ref=e292]
+                      - cell "99" [ref=e293]
+                      - cell "1" [ref=e294]
+                      - cell "tg128" [ref=e295]
+                      - cell "198.39 ± 0.05" [ref=e296]
+                    - row "gpt-oss 20B MXFP4 MoE RTX 4090 11.27 GiB 20.91 B CUDA 99 1 tg128 232.05 ± 0.02" [ref=e297]:
+                      - cell "gpt-oss 20B MXFP4 MoE" [ref=e298]
+                      - cell "RTX 4090" [ref=e299]
+                      - cell "11.27 GiB" [ref=e300]
+                      - cell "20.91 B" [ref=e301]
+                      - cell "CUDA" [ref=e302]
+                      - cell "99" [ref=e303]
+                      - cell "1" [ref=e304]
+                      - cell "tg128" [ref=e305]
+                      - cell "232.05 ± 0.02" [ref=e306]
+                - paragraph [ref=e307]:
+                  - text: According to my rough napkin math
+                  - superscript [ref=e308]:
+                    - link "[1]" [ref=e309] [cursor=pointer]:
+                      - /url: "#user-content-fn-1-859ceba944c029c61990321fbf17a6c4"
+                  - text: ", the theoretical speed-of-light for"
+                  - code [ref=e310]: gpt-oss-20b
+                  - text: on a 5090 is ~520 t/s, and we are able to reach ~419 t/s (~80%), although speedups are more modest as context size grows.
+                - paragraph [ref=e311]:
+                  - text: Most of the optimizations are enabled by default in llama.cpp, concurrent streams is enabled via an environment flag
+                  - code [ref=e312]: GGML_CUDA_GRAPH_OPT=1
+                  - text: (note that this particular optimization only works for a single GPU at the moment, also note that this has nothing to with CUDA Graphs)
+                - heading "Kernel Fusion" [level=2] [ref=e313]
+                - paragraph [ref=e314]: Fusing kernels reduces memory traffic and kernel launch time. Since TG is memory-bound, kernel fusion helps there the most. From experience fusion is the most useful when we have high memory bandwidth, conversely the results are not as great when the bandwidth is low.
+                - paragraph [ref=e315]: Note that some fusion will increase register pressure and generally leads to more complex kernels, so it's not always worth doing.
+                - paragraph [ref=e316]:
+                  - text: llama.cpp's backend is based on ggml, a low level tensor library. ggml offers a lot of flexibility to backends via its cgraph (compute graph) interface. After upfront tensor allocation and initial graph ordering, it passes control to individual backends to compute the graph. The graph itself is composed of
+                  - code [ref=e317]: ggml_tensor
+                  - text: s, which contain all the information required for fusion.
+                - paragraph [ref=e318]: "The backends are then responsible for fusion. The CUDA backend inspects order of operations and decides whether to fuse a bunch of individual kernels. This pattern can be described in pseudo-code:"
+                - generic [ref=e319]:
+                  - code [ref=e321]: "for (int i = 0; i < graph->n_nodes; ++i) { if (can_fuse(graph, i, FUSION_PATTERN)) { replace_nodes_with_kernel(graph, i, FUSION); i += SKIP_NODES; // Skip the nodes we just absorbed } }"
+                  - button "Copy code to clipboard" [ref=e323] [cursor=pointer]:
+                    - img [ref=e324]
+                - paragraph [ref=e327]:
+                  - text: In ggml-cuda, the relevant portions start from
+                  - link "here" [ref=e328] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/blob/fa0465954faef9d7170b967ad89f8bc5303a32f3/ggml/src/ggml-cuda/ggml-cuda.cu#L3294
+                - paragraph [ref=e329]: "Looking at the order of nodes, one can identify opportunities for fusion. Something which is commonly used in a lot of models is usually a good candidate. The following are the most effective fusions that the CUDA backend does at the moment:"
+                - heading "GEMV fusion" [level=3] [ref=e330]
+                - paragraph [ref=e331]:
+                  - text: Matrix-vector multiplication is used instead of matrix-matrix multiplication during TG as we operate on 1 token at a time. We identify operations where
+                  - code [ref=e332]: MUL_MAT
+                  - text: follows an
+                  - code [ref=e333]: ADD
+                  - text: or more interestingly, when there is a gated activation i.e. the operation
+                  - math [ref=e335]:
+                    - generic [ref=e336]: o
+                    - generic [ref=e337]: =
+                    - generic [ref=e338]: σ
+                    - generic [ref=e339]: (
+                    - generic [ref=e340]:
+                      - generic [ref=e341]: W
+                      - generic [ref=e342]:
+                        - generic [ref=e343]: g
+                        - generic [ref=e344]: a
+                        - generic [ref=e345]: t
+                        - generic [ref=e346]: e
+                    - generic [ref=e347]: X
+                    - generic [ref=e348]: )
+                    - generic [ref=e349]: ⊙
+                    - generic [ref=e350]:
+                      - generic [ref=e351]: W
+                      - generic [ref=e352]:
+                        - generic [ref=e353]: u
+                        - generic [ref=e354]: p
+                    - generic [ref=e355]: X
+                  - text: ", so we can re-use the X activation and multiply by both matrices. More details"
+                  - link "here" [ref=e356] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/16715
+                - heading "TopK-MoE" [level=3] [ref=e357]
+                - paragraph [ref=e358]:
+                  - text: This is the common scoring algorithm in MoE models to select expert weights per token. This usually involves a soft-max over the logits per expert, then a top-k selection for the experts for the sparse MoE matrix multiplication (called MUL_MAT_ID in ggml). More details
+                  - link "here" [ref=e359] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/16130
+                - heading "Fused RMS Norm" [level=3] [ref=e360]
+                - paragraph [ref=e361]:
+                  - text: This is a relatively simple one, usually
+                  - code [ref=e362]: RMS_NORM
+                  - text: follows a
+                  - code [ref=e363]: MUL
+                  - text: and optionally an
+                  - code [ref=e364]: ADD
+                  - text: . We just do everything in the same kernel. More details
+                  - link "here" [ref=e365] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/14800
+                  - text: .
+                - paragraph [ref=e366]:
+                  - text: Others include fusing
+                  - link "adds" [ref=e367] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/15631
+                  - text: ", fusing the"
+                  - link "softcap" [ref=e368] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/14907
+                  - text: operation.
+                - heading "Concurrent CUDA Streams" [level=2] [ref=e369]
+                - blockquote [ref=e370]:
+                  - paragraph [ref=e371]:
+                    - text: "Note: At the moment to run this you need to supply the env variable"
+                    - code [ref=e372]: GGML_CUDA_GRAPH_OPT=1
+                    - text: .
+                - paragraph [ref=e373]:
+                  - text: Since query (Q), key (K), and value(V) projections in the attention block are independent of each other prior to calculating the attention scores, we can run them independently using CUDA streams. This is better explained with a NSight diagram.
+                  - link "qkv concurrent streams" [ref=e374] [cursor=pointer]:
+                    - /url: https://private-user-images.githubusercontent.com/2929750/520493863-c460d4c4-d105-40f5-9aff-090036c9f204.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAwMjE5MzAsIm5iZiI6MTc4MDAyMTYzMCwicGF0aCI6Ii8yOTI5NzUwLzUyMDQ5Mzg2My1jNDYwZDRjNC1kMTA1LTQwZjUtOWFmZi0wOTAwMzZjOWYyMDQucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MjlUMDIyNzEwWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9Mzk2ZGQ2N2UxMmEzMWE5YzNmYWRhMDY1NDI5MTIwMjhlNzA0YWE1ZTQ5NGZkZTVhNjcwYzdiZWQ1ZTc5MDJjZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.mbxiiDi7E2I5MrnnevSOtNRfFUAzZpBrSQpZtPqSlUM
+                    - img "qkv concurrent streams" [ref=e375]
+                - paragraph [ref=e376]:
+                  - text: The ggml graph allocator optimizes for memory footprint by reusing 'expired' buffers immediately. In a multi-stream context, 'expired' is ambiguous, leading to race conditions where Stream B overwrites Stream A's input. This is currently "solved" via interleaving the graph nodes to extend their lifetime. There will be a better long-term fix in ggml to allow for such scenarios. More details
+                  - link "here" [ref=e377] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/pull/16991
+                - heading "Conclusion" [level=2] [ref=e378]
+                - paragraph [ref=e379]: Although none of these PRs increase the TG by more than 10%, taking them all altogether we get a nice speedup.
+                - heading "Acknowledgements" [level=2] [ref=e380]
+                - paragraph [ref=e381]:
+                  - link "Johannes" [ref=e382] [cursor=pointer]:
+                    - /url: https://github.com/JohannesGaessler
+                  - text: ","
+                  - link "Jeff" [ref=e383] [cursor=pointer]:
+                    - /url: https://github.com/jeffbolznv
+                  - text: ","
+                  - link "Georgi" [ref=e384] [cursor=pointer]:
+                    - /url: https://github.com/ggerganov
+                  - text: ","
+                  - link "Oliver" [ref=e385] [cursor=pointer]:
+                    - /url: https://github.com/ORippler
+                  - text: ","
+                  - link "Sigbjørn" [ref=e386] [cursor=pointer]:
+                    - /url: https://github.com/CISC
+                - generic [ref=e387]:
+                  - heading "Footnotes" [level=2] [ref=e388]
+                  - list [ref=e389]:
+                    - listitem [ref=e390]:
+                      - paragraph [ref=e391]:
+                        - text: speed-of-light (SoL)
+                        - link "napkin math" [ref=e392] [cursor=pointer]:
+                          - /url: https://gist.github.com/am17an/6833d30230b877c93abf33ca12a07937
+                        - link "Back to reference 1" [ref=e393] [cursor=pointer]:
+                          - /url: "#user-content-fnref-1-859ceba944c029c61990321fbf17a6c4"
+                          - text: ↩
+              - generic [ref=e396]:
+                - 'button "Upvote: 17" [disabled] [ref=e400]':
+                  - img [ref=e401]
+                  - generic [ref=e403]: "17"
+                - generic [ref=e406]:
+                  - button "+1 3" [disabled] [ref=e407]:
+                    - img "+1" [ref=e409]
+                    - generic [ref=e410]: "3"
+                  - button "tada 6" [disabled] [ref=e411]:
+                    - img "tada" [ref=e413]
+                    - generic [ref=e414]: "6"
+                  - button "heart 1" [disabled] [ref=e415]:
+                    - img "heart" [ref=e417]
+                    - generic [ref=e418]: "1"
+                  - button "rocket 10" [disabled] [ref=e419]:
+                    - img "rocket" [ref=e421]
+                    - generic [ref=e422]: "10"
+                  - button "eyes 2" [disabled] [ref=e423]:
+                    - img "eyes" [ref=e425]
+                    - generic [ref=e426]: "2"
+          - generic [ref=e427]:
+            - generic [ref=e428]:
+              - 'heading "Replies: 2 comments 5 replies" [level=2] [ref=e430]':
+                - generic [ref=e431]: "Replies:"
+                - text: 2 comments · 5 replies
+              - navigation "Sort comments" [ref=e432]:
+                - list "Sort comments" [ref=e434]:
+                  - listitem [ref=e435]:
+                    - link "Oldest" [ref=e436] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/17621?sort=old
+                      - generic [ref=e438]: Oldest
+                  - listitem [ref=e439]:
+                    - link "Newest" [ref=e440] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/17621?sort=new
+                      - generic [ref=e442]: Newest
+                  - listitem [ref=e443]:
+                    - link "Top" [ref=e444] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/17621?sort=top
+                      - generic [ref=e446]: Top
+            - generic [ref=e452]:
+              - generic [ref=e454]:
+                - button "Comment options" [ref=e459] [cursor=pointer]:
+                  - img
+                - heading "CISC Nov 30, 2025on Nov 30, 2025 Collaborator" [level=3] [ref=e460]:
+                  - generic [ref=e461]:
+                    - link "CISC" [ref=e462] [cursor=pointer]:
+                      - /url: /CISC
+                      - img [ref=e463]
+                      - generic [ref=e465]: CISC
+                    - link "Nov 30, 2025on Nov 30, 2025" [ref=e466] [cursor=pointer]:
+                      - /url: "#discussioncomment-15116648"
+                    - generic "This user is a collaborator on this repository." [ref=e468]: Collaborator
+              - generic [ref=e470]:
+                - paragraph [ref=e472]: The NSight diagram link doesn't work (also took the liberty to edit my name since everyone else was on a first-name basis). :)
+                - generic [ref=e474]:
+                  - 'button "Upvote: 3" [disabled] [ref=e479]':
+                    - img [ref=e480]
+                    - generic [ref=e482]: "3"
+                  - generic [ref=e483]: 1 reply
+              - generic [ref=e485]:
+                - link "@am17an" [ref=e487] [cursor=pointer]:
+                  - /url: /am17an
+                  - img "@am17an" [ref=e488]
+                - generic [ref=e492]:
+                  - generic [ref=e494]:
+                    - button "Comment options" [ref=e499] [cursor=pointer]:
+                      - img
+                    - heading "am17an Nov 30, 2025on Nov 30, 2025 Collaborator Author" [level=4] [ref=e500]:
+                      - generic [ref=e501]:
+                        - link "am17an" [ref=e502] [cursor=pointer]:
+                          - /url: /am17an
+                        - link "Nov 30, 2025on Nov 30, 2025" [ref=e503] [cursor=pointer]:
+                          - /url: "#discussioncomment-15116890"
+                        - generic [ref=e504]:
+                          - generic "This user is a collaborator on this repository." [ref=e505]: Collaborator
+                          - generic "This user is the author of this discussion." [ref=e506]: Author
+                  - generic [ref=e508]:
+                    - paragraph [ref=e510]: Fixed, and I always thought your first name was CISC! (just kidding...)
+                    - button "smile 4" [disabled] [ref=e517]:
+                      - img "smile" [ref=e519]
+                      - generic [ref=e520]: "4"
+            - generic [ref=e526]:
+              - generic [ref=e528]:
+                - button "Comment options" [ref=e533] [cursor=pointer]:
+                  - img
+                - button "edited" [ref=e538] [cursor=pointer]:
+                  - generic [ref=e540]: edited
+                  - generic:
+                    - img
+                - heading "coder543 Jan 1, 2026on Jan 1" [level=3] [ref=e541]:
+                  - generic [ref=e542]:
+                    - link "coder543" [ref=e543] [cursor=pointer]:
+                      - /url: /coder543
+                      - img [ref=e544]
+                      - generic [ref=e546]: coder543
+                    - link "Jan 1, 2026on Jan 1" [ref=e547] [cursor=pointer]:
+                      - /url: "#discussioncomment-15387339"
+              - generic [ref=e549]:
+                - generic [ref=e550]:
+                  - paragraph [ref=e551]: I think your napkin math for the theoretical limit could be a little pessimistic.
+                  - generic [ref=e552]:
+                    - code [ref=e554]: "$ llama-bench -m ggml-gpt-oss-20b-mxfp4.gguf -ngl 999 -fa 1 -p 2048 -n 32 -mmp 0 -r 5 ggml_cuda_init: GGML_CUDA_FORCE_MMQ: no ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no ggml_cuda_init: found 1 CUDA devices: Device 0: NVIDIA GB10, compute capability 12.1, VMM: yes | model | size | params | backend | ngl | fa | mmap | test | t/s | | ------------------------------ | ---------: | ---------: | ---------- | --: | -: | ---: | --------------: | -------------------: | | gpt-oss 20B MXFP4 MoE | 11.27 GiB | 20.91 B | CUDA | 999 | 1 | 0 | pp2048 | 4317.51 ± 29.87 | | gpt-oss 20B MXFP4 MoE | 11.27 GiB | 20.91 B | CUDA | 999 | 1 | 0 | tg32 | 86.06 ± 0.64 |"
+                    - button "Copy code to clipboard" [ref=e556] [cursor=pointer]:
+                      - img [ref=e557]
+                  - paragraph [ref=e560]:
+                    - text: With 273GB/s / 3.45GB, this would only yield 79 tokens per second
+                    - emphasis [ref=e561]: theoretical
+                    - text: ", but I'm seeing 86 in practice using the"
+                    - code [ref=e562]: ggml-org
+                    - text: quant of
+                    - code [ref=e563]: gpt-oss-20b
+                    - text: on the Nvidia DGX Spark.
+                  - paragraph [ref=e564]:
+                    - text: I had
+                    - code [ref=e565]: codex
+                    - text: "consider the problem, and it came up with a script:"
+                    - link "gguf_bandwidth.py" [ref=e566] [cursor=pointer]:
+                      - /url: https://github.com/user-attachments/files/24402743/gguf_bandwidth.py
+                  - paragraph [ref=e567]: "If I run this against gpt-oss-20b, I get:"
+                  - generic [ref=e568]:
+                    - code [ref=e570]: "$ gguf_bandwidth --bw 273 --kv-used 0 ggml-gpt-oss-20b-mxfp4.gguf model: ggml-gpt-oss-20b-mxfp4.gguf layers: 24 context_length: 131072 sliding_window: 128 head_count_kv: 8 key_len: 64 value_len: 64 kv_bytes_per_elem: 2 kv_used: 0 iswa: True n_swa: 128 swa_layers: 12 base_layers: 12 swa_full: False ubatch: 512 n_seq_max: 1 n_kv_base: 0 n_kv_swa: 0 moe: True expert_count: 32 expert_used_count: 4 weights_used_bytes: 3190031616 weights_total_bytes: 12096558336 kv_read_bytes: 0 kv_write_bytes: 49152 kv_cache_bytes: 3240099840 total_mem_bytes: 15336658176 total_mem_GB: 15.336658 total_mem_GiB: 14.283376 total_bytes: 3190080768 total_GB: 3.190081 total_GiB: 2.970994 bw_GBps: 273 tps_max_theoretical: 85.5778"
+                    - button "Copy code to clipboard" [ref=e572] [cursor=pointer]:
+                      - img [ref=e573]
+                  - paragraph [ref=e576]: Which is not far off of the reality on the DGX Spark.
+                  - paragraph [ref=e577]: "Setting --bw to 1792 for the RTX 5090:"
+                  - generic [ref=e578]:
+                    - code [ref=e580]: "$ gguf_bandwidth --bw 1792 --kv-used 0 ggml-gpt-oss-20b-mxfp4.gguf model: ggml-gpt-oss-20b-mxfp4.gguf layers: 24 context_length: 131072 sliding_window: 128 head_count_kv: 8 key_len: 64 value_len: 64 kv_bytes_per_elem: 2 kv_used: 0 iswa: True n_swa: 128 swa_layers: 12 base_layers: 12 swa_full: False ubatch: 512 n_seq_max: 1 n_kv_base: 0 n_kv_swa: 0 moe: True expert_count: 32 expert_used_count: 4 weights_used_bytes: 3190031616 weights_total_bytes: 12096558336 kv_read_bytes: 0 kv_write_bytes: 49152 kv_cache_bytes: 3240099840 total_mem_bytes: 15336658176 total_mem_GB: 15.336658 total_mem_GiB: 14.283376 total_bytes: 3190080768 total_GB: 3.190081 total_GiB: 2.970994 bw_GBps: 1792 tps_max_theoretical: 561.7413"
+                    - button "Copy code to clipboard" [ref=e582] [cursor=pointer]:
+                      - img [ref=e583]
+                  - paragraph [ref=e586]: It believes that the RTX 5090 could go as high as 560 tokens per second in a purely memory-bandwidth constrained scenario.
+                - generic [ref=e588]:
+                  - 'button "Upvote: 1" [disabled] [ref=e593]':
+                    - img [ref=e594]
+                    - generic [ref=e596]: "1"
+                  - generic [ref=e597]: 4 replies
+              - generic [ref=e598]:
+                - generic [ref=e599]:
+                  - link "@am17an" [ref=e601] [cursor=pointer]:
+                    - /url: /am17an
+                    - img "@am17an" [ref=e602]
+                  - generic [ref=e606]:
+                    - generic [ref=e608]:
+                      - button "Comment options" [ref=e613] [cursor=pointer]:
+                        - img
+                      - heading "am17an Jan 2, 2026on Jan 1 Collaborator Author" [level=4] [ref=e614]:
+                        - generic [ref=e615]:
+                          - link "am17an" [ref=e616] [cursor=pointer]:
+                            - /url: /am17an
+                          - link "Jan 2, 2026on Jan 1" [ref=e617] [cursor=pointer]:
+                            - /url: "#discussioncomment-15388847"
+                          - generic [ref=e618]:
+                            - generic "This user is a collaborator on this repository." [ref=e619]: Collaborator
+                            - generic "This user is the author of this discussion." [ref=e620]: Author
+                    - paragraph [ref=e624]: I would consider an error of +/-10% to be fine when estimating. However your perf test is for tg32, whereas the numbers posted above are for tg128
+                - generic [ref=e625]:
+                  - link "@coder543" [ref=e627] [cursor=pointer]:
+                    - /url: /coder543
+                    - img "@coder543" [ref=e628]
+                  - generic [ref=e632]:
+                    - generic [ref=e634]:
+                      - button "Comment options" [ref=e639] [cursor=pointer]:
+                        - img
+                      - heading "coder543 Jan 2, 2026on Jan 1" [level=4] [ref=e640]:
+                        - generic [ref=e641]:
+                          - link "coder543" [ref=e642] [cursor=pointer]:
+                            - /url: /coder543
+                          - link "Jan 2, 2026on Jan 1" [ref=e643] [cursor=pointer]:
+                            - /url: "#discussioncomment-15388860"
+                    - generic [ref=e646]:
+                      - paragraph [ref=e647]: tg32 vs tg128 isn't really meaningful if either of the numbers are above the theoretical limit, which was calculated without regard for the number of output tokens?
+                      - paragraph [ref=e648]: "But, yes:"
+                      - generic [ref=e649]:
+                        - code [ref=e651]: "$ llama-bench -m ggml-gpt-oss-20b-mxfp4.gguf -ngl 999 -fa 1 -p 2048 -n 128 -mmp 0 -r 5 ggml_cuda_init: found 1 CUDA devices: Device 0: NVIDIA GB10, compute capability 12.1, VMM: yes | model | size | params | backend | ngl | fa | mmap | test | t/s | | ------------------------------ | ---------: | ---------: | ---------- | --: | -: | ---: | --------------: | -------------------: | | gpt-oss 20B MXFP4 MoE | 11.27 GiB | 20.91 B | CUDA | 999 | 1 | 0 | pp2048 | 4251.36 ± 27.66 | | gpt-oss 20B MXFP4 MoE | 11.27 GiB | 20.91 B | CUDA | 999 | 1 | 0 | tg128 | 82.64 ± 0.14 |"
+                        - button "Copy code to clipboard" [ref=e653] [cursor=pointer]:
+                          - img [ref=e654]
+                      - paragraph [ref=e657]: which is still above 79 tokens per second.
+                      - paragraph [ref=e658]:
+                        - text: I mainly just thought the script was cool, since it can be used with any
+                        - code [ref=e659]: gguf
+                        - text: file and based on my own testing appears to do a good job of accounting for a number of nuances in calculating the amount of memory being transferred for each token generated.
+                      - paragraph [ref=e660]: I did say the calculation "could be pessimistic", not that it was terribly wrong. I like to hope that this can all be optimized even more to bring the performance up even higher. A higher theoretical ceiling provides more hope that it's not impossible.
+                - generic [ref=e661]:
+                  - link "@am17an" [ref=e663] [cursor=pointer]:
+                    - /url: /am17an
+                    - img "@am17an" [ref=e664]
+                  - generic [ref=e668]:
+                    - generic [ref=e670]:
+                      - button "Comment options" [ref=e675] [cursor=pointer]:
+                        - img
+                      - heading "am17an Jan 2, 2026on Jan 1 Collaborator Author" [level=4] [ref=e676]:
+                        - generic [ref=e677]:
+                          - link "am17an" [ref=e678] [cursor=pointer]:
+                            - /url: /am17an
+                          - link "Jan 2, 2026on Jan 1" [ref=e679] [cursor=pointer]:
+                            - /url: "#discussioncomment-15388898"
+                          - generic [ref=e680]:
+                            - generic "This user is a collaborator on this repository." [ref=e681]: Collaborator
+                            - generic "This user is the author of this discussion." [ref=e682]: Author
+                    - paragraph [ref=e686]:
+                      - text: Right, makes sense. BTW you can use
+                      - code [ref=e687]: GGML_CUDA_GRAPH_OPT=1
+                      - text: for some additional perf in TG, PP performance looks quite good for DGX spark
+                - generic [ref=e688]:
+                  - link "@mediouni-m" [ref=e690] [cursor=pointer]:
+                    - /url: /mediouni-m
+                    - img "@mediouni-m" [ref=e691]
+                  - generic [ref=e695]:
+                    - generic [ref=e697]:
+                      - button "Comment options" [ref=e702] [cursor=pointer]:
+                        - img
+                      - heading "mediouni-m Jan 17, 2026on Jan 17" [level=4] [ref=e703]:
+                        - generic [ref=e704]:
+                          - link "mediouni-m" [ref=e705] [cursor=pointer]:
+                            - /url: /mediouni-m
+                          - link "Jan 17, 2026on Jan 17" [ref=e706] [cursor=pointer]:
+                            - /url: "#discussioncomment-15524123"
+                    - generic [ref=e709]:
+                      - paragraph [ref=e710]: "On an Ascent GX10 with NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf:"
+                      - paragraph [ref=e711]: "Baseline CUDA:"
+                      - paragraph [ref=e712]:
+                        - text: "ggml_cuda_init: found 1 CUDA devices:"
+                        - text: "Device 0: NVIDIA GB10, compute capability 12.1, VMM: yes"
+                      - table [ref=e714]:
+                        - rowgroup [ref=e715]:
+                          - row "model size params backend ngl test t/s" [ref=e716]:
+                            - columnheader "model" [ref=e717]
+                            - columnheader "size" [ref=e718]
+                            - columnheader "params" [ref=e719]
+                            - columnheader "backend" [ref=e720]
+                            - columnheader "ngl" [ref=e721]
+                            - columnheader "test" [ref=e722]
+                            - columnheader "t/s" [ref=e723]
+                        - rowgroup [ref=e724]:
+                          - row "nemotron_h_moe 31B.A3.5B Q4_K - Medium 22.82 GiB 31.58 B CUDA 99 pp512 2135.98 ± 9.54" [ref=e725]:
+                            - cell "nemotron_h_moe 31B.A3.5B Q4_K - Medium" [ref=e726]
+                            - cell "22.82 GiB" [ref=e727]
+                            - cell "31.58 B" [ref=e728]
+                            - cell "CUDA" [ref=e729]
+                            - cell "99" [ref=e730]
+                            - cell "pp512" [ref=e731]
+                            - cell "2135.98 ± 9.54" [ref=e732]
+                          - row "nemotron_h_moe 31B.A3.5B Q4_K - Medium 22.82 GiB 31.58 B CUDA 99 tg128 61.76 ± 0.02" [ref=e733]:
+                            - cell "nemotron_h_moe 31B.A3.5B Q4_K - Medium" [ref=e734]
+                            - cell "22.82 GiB" [ref=e735]
+                            - cell "31.58 B" [ref=e736]
+                            - cell "CUDA" [ref=e737]
+                            - cell "99" [ref=e738]
+                            - cell "tg128" [ref=e739]
+                            - cell "61.76 ± 0.02" [ref=e740]
+                      - paragraph [ref=e741]:
+                        - text: "build:"
+                        - link "a89002f" [ref=e742] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/commit/a89002f07b55dace8671fc07b2e2418700716992
+                        - text: (7761)
+                      - paragraph [ref=e743]:
+                        - text: With
+                        - code [ref=e744]: GGML_CUDA_GRAPH_OPT=1
+                        - text: ":"
+                        - text: "ggml_cuda_init: found 1 CUDA devices:"
+                        - text: "Device 0: NVIDIA GB10, compute capability 12.1, VMM: yes"
+                      - table [ref=e746]:
+                        - rowgroup [ref=e747]:
+                          - row "model size params backend ngl test t/s" [ref=e748]:
+                            - columnheader "model" [ref=e749]
+                            - columnheader "size" [ref=e750]
+                            - columnheader "params" [ref=e751]
+                            - columnheader "backend" [ref=e752]
+                            - columnheader "ngl" [ref=e753]
+                            - columnheader "test" [ref=e754]
+                            - columnheader "t/s" [ref=e755]
+                        - rowgroup [ref=e756]:
+                          - row "nemotron_h_moe 31B.A3.5B Q4_K - Medium 22.82 GiB 31.58 B CUDA 99 pp512 2110.23 ± 7.89" [ref=e757]:
+                            - cell "nemotron_h_moe 31B.A3.5B Q4_K - Medium" [ref=e758]
+                            - cell "22.82 GiB" [ref=e759]
+                            - cell "31.58 B" [ref=e760]
+                            - cell "CUDA" [ref=e761]
+                            - cell "99" [ref=e762]
+                            - cell "pp512" [ref=e763]
+                            - cell "2110.23 ± 7.89" [ref=e764]
+                          - row "nemotron_h_moe 31B.A3.5B Q4_K - Medium 22.82 GiB 31.58 B CUDA 99 tg128 54.77 ± 1.11" [ref=e765]:
+                            - cell "nemotron_h_moe 31B.A3.5B Q4_K - Medium" [ref=e766]
+                            - cell "22.82 GiB" [ref=e767]
+                            - cell "31.58 B" [ref=e768]
+                            - cell "CUDA" [ref=e769]
+                            - cell "99" [ref=e770]
+                            - cell "tg128" [ref=e771]
+                            - cell "54.77 ± 1.11" [ref=e772]
+                      - paragraph [ref=e773]:
+                        - text: "build:"
+                        - link "a89002f" [ref=e774] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/commit/a89002f07b55dace8671fc07b2e2418700716992
+                        - text: (7761)
+                      - paragraph [ref=e775]: "Vulkan backend:"
+                      - paragraph [ref=e776]:
+                        - text: "ggml_vulkan: Found 1 Vulkan devices:"
+                        - text: "ggml_vulkan: 0 = NVIDIA Tegra NVIDIA GB10 (NVIDIA) | uma: 1 | fp16: 1 | bf16: 1 | warp size: 32 | shared memory: 49152 | int dot: 1 | matrix cores: NV_coopmat2"
+                      - table [ref=e778]:
+                        - rowgroup [ref=e779]:
+                          - row "model size params backend ngl test t/s" [ref=e780]:
+                            - columnheader "model" [ref=e781]
+                            - columnheader "size" [ref=e782]
+                            - columnheader "params" [ref=e783]
+                            - columnheader "backend" [ref=e784]
+                            - columnheader "ngl" [ref=e785]
+                            - columnheader "test" [ref=e786]
+                            - columnheader "t/s" [ref=e787]
+                        - rowgroup [ref=e788]:
+                          - row "nemotron_h_moe 31B.A3.5B Q4_K - Medium 22.82 GiB 31.58 B Vulkan 99 pp512 1661.48 ± 12.92" [ref=e789]:
+                            - cell "nemotron_h_moe 31B.A3.5B Q4_K - Medium" [ref=e790]
+                            - cell "22.82 GiB" [ref=e791]
+                            - cell "31.58 B" [ref=e792]
+                            - cell "Vulkan" [ref=e793]
+                            - cell "99" [ref=e794]
+                            - cell "pp512" [ref=e795]
+                            - cell "1661.48 ± 12.92" [ref=e796]
+                          - row "nemotron_h_moe 31B.A3.5B Q4_K - Medium 22.82 GiB 31.58 B Vulkan 99 tg128 64.50 ± 1.02" [ref=e797]:
+                            - cell "nemotron_h_moe 31B.A3.5B Q4_K - Medium" [ref=e798]
+                            - cell "22.82 GiB" [ref=e799]
+                            - cell "31.58 B" [ref=e800]
+                            - cell "Vulkan" [ref=e801]
+                            - cell "99" [ref=e802]
+                            - cell "tg128" [ref=e803]
+                            - cell "64.50 ± 1.02" [ref=e804]
+                      - paragraph [ref=e805]:
+                        - text: "build:"
+                        - link "a89002f" [ref=e806] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/commit/a89002f07b55dace8671fc07b2e2418700716992
+                        - text: (7761)
+        - generic [ref=e808]:
+          - link "Sign up for free" [ref=e809] [cursor=pointer]:
+            - /url: /join?source=comment-repo
+          - strong [ref=e810]: to join this conversation on GitHub
+          - text: . Already have an account?
+          - link "Sign in to comment" [ref=e811] [cursor=pointer]:
+            - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F17621
+      - generic [ref=e812]:
+        - generic [ref=e815]:
+          - generic [ref=e816]: Category
+          - link "Show and tell" [ref=e817] [cursor=pointer]:
+            - /url: /ggml-org/llama.cpp/discussions/categories/show-and-tell
+            - img [ref=e820]
+            - text: Show and tell
+        - generic [ref=e821]:
+          - generic [ref=e822]: Labels
+          - generic [ref=e823]: None yet
+        - generic [ref=e825]:
+          - generic [ref=e826]: 4 participants
+          - generic [ref=e827]:
+            - link "@am17an" [ref=e828] [cursor=pointer]:
+              - /url: /am17an
+              - img "@am17an" [ref=e829]
+            - link "@coder543" [ref=e830] [cursor=pointer]:
+              - /url: /coder543
+              - img "@coder543" [ref=e831]
+            - link "@CISC" [ref=e832] [cursor=pointer]:
+              - /url: /CISC
+              - img "@CISC" [ref=e833]
+            - link "@mediouni-m" [ref=e834] [cursor=pointer]:
+              - /url: /mediouni-m
+              - img "@mediouni-m" [ref=e835]
+  - contentinfo [ref=e836]:
+    - heading "Footer" [level=2] [ref=e837]
+    - generic [ref=e838]:
+      - generic [ref=e839]:
+        - link "GitHub Homepage" [ref=e840] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e841]
+        - generic [ref=e843]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e844]:
+        - heading "Footer navigation" [level=3] [ref=e845]
+        - list "Footer navigation" [ref=e846]:
+          - listitem [ref=e847]:
+            - link "Terms" [ref=e848] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e849]:
+            - link "Privacy" [ref=e850] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e851]:
+            - link "Security" [ref=e852] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e853]:
+            - link "Status" [ref=e854] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e855]:
+            - link "Community" [ref=e856] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e857]:
+            - link "Docs" [ref=e858] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e859]:
+            - link "Contact" [ref=e860] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e861]:
+            - button "Manage cookies" [ref=e863] [cursor=pointer]
+          - listitem [ref=e864]:
+            - button "Do not share my personal information" [ref=e866] [cursor=pointer]

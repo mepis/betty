@@ -1,6 +1,0 @@
-[     266ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=G-86QMHRN5P3:0
-[     270ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447:0
-[     513ms] [INFO] 🌐 i18next is made possible by our own product, Locize — consider powering your project with managed localization (AI, CDN, integrations): https://locize.com 💙 @ https://tokenmix.ai/assets/index-BnLBs3BF.js:36
-[     852ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=G-86QMHRN5P3:0
-[     855ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447:0
-[    1458ms] [INFO] 🌐 i18next is made possible by our own product, Locize — consider powering your project with managed localization (AI, CDN, integrations): https://locize.com 💙 @ https://tokenmix.ai/assets/index-BnLBs3BF.js:36

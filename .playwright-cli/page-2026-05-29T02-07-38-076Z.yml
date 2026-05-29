@@ -1,0 +1,368 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link "Home" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Home" [ref=e6]
+        - link "DEVELOPER" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "Home" [ref=e13] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e14]:
+            - link "Blog" [ref=e15] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e16]:
+            - link "Forums" [ref=e17] [cursor=pointer]:
+              - /url: https://forums.developer.nvidia.com/
+          - listitem [ref=e18]:
+            - link "Docs" [ref=e19] [cursor=pointer]:
+              - /url: https://docs.nvidia.com/
+          - listitem [ref=e20]:
+            - link "Downloads" [ref=e21] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/downloads
+          - listitem [ref=e22]:
+            - link "Training" [ref=e23] [cursor=pointer]:
+              - /url: https://www.nvidia.com/en-us/training/
+      - navigation [ref=e24]:
+        - list [ref=e25]:
+          - listitem [ref=e26]:
+            - button "Search" [ref=e31] [cursor=pointer]:
+              - generic [ref=e32]: 
+          - listitem [ref=e33]:
+            - link "Join" [ref=e34] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/login
+          - listitem [ref=e35]:
+            - link "User Account" [ref=e36] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/login
+              - img "User Account" [ref=e37]
+  - generic [ref=e39]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - link "Technical Blog" [ref=e47] [cursor=pointer]:
+          - /url: https://developer.nvidia.com/blog
+        - generic [ref=e48]:
+          - img [ref=e50]
+          - textbox "Search blog" [ref=e52]
+      - link "Subscribe" [ref=e54] [cursor=pointer]:
+        - /url: https://developer.nvidia.com/email-signup
+        - text: Subscribe
+        - img [ref=e55]
+    - generic [ref=e57]:
+      - text: 
+      - main [ref=e58]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - link "Agentic AI / Generative AI" [ref=e64] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/category/generative-ai/
+            - combobox "Select language" [ref=e68]:
+              - option "English" [selected]
+              - option "한국어"
+          - heading "Optimizing llama.cpp AI Inference with CUDA Graphs" [level=1] [ref=e69]
+          - generic [ref=e70]:
+            - generic [ref=e71]: Aug 07, 2024
+            - generic [ref=e72]:
+              - text: By
+              - link "Alan Gray" [ref=e73] [cursor=pointer]:
+                - /url: https://developer.nvidia.com/blog/author/alan-gray/
+            - generic [ref=e74]:
+              - generic [ref=e75]:
+                - generic [ref=e77]:
+                  - button "Like Button" [ref=e78] [cursor=pointer]:
+                    - generic [ref=e80]: 
+                  - generic [ref=e81]: "+16"
+                - button "Like this post" [ref=e82] [cursor=pointer]: Like
+              - link " 􏒦 Discuss (0)" [ref=e84] [cursor=pointer]:
+                - /url: "#entry-content-comments"
+                - generic [ref=e85]:  􏒦
+                - text: Discuss (0)
+        - generic [ref=e87]:
+          - paragraph [ref=e88]:
+            - img [ref=e90]
+            - generic [ref=e92]: AI-Generated Summary
+          - img [ref=e95]
+        - generic [ref=e97]:
+          - paragraph [ref=e98]:
+            - text: The open-source
+            - link "llama.cpp" [ref=e99] [cursor=pointer]:
+              - /url: https://github.com/ggerganov/llama.cpp
+            - text: code base was originally released in 2023 as a lightweight but efficient framework for performing inference on Meta Llama models. Built on the
+            - link "GGML" [ref=e100] [cursor=pointer]:
+              - /url: https://github.com/ggerganov/ggml
+            - text: library released the previous year, llama.cpp quickly became attractive to many users and developers (particularly for use on personal workstations) due to its focus on C/C++ without the need for complex dependencies.
+          - paragraph [ref=e101]:
+            - text: Since initial release, llama.cpp has been extended to support not only a wide range of models, quantization, and more, but also multiple backends including NVIDIA CUDA-enabled GPUs. At the time of writing, llama.cpp sits at
+            - link "#123 in the star ranking of all GitHub repos" [ref=e102] [cursor=pointer]:
+              - /url: https://gitstar-ranking.com/repositories?page=2
+            - text: ", and"
+            - link "#11 of all C++ GitHub repos" [ref=e103] [cursor=pointer]:
+              - /url: https://github.com/EvanLi/Github-Ranking/blob/master/Top100/CPP.md
+            - text: .
+          - paragraph [ref=e104]: Performing AI inference with llama.cpp on NVIDIA GPUs already offers significant benefits, due to their ability to perform the computations underlying AI inference with extreme performance and energy efficiency, paired with their prevalence in consumer devices and data centers. NVIDIA and the llama.cpp developer community continue to collaborate to further enhance performance. This post describes recent improvements achieved through introducing CUDA graph functionality to llama.cpp.
+          - heading "CUDA GraphsScroll to CUDA Graphs section" [level=2] [ref=e105]:
+            - text: CUDA Graphs
+            - link "Scroll to CUDA Graphs section" [ref=e106] [cursor=pointer]:
+              - /url: "#cuda_graphs"
+              - generic [ref=e107]: 
+          - paragraph [ref=e108]: GPUs continue to speed up with each new generation, and it is often the case that each activity on the GPU (such as a kernel or memory copy) completes very quickly. In the past, each activity had to be separately scheduled (launched) by the CPU, and associated overheads could accumulate to become a performance bottleneck.
+          - paragraph [ref=e109]:
+            - text: The CUDA Graphs facility addresses this problem by enabling multiple GPU activities to be scheduled as a single computational graph. In a previous post,
+            - link "Getting Started with CUDA Graphs" [ref=e110] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/cuda-graphs/
+            - text: ", I introduce CUDA Graphs and demonstrate how to get started. In a subsequent post,"
+            - link "A Guide to CUDA Graphs in GROMACS 2023" [ref=e111] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/a-guide-to-cuda-graphs-in-gromacs-2023/
+            - text: ", I describe how CUDA Graphs were successfully applied to the GROMACS biomolecular simulation scientific software package."
+          - paragraph [ref=e112]: When using the traditional stream model, each GPU activity is scheduled separately, whereas CUDA graphs enable multiple GPU activities to be scheduled in unison. This reduces scheduling overheads. It is relatively straightforward to adapt an existing stream-based code to use graphs. The functionality “captures” the stream execution into a graph, through a few extra CUDA API calls.
+          - paragraph [ref=e113]: This post explains how to exploit this facility to enable the pre-existing llama.cpp code to be executed using graphs instead of streams.
+          - heading "Implementing CUDA Graphs in llama.cppScroll to Implementing CUDA Graphs in llama.cpp section" [level=2] [ref=e114]:
+            - text: Implementing CUDA Graphs in llama.cpp
+            - link "Scroll to Implementing CUDA Graphs in llama.cpp section" [ref=e115] [cursor=pointer]:
+              - /url: "#implementing_cuda_graphs_in_llamacpp"
+              - generic [ref=e116]: 
+          - paragraph [ref=e117]: This section highlights the overheads in the pre-existing code, and describes how CUDA Graphs have been introduced to reduce these overheads.
+          - heading "Overheads in pre-existing codeScroll to Overheads in pre-existing code section" [level=3] [ref=e118]:
+            - text: Overheads in pre-existing code
+            - link "Scroll to Overheads in pre-existing code section" [ref=e119] [cursor=pointer]:
+              - /url: "#overheads_in_pre-existing_code"
+              - generic [ref=e120]: 
+          - paragraph [ref=e121]:
+            - text: Figure 1 shows snippets of the profile of the pre-existing code, before the introduction of CUDA Graphs, performing Llama 7B Q4 inference on an NVIDIA A100 GPU using Linux. It was obtained using
+            - link "NVIDIA Nsight Systems" [ref=e122] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/nsight-systems
+            - text: . Each chunk of GPU activities in the top profile in the figure corresponds to the evaluation of a single token, where the zoom is set to show two full tokens being evaluated. It can be seen that there are gaps in the profile between the evaluation of each token, corresponding to CPU activities related to sampling and preparation of the compute graph. (I will return to this point at the end of the post.)
+          - figure "Figure 1. Overheads associated with the GPU activities involved in GPU inference, observed through sections of the profiling timeline where the GPU is idle" [ref=e124]:
+            - img "Diagram profile of the pre-existing code performing Llama 7B Q4 inference on an NVIDIA A100 GPU, using Linux and obtained using Nsight Systems, showing evaluation of a few tokens (top) and zoomed in further to show several activities within evaluation of a single token (bottom)." [ref=e125]
+            - button "Enlarge" [ref=e126] [cursor=pointer]:
+              - img [ref=e127]
+            - emphasis [ref=e130]: Figure 1. Overheads associated with the GPU activities involved in GPU inference, observed through sections of the profiling timeline where the GPU is idle
+          - paragraph [ref=e131]: "The bottom of Figure 1 shows the same profile but zoomed in to show several activities within the evaluation of a token. The gaps seen between kernels within token evaluation are due to launch overheads. As this post will show, the removal of these overheads with CUDA Graphs leads to substantial performance improvement. The highlighted events are the launch of a kernel from the CPU (bottom left) and the corresponding kernel execution on the GPU (top right): the CPU is able to successfully launch well in advance of execution on the GPU."
+          - paragraph [ref=e132]: Therefore, CPU-side launch overheads are not on critical path here. Instead, the overheads are due to GPU-side activities associated with each kernel launch. This behavior may vary across different models and hardware, but CUDA Graphs are applicable for reducing CPU and/or GPU launch overheads.
+          - heading "Introducing CUDA Graphs to reduce overheadsScroll to Introducing CUDA Graphs to reduce overheads section" [level=3] [ref=e133]:
+            - text: Introducing CUDA Graphs to reduce overheads
+            - link "Scroll to Introducing CUDA Graphs to reduce overheads section" [ref=e134] [cursor=pointer]:
+              - /url: "#introducing_cuda_graphs_to_reduce_overheads"
+              - generic [ref=e135]: 
+          - paragraph [ref=e136]: "llama.cpp already uses the concept of a “graph” in GGML format. The generation of each token involves the following steps:"
+          - list [ref=e137]:
+            - listitem [ref=e138]: Preparation of the GGML graph structure based on the model in use.
+            - listitem [ref=e139]: Evaluation of the structure on the backend in use (in this case an NVIDIA GPU) to get “logits,” log probability distribution across vocabulary for next token.
+            - listitem [ref=e140]: Sampling is performed on the CPU to select a token from the vocabulary using the logits.
+          - paragraph [ref=e141]: CUDA Graphs were introduced by intercepting the GPU graph evaluation stage. Code was added to capture the existing stream into a graph, instantiate the captured graph into an executable graph, and launch that to the GPU to perform the evaluation of a single token.
+          - paragraph [ref=e142]: To be suitably efficient, it is necessary to re-use the same graph multiple times; otherwise, newly introduced overheads involved in capture and instantiation outweigh the benefits. However, the graph dynamically evolves as inference proceeds. The challenge was to develop a mechanism to enable minor (low-overhead) adjustments to the graph across tokens, to reach an overall benefit.
+          - paragraph [ref=e143]:
+            - text: As inference progresses, the length of operations steps up with context size, resulting in substantial (but infrequent) changes to the compute graph. The GGML graph is inspected and only recaptured when required.
+            - link "cudaGraphExecUpdate" [ref=e144] [cursor=pointer]:
+              - /url: https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__GRAPH.html#group__CUDART__GRAPH_1g34c8e1e6118aa68fc715250dfd93c1c4
+            - text: is used to update the previously instantiated executable graph with much lower overhead than full re-instantiation.
+          - paragraph [ref=e145]: There are also frequent, but very minor, changes to the compute graph, where kernel parameters for certain nodes (related to the KV cache) change for each token. NVIDIA developed a mechanism to update only these parameters in a re-usable CUDA Graph. Before each graph is launched, we leverage CUDA Graph API functionality to identify the part of the graph that requires updating, and to manually replace the relevant parameters.
+          - paragraph [ref=e146]:
+            - text: Note that CUDA Graphs are currently restricted to batch size 1 inference (a key use case for llama.cpp) with further work planned on larger batch sizes. For more information on these developments and ongoing work to address issues and restrictions, see the GitHub issue,
+            - link "new optimization from NVIDIA to use CUDA Graphs in llama.cpp" [ref=e147] [cursor=pointer]:
+              - /url: https://github.com/ggerganov/llama.cpp/issues/6763
+            - text: ", and pull requests linked therein."
+          - heading "Impact of CUDA Graphs in reducing overheadsScroll to Impact of CUDA Graphs in reducing overheads section" [level=3] [ref=e148]:
+            - text: Impact of CUDA Graphs in reducing overheads
+            - link "Scroll to Impact of CUDA Graphs in reducing overheads section" [ref=e149] [cursor=pointer]:
+              - /url: "#impact_of_cuda_graphs_in_reducing_overheads"
+              - generic [ref=e150]: 
+          - paragraph [ref=e151]: Before the introduction of CUDA Graphs there existed significant gaps between kernels due to GPU-side launch overhead, as shown in the bottom profile in Figure 1.
+          - paragraph [ref=e152]: "Figure 2 shows the equivalent with CUDA Graphs. All the kernels are submitted to the GPU as part of the same computational graph (with a single CUDA API launch call). This vastly reduces the overheads: the gap between each kernel within the graph is now very small."
+          - figure "Figure 2. Overheads associated with the GPU activities involved in GPU inference are vastly reduced with CUDA Graphs" [ref=e154]:
+            - img "A profile of the code performing Llama 7B Q4 inference with CUDA Graphs, zoomed in to show a few activities within evaluation of a single token." [ref=e155]
+            - button "Enlarge" [ref=e156] [cursor=pointer]:
+              - img [ref=e157]
+            - emphasis [ref=e160]: Figure 2. Overheads associated with the GPU activities involved in GPU inference are vastly reduced with CUDA Graphs
+          - heading "Performance resultsScroll to Performance results section" [level=2] [ref=e161]:
+            - text: Performance results
+            - link "Scroll to Performance results section" [ref=e162] [cursor=pointer]:
+              - /url: "#performance_results"
+              - generic [ref=e163]: 
+          - paragraph [ref=e164]: Figure 3 shows the benefit of the new CUDA Graphs functionality in llama.cpp. The measured speedup varies across model sizes and GPU variants, with increasing benefits as model size decreases and GPU capability increases. This is in line with expectations, as using CUDA Graphs reduces the overheads most relevant for small problems on fast GPUs. The highest achieved speedup is 1.2x for the smallest Llama 7B model on the fastest NVIDIA H100 GPUs. Linux systems were used for all results.
+          - paragraph [ref=e165]: CUDA Graphs are now enabled by default for batch size 1 inference on NVIDIA GPUs in the main branch of llama.cpp.
+          - figure "Figure 3. The speedup achieved with CUDA Graphs against traditional streams, for several Llama models of varying sizes (all with batch size 1), including results across several variants of NVIDIA GPUs" [ref=e167]:
+            - img "A bar graph showing the performance benefits for llama.cpp inference using CUDA Graphs." [ref=e168]
+            - button "Enlarge" [ref=e169] [cursor=pointer]:
+              - img [ref=e170]
+            - emphasis [ref=e173]: Figure 3. The speedup achieved with CUDA Graphs against traditional streams, for several Llama models of varying sizes (all with batch size 1), including results across several variants of NVIDIA GPUs
+          - heading "Ongoing work to reduce CPU overheadsScroll to Ongoing work to reduce CPU overheads section" [level=2] [ref=e174]:
+            - text: Ongoing work to reduce CPU overheads
+            - link "Scroll to Ongoing work to reduce CPU overheads section" [ref=e175] [cursor=pointer]:
+              - /url: "#ongoing_work_to_reduce_cpu_overheads"
+              - generic [ref=e176]: 
+          - paragraph [ref=e177]:
+            - text: The top profile in Figure 1 shows gaps (where the GPU is idle) between token evaluation in the timeline. These are due to CPU activities associated with preparation of the GGML graph and with sampling. Work to reduce these overheads is at an advanced stage, as described in this
+            - link "GitHub issue" [ref=e178] [cursor=pointer]:
+              - /url: https://github.com/ggerganov/llama.cpp/issues/7456
+            - text: and the pull requests linked therein. This work is expected to offer up to ~10% further improvement.
+          - heading "SummaryScroll to Summary section" [level=2] [ref=e179]:
+            - text: Summary
+            - link "Scroll to Summary section" [ref=e180] [cursor=pointer]:
+              - /url: "#summary"
+              - generic [ref=e181]: 
+          - paragraph [ref=e182]:
+            - text: In this post, I showed how the introduction of CUDA Graphs to the popular llama.cpp code base has substantially improved AI inference performance on NVIDIA GPUs, with ongoing work promising further enhancements. To take advantage of this work for your own AI-enabled workflow, follow the
+            - link "Usage Instructions" [ref=e183] [cursor=pointer]:
+              - /url: https://github.com/ggerganov/llama.cpp?tab=readme-ov-file#basic-usage
+            - text: .
+        - generic [ref=e184]:
+          - link " 􏒦 Discuss (0)" [ref=e186] [cursor=pointer]:
+            - /url: "#entry-content-comments"
+            - generic [ref=e187]:  􏒦
+            - text: Discuss (0)
+          - generic [ref=e188]:
+            - generic [ref=e190]:
+              - button "Like Button" [ref=e191] [cursor=pointer]:
+                - generic [ref=e193]: 
+              - generic [ref=e194]: "+16"
+            - button "Like this post" [ref=e195] [cursor=pointer]: Like
+        - generic [ref=e196]:
+          - heading "Tags" [level=2] [ref=e198]
+          - generic [ref=e199]:
+            - link "Agentic AI / Generative AI" [ref=e200] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/category/generative-ai/
+            - text: "|"
+            - link "General" [ref=e201] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/recent-posts/?industry=General
+            - text: "|"
+            - link "CUDA" [ref=e202] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/recent-posts/?products=CUDA
+            - text: "|"
+            - link "Nsight Tools - Compute" [ref=e203] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/recent-posts/?products=Nsight+Tools+-+Compute
+            - text: "|"
+            - link "AI Inference" [ref=e204] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/tag/ai-inference-microservices/
+            - text: "|"
+            - link "CUDA Graphs" [ref=e205] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/tag/cuda-graphs/
+            - text: "|"
+            - link "featured" [ref=e206] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/tag/featured/
+            - text: "|"
+            - link "Llama.cpp" [ref=e207] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/tag/llama-cpp/
+            - text: "|"
+            - link "LLMs" [ref=e208] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/tag/large-language-models/
+        - generic [ref=e210]:
+          - heading "About the Authors" [level=2] [ref=e212]
+          - generic [ref=e213]:
+            - img "Avatar photo" [ref=e215]
+            - generic [ref=e216]:
+              - text: About Alan Gray
+              - text: Alan Gray is a Principal Developer Technology Engineer at NVIDIA where he specializes in application optimization, particularly on large-scale GPU-accelerated architectures. Previously, he worked at Edinburgh Parallel Computing Centre (EPCC) at The University of Edinburgh, where he was involved in a wide variety of projects covering many scientific, engineering, and industrial areas, with a particular interest in multi-GPU programming. His career began in the area of particle physics, using Lattice QCD techniques to simulate fundamental particle states and interactions. He received a Ph.D. from the University of Glasgow for which his thesis was awarded the UK-wide Ogden Prize in particle physics phenomenology, and he also spent two years furthering this research under a fellowship at The Ohio State University before moving to EPCC.
+              - link "View all posts by Alan Gray" [ref=e218] [cursor=pointer]:
+                - /url: https://developer.nvidia.com/blog/author/alan-gray/
+                - text: View all posts by Alan Gray
+                - img [ref=e219]
+        - heading "Comments" [level=2] [ref=e225]
+      - complementary [ref=e226]:
+        - generic [ref=e229]:
+          - heading "Related posts" [level=2] [ref=e230]
+          - generic [ref=e232]:
+            - heading "NVIDIA NIM 1.4 Ready to Deploy with 2.4x Faster Inference" [level=3] [ref=e236]
+            - link "NVIDIA NIM 1.4 Ready to Deploy with 2.4x Faster Inference" [ref=e237] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/nvidia-nim-1-4-ready-to-deploy-with-2-4x-faster-inference/
+              - generic [ref=e238]: NVIDIA NIM 1.4 Ready to Deploy with 2.4x Faster Inference
+          - generic [ref=e240]:
+            - heading "Boosting Llama 3.1 405B Throughput by Another 1.5x on NVIDIA H200 Tensor Core GPUs and NVLink Switch" [level=3] [ref=e244]
+            - link "Boosting Llama 3.1 405B Throughput by Another 1.5x on NVIDIA H200 Tensor Core GPUs and NVLink Switch" [ref=e245] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/boosting-llama-3-1-405b-throughput-by-another-1-5x-on-nvidia-h200-tensor-core-gpus-and-nvlink-switch/
+              - generic [ref=e246]: Boosting Llama 3.1 405B Throughput by Another 1.5x on NVIDIA H200 Tensor Core GPUs and NVLink Switch
+          - generic [ref=e248]:
+            - heading "Boosting Llama 3.1 405B Performance up to 1.44x with NVIDIA TensorRT Model Optimizer on NVIDIA H200 GPUs" [level=3] [ref=e252]
+            - link "Boosting Llama 3.1 405B Performance up to 1.44x with NVIDIA TensorRT Model Optimizer on NVIDIA H200 GPUs" [ref=e253] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/boosting-llama-3-1-405b-performance-by-up-to-44-with-nvidia-tensorrt-model-optimizer-on-nvidia-h200-gpus/
+              - generic [ref=e254]: Boosting Llama 3.1 405B Performance up to 1.44x with NVIDIA TensorRT Model Optimizer on NVIDIA H200 GPUs
+          - generic [ref=e256]:
+            - img "Decorative image of a llama in cool sunglasses against a sunny landscape." [ref=e258]
+            - heading "Supercharging Llama 3.1 across NVIDIA Platforms" [level=3] [ref=e261]
+            - link "Supercharging Llama 3.1 across NVIDIA Platforms" [ref=e262] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/supercharging-llama-3-1-across-nvidia-platforms/
+              - generic [ref=e263]: Supercharging Llama 3.1 across NVIDIA Platforms
+          - generic [ref=e265]:
+            - img "Llama 3 Performance with NVIDIA TensorRT-LLM and NVIDIA Triton Inference Server" [ref=e267]
+            - heading "Turbocharging Meta Llama 3 Performance with NVIDIA TensorRT-LLM and NVIDIA Triton Inference Server" [level=3] [ref=e270]
+            - link "Turbocharging Meta Llama 3 Performance with NVIDIA TensorRT-LLM and NVIDIA Triton Inference Server" [ref=e271] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/blog/turbocharging-meta-llama-3-performance-with-nvidia-tensorrt-llm-and-nvidia-triton-inference-server/
+              - generic [ref=e272]: Turbocharging Meta Llama 3 Performance with NVIDIA TensorRT-LLM and NVIDIA Triton Inference Server
+  - region "bottom banner" [ref=e276]:
+    - list [ref=e279]:
+      - listitem [ref=e280]:
+        - link "View Slide Details" [ref=e281] [cursor=pointer]:
+          - /url: https://www.nvidia.com/en-tw/gtc/taipei/?nvid=nv-int-bnr-463583
+          - img "gtc26-tpe-phase3-keynote-attend-blog-footer-1360x180-copy-enEN-4979800" [ref=e282]
+  - contentinfo [ref=e283]:
+    - contentinfo [ref=e284]:
+      - generic [ref=e287]:
+        - generic [ref=e289]:
+          - img [ref=e291]
+          - generic [ref=e293]: Sign up for NVIDIA News
+          - link "Subscribe" [ref=e295] [cursor=pointer]:
+            - /url: https://developer.nvidia.com/email-signup
+        - generic [ref=e296]:
+          - generic [ref=e297]: Follow NVIDIA Developer
+          - generic [ref=e298]:
+            - link "Facebook" [ref=e299] [cursor=pointer]:
+              - /url: https://www.facebook.com/NVIDIAAI/
+              - img [ref=e300]
+            - link "Instagram" [ref=e302] [cursor=pointer]:
+              - /url: https://www.instagram.com/nvidiadeveloper
+              - img [ref=e303]
+            - link "LinkedIn" [ref=e305] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/nvidia-ai
+              - img [ref=e306]
+            - link "Twitter" [ref=e308] [cursor=pointer]:
+              - /url: https://twitter.com/NVIDIAAIDev
+              - img [ref=e309]
+            - link "YouTube" [ref=e311] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/NVIDIADeveloper
+              - img [ref=e312]
+      - generic [ref=e315]:
+        - img [ref=e317]
+        - list [ref=e329]:
+          - listitem [ref=e330]:
+            - link "Privacy Policy" [ref=e331] [cursor=pointer]:
+              - /url: https://www.nvidia.com/en-us/about-nvidia/privacy-policy/
+            - text: "|"
+          - listitem [ref=e332]:
+            - link "Your Privacy Choices" [ref=e333] [cursor=pointer]:
+              - /url: https://www.nvidia.com/en-us/about-nvidia/privacy-center/
+            - text: "|"
+          - listitem [ref=e334]:
+            - link "Terms of Use" [ref=e335] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/legal/terms
+            - text: "|"
+          - listitem [ref=e336]:
+            - link "Accessibility" [ref=e337] [cursor=pointer]:
+              - /url: https://www.nvidia.com/en-us/about-nvidia/accessibility/
+            - text: "|"
+          - listitem [ref=e338]:
+            - link "Corporate Policies" [ref=e339] [cursor=pointer]:
+              - /url: https://www.nvidia.com/en-us/about-nvidia/company-policies/
+            - text: "|"
+          - listitem [ref=e340]:
+            - link "Contact" [ref=e341] [cursor=pointer]:
+              - /url: https://developer.nvidia.com/contact
+        - generic [ref=e342]: Copyright © 2026 NVIDIA Corporation
+  - list [ref=e344]:
+    - listitem [ref=e345]:
+      - link "L" [ref=e346] [cursor=pointer]:
+        - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdeveloper.nvidia.com%2Fblog%2Foptimizing-llama-cpp-ai-inference-with-cuda-graphs%2F
+    - listitem [ref=e347]:
+      - link "T" [ref=e348] [cursor=pointer]:
+        - /url: https://twitter.com/intent/tweet?text=Optimizing+llama.cpp+AI+Inference+with+CUDA+Graphs+%7C+NVIDIA+Technical+Blog+https%3A%2F%2Fdeveloper.nvidia.com%2Fblog%2Foptimizing-llama-cpp-ai-inference-with-cuda-graphs%2F
+    - listitem [ref=e349]:
+      - link "F" [ref=e350] [cursor=pointer]:
+        - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdeveloper.nvidia.com%2Fblog%2Foptimizing-llama-cpp-ai-inference-with-cuda-graphs%2F
+    - listitem [ref=e351]:
+      - link "R" [ref=e352] [cursor=pointer]:
+        - /url: https://www.reddit.com/submit?url=https%3A%2F%2Fdeveloper.nvidia.com%2Fblog%2Foptimizing-llama-cpp-ai-inference-with-cuda-graphs%2F&title=Optimizing+llama.cpp+AI+Inference+with+CUDA+Graphs+%7C+NVIDIA+Technical+Blog
+    - listitem [ref=e353]:
+      - link "E" [ref=e354] [cursor=pointer]:
+        - /url: mailto:?subject=I'd like to share a link with you&body=https%3A%2F%2Fdeveloper.nvidia.com%2Fblog%2Foptimizing-llama-cpp-ai-inference-with-cuda-graphs%2F
+  - text: 

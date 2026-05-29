@@ -1,0 +1,562 @@
+- generic [ref=e2]:
+  - generic:
+    - generic:
+      - tooltip "This user has previously committed to the llama.cpp repository."
+    - generic:
+      - tooltip "This user is the author of this issue"
+    - generic:
+      - tooltip "This user has previously committed to the llama.cpp repository."
+    - generic:
+      - tooltip "This user is the author of this issue"
+    - generic:
+      - tooltip "This user has previously committed to the llama.cpp repository."
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fissues%2F14692
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,897" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113564 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,048" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e149]:
+      - region "Header" [ref=e151]:
+        - generic [ref=e152]:
+          - 'heading "Eval bug: CUDA error: operation not supported #14692" [level=1] [ref=e154]':
+            - text: "Eval bug: CUDA error: operation not supported"
+            - generic [ref=e156]: "#14692"
+          - generic [ref=e158]:
+            - button "New issue" [ref=e160] [cursor=pointer]:
+              - generic [ref=e162]: New issue
+            - button "Copy link" [ref=e163] [cursor=pointer]:
+              - img [ref=e164]
+      - generic [ref=e172]:
+        - img "Issue" [ref=e173]
+        - text: Closed
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - generic [ref=e180]:
+            - link "@0xshawn's profile" [ref=e182] [cursor=pointer]:
+              - /url: https://github.com/0xshawn
+              - img "@0xshawn" [ref=e183]
+            - generic [ref=e184]:
+              - heading "Description" [level=2] [ref=e185]
+              - generic [ref=e187]:
+                - generic [ref=e189]:
+                  - generic [ref=e190]:
+                    - link "0xshawn" [ref=e192] [cursor=pointer]:
+                      - /url: https://github.com/0xshawn
+                    - generic [ref=e193]:
+                      - text: opened
+                      - link "on Jul 15, 2025on Jul 15, 2025" [ref=e194] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/14692#issue-3231684251
+                        - generic "Jul 15, 2025, 6:15 AM EDT" [ref=e195]: on Jul 15, 2025on Jul 15, 2025
+                  - button "Issue body actions" [ref=e199] [cursor=pointer]:
+                    - img [ref=e200]
+                - generic [ref=e202]:
+                  - generic [ref=e204]:
+                    - heading "Name and Version" [level=3] [ref=e205]
+                    - paragraph [ref=e206]:
+                      - text: "version: 1 ("
+                      - link "cbc68be" [ref=e207] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/commit/cbc68be51d88b1d5531643b926a4b359c3cff131
+                      - text: )
+                      - text: built with cc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0 for x86_64-linux-gnu
+                      - text: "Buid from source:"
+                      - link "https://github.com/ggml-org/llama.cpp/tree/cbc68be51d88b1d5531643b926a4b359c3cff131" [ref=e208] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/tree/cbc68be51d88b1d5531643b926a4b359c3cff131
+                    - heading "Operating systems" [level=3] [ref=e209]
+                    - paragraph [ref=e210]: Linux
+                    - heading "GGML backends" [level=3] [ref=e211]
+                    - paragraph [ref=e212]: CUDA
+                    - heading "Hardware" [level=3] [ref=e213]
+                    - paragraph [ref=e214]:
+                      - text: INTEL(R) XEON(R) PLATINUM 8580
+                      - text: NVIDIA 8xH200
+                    - heading "Models" [level=3] [ref=e215]
+                    - paragraph [ref=e216]:
+                      - link "https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF" [ref=e217] [cursor=pointer]:
+                        - /url: https://huggingface.co/unsloth/DeepSeek-V3-0324-GGUF
+                      - text: DeepSeek-V3-0324-UD-Q2_K_XL-00001-of-00006.gguf
+                    - heading "Problem description & steps to reproduce" [level=3] [ref=e218]
+                    - paragraph [ref=e219]: I was trying to use llama.cpp (built from master) to serve Deepseek V3 0324 GUFF UD-Q2-K-XL
+                    - generic [ref=e220]:
+                      - generic [ref=e221]: ./llama-server -m /mnt/models/deepseek-v3-0324-guff-UD-Q2_K_XL/DeepSeek-V3-0324-UD-Q2_K_XL-00001-of-00006.gguf \ --port 8000 \ --threads 24 \ --ctx-size 16384 \ --n-gpu-layers 99 \ --tensor-split 1,1,1,1,1,1,1,1 \ --flash-attn \ --batch-size 128 \ --no-warmup
+                      - button "Copy code to clipboard" [ref=e223] [cursor=pointer]:
+                        - img [ref=e224]
+                    - paragraph [ref=e227]: The server started successfully but report cuda error when requesting.
+                    - paragraph [ref=e228]:
+                      - text: Another problem is that when I set a large context (
+                      - code [ref=e229]: "--ctx-size 16384"
+                      - text: ) , the server usually be killed because of RAM OOM. I found that the llama-server cost almost 1TB RAM.
+                    - paragraph [ref=e230]: Thank you!
+                    - heading "First Bad Commit" [level=3] [ref=e231]
+                    - paragraph [ref=e232]:
+                      - emphasis [ref=e233]: No response
+                    - heading "Relevant log output" [level=3] [ref=e234]
+                    - generic [ref=e235]:
+                      - generic [ref=e236]: "main: server is listening on http://127.0.0.1:8000 - starting the main loop srv update_slots: all slots are idle srv params_from_: Chat format: Content-only slot launch_slot_: id 0 | task 0 | processing task slot update_slots: id 0 | task 0 | new prompt, n_ctx_slot = 16384, n_keep = 0, n_prompt_tokens = 9 slot update_slots: id 0 | task 0 | kv cache rm [0, end) slot update_slots: id 0 | task 0 | prompt processing progress, n_past = 9, n_tokens = 9, progress = 1.000000 slot update_slots: id 0 | task 0 | prompt done, n_past = 9, n_tokens = 9 /vllm-workspace/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:79: CUDA error CUDA error: operation not supported current device: 0, in function ggml_backend_cuda_cpy_tensor_async at /vllm-workspace/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:2557 cudaMemcpyPeerAsync(dst->data, cuda_ctx_dst->device, src->data, cuda_ctx_src->device, ggml_nbytes(dst), cuda_ctx_src->stream()) /vllm-workspace/llama.cpp/build/bin/libggml-base.so(+0x16ceb)[0x7fb11dec1ceb] /vllm-workspace/llama.cpp/build/bin/libggml-base.so(ggml_print_backtrace+0x21f)[0x7fb11dec214f] /vllm-workspace/llama.cpp/build/bin/libggml-base.so(ggml_abort+0x152)[0x7fb11dec2322] /vllm-workspace/llama.cpp/build/bin/libggml-cuda.so(+0xb6976)[0x7fb11bcbd976] /vllm-workspace/llama.cpp/build/bin/libggml-cuda.so(+0xbd822)[0x7fb11bcc4822] /vllm-workspace/llama.cpp/build/bin/libggml-base.so(ggml_backend_sched_graph_compute_async+0x2c9)[0x7fb11deda609] /vllm-workspace/llama.cpp/build/bin/libllama.so(_ZN13llama_context13graph_computeEP11ggml_cgraphb+0x99)[0x7fb11dfe6f99] /vllm-workspace/llama.cpp/build/bin/libllama.so(_ZN13llama_context14process_ubatchERK12llama_ubatch14llm_graph_typeP22llama_memory_context_iR11ggml_status+0x103)[0x7fb11dfe7253] /vllm-workspace/llama.cpp/build/bin/libllama.so(_ZN13llama_context6decodeERK11llama_batch+0x338)[0x7fb11dfebb58] /vllm-workspace/llama.cpp/build/bin/libllama.so(llama_decode+0x10)[0x7fb11dfecd30] ./llama-server(+0xdaf61)[0x5581ec541f61] ./llama-server(+0x8402d)[0x5581ec4eb02d] ./llama-server(+0x4c7d5)[0x5581ec4b37d5] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x29d90)[0x7fb11d978d90] /usr/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80)[0x7fb11d978e40] ./llama-server(+0x4e225)[0x5581ec4b5225] Aborted (core dumped)"
+                      - button "Copy code to clipboard" [ref=e238] [cursor=pointer]:
+                        - img [ref=e239]
+                  - generic:
+                    - toolbar "Reactions"
+          - generic [ref=e243]:
+            - generic [ref=e244]:
+              - heading "Activity" [level=2] [ref=e245]
+              - generic [ref=e246]:
+                - region "Events" [ref=e247]:
+                  - generic [ref=e254]:
+                    - img [ref=e258]
+                    - generic [ref=e262]:
+                      - link "0xshawn" [ref=e264] [cursor=pointer]:
+                        - /url: /0xshawn
+                        - generic [ref=e265]: 0xshawn
+                      - text: added
+                      - link "bug-unconfirmed" [ref=e267] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22bug-unconfirmed%22
+                        - generic [ref=e269]: bug-unconfirmed
+                      - link "on Jul 15, 2025on Jul 15, 2025" [ref=e271] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/14692#event-18635129589
+                        - generic "Jul 15, 2025, 6:15 AM EDT" [ref=e272]: on Jul 15, 2025on Jul 15, 2025
+                - generic [ref=e273]:
+                  - link "@JohannesGaessler's profile" [ref=e274] [cursor=pointer]:
+                    - /url: https://github.com/JohannesGaessler
+                    - img "JohannesGaessler" [ref=e275]
+                  - generic [ref=e282]:
+                    - generic [ref=e284]:
+                      - heading "JohannesGaessler commented on Jul 15, 2025 on Jul 15, 2025" [level=3] [ref=e285]:
+                        - text: JohannesGaessler commented
+                        - generic "Jul 15, 2025, 9:02 AM EDT" [ref=e286]: on Jul 15, 2025 on Jul 15, 2025
+                      - generic [ref=e287]:
+                        - link "JohannesGaessler" [ref=e289] [cursor=pointer]:
+                          - /url: /JohannesGaessler
+                        - link "on Jul 15, 2025on Jul 15, 2025" [ref=e292] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/14692#issuecomment-3073513652
+                          - generic "Jul 15, 2025, 9:02 AM EDT" [ref=e293]: on Jul 15, 2025on Jul 15, 2025
+                      - generic [ref=e295]:
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e297]: Contributor
+                        - button "Actions for JohannesGaessler's comment, 9:02 AM on July 15, 2025" [ref=e299] [cursor=pointer]:
+                          - img [ref=e300]
+                    - generic [ref=e302]:
+                      - paragraph [ref=e305]:
+                        - text: Is the problem fixed when compiling with either
+                        - code [ref=e306]: GGML_CUDA_NO_PEER_COPY=ON
+                        - text: or
+                        - code [ref=e307]: GGML_CUDA_PEER_MAX_BATCH_SIZE=0
+                        - text: "?"
+                      - toolbar "Reactions"
+                - generic [ref=e308]:
+                  - link "@0xshawn's profile" [ref=e309] [cursor=pointer]:
+                    - /url: https://github.com/0xshawn
+                    - img "0xshawn" [ref=e310]
+                  - generic [ref=e317]:
+                    - generic [ref=e319]:
+                      - heading "0xshawn commented on Jul 16, 2025 on Jul 16, 2025" [level=3] [ref=e320]:
+                        - text: 0xshawn commented
+                        - generic "Jul 16, 2025, 1:58 AM EDT" [ref=e321]: on Jul 16, 2025 on Jul 16, 2025
+                      - generic [ref=e322]:
+                        - link "0xshawn" [ref=e324] [cursor=pointer]:
+                          - /url: /0xshawn
+                        - link "on Jul 16, 2025on Jul 16, 2025" [ref=e327] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/14692#issuecomment-3076946667
+                          - generic "Jul 16, 2025, 1:58 AM EDT" [ref=e328]: on Jul 16, 2025on Jul 16, 2025
+                      - generic [ref=e330]:
+                        - generic "This user is the author of this issue" [ref=e332]: Author
+                        - button "Actions for 0xshawn's comment, 1:58 AM on July 16, 2025" [ref=e334] [cursor=pointer]:
+                          - img [ref=e335]
+                    - generic [ref=e337]:
+                      - generic [ref=e339]:
+                        - paragraph [ref=e340]:
+                          - text: Hi
+                          - link "@JohannesGaessler" [ref=e341] [cursor=pointer]:
+                            - /url: https://github.com/JohannesGaessler
+                        - paragraph [ref=e342]: Still cuda error.
+                        - paragraph [ref=e343]: "I tried set envs before building source code:"
+                        - generic [ref=e344]:
+                          - generic [ref=e345]: git clone --depth 1 https://github.com/ggerganov/llama.cpp.git && cd llama.cpp export GGML_CUDA_NO_PEER_COPY=ON export GGML_CUDA_PEER_MAX_BATCH_SIZE=0 cmake -B build -DGGML_CUDA=ON cmake --build build --config Release -j 16
+                          - button "Copy code to clipboard" [ref=e347] [cursor=pointer]:
+                            - img [ref=e348]
+                        - paragraph [ref=e351]: "Error logs:"
+                        - generic [ref=e352]:
+                          - generic [ref=e353]: "main: server is listening on http://127.0.0.1:8000 - starting the main loop srv update_slots: all slots are idle srv params_from_: Chat format: Content-only slot launch_slot_: id 0 | task 0 | processing task slot update_slots: id 0 | task 0 | new prompt, n_ctx_slot = 163840, n_keep = 0, n_prompt_tokens = 9 slot update_slots: id 0 | task 0 | kv cache rm [0, end) slot update_slots: id 0 | task 0 | prompt processing progress, n_past = 9, n_tokens = 9, progress = 1.000000 slot update_slots: id 0 | task 0 | prompt done, n_past = 9, n_tokens = 9 /mnt/models/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:79: CUDA error CUDA error: operation not supported current device: 0, in function ggml_backend_cuda_cpy_tensor_async at /mnt/models/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:2557 cudaMemcpyPeerAsync(dst->data, cuda_ctx_dst->device, src->data, cuda_ctx_src->device, ggml_nbytes(dst), cuda_ctx_src->stream()) /mnt/models/llama.cpp/build/bin/libggml-base.so(+0x16ceb)[0x7f99ea6bcceb] /mnt/models/llama.cpp/build/bin/libggml-base.so(ggml_print_backtrace+0x21f)[0x7f99ea6bd14f] /mnt/models/llama.cpp/build/bin/libggml-base.so(ggml_abort+0x152)[0x7f99ea6bd322] /mnt/models/llama.cpp/build/bin/libggml-cuda.so(+0xb6976)[0x7f99e84b8976] /mnt/models/llama.cpp/build/bin/libggml-cuda.so(+0xbd822)[0x7f99e84bf822] /mnt/models/llama.cpp/build/bin/libggml-base.so(ggml_backend_sched_graph_compute_async+0x2c9)[0x7f99ea6d5609] /mnt/models/llama.cpp/build/bin/libllama.so(_ZN13llama_context13graph_computeEP11ggml_cgraphb+0x99)[0x7f99ea7e3949] /mnt/models/llama.cpp/build/bin/libllama.so(_ZN13llama_context14process_ubatchERK12llama_ubatch14llm_graph_typeP22llama_memory_context_iR11ggml_status+0x103)[0x7f99ea7e3c03] /mnt/models/llama.cpp/build/bin/libllama.so(_ZN13llama_context6decodeERK11llama_batch+0x338)[0x7f99ea7e8508] /mnt/models/llama.cpp/build/bin/libllama.so(llama_decode+0x10)[0x7f99ea7e96e0] ./llama-server(+0xdaf61)[0x55a3bec94f61] ./llama-server(+0x8402d)[0x55a3bec3e02d] ./llama-server(+0x4c7d5)[0x55a3bec067d5] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x29d90)[0x7f99ea173d90] /usr/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80)[0x7f99ea173e40] ./llama-server(+0x4e225)[0x55a3bec08225]"
+                          - button "Copy code to clipboard" [ref=e355] [cursor=pointer]:
+                            - img [ref=e356]
+                      - toolbar "Reactions"
+                - generic [ref=e359]:
+                  - link "@JohannesGaessler's profile" [ref=e360] [cursor=pointer]:
+                    - /url: https://github.com/JohannesGaessler
+                    - img "JohannesGaessler" [ref=e361]
+                  - generic [ref=e368]:
+                    - generic [ref=e370]:
+                      - heading "JohannesGaessler commented on Jul 16, 2025 on Jul 16, 2025" [level=3] [ref=e371]:
+                        - text: JohannesGaessler commented
+                        - generic "Jul 16, 2025, 3:38 AM EDT" [ref=e372]: on Jul 16, 2025 on Jul 16, 2025
+                      - generic [ref=e373]:
+                        - link "JohannesGaessler" [ref=e375] [cursor=pointer]:
+                          - /url: /JohannesGaessler
+                        - link "on Jul 16, 2025on Jul 16, 2025" [ref=e378] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/14692#issuecomment-3077367550
+                          - generic "Jul 16, 2025, 3:38 AM EDT" [ref=e379]: on Jul 16, 2025on Jul 16, 2025
+                      - generic [ref=e381]:
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e383]: Contributor
+                        - button "Actions for JohannesGaessler's comment, 3:38 AM on July 16, 2025" [ref=e385] [cursor=pointer]:
+                          - img [ref=e386]
+                    - generic [ref=e388]:
+                      - generic [ref=e390]:
+                        - paragraph [ref=e391]: "I don't mean to set these options as environment variables, I mean to set them as CMake options during compilation, so for example:"
+                        - generic [ref=e392]:
+                          - code [ref=e394]: git clone --depth 1 https://github.com/ggerganov/llama.cpp.git && cd llama.cpp cmake -B build -DGGML_CUDA=ON -DGGML_CUDA_NO_PEER_COPY=ON cmake --build build --config Release -j 16
+                          - button "Copy code to clipboard" [ref=e396] [cursor=pointer]:
+                            - img [ref=e397]
+                        - paragraph [ref=e400]: And I want to know which of these options individually fix the issue since that may give me more information.
+                      - toolbar "Reactions"
+                - generic [ref=e401]:
+                  - link "@0xshawn's profile" [ref=e402] [cursor=pointer]:
+                    - /url: https://github.com/0xshawn
+                    - img "0xshawn" [ref=e403]
+                  - generic [ref=e410]:
+                    - generic [ref=e412]:
+                      - heading "0xshawn commented on Jul 16, 2025 on Jul 16, 2025" [level=3] [ref=e413]:
+                        - text: 0xshawn commented
+                        - generic "Jul 16, 2025, 10:29 AM EDT" [ref=e414]: on Jul 16, 2025 on Jul 16, 2025
+                      - generic [ref=e415]:
+                        - link "0xshawn" [ref=e417] [cursor=pointer]:
+                          - /url: /0xshawn
+                        - link "on Jul 16, 2025on Jul 16, 2025" [ref=e420] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/14692#issuecomment-3078862815
+                          - generic "Jul 16, 2025, 10:29 AM EDT" [ref=e421]: on Jul 16, 2025on Jul 16, 2025
+                      - generic [ref=e423]:
+                        - generic "This user is the author of this issue" [ref=e425]: Author
+                        - button "Actions for 0xshawn's comment, 10:29 AM on July 16, 2025" [ref=e427] [cursor=pointer]:
+                          - img [ref=e428]
+                    - generic [ref=e430]:
+                      - generic [ref=e432]:
+                        - blockquote [ref=e433]:
+                          - paragraph [ref=e434]: "I don't mean to set these options as environment variables, I mean to set them as CMake options during compilation, so for example:"
+                          - generic [ref=e435]:
+                            - code [ref=e437]: git clone --depth 1 https://github.com/ggerganov/llama.cpp.git && cd llama.cpp cmake -B build -DGGML_CUDA=ON -DGGML_CUDA_NO_PEER_COPY=ON cmake --build build --config Release -j 16
+                            - button "Copy code to clipboard" [ref=e439] [cursor=pointer]:
+                              - img [ref=e440]
+                          - paragraph [ref=e443]: And I want to know which of these options individually fix the issue since that may give me more information.
+                        - paragraph [ref=e444]:
+                          - text: Hi
+                          - link "@JohannesGaessler" [ref=e445] [cursor=pointer]:
+                            - /url: https://github.com/JohannesGaessler
+                          - text: The building option
+                          - code [ref=e446]: cmake -B build -DGGML_CUDA=ON -DGGML_CUDA_NO_PEER_COPY=ON
+                          - text: works and now it could launch successfully. But the performance is quite slow and once I sent lots of concurrent request (>100), the server will be stuck and will not generate tokens anymore.
+                        - paragraph [ref=e447]: I tried to send a inference requests
+                        - generic [ref=e448]:
+                          - code [ref=e450]: "curl -s -X 'POST' \\ 'http://localhost:8000/v1/chat/completions' \\ -H 'Accept: application/json' \\ -H 'Content-Type: application/json' \\ -d '{ \"messages\": [ { \"content\": \"what is the meaning of life\", \"role\": \"system\" } ], \"stream\": true, \"model\": \"deepseek/deepseek-chat-v3-0324\", \"stream_options\": {\"include_usage\": true} }'"
+                          - button "Copy code to clipboard" [ref=e452] [cursor=pointer]:
+                            - img [ref=e453]
+                        - paragraph [ref=e456]: Startup logs
+                        - generic [ref=e457]:
+                          - generic [ref=e458]: "common_init_from_params: setting dry_penalty_last_n to ctx_size = 163840 common_init_from_params: warming up the model with an empty run - please wait ... (--no-warmup to disable) srv init: initializing slots, n_slots = 1 slot init: id 0 | task -1 | new slot n_ctx_slot = 163840 main: model loaded main: chat template, chat_template: {% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{% set ns = namespace(is_first=false, is_tool=false, is_output_first=true, system_prompt='', is_first_sp=tr ue, is_last_user=false) %}{%- for message in messages %}{%- if message['role'] == 'system' %}{%- if ns.is_first_sp %}{% set ns.system_prompt = ns.system_prompt + message['content'] %}{% set ns.is_first_sp = false %}{%- else %}{% set ns.sy stem_prompt = ns.system_prompt + ' ' + message['content'] %}{%- endif %}{%- endif %}{%- endfor %}{{ bos_token }}{{ ns.system_prompt }}{%- for message in messages %}{%- if message['role'] == 'user' %}{%- set ns.is_tool = false -%}{%- set ns.is_first = false -%}{%- set ns.is _last_user = true -%}{{'<｜User｜>' + message['content'] + '<｜Assistant｜>'}}{%- endif %}{%- if message['role'] == 'assistant' and message['tool_calls'] is defined and message['tool_calls'] is not none %}{%- set ns.is_last_user = false - %}{%- if ns.is_tool %}{{'<｜tool▁outputs▁end｜>'}}{%- endif %}{%- set ns.is_first = false %}{%- set ns.is_tool = false -%}{%- set ns.is_output_first = true %}{%- for tool in message['tool_calls'] %}{%- if not ns.is_first %}{%- if message[ 'content'] is none %}{{'<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>' + tool['type'] + '<｜tool▁sep｜>' + tool['function']['name'] + ' ' + '```json' + ' ' + tool['function']['arguments'] + ' ' + '```' + '<｜tool▁call▁end｜>'}}{%- else %}{{message['content'] + '<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>' + tool['type'] + '<｜tool▁sep｜>' + tool['function']['name'] + ' ' + '```json' + ' ' + tool['function']['arguments'] + ' ' + '```' + '<｜tool▁call▁end｜>'}}{%- endif %}{%- set ns.is_first = true -%}{%- else %}{{' ' + '<｜tool▁call▁begin｜>' + tool['type'] + '<｜tool▁sep｜>' + tool['function']['name'] + ' ' + '```json' + ' ' + tool['function']['arguments'] + ' ' + '```' + '<｜tool▁call▁end｜>'}}{%- endif %}{%- endfor %}{{'<｜tool▁calls▁end｜><｜end▁of▁sentence｜>'}}{%- endif %}{%- if message['role'] == 'assistant' and (message['tool_calls'] is not defined or message['tool_calls'] is none)%}{%- set ns.is_last_user = false -%}{%- if ns.is_tool %}{{'<｜tool▁outputs▁end｜>' + message['content'] + '<｜end▁of▁sentence｜>'}}{%- set ns.is_tool = false -%}{%- else %}{% set content = message['content'] %}{{content + '<｜end▁of▁sentence｜ >'}}{%- endif %}{%- endif %}{%- if message['role'] == 'tool' %}{%- set ns.is_last_user = false -%}{%- set ns.is_tool = true -%}{%- if ns.is_output_first %}{{'<｜tool▁outputs▁begin｜><｜tool▁output▁begin｜>' + message['content'] + '<｜tool ▁output▁end｜>'}}{%- set ns.is_output_first = false %}{%- else %}{{' <｜tool▁output▁begin｜>' + message['content'] + '<｜tool▁output▁end｜>'}}{%- endif %}{%- endif %}{%- endfor -%}{% if ns.is_tool %}{{'<｜tool▁outputs▁end｜>'}}{% endif %}{% if add_generation_prompt and not ns.is_last_user and not ns.is_too l %}{{'<｜Assistant｜>'}}{% endif %}, example_format: 'You are a helpful assistant <｜User｜>Hello<｜Assistant｜>Hi there<｜end▁of▁sentence｜><｜User｜>How are you?<｜Assistant｜>' main: server is listening on http://0.0.0.0:8000 - starting the main loop srv update_slots: all slots are idle"
+                          - button "Copy code to clipboard" [ref=e460] [cursor=pointer]:
+                            - img [ref=e461]
+                        - paragraph [ref=e464]:
+                          - text: Output of
+                          - code [ref=e465]: nvidia-smi
+                        - generic [ref=e466]:
+                          - code [ref=e468]: "Wed Jul 16 14:26:03 2025 +-----------------------------------------------------------------------------------------+ | NVIDIA-SMI 570.133.20 Driver Version: 570.133.20 CUDA Version: 12.8 | |-----------------------------------------+------------------------+----------------------+ | GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC | | Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. | | | | MIG M. | |=========================================+========================+======================| | 0 NVIDIA H200 On | 00000000:01:00.0 Off | 0 | | N/A 36C P0 119W / 700W | 51100MiB / 143771MiB | 7% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 1 NVIDIA H200 On | 00000000:02:00.0 Off | 0 | | N/A 32C P0 119W / 700W | 62086MiB / 143771MiB | 6% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 2 NVIDIA H200 On | 00000000:03:00.0 Off | 0 | | N/A 33C P0 118W / 700W | 62092MiB / 143771MiB | 2% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 3 NVIDIA H200 On | 00000000:04:00.0 Off | 0 | | N/A 35C P0 129W / 700W | 54466MiB / 143771MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 4 NVIDIA H200 On | 00000000:05:00.0 Off | 0 | | N/A 38C P0 126W / 700W | 62098MiB / 143771MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 5 NVIDIA H200 On | 00000000:06:00.0 Off | 0 | | N/A 33C P0 121W / 700W | 62098MiB / 143771MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 6 NVIDIA H200 On | 00000000:07:00.0 Off | 0 | | N/A 35C P0 118W / 700W | 62098MiB / 143771MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ | 7 NVIDIA H200 On | 00000000:08:00.0 Off | 0 | | N/A 32C P0 117W / 700W | 47568MiB / 143771MiB | 0% Default | | | | N/A | +-----------------------------------------+------------------------+----------------------+ +-----------------------------------------------------------------------------------------+ | Processes: | | GPU GI CI PID Type Process name GPU Memory | | ID ID Usage | |=========================================================================================| | 0 N/A N/A 760360 C ./llama-server 50988MiB | | 1 N/A N/A 760360 C ./llama-server 61944MiB | | 2 N/A N/A 760360 C ./llama-server 61944MiB | | 3 N/A N/A 760360 C ./llama-server 54312MiB | | 4 N/A N/A 760360 C ./llama-server 61944MiB | | 5 N/A N/A 760360 C ./llama-server 61944MiB | | 6 N/A N/A 760360 C ./llama-server 61944MiB | | 7 N/A N/A 760360 C ./llama-server 47414MiB | +-----------------------------------------------------------------------------------------+"
+                          - button "Copy code to clipboard" [ref=e470] [cursor=pointer]:
+                            - img [ref=e471]
+                      - toolbar "Reactions"
+                - generic [ref=e474]:
+                  - link "@dagbdagb's profile" [ref=e475] [cursor=pointer]:
+                    - /url: https://github.com/dagbdagb
+                    - img "dagbdagb" [ref=e476]
+                  - generic [ref=e483]:
+                    - generic [ref=e485]:
+                      - heading "dagbdagb commented on Jul 22, 2025 on Jul 22, 2025" [level=3] [ref=e486]:
+                        - text: dagbdagb commented
+                        - generic "Jul 22, 2025, 3:56 PM EDT" [ref=e487]: on Jul 22, 2025 on Jul 22, 2025
+                      - generic [ref=e488]:
+                        - link "dagbdagb" [ref=e490] [cursor=pointer]:
+                          - /url: /dagbdagb
+                        - link "on Jul 22, 2025on Jul 22, 2025" [ref=e493] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/issues/14692#issuecomment-3104648840
+                          - generic "Jul 22, 2025, 3:56 PM EDT" [ref=e494]: on Jul 22, 2025on Jul 22, 2025
+                      - button "Actions for dagbdagb's comment, 3:56 PM on July 22, 2025" [ref=e498] [cursor=pointer]:
+                        - img [ref=e499]
+                    - generic [ref=e501]:
+                      - generic [ref=e503]:
+                        - paragraph [ref=e504]: "I came across this issue today, while searching for a solution to:"
+                        - paragraph [ref=e505]:
+                          - text: "/home/dagb/gits/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:79: CUDA error"
+                          - text: "ggml_cuda_compute_forward: RMS_NORM failed"
+                          - text: "CUDA error: device kernel image is invalid"
+                          - text: "current device: 0, in function ggml_cuda_compute_forward at /home/dagb/gits/llama.cpp/ggml/src/ggml-cuda/ggml-cuda.cu:2482"
+                        - paragraph [ref=e506]: I assume this is not the same issue, but piggybacking here to document the fix which worked for my issue.
+                        - paragraph [ref=e507]: None of the two compile-time flags mentioned above made a difference. The fix for my issue was to upgrade the drivers to 575.64.03. 535.261.03 resulted in the error above, 550.163.01 would not compile against linux kernel 6.15.7.
+                        - paragraph [ref=e508]: The minimum driver version for Cuda 12.9.1 is >=525.60.13 . Unsure if what I found is a bug and/or in what component.
+                        - paragraph [ref=e509]: Ampere hardware (3090)
+                        - paragraph [ref=e510]:
+                          - link "@JohannesGaessler" [ref=e511] [cursor=pointer]:
+                            - /url: https://github.com/JohannesGaessler
+                          - text: If my observations justify a separate bug report, let me know.
+                      - toolbar "Reactions"
+                - region "Events" [ref=e512]:
+                  - generic [ref=e519]:
+                    - img [ref=e523]
+                    - generic [ref=e527]:
+                      - link "github-actions" [ref=e529] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e530]: github-actions
+                      - text: added
+                      - link "stale" [ref=e532] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                        - generic [ref=e534]: stale
+                      - link "on Aug 21, 2025on Aug 21, 2025" [ref=e536] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/14692#event-19277533867
+                        - generic "Aug 21, 2025, 9:07 PM EDT" [ref=e537]: on Aug 21, 2025on Aug 21, 2025
+                - generic [ref=e538]:
+                  - link "@github-actions's profile" [ref=e539] [cursor=pointer]:
+                    - /url: https://github.com/apps/github-actions
+                    - img "github-actions" [ref=e540]
+                  - generic [ref=e547]:
+                    - generic [ref=e549]:
+                      - heading "github-actions commented on Sep 4, 2025 on Sep 4, 2025" [level=3] [ref=e550]:
+                        - text: github-actions commented
+                        - generic "Sep 4, 2025, 9:07 PM EDT" [ref=e551]: on Sep 4, 2025 on Sep 4, 2025
+                      - generic [ref=e552]:
+                        - generic [ref=e553]:
+                          - link "github-actions" [ref=e554] [cursor=pointer]:
+                            - /url: /apps/github-actions
+                          - generic [ref=e555]: bot
+                        - generic [ref=e557]:
+                          - link "on Sep 4, 2025on Sep 4, 2025" [ref=e558] [cursor=pointer]:
+                            - /url: https://github.com/ggml-org/llama.cpp/issues/14692#issuecomment-3256673733
+                            - generic "Sep 4, 2025, 9:07 PM EDT" [ref=e559]: on Sep 4, 2025on Sep 4, 2025
+                          - generic [ref=e560]:
+                            - text: – with
+                            - link "GitHub Actions" [ref=e561] [cursor=pointer]:
+                              - /url: https://help.github.com/en/actions
+                      - generic [ref=e563]:
+                        - generic "This user has previously committed to the llama.cpp repository." [ref=e565]: Contributor
+                        - button "Actions for github-actions's comment, 9:07 PM on September 4, 2025" [ref=e567] [cursor=pointer]:
+                          - img [ref=e568]
+                    - generic [ref=e570]:
+                      - paragraph [ref=e573]: This issue was closed because it has been inactive for 14 days since being marked as stale.
+                      - toolbar "Reactions"
+                - region "Events" [ref=e574]:
+                  - generic [ref=e581]:
+                    - img [ref=e585]
+                    - generic [ref=e589]:
+                      - link "github-actions" [ref=e591] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e592]: github-actions
+                      - text: closed this as
+                      - link "completed" [ref=e593] [cursor=pointer]:
+                        - /url: /ggml-org/llama.cpp/issues?q=is%3Aissue%20state%3Aclosed%20archived%3Afalse%20reason%3Acompleted
+                      - link "on Sep 4, 2025on Sep 4, 2025" [ref=e594] [cursor=pointer]:
+                        - /url: https://github.com/ggml-org/llama.cpp/issues/14692#event-19519869884
+                        - generic "Sep 4, 2025, 9:07 PM EDT" [ref=e595]: on Sep 4, 2025on Sep 4, 2025
+            - generic [ref=e596]:
+              - link "Sign up for free" [ref=e597] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ggml-org/llama.cpp/issues/14692
+                - generic [ref=e599]: Sign up for free
+              - generic [ref=e600]:
+                - strong [ref=e601]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e602] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ggml-org/llama.cpp/issues/14692
+        - generic [ref=e604]:
+          - heading "Metadata" [level=2] [ref=e605]
+          - generic [ref=e607]:
+            - generic [ref=e609]:
+              - generic [ref=e610]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e611]: No one assigned
+            - generic [ref=e612]:
+              - generic [ref=e614]:
+                - heading "Labels" [level=3]
+              - generic [ref=e616]:
+                - link "bug-unconfirmed" [ref=e617] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22bug-unconfirmed%22
+                  - generic [ref=e619]: bug-unconfirmed
+                - link "stale" [ref=e621] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/issues?q=state%3Aopen%20label%3A%22stale%22
+                  - generic [ref=e623]: stale
+            - generic [ref=e626]:
+              - generic [ref=e627]:
+                - heading "Type" [level=3]
+              - generic [ref=e628]: No type
+            - generic [ref=e629]:
+              - generic [ref=e631]:
+                - heading "Fields" [level=3] [ref=e632]
+                - link "Give feedback" [ref=e633] [cursor=pointer]:
+                  - /url: https://github.com/orgs/community/discussions/189141
+              - generic [ref=e635]: No fields configured for issues without a type.
+            - generic [ref=e637]:
+              - generic [ref=e638]:
+                - heading "Projects" [level=3]
+              - generic [ref=e639]: No projects
+            - generic [ref=e641]:
+              - generic [ref=e642]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e643]: No milestone
+            - generic [ref=e645]:
+              - generic [ref=e646]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e647]: None yet
+            - generic [ref=e649]:
+              - generic [ref=e650]:
+                - heading "Development" [level=3]
+              - generic [ref=e651]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e652]
+            - list
+  - contentinfo [ref=e653]:
+    - heading "Footer" [level=2] [ref=e654]
+    - generic [ref=e655]:
+      - generic [ref=e656]:
+        - link "GitHub Homepage" [ref=e657] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e658]
+        - generic [ref=e660]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e661]:
+        - heading "Footer navigation" [level=3] [ref=e662]
+        - list "Footer navigation" [ref=e663]:
+          - listitem [ref=e664]:
+            - link "Terms" [ref=e665] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e666]:
+            - link "Privacy" [ref=e667] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e668]:
+            - link "Security" [ref=e669] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e670]:
+            - link "Status" [ref=e671] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e672]:
+            - link "Community" [ref=e673] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e674]:
+            - link "Docs" [ref=e675] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e676]:
+            - link "Contact" [ref=e677] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e678]:
+            - button "Manage cookies" [ref=e680] [cursor=pointer]
+          - listitem [ref=e681]:
+            - button "Do not share my personal information" [ref=e683] [cursor=pointer]

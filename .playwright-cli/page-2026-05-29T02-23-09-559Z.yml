@@ -1,0 +1,842 @@
+- generic [ref=e1]:
+  - region "Notifications alt+T"
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - link "DeepWiki" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: DeepWiki
+      - paragraph [ref=e10]:
+        - link "ggml-org/llama.cpp" [ref=e11] [cursor=pointer]:
+          - /url: https://github.com/ggml-org/llama.cpp
+          - text: ggml-org/llama.cpp
+          - img [ref=e12]
+      - generic [ref=e14]:
+        - button "Index your code with Devin" [ref=e15]:
+          - generic [ref=e16]: Index your code with
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic [ref=e22]: Devin
+        - button "Edit Wiki" [ref=e23] [cursor=pointer]:
+          - img [ref=e24]
+          - text: Edit Wiki
+        - button "Share" [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e33]: Share
+        - button "Switch to dark mode" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+    - generic [ref=e39]:
+      - generic [ref=e41]:
+        - generic [ref=e43]:
+          - text: "Last indexed: 24 May 2026 ("
+          - link "549b9d" [ref=e44] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/commits/549b9d84
+          - text: )
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - link "Overview" [ref=e47] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/1-overview
+          - listitem [ref=e48]:
+            - link "Getting Started" [ref=e49] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2-getting-started
+          - listitem [ref=e50]:
+            - link "Installation and Building" [ref=e51] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.1-installation-and-building
+          - listitem [ref=e52]:
+            - link "Basic Usage and Examples" [ref=e53] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.2-basic-usage-and-examples
+          - listitem [ref=e54]:
+            - link "Configuration and Parameters" [ref=e55] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.3-configuration-and-parameters
+          - listitem [ref=e56]:
+            - link "Core Library Architecture" [ref=e57] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3-core-library-architecture
+          - listitem [ref=e58]:
+            - link "libllama Public API" [ref=e59] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.1-libllama-public-api
+          - listitem [ref=e60]:
+            - link "Model Loading and Representation" [ref=e61] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.2-model-loading-and-representation
+          - listitem [ref=e62]:
+            - link "Tokenization and Vocabulary" [ref=e63] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.3-tokenization-and-vocabulary
+          - listitem [ref=e64]:
+            - link "Inference Context and Orchestration" [ref=e65] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.4-inference-context-and-orchestration
+          - listitem [ref=e66]:
+            - link "Batch Processing Pipeline" [ref=e67] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.5-batch-processing-pipeline
+          - listitem [ref=e68]:
+            - link "Memory Management and KV Cache" [ref=e69] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.6-memory-management-and-kv-cache
+          - listitem [ref=e70]:
+            - link "Computation Graph Building" [ref=e71] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.7-computation-graph-building
+          - listitem [ref=e72]:
+            - link "Token Sampling and Generation" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.8-token-sampling-and-generation
+          - listitem [ref=e74]:
+            - link "Chat Templates and Message Parsing" [ref=e75] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.9-chat-templates-and-message-parsing
+          - listitem [ref=e76]:
+            - link "Adapters and Fine-tuning" [ref=e77] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.10-adapters-and-fine-tuning
+          - listitem [ref=e78]:
+            - link "Supported Model Architectures" [ref=e79] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.11-supported-model-architectures
+          - listitem [ref=e80]:
+            - link "GGML Tensor Library" [ref=e81] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4-ggml-tensor-library
+          - listitem [ref=e82]:
+            - link "GGML Core Architecture" [ref=e83] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.1-ggml-core-architecture
+          - listitem [ref=e84]:
+            - link "Backend System and Registration" [ref=e85] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.2-backend-system-and-registration
+          - listitem [ref=e86]:
+            - link "CPU Backend Implementation" [ref=e87] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.3-cpu-backend-implementation
+          - listitem [ref=e88]:
+            - link "Quantization in GGML" [ref=e89] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.4-quantization-in-ggml
+          - listitem [ref=e90]:
+            - link "GPU and Accelerator Backends" [ref=e91] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5-gpu-and-accelerator-backends
+          - listitem [ref=e92]:
+            - link "CUDA Backend (NVIDIA)" [ref=e93] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.1-cuda-backend-(nvidia)
+          - listitem [ref=e94]:
+            - link "Metal Backend (Apple)" [ref=e95] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.2-metal-backend-(apple)
+          - listitem [ref=e96]:
+            - link "Vulkan Backend (Cross-Platform)" [ref=e97] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.3-vulkan-backend-(cross-platform)
+          - listitem [ref=e98]:
+            - link "SYCL Backend (Intel)" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.4-sycl-backend-(intel)
+          - listitem [ref=e100]:
+            - link "HIP, CANN, and Other Backends" [ref=e101] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.5-hip-cann-and-other-backends
+          - listitem [ref=e102]:
+            - link "Backend Testing and Validation" [ref=e103] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.6-backend-testing-and-validation
+          - listitem [ref=e104]:
+            - link "User Tools and Interfaces" [ref=e105] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6-user-tools-and-interfaces
+          - listitem [ref=e106]:
+            - link "Command-Line Tools" [ref=e107] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.1-command-line-tools
+          - listitem [ref=e108]:
+            - link "llama-server HTTP API" [ref=e109] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.2-llama-server-http-api
+          - listitem [ref=e110]:
+            - link "Router Mode and Model Management" [ref=e111] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.3-router-mode-and-model-management
+          - listitem [ref=e112]:
+            - link "Web UI" [ref=e113] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.4-web-ui
+          - listitem [ref=e114]:
+            - link "Multimodal Support (libmtmd)" [ref=e115] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.5-multimodal-support-(libmtmd)
+          - listitem [ref=e116]:
+            - link "Text-to-Speech (TTS)" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.6-text-to-speech-(tts)
+          - listitem [ref=e118]:
+            - link "Model Pipeline" [ref=e119] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7-model-pipeline
+          - listitem [ref=e120]:
+            - link "GGUF File Format" [ref=e121] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.1-gguf-file-format
+          - listitem [ref=e122]:
+            - link "Model Conversion from HuggingFace" [ref=e123] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.2-model-conversion-from-huggingface
+          - listitem [ref=e124]:
+            - link "Quantization Techniques" [ref=e125] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.3-quantization-techniques
+          - listitem [ref=e126]:
+            - link "Model Acquisition and Management" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.4-model-acquisition-and-management
+          - listitem [ref=e128]:
+            - link "Advanced Features" [ref=e129] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8-advanced-features
+          - listitem [ref=e130]:
+            - link "Grammar and Structured Output" [ref=e131] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.1-grammar-and-structured-output
+          - listitem [ref=e132]:
+            - link "Flash Attention and Optimizations" [ref=e133] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.2-flash-attention-and-optimizations
+          - listitem [ref=e134]:
+            - link "Speculative Decoding" [ref=e135] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.3-speculative-decoding
+          - listitem [ref=e136]:
+            - link "Multi-GPU and Distributed Inference" [ref=e137] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.4-multi-gpu-and-distributed-inference
+          - listitem [ref=e138]:
+            - link "Development and Contributing" [ref=e139] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9-development-and-contributing
+          - listitem [ref=e140]:
+            - link "Build System and Configuration" [ref=e141] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.1-build-system-and-configuration
+          - listitem [ref=e142]:
+            - link "Testing Infrastructure" [ref=e143] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.2-testing-infrastructure
+          - listitem [ref=e144]:
+            - link "CI/CD Pipeline" [ref=e145] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.3-cicd-pipeline
+          - listitem [ref=e146]:
+            - link "GGML Synchronization and Contributing" [ref=e147] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.4-ggml-synchronization-and-contributing
+          - listitem [ref=e148]:
+            - link "Glossary" [ref=e149] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/10-glossary
+      - generic [ref=e155]:
+        - heading "Flash Attention and Optimizations Copy link to header" [level=1] [ref=e156]:
+          - text: Flash Attention and Optimizations
+          - button "Copy link to header" [ref=e157] [cursor=pointer]:
+            - img [ref=e158]
+        - group [ref=e160]:
+          - generic "Relevant source files" [ref=e161] [cursor=pointer]
+        - heading "Purpose and Scope Copy link to header" [level=2] [ref=e162]:
+          - text: Purpose and Scope
+          - button "Copy link to header" [ref=e163] [cursor=pointer]:
+            - img [ref=e164]
+        - paragraph [ref=e166]: "Flash Attention is a memory-efficient attention algorithm that reduces memory bandwidth requirements from $O(N^2)$ to $O(N)$ by tiling the computation and avoiding materialization of the full $N \\times N$ attention matrix. Traditional attention computes $S = Q \\times K^T$, applies $P = \\text{softmax}(S)$, then multiplies $O = P \\times V$, requiring storage of the full attention scores matrix $S$ of size $(\\text{seq_len} \\times \\text{seq_len})$. For a sequence of length 4096, this requires 64MB of memory just for the attention scores (at FP32), which becomes a bottleneck."
+        - paragraph [ref=e167]: "Flash Attention eliminates this by:"
+        - list [ref=e168]:
+          - listitem [ref=e169]:
+            - strong [ref=e170]: Tiling
+            - text: ": Processing attention in blocks that fit in fast shared memory (CUDA/Vulkan) or threadgroup memory (Metal)."
+          - listitem [ref=e171]:
+            - strong [ref=e172]: Online Softmax
+            - text: ": Computing softmax incrementally as blocks are processed, avoiding storing the full attention matrix."
+          - listitem [ref=e173]:
+            - strong [ref=e174]: Recomputation
+            - text: ": Accepting some redundant compute to avoid expensive memory transfers."
+        - paragraph [ref=e175]:
+          - text: This page documents Flash Attention implementations across
+          - code [ref=e176]: llama.cpp
+          - text: "backends and related optimization techniques:"
+        - list [ref=e177]:
+          - listitem [ref=e178]:
+            - strong [ref=e179]: Tiled computation
+            - text: ": Block-wise processing to fit in fast memory ($Br \\times Bc$ tiles)."
+          - listitem [ref=e180]:
+            - strong [ref=e181]: Split-K parallelization
+            - text: ": Dividing KV sequence across workgroups for better parallelism."
+          - listitem [ref=e182]:
+            - strong [ref=e183]: Cooperative matrices
+            - text: ": Hardware-accelerated tensor operations (MMA on CUDA, Cooperative Matrix on Vulkan)."
+          - listitem [ref=e184]:
+            - strong [ref=e185]: Quantization support
+            - text: ": On-the-fly dequantization of Q, K, V tensors within the attention kernel."
+          - listitem [ref=e186]:
+            - strong [ref=e187]: Accumulator type selection
+            - text: ": FP16 vs FP32 trade-offs for performance and accuracy."
+        - paragraph [ref=e188]:
+          - text: The operation is exposed through
+          - code [ref=e189]: GGML_OP_FLASH_ATTN_EXT
+          - text: which handles both causal and non-causal attention patterns.
+        - heading "Flash Attention Architecture Overview Copy link to header" [level=2] [ref=e190]:
+          - text: Flash Attention Architecture Overview
+          - button "Copy link to header" [ref=e191] [cursor=pointer]:
+            - img [ref=e192]
+        - paragraph [ref=e194]:
+          - text: Flash Attention in
+          - code [ref=e195]: llama.cpp
+          - text: is implemented across multiple backends with architecture-specific optimizations. Each backend provides multiple code paths optimized for different hardware capabilities.
+        - heading "Backend Dispatch and Code Paths Copy link to header" [level=3] [ref=e196]:
+          - text: Backend Dispatch and Code Paths
+          - button "Copy link to header" [ref=e197] [cursor=pointer]:
+            - img [ref=e198]
+        - paragraph [ref=e200]:
+          - strong [ref=e201]: "Diagram: Flash Attention Backend Dispatch and Implementation Variants"
+        - generic [ref=e203] [cursor=pointer]:
+          - document [ref=e205]:
+            - generic [ref=e207]:
+              - generic [ref=e208]:
+                - paragraph [ref=e215]: Vulkan_Kernels
+                - paragraph [ref=e222]: Metal_Kernels
+                - paragraph [ref=e229]: CUDA_Kernels
+                - paragraph [ref=e236]: Backend_Dispatch
+                - paragraph [ref=e243]: GGML_Operation
+              - generic [ref=e254]:
+                - paragraph [ref=e261]: GGML_OP_FLASH_ATTN_EXT
+                - paragraph [ref=e268]:
+                  - text: Backend Selection
+                  - text: ggml_backend
+                - paragraph [ref=e275]:
+                  - text: CUDA Backend
+                  - text: ggml_cuda_op_flash_attn_ext
+                - paragraph [ref=e282]:
+                  - text: Metal Backend
+                  - text: ggml_metal_op_flash_attn_ext
+                - paragraph [ref=e289]:
+                  - text: Vulkan Backend
+                  - text: ggml_vk_op_flash_attn_ext
+                - paragraph [ref=e296]:
+                  - text: ggml_cuda_flash_attn_ext_mma_f16
+                  - text: MMA/WMMA path
+                - paragraph [ref=e303]:
+                  - text: ggml_cuda_flash_attn_ext_vec
+                  - text: Vector path
+                - paragraph [ref=e310]:
+                  - text: ggml_cuda_flash_attn_ext_tile
+                  - text: Tiled variant
+                - paragraph [ref=e317]:
+                  - text: kernel_flash_attn_ext_vec
+                  - text: 1 query/threadgroup
+                - paragraph [ref=e324]:
+                  - text: kernel_flash_attn_ext
+                  - text: 8 queries/threadgroup
+                - paragraph [ref=e331]:
+                  - text: flash_attn_cm2.comp
+                  - text: Coop Matrix NV
+                - paragraph [ref=e338]:
+                  - text: flash_attn.comp
+                  - text: Standard GLSL
+          - generic [ref=e339]:
+            - button "Zoom in" [ref=e340]:
+              - img [ref=e341]
+            - button "Zoom out" [ref=e343]:
+              - img [ref=e344]
+            - img [ref=e347]
+        - paragraph [ref=e349]:
+          - strong [ref=e350]: "Sources:"
+        - list [ref=e351]:
+          - listitem [ref=e352]:
+            - link "ggml/src/ggml-cuda/fattn.cu 114" [ref=e353] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn.cu#L114-L114
+              - generic [ref=e354]:
+                - img [ref=e355]
+                - text: ggml/src/ggml-cuda/fattn.cu
+              - generic [ref=e357]: "114"
+            - text: "- Entry point for CUDA MMA implementation."
+          - listitem [ref=e358]:
+            - link "ggml/src/ggml-metal/ggml-metal-ops.cpp 175-185" [ref=e359] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-ops.cpp#L175-L185
+              - generic [ref=e360]:
+                - img [ref=e361]
+                - text: ggml/src/ggml-metal/ggml-metal-ops.cpp
+              - generic [ref=e363]: 175-185
+            - text: "- Metal operation dispatch logic."
+          - listitem [ref=e364]:
+            - link "ggml/src/ggml-vulkan/ggml-vulkan.cpp 137-161" [ref=e365] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/ggml-vulkan.cpp#L137-L161
+              - generic [ref=e366]:
+                - img [ref=e367]
+                - text: ggml/src/ggml-vulkan/ggml-vulkan.cpp
+              - generic [ref=e369]: 137-161
+            - text: "- Vulkan pipeline and shader management."
+        - heading "CUDA Flash Attention Implementation Copy link to header" [level=2] [ref=e370]:
+          - text: CUDA Flash Attention Implementation
+          - button "Copy link to header" [ref=e371] [cursor=pointer]:
+            - img [ref=e372]
+        - heading "Overview and Configuration Copy link to header" [level=3] [ref=e374]:
+          - text: Overview and Configuration
+          - button "Copy link to header" [ref=e375] [cursor=pointer]:
+            - img [ref=e376]
+        - paragraph [ref=e378]: "CUDA Flash Attention leverages NVIDIA Tensor Cores through Matrix Multiply-Accumulate (MMA) primitives. The implementation is highly templated to support various head dimensions ($D_{KQ}$, $D_V$) and GQA ratios."
+        - paragraph [ref=e379]:
+          - strong [ref=e380]: "Diagram: CUDA Flash Attention MMA Configuration"
+        - generic [ref=e382] [cursor=pointer]:
+          - document [ref=e384]:
+            - generic [ref=e386]:
+              - generic [ref=e387]:
+                - paragraph [ref=e394]: Code_Entities
+                - paragraph [ref=e401]: Configuration_Space
+              - generic [ref=e408]:
+                - paragraph [ref=e415]: fattn_mma_config
+                - paragraph [ref=e422]: DKQ (Head Dim K/Q)
+                - paragraph [ref=e429]: DV (Head Dim V)
+                - paragraph [ref=e436]: ncols (GQA Ratio)
+                - paragraph [ref=e443]: ggml_cuda_fattn_mma_get_config_ampere
+                - paragraph [ref=e450]: ggml_cuda_fattn_mma_get_config_turing
+                - paragraph [ref=e457]: ggml_cuda_flash_attn_ext_mma_f16
+          - generic [ref=e458]:
+            - button "Zoom in" [ref=e459]:
+              - img [ref=e460]
+            - button "Zoom out" [ref=e462]:
+              - img [ref=e463]
+            - img [ref=e466]
+        - paragraph [ref=e468]:
+          - strong [ref=e469]: "Key Implementation Details:"
+        - list [ref=e470]:
+          - listitem [ref=e471]:
+            - strong [ref=e472]: Numerical Stability
+            - text: ": Uses an offset for the KQ maximum to avoid numerical overflow in softmax:"
+            - code [ref=e473]: "#define FATTN_KQ_MAX_OFFSET (3.0f*0.6931f)"
+            - link "ggml/src/ggml-cuda/fattn-common.cuh 19" [ref=e474] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L19-L19
+              - generic [ref=e475]:
+                - img [ref=e476]
+                - text: ggml/src/ggml-cuda/fattn-common.cuh
+              - generic [ref=e478]: "19"
+          - listitem [ref=e479]:
+            - strong [ref=e480]: Softmax Flush
+            - text: ": Flushes small values to zero to avoid NaNs:"
+            - code [ref=e481]: "#define SOFTMAX_FTZ_THRESHOLD -20.0f"
+            - link "ggml/src/ggml-cuda/fattn-common.cuh 11" [ref=e482] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L11-L11
+              - generic [ref=e483]:
+                - img [ref=e484]
+                - text: ggml/src/ggml-cuda/fattn-common.cuh
+              - generic [ref=e486]: "11"
+          - listitem [ref=e487]:
+            - strong [ref=e488]: MMA Configs
+            - text: ": Tuning parameters like"
+            - code [ref=e489]: nthreads
+            - text: ","
+            - code [ref=e490]: nbatch_fa
+            - text: ", and"
+            - code [ref=e491]: nbatch_K2
+            - text: are selected based on the GPU architecture (Ampere, Turing)
+            - link "ggml/src/ggml-cuda/fattn-mma-f16.cuh 10-24" [ref=e492] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-mma-f16.cuh#L10-L24
+              - generic [ref=e493]:
+                - img [ref=e494]
+                - text: ggml/src/ggml-cuda/fattn-mma-f16.cuh
+              - generic [ref=e496]: 10-24
+          - listitem [ref=e497]:
+            - strong [ref=e498]: Hardware Selection
+            - text: ": Logic switches between MMA cases based on Compute Capability (CC) and head dimensions. For example, MiMo-V2.5 models use specialized switches for $D_{KQ}=192$"
+            - link "ggml/src/ggml-cuda/fattn.cu 143-158" [ref=e499] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn.cu#L143-L158
+              - generic [ref=e500]:
+                - img [ref=e501]
+                - text: ggml/src/ggml-cuda/fattn.cu
+              - generic [ref=e503]: 143-158
+        - paragraph [ref=e504]:
+          - strong [ref=e505]: "Sources:"
+        - list [ref=e506]:
+          - listitem [ref=e507]:
+            - link "ggml/src/ggml-cuda/fattn-common.cuh 9-21" [ref=e508] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L9-L21
+              - generic [ref=e509]:
+                - img [ref=e510]
+                - text: ggml/src/ggml-cuda/fattn-common.cuh
+              - generic [ref=e512]: 9-21
+            - text: "- Common constants and definitions."
+          - listitem [ref=e513]:
+            - link "ggml/src/ggml-cuda/fattn-mma-f16.cuh 10-88" [ref=e514] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-mma-f16.cuh#L10-L88
+              - generic [ref=e515]:
+                - img [ref=e516]
+                - text: ggml/src/ggml-cuda/fattn-mma-f16.cuh
+              - generic [ref=e518]: 10-88
+            - text: "- MMA configuration structures and architecture-specific tuning."
+          - listitem [ref=e519]:
+            - link "ggml/src/ggml-cuda/fattn.cu 37-111" [ref=e520] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn.cu#L37-L111
+              - generic [ref=e521]:
+                - img [ref=e522]
+                - text: ggml/src/ggml-cuda/fattn.cu
+              - generic [ref=e524]: 37-111
+            - text: "- Dispatch logic for different head sizes and GQA ratios."
+        - heading "Quantization Support Copy link to header" [level=3] [ref=e525]:
+          - text: Quantization Support
+          - button "Copy link to header" [ref=e526] [cursor=pointer]:
+            - img [ref=e527]
+        - paragraph [ref=e529]:
+          - text: CUDA kernels provide specialized
+          - code [ref=e530]: vec_dot
+          - text: functions for quantized Key tensors, allowing Flash Attention to operate directly on quantized KV caches.
+        - table [ref=e531]:
+          - rowgroup [ref=e532]:
+            - row "Function Name Supported Type Description" [ref=e533]:
+              - columnheader "Function Name" [ref=e534]
+              - columnheader "Supported Type" [ref=e535]
+              - columnheader "Description" [ref=e536]
+          - rowgroup [ref=e537]:
+            - row "vec_dot_fattn_vec_KQ_f16 FP16 Standard half-precision dot product ggml/src/ggml-cuda/fattn-common.cuh 48-58" [ref=e538]:
+              - cell "vec_dot_fattn_vec_KQ_f16" [ref=e539]:
+                - code [ref=e540]: vec_dot_fattn_vec_KQ_f16
+              - cell "FP16" [ref=e541]
+              - cell "Standard half-precision dot product ggml/src/ggml-cuda/fattn-common.cuh 48-58" [ref=e542]:
+                - text: Standard half-precision dot product
+                - link "ggml/src/ggml-cuda/fattn-common.cuh 48-58" [ref=e543] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L48-L58
+                  - generic [ref=e544]:
+                    - img [ref=e545]
+                    - text: ggml/src/ggml-cuda/fattn-common.cuh
+                  - generic [ref=e547]: 48-58
+            - row "vec_dot_fattn_vec_KQ_q4_0 Q4_0 Dequantizes and dots using dp4a ggml/src/ggml-cuda/fattn-common.cuh 109-137" [ref=e548]:
+              - cell "vec_dot_fattn_vec_KQ_q4_0" [ref=e549]:
+                - code [ref=e550]: vec_dot_fattn_vec_KQ_q4_0
+              - cell "Q4_0" [ref=e551]
+              - cell "Dequantizes and dots using dp4a ggml/src/ggml-cuda/fattn-common.cuh 109-137" [ref=e552]:
+                - text: Dequantizes and dots using
+                - code [ref=e553]: dp4a
+                - link "ggml/src/ggml-cuda/fattn-common.cuh 109-137" [ref=e554] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L109-L137
+                  - generic [ref=e555]:
+                    - img [ref=e556]
+                    - text: ggml/src/ggml-cuda/fattn-common.cuh
+                  - generic [ref=e558]: 109-137
+            - row "vec_dot_fattn_vec_KQ_q4_1 Q4_1 Supports scale and min dequantization ggml/src/ggml-cuda/fattn-common.cuh 140-170" [ref=e559]:
+              - cell "vec_dot_fattn_vec_KQ_q4_1" [ref=e560]:
+                - code [ref=e561]: vec_dot_fattn_vec_KQ_q4_1
+              - cell "Q4_1" [ref=e562]
+              - cell "Supports scale and min dequantization ggml/src/ggml-cuda/fattn-common.cuh 140-170" [ref=e563]:
+                - text: Supports scale and min dequantization
+                - link "ggml/src/ggml-cuda/fattn-common.cuh 140-170" [ref=e564] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L140-L170
+                  - generic [ref=e565]:
+                    - img [ref=e566]
+                    - text: ggml/src/ggml-cuda/fattn-common.cuh
+                  - generic [ref=e568]: 140-170
+            - row "vec_dot_fattn_vec_KQ_bf16 BF16 Bfloat16 support for newer architectures ggml/src/ggml-cuda/fattn-common.cuh 78-88" [ref=e569]:
+              - cell "vec_dot_fattn_vec_KQ_bf16" [ref=e570]:
+                - code [ref=e571]: vec_dot_fattn_vec_KQ_bf16
+              - cell "BF16" [ref=e572]
+              - cell "Bfloat16 support for newer architectures ggml/src/ggml-cuda/fattn-common.cuh 78-88" [ref=e573]:
+                - text: Bfloat16 support for newer architectures
+                - link "ggml/src/ggml-cuda/fattn-common.cuh 78-88" [ref=e574] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L78-L88
+                  - generic [ref=e575]:
+                    - img [ref=e576]
+                    - text: ggml/src/ggml-cuda/fattn-common.cuh
+                  - generic [ref=e578]: 78-88
+        - paragraph [ref=e579]:
+          - strong [ref=e580]: "Sources:"
+        - list [ref=e581]:
+          - listitem [ref=e582]:
+            - link "ggml/src/ggml-cuda/fattn-common.cuh 47-173" [ref=e583] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L47-L173
+              - generic [ref=e584]:
+                - img [ref=e585]
+                - text: ggml/src/ggml-cuda/fattn-common.cuh
+              - generic [ref=e587]: 47-173
+            - text: "- Quantized dot product implementations for Flash Attention."
+        - heading "Metal Flash Attention Implementation Copy link to header" [level=2] [ref=e588]:
+          - text: Metal Flash Attention Implementation
+          - button "Copy link to header" [ref=e589] [cursor=pointer]:
+            - img [ref=e590]
+        - paragraph [ref=e592]: The Metal backend implements Flash Attention using MSL (Metal Shading Language) with specialized kernels for different workload sizes.
+        - heading "Kernel Dispatch and Function Constants Copy link to header" [level=3] [ref=e593]:
+          - text: Kernel Dispatch and Function Constants
+          - button "Copy link to header" [ref=e594] [cursor=pointer]:
+            - img [ref=e595]
+        - paragraph [ref=e597]:
+          - text: Metal uses
+          - code [ref=e598]: MTLFunctionConstantValues
+          - text: to specialize kernels at runtime for specific head dimensions and GQA ratios.
+        - paragraph [ref=e599]:
+          - strong [ref=e600]: "Diagram: Metal Pipeline Specialization"
+        - generic [ref=e602] [cursor=pointer]:
+          - document [ref=e604]:
+            - generic [ref=e606]:
+              - generic [ref=e607]:
+                - paragraph [ref=e614]: Specialization_Constants
+                - paragraph [ref=e621]: Metal_Runtime
+              - generic [ref=e627]:
+                - paragraph [ref=e634]: ggml_metal_cv (Constant Values)
+                - paragraph [ref=e641]: ggml_metal_library
+                - paragraph [ref=e648]: ggml_metal_pipeline
+                - paragraph [ref=e655]: FC_FLASH_ATTN_EXT
+                - paragraph [ref=e662]: FC_FLASH_ATTN_EXT_VEC
+                - paragraph [ref=e669]: OP_FLASH_ATTN_EXT_NQPSG
+          - generic [ref=e670]:
+            - button "Zoom in" [ref=e671]:
+              - img [ref=e672]
+            - button "Zoom out" [ref=e674]:
+              - img [ref=e675]
+            - img [ref=e678]
+        - paragraph [ref=e680]:
+          - strong [ref=e681]: "Implementation Details:"
+        - list [ref=e682]:
+          - listitem [ref=e683]:
+            - strong [ref=e684]: Threadgroup Tuning
+            - text: ": Defines constants for queries per simdgroup ("
+            - code [ref=e685]: OP_FLASH_ATTN_EXT_NQPSG
+            - text: ) and KV blocks per simdgroup (
+            - code [ref=e686]: OP_FLASH_ATTN_EXT_NCPSG
+            - text: )
+            - link "ggml/src/ggml-metal/ggml-metal-impl.h 106-110" [ref=e687] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-impl.h#L106-L110
+              - generic [ref=e688]:
+                - img [ref=e689]
+                - text: ggml/src/ggml-metal/ggml-metal-impl.h
+              - generic [ref=e691]: 106-110
+          - listitem [ref=e692]:
+            - strong [ref=e693]: Dynamic Compilation
+            - text: ": Pipelines are compiled from source if a pre-compiled"
+            - code [ref=e694]: .metallib
+            - text: is not found
+            - link "ggml/src/ggml-metal/ggml-metal-device.m 182-198" [ref=e695] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-device.m#L182-L198
+              - generic [ref=e696]:
+                - img [ref=e697]
+                - text: ggml/src/ggml-metal/ggml-metal-device.m
+              - generic [ref=e699]: 182-198
+          - listitem [ref=e700]:
+            - strong [ref=e701]: Kernel Constants
+            - text: ": Uses specific offsets for function constants (e.g.,"
+            - code [ref=e702]: FC_FLASH_ATTN_EXT
+            - text: starts at 300)
+            - link "ggml/src/ggml-metal/ggml-metal-impl.h 88-92" [ref=e703] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-impl.h#L88-L92
+              - generic [ref=e704]:
+                - img [ref=e705]
+                - text: ggml/src/ggml-metal/ggml-metal-impl.h
+              - generic [ref=e707]: 88-92
+          - listitem [ref=e708]:
+            - strong [ref=e709]: Residency Sets
+            - text: ": macOS 15.0+ and iOS 18.0+ support residency sets for optimized buffer management"
+            - link "ggml/src/ggml-metal/ggml-metal-device.m 16-22" [ref=e710] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-device.m#L16-L22
+              - generic [ref=e711]:
+                - img [ref=e712]
+                - text: ggml/src/ggml-metal/ggml-metal-device.m
+              - generic [ref=e714]: 16-22
+        - paragraph [ref=e715]:
+          - strong [ref=e716]: "Sources:"
+        - list [ref=e717]:
+          - listitem [ref=e718]:
+            - link "ggml/src/ggml-metal/ggml-metal-impl.h 88-111" [ref=e719] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-impl.h#L88-L111
+              - generic [ref=e720]:
+                - img [ref=e721]
+                - text: ggml/src/ggml-metal/ggml-metal-impl.h
+              - generic [ref=e723]: 88-111
+            - text: "- Metal kernel parameter and constant definitions."
+          - listitem [ref=e724]:
+            - link "ggml/src/ggml-metal/ggml-metal-device.m 39-67" [ref=e725] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-device.m#L39-L67
+              - generic [ref=e726]:
+                - img [ref=e727]
+                - text: ggml/src/ggml-metal/ggml-metal-device.m
+              - generic [ref=e729]: 39-67
+            - text: "-"
+            - code [ref=e730]: ggml_metal_cv
+            - text: wrapper and initialization.
+          - listitem [ref=e731]:
+            - link "ggml/src/ggml-metal/ggml-metal-ops.cpp 175-208" [ref=e732] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-ops.cpp#L175-L208
+              - generic [ref=e733]:
+                - img [ref=e734]
+                - text: ggml/src/ggml-metal/ggml-metal-ops.cpp
+              - generic [ref=e736]: 175-208
+            - text: "- Metal operation encoding logic."
+        - heading "Vulkan Flash Attention Implementation Copy link to header" [level=2] [ref=e737]:
+          - text: Vulkan Flash Attention Implementation
+          - button "Copy link to header" [ref=e738] [cursor=pointer]:
+            - img [ref=e739]
+        - paragraph [ref=e741]:
+          - text: Vulkan Flash Attention uses GLSL compute shaders with support for
+          - code [ref=e742]: GL_KHR_cooperative_matrix
+          - text: and
+          - code [ref=e743]: GL_NV_cooperative_matrix2
+          - text: for hardware acceleration on compatible GPUs.
+        - heading "CoopMatrix Optimization Copy link to header" [level=3] [ref=e744]:
+          - text: CoopMatrix Optimization
+          - button "Copy link to header" [ref=e745] [cursor=pointer]:
+            - img [ref=e746]
+        - paragraph [ref=e748]:
+          - text: The
+          - code [ref=e749]: flash_attn_cm2.comp
+          - text: shader leverages cooperative matrices to process tiles of $Q, K, V$ efficiently.
+        - paragraph [ref=e750]:
+          - strong [ref=e751]: "Implementation Details:"
+        - list [ref=e752]:
+          - listitem [ref=e753]:
+            - strong [ref=e754]: Dequantization
+            - text: ": Shaders like"
+            - code [ref=e755]: flash_attn_cm2.comp
+            - text: include dequantization functions for various types (
+            - code [ref=e756]: Q4_0
+            - text: ","
+            - code [ref=e757]: Q4_1
+            - text: ","
+            - code [ref=e758]: Q8_0
+            - text: ", etc.) within the attention loop"
+            - link "ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp 31-55" [ref=e759] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp#L31-L55
+              - generic [ref=e760]:
+                - img [ref=e761]
+                - text: ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp
+              - generic [ref=e763]: 31-55
+          - listitem [ref=e764]:
+            - strong [ref=e765]: Split-K Parallelism
+            - text: ": Supports a"
+            - code [ref=e766]: split_k
+            - text: mode where the KV sequence is divided across multiple workgroups, with a final reduction pass
+            - link "ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp 104-123" [ref=e767] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp#L104-L123
+              - generic [ref=e768]:
+                - img [ref=e769]
+                - text: ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp
+              - generic [ref=e771]: 104-123
+          - listitem [ref=e772]:
+            - strong [ref=e773]: Tiling
+            - text: ": Processes $Br$ (rows) and $Bc$ (columns) tiles using cooperative matrix loads and stores"
+            - link "ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp 159-163" [ref=e774] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp#L159-L163
+              - generic [ref=e775]:
+                - img [ref=e776]
+                - text: ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp
+              - generic [ref=e778]: 159-163
+        - paragraph [ref=e779]:
+          - strong [ref=e780]: "Sources:"
+        - list [ref=e781]:
+          - listitem [ref=e782]:
+            - link "ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp 12-21" [ref=e783] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp#L12-L21
+              - generic [ref=e784]:
+                - img [ref=e785]
+                - text: ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp
+              - generic [ref=e787]: 12-21
+            - text: "- Vulkan shader extensions and includes."
+          - listitem [ref=e788]:
+            - link "ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp 31-55" [ref=e789] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp#L31-L55
+              - generic [ref=e790]:
+                - img [ref=e791]
+                - text: ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp
+              - generic [ref=e793]: 31-55
+            - text: "- Dequantization dispatch in Vulkan FA."
+          - listitem [ref=e794]:
+            - link "ggml/src/ggml-vulkan/ggml-vulkan.cpp 137-154" [ref=e795] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/ggml-vulkan.cpp#L137-L154
+              - generic [ref=e796]:
+                - img [ref=e797]
+                - text: ggml/src/ggml-vulkan/ggml-vulkan.cpp
+              - generic [ref=e799]: 137-154
+            - text: "- Vulkan pipeline structure definition."
+        - heading "Performance Optimization Techniques Copy link to header" [level=2] [ref=e800]:
+          - text: Performance Optimization Techniques
+          - button "Copy link to header" [ref=e801] [cursor=pointer]:
+            - img [ref=e802]
+        - heading "Online Softmax Implementation Copy link to header" [level=3] [ref=e804]:
+          - text: Online Softmax Implementation
+          - button "Copy link to header" [ref=e805] [cursor=pointer]:
+            - img [ref=e806]
+        - paragraph [ref=e808]: Instead of the standard $O(N^2)$ softmax, the backends implement an incremental version. This maintains a running maximum ($M$) and sum ($L$) to compute softmax values without needing the full attention matrix.
+        - list [ref=e809]:
+          - listitem [ref=e810]:
+            - strong [ref=e811]: CUDA
+            - text: ": Uses"
+            - code [ref=e812]: dst_meta
+            - text: to store intermediate softmax statistics (max and sum) for multi-pass reduction
+            - link "ggml/src/ggml-cuda/fattn-common.cuh 29" [ref=e813] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L29-L29
+              - generic [ref=e814]:
+                - img [ref=e815]
+                - text: ggml/src/ggml-cuda/fattn-common.cuh
+              - generic [ref=e817]: "29"
+          - listitem [ref=e818]:
+            - strong [ref=e819]: Vulkan
+            - text: ": Implements"
+            - code [ref=e820]: maxReduce
+            - text: and
+            - code [ref=e821]: Exp
+            - text: ops for incremental softmax within cooperative matrix loops
+            - link "ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp 62-90" [ref=e822] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp#L62-L90
+              - generic [ref=e823]:
+                - img [ref=e824]
+                - text: ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp
+              - generic [ref=e826]: 62-90
+        - heading "Memory Barriers and Concurrency Copy link to header" [level=3] [ref=e827]:
+          - text: Memory Barriers and Concurrency
+          - button "Copy link to header" [ref=e828] [cursor=pointer]:
+            - img [ref=e829]
+        - paragraph [ref=e831]:
+          - text: The Metal backend manages concurrency by checking for memory range overlaps between nodes. If nodes are independent, they are dispatched concurrently; otherwise, a memory barrier is inserted via
+          - code [ref=e832]: ggml_metal_encoder_memory_barrier
+          - link "ggml/src/ggml-metal/ggml-metal-ops.cpp 152" [ref=e833] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-ops.cpp#L152-L152
+            - generic [ref=e834]:
+              - img [ref=e835]
+              - text: ggml/src/ggml-metal/ggml-metal-ops.cpp
+            - generic [ref=e837]: "152"
+        - paragraph [ref=e838]:
+          - strong [ref=e839]: "Sources:"
+        - list [ref=e840]:
+          - listitem [ref=e841]:
+            - link "ggml/src/ggml-metal/ggml-metal-ops.cpp 147-173" [ref=e842] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-metal/ggml-metal-ops.cpp#L147-L173
+              - generic [ref=e843]:
+                - img [ref=e844]
+                - text: ggml/src/ggml-metal/ggml-metal-ops.cpp
+              - generic [ref=e846]: 147-173
+            - text: "- Metal concurrency checking and memory range management."
+          - listitem [ref=e847]:
+            - link "ggml/src/ggml-cuda/fattn-common.cuh 10-19" [ref=e848] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-cuda/fattn-common.cuh#L10-L19
+              - generic [ref=e849]:
+                - img [ref=e850]
+                - text: ggml/src/ggml-cuda/fattn-common.cuh
+              - generic [ref=e852]: 10-19
+            - text: "- CUDA numerical stability constants."
+          - listitem [ref=e853]:
+            - link "ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp 62-90" [ref=e854] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp#L62-L90
+              - generic [ref=e855]:
+                - img [ref=e856]
+                - text: ggml/src/ggml-vulkan/vulkan-shaders/flash_attn_cm2.comp
+              - generic [ref=e858]: 62-90
+            - text: "- Vulkan incremental softmax logic."
+      - generic [ref=e860]:
+        - generic [ref=e862]:
+          - button "Dismiss" [ref=e863]:
+            - img [ref=e864]
+            - generic [ref=e866]: Dismiss
+          - paragraph [ref=e867]: Refresh this wiki
+          - paragraph [ref=e868]: This wiki was recently refreshed. Please wait 3 days to refresh again.
+        - heading "On this page" [level=3] [ref=e869]
+        - list [ref=e870]:
+          - listitem [ref=e871]:
+            - link "Flash Attention and Optimizations" [ref=e872] [cursor=pointer]:
+              - /url: "#flash-attention-and-optimizations"
+          - listitem [ref=e873]:
+            - link "Purpose and Scope" [ref=e874] [cursor=pointer]:
+              - /url: "#purpose-and-scope"
+          - listitem [ref=e875]:
+            - link "Flash Attention Architecture Overview" [ref=e876] [cursor=pointer]:
+              - /url: "#flash-attention-architecture-overview"
+          - listitem [ref=e877]:
+            - link "Backend Dispatch and Code Paths" [ref=e878] [cursor=pointer]:
+              - /url: "#backend-dispatch-and-code-paths"
+          - listitem [ref=e879]:
+            - link "CUDA Flash Attention Implementation" [ref=e880] [cursor=pointer]:
+              - /url: "#cuda-flash-attention-implementation"
+          - listitem [ref=e881]:
+            - link "Overview and Configuration" [ref=e882] [cursor=pointer]:
+              - /url: "#overview-and-configuration"
+          - listitem [ref=e883]:
+            - link "Quantization Support" [ref=e884] [cursor=pointer]:
+              - /url: "#quantization-support"
+          - listitem [ref=e885]:
+            - link "Metal Flash Attention Implementation" [ref=e886] [cursor=pointer]:
+              - /url: "#metal-flash-attention-implementation"
+          - listitem [ref=e887]:
+            - link "Kernel Dispatch and Function Constants" [ref=e888] [cursor=pointer]:
+              - /url: "#kernel-dispatch-and-function-constants"
+          - listitem [ref=e889]:
+            - link "Vulkan Flash Attention Implementation" [ref=e890] [cursor=pointer]:
+              - /url: "#vulkan-flash-attention-implementation"
+          - listitem [ref=e891]:
+            - link "CoopMatrix Optimization" [ref=e892] [cursor=pointer]:
+              - /url: "#coopmatrix-optimization"
+          - listitem [ref=e893]:
+            - link "Performance Optimization Techniques" [ref=e894] [cursor=pointer]:
+              - /url: "#performance-optimization-techniques"
+          - listitem [ref=e895]:
+            - link "Online Softmax Implementation" [ref=e896] [cursor=pointer]:
+              - /url: "#online-softmax-implementation"
+          - listitem [ref=e897]:
+            - link "Memory Barriers and Concurrency" [ref=e898] [cursor=pointer]:
+              - /url: "#memory-barriers-and-concurrency"
+      - generic [ref=e899]:
+        - generic [ref=e902]:
+          - generic:
+            - generic: Ask Devin about ggml-org/llama.cpp
+          - textbox [active] [ref=e903]
+        - generic [ref=e904]:
+          - button "Fast" [ref=e906] [cursor=pointer]:
+            - generic [ref=e907]:
+              - img
+              - generic [ref=e908]: Fast
+            - img
+          - button [disabled] [ref=e910]:
+            - img [ref=e911]
+  - alert [ref=e913]

@@ -1,0 +1,661 @@
+- generic [active] [ref=e1]:
+  - region "Notifications alt+T"
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - link "DeepWiki" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: DeepWiki
+      - paragraph [ref=e10]:
+        - link "ggml-org/llama.cpp" [ref=e11] [cursor=pointer]:
+          - /url: https://github.com/ggml-org/llama.cpp
+          - text: ggml-org/llama.cpp
+          - img [ref=e12]
+      - generic [ref=e14]:
+        - button "Index your code with Devin" [ref=e15]:
+          - generic [ref=e16]: Index your code with
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic [ref=e22]: Devin
+        - button "Edit Wiki" [ref=e23] [cursor=pointer]:
+          - img [ref=e24]
+          - text: Edit Wiki
+        - button "Share" [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e33]: Share
+        - button "Switch to dark mode" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+    - generic [ref=e39]:
+      - generic [ref=e41]:
+        - generic [ref=e43]:
+          - text: "Last indexed: 24 May 2026 ("
+          - link "549b9d" [ref=e44] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/commits/549b9d84
+          - text: )
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - link "Overview" [ref=e47] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/1-overview
+          - listitem [ref=e48]:
+            - link "Getting Started" [ref=e49] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2-getting-started
+          - listitem [ref=e50]:
+            - link "Installation and Building" [ref=e51] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.1-installation-and-building
+          - listitem [ref=e52]:
+            - link "Basic Usage and Examples" [ref=e53] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.2-basic-usage-and-examples
+          - listitem [ref=e54]:
+            - link "Configuration and Parameters" [ref=e55] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/2.3-configuration-and-parameters
+          - listitem [ref=e56]:
+            - link "Core Library Architecture" [ref=e57] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3-core-library-architecture
+          - listitem [ref=e58]:
+            - link "libllama Public API" [ref=e59] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.1-libllama-public-api
+          - listitem [ref=e60]:
+            - link "Model Loading and Representation" [ref=e61] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.2-model-loading-and-representation
+          - listitem [ref=e62]:
+            - link "Tokenization and Vocabulary" [ref=e63] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.3-tokenization-and-vocabulary
+          - listitem [ref=e64]:
+            - link "Inference Context and Orchestration" [ref=e65] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.4-inference-context-and-orchestration
+          - listitem [ref=e66]:
+            - link "Batch Processing Pipeline" [ref=e67] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.5-batch-processing-pipeline
+          - listitem [ref=e68]:
+            - link "Memory Management and KV Cache" [ref=e69] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.6-memory-management-and-kv-cache
+          - listitem [ref=e70]:
+            - link "Computation Graph Building" [ref=e71] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.7-computation-graph-building
+          - listitem [ref=e72]:
+            - link "Token Sampling and Generation" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.8-token-sampling-and-generation
+          - listitem [ref=e74]:
+            - link "Chat Templates and Message Parsing" [ref=e75] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.9-chat-templates-and-message-parsing
+          - listitem [ref=e76]:
+            - link "Adapters and Fine-tuning" [ref=e77] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.10-adapters-and-fine-tuning
+          - listitem [ref=e78]:
+            - link "Supported Model Architectures" [ref=e79] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/3.11-supported-model-architectures
+          - listitem [ref=e80]:
+            - link "GGML Tensor Library" [ref=e81] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4-ggml-tensor-library
+          - listitem [ref=e82]:
+            - link "GGML Core Architecture" [ref=e83] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.1-ggml-core-architecture
+          - listitem [ref=e84]:
+            - link "Backend System and Registration" [ref=e85] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.2-backend-system-and-registration
+          - listitem [ref=e86]:
+            - link "CPU Backend Implementation" [ref=e87] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.3-cpu-backend-implementation
+          - listitem [ref=e88]:
+            - link "Quantization in GGML" [ref=e89] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/4.4-quantization-in-ggml
+          - listitem [ref=e90]:
+            - link "GPU and Accelerator Backends" [ref=e91] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5-gpu-and-accelerator-backends
+          - listitem [ref=e92]:
+            - link "CUDA Backend (NVIDIA)" [ref=e93] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.1-cuda-backend-(nvidia)
+          - listitem [ref=e94]:
+            - link "Metal Backend (Apple)" [ref=e95] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.2-metal-backend-(apple)
+          - listitem [ref=e96]:
+            - link "Vulkan Backend (Cross-Platform)" [ref=e97] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.3-vulkan-backend-(cross-platform)
+          - listitem [ref=e98]:
+            - link "SYCL Backend (Intel)" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.4-sycl-backend-(intel)
+          - listitem [ref=e100]:
+            - link "HIP, CANN, and Other Backends" [ref=e101] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.5-hip-cann-and-other-backends
+          - listitem [ref=e102]:
+            - link "Backend Testing and Validation" [ref=e103] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/5.6-backend-testing-and-validation
+          - listitem [ref=e104]:
+            - link "User Tools and Interfaces" [ref=e105] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6-user-tools-and-interfaces
+          - listitem [ref=e106]:
+            - link "Command-Line Tools" [ref=e107] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.1-command-line-tools
+          - listitem [ref=e108]:
+            - link "llama-server HTTP API" [ref=e109] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.2-llama-server-http-api
+          - listitem [ref=e110]:
+            - link "Router Mode and Model Management" [ref=e111] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.3-router-mode-and-model-management
+          - listitem [ref=e112]:
+            - link "Web UI" [ref=e113] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.4-web-ui
+          - listitem [ref=e114]:
+            - link "Multimodal Support (libmtmd)" [ref=e115] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.5-multimodal-support-(libmtmd)
+          - listitem [ref=e116]:
+            - link "Text-to-Speech (TTS)" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/6.6-text-to-speech-(tts)
+          - listitem [ref=e118]:
+            - link "Model Pipeline" [ref=e119] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7-model-pipeline
+          - listitem [ref=e120]:
+            - link "GGUF File Format" [ref=e121] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.1-gguf-file-format
+          - listitem [ref=e122]:
+            - link "Model Conversion from HuggingFace" [ref=e123] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.2-model-conversion-from-huggingface
+          - listitem [ref=e124]:
+            - link "Quantization Techniques" [ref=e125] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.3-quantization-techniques
+          - listitem [ref=e126]:
+            - link "Model Acquisition and Management" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/7.4-model-acquisition-and-management
+          - listitem [ref=e128]:
+            - link "Advanced Features" [ref=e129] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8-advanced-features
+          - listitem [ref=e130]:
+            - link "Grammar and Structured Output" [ref=e131] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.1-grammar-and-structured-output
+          - listitem [ref=e132]:
+            - link "Flash Attention and Optimizations" [ref=e133] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.2-flash-attention-and-optimizations
+          - listitem [ref=e134]:
+            - link "Speculative Decoding" [ref=e135] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.3-speculative-decoding
+          - listitem [ref=e136]:
+            - link "Multi-GPU and Distributed Inference" [ref=e137] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/8.4-multi-gpu-and-distributed-inference
+          - listitem [ref=e138]:
+            - link "Development and Contributing" [ref=e139] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9-development-and-contributing
+          - listitem [ref=e140]:
+            - link "Build System and Configuration" [ref=e141] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.1-build-system-and-configuration
+          - listitem [ref=e142]:
+            - link "Testing Infrastructure" [ref=e143] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.2-testing-infrastructure
+          - listitem [ref=e144]:
+            - link "CI/CD Pipeline" [ref=e145] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.3-cicd-pipeline
+          - listitem [ref=e146]:
+            - link "GGML Synchronization and Contributing" [ref=e147] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/9.4-ggml-synchronization-and-contributing
+          - listitem [ref=e148]:
+            - link "Glossary" [ref=e149] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/10-glossary
+      - generic [ref=e155]:
+        - heading "Multi-GPU and Distributed Inference Copy link to header" [level=1] [ref=e156]:
+          - text: Multi-GPU and Distributed Inference
+          - button "Copy link to header" [ref=e157] [cursor=pointer]:
+            - img [ref=e158]
+        - group [ref=e160]:
+          - generic "Relevant source files" [ref=e161] [cursor=pointer]
+        - heading "Purpose and Scope Copy link to header" [level=2] [ref=e162]:
+          - text: Purpose and Scope
+          - button "Copy link to header" [ref=e163] [cursor=pointer]:
+            - img [ref=e164]
+        - paragraph [ref=e166]: This document covers strategies for utilizing multiple GPUs and distributed computing resources to run large language models that exceed single-device memory capacity. It explains tensor parallelism, backend scheduling, memory management across devices, and the RPC backend for cross-machine inference.
+        - paragraph [ref=e167]:
+          - text: For information about individual GPU backend implementations, see
+          - link "GPU and Accelerator Backends" [ref=e168] [cursor=pointer]:
+            - /url: /ggml-org/llama.cpp/5-gpu-and-accelerator-backends
+          - text: . For memory optimization strategies, see
+          - link "Model Loading and Representation" [ref=e169] [cursor=pointer]:
+            - /url: /ggml-org/llama.cpp/3.2-model-loading-and-representation
+          - text: .
+        - separator [ref=e170]
+        - heading "Overview of Multi-Device Strategies Copy link to header" [level=2] [ref=e171]:
+          - text: Overview of Multi-Device Strategies
+          - button "Copy link to header" [ref=e172] [cursor=pointer]:
+            - img [ref=e173]
+        - paragraph [ref=e175]: "llama.cpp supports three primary approaches for multi-device inference:"
+        - list [ref=e176]:
+          - listitem [ref=e177]:
+            - strong [ref=e178]: Tensor Splitting
+            - text: ": Distributing model layers across multiple GPUs on the same machine."
+          - listitem [ref=e179]:
+            - strong [ref=e180]: CPU+GPU Hybrid
+            - text: ": Offloading some layers to CPU when GPU VRAM is insufficient."
+          - listitem [ref=e181]:
+            - strong [ref=e182]: RPC Backend
+            - text: ": Distributed inference across multiple machines via remote procedure calls."
+        - heading "Multi-Device Inference Architecture Copy link to header" [level=3] [ref=e183]:
+          - text: Multi-Device Inference Architecture
+          - button "Copy link to header" [ref=e184] [cursor=pointer]:
+            - img [ref=e185]
+        - paragraph [ref=e188]: The backend scheduler orchestrates computation across available backends, automatically routing tensors to appropriate devices based on layer assignments and memory constraints.
+        - paragraph [ref=e189]:
+          - strong [ref=e190]: "Sources:"
+          - link "ggml/src/ggml-rpc/ggml-rpc.cpp 218-222" [ref=e191] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L218-L222
+            - generic [ref=e192]:
+              - img [ref=e193]
+              - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+            - generic [ref=e195]: 218-222
+          - link "tools/rpc/README.md 11-34" [ref=e196] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L11-L34
+            - generic [ref=e197]:
+              - img [ref=e198]
+              - text: tools/rpc/README.md
+            - generic [ref=e200]: 11-34
+        - separator [ref=e201]
+        - heading "Tensor Splitting Configuration Copy link to header" [level=2] [ref=e202]:
+          - text: Tensor Splitting Configuration
+          - button "Copy link to header" [ref=e203] [cursor=pointer]:
+            - img [ref=e204]
+        - heading "Layer Distribution Across Devices Copy link to header" [level=3] [ref=e206]:
+          - text: Layer Distribution Across Devices
+          - button "Copy link to header" [ref=e207] [cursor=pointer]:
+            - img [ref=e208]
+        - paragraph [ref=e210]:
+          - text: Multi-GPU inference is achieved by distributing model layers across available GPU devices. The distribution is controlled through the
+          - code [ref=e211]: n_gpu_layers
+          - text: parameter and optional
+          - code [ref=e212]: tensor_split
+          - text: ratios. By default, llama.cpp distributes model weights and the KV cache across all available devices in proportion to each device's available memory
+          - link "tools/rpc/README.md 83-84" [ref=e213] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L83-L84
+            - generic [ref=e214]:
+              - img [ref=e215]
+              - text: tools/rpc/README.md
+            - generic [ref=e217]: 83-84
+        - heading "Multi-GPU Initialization and Layer Distribution Copy link to header" [level=3] [ref=e218]:
+          - text: Multi-GPU Initialization and Layer Distribution
+          - button "Copy link to header" [ref=e219] [cursor=pointer]:
+            - img [ref=e220]
+        - table [ref=e223]:
+          - rowgroup [ref=e224]:
+            - row "Component Purpose Location" [ref=e225]:
+              - columnheader "Component" [ref=e226]
+              - columnheader "Purpose" [ref=e227]
+              - columnheader "Location" [ref=e228]
+          - rowgroup [ref=e229]:
+            - row "ggml_backend_rpc_context Context for an RPC backend instance ggml/src/ggml-rpc/ggml-rpc.cpp 218-222" [ref=e230]:
+              - cell "ggml_backend_rpc_context" [ref=e231]:
+                - code [ref=e232]: ggml_backend_rpc_context
+              - cell "Context for an RPC backend instance" [ref=e233]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 218-222" [ref=e234]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 218-222" [ref=e235] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L218-L222
+                  - generic [ref=e236]:
+                    - img [ref=e237]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e239]: 218-222
+            - row "ggml_backend_rpc_init Initializes an RPC backend for a remote endpoint ggml/include/ggml-rpc.h 20" [ref=e240]:
+              - cell "ggml_backend_rpc_init" [ref=e241]:
+                - code [ref=e242]: ggml_backend_rpc_init
+              - cell "Initializes an RPC backend for a remote endpoint" [ref=e243]
+              - cell "ggml/include/ggml-rpc.h 20" [ref=e244]:
+                - link "ggml/include/ggml-rpc.h 20" [ref=e245] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/include/ggml-rpc.h#L20-L20
+                  - generic [ref=e246]:
+                    - img [ref=e247]
+                    - text: ggml/include/ggml-rpc.h
+                  - generic [ref=e249]: "20"
+            - row "rpc_server_params Parameters for configuring the remote server tools/rpc/rpc-server.cpp 172-179" [ref=e250]:
+              - cell "rpc_server_params" [ref=e251]:
+                - code [ref=e252]: rpc_server_params
+              - cell "Parameters for configuring the remote server" [ref=e253]
+              - cell "tools/rpc/rpc-server.cpp 172-179" [ref=e254]:
+                - link "tools/rpc/rpc-server.cpp 172-179" [ref=e255] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/rpc-server.cpp#L172-L179
+                  - generic [ref=e256]:
+                    - img [ref=e257]
+                    - text: tools/rpc/rpc-server.cpp
+                  - generic [ref=e259]: 172-179
+        - paragraph [ref=e260]:
+          - strong [ref=e261]: "Sources:"
+          - link "ggml/include/ggml-rpc.h 17-31" [ref=e262] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/include/ggml-rpc.h#L17-L31
+            - generic [ref=e263]:
+              - img [ref=e264]
+              - text: ggml/include/ggml-rpc.h
+            - generic [ref=e266]: 17-31
+          - link "tools/rpc/README.md 83-85" [ref=e267] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L83-L85
+            - generic [ref=e268]:
+              - img [ref=e269]
+              - text: tools/rpc/README.md
+            - generic [ref=e271]: 83-85
+        - separator [ref=e272]
+        - heading "RPC Backend for Distributed Inference Copy link to header" [level=2] [ref=e273]:
+          - text: RPC Backend for Distributed Inference
+          - button "Copy link to header" [ref=e274] [cursor=pointer]:
+            - img [ref=e275]
+        - paragraph [ref=e277]:
+          - text: The RPC (Remote Procedure Call) backend allows exposing
+          - code [ref=e278]: ggml
+          - text: devices on a remote host
+          - link "tools/rpc/README.md 7-8" [ref=e279] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L7-L8
+            - generic [ref=e280]:
+              - img [ref=e281]
+              - text: tools/rpc/README.md
+            - generic [ref=e283]: 7-8
+          - text: This enables distributed inference where the main host offloads computations to one or several
+          - code [ref=e284]: rpc-server
+          - text: instances.
+        - heading "RPC Backend Architecture Copy link to header" [level=3] [ref=e285]:
+          - text: RPC Backend Architecture
+          - button "Copy link to header" [ref=e286] [cursor=pointer]:
+            - img [ref=e287]
+        - heading "RPC Communication Protocol Copy link to header" [level=3] [ref=e290]:
+          - text: RPC Communication Protocol
+          - button "Copy link to header" [ref=e291] [cursor=pointer]:
+            - img [ref=e292]
+        - paragraph [ref=e294]:
+          - text: The RPC backend serializes
+          - code [ref=e295]: ggml_tensor
+          - text: into
+          - code [ref=e296]: rpc_tensor
+          - text: for transmission. The
+          - code [ref=e297]: rpc_tensor
+          - text: structure is packed to ensure consistent layout across different architectures
+          - link "ggml/src/ggml-rpc/ggml-rpc.cpp 33-51" [ref=e298] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L33-L51
+            - generic [ref=e299]:
+              - img [ref=e300]
+              - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+            - generic [ref=e302]: 33-51
+        - table [ref=e303]:
+          - rowgroup [ref=e304]:
+            - row "Command Purpose Code Reference" [ref=e305]:
+              - columnheader "Command" [ref=e306]
+              - columnheader "Purpose" [ref=e307]
+              - columnheader "Code Reference" [ref=e308]
+          - rowgroup [ref=e309]:
+            - row "RPC_CMD_ALLOC_BUFFER Allocate memory on remote device ggml/src/ggml-rpc/ggml-rpc.cpp 57" [ref=e310]:
+              - cell "RPC_CMD_ALLOC_BUFFER" [ref=e311]:
+                - code [ref=e312]: RPC_CMD_ALLOC_BUFFER
+              - cell "Allocate memory on remote device" [ref=e313]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 57" [ref=e314]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 57" [ref=e315] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L57-L57
+                  - generic [ref=e316]:
+                    - img [ref=e317]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e319]: "57"
+            - row "RPC_CMD_SET_TENSOR Upload tensor data to remote ggml/src/ggml-rpc/ggml-rpc.cpp 63" [ref=e320]:
+              - cell "RPC_CMD_SET_TENSOR" [ref=e321]:
+                - code [ref=e322]: RPC_CMD_SET_TENSOR
+              - cell "Upload tensor data to remote" [ref=e323]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 63" [ref=e324]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 63" [ref=e325] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L63-L63
+                  - generic [ref=e326]:
+                    - img [ref=e327]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e329]: "63"
+            - row "RPC_CMD_GET_TENSOR Download tensor data from remote ggml/src/ggml-rpc/ggml-rpc.cpp 65" [ref=e330]:
+              - cell "RPC_CMD_GET_TENSOR" [ref=e331]:
+                - code [ref=e332]: RPC_CMD_GET_TENSOR
+              - cell "Download tensor data from remote" [ref=e333]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 65" [ref=e334]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 65" [ref=e335] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L65-L65
+                  - generic [ref=e336]:
+                    - img [ref=e337]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e339]: "65"
+            - row "RPC_CMD_GRAPH_COMPUTE Execute a computational graph remotely ggml/src/ggml-rpc/ggml-rpc.cpp 67" [ref=e340]:
+              - cell "RPC_CMD_GRAPH_COMPUTE" [ref=e341]:
+                - code [ref=e342]: RPC_CMD_GRAPH_COMPUTE
+              - cell "Execute a computational graph remotely" [ref=e343]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 67" [ref=e344]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 67" [ref=e345] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L67-L67
+                  - generic [ref=e346]:
+                    - img [ref=e347]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e349]: "67"
+            - row "RPC_CMD_HELLO Handshake and capability negotiation ggml/src/ggml-rpc/ggml-rpc.cpp 71" [ref=e350]:
+              - cell "RPC_CMD_HELLO" [ref=e351]:
+                - code [ref=e352]: RPC_CMD_HELLO
+              - cell "Handshake and capability negotiation" [ref=e353]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 71" [ref=e354]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 71" [ref=e355] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L71-L71
+                  - generic [ref=e356]:
+                    - img [ref=e357]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e359]: "71"
+        - 'heading "Transport Layers: TCP and RDMA Copy link to header" [level=3] [ref=e360]':
+          - text: "Transport Layers: TCP and RDMA"
+          - button "Copy link to header" [ref=e361] [cursor=pointer]:
+            - img [ref=e362]
+        - paragraph [ref=e364]: "The RPC backend supports two transport mechanisms:"
+        - list [ref=e365]:
+          - listitem [ref=e366]:
+            - strong [ref=e367]: TCP
+            - text: ": The default transport for standard network environments."
+          - listitem [ref=e368]:
+            - strong [ref=e369]: RDMA
+            - text: ": Supported on Linux with"
+            - code [ref=e370]: libibverbs
+            - text: . It provides lower latency and higher throughput for RoCEv2 or InfiniBand networks
+            - link "tools/rpc/README.md 98-103" [ref=e371] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L98-L103
+              - generic [ref=e372]:
+                - img [ref=e373]
+                - text: tools/rpc/README.md
+              - generic [ref=e375]: 98-103
+            - text: The transport is negotiated automatically via the
+            - code [ref=e376]: HELLO
+            - text: handshake
+            - link "ggml/src/ggml-rpc/transport.h 20-25" [ref=e377] [cursor=pointer]:
+              - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/transport.h#L20-L25
+              - generic [ref=e378]:
+                - img [ref=e379]
+                - text: ggml/src/ggml-rpc/transport.h
+              - generic [ref=e381]: 20-25
+        - paragraph [ref=e382]:
+          - strong [ref=e383]: "Sources:"
+          - link "ggml/src/ggml-rpc/ggml-rpc.cpp 35-75" [ref=e384] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L35-L75
+            - generic [ref=e385]:
+              - img [ref=e386]
+              - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+            - generic [ref=e388]: 35-75
+          - link "tools/rpc/README.md 98-103" [ref=e389] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L98-L103
+            - generic [ref=e390]:
+              - img [ref=e391]
+              - text: tools/rpc/README.md
+            - generic [ref=e393]: 98-103
+        - separator [ref=e394]
+        - heading "RPC Server Implementation Copy link to header" [level=2] [ref=e395]:
+          - text: RPC Server Implementation
+          - button "Copy link to header" [ref=e396] [cursor=pointer]:
+            - img [ref=e397]
+        - paragraph [ref=e399]:
+          - text: The
+          - code [ref=e400]: rpc-server
+          - text: detects and exposes available accelerator devices on the host
+          - link "tools/rpc/README.md 36-38" [ref=e401] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L36-L38
+            - generic [ref=e402]:
+              - img [ref=e403]
+              - text: tools/rpc/README.md
+            - generic [ref=e405]: 36-38
+          - text: It can use a local file cache to store large tensors, significantly speeding up model loading by avoiding repeated network transfers
+          - link "tools/rpc/README.md 88-90" [ref=e406] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L88-L90
+            - generic [ref=e407]:
+              - img [ref=e408]
+              - text: tools/rpc/README.md
+            - generic [ref=e410]: 88-90
+        - heading "Server Configuration and Cache Copy link to header" [level=3] [ref=e411]:
+          - text: Server Configuration and Cache
+          - button "Copy link to header" [ref=e412] [cursor=pointer]:
+            - img [ref=e413]
+        - table [ref=e415]:
+          - rowgroup [ref=e416]:
+            - row "Function/Struct Purpose Location" [ref=e417]:
+              - columnheader "Function/Struct" [ref=e418]
+              - columnheader "Purpose" [ref=e419]
+              - columnheader "Location" [ref=e420]
+          - rowgroup [ref=e421]:
+            - row "rpc_server_params Configuration for host, port, threads, and cache tools/rpc/rpc-server.cpp 172-179" [ref=e422]:
+              - cell "rpc_server_params" [ref=e423]:
+                - code [ref=e424]: rpc_server_params
+              - cell "Configuration for host, port, threads, and cache" [ref=e425]
+              - cell "tools/rpc/rpc-server.cpp 172-179" [ref=e426]:
+                - link "tools/rpc/rpc-server.cpp 172-179" [ref=e427] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/rpc-server.cpp#L172-L179
+                  - generic [ref=e428]:
+                    - img [ref=e429]
+                    - text: tools/rpc/rpc-server.cpp
+                  - generic [ref=e431]: 172-179
+            - row "fs_get_cache_directory Resolves the path for the local RPC tensor cache tools/rpc/rpc-server.cpp 126-170" [ref=e432]:
+              - cell "fs_get_cache_directory" [ref=e433]:
+                - code [ref=e434]: fs_get_cache_directory
+              - cell "Resolves the path for the local RPC tensor cache" [ref=e435]
+              - cell "tools/rpc/rpc-server.cpp 126-170" [ref=e436]:
+                - link "tools/rpc/rpc-server.cpp 126-170" [ref=e437] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/rpc-server.cpp#L126-L170
+                  - generic [ref=e438]:
+                    - img [ref=e439]
+                    - text: tools/rpc/rpc-server.cpp
+                  - generic [ref=e441]: 126-170
+            - row "ggml_backend_rpc_start_server Entry point to start the RPC server listener ggml/include/ggml-rpc.h 27-28" [ref=e442]:
+              - cell "ggml_backend_rpc_start_server" [ref=e443]:
+                - code [ref=e444]: ggml_backend_rpc_start_server
+              - cell "Entry point to start the RPC server listener" [ref=e445]
+              - cell "ggml/include/ggml-rpc.h 27-28" [ref=e446]:
+                - link "ggml/include/ggml-rpc.h 27-28" [ref=e447] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/include/ggml-rpc.h#L27-L28
+                  - generic [ref=e448]:
+                    - img [ref=e449]
+                    - text: ggml/include/ggml-rpc.h
+                  - generic [ref=e451]: 27-28
+        - paragraph [ref=e452]:
+          - strong [ref=e453]: "Sources:"
+          - link "tools/rpc/rpc-server.cpp 126-179" [ref=e454] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/rpc-server.cpp#L126-L179
+            - generic [ref=e455]:
+              - img [ref=e456]
+              - text: tools/rpc/rpc-server.cpp
+            - generic [ref=e458]: 126-179
+          - link "tools/rpc/README.md 88-96" [ref=e459] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/tools/rpc/README.md?plain=1#L88-L96
+            - generic [ref=e460]:
+              - img [ref=e461]
+              - text: tools/rpc/README.md
+            - generic [ref=e463]: 88-96
+        - separator [ref=e464]
+        - heading "Memory Management and Synchronization Copy link to header" [level=2] [ref=e465]:
+          - text: Memory Management and Synchronization
+          - button "Copy link to header" [ref=e466] [cursor=pointer]:
+            - img [ref=e467]
+        - paragraph [ref=e469]: In multi-device environments, managing memory across disparate backends (CPU, CUDA, RPC) requires precise tracking of free and total memory.
+        - table [ref=e470]:
+          - rowgroup [ref=e471]:
+            - row "Function Purpose Location" [ref=e472]:
+              - columnheader "Function" [ref=e473]
+              - columnheader "Purpose" [ref=e474]
+              - columnheader "Location" [ref=e475]
+          - rowgroup [ref=e476]:
+            - row "ggml_backend_rpc_get_device_memory Queries remote machine VRAM/RAM status ggml/src/ggml-rpc/ggml-rpc.cpp 180-187" [ref=e477]:
+              - cell "ggml_backend_rpc_get_device_memory" [ref=e478]:
+                - code [ref=e479]: ggml_backend_rpc_get_device_memory
+              - cell "Queries remote machine VRAM/RAM status" [ref=e480]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 180-187" [ref=e481]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 180-187" [ref=e482] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L180-L187
+                  - generic [ref=e483]:
+                    - img [ref=e484]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e486]: 180-187
+            - row "rpc_msg_get_device_memory_rsp Response structure for memory queries ggml/src/ggml-rpc/ggml-rpc.cpp 184-187" [ref=e487]:
+              - cell "rpc_msg_get_device_memory_rsp" [ref=e488]:
+                - code [ref=e489]: rpc_msg_get_device_memory_rsp
+              - cell "Response structure for memory queries" [ref=e490]
+              - cell "ggml/src/ggml-rpc/ggml-rpc.cpp 184-187" [ref=e491]:
+                - link "ggml/src/ggml-rpc/ggml-rpc.cpp 184-187" [ref=e492] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L184-L187
+                  - generic [ref=e493]:
+                    - img [ref=e494]
+                    - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+                  - generic [ref=e496]: 184-187
+        - heading "Tensor Serialization Details Copy link to header" [level=3] [ref=e497]:
+          - text: Tensor Serialization Details
+          - button "Copy link to header" [ref=e498] [cursor=pointer]:
+            - img [ref=e499]
+        - paragraph [ref=e501]:
+          - text: The
+          - code [ref=e502]: rpc_tensor
+          - text: structure includes all metadata required for remote execution, including the operation type and parameters.
+        - paragraph [ref=e505]:
+          - strong [ref=e506]: "Sources:"
+          - link "ggml/src/ggml-rpc/ggml-rpc.cpp 35-51" [ref=e507] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L35-L51
+            - generic [ref=e508]:
+              - img [ref=e509]
+              - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+            - generic [ref=e511]: 35-51
+          - link "ggml/src/ggml-rpc/ggml-rpc.cpp 180-187" [ref=e512] [cursor=pointer]:
+            - /url: https://github.com/ggml-org/llama.cpp/blob/549b9d84/ggml/src/ggml-rpc/ggml-rpc.cpp#L180-L187
+            - generic [ref=e513]:
+              - img [ref=e514]
+              - text: ggml/src/ggml-rpc/ggml-rpc.cpp
+            - generic [ref=e516]: 180-187
+      - generic [ref=e518]:
+        - generic [ref=e520]:
+          - button "Dismiss" [ref=e521]:
+            - img [ref=e522]
+            - generic [ref=e524]: Dismiss
+          - paragraph [ref=e525]: Refresh this wiki
+          - paragraph [ref=e526]: This wiki was recently refreshed. Please wait 3 days to refresh again.
+        - heading "On this page" [level=3] [ref=e527]
+        - list [ref=e528]:
+          - listitem [ref=e529]:
+            - link "Multi-GPU and Distributed Inference" [ref=e530] [cursor=pointer]:
+              - /url: "#multi-gpu-and-distributed-inference"
+          - listitem [ref=e531]:
+            - link "Purpose and Scope" [ref=e532] [cursor=pointer]:
+              - /url: "#purpose-and-scope"
+          - listitem [ref=e533]:
+            - link "Overview of Multi-Device Strategies" [ref=e534] [cursor=pointer]:
+              - /url: "#overview-of-multi-device-strategies"
+          - listitem [ref=e535]:
+            - link "Multi-Device Inference Architecture" [ref=e536] [cursor=pointer]:
+              - /url: "#multi-device-inference-architecture"
+          - listitem [ref=e537]:
+            - link "Tensor Splitting Configuration" [ref=e538] [cursor=pointer]:
+              - /url: "#tensor-splitting-configuration"
+          - listitem [ref=e539]:
+            - link "Layer Distribution Across Devices" [ref=e540] [cursor=pointer]:
+              - /url: "#layer-distribution-across-devices"
+          - listitem [ref=e541]:
+            - link "Multi-GPU Initialization and Layer Distribution" [ref=e542] [cursor=pointer]:
+              - /url: "#multi-gpu-initialization-and-layer-distribution"
+          - listitem [ref=e543]:
+            - link "RPC Backend for Distributed Inference" [ref=e544] [cursor=pointer]:
+              - /url: "#rpc-backend-for-distributed-inference"
+          - listitem [ref=e545]:
+            - link "RPC Backend Architecture" [ref=e546] [cursor=pointer]:
+              - /url: "#rpc-backend-architecture"
+          - listitem [ref=e547]:
+            - link "RPC Communication Protocol" [ref=e548] [cursor=pointer]:
+              - /url: "#rpc-communication-protocol"
+          - listitem [ref=e549]:
+            - 'link "Transport Layers: TCP and RDMA" [ref=e550] [cursor=pointer]':
+              - /url: "#transport-layers-tcp-and-rdma"
+          - listitem [ref=e551]:
+            - link "RPC Server Implementation" [ref=e552] [cursor=pointer]:
+              - /url: "#rpc-server-implementation"
+          - listitem [ref=e553]:
+            - link "Server Configuration and Cache" [ref=e554] [cursor=pointer]:
+              - /url: "#server-configuration-and-cache"
+          - listitem [ref=e555]:
+            - link "Memory Management and Synchronization" [ref=e556] [cursor=pointer]:
+              - /url: "#memory-management-and-synchronization"
+          - listitem [ref=e557]:
+            - link "Tensor Serialization Details" [ref=e558] [cursor=pointer]:
+              - /url: "#tensor-serialization-details"
+  - alert [ref=e559]

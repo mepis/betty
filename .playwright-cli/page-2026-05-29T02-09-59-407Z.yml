@@ -1,0 +1,461 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - generic [ref=e53]:
+              - link "Sign in" [ref=e54] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fblob%2Fmaster%2Fdocs%2Fbuild%2Fgpu-backend-options.md
+              - generic [ref=e56]:
+                - heading "Sign in to GitHub" [level=4] [ref=e57]
+                - generic [ref=e58]:
+                  - text: Username or email address
+                  - textbox "Username or email address" [active] [ref=e59]
+                  - generic [ref=e60]:
+                    - text: Password
+                    - textbox "Password" [ref=e61]
+                    - link "Forgot password?" [ref=e62] [cursor=pointer]:
+                      - /url: /password_reset
+                    - button "Sign in" [ref=e63] [cursor=pointer]
+                - link "or continue with other methods" [ref=e66] [cursor=pointer]:
+                  - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fblob%2Fmaster%2Fdocs%2Fbuild%2Fgpu-backend-options.md
+                  - generic [ref=e68]: or continue with other methods
+            - link "Sign up" [ref=e69] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e72] [cursor=pointer]:
+              - img
+  - main [ref=e76]:
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - generic [ref=e80]:
+          - img [ref=e81]
+          - link "ggml-org" [ref=e84] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e85]: /
+          - strong [ref=e86]:
+            - link "llama.cpp" [ref=e87] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e88]: Public
+        - generic [ref=e89]:
+          - list:
+            - listitem [ref=e90]:
+              - link "You must be signed in to change notification settings" [ref=e91] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e92]
+                - text: Notifications
+            - listitem [ref=e94]:
+              - link "Fork 18.9k" [ref=e95] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e96]
+                - text: Fork
+                - generic "18,897" [ref=e98]: 18.9k
+            - listitem [ref=e99]:
+              - link "You must be signed in to star a repository" [ref=e101] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e102]
+                - text: Star
+                - generic "113562 users starred this repository" [ref=e104]: 114k
+      - navigation "Repository" [ref=e105]:
+        - list [ref=e106]:
+          - listitem [ref=e107]:
+            - link "Code" [ref=e108] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e109]
+              - generic [ref=e111]: Code
+          - listitem [ref=e112]:
+            - link "Issues 675" [ref=e113] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e114]
+              - generic [ref=e117]: Issues
+              - generic "675" [ref=e118]
+          - listitem [ref=e119]:
+            - link "Pull requests 1k" [ref=e120] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e121]
+              - generic [ref=e123]: Pull requests
+              - generic "1,048" [ref=e124]: 1k
+          - listitem [ref=e125]:
+            - link "Discussions" [ref=e126] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e127]
+              - generic [ref=e129]: Discussions
+          - listitem [ref=e130]:
+            - link "Actions" [ref=e131] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e132]
+              - generic [ref=e134]: Actions
+          - listitem [ref=e135]:
+            - link "Projects" [ref=e136] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e137]
+              - generic [ref=e139]: Projects
+          - listitem [ref=e140]:
+            - link "Wiki" [ref=e141] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e142]
+              - generic [ref=e144]: Wiki
+          - listitem [ref=e145]:
+            - link "Security and quality 13" [ref=e146] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e147]
+              - generic [ref=e149]: Security and quality
+              - generic "13" [ref=e150]
+          - listitem [ref=e151]:
+            - link "Insights" [ref=e152] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e153]
+              - generic [ref=e155]: Insights
+    - generic [ref=e163]:
+      - generic [ref=e165]:
+        - generic [ref=e168]:
+          - generic [ref=e169]:
+            - generic [ref=e170]:
+              - heading "Collapse file tree" [level=2] [ref=e171]:
+                - button "Collapse file tree" [expanded] [ref=e172] [cursor=pointer]:
+                  - img [ref=e173]
+              - heading "Files" [level=2] [ref=e176]
+            - generic [ref=e177]:
+              - button "master branch" [ref=e179] [cursor=pointer]:
+                - generic [ref=e180]:
+                  - generic [ref=e182]:
+                    - img [ref=e184]
+                    - generic [ref=e187]: master
+                  - generic:
+                    - img
+              - button "Search this repository (forward slash)" [ref=e189] [cursor=pointer]:
+                - img [ref=e190]
+          - generic [ref=e193]:
+            - img [ref=e195]
+            - combobox "Go to file" [ref=e197]
+          - navigation "File Tree Navigation" [ref=e203]:
+            - tree "Files" [ref=e205]:
+              - treeitem ".devops" [level=1] [ref=e206]:
+                - generic [ref=e207] [cursor=pointer]:
+                  - img [ref=e209]
+                  - generic [ref=e211]:
+                    - img [ref=e215]
+                    - generic [ref=e217]: .devops
+              - treeitem ".gemini" [level=1] [ref=e218]:
+                - generic [ref=e219] [cursor=pointer]:
+                  - img [ref=e221]
+                  - generic [ref=e223]:
+                    - img [ref=e227]
+                    - generic [ref=e229]: .gemini
+              - treeitem ".github" [level=1] [ref=e230]:
+                - generic [ref=e231] [cursor=pointer]:
+                  - img [ref=e233]
+                  - generic [ref=e235]:
+                    - img [ref=e239]
+                    - generic [ref=e241]: .github
+              - treeitem ".pi" [level=1] [ref=e242]:
+                - generic [ref=e243] [cursor=pointer]:
+                  - img [ref=e245]
+                  - generic [ref=e247]:
+                    - img [ref=e251]
+                    - generic [ref=e253]: .pi
+              - treeitem "app" [level=1] [ref=e254]:
+                - generic [ref=e255] [cursor=pointer]:
+                  - img [ref=e257]
+                  - generic [ref=e259]:
+                    - img [ref=e263]
+                    - generic [ref=e265]: app
+              - treeitem "benches" [level=1] [ref=e266]:
+                - generic [ref=e267] [cursor=pointer]:
+                  - img [ref=e269]
+                  - generic [ref=e271]:
+                    - img [ref=e275]
+                    - generic [ref=e277]: benches
+              - treeitem "ci" [level=1] [ref=e278]:
+                - generic [ref=e279] [cursor=pointer]:
+                  - img [ref=e281]
+                  - generic [ref=e283]:
+                    - img [ref=e287]
+                    - generic [ref=e289]: ci
+              - treeitem "cmake" [level=1] [ref=e290]:
+                - generic [ref=e291] [cursor=pointer]:
+                  - img [ref=e293]
+                  - generic [ref=e295]:
+                    - img [ref=e299]
+                    - generic [ref=e301]: cmake
+              - treeitem "common" [level=1] [ref=e302]:
+                - generic [ref=e303] [cursor=pointer]:
+                  - img [ref=e305]
+                  - generic [ref=e307]:
+                    - img [ref=e311]
+                    - generic [ref=e313]: common
+              - treeitem "conversion" [level=1] [ref=e314]:
+                - generic [ref=e315] [cursor=pointer]:
+                  - img [ref=e317]
+                  - generic [ref=e319]:
+                    - img [ref=e323]
+                    - generic [ref=e325]: conversion
+              - treeitem "docs" [level=1] [ref=e326]:
+                - generic [ref=e327] [cursor=pointer]:
+                  - img [ref=e329]
+                  - generic [ref=e331]:
+                    - img [ref=e335]
+                    - generic [ref=e337]: docs
+              - treeitem "examples" [level=1] [ref=e338]:
+                - generic [ref=e339] [cursor=pointer]:
+                  - img [ref=e341]
+                  - generic [ref=e343]:
+                    - img [ref=e347]
+                    - generic [ref=e349]: examples
+              - treeitem "ggml" [level=1] [ref=e350]:
+                - generic [ref=e351] [cursor=pointer]:
+                  - img [ref=e353]
+                  - generic [ref=e355]:
+                    - img [ref=e359]
+                    - generic [ref=e361]: ggml
+              - treeitem "gguf-py" [level=1] [ref=e362]:
+                - generic [ref=e363] [cursor=pointer]:
+                  - img [ref=e365]
+                  - generic [ref=e367]:
+                    - img [ref=e371]
+                    - generic [ref=e373]: gguf-py
+              - treeitem "grammars" [level=1] [ref=e374]:
+                - generic [ref=e375] [cursor=pointer]:
+                  - img [ref=e377]
+                  - generic [ref=e379]:
+                    - img [ref=e383]
+                    - generic [ref=e385]: grammars
+              - treeitem "include" [level=1] [ref=e386]:
+                - generic [ref=e387] [cursor=pointer]:
+                  - img [ref=e389]
+                  - generic [ref=e391]:
+                    - img [ref=e395]
+                    - generic [ref=e397]: include
+              - treeitem "licenses" [level=1] [ref=e398]:
+                - generic [ref=e399] [cursor=pointer]:
+                  - img [ref=e401]
+                  - generic [ref=e403]:
+                    - img [ref=e407]
+                    - generic [ref=e409]: licenses
+              - treeitem "media" [level=1] [ref=e410]:
+                - generic [ref=e411] [cursor=pointer]:
+                  - img [ref=e413]
+                  - generic [ref=e415]:
+                    - img [ref=e419]
+                    - generic [ref=e421]: media
+              - treeitem "models" [level=1] [ref=e422]:
+                - generic [ref=e423] [cursor=pointer]:
+                  - img [ref=e425]
+                  - generic [ref=e427]:
+                    - img [ref=e431]
+                    - generic [ref=e433]: models
+              - treeitem "pocs" [level=1] [ref=e434]:
+                - generic [ref=e435] [cursor=pointer]:
+                  - img [ref=e437]
+                  - generic [ref=e439]:
+                    - img [ref=e443]
+                    - generic [ref=e445]: pocs
+              - treeitem "requirements" [level=1] [ref=e446]:
+                - generic [ref=e447] [cursor=pointer]:
+                  - img [ref=e449]
+                  - generic [ref=e451]:
+                    - img [ref=e455]
+                    - generic [ref=e457]: requirements
+              - treeitem "scripts" [level=1] [ref=e458]:
+                - generic [ref=e459] [cursor=pointer]:
+                  - img [ref=e461]
+                  - generic [ref=e463]:
+                    - img [ref=e467]
+                    - generic [ref=e469]: scripts
+              - treeitem "src" [level=1] [ref=e470]:
+                - generic [ref=e471] [cursor=pointer]:
+                  - img [ref=e473]
+                  - generic [ref=e475]:
+                    - img [ref=e479]
+                    - generic [ref=e481]: src
+              - treeitem "tests" [level=1] [ref=e482]:
+                - generic [ref=e483] [cursor=pointer]:
+                  - img [ref=e485]
+                  - generic [ref=e487]:
+                    - img [ref=e491]
+                    - generic [ref=e493]: tests
+              - treeitem "tools" [level=1] [ref=e494]:
+                - generic [ref=e495] [cursor=pointer]:
+                  - img [ref=e497]
+                  - generic [ref=e499]:
+                    - img [ref=e503]
+                    - generic [ref=e505]: tools
+              - treeitem "vendor" [level=1] [ref=e506]:
+                - generic [ref=e507] [cursor=pointer]:
+                  - img [ref=e509]
+                  - generic [ref=e511]:
+                    - img [ref=e515]
+                    - generic [ref=e517]: vendor
+              - treeitem ".clang-format" [level=1] [ref=e518]:
+                - generic [ref=e520] [cursor=pointer]:
+                  - img [ref=e523]
+                  - generic [ref=e525]: .clang-format
+              - treeitem ".clang-tidy" [level=1] [ref=e526]:
+                - generic [ref=e528] [cursor=pointer]:
+                  - img [ref=e531]
+                  - generic [ref=e533]: .clang-tidy
+              - treeitem ".dockerignore" [level=1] [ref=e534]:
+                - generic [ref=e536] [cursor=pointer]:
+                  - img [ref=e539]
+                  - generic [ref=e541]: .dockerignore
+              - treeitem ".ecrc" [level=1] [ref=e542]:
+                - generic [ref=e544] [cursor=pointer]:
+                  - img [ref=e547]
+                  - generic [ref=e549]: .ecrc
+              - treeitem ".editorconfig" [level=1] [ref=e550]:
+                - generic [ref=e552] [cursor=pointer]:
+                  - img [ref=e555]
+                  - generic [ref=e557]: .editorconfig
+              - treeitem ".flake8" [level=1] [ref=e558]:
+                - generic [ref=e560] [cursor=pointer]:
+                  - img [ref=e563]
+                  - generic [ref=e565]: .flake8
+              - treeitem ".gitignore" [level=1] [ref=e566]:
+                - generic [ref=e568] [cursor=pointer]:
+                  - img [ref=e571]
+                  - generic [ref=e573]: .gitignore
+              - treeitem ".gitmodules" [level=1] [ref=e574]:
+                - generic [ref=e576] [cursor=pointer]:
+                  - img [ref=e579]
+                  - generic [ref=e581]: .gitmodules
+              - treeitem ".pre-commit-config.yaml" [level=1] [ref=e582]:
+                - generic [ref=e584] [cursor=pointer]:
+                  - img [ref=e587]
+                  - generic [ref=e589]: .pre-commit-config.yaml
+              - treeitem "AGENTS.md" [level=1] [ref=e590]:
+                - generic [ref=e592] [cursor=pointer]:
+                  - img [ref=e595]
+                  - generic [ref=e597]: AGENTS.md
+              - treeitem "AUTHORS" [level=1] [ref=e598]:
+                - generic [ref=e600] [cursor=pointer]:
+                  - img [ref=e603]
+                  - generic [ref=e605]: AUTHORS
+              - treeitem "CLAUDE.md" [level=1] [ref=e606]:
+                - generic [ref=e608] [cursor=pointer]:
+                  - img [ref=e611]
+                  - generic [ref=e613]: CLAUDE.md
+              - treeitem "CMakeLists.txt" [level=1] [ref=e614]:
+                - generic [ref=e616] [cursor=pointer]:
+                  - img [ref=e619]
+                  - generic [ref=e621]: CMakeLists.txt
+              - treeitem "CMakePresets.json" [level=1] [ref=e622]:
+                - generic [ref=e624] [cursor=pointer]:
+                  - img [ref=e627]
+                  - generic [ref=e629]: CMakePresets.json
+              - treeitem "CODEOWNERS" [level=1] [ref=e630]:
+                - generic [ref=e632] [cursor=pointer]:
+                  - img [ref=e635]
+                  - generic [ref=e637]: CODEOWNERS
+              - treeitem "CONTRIBUTING.md" [level=1] [ref=e638]:
+                - generic [ref=e640] [cursor=pointer]:
+                  - img [ref=e643]
+                  - generic [ref=e645]: CONTRIBUTING.md
+              - treeitem "LICENSE" [level=1] [ref=e646]:
+                - generic [ref=e648] [cursor=pointer]:
+                  - img [ref=e651]
+                  - generic [ref=e653]: LICENSE
+              - treeitem "Makefile" [level=1] [ref=e654]:
+                - generic [ref=e656] [cursor=pointer]:
+                  - img [ref=e659]
+                  - generic [ref=e661]: Makefile
+              - treeitem "README.md" [level=1] [ref=e662]:
+                - generic [ref=e664] [cursor=pointer]:
+                  - img [ref=e667]
+                  - generic [ref=e669]: README.md
+              - treeitem "SECURITY.md" [level=1] [ref=e670]:
+                - generic [ref=e672] [cursor=pointer]:
+                  - img [ref=e675]
+                  - generic [ref=e677]: SECURITY.md
+              - treeitem "build-xcframework.sh" [level=1] [ref=e678]:
+                - generic [ref=e680] [cursor=pointer]:
+                  - img [ref=e683]
+                  - generic [ref=e685]: build-xcframework.sh
+              - treeitem "convert_hf_to_gguf.py" [level=1] [ref=e686]:
+                - generic [ref=e688] [cursor=pointer]:
+                  - img [ref=e691]
+                  - generic [ref=e693]: convert_hf_to_gguf.py
+              - treeitem "convert_hf_to_gguf_update.py" [level=1] [ref=e694]:
+                - generic [ref=e696] [cursor=pointer]:
+                  - img [ref=e699]
+                  - generic [ref=e701]: convert_hf_to_gguf_update.py
+              - treeitem "convert_llama_ggml_to_gguf.py" [level=1] [ref=e702]:
+                - generic [ref=e704] [cursor=pointer]:
+                  - img [ref=e707]
+                  - generic [ref=e709]: convert_llama_ggml_to_gguf.py
+              - treeitem "convert_lora_to_gguf.py" [level=1] [ref=e710]:
+                - generic [ref=e712] [cursor=pointer]:
+                  - img [ref=e715]
+                  - generic [ref=e717]: convert_lora_to_gguf.py
+              - treeitem "flake.nix" [level=1] [ref=e718]:
+                - generic [ref=e720] [cursor=pointer]:
+                  - img [ref=e723]
+                  - generic [ref=e725]: flake.nix
+              - treeitem "mypy.ini" [level=1] [ref=e726]:
+                - generic [ref=e728] [cursor=pointer]:
+                  - img [ref=e731]
+                  - generic [ref=e733]: mypy.ini
+              - treeitem "pyproject.toml" [level=1] [ref=e734]:
+                - generic [ref=e736] [cursor=pointer]:
+                  - img [ref=e739]
+                  - generic [ref=e741]: pyproject.toml
+              - treeitem "pyrightconfig.json" [level=1] [ref=e742]:
+                - generic [ref=e744] [cursor=pointer]:
+                  - img [ref=e747]
+                  - generic [ref=e749]: pyrightconfig.json
+              - treeitem "requirements.txt" [level=1] [ref=e750]:
+                - generic [ref=e752] [cursor=pointer]:
+                  - img [ref=e755]
+                  - generic [ref=e757]: requirements.txt
+              - treeitem "ty.toml" [level=1] [ref=e758]:
+                - generic [ref=e760] [cursor=pointer]:
+                  - img [ref=e763]
+                  - generic [ref=e765]: ty.toml
+        - slider "Draggable pane splitter" [ref=e767]
+      - generic [ref=e772]:
+        - img [ref=e773]
+        - generic [ref=e775]:
+          - generic [ref=e776]: 404 - page not found
+          - generic [ref=e777]:
+            - text: The
+            - paragraph [ref=e778]: master
+            - text: branch of
+            - paragraph [ref=e779]: llama.cpp
+            - text: does not contain the path
+            - paragraph [ref=e780]: docs/build/gpu-backend-options.md.
+        - link "go to Overview" [ref=e781] [cursor=pointer]:
+          - /url: /ggml-org/llama.cpp
+          - generic [ref=e783]: Return to the repository overview

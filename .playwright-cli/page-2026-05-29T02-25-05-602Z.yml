@@ -1,0 +1,362 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "yW!an" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e19]: yW!an
+          - navigation [ref=e20]:
+            - link "Home" [ref=e21] [cursor=pointer]:
+              - /url: /
+            - button "Blog" [ref=e24] [cursor=pointer]:
+              - text: Blog
+              - img [ref=e25]
+            - link "About" [ref=e27] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e28] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e33]:
+          - textbox "Search articles" [ref=e34]:
+            - /placeholder: Search articles...
+          - generic:
+            - img
+    - main [ref=e35]:
+      - navigation "Breadcrumb" [ref=e37]:
+        - generic [ref=e38]:
+          - link "Home" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img [ref=e40]
+            - text: Home
+          - img [ref=e42]
+          - generic [ref=e44]:
+            - img [ref=e45]
+            - text: AI
+      - generic [ref=e49]:
+        - article [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: AI
+              - generic [ref=e54]:
+                - img [ref=e55]
+                - text: 6 min read
+            - 'heading "llama.cpp GPU Acceleration: The Complete Guide" [level=1] [ref=e57]'
+            - paragraph [ref=e58]: Step-by-step guide to build and run llama.cpp with GPU backends (CUDA, HIP, Metal, OpenCL, Vulkan) plus troubleshooting and key flags.
+          - 'img "llama.cpp GPU Acceleration: The Complete Guide" [ref=e61]'
+          - generic [ref=e63]:
+            - heading "Short answer" [level=2] [ref=e64]
+            - paragraph [ref=e65]:
+              - text: If you want faster, local LLM inference with
+              - strong [ref=e66]: llama.cpp
+              - text: ", you must build it with a GPU backend that matches your hardware (CUDA for Nvidia, HIP for AMD, Metal for Apple, OpenCL for Adreno, Vulkan/SYCL for others). Once built, use the"
+              - code [ref=e67]: "`--n-gpu-layers`"
+              - text: ","
+              - code [ref=e68]: "`--main-gpu`"
+              - text: ", and"
+              - code [ref=e69]: "`--split-mode`"
+              - text: flags to offload work. Follow the repo build notes and the vendor docs linked below.
+            - heading "GPU compatibility matrix" [level=2] [ref=e70]
+            - table [ref=e71]:
+              - rowgroup [ref=e72]:
+                - row "GPU Recommended backend Notes & links" [ref=e73]:
+                  - columnheader "GPU" [ref=e74]
+                  - columnheader "Recommended backend" [ref=e75]
+                  - columnheader "Notes & links" [ref=e76]
+              - rowgroup [ref=e77]:
+                - row "Nvidia CUDA (+ cuBLAS) Best performance on Linux/Windows. See llama.cpp repo." [ref=e78]:
+                  - cell "Nvidia" [ref=e79]
+                  - cell "CUDA (+ cuBLAS)" [ref=e80]
+                  - cell "Best performance on Linux/Windows. See llama.cpp repo." [ref=e81]:
+                    - text: Best performance on Linux/Windows. See
+                    - link "llama.cpp repo" [ref=e82] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp
+                    - text: .
+                - row "AMD HIP Good support via HIP. See llama.cpp and community reports." [ref=e83]:
+                  - cell "AMD" [ref=e84]
+                  - cell "HIP" [ref=e85]
+                  - cell "Good support via HIP. See llama.cpp and community reports." [ref=e86]:
+                    - text: Good support via HIP. See
+                    - link "llama.cpp" [ref=e87] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp
+                    - text: and community reports.
+                - row "Apple Silicon (M1/M2) Metal Native Metal backend gives excellent perf on macOS." [ref=e88]:
+                  - cell "Apple Silicon (M1/M2)" [ref=e89]
+                  - cell "Metal" [ref=e90]
+                  - cell "Native Metal backend gives excellent perf on macOS." [ref=e91]
+                - 'row "Qualcomm Adreno (Android) OpenCL (new), Vulkan (partial) Use the new OpenCL backend optimized for Adreno: Qualcomm blog. Vulkan can work on some devices; see community threads: issue #8705 and discussion about Vulkan performance." [ref=e92]':
+                  - cell "Qualcomm Adreno (Android)" [ref=e93]
+                  - cell "OpenCL (new), Vulkan (partial)" [ref=e94]
+                  - 'cell "Use the new OpenCL backend optimized for Adreno: Qualcomm blog. Vulkan can work on some devices; see community threads: issue #8705 and discussion about Vulkan performance." [ref=e95]':
+                    - text: "Use the new OpenCL backend optimized for Adreno:"
+                    - link "Qualcomm blog" [ref=e96] [cursor=pointer]:
+                      - /url: https://www.qualcomm.com/developer/blog/2024/11/introducing-new-opn-cl-gpu-backend-llama-cpp-for-qualcomm-adreno-gpu
+                    - text: ". Vulkan can work on some devices; see community threads:"
+                    - 'link "issue #8705" [ref=e97] [cursor=pointer]':
+                      - /url: https://github.com/ggml-org/llama.cpp/issues/8705
+                    - text: and discussion
+                    - link "about Vulkan performance" [ref=e98] [cursor=pointer]:
+                      - /url: https://github.com/ggerganov/llama.cpp/discussions/9464
+                    - text: .
+                - row "Other (Intel, integrated) SYCL / Vulkan / BLAS Options vary; check llama.cpp docs." [ref=e99]:
+                  - cell "Other (Intel, integrated)" [ref=e100]
+                  - cell "SYCL / Vulkan / BLAS" [ref=e101]
+                  - cell "Options vary; check llama.cpp docs." [ref=e102]:
+                    - text: Options vary; check
+                    - link "llama.cpp docs" [ref=e103] [cursor=pointer]:
+                      - /url: https://github.com/ggml-org/llama.cpp
+                    - text: .
+            - heading "Quick checklist (what you need)" [level=2] [ref=e104]
+            - list [ref=e105]:
+              - listitem [ref=e106]: A compatible GPU and up-to-date drivers.
+              - listitem [ref=e107]:
+                - text: llama.cpp source (clone from
+                - link "ggml-org/llama.cpp" [ref=e108] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp
+                - text: ).
+              - listitem [ref=e109]: GGUF or converted model (quantized models work best).
+              - listitem [ref=e110]: "Build toolchain: CMake, compiler, vendor SDK (CUDA toolkit, ROCm/HIP, Vulkan SDK, Android NDK for mobile)."
+              - listitem [ref=e111]: Patience—mobile builds can need device-specific tweaks.
+            - heading "How to build (examples)" [level=2] [ref=e112]
+            - paragraph [ref=e113]:
+              - text: Always check the project
+              - link "build docs" [ref=e114] [cursor=pointer]:
+                - /url: https://github.com/ggml-org/llama.cpp
+              - text: first. Below are example commands you can adapt. They’re labelled as examples — your flags or SDK paths may differ.
+            - 'heading "Example: CUDA (Nvidia)" [level=3] [ref=e115]'
+            - paragraph [ref=e116]: "Install the CUDA toolkit and a matching driver. Then build:"
+            - code [ref=e118]: mkdir build && cd build cmake .. -DUSE_CUDA=ON -DUSE_CUBLAS=ON make -j$(nproc)
+            - paragraph [ref=e119]: "Run with:"
+            - code [ref=e121]: ./main -m /path/to/model.gguf --n-gpu-layers 999 --main-gpu 0
+            - 'heading "Example: HIP (AMD)" [level=3] [ref=e122]'
+            - paragraph [ref=e123]: "Install ROCm/HIP per AMD docs. Then:"
+            - code [ref=e125]: mkdir build && cd build cmake .. -DUSE_HIP=ON make -j$(nproc)
+            - 'heading "Example: OpenCL (Adreno / mobile)" [level=3] [ref=e126]'
+            - paragraph [ref=e127]:
+              - text: For Adreno, the new
+              - link "OpenCL backend" [ref=e128] [cursor=pointer]:
+                - /url: https://www.qualcomm.com/developer/blog/2024/11/introducing-new-opn-cl-gpu-backend-llama-cpp-for-qualcomm-adreno-gpu
+              - text: "is recommended. Build with OpenCL enabled:"
+            - code [ref=e130]: mkdir build && cd build cmake .. -DUSE_OPENCL=ON make -j$(nproc)
+            - paragraph [ref=e131]: "On Android you may also need to set runtime env vars (example from a public run):"
+            - code [ref=e133]: GGML_OPENCL_PLATFORM=0 GGML_OPENCL_DEVICE=0 export LD_LIBRARY_PATH=/vendor/lib64:$LD_LIBRARY_PATH
+            - 'heading "Example: Vulkan (Android/Linux)" [level=3] [ref=e134]'
+            - paragraph [ref=e135]: "Vulkan is supported but can be hit-or-miss depending on drivers. Enable Vulkan at build time:"
+            - code [ref=e137]: mkdir build && cd build cmake .. -DUSE_VULKAN=ON make -j$(nproc)
+            - paragraph [ref=e138]:
+              - text: On Android, some GPUs (Exynos RDNA) show good perf; others (Adreno, Mali) can be slower without driver fixes — see
+              - link "community issue" [ref=e139] [cursor=pointer]:
+                - /url: https://github.com/ggml-org/llama.cpp/issues/8705
+              - text: and discussion
+              - link "about Vulkan speed" [ref=e140] [cursor=pointer]:
+                - /url: https://github.com/ggerganov/llama.cpp/discussions/9464
+              - text: .
+            - 'heading "Example: Metal (macOS)" [level=3] [ref=e141]'
+            - paragraph [ref=e142]: "On macOS, build with Metal:"
+            - code [ref=e144]: mkdir build && cd build cmake .. -DUSE_METAL=ON make -j$(sysctl -n hw.ncpu)
+            - heading "Key flags you’ll use" [level=2] [ref=e145]
+            - list [ref=e146]:
+              - listitem [ref=e147]:
+                - strong [ref=e148]: "--n-gpu-layers"
+                - text: ": Number of layers to offload to GPU. Set high (999) to try to load whole model to GPU; set lower to do partial offload."
+              - listitem [ref=e149]:
+                - strong [ref=e150]: "--main-gpu"
+                - text: ": Which device ID is the main GPU (0 by default)."
+              - listitem [ref=e151]:
+                - strong [ref=e152]: "--split-mode"
+                - text: ": Controls CPU/GPU splitting behavior for models larger than VRAM. Try modes 0, 1, 2 to see what’s fastest for your hardware."
+            - heading "How to verify the GPU is being used" [level=2] [ref=e153]
+            - list [ref=e154]:
+              - listitem [ref=e155]:
+                - text: Check llama.cpp startup logs — it mentions GPU backend if built correctly (see
+                - link "repo" [ref=e156] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp
+                - text: ).
+              - listitem [ref=e157]:
+                - text: "For CUDA: run"
+                - code [ref=e158]: "`nvidia-smi`"
+                - text: to see utilization.
+              - listitem [ref=e159]:
+                - text: "For OpenCL: use"
+                - code [ref=e160]: "`clinfo`"
+                - text: or platform tools to confirm devices.
+              - listitem [ref=e161]: Watch system CPU usage drop when the GPU is active; latency should fall and throughput rise.
+              - listitem [ref=e162]:
+                - text: "Note: some Python wrappers and older builds report GPU incorrectly; see a common detection thread on"
+                - link "Stack Overflow" [ref=e163] [cursor=pointer]:
+                  - /url: https://stackoverflow.com/questions/78415856/detecting-gpu-availability-in-llama-cpp-python
+                - text: .
+            - 'heading "Troubleshooting: common problems and fixes" [level=2] [ref=e164]'
+            - list [ref=e165]:
+              - listitem [ref=e166]:
+                - strong [ref=e167]: Build fails
+                - text: ": Install the vendor SDK (CUDA/ROCm/Vulkan SDK/Android NDK). Read the build logs and add include/library paths to CMake as needed."
+              - listitem [ref=e168]:
+                - strong [ref=e169]: GPU not used at runtime
+                - text: ": Rebuild with the backend enabled. Confirm binary was built after changing CMake flags. Check logs and environment variables."
+              - listitem [ref=e170]:
+                - strong [ref=e171]: Very slow on Android Vulkan
+                - text: ": Performance varies by GPU/driver. See the community notes:"
+                - 'link "issue #8705" [ref=e172] [cursor=pointer]':
+                  - /url: https://github.com/ggml-org/llama.cpp/issues/8705
+                - text: and
+                - link "Vulkan discussion" [ref=e173] [cursor=pointer]:
+                  - /url: https://github.com/ggerganov/llama.cpp/discussions/9464
+                - text: . Try the OpenCL backend for Adreno (see
+                - link "Qualcomm blog" [ref=e174] [cursor=pointer]:
+                  - /url: https://www.qualcomm.com/developer/blog/2024/11/introducing-new-opn-cl-gpu-backend-llama-cpp-for-qualcomm-adreno-gpu
+                - text: ).
+              - listitem [ref=e175]:
+                - strong [ref=e176]: Out of VRAM
+                - text: ": Use quantized GGUF models, lower"
+                - code [ref=e177]: "`--n-gpu-layers`"
+                - text: ", or enable split-mode to keep some tensors on CPU. Guides on quantization and model conversion help—see the community guide:"
+                - link "llama.cpp guide" [ref=e178] [cursor=pointer]:
+                  - /url: https://steelph0enix.github.io/posts/llama-cpp-guide/
+                - text: .
+            - heading "FAQ" [level=2] [ref=e179]
+            - heading "Can I run Llama 3 8B on a phone GPU?" [level=3] [ref=e180]
+            - paragraph [ref=e181]:
+              - text: "Maybe. Some Exynos RDNA phones and recent flagship Qualcomm chips can run trimmed/quantized 8B models with the right backend. Expect compromises: quantization and split-mode are essential. See the Qualcomm OpenCL announcement:"
+              - link "OpenCL backend" [ref=e182] [cursor=pointer]:
+                - /url: https://www.qualcomm.com/developer/blog/2024/11/introducing-new-opn-cl-gpu-backend-llama-cpp-for-qualcomm-adreno-gpu
+              - text: .
+            - heading "Why is Vulkan slow on my device?" [level=3] [ref=e183]
+            - paragraph [ref=e184]: Drivers and shader compiler quality vary. Community threads show Adreno and Mali behave differently; follow the linked issues for device-specific tips.
+            - heading "Where do I get quantized models?" [level=3] [ref=e185]
+            - paragraph [ref=e186]:
+              - text: Use converters and community tools to produce GGUF quantized models. See model conversion notes in the
+              - link "llama.cpp repo" [ref=e187] [cursor=pointer]:
+                - /url: https://github.com/ggml-org/llama.cpp
+              - text: and community guides like
+              - link "this guide" [ref=e188] [cursor=pointer]:
+                - /url: https://steelph0enix.github.io/posts/llama-cpp-guide/
+              - text: .
+            - heading "Next steps and links" [level=2] [ref=e189]
+            - list [ref=e190]:
+              - listitem [ref=e191]:
+                - text: "Read the main repo and build docs:"
+                - link "ggml-org/llama.cpp" [ref=e192] [cursor=pointer]:
+                  - /url: https://github.com/ggml-org/llama.cpp
+                - text: .
+              - listitem [ref=e193]:
+                - text: "Adreno & OpenCL announcement:"
+                - link "Qualcomm blog" [ref=e194] [cursor=pointer]:
+                  - /url: https://www.qualcomm.com/developer/blog/2024/11/introducing-new-opn-cl-gpu-backend-llama-cpp-for-qualcomm-adreno-gpu
+                - text: .
+              - listitem [ref=e195]:
+                - text: "Community guide with flags and tips:"
+                - link "llama.cpp guide" [ref=e196] [cursor=pointer]:
+                  - /url: https://steelph0enix.github.io/posts/llama-cpp-guide/
+                - text: .
+              - listitem [ref=e197]:
+                - text: "Example environment tweaks for OpenCL runs:"
+                - link "Kaggle run notes" [ref=e198] [cursor=pointer]:
+                  - /url: https://www.kaggle.com/code/gpreda/fast-test-of-llama-v2-pre-quantized-with-llama-cpp/input
+                - text: .
+            - paragraph [ref=e199]:
+              - text: "What to try now: pick your hardware, follow the relevant subsection above, build with the matching backend, and run a small test model using"
+              - code [ref=e200]: "`--n-gpu-layers 8`"
+              - text: to confirm behaviour. If you hit a specific error, open a GitHub issue with logs — the community moves fast.
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - generic [ref=e203]: GPU
+              - generic [ref=e204]: llama.cpp
+              - generic [ref=e205]: local-llm
+            - generic [ref=e207]:
+              - button "Copy link to clipboard" [ref=e208] [cursor=pointer]:
+                - img [ref=e209]
+              - button "Share on X" [ref=e211] [cursor=pointer]:
+                - img [ref=e212]
+              - button "Share on LinkedIn" [ref=e214] [cursor=pointer]:
+                - img [ref=e215]
+              - button "Share on Facebook" [ref=e217] [cursor=pointer]:
+                - img [ref=e218]
+          - generic [ref=e221]:
+            - img [ref=e223]
+            - generic [ref=e225]:
+              - paragraph [ref=e226]: AI-Generated Content
+              - paragraph [ref=e227]: This article is created using artificial intelligence.
+        - generic [ref=e228]:
+          - generic [ref=e229]:
+            - heading "Related Articles" [level=2] [ref=e230]
+            - paragraph [ref=e231]: More insights you might find interesting
+          - generic [ref=e232]:
+            - article [ref=e234]:
+              - link "Run Qwen3-Next Locally with Llama.cpp AI • 5 months ago • 5 min read Run Qwen3-Next Locally with Llama.cpp Qwen3-Next llama.cpp GGUF +1 more" [ref=e235] [cursor=pointer]:
+                - /url: /blog/run-qwen3-next-locally-llama-cpp
+                - img "Run Qwen3-Next Locally with Llama.cpp" [ref=e238]
+                - generic [ref=e239]:
+                  - generic [ref=e240]:
+                    - generic [ref=e241]: AI
+                    - generic [ref=e242]: •
+                    - time [ref=e243]: 5 months ago
+                    - generic [ref=e244]: •
+                    - generic [ref=e245]: 5 min read
+                  - heading "Run Qwen3-Next Locally with Llama.cpp" [level=2] [ref=e246]
+                  - generic [ref=e247]:
+                    - generic [ref=e248]: Qwen3-Next
+                    - generic [ref=e249]: llama.cpp
+                    - generic [ref=e250]: GGUF
+                    - generic [ref=e251]: +1 more
+            - article [ref=e253]:
+              - link "RX 580 Vulkan AI Benchmarks (llama.cpp + SD.cpp) AI • 15 days ago • 10 min read RX 580 Vulkan AI Benchmarks (llama.cpp + SD.cpp) RX 580 Vulkan llama.cpp +5 more" [ref=e254] [cursor=pointer]:
+                - /url: /blog/rx-580-vulkan-ai-benchmarks-llama-cpp-sd-cpp
+                - img "RX 580 Vulkan AI Benchmarks (llama.cpp + SD.cpp)" [ref=e257]
+                - generic [ref=e258]:
+                  - generic [ref=e259]:
+                    - generic [ref=e260]: AI
+                    - generic [ref=e261]: •
+                    - time [ref=e262]: 15 days ago
+                    - generic [ref=e263]: •
+                    - generic [ref=e264]: 10 min read
+                  - heading "RX 580 Vulkan AI Benchmarks (llama.cpp + SD.cpp)" [level=2] [ref=e265]
+                  - generic [ref=e266]:
+                    - generic [ref=e267]: RX 580
+                    - generic [ref=e268]: Vulkan
+                    - generic [ref=e269]: llama.cpp
+                    - generic [ref=e270]: +5 more
+            - article [ref=e272]:
+              - 'link "LLMs on 8GB VRAM: A Benchmark Guide AI • 5 months ago • 9 min read LLMs on 8GB VRAM: A Benchmark Guide llama.cpp benchmarks" [ref=e273] [cursor=pointer]':
+                - /url: /blog/llms-on-8gb-vram-a-benchmark-guide
+                - 'img "LLMs on 8GB VRAM: A Benchmark Guide" [ref=e276]'
+                - generic [ref=e277]:
+                  - generic [ref=e278]:
+                    - generic [ref=e279]: AI
+                    - generic [ref=e280]: •
+                    - time [ref=e281]: 5 months ago
+                    - generic [ref=e282]: •
+                    - generic [ref=e283]: 9 min read
+                  - 'heading "LLMs on 8GB VRAM: A Benchmark Guide" [level=2] [ref=e284]'
+                  - generic [ref=e285]:
+                    - generic [ref=e286]: llama.cpp
+                    - generic [ref=e287]: benchmarks
+        - link "Back to AI" [ref=e289] [cursor=pointer]:
+          - /url: /category/ai
+          - img [ref=e290]
+          - text: Back to AI
+    - contentinfo [ref=e292]:
+      - generic [ref=e293]:
+        - navigation "Footer navigation" [ref=e294]:
+          - list [ref=e295]:
+            - listitem [ref=e296]:
+              - link "About" [ref=e297] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e298]:
+              - link "Privacy Policy" [ref=e299] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e300]:
+              - link "Terms of Service" [ref=e301] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e302]:
+              - link "Contact Us" [ref=e303] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e304]:
+              - link "AI Manifest" [ref=e305] [cursor=pointer]:
+                - /url: /llms.txt
+        - generic [ref=e306]:
+          - paragraph [ref=e307]: © 2026 yW!an. All rights reserved.
+          - paragraph [ref=e308]:
+            - link "ywian.com@gmail.com" [ref=e309] [cursor=pointer]:
+              - /url: mailto:ywian.com@gmail.com

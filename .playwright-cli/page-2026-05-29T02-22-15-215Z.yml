@@ -1,0 +1,491 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F8340
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fdiscussions_fragments%2Fdiscussion_layout&source=header-repo&source_repo=ggml-org%2Fllama.cpp
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ggml-org" [ref=e70] [cursor=pointer]:
+            - /url: /ggml-org
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "llama.cpp" [ref=e73] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.9k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,897" [ref=e84]: 18.9k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fggml-org%2Fllama.cpp
+                - img [ref=e88]
+                - text: Star
+                - generic "113564 users starred this repository" [ref=e90]: 114k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 675" [ref=e99] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "675" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 1k" [ref=e106] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "1,048" [ref=e110]: 1k
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Projects" [ref=e122] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/projects
+              - img [ref=e123]
+              - generic [ref=e125]: Projects
+          - listitem [ref=e126]:
+            - link "Wiki" [ref=e127] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/wiki
+              - img [ref=e128]
+              - generic [ref=e130]: Wiki
+          - listitem [ref=e131]:
+            - link "Security and quality 13" [ref=e132] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/security
+              - img [ref=e133]
+              - generic [ref=e135]: Security and quality
+              - generic "13" [ref=e136]
+          - listitem [ref=e137]:
+            - link "Insights" [ref=e138] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/pulse
+              - img [ref=e139]
+              - generic [ref=e141]: Insights
+    - generic [ref=e145]:
+      - generic [ref=e152]:
+        - 'heading "Is there any indication at compile-time or runtime whether cuBLAS or MMQ will be used? #8340" [level=1] [ref=e153]'
+        - generic [ref=e154]:
+          - generic "Unanswered" [ref=e155]
+          - generic [ref=e156]:
+            - link "isaac-mcfadyen" [ref=e157] [cursor=pointer]:
+              - /url: /isaac-mcfadyen
+            - text: asked this question in
+            - link "Q&A" [ref=e158] [cursor=pointer]:
+              - /url: /ggml-org/llama.cpp/discussions/categories/q-a
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - generic [ref=e166]:
+            - generic [ref=e168]:
+              - button "Discussion options" [ref=e173] [cursor=pointer]:
+                - img
+              - heading "isaac-mcfadyen Jul 6, 2024on Jul 6, 2024" [level=2] [ref=e174]:
+                - generic [ref=e175]:
+                  - link "isaac-mcfadyen" [ref=e176] [cursor=pointer]:
+                    - /url: /isaac-mcfadyen
+                    - img [ref=e177]
+                    - generic [ref=e179]: isaac-mcfadyen
+                  - link "Jul 6, 2024on Jul 6, 2024" [ref=e180] [cursor=pointer]:
+                    - /url: "#discussion-6904244"
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - paragraph [ref=e184]:
+                  - text: As far as I know,
+                  - code [ref=e185]: llama.cpp
+                  - text: picks between cuBLAS and MMQ based on int8 tensor core support on the GPU.
+                - paragraph [ref=e186]: There are optional compile flags to force either MMQ or cuBLAS. However, I haven't specified those flags and I can't find any indication which is actually being used.
+                - paragraph [ref=e187]: Is this a case of me just missing the location where it's specified, or is it not indicated? And if it's not indicated, is this a possible feature that would be useful/should be added (if so I'll create an Issue)?
+              - 'button "Upvote: 1" [disabled] [ref=e194]':
+                - img [ref=e195]
+                - generic [ref=e197]: "1"
+          - generic [ref=e198]:
+            - generic [ref=e199]:
+              - 'heading "Replies: 5 comments 4 replies" [level=2] [ref=e201]':
+                - generic [ref=e202]: "Replies:"
+                - text: 5 comments · 4 replies
+              - navigation "Sort comments" [ref=e203]:
+                - list "Sort comments" [ref=e205]:
+                  - listitem [ref=e206]:
+                    - link "Oldest" [ref=e207] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/8340?sort=old
+                      - generic [ref=e209]: Oldest
+                  - listitem [ref=e210]:
+                    - link "Newest" [ref=e211] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/8340?sort=new
+                      - generic [ref=e213]: Newest
+                  - listitem [ref=e214]:
+                    - link "Top" [ref=e215] [cursor=pointer]:
+                      - /url: /ggml-org/llama.cpp/discussions/8340?sort=top
+                      - generic [ref=e217]: Top
+            - generic [ref=e223]:
+              - generic [ref=e225]:
+                - button "Comment options" [ref=e230] [cursor=pointer]:
+                  - img
+                - button "edited" [ref=e235] [cursor=pointer]:
+                  - generic [ref=e237]: edited
+                  - generic:
+                    - img
+                - heading "dspasyuk Jul 7, 2024on Jul 7, 2024" [level=3] [ref=e238]:
+                  - generic [ref=e239]:
+                    - link "dspasyuk" [ref=e240] [cursor=pointer]:
+                      - /url: /dspasyuk
+                      - img [ref=e241]
+                      - generic [ref=e243]: dspasyuk
+                    - link "Jul 7, 2024on Jul 7, 2024" [ref=e244] [cursor=pointer]:
+                      - /url: "#discussioncomment-9979728"
+              - generic [ref=e246]:
+                - paragraph [ref=e248]:
+                  - text: Are you on linux?
+                  - text: "Have you tried:"
+                  - code [ref=e249]: ldd ./llama-cli
+                  - text: but if you build it without Cuda you will not get it, so CPU only, I am not sure cuBLAS is still supported.
+                  - text: "You can rebuild with Cuda support:"
+                  - code [ref=e250]: make clean && LLAMA_CUDA=1 make -j 6
+                  - text: or
+                  - code [ref=e251]: make clean && LLAMA_CUBLAS=1 make -j 6
+                  - text: "You will also need to add -ngl 35 to store layers in VRAM so:"
+                  - code [ref=e252]: ./llama.cpp/llama-cli -ngl 25 -m ../../models/Meta-Llama-3-8B-Instruct_Q4_K_S.gguf -p "What is 2 + 2"
+                - generic [ref=e254]:
+                  - 'button "Upvote: 2" [disabled] [ref=e259]':
+                    - img [ref=e260]
+                    - generic [ref=e262]: "2"
+                  - generic [ref=e263]: 1 reply
+              - generic [ref=e265]:
+                - link "@isaac-mcfadyen" [ref=e267] [cursor=pointer]:
+                  - /url: /isaac-mcfadyen
+                  - img "@isaac-mcfadyen" [ref=e268]
+                - generic [ref=e272]:
+                  - generic [ref=e274]:
+                    - button "Comment options" [ref=e279] [cursor=pointer]:
+                      - img
+                    - heading "isaac-mcfadyen Jul 7, 2024on Jul 7, 2024 Author" [level=4] [ref=e280]:
+                      - generic [ref=e281]:
+                        - link "isaac-mcfadyen" [ref=e282] [cursor=pointer]:
+                          - /url: /isaac-mcfadyen
+                        - link "Jul 7, 2024on Jul 7, 2024" [ref=e283] [cursor=pointer]:
+                          - /url: "#discussioncomment-9979764"
+                        - generic "This user is the author of this discussion." [ref=e285]: Author
+                  - generic [ref=e287]:
+                    - generic [ref=e288]:
+                      - paragraph [ref=e289]: I am on Linux, yup.
+                      - paragraph [ref=e290]:
+                        - code [ref=e291]: ldd
+                        - text: shows it linking to cuBLAS - but I don't think that means it's actually choosing cuBLAS at runtime (I could be wrong, but given I'm on an RTX 4090 with int8 support I believe it would use MMQ).
+                      - paragraph [ref=e292]:
+                        - text: "By MMQ vs cuBLAS I mean what's actually used at runtime, not what's linked by the binary: see this PR"
+                        - link "#8075" [ref=e293] [cursor=pointer]:
+                          - /url: https://github.com/ggml-org/llama.cpp/pull/8075
+                    - button "+1 1" [disabled] [ref=e300]:
+                      - img "+1" [ref=e302]
+                      - generic [ref=e303]: "1"
+            - generic [ref=e309]:
+              - generic [ref=e311]:
+                - button "Comment options" [ref=e316] [cursor=pointer]:
+                  - img
+                - button "edited" [ref=e321] [cursor=pointer]:
+                  - generic [ref=e323]: edited
+                  - generic:
+                    - img
+                - heading "dspasyuk Jul 7, 2024on Jul 7, 2024" [level=3] [ref=e324]:
+                  - generic [ref=e325]:
+                    - link "dspasyuk" [ref=e326] [cursor=pointer]:
+                      - /url: /dspasyuk
+                      - img [ref=e327]
+                      - generic [ref=e329]: dspasyuk
+                    - link "Jul 7, 2024on Jul 7, 2024" [ref=e330] [cursor=pointer]:
+                      - /url: "#discussioncomment-9979797"
+              - generic [ref=e332]:
+                - generic [ref=e333]:
+                  - paragraph [ref=e334]:
+                    - link "@isaac-mcfadyen" [ref=e335] [cursor=pointer]:
+                      - /url: https://github.com/isaac-mcfadyen
+                    - text: "No, you are correct, it will use GPUs only if you set -ngl to whatever number of layers your model has, so ~ 35 for 7B. At run time llama-cli will print a log and you should see ... I am offloading 25 layers in this example:"
+                  - paragraph [ref=e336]:
+                    - text: "llm_load_tensors: offloading 25 repeating layers to GPU"
+                    - text: "llm_load_tensors: offloaded 25/33 layers to GPU"
+                    - text: "llm_load_tensors: CPU buffer size = 4467.80 MiB"
+                    - text: "llm_load_tensors: CUDA0 buffer size = 2925.78 MiB"
+                - generic [ref=e338]:
+                  - 'button "Upvote: 1" [disabled] [ref=e343]':
+                    - img [ref=e344]
+                    - generic [ref=e346]: "1"
+                  - generic [ref=e347]: 1 reply
+              - generic [ref=e349]:
+                - link "@isaac-mcfadyen" [ref=e351] [cursor=pointer]:
+                  - /url: /isaac-mcfadyen
+                  - img "@isaac-mcfadyen" [ref=e352]
+                - generic [ref=e356]:
+                  - generic [ref=e358]:
+                    - button "Comment options" [ref=e363] [cursor=pointer]:
+                      - img
+                    - heading "isaac-mcfadyen Jul 7, 2024on Jul 7, 2024 Author" [level=4] [ref=e364]:
+                      - generic [ref=e365]:
+                        - link "isaac-mcfadyen" [ref=e366] [cursor=pointer]:
+                          - /url: /isaac-mcfadyen
+                        - link "Jul 7, 2024on Jul 7, 2024" [ref=e367] [cursor=pointer]:
+                          - /url: "#discussioncomment-9979808"
+                        - generic "This user is the author of this discussion." [ref=e369]: Author
+                  - generic [ref=e371]:
+                    - generic [ref=e372]:
+                      - paragraph [ref=e373]:
+                        - link "@dspasyuk" [ref=e374] [cursor=pointer]:
+                          - /url: https://github.com/dspasyuk
+                        - text: yes that's definitely using CUDA, but I'm specifically talking about CUDA with MMQ versus CUDA with cuBLAS.
+                      - paragraph [ref=e375]:
+                        - text: In your example you are offloading layers to CUDA but there's no indication whether
+                        - code [ref=e376]: llama.cpp
+                        - text: is using MMQ or cuBLAS (two different ways of running with CUDA, which one is used is chosen automatically by
+                        - code [ref=e377]: llama.cpp
+                        - text: ).
+                    - button "+1 2" [disabled] [ref=e384]:
+                      - img "+1" [ref=e386]
+                      - generic [ref=e387]: "2"
+            - generic [ref=e393]:
+              - generic [ref=e395]:
+                - button "Comment options" [ref=e400] [cursor=pointer]:
+                  - img
+                - heading "dspasyuk Jul 7, 2024on Jul 7, 2024" [level=3] [ref=e401]:
+                  - generic [ref=e402]:
+                    - link "dspasyuk" [ref=e403] [cursor=pointer]:
+                      - /url: /dspasyuk
+                      - img [ref=e404]
+                      - generic [ref=e406]: dspasyuk
+                    - link "Jul 7, 2024on Jul 7, 2024" [ref=e407] [cursor=pointer]:
+                      - /url: "#discussioncomment-9979850"
+              - generic [ref=e409]:
+                - paragraph [ref=e411]:
+                  - text: I see in my case they are both set to no :)
+                  - text: "ggml_cuda_init: GGML_CUDA_FORCE_MMQ: no"
+                  - text: "ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no"
+                - generic [ref=e413]:
+                  - 'button "Upvote: 1" [disabled] [ref=e418]':
+                    - img [ref=e419]
+                    - generic [ref=e421]: "1"
+                  - generic [ref=e422]: 1 reply
+              - generic [ref=e424]:
+                - link "@isaac-mcfadyen" [ref=e426] [cursor=pointer]:
+                  - /url: /isaac-mcfadyen
+                  - img "@isaac-mcfadyen" [ref=e427]
+                - generic [ref=e431]:
+                  - generic [ref=e433]:
+                    - button "Comment options" [ref=e438] [cursor=pointer]:
+                      - img
+                    - heading "isaac-mcfadyen Jul 7, 2024on Jul 7, 2024 Author" [level=4] [ref=e439]:
+                      - generic [ref=e440]:
+                        - link "isaac-mcfadyen" [ref=e441] [cursor=pointer]:
+                          - /url: /isaac-mcfadyen
+                        - link "Jul 7, 2024on Jul 7, 2024" [ref=e442] [cursor=pointer]:
+                          - /url: "#discussioncomment-9979859"
+                        - generic "This user is the author of this discussion." [ref=e444]: Author
+                  - generic [ref=e446]:
+                    - generic [ref=e447]:
+                      - paragraph [ref=e448]: Those would be the flags to force them to on.
+                      - paragraph [ref=e449]: Without those flags it picks automatically - and as far as I can tell, there is no indication which is picked, so I might create a Github issue/feature request for an indicator to be added.
+                    - button "+1 2" [disabled] [ref=e456]:
+                      - img "+1" [ref=e458]
+                      - generic [ref=e459]: "2"
+            - generic [ref=e465]:
+              - generic [ref=e467]:
+                - button "Comment options" [ref=e472] [cursor=pointer]:
+                  - img
+                - heading "isaac-mcfadyen Jul 7, 2024on Jul 7, 2024 Author" [level=3] [ref=e473]:
+                  - generic [ref=e474]:
+                    - link "isaac-mcfadyen" [ref=e475] [cursor=pointer]:
+                      - /url: /isaac-mcfadyen
+                      - img [ref=e476]
+                      - generic [ref=e478]: isaac-mcfadyen
+                    - link "Jul 7, 2024on Jul 7, 2024" [ref=e479] [cursor=pointer]:
+                      - /url: "#discussioncomment-9979881"
+                    - generic "This user is the author of this discussion." [ref=e481]: Author
+              - generic [ref=e483]:
+                - paragraph [ref=e485]:
+                  - text: Opened Issue at
+                  - link "#8350" [ref=e486] [cursor=pointer]:
+                    - /url: https://github.com/ggml-org/llama.cpp/issues/8350
+                  - text: :)
+                - generic [ref=e488]:
+                  - generic [ref=e489]:
+                    - 'button "Upvote: 1" [disabled] [ref=e493]':
+                      - img [ref=e494]
+                      - generic [ref=e496]: "1"
+                    - button "+1 2" [disabled] [ref=e500]:
+                      - img "+1" [ref=e502]
+                      - generic [ref=e503]: "2"
+                  - generic [ref=e504]: 0 replies
+            - generic [ref=e510]:
+              - generic [ref=e512]:
+                - button "Comment options" [ref=e517] [cursor=pointer]:
+                  - img
+                - heading "dspasyuk Jul 7, 2024on Jul 7, 2024" [level=3] [ref=e518]:
+                  - generic [ref=e519]:
+                    - link "dspasyuk" [ref=e520] [cursor=pointer]:
+                      - /url: /dspasyuk
+                      - img [ref=e521]
+                      - generic [ref=e523]: dspasyuk
+                    - link "Jul 7, 2024on Jul 7, 2024" [ref=e524] [cursor=pointer]:
+                      - /url: "#discussioncomment-9979891"
+              - generic [ref=e526]:
+                - paragraph [ref=e528]:
+                  - text: I cannot think of anything useful except for Nsight-compute but it is a pain
+                  - link "https://developer.nvidia.com/nsight-compute" [ref=e529] [cursor=pointer]:
+                    - /url: https://developer.nvidia.com/nsight-compute
+                - generic [ref=e531]:
+                  - generic [ref=e532]:
+                    - 'button "Upvote: 1" [disabled] [ref=e536]':
+                      - img [ref=e537]
+                      - generic [ref=e539]: "1"
+                    - button "+1 1" [disabled] [ref=e543]:
+                      - img "+1" [ref=e545]
+                      - generic [ref=e546]: "1"
+                  - generic [ref=e547]: 1 reply
+              - generic [ref=e549]:
+                - link "@hbabak" [ref=e551] [cursor=pointer]:
+                  - /url: /hbabak
+                  - img "@hbabak" [ref=e552]
+                - generic [ref=e556]:
+                  - generic [ref=e558]:
+                    - button "Comment options" [ref=e563] [cursor=pointer]:
+                      - img
+                    - heading "hbabak Aug 23, 2025on Aug 23, 2025" [level=4] [ref=e564]:
+                      - generic [ref=e565]:
+                        - link "hbabak" [ref=e566] [cursor=pointer]:
+                          - /url: /hbabak
+                        - link "Aug 23, 2025on Aug 23, 2025" [ref=e567] [cursor=pointer]:
+                          - /url: "#discussioncomment-14198237"
+                  - generic [ref=e570]:
+                    - paragraph [ref=e571]:
+                      - text: Indirectly, if this is still an issue, you could turn on logging for cuBLAS, it should produce log files and you can count how many times cuBLAS is actually called. From the
+                      - link "docs:" [ref=e572] [cursor=pointer]:
+                        - /url: https://docs.nvidia.com/cuda/cublas/#cublaslt-logging
+                    - generic [ref=e573]:
+                      - code [ref=e575]: export CUBLAS_LOGINFO_DBG=1 CUBLAS_LOGDEST_DBG=cublas.log export CUBLASLT_LOG_LEVEL=2 CUBLASLT_LOG_FILE=cublasLt.log ./app
+                      - button "Copy code to clipboard" [ref=e577] [cursor=pointer]:
+                        - img [ref=e578]
+        - generic [ref=e582]:
+          - link "Sign up for free" [ref=e583] [cursor=pointer]:
+            - /url: /join?source=comment-repo
+          - strong [ref=e584]: to join this conversation on GitHub
+          - text: . Already have an account?
+          - link "Sign in to comment" [ref=e585] [cursor=pointer]:
+            - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp%2Fdiscussions%2F8340
+      - generic [ref=e586]:
+        - generic [ref=e589]:
+          - generic [ref=e590]: Category
+          - link "Q&A" [ref=e591] [cursor=pointer]:
+            - /url: /ggml-org/llama.cpp/discussions/categories/q-a
+            - img [ref=e594]
+            - text: Q&A
+        - generic [ref=e595]:
+          - generic [ref=e596]: Labels
+          - generic [ref=e597]: None yet
+        - generic [ref=e599]:
+          - generic [ref=e600]: 3 participants
+          - generic [ref=e601]:
+            - link "@isaac-mcfadyen" [ref=e602] [cursor=pointer]:
+              - /url: /isaac-mcfadyen
+              - img "@isaac-mcfadyen" [ref=e603]
+            - link "@hbabak" [ref=e604] [cursor=pointer]:
+              - /url: /hbabak
+              - img "@hbabak" [ref=e605]
+            - link "@dspasyuk" [ref=e606] [cursor=pointer]:
+              - /url: /dspasyuk
+              - img "@dspasyuk" [ref=e607]
+  - contentinfo [ref=e608]:
+    - heading "Footer" [level=2] [ref=e609]
+    - generic [ref=e610]:
+      - generic [ref=e611]:
+        - link "GitHub Homepage" [ref=e612] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e613]
+        - generic [ref=e615]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e616]:
+        - heading "Footer navigation" [level=3] [ref=e617]
+        - list "Footer navigation" [ref=e618]:
+          - listitem [ref=e619]:
+            - link "Terms" [ref=e620] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e621]:
+            - link "Privacy" [ref=e622] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e623]:
+            - link "Security" [ref=e624] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e625]:
+            - link "Status" [ref=e626] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e627]:
+            - link "Community" [ref=e628] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e629]:
+            - link "Docs" [ref=e630] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e631]:
+            - link "Contact" [ref=e632] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e633]:
+            - button "Manage cookies" [ref=e635] [cursor=pointer]
+          - listitem [ref=e636]:
+            - button "Do not share my personal information" [ref=e638] [cursor=pointer]

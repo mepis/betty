@@ -1,8 +1,0 @@
-[    6049ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://www.anthropic.com/images/icons/favicon-32x32.png:0
-[   10553ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtm.js?id=GTM-KWW2N9TQ:0
-[   10805ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://www.anthropic.com/_next/static/chunks/81fd5882751676c3.js:0
-[   10805ms] [ERROR] Refused to execute script from 'https://www.anthropic.com/_next/static/chunks/81fd5882751676c3.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents:0
-[   10806ms] [ERROR] [Segment] Failed to load: Error: Failed to load chunk /_next/static/chunks/81fd5882751676c3.js from module 149122
-    at https://www.anthropic.com/_next/static/chunks/turbopack-39eded8e57394c57.js:1:5709 @ https://www.anthropic.com/_next/static/chunks/3b0f2b73e7d4948a.js:0
-[   10806ms] [ERROR] [Segment] Failed to load: Error: Failed to load chunk /_next/static/chunks/81fd5882751676c3.js from module 149122
-    at https://www.anthropic.com/_next/static/chunks/turbopack-39eded8e57394c57.js:1:5709 @ https://www.anthropic.com/_next/static/chunks/3b0f2b73e7d4948a.js:0
