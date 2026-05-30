@@ -8,3 +8,4 @@
 - [RAG Systems](../topics/rag-systems/) — 2026-05-29 — Comprehensive research on Retrieval-Augmented Generation systems, covering architecture, chunking, embedding models, vector databases, advanced patterns, evaluation, and production deployment.
 - [Agent Memory Strategies](../topics/agent-memory-strategies/) — 2026-05-29 — Comprehensive survey of agent memory architectures, mechanisms, and frameworks for LLM-based agents.
 - [Agent Memory Using Markdown](../topics/agent-memory-using-markdown/) — 2026-05-29 — Research on using Markdown as the primary memory representation format for LLM agents, including the LLM Wiki pattern and structured Markdown formats.
+- [Using Go to Build Agentic Systems](../topics/using-go-to-build-agentic-systems/) — 2026-05-29 — Comprehensive research on the Go ecosystem for building agentic AI systems, with focus on tool calling mechanisms, MCP integration, and agent frameworks.

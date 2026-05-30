@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: golang go llm ai agent tool calling library github
+    - complementary "Account Rewards and Preferences" [ref=e17]:
+      - button "Microsoft Rewards"
+      - link "Sign in" [ref=e18] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - generic "Sign in" [ref=e19]
+    - navigation "Search Filter" [ref=e20]:
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "All" [ref=e23] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e24]:
+          - link "Images" [ref=e25] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=b8541393e5b77067895833fde3efe6b797cdeb2ca1070cc8be2e4ffb231ff142JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03236d29-f8ad-68bc-3119-7a40f94269de&u=a1L2ltYWdlcy9zZWFyY2g_cT1nb2xhbmcrZ28rbGxtK2FpK2FnZW50K3Rvb2wrY2FsbGluZytsaWJyYXJ5K2dpdGh1YiZGT1JNPUhEUlNDMg&ntb=1
+        - listitem [ref=e26]:
+          - link "Videos" [ref=e27] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=ea7efbe47ee315d7e20f7dc747b3707a72b72def7245233c09f93d8940571400JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03236d29-f8ad-68bc-3119-7a40f94269de&u=a1L3ZpZGVvcy9zZWFyY2g_cT1nb2xhbmcrZ28rbGxtK2FpK2FnZW50K3Rvb2wrY2FsbGluZytsaWJyYXJ5K2dpdGh1YiZGT1JNPUhEUlNDMw&ntb=1
+        - listitem [ref=e28]:
+          - link "Maps" [ref=e29] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=96cde4155a8be32ffef32e5c49c8b57735db6583f1ded17815ed6dcbcd8c5628JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03236d29-f8ad-68bc-3119-7a40f94269de&u=a1L21hcHM_cT1nb2xhbmcrZ28rbGxtK2FpK2FnZW50K3Rvb2wrY2FsbGluZytsaWJyYXJ5K2dpdGh1YiZGT1JNPUhEUlNDNA&ntb=1
+        - listitem [ref=e30]:
+          - link "News" [ref=e31] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=752cbfdab7d0df27daedd035795fce29fd08d1bfaf6b306289c840f0b19856ddJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03236d29-f8ad-68bc-3119-7a40f94269de&u=a1L25ld3Mvc2VhcmNoP3E9Z29sYW5nK2dvK2xsbSthaSthZ2VudCt0b29sK2NhbGxpbmcrbGlicmFyeStnaXRodWImRk9STT1IRFJTQzY&ntb=1
+        - listitem [ref=e32]:
+          - link "Shopping" [ref=e33] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=ba1fa69c07a72b4ad06c1b7aa76755477cc38d9d74355bdd45c32163b55b8134JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03236d29-f8ad-68bc-3119-7a40f94269de&u=a1L3Nob3AvdG9waWNzP3E9Z29sYW5nK2dvK2xsbSthaSthZ2VudCt0b29sK2NhbGxpbmcrbGlicmFyeStnaXRodWImRk9STT1TSE9QVEI&ntb=1
+        - listitem [ref=e34]:
+          - button "More" [ref=e35] [cursor=pointer]:
+            - img [ref=e37]
+            - text: More
+  - contentinfo [ref=e39]:
+    - generic [ref=e40]:
+      - list:
+        - listitem [ref=e41]:
+          - link "Privacy" [ref=e42] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=08feacc33578a23dbd67405bf428d753caeeeee116a6e67e86e49b9702aee83bJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03236d29-f8ad-68bc-3119-7a40f94269de&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+        - listitem [ref=e43]:
+          - link "Terms" [ref=e44] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=9f75eda8a969a88b265873f3f2dcf3341808a088d5e1e8583e31f4eb72e98833JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03236d29-f8ad-68bc-3119-7a40f94269de&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1

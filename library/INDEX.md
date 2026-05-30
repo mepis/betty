@@ -13,6 +13,7 @@
 | [RAG Systems](topics/rag-systems/) | 2026-05-29 | Complete | rag, retrieval, embeddings, vector-databases, llm, architecture, evaluation, frameworks |
 | [Agent Memory Strategies](topics/agent-memory-strategies/) | 2026-05-29 | Complete | agent-memory, llm-architecture, memory-benchmarks, privacy-security, multi-agent-systems |
 | [Agent Memory Using Markdown](topics/agent-memory-using-markdown/) | 2026-05-29 | Complete | agent-memory, markdown, llm-wiki, structured-text, mcp |
+| [Using Go to Build Agentic Systems](topics/using-go-to-build-agentic-systems/) | 2026-05-29 | Complete | golang, ai, agent, tool-calling, mcp, llm, framework |
 
 ## Detail
 
@@ -147,3 +148,22 @@ Qdrant is a vector database written in Rust that provides disk-based storage, st
 - Sparse vector support enables hybrid search via Reciprocal Rank Fusion
 - Free tier supports up to 8M vectors (with binary quantization)
 - ACORN algorithm (v1.16+) improves filtered search accuracy
+
+---
+
+## Using Go to Build Agentic Systems
+
+**Date:** 2026-05-29
+
+This research examines the Go ecosystem for building agentic AI systems, with particular focus on tool calling mechanisms. The Go ecosystem has matured from simple LLM API wrappers to comprehensive agent frameworks with native tool calling support, MCP protocol integration, and production-ready architectures.
+
+**Key findings:**
+- **Three architectural approaches coexist:** SDK-level tool calling (OpenAI function calling), protocol-level tool discovery (MCP), and framework-level orchestration (Blades, pi-agent-go, AgenticGoKit)
+- **MCP-first architectures dominate:** The most mature Go agent frameworks are built around the Model Context Protocol, reflecting its emergence as the de facto standard for tool discovery
+- **Go's type system provides unique advantages:** Compile-time validation of tool definitions, automatic JSON schema generation, and structured output parsing enable both flexibility and type safety
+- **Robust MCP ecosystem:** Official SDKs from Anthropic and Google, plus third-party implementations (mcp-go, ToolHive, MCP Toolbox), create a comprehensive tool infrastructure
+- **Performance advantages:** Compiled execution with goroutine-based concurrency enables efficient parallel tool execution, making Go ideal for production agentic systems
+
+**Notable frameworks:** Blades (go-kratos), pi-agent-go, AgenticGoKit, JoakimCarlsson/ai, Gollm, ChatGPT-CLI
+
+**Notable MCP libraries:** MCP Go SDK (Anthropic), MCP Go Server, MCP Toolbox (Google), ToolHive (Stacklok), MCP Toolbox Go SDK

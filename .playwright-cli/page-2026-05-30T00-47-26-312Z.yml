@@ -1,0 +1,53 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: Go golang agentic AI systems tool calling function calling
+    - complementary "Account Rewards and Preferences" [ref=e17]:
+      - button "Microsoft Rewards"
+      - link "Sign in" [ref=e18] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - generic "Sign in" [ref=e19]
+    - navigation "Search Filter" [ref=e20]:
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "All" [ref=e23] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e24]:
+          - link "Search" [ref=e25] [cursor=pointer]:
+            - /url: /copilotsearch?q=Go+golang+agentic+AI+systems+tool+calling+function+calling&FORM=CSSCOP
+            - img [ref=e26]
+            - text: Search
+        - listitem [ref=e28]:
+          - link "Images" [ref=e29] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=9fabe0b7bd8602254ef9abdbb7b49eaba101ed54abc192f79ba694bbd7e05f73JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=1568373c-d1a5-6d3a-016f-2055d0ca6c23&u=a1L2ltYWdlcy9zZWFyY2g_cT1Hbytnb2xhbmcrYWdlbnRpYytBSStzeXN0ZW1zK3Rvb2wrY2FsbGluZytmdW5jdGlvbitjYWxsaW5nJkZPUk09SERSU0My&ntb=1
+        - listitem [ref=e30]:
+          - link "Videos" [ref=e31] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=51b41026ea29136d2eb12d0009d1d2429a0e0025dce02ea53543eb6127080023JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=1568373c-d1a5-6d3a-016f-2055d0ca6c23&u=a1L3ZpZGVvcy9zZWFyY2g_cT1Hbytnb2xhbmcrYWdlbnRpYytBSStzeXN0ZW1zK3Rvb2wrY2FsbGluZytmdW5jdGlvbitjYWxsaW5nJkZPUk09SERSU0Mz&ntb=1
+        - listitem [ref=e32]:
+          - link "Maps" [ref=e33] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=dd0c3ceb728b93506cabe273234038de76007c33149e9788e6c0bb8d3db3eafaJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=1568373c-d1a5-6d3a-016f-2055d0ca6c23&u=a1L21hcHM_cT1Hbytnb2xhbmcrYWdlbnRpYytBSStzeXN0ZW1zK3Rvb2wrY2FsbGluZytmdW5jdGlvbitjYWxsaW5nJkZPUk09SERSU0M0&ntb=1
+        - listitem [ref=e34]:
+          - link "News" [ref=e35] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=1ab18c6b691f99a3da3bd55922836de36603d85863bfc2f3ff757c9d0752db93JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=1568373c-d1a5-6d3a-016f-2055d0ca6c23&u=a1L25ld3Mvc2VhcmNoP3E9R28rZ29sYW5nK2FnZW50aWMrQUkrc3lzdGVtcyt0b29sK2NhbGxpbmcrZnVuY3Rpb24rY2FsbGluZyZGT1JNPUhEUlNDNg&ntb=1
+        - listitem [ref=e36]:
+          - button "More" [ref=e37] [cursor=pointer]:
+            - img [ref=e39]
+            - text: More
+  - contentinfo [ref=e41]:
+    - generic [ref=e42]:
+      - list:
+        - listitem [ref=e43]:
+          - link "Privacy" [ref=e44] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=1408001db1e1618b3dea3fcfe2ff1a42b2a66319b3cd72ef23b7706a5fbad223JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=1568373c-d1a5-6d3a-016f-2055d0ca6c23&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+        - listitem [ref=e45]:
+          - link "Terms" [ref=e46] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=209dabbb7ad7b04e19d4c2042f4d674fef0f8b49640301449a9986d5237685e3JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=1568373c-d1a5-6d3a-016f-2055d0ca6c23&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1

@@ -1,0 +1,54 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - button "Skip to content" [ref=e3] [cursor=pointer]:
+      - generic [ref=e5]: Skip to content
+    - button "Accessibility Feedback" [ref=e6] [cursor=pointer]:
+      - generic [ref=e8]: Accessibility Feedback
+    - generic [ref=e9]:
+      - link "Back to Bing search" [ref=e10] [cursor=pointer]:
+        - /url: /?FORM=Z9FD1
+        - heading "Back to Bing search" [level=1] [ref=e11]
+      - search [ref=e12]:
+        - button "Search" [ref=e15] [cursor=pointer]
+        - searchbox "Enter your search here - Search suggestions will show as you type" [ref=e16]: "\"golang\" \"AI agent\" OR \"LLM agent\" tool calling function calling"
+        - button "Search using an image" [ref=e19] [cursor=pointer]
+    - complementary "Account Rewards and Preferences" [ref=e21]:
+      - button "Microsoft Rewards"
+      - link "Sign in" [ref=e22] [cursor=pointer]:
+        - /url: javascript:void(0)
+        - generic "Sign in" [ref=e23]
+    - navigation "Search Filter" [ref=e24]:
+      - list [ref=e25]:
+        - listitem [ref=e26]:
+          - link "All" [ref=e27] [cursor=pointer]:
+            - /url: /?scope=web&FORM=HDRSC1
+        - listitem [ref=e28]:
+          - link "Search" [ref=e29] [cursor=pointer]:
+            - /url: /copilotsearch?q=%22golang%22+%22AI+agent%22+OR+%22LLM+agent%22+tool+calling+function+calling&FORM=CSSCOP
+            - img [ref=e30]
+            - text: Search
+        - listitem [ref=e32]:
+          - link "Images" [ref=e33] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=a23e612f5afde26df33ba8818b117b6fb60b4f320236d8a8d46a261d2f64b3baJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03c1722c-2ee8-665e-204c-65452fe76723&u=a1L2ltYWdlcy9zZWFyY2g_cT0lMjJnb2xhbmclMjIrJTIyQUkrYWdlbnQlMjIrT1IrJTIyTExNK2FnZW50JTIyK3Rvb2wrY2FsbGluZytmdW5jdGlvbitjYWxsaW5nJkZPUk09SERSU0My&ntb=1
+        - listitem [ref=e34]:
+          - link "Videos" [ref=e35] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=ad00fafd50719a24fcab89577c830b509686567f40b2cdbae044182223d9139dJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03c1722c-2ee8-665e-204c-65452fe76723&u=a1L3ZpZGVvcy9zZWFyY2g_cT0lMjJnb2xhbmclMjIrJTIyQUkrYWdlbnQlMjIrT1IrJTIyTExNK2FnZW50JTIyK3Rvb2wrY2FsbGluZytmdW5jdGlvbitjYWxsaW5nJkZPUk09SERSU0Mz&ntb=1
+        - listitem [ref=e36]:
+          - link "Maps" [ref=e37] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=8f0ddb0048c89a3d5ee635297242456e782c6deff03ac0c83fd6837c64b3debfJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03c1722c-2ee8-665e-204c-65452fe76723&u=a1L21hcHM_cT0lMjJnb2xhbmclMjIrJTIyQUkrYWdlbnQlMjIrT1IrJTIyTExNK2FnZW50JTIyK3Rvb2wrY2FsbGluZytmdW5jdGlvbitjYWxsaW5nJkZPUk09SERSU0M0&ntb=1
+        - listitem [ref=e38]:
+          - link "News" [ref=e39] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=a25c7cce4e53855383853f80bede33ed249ad236cdd6cf9a4fdc5a84daaef46fJmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03c1722c-2ee8-665e-204c-65452fe76723&u=a1L25ld3Mvc2VhcmNoP3E9JTIyZ29sYW5nJTIyKyUyMkFJK2FnZW50JTIyK09SKyUyMkxMTSthZ2VudCUyMit0b29sK2NhbGxpbmcrZnVuY3Rpb24rY2FsbGluZyZGT1JNPUhEUlNDNg&ntb=1
+        - listitem [ref=e40]:
+          - button "More" [ref=e41] [cursor=pointer]:
+            - img [ref=e43]
+            - text: More
+  - contentinfo [ref=e45]:
+    - generic [ref=e46]:
+      - list:
+        - listitem [ref=e47]:
+          - link "Privacy" [ref=e48] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=5f39a615be3a4b78432b7e4e62ec75d82eb72802f63d777d80c1aa6dbf186720JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03c1722c-2ee8-665e-204c-65452fe76723&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSWQ9NTIxODM5&ntb=1
+        - listitem [ref=e49]:
+          - link "Terms" [ref=e50] [cursor=pointer]:
+            - /url: https://www.bing.com/ck/a?!&&p=987cc66814230861880019cf0001f16622a6c14dd12739e1a16c8c76ea6e3df3JmltdHM9MTc4MDAxMjgwMA&ptn=3&ver=2&hsh=4&fclid=03c1722c-2ee8-665e-204c-65452fe76723&u=a1aHR0cDovL2dvLm1pY3Jvc29mdC5jb20vZndsaW5rLz9MaW5rSUQ9MjQ2MzM4&ntb=1
