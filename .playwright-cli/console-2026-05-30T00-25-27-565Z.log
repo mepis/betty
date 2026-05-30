@@ -1,0 +1,2 @@
+[     151ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://raw.githubusercontent.com/alexfao/neocortex.md/main/neocortex.md:0
+[    3577ms] [ERROR] Blocked script execution in 'https://raw.githubusercontent.com/alexfao/neocortex.md/main/neocortex.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set. @ https://raw.githubusercontent.com/alexfao/neocortex.md/main/neocortex.md:0

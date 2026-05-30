@@ -1,0 +1,13 @@
+[     491ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://log.cookieyes.com/api/v1/log:0
+[     917ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://securepubads.g.doubleclick.net/tag/js/gpt.js:0
+[     917ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://js.hs-scripts.com/46095657.js?businessUnitId=2278289:0
+[     917ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtm.js?id=GTM-NDXD39TW:0
+[     928ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://static.ads-twitter.com/uwt.js:0
+[    1128ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://plugins.blueconic.net/static/scripts/jquery/jquery-3.7.1-BC-v2.min.js:0
+[    1130ms] [LOG] [IMGJS] INFO IMGJS is initialized @ https://towardsdatascience.com/wp-content/plugins/tds-plugin/dist/js/imgjs-init.js?ver=ce4ec76a64b9643c6dc9:0
+[    1196ms] [LOG] [BC][ERROR] could not load script url: [object Event] @ https://h030.towardsdatascience.com/script.js:141
+[    1196ms] [LOG] [BC][ERROR] --stacktrace-- @ https://h030.towardsdatascience.com/script.js:141
+[    1196ms] [LOG] [BC][ERROR] --end stacktrace-- @ https://h030.towardsdatascience.com/script.js:141
+[    1199ms] [ERROR] Error occurs when executing javascript:  $ is not a function @ https://h030.towardsdatascience.com/plugin/library/7cca1e1e3b698c80920cd851b1480f54:17
+[    1280ms] [ERROR] Error occurs when executing javascript:  $ is not a function @ https://h030.towardsdatascience.com/plugin/library/7cca1e1e3b698c80920cd851b1480f54:17
+[    1628ms] [LOG] {user: null} @ https://towardsdatascience.com/wp-content/plugins/tds-plugin/dist/js/imgjs-init.js?ver=ce4ec76a64b9643c6dc9:0

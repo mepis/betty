@@ -2,5 +2,4 @@
 
 ## Topics
 
-- [OpenAI Compatible APIs](../topics/openai-compatible-apis/) — 2026-05-29 — Comprehensive research on the OpenAI-compatible API ecosystem
-- [LLM Harness](../topics/llm-harness/) — 2026-05-29 — MCP (Model Context Protocol) by Anthropic as a competing standard to A2A for agent-tool connectivity.
+- [Agent Memory Using Markdown](../topics/agent-memory-using-markdown/) — Research on MCP-based Markdown memory servers that expose memory through standardized tools (memory_ingest, memory_query, memory_lint) for cross-agent compatibility (2026-05-29)

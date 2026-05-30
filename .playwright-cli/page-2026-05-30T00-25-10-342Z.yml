@@ -1,0 +1,620 @@
+- generic [active] [ref=e1]:
+  - region "We value your privacy" [ref=e2]:
+    - generic [ref=e5]:
+      - heading "We value your privacy" [level=2] [ref=e6]
+      - generic [ref=e7]:
+        - paragraph [ref=e9]: We use cookies to enhance your browsing experience, serve personalised ads or content, and analyse our traffic. By clicking "Accept All", you consent to our use of cookies.
+        - generic [ref=e10]:
+          - button "Customise" [ref=e11] [cursor=pointer]
+          - button "Reject All" [ref=e12] [cursor=pointer]
+          - button "Accept All" [ref=e13] [cursor=pointer]
+  - link "Skip to content" [ref=e15] [cursor=pointer]:
+    - /url: "#wp--skip-link--target"
+  - generic [ref=e16]:
+    - banner [ref=e17]:
+      - banner [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - generic [ref=e21]:
+              - link "Towards Data Science" [ref=e23] [cursor=pointer]:
+                - /url: https://towardsdatascience.com/
+                - img "Towards Data Science" [ref=e24]
+              - paragraph [ref=e25]: Publish AI, ML & data-science insights to a global community of data professionals.
+            - generic [ref=e27]:
+              - generic [ref=e29] [cursor=pointer]: Sign in
+              - link "Submit an Article" [ref=e31] [cursor=pointer]:
+                - /url: https://contributor.insightmediagroup.io/
+          - generic [ref=e32]:
+            - navigation [ref=e33]:
+              - menubar [ref=e34]:
+                - menuitem "Latest" [ref=e35] [cursor=pointer]
+                - menuitem "Editor’s Picks" [ref=e36] [cursor=pointer]
+                - menuitem "Deep Dives" [ref=e37] [cursor=pointer]
+                - menuitem "Newsletter" [ref=e38] [cursor=pointer]
+                - separator [ref=e39]
+                - menuitem "Write For TDS" [ref=e40] [cursor=pointer]
+            - generic [ref=e41]:
+              - list [ref=e42]:
+                - listitem [ref=e43]:
+                  - link "LinkedIn" [ref=e44] [cursor=pointer]:
+                    - /url: https://www.linkedin.com/company/towards-data-science/?originalSubdomain=ca
+                    - img [ref=e45]
+                    - generic [ref=e47]: LinkedIn
+                - listitem [ref=e48]:
+                  - link "X" [ref=e49] [cursor=pointer]:
+                    - /url: https://x.com/TDataScience
+                    - img [ref=e50]
+                    - generic [ref=e52]: X
+              - button "Toggle Search" [ref=e54] [cursor=pointer]:
+                - img [ref=e56]
+                - generic [ref=e58]: Toggle Search
+    - generic [ref=e60]:
+      - main [ref=e61]:
+        - generic [ref=e62]:
+          - link "Agentic AI" [ref=e64] [cursor=pointer]:
+            - /url: https://towardsdatascience.com/category/artificial-intelligence/agentic-ai/
+          - 'heading "memweave: Zero-Infra AI Agent Memory with Markdown and SQLite — No Vector Database Required" [level=1] [ref=e65]'
+          - paragraph [ref=e68]: The problem with agent memory today
+          - generic [ref=e69]:
+            - generic [ref=e71]:
+              - link "Sachin Sharma" [ref=e73] [cursor=pointer]:
+                - /url: https://towardsdatascience.com/author/sachinsharma9780/
+              - generic [ref=e74]:
+                - time [ref=e76]: Apr 16, 2026
+                - generic [ref=e77]: 17 min read
+            - button "Share" [ref=e78] [cursor=pointer]:
+              - generic [ref=e79]: Share
+              - img [ref=e80]
+          - figure "Photo by Kelly Sikkema on Unsplash" [ref=e82]:
+            - generic [ref=e83]:
+              - link "Photo" [ref=e84] [cursor=pointer]:
+                - /url: https://unsplash.com/photos/a-hand-holding-a-piece-of-paper-HTF3_X-uasY
+              - text: by Kelly Sikkema on Unsplash
+        - generic [ref=e86]:
+          - blockquote [ref=e87]:
+            - paragraph [ref=e88]:
+              - emphasis [ref=e89]: "Disclosure: memweave is an open-source project I built. This article describes the problem it addresses and the design decisions behind it."
+          - paragraph [ref=e90]: "Picture this: you spend an afternoon building an AI coding assistant. It learns your project’s conventions, remembers that you use Valkey instead of Redis, and knows your team’s preferred testing patterns. The session ends. You open a new conversation the next morning, and you have forgotten everything. Back to square one."
+          - paragraph [ref=e91]: This is the default state of every LLM agent. Models are stateless by design. Each call starts with a blank slate. Memory is your problem to solve.
+          - paragraph [ref=e92]: The most common workaround is to stuff the entire conversation history into the context window. It works — until it doesn’t. Context windows are finite and expensive. A long-running agent accumulates thousands of tokens of history, most of which are irrelevant to the current question. You end up paying to repeatedly feed your agent last week’s debugging notes when all it needs is one architecture decision from three months ago.
+          - paragraph [ref=e93]: "So you reach for a vector database. Spin up Chroma, or provision a Pinecone index, embed everything, and query by semantic similarity. This works too — but it introduces a new class of problems:"
+          - list [ref=e94]:
+            - listitem [ref=e95]:
+              - strong [ref=e96]: Opacity.
+              - text: Your agent’s memory lives in a binary index you cannot open, read, or reason about. What does your agent actually know? You can only find out by querying it.
+            - listitem [ref=e97]:
+              - strong [ref=e98]: No version control.
+              - text: There is no
+              - code [ref=e99]: git diff
+              - text: for a vector store. You cannot see what an agent learned between runs, audit its knowledge, or roll back a bad memory.
+            - listitem [ref=e100]:
+              - strong [ref=e101]: Infrastructure overhead.
+              - text: Even for a single local agent, you now have a server process to manage, credentials to configure, and a service to keep running.
+            - listitem [ref=e102]:
+              - strong [ref=e103]: Stale memory, no remedy.
+              - text: A vector DB ranks results by semantic similarity, full stop. A debugging note from six months ago competes on equal footing with a decision made this morning. Older, stale context surfaces confidently alongside fresh knowledge — and there is no built-in mechanism to prefer the recent over the outdated.
+            - listitem [ref=e104]:
+              - strong [ref=e105]: Invisible edits.
+              - text: If you want to correct a memory — fix a wrong assumption the agent stored — you need to delete and re-embed. You cannot just open the file and change a line.
+          - paragraph [ref=e106]: The deeper issue is that none of these tools were designed for agent memory. They were designed for document retrieval at scale. Using them for a personal or project-scoped agent is like deploying a PostgreSQL cluster to store a config file.
+          - paragraph [ref=e107]: There is a simpler way.
+          - 'heading "The Approach: Markdown + SQLite" [level=2] [ref=e108]'
+          - figure "Photo by Soragrit Wongsa on Unsplash" [ref=e109]:
+            - generic [ref=e110]:
+              - text: Photo by
+              - link "Soragrit Wongsa" [ref=e111] [cursor=pointer]:
+                - /url: https://unsplash.com/@invictar1997?utm_source=medium&utm_medium=referral
+              - text: "on"
+              - link "Unsplash" [ref=e112] [cursor=pointer]:
+                - /url: https://unsplash.com?utm_source=medium&utm_medium=referral
+          - paragraph [ref=e113]:
+            - text: The core idea behind
+            - link "memweave" [ref=e115] [cursor=pointer]:
+              - /url: https://github.com/sachinsharma9780/memweave
+              - strong [ref=e116]: memweave
+            - text: "is deliberately simple: memories are"
+            - code [ref=e117]: .md
+            - text: files you write to disk. memweave indexes them into a local SQLite database and lets you search across them with hybrid BM25 + semantic vector search. The database is always a derived cache — if you delete it, memweave rebuilds it from the files. The files are the source of truth.
+          - code [ref=e119]: pip install memweave
+          - paragraph [ref=e120]: "Here is everything you need to give an agent persistent memory:"
+          - code [ref=e122]:
+            - text: "import asyncio from pathlib import Path from memweave import MemWeave, MemoryConfig async def main(): async with MemWeave(MemoryConfig(workspace_dir=\".\")) as mem: # Write a memory - just a plain Markdown file memory_file = Path(\"memory/stack.md\") memory_file.parent.mkdir(exist_ok=True) memory_file.write_text(\"We use Valkey instead of Redis. Target latency SLA: 5ms p99.\") await mem.add(memory_file) # Search across all memories. # min_score=0.0 ensures results surface in a small corpus; # in production the default 0.35 threshold filters low-confidence matches. results = await mem.search(\"caching layer decision\", , min_score=0.0) for r in results: print("
+            - generic [ref=e123]:
+              - text: f"[
+              - generic [ref=e124]: "{r.score:.2f}"
+              - text: "]"
+              - generic [ref=e125]: "{r.snippet}"
+              - text: ←
+              - generic [ref=e126]: "{r.path}"
+              - text: ":"
+              - generic [ref=e127]: "{r.start_line}"
+              - text: "\""
+            - text: ) asyncio.run(main())
+          - paragraph [ref=e128]: "Output:"
+          - code [ref=e130]: "[0.34] We use Valkey instead of Redis. Target latency SLA: 5ms p99. ← memory/stack.md:1"
+          - paragraph [ref=e131]: Every result includes its relevance score, the exact file it came from, and the line number—full source provenance out of the box. No post-processing needed to trace where an answer originated.
+          - paragraph [ref=e132]: "And because memories are just files, you can inspect them with any tool you already have:"
+          - code [ref=e134]: cat memory/stack.md grep -r "Valkey" memory/ git diff memory/
+          - paragraph [ref=e135]:
+            - text: That last command —
+            - code [ref=e136]: git diff memory/
+            - text: — is the one that changes how you think about agent memory. Every fact your agent stores is a line in a file. Every session is a commit. What your agent learned is as auditable as any other change in your codebase.
+          - heading "Why Files and SQLite Instead of a Vector Database" [level=2] [ref=e137]
+          - paragraph [ref=e138]: "Vector databases were designed for large-scale document retrieval — millions of documents, multi-tenant services, and production search infrastructure. They are excellent at that job. Agent memory is a different job entirely: hundreds of thousands of files, personal or project-scoped, where the knowledge is as important as the code itself. These constraints pushed me toward a different set of tradeoffs:"
+          - figure "memweave vs Vector Databases (image by author)" [ref=e139]:
+            - generic [ref=e140]: memweave vs Vector Databases (image by author)
+          - paragraph [ref=e141]:
+            - text: Each of these differences compounds in practice, but
+            - strong [ref=e142]: version control
+            - text: illustrates the gap most concretely. Consider what happens when your agent stores a wrong assumption — say, it learned that your team uses PostgreSQL when you actually migrated to CockroachDB last quarter. With a vector DB, correcting this means finding the right embedding, deleting it, and re-inserting the corrected version via API. With memweave, you open the file and fix the line. Then you commit it.
+          - code [ref=e144]: "# git diff memory/stack.md - Database: PostgreSQL (primary), Redis (cache) + Database: CockroachDB (primary, migrated Q1 2026), Valkey (cache) + Reason: geo-distribution requirement from the platform team"
+          - paragraph [ref=e145]: "That diff is now part of your project history. Any teammate — or any future agent — can see what changed, when, and why. This is the operational model that memweave is built around: agent memory as a first-class artifact of your project, not a side-effect stored in a service you can’t inspect."
+          - heading "Architecture" [level=2] [ref=e146]
+          - paragraph [ref=e147]:
+            - text: "memweave is built around one central idea:"
+            - strong [ref=e148]: separate storage from search
+            - text: . The Markdown files are the source of truth. The SQLite database is a derived index — always rebuildable, never irreplaceable.
+          - code [ref=e150]: ┌──────────────────────────────────────────────────────────────┐ │ SOURCE OF TRUTH (Markdown files) │ │ memory/MEMORY.md ← evergreen knowledge │ │ memory/2026-03-21.md ← daily logs │ │ memory/researcher_agent/ ← agent-scoped namespace │ └───────────────────────┬──────────────────────────────────────┘ │ chunking → hashing → embedding ┌───────────────────────▼──────────────────────────────────────┐ │ DERIVED INDEX (SQLite) │ │ chunks - text + metadata │ │ chunks_fts - FTS5 full-text index (BM25) │ │ chunks_vec - sqlite-vec SIMD index (cosine) │ │ embedding_cache - hash → vector (compute once, reuse) │ │ files - SHA-256 change detection │ └───────────────────────┬──────────────────────────────────────┘ │ hybrid merge → post-processing ▼ list[SearchResult]
+          - paragraph [ref=e151]:
+            - text: "This separation has a practical consequence that is easy to overlook:"
+            - strong [ref=e152]: losing the database is not data loss. Losing the files is.
+            - text: If the SQLite index is deleted or corrupted,
+            - code [ref=e153]: await mem.index()
+            - text: rebuilds it completely from the Markdown files in the workspace. No data is gone. No embeddings need to be re-fetched if the cache is intact.
+          - heading "The Write Path" [level=2] [ref=e154]
+          - paragraph [ref=e155]:
+            - text: When you call
+            - code [ref=e156]: await mem.add(path)
+            - text: or
+            - code [ref=e157]: await mem.index()
+            - text: ", memweave processes each file through a deterministic pipeline — no LLM involved at any step:"
+          - code [ref=e159]: ".md file │ ▼ chunking - split into overlapping text chunks │ ▼ sha256(chunk_text) - fingerprint each chunk by content │ ▼ embedding cache lookup - bulk SQL query: which hashes are already cached? │ ├── cache hit ──────── reuse stored vector, skip API call │ └── cache miss ──────── call embedding API (batched) │ ▼ store in cache - write vector to embedding_cache table │ ▼ insert into FTS5 + sqlite-vec tables"
+          - paragraph [ref=e160]: The SHA-256 hash is the key efficiency lever. A chunk’s hash is determined entirely by its text content — so if a file is re-indexed and 90% of its chunks are unchanged, only the changed chunks trigger an API call. The rest are served from cache instantly.
+          - heading "The Search Path" [level=2] [ref=e161]
+          - paragraph [ref=e162]:
+            - text: When you call
+            - code [ref=e163]: await mem.search(query)
+            - text: ", both search backends run in parallel against the same query and their results are merged before post-processing:"
+          - code [ref=e165]: query │ ├─── FTS5 BM25 (keyword) ─────────────────────┐ │ exact term matching │ │ ▼ └─── sqlite-vec ANN (semantic) ──────► weighted merge cosine similarity score = 0.7 × vector + 0.3 × BM25 │ ▼ post-processing pipeline (threshold → decay → MMR) │ ▼ list[SearchResult]
+          - paragraph [ref=e166]: "Running both backends in parallel matters: BM25 catches exact matches — error codes, config values, proper names — while vector search catches semantically related content even when no keywords overlap. Together they cover the full range of how an agent’s memory is likely to be queried. The post-processing pipeline that follows the merge is covered in detail in next sections."
+          - heading "Why SQLite as the Infrastructure Layer?" [level=2] [ref=e167]
+          - paragraph [ref=e168]:
+            - text: The choice of SQLite deserves a brief note. SQLite is not a compromise — it is a deliberate fit for this use case. It ships with Python, requires no server, supports full-text search via FTS5, and with the
+            - code [ref=e169]: sqlite-vec
+            - text: extension gains SIMD-accelerated vector similarity search. The entire memory store — chunks, embeddings, cache, file metadata — is a single file on disk that you can copy, back up, or inspect with any SQLite browser. For the scale of agent memory (hundreds of thousands of files), it is not just sufficient — it is optimal.
+          - 'heading "How memweave Organises Memory: Evergreen Files, Dated Logs, and Agent Namespaces" [level=2] [ref=e170]'
+          - paragraph [ref=e171]: Not all knowledge ages equally. A team’s decision to use CockroachDB over PostgreSQL is as relevant today as the day it was made. A debugging note from a session six months ago probably isn’t. memweave enforces this distinction at the file level — no metadata tagging, no configuration, just a naming convention.
+          - paragraph [ref=e172]: "There are two types of memory files:"
+          - figure "Types of memory files in memweave (image by author)" [ref=e173]:
+            - generic [ref=e174]: Types of memory files in memweave (image by author)
+          - paragraph [ref=e175]:
+            - text: "The rule is simple:"
+            - strong [ref=e176]: any file whose name matches
+            - code [ref=e177]: <strong>YYYY-MM-DD.md</strong>
+            - strong [ref=e178]: is dated
+            - text: . Everything else is evergreen. memweave reads the date directly from the filename — no file system metadata, no frontmatter parsing, no manual tagging.
+          - paragraph [ref=e179]: "A typical workspace organises itself naturally around this convention:"
+          - code [ref=e181]: memory/ ├── MEMORY.md ← evergreen - permanent facts, always surfaces ├── architecture.md ← evergreen - stack decisions, constraints ├── 2026-01-15.md ← dated - session notes from January ├── 2026-03-10.md ← dated - session notes from March ├── 2026-04-11.md ← dated - today's session, full score for now └── researcher_agent/ ├── findings.md ← evergreen - agent's standing knowledge └── 2026-04-11.md ← dated - agent's session log, will decay
+          - paragraph [ref=e182]:
+            - text: Over time, the dated files accumulate and fade. The evergreen files remain anchored at full score regardless of how much history builds up around them. An agent asking about the tech stack always gets
+            - code [ref=e183]: architecture.md
+            - text: at the top of its results — even if hundreds of session logs have been written since.
+          - heading "Agent Namespaces (enables Multi-Agent Memory)" [level=2] [ref=e184]
+          - paragraph [ref=e185]:
+            - text: When multiple agents share one workspace, you need a way to keep their knowledge isolated without spinning up separate databases. memweave handles this through subdirectories. The immediate subdirectory under
+            - code [ref=e186]: memory/
+            - text: becomes the
+            - code [ref=e187]: source
+            - text: "label for every file inside it:"
+          - figure "memweave agent namespaces examples (image by author)" [ref=e188]:
+            - generic [ref=e189]: memweave agent namespaces examples (image by author)
+          - paragraph [ref=e190]:
+            - text: Each agent writes to its own subdirectory. All agents index against the same SQLite database. Searches are global by default — any agent can read any other agent’s memories. Pass
+            - code [ref=e191]: source_filter
+            - text: "to scope a search exclusively to one namespace:"
+          - code [ref=e193]: "# Researcher writes to its own namespace researcher = MemWeave(MemoryConfig(workspace_dir=\"./project\")) writer = MemWeave(MemoryConfig(workspace_dir=\"./project\")) async with researcher, writer: # Researcher indexes its findings under memory/researcher_agent/ await researcher.index() # Writer queries only the researcher's namespace results = await writer.search( \"water ice on the Moon\", source_filter=\"researcher_agent\", )"
+          - paragraph [ref=e194]:
+            - text: This pattern scales naturally to any number of agents. Each agent’s knowledge is isolated by path convention, inspectable as a folder, and versionable independently —
+            - code [ref=e195]: git log memory/researcher_agent/
+            - text: shows exactly what that agent learned and when.
+          - heading "memweave Search Pipeline" [level=2] [ref=e196]
+          - paragraph [ref=e197]:
+            - text: Every
+            - code [ref=e198]: mem.search(query)
+            - text: call moves through five fixed stages in order. Each stage is independent, composable, and tunable. Here is the full pipeline, then each stage in detail.
+          - figure "5-stage memweave search pipeline (image by author)" [ref=e199]:
+            - generic [ref=e200]: 5-stage memweave search pipeline (image by author)
+          - heading "Stage 1 — Hybrid Score Merge" [level=3] [ref=e201]
+          - paragraph [ref=e202]: "Both backends run in parallel against the same query and their scores are normalised then linearly combined:"
+          - code [ref=e204]: merged_score = α × vector_score + (1 − α) × bm25_score
+          - paragraph [ref=e205]:
+            - text: Default
+            - code [ref=e206]: α = 0.7
+            - text: ". Each backend contributes what it does best:"
+          - list [ref=e207]:
+            - listitem [ref=e208]:
+              - strong [ref=e209]: FTS5 BM25
+              - text: ranks by term frequency and inverse document frequency. It is a precision anchor — exact technical terms, error codes, config values, and proper names score high. If your query and your document use the same words, BM25 finds it.
+            - listitem [ref=e210]:
+              - strong [ref=e211]: sqlite-vec cosine similarity
+              - text: measures distance in embedding space. It catches semantically related content even when no keywords overlap — a query for “caching layer” will surface a chunk mentioning “Redis latency” because the embeddings are close, even though the words differ.
+          - paragraph [ref=e212]:
+            - text: "The 70/30 split reflects the nature of most agent memory queries: conceptual and paraphrased more often than exact-string lookups. Tune the weights via"
+            - code [ref=e213]: HybridConfig
+            - text: ", if your use case skews toward precise technical retrieval:"
+          - code [ref=e215]: "from memweave.config import MemoryConfig, QueryConfig, HybridConfig config = MemoryConfig( query=QueryConfig( hybrid=HybridConfig( vector_weight=0.5, # equal weight for keyword-heavy corpora text_weight=0.5, ) ) )"
+          - heading "Stage 2 — Score Threshold" [level=3] [ref=e216]
+          - code [ref=e218]: "drop result if merged_score < min_score (default: 0.35)"
+          - paragraph [ref=e219]:
+            - text: A noise gate that runs before the more expensive post-processing stages. Without it, low-confidence tail results enter MMR and decay calculations and waste compute. The default of
+            - code [ref=e220]: "0.35"
+            - text: is calibrated for typical agent memory corpora — lower it for small workspaces where you want more results to surface, raise it when precision matters more than recall.
+          - code [ref=e222]: "# Override per call - no config change needed results = await mem.search(\"architecture decision\", min_score=0.5)"
+          - heading "Stage 3 — Temporal Decay (opt-in)" [level=3] [ref=e223]
+          - paragraph [ref=e224]:
+            - text: Agents accumulate knowledge over time, but not all knowledge ages equally. Without decay, a stale debugging note from six months ago can outrank a decision made this morning simply because it embeds well. Temporal decay solves this by multiplying each result’s score by an exponential factor based on the age of its source file.
+            - text: "The formula is standard exponential decay:"
+          - code [ref=e226]: λ = ln(2) / half_life_days multiplier = exp(−λ × age_days) decayed_score = original_score × multiplier
+          - paragraph [ref=e227]:
+            - text: At
+            - code [ref=e228]: age_days = 0
+            - text: the multiplier is
+            - code [ref=e229]: "1.0"
+            - text: — no change. At
+            - code [ref=e230]: age_days = half_life_days
+            - text: it is exactly
+            - code [ref=e231]: "0.5"
+            - text: ". The curve is smooth and continuous: scores are never zeroed, old memories still surface, they simply rank lower than recent ones."
+          - paragraph [ref=e232]:
+            - text: Evergreen files bypass this stage entirely — their multiplier is always
+            - code [ref=e233]: "1.0"
+            - text: regardless of when they were written.
+          - code [ref=e235]: "from memweave.config import MemoryConfig, QueryConfig, TemporalDecayConfig config = MemoryConfig( query=QueryConfig( temporal_decay=TemporalDecayConfig( enabled=True, half_life_days=30.0, # tune to your workflow ) ) )"
+          - paragraph [ref=e236]:
+            - text: Tune
+            - code [ref=e237]: half_life_days
+            - text: "to your workflow:"
+            - code [ref=e238]: "7"
+            - text: for fast-moving projects where week-old context is already stale,
+            - code [ref=e239]: "90"
+            - text: for research or documentation repositories where knowledge stays relevant for months.
+          - heading "Stage 4 — MMR Re-ranking (opt-in)" [level=3] [ref=e240]
+          - paragraph [ref=e241]: Without diversity control, the top results from a hybrid search are often near-duplicates — multiple chunks from the same file, or different phrasings of the same fact. An agent loading all of them into its context window wastes tokens and misses other relevant but distinct memories.
+          - paragraph [ref=e242]: "MMR (Maximal Marginal Relevance) reorders results after scoring to balance relevance against diversity. At each selection step it picks the candidate that maximises:"
+          - code [ref=e244]: MMR(cᵢ) = λ × relevance(cᵢ) − (1 − λ) × max sim(cᵢ, cⱼ) for cⱼ ∈ S
+          - paragraph [ref=e245]:
+            - text: "Where:"
+            - code [ref=e246]: S
+            - text: = set of already-selected results
+            - code [ref=e247]: relevance(cᵢ)
+            - text: = merged score from Stage 1, after temporal decay
+            - code [ref=e248]: sim(cᵢ, cⱼ)
+            - text: = Jaccard token overlap between candidate and each selected result
+            - code [ref=e249]: λ
+            - text: = diversity dial —
+            - code [ref=e250]: "0"
+            - text: is pure diversity,
+            - code [ref=e251]: "1"
+            - text: is pure relevance, default
+            - code [ref=e252]: "0.7"
+          - paragraph [ref=e253]:
+            - strong [ref=e254]: Why Jaccard overlap rather than cosine similarity?
+          - paragraph [ref=e255]: Two chunks that share many of the same words — even from different files — are genuinely redundant for an agent loading them as context. Jaccard catches this at the token level without requiring an additional embedding call per pair.
+          - code [ref=e257]: ┌──────────────┬─────────────────────────────────────────────────────────┐ │ lambda_param │ Behaviour │ ├──────────────┼─────────────────────────────────────────────────────────┤ │ 1.0 │ Pure relevance — identical to no MMR │ │ 0.7 │ Default — strong relevance, light diversity push │ │ 0.5 │ Equal weight between relevance and diversity │ │ 0.0 │ Pure diversity — maximally novel results │ └──────────────┴─────────────────────────────────────────────────────────┘
+          - code [ref=e259]: "from memweave.config import MemoryConfig, QueryConfig, MMRConfig config = MemoryConfig( query=QueryConfig( mmr=MMRConfig(enabled=True, lambda_param=0.7) ) ) # Or override λ per call without touching the config diverse_results = await mem.search(\"deployment steps\", mmr_lambda=0.3)"
+          - heading "Stage 5 — Custom Post-processors" [level=3] [ref=e260]
+          - paragraph [ref=e261]:
+            - text: Any processors registered via
+            - code [ref=e262]: mem.register_postprocessor()
+            - text: run last, in registration order. Each receives the output of the previous stage and can filter, reorder, or rescore freely — domain-specific boosting, hard pinning a result to the top, or integrating an external signal. The built-in pipeline runs first; custom stages extend it without replacing it.
+          - heading "Real-World Example using memweave — Book Club Decision Log" [level=2] [ref=e263]
+          - paragraph [ref=e264]:
+            - text: The best way to see memweave in action is to watch two agents answer the same question with different retrieval strategies. The full runnable notebook is available at
+            - code [ref=e265]: <a href="https://github.com/sachinsharma9780/memweave/blob/main/examples/book_club_demo.ipynb" rel="noreferrer noopener" target="_blank">examples/book_club_demo.ipynb</a>
+            - text: .
+          - heading "The Setup" [level=3] [ref=e266]
+          - paragraph [ref=e267]: "The workspace contains 9 memory files spanning 18 months of a book club’s history:"
+          - figure "Book Club dataset (image by author)" [ref=e268]:
+            - generic [ref=e269]: Book Club dataset (image by author)
+          - paragraph [ref=e270]: One evergreen file holds standing information that should always surface at full score. Seven dated files accumulate the club’s history. One file written today holds the current state.
+          - heading "The Question" [level=3] [ref=e271]
+          - paragraph [ref=e272]: "Both agents are asked the same question:"
+          - blockquote [ref=e273]:
+            - paragraph [ref=e274]: “What genre did the club vote on most recently?”
+          - paragraph [ref=e275]:
+            - text: The correct answer — grounded in the most recent information — is
+            - strong [ref=e276]: science fiction
+            - text: ", with literary fiction likely next. But an agent without temporal awareness will not necessarily find this."
+          - heading "Agent A — No Temporal Decay" [level=2] [ref=e277]
+          - code [ref=e279]: "config = MemoryConfig( workspace_dir=WORKSPACE, embedding=EmbeddingConfig(model=\"text-embedding-3-small\"), ) async with MemWeave(config) as mem: results = await mem.search( \"What genre did the club vote on most recently?\", max_results=3, min_score=0.1, )"
+          - paragraph [ref=e280]: "Agent A’s top 3 results by raw semantic similarity:"
+          - code [ref=e282]: "[0.339] 2025-11-03.md ← Non-fiction vote (5 months ago) [0.336] 2024-10-05.md ← Fantasy vote (18 months ago) [0.320] 2025-05-10.md ← Mystery vote (11 months ago)"
+          - paragraph [ref=e283]:
+            - text: Today’s file does not appear in the top 3. The older “vote” files outscore it on raw semantic similarity because they contain more explicit voting language.
+            - strong [ref=e284]: "Agent A’s answer:"
+          - blockquote [ref=e285]:
+            - paragraph [ref=e286]: “The club most recently voted on the genre of non-fiction.”
+          - paragraph [ref=e287]: Factually stale — the November 2025 vote, not the most recent one.
+          - heading "Agent B — With Temporal Decay (half_life = 90 days)" [level=2] [ref=e288]:
+            - text: Agent B — With Temporal Decay (
+            - code [ref=e289]: half_life = 90 days
+            - text: )
+          - code [ref=e291]: "async with MemWeave(config) as mem: results = await mem.search( \"What genre did the club vote on most recently?\", max_results=3, min_score=0.1, decay_half_life_days=90.0, )"
+          - paragraph [ref=e292]: "Agent B’s top 3 results after the age penalty:"
+          - code [ref=e294]: "[0.313] 2026-04-11.md ← Today's notes (multiplier: 1.00) ↑ rank 1 [0.293] club_info.md ← Evergreen (multiplier: 1.00) [0.128] 2025-12-30.md ← Sci-fi plan (multiplier: ~0.46)"
+          - paragraph [ref=e295]: Today’s file floats to rank 1 after the age penalty collapses the scores of older files. The end-of-year review retains ~46% of its score; the November 2025 non-fiction vote drops out of the top 3 entirely.
+          - paragraph [ref=e296]:
+            - strong [ref=e297]: Agent B’s answer, grounded in today’s file
+            - text: ":"
+          - blockquote [ref=e298]:
+            - paragraph [ref=e299]: “The club most recently voted for science fiction.”
+          - heading "What This Demonstrates" [level=2] [ref=e300]
+          - list [ref=e301]:
+            - listitem [ref=e302]:
+              - strong [ref=e303]: The stale memory problem is real and silent.
+              - text: Agent A does not know it is wrong. It returns a confident answer based on the highest-scoring semantic matches — which happen to be older files with more explicit voting language. There is no error, no warning, just subtly outdated context.
+            - listitem [ref=e304]:
+              - strong [ref=e305]: Decay’s advantage compounds with history.
+              - text: With 18 months of files, Agent A’s context fills with increasingly stale votes. The larger the memory grows, the worse the problem becomes — and the more dramatic the difference between the two agents.
+            - listitem [ref=e306]:
+              - code [ref=e307]: club_info.md
+              - strong [ref=e308]: (evergreen) surfaces in Agent B at full score.
+              - text: With decay enabled, the age penalty clears out stale vote records, and the evergreen standing info rises into the top 3 — despite never being the closest semantic match to the query. In Agent A, older dated files with explicit voting language outscore it on raw similarity. Evergreen immunity is determined by the file path, not the content.
+            - listitem [ref=e309]:
+              - strong [ref=e310]: A single parameter change is all it takes.
+              - code [ref=e311]: decay_half_life_days=90.0
+              - text: is the only difference between Agent A and Agent B. No schema changes, no re-indexing, no metadata tagging.
+          - heading "Summary" [level=2] [ref=e312]
+          - paragraph [ref=e313]:
+            - text: "Agent memory does not have to mean infrastructure. memweave takes a different bet: memories are plain Markdown files you can open, edit, and"
+            - code [ref=e314]: git diff
+            - text: . A local SQLite database indexes them for hybrid search — BM25 for exact matches, vector search for semantic retrieval, merged into a single ranked list. Temporal decay keeps recent context above stale history automatically. MMR ensures the top results cover different aspects of your query rather than repeating the same fact. An embedding cache means only changed content ever hits the API. The entire store is a single file on disk — no server, no Docker, no cloud service.
+          - paragraph [ref=e315]: "The book club demo makes the tradeoff concrete: two agents, one question, one parameter difference, two different answers. The agent with temporal decay surfaces today’s file at rank one. The agent, without it, surfaces a five-month-old vote with more explicit “voting” language — and confidently gives the wrong answer without knowing it."
+          - paragraph [ref=e316]: The broader point is that the stale-memory problem is silent. There is no error, no warning — just subtly outdated context fed to the model. The larger the memory grows, the more stale files accumulate, and the more aggressively they compete with recent ones on raw semantic similarity. Temporal decay is the only mechanism that keeps the retrieval honest as history builds up.
+          - heading "Get Started" [level=2] [ref=e317]
+          - code [ref=e319]: pip install memweave
+          - list [ref=e320]:
+            - listitem [ref=e321]:
+              - strong [ref=e322]:
+                - link "Book club demo" [ref=e323] [cursor=pointer]:
+                  - /url: https://github.com/sachinsharma9780/memweave/blob/main/examples/book_club_demo.ipynb
+            - listitem [ref=e324]:
+              - strong [ref=e325]:
+                - link "Meeting notes agent" [ref=e326] [cursor=pointer]:
+                  - /url: https://github.com/sachinsharma9780/memweave/blob/main/examples/meeting_notes_agent.ipynb
+            - listitem [ref=e327]:
+              - strong [ref=e328]: "GitHub:"
+              - link "github.com/sachinsharma9780/memweave" [ref=e329] [cursor=pointer]:
+                - /url: https://github.com/sachinsharma9780/memweave
+            - listitem [ref=e330]:
+              - strong [ref=e331]: "PyPI:"
+              - link "pypi.org/project/memweave" [ref=e332] [cursor=pointer]:
+                - /url: https://pypi.org/project/memweave
+          - paragraph [ref=e333]: If you hit something unexpected, find a use case the library doesn’t cover well, or just want to share what you built — open an issue or start a discussion on GitHub. The feedback will be really appreciated.
+          - paragraph
+        - separator [ref=e334]: ···
+        - generic [ref=e335]:
+          - generic [ref=e337]:
+            - paragraph [ref=e338]: Written By
+            - generic [ref=e339]: Sachin Sharma
+            - link "See all from Sachin Sharma" [ref=e342] [cursor=pointer]:
+              - /url: https://towardsdatascience.com/author/sachinsharma9780/
+          - generic [ref=e343]:
+            - paragraph
+            - generic [ref=e344]:
+              - link "Ai Agent" [ref=e345] [cursor=pointer]:
+                - /url: https://towardsdatascience.com/tag/ai-agent/
+              - link "AI coding assistants" [ref=e346] [cursor=pointer]:
+                - /url: https://towardsdatascience.com/tag/ai-coding-assistants/
+              - link "Deep Dives" [ref=e347] [cursor=pointer]:
+                - /url: https://towardsdatascience.com/tag/deep-dives/
+              - link "Llm" [ref=e348] [cursor=pointer]:
+                - /url: https://towardsdatascience.com/tag/llm/
+              - link "Sqlite" [ref=e349] [cursor=pointer]:
+                - /url: https://towardsdatascience.com/tag/sqlite/
+          - generic [ref=e350]:
+            - paragraph [ref=e351]: Share This Article
+            - list [ref=e352]:
+              - listitem [ref=e353]:
+                - link "Share on Facebook" [ref=e354] [cursor=pointer]:
+                  - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftowardsdatascience.com%2Fmemweave-zero-infra-ai-agent-memory-with-markdown-and-sqlite-no-vector-database-required%2F&title=memweave%3A%20Zero-Infra%20AI%20Agent%20Memory%20with%20Markdown%20and%20SQLite%E2%80%8A%E2%80%94%E2%80%8ANo%20Vector%20Database%C2%A0Required
+                  - img [ref=e355]
+                  - generic [ref=e357]: Share on Facebook
+              - listitem [ref=e358]:
+                - link "Share on LinkedIn" [ref=e359] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftowardsdatascience.com%2Fmemweave-zero-infra-ai-agent-memory-with-markdown-and-sqlite-no-vector-database-required%2F&title=memweave%3A%20Zero-Infra%20AI%20Agent%20Memory%20with%20Markdown%20and%20SQLite%E2%80%8A%E2%80%94%E2%80%8ANo%20Vector%20Database%C2%A0Required
+                  - img [ref=e360]
+                  - generic [ref=e362]: Share on LinkedIn
+              - listitem [ref=e363]:
+                - link "Share on X" [ref=e364] [cursor=pointer]:
+                  - /url: https://x.com/share?url=https%3A%2F%2Ftowardsdatascience.com%2Fmemweave-zero-infra-ai-agent-memory-with-markdown-and-sqlite-no-vector-database-required%2F&text=memweave%3A%20Zero-Infra%20AI%20Agent%20Memory%20with%20Markdown%20and%20SQLite%E2%80%8A%E2%80%94%E2%80%8ANo%20Vector%20Database%C2%A0Required
+                  - img [ref=e365]
+                  - generic [ref=e367]: Share on X
+        - generic [ref=e368]:
+          - paragraph [ref=e369]: Towards Data Science is a community publication. Submit your insights to reach our global audience and earn through the TDS Author Payment Program.
+          - link "Write for TDS" [ref=e370] [cursor=pointer]:
+            - /url: /questions-96667b06af5/
+      - generic [ref=e372]:
+        - heading "Related Articles" [level=2] [ref=e373]
+        - list [ref=e375]:
+          - listitem [ref=e376] [cursor=pointer]:
+            - generic [ref=e377]:
+              - figure [ref=e378]
+              - generic [ref=e379]:
+                - generic [ref=e380]:
+                  - heading "Talk to my Agent" [level=2] [ref=e381]:
+                    - link "Talk to my Agent" [ref=e382]:
+                      - /url: https://towardsdatascience.com/talk-to-my-agent/
+                  - link "Artificial Intelligence" [ref=e383]:
+                    - /url: https://towardsdatascience.com/category/artificial-intelligence/
+                - paragraph [ref=e385]: The exciting new world of designing conversation driven APIs for LLMs.
+                - generic [ref=e387]:
+                  - link "Roni Dover" [ref=e389]:
+                    - /url: https://towardsdatascience.com/author/roni-dover/
+                  - generic [ref=e390]:
+                    - time [ref=e392]: July 28, 2025
+                    - generic [ref=e393]: 9 min read
+          - listitem [ref=e394] [cursor=pointer]:
+            - generic [ref=e395]:
+              - figure [ref=e396]
+              - generic [ref=e397]:
+                - generic [ref=e398]:
+                  - 'heading "Preventing Context Overload: Controlled Neo4j MCP Cypher Responses for LLMs" [level=2] [ref=e399]':
+                    - 'link "Preventing Context Overload: Controlled Neo4j MCP Cypher Responses for LLMs" [ref=e400]':
+                      - /url: https://towardsdatascience.com/preventing-context-overload-controlled-neo4j-mcp-cypher-responses-for-llms/
+                  - link "Agentic AI" [ref=e401]:
+                    - /url: https://towardsdatascience.com/category/artificial-intelligence/agentic-ai/
+                - paragraph [ref=e403]: How timeouts, truncation, and result sanitization keep Cypher outputs LLM-ready
+                - generic [ref=e405]:
+                  - link "Tomaz Bratanic" [ref=e407]:
+                    - /url: https://towardsdatascience.com/author/bratanic-tomaz/
+                  - generic [ref=e408]:
+                    - time [ref=e410]: September 7, 2025
+                    - generic [ref=e411]: 4 min read
+          - listitem [ref=e412] [cursor=pointer]:
+            - generic [ref=e413]:
+              - figure [ref=e414]:
+                - img "Building AI Agents" [ref=e415]
+              - generic [ref=e416]:
+                - generic [ref=e417]:
+                  - heading "How to Build Effective AI Agents to Process Millions of Requests" [level=2] [ref=e418]:
+                    - link "How to Build Effective AI Agents to Process Millions of Requests" [ref=e419]:
+                      - /url: https://towardsdatascience.com/how-to-build-effective-ai-agents-to-process-millions-of-requests/
+                  - link "Agentic AI" [ref=e420]:
+                    - /url: https://towardsdatascience.com/category/artificial-intelligence/agentic-ai/
+                - paragraph [ref=e422]: Learn how to build production ready systems using AI agents
+                - generic [ref=e424]:
+                  - link "Eivind Kjosbakken" [ref=e426]:
+                    - /url: https://towardsdatascience.com/author/oieivind/
+                  - generic [ref=e427]:
+                    - time [ref=e429]: September 9, 2025
+                    - generic [ref=e430]: 9 min read
+          - listitem [ref=e431] [cursor=pointer]:
+            - generic [ref=e432]:
+              - figure [ref=e433]:
+                - img "LangChain for EDA - Learn to build a CSV Sanity-Check Agent in Python" [ref=e434]
+              - generic [ref=e435]:
+                - generic [ref=e436]:
+                  - 'heading "LangChain for EDA: Build a CSV Sanity-Check Agent in Python" [level=2] [ref=e437]':
+                    - 'link "LangChain for EDA: Build a CSV Sanity-Check Agent in Python" [ref=e438]':
+                      - /url: https://towardsdatascience.com/langchain-for-eda-build-a-csv-sanity-check-agent-in-python/
+                  - link "Agentic AI" [ref=e439]:
+                    - /url: https://towardsdatascience.com/category/artificial-intelligence/agentic-ai/
+                - paragraph [ref=e441]: A practical LangChain tutorial for data scientists to inspect CSVs
+                - generic [ref=e443]:
+                  - link "Sarah Schürch" [ref=e445]:
+                    - /url: https://towardsdatascience.com/author/schuerch_sarah/
+                  - generic [ref=e446]:
+                    - time [ref=e448]: September 9, 2025
+                    - generic [ref=e449]: 19 min read
+          - listitem [ref=e450] [cursor=pointer]:
+            - generic [ref=e451]:
+              - figure [ref=e452]
+              - generic [ref=e453]:
+                - generic [ref=e454]:
+                  - heading "Building Research Agents for Tech Insights" [level=2] [ref=e455]:
+                    - link "Building Research Agents for Tech Insights" [ref=e456]:
+                      - /url: https://towardsdatascience.com/building-research-agents-for-tech-insights/
+                  - link "Agentic AI" [ref=e457]:
+                    - /url: https://towardsdatascience.com/category/artificial-intelligence/agentic-ai/
+                - paragraph [ref=e459]: Using a controlled workflow, unique data & prompt chaining
+                - generic [ref=e461]:
+                  - link "Ida Silfverskiöld" [ref=e463]:
+                    - /url: https://towardsdatascience.com/author/ilsilfverskiold/
+                  - generic [ref=e464]:
+                    - time [ref=e466]: September 13, 2025
+                    - generic [ref=e467]: 10 min read
+          - listitem [ref=e468] [cursor=pointer]:
+            - generic [ref=e469]:
+              - figure [ref=e470]:
+                - img "Computer was once a job doing math with paper and pencil. That's how entity resolution felt before LLMs. Generated by Nano Banana." [ref=e471]
+              - generic [ref=e472]:
+                - generic [ref=e473]:
+                  - heading "The Rise of Semantic Entity Resolution" [level=2] [ref=e474]:
+                    - link "The Rise of Semantic Entity Resolution" [ref=e475]:
+                      - /url: https://towardsdatascience.com/the-rise-of-semantic-entity-resolution/
+                  - link "Agentic AI" [ref=e476]:
+                    - /url: https://towardsdatascience.com/category/artificial-intelligence/agentic-ai/
+                - paragraph [ref=e478]: Semantic entity resolution uses language models to bring an increased level of automation to schema…
+                - generic [ref=e480]:
+                  - link "Russell Jurney" [ref=e482]:
+                    - /url: https://towardsdatascience.com/author/rjurney/
+                  - generic [ref=e483]:
+                    - time [ref=e485]: September 14, 2025
+                    - generic [ref=e486]: 22 min read
+          - listitem [ref=e487] [cursor=pointer]:
+            - generic [ref=e488]:
+              - figure [ref=e489]
+              - generic [ref=e490]:
+                - generic [ref=e491]:
+                  - heading "How to Connect an MCP Server for an AI-Powered, Supply-Chain Network Optimization Agent" [level=2] [ref=e492]:
+                    - link "How to Connect an MCP Server for an AI-Powered, Supply-Chain Network Optimization Agent" [ref=e493]:
+                      - /url: https://towardsdatascience.com/mcp-server-for-an-ai-powered-supply-chain-network-optimization-agent/
+                  - link "Agentic AI" [ref=e494]:
+                    - /url: https://towardsdatascience.com/category/artificial-intelligence/agentic-ai/
+                - paragraph [ref=e496]: "From prompt to strategic decision-making: MCP-powered agents for cost-efficient, reliable and sustainable supply chain network…"
+                - generic [ref=e498]:
+                  - link "Samir Saci" [ref=e500]:
+                    - /url: https://towardsdatascience.com/author/s-saci95/
+                  - generic [ref=e501]:
+                    - time [ref=e503]: September 22, 2025
+                    - generic [ref=e504]: 22 min read
+    - contentinfo [ref=e505]:
+      - generic [ref=e507]:
+        - list [ref=e509]:
+          - listitem [ref=e510]:
+            - link "YouTube" [ref=e511] [cursor=pointer]:
+              - /url: https://www.youtube.com/c/TowardsDataScience
+              - img [ref=e512]
+              - generic [ref=e514]: YouTube
+          - listitem [ref=e515]:
+            - link "X" [ref=e516] [cursor=pointer]:
+              - /url: https://x.com/TDataScience
+              - img [ref=e517]
+              - generic [ref=e519]: X
+          - listitem [ref=e520]:
+            - link "LinkedIn" [ref=e521] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/towards-data-science/?originalSubdomain=ca
+              - img [ref=e522]
+              - generic [ref=e524]: LinkedIn
+          - listitem [ref=e525]:
+            - link "Threads" [ref=e526] [cursor=pointer]:
+              - /url: https://www.threads.net/@towardsdatascience
+              - img [ref=e527]
+              - generic [ref=e529]: Threads
+          - listitem [ref=e530]:
+            - link "Bluesky" [ref=e531] [cursor=pointer]:
+              - /url: https://bsky.app/profile/towardsdatascience.com
+              - img [ref=e532]
+              - generic [ref=e534]: Bluesky
+        - generic [ref=e535]:
+          - generic [ref=e536]:
+            - link "Towards Data Science" [ref=e538] [cursor=pointer]:
+              - /url: https://towardsdatascience.com/
+              - img "Towards Data Science" [ref=e539]
+            - paragraph [ref=e540]: Your home for data science and Al. The world’s leading publication for data science, data analytics, data engineering, machine learning, and artificial intelligence professionals.
+            - generic [ref=e542]: © Insight Media Group, LLC 2026
+          - generic [ref=e543]:
+            - button "Subscribe to Our Newsletter" [ref=e546] [cursor=pointer]
+            - navigation "Site Footer Navigation" [ref=e547]:
+              - list [ref=e548]:
+                - listitem [ref=e549]:
+                  - link "Write For TDS" [ref=e550] [cursor=pointer]:
+                    - /url: https://towardsdatascience.com/questions-96667b06af5/
+                  - text: •
+                - listitem [ref=e551]:
+                  - link "About" [ref=e552] [cursor=pointer]:
+                    - /url: https://towardsdatascience.com/about-towards-data-science-d691af11cc2f/
+                  - text: •
+                - listitem [ref=e553]:
+                  - link "Advertise" [ref=e554] [cursor=pointer]:
+                    - /url: https://contact.towardsdatascience.com/advertise-with-towards-data-science
+                  - text: •
+                - listitem [ref=e555]:
+                  - link "Privacy Policy" [ref=e556] [cursor=pointer]:
+                    - /url: https://towardsdatascience.com/privacy-policy/
+                  - text: •
+                - listitem [ref=e557]:
+                  - link "Terms of Use" [ref=e558] [cursor=pointer]:
+                    - /url: https://towardsdatascience.com/website-terms-of-use/
+  - generic [ref=e559]: Some areas of this page may shift around if you resize the browser window. Be sure to check heading and document order.

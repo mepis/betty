@@ -12,6 +12,7 @@
 | [Qdrant](topics/qdrant/) | 2026-05-29 | Complete | vector-database, qdrant, rust, hybrid-search, hnsw, distributed, embeddings |
 | [RAG Systems](topics/rag-systems/) | 2026-05-29 | Complete | rag, retrieval, embeddings, vector-databases, llm, architecture, evaluation, frameworks |
 | [Agent Memory Strategies](topics/agent-memory-strategies/) | 2026-05-29 | Complete | agent-memory, llm-architecture, memory-benchmarks, privacy-security, multi-agent-systems |
+| [Agent Memory Using Markdown](topics/agent-memory-using-markdown/) | 2026-05-29 | Complete | agent-memory, markdown, llm-wiki, structured-text, mcp |
 
 ## Detail
 
@@ -117,6 +118,20 @@ Agent memory strategies encompass the architectures, mechanisms, and frameworks 
 - Dedicated benchmarks now measure memory quality independently of downstream task performance
 - Self-evolving memory systems (ReMe) significantly outperform static memory agents
 - Privacy attacks (MEXTRA) demonstrate real risks requiring dedicated defense mechanisms
+
+---
+
+## Agent Memory Using Markdown
+
+**Date:** 2026-05-29
+
+This research investigates using Markdown as the primary memory representation format for AI agents. Key findings:
+
+- **The LLM Wiki pattern** (Karpathy, 2026) transforms RAG from retrieval-only to compilation-based knowledge accumulation with a three-layer architecture (raw sources → wiki → schema)
+- **Markdown is 15% more token-efficient than JSON**, with savings widening to 20-25% at deeper nesting levels
+- **Hybrid Markdown+SQLite systems** achieve 98% Recall@5 on LongMemEval-S while maintaining human readability, scaling to 100K+ entries
+- **Production-grade formats** (neocortex.md, ClawMem, agentmemory, memweave) provide explicit schemas, governance rules, and four-tier memory architectures
+- **The "Obsidian as IDE" pattern** enables human-in-the-loop memory editing without breaking structured formats
 
 ---
 
