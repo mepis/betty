@@ -1,0 +1,12 @@
+{
+  "name": "pi-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Self-hosted web interface for pi.dev",
+  "scripts": {
+    "dev": "npm install --prefix backend && npm install --prefix frontend && cd frontend && npm run build && cd .. && node --watch backend/src/index.js",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "node backend/src/index.js",
+    "install:all": "npm install --prefix backend && npm install --prefix frontend && cd frontend && npm run build"
+  }
+}

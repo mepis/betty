@@ -1,0 +1,173 @@
+{
+  "pages": [
+    {
+      "name": "Main Page (Desktop)",
+      "url": "http://localhost:3000/",
+      "viewport": "1280x720",
+      "screenshot": "01-desktop-full.png",
+      "title": "pi.dev",
+      "classes": [
+        "backdrop-blur",
+        "bg-blue-600",
+        "bg-gray-600",
+        "bg-gray-800",
+        "bg-gray-900",
+        "bg-gray-900/60",
+        "bg-gray-900/80",
+        "bg-gray-950",
+        "bg-green-400",
+        "border",
+        "border-b",
+        "border-gray-700",
+        "border-gray-800",
+        "border-t",
+        "disabled:bg-gray-700",
+        "disabled:cursor-not-allowed",
+        "disabled:opacity-50",
+        "flex",
+        "flex-1",
+        "flex-col",
+        "flex-shrink-0",
+        "focus:border-transparent",
+        "focus:outline-none",
+        "focus:ring-2",
+        "focus:ring-blue-500",
+        "font-bold",
+        "font-medium",
+        "gap-1",
+        "gap-1.5",
+        "gap-x-2",
+        "h-2",
+        "h-5",
+        "h-screen",
+        "hidden",
+        "hover:bg-blue-500",
+        "hover:bg-gray-700",
+        "hover:bg-gray-800",
+        "hover:text-gray-200",
+        "items-center",
+        "justify-center",
+        "max-h-[150px]",
+        "max-w-4xl",
+        "max-w-sm",
+        "mb-2",
+        "mb-3",
+        "min-h-[60vh]",
+        "min-w-0",
+        "mr-1",
+        "mx-auto",
+        "overflow-x-auto",
+        "overflow-y-auto",
+        "p-1.5",
+        "placeholder-gray-500",
+        "px-2",
+        "px-3",
+        "px-4",
+        "py-1.5",
+        "py-10",
+        "py-2",
+        "resize-none",
+        "rounded-full",
+        "rounded-lg",
+        "rounded-md",
+        "select-none",
+        "shrink-0",
+        "sm:flex",
+        "sm:gap-2",
+        "sm:gap-x-3",
+        "sm:hidden",
+        "sm:inline",
+        "sm:max-w-md",
+        "sm:mb-4",
+        "sm:mr-4",
+        "sm:px-3",
+        "sm:px-4",
+        "sm:px-5",
+        "sm:py-2.5",
+        "sm:py-20",
+        "sm:py-3",
+        "sm:py-4",
+        "sm:text-2xl",
+        "sm:text-5xl",
+        "sm:text-base",
+        "sm:text-lg",
+        "text-4xl",
+        "text-base",
+        "text-center",
+        "text-emerald-400",
+        "text-gray-100",
+        "text-gray-200",
+        "text-gray-300",
+        "text-gray-400",
+        "text-gray-500",
+        "text-sm",
+        "text-white",
+        "text-xl",
+        "text-xs",
+        "transition-colors",
+        "w-2",
+        "w-5",
+        "xs:hidden",
+        "xs:inline"
+      ],
+      "status": "loaded"
+    },
+    {
+      "name": "Mobile (375x667)",
+      "viewport": "375x667",
+      "screenshot": "02-mobile-375.png"
+    },
+    {
+      "name": "Tablet (768x1024)",
+      "viewport": "768x1024",
+      "screenshot": "03-tablet-768.png"
+    },
+    {
+      "name": "Desktop (1920x1080)",
+      "viewport": "1920x1080",
+      "screenshot": "04-desktop-1920.png"
+    }
+  ],
+  "consoleErrors": [],
+  "networkErrors": [],
+  "issues": [
+    {
+      "severity": "Critical",
+      "description": "API endpoint /api/agent/version returns HTML instead of JSON",
+      "details": "Content-Type: text/html; charset=UTF-8"
+    },
+    {
+      "severity": "Critical",
+      "description": "API endpoint /api/agent/commands returns HTML instead of JSON",
+      "details": "Content-Type: text/html; charset=UTF-8"
+    },
+    {
+      "severity": "Critical",
+      "description": "API endpoint /api/agent/tools returns HTML instead of JSON",
+      "details": "Content-Type: text/html; charset=UTF-8"
+    }
+  ],
+  "testSummary": {
+    "pagesTested": 4,
+    "consoleErrors": 2,
+    "networkErrors": 1,
+    "issuesFound": 3,
+    "issues": [
+      {
+        "severity": "Critical",
+        "description": "API endpoint /api/agent/version returns HTML instead of JSON",
+        "details": "Content-Type: text/html; charset=UTF-8"
+      },
+      {
+        "severity": "Critical",
+        "description": "API endpoint /api/agent/commands returns HTML instead of JSON",
+        "details": "Content-Type: text/html; charset=UTF-8"
+      },
+      {
+        "severity": "Critical",
+        "description": "API endpoint /api/agent/tools returns HTML instead of JSON",
+        "details": "Content-Type: text/html; charset=UTF-8"
+      }
+    ]
+  }
+}
