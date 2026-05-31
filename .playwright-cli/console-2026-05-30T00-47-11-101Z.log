@@ -1,4 +1,0 @@
-[     446ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://100.91.131.108/searxng/static/themes/simple/chunk/BnP4vIuG.min.js:0
-[     446ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://100.91.131.108/searxng/static/themes/simple/chunk/DGJ63wI6.min.js:0
-[     456ms] Failed to fetch dynamically imported module: http://100.91.131.108/searxng/static/themes/simple/chunk/BnP4vIuG.min.js
-[     456ms] Failed to fetch dynamically imported module: http://100.91.131.108/searxng/static/themes/simple/chunk/DGJ63wI6.min.js

@@ -1,7 +1,0 @@
-[     301ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/latest/concepts/metrics/context_precision/:0
-[     521ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=G-XWJT601CLX:0
-[     554ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/latest/_static/js/header_border.js:18
-[     606ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/latest/_static/js/header_border.js:18
-[     619ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
-[     940ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
-[    1277ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.cr-relay.com/v1/site/af0e3230-e3f4-4e7d-8790-28b56c38d8a9/batch:0

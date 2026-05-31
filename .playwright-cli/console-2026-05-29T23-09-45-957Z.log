@@ -1,9 +1,0 @@
-[    1438ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://ranksquire.com/2026/04/19/qdrant-cloud-pricing-2026/:0
-[    8495ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=GT-5RMJCKP2:0
-[    8509ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://ranksquire.com/wp-content/uploads/al_opt_content/SCRIPT/9ffeb32e2d9efbf8f70caabded242267.js?ver=3.4.1:1
-[    8997ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://cdn.prod.uidapi.com/uid2-sdk-4.0.1.js:0
-[    8998ms] Error: UID2 SDK failed to load after 1 attempt(s):
-  Attempt 1: https://cdn.prod.uidapi.com/uid2-sdk-4.0.1.js - error at 2026-05-29T23:09:54.953Z
-    at f (https://faves.grow.me/uid2SdkLoader-B_zmg2gY.js:2:11)
-    at https://faves.grow.me/uid2SdkLoader-B_zmg2gY.js:3:736
-    at o.onerror (https://faves.grow.me/uid2SdkLoader-B_zmg2gY.js:3:437)

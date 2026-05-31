@@ -1,7 +1,0 @@
-[     346ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=G-XWJT601CLX:0
-[     386ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/stable/_static/js/header_border.js:18
-[     441ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/stable/_static/js/header_border.js:18
-[     442ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
-[     691ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
-[    1023ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.cr-relay.com/v1/site/af0e3230-e3f4-4e7d-8790-28b56c38d8a9/batch:0
-[    2408ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://api.vector.co/pixel/phoenix/rp/p?tv=v3.14.0&pu=https%3A%2F%2Fdocs.ragas.io%2Fen%2Fstable%2Fconcepts%2F&did=did-006l&wpn=lc-bundle&ae=eyJuYW1lIjoiU3luY0NvbnRhaW5lckxvYWRFcnJvciIsIm1lc3NhZ2UiOiJFcnJvciB3aGlsZSBsb2FkaW5nIHN5bmMgY29udGFpbmVyIiwic3RhY2tUcmFjZSI6IkVycm9yIHdoaWxlIGxvYWRpbmcgc3luYyBjb250YWluZXIifQ:0

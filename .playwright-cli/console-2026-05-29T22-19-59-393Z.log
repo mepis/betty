@@ -1,2 +1,0 @@
-[       6ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://100.91.131.108/searxng/search?q=OpenWebUI+Ollama+OpenAI+compatible+self+hosted+chat+UI+local+LLM+deployment+2025&format=json:0
-[      14ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://100.91.131.108/favicon.ico:0

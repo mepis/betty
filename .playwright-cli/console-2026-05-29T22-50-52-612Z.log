@@ -1,8 +1,0 @@
-[     262ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/latest/concepts/metrics/faithfulness/:0
-[     503ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://www.googletagmanager.com/gtag/js?id=G-XWJT601CLX:0
-[     505ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/latest/_static/js/header_border.js:18
-[     553ms] [LOG] Navbar is hidden: false @ https://docs.ragas.io/en/latest/_static/js/header_border.js:18
-[     554ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
-[     883ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://docs.ragas.io/en/versions.json:0
-[    1243ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.cr-relay.com/v1/site/af0e3230-e3f4-4e7d-8790-28b56c38d8a9/batch:0
-[   16179ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.cr-relay.com/v1/site/af0e3230-e3f4-4e7d-8790-28b56c38d8a9/batch:0

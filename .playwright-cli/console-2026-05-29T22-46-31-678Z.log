@@ -1,2 +1,0 @@
-[     288ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/design-evaluate-rag-application:0
-[    1240ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://c.bing.com/c.gif?DI=4050&did=1&t=&ctsa=mr&CtsSyncId=DC7198331B814DC0A17DCE5BC0B9BDB0&RedC=c1.microsoft.com&MXFR=152CFF54443C66CC1052E83C403C609E:0
