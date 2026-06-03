@@ -14,6 +14,7 @@
 | [Agent Memory Strategies](topics/agent-memory-strategies/) | 2026-05-29 | Complete | agent-memory, llm-architecture, memory-benchmarks, privacy-security, multi-agent-systems |
 | [Agent Memory Using Markdown](topics/agent-memory-using-markdown/) | 2026-05-29 | Complete | agent-memory, markdown, llm-wiki, structured-text, mcp |
 | [Using Go to Build Agentic Systems](topics/using-go-to-build-agentic-systems/) | 2026-05-29 | Complete | golang, ai, agent, tool-calling, mcp, llm, framework |
+| [pi.dev SDK](topics/pi-dev-sdk/) | 2026-06-03 | Complete | pi.dev, SDK, agent-harness, TypeScript, coding-agent, OpenClaw, extensions, RPC, Lit |
 
 ## Detail
 
@@ -167,3 +168,20 @@ This research examines the Go ecosystem for building agentic AI systems, with pa
 **Notable frameworks:** Blades (go-kratos), pi-agent-go, AgenticGoKit, JoakimCarlsson/ai, Gollm, ChatGPT-CLI
 
 **Notable MCP libraries:** MCP Go SDK (Anthropic), MCP Go Server, MCP Toolbox (Google), ToolHive (Stacklok), MCP Toolbox Go SDK
+
+---
+
+## pi.dev SDK
+
+**Date:** 2026-06-03
+
+The pi.dev SDK is the programmatic interface for embedding Mario Zechner's open-source coding agent into custom applications. Built as a TypeScript monorepo with 5 layered packages (pi-ai, pi-agent-core, pi-coding-agent, pi-tui, pi-web-ui), it exposes `createAgentSession()` as its primary factory, yielding a fully-configurable `AgentSession` with event streaming, tool execution, session management, and extension support.
+
+**Key findings:**
+- **Layered DAG architecture:** 5 core packages with strict downward-only dependencies; each independently usable
+- **Minimal agent core:** ~418-line agent loop, ~1,500 lines total for pi-agent-core; <1,000 token system prompt
+- **Rich event system:** 25+ typed events across 7 categories for extension hooks
+- **Four integration modes:** Interactive TUI, print/JSON, RPC (JSONL over stdin/stdout), direct SDK embedding
+- **OpenClaw as canonical integration:** 145k+ stars, multi-channel (WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Teams)
+- **Most extensible open-source agent:** 25+ events vs Claude Code's 14 hooks; in-process TypeScript vs shell-based hooks
+- **Session tree:** JSONL storage with branching, forking, cloning via id/parentId linking
