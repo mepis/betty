@@ -1,0 +1,967 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "Pi home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+      - generic "Primary navigation" [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Documentation" [ref=e10] [cursor=pointer]:
+          - /url: /docs/latest
+          - text: Docs
+        - link "News" [ref=e11] [cursor=pointer]:
+          - /url: /news
+        - link "Packages" [ref=e12] [cursor=pointer]:
+          - /url: /packages
+        - link "Models" [ref=e13] [cursor=pointer]:
+          - /url: /models
+      - generic [ref=e14]:
+        - 'button "Theme preference: system (light). Switch to light theme." [ref=e16] [cursor=pointer]':
+          - generic [ref=e17]:
+            - generic [ref=e18]:
+              - img [ref=e20]
+              - img [ref=e23]
+            - generic [ref=e25]:
+              - generic [ref=e26]: Auto
+              - generic [ref=e27]: Light
+              - generic [ref=e28]: Dark
+        - generic [ref=e29]:
+          - link "GitHub" [ref=e30] [cursor=pointer]:
+            - /url: https://github.com/earendil-works/pi/tree/main/packages/coding-agent
+            - img [ref=e31]
+          - link "npm" [ref=e33] [cursor=pointer]:
+            - /url: https://www.npmjs.com/package/@earendil-works/pi-coding-agent
+            - img [ref=e34]
+          - link "Discord" [ref=e36] [cursor=pointer]:
+            - /url: https://discord.com/invite/3cU7Bz4UPx
+            - img [ref=e37]
+        - link "Earendil Inc. website" [ref=e39] [cursor=pointer]:
+          - /url: https://earendil.com
+          - img [ref=e40]
+  - generic [ref=e42]:
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: Documentation
+        - paragraph [ref=e46]: Guides and references for configuring and extending Pi.
+      - generic [ref=e47]:
+        - complementary [ref=e48]:
+          - generic [ref=e49]:
+            - heading "Docs" [level=2] [ref=e51]:
+              - generic [ref=e53]: Docs
+            - navigation "Docs navigation" [ref=e55]:
+              - generic [ref=e56]:
+                - heading "Start here" [level=2] [ref=e57]
+                - generic [ref=e58]:
+                  - link "Overview" [ref=e59] [cursor=pointer]:
+                    - /url: /docs/latest
+                  - link "Quickstart" [ref=e60] [cursor=pointer]:
+                    - /url: /docs/latest/quickstart
+                  - link "Using Pi" [ref=e61] [cursor=pointer]:
+                    - /url: /docs/latest/usage
+                  - link "Providers" [ref=e62] [cursor=pointer]:
+                    - /url: /docs/latest/providers
+                  - link "Settings" [ref=e63] [cursor=pointer]:
+                    - /url: /docs/latest/settings
+                  - link "Keybindings" [ref=e64] [cursor=pointer]:
+                    - /url: /docs/latest/keybindings
+                  - link "Sessions" [ref=e65] [cursor=pointer]:
+                    - /url: /docs/latest/sessions
+                  - link "Compaction" [ref=e66] [cursor=pointer]:
+                    - /url: /docs/latest/compaction
+              - generic [ref=e67]:
+                - heading "Customization" [level=2] [ref=e68]
+                - generic [ref=e69]:
+                  - link "Extensions" [ref=e70] [cursor=pointer]:
+                    - /url: /docs/latest/extensions
+                  - link "Skills" [ref=e71] [cursor=pointer]:
+                    - /url: /docs/latest/skills
+                  - link "Prompt Templates" [ref=e72] [cursor=pointer]:
+                    - /url: /docs/latest/prompt-templates
+                  - link "Themes" [ref=e73] [cursor=pointer]:
+                    - /url: /docs/latest/themes
+                  - link "Pi Packages" [ref=e74] [cursor=pointer]:
+                    - /url: /docs/latest/packages
+                  - link "Custom Models" [ref=e75] [cursor=pointer]:
+                    - /url: /docs/latest/models
+                  - link "Custom Providers" [ref=e76] [cursor=pointer]:
+                    - /url: /docs/latest/custom-provider
+              - generic [ref=e77]:
+                - heading "Reference" [level=2] [ref=e78]
+                - link "Session Format" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/latest/session-format
+              - generic [ref=e81]:
+                - heading "Programmatic Usage" [level=2] [ref=e82]
+                - generic [ref=e83]:
+                  - link "SDK" [ref=e84] [cursor=pointer]:
+                    - /url: /docs/latest/sdk
+                  - link "RPC Mode" [ref=e85] [cursor=pointer]:
+                    - /url: /docs/latest/rpc
+                  - link "JSON Event Stream Mode" [ref=e86] [cursor=pointer]:
+                    - /url: /docs/latest/json
+                  - link "TUI Components" [ref=e87] [cursor=pointer]:
+                    - /url: /docs/latest/tui
+              - generic [ref=e88]:
+                - heading "Platform Setup" [level=2] [ref=e89]
+                - generic [ref=e90]:
+                  - link "Windows" [ref=e91] [cursor=pointer]:
+                    - /url: /docs/latest/windows
+                  - link "Termux on Android" [ref=e92] [cursor=pointer]:
+                    - /url: /docs/latest/termux
+                  - link "tmux" [ref=e93] [cursor=pointer]:
+                    - /url: /docs/latest/tmux
+                  - link "Terminal Setup" [ref=e94] [cursor=pointer]:
+                    - /url: /docs/latest/terminal-setup
+                  - link "Shell Aliases" [ref=e95] [cursor=pointer]:
+                    - /url: /docs/latest/shell-aliases
+              - generic [ref=e96]:
+                - heading "Development" [level=2] [ref=e97]
+                - link "Development" [ref=e99] [cursor=pointer]:
+                  - /url: /docs/latest/development
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - heading "SDK" [level=1] [ref=e105]
+              - generic [ref=e106]: "Version: Latest"
+            - navigation "Source links" [ref=e107]:
+              - link "[ View source ]" [ref=e108] [cursor=pointer]:
+                - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/sdk.md
+              - link "[ Edit on GitHub ]" [ref=e109] [cursor=pointer]:
+                - /url: https://github.com/earendil-works/pi/edit/main/packages/coding-agent/docs/sdk.md
+          - generic [ref=e110]:
+            - blockquote [ref=e111]:
+              - paragraph [ref=e112]: pi can help you use the SDK. Ask it to build an integration for your use case.
+            - paragraph [ref=e113]: The SDK provides programmatic access to pi's agent capabilities. Use it to embed pi in other applications, build custom interfaces, or integrate with automated workflows.
+            - paragraph [ref=e114]:
+              - strong [ref=e115]: "Example use cases:"
+            - list [ref=e116]:
+              - listitem [ref=e117]: Build a custom UI (web, desktop, mobile)
+              - listitem [ref=e118]: Integrate agent capabilities into existing applications
+              - listitem [ref=e119]: Create automated pipelines with agent reasoning
+              - listitem [ref=e120]: Build custom tools that spawn sub-agents
+              - listitem [ref=e121]: Test agent behavior programmatically
+            - paragraph [ref=e122]:
+              - text: See
+              - link "examples/sdk/" [ref=e123] [cursor=pointer]:
+                - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk
+              - text: for working examples from minimal to full control.
+            - generic [ref=e124]:
+              - heading "Quick Start" [level=2] [ref=e125]
+              - 'link "Permalink: Quick Start" [ref=e126] [cursor=pointer]':
+                - /url: "#quick-start"
+                - img [ref=e128]
+                - img [ref=e131]
+                - generic: Copied
+            - code [ref=e134]: "import { AuthStorage, createAgentSession, ModelRegistry, SessionManager } from \"@earendil-works/pi-coding-agent\"; // Set up credential storage and model registry const authStorage = AuthStorage.create(); const modelRegistry = ModelRegistry.create(authStorage); const { session } = await createAgentSession({ sessionManager: SessionManager.inMemory(), authStorage, modelRegistry, }); session.subscribe((event) => { if (event.type === \"message_update\" && event.assistantMessageEvent.type === \"text_delta\") { process.stdout.write(event.assistantMessageEvent.delta); } }); await session.prompt(\"What files are in the current directory?\");"
+            - generic [ref=e135]:
+              - heading "Installation" [level=2] [ref=e136]
+              - 'link "Permalink: Installation" [ref=e137] [cursor=pointer]':
+                - /url: "#installation"
+                - img [ref=e139]
+                - img [ref=e142]
+                - generic: Copied
+            - code [ref=e145]: npm install @earendil-works/pi-coding-agent
+            - paragraph [ref=e146]: The SDK is included in the main package. No separate installation needed.
+            - generic [ref=e147]:
+              - heading "Core Concepts" [level=2] [ref=e148]
+              - 'link "Permalink: Core Concepts" [ref=e149] [cursor=pointer]':
+                - /url: "#core-concepts"
+                - img [ref=e151]
+                - img [ref=e154]
+                - generic: Copied
+            - generic [ref=e156]:
+              - heading "createAgentSession()" [level=3] [ref=e157]
+              - 'link "Permalink: createAgentSession()" [ref=e158] [cursor=pointer]':
+                - /url: "#createagentsession"
+                - img [ref=e160]
+                - img [ref=e163]
+                - generic: Copied
+            - paragraph [ref=e165]:
+              - text: The main factory function for a single
+              - code [ref=e166]: AgentSession
+              - text: .
+            - paragraph [ref=e167]:
+              - code [ref=e168]: createAgentSession()
+              - text: uses a
+              - code [ref=e169]: ResourceLoader
+              - text: to supply extensions, skills, prompt templates, themes, and context files. If you do not provide one, it uses
+              - code [ref=e170]: DefaultResourceLoader
+              - text: with standard discovery.
+            - code [ref=e172]: "import { createAgentSession, SessionManager } from \"@earendil-works/pi-coding-agent\"; // Minimal: defaults with DefaultResourceLoader const { session } = await createAgentSession(); // Custom: override specific options const { session } = await createAgentSession({ model: myModel, tools: [\"read\", \"bash\"], sessionManager: SessionManager.inMemory(), });"
+            - generic [ref=e173]:
+              - heading "AgentSession" [level=3] [ref=e174]
+              - 'link "Permalink: AgentSession" [ref=e175] [cursor=pointer]':
+                - /url: "#agentsession"
+                - img [ref=e177]
+                - img [ref=e180]
+                - generic: Copied
+            - paragraph [ref=e182]: The session manages agent lifecycle, message history, model state, compaction, and event streaming.
+            - code [ref=e184]: "interface AgentSession { // Send a prompt and wait for completion prompt(text: string, options?: PromptOptions): Promise<void>; // Queue messages during streaming steer(text: string): Promise<void>; followUp(text: string): Promise<void>; // Subscribe to events (returns unsubscribe function) subscribe(listener: (event: AgentSessionEvent) => void): () => void; // Session info sessionFile: string | undefined; sessionId: string; // Model control setModel(model: Model): Promise<void>; setThinkingLevel(level: ThinkingLevel): void; cycleModel(): Promise<ModelCycleResult | undefined>; cycleThinkingLevel(): ThinkingLevel | undefined; // State access agent: Agent; model: Model | undefined; thinkingLevel: ThinkingLevel; messages: AgentMessage[]; isStreaming: boolean; // In-place tree navigation within the current session file navigateTree(targetId: string, options?: { summarize?: boolean; customInstructions?: string; replaceInstructions?: boolean; label?: string }): Promise<{ editorText?: string; cancelled: boolean }>; // Compaction compact(customInstructions?: string): Promise<CompactionResult>; abortCompaction(): void; // Abort current operation abort(): Promise<void>; // Cleanup dispose(): void; }"
+            - paragraph [ref=e185]:
+              - text: Session replacement APIs such as new-session, resume, fork, and import live on
+              - code [ref=e186]: AgentSessionRuntime
+              - text: ", not on"
+              - code [ref=e187]: AgentSession
+              - text: .
+            - generic [ref=e188]:
+              - heading "createAgentSessionRuntime() and AgentSessionRuntime" [level=3] [ref=e189]
+              - 'link "Permalink: createAgentSessionRuntime() and AgentSessionRuntime" [ref=e190] [cursor=pointer]':
+                - /url: "#createagentsessionruntime-and-agentsessionruntime"
+                - img [ref=e192]
+                - img [ref=e195]
+                - generic: Copied
+            - paragraph [ref=e197]: Use the runtime API when you need to replace the active session and rebuild cwd-bound runtime state. This is the same layer used by the built-in interactive, print, and RPC modes.
+            - paragraph [ref=e198]:
+              - code [ref=e199]: createAgentSessionRuntime()
+              - text: takes a runtime factory plus the initial cwd/session target. The factory closes over process-global fixed inputs, recreates cwd-bound services for the effective cwd, resolves session options against those services, and returns a full runtime result.
+            - code [ref=e201]: "import { type CreateAgentSessionRuntimeFactory, createAgentSessionFromServices, createAgentSessionRuntime, createAgentSessionServices, getAgentDir, SessionManager, } from \"@earendil-works/pi-coding-agent\"; const createRuntime: CreateAgentSessionRuntimeFactory = async ({ cwd, sessionManager, sessionStartEvent }) => { const services = await createAgentSessionServices({ cwd }); return { ...(await createAgentSessionFromServices({ services, sessionManager, sessionStartEvent, })), services, diagnostics: services.diagnostics, }; }; const runtime = await createAgentSessionRuntime(createRuntime, { cwd: process.cwd(), agentDir: getAgentDir(), sessionManager: SessionManager.create(process.cwd()), });"
+            - paragraph [ref=e202]:
+              - code [ref=e203]: AgentSessionRuntime
+              - text: "owns replacement of the active runtime across:"
+            - list [ref=e204]:
+              - listitem [ref=e205]:
+                - code [ref=e206]: newSession()
+              - listitem [ref=e207]:
+                - code [ref=e208]: switchSession()
+              - listitem [ref=e209]:
+                - code [ref=e210]: fork()
+              - listitem [ref=e211]:
+                - text: clone flows via
+                - code [ref=e212]: "fork(entryId, { position: \"at\" })"
+              - listitem [ref=e213]:
+                - code [ref=e214]: importFromJsonl()
+            - paragraph [ref=e215]: "Important behavior:"
+            - list [ref=e216]:
+              - listitem [ref=e217]:
+                - code [ref=e218]: runtime.session
+                - text: changes after those operations
+              - listitem [ref=e219]:
+                - text: event subscriptions are attached to a specific
+                - code [ref=e220]: AgentSession
+                - text: ", so re-subscribe after replacement"
+              - listitem [ref=e221]:
+                - text: if you use extensions, call
+                - code [ref=e222]: runtime.session.bindExtensions(...)
+                - text: again for the new session
+              - listitem [ref=e223]:
+                - text: creation returns diagnostics on
+                - code [ref=e224]: runtime.diagnostics
+              - listitem [ref=e225]: if runtime creation or replacement fails, the method throws and the caller decides how to handle it
+            - code [ref=e227]: "let session = runtime.session; let unsubscribe = session.subscribe(() => {}); await runtime.newSession(); unsubscribe(); session = runtime.session; unsubscribe = session.subscribe(() => {});"
+            - generic [ref=e228]:
+              - heading "Prompting and Message Queueing" [level=3] [ref=e229]
+              - 'link "Permalink: Prompting and Message Queueing" [ref=e230] [cursor=pointer]':
+                - /url: "#prompting-and-message-queueing"
+                - img [ref=e232]
+                - img [ref=e235]
+                - generic: Copied
+            - paragraph [ref=e237]:
+              - code [ref=e238]: PromptOptions
+              - text: "controls prompt expansion, queueing behavior while streaming, and prompt preflight notifications:"
+            - code [ref=e240]: "interface PromptOptions { expandPromptTemplates?: boolean; images?: ImageContent[]; streamingBehavior?: \"steer\" | \"followUp\"; source?: InputSource; preflightResult?: (success: boolean) => void; }"
+            - paragraph [ref=e241]:
+              - code [ref=e242]: preflightResult
+              - text: is called once per
+              - code [ref=e243]: prompt()
+              - text: "invocation:"
+            - list [ref=e244]:
+              - listitem [ref=e245]:
+                - code [ref=e246]: "true"
+                - text: when the prompt was accepted, queued, or handled immediately
+              - listitem [ref=e247]:
+                - code [ref=e248]: "false"
+                - text: when prompt preflight rejected before acceptance
+            - paragraph [ref=e249]:
+              - text: It fires before
+              - code [ref=e250]: prompt()
+              - text: resolves.
+              - code [ref=e251]: prompt()
+              - text: still resolves only after the full accepted run finishes, including retries. Failures after acceptance are reported through the normal event and message stream, not through
+              - code [ref=e252]: preflightResult(false)
+              - text: .
+            - paragraph [ref=e253]:
+              - text: The
+              - code [ref=e254]: prompt()
+              - text: "method handles prompt templates, extension commands, and message sending:"
+            - code [ref=e256]: "// Basic prompt (when not streaming) await session.prompt(\"What files are here?\"); // With images await session.prompt(\"What's in this image?\", { images: [{ type: \"image\", source: { type: \"base64\", mediaType: \"image/png\", data: \"...\" } }] }); // During streaming: must specify how to queue the message await session.prompt(\"Stop and do this instead\", { streamingBehavior: \"steer\" }); await session.prompt(\"After you're done, also check X\", { streamingBehavior: \"followUp\" });"
+            - paragraph [ref=e257]:
+              - strong [ref=e258]: "Behavior:"
+            - list [ref=e259]:
+              - listitem [ref=e260]:
+                - strong [ref=e261]: Extension commands
+                - text: (e.g.,
+                - code [ref=e262]: /mycommand
+                - text: "): Execute immediately, even during streaming. They manage their own LLM interaction via"
+                - code [ref=e263]: pi.sendMessage()
+                - text: .
+              - listitem [ref=e264]:
+                - strong [ref=e265]: File-based prompt templates
+                - text: (from
+                - code [ref=e266]: .md
+                - text: "files): Expanded to their content before sending or queueing."
+              - listitem [ref=e267]:
+                - strong [ref=e268]:
+                  - text: During streaming without
+                  - code [ref=e269]: streamingBehavior
+                - text: ": Throws an error. Use"
+                - code [ref=e270]: steer()
+                - text: or
+                - code [ref=e271]: followUp()
+                - text: directly, or specify the option.
+              - listitem [ref=e272]:
+                - strong [ref=e273]:
+                  - code [ref=e274]: preflightResult(true)
+                - text: ": Means the prompt was accepted, queued, or handled immediately."
+              - listitem [ref=e275]:
+                - strong [ref=e276]:
+                  - code [ref=e277]: preflightResult(false)
+                - text: ": Means preflight rejected before acceptance."
+            - paragraph [ref=e278]: "For explicit queueing during streaming:"
+            - code [ref=e280]: // Queue a steering message for delivery after the current assistant turn finishes its tool calls await session.steer("New instruction"); // Wait for agent to finish (delivered only when agent stops) await session.followUp("After you're done, also do this");
+            - paragraph [ref=e281]:
+              - text: Both
+              - code [ref=e282]: steer()
+              - text: and
+              - code [ref=e283]: followUp()
+              - text: expand file-based prompt templates but error on extension commands (extension commands cannot be queued).
+            - generic [ref=e284]:
+              - heading "Agent and AgentState" [level=3] [ref=e285]
+              - 'link "Permalink: Agent and AgentState" [ref=e286] [cursor=pointer]':
+                - /url: "#agent-and-agentstate"
+                - img [ref=e288]
+                - img [ref=e291]
+                - generic: Copied
+            - paragraph [ref=e293]:
+              - text: The
+              - code [ref=e294]: Agent
+              - text: class (from
+              - code [ref=e295]: "@earendil-works/pi-agent-core"
+              - text: ) handles the core LLM interaction. Access it via
+              - code [ref=e296]: session.agent
+              - text: .
+            - code [ref=e298]: "// Access current state const state = session.agent.state; // state.messages: AgentMessage[] - conversation history // state.model: Model - current model // state.thinkingLevel: ThinkingLevel - current thinking level // state.systemPrompt: string - system prompt // state.tools: AgentTool[] - available tools // state.streamingMessage?: AgentMessage - current partial assistant message // state.errorMessage?: string - latest assistant error // Replace messages (useful for branching or restoration) session.agent.state.messages = messages; // copies the top-level array // Replace tools session.agent.state.tools = tools; // copies the top-level array // Wait for agent to finish processing await session.agent.waitForIdle();"
+            - generic [ref=e299]:
+              - heading "Events" [level=3] [ref=e300]
+              - 'link "Permalink: Events" [ref=e301] [cursor=pointer]':
+                - /url: "#events"
+                - img [ref=e303]
+                - img [ref=e306]
+                - generic: Copied
+            - paragraph [ref=e308]: Subscribe to events to receive streaming output and lifecycle notifications.
+            - code [ref=e310]: "session.subscribe((event) => { switch (event.type) { // Streaming text from assistant case \"message_update\": if (event.assistantMessageEvent.type === \"text_delta\") { process.stdout.write(event.assistantMessageEvent.delta); } if (event.assistantMessageEvent.type === \"thinking_delta\") { // Thinking output (if thinking enabled) } break; // Tool execution case \"tool_execution_start\": console.log(`Tool: ${event.toolName}`); break; case \"tool_execution_update\": // Streaming tool output break; case \"tool_execution_end\": console.log(`Result: ${event.isError ? \"error\" : \"success\"}`); break; // Message lifecycle case \"message_start\": // New message starting break; case \"message_end\": // Message complete break; // Agent lifecycle case \"agent_start\": // Agent started processing prompt break; case \"agent_end\": // Agent finished (event.messages contains new messages) break; // Turn lifecycle (one LLM response + tool calls) case \"turn_start\": break; case \"turn_end\": // event.message: assistant response // event.toolResults: tool results from this turn break; // Session events (queue, compaction, retry) case \"queue_update\": console.log(event.steering, event.followUp); break; case \"compaction_start\": case \"compaction_end\": case \"auto_retry_start\": case \"auto_retry_end\": break; } });"
+            - generic [ref=e311]:
+              - heading "Options Reference" [level=2] [ref=e312]
+              - 'link "Permalink: Options Reference" [ref=e313] [cursor=pointer]':
+                - /url: "#options-reference"
+                - img [ref=e315]
+                - img [ref=e318]
+                - generic: Copied
+            - generic [ref=e320]:
+              - heading "Directories" [level=3] [ref=e321]
+              - 'link "Permalink: Directories" [ref=e322] [cursor=pointer]':
+                - /url: "#directories"
+                - img [ref=e324]
+                - img [ref=e327]
+                - generic: Copied
+            - code [ref=e330]: "const { session } = await createAgentSession({ // Working directory for DefaultResourceLoader discovery cwd: process.cwd(), // default // Global config directory agentDir: \"~/.pi/agent\", // default (expands ~) });"
+            - paragraph [ref=e331]:
+              - code [ref=e332]: cwd
+              - text: is used by
+              - code [ref=e333]: DefaultResourceLoader
+              - text: "for:"
+            - list [ref=e334]:
+              - listitem [ref=e335]:
+                - text: Project extensions (
+                - code [ref=e336]: .pi/extensions/
+                - text: )
+              - listitem [ref=e337]:
+                - text: "Project skills:"
+                - list [ref=e338]:
+                  - listitem [ref=e339]:
+                    - code [ref=e340]: .pi/skills/
+                  - listitem [ref=e341]:
+                    - code [ref=e342]: .agents/skills/
+                    - text: in
+                    - code [ref=e343]: cwd
+                    - text: and ancestor directories (up to git repo root, or filesystem root when not in a repo)
+              - listitem [ref=e344]:
+                - text: Project prompts (
+                - code [ref=e345]: .pi/prompts/
+                - text: )
+              - listitem [ref=e346]:
+                - text: Context files (
+                - code [ref=e347]: AGENTS.md
+                - text: walking up from cwd)
+              - listitem [ref=e348]: Session directory naming
+            - paragraph [ref=e349]:
+              - code [ref=e350]: agentDir
+              - text: is used by
+              - code [ref=e351]: DefaultResourceLoader
+              - text: "for:"
+            - list [ref=e352]:
+              - listitem [ref=e353]:
+                - text: Global extensions (
+                - code [ref=e354]: extensions/
+                - text: )
+              - listitem [ref=e355]:
+                - text: "Global skills:"
+                - list [ref=e356]:
+                  - listitem [ref=e357]:
+                    - code [ref=e358]: skills/
+                    - text: under
+                    - code [ref=e359]: agentDir
+                    - text: (for example
+                    - code [ref=e360]: ~/.pi/agent/skills/
+                    - text: )
+                  - listitem [ref=e361]:
+                    - code [ref=e362]: ~/.agents/skills/
+              - listitem [ref=e363]:
+                - text: Global prompts (
+                - code [ref=e364]: prompts/
+                - text: )
+              - listitem [ref=e365]:
+                - text: Global context file (
+                - code [ref=e366]: AGENTS.md
+                - text: )
+              - listitem [ref=e367]:
+                - text: Settings (
+                - code [ref=e368]: settings.json
+                - text: )
+              - listitem [ref=e369]:
+                - text: Custom models (
+                - code [ref=e370]: models.json
+                - text: )
+              - listitem [ref=e371]:
+                - text: Credentials (
+                - code [ref=e372]: auth.json
+                - text: )
+              - listitem [ref=e373]:
+                - text: Sessions (
+                - code [ref=e374]: sessions/
+                - text: )
+            - paragraph [ref=e375]:
+              - text: When you pass a custom
+              - code [ref=e376]: ResourceLoader
+              - text: ","
+              - code [ref=e377]: cwd
+              - text: and
+              - code [ref=e378]: agentDir
+              - text: no longer control resource discovery. They still influence session naming and tool path resolution.
+            - generic [ref=e379]:
+              - heading "Model" [level=3] [ref=e380]
+              - 'link "Permalink: Model" [ref=e381] [cursor=pointer]':
+                - /url: "#model"
+                - img [ref=e383]
+                - img [ref=e386]
+                - generic: Copied
+            - code [ref=e389]: "import { getModel } from \"@earendil-works/pi-ai\"; import { AuthStorage, ModelRegistry } from \"@earendil-works/pi-coding-agent\"; const authStorage = AuthStorage.create(); const modelRegistry = ModelRegistry.create(authStorage); // Find specific built-in model (doesn't check if API key exists) const opus = getModel(\"anthropic\", \"claude-opus-4-5\"); if (!opus) throw new Error(\"Model not found\"); // Find any model by provider/id, including custom models from models.json // (doesn't check if API key exists) const customModel = modelRegistry.find(\"my-provider\", \"my-model\"); // Get only models that have valid API keys configured const available = await modelRegistry.getAvailable(); const { session } = await createAgentSession({ model: opus, thinkingLevel: \"medium\", // off, minimal, low, medium, high, xhigh // Models for cycling (Ctrl+P in interactive mode) scopedModels: [ { model: opus, thinkingLevel: \"high\" }, { model: haiku, thinkingLevel: \"off\" }, ], authStorage, modelRegistry, });"
+            - paragraph [ref=e390]: "If no model is provided:"
+            - list [ref=e391]:
+              - listitem [ref=e392]: Tries to restore from session (if continuing)
+              - listitem [ref=e393]: Uses default from settings
+              - listitem [ref=e394]: Falls back to first available model
+            - blockquote [ref=e395]:
+              - paragraph [ref=e396]:
+                - text: See
+                - link "examples/sdk/02-custom-model.ts" [ref=e397] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/02-custom-model.ts
+            - generic [ref=e398]:
+              - heading "API Keys and OAuth" [level=3] [ref=e399]
+              - 'link "Permalink: API Keys and OAuth" [ref=e400] [cursor=pointer]':
+                - /url: "#api-keys-and-oauth"
+                - img [ref=e402]
+                - img [ref=e405]
+                - generic: Copied
+            - paragraph [ref=e407]: "API key resolution priority (handled by AuthStorage):"
+            - list [ref=e408]:
+              - listitem [ref=e409]:
+                - text: Runtime overrides (via
+                - code [ref=e410]: setRuntimeApiKey
+                - text: ", not persisted)"
+              - listitem [ref=e411]:
+                - text: Stored credentials in
+                - code [ref=e412]: auth.json
+                - text: (API keys or OAuth tokens)
+              - listitem [ref=e413]:
+                - text: Environment variables (
+                - code [ref=e414]: ANTHROPIC_API_KEY
+                - text: ","
+                - code [ref=e415]: OPENAI_API_KEY
+                - text: ", etc.)"
+              - listitem [ref=e416]:
+                - text: Fallback resolver (for custom provider keys from
+                - code [ref=e417]: models.json
+                - text: )
+            - code [ref=e419]: "import { AuthStorage, ModelRegistry } from \"@earendil-works/pi-coding-agent\"; // Default: uses ~/.pi/agent/auth.json and ~/.pi/agent/models.json const authStorage = AuthStorage.create(); const modelRegistry = ModelRegistry.create(authStorage); const { session } = await createAgentSession({ sessionManager: SessionManager.inMemory(), authStorage, modelRegistry, }); // Runtime API key override (not persisted to disk) authStorage.setRuntimeApiKey(\"anthropic\", \"sk-my-temp-key\"); // Custom auth storage location const customAuth = AuthStorage.create(\"/my/app/auth.json\"); const customRegistry = ModelRegistry.create(customAuth, \"/my/app/models.json\"); const { session } = await createAgentSession({ sessionManager: SessionManager.inMemory(), authStorage: customAuth, modelRegistry: customRegistry, }); // No custom models.json (built-in models only) const simpleRegistry = ModelRegistry.inMemory(authStorage);"
+            - blockquote [ref=e420]:
+              - paragraph [ref=e421]:
+                - text: See
+                - link "examples/sdk/09-api-keys-and-oauth.ts" [ref=e422] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/09-api-keys-and-oauth.ts
+            - generic [ref=e423]:
+              - heading "System Prompt" [level=3] [ref=e424]
+              - 'link "Permalink: System Prompt" [ref=e425] [cursor=pointer]':
+                - /url: "#system-prompt"
+                - img [ref=e427]
+                - img [ref=e430]
+                - generic: Copied
+            - paragraph [ref=e432]:
+              - text: Use a
+              - code [ref=e433]: ResourceLoader
+              - text: "to override the system prompt:"
+            - code [ref=e435]: "import { createAgentSession, DefaultResourceLoader } from \"@earendil-works/pi-coding-agent\"; const loader = new DefaultResourceLoader({ systemPromptOverride: () => \"You are a helpful assistant.\", }); await loader.reload(); const { session } = await createAgentSession({ resourceLoader: loader });"
+            - blockquote [ref=e436]:
+              - paragraph [ref=e437]:
+                - text: See
+                - link "examples/sdk/03-custom-prompt.ts" [ref=e438] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/03-custom-prompt.ts
+            - generic [ref=e439]:
+              - heading "Tools" [level=3] [ref=e440]
+              - 'link "Permalink: Tools" [ref=e441] [cursor=pointer]':
+                - /url: "#tools"
+                - img [ref=e443]
+                - img [ref=e446]
+                - generic: Copied
+            - paragraph [ref=e448]: "Specify which built-in tools to enable:"
+            - list [ref=e449]:
+              - listitem [ref=e450]:
+                - text: "Built-in tool names:"
+                - code [ref=e451]: read
+                - text: ","
+                - code [ref=e452]: bash
+                - text: ","
+                - code [ref=e453]: edit
+                - text: ","
+                - code [ref=e454]: write
+                - text: ","
+                - code [ref=e455]: grep
+                - text: ","
+                - code [ref=e456]: find
+                - text: ","
+                - code [ref=e457]: ls
+              - listitem [ref=e458]:
+                - text: "Default built-ins:"
+                - code [ref=e459]: read
+                - text: ","
+                - code [ref=e460]: bash
+                - text: ","
+                - code [ref=e461]: edit
+                - text: ","
+                - code [ref=e462]: write
+              - listitem [ref=e463]:
+                - code [ref=e464]: "noTools: \"all\""
+                - text: disables all tools
+              - listitem [ref=e465]:
+                - code [ref=e466]: "noTools: \"builtin\""
+                - text: disables default built-ins while keeping extension and custom tools enabled
+              - listitem [ref=e467]:
+                - code [ref=e468]: excludeTools
+                - text: disables specific built-in, extension, or custom tool names after any
+                - code [ref=e469]: tools
+                - text: allowlist is applied
+            - paragraph [ref=e470]:
+              - text: The
+              - code [ref=e471]: edit
+              - text: tool returns
+              - code [ref=e472]: details.diff
+              - text: for Pi's TUI display and
+              - code [ref=e473]: details.patch
+              - text: as a standard unified patch for SDK consumers.
+            - code [ref=e475]: "import { createAgentSession } from \"@earendil-works/pi-coding-agent\"; // Read-only mode const { session } = await createAgentSession({ tools: [\"read\", \"grep\", \"find\", \"ls\"], }); // Pick specific tools const { session } = await createAgentSession({ tools: [\"read\", \"bash\", \"grep\"], }); // Disable one tool while keeping the rest available const { session } = await createAgentSession({ excludeTools: [\"ask_question\"], });"
+            - generic [ref=e476]:
+              - heading "Tools with Custom cwd" [level=4] [ref=e477]
+              - 'link "Permalink: Tools with Custom cwd" [ref=e478] [cursor=pointer]':
+                - /url: "#tools-with-custom-cwd"
+                - img [ref=e480]
+                - img [ref=e483]
+                - generic: Copied
+            - paragraph [ref=e485]:
+              - text: When you pass a custom
+              - code [ref=e486]: cwd
+              - text: ","
+              - code [ref=e487]: createAgentSession()
+              - text: builds selected built-in tools for that cwd.
+            - code [ref=e489]: "import { createAgentSession, SessionManager } from \"@earendil-works/pi-coding-agent\"; const cwd = \"/path/to/project\"; // Use default tools for custom cwd const { session } = await createAgentSession({ cwd, sessionManager: SessionManager.inMemory(cwd), }); // Or pick specific tools for custom cwd const { session } = await createAgentSession({ cwd, tools: [\"read\", \"bash\", \"grep\"], sessionManager: SessionManager.inMemory(cwd), });"
+            - blockquote [ref=e490]:
+              - paragraph [ref=e491]:
+                - text: See
+                - link "examples/sdk/05-tools.ts" [ref=e492] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/05-tools.ts
+            - generic [ref=e493]:
+              - heading "Custom Tools" [level=3] [ref=e494]
+              - 'link "Permalink: Custom Tools" [ref=e495] [cursor=pointer]':
+                - /url: "#custom-tools"
+                - img [ref=e497]
+                - img [ref=e500]
+                - generic: Copied
+            - code [ref=e503]: "import { Type } from \"typebox\"; import { createAgentSession, defineTool } from \"@earendil-works/pi-coding-agent\"; // Inline custom tool const myTool = defineTool({ name: \"my_tool\", label: \"My Tool\", description: \"Does something useful\", parameters: Type.Object({ input: Type.String({ description: \"Input value\" }), }), execute: async (_toolCallId, params) => ({ content: [{ type: \"text\", text: `Result: ${params.input}` }], details: {}, }), }); // Pass custom tools directly const { session } = await createAgentSession({ customTools: [myTool], });"
+            - paragraph [ref=e504]:
+              - text: Use
+              - code [ref=e505]: defineTool()
+              - text: for standalone definitions and arrays like
+              - code [ref=e506]: "customTools: [myTool]"
+              - text: . Inline
+              - code [ref=e507]: "pi.registerTool({ ... })"
+              - text: already infers parameter types correctly.
+            - paragraph [ref=e508]:
+              - text: Custom tools passed via
+              - code [ref=e509]: customTools
+              - text: are combined with extension-registered tools. Extensions loaded by the ResourceLoader can also register tools via
+              - code [ref=e510]: pi.registerTool()
+              - text: .
+            - paragraph [ref=e511]:
+              - text: If you pass
+              - code [ref=e512]: tools
+              - text: ", include each custom or extension tool name you want enabled, for example"
+              - code [ref=e513]: "tools: [\"read\", \"bash\", \"my_tool\"]"
+              - text: .
+            - blockquote [ref=e514]:
+              - paragraph [ref=e515]:
+                - text: See
+                - link "examples/sdk/05-tools.ts" [ref=e516] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/05-tools.ts
+            - generic [ref=e517]:
+              - heading "Extensions" [level=3] [ref=e518]
+              - 'link "Permalink: Extensions" [ref=e519] [cursor=pointer]':
+                - /url: "#extensions"
+                - img [ref=e521]
+                - img [ref=e524]
+                - generic: Copied
+            - paragraph [ref=e526]:
+              - text: Extensions are loaded by the
+              - code [ref=e527]: ResourceLoader
+              - text: .
+              - code [ref=e528]: DefaultResourceLoader
+              - text: discovers extensions from
+              - code [ref=e529]: ~/.pi/agent/extensions/
+              - text: ","
+              - code [ref=e530]: .pi/extensions/
+              - text: ", and settings.json extension sources."
+            - code [ref=e532]: "import { createAgentSession, DefaultResourceLoader } from \"@earendil-works/pi-coding-agent\"; const loader = new DefaultResourceLoader({ additionalExtensionPaths: [\"/path/to/my-extension.ts\"], extensionFactories: [ (pi) => { pi.on(\"agent_start\", () => { console.log(\"[Inline Extension] Agent starting\"); }); }, ], }); await loader.reload(); const { session } = await createAgentSession({ resourceLoader: loader });"
+            - paragraph [ref=e533]:
+              - text: Extensions can register tools, subscribe to events, add commands, and more. See
+              - link "extensions.md" [ref=e534] [cursor=pointer]:
+                - /url: /docs/latest/extensions
+              - text: for the full API.
+            - paragraph [ref=e535]:
+              - strong [ref=e536]: "Event Bus:"
+              - text: Extensions can communicate via
+              - code [ref=e537]: pi.events
+              - text: . Pass a shared
+              - code [ref=e538]: eventBus
+              - text: to
+              - code [ref=e539]: DefaultResourceLoader
+              - text: "if you need to emit or listen from outside:"
+            - code [ref=e541]: "import { createEventBus, DefaultResourceLoader } from \"@earendil-works/pi-coding-agent\"; const eventBus = createEventBus(); const loader = new DefaultResourceLoader({ eventBus, }); await loader.reload(); eventBus.on(\"my-extension:status\", (data) => console.log(data));"
+            - blockquote [ref=e542]:
+              - paragraph [ref=e543]:
+                - text: See
+                - link "examples/sdk/06-extensions.ts" [ref=e544] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/06-extensions.ts
+                - text: and
+                - link "docs/extensions.md" [ref=e545] [cursor=pointer]:
+                  - /url: /docs/latest/extensions
+            - generic [ref=e546]:
+              - heading "Skills" [level=3] [ref=e547]
+              - 'link "Permalink: Skills" [ref=e548] [cursor=pointer]':
+                - /url: "#skills"
+                - img [ref=e550]
+                - img [ref=e553]
+                - generic: Copied
+            - code [ref=e556]: "import { createAgentSession, DefaultResourceLoader, type Skill, } from \"@earendil-works/pi-coding-agent\"; const customSkill: Skill = { name: \"my-skill\", description: \"Custom instructions\", filePath: \"/path/to/SKILL.md\", baseDir: \"/path/to\", source: \"custom\", }; const loader = new DefaultResourceLoader({ skillsOverride: (current) => ({ skills: [...current.skills, customSkill], diagnostics: current.diagnostics, }), }); await loader.reload(); const { session } = await createAgentSession({ resourceLoader: loader });"
+            - blockquote [ref=e557]:
+              - paragraph [ref=e558]:
+                - text: See
+                - link "examples/sdk/04-skills.ts" [ref=e559] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/04-skills.ts
+            - generic [ref=e560]:
+              - heading "Context Files" [level=3] [ref=e561]
+              - 'link "Permalink: Context Files" [ref=e562] [cursor=pointer]':
+                - /url: "#context-files"
+                - img [ref=e564]
+                - img [ref=e567]
+                - generic: Copied
+            - code [ref=e570]: "import { createAgentSession, DefaultResourceLoader } from \"@earendil-works/pi-coding-agent\"; const loader = new DefaultResourceLoader({ agentsFilesOverride: (current) => ({ agentsFiles: [ ...current.agentsFiles, { path: \"/virtual/AGENTS.md\", content: \"# Guidelines\\n\\n- Be concise\" }, ], }), }); await loader.reload(); const { session } = await createAgentSession({ resourceLoader: loader });"
+            - blockquote [ref=e571]:
+              - paragraph [ref=e572]:
+                - text: See
+                - link "examples/sdk/07-context-files.ts" [ref=e573] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/07-context-files.ts
+            - generic [ref=e574]:
+              - heading "Slash Commands" [level=3] [ref=e575]
+              - 'link "Permalink: Slash Commands" [ref=e576] [cursor=pointer]':
+                - /url: "#slash-commands"
+                - img [ref=e578]
+                - img [ref=e581]
+                - generic: Copied
+            - code [ref=e584]: "import { createAgentSession, DefaultResourceLoader, type PromptTemplate, } from \"@earendil-works/pi-coding-agent\"; const customCommand: PromptTemplate = { name: \"deploy\", description: \"Deploy the application\", source: \"(custom)\", content: \"# Deploy\\n\\n1. Build\\n2. Test\\n3. Deploy\", }; const loader = new DefaultResourceLoader({ promptsOverride: (current) => ({ prompts: [...current.prompts, customCommand], diagnostics: current.diagnostics, }), }); await loader.reload(); const { session } = await createAgentSession({ resourceLoader: loader });"
+            - blockquote [ref=e585]:
+              - paragraph [ref=e586]:
+                - text: See
+                - link "examples/sdk/08-prompt-templates.ts" [ref=e587] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/08-prompt-templates.ts
+            - generic [ref=e588]:
+              - heading "Session Management" [level=3] [ref=e589]
+              - 'link "Permalink: Session Management" [ref=e590] [cursor=pointer]':
+                - /url: "#session-management"
+                - img [ref=e592]
+                - img [ref=e595]
+                - generic: Copied
+            - paragraph [ref=e597]:
+              - text: Sessions use a tree structure with
+              - code [ref=e598]: id
+              - text: /
+              - code [ref=e599]: parentId
+              - text: linking, enabling in-place branching.
+            - code [ref=e601]: "import { type CreateAgentSessionRuntimeFactory, createAgentSession, createAgentSessionFromServices, createAgentSessionRuntime, createAgentSessionServices, getAgentDir, SessionManager, } from \"@earendil-works/pi-coding-agent\"; // In-memory (no persistence) const { session } = await createAgentSession({ sessionManager: SessionManager.inMemory(), }); // New persistent session const { session: persisted } = await createAgentSession({ sessionManager: SessionManager.create(process.cwd()), }); // Continue most recent const { session: continued, modelFallbackMessage } = await createAgentSession({ sessionManager: SessionManager.continueRecent(process.cwd()), }); if (modelFallbackMessage) { console.log(\"Note:\", modelFallbackMessage); } // Open specific file const { session: opened } = await createAgentSession({ sessionManager: SessionManager.open(\"/path/to/session.jsonl\"), }); // List sessions const currentProjectSessions = await SessionManager.list(process.cwd()); const allSessions = await SessionManager.listAll(process.cwd()); // Session replacement API for /new, /resume, /fork, /clone, and import flows. const createRuntime: CreateAgentSessionRuntimeFactory = async ({ cwd, sessionManager, sessionStartEvent }) => { const services = await createAgentSessionServices({ cwd }); return { ...(await createAgentSessionFromServices({ services, sessionManager, sessionStartEvent, })), services, diagnostics: services.diagnostics, }; }; const runtime = await createAgentSessionRuntime(createRuntime, { cwd: process.cwd(), agentDir: getAgentDir(), sessionManager: SessionManager.create(process.cwd()), }); // Replace the active session with a fresh one await runtime.newSession(); // Replace the active session with another saved session await runtime.switchSession(\"/path/to/session.jsonl\"); // Replace the active session with a fork from a specific user entry await runtime.fork(\"entry-id\"); // Clone the active path through a specific entry await runtime.fork(\"entry-id\", { position: \"at\" });"
+            - paragraph [ref=e602]:
+              - strong [ref=e603]: "SessionManager tree API:"
+            - code [ref=e605]: const sm = SessionManager.open("/path/to/session.jsonl"); // Session listing const currentProjectSessions = await SessionManager.list(process.cwd()); const allSessions = await SessionManager.listAll(process.cwd()); // Tree traversal const entries = sm.getEntries(); // All entries (excludes header) const tree = sm.getTree(); // Full tree structure const path = sm.getPath(); // Path from root to current leaf const leaf = sm.getLeafEntry(); // Current leaf entry const entry = sm.getEntry(id); // Get entry by ID const children = sm.getChildren(id); // Direct children of entry // Labels const label = sm.getLabel(id); // Get label for entry sm.appendLabelChange(id, "checkpoint"); // Set label // Branching sm.branch(entryId); // Move leaf to earlier entry sm.branchWithSummary(id, "Summary..."); // Branch with context summary sm.createBranchedSession(leafId); // Extract path to new file
+            - blockquote [ref=e606]:
+              - paragraph [ref=e607]:
+                - text: See
+                - link "examples/sdk/11-sessions.ts" [ref=e608] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/11-sessions.ts
+                - text: and
+                - link "Session Format" [ref=e609] [cursor=pointer]:
+                  - /url: /docs/latest/session-format
+            - generic [ref=e610]:
+              - heading "Settings Management" [level=3] [ref=e611]
+              - 'link "Permalink: Settings Management" [ref=e612] [cursor=pointer]':
+                - /url: "#settings-management"
+                - img [ref=e614]
+                - img [ref=e617]
+                - generic: Copied
+            - code [ref=e620]: "import { createAgentSession, SettingsManager, SessionManager } from \"@earendil-works/pi-coding-agent\"; // Default: loads from files (global + project merged) const { session } = await createAgentSession({ settingsManager: SettingsManager.create(), }); // With overrides const settingsManager = SettingsManager.create(); settingsManager.applyOverrides({ compaction: { enabled: false }, retry: { enabled: true, maxRetries: 5 }, }); const { session } = await createAgentSession({ settingsManager }); // In-memory (no file I/O, for testing) const { session } = await createAgentSession({ settingsManager: SettingsManager.inMemory({ compaction: { enabled: false } }), sessionManager: SessionManager.inMemory(), }); // Custom directories const { session } = await createAgentSession({ settingsManager: SettingsManager.create(\"/custom/cwd\", \"/custom/agent\"), });"
+            - paragraph [ref=e621]:
+              - strong [ref=e622]: "Static factories:"
+            - list [ref=e623]:
+              - listitem [ref=e624]:
+                - code [ref=e625]: SettingsManager.create(cwd?, agentDir?)
+                - text: "- Load from files"
+              - listitem [ref=e626]:
+                - code [ref=e627]: SettingsManager.inMemory(settings?)
+                - text: "- No file I/O"
+            - paragraph [ref=e628]:
+              - strong [ref=e629]: "Project-specific settings:"
+            - paragraph [ref=e630]: "Settings load from two locations and merge:"
+            - list [ref=e631]:
+              - listitem [ref=e632]:
+                - text: "Global:"
+                - code [ref=e633]: ~/.pi/agent/settings.json
+              - listitem [ref=e634]:
+                - text: "Project:"
+                - code [ref=e635]: <cwd>/.pi/settings.json
+            - paragraph [ref=e636]: Project overrides global. Nested objects merge keys. Setters modify global settings by default.
+            - paragraph [ref=e637]:
+              - strong [ref=e638]: "Persistence and error handling semantics:"
+            - list [ref=e639]:
+              - listitem [ref=e640]: Settings getters/setters are synchronous for in-memory state.
+              - listitem [ref=e641]: Setters enqueue persistence writes asynchronously.
+              - listitem [ref=e642]:
+                - text: Call
+                - code [ref=e643]: await settingsManager.flush()
+                - text: when you need a durability boundary (for example, before process exit or before asserting file contents in tests).
+              - listitem [ref=e644]:
+                - code [ref=e645]: SettingsManager
+                - text: does not print settings I/O errors. Use
+                - code [ref=e646]: settingsManager.drainErrors()
+                - text: and report them in your app layer.
+            - blockquote [ref=e647]:
+              - paragraph [ref=e648]:
+                - text: See
+                - link "examples/sdk/10-settings.ts" [ref=e649] [cursor=pointer]:
+                  - /url: https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/sdk/10-settings.ts
+            - generic [ref=e650]:
+              - heading "ResourceLoader" [level=2] [ref=e651]
+              - 'link "Permalink: ResourceLoader" [ref=e652] [cursor=pointer]':
+                - /url: "#resourceloader"
+                - img [ref=e654]
+                - img [ref=e657]
+                - generic: Copied
+            - paragraph [ref=e659]:
+              - text: Use
+              - code [ref=e660]: DefaultResourceLoader
+              - text: to discover extensions, skills, prompts, themes, and context files.
+            - code [ref=e662]: "import { DefaultResourceLoader, getAgentDir, } from \"@earendil-works/pi-coding-agent\"; const loader = new DefaultResourceLoader({ cwd, agentDir: getAgentDir(), }); await loader.reload(); const extensions = loader.getExtensions(); const skills = loader.getSkills(); const prompts = loader.getPrompts(); const themes = loader.getThemes(); const contextFiles = loader.getAgentsFiles().agentsFiles;"
+            - generic [ref=e663]:
+              - heading "Return Value" [level=2] [ref=e664]
+              - 'link "Permalink: Return Value" [ref=e665] [cursor=pointer]':
+                - /url: "#return-value"
+                - img [ref=e667]
+                - img [ref=e670]
+                - generic: Copied
+            - paragraph [ref=e672]:
+              - code [ref=e673]: createAgentSession()
+              - text: "returns:"
+            - code [ref=e675]: "interface CreateAgentSessionResult { // The session session: AgentSession; // Extensions result (for runner setup) extensionsResult: LoadExtensionsResult; // Warning if session model couldn't be restored modelFallbackMessage?: string; } interface LoadExtensionsResult { extensions: Extension[]; errors: Array<{ path: string; error: string }>; runtime: ExtensionRuntime; }"
+            - generic [ref=e676]:
+              - heading "Complete Example" [level=2] [ref=e677]
+              - 'link "Permalink: Complete Example" [ref=e678] [cursor=pointer]':
+                - /url: "#complete-example"
+                - img [ref=e680]
+                - img [ref=e683]
+                - generic: Copied
+            - code [ref=e686]: "import { getModel } from \"@earendil-works/pi-ai\"; import { Type } from \"typebox\"; import { AuthStorage, createAgentSession, DefaultResourceLoader, defineTool, ModelRegistry, SessionManager, SettingsManager, } from \"@earendil-works/pi-coding-agent\"; // Set up auth storage (custom location) const authStorage = AuthStorage.create(\"/custom/agent/auth.json\"); // Runtime API key override (not persisted) if (process.env.MY_KEY) { authStorage.setRuntimeApiKey(\"anthropic\", process.env.MY_KEY); } // Model registry (no custom models.json) const modelRegistry = ModelRegistry.create(authStorage); // Inline tool const statusTool = defineTool({ name: \"status\", label: \"Status\", description: \"Get system status\", parameters: Type.Object({}), execute: async () => ({ content: [{ type: \"text\", text: `Uptime: ${process.uptime()}s` }], details: {}, }), }); const model = getModel(\"anthropic\", \"claude-opus-4-5\"); if (!model) throw new Error(\"Model not found\"); // In-memory settings with overrides const settingsManager = SettingsManager.inMemory({ compaction: { enabled: false }, retry: { enabled: true, maxRetries: 2 }, }); const loader = new DefaultResourceLoader({ cwd: process.cwd(), agentDir: \"/custom/agent\", settingsManager, systemPromptOverride: () => \"You are a minimal assistant. Be concise.\", }); await loader.reload(); const { session } = await createAgentSession({ cwd: process.cwd(), agentDir: \"/custom/agent\", model, thinkingLevel: \"off\", authStorage, modelRegistry, tools: [\"read\", \"bash\", \"status\"], customTools: [statusTool], resourceLoader: loader, sessionManager: SessionManager.inMemory(), settingsManager, }); session.subscribe((event) => { if (event.type === \"message_update\" && event.assistantMessageEvent.type === \"text_delta\") { process.stdout.write(event.assistantMessageEvent.delta); } }); await session.prompt(\"Get status and list files.\");"
+            - generic [ref=e687]:
+              - heading "Run Modes" [level=2] [ref=e688]
+              - 'link "Permalink: Run Modes" [ref=e689] [cursor=pointer]':
+                - /url: "#run-modes"
+                - img [ref=e691]
+                - img [ref=e694]
+                - generic: Copied
+            - paragraph [ref=e696]:
+              - text: The SDK exports run mode utilities for building custom interfaces on top of
+              - code [ref=e697]: createAgentSession()
+              - text: ":"
+            - generic [ref=e698]:
+              - heading "InteractiveMode" [level=3] [ref=e699]
+              - 'link "Permalink: InteractiveMode" [ref=e700] [cursor=pointer]':
+                - /url: "#interactivemode"
+                - img [ref=e702]
+                - img [ref=e705]
+                - generic: Copied
+            - paragraph [ref=e707]: "Full TUI interactive mode with editor, chat history, and all built-in commands:"
+            - code [ref=e709]: "import { type CreateAgentSessionRuntimeFactory, createAgentSessionFromServices, createAgentSessionRuntime, createAgentSessionServices, getAgentDir, InteractiveMode, SessionManager, } from \"@earendil-works/pi-coding-agent\"; const createRuntime: CreateAgentSessionRuntimeFactory = async ({ cwd, sessionManager, sessionStartEvent }) => { const services = await createAgentSessionServices({ cwd }); return { ...(await createAgentSessionFromServices({ services, sessionManager, sessionStartEvent })), services, diagnostics: services.diagnostics, }; }; const runtime = await createAgentSessionRuntime(createRuntime, { cwd: process.cwd(), agentDir: getAgentDir(), sessionManager: SessionManager.create(process.cwd()), }); const mode = new InteractiveMode(runtime, { migratedProviders: [], modelFallbackMessage: undefined, initialMessage: \"Hello\", initialImages: [], initialMessages: [], }); await mode.run();"
+            - generic [ref=e710]:
+              - heading "runPrintMode" [level=3] [ref=e711]
+              - 'link "Permalink: runPrintMode" [ref=e712] [cursor=pointer]':
+                - /url: "#runprintmode"
+                - img [ref=e714]
+                - img [ref=e717]
+                - generic: Copied
+            - paragraph [ref=e719]: "Single-shot mode: send prompts, output result, exit:"
+            - code [ref=e721]: "import { type CreateAgentSessionRuntimeFactory, createAgentSessionFromServices, createAgentSessionRuntime, createAgentSessionServices, getAgentDir, runPrintMode, SessionManager, } from \"@earendil-works/pi-coding-agent\"; const createRuntime: CreateAgentSessionRuntimeFactory = async ({ cwd, sessionManager, sessionStartEvent }) => { const services = await createAgentSessionServices({ cwd }); return { ...(await createAgentSessionFromServices({ services, sessionManager, sessionStartEvent })), services, diagnostics: services.diagnostics, }; }; const runtime = await createAgentSessionRuntime(createRuntime, { cwd: process.cwd(), agentDir: getAgentDir(), sessionManager: SessionManager.create(process.cwd()), }); await runPrintMode(runtime, { mode: \"text\", initialMessage: \"Hello\", initialImages: [], messages: [\"Follow up\"], });"
+            - generic [ref=e722]:
+              - heading "runRpcMode" [level=3] [ref=e723]
+              - 'link "Permalink: runRpcMode" [ref=e724] [cursor=pointer]':
+                - /url: "#runrpcmode"
+                - img [ref=e726]
+                - img [ref=e729]
+                - generic: Copied
+            - paragraph [ref=e731]: "JSON-RPC mode for subprocess integration:"
+            - code [ref=e733]: "import { type CreateAgentSessionRuntimeFactory, createAgentSessionFromServices, createAgentSessionRuntime, createAgentSessionServices, getAgentDir, runRpcMode, SessionManager, } from \"@earendil-works/pi-coding-agent\"; const createRuntime: CreateAgentSessionRuntimeFactory = async ({ cwd, sessionManager, sessionStartEvent }) => { const services = await createAgentSessionServices({ cwd }); return { ...(await createAgentSessionFromServices({ services, sessionManager, sessionStartEvent })), services, diagnostics: services.diagnostics, }; }; const runtime = await createAgentSessionRuntime(createRuntime, { cwd: process.cwd(), agentDir: getAgentDir(), sessionManager: SessionManager.create(process.cwd()), }); await runRpcMode(runtime);"
+            - paragraph [ref=e734]:
+              - text: See
+              - link "RPC documentation" [ref=e735] [cursor=pointer]:
+                - /url: /docs/latest/rpc
+              - text: for the JSON protocol.
+            - generic [ref=e736]:
+              - heading "RPC Mode Alternative" [level=2] [ref=e737]
+              - 'link "Permalink: RPC Mode Alternative" [ref=e738] [cursor=pointer]':
+                - /url: "#rpc-mode-alternative"
+                - img [ref=e740]
+                - img [ref=e743]
+                - generic: Copied
+            - paragraph [ref=e745]: "For subprocess-based integration without building with the SDK, use the CLI directly:"
+            - code [ref=e747]: pi --mode rpc --no-session
+            - paragraph [ref=e748]:
+              - text: See
+              - link "RPC documentation" [ref=e749] [cursor=pointer]:
+                - /url: /docs/latest/rpc
+              - text: for the JSON protocol.
+            - paragraph [ref=e750]: "The SDK is preferred when:"
+            - list [ref=e751]:
+              - listitem [ref=e752]: You want type safety
+              - listitem [ref=e753]: You're in the same Node.js process
+              - listitem [ref=e754]: You need direct access to agent state
+              - listitem [ref=e755]: You want to customize tools/extensions programmatically
+            - paragraph [ref=e756]: "RPC mode is preferred when:"
+            - list [ref=e757]:
+              - listitem [ref=e758]: You're integrating from another language
+              - listitem [ref=e759]: You want process isolation
+              - listitem [ref=e760]: You're building a language-agnostic client
+            - generic [ref=e761]:
+              - heading "Exports" [level=2] [ref=e762]
+              - 'link "Permalink: Exports" [ref=e763] [cursor=pointer]':
+                - /url: "#exports"
+                - img [ref=e765]
+                - img [ref=e768]
+                - generic: Copied
+            - paragraph [ref=e770]: "The main entry point exports:"
+            - code [ref=e772]: // Factory createAgentSession createAgentSessionRuntime AgentSessionRuntime // Auth and Models AuthStorage ModelRegistry // Resource loading DefaultResourceLoader type ResourceLoader createEventBus // Helpers defineTool // Session management SessionManager SettingsManager // Tool factories createCodingTools createReadOnlyTools createReadTool, createBashTool, createEditTool, createWriteTool createGrepTool, createFindTool, createLsTool // Types type CreateAgentSessionOptions type CreateAgentSessionResult type ExtensionFactory type ExtensionAPI type ToolDefinition type Skill type PromptTemplate type Tool
+            - paragraph [ref=e773]:
+              - text: For extension types, see
+              - link "extensions.md" [ref=e774] [cursor=pointer]:
+                - /url: /docs/latest/extensions
+              - text: for the full API.
+        - complementary [ref=e775]:
+          - generic [ref=e776]:
+            - heading "On this page" [level=2] [ref=e778]
+            - navigation "On this page" [ref=e780]:
+              - link "Quick Start" [ref=e781] [cursor=pointer]:
+                - /url: "#quick-start"
+              - link "Installation" [ref=e782] [cursor=pointer]:
+                - /url: "#installation"
+              - link "Core Concepts" [ref=e783] [cursor=pointer]:
+                - /url: "#core-concepts"
+              - link "createAgentSession()" [ref=e784] [cursor=pointer]:
+                - /url: "#createagentsession"
+              - link "AgentSession" [ref=e785] [cursor=pointer]:
+                - /url: "#agentsession"
+              - link "createAgentSessionRuntime() and AgentSessionRuntime" [ref=e786] [cursor=pointer]:
+                - /url: "#createagentsessionruntime-and-agentsessionruntime"
+              - link "Prompting and Message Queueing" [ref=e787] [cursor=pointer]:
+                - /url: "#prompting-and-message-queueing"
+              - link "Agent and AgentState" [ref=e788] [cursor=pointer]:
+                - /url: "#agent-and-agentstate"
+              - link "Events" [ref=e789] [cursor=pointer]:
+                - /url: "#events"
+              - link "Options Reference" [ref=e790] [cursor=pointer]:
+                - /url: "#options-reference"
+              - link "Directories" [ref=e791] [cursor=pointer]:
+                - /url: "#directories"
+              - link "Model" [ref=e792] [cursor=pointer]:
+                - /url: "#model"
+              - link "API Keys and OAuth" [ref=e793] [cursor=pointer]:
+                - /url: "#api-keys-and-oauth"
+              - link "System Prompt" [ref=e794] [cursor=pointer]:
+                - /url: "#system-prompt"
+              - link "Tools" [ref=e795] [cursor=pointer]:
+                - /url: "#tools"
+              - link "Custom Tools" [ref=e796] [cursor=pointer]:
+                - /url: "#custom-tools"
+              - link "Extensions" [ref=e797] [cursor=pointer]:
+                - /url: "#extensions"
+              - link "Skills" [ref=e798] [cursor=pointer]:
+                - /url: "#skills"
+              - link "Context Files" [ref=e799] [cursor=pointer]:
+                - /url: "#context-files"
+              - link "Slash Commands" [ref=e800] [cursor=pointer]:
+                - /url: "#slash-commands"
+              - link "Session Management" [ref=e801] [cursor=pointer]:
+                - /url: "#session-management"
+              - link "Settings Management" [ref=e802] [cursor=pointer]:
+                - /url: "#settings-management"
+              - link "ResourceLoader" [ref=e803] [cursor=pointer]:
+                - /url: "#resourceloader"
+              - link "Return Value" [ref=e804] [cursor=pointer]:
+                - /url: "#return-value"
+              - link "Complete Example" [ref=e805] [cursor=pointer]:
+                - /url: "#complete-example"
+              - link "Run Modes" [ref=e806] [cursor=pointer]:
+                - /url: "#run-modes"
+              - link "InteractiveMode" [ref=e807] [cursor=pointer]:
+                - /url: "#interactivemode"
+              - link "runPrintMode" [ref=e808] [cursor=pointer]:
+                - /url: "#runprintmode"
+              - link "runRpcMode" [ref=e809] [cursor=pointer]:
+                - /url: "#runrpcmode"
+              - link "RPC Mode Alternative" [ref=e810] [cursor=pointer]:
+                - /url: "#rpc-mode-alternative"
+              - link "Exports" [ref=e811] [cursor=pointer]:
+                - /url: "#exports"
+    - contentinfo [ref=e812]:
+      - generic [ref=e813]:
+        - generic [ref=e814]:
+          - generic [ref=e815]:
+            - link "Earendil Inc." [ref=e816] [cursor=pointer]:
+              - /url: https://earendil.com/
+            - text: "& Contributors"
+          - link "Press Kit" [ref=e818] [cursor=pointer]:
+            - /url: /press-kit
+          - generic [ref=e819]: MIT License
+        - generic [ref=e820]:
+          - text: pi.dev domain graciously donated by
+          - link "exe.dev" [ref=e821] [cursor=pointer]:
+            - /url: https://exe.dev

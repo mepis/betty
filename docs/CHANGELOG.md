@@ -6,19 +6,22 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- **Web Frontend**: Vue 3 SPA (`src/web/frontend/`) with real-time chat interface, WebSocket-based RPC client, and markdown rendering
-- **Web Backend**: Express + WebSocket proxy (`src/web/backend/`) bridging the browser to the pi RPC server
-- **Testing Agent**: New `.agents/testing/` agent with comprehensive test report and audit capabilities
-- **Markdown Preview**: `MarkdownPreview.vue` component for rendering chat messages with syntax highlighting and copy-to-clipboard
-- **Session Sidebar**: `SessionSidebar.vue` component for managing chat sessions with localStorage persistence
+- **pi.dev SDK Research**: Comprehensive analytical report on the pi.dev SDK architecture, API, extensions, and integration patterns (`.agents/deep-research/REPORT.md`)
+- **Web Chat App Design**: Complete design document with architecture, WebSocket protocol, phased implementation plan, and validation criteria (`.agents/plans/web-chat-app-design.md`)
+- **Implementation Plan**: Detailed 4-phase implementation plan covering scaffolding, SDK integration, frontend, and polish (`.agents/plans/web chat app implementation plan/`)
+- **Merge Request Skill**: New `.pi/skills/merge-request/` skill for generating MR descriptions
+- **Project Template**: `templates/project_template.md` for scaffolding new projects
 
 ### Changed
 
-- **Testing Agent**: Replaced old `.agents/testing/` agent with new version featuring structured test reports and audit workflows
+- **Project Direction**: Shifted from old web chat app implementation to comprehensive design-first approach with detailed architecture documents and phased implementation plan
 
 ### Removed
 
 - **Stale Agent Artifacts**: Removed 516 obsolete files from deep-research, playwright-cli, and testing agent runs (logs, page captures, screenshots, agent reports)
+- **Old Web Chat App**: Removed `src/web/` (frontend Vue SPA, Express backend, configs) — superseded by new design document and implementation plan
+- **Old Testing Agent**: Removed `.agents/testing/` artifacts (snapshots, test reports, state files, verification results)
+- **Old Extensions**: Removed `.pi/extensions/optimize-compaction.ts` and `src/llama/llama.cpp`
 
 ### Fixed
 
