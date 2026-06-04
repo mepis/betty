@@ -1,0 +1,28 @@
+{
+  "name": "betty-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "file:/home/jon/.local/lib/node_modules/@earendil-works/pi-coding-agent",
+    "express": "^5.1.0",
+    "ws": "^8.18.1",
+    "cors": "^2.8.5",
+    "helmet": "^8.1.0",
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "@types/node": "^22.14.0",
+    "@types/express": "^5.0.1",
+    "@types/ws": "^8.18.1",
+    "@types/cors": "^2.8.17",
+    "@types/helmet": "^4.0.0",
+    "tsx": "^4.19.3"
+  }
+}

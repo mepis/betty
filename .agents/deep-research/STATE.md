@@ -2,11 +2,11 @@
 topic: "Opencode.ai Directory Restriction Mechanisms"
 created_at: "2026-06-04 10:00"
 last_updated: "2026-06-04 11:00"
-current_phase: "Phase 4"
-status: "active"
+current_phase: "Complete"
+status: "completed"
 library_topic_slug: "opencode-ai-directory-restriction"
 library_entry_exists: false
-stopping_criteria: ""
+stopping_criteria: "A - All gaps addressed; comprehensive coverage of OpenCode's permission system, external_directory guard, per-agent overrides, subagent inheritance, symlink vulnerabilities, and community hardening practices."
 ---
 
 ## Phase 0: Library Check
