@@ -15,6 +15,7 @@
 | [Agent Memory Using Markdown](topics/agent-memory-using-markdown/) | 2026-05-29 | Complete | agent-memory, markdown, llm-wiki, structured-text, mcp |
 | [Using Go to Build Agentic Systems](topics/using-go-to-build-agentic-systems/) | 2026-05-29 | Complete | golang, ai, agent, tool-calling, mcp, llm, framework |
 | [pi.dev SDK](topics/pi-dev-sdk/) | 2026-06-03 | Complete | pi.dev, SDK, agent-harness, TypeScript, coding-agent, OpenClaw, extensions, RPC, Lit |
+| [Opencode.ai Directory Restriction Mechanisms](topics/opencode-ai-directory-restriction/) | 2026-06-04 | Complete | opencode, agent-harness, security, permissions, sandboxing, directory-restriction, filesystem, anomaly |
 
 ## Detail
 
@@ -185,3 +186,19 @@ The pi.dev SDK is the programmatic interface for embedding Mario Zechner's open-
 - **OpenClaw as canonical integration:** 145k+ stars, multi-channel (WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Teams)
 - **Most extensible open-source agent:** 25+ events vs Claude Code's 14 hooks; in-process TypeScript vs shell-based hooks
 - **Session tree:** JSONL storage with branching, forking, cloning via id/parentId linking
+
+---
+
+## Opencode.ai Directory Restriction Mechanisms
+
+**Date:** 2026-06-04
+
+OpenCode.ai (by Anomaly) restricts AI agents to specific directories through a permission-based, tool-centric model rather than OS-level sandboxing. The primary mechanism is the `external_directory` permission that triggers when tools access paths outside the working directory, combined with per-agent permission overrides and wildcard pattern matching.
+
+**Key findings:**
+- **Permission system is tool-centric, not path-centric:** Each tool (read, edit, glob, grep, bash, etc.) gated with allow/ask/deny actions using wildcard pattern matching; last-match-wins semantics
+- **external_directory is the primary directory boundary:** Defaults to "ask" for user approval when tools access paths outside the working directory
+- **Per-agent permission overrides fully supported:** Different agents can have different access levels via JSON config or Markdown agent files
+- **Subagent permission inheritance changed May 2026:** PR #26597 introduced parent deny inheritance; fixed by PR #26845/#27201 to only inherit edit-class denies
+- **No OS-level sandboxing:** Docker container isolation recommended for production; symlink escape vulnerabilities patched multiple times (issues #8313, #6403; PRs #7515, #8727, #10366, #11351)
+- **Per-agent filesystem path boundaries remain unimplemented:** Issue #5529 (Dec 2025, 11+ 👍) proposes fs.allow/fs.deny but no implementation exists

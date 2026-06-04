@@ -669,11 +669,13 @@ Build the main chat interface with message list, streaming indicator, tool execu
         chatStore.setSessionName(event.data.name);
         break;
       case 'thinking_level_changed':
-        // Fix for Issue #4: Also update available levels when thinking level changes
         chatStore.setThinkingLevel(event.data.level);
-        if (event.data.availableLevels) {
-          chatStore.setAvailableThinkingLevels(event.data.availableLevels);
-        }
+        // Note: availableLevels is no longer sent by the backend.
+        // The frontend should filter thinking levels based on the current model's capabilities.
+        break;
+      case 'model_select':
+        // Update model display in settings and connection bar
+        chatStore.setModel(event.data.model);
         break;
       case 'extension_ui_request':
         // Fix for Issue #1: Handle extension UI dialog requests

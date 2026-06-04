@@ -343,13 +343,26 @@ Subscribe to `runtime.session.subscribe()` and map all SDK `AgentSessionEvent` t
         ws.send(JSON.stringify({ type: 'session_info_changed', data: { name: event.name } }));
         break;
       case 'thinking_level_changed':
-        // Fix for Issue #4 & #17: Include available levels in the event
-        const availableLevels = runtime.session.getAvailableThinkingLevels();
+        // Fix for Issue #4 & #17: SDK does NOT provide getAvailableThinkingLevels().
+        // Available levels are determined by the model's reasoning capability.
+        // The frontend filters levels client-side based on model type.
         ws.send(JSON.stringify({
           type: 'thinking_level_changed',
           data: {
             level: event.level,
-            availableLevels: availableLevels,
+          },
+        }));
+        break;
+      case 'model_select':
+        // Relay model selection changes to frontend
+        ws.send(JSON.stringify({
+          type: 'model_select',
+          data: {
+            model: event.model?.id,
+            provider: event.model?.provider,
+            previousModel: event.previousModel?.id,
+            previousProvider: event.previousModel?.provider,
+            source: event.source,
           },
         }));
         break;
@@ -392,11 +405,11 @@ Subscribe to `runtime.session.subscribe()` and map all SDK `AgentSessionEvent` t
   ws.send(JSON.stringify({
     type: 'session_info',
     data: {
-      sessionId: runtime.session.id,
+      sessionId: runtime.session.sessionId,
       sessionFile: runtime.session.sessionFile,
-      model: runtime.session.model.name,
+      model: runtime.session.model.id,
       thinkingLevel: runtime.session.thinkingLevel,
-      sessionName: runtime.session.name,
+      sessionName: runtime.session.getSessionName(),
     },
   }));
   ```
@@ -425,7 +438,7 @@ Subscribe to `runtime.session.subscribe()` and map all SDK `AgentSessionEvent` t
   | Auto-retry | `auto_retry_start`, `auto_retry_end` |
   | Extension errors | `extension_error` |
   | Extension UI | `extension_ui_request` (Fix for Issue #1) |
-  | Session metadata | `session_info_changed`, `thinking_level_changed` |
+  | Session metadata | `session_info_changed`, `thinking_level_changed`, `model_select` |
 
 - **`message_update` delta types** (from `assistantMessageEvent.type`):
   - `text_start`, `text_delta`, `text_end` — text content
@@ -433,7 +446,7 @@ Subscribe to `runtime.session.subscribe()` and map all SDK `AgentSessionEvent` t
   - `toolcall_start`, `toolcall_delta`, `toolcall_end` — tool calls
   - `done`, `error` — completion/error
 
-- **`compaction_end` result field**: `undefined` (not `null`) when compaction is aborted or failed. `details` carries extension-specific compaction data.
+- **`compaction_end` result field**: `null` when compaction is aborted or failed. `details` carries extension-specific compaction data.
 
 - **`agent_end.willRetry`**: When `true`, the agent will automatically retry (e.g., after compaction). Relay to frontend for UI indicator.
 
@@ -449,12 +462,13 @@ Subscribe to `runtime.session.subscribe()` and map all SDK `AgentSessionEvent` t
 - Auto-retry events show "Retrying (attempt X/Y)..." indicator (via relay)
 - `session_changed` is emitted after session replacement
 - `session_info_changed` updates the sidebar when session name changes
-- `thinking_level_changed` updates the settings panel when thinking level changes (includes availableLevels — Fix #4, #17)
+- `thinking_level_changed` updates the settings panel when thinking level changes
+- `model_select` updates the settings panel when model changes (new event)
 - `extension_ui_request` events are relayed to the frontend (Fix #1)
 - `compaction_end` with `willRetry` shows "Retrying after compaction..." indicator (via relay)
 - `auto_retry_end` with `finalError` shows error toast (via relay)
 - No events are lost during rapid streaming
-- `setRebindSession()` eliminates manual re-subscription code
+- `setRebindSession()` (if available) or manual pattern eliminates re-subscription code
 
 ---
 
@@ -552,7 +566,12 @@ Implement the command handler that routes all client-to-server WebSocket command
       sessionPath: string;
       cwdOverride?: string;
     };
-    const result = await runtime.switchSession(sessionPath, { cwdOverride });
+    // Note: cwdOverride is a custom extension parameter.
+    // The SDK's switchSession(sessionPath) may not support it.
+    // If unsupported, fall back to switchSession(sessionPath) only.
+    const result = cwdOverride
+      ? await runtime.switchSession(sessionPath, { cwdOverride })
+      : await runtime.switchSession(sessionPath);
     ws.send(JSON.stringify({
       type: 'response',
       command: 'switch_session',
@@ -577,7 +596,7 @@ Implement the command handler that routes all client-to-server WebSocket command
       success: true,
       data: {
         cancelled: result.cancelled,
-        selectedText: result.selectedText,
+        text: result.text,
       },
     }));
     break;
@@ -621,8 +640,8 @@ Implement the command handler that routes all client-to-server WebSocket command
       data: {
         editorText: result.editorText,
         cancelled: result.cancelled,
-        aborted: result.aborted,
-        summaryEntry: result.summaryEntry,
+        // Note: SDK navigateTree() returns { editorText?, cancelled: boolean } only.
+        // aborted and summaryEntry are not part of the SDK return type.
       },
     }));
     break;
@@ -901,9 +920,9 @@ Implement the command handler that routes all client-to-server WebSocket command
 
 - **Session replacement cancellation**: `newSession()`, `switchSession()`, and `fork()` return `{ cancelled: boolean }` when extensions cancel the operation (via `session_before_switch` or `session_before_fork` handlers). The frontend should show a toast explaining the cancellation.
 
-- **`fork` response `selectedText`**: Contains the text from the forked entry for pre-filling the input area.
+- **`fork` response `text`**: Contains the text from the forked entry for pre-filling the input area. (RPC protocol uses `text`, not `selectedText`.)
 
-- **`clone` vs `fork`**: `clone()` uses `fork(entryId, { position: "at" })` — does NOT return `selectedText`. It replaces the current branch rather than creating a new one.
+- **`clone` vs `fork`**: `clone()` uses `fork(entryId, { position: "at" })` — does NOT return `text`. It replaces the current branch rather than creating a new one.
 
 - **`navigateTree()` vs `fork()`**: `navigateTree()` navigates in-place within the same session file (different from `fork` which creates a new file).
 
@@ -916,7 +935,6 @@ Implement the command handler that routes all client-to-server WebSocket command
 - `auth` command validates shared secret on first message
 - `prompt` command triggers agent response
 - `prompt` without `streamingBehavior` while streaming throws an error with user-friendly message (Fix #7)
-- `prompt` with `streamingBehavior: 'followUp'` queues after agent finishes
 - `prompt` with `streamingBehavior: 'followUp'` queues after agent finishes
 - Extension commands (`/mycommand`) execute immediately even during streaming
 - `abort` command stops current agent operation
@@ -953,7 +971,7 @@ Create REST API endpoints for models, commands, sessions, and session stats. Sup
 
   router.get('/', (_req, res) => {
     try {
-      const models = modelRegistry.getAvailable(); // synchronous
+      const models = await modelRegistry.getAvailable(); // async
       if (models.length === 0) {
         // Check if API keys are configured
         res.json({
@@ -985,8 +1003,9 @@ Create REST API endpoints for models, commands, sessions, and session stats. Sup
 
 - [ ] **2.4.4** Create `src/backend/src/routes/session-stats.ts`:
   - `GET /api/sessions/:id/stats` — Return token usage, cost, and context window stats
-  - Parse the session's JSONL file to compute stats
-  - Or use SDK's built-in stats if available
+  - Use SDK's built-in stats if available (preferred approach)
+  - Fallback: Parse the session's JSONL file to compute stats
+  - The RPC docs show `get_session_stats` returns: userMessages, assistantMessages, toolCalls, toolResults, totalMessages, tokens (input/output/cacheRead/cacheWrite/total), cost, contextUsage (tokens/contextWindow/percent)
 
 - [ ] **2.4.5** Create `src/backend/src/routes/health.ts` (already done in Task 1.2, verify):
   - `GET /api/health` — Returns `{ status: 'ok' }`
@@ -1022,7 +1041,7 @@ Create REST API endpoints for models, commands, sessions, and session stats. Sup
 
 ### Additional Info
 
-- **`modelRegistry.getAvailable()` is synchronous** — do NOT `await` it. It's a getter, not an async method.
+- **`modelRegistry.getAvailable()` is async** — must be `await`ed. All SDK examples use `await modelRegistry.getAvailable()`.
 
 - **Model resolution for `set_model`**: The command payload has `{ provider, modelId }` strings. The SDK requires a `Model<any>` object. Use `modelRegistry.find(provider, modelId)` to resolve.
 
@@ -1040,8 +1059,8 @@ Create REST API endpoints for models, commands, sessions, and session stats. Sup
 
 ### Acceptance Criteria
 
-- Available models are listed with provider, name, and availability status
-- `modelRegistry.getAvailable()` is called synchronously (not async)
+- Available models are listed with provider, id, and availability status
+- `modelRegistry.getAvailable()` is async (must be awaited)
 - Empty model list returns a clear message when no API keys are configured
 - Commands list includes extension commands, prompt templates, and skills
 - Session stats include token usage, cost, and context window percentage
@@ -1090,7 +1109,7 @@ Create REST API endpoints for models, commands, sessions, and session stats. Sup
 
 - **Re-binding extensions after session replacement**: Same as above — `bindExtensions()` must be called again after every session replacement.
 
-- **`modelRegistry.getAvailable()` is synchronous**: Don't `await` it. It's a getter.
+- **`modelRegistry.getAvailable()` is async**: Must `await` it. All SDK examples use `await modelRegistry.getAvailable()`.
 
 - **`ws.readyState` check**: Always check `ws.readyState === WebSocket.OPEN` before sending. If the connection is closing, `ws.send()` will throw.
 

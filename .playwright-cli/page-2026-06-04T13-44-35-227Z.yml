@@ -1,0 +1,398 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "OpenCode" [ref=e7] [cursor=pointer]:
+          - /url: /docs/
+          - generic [ref=e8]: OpenCode
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - link [ref=e11] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - img [ref=e12]
+            - link [ref=e14] [cursor=pointer]:
+              - /url: https://opencode.ai/discord
+              - img [ref=e15]
+          - button "Search" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: Search
+            - generic [ref=e20]:
+              - generic [ref=e21]: Ctrl
+              - generic [ref=e22]: K
+    - navigation "Main":
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "Intro" [ref=e28] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=e29]:
+          - link "Config" [ref=e30] [cursor=pointer]:
+            - /url: /docs/config/
+        - listitem [ref=e31]:
+          - link "Providers" [ref=e32] [cursor=pointer]:
+            - /url: /docs/providers/
+        - listitem [ref=e33]:
+          - link "Network" [ref=e34] [cursor=pointer]:
+            - /url: /docs/network/
+        - listitem [ref=e35]:
+          - link "Enterprise" [ref=e36] [cursor=pointer]:
+            - /url: /docs/enterprise/
+        - listitem [ref=e37]:
+          - link "Troubleshooting" [ref=e38] [cursor=pointer]:
+            - /url: /docs/troubleshooting/
+        - listitem [ref=e39]:
+          - link "Windows" [ref=e40] [cursor=pointer]:
+            - /url: /docs/windows-wsl
+        - listitem [ref=e41]:
+          - group [ref=e42]:
+            - generic "Usage" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: Usage
+              - img [ref=e45]
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Go" [ref=e49] [cursor=pointer]:
+                  - /url: /docs/go/
+              - listitem [ref=e50]:
+                - link "TUI" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/tui/
+              - listitem [ref=e52]:
+                - link "CLI" [ref=e53] [cursor=pointer]:
+                  - /url: /docs/cli/
+              - listitem [ref=e54]:
+                - link "Web" [ref=e55] [cursor=pointer]:
+                  - /url: /docs/web/
+              - listitem [ref=e56]:
+                - link "IDE" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/ide/
+              - listitem [ref=e58]:
+                - link "Zen" [ref=e59] [cursor=pointer]:
+                  - /url: /docs/zen/
+              - listitem [ref=e60]:
+                - link "Share" [ref=e61] [cursor=pointer]:
+                  - /url: /docs/share/
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/github/
+              - listitem [ref=e64]:
+                - link "GitLab" [ref=e65] [cursor=pointer]:
+                  - /url: /docs/gitlab/
+        - listitem [ref=e66]:
+          - group [ref=e67]:
+            - generic "Configure" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: Configure
+              - img [ref=e70]
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - link "Tools" [ref=e74] [cursor=pointer]:
+                  - /url: /docs/tools/
+              - listitem [ref=e75]:
+                - link "Rules" [ref=e76] [cursor=pointer]:
+                  - /url: /docs/rules/
+              - listitem [ref=e77]:
+                - link "Agents" [ref=e78] [cursor=pointer]:
+                  - /url: /docs/agents/
+              - listitem [ref=e79]:
+                - link "Models" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/models/
+              - listitem [ref=e81]:
+                - link "Themes" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/themes/
+              - listitem [ref=e83]:
+                - link "Keybinds" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/keybinds/
+              - listitem [ref=e85]:
+                - link "Commands" [ref=e86] [cursor=pointer]:
+                  - /url: /docs/commands/
+              - listitem [ref=e87]:
+                - link "Formatters" [ref=e88] [cursor=pointer]:
+                  - /url: /docs/formatters/
+              - listitem [ref=e89]:
+                - link "Permissions" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/permissions/
+              - listitem [ref=e91]:
+                - link "Policies" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/policies/
+              - listitem [ref=e93]:
+                - link "LSP Servers" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/lsp/
+              - listitem [ref=e95]:
+                - link "MCP servers" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/mcp-servers/
+              - listitem [ref=e97]:
+                - link "ACP Support" [ref=e98] [cursor=pointer]:
+                  - /url: /docs/acp/
+              - listitem [ref=e99]:
+                - link "Agent Skills" [ref=e100] [cursor=pointer]:
+                  - /url: /docs/skills/
+              - listitem [ref=e101]:
+                - link "Custom Tools" [ref=e102] [cursor=pointer]:
+                  - /url: /docs/custom-tools/
+        - listitem [ref=e103]:
+          - group [ref=e104]:
+            - generic "Develop" [ref=e105] [cursor=pointer]:
+              - generic [ref=e106]: Develop
+              - img [ref=e107]
+            - list [ref=e109]:
+              - listitem [ref=e110]:
+                - link "SDK" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/sdk/
+              - listitem [ref=e112]:
+                - link "Server" [ref=e113] [cursor=pointer]:
+                  - /url: /docs/server/
+              - listitem [ref=e114]:
+                - link "Plugins" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/plugins/
+              - listitem [ref=e116]:
+                - link "Ecosystem" [ref=e117] [cursor=pointer]:
+                  - /url: /docs/ecosystem/
+    - generic [ref=e119]:
+      - complementary [ref=e120]:
+        - navigation "On this page" [ref=e125]:
+          - heading "On this page" [level=2] [ref=e126]
+          - list [ref=e127]:
+            - listitem [ref=e128]:
+              - link "Overview" [ref=e129] [cursor=pointer]:
+                - /url: "#_top"
+            - listitem [ref=e130]:
+              - link "Configuration" [ref=e131] [cursor=pointer]:
+                - /url: "#configuration"
+            - listitem [ref=e132]:
+              - link "Available Policies" [ref=e133] [cursor=pointer]:
+                - /url: "#available-policies"
+            - listitem [ref=e134]:
+              - link "Matching" [ref=e135] [cursor=pointer]:
+                - /url: "#matching"
+            - listitem [ref=e136]:
+              - link "Rule Order" [ref=e137] [cursor=pointer]:
+                - /url: "#rule-order"
+            - listitem [ref=e138]:
+              - link "Provider Lists" [ref=e139] [cursor=pointer]:
+                - /url: "#provider-lists"
+      - main [ref=e141]:
+        - generic [ref=e143]:
+          - heading "Policies" [level=1] [ref=e144]
+          - paragraph [ref=e145]: Control which configured resources OpenCode may use.
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - paragraph [ref=e149]:
+              - text: Policies control whether OpenCode may perform an action on a named resource. This feature is experimental and is configured with the
+              - code [ref=e150]: "`experimental.policies`"
+              - text: array in
+              - code [ref=e151]: "`opencode.json`"
+              - text: .
+            - paragraph [ref=e152]:
+              - text: Policies are separate from
+              - link "permissions" [ref=e153] [cursor=pointer]:
+                - /url: /docs/permissions
+              - text: . Permissions control what tools can do during a session, while policies control whether OpenCode may use a resource such as an LLM provider.
+            - separator [ref=e154]
+            - heading "Configuration" [level=2] [ref=e155]:
+              - link "Configuration" [ref=e156]:
+                - /url: "#configuration"
+            - paragraph [ref=e157]: "Each policy statement has three fields:"
+            - list [ref=e158]:
+              - listitem [ref=e159]:
+                - code [ref=e160]: "`effect`"
+                - text: "- Either"
+                - code [ref=e161]: "`\"allow\"`"
+                - text: or
+                - code [ref=e162]: "`\"deny\"`"
+                - text: .
+              - listitem [ref=e163]:
+                - code [ref=e164]: "`action`"
+                - text: "- The operation being controlled."
+              - listitem [ref=e165]:
+                - code [ref=e166]: "`resource`"
+                - text: "- The resource ID or wildcard pattern the statement applies to."
+            - paragraph [ref=e167]:
+              - text: For example, deny use of the
+              - code [ref=e168]: "`openai`"
+              - text: "provider:"
+            - figure "opencode.json" [ref=e170]:
+              - generic [ref=e172]: opencode.json
+              - code [ref=e174]:
+                - generic [ref=e176]: "{"
+                - generic [ref=e178]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e180]: "\"experimental\": {"
+                - generic [ref=e182]: "\"policies\": ["
+                - generic [ref=e184]: "{"
+                - generic [ref=e187]: "\"effect\": \"deny\","
+                - generic [ref=e189]: "\"action\": \"provider.use\","
+                - generic [ref=e191]: "\"resource\": \"openai\""
+                - generic [ref=e193]: "}"
+                - generic [ref=e196]: "]"
+                - generic [ref=e199]: "}"
+                - generic [ref=e202]: "}"
+              - button "Copy to clipboard" [ref=e204] [cursor=pointer]
+            - paragraph [ref=e206]: A provider denied by policy is not available for model selection or model use, even if it has credentials or is otherwise configured correctly.
+            - separator [ref=e207]
+            - heading "Available Policies" [level=2] [ref=e208]:
+              - link "Available Policies" [ref=e209]:
+                - /url: "#available-policies"
+            - paragraph [ref=e210]: "OpenCode currently supports one policy action:"
+            - table [ref=e211]:
+              - rowgroup [ref=e212]:
+                - row "Action Resource Description" [ref=e213]:
+                  - columnheader "Action" [ref=e214]
+                  - columnheader "Resource" [ref=e215]
+                  - columnheader "Description" [ref=e216]
+              - rowgroup [ref=e217]:
+                - 'row "`provider.use` Provider ID, such as `openai` Allow or deny use of an LLM provider." [ref=e218]':
+                  - 'cell "`provider.use`" [ref=e219]':
+                    - code [ref=e220]: "`provider.use`"
+                  - 'cell "Provider ID, such as `openai`" [ref=e221]':
+                    - text: Provider ID, such as
+                    - code [ref=e222]: "`openai`"
+                  - cell "Allow or deny use of an LLM provider." [ref=e223]
+            - paragraph [ref=e224]: More policy actions may be added in the future.
+            - separator [ref=e225]
+            - heading "Matching" [level=2] [ref=e226]:
+              - link "Matching" [ref=e227]:
+                - /url: "#matching"
+            - paragraph [ref=e228]:
+              - text: The
+              - code [ref=e229]: "`resource`"
+              - text: field supports wildcard matching. Use
+              - code [ref=e230]: "`*`"
+              - text: to match zero or more characters and
+              - code [ref=e231]: "`?`"
+              - text: to match one character.
+            - figure "opencode.json" [ref=e233]:
+              - generic [ref=e235]: opencode.json
+              - code [ref=e237]:
+                - generic [ref=e239]: "{"
+                - generic [ref=e241]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e243]: "\"experimental\": {"
+                - generic [ref=e245]: "\"policies\": ["
+                - generic [ref=e247]: "{"
+                - generic [ref=e250]: "\"effect\": \"deny\","
+                - generic [ref=e252]: "\"action\": \"provider.use\","
+                - generic [ref=e254]: "\"resource\": \"company-*\""
+                - generic [ref=e256]: "}"
+                - generic [ref=e259]: "]"
+                - generic [ref=e262]: "}"
+                - generic [ref=e265]: "}"
+              - button "Copy to clipboard" [ref=e267] [cursor=pointer]
+            - paragraph [ref=e269]:
+              - text: This denies providers such as
+              - code [ref=e270]: "`company-us`"
+              - text: and
+              - code [ref=e271]: "`company-eu`"
+              - text: .
+            - separator [ref=e272]
+            - heading "Rule Order" [level=2] [ref=e273]:
+              - link "Rule Order" [ref=e274]:
+                - /url: "#rule-order"
+            - paragraph [ref=e275]: When multiple statements match, the last matching statement wins. Put broad rules first, then more specific exceptions after them.
+            - paragraph [ref=e276]: "For example, allow only Anthropic:"
+            - figure "opencode.json" [ref=e278]:
+              - generic [ref=e280]: opencode.json
+              - code [ref=e282]:
+                - generic [ref=e284]: "{"
+                - generic [ref=e286]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e288]: "\"experimental\": {"
+                - generic [ref=e290]: "\"policies\": ["
+                - generic [ref=e292]: "{"
+                - generic [ref=e295]: "\"effect\": \"deny\","
+                - generic [ref=e297]: "\"action\": \"provider.use\","
+                - generic [ref=e299]: "\"resource\": \"*\""
+                - generic [ref=e301]: "},"
+                - generic [ref=e304]: "{"
+                - generic [ref=e307]: "\"effect\": \"allow\","
+                - generic [ref=e309]: "\"action\": \"provider.use\","
+                - generic [ref=e311]: "\"resource\": \"anthropic\""
+                - generic [ref=e313]: "}"
+                - generic [ref=e316]: "]"
+                - generic [ref=e319]: "}"
+                - generic [ref=e322]: "}"
+              - button "Copy to clipboard" [ref=e324] [cursor=pointer]
+            - paragraph [ref=e326]: If no policy matches a provider, provider use is allowed by default.
+            - paragraph [ref=e327]: Policies may be set in both your global config and project config. If policies from both locations match the same provider, your global policy takes priority over the project policy. This prevents a repository from re-enabling a provider that you deny globally.
+            - separator [ref=e328]
+            - heading "Provider Lists" [level=2] [ref=e329]:
+              - link "Provider Lists" [ref=e330]:
+                - /url: "#provider-lists"
+            - paragraph [ref=e331]:
+              - text: Use policies instead of the older
+              - code [ref=e332]: "`disabled_providers`"
+              - text: and
+              - code [ref=e333]: "`enabled_providers`"
+              - text: settings when controlling provider access.
+            - paragraph [ref=e334]:
+              - text: To replace
+              - code [ref=e335]: "`disabled_providers`"
+              - text: ":"
+            - figure "opencode.json" [ref=e337]:
+              - generic [ref=e339]: opencode.json
+              - code [ref=e341]:
+                - generic [ref=e343]: "{"
+                - generic [ref=e345]: "\"experimental\": {"
+                - generic [ref=e347]: "\"policies\": ["
+                - generic [ref=e349]: "{ \"effect\": \"deny\", \"action\": \"provider.use\", \"resource\": \"openai\" },"
+                - generic [ref=e352]: "{ \"effect\": \"deny\", \"action\": \"provider.use\", \"resource\": \"google\" }"
+                - generic [ref=e355]: "]"
+                - generic [ref=e358]: "}"
+                - generic [ref=e361]: "}"
+              - button "Copy to clipboard" [ref=e363] [cursor=pointer]
+            - paragraph [ref=e365]:
+              - text: To replace
+              - code [ref=e366]: "`enabled_providers`"
+              - text: ", deny all providers first and allow the selected providers after it:"
+            - figure "opencode.json" [ref=e368]:
+              - generic [ref=e370]: opencode.json
+              - code [ref=e372]:
+                - generic [ref=e374]: "{"
+                - generic [ref=e376]: "\"experimental\": {"
+                - generic [ref=e378]: "\"policies\": ["
+                - generic [ref=e380]: "{ \"effect\": \"deny\", \"action\": \"provider.use\", \"resource\": \"*\" },"
+                - generic [ref=e383]: "{ \"effect\": \"allow\", \"action\": \"provider.use\", \"resource\": \"anthropic\" },"
+                - generic [ref=e386]: "{ \"effect\": \"allow\", \"action\": \"provider.use\", \"resource\": \"openai\" }"
+                - generic [ref=e389]: "]"
+                - generic [ref=e392]: "}"
+                - generic [ref=e395]: "}"
+              - button "Copy to clipboard" [ref=e397] [cursor=pointer]
+          - generic [ref=e400]:
+            - generic [ref=e401]:
+              - link "Edit page" [ref=e402] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/edit/dev/packages/web/src/content/docs/policies.mdx
+                - img [ref=e403]
+                - text: Edit page
+              - link "Found a bug? Open an issue" [ref=e405] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues/new
+                - img [ref=e406]
+                - text: Found a bug? Open an issue
+              - link "Join our Discord community" [ref=e408] [cursor=pointer]:
+                - /url: https://opencode.ai/discord
+                - img [ref=e409]
+                - text: Join our Discord community
+              - generic [ref=e412]:
+                - generic [ref=e413]: Select language
+                - img
+                - combobox "Select language" [ref=e414] [cursor=pointer]:
+                  - option "English" [selected]
+                  - option "العربية"
+                  - option "Bosanski"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Español"
+                  - option "Français"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어"
+                  - option "Norsk Bokmål"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Русский"
+                  - option "ไทย"
+                  - option "Türkçe"
+                  - option "简体中文"
+                  - option "繁體中文"
+                - img
+            - generic [ref=e415]:
+              - paragraph [ref=e416]:
+                - text: ©
+                - link "Anomaly" [ref=e417] [cursor=pointer]:
+                  - /url: https://anoma.ly
+              - paragraph [ref=e418]:
+                - text: "Last updated:"
+                - time [ref=e419]: Jun 3, 2026

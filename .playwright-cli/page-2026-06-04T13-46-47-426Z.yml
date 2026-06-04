@@ -1,0 +1,507 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fanomalyco%2Fopencode%2Fpull%2F8727
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fpull_requests_fragments%2Fpull_request_layout&source=header-repo&source_repo=anomalyco%2Fopencode
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "anomalyco" [ref=e70] [cursor=pointer]:
+            - /url: /anomalyco
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "opencode" [ref=e73] [cursor=pointer]:
+              - /url: /anomalyco/opencode
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fanomalyco%2Fopencode
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 20.3k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fanomalyco%2Fopencode
+                - img [ref=e82]
+                - text: Fork
+                - generic "20,318" [ref=e84]: 20.3k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fanomalyco%2Fopencode
+                - img [ref=e88]
+                - text: Star
+                - generic "169785 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /anomalyco/opencode
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 5k+" [ref=e99] [cursor=pointer]:
+              - /url: /anomalyco/opencode/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "5,000+" [ref=e104]: 5k+
+          - listitem [ref=e105]:
+            - link "Pull requests 996" [ref=e106] [cursor=pointer]:
+              - /url: /anomalyco/opencode/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "996" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /anomalyco/opencode/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Projects" [ref=e117] [cursor=pointer]:
+              - /url: /anomalyco/opencode/projects
+              - img [ref=e118]
+              - generic [ref=e120]: Projects
+          - listitem [ref=e121]:
+            - link "Security and quality 2" [ref=e122] [cursor=pointer]:
+              - /url: /anomalyco/opencode/security
+              - img [ref=e123]
+              - generic [ref=e125]: Security and quality
+              - generic "2" [ref=e126]
+          - listitem [ref=e127]:
+            - link "Insights" [ref=e128] [cursor=pointer]:
+              - /url: /anomalyco/opencode/pulse
+              - img [ref=e129]
+              - generic [ref=e131]: Insights
+    - generic [ref=e138]:
+      - generic [ref=e141]:
+        - 'heading "fix(security): prevent path traversal via symlinks in File.read and File.list #8727" [level=1] [ref=e143]':
+          - text: "fix(security): prevent path traversal via symlinks in File.read and File.list"
+          - generic [ref=e145]: "#8727"
+        - generic [ref=e147]:
+          - generic [ref=e149]:
+            - img "Pull request" [ref=e150]
+            - text: Closed
+          - generic [ref=e153]:
+            - link "Ashwinhegde19" [ref=e154] [cursor=pointer]:
+              - /url: /Ashwinhegde19
+            - text: wants to merge 0 commit into
+            - generic [ref=e155]:
+              - link "anomalyco:dev" [ref=e156] [cursor=pointer]:
+                - /url: /anomalyco/opencode/tree/dev
+              - generic [ref=e157]: from
+              - generic [ref=e158]:
+                - link "Ashwinhegde19:dev" [ref=e159] [cursor=pointer]:
+                  - /url: /Ashwinhegde19/opencode/tree/dev
+                - button "Copy head branch name to clipboard" [ref=e160] [cursor=pointer]:
+                  - img [ref=e161]
+        - navigation "Pull request navigation tabs" [ref=e167]:
+          - tablist [ref=e168]:
+            - tab "Conversation" [selected] [ref=e169] [cursor=pointer]:
+              - img [ref=e170]
+              - text: Conversation
+            - tab "Commits (0)" [ref=e172] [cursor=pointer]:
+              - img [ref=e173]
+              - text: Commits
+              - generic [ref=e175]: "0"
+              - generic [ref=e176]: (0)
+            - tab "Checks" [ref=e177] [cursor=pointer]:
+              - img [ref=e178]
+              - text: Checks
+            - tab "Files changed" [ref=e180] [cursor=pointer]:
+              - img [ref=e181]
+              - text: Files changed
+      - generic [ref=e187]:
+        - generic [ref=e189]:
+          - heading "Conversation" [level=2] [ref=e190]
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - generic [ref=e194]:
+                - link "@Ashwinhegde19" [ref=e195] [cursor=pointer]:
+                  - /url: /Ashwinhegde19
+                  - img "@Ashwinhegde19" [ref=e196]
+                - generic [ref=e198]:
+                  - generic [ref=e199]:
+                    - group [ref=e202]:
+                      - button "Show options" [ref=e203] [cursor=pointer]:
+                        - img "Show options" [ref=e206]
+                    - heading "Ashwinhegde19 commented Jan 15, 2026on Jan 15" [level=3] [ref=e208]:
+                      - generic [ref=e209]:
+                        - strong [ref=e210]:
+                          - link "Ashwinhegde19" [ref=e211] [cursor=pointer]:
+                            - /url: /Ashwinhegde19
+                        - text: commented
+                        - link "Jan 15, 2026on Jan 15" [ref=e212] [cursor=pointer]:
+                          - /url: "#issue-3818964436"
+                  - generic [ref=e216]:
+                    - paragraph [ref=e217]: This PR fixes a security issue where File.read and File.list could follow symlinks outside the project directory due to lexical path checks. This allows potential path traversal. The code now resolves real paths and verifies containment before access.
+                    - paragraph [ref=e218]:
+                      - text: "Fixes:"
+                      - text: Fixes
+                      - link "#8313" [ref=e219] [cursor=pointer]:
+                        - /url: https://github.com/anomalyco/opencode/issues/8313
+                    - paragraph [ref=e220]: "What changed:"
+                    - paragraph [ref=e221]: Updated File.read to use fs.promises.realpath() before reading.
+                    - paragraph [ref=e222]: Updated File.list to resolve paths before listing.
+                    - paragraph [ref=e223]: Added regression tests under packages/opencode/test/security/symlink.test.ts.
+              - generic [ref=e224]:
+                - generic [ref=e226]:
+                  - link "@github-actions" [ref=e228] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                    - img "@github-actions" [ref=e229]
+                  - generic [ref=e231]:
+                    - generic [ref=e232]:
+                      - generic [ref=e233]:
+                        - group [ref=e235]:
+                          - button "Show options" [ref=e236] [cursor=pointer]:
+                            - img "Show options" [ref=e239]
+                        - generic "This user has previously committed to the opencode repository." [ref=e242]:
+                          - generic [ref=e243]: Contributor
+                      - heading "github-actions Bot commented Jan 15, 2026on Jan 15" [level=3] [ref=e244]:
+                        - generic [ref=e245]:
+                          - strong [ref=e246]:
+                            - link "github-actions" [ref=e247] [cursor=pointer]:
+                              - /url: /apps/github-actions
+                            - generic [ref=e248]: Bot
+                          - text: commented
+                          - link "Jan 15, 2026on Jan 15" [ref=e249] [cursor=pointer]:
+                            - /url: "#issuecomment-3756634918"
+                    - table [ref=e252]:
+                      - rowgroup [ref=e253]:
+                        - row [ref=e254]:
+                          - cell [ref=e255]:
+                            - paragraph [ref=e256]:
+                              - emphasis [ref=e257]: "The following comment was made by an LLM, it may be inaccurate:"
+                            - heading "Potential Duplicate/Related PRs Found:" [level=2] [ref=e258]
+                            - list [ref=e259]:
+                              - listitem [ref=e260]:
+                                - paragraph [ref=e261]:
+                                  - strong [ref=e262]:
+                                    - text: PR
+                                    - generic [ref=e263]:
+                                      - img [ref=e264]
+                                      - 'link "fix: prevent path traversal via symlinks and cross-drive paths #8316" [ref=e266] [cursor=pointer]':
+                                        - /url: https://github.com/anomalyco/opencode/pull/8316
+                                    - text: ": fix: prevent path traversal via symlinks and cross-drive paths"
+                                - list [ref=e267]:
+                                  - listitem [ref=e268]:
+                                    - generic [ref=e269]:
+                                      - img [ref=e270]
+                                      - 'link "fix: prevent path traversal via symlinks and cross-drive paths #8316" [ref=e272] [cursor=pointer]':
+                                        - /url: https://github.com/anomalyco/opencode/pull/8316
+                                  - listitem [ref=e273]: This appears to be directly related - it addresses the same symlink path traversal security issue, with potentially overlapping solutions.
+                              - listitem [ref=e274]:
+                                - paragraph [ref=e275]:
+                                  - strong [ref=e276]:
+                                    - text: PR
+                                    - generic [ref=e277]:
+                                      - img [ref=e278]
+                                      - 'link "fix: address external_directory gaps and improve symlink checks #7515" [ref=e280] [cursor=pointer]':
+                                        - /url: https://github.com/anomalyco/opencode/pull/7515
+                                    - text: ": fix: address external_directory gaps and improve symlink checks"
+                                - list [ref=e281]:
+                                  - listitem [ref=e282]:
+                                    - generic [ref=e283]:
+                                      - img [ref=e284]
+                                      - 'link "fix: address external_directory gaps and improve symlink checks #7515" [ref=e286] [cursor=pointer]':
+                                        - /url: https://github.com/anomalyco/opencode/pull/7515
+                                  - listitem [ref=e287]: Related symlink security improvements that may have similar scope.
+                              - listitem [ref=e288]:
+                                - paragraph [ref=e289]:
+                                  - strong [ref=e290]:
+                                    - text: PR
+                                    - generic [ref=e291]:
+                                      - img [ref=e292]
+                                      - 'link "fix: prevent symlink escape in Filesystem.contains #6403" [ref=e294] [cursor=pointer]':
+                                        - /url: https://github.com/anomalyco/opencode/pull/6403
+                                    - text: ": fix: prevent symlink escape in Filesystem.contains"
+                                - list [ref=e295]:
+                                  - listitem [ref=e296]:
+                                    - generic [ref=e297]:
+                                      - img [ref=e298]
+                                      - 'link "fix: prevent symlink escape in Filesystem.contains #6403" [ref=e300] [cursor=pointer]':
+                                        - /url: https://github.com/anomalyco/opencode/pull/6403
+                                  - listitem [ref=e301]: Previous symlink-related security fix in a similar area.
+                            - paragraph [ref=e302]:
+                              - strong [ref=e303]: "Recommendation:"
+                              - text: Check PR
+                              - link "#8316" [ref=e304] [cursor=pointer]:
+                                - /url: https://github.com/anomalyco/opencode/pull/8316
+                              - text: most urgently, as it appears to be addressing the exact same vulnerability (symlink path traversal). Verify which PR was opened first and if one supersedes the other, or if they should be consolidated.
+                - generic [ref=e305]:
+                  - generic [ref=e306]:
+                    - img [ref=e308]
+                    - generic [ref=e310]:
+                      - generic [ref=e311]:
+                        - link "@github-actions" [ref=e312] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                          - img "@github-actions" [ref=e313]
+                        - link "github-actions" [ref=e314] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - generic [ref=e315]: Bot
+                        - text: mentioned this pull request
+                        - link "Jan 15, 2026on Jan 15" [ref=e316] [cursor=pointer]:
+                          - /url: "#ref-pullrequest-3819495758"
+                      - generic [ref=e317]:
+                        - 'link "fix(tools): sandbox glob and grep to project directory #8754" [ref=e319] [cursor=pointer]':
+                          - /url: /anomalyco/opencode/pull/8754
+                        - 'generic "Status: Closed" [ref=e321]':
+                          - img [ref=e322]
+                          - text: Closed
+                  - generic [ref=e324]:
+                    - img [ref=e326]
+                    - generic [ref=e328]:
+                      - generic [ref=e329]: This was referenced Jan 24, 2026on Jan 24
+                      - generic [ref=e330]:
+                        - 'link "fix(opencode): resolve symlinks to directories in project picker #10366" [ref=e332] [cursor=pointer]':
+                          - /url: /anomalyco/opencode/pull/10366
+                        - 'generic "Status: Closed" [ref=e334]':
+                          - img [ref=e335]
+                          - text: Closed
+                      - generic [ref=e337]:
+                        - 'link "feat(server): centralized tool execution with security fixes #10598" [ref=e339] [cursor=pointer]':
+                          - /url: /anomalyco/opencode/pull/10598
+                        - 'generic "Status: Closed" [ref=e341]':
+                          - img [ref=e342]
+                          - text: Closed
+                  - generic [ref=e344]:
+                    - img [ref=e346]
+                    - generic [ref=e348]:
+                      - link "@thdxr" [ref=e349] [cursor=pointer]:
+                        - /url: /thdxr
+                        - img "@thdxr" [ref=e350]
+                      - link "thdxr" [ref=e351] [cursor=pointer]:
+                        - /url: /thdxr
+                      - link "force-pushed" [ref=e352] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/cbab81f7e7e0c9cbfc34ba18863e07c953665f66..2d3c7a0f24754ea0643d9bfd6dec2df39623763f
+                      - text: the
+                      - generic [ref=e354]: dev
+                      - text: branch from
+                      - link "cbab81f" [ref=e355] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/cbab81f7e7e0c9cbfc34ba18863e07c953665f66
+                        - code [ref=e356]: cbab81f
+                      - text: to
+                      - link "2d3c7a0" [ref=e357] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/2d3c7a0f24754ea0643d9bfd6dec2df39623763f
+                        - code [ref=e358]: 2d3c7a0
+                      - link "Compare" [ref=e359] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/cbab81f7e7e0c9cbfc34ba18863e07c953665f66..2d3c7a0f24754ea0643d9bfd6dec2df39623763f
+                        - generic [ref=e361]: Compare
+                      - link "January 30, 2026 04:505 months ago" [ref=e362] [cursor=pointer]:
+                        - /url: "#event-22397044558"
+                  - generic [ref=e363]:
+                    - img [ref=e365]
+                    - generic [ref=e367]:
+                      - link "@opencode-agent" [ref=e368] [cursor=pointer]:
+                        - /url: /apps/opencode-agent
+                        - img "@opencode-agent" [ref=e369]
+                      - link "opencode-agent" [ref=e370] [cursor=pointer]:
+                        - /url: /apps/opencode-agent
+                      - generic [ref=e371]: Bot
+                      - link "force-pushed" [ref=e372] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/00637c0269312455e55e4977a7a8f55c728e93bd..71e0ba271f1917f3128649f23210187265573f29
+                      - text: the
+                      - generic [ref=e374]: dev
+                      - text: branch from
+                      - link "00637c0" [ref=e375] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/00637c0269312455e55e4977a7a8f55c728e93bd
+                        - code [ref=e376]: 00637c0
+                      - text: to
+                      - link "71e0ba2" [ref=e377] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/71e0ba271f1917f3128649f23210187265573f29
+                        - code [ref=e378]: 71e0ba2
+                      - link "Compare" [ref=e379] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/00637c0269312455e55e4977a7a8f55c728e93bd..71e0ba271f1917f3128649f23210187265573f29
+                        - generic [ref=e381]: Compare
+                      - link "January 30, 2026 14:325 months ago" [ref=e382] [cursor=pointer]:
+                        - /url: "#event-22409208522"
+                  - generic [ref=e383]:
+                    - img [ref=e385]
+                    - generic [ref=e387]:
+                      - link "@thdxr" [ref=e388] [cursor=pointer]:
+                        - /url: /thdxr
+                        - img "@thdxr" [ref=e389]
+                      - link "thdxr" [ref=e390] [cursor=pointer]:
+                        - /url: /thdxr
+                      - link "force-pushed" [ref=e391] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/f1ae80149891d518bc8c30d5fae97f571def6ab6..08fa7f71884702df9ee2e69a840a1eaeb5685df7
+                      - text: the
+                      - generic [ref=e393]: dev
+                      - text: branch 3 times, most recently from
+                      - link "f1ae801" [ref=e394] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/f1ae80149891d518bc8c30d5fae97f571def6ab6
+                        - code [ref=e395]: f1ae801
+                      - text: to
+                      - link "08fa7f7" [ref=e396] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/08fa7f71884702df9ee2e69a840a1eaeb5685df7
+                        - code [ref=e397]: 08fa7f7
+                      - link "Compare" [ref=e398] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/f1ae80149891d518bc8c30d5fae97f571def6ab6..08fa7f71884702df9ee2e69a840a1eaeb5685df7
+                        - generic [ref=e400]: Compare
+                      - link "January 30, 2026 14:375 months ago" [ref=e401] [cursor=pointer]:
+                        - /url: "#event-22409325318"
+                  - generic [ref=e402]:
+                    - img [ref=e404]
+                    - generic [ref=e406]:
+                      - generic [ref=e407]: This was referenced Jan 30, 2026on Jan 30
+                      - generic [ref=e408]:
+                        - 'link "fix: handle symlink directories in file listing #11351" [ref=e410] [cursor=pointer]':
+                          - /url: /anomalyco/opencode/pull/11351
+                        - 'generic "Status: Closed" [ref=e412]':
+                          - img [ref=e413]
+                          - text: Closed
+                      - generic [ref=e415]:
+                        - 'link "fix: security vulnerabilities and reliability improvements #11720" [ref=e417] [cursor=pointer]':
+                          - /url: /anomalyco/opencode/pull/11720
+                        - 'generic "Status: Closed" [ref=e419]':
+                          - img [ref=e420]
+                          - text: Closed
+                  - generic [ref=e422]:
+                    - img [ref=e424]
+                    - generic [ref=e426]:
+                      - link "@Ashwinhegde19" [ref=e427] [cursor=pointer]:
+                        - /url: /Ashwinhegde19
+                        - img "@Ashwinhegde19" [ref=e428]
+                      - link "Ashwinhegde19" [ref=e429] [cursor=pointer]:
+                        - /url: /Ashwinhegde19
+                      - text: closed this
+                      - link "Mar 17, 2026on Mar 17" [ref=e430] [cursor=pointer]:
+                        - /url: "#event-23652263857"
+                  - generic [ref=e432]:
+                    - img [ref=e434]
+                    - generic [ref=e436]:
+                      - link "@Ashwinhegde19" [ref=e437] [cursor=pointer]:
+                        - /url: /Ashwinhegde19
+                        - img "@Ashwinhegde19" [ref=e438]
+                      - link "Ashwinhegde19" [ref=e439] [cursor=pointer]:
+                        - /url: /Ashwinhegde19
+                      - link "force-pushed" [ref=e440] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/2f6453923fd45fb3e8922793915e7daf82f80f0d..dadddc9c8c35ecb80b287ab729cfed5869b86d56
+                      - text: the
+                      - generic [ref=e442]: dev
+                      - text: branch from
+                      - link "2f64539" [ref=e443] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/2f6453923fd45fb3e8922793915e7daf82f80f0d
+                        - code [ref=e444]: 2f64539
+                      - text: to
+                      - link "dadddc9" [ref=e445] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/commit/dadddc9c8c35ecb80b287ab729cfed5869b86d56
+                        - code [ref=e446]: dadddc9
+                      - link "Compare" [ref=e447] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/compare/2f6453923fd45fb3e8922793915e7daf82f80f0d..dadddc9c8c35ecb80b287ab729cfed5869b86d56
+                        - generic [ref=e449]: Compare
+                      - link "March 17, 2026 17:063 months ago" [ref=e450] [cursor=pointer]:
+                        - /url: "#event-23652263974"
+            - generic [ref=e454]:
+              - link "Sign up for free" [ref=e455] [cursor=pointer]:
+                - /url: /join?source=comment-repo
+              - strong [ref=e456]: to join this conversation on GitHub
+              - text: . Already have an account?
+              - link "Sign in to comment" [ref=e457] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fanomalyco%2Fopencode%2Fpull%2F8727
+        - generic [ref=e461]:
+          - form "Select reviewers" [ref=e463]:
+            - heading "Reviewers" [level=3] [ref=e464]
+            - text: No reviews
+          - form "Select assignees" [ref=e466]:
+            - heading "Assignees" [level=3] [ref=e467]
+            - text: No one assigned
+          - generic [ref=e468]:
+            - heading "Labels" [level=3] [ref=e469]
+            - generic [ref=e470]: None yet
+          - form "Select projects" [ref=e472]:
+            - heading "Projects" [level=3] [ref=e473]
+            - text: None yet
+          - form "Select milestones" [ref=e475]:
+            - heading "Milestone" [level=3] [ref=e476]
+            - text: No milestone
+          - form "Link issues" [ref=e482]:
+            - heading "Development" [level=3] [ref=e483]
+            - paragraph [ref=e484]: Successfully merging this pull request may close these issues.
+            - link "Closed issue Path traversal vulnerability via symlinks and cross-drive paths" [ref=e486] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode/issues/8313
+              - img "Closed issue" [ref=e487]
+              - text: Path traversal vulnerability via symlinks and cross-drive paths
+          - generic [ref=e491]:
+            - heading "1 participant" [level=3] [ref=e492]
+            - link "@Ashwinhegde19" [ref=e494] [cursor=pointer]:
+              - /url: /Ashwinhegde19
+              - img "@Ashwinhegde19" [ref=e495]
+  - contentinfo [ref=e496]:
+    - heading "Footer" [level=2] [ref=e497]
+    - generic [ref=e498]:
+      - generic [ref=e499]:
+        - link "GitHub Homepage" [ref=e500] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e501]
+        - generic [ref=e503]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e504]:
+        - heading "Footer navigation" [level=3] [ref=e505]
+        - list "Footer navigation" [ref=e506]:
+          - listitem [ref=e507]:
+            - link "Terms" [ref=e508] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e509]:
+            - link "Privacy" [ref=e510] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e511]:
+            - link "Security" [ref=e512] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e513]:
+            - link "Status" [ref=e514] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e515]:
+            - link "Community" [ref=e516] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e517]:
+            - link "Docs" [ref=e518] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e519]:
+            - link "Contact" [ref=e520] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e521]:
+            - button "Manage cookies" [ref=e523] [cursor=pointer]
+          - listitem [ref=e524]:
+            - button "Do not share my personal information" [ref=e526] [cursor=pointer]

@@ -47,7 +47,7 @@ Build the settings panel accessible via a gear icon, with model selector, thinki
       <h3>Model</h3>
       <select v-model="selectedModel" @change="changeModel">
         <option v-for="model in availableModels" :key="model.id" :value="model.id">
-          {{ model.name }} ({{ model.provider }})
+          {{ model.name || `${model.provider}/${model.id}` }} ({{ model.provider }})
         </option>
       </select>
       <p v-if="availableModels.length === 0" class="text-warning">
@@ -76,33 +76,14 @@ Build the settings panel accessible via a gear icon, with model selector, thinki
     </div>
   </template>
   ```
-  - Filter to only levels returned by `runtime.session.getAvailableThinkingLevels()` for the current model
+  - Filter to only levels supported by the current model (reasoning models support off/minimal/low/medium/high/xhigh; non-reasoning models always use 'off')
   - Not all models support all thinking levels
   - Levels: `off`, `minimal`, `low`, `medium`, `high`, `xhigh`
   - Changes take effect on next prompt
-  - **Fix for Issue #4:** When `thinking_level_changed` event fires (from backend), update both the current level AND the available levels list:
-    ```typescript
-    // In ChatView.vue handleEvent for 'thinking_level_changed':
-    case 'thinking_level_changed':
-      chatStore.setThinkingLevel(event.data.level);
-      if (event.data.availableLevels) {
-        chatStore.setAvailableThinkingLevels(event.data.availableLevels);
-      }
-      break;
-    ```
-  - **Fix for Issue #17:** Add a `get_available_thinking_levels` WebSocket command to the backend, or have the backend relay available levels in the `thinking_level_changed` event:
-    ```typescript
-    // In event-relay.ts, thinking_level_changed handler:
-    case 'thinking_level_changed':
-      const availableLevels = runtime.session.getAvailableThinkingLevels();
-      ws.send(JSON.stringify({
-        type: 'thinking_level_changed',
-        data: {
-          level: event.level,
-          availableLevels: availableLevels, // ← Include available levels
-        },
-      }));
-      break;
+  - Note: The SDK does NOT provide `getAvailableThinkingLevels()`. Available levels are determined by the model's reasoning capability.
+    - Reasoning models (e.g., Claude): off, minimal, low, medium, high, xhigh
+    - Non-reasoning models: always 'off'
+    - The frontend should filter levels based on the current model's `reasoning` property.
     ```
     This way the frontend receives available levels whenever the thinking level changes (e.g., after model switch), without needing a separate WebSocket command.
 
@@ -220,9 +201,12 @@ Build the settings panel accessible via a gear icon, with model selector, thinki
 
 ### Additional Info
 
-- **Model availability**: The `/api/models` endpoint returns models with provider, name, and availability status. Display unavailable models with a visual indicator (e.g., grayed out, "(no API key)" label).
+- **Model availability**: The `/api/models` endpoint returns models with provider, id, and availability status. Display unavailable models with a visual indicator (e.g., grayed out, "(no API key)" label).
 
-- **Thinking level filtering**: Not all models support all thinking levels. The SDK provides `runtime.session.getAvailableThinkingLevels()` which returns the supported levels for the current model. Filter the dropdown to only show available levels.
+- **Thinking level filtering**: Not all models support all thinking levels. The SDK does NOT provide `getAvailableThinkingLevels()`. Available levels are determined by the model's reasoning capability.
+    - Reasoning models (e.g., Claude): off, minimal, low, medium, high, xhigh
+    - Non-reasoning models: always 'off'
+    - The frontend should filter levels based on the current model's `reasoning` property.
 
 - **API key providers**: Common providers include:
   - OpenAI (`OPENAI_API_KEY`)
@@ -241,7 +225,6 @@ Build the settings panel accessible via a gear icon, with model selector, thinki
 - Model selector shows available models from `/api/models`
 - Thinking level changes take effect on next prompt
 - Available thinking levels are updated when `thinking_level_changed` event fires (Fix #4, #17)
-- Thinking level changes take effect on next prompt
 - Settings persist across page reloads (localStorage)
 - Connection status shows real-time WebSocket state
 - Session stats are displayed and update in real-time
@@ -768,6 +751,7 @@ When all milestones are complete:
 - [ ] Thinking output has scroll container (Fix #11)
 - [ ] Model selector works
 - [ ] Thinking level changes
+- [ ] Model changes relayed via `model_select` WebSocket event
 - [ ] Available thinking levels update on model change (Fix #4, #17)
 - [ ] Extension dialogs work (Fix #1)
 - [ ] Tool call deltas handled during streaming (Fix #9)

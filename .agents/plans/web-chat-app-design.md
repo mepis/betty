@@ -335,7 +335,7 @@ const runtime = await createAgentSessionRuntime(createRuntime, {
 
   **Extension errors:** `extension_error`
 
-  **Session metadata:** `session_info_changed`, `thinking_level_changed`
+  **Session metadata:** `session_info_changed`, `thinking_level_changed`, `model_select`
 
 - Emit a `session_changed` event after every session replacement so the frontend can reset state
 - Stream events in real-time (no batching)
@@ -351,6 +351,7 @@ const runtime = await createAgentSessionRuntime(createRuntime, {
 - `session_changed` is emitted after session replacement
 - `session_info_changed` updates the sidebar when session name changes
 - `thinking_level_changed` updates the settings panel when thinking level changes
+- `model_select` updates the settings panel when model changes
 - `compaction_end` with `willRetry` shows "Retrying after compaction..." indicator
 - `auto_retry_end` with `finalError` shows error toast when retries are exhausted
 - No events are lost during rapid streaming
@@ -396,7 +397,7 @@ const runtime = await createAgentSessionRuntime(createRuntime, {
     - `cwdOverride` allows switching to a session in a different directory
   - `fork` -- `await runtime.fork(entryId, { position: payload.position ?? "before" })` -- re-subscribe to new `runtime.session`
     - Check `cancelled` in response; show toast if cancelled by extension
-    - Response includes `selectedText?: string` (text from the forked entry) for pre-filling input
+    - Response includes `text?: string` (text from the forked entry) for pre-filling input
     - `position: "before"` creates a new branch (default); `position: "at"` replaces the current branch
   - `clone` -- `await runtime.fork(runtime.session.getLeafId(), { position: "at" })` -- re-subscribe
     - Check `cancelled` in response; show toast if cancelled by extension
@@ -442,7 +443,7 @@ const runtime = await createAgentSessionRuntime(createRuntime, {
 
 #### Task 2.4: Model, Settings, and Commands Management
 
-- Create `GET /api/models` endpoint using `modelRegistry.getAvailable()` (synchronous)
+- Create `GET /api/models` endpoint using `await modelRegistry.getAvailable()` (async)
   - Handle "no available models" case (empty array when no API keys configured)
   - Handle "no available models" error (no API keys configured)
 - Create `GET /api/commands` endpoint to list available commands (extension commands, prompt templates, skills) via `resourceLoader.getPrompts()` and extension registry
@@ -454,8 +455,8 @@ const runtime = await createAgentSessionRuntime(createRuntime, {
 - Call `settingsManager.drainErrors()` periodically and relay settings I/O errors
 
 **Acceptance criteria:**
-- Available models are listed with provider, name, and availability status
-- `modelRegistry.getAvailable()` is called synchronously (not async)
+- Available models are listed with provider, id, and availability status
+- `modelRegistry.getAvailable()` is async (must be awaited)
 - Empty model list returns a clear message when no API keys are configured
 - Commands list includes extension commands, prompt templates, and skills
 - Session stats include token usage, cost, and context window percentage
@@ -578,7 +579,7 @@ const runtime = await createAgentSessionRuntime(createRuntime, {
 - Build `SettingsPanel.vue` (accessible via gear icon):
   - Model selector (dropdown with available models)
   - Thinking level selector (off, minimal, low, medium, high, xhigh)
-    - Filter to only levels returned by `runtime.session.getAvailableThinkingLevels()` for the current model
+    - Filter to only levels supported by the current model (reasoning models support off/minimal/low/medium/high/xhigh; non-reasoning models always use 'off')
     - Not all models support all thinking levels
   - API key input (for providers without OAuth)
   - Shared secret configuration
@@ -777,8 +778,8 @@ betty/
 { type: 'switch_session', payload: { sessionPath: string, cwdOverride?: string } }
 
 // Fork from a previous user message on the active branch
-// Returns { cancelled: boolean, selectedText?: string } -- show toast if cancelled
-// selectedText contains the text from the forked entry for pre-filling the input
+// Returns { cancelled: boolean, text?: string } -- show toast if cancelled
+// `text` contains the text from the forked entry for pre-filling the input
 // position: "before" (default) creates a new branch; "at" replaces the current branch
 { type: 'fork', payload: { entryId: string, position?: 'before' | 'at' } }
 
@@ -829,8 +830,9 @@ betty/
 // { type: 'response', command: 'get_messages', success: true, data: { messages: AgentMessage[] } }
 //
 // `get_last_assistant_text` response:
-// { type: 'response', command: 'get_last_assistant_text', success: true, data: { text: string | undefined } }
+// { type: 'response', command: 'get_last_assistant_text', success: true, data: { text: string | null } }
 // SDK: getLastAssistantText(): string | undefined
+// RPC: returns { text: null } when no assistant messages exist.
 //
 // `new_session` response:
 // { type: 'response', command: 'new_session', success: true, data: { cancelled: boolean } }
@@ -841,13 +843,13 @@ betty/
 // Show toast if cancelled by extension
 //
 // `fork` response:
-// { type: 'response', command: 'fork', success: true, data: { cancelled: boolean, selectedText?: string } }
-// `selectedText` contains the text from the forked entry for pre-filling the input area
+// { type: 'response', command: 'fork', success: true, data: { cancelled: boolean, text?: string } }
+// `text` contains the text from the forked entry for pre-filling the input area
 // Show toast if cancelled by extension
 //
 // `clone` response:
 // { type: 'response', command: 'clone', success: true, data: { cancelled: boolean } }
-// clone() uses fork with position: "at" — does NOT return selectedText
+// clone() uses fork with position: "at" — does NOT return `text`
 // Show toast if cancelled by extension
 //
 // `get_fork_messages` response:
@@ -857,10 +859,12 @@ betty/
 // { type: 'response', command: 'compact', success: true, data: { summary: string, firstKeptEntryId: string, tokensBefore: number, details?: unknown } }
 //
 // `set_model` response:
-// { type: 'response', command: 'set_model', success: true, data: { model: Model<any> } }
+// { type: 'response', command: 'set_model', success: true, data: Model<any> }
+// Model object is returned directly, not wrapped in a 'model' field.
 //
 // `navigate_tree` response:
-// { type: 'response', command: 'navigate_tree', success: true, data: { editorText?: string, cancelled: boolean, aborted?: boolean, summaryEntry?: BranchSummaryEntry } }
+// { type: 'response', command: 'navigate_tree', success: true, data: { editorText?: string, cancelled: boolean } }
+// SDK: navigateTree() returns { editorText?, cancelled: boolean } only.
 //
 // `set_session_name` response:
 // { type: 'response', command: 'set_session_name', success: true }
@@ -978,7 +982,7 @@ betty/
     errorMessage?: string
   }
 }
-// Note: `result` is `undefined` (not `null`) when compaction is aborted or failed.
+// Note: `result` is `null` when compaction is aborted or failed.
 // `details` carries extension-specific compaction data (e.g., ArtifactIndex, version markers).
 
 // ---- Auto-retry ----
@@ -1060,6 +1064,9 @@ betty/
 // Thinking level changed (from setThinkingLevel or extension)
 // level is one of: 'off' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh'
 { type: 'thinking_level_changed', data: { level: 'off' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh' } }
+
+// Model changed (from setModel, new_session, switch_session, or extension)
+{ type: 'model_select', data: { model: string | null, provider: string | null, previousModel: string | null, previousProvider: string | null, source: 'set' | 'cycle' | 'restore' } }
 
 // ---- Errors ----
 
@@ -1164,5 +1171,5 @@ betty/
 - **`PromptOptions.source`:** Set `source: "rpc"` on all `prompt()` calls so extensions can filter input by source (e.g., skip processing for RPC-injected messages).
 - **`willRetry` field:** Both `agent_end` and `compaction_end` include a `willRetry: boolean` field. When true, the agent will automatically retry (e.g., after compaction). Show "Retrying after compaction..." in the UI.
 - **`clone` command:** `runtime.fork(entryId, { position: "at" })` creates a clone of the current active branch without restoring editor text. Different from `fork` which creates a new branch.
-- **`navigateTree()`:** `runtime.session.navigateTree(targetId, options)` navigates in-place within the same session file (different from `fork` which creates a new file). Returns `{ editorText?, cancelled, aborted?, summaryEntry? }` for prefilling the input.
+- **`navigateTree()`:** `runtime.session.navigateTree(targetId, options)` navigates in-place within the same session file (different from `fork` which creates a new file). Returns `{ editorText?, cancelled: boolean }` for prefilling the input.
 - **`withSession` callback:** `newSession()`, `switchSession()`, and `fork()` accept a `withSession` callback that receives a `ReplacedSessionContext` with `sendMessage`, `sendUserMessage`, and other methods for post-replacement actions. Use this if the backend needs to interact with the new session immediately after creation.

@@ -1,0 +1,742 @@
+- generic [ref=e2]:
+  - generic:
+    - generic:
+      - tooltip "This user has previously committed to the opencode repository."
+    - generic:
+      - tooltip "This user is a member of the anomalyco organization."
+    - generic:
+      - tooltip "This user is the author of this issue"
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fanomalyco%2Fopencode%2Fissues%2F7504
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=anomalyco%2Fopencode
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "anomalyco" [ref=e70] [cursor=pointer]:
+            - /url: /anomalyco
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "opencode" [ref=e73] [cursor=pointer]:
+              - /url: /anomalyco/opencode
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fanomalyco%2Fopencode
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 20.3k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fanomalyco%2Fopencode
+                - img [ref=e82]
+                - text: Fork
+                - generic "20,318" [ref=e84]: 20.3k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fanomalyco%2Fopencode
+                - img [ref=e88]
+                - text: Star
+                - generic "169785 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /anomalyco/opencode
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 5k+" [ref=e99] [cursor=pointer]:
+              - /url: /anomalyco/opencode/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "5,000+" [ref=e104]: 5k+
+          - listitem [ref=e105]:
+            - link "Pull requests 996" [ref=e106] [cursor=pointer]:
+              - /url: /anomalyco/opencode/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "996" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /anomalyco/opencode/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Projects" [ref=e117] [cursor=pointer]:
+              - /url: /anomalyco/opencode/projects
+              - img [ref=e118]
+              - generic [ref=e120]: Projects
+          - listitem [ref=e121]:
+            - link "Security and quality 2" [ref=e122] [cursor=pointer]:
+              - /url: /anomalyco/opencode/security
+              - img [ref=e123]
+              - generic [ref=e125]: Security and quality
+              - generic "2" [ref=e126]
+          - listitem [ref=e127]:
+            - link "Insights" [ref=e128] [cursor=pointer]:
+              - /url: /anomalyco/opencode/pulse
+              - img [ref=e129]
+              - generic [ref=e131]: Insights
+    - generic [ref=e139]:
+      - region "Header" [ref=e141]:
+        - generic [ref=e142]:
+          - 'heading "An agent is able to read all filesystem outside a project directory in Plan mode #7504" [level=1] [ref=e144]':
+            - text: An agent is able to read all filesystem outside a project directory in Plan mode
+            - generic [ref=e146]: "#7504"
+          - generic [ref=e148]:
+            - button "New issue" [ref=e150] [cursor=pointer]:
+              - generic [ref=e152]: New issue
+            - button "Copy link" [ref=e153] [cursor=pointer]:
+              - img [ref=e154]
+      - generic [ref=e162]:
+        - img "Issue, not planned" [ref=e163]
+        - text: Closed as not planned
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - generic [ref=e169]:
+            - link "@AnyCPU's profile" [ref=e171] [cursor=pointer]:
+              - /url: https://github.com/AnyCPU
+              - img "@AnyCPU" [ref=e172]
+            - generic [ref=e173]:
+              - heading "Description" [level=2] [ref=e174]
+              - generic [ref=e176]:
+                - generic [ref=e178]:
+                  - generic [ref=e179]:
+                    - link "AnyCPU" [ref=e181] [cursor=pointer]:
+                      - /url: https://github.com/AnyCPU
+                    - generic [ref=e182]:
+                      - text: opened
+                      - link "on Jan 9, 2026on Jan 9" [ref=e183] [cursor=pointer]:
+                        - /url: https://github.com/anomalyco/opencode/issues/7504#issue-3797705592
+                        - generic "Jan 9, 2026, 12:11 PM EST" [ref=e184]: on Jan 9, 2026on Jan 9
+                  - button "Issue body actions" [ref=e188] [cursor=pointer]:
+                    - img [ref=e189]
+                - generic [ref=e191]:
+                  - generic [ref=e193]:
+                    - heading "Description" [level=3] [ref=e194]
+                    - paragraph [ref=e195]: I do not like that an agent is able to read all filesystem outside a project directory in Plan mode without asking for permission. I was surprised when I saw it first time.
+                    - paragraph [ref=e196]: OpenCode/LLM say that I can trust them, it is safe. As if! (c) Big Bro
+                    - paragraph [ref=e197]: So I investigated what was going on under the hood.
+                    - paragraph [ref=e198]: "And I found following troubles:"
+                    - table [ref=e200]:
+                      - rowgroup [ref=e201]:
+                        - row "# Severity Issue Location Status" [ref=e202]:
+                          - columnheader "#" [ref=e203]
+                          - columnheader "Severity" [ref=e204]
+                          - columnheader "Issue" [ref=e205]
+                          - columnheader "Location" [ref=e206]
+                          - columnheader "Status" [ref=e207]
+                      - rowgroup [ref=e208]:
+                        - row "1 CRITICAL WriteTool had NO external_directory check write.ts:25-30 ✅ Fixed" [ref=e209]:
+                          - cell "1" [ref=e210]
+                          - cell "CRITICAL" [ref=e211]:
+                            - strong [ref=e212]: CRITICAL
+                          - cell "WriteTool had NO external_directory check" [ref=e213]
+                          - cell "write.ts:25-30" [ref=e214]:
+                            - code [ref=e215]: write.ts:25-30
+                          - cell "✅ Fixed" [ref=e216]
+                        - row "2 CRITICAL Bash tool only checked write commands, not read commands (ls, cat, etc.) bash.ts:111 ✅ Fixed" [ref=e217]:
+                          - cell "2" [ref=e218]
+                          - cell "CRITICAL" [ref=e219]:
+                            - strong [ref=e220]: CRITICAL
+                          - cell "Bash tool only checked write commands, not read commands (ls, cat, etc.)" [ref=e221]:
+                            - text: Bash tool only checked write commands, not read commands (
+                            - code [ref=e222]: ls
+                            - text: ","
+                            - code [ref=e223]: cat
+                            - text: ", etc.)"
+                          - cell "bash.ts:111" [ref=e224]:
+                            - code [ref=e225]: bash.ts:111
+                          - cell "✅ Fixed" [ref=e226]
+                        - row "3 CRITICAL Filesystem.contains() was lexical-only (symlinks could escape) filesystem.ts:25 ✅ Fixed" [ref=e227]:
+                          - cell "3" [ref=e228]
+                          - cell "CRITICAL" [ref=e229]:
+                            - strong [ref=e230]: CRITICAL
+                          - cell "Filesystem.contains() was lexical-only (symlinks could escape)" [ref=e231]:
+                            - code [ref=e232]: Filesystem.contains()
+                            - text: was lexical-only (symlinks could escape)
+                          - cell "filesystem.ts:25" [ref=e233]:
+                            - code [ref=e234]: filesystem.ts:25
+                          - cell "✅ Fixed" [ref=e235]
+                        - row "4 HIGH GrepTool - no path boundary check grep.ts ✅ Fixed" [ref=e236]:
+                          - cell "4" [ref=e237]
+                          - cell "HIGH" [ref=e238]:
+                            - strong [ref=e239]: HIGH
+                          - cell "GrepTool - no path boundary check" [ref=e240]
+                          - cell "grep.ts" [ref=e241]:
+                            - code [ref=e242]: grep.ts
+                          - cell "✅ Fixed" [ref=e243]
+                        - row "5 HIGH GlobTool - no path boundary check glob.ts ✅ Fixed" [ref=e244]:
+                          - cell "5" [ref=e245]
+                          - cell "HIGH" [ref=e246]:
+                            - strong [ref=e247]: HIGH
+                          - cell "GlobTool - no path boundary check" [ref=e248]
+                          - cell "glob.ts" [ref=e249]:
+                            - code [ref=e250]: glob.ts
+                          - cell "✅ Fixed" [ref=e251]
+                        - row "6 HIGH ListTool - no path boundary check ls.ts ✅ Fixed" [ref=e252]:
+                          - cell "6" [ref=e253]
+                          - cell "HIGH" [ref=e254]:
+                            - strong [ref=e255]: HIGH
+                          - cell "ListTool - no path boundary check" [ref=e256]
+                          - cell "ls.ts" [ref=e257]:
+                            - code [ref=e258]: ls.ts
+                          - cell "✅ Fixed" [ref=e259]
+                        - row "7 HIGH ReadTool - used sync contains() instead of containsSafe() read.ts:30 ✅ Fixed" [ref=e260]:
+                          - cell "7" [ref=e261]
+                          - cell "HIGH" [ref=e262]:
+                            - strong [ref=e263]: HIGH
+                          - cell "ReadTool - used sync contains() instead of containsSafe()" [ref=e264]:
+                            - text: ReadTool - used sync
+                            - code [ref=e265]: contains()
+                            - text: instead of
+                            - code [ref=e266]: containsSafe()
+                          - cell "read.ts:30" [ref=e267]:
+                            - code [ref=e268]: read.ts:30
+                          - cell "✅ Fixed" [ref=e269]
+                        - row "8 HIGH EditTool - used sync contains() edit.ts:43 ✅ Fixed" [ref=e270]:
+                          - cell "8" [ref=e271]
+                          - cell "HIGH" [ref=e272]:
+                            - strong [ref=e273]: HIGH
+                          - cell "EditTool - used sync contains()" [ref=e274]:
+                            - text: EditTool - used sync
+                            - code [ref=e275]: contains()
+                          - cell "edit.ts:43" [ref=e276]:
+                            - code [ref=e277]: edit.ts:43
+                          - cell "✅ Fixed" [ref=e278]
+                        - row "9 HIGH PatchTool - used sync contains() patch.ts:53 ✅ Fixed" [ref=e279]:
+                          - cell "9" [ref=e280]
+                          - cell "HIGH" [ref=e281]:
+                            - strong [ref=e282]: HIGH
+                          - cell "PatchTool - used sync contains()" [ref=e283]:
+                            - text: PatchTool - used sync
+                            - code [ref=e284]: contains()
+                          - cell "patch.ts:53" [ref=e285]:
+                            - code [ref=e286]: patch.ts:53
+                          - cell "✅ Fixed" [ref=e287]
+                        - row "10 HIGH File.read() and File.list() - symlink bypass file/index.ts ✅ Fixed" [ref=e288]:
+                          - cell "10" [ref=e289]
+                          - cell "HIGH" [ref=e290]:
+                            - strong [ref=e291]: HIGH
+                          - cell "File.read() and File.list() - symlink bypass" [ref=e292]
+                          - cell "file/index.ts" [ref=e293]:
+                            - code [ref=e294]: file/index.ts
+                          - cell "✅ Fixed" [ref=e295]
+                        - row "11 HIGH bypassCwdCheck flag could skip all checks read.ts:30 Documented" [ref=e296]:
+                          - cell "11" [ref=e297]
+                          - cell "HIGH" [ref=e298]:
+                            - strong [ref=e299]: HIGH
+                          - cell "bypassCwdCheck flag could skip all checks" [ref=e300]:
+                            - code [ref=e301]: bypassCwdCheck
+                            - text: flag could skip all checks
+                          - cell "read.ts:30" [ref=e302]:
+                            - code [ref=e303]: read.ts:30
+                          - cell "Documented" [ref=e304]
+                        - row "12 MEDIUM Env.all() exposes all environment variables env/index.ts Not fixed (optional)" [ref=e305]:
+                          - cell "12" [ref=e306]
+                          - cell "MEDIUM" [ref=e307]:
+                            - strong [ref=e308]: MEDIUM
+                          - cell "Env.all() exposes all environment variables" [ref=e309]
+                          - cell "env/index.ts" [ref=e310]:
+                            - code [ref=e311]: env/index.ts
+                          - cell "Not fixed (optional)" [ref=e312]
+                        - row "13 MEDIUM Plugin system - arbitrary code execution via config plugin/index.ts Documented" [ref=e313]:
+                          - cell "13" [ref=e314]
+                          - cell "MEDIUM" [ref=e315]:
+                            - strong [ref=e316]: MEDIUM
+                          - cell "Plugin system - arbitrary code execution via config" [ref=e317]
+                          - cell "plugin/index.ts" [ref=e318]:
+                            - code [ref=e319]: plugin/index.ts
+                          - cell "Documented" [ref=e320]
+                        - row "14 MEDIUM MCP server command injection via config mcp/index.ts Documented" [ref=e321]:
+                          - cell "14" [ref=e322]
+                          - cell "MEDIUM" [ref=e323]:
+                            - strong [ref=e324]: MEDIUM
+                          - cell "MCP server command injection via config" [ref=e325]
+                          - cell "mcp/index.ts" [ref=e326]:
+                            - code [ref=e327]: mcp/index.ts
+                          - cell "Documented" [ref=e328]
+                    - paragraph [ref=e329]: I'm ok with bypassCwdCheck, but others do not make happy.
+                    - paragraph [ref=e330]: A containsSafe function resolves symlinks before checking if a path is inside the project directory.
+                    - paragraph [ref=e331]:
+                      - text: I applied fixes above locally and I could not test it because
+                      - code [ref=e332]: bun dev
+                      - text: and
+                      - code [ref=e333]: bun dev .
+                      - text: commands failed constantly.
+                      - text: I had to go to
+                      - code [ref=e334]: packages/opencode
+                      - text: and run a
+                      - code [ref=e335]: bun src/index.ts
+                      - text: command.
+                    - paragraph [ref=e336]: Also I found that some tools may exit from Plan mode on their own without any confirmation.
+                    - paragraph [ref=e337]: I got what I expected in result, and then I found an ui bug.
+                    - paragraph [ref=e338]: A question is everything above is intended behavior?
+                    - paragraph [ref=e339]: I would like to know about possible following steps.
+                    - paragraph [ref=e340]: "p.s.: I used Opus 4.5 and GLM 4.7 models, both provided almost similar results."
+                    - heading "Plugins" [level=3] [ref=e341]
+                    - paragraph [ref=e342]: Standard installation
+                    - heading "OpenCode version" [level=3] [ref=e343]
+                    - paragraph [ref=e344]: 1.1.8
+                    - heading "Steps to reproduce" [level=3] [ref=e345]
+                    - paragraph [ref=e346]: "send a prompt: list content of ../ dir"
+                    - heading "Screenshot and/or share link" [level=3] [ref=e347]
+                    - paragraph [ref=e348]:
+                      - emphasis [ref=e349]: No response
+                    - heading "Operating System" [level=3] [ref=e350]
+                    - paragraph [ref=e351]: macOS 15.7.3 (Intel)
+                    - heading "Terminal" [level=3] [ref=e352]
+                    - paragraph [ref=e353]: Terminal
+                  - toolbar "Reactions" [ref=e355]:
+                    - switch "👍 3 reactions" [ref=e356]:
+                      - generic [ref=e357]:
+                        - generic: 👍
+                        - generic [ref=e358]:
+                          - generic [ref=e359]: React with 👍
+                          - text: "3"
+          - generic [ref=e361]:
+            - generic [ref=e362]:
+              - heading "Activity" [level=2] [ref=e363]
+              - generic [ref=e364]:
+                - region "Events" [ref=e365]:
+                  - generic [ref=e372]:
+                    - img [ref=e376]
+                    - generic [ref=e380]:
+                      - link "AnyCPU" [ref=e382] [cursor=pointer]:
+                        - /url: /AnyCPU
+                        - generic [ref=e383]: AnyCPU
+                      - text: added
+                      - link "bug Something isn't working" [ref=e385] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/issues?q=state%3Aopen%20label%3A%22bug%22
+                        - generic [ref=e387]: bug
+                        - generic [ref=e388]: Something isn't working
+                      - link "on Jan 9, 2026on Jan 9" [ref=e389] [cursor=pointer]:
+                        - /url: https://github.com/anomalyco/opencode/issues/7504#event-21952070314
+                        - generic "Jan 9, 2026, 12:11 PM EST" [ref=e390]: on Jan 9, 2026on Jan 9
+                  - generic [ref=e394]:
+                    - img [ref=e398]
+                    - generic [ref=e402]:
+                      - link "github-actions" [ref=e404] [cursor=pointer]:
+                        - /url: /apps/github-actions
+                        - generic [ref=e405]: github-actions
+                      - text: assigned
+                      - link "thdxr" [ref=e407] [cursor=pointer]:
+                        - /url: /thdxr
+                      - link "on Jan 9, 2026on Jan 9" [ref=e408] [cursor=pointer]:
+                        - /url: https://github.com/anomalyco/opencode/issues/7504#event-21952079306
+                        - generic "Jan 9, 2026, 12:11 PM EST" [ref=e409]: on Jan 9, 2026on Jan 9
+                - generic [ref=e410]:
+                  - link "@github-actions's profile" [ref=e411] [cursor=pointer]:
+                    - /url: https://github.com/apps/github-actions
+                    - img "github-actions" [ref=e412]
+                  - generic [ref=e419]:
+                    - generic [ref=e421]:
+                      - heading "github-actions commented on Jan 9, 2026 on Jan 9" [level=3] [ref=e422]:
+                        - text: github-actions commented
+                        - generic "Jan 9, 2026, 12:12 PM EST" [ref=e423]: on Jan 9, 2026 on Jan 9
+                      - generic [ref=e424]:
+                        - generic [ref=e425]:
+                          - link "github-actions" [ref=e426] [cursor=pointer]:
+                            - /url: /apps/github-actions
+                          - generic [ref=e427]: bot
+                        - generic [ref=e429]:
+                          - link "on Jan 9, 2026on Jan 9" [ref=e430] [cursor=pointer]:
+                            - /url: https://github.com/anomalyco/opencode/issues/7504#issuecomment-3729851219
+                            - generic "Jan 9, 2026, 12:12 PM EST" [ref=e431]: on Jan 9, 2026on Jan 9
+                          - generic [ref=e432]:
+                            - text: – with
+                            - link "GitHub Actions" [ref=e433] [cursor=pointer]:
+                              - /url: https://help.github.com/en/actions
+                      - generic [ref=e435]:
+                        - generic "This user has previously committed to the opencode repository." [ref=e437]: Contributor
+                        - button "Actions for github-actions's comment, 12:12 PM on January 9" [ref=e439] [cursor=pointer]:
+                          - img [ref=e440]
+                    - generic [ref=e442]:
+                      - generic [ref=e444]:
+                        - paragraph [ref=e445]: "This issue might be a duplicate of or closely related to existing security issues. Please check:"
+                        - list [ref=e446]:
+                          - listitem [ref=e447]:
+                            - generic [ref=e448]:
+                              - img [ref=e449]
+                              - 'link "Grep Tool Fails on Symlinks #7498" [ref=e452] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7498
+                            - text: ": Grep Tool Fails on Symlinks—handles symlink security which relates to path boundary issues mentioned in your investigation"
+                          - listitem [ref=e453]:
+                            - generic [ref=e454]:
+                              - img [ref=e455]
+                              - 'link "BashTool input validation security hardening #7478" [ref=e457] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7478
+                            - text: ": BashTool input validation security hardening - addresses bash command execution safety"
+                          - listitem [ref=e458]:
+                            - generic [ref=e459]:
+                              - img [ref=e460]
+                              - 'link "[Security Bug] Subagent permissions not enforced - configured restrictions ignored #7474" [ref=e462] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7474
+                            - text: ": [Security Bug] Subagent permissions not enforced - similar critical security issue about permission bypasses"
+                          - listitem [ref=e463]:
+                            - generic [ref=e464]:
+                              - img [ref=e465]
+                              - 'link "[CRITICAL Security Issue/Bug] Plan mode restrictions bypassed when spawning sub-agents #6527" [ref=e468] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/6527
+                            - text: ": [Security Issue/Bug] Plan mode restrictions bypassed when spawning sub-agents - demonstrates permission system bypass issues similar to those you identified"
+                          - listitem [ref=e469]:
+                            - generic [ref=e470]:
+                              - img [ref=e471]
+                              - 'link "Security Issue - Lifecycle Script Execution via .opencode/package.json #7173" [ref=e474] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7173
+                            - text: ": Security Issue - Lifecycle Script Execution via .opencode/package.json - related RCE security issue"
+                          - listitem [ref=e475]:
+                            - generic [ref=e476]:
+                              - img [ref=e477]
+                              - 'link "Security Issue - Autoloading Repository Plugins #7163" [ref=e480] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7163
+                            - text: ": Security Issue - Autoloading Repository Plugins - related automatic execution security issue"
+                          - listitem [ref=e481]:
+                            - generic [ref=e482]:
+                              - img [ref=e483]
+                              - 'link "Bug: permission pathing crossplatform #7279" [ref=e486] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7279
+                            - text: ": Bug: permission pathing crossplatform - relates to path boundary checking on different platforms"
+                        - paragraph [ref=e487]:
+                          - text: Your investigation appears comprehensive and identifies multiple legitimate security concerns. The issues above share similar themes around boundary checking, permission enforcement, and symlink handling that your issue
+                          - link "#7504" [ref=e488] [cursor=pointer]:
+                            - /url: https://github.com/anomalyco/opencode/issues/7504
+                          - text: highlights.
+                      - toolbar "Reactions"
+                - region "Events" [ref=e489]:
+                  - generic [ref=e496]:
+                    - img [ref=e500]
+                    - generic [ref=e502]:
+                      - generic [ref=e504]:
+                        - link "AnyCPU" [ref=e506] [cursor=pointer]:
+                          - /url: /AnyCPU
+                          - generic [ref=e507]: AnyCPU
+                        - text: mentioned this
+                        - link "on Jan 9, 2026on Jan 9" [ref=e508] [cursor=pointer]:
+                          - /url: https://github.com/anomalyco/opencode/issues/7504#event-4331087782
+                          - generic "Jan 9, 2026, 12:33 PM EST" [ref=e509]: on Jan 9, 2026on Jan 9
+                      - region "Issues mentioned" [ref=e512]:
+                        - list [ref=e513]:
+                          - listitem [ref=e514]:
+                            - generic [ref=e515]:
+                              - img "Completed" [ref=e516]
+                              - 'link "Standard UI theme has several troubles #7505" [ref=e519] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7505
+                                - text: Standard UI theme has several troubles
+                                - generic [ref=e520]: "#7505"
+                  - generic [ref=e524]:
+                    - img [ref=e528]
+                    - generic [ref=e530]:
+                      - generic [ref=e532]:
+                        - link "RinZ27" [ref=e534] [cursor=pointer]:
+                          - /url: /RinZ27
+                          - generic [ref=e535]: RinZ27
+                        - text: mentioned this
+                        - link "on Jan 9, 2026on Jan 9" [ref=e536] [cursor=pointer]:
+                          - /url: https://github.com/anomalyco/opencode/issues/7504#event-4333984105
+                          - generic "Jan 9, 2026, 11:25 PM EST" [ref=e537]: on Jan 9, 2026on Jan 9
+                      - region "Issues mentioned" [ref=e540]:
+                        - list [ref=e541]:
+                          - listitem [ref=e542]:
+                            - generic [ref=e543]:
+                              - img "Closed" [ref=e544]
+                              - 'link "feat: update BashTool command parsing logic #6948" [ref=e546] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/pull/6948
+                                - text: "feat: update BashTool command parsing logic"
+                                - generic [ref=e547]: "#6948"
+                  - generic [ref=e551]:
+                    - img [ref=e555]
+                    - generic [ref=e557]:
+                      - generic [ref=e559]:
+                        - link "github-actions" [ref=e561] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                          - generic [ref=e562]: github-actions
+                        - text: mentioned this in 4 issues
+                        - link "on Jan 15, 2026on Jan 15" [ref=e563] [cursor=pointer]:
+                          - /url: https://github.com/anomalyco/opencode/issues/7504#event-4336518328
+                          - generic "Jan 15, 2026, 1:51 AM EST" [ref=e564]: on Jan 15, 2026on Jan 15
+                      - region "Issues mentioned" [ref=e567]:
+                        - list [ref=e568]:
+                          - listitem [ref=e569]:
+                            - generic [ref=e570]:
+                              - img "Completed" [ref=e571]
+                              - 'link "[FEATURE]: add file tracking modified ( acp ) #7720" [ref=e574] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/7720
+                                - text: "[FEATURE]: add file tracking modified ( acp )"
+                                - generic [ref=e575]: "#7720"
+                          - listitem [ref=e576]:
+                            - generic [ref=e577]:
+                              - img "Completed" [ref=e578]
+                              - 'link "[FEATURE]: option to remove noobtrap \"security\" guardrails #8066" [ref=e581] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/8066
+                                - text: "[FEATURE]: option to remove noobtrap \"security\" guardrails"
+                                - generic [ref=e582]: "#8066"
+                          - listitem [ref=e583]:
+                            - generic [ref=e584]:
+                              - img "Completed" [ref=e585]
+                              - 'link "Path traversal vulnerability via symlinks and cross-drive paths #8313" [ref=e588] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/8313
+                                - text: Path traversal vulnerability via symlinks and cross-drive paths
+                                - generic [ref=e589]: "#8313"
+                          - listitem [ref=e590]:
+                            - generic [ref=e591]:
+                              - img "Completed" [ref=e592]
+                              - 'link "[BUG] Research agents report incorrect file paths #8615" [ref=e595] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/8615
+                                - text: "[BUG] Research agents report incorrect file paths"
+                                - generic [ref=e596]: "#8615"
+                  - generic [ref=e600]:
+                    - img [ref=e604]
+                    - generic [ref=e606]:
+                      - generic [ref=e608]:
+                        - link "github-actions" [ref=e610] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                          - generic [ref=e611]: github-actions
+                        - text: mentioned this in 3 issues
+                        - link "on Jan 29, 2026on Jan 29" [ref=e612] [cursor=pointer]:
+                          - /url: https://github.com/anomalyco/opencode/issues/7504#event-4446342332
+                          - generic "Jan 29, 2026, 4:11 AM EST" [ref=e613]: on Jan 29, 2026on Jan 29
+                      - region "Issues mentioned" [ref=e616]:
+                        - list [ref=e617]:
+                          - listitem [ref=e618]:
+                            - generic [ref=e619]:
+                              - img "Not planned" [ref=e620]
+                              - 'link "[FEATURE]: Safer default for build agent: prompt on destructive bash commands #10238" [ref=e622] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/10238
+                                - text: "[FEATURE]: Safer default for build agent: prompt on destructive bash commands"
+                                - generic [ref=e623]: "#10238"
+                          - listitem [ref=e624]:
+                            - generic [ref=e625]:
+                              - img "Completed" [ref=e626]
+                              - 'link "Read permission doesn''t look to match when the agent uses ../.. paths #11059" [ref=e629] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/11059
+                                - text: Read permission doesn't look to match when the agent uses ../.. paths
+                                - generic [ref=e630]: "#11059"
+                          - listitem [ref=e631]:
+                            - generic [ref=e632]:
+                              - img "Completed" [ref=e633]
+                              - 'link "Patch tool should fail fast on paths outside workspace #11113" [ref=e636] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/issues/11113
+                                - text: Patch tool should fail fast on paths outside workspace
+                                - generic [ref=e637]: "#11113"
+                - generic [ref=e638]:
+                  - link "@thdxr's profile" [ref=e639] [cursor=pointer]:
+                    - /url: https://github.com/thdxr
+                    - img "thdxr" [ref=e640]
+                  - generic [ref=e647]:
+                    - generic [ref=e649]:
+                      - heading "thdxr commented on Mar 24, 2026 on Mar 24" [level=3] [ref=e650]:
+                        - text: thdxr commented
+                        - generic "Mar 24, 2026, 11:53 PM EDT" [ref=e651]: on Mar 24, 2026 on Mar 24
+                      - generic [ref=e652]:
+                        - link "thdxr" [ref=e654] [cursor=pointer]:
+                          - /url: /thdxr
+                        - link "on Mar 24, 2026on Mar 24" [ref=e657] [cursor=pointer]:
+                          - /url: https://github.com/anomalyco/opencode/issues/7504#issuecomment-4122963268
+                          - generic "Mar 24, 2026, 11:53 PM EDT" [ref=e658]: on Mar 24, 2026on Mar 24
+                      - generic [ref=e660]:
+                        - generic "This user is a member of the anomalyco organization." [ref=e662]: Member
+                        - button "Actions for thdxr's comment, 11:53 PM on March 24" [ref=e664] [cursor=pointer]:
+                          - img [ref=e665]
+                    - generic [ref=e667]:
+                      - paragraph [ref=e670]: To stay organized issues are automatically closed after 90 days of no activity. If the issue is still relevant please open a new one.
+                      - toolbar "Reactions"
+                - generic [ref=e671]:
+                  - link "@AnyCPU's profile" [ref=e672] [cursor=pointer]:
+                    - /url: https://github.com/AnyCPU
+                    - img "AnyCPU" [ref=e673]
+                  - generic [ref=e680]:
+                    - generic [ref=e682]:
+                      - heading "AnyCPU commented on Mar 25, 2026 on Mar 25" [level=3] [ref=e683]:
+                        - text: AnyCPU commented
+                        - generic "Mar 25, 2026, 5:39 AM EDT" [ref=e684]: on Mar 25, 2026 on Mar 25
+                      - generic [ref=e685]:
+                        - link "AnyCPU" [ref=e687] [cursor=pointer]:
+                          - /url: /AnyCPU
+                        - link "on Mar 25, 2026on Mar 25" [ref=e690] [cursor=pointer]:
+                          - /url: https://github.com/anomalyco/opencode/issues/7504#issuecomment-4125099891
+                          - generic "Mar 25, 2026, 5:39 AM EDT" [ref=e691]: on Mar 25, 2026on Mar 25
+                      - generic [ref=e693]:
+                        - generic "This user is the author of this issue" [ref=e695]: Author
+                        - button "Actions for AnyCPU's comment, 5:39 AM on March 25" [ref=e697] [cursor=pointer]:
+                          - img [ref=e698]
+                    - generic [ref=e700]:
+                      - paragraph [ref=e703]: it is still relevant, but i do not want to respond to ai slop and won't recommend this project.
+                      - toolbar "Reactions" [ref=e704]:
+                        - switch "👍 1 reaction" [ref=e705]:
+                          - generic [ref=e706]:
+                            - generic: 👍
+                            - generic [ref=e707]:
+                              - generic [ref=e708]: React with 👍
+                              - text: "1"
+                - region "Events" [ref=e709]:
+                  - generic [ref=e716]:
+                    - img [ref=e720]
+                    - generic [ref=e724]:
+                      - link "AnyCPU" [ref=e726] [cursor=pointer]:
+                        - /url: /AnyCPU
+                        - generic [ref=e727]: AnyCPU
+                      - text: closed this as
+                      - link "not planned" [ref=e728] [cursor=pointer]:
+                        - /url: /anomalyco/opencode/issues?q=is%3Aissue%20state%3Aclosed%20archived%3Afalse%20reason%3Anot-planned
+                      - link "on Mar 25, 2026on Mar 25" [ref=e729] [cursor=pointer]:
+                        - /url: https://github.com/anomalyco/opencode/issues/7504#event-23883714291
+                        - generic "Mar 25, 2026, 5:39 AM EDT" [ref=e730]: on Mar 25, 2026on Mar 25
+                  - generic [ref=e734]:
+                    - img [ref=e738]
+                    - generic [ref=e740]:
+                      - generic [ref=e742]:
+                        - link "RinZ27" [ref=e744] [cursor=pointer]:
+                          - /url: /RinZ27
+                          - generic [ref=e745]: RinZ27
+                        - text: mentioned this
+                        - link "on Mar 26, 2026on Mar 26" [ref=e746] [cursor=pointer]:
+                          - /url: https://github.com/anomalyco/opencode/issues/7504#event-5288037961
+                          - generic "Mar 26, 2026, 9:29 AM EDT" [ref=e747]: on Mar 26, 2026on Mar 26
+                      - region "Issues mentioned" [ref=e750]:
+                        - list [ref=e751]:
+                          - listitem [ref=e752]:
+                            - generic [ref=e753]:
+                              - img "Closed" [ref=e754]
+                              - 'link "refactor(opencode): harden BashTool input validation and environment #19290" [ref=e756] [cursor=pointer]':
+                                - /url: https://github.com/anomalyco/opencode/pull/19290
+                                - text: "refactor(opencode): harden BashTool input validation and environment"
+                                - generic [ref=e757]: "#19290"
+            - generic [ref=e758]:
+              - link "Sign up for free" [ref=e759] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/anomalyco/opencode/issues/7504
+                - generic [ref=e761]: Sign up for free
+              - generic [ref=e762]:
+                - strong [ref=e763]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e764] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/anomalyco/opencode/issues/7504
+        - generic [ref=e766]:
+          - heading "Metadata" [level=2] [ref=e767]
+          - generic [ref=e769]:
+            - generic [ref=e770]:
+              - generic [ref=e772]:
+                - heading "Assignees" [level=3]
+              - list [ref=e774]:
+                - listitem [ref=e775]:
+                  - link "thdxr" [ref=e776] [cursor=pointer]:
+                    - /url: /thdxr
+                    - generic:
+                      - img "@thdxr"
+                    - generic [ref=e779]: thdxr
+            - generic [ref=e780]:
+              - generic [ref=e782]:
+                - heading "Labels" [level=3]
+              - link "bug Something isn't working" [ref=e785] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues?q=state%3Aopen%20label%3A%22bug%22
+                - generic [ref=e787]: bug
+                - generic [ref=e788]: Something isn't working
+            - generic [ref=e790]:
+              - generic [ref=e791]:
+                - heading "Type" [level=3]
+              - generic [ref=e792]: No type
+            - generic [ref=e793]:
+              - generic [ref=e795]:
+                - heading "Fields" [level=3] [ref=e796]
+                - link "Give feedback" [ref=e797] [cursor=pointer]:
+                  - /url: https://github.com/orgs/community/discussions/189141
+              - generic [ref=e799]: No fields configured for issues without a type.
+            - generic [ref=e801]:
+              - generic [ref=e802]:
+                - heading "Projects" [level=3]
+              - generic [ref=e803]: No projects
+            - generic [ref=e805]:
+              - generic [ref=e806]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e807]: No milestone
+            - generic [ref=e809]:
+              - generic [ref=e810]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e811]: None yet
+            - generic [ref=e813]:
+              - generic [ref=e814]:
+                - heading "Development" [level=3]
+              - generic [ref=e815]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e816]
+            - list
+  - contentinfo [ref=e817]:
+    - heading "Footer" [level=2] [ref=e818]
+    - generic [ref=e819]:
+      - generic [ref=e820]:
+        - link "GitHub Homepage" [ref=e821] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e822]
+        - generic [ref=e824]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e825]:
+        - heading "Footer navigation" [level=3] [ref=e826]
+        - list "Footer navigation" [ref=e827]:
+          - listitem [ref=e828]:
+            - link "Terms" [ref=e829] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e830]:
+            - link "Privacy" [ref=e831] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e832]:
+            - link "Security" [ref=e833] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e834]:
+            - link "Status" [ref=e835] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e836]:
+            - link "Community" [ref=e837] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e838]:
+            - link "Docs" [ref=e839] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e840]:
+            - link "Contact" [ref=e841] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e842]:
+            - button "Manage cookies" [ref=e844] [cursor=pointer]
+          - listitem [ref=e845]:
+            - button "Do not share my personal information" [ref=e847] [cursor=pointer]
