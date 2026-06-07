@@ -14,6 +14,7 @@ A web-based chat interface for the [pi coding agent](https://pi.dev), accessible
 - 📂 Session management (new, fork, compact)
 - ⚡ Model and thinking level controls
 - 🖥️ Extension UI support (dialogs, confirmations)
+- 📁 **Workspace selector** - switch between projects/repos
 
 ## Quick Start
 
@@ -35,6 +36,7 @@ Open `http://localhost:3000` in your browser.
 |----------|---------|-------------|
 | `PORT` | `3000` | HTTP server port |
 | `HOST` | `0.0.0.0` | Bind address (use `0.0.0.0` for remote access) |
+| `WORKSPACE` | `$HOME` | Default working directory for the agent |
 
 ### Remote Access
 
@@ -82,15 +84,25 @@ Betty reads your pi settings from `~/.pi/agent/settings.json`:
 
 You can switch models and thinking levels directly from the web UI sidebar.
 
+## Workspace Selection
+
+Betty includes a workspace selector in the sidebar. Click the 📁 button to browse directories and select which project to work in. The agent will restart with the new working directory.
+
+You can also set a default workspace via the `WORKSPACE` environment variable:
+
+```bash
+WORKSPACE=/home/jon/git/my-project npm start
+```
+
 ## Architecture
 
 ```
 Browser ←→ WebSocket ←→ Node.js Server ←→ pi (RPC mode)
 ```
 
-- **Express** serves the static frontend
+- **Express** serves the static frontend and provides workspace API endpoints
 - **WebSocket** handles real-time bidirectional communication
-- **pi --mode rpc** runs as a managed subprocess
+- **pi --mode rpc** runs as a managed subprocess with the selected working directory
 - The JSONL RPC protocol bridges WebSocket messages to the agent
 
 ## License

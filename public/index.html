@@ -857,6 +857,19 @@
       color: var(--text-muted);
     }
 
+    /* Directory Browser */
+    .browser-item {
+      transition: background 0.1s;
+    }
+
+    .browser-item:hover {
+      background: var(--bg-secondary) !important;
+    }
+
+    .browser-item.selected {
+      background: var(--bg-hover) !important;
+    }
+
     /* Toast notifications */
     .toast-container {
       position: fixed;
@@ -965,6 +978,14 @@
       </div>
 
       <div class="sidebar-section">
+        <div class="sidebar-section-title">Workspace</div>
+        <button class="sidebar-btn" onclick="showWorkspaceModal()" id="workspaceBtn">
+          <span class="icon">📁</span>
+          <span id="workspaceLabel" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Loading...</span>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
         <div class="sidebar-section-title">Actions</div>
         <button class="sidebar-btn" onclick="newSession()">
           <span class="icon">✦</span> New Session
@@ -1043,6 +1064,27 @@
         </div>
       </div>
     </main>
+  </div>
+
+  <!-- Directory Browser Modal -->
+  <div class="modal-overlay" id="dirBrowserOverlay" onclick="closeDirBrowser(event)">
+    <div class="modal" id="dirBrowserModal" onclick="event.stopPropagation()" style="max-width:600px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+        <h3 style="margin:0;">Select Workspace</h3>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="header-btn" onclick="browserNavigateUp()" title="Go up" id="browserUpBtn">↑</button>
+          <button class="header-btn" onclick="browserRefresh()" title="Refresh">↻</button>
+        </div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px; font-family:monospace;" id="browserPath">/</div>
+      <div id="browserContent" style="max-height:50vh; overflow-y:auto;">
+        <div style="padding:20px; text-align:center; color:var(--text-muted);">Loading...</div>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn" onclick="hideDirBrowser()">Cancel</button>
+        <button class="modal-btn primary" id="browserSelectBtn" onclick="browserSelect()" disabled>Select Workspace</button>
+      </div>
+    </div>
   </div>
 
   <!-- Toast Container -->
@@ -2214,8 +2256,203 @@
       }
     });
 
+    // ─── Workspace Management ───────────────────────────────────────────────
+    let browserCurrentPath = '';
+    let browserSelectedPath = '';
+
+    function loadWorkspace() {
+      fetch('/api/workspace')
+        .then(r => r.json())
+        .then(data => {
+          currentWorkspace = data.workspace;
+          updateWorkspaceLabel();
+        })
+        .catch(err => {
+          console.error('Failed to load workspace:', err);
+        });
+    }
+
+    function updateWorkspaceLabel() {
+      const label = document.getElementById('workspaceLabel');
+      if (!label) return;
+      const home = window.__ENV?.HOME || '/home/' + (window.location.hostname === 'localhost' ? '' : '');
+      // Show relative path from HOME, or just the basename if too long
+      let display = currentWorkspace;
+      if (display.startsWith(home)) {
+        display = '~' + display.slice(home.length);
+      }
+      if (display.length > 30) {
+        display = '/' + display.split('/').slice(-3).join('/');
+      }
+      label.textContent = display || currentWorkspace;
+    }
+
+    function showWorkspaceModal() {
+      browserCurrentPath = currentWorkspace;
+      browserSelectedPath = currentWorkspace;
+      loadDirectoryBrowser(currentWorkspace);
+      document.getElementById('browserSelectBtn').disabled = false;
+      document.getElementById('dirBrowserOverlay').classList.add('active');
+    }
+
+    function hideDirBrowser() {
+      document.getElementById('dirBrowserOverlay').classList.remove('active');
+    }
+
+    function closeDirBrowser(event) {
+      if (event.target === event.currentTarget) hideDirBrowser();
+    }
+
+    function loadDirectoryBrowser(path) {
+      browserCurrentPath = path;
+      document.getElementById('browserPath').textContent = path;
+      const home = window.__ENV?.HOME || '/';
+      document.getElementById('browserUpBtn').disabled = path === '/' || path === home;
+
+      fetch(`/api/directory?path=${encodeURIComponent(path)}`)
+        .then(r => r.json())
+        .then(data => {
+          renderBrowserContent(data);
+        })
+        .catch(err => {
+          document.getElementById('browserContent').innerHTML =
+            '<div style="padding:20px; text-align:center; color:var(--red);">Failed to load directory</div>';
+        });
+    }
+
+    function renderBrowserContent(data) {
+      const content = document.getElementById('browserContent');
+      let html = '<div style="display:flex; flex-direction:column; gap:2px;">';
+
+      // Render directories
+      for (const dir of data.directories) {
+        const fullPath = joinPaths(browserCurrentPath, dir);
+        const isSelected = fullPath === browserSelectedPath;
+        html += '<div class="browser-item' + (isSelected ? ' selected' : '') + '" onclick="browserNavigateTo(\'' + escapeHtml(fullPath) + '\')" style="display:flex;align-items:center;gap:8px;padding:8px 12px;cursor:pointer;border-radius:6px;background:' + (isSelected ? 'var(--bg-hover)' : 'transparent') + ';transition:background 0.1s;">';
+        html += '<span style="font-size:16px;">📁</span>';
+        html += '<span style="font-size:13px;color:var(--text-primary);">' + escapeHtml(dir) + '</span>';
+        if (isSelected) html += '<span style="margin-left:auto;font-size:10px;color:var(--accent);">selected</span>';
+        html += '</div>';
+      }
+
+      // Render files (non-hidden, common project files)
+      const projectFiles = data.files.filter(f => {
+        // Show common project files
+        const show = f.startsWith('.') ||
+          ['.gitignore', '.env', 'README', 'package.json', 'tsconfig.json', 'Makefile',
+           'Dockerfile', 'Cargo.toml', 'go.mod', 'requirements.txt', 'pyproject.toml',
+           'Gemfile', 'composer.json', 'pom.xml', 'build.gradle', 'CMakeLists.txt',
+           '.pi', 'SKILL.md', 'AGENTS.md', 'INDEX.md'].some(k => f.toLowerCase().includes(k.toLowerCase())) ||
+          f.match(/\.(js|ts|tsx|jsx|py|go|rs|java|c|cpp|h|hpp|css|scss|html|md|json|yaml|yml|toml|sh|bash|zsh)$/i);
+        return show;
+      }).slice(0, 50); // Limit to 50 files
+
+      if (projectFiles.length > 0) {
+        html += '<div style="height:1px; background:var(--border); margin:8px 0;"></div>';
+        for (const file of projectFiles) {
+          const isSelected = joinPaths(browserCurrentPath, file) === browserSelectedPath;
+          const icon = getFileIcon(file);
+          html += '<div class="browser-item" onclick="browserSelectFile(\'' + escapeHtml(file) + '\')" style="display:flex;align-items:center;gap:8px;padding:6px 12px;cursor:pointer;border-radius:6px;background:' + (isSelected ? 'var(--bg-hover)' : 'transparent') + ';transition:background 0.1s;">';
+          html += '<span style="font-size:14px;">' + icon + '</span>';
+          html += '<span style="font-size:12px;color:var(--text-secondary);">' + escapeHtml(file) + '</span>';
+          html += '</div>';
+        }
+      }
+
+      if (data.directories.length === 0 && data.files.length === 0) {
+        html += '<div style="padding:20px; text-align:center; color:var(--text-muted); font-size:13px;">Empty directory</div>';
+      }
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function getFileIcon(filename) {
+      const ext = filename.split('.').pop().toLowerCase();
+      const icons = {
+        js: '📜', ts: '📜', tsx: '⚛️', jsx: '⚛️', py: '🐍', go: '🔷',
+        rs: '🦀', java: '☕', c: '🔧', cpp: '🔧', h: '🔧', hpp: '🔧',
+        css: '🎨', scss: '🎨', html: '🌐', md: '📝', json: '📋',
+        yaml: '📋', yml: '📋', toml: '📋', sh: '⚙️', bash: '⚙️',
+        gitignore: '🔒', env: '🔐', dockerfile: '🐳', makefile: '🔨',
+      };
+      return icons[ext] || '📄';
+    }
+
+    function joinPaths(base, relative) {
+      if (!relative) return base;
+      const combined = base.replace(/\/$/, '') + '/' + relative.replace(/^\//, '');
+      // Normalize
+      const parts = combined.split('/').filter(p => p && p !== '.');
+      const result = [];
+      for (const p of parts) {
+        if (p === '..') {
+          result.pop();
+        } else {
+          result.push(p);
+        }
+      }
+      return '/' + result.join('/');
+    }
+
+    function browserNavigateTo(path) {
+      browserSelectedPath = path;
+      loadDirectoryBrowser(path);
+      document.getElementById('browserSelectBtn').disabled = false;
+    }
+
+    function browserNavigateUp() {
+      const home = window.__ENV?.HOME || '/';
+      if (browserCurrentPath === '/' || browserCurrentPath === home) return;
+      const parts = browserCurrentPath.split('/').filter(p => p);
+      parts.pop();
+      const parent = '/' + parts.join('/') || '/';
+      browserSelectedPath = parent;
+      loadDirectoryBrowser(parent);
+      document.getElementById('browserSelectBtn').disabled = false;
+    }
+
+    function browserRefresh() {
+      loadDirectoryBrowser(browserCurrentPath);
+    }
+
+    function browserSelectFile(filename) {
+      const fullPath = joinPaths(browserCurrentPath, filename);
+      toast(`Selected file: ${filename}`, 'info');
+      // Don't close - just select the parent directory as workspace
+      browserSelectedPath = browserCurrentPath;
+      document.getElementById('browserSelectBtn').disabled = false;
+    }
+
+    function browserSelect() {
+      const path = browserSelectedPath || browserCurrentPath;
+      // Validate the path exists
+      fetch('/api/workspace', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.workspace) {
+          currentWorkspace = data.workspace;
+          updateWorkspaceLabel();
+          hideDirBrowser();
+          toast(`Workspace set to: ${path}`, 'success');
+        } else {
+          toast('Failed to set workspace', 'error');
+        }
+      })
+      .catch(err => {
+        toast('Failed to set workspace: ' + err.message, 'error');
+      });
+    }
+
     // ─── Init ─────────────────────────────────────────────────────────────────
     connect();
+
+    // Load workspace info
+    loadWorkspace();
 
     // Request initial state
     setTimeout(() => {

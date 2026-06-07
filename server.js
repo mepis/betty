@@ -9,12 +9,113 @@ import { randomUUID } from "node:crypto";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "0.0.0.0";
+const DEFAULT_WORKSPACE = process.env.WORKSPACE || process.env.HOME;
 
 // ─── HTTP Server ────────────────────────────────────────────────────────────
 
 const app = express();
 const httpServer = createServer(app);
+app.use(express.json());
+
+// Inject env vars into the frontend
+const { readFileSync } = await import("node:fs");
+const frontendHtml = readFileSync(join(__dirname, "public", "index.html"), "utf8");
+const homeDir = process.env.HOME || "/home/" + (process.env.USER || "user");
+
+app.get("/", (req, res) => {
+  const modified = frontendHtml.replace(
+    '<head>',
+    `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)} };</script>`
+  );
+  res.send(modified);
+});
+
+// Serve static files (JS, CSS, etc.)
 app.use(express.static(join(__dirname, "public")));
+
+// Workspace state
+let currentWorkspace = DEFAULT_WORKSPACE;
+
+// ─── Workspace API ──────────────────────────────────────────────────────────
+
+async function listDirectory(dir) {
+  const { readdir, stat } = await import("node:fs/promises");
+  const entries = await readdir(dir, { withFileTypes: true }).catch(() => []);
+  const result = {
+    path: dir,
+    directories: [],
+    files: []
+  };
+
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      result.directories.push(entry.name);
+    } else if (entry.isFile()) {
+      result.files.push(entry.name);
+    }
+  }
+
+  // Sort: directories first, then files, both alphabetically
+  result.directories.sort();
+  result.files.sort();
+
+  return result;
+}
+
+app.get("/api/workspace", (req, res) => {
+  res.json({ workspace: currentWorkspace });
+});
+
+app.post("/api/workspace", async (req, res) => {
+  try {
+    const { path } = req.body;
+    if (!path) {
+      return res.status(400).json({ error: "Path is required" });
+    }
+
+    // Resolve relative paths
+    const resolved = !path.startsWith("/") ? join(process.env.HOME, path) : path;
+
+    // Check if directory exists
+    const { stat } = await import("node:fs/promises");
+    try {
+      await stat(resolved);
+    } catch {
+      return res.status(404).json({ error: "Directory not found" });
+    }
+
+    currentWorkspace = resolved;
+    console.log(`[workspace] Changed to: ${currentWorkspace}`);
+
+    // Restart agent with new workspace
+    try {
+      await agent.restart();
+      // Notify all clients
+      for (const [id, client] of clients) {
+        try {
+          client.ws.send(JSON.stringify({ type: "agent_status", status: "running" }));
+        } catch {}
+      }
+    } catch (err) {
+      console.error(`[workspace] Failed to restart agent: ${err.message}`);
+    }
+
+    res.json({ workspace: currentWorkspace });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get("/api/directory", async (req, res) => {
+  try {
+    const dir = req.query.path || currentWorkspace;
+    const result = await listDirectory(dir);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // ─── WebSocket Server ───────────────────────────────────────────────────────
 
@@ -73,11 +174,13 @@ class RpcAgent {
     }
 
     console.log(`[rpc] Starting pi with: pi ${args.join(" ")}`);
+    console.log(`[rpc] Working directory: ${currentWorkspace}`);
 
     return new Promise((resolve, reject) => {
       this.proc = spawn("pi", args, {
         stdio: ["pipe", "pipe", "pipe"],
         env: { ...process.env },
+        cwd: currentWorkspace,
       });
 
       this.proc.stdout.on("data", (data) => this._handleStdout(data));
@@ -246,9 +349,22 @@ class RpcAgent {
 
   stop() {
     if (this.proc) {
+      // Detach exit/error handlers so killing the process doesn't
+      // trigger notifications to clients (e.g. during workspace restart)
+      this.proc.removeAllListeners("exit");
+      this.proc.removeAllListeners("error");
       this.proc.kill("SIGTERM");
       this.proc = null;
     }
+  }
+
+  async restart() {
+    console.log(`[rpc] Restarting agent with cwd: ${currentWorkspace}`);
+    this.stop();
+    this.isRunning = false;
+    await this.start();
+    this.isRunning = true;
+    console.log("[rpc] Agent restarted");
   }
 }
 
