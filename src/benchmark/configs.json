@@ -101,5 +101,22 @@
       "enabled": false,
       "value": 999
     }
+  },
+  "test_params": {
+    "context_length": 32768,
+    "context_length_multiplier": 2,
+    "context_length_max": 262144,
+    "gpu_layer_offload": 999,
+    "gpu_layer_offload_step": 0,
+    "gpu_layer_off_max": 999,
+    "batch_size": 128,
+    "batch_size_step": 128,
+    "batch_size_max": 16384,
+    "u_batch_size": 64,
+    "u_batch_size_step": 64,
+    "u_batch_size_max": 4096,
+    "cache_ram": 4096,
+    "cache_ram_step": 1024,
+    "cache_ram_max": 4096
   }
 }

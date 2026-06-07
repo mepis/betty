@@ -50,25 +50,26 @@ console.log(
 
 // Test variables (Do not remove)
 // (Do not remove comment) # common contet size windows: 16384, 32768, 65536, 131072, 262144, 524288
-let contextLength = 32768;
-const contextLengthMultiplier = 2;
-const contextLengthMax = 262144;
+const testParams = configs.test_params;
+let contextLength = testParams.context_length;
+const contextLengthMultiplier = testParams.context_length_multiplier;
+const contextLengthMax = testParams.context_length_max;
 
-let gpuLayerOffload = 999;
-const gpuLayerOffloadStep = 0;
-const gpuLayerOffMax = 999;
+let gpuLayerOffload = testParams.gpu_layer_offload;
+const gpuLayerOffloadStep = testParams.gpu_layer_offload_step;
+const gpuLayerOffMax = testParams.gpu_layer_off_max;
 
-let batchSize = 128;
-const batchSizeStep = 128;
-const batchSizeMax = 16384;
+let batchSize = testParams.batch_size;
+const batchSizeStep = testParams.batch_size_step;
+const batchSizeMax = testParams.batch_size_max;
 
-let uBatchSize = 64;
-const uBatchSizeStep = 64;
-const uBatchSizeMax = 4096;
+let uBatchSize = testParams.u_batch_size;
+const uBatchSizeStep = testParams.u_batch_size_step;
+const uBatchSizeMax = testParams.u_batch_size_max;
 
-let cacheRam = 4096;
-const cacheRamStep = 1024;
-const cacheRamSMax = 4096;
+let cacheRam = testParams.cache_ram;
+const cacheRamStep = testParams.cache_ram_step;
+const cacheRamMax = testParams.cache_ram_max;
 
 // End Test variables ------------------------
 
@@ -146,6 +147,14 @@ async function main() {
           console.error(`\nReached ${maxErrors} errors. Stopping benchmark.`);
           isRunning = false;
         }
+        // Write results after each test run for incremental reporting
+        writeResultsToMarkdown();
+        if (areAllVariablesAtMax()) {
+          console.log(
+            "\nAll test variables reached their maximum values. Benchmark complete.",
+          );
+          isRunning = false;
+        }
       }
     } else {
       console.error("\n" + "=".repeat(60));
@@ -178,6 +187,7 @@ async function main() {
   // Final cleanup: ensure llama-server is stopped
   await stopLlamaServer();
 
+  // Final write of results (already written after last test run, but ensure it's up to date)
   writeResultsToMarkdown();
   console.log("Benchmark complete. Results saved to", resultsFile);
   process.exit(0);
@@ -185,11 +195,28 @@ async function main() {
 
 //--- Config update: advance to next test configuration ---
 function updateConfigs() {
-  contextLength = contextLength * contextLengthMultiplier;
-  gpuLayerOffload = gpuLayerOffload + gpuLayerOffloadStep;
-  batchSize = batchSize + batchSizeStep;
-  uBatchSize = uBatchSize + uBatchSizeStep;
-  cacheRam = cacheRam + cacheRamStep;
+  contextLength = Math.min(
+    contextLength * contextLengthMultiplier,
+    contextLengthMax,
+  );
+  gpuLayerOffload = Math.min(
+    gpuLayerOffload + gpuLayerOffloadStep,
+    gpuLayerOffMax,
+  );
+  batchSize = Math.min(batchSize + batchSizeStep, batchSizeMax);
+  uBatchSize = Math.min(uBatchSize + uBatchSizeStep, uBatchSizeMax);
+  cacheRam = Math.min(cacheRam + cacheRamStep, cacheRamMax);
+}
+
+//--- Check if all test variables have reached their maximum values ---
+function areAllVariablesAtMax() {
+  return (
+    contextLength >= contextLengthMax &&
+    gpuLayerOffload >= gpuLayerOffMax &&
+    batchSize >= batchSizeMax &&
+    uBatchSize >= uBatchSizeMax &&
+    cacheRam >= cacheRamMax
+  );
 }
 
 //--- Controller: init repo, build, then enter benchmark loop ---

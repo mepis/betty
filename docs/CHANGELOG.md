@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-07] Benchmark test parameters — moved `context_length`, `gpu_layer_offload`, `batch_size`, `u_batch_size`, and `cache_ram` (plus their step/max values) from hardcoded constants in `index.js` to a new `test_params` section in `configs.json` for centralized configuration
+- [Changed]: [2026-06-07] Benchmark iteration bounds — `updateConfigs()` now caps all test variables at their configured maximums via `Math.min()` instead of unbounded increments; added `areAllVariablesAtMax()` to detect when all variables have reached their limits
+- [Changed]: [2026-06-07] Benchmark result reporting — `writeResultsToMarkdown()` now runs after each test iteration for incremental reporting, not just at the end of the benchmark
+
+### Fixed
+
+- [Fixed]: [2026-06-07] Benchmark variable typo — renamed `cacheRamSMax` to `cacheRamMax` for consistency with other max variable names
+
 ### Added
 
 - [Added]: [2026-06-07] Skip build option — added `skip_build` config flag and `--no-build` CLI argument to skip llama.cpp compilation; `startLlamaServer()` now uses `spawn()` with `shell: true` instead of manual command parsing; added `buildParams` cache variable to reduce repeated `configs.build_make_params` access; changed `llama_host` to 100.105.3.99
