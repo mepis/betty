@@ -1,4 +1,5 @@
 {
+  "max_sys_mem": 93,
   "llama_port": 11434,
   "llama_host": "100.105.3.99",
   "model": "gemma-4-E2B_q4_0-it.gguf",

@@ -73,11 +73,6 @@ const cacheRamMax = testParams.cache_ram_max;
 
 // End Test variables ------------------------
 
-const memTimerId = setInterval(async () => {
-  const mem = getMem();
-  console.log(`${mem.used}Gb/${mem.total}Gb (${mem.stat}%) Memory Used`);
-}, memTimer);
-
 //--- Server process reference ---
 let serverProcess = null;
 
@@ -135,6 +130,12 @@ async function main() {
   console.log(`Model: ${configs.model_directory}/${configs.model}`);
   console.log(`Results file: ${resultsFile}`);
 
+  // Wipe the report file on startup
+  if (fs.existsSync(resultsFile)) {
+    fs.writeFileSync(resultsFile, "");
+    console.log(`Wiped existing results file: ${resultsFile}`);
+  }
+
   // Kill any existing llama-server before proceeding
   await ensureNoLlamaServer();
 
@@ -142,14 +143,15 @@ async function main() {
     const initResult = await initController();
     if (initResult.success) {
       while (isRunning) {
-        await runTestRun();
+        const result = await runTestRun();
         if (errorCount >= maxErrors) {
           console.error(`\nReached ${maxErrors} errors. Stopping benchmark.`);
           isRunning = false;
         }
         // Write results after each test run for incremental reporting
         writeResultsToMarkdown();
-        if (areAllVariablesAtMax()) {
+        // Skip the "all variables at max" check if this run was aborted (configs not advanced)
+        if (!result?.aborted && areAllVariablesAtMax()) {
           console.log(
             "\nAll test variables reached their maximum values. Benchmark complete.",
           );
@@ -941,6 +943,26 @@ async function runTestRun() {
   );
   console.log(`  GPU Offload: ${gpuLayerOffload}`);
 
+  // Check system memory before starting the test
+  const mem = getMem();
+  if (parseFloat(mem.stat) >= configs.max_sys_mem) {
+    console.log(
+      `  ABORTED: System memory at ${mem.stat}% (${mem.used}GB/${mem.total}GB) exceeds threshold of ${configs.max_sys_mem}%`,
+    );
+    const abortedResult = {
+      testRunId,
+      contextLength,
+      batchSize,
+      uBatchSize,
+      cacheRam,
+      gpuLayerOffload,
+      aborted: true,
+      abortReason: `System memory at ${mem.stat}% (${mem.used}GB/${mem.total}GB) exceeds threshold of ${configs.max_sys_mem}%`,
+    };
+    results.push(abortedResult);
+    return { aborted: true };
+  }
+
   // Ensure no leftover llama-server from previous run before starting a new one
   await ensureNoLlamaServer();
 
@@ -971,6 +993,7 @@ async function runTestRun() {
       const result = await sendChat(chatHistory);
       result.messageIndex = i + 1;
       result.totalMessagesInContext = chatHistory.length;
+      result.mem = getMem();
       messageResults.push(result);
 
       // Add the assistant's response to the chat history for the next turn
@@ -1019,6 +1042,8 @@ async function runTestRun() {
   const avgGenTokensPerSec =
     messageResults.reduce((s, r) => s + r.generatedTokensPerSec, 0) /
     messageResults.length;
+  const avgMemUsed =
+    messageResults.reduce((s, r) => s + r.mem.used, 0) / messageResults.length;
 
   const sp = configs.server_params;
   const sps = configs.split_params;
@@ -1050,6 +1075,7 @@ async function runTestRun() {
       totalTimeMs: totalMs,
       avgPromptTokensPerSec: Math.round(avgPromptTokensPerSec * 100) / 100,
       avgGenTokensPerSec: Math.round(avgGenTokensPerSec * 100) / 100,
+      avgMemUsed: Math.round(avgMemUsed * 100) / 100,
     },
   };
 
@@ -1084,13 +1110,17 @@ function writeResultsToMarkdown() {
   // Table 1: Per-message results
   md += "## Per-Message Results\n\n";
   md +=
-    "| Test Run | Message | Context Len | Messages in Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec |\n";
+    "| Test Run | Message | Context Len | Messages in Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec | Memory (used/total/%) |\n";
   md +=
-    "|----------|---------|-------------|---------------------|---------------|------------------|-----------------|-------------------|----------------|\n";
+    "|----------|---------|-------------|---------------------|---------------|------------------|-----------------|-------------------|----------------|-------------------------|\n";
 
   for (const run of results) {
-    for (const msg of run.messageResults) {
-      md += `| ${run.testRunId} | ${msg.messageIndex} | ${run.contextLength} | ${msg.totalMessagesInContext} | ${msg.promptTokens} | ${msg.generatedTokens} | ${msg.totalTimeMs} | ${msg.promptTokensPerSec} | ${msg.generatedTokensPerSec} |\n`;
+    if (run.aborted) {
+      md += `| ${run.testRunId} | - | ${run.contextLength} | - | - | - | - | - | - | - | *Aborted: ${run.abortReason}* |\n`;
+    } else {
+      for (const msg of run.messageResults) {
+        md += `| ${run.testRunId} | ${msg.messageIndex} | ${run.contextLength} | ${msg.totalMessagesInContext} | ${msg.promptTokens} | ${msg.generatedTokens} | ${msg.totalTimeMs} | ${msg.promptTokensPerSec} | ${msg.generatedTokensPerSec} | ${msg.mem.used}GB/${msg.mem.total}GB/${msg.mem.stat}% |\n`;
+      }
     }
   }
 
@@ -1099,12 +1129,16 @@ function writeResultsToMarkdown() {
   // Table 2: Per-test-run averages
   md += "## Test Run Averages\n\n";
   md +=
-    "| Test Run | Context | Batch | UBatch | Cache (GB) | GPU Layers | Avg Prompt Tok/s | Avg Gen Tok/s | Total Prompt Toks | Total Gen Toks | Total Time (ms) |\n";
+    "| Test Run | Context | Batch | UBatch | Cache (GB) | GPU Layers | Avg Prompt Tok/s | Avg Gen Tok/s | Total Prompt Toks | Total Gen Toks | Total Time (ms) | Avg Mem Used (GB) |\n";
   md +=
-    "|----------|---------|-------|--------|------------|------------|------------------|---------------|-------------------|----------------|-----------------|\n";
+    "|----------|---------|-------|--------|------------|------------|------------------|---------------|-------------------|----------------|-----------------|---------------------|\n";
 
   for (const run of results) {
-    md += `| ${run.testRunId} | ${run.contextLength} | ${run.batchSize} | ${run.uBatchSize} | ${run.cacheRam} | ${run.gpuLayerOffload} | ${run.averages.avgPromptTokensPerSec} | ${run.averages.avgGenTokensPerSec} | ${run.averages.totalPromptTokens} | ${run.averages.totalGeneratedTokens} | ${run.averages.totalTimeMs} |\n`;
+    if (run.aborted) {
+      md += `| ${run.testRunId} | ${run.contextLength} | ${run.batchSize} | ${run.uBatchSize} | ${run.cacheRam} | ${run.gpuLayerOffload} | - | - | - | - | - | - | *Aborted: ${run.abortReason}* |\n`;
+    } else {
+      md += `| ${run.testRunId} | ${run.contextLength} | ${run.batchSize} | ${run.uBatchSize} | ${run.cacheRam} | ${run.gpuLayerOffload} | ${run.averages.avgPromptTokensPerSec} | ${run.averages.avgGenTokensPerSec} | ${run.averages.totalPromptTokens} | ${run.averages.totalGeneratedTokens} | ${run.averages.totalTimeMs} | ${run.averages.avgMemUsed} |\n`;
+    }
   }
 
   md += "\n";

@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-07] System memory safety threshold — `max_sys_mem` config option (93%) that aborts a test run before starting if system memory usage exceeds the threshold, preventing OOM crashes; aborted runs are recorded in results with the abort reason
+- [Added]: [2026-06-07] Per-message memory tracking — `getMem()` is called after each chat message and stored in the result; average memory used (GB) is calculated and reported per test run
+- [Added]: [2026-06-07] Memory column in benchmark results — per-message results table includes memory used/total/%; test run averages table includes average memory used (GB); aborted runs are marked with their abort reason in both tables
+- [Added]: [2026-06-07] Results file wipe on startup — existing `results.md` is wiped at the start of each benchmark run to avoid stale data
+
+### Changed
+
+- [Changed]: [2026-06-07] Benchmark main loop — now captures the return value from `runTestRun()` and skips the `areAllVariablesAtMax()` check when a run was aborted (configs not advanced on abort)
+- [Changed]: [2026-06-07] Benchmark memory timer removed — the periodic memory logging interval was removed as it is no longer needed (memory is now tracked per-message)
+
+### Fixed
+
+- [Fixed]: [2026-06-07] Benchmark main loop — removed dangling `clearInterval(memTimerId)` call after removing the memory timer interval
+
 ### Changed
 
 - [Changed]: [2026-06-07] Benchmark test parameters — moved `context_length`, `gpu_layer_offload`, `batch_size`, `u_batch_size`, and `cache_ram` (plus their step/max values) from hardcoded constants in `index.js` to a new `test_params` section in `configs.json` for centralized configuration
