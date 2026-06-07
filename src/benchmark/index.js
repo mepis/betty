@@ -8,7 +8,9 @@ import { dirname, join } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const configs = JSON.parse(fs.readFileSync(join(__dirname, "configs.json"), "utf8"));
+const configs = JSON.parse(
+  fs.readFileSync(join(__dirname, "configs.json"), "utf8"),
+);
 const llamaUrl = `http://${configs.llama_host}:${configs.llama_port}`;
 const rootDir = __dirname;
 const resultsFile = join(rootDir, "results.md");
@@ -24,6 +26,10 @@ const benchmarkMessages = [
 //--- Configurable test parameters ---
 const memTimer = 5000;
 let isRunning = true;
+
+//--- Error tracking ---
+const maxErrors = 10;
+let errorCount = 0;
 
 //** Build Params */
 const peerBatchSize = configs.build_make_params.peer_batch_size;
@@ -48,12 +54,9 @@ const uBatchSizeStep = 64;
 let cacheRam = 4096;
 const cacheRamStep = 1024;
 
-let flashAttn = 1;
-let reasoning = 1;
-
 const memTimerId = setInterval(async () => {
   const mem = getMem();
-  console.log(`${mem.used} of ${mem.total} GB memory utilization (${mem.stat}%)`);
+  console.log(`${mem.used}Gb/${mem.total}Gb (${mem.stat}%) Memory Used`);
 }, memTimer);
 
 //--- Server process reference ---
@@ -68,11 +71,40 @@ async function main() {
   console.log(`Model: ${configs.model_directory}/${configs.model}`);
   console.log(`Results file: ${resultsFile}`);
 
-  const ready = await initController();
-  if (ready) {
-    while (isRunning) {
-      await runTestRun();
+  try {
+    const initResult = await initController();
+    if (initResult.success) {
+      while (isRunning) {
+        await runTestRun();
+        if (errorCount >= maxErrors) {
+          console.error(`\nReached ${maxErrors} errors. Stopping benchmark.`);
+          isRunning = false;
+        }
+      }
+    } else {
+      console.error("\n" + "=".repeat(60));
+      console.error("BENCHMARK ABORTED");
+      console.error("=".repeat(60));
+      console.error(`Reason: ${initResult.reason}`);
+      if (initResult.detail) {
+        console.error(`\nDetail: ${initResult.detail}`);
+      }
+      console.error(
+        "\nCheck the logs above for cmake, git clone, or build errors.",
+      );
+      console.error("=".repeat(60));
+      process.exit(1);
     }
+  } catch (error) {
+    console.error("\n" + "=".repeat(60));
+    console.error("BENCHMARK ENCOUNTERED AN UNEXPECTED ERROR");
+    console.error("=".repeat(60));
+    console.error(`Error: ${error.message}`);
+    if (error.stack) {
+      console.error(`\nStack trace:\n${error.stack}`);
+    }
+    console.error("=".repeat(60));
+    process.exit(1);
   }
 
   clearInterval(memTimerId);
@@ -92,33 +124,61 @@ function updateConfigs() {
 
 //--- Controller: init repo, build, then enter benchmark loop ---
 async function initController() {
-  const didInit = await init();
-  if (!didInit) return false;
+  const initResult = await init();
+  if (!initResult.success) {
+    return {
+      success: false,
+      reason: "Repository initialization failed",
+      detail: initResult.detail,
+    };
+  }
 
-  const isBuilt = await runBuild();
-  if (!isBuilt) return false;
+  const buildResult = await runBuild();
+  if (!buildResult.success) {
+    return {
+      success: false,
+      reason: "llama.cpp build failed",
+      detail: buildResult.detail,
+    };
+  }
 
-  return true;
+  return { success: true, reason: null };
 }
 
 async function init() {
   try {
     const cloned = isCloned();
     if (cloned) {
-      return await runPull();
+      const result = await runPull();
+      return { success: true, detail: "llama.cpp updated" };
     } else {
-      return await runClone();
+      const result = await runClone();
+      return { success: true, detail: "llama.cpp cloned" };
     }
   } catch (error) {
-    console.error("Init failed:", error);
-    return false;
+    let msg = "Init failed";
+    if (error instanceof Error) {
+      msg = error.message;
+    } else if (error && typeof error === "object") {
+      msg = error.error || "Unknown error";
+      if (error.stderr) {
+        msg += `\n\n--- stderr ---\n${error.stderr}`;
+      }
+    }
+    console.error("\n" + "=".repeat(60));
+    console.error("INITIALIZATION FAILURE");
+    console.error("=".repeat(60));
+    console.error(msg);
+    console.error("=".repeat(60));
+    return { success: false, detail: msg };
   }
 }
 
 function isCloned() {
   try {
-    const dirs = fs.readdirSync(rootDir);
-    return dirs.some((d) => d === "llama.cpp");
+    const llamaDir = join(rootDir, "llama.cpp");
+    const stat = fs.statSync(llamaDir);
+    return stat.isDirectory();
   } catch {
     return false;
   }
@@ -126,39 +186,70 @@ function isCloned() {
 
 async function runBuild() {
   try {
-    const exports = getExports();
-    const buildScript = getBuildScript();
-    const cmakeCommand = `${exports} && cd ${rootDir}/llama.cpp && ${buildScript}`;
+    const env = buildEnv();
+    const buildCores = configs.build_cores;
+    const buildDir = rootDir + "/llama.cpp";
 
+    // Step 1: Configure with cmake
     console.log("Running cmake build configuration...");
-    const cmakeResult = await runCommand(cmakeCommand);
-    if (!cmakeResult) {
-      throw new Error("CMake configuration failed");
-    }
+    console.log(`  Working directory: ${buildDir}`);
+    console.log(`  Build cores: ${buildCores}`);
+    await runCommand(`cmake -B build -DCMAKE_BUILD_TYPE=Release`, {
+      cwd: buildDir,
+      env,
+    });
+    console.log("CMake configuration complete.");
 
-    const buildCores = configs.build_make_params.build_cores;
-    const buildBin = `cmake --build llama.cpp/build --config Release -j ${buildCores} --clean-first`;
+    // Step 2: Build with make
     console.log("Building llama.cpp...");
-    const buildResult = await runCommand(buildBin);
-    if (!buildResult) {
-      throw new Error("Build failed");
+    await runCommand(
+      `cmake --build build --config Release -j ${buildCores} --clean-first`,
+      { cwd: buildDir, env },
+    );
+
+    // Step 3: Verify the binary was built
+    const binaryPath = buildDir + "/build/bin/llama-server";
+    if (!fs.existsSync(binaryPath)) {
+      let detail = `llama-server binary not found at ${binaryPath}. `;
+      try {
+        detail += `Build directory contents: ${fs.readdirSync(buildDir + "/build").join(", ")}`;
+      } catch {
+        detail += "Build directory does not exist.";
+      }
+      throw new Error(detail);
     }
 
-    console.log("llama.cpp build complete.");
-    return true;
+    console.log("llama.cpp build complete. Binary: " + binaryPath);
+    return { success: true, detail: "Build successful" };
   } catch (error) {
-    console.error("Build failure:", error.message);
-    return false;
+    // error is either an Error object or { error: string, stderr: string } from runCommand
+    let msg = "Build failed";
+    if (error instanceof Error) {
+      msg = error.message;
+    } else if (error && typeof error === "object") {
+      msg = error.error || "Unknown error";
+      if (error.stderr) {
+        msg += `\n\n--- Build stderr ---\n${error.stderr}`;
+      }
+    }
+    console.error("\n" + "=".repeat(60));
+    console.error("BUILD FAILURE");
+    console.error("=".repeat(60));
+    console.error(msg);
+    console.error("=".repeat(60));
+    return { success: false, detail: msg };
   }
 }
 
 async function runPull() {
   try {
-    const command = `cd ${rootDir}/llama.cpp && git stash && git pull`;
+    const llamaDir = rootDir + "/llama.cpp";
     console.log("Pulling latest llama.cpp...");
-    return await runCommand(command);
+    const result = await runCommand("git stash && git pull", { cwd: llamaDir });
+    console.log("llama.cpp updated successfully.");
+    return result;
   } catch (error) {
-    console.error("Pull failed:", error.message);
+    console.error("Pull failed:", error.error);
     return false;
   }
 }
@@ -166,35 +257,77 @@ async function runPull() {
 async function runClone() {
   try {
     console.log("Cloning llama.cpp repository...");
-    const command = `cd ${rootDir} && git clone https://github.com/ggml-org/llama.cpp`;
-    return await runCommand(command);
+    const result = await runCommand(
+      "git clone https://github.com/ggml-org/llama.cpp",
+      { cwd: rootDir },
+    );
+    console.log("llama.cpp cloned successfully.");
+    return result;
   } catch (error) {
-    console.error("Clone failed:", error.message);
+    console.error("Clone failed:", error.error);
     return false;
   }
 }
 
-function runCommand(command) {
+function runCommand(command, options = {}) {
+  const { cwd, env } = options;
   return new Promise((resolve, reject) => {
-    exec(command, { timeout: 3600000 }, (error, stdout, stderr) => {
-      if (error) return reject({ error: error.message, stderr });
+    exec(command, { timeout: 3600000, cwd, env }, (error, stdout, stderr) => {
+      if (error) {
+        const errorMsg = error.message;
+        const stderrMsg = stderr ? stderr.trim() : "(no stderr output)";
+        console.error(`Command failed: ${command}`);
+        console.error(`  Error: ${errorMsg}`);
+        console.error(`  Stderr: ${stderrMsg}`);
+        return reject({ error: errorMsg, stderr: stderrMsg });
+      }
+      if (stderr) {
+        // Log warnings but don't fail on non-error output
+        const warningLines = stderr
+          .split("\n")
+          .filter(
+            (l) =>
+              l.toLowerCase().includes("warning") ||
+              l.toLowerCase().includes("deprecated"),
+          );
+        if (warningLines.length > 0) {
+          console.warn(`Command produced warnings:\n${stderr}`);
+        }
+      }
       resolve(stdout.trim());
     });
   });
 }
 
-//--- Environment exports for llama.cpp ---
+//--- Environment variables for llama.cpp build ---
+function buildEnv() {
+  return {
+    ...process.env,
+    GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
+    CUDA_SCALE_LAUNCH_QUEUES: "4x",
+    LLAMA_CACHE: configs.llama_cache,
+    CUDACXX: process.env.CUDACXX || "",
+    GGML_CUDA_P2P: "on",
+    PATH: `/usr/local/cuda-${configs.cuda_configs.cuda_version}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
+    LLAMA_ARG_FIT: "on",
+    LLAMA_ARG_FIT_TARGET: "256",
+    LLAMA_ARG_FIT_CTX: "131072",
+  };
+}
+
+//--- Environment exports for llama.cpp runtime ---
 function getExports() {
+  const env = buildEnv();
   const exports = [
-    `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=1`,
-    `export CUDA_SCALE_LAUNCH_QUEUES=4x`,
-    `export LLAMA_CACHE=${configs.llama_cache}`,
-    `export CUDACXX=$(which nvcc)`,
-    `export GGML_CUDA_P2P=on`,
-    `export PATH=/usr/local/cuda-${configs.cuda_configs.cuda_version}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
-    `export LLAMA_ARG_FIT=on`,
-    `export LLAMA_ARG_FIT_TARGET=256`,
-    `export LLAMA_ARG_FIT_CTX=131072`,
+    `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=${env.GGML_CUDA_ENABLE_UNIFIED_MEMORY}`,
+    `export CUDA_SCALE_LAUNCH_QUEUES=${env.CUDA_SCALE_LAUNCH_QUEUES}`,
+    `export LLAMA_CACHE=${env.LLAMA_CACHE}`,
+    `export CUDACXX=${env.CUDACXX}`,
+    `export GGML_CUDA_P2P=${env.GGML_CUDA_P2P}`,
+    `export PATH=${env.PATH}`,
+    `export LLAMA_ARG_FIT=${env.LLAMA_ARG_FIT}`,
+    `export LLAMA_ARG_FIT_TARGET=${env.LLAMA_ARG_FIT_TARGET}`,
+    `export LLAMA_ARG_FIT_CTX=${env.LLAMA_ARG_FIT_CTX}`,
   ];
   return exports.join(" && ");
 }
@@ -246,25 +379,38 @@ function getBuildScript() {
   return make;
 }
 
-//--- Build llama-server command line ---
+//--- Build llama-server command line (no export prefix — env vars are set via spawn's env option) ---
 function getRunScript() {
-  const exports = getExports();
-  const run = `${exports} ./llama-server -m ${configs.model_directory}/${configs.model} `
-    + `--port ${configs.llama_port} --host ${configs.llama_host} `
-    + `-c ${contextLength} -ngl ${gpuLayerOffload} `
-    + `--cont-batching --temp ${configs.model_configs.temp} `
-    + `--top-p ${configs.model_configs.top_p} --min-p ${configs.model_configs.min_p} `
-    + `--top-k ${configs.model_configs.top_k} `
-    + `--batch-size ${batchSize} --ubatch-size ${uBatchSize} `
-    + `--flash-attn ${flashAttn} --reasoning ${reasoning} `
-    + `--split-mode ${configs.layer_split} `
-    + `--tensor-split ${configs.tensor_split} `
-    + `--main-gpu ${configs.primary_gpu} -e `
-    + `--presence-penalty 0.0 `
-    + `--reasoning-budget 2048 --reasoning-budget-message "Proceed to final answer." `
-    + `--cache-ram ${cacheRam} `
-    + `--rope-scaling yarn --jinja --parallel 1`;
-  return run;
+  const sp = configs.server_params;
+  const sps = configs.split_params;
+  const parts = [
+    `./llama-server -m ${configs.model_directory}/${configs.model} `,
+    `--port ${configs.llama_port} --host ${configs.llama_host} `,
+    `-c ${contextLength} -ngl ${gpuLayerOffload} `,
+    `--temp ${configs.model_configs.temp} `,
+    `--top-p ${configs.model_configs.top_p} --min-p ${configs.model_configs.min_p} `,
+    `--top-k ${configs.model_configs.top_k} `,
+    `--batch-size ${batchSize} --ubatch-size ${uBatchSize} `,
+    `--cache-ram ${cacheRam} `,
+  ];
+
+  if (sp.cont_batching) parts.push(`--cont-batching `);
+  if (sp.flash_attn.enabled) parts.push(`--flash-attn ${sp.flash_attn.value} `);
+  if (sp.reasoning.enabled) parts.push(`--reasoning ${sp.reasoning.value} `);
+  if (sp.profiling) parts.push(`-e `);
+  if (sp.presence_penalty.enabled) parts.push(`--presence-penalty ${sp.presence_penalty.value} `);
+  if (sp.reasoning_budget.enabled) parts.push(`--reasoning-budget ${sp.reasoning_budget.value} `);
+  if (sp.reasoning_budget_message.enabled) {
+    parts.push(`--reasoning-budget-message "${sp.reasoning_budget_message.value}" `);
+  }
+  if (sp.rope_scaling.enabled) parts.push(`--rope-scaling ${sp.rope_scaling.value} `);
+  if (sp.jinja) parts.push(`--jinja `);
+  if (sp.parallel.enabled) parts.push(`--parallel ${sp.parallel.value} `);
+  if (sps.layer_split.enabled) parts.push(`--split-mode ${sps.layer_split.value} `);
+  if (sps.tensor_split.enabled) parts.push(`--tensor-split ${sps.tensor_split.value} `);
+  if (sps.primary_gpu.enabled) parts.push(`--main-gpu ${sps.primary_gpu.value} `);
+
+  return parts.join("");
 }
 
 //--- System memory helper ---
@@ -281,25 +427,39 @@ function getMem() {
   return {
     used: usedMB,
     total: totalGb,
-    stat: percentUsed * 100,
+    stat: (percentUsed * 100).toFixed(2),
   };
 }
 
 //--- Start llama-server as a child process ---
 function startLlamaServer() {
   return new Promise((resolve, reject) => {
-    const exports = getExports();
+    // Verify the binary exists before attempting to start
+    const binaryPath = rootDir + "/llama.cpp/build/bin/llama-server";
+    if (!fs.existsSync(binaryPath)) {
+      reject(
+        new Error(
+          `llama-server binary not found at ${binaryPath}. ` +
+            "Run the benchmark again - it should build llama.cpp automatically on first run. " +
+            "Check the build logs above for cmake/make errors.",
+        ),
+      );
+      return;
+    }
+
     const runCmd = getRunScript();
 
     // Parse the command into executable and args
-    const parts = runCmd.replace(/^export .+ && /, "").trim();
-    const execPath = parts.split(" ")[0];
-    const args = parts.split(" ").slice(1);
+    const parts = runCmd.trim().split(/\s+/);
+    const execPath = parts[0];
+    const args = parts.slice(1);
 
     console.log("Starting llama-server...");
+    console.log(`  Binary: ${binaryPath}`);
     console.log(`  Command: ${execPath} ${args.join(" ")}`);
 
     serverProcess = spawn(execPath, args, {
+      cwd: rootDir + "/llama.cpp/build/bin",
       env: {
         ...process.env,
         GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
@@ -389,56 +549,70 @@ function stopLlamaServer() {
 async function sendCompletion(prompt) {
   const startTime = Date.now();
 
-  const payload = {
-    prompt: prompt,
-    n_predict: 512,
-    n_keep: 0,
-    temperature: configs.model_configs.temp,
-    top_p: configs.model_configs.top_p,
-    min_p: configs.model_configs.min_p,
-    top_k: configs.model_configs.top_k,
-    stream: false,
-    cache_prompt: true,
-    n_ctx: contextLength,
-    batch_size: batchSize,
-  };
+  try {
+    const sp = configs.server_params;
+    const payload = {
+      prompt: prompt,
+      n_ctx: contextLength,
+      batch_size: batchSize,
+      temperature: configs.model_configs.temp,
+      top_p: configs.model_configs.top_p,
+      min_p: configs.model_configs.min_p,
+      top_k: configs.model_configs.top_k,
+    };
 
-  const resp = await axios.post(`${llamaUrl}/completion`, payload, {
-    timeout: 600000,
-  });
+    if (sp.n_predict.enabled) payload.n_predict = sp.n_predict.value;
+    if (sp.n_keep.enabled) payload.n_keep = sp.n_keep.value;
+    if (sp.stream.enabled) payload.stream = sp.stream.value;
+    if (sp.cache_prompt.enabled) payload.cache_prompt = sp.cache_prompt.value;
 
-  const endTime = Date.now();
-  const totalTimeMs = endTime - startTime;
+    const resp = await axios.post(`${llamaUrl}/completion`, payload, {
+      timeout: 600000,
+    });
 
-  const data = resp.data;
-  const promptTokens = data.n_prompt_tokens || 0;
-  const generatedTokens = data.n_tokens_predicted || data.n_predict || 0;
-  const promptTimeMs = data.timings?.prompt_ms || 0;
-  const predictedTimeMs = data.timings?.predicted_ms || 0;
+    const endTime = Date.now();
+    const totalTimeMs = endTime - startTime;
 
-  const promptTokensPerSec = promptTokens > 0 && promptTimeMs > 0
-    ? (promptTokens / promptTimeMs) * 1000
-    : 0;
-  const generatedTokensPerSec = generatedTokens > 0 && predictedTimeMs > 0
-    ? (generatedTokens / predictedTimeMs) * 1000
-    : 0;
+    const data = resp.data;
+    const promptTokens = data.n_prompt_tokens || 0;
+    const generatedTokens = data.n_tokens_predicted || data.n_predict || 0;
+    const promptTimeMs = data.timings?.prompt_ms || 0;
+    const predictedTimeMs = data.timings?.predicted_ms || 0;
 
-  return {
-    messageIndex: 0,
-    prompt,
-    promptTokens,
-    generatedTokens,
-    totalTimeMs,
-    promptTimeMs: promptTimeMs || totalTimeMs,
-    predictedTimeMs: predictedTimeMs || 0,
-    promptTokensPerSec: Math.round(promptTokensPerSec * 100) / 100,
-    generatedTokensPerSec: Math.round(generatedTokensPerSec * 100) / 100,
-    serverParams: getServerParamsSnapshot(),
-  };
+    const promptTokensPerSec =
+      promptTokens > 0 && promptTimeMs > 0
+        ? (promptTokens / promptTimeMs) * 1000
+        : 0;
+    const generatedTokensPerSec =
+      generatedTokens > 0 && predictedTimeMs > 0
+        ? (generatedTokens / predictedTimeMs) * 1000
+        : 0;
+
+    return {
+      messageIndex: 0,
+      prompt,
+      promptTokens,
+      generatedTokens,
+      totalTimeMs,
+      promptTimeMs: promptTimeMs || totalTimeMs,
+      predictedTimeMs: predictedTimeMs || 0,
+      promptTokensPerSec: Math.round(promptTokensPerSec * 100) / 100,
+      generatedTokensPerSec: Math.round(generatedTokensPerSec * 100) / 100,
+      serverParams: getServerParamsSnapshot(),
+    };
+  } catch (error) {
+    const elapsed = Date.now() - startTime;
+    const errMsg = error.response
+      ? `[${error.response.status}] ${error.response.statusText}`
+      : error.message;
+    throw new Error(`Completion request failed after ${elapsed}ms: ${errMsg}`);
+  }
 }
 
 //--- Snapshot of server parameters for this test run ---
 function getServerParamsSnapshot() {
+  const sp = configs.server_params;
+  const sps = configs.split_params;
   return {
     model: `${configs.model_directory}/${configs.model}`,
     host: configs.llama_host,
@@ -448,22 +622,22 @@ function getServerParamsSnapshot() {
     batchSize,
     uBatchSize,
     cacheRam,
-    flashAttn,
-    reasoning,
+    flashAttn: sp.flash_attn.enabled ? sp.flash_attn.value : null,
+    reasoning: sp.reasoning.enabled ? sp.reasoning.value : null,
     temperature: configs.model_configs.temp,
     topP: configs.model_configs.top_p,
     minP: configs.model_configs.min_p,
     topK: configs.model_configs.top_k,
-    layerSplit: configs.layer_split,
-    tensorSplit: configs.tensor_split,
-    primaryGpu: configs.primary_gpu,
-    ropeScaling: "yarn",
-    jinja: true,
-    parallel: 1,
-    contBatching: true,
-    presencePenalty: 0.0,
-    reasoningBudget: 2048,
-    reasoningBudgetMessage: "Proceed to final answer.",
+    layerSplit: sps.layer_split.enabled ? sps.layer_split.value : null,
+    tensorSplit: sps.tensor_split.enabled ? sps.tensor_split.value : null,
+    primaryGpu: sps.primary_gpu.enabled ? sps.primary_gpu.value : null,
+    ropeScaling: sp.rope_scaling.enabled ? sp.rope_scaling.value : null,
+    jinja: sp.jinja ? true : null,
+    parallel: sp.parallel.enabled ? sp.parallel.value : null,
+    contBatching: sp.cont_batching ? true : null,
+    presencePenalty: sp.presence_penalty.enabled ? sp.presence_penalty.value : null,
+    reasoningBudget: sp.reasoning_budget.enabled ? sp.reasoning_budget.value : null,
+    reasoningBudgetMessage: sp.reasoning_budget_message.enabled ? sp.reasoning_budget_message.value : null,
     env: {
       GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
       CUDA_SCALE_LAUNCH_QUEUES: "4x",
@@ -486,13 +660,17 @@ function getCmakeFlagsSnapshot() {
   if (bp.enable_cuda_fa) flags.GGML_CUDA_FA = "1";
   if (bp.enable_cuda_graphs) flags.GGML_CUDA_GRAPHS = "1";
   if (bp.enable_cuda_nccl) flags.GGML_CUDA_NCCL = "1";
-  if (bp.enable_cuda_per_max_batch_size) flags.GGML_CUDA_PEER_MAX_BATCH_SIZE = peerBatchSize;
+  if (bp.enable_cuda_per_max_batch_size)
+    flags.GGML_CUDA_PEER_MAX_BATCH_SIZE = peerBatchSize;
   if (bp.enable_cuda_peer_copy) flags.GGML_CUDA_PEER_COPY = "1";
-  if (bp.enable_cuda_custom_arch) flags.CMAKE_CUDA_ARCHITECTURES = "86-real;120-real";
+  if (bp.enable_cuda_custom_arch)
+    flags.CMAKE_CUDA_ARCHITECTURES = "86-real;120-real";
   if (bp.enable_cuda_fa_all_quants) flags.GGML_CUDA_FA_ALL_QUANTS = allQuants;
   if (bp.enable_cuda_fp16) flags.GGML_CUDA_FP16 = cudaFp16;
-  if (bp.enable_cuda_scheduled_max_copies) flags.GGML_SCHED_MAX_COPIES = schedMaxCopies;
-  if (bp.enable_cuda_compression_level) flags.GGML_CUDA_COMPRESSION_LEVEL = cudaCompression;
+  if (bp.enable_cuda_scheduled_max_copies)
+    flags.GGML_SCHED_MAX_COPIES = schedMaxCopies;
+  if (bp.enable_cuda_compression_level)
+    flags.GGML_CUDA_COMPRESSION_LEVEL = cudaCompression;
   return flags;
 }
 
@@ -500,37 +678,79 @@ function getCmakeFlagsSnapshot() {
 async function runTestRun() {
   const testRunId = results.length + 1;
   console.log(`\n========== Test Run #${testRunId} ==========`);
-  console.log(`  Context: ${contextLength}, Batch: ${batchSize}, UBatch: ${uBatchSize}, Cache: ${cacheRam} GB`);
+  console.log(
+    `  Context: ${contextLength}, Batch: ${batchSize}, UBatch: ${uBatchSize}, Cache: ${cacheRam} GB`,
+  );
   console.log(`  GPU Offload: ${gpuLayerOffload}`);
 
   // Start server
-  await startLlamaServer();
+  try {
+    await startLlamaServer();
+  } catch (error) {
+    errorCount++;
+    console.error(
+      `\nTest Run #${testRunId} failed (error ${errorCount}/${maxErrors}): ${error.message}`,
+    );
+    console.error("Skipping this test run. Check the error above for details.");
+    return;
+  }
 
   const messageResults = [];
 
   // Send 4 messages sequentially
+  let runFailed = false;
   for (let i = 0; i < benchmarkMessages.length; i++) {
     console.log(`\n  --- Message ${i + 1}/${benchmarkMessages.length} ---`);
-    const result = await sendCompletion(benchmarkMessages[i]);
-    result.messageIndex = i + 1;
-    messageResults.push(result);
+    try {
+      const result = await sendCompletion(benchmarkMessages[i]);
+      result.messageIndex = i + 1;
+      messageResults.push(result);
 
-    console.log(`    Prompt tokens: ${result.promptTokens}, Generated: ${result.generatedTokens}`);
-    console.log(`    Total time: ${result.totalTimeMs} ms`);
-    console.log(`    Prompt tokens/sec: ${result.promptTokensPerSec}`);
-    console.log(`    Gen tokens/sec: ${result.generatedTokensPerSec}`);
+      console.log(
+        `    Prompt tokens: ${result.promptTokens}, Generated: ${result.generatedTokens}`,
+      );
+      console.log(`    Total time: ${result.totalTimeMs} ms`);
+      console.log(`    Prompt tokens/sec: ${result.promptTokensPerSec}`);
+      console.log(`    Gen tokens/sec: ${result.generatedTokensPerSec}`);
+    } catch (error) {
+      console.error(`    ERROR: ${error.message}`);
+      runFailed = true;
+      break;
+    }
   }
 
   // Stop server
   await stopLlamaServer();
 
-  // Calculate averages for this test run
-  const totalPromptTokens = messageResults.reduce((s, r) => s + r.promptTokens, 0);
-  const totalGeneratedTokens = messageResults.reduce((s, r) => s + r.generatedTokens, 0);
-  const totalMs = messageResults.reduce((s, r) => s + r.totalTimeMs, 0);
-  const avgPromptTokensPerSec = messageResults.reduce((s, r) => s + r.promptTokensPerSec, 0) / messageResults.length;
-  const avgGenTokensPerSec = messageResults.reduce((s, r) => s + r.generatedTokensPerSec, 0) / messageResults.length;
+  // Skip results collection if run failed
+  if (runFailed) {
+    errorCount++;
+    console.log(
+      `\n  === Test Run #${testRunId} FAILED (error ${errorCount}/${maxErrors}) ===`,
+    );
+    console.log("  Not enough successful messages to record results.");
+    return;
+  }
 
+  // Calculate averages for this test run
+  const totalPromptTokens = messageResults.reduce(
+    (s, r) => s + r.promptTokens,
+    0,
+  );
+  const totalGeneratedTokens = messageResults.reduce(
+    (s, r) => s + r.generatedTokens,
+    0,
+  );
+  const totalMs = messageResults.reduce((s, r) => s + r.totalTimeMs, 0);
+  const avgPromptTokensPerSec =
+    messageResults.reduce((s, r) => s + r.promptTokensPerSec, 0) /
+    messageResults.length;
+  const avgGenTokensPerSec =
+    messageResults.reduce((s, r) => s + r.generatedTokensPerSec, 0) /
+    messageResults.length;
+
+  const sp = configs.server_params;
+  const sps = configs.split_params;
   const testRunResult = {
     testRunId,
     contextLength,
@@ -538,17 +758,17 @@ async function runTestRun() {
     uBatchSize,
     cacheRam,
     gpuLayerOffload,
-    flashAttn,
-    reasoning,
+    flashAttn: sp.flash_attn.enabled ? sp.flash_attn.value : null,
+    reasoning: sp.reasoning.enabled ? sp.reasoning.value : null,
     temperature: configs.model_configs.temp,
     topP: configs.model_configs.top_p,
     minP: configs.model_configs.min_p,
     topK: configs.model_configs.top_k,
-    layerSplit: configs.layer_split,
-    tensorSplit: configs.tensor_split,
-    primaryGpu: configs.primary_gpu,
-    ropeScaling: "yarn",
-    parallel: 1,
+    layerSplit: sps.layer_split.enabled ? sps.layer_split.value : null,
+    tensorSplit: sps.tensor_split.enabled ? sps.tensor_split.value : null,
+    primaryGpu: sps.primary_gpu.enabled ? sps.primary_gpu.value : null,
+    ropeScaling: sp.rope_scaling.enabled ? sp.rope_scaling.value : null,
+    parallel: sp.parallel.enabled ? sp.parallel.value : null,
     env: getServerParamsSnapshot().env,
     cmakeFlags: getCmakeFlagsSnapshot(),
     messageResults,
@@ -565,10 +785,18 @@ async function runTestRun() {
 
   // Print summary for this run
   console.log(`\n  === Test Run #${testRunId} Summary ===`);
-  console.log(`  Avg prompt tokens/sec: ${testRunResult.averages.avgPromptTokensPerSec}`);
-  console.log(`  Avg gen tokens/sec:    ${testRunResult.averages.avgGenTokensPerSec}`);
-  console.log(`  Total tokens:          ${testRunResult.averages.totalGeneratedTokens} (gen) / ${testRunResult.averages.totalPromptTokens} (prompt)`);
-  console.log(`  Total time (all msgs): ${testRunResult.averages.totalTimeMs} ms`);
+  console.log(
+    `  Avg prompt tokens/sec: ${testRunResult.averages.avgPromptTokensPerSec}`,
+  );
+  console.log(
+    `  Avg gen tokens/sec:    ${testRunResult.averages.avgGenTokensPerSec}`,
+  );
+  console.log(
+    `  Total tokens:          ${testRunResult.averages.totalGeneratedTokens} (gen) / ${testRunResult.averages.totalPromptTokens} (prompt)`,
+  );
+  console.log(
+    `  Total time (all msgs): ${testRunResult.averages.totalTimeMs} ms`,
+  );
 
   // Update configs for next iteration
   updateConfigs();
@@ -583,8 +811,10 @@ function writeResultsToMarkdown() {
 
   // Table 1: Per-message results
   md += "## Per-Message Results\n\n";
-  md += "| Test Run | Message | Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec |\n";
-  md += "|----------|---------|---------|---------------|------------------|-----------------|-------------------|----------------|\n";
+  md +=
+    "| Test Run | Message | Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec |\n";
+  md +=
+    "|----------|---------|---------|---------------|------------------|-----------------|-------------------|----------------|\n";
 
   for (const run of results) {
     for (const msg of run.messageResults) {
@@ -596,8 +826,10 @@ function writeResultsToMarkdown() {
 
   // Table 2: Per-test-run averages
   md += "## Test Run Averages\n\n";
-  md += "| Test Run | Context | Batch | UBatch | Cache (GB) | GPU Layers | Avg Prompt Tok/s | Avg Gen Tok/s | Total Prompt Toks | Total Gen Toks | Total Time (ms) |\n";
-  md += "|----------|---------|-------|--------|------------|------------|------------------|---------------|-------------------|----------------|-----------------|\n";
+  md +=
+    "| Test Run | Context | Batch | UBatch | Cache (GB) | GPU Layers | Avg Prompt Tok/s | Avg Gen Tok/s | Total Prompt Toks | Total Gen Toks | Total Time (ms) |\n";
+  md +=
+    "|----------|---------|-------|--------|------------|------------|------------------|---------------|-------------------|----------------|-----------------|\n";
 
   for (const run of results) {
     md += `| ${run.testRunId} | ${run.contextLength} | ${run.batchSize} | ${run.uBatchSize} | ${run.cacheRam} | ${run.gpuLayerOffload} | ${run.averages.avgPromptTokensPerSec} | ${run.averages.avgGenTokensPerSec} | ${run.averages.totalPromptTokens} | ${run.averages.totalGeneratedTokens} | ${run.averages.totalTimeMs} |\n`;
@@ -607,8 +839,10 @@ function writeResultsToMarkdown() {
 
   // Table 3: Server parameters per test run
   md += "## Server Parameters\n\n";
-  md += "| Test Run | Temp | Top-P | Min-P | Top-K | Flash-Attn | Reasoning | Rope Scaling | Split Mode | Tensor Split | Main GPU | Parallel |\n";
-  md += "|----------|------|-------|-------|-------|------------|-----------|--------------|------------|--------------|----------|----------|\n";
+  md +=
+    "| Test Run | Temp | Top-P | Min-P | Top-K | Flash-Attn | Reasoning | Rope Scaling | Split Mode | Tensor Split | Main GPU | Parallel |\n";
+  md +=
+    "|----------|------|-------|-------|-------|------------|-----------|--------------|------------|--------------|----------|----------|\n";
 
   for (const run of results) {
     md += `| ${run.testRunId} | ${run.temperature} | ${run.topP} | ${run.minP} | ${run.topK} | ${run.flashAttn} | ${run.reasoning} | ${run.ropeScaling} | ${run.layerSplit} | ${run.tensorSplit} | ${run.primaryGpu} | ${run.parallel} |\n`;
@@ -618,8 +852,10 @@ function writeResultsToMarkdown() {
 
   // Table 4: CMake build flags per test run
   md += "## CMake Build Flags\n\n";
-  md += "| Test Run | GGML_CUDA | GGML_CUDA_GRAPHS | GGML_CUDA_FA | GGML_CUDA_FP16 | GGML_CUDA_PEER_MAX_BATCH_SIZE | GGML_SCHED_MAX_COPIES | GGML_CUDA_COMPRESSION_LEVEL | GGML_LTO | GGML_CCACHE |\n";
-  md += "|----------|-----------|------------------|--------------|----------------|-------------------------------|-----------------------|-----------------------------|----------|-------------|\n";
+  md +=
+    "| Test Run | GGML_CUDA | GGML_CUDA_GRAPHS | GGML_CUDA_FA | GGML_CUDA_FP16 | GGML_CUDA_PEER_MAX_BATCH_SIZE | GGML_SCHED_MAX_COPIES | GGML_CUDA_COMPRESSION_LEVEL | GGML_LTO | GGML_CCACHE |\n";
+  md +=
+    "|----------|-----------|------------------|--------------|----------------|-------------------------------|-----------------------|-----------------------------|----------|-------------|\n";
 
   for (const run of results) {
     const f = run.cmakeFlags;
@@ -630,8 +866,10 @@ function writeResultsToMarkdown() {
 
   // Table 5: Environment variables per test run
   md += "## Environment Variables\n\n";
-  md += "| Test Run | GGML_CUDA_ENABLE_UNIFIED_MEMORY | CUDA_SCALE_LAUNCH_QUEUES | LLAMA_CACHE | GGML_CUDA_P2P | LLAMA_ARG_FIT | LLAMA_ARG_FIT_TARGET | LLAMA_ARG_FIT_CTX |\n";
-  md += "|----------|---------------------------------|--------------------------|-------------|---------------|---------------|----------------------|---------------------|\n";
+  md +=
+    "| Test Run | GGML_CUDA_ENABLE_UNIFIED_MEMORY | CUDA_SCALE_LAUNCH_QUEUES | LLAMA_CACHE | GGML_CUDA_P2P | LLAMA_ARG_FIT | LLAMA_ARG_FIT_TARGET | LLAMA_ARG_FIT_CTX |\n";
+  md +=
+    "|----------|---------------------------------|--------------------------|-------------|---------------|---------------|----------------------|---------------------|\n";
 
   for (const run of results) {
     const e = run.env;

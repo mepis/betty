@@ -28,3 +28,18 @@ All notable changes to this project will be documented in this file.
 - [Added]: [2026-06-07] llama.cpp benchmark tool (`src/benchmark/`) — automated benchmark runner that starts llama-server, sends 4 context-filling messages per test run via the `/completion` endpoint, measures total time in ms, prompt tokens/sec, and generation tokens/sec per message, logs server parameters and environment variables, writes results to `results.md` as markdown tables, and loops through config iterations (doubling context, incrementing batch/ubatch/cache sizes)
 - [Added]: [2026-06-07] Benchmark config file (`src/benchmark/configs.json`) — configurable model path, CUDA build flags, model inference params (temp, top-p, top-k), multi-GPU tensor split, and llama-server runtime options
 - [Added]: [2026-06-07] `axios` and `dotenv` dependencies for HTTP requests and environment variable loading in the benchmark tool
+
+### Fixed
+
+- [Fixed]: [2026-06-07] llama.cpp build — cmake now runs in the correct directory (`llama.cpp/`) with proper `cwd` and `env` options instead of relying on shell `export` commands that don't persist between `exec()` calls; added binary existence verification after build
+- [Fixed]: [2026-06-07] llama-server spawn `ENOENT` — removed dead `export VAR=val` prefix from command string; added `cwd` to `spawn()` pointing to the binary directory; env vars now passed via spawn's `env` option
+- [Fixed]: [2026-06-07] Build error messages were swallowed — `runCommand` rejected with `{ error, stderr }` but catch blocks accessed `error.message` (undefined on plain objects); now properly extracts and displays both error message and stderr
+- [Fixed]: [2026-06-07] `isCloned()` — now uses `fs.statSync` to verify `llama.cpp` is a directory, not just a name in the listing
+
+### Added
+
+- [Added]: [2026-06-07] Verbose error display — `runBuild`, `init`, and `main` now show formatted error blocks with separator lines, stderr output, and helpful context (working directory, build cores, build directory contents)
+- [Added]: [2026-06-07] 10-error limit — benchmark stops after 10 test run failures; error count displayed as `error N/10` in console output
+- [Added]: [2026-06-07] `npm run benchmark` script in `package.json` to run the benchmark tool
+- [Added]: [2026-06-07] Server parameters in `configs.json` — `server_params` section with `enabled`/`value` pattern for all llama-server flags (flash_attn, reasoning, profiling, presence_penalty, reasoning_budget, reasoning_budget_message, rope_scaling, jinja, parallel, n_predict, n_keep, stream, cache_prompt, cont_batching)
+- [Added]: [2026-06-07] Split parameters in `configs.json` — `split_params` section with `enabled`/`value` pattern for layer_split, tensor_split, and primary_gpu

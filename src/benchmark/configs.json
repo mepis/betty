@@ -1,12 +1,23 @@
 {
   "llama_port": 11434,
   "llama_host": "100.88.77.33",
-  "model": "Qwen3.6-35B-A3B-Q8_0.gguf",
+  "model": "gemma-4-E2B_q4_0-it.gguf",
   "model_directory": "/home/jon/.llm_models",
   "llama_cache": "/home/jon/.llama_cache",
-  "layer_split": "layer",
-  "tensor_split": "16,12,12",
-  "primary_gpu": "cuda0",
+  "split_params": {
+    "layer_split": {
+      "enabled": true,
+      "value": "layer"
+    },
+    "tensor_split": {
+      "enabled": true,
+      "value": "16,12,12"
+    },
+    "primary_gpu": {
+      "enabled": true,
+      "value": "cuda0"
+    }
+  },
   "build_cores": 16,
   "build_make_params": {
     "enable_ccache": true,
@@ -36,5 +47,54 @@
     "top_p": 0.95,
     "min_p": 0.0,
     "top_k": 20
+  },
+  "server_params": {
+    "cont_batching": true,
+    "flash_attn": {
+      "enabled": true,
+      "value": 1
+    },
+    "reasoning": {
+      "enabled": true,
+      "value": 1
+    },
+    "profiling": true,
+    "presence_penalty": {
+      "enabled": true,
+      "value": 0.0
+    },
+    "reasoning_budget": {
+      "enabled": true,
+      "value": 2048
+    },
+    "reasoning_budget_message": {
+      "enabled": true,
+      "value": "Proceed to final answer."
+    },
+    "rope_scaling": {
+      "enabled": true,
+      "value": "yarn"
+    },
+    "jinja": true,
+    "parallel": {
+      "enabled": true,
+      "value": 1
+    },
+    "n_predict": {
+      "enabled": true,
+      "value": 512
+    },
+    "n_keep": {
+      "enabled": true,
+      "value": 0
+    },
+    "stream": {
+      "enabled": true,
+      "value": false
+    },
+    "cache_prompt": {
+      "enabled": true,
+      "value": true
+    }
   }
 }

@@ -1,3 +1,5 @@
 node_modules/
 *.log
 .env
+src/benchmark/llama.cpp/
+src/benchmark/results.md

@@ -6,7 +6,8 @@
   "scripts": {
     "kill": "pkill -f \"node server.js\"",
     "start": "HOST=0.0.0.0 PORT=3000 node src/backend/server.js",
-    "dev": "node src/backend/server.js"
+    "dev": "node src/backend/server.js",
+    "benchmark": "node src/benchmark/index.js"
   },
   "dependencies": {
     "axios": "^1.17.0",
