@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "kill": "pkill -f \"node server.js\"",
-    "start": "HOST=0.0.0.0 PORT=3000 node server.js",
-    "dev": "node server.js"
+    "start": "HOST=0.0.0.0 PORT=3000 node src/backend/server.js",
+    "dev": "node src/backend/server.js"
   },
   "dependencies": {
     "express": "^4.21.0",

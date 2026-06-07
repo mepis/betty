@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Inject env vars into the frontend
 const { readFileSync } = await import("node:fs");
-const frontendHtml = readFileSync(join(__dirname, "public", "index.html"), "utf8");
+const frontendHtml = readFileSync(join(__dirname, "..", "frontend", "public", "index.html"), "utf8");
 const homeDir = process.env.HOME || "/home/" + (process.env.USER || "user");
 
 app.get("/", (req, res) => {
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 });
 
 // Serve static files (JS, CSS, etc.)
-app.use(express.static(join(__dirname, "public")));
+app.use(express.static(join(__dirname, "..", "frontend", "public")));
 
 // Workspace state
 let currentWorkspace = DEFAULT_WORKSPACE;
