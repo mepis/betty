@@ -43,3 +43,9 @@ All notable changes to this project will be documented in this file.
 - [Added]: [2026-06-07] `npm run benchmark` script in `package.json` to run the benchmark tool
 - [Added]: [2026-06-07] Server parameters in `configs.json` — `server_params` section with `enabled`/`value` pattern for all llama-server flags (flash_attn, reasoning, profiling, presence_penalty, reasoning_budget, reasoning_budget_message, rope_scaling, jinja, parallel, n_predict, n_keep, stream, cache_prompt, cont_batching)
 - [Added]: [2026-06-07] Split parameters in `configs.json` — `split_params` section with `enabled`/`value` pattern for layer_split, tensor_split, and primary_gpu
+
+### Changed
+
+- [Changed]: [2026-06-07] Benchmark config — disabled layer_split, tensor_split, primary_gpu, n_predict, and n_keep split params; added gpu_layers split param (value: 999); updated CUDA version from 13.3 to 13.2
+- [Changed]: [2026-06-07] Benchmark build script — refactored `getBuildScript()` to use an array of flags instead of string concatenation, with improved logging of cmake flags and full command; fixed `CUDACXX` env var to only be set when present in process.env
+- [Changed]: [2026-06-07] Benchmark server params — added `gpuLayers` to server params snapshot and test run configuration

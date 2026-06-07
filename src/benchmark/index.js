@@ -191,10 +191,17 @@ async function runBuild() {
     const buildDir = rootDir + "/llama.cpp";
 
     // Step 1: Configure with cmake
+    const buildScript = getBuildScript();
+
     console.log("Running cmake build configuration...");
     console.log(`  Working directory: ${buildDir}`);
     console.log(`  Build cores: ${buildCores}`);
-    await runCommand(`cmake -B build -DCMAKE_BUILD_TYPE=Release`, {
+    console.log("  Build parameters:");
+    for (const flag of buildScript.flags) {
+      console.log(`    ${flag}`);
+    }
+    console.log(`  CMake command: ${buildScript.command}`);
+    await runCommand(buildScript.command, {
       cwd: buildDir,
       env,
     });
@@ -306,7 +313,7 @@ function buildEnv() {
     GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
     CUDA_SCALE_LAUNCH_QUEUES: "4x",
     LLAMA_CACHE: configs.llama_cache,
-    CUDACXX: process.env.CUDACXX || "",
+    ...(process.env.CUDACXX ? { CUDACXX: process.env.CUDACXX } : {}),
     GGML_CUDA_P2P: "on",
     PATH: `/usr/local/cuda-${configs.cuda_configs.cuda_version}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
     LLAMA_ARG_FIT: "on",
@@ -334,49 +341,52 @@ function getExports() {
 
 //--- CMake build script with proper if/else (fixed fall-through) ---
 function getBuildScript() {
-  let make = `cmake -B build`;
+  const flags = [];
 
   if (configs.build_make_params.enable_ccache) {
-    make += ` -DGGML_CCACHE=1`;
+    flags.push(`-DGGML_CCACHE=1`);
   }
   if (configs.build_make_params.enable_lto) {
-    make += ` -DGGML_LTO=1`;
+    flags.push(`-DGGML_LTO=1`);
   }
   if (configs.build_make_params.enable_cuda) {
-    make += ` -DGGML_CUDA=1`;
+    flags.push(`-DGGML_CUDA=1`);
   }
   if (configs.build_make_params.enable_cuda_fa) {
-    make += ` -DGGML_CUDA_FA=1`;
+    flags.push(`-DGGML_CUDA_FA=1`);
   }
   if (configs.build_make_params.enable_cuda_graphs) {
-    make += ` -DGGML_CUDA_GRAPHS=1`;
+    flags.push(`-DGGML_CUDA_GRAPHS=1`);
   }
   if (configs.build_make_params.enable_cuda_nccl) {
-    make += ` -DGGML_CUDA_NCCL=1`;
+    flags.push(`-DGGML_CUDA_NCCL=1`);
   }
   if (configs.build_make_params.enable_cuda_per_max_batch_size) {
-    make += ` -DGGML_CUDA_PEER_MAX_BATCH_SIZE=${peerBatchSize}`;
+    flags.push(`-DGGML_CUDA_PEER_MAX_BATCH_SIZE=${peerBatchSize}`);
   }
   if (configs.build_make_params.enable_cuda_peer_copy) {
-    make += ` -DGGML_CUDA_PEER_COPY=1`;
+    flags.push(`-DGGML_CUDA_PEER_COPY=1`);
   }
   if (configs.build_make_params.enable_cuda_custom_arch) {
-    make += ` -DCMAKE_CUDA_ARCHITECTURES="86-real;120-real"`;
+    flags.push(`-DCMAKE_CUDA_ARCHITECTURES="86-real;120-real"`);
   }
   if (configs.build_make_params.enable_cuda_fa_all_quants) {
-    make += ` -DGGML_CUDA_FA_ALL_QUANTS=${allQuants}`;
+    flags.push(`-DGGML_CUDA_FA_ALL_QUANTS=${allQuants}`);
   }
   if (configs.build_make_params.enable_cuda_fp16) {
-    make += ` -DGGML_CUDA_FP16=${cudaFp16}`;
+    flags.push(`-DGGML_CUDA_FP16=${cudaFp16}`);
   }
   if (configs.build_make_params.enable_cuda_scheduled_max_copies) {
-    make += ` -DGGML_SCHED_MAX_COPIES=${schedMaxCopies}`;
+    flags.push(`-DGGML_SCHED_MAX_COPIES=${schedMaxCopies}`);
   }
   if (configs.build_make_params.enable_cuda_compression_level) {
-    make += ` -DGGML_CUDA_COMPRESSION_LEVEL=${cudaCompression}`;
+    flags.push(`-DGGML_CUDA_COMPRESSION_LEVEL=${cudaCompression}`);
   }
 
-  return make;
+  return {
+    command: `cmake -B build -DCMAKE_BUILD_TYPE=Release ${flags.join(" ")}`,
+    flags,
+  };
 }
 
 //--- Build llama-server command line (no export prefix — env vars are set via spawn's env option) ---
@@ -619,6 +629,7 @@ function getServerParamsSnapshot() {
     port: configs.llama_port,
     contextLength,
     gpuLayerOffload,
+    gpuLayers: sp.gpu_layers.enabled ? sp.gpu_layers.value : null,
     batchSize,
     uBatchSize,
     cacheRam,
@@ -768,6 +779,7 @@ async function runTestRun() {
     tensorSplit: sps.tensor_split.enabled ? sps.tensor_split.value : null,
     primaryGpu: sps.primary_gpu.enabled ? sps.primary_gpu.value : null,
     ropeScaling: sp.rope_scaling.enabled ? sp.rope_scaling.value : null,
+    gpuLayers: sp.gpu_layers.enabled ? sp.gpu_layers.value : null,
     parallel: sp.parallel.enabled ? sp.parallel.value : null,
     env: getServerParamsSnapshot().env,
     cmakeFlags: getCmakeFlagsSnapshot(),
