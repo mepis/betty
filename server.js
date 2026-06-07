@@ -403,6 +403,7 @@ wss.on("connection", (ws) => {
         case "prompt":
           await agent.prompt(msg.message, {
             streamingBehavior: msg.streamingBehavior,
+            images: msg.images || null,
           });
           ws.send(JSON.stringify({ type: "response", success: true }));
           break;

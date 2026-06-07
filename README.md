@@ -5,6 +5,7 @@ A web-based chat interface for the [pi coding agent](https://pi.dev), accessible
 ## Features
 
 - 💬 Real-time chat with streaming responses
+- 🖼️ **Image attachments** - drag & drop or click 📷 to attach images (up to 10MB each, max 10 images)
 - 🧠 Thinking block display (collapsible)
 - 🔧 Tool call visibility (bash, read, edit, write, etc.)
 - 📋 Code block rendering with copy buttons
@@ -93,6 +94,26 @@ You can also set a default workspace via the `WORKSPACE` environment variable:
 ```bash
 WORKSPACE=/home/jon/git/my-project npm start
 ```
+
+## Image Support
+
+Betty supports sending images to the agent for visual analysis. You can attach images by:
+
+- **Drag & drop** images onto the input area
+- **Click the 📷 button** to open a file picker
+- **Multi-image support** - attach up to 10 images per message
+- **Automatic compression** - images are resized (max 1920px) and compressed to JPEG at 80% quality
+- **File size limit** - 10MB per image
+
+Images are sent as base64 data URLs in the OpenAI-compatible format:
+```json
+{
+  "type": "image_url",
+  "image_url": { "url": "data:image/jpeg;base64,..." }
+}
+```
+
+Images are displayed as thumbnails in the chat alongside your message text.
 
 ## Architecture
 
