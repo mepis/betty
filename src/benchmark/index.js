@@ -44,22 +44,33 @@ const cudaFp16 = configs.build_make_params.cuda_fp16;
 const allQuants = configs.build_make_params.cuda_all_quants;
 
 //** Run Params */
-console.log(`Skip build: ${skipBuild} (config: ${configs.skip_build}, cli: ${cliSkipBuild})`);
+console.log(
+  `Skip build: ${skipBuild} (config: ${configs.skip_build}, cli: ${cliSkipBuild})`,
+);
 
+// Test variables (Do not remove)
+// (Do not remove comment) # common contet size windows: 16384, 32768, 65536, 131072, 262144, 524288
 let contextLength = 32768;
 const contextLengthMultiplier = 2;
+const contextLengthMax = 262144;
 
 let gpuLayerOffload = 999;
 const gpuLayerOffloadStep = 0;
+const gpuLayerOffMax = 999;
 
 let batchSize = 128;
 const batchSizeStep = 128;
+const batchSizeMax = 16384;
 
 let uBatchSize = 64;
 const uBatchSizeStep = 64;
+const uBatchSizeMax = 4096;
 
 let cacheRam = 4096;
 const cacheRamStep = 1024;
+const cacheRamSMax = 4096;
+
+// End Test variables ------------------------
 
 const memTimerId = setInterval(async () => {
   const mem = getMem();
@@ -72,11 +83,59 @@ let serverProcess = null;
 //--- Results storage ---
 const results = [];
 
+//--- Ensure no llama-server is running before we start ---
+async function ensureNoLlamaServer() {
+  return new Promise((resolve) => {
+    exec("pgrep -f llama-server", (error, stdout) => {
+      if (error || !stdout.trim()) {
+        console.log("No existing llama-server found.");
+        resolve();
+        return;
+      }
+
+      const pids = stdout.trim().split("\n").filter(Boolean);
+      console.log(
+        `Found ${pids.length} existing llama-server process(es): ${pids.join(", ")}`,
+      );
+      console.log("Killing existing llama-server process(es)...");
+
+      // SIGTERM first
+      pids.forEach((pid) => {
+        try {
+          process.kill(parseInt(pid, 10), "SIGTERM");
+        } catch {
+          // already dead
+        }
+      });
+
+      // Wait 2s, then SIGKILL anything still alive
+      setTimeout(async () => {
+        pids.forEach((pid) => {
+          try {
+            process.kill(parseInt(pid, 10), "SIGKILL");
+          } catch {
+            // already dead
+          }
+        });
+        console.log("All existing llama-server processes killed.");
+
+        // Wait for port to be free
+        await waitForPortFree(configs.llama_port);
+        console.log("Port is free. Proceeding.");
+        resolve();
+      }, 2000);
+    });
+  });
+}
+
 async function main() {
   console.log("=== llama.cpp Benchmark Starting ===");
   console.log(`Server URL: ${llamaUrl}`);
   console.log(`Model: ${configs.model_directory}/${configs.model}`);
   console.log(`Results file: ${resultsFile}`);
+
+  // Kill any existing llama-server before proceeding
+  await ensureNoLlamaServer();
 
   try {
     const initResult = await initController();
@@ -115,6 +174,10 @@ async function main() {
   }
 
   clearInterval(memTimerId);
+
+  // Final cleanup: ensure llama-server is stopped
+  await stopLlamaServer();
+
   writeResultsToMarkdown();
   console.log("Benchmark complete. Results saved to", resultsFile);
   process.exit(0);
@@ -419,17 +482,25 @@ function getRunScript() {
   if (sp.flash_attn.enabled) parts.push(`--flash-attn ${sp.flash_attn.value} `);
   if (sp.reasoning.enabled) parts.push(`--reasoning ${sp.reasoning.value} `);
   if (sp.profiling) parts.push(`-e `);
-  if (sp.presence_penalty.enabled) parts.push(`--presence-penalty ${sp.presence_penalty.value} `);
-  if (sp.reasoning_budget.enabled) parts.push(`--reasoning-budget ${sp.reasoning_budget.value} `);
+  if (sp.presence_penalty.enabled)
+    parts.push(`--presence-penalty ${sp.presence_penalty.value} `);
+  if (sp.reasoning_budget.enabled)
+    parts.push(`--reasoning-budget ${sp.reasoning_budget.value} `);
   if (sp.reasoning_budget_message.enabled) {
-    parts.push(`--reasoning-budget-message "${sp.reasoning_budget_message.value}" `);
+    parts.push(
+      `--reasoning-budget-message "${sp.reasoning_budget_message.value}" `,
+    );
   }
-  if (sp.rope_scaling.enabled) parts.push(`--rope-scaling ${sp.rope_scaling.value} `);
+  if (sp.rope_scaling.enabled)
+    parts.push(`--rope-scaling ${sp.rope_scaling.value} `);
   if (sp.jinja) parts.push(`--jinja `);
   if (sp.parallel.enabled) parts.push(`--parallel ${sp.parallel.value} `);
-  if (sps.layer_split.enabled) parts.push(`--split-mode ${sps.layer_split.value} `);
-  if (sps.tensor_split.enabled) parts.push(`--tensor-split ${sps.tensor_split.value} `);
-  if (sps.primary_gpu.enabled) parts.push(`--main-gpu ${sps.primary_gpu.value} `);
+  if (sps.layer_split.enabled)
+    parts.push(`--split-mode ${sps.layer_split.value} `);
+  if (sps.tensor_split.enabled)
+    parts.push(`--tensor-split ${sps.tensor_split.value} `);
+  if (sps.primary_gpu.enabled)
+    parts.push(`--main-gpu ${sps.primary_gpu.value} `);
 
   return parts.join("");
 }
@@ -452,27 +523,47 @@ function getMem() {
   };
 }
 
-//--- Start llama-server as a child process ---
-function startLlamaServer() {
-  return new Promise((resolve, reject) => {
-    // Verify the binary exists before attempting to start
-    const binaryPath = rootDir + "/llama.cpp/build/bin/llama-server";
-    if (!fs.existsSync(binaryPath)) {
-      reject(
-        new Error(
-          `llama-server binary not found at ${binaryPath}. ` +
-            "Run the benchmark again - it should build llama.cpp automatically on first run. " +
-            "Check the build logs above for cmake/make errors.",
-        ),
-      );
-      return;
+//--- Start llama-server as a child process (with retry on port binding failure) ---
+async function startLlamaServer() {
+  // Verify the binary exists
+  const binaryPath = rootDir + "/llama.cpp/build/bin/llama-server";
+  if (!fs.existsSync(binaryPath)) {
+    throw new Error(
+      `llama-server binary not found at ${binaryPath}. ` +
+        "Run the benchmark again - it should build llama.cpp automatically on first run. " +
+        "Check the build logs above for cmake/make errors.",
+    );
+  }
+
+  const runCmd = getRunScript();
+  console.log("Starting llama-server...");
+  console.log(`  Binary: ${binaryPath}`);
+  console.log(`  Command: ${runCmd.trim()}`);
+
+  // Retry loop: llama-server may fail to bind if port is still in TIME_WAIT
+  const maxStartRetries = 5;
+  for (let attempt = 1; attempt <= maxStartRetries; attempt++) {
+    if (attempt > 1) {
+      console.log(`  Retry attempt ${attempt}/${maxStartRetries}...`);
+      await new Promise((r) => setTimeout(r, 2000));
     }
 
-    const runCmd = getRunScript();
+    const started = await tryStartServer(runCmd, binaryPath);
+    if (started) {
+      console.log(`llama-server started successfully on attempt ${attempt}.`);
+      return;
+    }
+  }
 
-    console.log("Starting llama-server...");
-    console.log(`  Binary: ${binaryPath}`);
-    console.log(`  Command: ${runCmd.trim()}`);
+  throw new Error(
+    `llama-server failed to start after ${maxStartRetries} attempts (port binding issue)`,
+  );
+}
+
+//--- Attempt to start the server once; returns true if successful ---
+function tryStartServer(runCmd, binaryPath) {
+  return new Promise((resolve) => {
+    const prevProcess = serverProcess;
 
     serverProcess = spawn(runCmd.trim(), {
       cwd: rootDir + "/llama.cpp/build/bin",
@@ -503,73 +594,178 @@ function startLlamaServer() {
       process.stderr.write(str);
     });
 
-    serverProcess.on("error", (err) => {
-      reject(new Error(`Failed to start llama-server: ${err.message}`));
-    });
+    // If server dies within 3 seconds, it likely failed to bind the port
+    const earlyDeathTimer = setTimeout(() => {
+      // Server survived 3 seconds — it's up, now poll for health
+      const maxHealthRetries = 120;
+      let retries = 0;
+      const pollInterval = setInterval(async () => {
+        retries++;
+        try {
+          const resp = await axios.get(`${llamaUrl}/health`, { timeout: 3000 });
+          if (resp.status === 200) {
+            clearInterval(pollInterval);
+            console.log(`llama-server ready after ${retries * 1} tries.`);
+            resolve(true);
+            return;
+          }
+        } catch {
+          if (retries >= maxHealthRetries) {
+            clearInterval(pollInterval);
+            console.log("llama-server did not become ready, will retry.");
+            resolve(false);
+            return;
+          }
+        }
+      }, 1000);
+    }, 3000);
 
     serverProcess.on("close", (code) => {
+      clearTimeout(earlyDeathTimer);
+      // Check if the failure was a port binding issue
       if (code !== 0) {
-        reject(new Error(`llama-server exited with code ${code}`));
+        const hasBindError =
+          output.includes("couldn't bind") ||
+          output.includes("HTTP server error");
+        if (hasBindError) {
+          console.log(
+            `llama-server failed to bind port (attempt ${output.split("\n").filter((l) => l.includes("couldn't bind")).length > 0 ? "port conflict" : "exit code " + code}). Will retry.`,
+          );
+        }
+        resolve(false);
       }
     });
 
-    // Wait for server to be ready by polling the health endpoint
-    const maxRetries = 120;
-    let retries = 0;
-    const pollInterval = setInterval(async () => {
-      retries++;
-      try {
-        const resp = await axios.get(`${llamaUrl}/health`, { timeout: 3000 });
-        if (resp.status === 200) {
-          clearInterval(pollInterval);
-          console.log(`llama-server ready after ${retries * 1} tries.`);
-          resolve();
-          return;
-        }
-      } catch {
-        if (retries >= maxRetries) {
-          clearInterval(pollInterval);
-          reject(new Error("llama-server did not become ready within timeout"));
-        }
-      }
-    }, 1000);
+    serverProcess.on("error", (err) => {
+      clearTimeout(earlyDeathTimer);
+      resolve(false);
+    });
+
+    // If previous process exists, clean it up
+    if (prevProcess && !prevProcess.killed) {
+      prevProcess.kill("SIGKILL");
+    }
   });
 }
 
-//--- Stop llama-server ---
-function stopLlamaServer() {
-  return new Promise((resolve) => {
-    if (serverProcess) {
-      console.log("Stopping llama-server...");
-      serverProcess.kill("SIGTERM");
+//--- Stop llama-server (safe to call multiple times) ---
+async function stopLlamaServer() {
+  if (!serverProcess) return;
+  console.log("Stopping llama-server...");
+
+  // Try graceful shutdown via /shutdown endpoint first
+  try {
+    await axios.post(`${llamaUrl}/shutdown`, null, { timeout: 3000 });
+    console.log("llama-server stopped gracefully via /shutdown");
+    // Wait for process to close
+    await new Promise((resolve) => {
       serverProcess.on("close", () => {
         serverProcess = null;
         console.log("llama-server stopped.");
         resolve();
       });
-      // Force kill after 5 seconds
+      setTimeout(resolve, 3000);
+    });
+  } catch {
+    // /shutdown failed or server already dead, fall back to signal
+  }
+
+  // If process is still alive, use SIGTERM -> SIGKILL
+  if (serverProcess) {
+    serverProcess.kill("SIGTERM");
+
+    await new Promise((resolve) => {
+      serverProcess.on("close", () => {
+        serverProcess = null;
+        console.log("llama-server stopped.");
+        resolve();
+      });
+      // Force kill after 10 seconds
       setTimeout(() => {
         if (serverProcess) {
           serverProcess.kill("SIGKILL");
           serverProcess = null;
           console.log("llama-server force killed.");
-          resolve();
         }
-      }, 5000);
-    } else {
-      resolve();
-    }
+        resolve();
+      }, 10000);
+    });
+  }
+
+  // Wait for port to be truly free (no TIME_WAIT either)
+  await waitForPortFree(configs.llama_port);
+  console.log("llama-server stopped.");
+}
+
+//--- Wait for a TCP port to be fully free (no process bound, no TIME_WAIT) ---
+function waitForPortFree(port, maxWaitMs = 15000) {
+  return new Promise((resolve) => {
+    const start = Date.now();
+    const check = () => {
+      exec(
+        `ss -t state time-wait sport = :${port} 2>/dev/null || true`,
+        (error, stdout) => {
+          const hasTimeWait = stdout.trim().length > 0;
+          if (!hasTimeWait) {
+            // Also verify no process is bound
+            exec(`lsof -i :${port} -t 2>/dev/null`, (error2) => {
+              if (error2) {
+                // No process bound and no TIME_WAIT — port is truly free
+                resolve();
+              } else {
+                // Process still bound, kill it
+                exec(
+                  `kill -9 $(lsof -i :${port} -t 2>/dev/null)`,
+                  (killErr) => {
+                    console.warn(
+                      `Warning: force-killed leftover process on port ${port}`,
+                    );
+                    setTimeout(resolve, 500);
+                  },
+                );
+              }
+            });
+          } else if (Date.now() - start < maxWaitMs) {
+            setTimeout(check, 500);
+          } else {
+            // Max wait exceeded — force kill anything on the port
+            exec(`kill -9 $(lsof -i :${port} -t 2>/dev/null)`, (killErr) => {
+              console.warn(
+                `Warning: force-killed leftover process on port ${port} after timeout`,
+              );
+              resolve();
+            });
+          }
+        },
+      );
+    };
+    check();
   });
 }
 
-//--- Send a single message to the completion endpoint and measure timing ---
-async function sendCompletion(prompt) {
+//--- Signal handlers: kill llama-server on process exit ---
+process.on("SIGTERM", () => {
+  console.log("\nReceived SIGTERM. Shutting down...");
+  stopLlamaServer().then(() => process.exit(0));
+});
+
+process.on("SIGINT", () => {
+  console.log("\nReceived SIGINT. Shutting down...");
+  stopLlamaServer().then(() => process.exit(0));
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("\nUncaught exception:", err.message);
+  stopLlamaServer().then(() => process.exit(1));
+});
+
+//--- Send a chat request to the chat/completions endpoint and measure timing ---
+async function sendChat(messages) {
   const startTime = Date.now();
 
   try {
-    const sp = configs.server_params;
     const payload = {
-      prompt: prompt,
+      messages: messages,
       n_ctx: contextLength,
       batch_size: batchSize,
       temperature: configs.model_configs.temp,
@@ -578,12 +774,14 @@ async function sendCompletion(prompt) {
       top_k: configs.model_configs.top_k,
     };
 
-    if (sp.n_predict.enabled) payload.n_predict = sp.n_predict.value;
-    if (sp.n_keep.enabled) payload.n_keep = sp.n_keep.value;
-    if (sp.stream.enabled) payload.stream = sp.stream.value;
-    if (sp.cache_prompt.enabled) payload.cache_prompt = sp.cache_prompt.value;
+    if (configs.server_params.n_predict.enabled)
+      payload.n_predict = configs.server_params.n_predict.value;
+    if (configs.server_params.n_keep.enabled)
+      payload.n_keep = configs.server_params.n_keep.value;
+    if (configs.server_params.cache_prompt.enabled)
+      payload.cache_prompt = configs.server_params.cache_prompt.value;
 
-    const resp = await axios.post(`${llamaUrl}/completion`, payload, {
+    const resp = await axios.post(`${llamaUrl}/chat/completions`, payload, {
       timeout: 600000,
     });
 
@@ -591,8 +789,16 @@ async function sendCompletion(prompt) {
     const totalTimeMs = endTime - startTime;
 
     const data = resp.data;
-    const promptTokens = data.n_prompt_tokens || 0;
-    const generatedTokens = data.n_tokens_predicted || data.n_predict || 0;
+
+    // Extract the assistant's response text
+    const responseText =
+      data.choices?.[0]?.message?.content || "(no response content)";
+
+    // Token counts: chat endpoint uses total_tokens + completion_tokens
+    const promptTokens = data.usage?.prompt_tokens || 0;
+    const generatedTokens = data.usage?.completion_tokens || 0;
+
+    // Timing: chat endpoint uses timings.prompt_ms and timings.predicted_ms
     const promptTimeMs = data.timings?.prompt_ms || 0;
     const predictedTimeMs = data.timings?.predicted_ms || 0;
 
@@ -607,7 +813,8 @@ async function sendCompletion(prompt) {
 
     return {
       messageIndex: 0,
-      prompt,
+      prompt: messages[messages.length - 1].content,
+      responseText,
       promptTokens,
       generatedTokens,
       totalTimeMs,
@@ -622,7 +829,7 @@ async function sendCompletion(prompt) {
     const errMsg = error.response
       ? `[${error.response.status}] ${error.response.statusText}`
       : error.message;
-    throw new Error(`Completion request failed after ${elapsed}ms: ${errMsg}`);
+    throw new Error(`Chat request failed after ${elapsed}ms: ${errMsg}`);
   }
 }
 
@@ -653,9 +860,15 @@ function getServerParamsSnapshot() {
     jinja: sp.jinja ? true : null,
     parallel: sp.parallel.enabled ? sp.parallel.value : null,
     contBatching: sp.cont_batching ? true : null,
-    presencePenalty: sp.presence_penalty.enabled ? sp.presence_penalty.value : null,
-    reasoningBudget: sp.reasoning_budget.enabled ? sp.reasoning_budget.value : null,
-    reasoningBudgetMessage: sp.reasoning_budget_message.enabled ? sp.reasoning_budget_message.value : null,
+    presencePenalty: sp.presence_penalty.enabled
+      ? sp.presence_penalty.value
+      : null,
+    reasoningBudget: sp.reasoning_budget.enabled
+      ? sp.reasoning_budget.value
+      : null,
+    reasoningBudgetMessage: sp.reasoning_budget_message.enabled
+      ? sp.reasoning_budget_message.value
+      : null,
     env: {
       GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
       CUDA_SCALE_LAUNCH_QUEUES: "4x",
@@ -701,6 +914,9 @@ async function runTestRun() {
   );
   console.log(`  GPU Offload: ${gpuLayerOffload}`);
 
+  // Ensure no leftover llama-server from previous run before starting a new one
+  await ensureNoLlamaServer();
+
   // Start server
   try {
     await startLlamaServer();
@@ -714,18 +930,28 @@ async function runTestRun() {
   }
 
   const messageResults = [];
+  const chatHistory = []; // Accumulated messages for chat-style requests
 
-  // Send 4 messages sequentially
+  // Send 4 messages sequentially, accumulating prior messages each turn
   let runFailed = false;
   for (let i = 0; i < benchmarkMessages.length; i++) {
     console.log(`\n  --- Message ${i + 1}/${benchmarkMessages.length} ---`);
     try {
-      const result = await sendCompletion(benchmarkMessages[i]);
+      // Add the user's message to the chat history
+      chatHistory.push({ role: "user", content: benchmarkMessages[i] });
+
+      // Send all accumulated messages to the chat endpoint
+      const result = await sendChat(chatHistory);
       result.messageIndex = i + 1;
+      result.totalMessagesInContext = chatHistory.length;
       messageResults.push(result);
 
+      // Add the assistant's response to the chat history for the next turn
+      chatHistory.push({ role: "assistant", content: result.responseText });
+
       console.log(
-        `    Prompt tokens: ${result.promptTokens}, Generated: ${result.generatedTokens}`,
+        `    Messages in context: ${chatHistory.length}, ` +
+          `Prompt tokens: ${result.promptTokens}, Generated: ${result.generatedTokens}`,
       );
       console.log(`    Total time: ${result.totalTimeMs} ms`);
       console.log(`    Prompt tokens/sec: ${result.promptTokensPerSec}`);
@@ -831,13 +1057,13 @@ function writeResultsToMarkdown() {
   // Table 1: Per-message results
   md += "## Per-Message Results\n\n";
   md +=
-    "| Test Run | Message | Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec |\n";
+    "| Test Run | Message | Context Len | Messages in Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec |\n";
   md +=
-    "|----------|---------|---------|---------------|------------------|-----------------|-------------------|----------------|\n";
+    "|----------|---------|-------------|---------------------|---------------|------------------|-----------------|-------------------|----------------|\n";
 
   for (const run of results) {
     for (const msg of run.messageResults) {
-      md += `| ${run.testRunId} | ${msg.messageIndex} | ${run.contextLength} | ${msg.promptTokens} | ${msg.generatedTokens} | ${msg.totalTimeMs} | ${msg.promptTokensPerSec} | ${msg.generatedTokensPerSec} |\n`;
+      md += `| ${run.testRunId} | ${msg.messageIndex} | ${run.contextLength} | ${msg.totalMessagesInContext} | ${msg.promptTokens} | ${msg.generatedTokens} | ${msg.totalTimeMs} | ${msg.promptTokensPerSec} | ${msg.generatedTokensPerSec} |\n`;
     }
   }
 

@@ -51,3 +51,17 @@ All notable changes to this project will be documented in this file.
 - [Changed]: [2026-06-07] Benchmark config — disabled layer_split, tensor_split, primary_gpu, n_predict, and n_keep split params; added gpu_layers split param (value: 999); updated CUDA version from 13.3 to 13.2
 - [Changed]: [2026-06-07] Benchmark build script — refactored `getBuildScript()` to use an array of flags instead of string concatenation, with improved logging of cmake flags and full command; fixed `CUDACXX` env var to only be set when present in process.env
 - [Changed]: [2026-06-07] Benchmark server params — added `gpuLayers` to server params snapshot and test run configuration
+
+### Added
+
+- [Added]: [2026-06-07] Chat-based benchmark — switched from `/completion` to `/chat/completions` endpoint; benchmark now sends multi-turn chat requests with accumulated conversation history, extracts assistant response text, and reports `totalMessagesInContext` per message
+
+### Changed
+
+- [Changed]: [2026-06-07] Server lifecycle — `startLlamaServer()` now retries up to 5 times on port binding failures; `stopLlamaServer()` tries graceful `/shutdown` endpoint first then falls back to SIGTERM/SIGKILL; added `waitForPortFree()` to verify port is fully free (no TIME_WAIT)
+- [Changed]: [2026-06-07] Pre-flight cleanup — added `ensureNoLlamaServer()` to detect and kill leftover llama-server processes before starting a new benchmark run; called in both `main()` and `runTestRun()`
+- [Changed]: [2026-06-07] Signal handling — added SIGTERM, SIGINT, and uncaughtException handlers that gracefully stop llama-server and exit
+- [Changed]: [2026-06-07] Server start logic — extracted `tryStartServer()` helper with early-death detection (3s timeout) and health polling; `startLlamaServer()` is now async with retry loop
+- [Changed]: [2026-06-07] Test variable bounds — added `contextLengthMax`, `gpuLayerOffMax`, `batchSizeMax`, `uBatchSizeMax`, `cacheRamSMax` constants for future bound enforcement
+- [Changed]: [2026-06-07] Results table — added "Messages in Context" column to per-message results markdown output
+- [Changed]: [2026-06-07] Formatting — applied consistent line-break formatting to long if-statements and console.log calls in `getRunScript()` and `getServerParamsSnapshot()`
