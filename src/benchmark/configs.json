@@ -1,6 +1,6 @@
 {
   "llama_port": 11434,
-  "llama_host": "100.88.77.33",
+  "llama_host": "100.105.3.99",
   "model": "gemma-4-E2B_q4_0-it.gguf",
   "model_directory": "/home/jon/.llm_models",
   "llama_cache": "/home/jon/.llama_cache",
@@ -19,6 +19,7 @@
     }
   },
   "build_cores": 16,
+  "skip_build": true,
   "build_make_params": {
     "enable_ccache": true,
     "enable_lto": true,

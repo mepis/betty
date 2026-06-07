@@ -12,6 +12,10 @@ const configs = JSON.parse(
   fs.readFileSync(join(__dirname, "configs.json"), "utf8"),
 );
 const llamaUrl = `http://${configs.llama_host}:${configs.llama_port}`;
+
+//--- CLI arguments ---
+const cliSkipBuild = process.argv.includes("--no-build");
+const skipBuild = cliSkipBuild || configs.skip_build;
 const rootDir = __dirname;
 const resultsFile = join(rootDir, "results.md");
 
@@ -32,13 +36,16 @@ const maxErrors = 10;
 let errorCount = 0;
 
 //** Build Params */
-const peerBatchSize = configs.build_make_params.peer_batch_size;
+const buildParams = configs.build_make_params;
+const peerBatchSize = buildParams.peer_batch_size;
 const schedMaxCopies = configs.build_make_params.cuda_max_scheduled_copies;
 const cudaCompression = configs.build_make_params.cuda_compression_level;
 const cudaFp16 = configs.build_make_params.cuda_fp16;
 const allQuants = configs.build_make_params.cuda_all_quants;
 
 //** Run Params */
+console.log(`Skip build: ${skipBuild} (config: ${configs.skip_build}, cli: ${cliSkipBuild})`);
+
 let contextLength = 32768;
 const contextLengthMultiplier = 2;
 
@@ -133,13 +140,17 @@ async function initController() {
     };
   }
 
-  const buildResult = await runBuild();
-  if (!buildResult.success) {
-    return {
-      success: false,
-      reason: "llama.cpp build failed",
-      detail: buildResult.detail,
-    };
+  if (!skipBuild) {
+    const buildResult = await runBuild();
+    if (!buildResult.success) {
+      return {
+        success: false,
+        reason: "llama.cpp build failed",
+        detail: buildResult.detail,
+      };
+    }
+  } else {
+    console.log("Skipping llama.cpp build (--no-build flag set).");
   }
 
   return { success: true, reason: null };
@@ -343,43 +354,43 @@ function getExports() {
 function getBuildScript() {
   const flags = [];
 
-  if (configs.build_make_params.enable_ccache) {
+  if (buildParams.enable_ccache) {
     flags.push(`-DGGML_CCACHE=1`);
   }
-  if (configs.build_make_params.enable_lto) {
+  if (buildParams.enable_lto) {
     flags.push(`-DGGML_LTO=1`);
   }
-  if (configs.build_make_params.enable_cuda) {
+  if (buildParams.enable_cuda) {
     flags.push(`-DGGML_CUDA=1`);
   }
-  if (configs.build_make_params.enable_cuda_fa) {
+  if (buildParams.enable_cuda_fa) {
     flags.push(`-DGGML_CUDA_FA=1`);
   }
-  if (configs.build_make_params.enable_cuda_graphs) {
+  if (buildParams.enable_cuda_graphs) {
     flags.push(`-DGGML_CUDA_GRAPHS=1`);
   }
-  if (configs.build_make_params.enable_cuda_nccl) {
+  if (buildParams.enable_cuda_nccl) {
     flags.push(`-DGGML_CUDA_NCCL=1`);
   }
-  if (configs.build_make_params.enable_cuda_per_max_batch_size) {
+  if (buildParams.enable_cuda_per_max_batch_size) {
     flags.push(`-DGGML_CUDA_PEER_MAX_BATCH_SIZE=${peerBatchSize}`);
   }
-  if (configs.build_make_params.enable_cuda_peer_copy) {
+  if (buildParams.enable_cuda_peer_copy) {
     flags.push(`-DGGML_CUDA_PEER_COPY=1`);
   }
-  if (configs.build_make_params.enable_cuda_custom_arch) {
+  if (buildParams.enable_cuda_custom_arch) {
     flags.push(`-DCMAKE_CUDA_ARCHITECTURES="86-real;120-real"`);
   }
-  if (configs.build_make_params.enable_cuda_fa_all_quants) {
+  if (buildParams.enable_cuda_fa_all_quants) {
     flags.push(`-DGGML_CUDA_FA_ALL_QUANTS=${allQuants}`);
   }
-  if (configs.build_make_params.enable_cuda_fp16) {
+  if (buildParams.enable_cuda_fp16) {
     flags.push(`-DGGML_CUDA_FP16=${cudaFp16}`);
   }
-  if (configs.build_make_params.enable_cuda_scheduled_max_copies) {
+  if (buildParams.enable_cuda_scheduled_max_copies) {
     flags.push(`-DGGML_SCHED_MAX_COPIES=${schedMaxCopies}`);
   }
-  if (configs.build_make_params.enable_cuda_compression_level) {
+  if (buildParams.enable_cuda_compression_level) {
     flags.push(`-DGGML_CUDA_COMPRESSION_LEVEL=${cudaCompression}`);
   }
 
@@ -459,16 +470,11 @@ function startLlamaServer() {
 
     const runCmd = getRunScript();
 
-    // Parse the command into executable and args
-    const parts = runCmd.trim().split(/\s+/);
-    const execPath = parts[0];
-    const args = parts.slice(1);
-
     console.log("Starting llama-server...");
     console.log(`  Binary: ${binaryPath}`);
-    console.log(`  Command: ${execPath} ${args.join(" ")}`);
+    console.log(`  Command: ${runCmd.trim()}`);
 
-    serverProcess = spawn(execPath, args, {
+    serverProcess = spawn(runCmd.trim(), {
       cwd: rootDir + "/llama.cpp/build/bin",
       env: {
         ...process.env,
@@ -481,6 +487,7 @@ function startLlamaServer() {
         LLAMA_ARG_FIT_CTX: "131072",
       },
       stdio: ["pipe", "pipe", "pipe"],
+      shell: true,
     });
 
     let output = "";
@@ -664,7 +671,7 @@ function getServerParamsSnapshot() {
 
 function getCmakeFlagsSnapshot() {
   const flags = {};
-  const bp = configs.build_make_params;
+  const bp = buildParams;
   if (bp.enable_ccache) flags.GGML_CCACHE = "1";
   if (bp.enable_lto) flags.GGML_LTO = "1";
   if (bp.enable_cuda) flags.GGML_CUDA = "1";
