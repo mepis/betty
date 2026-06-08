@@ -16,7 +16,7 @@
     },
     "primary_gpu": {
       "enabled": true,
-      "value": "cuda0"
+      "value": 0
     }
   },
   "build_cores": 20,
