@@ -20,7 +20,7 @@
     }
   },
   "build_cores": 20,
-  "skip_build": true,
+  "skip_build": false,
   "build_make_params": {
     "enable_ccache": true,
     "enable_lto": true,
