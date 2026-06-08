@@ -91,3 +91,29 @@ All notable changes to this project will be documented in this file.
 - [Changed]: [2026-06-07] Test variable bounds — added `contextLengthMax`, `gpuLayerOffMax`, `batchSizeMax`, `uBatchSizeMax`, `cacheRamSMax` constants for future bound enforcement
 - [Changed]: [2026-06-07] Results table — added "Messages in Context" column to per-message results markdown output
 - [Changed]: [2026-06-07] Formatting — applied consistent line-break formatting to long if-statements and console.log calls in `getRunScript()` and `getServerParamsSnapshot()`
+
+### Added
+
+- [Added]: [2026-06-07] Benchmark API server (`src/benchmark/api-server.js`) — standalone Express server providing REST API and SSE streaming for the benchmark tool; supports real-time live metrics via Server-Sent Events, config CRUD, results retrieval, and report management (save/list/view/delete)
+- [Added]: [2026-06-07] Benchmark REST API endpoints — `GET/PUT /api/configs` for config management, `GET /api/status` for live status, `POST /api/run` and `POST /api/stop` for benchmark lifecycle, `GET /api/results` for results data, `GET/POST/DELETE /api/report*` for report CRUD, `POST /api/save-report` to save current results as a named report, `GET /api/health` for health checks
+- [Added]: [2026-06-07] SSE stream endpoint (`GET /api/stream`) — persistent SSE connection with heartbeat (15s interval), broadcasts benchmark stdout/stderr, status transitions, parsed live metrics, and exit/error events to all connected clients
+- [Added]: [2026-06-07] BenchmarkManager class in main server (`src/backend/server.js`) — event-driven benchmark orchestrator with `start()`, `stop()`, `loadConfig()`, and `getResults()` methods; emits `stdout`, `stderr`, `status`, `results`, `exit`, and `error` events; parses benchmark log output for live metrics (tokens/sec, total tokens, timing, memory)
+- [Added]: [2026-06-07] WebSocket benchmark commands — new WebSocket message types `benchmark_start`, `benchmark_stop`, `benchmark_get_config`, and `benchmark_get_results` handled in the main server's WebSocket handler
+- [Added]: [2026-06-07] Benchmark frontend UI (`src/frontend/public/js/benchmark.js`, `src/frontend/public/css/benchmark.css`) — multi-page dashboard app with 5 views (Dashboard, Configs, Run, Results, Reports); live SSE-driven metrics display, config editor with typed fields and toggle switches, real-time log viewer, report viewer with download/delete, and responsive layout
+- [Added]: [2026-06-07] App tab switching — added "Views" section in sidebar with Chat (💬) and Benchmark (⚡) tabs; `switchTab()` toggles between chat view and benchmark view, initializing the benchmark app on first visit
+- [Added]: [2026-06-07] Collapsible sidebar — sidebar now supports collapse/expand state with CSS transitions; collapsed state hides sidebar content; mobile overlay for sidebar when open
+- [Added]: [2026-06-07] Benchmark config schema (`src/frontend/public/js/benchmark.js`) — declarative config schema mapping JSON paths to UI field definitions (text, number, toggle types) with nested path support (e.g., `build_make_params.enable_cuda`)
+- [Added]: [2026-06-07] Benchmark config categories — configs organized into 6 categories: Server, Build Parameters, Model Parameters, Server Parameters, Split Parameters, and Test Parameters, each with appropriate field types and hints
+
+### Changed
+
+- [Changed]: [2026-06-07] Frontend modal system replaced — replaced custom modal dialogs (select, confirm, input, editor) with native browser `prompt()`, `confirm()`, and `alert()` calls; replaced `showModal()`/`hideModal()` with `toast()` notifications for non-critical messages
+- [Changed]: [2026-06-07] Dialog functions migrated — `showSelectDialog()`, `showConfirmDialog()`, `showInputDialog()`, `showEditorDialog()`, `showModal()`, `hideModal()`, `closeModal()` all removed; callers updated to use native dialogs or toast notifications
+- [Changed]: [2026-06-07] Workspace selector — replaced directory browser modal with native `prompt()` for entering workspace path; `showWorkspaceModal()` now calls `prompt()` with current workspace as default
+- [Changed]: [2026-06-07] Command palette display — `showCommands()` now shows available commands in a toast notification instead of a modal list
+- [Changed]: [2026-06-07] Compact session — replaced custom modal with `prompt()` dialog for optional custom compaction instructions
+- [Changed]: [2026-06-07] Fork session — replaced command list modal with `prompt()` showing available entry IDs for selecting fork point
+- [Changed]: [2026-06-07] Help and shortcuts — replaced modal dialogs with toast notifications displaying help text and keyboard shortcuts
+- [Changed]: [2026-06-07] Extension UI handlers — `select`, `confirm`, `input`, and `editor` extension UI methods now use native `prompt()` and `confirm()` instead of custom modals
+- [Changed]: [2026-06-07] Benchmark config (`src/benchmark/configs.json`) — updated model from `gemma-4-E2B_q4_0-it.gguf` to `Qwen3.6-35B-A3B-Q8_0.gguf`; changed `llama_host` from `100.105.3.99` to `100.88.77.33`; enabled layer_split, tensor_split, and primary_gpu split params; increased `build_cores` from 16 to 20; updated CUDA version from 13.2 to 13.3; disabled CUDA compression; disabled jinja template; enabled gpu_layers (999); changed `cuda_max_scheduled_copies` from 16 to 14
+- [Changed]: [2026-06-07] CSS variables — added new design tokens (`--bg-card`, `--border-light`, `--accent-blue/cyan/green/orange/red`, `--sidebar-width`, `--radius`, `--radius-sm`, `--btn-primary-bg/hover`, `--btn-secondary-bg/hover`, `--btn-danger-bg/hover`) for consistent theming across chat and benchmark views

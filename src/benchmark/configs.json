@@ -1,25 +1,25 @@
 {
   "max_sys_mem": 93,
   "llama_port": 11434,
-  "llama_host": "100.105.3.99",
-  "model": "gemma-4-E2B_q4_0-it.gguf",
+  "llama_host": "100.88.77.33",
+  "model": "Qwen3.6-35B-A3B-Q8_0.gguf",
   "model_directory": "/home/jon/.llm_models",
   "llama_cache": "/home/jon/.llama_cache",
   "split_params": {
     "layer_split": {
-      "enabled": false,
+      "enabled": true,
       "value": "layer"
     },
     "tensor_split": {
-      "enabled": false,
+      "enabled": true,
       "value": "16,12,12"
     },
     "primary_gpu": {
-      "enabled": false,
+      "enabled": true,
       "value": "cuda0"
     }
   },
-  "build_cores": 16,
+  "build_cores": 20,
   "skip_build": true,
   "build_make_params": {
     "enable_ccache": true,
@@ -37,12 +37,12 @@
     "enable_cuda_fp16": true,
     "cuda_fp16": true,
     "enable_cuda_scheduled_max_copies": true,
-    "cuda_max_scheduled_copies": 16,
-    "enable_cuda_compression_level": true,
-    "cuda_compression_level": 3
+    "cuda_max_scheduled_copies": 14,
+    "enable_cuda_compression_level": false,
+    "cuda_compression_level": 0
   },
   "cuda_configs": {
-    "cuda_version": "13.2"
+    "cuda_version": "13.3"
   },
   "model_configs": {
     "temp": 0.6,
@@ -77,7 +77,7 @@
       "enabled": true,
       "value": "yarn"
     },
-    "jinja": true,
+    "jinja": false,
     "parallel": {
       "enabled": true,
       "value": 1
@@ -99,7 +99,7 @@
       "value": true
     },
     "gpu_layers": {
-      "enabled": false,
+      "enabled": true,
       "value": 999
     }
   },
