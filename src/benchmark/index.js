@@ -21,10 +21,10 @@ const resultsFile = join(rootDir, "results.md");
 
 //--- Benchmark messages (4 user-defined messages to fill context) ---
 const benchmarkMessages = [
-  "Summarize the key points of quantum computing and its implications for modern cryptography. Include a discussion of Shor's algorithm and Grover's algorithm, and explain how each affects RSA and ECC encryption schemes. Provide a timeline of when quantum computers might be capable of breaking these systems.",
-  "Write a comprehensive analysis of the economic impact of renewable energy adoption across G20 nations from 2010 to 2025. Cover solar, wind, hydroelectric, and geothermal energy sources. Include data on job creation, GDP impact, infrastructure investment, and the transition challenges for fossil fuel-dependent economies.",
-  "Explain the current state of artificial intelligence research as of 2026, covering transformer architectures, multimodal models, reasoning capabilities, and the ongoing debate about AGI timelines. Discuss the role of reinforcement learning from human feedback (RLHF), constitutional AI, and the latest advances in large language model scaling laws. Include perspectives from both optimistic and cautious researchers.",
-  "Provide a detailed technical comparison of the top five open-source large language models as of mid-2026. Cover model architecture, training data size, parameter count, inference speed, memory requirements, benchmark scores (MMLU, GSM8K, HumanEval), license terms, and recommended use cases. Include both dense and Mixture-of-Experts (MoE) models.",
+  "Develop a design doc for a self-hosted tetris clone web-based game..",
+  "Audit the design doc.",
+  "Recommend optimizations.",
+  "Create a social-media marketing campaign for it.",
 ];
 
 //--- Configurable test parameters ---
