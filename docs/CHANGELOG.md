@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-08] GPU selection config — new `gpu_selection` section in `configs.json` with `enabled`/`gpus` array (e.g., `[0, 1, 2]`); auto-generates `primaryGpu` (first GPU) and `tensorSplitValue` (equal split across GPUs) at startup; added GPU column to benchmark results table
+- [Added]: [2026-06-08] `CUDACXX` path config — new `cuda_configs.cudacxx` field in `configs.json` (`/usr/local/cuda-13.3/bin/nvcc`); used by `buildEnv()`, `tryStartServer()`, and `getServerParamsSnapshot()` for consistent CUDA compiler path across build and runtime
+
 ### Removed
 
 - [Removed]: [2026-06-08] Standalone benchmark web UI — deleted `src/benchmark/public/` (index.html, css/style.css, js/app.js) as the benchmark is now only accessed through the main Betty frontend's benchmark view
@@ -25,6 +30,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-08] GPU split parameters — `tensor_split` and `primary_gpu` values in `split_params` are now auto-generated from `gpu_selection.gpus` at startup instead of read directly from config; tensor split is calculated as equal fractions (e.g., 3 GPUs → `33,33,33`)
+- [Changed]: [2026-06-08] Benchmark config — enabled `skip_build` (set to `false`) to rebuild llama.cpp on each run
 - [Changed]: [2026-06-08] API server — replaced generic `cors()` with explicit CORS configuration supporting configurable `CORS_ORIGIN` env var; added `API_HOST` env var for remote access binding; switched static file serving from `public/` to `frontend/dist/`; added SPA fallback route for Vue Router history mode; improved startup logging with host/port/directory info
 - [Changed]: [2026-06-08] Benchmark package scripts — added `dev:frontend` for Vue dev server with API proxy, `build:frontend` for production build, and updated `start` to build frontend before launching server; changed `API_PORT` to parse as integer
 - [Changed]: [2026-06-07] Benchmark main loop — now captures the return value from `runTestRun()` and skips the `areAllVariablesAtMax()` check when a run was aborted (configs not advanced on abort)

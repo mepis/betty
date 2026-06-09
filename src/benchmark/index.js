@@ -35,6 +35,23 @@ let isRunning = true;
 const maxErrors = 10;
 let errorCount = 0;
 
+//** GPU Selection */
+const gpuSelection = configs.gpu_selection;
+let selectedGpus = gpuSelection.enabled ? gpuSelection.gpus : [0];
+const primaryGpu = selectedGpus[0];
+const tensorSplitValue = selectedGpus.length > 1
+  ? Array(selectedGpus.length).fill(Math.round(100 / selectedGpus.length)).join(",")
+  : "0";
+console.log(
+  `GPU selection: ${gpuSelection.enabled ? `enabled [${selectedGpus.join(", ")}]` : "disabled (GPU 0)"}`,
+);
+console.log(
+  `  Primary GPU: ${primaryGpu}`,
+);
+console.log(
+  `  Tensor split: ${tensorSplitValue}`,
+);
+
 //** Build Params */
 const buildParams = configs.build_make_params;
 const peerBatchSize = buildParams.peer_batch_size;
@@ -416,7 +433,7 @@ function buildEnv() {
     GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
     CUDA_SCALE_LAUNCH_QUEUES: "4x",
     LLAMA_CACHE: configs.llama_cache,
-    ...(process.env.CUDACXX ? { CUDACXX: process.env.CUDACXX } : {}),
+    CUDACXX: configs.cuda_configs.cudacxx,
     GGML_CUDA_P2P: "on",
     PATH: `/usr/local/cuda-${configs.cuda_configs.cuda_version}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
     LLAMA_ARG_FIT: "on",
@@ -527,9 +544,9 @@ function getRunScript() {
   if (sps.layer_split.enabled)
     parts.push(`--split-mode ${sps.layer_split.value} `);
   if (sps.tensor_split.enabled)
-    parts.push(`--tensor-split ${sps.tensor_split.value} `);
+    parts.push(`--tensor-split ${tensorSplitValue} `);
   if (sps.primary_gpu.enabled)
-    parts.push(`--main-gpu ${sps.primary_gpu.value} `);
+    parts.push(`--main-gpu ${primaryGpu} `);
 
   return parts.join("");
 }
@@ -605,6 +622,7 @@ function tryStartServer(runCmd, binaryPath) {
         LLAMA_ARG_FIT: "on",
         LLAMA_ARG_FIT_TARGET: "256",
         LLAMA_ARG_FIT_CTX: "131072",
+        CUDACXX: configs.cuda_configs.cudacxx,
       },
       stdio: ["pipe", "pipe", "pipe"],
       shell: true,
@@ -883,8 +901,11 @@ function getServerParamsSnapshot() {
     minP: configs.model_configs.min_p,
     topK: configs.model_configs.top_k,
     layerSplit: sps.layer_split.enabled ? sps.layer_split.value : null,
-    tensorSplit: sps.tensor_split.enabled ? sps.tensor_split.value : null,
-    primaryGpu: sps.primary_gpu.enabled ? sps.primary_gpu.value : null,
+    tensorSplit: sps.tensor_split.enabled ? tensorSplitValue : null,
+    primaryGpu: sps.primary_gpu.enabled ? primaryGpu : null,
+    gpuSelection: gpuSelection.enabled
+      ? selectedGpus.slice()
+      : [0],
     ropeScaling: sp.rope_scaling.enabled ? sp.rope_scaling.value : null,
     jinja: sp.jinja ? true : null,
     parallel: sp.parallel.enabled ? sp.parallel.value : null,
@@ -906,6 +927,7 @@ function getServerParamsSnapshot() {
       LLAMA_ARG_FIT: "on",
       LLAMA_ARG_FIT_TARGET: "256",
       LLAMA_ARG_FIT_CTX: "131072",
+      CUDACXX: configs.cuda_configs.cudacxx,
     },
     cmakeFlags: getCmakeFlagsSnapshot(),
   };
@@ -1061,8 +1083,11 @@ async function runTestRun() {
     minP: configs.model_configs.min_p,
     topK: configs.model_configs.top_k,
     layerSplit: sps.layer_split.enabled ? sps.layer_split.value : null,
-    tensorSplit: sps.tensor_split.enabled ? sps.tensor_split.value : null,
-    primaryGpu: sps.primary_gpu.enabled ? sps.primary_gpu.value : null,
+    tensorSplit: sps.tensor_split.enabled ? tensorSplitValue : null,
+    primaryGpu: sps.primary_gpu.enabled ? primaryGpu : null,
+    gpuSelection: gpuSelection.enabled
+      ? selectedGpus.slice()
+      : [0],
     ropeScaling: sp.rope_scaling.enabled ? sp.rope_scaling.value : null,
     gpuLayers: sp.gpu_layers.enabled ? sp.gpu_layers.value : null,
     parallel: sp.parallel.enabled ? sp.parallel.value : null,
@@ -1146,12 +1171,12 @@ function writeResultsToMarkdown() {
   // Table 3: Server parameters per test run
   md += "## Server Parameters\n\n";
   md +=
-    "| Test Run | Temp | Top-P | Min-P | Top-K | Flash-Attn | Reasoning | Rope Scaling | Split Mode | Tensor Split | Main GPU | Parallel |\n";
+    "| Test Run | GPUs | Temp | Top-P | Min-P | Top-K | Flash-Attn | Reasoning | Rope Scaling | Split Mode | Tensor Split | Main GPU | Parallel |\n";
   md +=
-    "|----------|------|-------|-------|-------|------------|-----------|--------------|------------|--------------|----------|----------|\n";
+    "|----------|------|------|-------|-------|-------|------------|-----------|--------------|------------|--------------|----------|----------|\n";
 
   for (const run of results) {
-    md += `| ${run.testRunId} | ${run.temperature} | ${run.topP} | ${run.minP} | ${run.topK} | ${run.flashAttn} | ${run.reasoning} | ${run.ropeScaling} | ${run.layerSplit} | ${run.tensorSplit} | ${run.primaryGpu} | ${run.parallel} |\n`;
+    md += `| ${run.testRunId} | ${run.gpuSelection?.join(",") || "0"} | ${run.temperature} | ${run.topP} | ${run.minP} | ${run.topK} | ${run.flashAttn} | ${run.reasoning} | ${run.ropeScaling} | ${run.layerSplit} | ${run.tensorSplit} | ${run.primaryGpu} | ${run.parallel} |\n`;
   }
 
   md += "\n";
