@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node api-server.js"
+    "dev": "node api-server.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "npm run build:frontend && node api-server.js"
   },
   "dependencies": {
     "axios": "^1.7.0",

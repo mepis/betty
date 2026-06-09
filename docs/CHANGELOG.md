@@ -10,6 +10,14 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-08] Standalone benchmark Vue 3 web frontend — new single-page application built with Vue 3, Pinia, Vue Router, and Tailwind CSS 4; features real-time SSE streaming for live benchmark progress, JSON and visual configuration editors, report management, and a responsive dark-themed UI
+- [Added]: [2026-06-08] Model directory listing API — new `GET /api/models?directory=<path>` endpoint that scans a directory for model files (`.gguf`, `.bin`, `.safetensors`) and returns a sorted list; used by the visual config editor to populate the model dropdown
+- [Added]: [2026-06-08] Configurable CORS origins — `CORS_ORIGIN` environment variable supports comma-separated origins or `*` for all; CORS preflight now explicitly allows `PUT`, `DELETE`, and `OPTIONS` methods with `Content-Type` and `Authorization` headers
+- [Added]: [2026-06-08] Remote access support — `API_HOST` environment variable (default `0.0.0.0`) allows the API server to bind to all network interfaces for remote machine access
+- [Added]: [2026-06-08] SPA fallback route — API server now serves `index.html` for all non-API routes to support Vue Router history mode
+- [Added]: [2026-06-08] `ConfigSection` component — reusable form section component supporting `text`, `number`, `boolean`, and `select` input types with proper `v-model` two-way binding
+- [Added]: [2026-06-08] Environment variable example — `.env.example` documenting all configurable API server options
+
 - [Added]: [2026-06-07] System memory safety threshold — `max_sys_mem` config option (93%) that aborts a test run before starting if system memory usage exceeds the threshold, preventing OOM crashes; aborted runs are recorded in results with the abort reason
 - [Added]: [2026-06-07] Per-message memory tracking — `getMem()` is called after each chat message and stored in the result; average memory used (GB) is calculated and reported per test run
 - [Added]: [2026-06-07] Memory column in benchmark results — per-message results table includes memory used/total/%; test run averages table includes average memory used (GB); aborted runs are marked with their abort reason in both tables
@@ -17,6 +25,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-08] API server — replaced generic `cors()` with explicit CORS configuration supporting configurable `CORS_ORIGIN` env var; added `API_HOST` env var for remote access binding; switched static file serving from `public/` to `frontend/dist/`; added SPA fallback route for Vue Router history mode; improved startup logging with host/port/directory info
+- [Changed]: [2026-06-08] Benchmark package scripts — added `dev:frontend` for Vue dev server with API proxy, `build:frontend` for production build, and updated `start` to build frontend before launching server; changed `API_PORT` to parse as integer
 - [Changed]: [2026-06-07] Benchmark main loop — now captures the return value from `runTestRun()` and skips the `areAllVariablesAtMax()` check when a run was aborted (configs not advanced on abort)
 - [Changed]: [2026-06-07] Benchmark memory timer removed — the periodic memory logging interval was removed as it is no longer needed (memory is now tracked per-message)
 

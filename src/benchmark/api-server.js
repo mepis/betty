@@ -10,11 +10,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.API_PORT || 3456;
+const PORT = parseInt(process.env.API_PORT, 10) || 3456;
+const API_HOST = process.env.API_HOST || '0.0.0.0';
 const BENCHMARK_DIR = __dirname;
+const FRONTEND_DIR = join(BENCHMARK_DIR, "frontend", "dist");
 const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(BENCHMARK_DIR, "reports");
+
+// Allowed CORS origins (comma-separated or * for all)
+const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
 
 // Ensure reports directory exists
 if (!fs.existsSync(REPORTS_DIR)) {
@@ -28,9 +33,17 @@ let currentTestRun = 0;
 let liveResults = [];
 let streamingClients = new Set();
 
-app.use(cors());
+// CORS configuration
+app.use(cors({
+  origin: CORS_ORIGIN === '*' ? '*' : CORS_ORIGIN.split(',').map(o => o.trim()),
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Type'],
+  credentials: true,
+}));
+
 app.use(express.json({ limit: "10mb" }));
-app.use(express.static(join(BENCHMARK_DIR, "public")));
+app.use(express.static(FRONTEND_DIR));
 
 //--- Config endpoints ---
 app.get("/api/configs", (_req, res) => {
@@ -368,13 +381,41 @@ app.get("/api/results", (_req, res) => {
   }
 });
 
+//--- List models in a directory ---
+app.get("/api/models", (_req, res) => {
+  try {
+    const dir = _req.query.directory;
+    if (!dir) {
+      return res.status(400).json({ success: false, error: "directory query param required" });
+    }
+    if (!fs.existsSync(dir)) {
+      return res.json({ success: true, data: [] });
+    }
+    const files = fs.readdirSync(dir)
+      .filter(f => f.endsWith('.gguf') || f.endsWith('.bin') || f.endsWith('.safetensors'))
+      .sort();
+    res.json({ success: true, data: files });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Health check ---
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });
 });
 
-app.listen(PORT, () => {
-  console.log(`Benchmark API server running at http://localhost:${PORT}`);
+// SPA fallback: serve index.html for non-API routes
+app.get('*', (_req, res) => {
+  res.sendFile(join(FRONTEND_DIR, 'index.html'));
+});
+
+app.listen(PORT, API_HOST, () => {
+  console.log(`Benchmark API server running at http://${API_HOST === '0.0.0.0' ? 'localhost' : API_HOST}:${PORT}`);
+  console.log(`Frontend served from: ${FRONTEND_DIR}`);
   console.log(`Config file: ${CONFIGS_FILE}`);
   console.log(`Reports directory: ${REPORTS_DIR}`);
+  if (API_HOST === '0.0.0.0') {
+    console.log(`Accessible from remote machines on port ${PORT}`);
+  }
 });

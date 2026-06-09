@@ -1,8 +1,8 @@
 {
   "max_sys_mem": 93,
   "llama_port": 11434,
-  "llama_host": "100.88.77.33",
-  "model": "Qwen3.6-35B-A3B-Q8_0.gguf",
+  "llama_host": "100.105.3.99",
+  "model": "gemma-4-E2B_q4_0-it.gguf",
   "model_directory": "/home/jon/.llm_models",
   "llama_cache": "/home/jon/.llama_cache",
   "split_params": {
@@ -47,7 +47,7 @@
   "model_configs": {
     "temp": 0.6,
     "top_p": 0.95,
-    "min_p": 0.0,
+    "min_p": 0,
     "top_k": 20
   },
   "server_params": {
@@ -63,7 +63,7 @@
     "profiling": true,
     "presence_penalty": {
       "enabled": true,
-      "value": 0.0
+      "value": 0
     },
     "reasoning_budget": {
       "enabled": true,
