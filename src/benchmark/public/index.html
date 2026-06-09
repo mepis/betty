@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>llama.cpp Benchmark</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <h1>⚡ Benchmark</h1>
+      </div>
+      <nav id="nav">
+        <button class="nav-btn active" data-page="dashboard">
+          <span class="nav-icon">📊</span> Dashboard
+        </button>
+        <button class="nav-btn" data-page="configs">
+          <span class="nav-icon">⚙️</span> Configs
+        </button>
+        <button class="nav-btn" data-page="run">
+          <span class="nav-icon">▶️</span> Run
+        </button>
+        <button class="nav-btn" data-page="results">
+          <span class="nav-icon">📋</span> Results
+        </button>
+        <button class="nav-btn" data-page="reports">
+          <span class="nav-icon">📁</span> Reports
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <div id="status-indicator" class="status-badge idle">
+          <span class="status-dot"></span>
+          <span class="status-text">Idle</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main id="main">
+      <!-- Dashboard page -->
+      <div id="page-dashboard" class="page active">
+        <h2>Dashboard</h2>
+        <div class="dashboard-grid">
+          <div class="card">
+            <h3>Model</h3>
+            <p id="dash-model" class="stat">—</p>
+          </div>
+          <div class="card">
+            <h3>Status</h3>
+            <p id="dash-status" class="stat">Idle</p>
+          </div>
+          <div class="card">
+            <h3>Test Runs</h3>
+            <p id="dash-runs" class="stat">0</p>
+          </div>
+          <div class="card">
+            <h3>Best Gen Tok/s</h3>
+            <p id="dash-best" class="stat">—</p>
+          </div>
+          <div class="card">
+            <h3>Best Prompt Tok/s</h3>
+            <p id="dash-best-prompt" class="stat">—</p>
+          </div>
+          <div class="card">
+            <h3>Last Run Time</h3>
+            <p id="dash-last-time" class="stat">—</p>
+          </div>
+        </div>
+
+        <div class="card action-card">
+          <h3>Quick Actions</h3>
+          <div class="action-buttons">
+            <button id="btn-run-dashboard" class="btn btn-primary">▶ Run Benchmark</button>
+            <button id="btn-stop-dashboard" class="btn btn-danger" disabled>■ Stop</button>
+            <button id="btn-save-report-dash" class="btn btn-secondary">💾 Save Report</button>
+            <button id="btn-refresh-dash" class="btn btn-outline">↻ Refresh</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Recent Results</h3>
+          <div id="dash-recent-results">
+            <p class="empty-state">No results yet. Start a benchmark to see results here.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Configs page -->
+      <div id="page-configs" class="page">
+        <div class="page-header">
+          <h2>Configuration</h2>
+          <div class="header-actions">
+            <button id="btn-save-configs" class="btn btn-primary">💾 Save Configs</button>
+            <button id="btn-reset-configs" class="btn btn-outline">↺ Reset</button>
+          </div>
+        </div>
+        <div id="configs-container" class="configs-grid">
+          <!-- Config sections will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Run page -->
+      <div id="page-run" class="page">
+        <div class="page-header">
+          <h2>Benchmark Run</h2>
+          <div class="header-actions">
+            <button id="btn-run" class="btn btn-primary">▶ Start Benchmark</button>
+            <button id="btn-stop" class="btn btn-danger" disabled>■ Stop</button>
+            <button id="btn-save-report" class="btn btn-secondary">💾 Save Report</button>
+          </div>
+        </div>
+
+        <div class="run-layout">
+          <div class="run-info">
+            <div class="run-status-card">
+              <h3>Current Status</h3>
+              <div id="run-status" class="status-display">
+                <span class="status-icon">⏸</span>
+                <span class="status-label">Ready</span>
+              </div>
+              <div id="run-details" class="run-details">
+                <div class="detail-row">
+                  <span class="detail-label">Test Run:</span>
+                  <span id="run-num" class="detail-value">—</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Context Length:</span>
+                  <span id="run-context" class="detail-value">—</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Batch Size:</span>
+                  <span id="run-batch" class="detail-value">—</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">GPU Layers:</span>
+                  <span id="run-gpu" class="detail-value">—</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="run-metrics-card">
+              <h3>Live Metrics</h3>
+              <div class="metrics-grid">
+                <div class="metric">
+                  <div class="metric-label">Avg Prompt Tok/s</div>
+                  <div id="metric-prompt" class="metric-value">—</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Avg Gen Tok/s</div>
+                  <div id="metric-gen" class="metric-value">—</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Total Gen Tokens</div>
+                  <div id="metric-total-gen" class="metric-value">—</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Total Time (ms)</div>
+                  <div id="metric-total-time" class="metric-value">—</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="log-container">
+            <div class="log-header">
+              <h3>Live Log</h3>
+              <button id="btn-clear-log" class="btn btn-small btn-outline">Clear</button>
+            </div>
+            <div id="log-output" class="log-output">
+              <div class="log-line log-info">Ready to start benchmark. Click "Start Benchmark" to begin.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results page -->
+      <div id="page-results" class="page">
+        <div class="page-header">
+          <h2>Results</h2>
+          <div class="header-actions">
+            <button id="btn-refresh-results" class="btn btn-outline">↻ Refresh</button>
+            <button id="btn-save-report-results" class="btn btn-secondary">💾 Save Report</button>
+          </div>
+        </div>
+        <div id="results-container">
+          <div class="empty-state">No results yet. Run a benchmark to see results here.</div>
+        </div>
+      </div>
+
+      <!-- Reports page -->
+      <div id="page-reports" class="page">
+        <div class="page-header">
+          <h2>Saved Reports</h2>
+          <button id="btn-save-report-reports" class="btn btn-primary">💾 Save Current as Report</button>
+        </div>
+        <div id="reports-list" class="reports-list">
+          <div class="empty-state">No saved reports yet.</div>
+        </div>
+        <div id="report-viewer" class="report-viewer" style="display: none;">
+          <div class="report-viewer-header">
+            <button id="btn-back-reports" class="btn btn-outline">← Back to Reports</button>
+            <h3 id="report-viewer-title">Report</h3>
+            <div class="report-viewer-actions">
+              <button id="btn-download-report" class="btn btn-secondary">📥 Download</button>
+              <button id="btn-delete-report" class="btn btn-danger">🗑 Delete</button>
+            </div>
+          </div>
+          <div id="report-content" class="report-content"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Save Report Modal -->
+  <div id="modal-save-report" class="modal">
+    <div class="modal-content">
+      <h3>Save Report</h3>
+      <input type="text" id="report-name-input" placeholder="Report name (optional)" />
+      <div class="modal-actions">
+        <button id="btn-cancel-save-report" class="btn btn-outline">Cancel</button>
+        <button id="btn-confirm-save-report" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
