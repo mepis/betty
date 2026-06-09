@@ -42,6 +42,7 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - [Removed]: [2026-06-07] Deleted local `.pi/agents/` and `.pi/skills/` files (reviewer.md, scout.md, worker.md, and all skill definitions and references)
+- [Removed]: [2026-06-08] Benchmark feature — removed the entire benchmark system including the benchmark CLI tool (`src/benchmark/`), WebSocket benchmark commands and `BenchmarkManager` class (`src/backend/server.js`), benchmark REST API endpoints, benchmark frontend UI and navigation (`src/frontend/public/index.html`), benchmark CSS (`src/frontend/public/css/benchmark.css`), benchmark JavaScript (`src/frontend/public/js/benchmark.js`), and the `benchmark` npm script from `package.json`
 
 ### Added
 
