@@ -7,23 +7,27 @@
   "llama_cache": "/home/jon/.llama_cache",
   "gpu_selection": {
     "enabled": true,
-    "gpus": [0, 1, 2]
+    "gpus": [
+      0,
+      1,
+      2
+    ]
   },
   "split_params": {
     "layer_split": {
-      "enabled": true,
+      "enabled": false,
       "value": "layer"
     },
     "tensor_split": {
-      "enabled": true,
+      "enabled": false,
       "value": "16,12,12"
     },
     "primary_gpu": {
-      "enabled": true,
+      "enabled": false,
       "value": 0
     }
   },
-  "build_cores": 20,
+  "build_cores": 14,
   "skip_build": false,
   "build_make_params": {
     "enable_ccache": true,
@@ -46,8 +50,8 @@
     "cuda_compression_level": 0
   },
   "cuda_configs": {
-    "cuda_version": "13.3",
-    "cudacxx": "/usr/local/cuda-13.3/bin/nvcc"
+    "cuda_version": "13.2",
+    "cudacxx": "/usr/local/cuda-13.2/bin/nvcc"
   },
   "model_configs": {
     "temp": 0.6,

@@ -11,6 +11,7 @@ const configsJson = ref('')
 const editMode = ref('json') // 'json' or 'visual'
 const visualConfigs = ref({})
 const modelOptions = ref([])
+const newGpuIndex = ref(0)
 
 async function fetchModelsForDirectory(dir) {
   if (!dir) {
@@ -84,6 +85,53 @@ function handleReset() {
     }
   }
   saveError.value = ''
+}
+
+function toggleGpuEnabled() {
+  if (!visualConfigs.value.gpu_selection) {
+    visualConfigs.value.gpu_selection = { enabled: false, gpus: [] }
+  }
+  visualConfigs.value.gpu_selection.enabled = !visualConfigs.value.gpu_selection.enabled
+}
+
+function addGpuIndex() {
+  if (!visualConfigs.value.gpu_selection) {
+    visualConfigs.value.gpu_selection = { enabled: true, gpus: [] }
+  }
+  const gpus = visualConfigs.value.gpu_selection.gpus || []
+  const idx = newGpuIndex.value
+  if (!gpus.includes(idx)) {
+    gpus.push(idx)
+    gpus.sort((a, b) => a - b)
+    visualConfigs.value.gpu_selection.gpus = gpus
+  }
+  newGpuIndex.value = idx + 1
+}
+
+function removeGpuIndex(index) {
+  const gpus = [...(visualConfigs.value.gpu_selection.gpus || [])]
+  gpus.splice(index, 1)
+  visualConfigs.value.gpu_selection.gpus = gpus
+}
+
+function toggleSplitParam(key) {
+  if (!visualConfigs.value.split_params) {
+    visualConfigs.value.split_params = {}
+  }
+  if (!visualConfigs.value.split_params[key]) {
+    visualConfigs.value.split_params[key] = { enabled: false, value: '' }
+  }
+  visualConfigs.value.split_params[key].enabled = !visualConfigs.value.split_params[key].enabled
+}
+
+function updateSplitParamValue(key, type, value) {
+  if (!visualConfigs.value.split_params) {
+    visualConfigs.value.split_params = {}
+  }
+  if (!visualConfigs.value.split_params[key]) {
+    visualConfigs.value.split_params[key] = { enabled: true, value: '' }
+  }
+  visualConfigs.value.split_params[key].value = type === 'number' ? Number(value) : value
 }
 </script>
 
@@ -180,6 +228,105 @@ function handleReset() {
           ]"
           v-model="visualConfigs.test_params"
         />
+
+        <!-- GPU Selection -->
+
+        <!-- Split Params -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Split Params</h4>
+          <div
+            v-for="param in [
+              { key: 'layer_split', label: 'Layer Split', type: 'text' },
+              { key: 'tensor_split', label: 'Tensor Split', type: 'text' },
+              { key: 'primary_gpu', label: 'Primary GPU', type: 'number' },
+            ]"
+            :key="param.key"
+            class="space-y-2"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <span class="text-sm text-text-secondary">{{ param.label }}</span>
+              <button
+                @click="toggleSplitParam(param.key)"
+                class="relative w-10 h-5 rounded-full transition-colors"
+                :class="(visualConfigs.split_params?.[param.key]?.enabled ?? false) ? 'bg-accent' : 'bg-bg-tertiary'"
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                  :class="(visualConfigs.split_params?.[param.key]?.enabled ?? false) ? 'translate-x-5' : ''"
+                />
+              </button>
+            </div>
+            <div v-if="visualConfigs.split_params?.[param.key]?.enabled" class="ml-1">
+              <input
+                :type="param.type === 'number' ? 'number' : 'text'"
+                :value="visualConfigs.split_params[param.key]?.value ?? ''"
+                @input="updateSplitParamValue(param.key, param.type, $event.target.value)"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">GPU Selection</h4>
+          <div class="flex items-center justify-between gap-4">
+            <label class="text-sm text-text-secondary">Enable GPU Selection</label>
+            <button
+              @click="toggleGpuEnabled()"
+              class="relative w-10 h-5 rounded-full transition-colors"
+              :class="(visualConfigs.gpu_selection?.enabled ?? false) ? 'bg-accent' : 'bg-bg-tertiary'"
+            >
+              <span
+                class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                :class="(visualConfigs.gpu_selection?.enabled ?? false) ? 'translate-x-5' : ''"
+              />
+            </button>
+          </div>
+          <div v-if="visualConfigs.gpu_selection?.enabled" class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-text-secondary">GPU Indices</span>
+              <div class="flex items-center gap-2">
+                <input
+                  type="number"
+                  min="0"
+                  :value="newGpuIndex"
+                  @input="newGpuIndex = Number($event.target.value)"
+                  class="input w-20 text-xs"
+                  placeholder="GPU #"
+                />
+                <button
+                  @click="addGpuIndex()"
+                  class="btn btn-ghost btn-xs"
+                  :disabled="visualConfigs.gpu_selection?.gpus?.includes(newGpuIndex)"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="(gpu, idx) in visualConfigs.gpu_selection?.gpus"
+                :key="gpu"
+                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-accent-subtle text-accent text-xs font-medium"
+              >
+                GPU {{ gpu }}
+                <button
+                  @click="removeGpuIndex(idx)"
+                  class="ml-0.5 text-accent/60 hover:text-accent transition-colors"
+                >
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </span>
+              <span v-if="!visualConfigs.gpu_selection?.gpus?.length" class="text-xs text-text-muted italic">
+                No GPUs selected
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Actions -->

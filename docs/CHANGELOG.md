@@ -1,8 +1,16 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
 ## [Unreleased]
+
+### Added
+
+- [Added]: [2026-06-08] Visual GPU selection editor — new toggle switch and add/remove UI in Config.vue visual editor for enabling/disabling GPU selection and managing GPU index array
+- [Added]: [2026-06-08] Visual split params editor — new toggle switches and inline value inputs in Config.vue visual editor for layer_split, tensor_split, and primary_gpu split parameters
+
+### Changed
+
+- [Changed]: [2026-06-08] Benchmark config — disabled split_params (layer_split, tensor_split, primary_gpu); reduced build_cores from 20 to 14; downgraded CUDA from 13.3 to 13.2
+- [Changed]: [2026-06-08] Frontend assets — rebuilt Vue frontend with new asset hashes
 
 ### Added
 
