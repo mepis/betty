@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-08] Standalone benchmark web UI — deleted `src/benchmark/public/` (index.html, css/style.css, js/app.js) as the benchmark is now only accessed through the main Betty frontend's benchmark view
+
 ### Added
 
 - [Added]: [2026-06-07] System memory safety threshold — `max_sys_mem` config option (93%) that aborts a test run before starting if system memory usage exceeds the threshold, preventing OOM crashes; aborted runs are recorded in results with the abort reason
