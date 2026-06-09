@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-08] Benchmark frontend API URL — updated `VITE_API_URL` in `.env.development` from `100.105.3.99` to `100.88.77.33` to point to the new API server; added `env.production` template with the previous server address
+
 ### Added
 
 - [Added]: [2026-06-08] Speculative decoding params — new `spec_params` section in `configs.json` with `spec_type` (default `draft-mtp`) and `spec_draft_n_max` (default `3`); toggle switches and inline inputs in Config.vue visual editor; `--spec-type` and `--spec-draft-n-max` flags added to llama-server run script in `index.js`
