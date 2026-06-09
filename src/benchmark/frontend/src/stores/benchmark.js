@@ -25,6 +25,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
       state.status === 'building' || state.status === 'testing',
     isIdle: (state) => state.status === 'idle',
     isError: (state) => state.status === 'error',
+    isStopped: (state) => state.status === 'stopped',
     latestResult: (state) =>
       state.liveResults.length > 0
         ? state.liveResults[state.liveResults.length - 1]
@@ -181,6 +182,8 @@ export const useBenchmarkStore = defineStore('benchmark', {
       if (this.sseConnected) return
 
       const eventSource = new EventSource(`${API_BASE}/api/stream`)
+      let reconnectTimer = null
+      let lastStatusReceived = Date.now()
 
       eventSource.addEventListener('status', (e) => {
         const data = JSON.parse(e.data)
@@ -188,11 +191,13 @@ export const useBenchmarkStore = defineStore('benchmark', {
         this.testRun = data.testRun
         this.liveResults = data.liveResults || []
         this.processAlive = true
+        lastStatusReceived = Date.now()
       })
 
       eventSource.addEventListener('results', (e) => {
         const data = JSON.parse(e.data)
         this.liveResults = data.liveResults || []
+        lastStatusReceived = Date.now()
       })
 
       eventSource.addEventListener('log', (e) => {
@@ -209,19 +214,40 @@ export const useBenchmarkStore = defineStore('benchmark', {
             this.logs = this.logs.slice(-500)
           }
         }
+        lastStatusReceived = Date.now()
       })
 
       eventSource.addEventListener('heartbeat', () => {
         // Connection alive
+        lastStatusReceived = Date.now()
       })
 
       eventSource.onerror = () => {
         this.sseConnected = false
-        eventSource.close()
+        // Don't close immediately - let EventSource auto-reconnect
+        // But if we haven't received any data in 20s, force reconnect
+        if (Date.now() - lastStatusReceived > 20000) {
+          if (this._reconnectTimer) clearTimeout(this._reconnectTimer)
+          this._reconnectTimer = setTimeout(() => {
+            eventSource.close()
+            this._sse = null
+            this.sseConnected = false
+            // Reconnect after a delay
+            setTimeout(() => {
+              if (!this._sse) {
+                this.connectSSE()
+              }
+            }, 3000)
+          }, 2000)
+        }
       }
 
       eventSource.onopen = () => {
         this.sseConnected = true
+        if (this._reconnectTimer) {
+          clearTimeout(this._reconnectTimer)
+          this._reconnectTimer = null
+        }
       }
 
       // Store reference for cleanup
@@ -233,6 +259,10 @@ export const useBenchmarkStore = defineStore('benchmark', {
         this._sse.close()
         this._sse = null
         this.sseConnected = false
+      }
+      if (this._reconnectTimer) {
+        clearTimeout(this._reconnectTimer)
+        this._reconnectTimer = null
       }
     },
 

@@ -185,8 +185,8 @@ function formatTime(ms) {
                     :class="i % 2 === 0 ? '' : 'bg-bg-tertiary/30'"
                   >
                     <td class="py-2 px-3 font-mono text-xs">{{ r.testRunId }}</td>
-                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.totalPromptTokens ?? '—' }}</td>
-                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.totalGenTokens ?? '—' }}</td>
+                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.contextLength ?? '—' }}</td>
+                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.batchSize ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs">{{ r.gpuLayerOffload ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs">{{ r.avgPromptTokensPerSec?.toFixed(2) ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs font-medium text-accent">{{ r.avgGenTokensPerSec?.toFixed(2) ?? '—' }}</td>

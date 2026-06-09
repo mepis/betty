@@ -12,6 +12,8 @@
 
 - [Changed]: [2026-06-08] Benchmark config — disabled split_params (layer_split, tensor_split, primary_gpu); reduced build_cores from 20 to 14; downgraded CUDA from 13.3 to 13.2
 - [Changed]: [2026-06-08] Frontend assets — rebuilt Vue frontend with new asset hashes
+- [Changed]: [2026-06-08] SSE reliability — added `Retry-After` header to SSE endpoint; improved reconnection logic in both Vue store and vanilla JS frontend with status polling fallback when SSE drops; added 5s status polling interval as backup during long benchmarks
+- [Changed]: [2026-06-08] Benchmark results table — replaced token count columns with `contextLength` and `batchSize` columns in Dashboard and Reports views for more relevant benchmark metrics
 
 ### Added
 

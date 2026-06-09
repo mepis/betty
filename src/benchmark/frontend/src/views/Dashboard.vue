@@ -163,7 +163,7 @@ function statusBg(status) {
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-3">
           <button
-            v-if="store.isIdle"
+            v-if="!store.isRunning"
             @click="handleStart"
             class="btn btn-success"
           >
@@ -171,7 +171,7 @@ function statusBg(status) {
               <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Start Benchmark
+            {{ store.isError ? 'Restart Benchmark' : store.isStopped ? 'Restart Benchmark' : 'Start Benchmark' }}
           </button>
           <button
             v-if="store.isRunning"
@@ -261,8 +261,8 @@ function statusBg(status) {
               :class="i % 2 === 0 ? '' : 'bg-bg-tertiary/30'"
             >
               <td class="py-2.5 px-3 font-mono text-xs" :class="statusColor(store.status)">{{ result.testRunId }}</td>
-              <td class="py-2.5 px-3 text-right font-mono text-xs">{{ formatNumber(result.totalPromptTokens) }}</td>
-              <td class="py-2.5 px-3 text-right font-mono text-xs">{{ formatNumber(result.totalGenTokens) }}</td>
+              <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.contextLength ?? '—' }}</td>
+              <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.batchSize ?? '—' }}</td>
               <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.gpuLayerOffload ?? '—' }}</td>
               <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.avgPromptTokensPerSec?.toFixed(2) ?? '—' }}</td>
               <td class="py-2.5 px-3 text-right font-mono text-xs font-medium text-accent">{{ result.avgGenTokensPerSec?.toFixed(2) ?? '—' }}</td>

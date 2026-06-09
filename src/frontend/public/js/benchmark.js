@@ -362,7 +362,16 @@ function setupConfigListeners() {
 }
 
 // === SSE Connection ===
+let sseReconnectTimer = null;
+let statusPollTimer = null;
+
 function connectSSE() {
+  // Clear any existing reconnect timer
+  if (sseReconnectTimer) {
+    clearTimeout(sseReconnectTimer);
+    sseReconnectTimer = null;
+  }
+
   if (state.sse) {
     state.sse.close();
   }
@@ -388,15 +397,80 @@ function connectSSE() {
     if (data.liveResults) state.liveResults = data.liveResults;
     updateStatusUI();
     updateDashboard();
+    // Clear reconnect timer on successful message
+    if (sseReconnectTimer) {
+      clearTimeout(sseReconnectTimer);
+      sseReconnectTimer = null;
+    }
   });
 
   state.sse.addEventListener('heartbeat', () => {
     // Keep connection alive
+    // Clear reconnect timer on heartbeat
+    if (sseReconnectTimer) {
+      clearTimeout(sseReconnectTimer);
+      sseReconnectTimer = null;
+    }
   });
 
   state.sse.onerror = () => {
     console.log('SSE connection lost, reconnecting...');
+    // If we haven't received a status update in a while, start polling as fallback
+    if (!sseReconnectTimer) {
+      sseReconnectTimer = setTimeout(() => {
+        sseReconnectTimer = null;
+        // SSE will auto-reconnect, but also poll status as backup
+        startStatusPolling();
+      }, 5000);
+    }
   };
+}
+
+// === Status Polling Fallback ===
+// Used when SSE connection drops during long benchmarks
+function startStatusPolling() {
+  if (statusPollTimer) return; // Already polling
+
+  statusPollTimer = setInterval(async () => {
+    try {
+      const res = await fetch('/api/status');
+      const data = await res.json();
+      if (data.success) {
+        const wasRunning = state.status === 'building' || state.status === 'testing';
+        const isNowRunning = data.status === 'building' || data.status === 'testing';
+
+        if (wasRunning && !isNowRunning) {
+          // Benchmark finished while polling was active
+          state.status = data.status;
+          state.testRun = data.testRun;
+          if (data.liveResults) state.liveResults = data.liveResults;
+          updateStatusUI();
+          updateDashboard();
+          // Stop polling once benchmark is done
+          stopStatusPolling();
+          return;
+        }
+
+        // Update UI if benchmark is still running
+        if (isNowRunning) {
+          state.status = data.status;
+          state.testRun = data.testRun;
+          if (data.liveResults) state.liveResults = data.liveResults;
+          updateStatusUI();
+          updateDashboard();
+        }
+      }
+    } catch (err) {
+      console.log('Status poll failed:', err.message);
+    }
+  }, 5000);
+}
+
+function stopStatusPolling() {
+  if (statusPollTimer) {
+    clearInterval(statusPollTimer);
+    statusPollTimer = null;
+  }
 }
 
 // === Log Handling ===
@@ -524,6 +598,11 @@ function updateStatusUI() {
 
   // Update run details
   document.getElementById('run-num').textContent = state.testRun || '—';
+
+  // Stop polling when benchmark is no longer running
+  if (state.status !== 'building' && state.status !== 'testing') {
+    stopStatusPolling();
+  }
 
   updateButtons();
 }
@@ -856,7 +935,13 @@ window.initBenchmarkApp = async function() {
     if (state.sse) {
       state.sse.close();
     }
+    // Stop any existing polling
+    stopStatusPolling();
     connectSSE();
+    // If benchmark appears to be running, start polling as backup
+    if (state.status === 'building' || state.status === 'testing') {
+      startStatusPolling();
+    }
     updateDashboard();
     return;
   }
@@ -876,6 +961,11 @@ window.initBenchmarkApp = async function() {
   connectSSE();
   updateStatusUI();
   updateDashboard();
+
+  // If benchmark is running on load, start polling as backup
+  if (state.status === 'building' || state.status === 'testing') {
+    startStatusPolling();
+  }
 
   // Auto-refresh dashboard every 5 seconds
   setInterval(() => {
