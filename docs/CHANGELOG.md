@@ -4,6 +4,7 @@
 
 ### Added
 
+- [Added]: [2026-06-08] Speculative decoding params — new `spec_params` section in `configs.json` with `spec_type` (default `draft-mtp`) and `spec_draft_n_max` (default `3`); toggle switches and inline inputs in Config.vue visual editor; `--spec-type` and `--spec-draft-n-max` flags added to llama-server run script in `index.js`
 - [Added]: [2026-06-08] Visual GPU selection editor — new toggle switch and add/remove UI in Config.vue visual editor for enabling/disabling GPU selection and managing GPU index array
 - [Added]: [2026-06-08] Visual split params editor — new toggle switches and inline value inputs in Config.vue visual editor for layer_split, tensor_split, and primary_gpu split parameters
 

@@ -133,6 +133,26 @@ function updateSplitParamValue(key, type, value) {
   }
   visualConfigs.value.split_params[key].value = type === 'number' ? Number(value) : value
 }
+
+function toggleSpecParam(key) {
+  if (!visualConfigs.value.spec_params) {
+    visualConfigs.value.spec_params = {}
+  }
+  if (!visualConfigs.value.spec_params[key]) {
+    visualConfigs.value.spec_params[key] = { enabled: false, value: '' }
+  }
+  visualConfigs.value.spec_params[key].enabled = !visualConfigs.value.spec_params[key].enabled
+}
+
+function updateSpecParamValue(key, type, value) {
+  if (!visualConfigs.value.spec_params) {
+    visualConfigs.value.spec_params = {}
+  }
+  if (!visualConfigs.value.spec_params[key]) {
+    visualConfigs.value.spec_params[key] = { enabled: true, value: '' }
+  }
+  visualConfigs.value.spec_params[key].value = type === 'number' ? Number(value) : value
+}
 </script>
 
 <template>
@@ -228,6 +248,41 @@ function updateSplitParamValue(key, type, value) {
           ]"
           v-model="visualConfigs.test_params"
         />
+
+        <!-- Spec Params -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Spec Params</h4>
+          <div
+            v-for="param in [
+              { key: 'spec_type', label: 'Spec Type', type: 'text' },
+              { key: 'spec_draft_n_max', label: 'Spec Draft N-Max', type: 'number' },
+            ]"
+            :key="param.key"
+            class="space-y-2"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <span class="text-sm text-text-secondary">{{ param.label }}</span>
+              <button
+                @click="toggleSpecParam(param.key)"
+                class="relative w-10 h-5 rounded-full transition-colors"
+                :class="(visualConfigs.spec_params?.[param.key]?.enabled ?? false) ? 'bg-accent' : 'bg-bg-tertiary'"
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                  :class="(visualConfigs.spec_params?.[param.key]?.enabled ?? false) ? 'translate-x-5' : ''"
+                />
+              </button>
+            </div>
+            <div v-if="visualConfigs.spec_params?.[param.key]?.enabled" class="ml-1">
+              <input
+                :type="param.type === 'number' ? 'number' : 'text'"
+                :value="visualConfigs.spec_params[param.key]?.value ?? ''"
+                @input="updateSpecParamValue(param.key, param.type, $event.target.value)"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+        </div>
 
         <!-- GPU Selection -->
 

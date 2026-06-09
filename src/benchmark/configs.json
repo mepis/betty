@@ -27,6 +27,16 @@
       "value": 0
     }
   },
+  "spec_params": {
+    "spec_type": {
+      "enabled": false,
+      "value": "draft-mtp"
+    },
+    "spec_draft_n_max": {
+      "enabled": false,
+      "value": 3
+    }
+  },
   "build_cores": 14,
   "skip_build": false,
   "build_make_params": {

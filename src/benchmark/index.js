@@ -548,6 +548,12 @@ function getRunScript() {
   if (sps.primary_gpu.enabled)
     parts.push(`--main-gpu ${primaryGpu} `);
 
+  const sps2 = configs.spec_params;
+  if (sps2.spec_type.enabled)
+    parts.push(`--spec-type ${sps2.spec_type.value} `);
+  if (sps2.spec_draft_n_max.enabled)
+    parts.push(`--spec-draft-n-max ${sps2.spec_draft_n_max.value} `);
+
   return parts.join("");
 }
 
