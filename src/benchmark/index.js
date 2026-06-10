@@ -1107,6 +1107,7 @@ async function runTestRun() {
       avgPromptTokensPerSec: Math.round(avgPromptTokensPerSec * 100) / 100,
       avgGenTokensPerSec: Math.round(avgGenTokensPerSec * 100) / 100,
       avgMemUsed: Math.round(avgMemUsed * 100) / 100,
+      avgMemTotal: mem.total,
     },
   };
 
@@ -1127,7 +1128,7 @@ async function runTestRun() {
     `  Total time (all msgs): ${testRunResult.averages.totalTimeMs} ms`,
   );
   console.log(
-    `  Avg Mem Used (GB):     ${testRunResult.averages.avgMemUsed}`,
+    `  Avg Mem Used (GB):     ${testRunResult.averages.avgMemUsed} / ${testRunResult.averages.avgMemTotal}`,
   );
 
   // Update configs for next iteration
@@ -1144,16 +1145,16 @@ function writeResultsToMarkdown() {
   // Table 1: Per-message results
   md += "## Per-Message Results\n\n";
   md +=
-    "| Test Run | Message | Context Len | Messages in Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec | Memory (used/total/%) |\n";
+    "| Test Run | Message | Context Len | Messages in Context | Prompt Tokens | Generated Tokens | Total Time (ms) | Prompt Tokens/sec | Gen Tokens/sec | Memory (GB) |\n";
   md +=
-    "|----------|---------|-------------|---------------------|---------------|------------------|-----------------|-------------------|----------------|-------------------------|\n";
+    "|----------|---------|-------------|---------------------|---------------|------------------|-----------------|-------------------|----------------|-------------|\n";
 
   for (const run of results) {
     if (run.aborted) {
       md += `| ${run.testRunId} | - | ${run.contextLength} | - | - | - | - | - | - | - | *Aborted: ${run.abortReason}* |\n`;
     } else {
       for (const msg of run.messageResults) {
-        md += `| ${run.testRunId} | ${msg.messageIndex} | ${run.contextLength} | ${msg.totalMessagesInContext} | ${msg.promptTokens} | ${msg.generatedTokens} | ${msg.totalTimeMs} | ${msg.promptTokensPerSec} | ${msg.generatedTokensPerSec} | ${msg.mem.used}GB/${msg.mem.total}GB/${msg.mem.stat}% |\n`;
+        md += `| ${run.testRunId} | ${msg.messageIndex} | ${run.contextLength} | ${msg.totalMessagesInContext} | ${msg.promptTokens} | ${msg.generatedTokens} | ${msg.totalTimeMs} | ${msg.promptTokensPerSec} | ${msg.generatedTokensPerSec} | ${msg.mem.used} / ${msg.mem.total} GB |\n`;
       }
     }
   }
@@ -1163,15 +1164,15 @@ function writeResultsToMarkdown() {
   // Table 2: Per-test-run averages
   md += "## Test Run Averages\n\n";
   md +=
-    "| Test Run | Context | Batch | UBatch | Cache (GB) | GPU Layers | Avg Prompt Tok/s | Avg Gen Tok/s | Total Prompt Toks | Total Gen Toks | Total Time (ms) | Avg Mem Used (GB) |\n";
+    "| Test Run | Context | Batch | UBatch | Cache (GB) | GPU Layers | Avg Prompt Tok/s | Avg Gen Tok/s | Total Prompt Toks | Total Gen Toks | Total Time (ms) | Mem (GB) |\n";
   md +=
-    "|----------|---------|-------|--------|------------|------------|------------------|---------------|-------------------|----------------|-----------------|---------------------|\n";
+    "|----------|---------|-------|--------|------------|------------|------------------|---------------|-------------------|----------------|-----------------|----------|\n";
 
   for (const run of results) {
     if (run.aborted) {
       md += `| ${run.testRunId} | ${run.contextLength} | ${run.batchSize} | ${run.uBatchSize} | ${run.cacheRam} | ${run.gpuLayerOffload} | - | - | - | - | - | - | *Aborted: ${run.abortReason}* |\n`;
     } else {
-      md += `| ${run.testRunId} | ${run.contextLength} | ${run.batchSize} | ${run.uBatchSize} | ${run.cacheRam} | ${run.gpuLayerOffload} | ${run.averages.avgPromptTokensPerSec} | ${run.averages.avgGenTokensPerSec} | ${run.averages.totalPromptTokens} | ${run.averages.totalGeneratedTokens} | ${run.averages.totalTimeMs} | ${run.averages.avgMemUsed} |\n`;
+      md += `| ${run.testRunId} | ${run.contextLength} | ${run.batchSize} | ${run.uBatchSize} | ${run.cacheRam} | ${run.gpuLayerOffload} | ${run.averages.avgPromptTokensPerSec} | ${run.averages.avgGenTokensPerSec} | ${run.averages.totalPromptTokens} | ${run.averages.totalGeneratedTokens} | ${run.averages.totalTimeMs} | ${run.averages.avgMemUsed} / ${run.averages.avgMemTotal} GB |\n`;
     }
   }
 

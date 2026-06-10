@@ -384,7 +384,7 @@ function parseLogOutput(text) {
   const totalGenMatch = text.match(/Total tokens:\s+([\d.]+)\s*\(gen\)/);
   const totalPromptMatch = text.match(/Total tokens:\s+[\d.]+\s*\(gen\) \/ ([\d.]+)/);
   const totalTimeMatch = text.match(/Total time \(all msgs\):\s+([\d.]+)\s*ms/);
-  const memMatch = text.match(/Avg Mem Used \(GB\):\s+([\d.]+)/);
+  const memMatch = text.match(/Avg Mem Used \(GB\):\s+([\d.]+) \/ ([\d.]+)/);
 
   if (genMatch && promptMatch) {
     const runId = currentTestRun;
@@ -398,6 +398,7 @@ function parseLogOutput(text) {
       totalPromptTokens: totalPromptMatch ? parseFloat(totalPromptMatch[1]) : null,
       totalTimeMs: totalTimeMatch ? parseFloat(totalTimeMatch[1]) : null,
       avgMemUsed: memMatch ? parseFloat(memMatch[1]) : null,
+      avgMemTotal: memMatch ? parseFloat(memMatch[2]) : null,
     };
 
     if (existingIdx >= 0) {

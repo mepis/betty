@@ -264,7 +264,7 @@ function statusBg(status) {
                 {{ formatNumber(result.totalGenTokens) }} / {{ formatNumber(result.totalPromptTokens) }}
               </td>
               <td class="py-2.5 px-3 text-right font-mono text-xs text-text-secondary">{{ formatTime(result.totalTimeMs) }}</td>
-              <td class="py-2.5 px-3 text-right font-mono text-xs text-text-muted">{{ result.avgMemUsed?.toFixed(1) ?? '—' }}</td>
+              <td class="py-2.5 px-3 text-right font-mono text-xs text-text-muted">{{ result.avgMemUsed != null ? `${result.avgMemUsed.toFixed(1)} / ${result.avgMemTotal?.toFixed(0) ?? '?'}` : '—' }}</td>
             </tr>
             <tr v-if="store.liveResults.length === 0">
               <td colspan="6" class="py-12 text-center text-text-muted text-sm">

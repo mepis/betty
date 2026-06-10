@@ -171,7 +171,7 @@ function formatTime(ms) {
                     <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Prompt/s</th>
                     <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Gen/s</th>
                     <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Time</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Mem</th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Mem (GB)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -185,7 +185,7 @@ function formatTime(ms) {
                     <td class="py-2 px-3 text-right font-mono text-xs">{{ r.avgPromptTokensPerSec?.toFixed(2) ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs font-medium text-accent">{{ r.avgGenTokensPerSec?.toFixed(2) ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs text-text-secondary">{{ formatTime(r.totalTimeMs) }}</td>
-                    <td class="py-2 px-3 text-right font-mono text-xs text-text-muted">{{ r.avgMemUsed?.toFixed(1) ?? '—' }}</td>
+                    <td class="py-2 px-3 text-right font-mono text-xs text-text-muted">{{ r.avgMemUsed != null ? `${r.avgMemUsed.toFixed(1)} / ${r.avgMemTotal?.toFixed(0) ?? '?'}` : '—' }}</td>
                   </tr>
                 </tbody>
               </table>
