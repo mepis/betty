@@ -1126,6 +1126,9 @@ async function runTestRun() {
   console.log(
     `  Total time (all msgs): ${testRunResult.averages.totalTimeMs} ms`,
   );
+  console.log(
+    `  Avg Mem Used (GB):     ${testRunResult.averages.avgMemUsed}`,
+  );
 
   // Update configs for next iteration
   updateConfigs();

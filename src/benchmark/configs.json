@@ -6,7 +6,7 @@
   "model_directory": "/home/jon/.llm_models",
   "llama_cache": "/home/jon/.llama_cache",
   "gpu_selection": {
-    "enabled": true,
+    "enabled": false,
     "gpus": [
       0,
       1,
@@ -38,7 +38,7 @@
     }
   },
   "build_cores": 14,
-  "skip_build": false,
+  "skip_build": true,
   "build_make_params": {
     "enable_ccache": true,
     "enable_lto": true,

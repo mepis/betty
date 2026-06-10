@@ -8,6 +8,8 @@
 
 ### Changed
 
+- [Changed]: [2026-06-09] Benchmark config — disabled GPU selection, enabled skip_build
+- [Changed]: [2026-06-09] Benchmark logging — added Avg Mem Used (GB) line to test run summary console output in index.js for consistency with api-server.js log parser
 - [Changed]: [2026-06-08] Benchmark frontend API URL — updated `VITE_API_URL` in `.env.development` from `100.105.3.99` to `100.88.77.33` to point to the new API server; added `env.production` template with the previous server address
 
 ### Added
