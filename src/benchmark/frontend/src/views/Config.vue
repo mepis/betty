@@ -35,7 +35,9 @@ onMounted(async () => {
   await store.fetchConfigs()
   if (store.configs) {
     configsJson.value = JSON.stringify(store.configs, null, 2)
-    visualConfigs.value = JSON.parse(JSON.stringify(store.configs))
+    visualConfigs.value = normalizeBuildParams(
+      JSON.parse(JSON.stringify(store.configs))
+    )
     await fetchModelsForDirectory(store.configs.model_directory || '')
   }
 })
@@ -46,9 +48,36 @@ function switchMode(mode) {
     configsJson.value = JSON.stringify(store.configs, null, 2)
   }
   if (mode === 'visual' && store.configs) {
-    visualConfigs.value = JSON.parse(JSON.stringify(store.configs))
+    visualConfigs.value = normalizeBuildParams(
+      JSON.parse(JSON.stringify(store.configs))
+    )
     fetchModelsForDirectory(store.configs.model_directory || '')
   }
+}
+
+function flattenBuildParams(configs) {
+  const params = configs.build_make_params || {}
+  const flat = {}
+  for (const [key, val] of Object.entries(params)) {
+    if (typeof val === 'object' && val !== null && 'enabled' in val) {
+      flat[key] = val.value
+    } else {
+      flat[key] = val
+    }
+  }
+  configs.build_make_params = flat
+
+  const cuda = configs.cuda_configs || {}
+  const cudaFlat = {}
+  for (const [key, val] of Object.entries(cuda)) {
+    if (typeof val === 'object' && val !== null && 'enabled' in val) {
+      cudaFlat[key] = val.value
+    } else {
+      cudaFlat[key] = val
+    }
+  }
+  configs.cuda_configs = cudaFlat
+  return configs
 }
 
 async function handleSave() {
@@ -61,7 +90,7 @@ async function handleSave() {
     if (editMode.value === 'json') {
       configs = JSON.parse(configsJson.value)
     } else {
-      configs = visualConfigs.value
+      configs = flattenBuildParams(JSON.parse(JSON.stringify(visualConfigs.value)))
     }
     const ok = await store.saveConfigs(configs)
     if (ok) {
@@ -81,7 +110,9 @@ function handleReset() {
     if (editMode.value === 'json') {
       configsJson.value = JSON.stringify(store.configs, null, 2)
     } else {
-      visualConfigs.value = JSON.parse(JSON.stringify(store.configs))
+      visualConfigs.value = normalizeBuildParams(
+        JSON.parse(JSON.stringify(store.configs))
+      )
       fetchModelsForDirectory(store.configs.model_directory || '')
     }
   }
@@ -154,6 +185,71 @@ function updateSpecParamValue(key, type, value) {
   }
   visualConfigs.value.spec_params[key].value = type === 'number' ? Number(value) : value
 }
+
+function toggleBuildParam(key) {
+  if (!visualConfigs.value.build_make_params) {
+    visualConfigs.value.build_make_params = {}
+  }
+  if (!visualConfigs.value.build_make_params[key]) {
+    visualConfigs.value.build_make_params[key] = { enabled: false, value: '' }
+  }
+  visualConfigs.value.build_make_params[key].enabled =
+    !visualConfigs.value.build_make_params[key].enabled
+}
+
+function updateBuildParamValue(key, type, value) {
+  if (!visualConfigs.value.build_make_params) {
+    visualConfigs.value.build_make_params = {}
+  }
+  if (!visualConfigs.value.build_make_params[key]) {
+    visualConfigs.value.build_make_params[key] = { enabled: true, value: '' }
+  }
+  visualConfigs.value.build_make_params[key].value =
+    type === 'number' ? Number(value) : value
+}
+
+function toggleCudaConfig(key) {
+  if (!visualConfigs.value.cuda_configs) {
+    visualConfigs.value.cuda_configs = {}
+  }
+  if (!visualConfigs.value.cuda_configs[key]) {
+    visualConfigs.value.cuda_configs[key] = { enabled: false, value: '' }
+  }
+  visualConfigs.value.cuda_configs[key].enabled =
+    !visualConfigs.value.cuda_configs[key].enabled
+}
+
+function updateCudaConfigValue(key, type, value) {
+  if (!visualConfigs.value.cuda_configs) {
+    visualConfigs.value.cuda_configs = {}
+  }
+  if (!visualConfigs.value.cuda_configs[key]) {
+    visualConfigs.value.cuda_configs[key] = { enabled: true, value: '' }
+  }
+  visualConfigs.value.cuda_configs[key].value =
+    type === 'number' ? Number(value) : value
+}
+
+function normalizeBuildParams(configs) {
+  const params = configs.build_make_params || {}
+  const normalized = {}
+  for (const [key, val] of Object.entries(params)) {
+    if (typeof val === 'boolean') {
+      normalized[key] = { enabled: val, value: val }
+    } else {
+      normalized[key] = { enabled: true, value: val }
+    }
+  }
+  configs.build_make_params = normalized
+
+  const cuda = configs.cuda_configs || {}
+  const cudaNormalized = {}
+  for (const [key, val] of Object.entries(cuda)) {
+    cudaNormalized[key] = { enabled: true, value: val }
+  }
+  configs.cuda_configs = cudaNormalized
+  return configs
+}
 </script>
 
 <template>
@@ -220,6 +316,164 @@ function updateSpecParamValue(key, type, value) {
           :model-options="modelOptions"
           v-model="visualConfigs"
         />
+
+        <!-- Build Settings -->
+        <div class="space-y-4">
+          <h3 class="text-sm font-semibold text-text-primary">Build Settings</h3>
+
+          <!-- Basic Build Options -->
+          <div class="space-y-2">
+            <h5 class="text-xs font-medium text-text-muted">Basic Options</h5>
+            <div
+              v-for="param in [
+                { key: 'enable_ccache', label: 'Enable ccache', type: 'boolean' },
+                { key: 'enable_lto', label: 'Enable LTO', type: 'boolean' },
+              ]"
+              :key="param.key"
+              class="flex items-center justify-between gap-4"
+            >
+              <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              <button
+                @click="toggleBuildParam(param.key)"
+                class="relative w-10 h-5 rounded-full transition-colors"
+                :class="
+                  (visualConfigs.build_make_params?.[param.key]?.enabled ?? false)
+                    ? 'bg-accent'
+                    : 'bg-bg-tertiary'
+                "
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                  :class="
+                    (visualConfigs.build_make_params?.[param.key]?.enabled ?? false)
+                      ? 'translate-x-5'
+                      : ''
+                  "
+                />
+              </button>
+            </div>
+          </div>
+
+          <!-- CUDA Build Options -->
+          <div class="space-y-2">
+            <h5 class="text-xs font-medium text-text-muted">CUDA Options</h5>
+            <div
+              v-for="param in [
+                { key: 'enable_cuda', label: 'Enable CUDA', type: 'boolean' },
+                { key: 'enable_cuda_fa', label: 'Enable Flash Attention', type: 'boolean' },
+                { key: 'enable_cuda_graphs', label: 'Enable CUDA Graphs', type: 'boolean' },
+                { key: 'enable_cuda_nccl', label: 'Enable NCCL', type: 'boolean' },
+                { key: 'enable_cuda_per_max_batch_size', label: 'Per-Max Batch Size', type: 'boolean' },
+                { key: 'enable_cuda_peer_copy', label: 'Enable Peer Copy', type: 'boolean' },
+                { key: 'enable_cuda_custom_arch', label: 'Custom CUDA Architecture', type: 'boolean' },
+                { key: 'enable_cuda_fp16', label: 'Enable FP16', type: 'boolean' },
+                { key: 'enable_cuda_scheduled_max_copies', label: 'Scheduled Max Copies', type: 'boolean' },
+                { key: 'enable_cuda_compression_level', label: 'Compression Level', type: 'boolean' },
+              ]"
+              :key="param.key"
+              class="flex items-center justify-between gap-4"
+            >
+              <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              <button
+                @click="toggleBuildParam(param.key)"
+                class="relative w-10 h-5 rounded-full transition-colors"
+                :class="
+                  (visualConfigs.build_make_params?.[param.key]?.enabled ?? false)
+                    ? 'bg-accent'
+                    : 'bg-bg-tertiary'
+                "
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                  :class="
+                    (visualConfigs.build_make_params?.[param.key]?.enabled ?? false)
+                      ? 'translate-x-5'
+                      : ''
+                  "
+                />
+              </button>
+            </div>
+          </div>
+
+          <!-- Build Parameter Values -->
+          <div class="space-y-2">
+            <h5 class="text-xs font-medium text-text-muted">Build Parameters</h5>
+            <div
+              v-for="param in [
+                { key: 'peer_batch_size', label: 'Peer Batch Size', type: 'text' },
+                { key: 'cuda_max_scheduled_copies', label: 'Max Scheduled Copies', type: 'number' },
+                { key: 'cuda_compression_level', label: 'Compression Level', type: 'number' },
+              ]"
+              :key="param.key"
+              class="space-y-1"
+            >
+              <div class="flex items-center justify-between gap-4">
+                <label class="text-sm text-text-secondary">{{ param.label }}</label>
+                <input
+                  :type="param.type === 'number' ? 'number' : 'text'"
+                  :value="visualConfigs.build_make_params?.[param.key]?.value ?? ''"
+                  @input="updateBuildParamValue(param.key, param.type, $event.target.value)"
+                  class="input w-40 text-xs"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- CUDA Quantization Options -->
+          <div class="space-y-2">
+            <h5 class="text-xs font-medium text-text-muted">Quantization &amp; Precision</h5>
+            <div
+              v-for="param in [
+                { key: 'enable_cuda_fa_all_quants', label: 'Enable FA All Quants', type: 'boolean' },
+                { key: 'cuda_all_quants', label: 'CUDA All Quants', type: 'boolean' },
+              ]"
+              :key="param.key"
+              class="flex items-center justify-between gap-4"
+            >
+              <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              <button
+                @click="toggleBuildParam(param.key)"
+                class="relative w-10 h-5 rounded-full transition-colors"
+                :class="
+                  (visualConfigs.build_make_params?.[param.key]?.enabled ?? false)
+                    ? 'bg-accent'
+                    : 'bg-bg-tertiary'
+                "
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                  :class="
+                    (visualConfigs.build_make_params?.[param.key]?.enabled ?? false)
+                      ? 'translate-x-5'
+                      : ''
+                  "
+                />
+              </button>
+            </div>
+          </div>
+
+          <!-- CUDA Config -->
+          <div class="space-y-2">
+            <h5 class="text-xs font-medium text-text-muted">CUDA Configuration</h5>
+            <div
+              v-for="param in [
+                { key: 'cuda_version', label: 'CUDA Version', type: 'text' },
+                { key: 'cudacxx', label: 'NVCC Path', type: 'text' },
+              ]"
+              :key="param.key"
+              class="flex items-center justify-between gap-4"
+            >
+              <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              <input
+                :type="param.type === 'number' ? 'number' : 'text'"
+                :value="visualConfigs.cuda_configs?.[param.key]?.value ?? ''"
+                @input="updateCudaConfigValue(param.key, param.type, $event.target.value)"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+        </div>
+
         <config-section
           title="Model Configs"
           :items="[
