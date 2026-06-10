@@ -243,9 +243,6 @@ function statusBg(status) {
           <thead>
             <tr class="border-b border-border">
               <th class="text-left py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">#</th>
-              <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Ctx Len</th>
-              <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Batch</th>
-              <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">GPU Layers</th>
               <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Prompt Tok/s</th>
               <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Gen Tok/s</th>
               <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Total Tokens</th>
@@ -261,9 +258,6 @@ function statusBg(status) {
               :class="i % 2 === 0 ? '' : 'bg-bg-tertiary/30'"
             >
               <td class="py-2.5 px-3 font-mono text-xs" :class="statusColor(store.status)">{{ result.testRunId }}</td>
-              <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.contextLength ?? '—' }}</td>
-              <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.batchSize ?? '—' }}</td>
-              <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.gpuLayerOffload ?? '—' }}</td>
               <td class="py-2.5 px-3 text-right font-mono text-xs">{{ result.avgPromptTokensPerSec?.toFixed(2) ?? '—' }}</td>
               <td class="py-2.5 px-3 text-right font-mono text-xs font-medium text-accent">{{ result.avgGenTokensPerSec?.toFixed(2) ?? '—' }}</td>
               <td class="py-2.5 px-3 text-right font-mono text-xs text-text-secondary">
@@ -273,7 +267,7 @@ function statusBg(status) {
               <td class="py-2.5 px-3 text-right font-mono text-xs text-text-muted">{{ result.avgMemUsed?.toFixed(1) ?? '—' }}</td>
             </tr>
             <tr v-if="store.liveResults.length === 0">
-              <td colspan="9" class="py-12 text-center text-text-muted text-sm">
+              <td colspan="6" class="py-12 text-center text-text-muted text-sm">
                 <svg class="w-8 h-8 mx-auto mb-2 text-text-muted/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>

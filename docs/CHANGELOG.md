@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-09] Unnecessary columns from live results table — removed `Ctx Len`, `Batch`, and `GPU Layers` columns from the Dashboard live results table; these fields were always showing `—` since they are not included in the parsed `liveResults` data from `api-server.js`
+
 ### Changed
 
 - [Changed]: [2026-06-08] Benchmark frontend API URL — updated `VITE_API_URL` in `.env.development` from `100.105.3.99` to `100.88.77.33` to point to the new API server; added `env.production` template with the previous server address
