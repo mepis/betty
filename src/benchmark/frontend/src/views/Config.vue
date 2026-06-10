@@ -8,7 +8,7 @@ const saving = ref(false)
 const saveSuccess = ref(false)
 const saveError = ref('')
 const configsJson = ref('')
-const editMode = ref('json') // 'json' or 'visual'
+const editMode = ref('visual') // 'json' or 'visual'
 const visualConfigs = ref({})
 const modelOptions = ref([])
 const newGpuIndex = ref(0)
@@ -35,6 +35,7 @@ onMounted(async () => {
   await store.fetchConfigs()
   if (store.configs) {
     configsJson.value = JSON.stringify(store.configs, null, 2)
+    visualConfigs.value = JSON.parse(JSON.stringify(store.configs))
     await fetchModelsForDirectory(store.configs.model_directory || '')
   }
 })
@@ -178,18 +179,18 @@ function updateSpecParamValue(key, type, value) {
       <!-- Mode tabs -->
       <div class="flex items-center gap-2 mb-4">
         <button
-          @click="switchMode('json')"
-          class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-          :class="editMode === 'json' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
-        >
-          JSON Editor
-        </button>
-        <button
           @click="switchMode('visual')"
           class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
           :class="editMode === 'visual' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
         >
           Visual Editor
+        </button>
+        <button
+          @click="switchMode('json')"
+          class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+          :class="editMode === 'json' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
+        >
+          JSON Editor
         </button>
       </div>
 
