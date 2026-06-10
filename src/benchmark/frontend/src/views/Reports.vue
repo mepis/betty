@@ -168,9 +168,6 @@ function formatTime(ms) {
                 <thead>
                   <tr class="border-b border-border">
                     <th class="text-left py-2 px-3 text-xs font-medium text-text-muted uppercase">#</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Ctx</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Batch</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">GPU</th>
                     <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Prompt/s</th>
                     <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Gen/s</th>
                     <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Time</th>
@@ -185,9 +182,6 @@ function formatTime(ms) {
                     :class="i % 2 === 0 ? '' : 'bg-bg-tertiary/30'"
                   >
                     <td class="py-2 px-3 font-mono text-xs">{{ r.testRunId }}</td>
-                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.contextLength ?? '—' }}</td>
-                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.batchSize ?? '—' }}</td>
-                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.gpuLayerOffload ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs">{{ r.avgPromptTokensPerSec?.toFixed(2) ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs font-medium text-accent">{{ r.avgGenTokensPerSec?.toFixed(2) ?? '—' }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs text-text-secondary">{{ formatTime(r.totalTimeMs) }}</td>
