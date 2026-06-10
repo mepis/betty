@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-09] Per-test-run configuration tracking — new `extractConfigsPerRun()` helper in `api-server.js` that computes detailed configuration values (test params, model params, server params, split/GPU params, environment variables, CMake flags) for each test run based on progression logic; saved reports now include `configsPerRun` array alongside the base `configs`
+- [Added]: [2026-06-09] Test run config API endpoint — new `GET /api/report/:name/configs/:testRunId` endpoint that returns the detailed configuration for a specific test run within a saved report
+- [Added]: [2026-06-09] Test run config modal — new interactive modal in `Reports.vue` that displays comprehensive configuration details per test run including test parameters, model parameters, server parameters, split & GPU parameters, environment variables, and CMake build flags; rows in the results table are now clickable to open the modal
+- [Added]: [2026-06-09] Modal transition styles — added CSS transitions for modal enter/leave animations in `main.css` with fade and scale effects
+
+### Changed
+
+- [Changed]: [2026-06-09] Documentation directory renamed — moved `docs/llama-cpp/` to `docs/llama.cpp_docs/` with all 18 documentation files (architecture, build options, server flags, llamafile, tags, index) to match upstream llama.cpp naming conventions
+
+### Removed
+
+- [Removed]: [2026-06-09] Old llama.cpp documentation directory — deleted `docs/llama-cpp/` (18 files) as part of the directory rename to `llama.cpp_docs/`
+
 ### Removed
 
 - [Removed]: [2026-06-09] Unnecessary columns from live results table — removed `Ctx Len`, `Batch`, and `GPU Layers` columns from the Dashboard live results table; these fields were always showing `—` since they are not included in the parsed `liveResults` data from `api-server.js`

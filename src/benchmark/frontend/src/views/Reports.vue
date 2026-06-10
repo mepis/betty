@@ -1,12 +1,20 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import axios from 'axios'
 import { useBenchmarkStore } from '@/stores/benchmark'
 
+const API_BASE = import.meta.env.VITE_API_URL || ''
 const store = useBenchmarkStore()
 const selectedReport = ref(null)
 const loadingReport = ref(false)
 const deletingReport = ref(null)
 const showMdView = ref(false)
+
+// Modal state
+const showConfigModal = ref(false)
+const selectedTestRunId = ref(null)
+const loadingConfig = ref(false)
+const testRunConfig = ref(null)
 
 onMounted(async () => {
   await store.fetchReports()
@@ -31,6 +39,33 @@ async function deleteReport(name) {
   deletingReport.value = null
 }
 
+async function openConfigModal(reportName, testRunId) {
+  selectedTestRunId.value = testRunId
+  showConfigModal.value = true
+  loadingConfig.value = true
+  testRunConfig.value = null
+  try {
+    const res = await axios.get(`${API_BASE}/api/report/${reportName}/configs/${testRunId}`)
+    if (res.data.success) {
+      testRunConfig.value = res.data.data
+    }
+  } catch (e) {
+    console.error('Failed to load test run config:', e)
+  }
+  loadingConfig.value = false
+}
+
+function closeConfigModal() {
+  showConfigModal.value = false
+  testRunConfig.value = null
+  selectedTestRunId.value = null
+}
+
+// Close modal on Escape key
+function handleKeydown(e) {
+  if (e.key === 'Escape') closeConfigModal()
+}
+
 function formatDate(dateStr) {
   if (!dateStr) return '—'
   const d = new Date(dateStr)
@@ -52,6 +87,22 @@ function formatTime(ms) {
   if (!ms) return '—'
   if (ms < 1000) return `${ms.toFixed(0)}ms`
   return `${(ms / 1000).toFixed(1)}s`
+}
+
+function formatValue(v) {
+  if (v === null || v === undefined || v === '') return '—'
+  return String(v)
+}
+
+function formatBool(v) {
+  if (v === true) return '✓'
+  if (v === false) return '✗'
+  return formatValue(v)
+}
+
+function formatList(arr) {
+  if (!arr || !Array.isArray(arr) || arr.length === 0) return '—'
+  return arr.join(', ')
 }
 </script>
 
@@ -162,7 +213,10 @@ function formatTime(ms) {
 
           <!-- Results Table -->
           <div v-if="!showMdView && selectedReport.liveResults" class="card">
-            <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wider mb-4">Results Summary</h3>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">Results Summary</h3>
+              <span class="text-xs text-text-muted">Click a row to view configs</span>
+            </div>
             <div class="overflow-x-auto">
               <table class="w-full text-sm">
                 <thead>
@@ -178,8 +232,12 @@ function formatTime(ms) {
                   <tr
                     v-for="(r, i) in selectedReport.liveResults"
                     :key="r.testRunId"
-                    class="border-b border-border/50 last:border-0"
-                    :class="i % 2 === 0 ? '' : 'bg-bg-tertiary/30'"
+                    class="border-b border-border/50 last:border-0 cursor-pointer transition-colors"
+                    :class="[
+                      i % 2 === 0 ? '' : 'bg-bg-tertiary/30',
+                      'hover:bg-accent-subtle/50',
+                    ]"
+                    @click="openConfigModal(selectedReport.name, r.testRunId)"
                   >
                     <td class="py-2 px-3 font-mono text-xs">{{ r.testRunId }}</td>
                     <td class="py-2 px-3 text-right font-mono text-xs">{{ r.avgPromptTokensPerSec?.toFixed(2) ?? '—' }}</td>
@@ -210,5 +268,237 @@ function formatTime(ms) {
         </div>
       </div>
     </div>
+
+    <!-- Config Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showConfigModal" class="fixed inset-0 z-50 flex items-center justify-center" @keydown="handleKeydown">
+          <!-- Backdrop -->
+          <div
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            @click="closeConfigModal"
+          />
+
+          <!-- Modal -->
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-4xl max-h-[85vh] mx-4 flex flex-col">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
+              <div>
+                <h3 class="text-lg font-semibold text-text-primary">
+                  Test Run #{{ selectedTestRunId }} — Configuration
+                </h3>
+                <p class="text-xs text-text-muted mt-0.5">{{ selectedReport?.name }}</p>
+              </div>
+              <button
+                @click="closeConfigModal"
+                class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content -->
+            <div class="overflow-auto flex-1 p-6">
+              <div v-if="loadingConfig" class="flex items-center justify-center py-12">
+                <svg class="w-6 h-6 animate-spin text-accent" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              </div>
+
+              <div v-else-if="testRunConfig" class="space-y-6">
+                <!-- Test Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                    Test Parameters
+                  </h4>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Context Length</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.contextLength) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Batch Size</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.batchSize) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">U-Batch Size</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.uBatchSize) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Cache RAM (GB)</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.cacheRam) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">GPU Layers</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.gpuLayerOffload) }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Model Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    Model Parameters
+                  </h4>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Temperature</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.temperature) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Top P</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.topP) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Min P</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.minP) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Top K</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.topK) }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Server Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                    </svg>
+                    Server Parameters
+                  </h4>
+                  <div class="bg-bg-tertiary rounded-lg p-4 space-y-2">
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Model</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.model) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Host</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.host) }}:{{ formatValue(testRunConfig.serverParameters?.port) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Flash Attention</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(testRunConfig.serverParameters?.flashAttn) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Reasoning</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(testRunConfig.serverParameters?.reasoning) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Rope Scaling</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.ropeScaling) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">GPU Layers</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.gpuLayers) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Parallel</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.parallel) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Cont. Batching</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(testRunConfig.serverParameters?.contBatching) }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Split & GPU Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                    Split & GPU Parameters
+                  </h4>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">GPU Selection</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatList(testRunConfig.splitParameters?.gpuSelection) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Layer Split</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.splitParameters?.layerSplit) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Tensor Split</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.splitParameters?.tensorSplit) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Primary GPU</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.splitParameters?.primaryGpu) }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Environment Variables -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Environment Variables
+                  </h4>
+                  <div class="bg-bg-tertiary rounded-lg p-4 space-y-2">
+                    <div
+                      v-for="(val, key) in testRunConfig.environment"
+                      :key="key"
+                      class="flex justify-between"
+                    >
+                      <span class="text-xs text-text-muted font-mono">{{ key }}</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(val) }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CMake Build Flags -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    CMake Build Flags
+                  </h4>
+                  <div class="bg-bg-tertiary rounded-lg p-4 space-y-2">
+                    <div
+                      v-for="(val, key) in testRunConfig.cmakeFlags"
+                      :key="key"
+                      class="flex justify-between"
+                    >
+                      <span class="text-xs text-text-muted font-mono">{{ key }}</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(val) }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div v-else class="text-center py-12 text-text-muted">
+                <p class="text-sm">Failed to load configuration</p>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-end px-6 py-3 border-t border-border flex-shrink-0">
+              <button
+                @click="closeConfigModal"
+                class="btn btn-ghost btn-sm"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>

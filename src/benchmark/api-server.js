@@ -494,6 +494,99 @@ app.delete("/api/report/:name", (req, res) => {
   }
 });
 
+//--- Helper: extract detailed test run configs from liveResults ---
+function extractConfigsPerRun(liveResults, configs) {
+  if (!liveResults || !configs) return [];
+  return liveResults.map((r) => {
+    const tp = configs.test_params || {};
+    const mc = configs.model_configs || {};
+    const sp = configs.server_params || {};
+    const sps = configs.split_params || {};
+    const gs = configs.gpu_selection || { enabled: false, gpus: [0] };
+
+    // Calculate config values based on test run progression
+    const contextLength = Math.min(
+      tp.context_length * Math.pow(tp.context_length_multiplier || 2, r.testRunId - 1),
+      tp.context_length_max || 262144,
+    );
+    const gpuLayerOffload = Math.min(
+      tp.gpu_layer_offload + (tp.gpu_layer_offload_step || 0) * (r.testRunId - 1),
+      tp.gpu_layer_off_max || 999,
+    );
+    const batchSize = Math.min(
+      tp.batch_size + (tp.batch_size_step || 128) * (r.testRunId - 1),
+      tp.batch_size_max || 16384,
+    );
+    const uBatchSize = Math.min(
+      tp.u_batch_size + (tp.u_batch_size_step || 64) * (r.testRunId - 1),
+      tp.u_batch_size_max || 4096,
+    );
+    const cacheRam = Math.min(
+      tp.cache_ram + (tp.cache_ram_step || 1024) * (r.testRunId - 1),
+      tp.cache_ram_max || 4096,
+    );
+
+    const tensorSplitValue = gs.enabled && gs.gpus && gs.gpus.length > 1
+      ? Array(gs.gpus.length).fill(Math.round(100 / gs.gpus.length)).join(",")
+      : "0";
+
+    return {
+      testRunId: r.testRunId,
+      testParameters: {
+        contextLength,
+        batchSize,
+        uBatchSize,
+        cacheRam,
+        gpuLayerOffload,
+      },
+      modelParameters: {
+        temperature: mc.temp,
+        topP: mc.top_p,
+        minP: mc.min_p,
+        topK: mc.top_k,
+      },
+      serverParameters: {
+        model: `${configs.model_directory || ""}/${configs.model || ""}`,
+        host: configs.llama_host || "localhost",
+        port: configs.llama_port || 11434,
+        flashAttn: sp.flash_attn?.enabled ? sp.flash_attn.value : null,
+        reasoning: sp.reasoning?.enabled ? sp.reasoning.value : null,
+        ropeScaling: sp.rope_scaling?.enabled ? sp.rope_scaling.value : null,
+        parallel: sp.parallel?.enabled ? sp.parallel.value : null,
+        contBatching: sp.cont_batching ? true : null,
+        gpuLayers: sp.gpu_layers?.enabled ? sp.gpu_layers.value : null,
+      },
+      splitParameters: {
+        layerSplit: sps.layer_split?.enabled ? sps.layer_split.value : null,
+        tensorSplit: sps.tensor_split?.enabled ? tensorSplitValue : null,
+        primaryGpu: sps.primary_gpu?.enabled ? (gs.enabled ? gs.gpus[0] : sps.primary_gpu.value) : null,
+        gpuSelection: gs.enabled ? gs.gpus : [0],
+      },
+      environment: {
+        GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
+        CUDA_SCALE_LAUNCH_QUEUES: "4x",
+        LLAMA_CACHE: configs.llama_cache || "",
+        GGML_CUDA_P2P: "on",
+        LLAMA_ARG_FIT: "on",
+        LLAMA_ARG_FIT_TARGET: "256",
+        LLAMA_ARG_FIT_CTX: "131072",
+        CUDACXX: configs.cuda_configs?.cudacxx || "",
+      },
+      cmakeFlags: {
+        GGML_CUDA: configs.build_make_params?.enable_cuda ? "1" : "",
+        GGML_CUDA_GRAPHS: configs.build_make_params?.enable_cuda_graphs ? "1" : "",
+        GGML_CUDA_FA: configs.build_make_params?.enable_cuda_fa ? "1" : "",
+        GGML_CUDA_FP16: configs.build_make_params?.enable_cuda_fp16 ? "true" : "",
+        GGML_CUDA_PEER_MAX_BATCH_SIZE: configs.build_make_params?.enable_cuda_per_max_batch_size ? configs.build_make_params.peer_batch_size : "",
+        GGML_SCHED_MAX_COPIES: configs.build_make_params?.enable_cuda_scheduled_max_copies ? configs.build_make_params.cuda_max_scheduled_copies : "",
+        GGML_CUDA_COMPRESSION_LEVEL: configs.build_make_params?.enable_cuda_compression_level ? configs.build_make_params.cuda_compression_level : "",
+        GGML_LTO: configs.build_make_params?.enable_lto ? "1" : "",
+        GGML_CCACHE: configs.build_make_params?.enable_ccache ? "1" : "",
+      },
+    };
+  });
+}
+
 //--- Save current results as report ---
 app.post("/api/save-report", (req, res) => {
   try {
@@ -502,18 +595,42 @@ app.post("/api/save-report", (req, res) => {
 
     // Read the current results.md
     const mdContent = fs.existsSync(RESULTS_FILE) ? fs.readFileSync(RESULTS_FILE, "utf8") : "";
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+
+    // Extract detailed configs per test run
+    const configsPerRun = extractConfigsPerRun(liveResults, configs);
 
     const report = {
       name: safeName,
       savedAt: new Date().toISOString(),
       mdContent,
       liveResults: liveResults,
-      configs: JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8")),
+      configsPerRun: configsPerRun,
+      configs: configs,
     };
 
     const filePath = join(REPORTS_DIR, `${safeName}.json`);
     fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
     res.json({ success: true, message: `Report saved as ${safeName}` });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Get detailed configs for a specific test run in a report ---
+app.get("/api/report/:name/configs/:testRunId", (req, res) => {
+  try {
+    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Report not found" });
+    }
+    const report = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const configsPerRun = report.configsPerRun || [];
+    const config = configsPerRun.find((c) => c.testRunId === parseInt(req.params.testRunId, 10));
+    if (!config) {
+      return res.status(404).json({ success: false, error: "Test run config not found" });
+    }
+    res.json({ success: true, data: config });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
