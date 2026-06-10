@@ -26,6 +26,152 @@ if (!fs.existsSync(REPORTS_DIR)) {
   fs.mkdirSync(REPORTS_DIR, { recursive: true });
 }
 
+// Default config template
+const DEFAULT_CONFIGS = {
+  max_sys_mem: 93,
+  llama_port: 11434,
+  llama_host: "localhost",
+  model: "",
+  model_directory: "",
+  llama_cache: "",
+  gpu_selection: {
+    enabled: true,
+    gpus: [0],
+  },
+  split_params: {
+    layer_split: {
+      enabled: false,
+      value: "layer",
+    },
+    tensor_split: {
+      enabled: false,
+      value: "16,12,12",
+    },
+    primary_gpu: {
+      enabled: false,
+      value: 0,
+    },
+  },
+  spec_params: {
+    spec_type: {
+      enabled: false,
+      value: "draft-mtp",
+    },
+    spec_draft_n_max: {
+      enabled: false,
+      value: 3,
+    },
+  },
+  build_cores: 1,
+  skip_build: false,
+  build_make_params: {
+    enable_ccache: true,
+    enable_lto: true,
+    enable_cuda: true,
+    enable_cuda_fa: true,
+    enable_cuda_graphs: true,
+    enable_cuda_nccl: true,
+    enable_cuda_per_max_batch_size: true,
+    peer_batch_size: "512",
+    enable_cuda_peer_copy: true,
+    enable_cuda_custom_arch: true,
+    enable_cuda_fa_all_quants: true,
+    cuda_all_quants: true,
+    enable_cuda_fp16: true,
+    cuda_fp16: true,
+    enable_cuda_scheduled_max_copies: true,
+    cuda_max_scheduled_copies: 14,
+    enable_cuda_compression_level: false,
+    cuda_compression_level: 0,
+  },
+  cuda_configs: {
+    cuda_version: "12.6",
+    cudacxx: "/usr/local/cuda/bin/nvcc",
+  },
+  model_configs: {
+    temp: 0.6,
+    top_p: 0.95,
+    min_p: 0,
+    top_k: 20,
+  },
+  server_params: {
+    cont_batching: true,
+    flash_attn: {
+      enabled: true,
+      value: 1,
+    },
+    reasoning: {
+      enabled: true,
+      value: 1,
+    },
+    profiling: true,
+    presence_penalty: {
+      enabled: true,
+      value: 0,
+    },
+    reasoning_budget: {
+      enabled: true,
+      value: 2048,
+    },
+    reasoning_budget_message: {
+      enabled: true,
+      value: "Proceed to final answer.",
+    },
+    rope_scaling: {
+      enabled: true,
+      value: "yarn",
+    },
+    jinja: false,
+    parallel: {
+      enabled: true,
+      value: 1,
+    },
+    n_predict: {
+      enabled: false,
+      value: 512,
+    },
+    n_keep: {
+      enabled: false,
+      value: 0,
+    },
+    stream: {
+      enabled: true,
+      value: false,
+    },
+    cache_prompt: {
+      enabled: true,
+      value: true,
+    },
+    gpu_layers: {
+      enabled: true,
+      value: 999,
+    },
+  },
+  test_params: {
+    context_length: 32768,
+    context_length_multiplier: 2,
+    context_length_max: 262144,
+    gpu_layer_offload: 999,
+    gpu_layer_offload_step: 0,
+    gpu_layer_off_max: 999,
+    batch_size: 128,
+    batch_size_step: 128,
+    batch_size_max: 16384,
+    u_batch_size: 64,
+    u_batch_size_step: 64,
+    u_batch_size_max: 4096,
+    cache_ram: 4096,
+    cache_ram_step: 1024,
+    cache_ram_max: 4096,
+  },
+};
+
+// Create default configs.json if it doesn't exist
+if (!fs.existsSync(CONFIGS_FILE)) {
+  fs.writeFileSync(CONFIGS_FILE, JSON.stringify(DEFAULT_CONFIGS, null, 2));
+  console.log(`Created default config file: ${CONFIGS_FILE}`);
+}
+
 // In-memory state
 let benchmarkProcess = null;
 let benchmarkStatus = "idle"; // idle | building | testing | error | stopped

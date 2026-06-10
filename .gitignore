@@ -4,3 +4,4 @@ node_modules/
 src/benchmark/llama.cpp/
 src/benchmark/results.md
 src/benchmark/.playwright-cli/
+src/benchmark/configs.json
