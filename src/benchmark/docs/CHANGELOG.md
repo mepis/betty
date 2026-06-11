@@ -28,6 +28,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - [Added]: [2026-06-10] `--build-only` CLI flag to build llama.cpp using `configs.json` settings and exit without running benchmark tests
+- [Added]: [2026-06-10] Build llama.cpp button in Config.vue with real-time SSE progress bar and build log viewer; backed by `POST /api/build` endpoint
 
 ### Added
 

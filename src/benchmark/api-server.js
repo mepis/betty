@@ -189,6 +189,8 @@ let currentTestRun = 0;
 let liveResults = [];
 let streamingClients = new Set();
 let currentReportName = null;
+let buildProcess = null;
+let buildStatus = "idle"; // idle | building | success | error
 
 // CORS configuration
 app.use(cors({
@@ -308,6 +310,7 @@ app.get("/api/status", (_req, res) => {
     testRun: currentTestRun,
     liveResults: liveResults,
     processAlive: benchmarkProcess ? !benchmarkProcess.killed : false,
+    buildStatus,
   });
 });
 
@@ -802,6 +805,105 @@ app.get("/api/models", (_req, res) => {
 //--- Health check ---
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });
+});
+
+//--- Build llama.cpp endpoint ---
+app.post("/api/build", async (req, res) => {
+  if (buildStatus !== "idle") {
+    return res.status(409).json({
+      success: false,
+      error: `Build is already ${buildStatus}`,
+    });
+  }
+
+  try {
+    buildStatus = "building";
+
+    // Set up SSE response
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    // Read configs to get build cores
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const buildCores = configs.build_cores || 1;
+
+    const buildProcess = spawn("node", ["index.js", "--build-only"], {
+      cwd: BENCHMARK_DIR,
+      env: {
+        ...process.env,
+        GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
+        CUDA_SCALE_LAUNCH_QUEUES: "4x",
+        LLAMA_CACHE: configs.llama_cache || "",
+        GGML_CUDA_P2P: "on",
+        LLAMA_ARG_FIT: "on",
+        LLAMA_ARG_FIT_TARGET: "256",
+        LLAMA_ARG_FIT_CTX: "131072",
+        CUDACXX: configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc",
+        PATH: `/usr/local/cuda-${configs.cuda_configs?.cuda_version || "12.6"}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
+      },
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+
+    let stdoutBuffer = "";
+    let stderrBuffer = "";
+
+    let progressInterval = setInterval(() => {
+      progressInterval++;
+      const pct = Math.min(90, 10 + Math.floor(progressInterval / 2));
+      res.write(`event: build-log\ndata: PROGRESS:${pct}\n\n`);
+    }, 3000);
+
+    buildProcess.stdout.on("data", (data) => {
+      const text = data.toString();
+      stdoutBuffer += text;
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: build-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    buildProcess.stderr.on("data", (data) => {
+      const text = data.toString();
+      stderrBuffer += text;
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: build-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    const buildResult = await new Promise((resolve, reject) => {
+      buildProcess.on("close", (code) => {
+        clearInterval(progressInterval);
+        if (code === 0) {
+          resolve({ success: true });
+        } else {
+          reject(new Error(`Build failed with exit code ${code}`));
+        }
+      });
+
+      buildProcess.on("error", (err) => {
+        clearInterval(progressInterval);
+        reject(err);
+      });
+    });
+
+    // Send final progress and completion
+    res.write(`event: build-log\ndata: PROGRESS:100\n\n`);
+    res.write(`event: build-log\ndata: STATUS:Build complete!\n\n`);
+    res.end();
+
+    buildStatus = "success";
+  } catch (err) {
+    res.write(`event: build-log\ndata: STATUS:Build failed\n\n`);
+    res.write(`event: build-log\ndata: ERROR: ${err.message}\n\n`);
+    res.end();
+    buildStatus = "error";
+  } finally {
+    // Reset after a delay so the UI can show the result
+    setTimeout(() => {
+      buildStatus = "idle";
+    }, 10000);
+  }
 });
 
 //--- Clone repository endpoint ---

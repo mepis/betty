@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, nextTick } from 'vue'
 import { useBenchmarkStore } from '@/stores/benchmark'
 import ConfigSection from '@/components/ConfigSection.vue'
 
@@ -12,6 +12,9 @@ const editMode = ref('visual') // 'json' or 'visual'
 const visualConfigs = ref({})
 const modelOptions = ref([])
 const newGpuIndex = ref(0)
+const showBuildLogs = ref(false)
+const buildLogContainer = ref(null)
+const buildLogAnchor = ref(null)
 
 // Profile state
 const profiles = ref([])
@@ -134,6 +137,17 @@ watch(
       await fetchModelsForDirectory(newDir)
     }
   }
+)
+
+// Auto-scroll build logs
+watch(
+  () => store.buildLogs.length,
+  async () => {
+    await nextTick()
+    if (buildLogContainer.value) {
+      buildLogContainer.value.scrollTop = buildLogContainer.value.scrollHeight
+    }
+  },
 )
 
 onMounted(async () => {
@@ -353,6 +367,12 @@ function formatDate(dateStr) {
     hour: '2-digit',
     minute: '2-digit',
   })
+}
+
+async function handleBuild() {
+  if (store.isBuilding) return
+  showBuildLogs.value = true
+  await store.buildLlamaCpp()
 }
 
 function normalizeBuildParams(configs) {
@@ -891,6 +911,97 @@ function normalizeBuildParams(configs) {
           >
             {{ saving ? 'Saving...' : 'Save Config' }}
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Build llama.cpp -->
+    <div class="card">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+          <div>
+            <h3 class="text-sm font-semibold text-text-primary">Build llama.cpp</h3>
+            <p class="text-xs text-text-muted mt-1">
+              Build llama.cpp using the configured build settings. Clones/pulls the repository and runs cmake with your configured options.
+            </p>
+          </div>
+        </div>
+        <span v-if="store.buildSuccess" class="badge bg-success-subtle text-success">✓ Built</span>
+        <span v-if="store.buildError" class="badge bg-error-subtle text-error">✗ Failed</span>
+      </div>
+
+      <!-- Build button -->
+      <div class="flex items-center gap-3">
+        <button
+          @click="handleBuild"
+          class="btn btn-primary"
+          :disabled="store.isBuilding"
+        >
+          <svg v-if="!store.isBuilding" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+          <svg v-else class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          {{ store.isBuilding ? 'Building...' : store.buildSuccess ? 'Build Successful' : store.buildError ? 'Build Failed — Retry' : 'Build llama.cpp' }}
+        </button>
+
+        <button
+          v-if="store.buildLogs.length > 0"
+          @click="showBuildLogs = !showBuildLogs"
+          class="btn btn-ghost btn-sm"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Logs ({{ store.buildLogs.length }})
+        </button>
+      </div>
+
+      <!-- Progress bar -->
+      <div v-if="store.buildProgress > 0" class="space-y-1 mt-4">
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-text-muted">Progress</span>
+          <span class="font-mono text-text-secondary">{{ store.buildProgress }}%</span>
+        </div>
+        <div class="w-full h-2 bg-bg-tertiary rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-500"
+            :class="store.buildSuccess ? 'bg-success' : store.buildError ? 'bg-error' : 'bg-accent'"
+            :style="{ width: store.buildProgress + '%' }"
+          />
+        </div>
+      </div>
+
+      <!-- Build logs -->
+      <div v-if="showBuildLogs && store.buildLogs.length > 0" class="space-y-2 mt-4">
+        <div class="flex items-center justify-between">
+          <h5 class="text-xs font-medium text-text-muted">Build Output</h5>
+          <button
+            @click="store.clearBuildLogs()"
+            class="btn btn-ghost btn-xs"
+          >
+            Clear
+          </button>
+        </div>
+        <div
+          ref="buildLogContainer"
+          class="bg-bg-primary rounded-lg p-3 font-mono text-xs max-h-64 overflow-auto border border-border"
+        >
+          <div
+            v-for="(log, i) in store.buildLogs"
+            :key="i"
+            class="leading-relaxed"
+            :class="log.type === 'error' ? 'text-error' : 'text-text-secondary'"
+          >
+            <span class="text-text-muted select-none">{{ String(i + 1).padStart(4, ' ') }} </span>
+            {{ log.text }}
+          </div>
+          <div ref="buildLogAnchor" />
         </div>
       </div>
     </div>
