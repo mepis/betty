@@ -7,6 +7,7 @@
 - [Added]: [2026-06-10] Kill port API endpoint — new `POST /api/kill-port` endpoint in `api-server.js` that finds and forcefully kills all processes listening on the llama_port using `lsof -ti` and `kill -9`
 - [Added]: [2026-06-10] Kill port frontend action — new `killPort()` action in the Pinia benchmark store (`stores/benchmark.js`) that calls the kill-port API endpoint
 - [Added]: [2026-06-10] Kill port button — new "Kill Port" button in `Dashboard.vue` (visible only when benchmark is not running) with loading state, success message display, and an X-out icon
+- [Added]: [2026-06-10] Live logs maximize button — new maximize/restore toggle in the Live Logs panel header in `Dashboard.vue` that expands the log container to fill available viewport height with a smooth transition
 
 ### Changed
 

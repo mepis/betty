@@ -5,6 +5,7 @@ import { useBenchmarkStore } from '@/stores/benchmark'
 const store = useBenchmarkStore()
 const logContainer = ref(null)
 const showLogs = ref(true)
+const logsMaximized = ref(false)
 const showEnvInput = ref(false)
 const envInput = ref('')
 const savingReport = ref(false)
@@ -326,18 +327,33 @@ function statusBg(status) {
           Live Logs
           <span class="badge bg-bg-tertiary text-text-muted ml-2">{{ store.logs.length }}</span>
         </button>
-        <button
-          v-if="store.logs.length > 0"
-          @click="store.clearLogs()"
-          class="btn btn-ghost btn-sm"
-        >
-          Clear
-        </button>
+        <div class="flex items-center gap-2">
+          <button
+            v-if="store.logs.length > 0"
+            @click="store.clearLogs()"
+            class="btn btn-ghost btn-sm"
+          >
+            Clear
+          </button>
+          <button
+            @click="logsMaximized = !logsMaximized"
+            class="btn btn-ghost btn-sm"
+            :title="logsMaximized ? 'Restore' : 'Maximize'"
+          >
+            <svg v-if="!logsMaximized" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+            <svg v-else class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M15 9V4.5M9 9H4.5M9 9h4.5M9 15v4.5M15 15v4.5M9 15H4.5M9 15h4.5" />
+            </svg>
+          </button>
+        </div>
       </div>
       <div
         v-if="showLogs"
         ref="logContainer"
-        class="bg-bg-primary rounded-lg p-4 font-mono text-xs max-h-80 overflow-auto"
+        class="bg-bg-primary rounded-lg p-4 font-mono text-xs overflow-auto transition-all duration-300"
+        :class="logsMaximized ? 'max-h-[calc(100vh-14rem)]' : 'max-h-80'"
       >
         <div v-if="store.logs.length === 0" class="text-text-muted">No logs yet.</div>
         <div
