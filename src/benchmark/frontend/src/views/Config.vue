@@ -230,6 +230,13 @@ function updateCudaConfigValue(key, type, value) {
     type === 'number' ? Number(value) : value
 }
 
+function updateBenchmarkMessage(idx, value) {
+  if (!visualConfigs.value.benchmark_messages) {
+    visualConfigs.value.benchmark_messages = []
+  }
+  visualConfigs.value.benchmark_messages[idx] = value
+}
+
 function normalizeBuildParams(configs) {
   const params = configs.build_make_params || {}
   const normalized = {}
@@ -316,6 +323,29 @@ function normalizeBuildParams(configs) {
           :model-options="modelOptions"
           v-model="visualConfigs"
         />
+
+        <!-- Benchmark Messages -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Benchmark Messages</h4>
+          <p class="text-xs text-text-muted">
+            Messages used to fill context during benchmarking. Each message is sent sequentially with accumulated history.
+          </p>
+          <div class="space-y-2">
+            <div
+              v-for="(msg, idx) in visualConfigs.benchmark_messages"
+              :key="idx"
+              class="space-y-1"
+            >
+              <label class="text-xs text-text-muted">Message {{ idx + 1 }}</label>
+              <textarea
+                :value="msg"
+                @input="updateBenchmarkMessage(idx, $event.target.value)"
+                class="textarea font-mono text-xs h-16"
+                placeholder="Enter benchmark message..."
+              />
+            </div>
+          </div>
+        </div>
 
         <!-- Build Settings -->
         <div class="space-y-4">

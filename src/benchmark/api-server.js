@@ -147,6 +147,12 @@ const DEFAULT_CONFIGS = {
       value: 999,
     },
   },
+  benchmark_messages: [
+    "Develop a design doc for a self-hosted tetris clone web-based game..",
+    "Audit the design doc.",
+    "Recommend optimizations.",
+    "Create a social-media marketing campaign for it.",
+  ],
   test_params: {
     context_length: 32768,
     context_length_multiplier: 2,
@@ -178,6 +184,7 @@ let benchmarkStatus = "idle"; // idle | building | testing | error | stopped
 let currentTestRun = 0;
 let liveResults = [];
 let streamingClients = new Set();
+let currentReportName = null;
 
 // CORS configuration
 app.use(cors({
@@ -408,6 +415,9 @@ function parseLogOutput(text) {
     }
 
     broadcast("results", { liveResults });
+
+    // Save/update report after each test run completes
+    saveReport();
   }
 }
 
@@ -493,6 +503,42 @@ app.delete("/api/report/:name", (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 });
+
+//--- Auto-save report after each test run completes ---
+function saveReport() {
+  if (!currentReportName) {
+    // Generate report name on first save
+    try {
+      const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+      const modelBasename = configs.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
+      const today = new Date().toISOString().slice(0, 10);
+      currentReportName = `${today}-${modelBasename}`;
+    } catch {
+      currentReportName = `benchmark-${Date.now()}`;
+    }
+  }
+
+  try {
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const mdContent = fs.existsSync(RESULTS_FILE) ? fs.readFileSync(RESULTS_FILE, "utf8") : "";
+    const configsPerRun = extractConfigsPerRun(liveResults, configs);
+
+    const report = {
+      name: currentReportName,
+      savedAt: new Date().toISOString(),
+      mdContent,
+      liveResults: liveResults,
+      configsPerRun: configsPerRun,
+      configs: configs,
+    };
+
+    const filePath = join(REPORTS_DIR, `${currentReportName}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
+    console.log(`Report saved: ${filePath}`);
+  } catch (err) {
+    console.error(`Failed to save report: ${err.message}`);
+  }
+}
 
 //--- Helper: extract detailed test run configs from liveResults ---
 function extractConfigsPerRun(liveResults, configs) {

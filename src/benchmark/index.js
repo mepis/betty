@@ -19,8 +19,8 @@ const skipBuild = cliSkipBuild || configs.skip_build;
 const rootDir = __dirname;
 const resultsFile = join(rootDir, "results.md");
 
-//--- Benchmark messages (4 user-defined messages to fill context) ---
-const benchmarkMessages = [
+//--- Benchmark messages (user-defined messages to fill context) ---
+const benchmarkMessages = configs.benchmark_messages || [
   "Develop a design doc for a self-hosted tetris clone web-based game..",
   "Audit the design doc.",
   "Recommend optimizations.",

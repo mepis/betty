@@ -122,6 +122,12 @@
       "value": 999
     }
   },
+  "benchmark_messages": [
+    "Develop a design doc for a self-hosted tetris clone web-based game..",
+    "Audit the design doc.",
+    "Recommend optimizations.",
+    "Create a social-media marketing campaign for it."
+  ],
   "test_params": {
     "context_length": 32768,
     "context_length_multiplier": 2,
