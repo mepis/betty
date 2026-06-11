@@ -186,3 +186,5 @@
 - [Changed]: [2026-06-07] Extension UI handlers — `select`, `confirm`, `input`, and `editor` extension UI methods now use native `prompt()` and `confirm()` instead of custom modals
 - [Changed]: [2026-06-07] Benchmark config (`src/benchmark/configs.json`) — updated model from `gemma-4-E2B_q4_0-it.gguf` to `Qwen3.6-35B-A3B-Q8_0.gguf`; changed `llama_host` from `100.105.3.99` to `100.88.77.33`; enabled layer_split, tensor_split, and primary_gpu split params; increased `build_cores` from 16 to 20; updated CUDA version from 13.2 to 13.3; disabled CUDA compression; disabled jinja template; enabled gpu_layers (999); changed `cuda_max_scheduled_copies` from 16 to 14
 - [Changed]: [2026-06-07] CSS variables — added new design tokens (`--bg-card`, `--border-light`, `--accent-blue/cyan/green/orange/red`, `--sidebar-width`, `--radius`, `--radius-sm`, `--btn-primary-bg/hover`, `--btn-secondary-bg/hover`, `--btn-danger-bg/hover`) for consistent theming across chat and benchmark views
+
+- [Fixed]: [2026-06-10] Consolidate execSync import to top-level ES module in api-server.js, removing redundant CommonJS require() inside kill-port handler

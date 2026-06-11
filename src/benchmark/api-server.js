@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import { spawn } from "child_process";
+import { spawn, execSync } from "child_process";
 import { join, dirname, basename } from "path";
 import { fileURLToPath } from "url";
 
@@ -813,7 +813,6 @@ app.get("/api/models", (_req, res) => {
 
 //--- Kill processes on llama_port ---
 app.post("/api/kill-port", (req, res) => {
-  const { execSync } = require("child_process");
   try {
     const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
     const port = configs.llama_port || 11434;
