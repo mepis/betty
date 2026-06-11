@@ -187,6 +187,19 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async killPort() {
+      try {
+        const res = await axios.post(`${API_BASE}/api/kill-port`)
+        if (res.data.success) {
+          return { success: true, message: res.data.message }
+        }
+        return { success: false, message: res.data.error }
+      } catch (e) {
+        this.error = e.message
+        return { success: false, message: e.message }
+      }
+    },
+
     async saveReport(name) {
       try {
         const res = await axios.post(`${API_BASE}/api/save-report`, { name })

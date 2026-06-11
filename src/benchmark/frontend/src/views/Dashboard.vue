@@ -10,6 +10,8 @@ const envInput = ref('')
 const savingReport = ref(false)
 const reportName = ref('')
 const saveReportSuccess = ref(false)
+const killingPort = ref(false)
+const killPortSuccess = ref('')
 const pollingTimer = ref(null)
 
 // Auto-scroll logs
@@ -72,6 +74,21 @@ async function handleSaveReport() {
     setTimeout(() => (saveReportSuccess.value = false), 3000)
   }
   savingReport.value = false
+}
+
+async function handleKillPort() {
+  if (killingPort.value) return
+  killingPort.value = true
+  killPortSuccess.value = ''
+  const result = await store.killPort()
+  if (result.success) {
+    killPortSuccess.value = result.message
+    setTimeout(() => (killPortSuccess.value = ''), 4000)
+  } else {
+    killPortSuccess.value = result.message || 'Failed to kill processes'
+    setTimeout(() => (killPortSuccess.value = ''), 4000)
+  }
+  killingPort.value = false
 }
 
 function formatTime(ms) {
@@ -174,6 +191,17 @@ function statusBg(status) {
             {{ store.isError ? 'Restart Benchmark' : store.isStopped ? 'Restart Benchmark' : 'Start Benchmark' }}
           </button>
           <button
+            v-if="!store.isRunning"
+            @click="handleKillPort"
+            class="btn btn-warning"
+            :disabled="killingPort"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+            {{ killingPort ? 'Killing...' : 'Kill Port' }}
+          </button>
+          <button
             v-if="store.isRunning"
             @click="handleStop"
             class="btn btn-danger"
@@ -196,6 +224,8 @@ function statusBg(status) {
           </button>
         </div>
         <div class="flex items-center gap-3">
+          <!-- Kill port success message -->
+          <span v-if="killPortSuccess" class="text-xs text-success">{{ killPortSuccess }}</span>
           <!-- Save report -->
           <div class="flex items-center gap-2">
             <input

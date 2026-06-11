@@ -811,6 +811,44 @@ app.get("/api/models", (_req, res) => {
   }
 });
 
+//--- Kill processes on llama_port ---
+app.post("/api/kill-port", (req, res) => {
+  const { execSync } = require("child_process");
+  try {
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const port = configs.llama_port || 11434;
+
+    // Find PIDs using the port
+    const pids = execSync(`lsof -ti :${port}`, { encoding: "utf8" })
+      .trim()
+      .split("\n")
+      .filter(Boolean);
+
+    if (pids.length === 0) {
+      return res.json({ success: true, message: `No processes found on port ${port}` });
+    }
+
+    // Kill each PID
+    const killed = [];
+    for (const pid of pids) {
+      try {
+        execSync(`kill -9 ${pid}`);
+        killed.push(pid);
+      } catch (err) {
+        console.error(`Failed to kill PID ${pid}: ${err.message}`);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `Killed ${killed.length} process(es) on port ${port}`,
+      killed,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Health check ---
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });

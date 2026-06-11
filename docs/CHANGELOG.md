@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-10] Kill port API endpoint — new `POST /api/kill-port` endpoint in `api-server.js` that finds and forcefully kills all processes listening on the llama_port using `lsof -ti` and `kill -9`
+- [Added]: [2026-06-10] Kill port frontend action — new `killPort()` action in the Pinia benchmark store (`stores/benchmark.js`) that calls the kill-port API endpoint
+- [Added]: [2026-06-10] Kill port button — new "Kill Port" button in `Dashboard.vue` (visible only when benchmark is not running) with loading state, success message display, and an X-out icon
+
 ### Changed
 
 - [Changed]: [2026-06-10] Default report name format — changed from `benchmark-YYYY-MM-DD-HH-mm-ss` timestamp-based names to `YYYY-MM-DD-modelname` format (e.g., `2026-06-10-gemma-4-E2B_q4_0-it`) in `api-server.js`; model name is extracted from `configs.json` with extension stripped
