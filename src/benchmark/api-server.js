@@ -591,11 +591,17 @@ function extractConfigsPerRun(liveResults, configs) {
 app.post("/api/save-report", (req, res) => {
   try {
     const { name } = req.body;
-    const safeName = name || `benchmark-${new Date().toISOString().slice(0, 19).replace(/[T:]/g, "-")}`;
+
+    // Read configs first to get the model name
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const modelBasename = configs.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
+    const today = new Date().toISOString().slice(0, 10);
+    const defaultName = `${today}-${modelBasename}`;
+
+    const safeName = name || defaultName;
 
     // Read the current results.md
     const mdContent = fs.existsSync(RESULTS_FILE) ? fs.readFileSync(RESULTS_FILE, "utf8") : "";
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
 
     // Extract detailed configs per test run
     const configsPerRun = extractConfigsPerRun(liveResults, configs);

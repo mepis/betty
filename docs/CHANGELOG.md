@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-10] Default report name format — changed from `benchmark-YYYY-MM-DD-HH-mm-ss` timestamp-based names to `YYYY-MM-DD-modelname` format (e.g., `2026-06-10-gemma-4-E2B_q4_0-it`) in `api-server.js`; model name is extracted from `configs.json` with extension stripped
+- [Changed]: [2026-06-10] Benchmark API URL — updated `VITE_API_URL` in `env.production` from `100.105.3.99` to `100.88.77.33`
+
 ### Added
 
 - [Added]: [2026-06-09] Per-test-run configuration tracking — new `extractConfigsPerRun()` helper in `api-server.js` that computes detailed configuration values (test params, model params, server params, split/GPU params, environment variables, CMake flags) for each test run based on progression logic; saved reports now include `configsPerRun` array alongside the base `configs`
