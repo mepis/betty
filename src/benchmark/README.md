@@ -15,6 +15,20 @@ npm run dev
 npm run dev:frontend
 ```
 
+## Build llama.cpp Only
+
+```bash
+# Build llama.cpp using configs.json settings, then exit (no benchmark run)
+node index.js --build-only
+
+# Skip build entirely (use pre-built binary)
+node index.js --no-build
+```
+
+The `--build-only` flag clones/pulls the llama.cpp repo and runs the full cmake build
+customized via `configs.json` (`build_make_params`, `cuda_configs`, etc.), then exits
+without running any benchmark tests. Useful for rebuilding after upstream changes.
+
 Server runs on port **3456** (configurable via `API_PORT`).
 
 ## Remote Access

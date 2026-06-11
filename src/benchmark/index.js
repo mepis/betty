@@ -15,6 +15,7 @@ const llamaUrl = `http://${configs.llama_host}:${configs.llama_port}`;
 
 //--- CLI arguments ---
 const cliSkipBuild = process.argv.includes("--no-build");
+const cliBuildOnly = process.argv.includes("--build-only");
 const skipBuild = cliSkipBuild || configs.skip_build;
 const rootDir = __dirname;
 const resultsFile = join(rootDir, "results.md");
@@ -158,6 +159,19 @@ async function main() {
 
   try {
     const initResult = await initController();
+    if (!initResult.success) {
+      return;
+    }
+
+    if (cliBuildOnly) {
+      console.log("\n" + "=".repeat(60));
+      console.log("BUILD COMPLETE (build-only mode, skipping benchmark)");
+      console.log("=".repeat(60));
+      console.log(`Binary: ${rootDir}/llama.cpp/build/bin/llama-server`);
+      console.log("=".repeat(60));
+      process.exit(0);
+    }
+
     if (initResult.success) {
       while (isRunning) {
         const result = await runTestRun();
@@ -249,7 +263,9 @@ async function initController() {
     };
   }
 
-  if (!skipBuild) {
+  if (skipBuild && !cliBuildOnly) {
+    console.log("Skipping llama.cpp build (--no-build flag set).");
+  } else {
     const buildResult = await runBuild();
     if (!buildResult.success) {
       return {
@@ -258,8 +274,6 @@ async function initController() {
         detail: buildResult.detail,
       };
     }
-  } else {
-    console.log("Skipping llama.cpp build (--no-build flag set).");
   }
 
   return { success: true, reason: null };
