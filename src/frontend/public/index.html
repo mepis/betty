@@ -1003,6 +1003,249 @@
     .hljs-type { color: #ffa657; }
     .hljs-operator { color: #ff7b72; }
     .hljs-variable { color: #ffa657; }
+
+    /* ── Responsive Modal ──────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .modal-content {
+        width: 95vw;
+        max-height: 90vh;
+        border-radius: 8px;
+      }
+      .clone-modal {
+        width: 95vw;
+      }
+      .modal-body {
+        padding: 16px;
+      }
+      .clone-field input {
+        font-size: 16px; /* Prevent iOS zoom */
+      }
+    }
+
+    /* ── Modal Overlay ─────────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      animation: fadeIn 0.15s ease;
+    }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 520px;
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .modal-close {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.15s;
+    }
+
+    .modal-close:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    /* ── Clone Modal ───────────────────────────────────────────────── */
+    .clone-field {
+      margin-bottom: 16px;
+    }
+
+    .clone-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .clone-field input {
+      width: 100%;
+      padding: 8px 12px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.15s;
+    }
+
+    .clone-field input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .clone-field input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .clone-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .clone-actions .btn {
+      flex: 1;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+    }
+
+    .clone-actions .btn-primary {
+      background: var(--btn-primary-bg);
+      color: #fff;
+      border-color: var(--btn-primary-bg);
+    }
+
+    .clone-actions .btn-primary:hover {
+      background: var(--btn-primary-hover);
+    }
+
+    .clone-actions .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .clone-actions .btn-outline {
+      background: transparent;
+      color: var(--text-secondary);
+    }
+
+    .clone-actions .btn-outline:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    /* Clone status area */
+    .clone-status {
+      margin-top: 20px;
+      padding: 12px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .clone-status-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .clone-status-icon {
+      font-size: 18px;
+      animation: spin 1s linear infinite;
+    }
+
+    .clone-status-icon.done {
+      animation: none;
+    }
+
+    .clone-status-icon.error {
+      animation: none;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .clone-status-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .clone-progress {
+      margin-top: 8px;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    .clone-log {
+      margin-top: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .clone-log .log-line {
+      padding: 1px 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .clone-log .log-info { color: var(--text-secondary); }
+    .clone-log .log-success { color: var(--accent-green); }
+    .clone-log .log-error { color: var(--accent-red); }
+    .clone-log .log-warning { color: var(--accent-orange); }
+
+    /* Clone modal specific size */
+    .clone-modal {
+      width: 560px;
+    }
   </style>
 </head>
 <body>
@@ -1075,6 +1318,9 @@
         </button>
         <button class="sidebar-btn" onclick="exportHtml()">
           <span class="icon">↓</span> Export HTML
+        </button>
+        <button class="sidebar-btn" onclick="showCloneModal()">
+          <span class="icon">↯</span> Clone Repository
         </button>
       </div>
 
@@ -1379,6 +1625,52 @@
 
   <!-- Benchmark Toast Container -->
   <div id="toast-container"></div>
+
+  <!-- Clone Repository Modal -->
+  <div class="modal-overlay" id="cloneModal" style="display:none;" onclick="if(event.target===this)hideCloneModal()">
+    <div class="modal-content clone-modal">
+      <div class="modal-header">
+        <h3>↯ Clone Repository</h3>
+        <button class="modal-close" onclick="hideCloneModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="clone-field">
+          <label for="cloneUrl">Repository URL</label>
+          <input type="text" id="cloneUrl" placeholder="https://github.com/user/repo.git" value="https://github.com/ggml-org/llama.cpp">
+        </div>
+        <div class="clone-field">
+          <label for="cloneBranch">Branch (optional)</label>
+          <input type="text" id="cloneBranch" placeholder="main (default)" value="">
+        </div>
+        <div class="clone-field">
+          <label for="cloneDir">Target Directory</label>
+          <input type="text" id="cloneDir" placeholder="llama.cpp" value="llama.cpp">
+        </div>
+        <div class="clone-actions">
+          <button class="btn btn-primary" id="btnClone" onclick="startClone()">
+            ▶ Clone
+          </button>
+          <button class="btn btn-outline" onclick="hideCloneModal()">
+            Cancel
+          </button>
+        </div>
+        <div class="clone-status" id="cloneStatus" style="display:none;">
+          <div class="clone-status-header">
+            <span class="clone-status-icon" id="cloneStatusIcon">⟳</span>
+            <span class="clone-status-text" id="cloneStatusText">Cloning...</span>
+          </div>
+          <div class="clone-progress" id="cloneProgress" style="display:none;">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+          <div class="clone-log" id="cloneLog">
+            <div class="log-line log-info">Initializing clone...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // ─── State ────────────────────────────────────────────────────────────────

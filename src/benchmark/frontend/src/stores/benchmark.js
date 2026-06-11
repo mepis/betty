@@ -16,6 +16,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
     currentReport: null,
     resultsMd: '',
     models: [],
+    profiles: [],
     error: null,
     sseConnected: false,
   }),
@@ -79,6 +80,58 @@ export const useBenchmarkStore = defineStore('benchmark', {
         if (res.data.success) this.models = res.data.data
       } catch (e) {
         this.error = e.message
+      }
+    },
+
+    async fetchProfiles() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/profiles`)
+        if (res.data.success) this.profiles = res.data.data
+      } catch (e) {
+        this.error = e.message
+      }
+    },
+
+    async saveProfile(name, configs) {
+      try {
+        const res = await axios.post(`${API_BASE}/api/profile`, { name, data: configs })
+        if (res.data.success) {
+          await this.fetchProfiles()
+          return true
+        }
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
+    async loadProfile(name) {
+      try {
+        const res = await axios.post(`${API_BASE}/api/profile/${name}/load`)
+        if (res.data.success) {
+          this.configs = res.data.data
+          await this.fetchProfiles()
+          return true
+        }
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
+    async deleteProfile(name) {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/profile/${name}`)
+        if (res.data.success) {
+          this.profiles = this.profiles.filter((p) => p.name !== name)
+          return true
+        }
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
       }
     },
 

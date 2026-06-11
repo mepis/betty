@@ -17,13 +17,17 @@ const FRONTEND_DIR = join(BENCHMARK_DIR, "frontend", "dist");
 const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(BENCHMARK_DIR, "reports");
+const PROFILES_DIR = join(BENCHMARK_DIR, "profiles");
 
 // Allowed CORS origins (comma-separated or * for all)
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
 
-// Ensure reports directory exists
+// Ensure reports and profiles directories exist
 if (!fs.existsSync(REPORTS_DIR)) {
   fs.mkdirSync(REPORTS_DIR, { recursive: true });
+}
+if (!fs.existsSync(PROFILES_DIR)) {
+  fs.mkdirSync(PROFILES_DIR, { recursive: true });
 }
 
 // Default config template
@@ -213,6 +217,84 @@ app.put("/api/configs", (_req, res) => {
     const configs = _req.body;
     fs.writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
     res.json({ success: true, message: "Config saved" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Profile endpoints ---
+app.get("/api/profiles", (_req, res) => {
+  try {
+    const files = fs.readdirSync(PROFILES_DIR).filter((f) => f.endsWith(".json"));
+    const profiles = files.map((file) => {
+      const stats = fs.statSync(join(PROFILES_DIR, file));
+      const name = file.replace(/\.json$/, "");
+      return {
+        name,
+        filename: file,
+        created: stats.birthtime,
+        modified: stats.mtime,
+      };
+    }).sort((a, b) => b.modified - a.modified);
+    res.json({ success: true, data: profiles });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get("/api/profile/:name", (req, res) => {
+  try {
+    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Profile not found" });
+    }
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    res.json({ success: true, data });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/profile", (req, res) => {
+  try {
+    const { name, data } = req.body;
+    if (!name || !data) {
+      return res.status(400).json({ success: false, error: "name and data required" });
+    }
+
+    // Sanitize name
+    const safeName = name.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filePath = join(PROFILES_DIR, `${safeName}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    res.json({ success: true, message: "Profile saved" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.delete("/api/profile/:name", (req, res) => {
+  try {
+    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Profile not found" });
+    }
+    fs.unlinkSync(filePath);
+    res.json({ success: true, message: "Profile deleted" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/profile/:name/load", (req, res) => {
+  try {
+    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Profile not found" });
+    }
+    const profile = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    // Write the profile's config to configs.json
+    fs.writeFileSync(CONFIGS_FILE, JSON.stringify(profile, null, 2));
+    res.json({ success: true, message: `Profile "${req.params.name}" loaded`, data: profile });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -720,6 +802,104 @@ app.get("/api/models", (_req, res) => {
 //--- Health check ---
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });
+});
+
+//--- Clone repository endpoint ---
+app.post("/api/clone", async (req, res) => {
+  try {
+    const { url, branch, dir } = req.body;
+
+    if (!url) {
+      return res.status(400).json({ success: false, error: "Repository URL is required" });
+    }
+
+    if (!dir) {
+      return res.status(400).json({ success: false, error: "Target directory is required" });
+    }
+
+    // Check if directory already exists
+    const targetPath = join(BENCHMARK_DIR, dir);
+    if (fs.existsSync(targetPath)) {
+      // Check if it's a git repo
+      const gitDir = join(targetPath, ".git");
+      if (fs.existsSync(gitDir)) {
+        return res.status(409).json({ success: false, error: `Directory "${dir}" already exists and appears to be a git repository` });
+      }
+      return res.status(409).json({ success: false, error: `Directory "${dir}" already exists` });
+    }
+
+    // Set up SSE response
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    // Build git clone command
+    const cloneArgs = ["clone", url, dir];
+    if (branch) {
+      cloneArgs.splice(1, 0, "-b", branch);
+    }
+    // Use depth=1 for faster cloning (shallow clone)
+    cloneArgs.splice(1, 0, "--depth", "1");
+
+    const gitProcess = spawn("git", cloneArgs, {
+      cwd: BENCHMARK_DIR,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+
+    let stdoutBuffer = "";
+    let stderrBuffer = "";
+
+    // Send progress updates
+    let progressInterval = setInterval(() => {
+      progressInterval++;
+      const pct = Math.min(80, 10 + Math.floor(progressInterval / 2));
+      res.write(`event: clone-log\ndata: PROGRESS:${pct}\n\n`);
+    }, 3000);
+
+    gitProcess.stdout.on("data", (data) => {
+      const text = data.toString();
+      stdoutBuffer += text;
+      // Stream each line
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: clone-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    gitProcess.stderr.on("data", (data) => {
+      const text = data.toString();
+      stderrBuffer += text;
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: clone-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    const cloneResult = await new Promise((resolve, reject) => {
+      gitProcess.on("close", (code) => {
+        clearInterval(progressInterval);
+        if (code === 0) {
+          resolve({ success: true });
+        } else {
+          reject(new Error(`Git clone failed with exit code ${code}`));
+        }
+      });
+
+      gitProcess.on("error", (err) => {
+        clearInterval(progressInterval);
+        reject(err);
+      });
+    });
+
+    // Send final progress and completion
+    res.write(`event: clone-log\ndata: PROGRESS:100\n\n`);
+    res.write(`event: clone-log\ndata: STATUS:Clone complete!\n\n`);
+    res.end();
+
+  } catch (err) {
+    res.write(`event: clone-log\ndata: STATUS:Clone failed\n\n`);
+    res.write(`event: clone-log\ndata: ERROR: ${err.message}\n\n`);
+    res.end();
+  }
 });
 
 // SPA fallback: serve index.html for non-API routes

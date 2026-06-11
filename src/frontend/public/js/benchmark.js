@@ -10,6 +10,9 @@ const state = {
   initialized: false,
 };
 
+// === Clone State ===
+let cloneController = null; // AbortController for cancelling clone
+
 // === Config Schema ===
 // Maps JSON paths to UI field definitions
 const configSchema = [
@@ -924,6 +927,181 @@ function setupDashboardListeners() {
   if (btnRefresh) btnRefresh.addEventListener('click', () => {
     updateDashboard();
   });
+}
+
+// === Clone Repository Modal ===
+function showCloneModal() {
+  const modal = document.getElementById('cloneModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    // Reset state
+    resetCloneUI();
+  }
+}
+
+function hideCloneModal() {
+  const modal = document.getElementById('cloneModal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+  // Cancel any ongoing clone
+  if (cloneController) {
+    cloneController.abort();
+    cloneController = null;
+  }
+}
+
+function resetCloneUI() {
+  const status = document.getElementById('cloneStatus');
+  const icon = document.getElementById('cloneStatusIcon');
+  const text = document.getElementById('cloneStatusText');
+  const progress = document.getElementById('cloneProgress');
+  const fill = document.getElementById('progressFill');
+  const log = document.getElementById('cloneLog');
+  const btn = document.getElementById('btnClone');
+
+  if (status) status.style.display = 'none';
+  if (icon) { icon.textContent = '⟳'; icon.classList.remove('done', 'error'); }
+  if (text) text.textContent = 'Cloning...';
+  if (progress) progress.style.display = 'none';
+  if (fill) fill.style.width = '0%';
+  if (log) log.innerHTML = '<div class="log-line log-info">Initializing clone...</div>';
+  if (btn) { btn.disabled = false; btn.textContent = '▶ Clone'; }
+}
+
+async function startClone() {
+  const url = document.getElementById('cloneUrl').value.trim();
+  const branch = document.getElementById('cloneBranch').value.trim();
+  const dir = document.getElementById('cloneDir').value.trim() || 'clone';
+
+  if (!url) {
+    showToast('Please enter a repository URL', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('btnClone');
+  const status = document.getElementById('cloneStatus');
+  const icon = document.getElementById('cloneStatusIcon');
+  const text = document.getElementById('cloneStatusText');
+  const progress = document.getElementById('cloneProgress');
+  const fill = document.getElementById('progressFill');
+  const log = document.getElementById('cloneLog');
+
+  // Disable button
+  btn.disabled = true;
+  btn.textContent = '⟳ Cloning...';
+  status.style.display = 'block';
+  progress.style.display = 'block';
+  log.innerHTML = '';
+
+  function addLog(msg, type = 'info') {
+    const line = document.createElement('div');
+    line.className = `log-line log-${type}`;
+    line.textContent = msg;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function setProgress(pct) {
+    fill.style.width = pct + '%';
+  }
+
+  try {
+    cloneController = new AbortController();
+
+    addLog(`Cloning ${url}...`, 'info');
+    setProgress(10);
+
+    const response = await fetch('/api/clone', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, branch, dir }),
+      signal: cloneController.signal,
+    });
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let done = false;
+    let progressCount = 0;
+
+    while (!done) {
+      const { value, done: readerDone } = await reader.read();
+      done = readerDone;
+
+      if (value) {
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+          if (!line.trim()) continue;
+
+          // Check for progress markers
+          const progressMatch = line.match(/^PROGRESS:(\d+)$/);
+          if (progressMatch) {
+            progressCount = parseInt(progressMatch[1], 10);
+            setProgress(Math.min(90, progressCount));
+            continue;
+          }
+
+          // Check for status updates
+          const statusMatch = line.match(/^STATUS:(.+)$/);
+          if (statusMatch) {
+            text.textContent = statusMatch[1];
+            continue;
+          }
+
+          // Regular log output
+          const lower = line.toLowerCase();
+          if (lower.includes('error') || lower.includes('failed')) {
+            addLog(line, 'error');
+          } else if (lower.includes('success') || lower.includes('complete') || lower.includes('done')) {
+            addLog(line, 'success');
+          } else if (lower.includes('warning') || lower.includes('warning:')) {
+            addLog(line, 'warning');
+          } else {
+            addLog(line, 'info');
+          }
+        }
+      }
+    }
+
+    // Final progress
+    setProgress(100);
+
+    // Check if the response was successful
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({ error: 'Clone failed' }));
+      throw new Error(errData.error || errData.message || 'Clone failed');
+    }
+
+    // Success
+    icon.textContent = '✓';
+    icon.classList.add('done');
+    text.textContent = 'Clone complete!';
+    setProgress(100);
+    addLog('✓ Repository cloned successfully!', 'success');
+    showToast('Repository cloned successfully', 'success');
+
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      icon.textContent = '⊘';
+      icon.classList.add('done');
+      text.textContent = 'Clone cancelled';
+      addLog('Clone cancelled by user', 'warning');
+    } else {
+      icon.textContent = '✕';
+      icon.classList.add('error');
+      text.textContent = 'Clone failed';
+      addLog(`✕ ${err.message}`, 'error');
+      showToast(`Clone failed: ${err.message}`, 'error');
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '▶ Clone';
+    cloneController = null;
+  }
 }
 
 // === Init ===

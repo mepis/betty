@@ -13,6 +13,111 @@ const visualConfigs = ref({})
 const modelOptions = ref([])
 const newGpuIndex = ref(0)
 
+// Profile state
+const profiles = ref([])
+const showProfilePanel = ref(false)
+const profileName = ref('')
+const savingProfile = ref(false)
+const profileAction = ref('') // 'save' | 'load' | 'delete'
+const profileMessage = ref('')
+const profileMessageError = ref(false)
+
+async function loadProfiles() {
+  try {
+    await store.fetchProfiles()
+    profiles.value = store.profiles || []
+  } catch (e) {
+    console.error('Failed to load profiles:', e)
+  }
+}
+
+async function handleSaveProfile() {
+  if (savingProfile.value) return
+  if (!profileName.value.trim()) {
+    profileMessage.value = 'Profile name is required'
+    profileMessageError.value = true
+    return
+  }
+
+  savingProfile.value = true
+  profileMessage.value = ''
+  profileMessageError.value = false
+
+  try {
+    let configs
+    if (editMode.value === 'json') {
+      configs = JSON.parse(configsJson.value)
+    } else {
+      configs = flattenBuildParams(JSON.parse(JSON.stringify(visualConfigs.value)))
+    }
+    const ok = await store.saveProfile(profileName.value.trim(), configs)
+    if (ok) {
+      profileMessage.value = `Profile "${profileName.value}" saved successfully`
+      profileMessageError.value = false
+      profileName.value = ''
+      await loadProfiles()
+    } else {
+      profileMessage.value = 'Failed to save profile'
+      profileMessageError.value = true
+    }
+  } catch (e) {
+    profileMessage.value = e.message || 'Invalid JSON'
+    profileMessageError.value = true
+  }
+  savingProfile.value = false
+}
+
+async function handleLoadProfile(name) {
+  if (profileAction.value) return
+  if (!confirm(`Load profile "${name}"? This will overwrite your current configs.`)) return
+
+  profileAction.value = 'load'
+  try {
+    const ok = await store.loadProfile(name)
+    if (ok) {
+      profileMessage.value = `Profile "${name}" loaded successfully`
+      profileMessageError.value = false
+      // Refresh visual configs
+      if (store.configs) {
+        visualConfigs.value = normalizeBuildParams(JSON.parse(JSON.stringify(store.configs)))
+        await fetchModelsForDirectory(store.configs.model_directory || '')
+        if (editMode.value === 'json') {
+          configsJson.value = JSON.stringify(store.configs, null, 2)
+        }
+      }
+    } else {
+      profileMessage.value = 'Failed to load profile'
+      profileMessageError.value = true
+    }
+  } catch (e) {
+    profileMessage.value = e.message
+    profileMessageError.value = true
+  }
+  profileAction.value = ''
+}
+
+async function handleDeleteProfile(name) {
+  if (profileAction.value) return
+  if (!confirm(`Delete profile "${name}"?`)) return
+
+  profileAction.value = 'delete'
+  try {
+    const ok = await store.deleteProfile(name)
+    if (ok) {
+      profileMessage.value = `Profile "${name}" deleted`
+      profileMessageError.value = false
+      await loadProfiles()
+    } else {
+      profileMessage.value = 'Failed to delete profile'
+      profileMessageError.value = true
+    }
+  } catch (e) {
+    profileMessage.value = e.message
+    profileMessageError.value = true
+  }
+  profileAction.value = ''
+}
+
 async function fetchModelsForDirectory(dir) {
   if (!dir) {
     modelOptions.value = []
@@ -40,6 +145,7 @@ onMounted(async () => {
     )
     await fetchModelsForDirectory(store.configs.model_directory || '')
   }
+  await loadProfiles()
 })
 
 function switchMode(mode) {
@@ -237,6 +343,18 @@ function updateBenchmarkMessage(idx, value) {
   visualConfigs.value.benchmark_messages[idx] = value
 }
 
+function formatDate(dateStr) {
+  if (!dateStr) return '—'
+  const d = new Date(dateStr)
+  return d.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
+
 function normalizeBuildParams(configs) {
   const params = configs.build_make_params || {}
   const normalized = {}
@@ -261,6 +379,96 @@ function normalizeBuildParams(configs) {
 
 <template>
   <div class="space-y-6">
+    <!-- Profile Panel -->
+    <div class="card">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <h3 class="text-sm font-semibold text-text-primary">Config Profiles</h3>
+          <span class="badge bg-bg-tertiary text-text-muted">{{ profiles.length }}</span>
+        </div>
+        <button
+          @click="showProfilePanel = !showProfilePanel"
+          class="btn btn-ghost btn-xs"
+        >
+          <svg class="w-4 h-4 transition-transform" :class="showProfilePanel ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+      <div v-if="showProfilePanel" class="space-y-4">
+        <!-- Save new profile -->
+        <div class="flex items-center gap-3">
+          <input
+            v-model="profileName"
+            @keydown.enter="handleSaveProfile"
+            placeholder="Profile name..."
+            class="input flex-1 text-xs"
+          />
+          <button
+            @click="handleSaveProfile"
+            class="btn btn-primary btn-sm"
+            :disabled="savingProfile"
+          >
+            <svg v-if="!savingProfile" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+            </svg>
+            {{ savingProfile ? 'Saving...' : 'Save' }}
+          </button>
+        </div>
+
+        <!-- Profile message -->
+        <div v-if="profileMessage" :class="profileMessageError ? 'text-error' : 'text-success'" class="text-xs">
+          {{ profileMessage }}
+        </div>
+
+        <!-- Profile list -->
+        <div v-if="profiles.length > 0" class="space-y-1">
+          <div
+            v-for="profile in profiles"
+            :key="profile.name"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-bg-tertiary transition-all"
+          >
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-medium truncate">{{ profile.name }}</div>
+              <div class="text-xs text-text-muted">{{ formatDate(profile.modified) }}</div>
+            </div>
+            <button
+              @click="handleLoadProfile(profile.name)"
+              class="btn btn-ghost btn-xs"
+              :disabled="profileAction === 'load'"
+              title="Load this profile"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Load
+            </button>
+            <button
+              @click="handleDeleteProfile(profile.name)"
+              class="p-1 rounded-md text-text-muted hover:text-error hover:bg-error-subtle transition-all"
+              :disabled="profileAction === 'delete'"
+              title="Delete this profile"
+            >
+              <svg v-if="profileAction !== 'delete'" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              <svg v-else class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div v-else class="text-xs text-text-muted text-center py-4">
+          No profiles yet. Save your current config as a profile.
+        </div>
+      </div>
+    </div>
+
     <!-- Info -->
     <div class="card">
       <div class="flex items-start gap-3">
