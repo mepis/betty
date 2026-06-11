@@ -1,4 +1,13 @@
 {
+  "export_configs": {
+    "GGML_CUDA_ENABLE_UNIFIED_MEMORY": "1",
+    "CUDA_SCALE_LAUNCH_QUEUES": "4x",
+    "LLAMA_CACHE": "/home/jon/.llama_cache",
+    "GGML_CUDA_P2P": "on",
+    "LLAMA_ARG_FIT": "on",
+    "LLAMA_ARG_FIT_TARGET": "256",
+    "LLAMA_ARG_FIT_CTX": "131072"
+  },
   "max_sys_mem": 93,
   "llama_port": 11434,
   "llama_host": "100.105.3.99",

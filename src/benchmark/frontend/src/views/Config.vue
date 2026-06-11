@@ -552,6 +552,21 @@ function normalizeBuildParams(configs) {
           v-model="visualConfigs"
         />
 
+        <!-- Environment Export Configs -->
+        <config-section
+          title="Environment Exports"
+          :items="[
+            { key: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', label: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', type: 'text' },
+            { key: 'CUDA_SCALE_LAUNCH_QUEUES', label: 'CUDA_SCALE_LAUNCH_QUEUES', type: 'text' },
+            { key: 'LLAMA_CACHE', label: 'LLAMA_CACHE', type: 'text' },
+            { key: 'GGML_CUDA_P2P', label: 'GGML_CUDA_P2P', type: 'text' },
+            { key: 'LLAMA_ARG_FIT', label: 'LLAMA_ARG_FIT', type: 'text' },
+            { key: 'LLAMA_ARG_FIT_TARGET', label: 'LLAMA_ARG_FIT_TARGET', type: 'text' },
+            { key: 'LLAMA_ARG_FIT_CTX', label: 'LLAMA_ARG_FIT_CTX', type: 'text' },
+          ]"
+          v-model="visualConfigs.export_configs"
+        />
+
         <!-- Benchmark Messages -->
         <div class="space-y-3">
           <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Benchmark Messages</h4>

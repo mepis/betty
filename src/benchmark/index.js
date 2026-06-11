@@ -442,23 +442,25 @@ function runCommand(command, options = {}) {
 
 //--- Environment variables for llama.cpp build ---
 function buildEnv() {
+  const ec = configs.export_configs || {};
   return {
     ...process.env,
-    GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
-    CUDA_SCALE_LAUNCH_QUEUES: "4x",
-    LLAMA_CACHE: configs.llama_cache,
-    CUDACXX: configs.cuda_configs.cudacxx,
-    GGML_CUDA_P2P: "on",
-    PATH: `/usr/local/cuda-${configs.cuda_configs.cuda_version}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
-    LLAMA_ARG_FIT: "on",
-    LLAMA_ARG_FIT_TARGET: "256",
-    LLAMA_ARG_FIT_CTX: "131072",
+    GGML_CUDA_ENABLE_UNIFIED_MEMORY: ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
+    CUDA_SCALE_LAUNCH_QUEUES: ec.CUDA_SCALE_LAUNCH_QUEUES || "4x",
+    LLAMA_CACHE: ec.LLAMA_CACHE || configs.llama_cache || "",
+    CUDACXX: configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc",
+    GGML_CUDA_P2P: ec.GGML_CUDA_P2P || "on",
+    PATH: `/usr/local/cuda-${configs.cuda_configs?.cuda_version || "12.6"}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
+    LLAMA_ARG_FIT: ec.LLAMA_ARG_FIT || "on",
+    LLAMA_ARG_FIT_TARGET: ec.LLAMA_ARG_FIT_TARGET || "256",
+    LLAMA_ARG_FIT_CTX: ec.LLAMA_ARG_FIT_CTX || "131072",
   };
 }
 
 //--- Environment exports for llama.cpp runtime ---
 function getExports() {
   const env = buildEnv();
+  const ec = configs.export_configs || {};
   const exports = [
     `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=${env.GGML_CUDA_ENABLE_UNIFIED_MEMORY}`,
     `export CUDA_SCALE_LAUNCH_QUEUES=${env.CUDA_SCALE_LAUNCH_QUEUES}`,
@@ -635,14 +637,7 @@ function tryStartServer(runCmd, binaryPath) {
       cwd: rootDir + "/llama.cpp/build/bin",
       env: {
         ...process.env,
-        GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
-        CUDA_SCALE_LAUNCH_QUEUES: "4x",
-        LLAMA_CACHE: configs.llama_cache,
-        GGML_CUDA_P2P: "on",
-        LLAMA_ARG_FIT: "on",
-        LLAMA_ARG_FIT_TARGET: "256",
-        LLAMA_ARG_FIT_CTX: "131072",
-        CUDACXX: configs.cuda_configs.cudacxx,
+        ...buildEnv(),
       },
       stdio: ["pipe", "pipe", "pipe"],
       shell: true,
@@ -939,16 +934,7 @@ function getServerParamsSnapshot() {
     reasoningBudgetMessage: sp.reasoning_budget_message.enabled
       ? sp.reasoning_budget_message.value
       : null,
-    env: {
-      GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
-      CUDA_SCALE_LAUNCH_QUEUES: "4x",
-      LLAMA_CACHE: configs.llama_cache,
-      GGML_CUDA_P2P: "on",
-      LLAMA_ARG_FIT: "on",
-      LLAMA_ARG_FIT_TARGET: "256",
-      LLAMA_ARG_FIT_CTX: "131072",
-      CUDACXX: configs.cuda_configs.cudacxx,
-    },
+    env: buildEnv(),
     cmakeFlags: getCmakeFlagsSnapshot(),
   };
 }
