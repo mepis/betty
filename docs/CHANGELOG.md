@@ -16,6 +16,7 @@
 - [Changed]: [2026-06-11] CloneModal — redesigned with SVG icons, animated overlay (fadeIn + slideUp), progress track redesign, ghost cancel button, status icons with spin animation, and cleaner field styling with optional label indicator
 - [Changed]: [2026-06-11] MessageInput — simplified placeholder text, updated hint text (replaced <kbd> elements with <span>), refined button hover/active states with scale transforms, updated abort button to use error color theme, reduced padding and max-height
 - [Changed]: [2026-06-11] ChatView — new connection badge in header with animated dot, typing indicator with three-dot animation, improved empty state layout, refined suggestion buttons
+- [Changed]: [2026-06-11] ChatView — added structured message styling with header (avatar, role label, timestamp), content area, fade-in animation, blinking streaming cursor, and consistent max-width (720px) flex layout; replaced inline style attributes with CSS classes
 - [Changed]: [2026-06-11] ChatMessage — replaced emoji avatar with SVG icon, refined avatar colors using new semantic tokens, updated message bubble styling
 - [Changed]: [2026-06-11] CommandPalette — SVG icon in header, refined padding and sizing, updated to use --bg-elevated for background
 - [Changed]: [2026-06-11] ToastContainer — icon-based toast notifications with semantic color icons (checkmark, X, info), improved layout with flex gap, added pointer-events handling
@@ -25,6 +26,7 @@
 
 ### Removed
 
+- [Removed]: [2026-06-11] Inline message styles from ChatView — removed scattered inline `style` attributes on message elements; all message layout now handled by CSS classes in the component's `<style>` block for consistency and maintainability
 - [Removed]: [2026-06-11] Emoji icons — removed all emoji icons from UI components (💬, 📷, ➤, ■, 🧠, 🔧, ⚡, ✕, ✓, ↗, ◈, ↓, ↯, 📁, ✦, ❓, ⌨️, 🗑️, 📂, 🔍, 🛠️, 🧠) and replaced with SVG equivalents
 - [Removed]: [2026-06-11] MessageInput `defineExpose` methods — removed `clearImages()` and `getImages()` methods that were exposed to parent component; image handling now managed internally
 - [Removed]: [2026-06-11] Image size validation comment — removed 10MB image size check comment in MessageInput file processing

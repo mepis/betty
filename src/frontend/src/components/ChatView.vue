@@ -425,6 +425,74 @@ function navigateCommands(direction) {
   display: block;
 }
 
+.message {
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+
+.message-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.message-avatar:not([class*="user"]) {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.message-role {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.message-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.message-content {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  padding-left: 0;
+}
+
+.streaming-cursor::after {
+  content: '▋';
+  animation: blink 1s infinite;
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 @media (max-width: 768px) {
   .sidebar-toggle {
     display: flex;
