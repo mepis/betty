@@ -1,9 +1,12 @@
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 
 export function useWebSocket() {
   const ws = ref(null);
   const connected = ref(false);
   const status = ref('disconnected'); // disconnected, connected, streaming
+
+  const eventHandlers = new Map();
+  const globalHandlers = [];
 
   function connect() {
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -27,13 +30,13 @@ export function useWebSocket() {
     ws.value.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
-        if (eventHandlers.value.has(data.type)) {
-          for (const handler of eventHandlers.value.get(data.type)) {
+        if (eventHandlers.has(data.type)) {
+          for (const handler of eventHandlers.get(data.type)) {
             handler(data);
           }
         }
         // Also call global handlers
-        for (const handler of globalHandlers.value) {
+        for (const handler of globalHandlers) {
           handler(data);
         }
       } catch (e) {
@@ -48,18 +51,15 @@ export function useWebSocket() {
     }
   }
 
-  const eventHandlers = reactive(new Map());
-  const globalHandlers = reactive([]);
-
   function on(type, handler) {
-    if (!eventHandlers.value.has(type)) {
-      eventHandlers.value.set(type, []);
+    if (!eventHandlers.has(type)) {
+      eventHandlers.set(type, []);
     }
-    eventHandlers.value.get(type).push(handler);
+    eventHandlers.get(type).push(handler);
   }
 
   function onAny(handler) {
-    globalHandlers.value.push(handler);
+    globalHandlers.push(handler);
   }
 
   function disconnect() {

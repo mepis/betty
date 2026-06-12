@@ -5,6 +5,14 @@ import { spawn } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
+import {
+  loadSession,
+  saveSession,
+  deleteSession,
+  listSessions,
+  createSession,
+  updateSession,
+} from "./session-store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
@@ -396,6 +404,26 @@ const agent = new RpcAgent();
 
 const clients = new Map();
 let currentSessionId = null;
+let currentSessionMessages = []; // Track messages for current session
+let pendingMessageSaves = new Map(); // clientId -> pending save timeout
+
+function saveCurrentSession() {
+  if (!currentSessionId) return;
+  updateSession(currentSessionId, {
+    messageCount: currentSessionMessages.length,
+    messages: currentSessionMessages,
+  });
+}
+
+function scheduleMessageSave(clientId) {
+  if (pendingMessageSaves.has(clientId)) {
+    clearTimeout(pendingMessageSaves.get(clientId));
+  }
+  pendingMessageSaves.set(clientId, setTimeout(() => {
+    saveCurrentSession();
+    pendingMessageSaves.delete(clientId);
+  }, 2000));
+}
 
 wss.on("connection", (ws) => {
   const clientId = randomUUID();
@@ -434,7 +462,8 @@ wss.on("connection", (ws) => {
           break;
 
         case "get_messages": {
-          const messages = await agent.getMessages();
+          // Return current session's messages
+          const messages = currentSessionMessages;
           ws.send(JSON.stringify({ type: "messages", messages }));
           break;
         }
@@ -476,8 +505,57 @@ wss.on("connection", (ws) => {
         }
 
         case "new_session": {
+          // Save current session before creating new one
+          if (currentSessionId) {
+            saveCurrentSession();
+          }
+          const newSession = createSession();
+          currentSessionId = newSession.id;
+          currentSessionMessages = [];
           const resp = await agent.newSession();
-          ws.send(JSON.stringify({ type: "session_new", success: resp.success, data: resp.data }));
+          ws.send(JSON.stringify({ type: "session_new", success: resp.success, data: resp.data, sessionId: newSession.id, sessionName: newSession.name }));
+          break;
+        }
+
+        case "list_sessions": {
+          const sessions = listSessions();
+          ws.send(JSON.stringify({ type: "sessions_list", sessions }));
+          break;
+        }
+
+        case "switch_session": {
+          // Save current session
+          if (currentSessionId) {
+            saveCurrentSession();
+          }
+          const targetSession = loadSession(msg.sessionId);
+          if (!targetSession) {
+            ws.send(JSON.stringify({ type: "error", message: "Session not found" }));
+            break;
+          }
+          currentSessionId = targetSession.id;
+          currentSessionMessages = targetSession.messages || [];
+          ws.send(JSON.stringify({ type: "session_switched", sessionId: targetSession.id, session: targetSession, messages: currentSessionMessages }));
+          break;
+        }
+
+        case "delete_session": {
+          if (currentSessionId === msg.sessionId) {
+            ws.send(JSON.stringify({ type: "error", message: "Cannot delete the current session. Switch to another session first." }));
+            break;
+          }
+          deleteSession(msg.sessionId);
+          ws.send(JSON.stringify({ type: "session_deleted", sessionId: msg.sessionId }));
+          break;
+        }
+
+        case "rename_session": {
+          const session = updateSession(msg.sessionId, { name: msg.name });
+          if (!session) {
+            ws.send(JSON.stringify({ type: "error", message: "Session not found" }));
+            break;
+          }
+          ws.send(JSON.stringify({ type: "session_renamed", session }));
           break;
         }
 
@@ -547,6 +625,27 @@ wss.on("connection", (ws) => {
 // ─── Agent Event Forwarding ─────────────────────────────────────────────────
 
 agent.on("event", (event) => {
+  // Persist messages when agent_end fires
+  if (event.type === "agent_end" && event.messages && currentSessionId) {
+    for (const msg of event.messages) {
+      if (msg.role !== "user") {
+        const existingIdx = currentSessionMessages.findIndex(m => m.id === msg.id);
+        if (existingIdx >= 0) {
+          currentSessionMessages[existingIdx] = msg;
+        } else {
+          currentSessionMessages.push(msg);
+        }
+      }
+    }
+    saveCurrentSession();
+  }
+
+  // Handle load_session requests
+  if (event.type === "load_session_response") {
+    // Agent confirmed session loaded
+    return;
+  }
+
   const data = JSON.stringify(event);
   for (const [id, client] of clients) {
     try {

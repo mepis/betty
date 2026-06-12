@@ -4,16 +4,26 @@
 
 ### Added
 
+- [Added]: [2026-06-11] Persistent session management — new file-based session store (`src/backend/session-store.js`) with CRUD operations (create, load, update, delete, list); sessions persisted to `~/.betty/sessions/` as JSON files with message history, metadata, and auto-timestamps
+- [Added]: [2026-06-11] Session management in main web interface — sidebar session list with active indicator, message count, right-click-to-delete; WebSocket events for session CRUD (new, switch, delete, rename, list); session-aware message persistence with debounced saves
+- [Added]: [2026-06-11] Environment variable example — `.env.example` documenting all configurable Betty server options (port, host, workspace, API keys for all supported providers)
 - [Added]: [2026-06-11] Standalone benchmark API server — restored `src/benchmark/api-server.js` (Express server with SSE streaming, REST API, config CRUD, results retrieval, report management, build endpoint, clone endpoint, and kill-port endpoint); supports CORS, SPA fallback, and remote access via `API_HOST`/`API_PORT` env vars
 - [Added]: [2026-06-11] Standalone benchmark Vue 3 frontend — restored `src/benchmark/frontend/` as a Vue 3 SPA with Vite 6, Pinia state management, Vue Router 4, and Tailwind CSS 4; includes Dashboard (real-time SSE metrics, live results table, log viewer), Config (JSON + visual editing modes, build settings, profiles), and Reports (browse, view, delete saved reports) views
 - [Added]: [2026-06-11] Benchmark npm package — new `src/benchmark/package.json` with Express, axios, cors, dotenv, and express-rate-limit dependencies; scripts for `dev`, `dev:frontend`, `build:frontend`, and `start`
 
 ### Changed
 
+- [Changed]: [2026-06-11] Sidebar — replaced Benchmark tab with Sessions section; session list shows name, message count, active state; right-click to delete sessions
+- [Changed]: [2026-06-11] Backend server.js — added session management WebSocket handlers (new_session, list_sessions, switch_session, delete_session, rename_session); message persistence with debounced saves on agent_end; current session tracking with in-memory message buffer
+- [Changed]: [2026-06-11] Frontend App.vue — replaced benchmark integration with session management; improved streaming message handling with pending message buffer to prevent lost responses; better deduplication of streaming vs agent_end messages; extractThinking/extractText helpers for multi-format message content
+- [Changed]: [2026-06-11] WebSocket composable — fixed reactivity bug by removing `reactive()` wrapper from `Map` and `Array` instances; handlers now use plain JS collections
+- [Changed]: [2026-06-11] Build scripts — `npm start` now runs `npm run build` first to ensure frontend is built; benchmark package `dev` script also builds frontend first
 - [Changed]: [2026-06-11] `.gitignore` — added `src/benchmark/frontend/dist/` to exclude future frontend build artifacts; current dist files are committed as initial seed
 
 ### Removed
 
+- [Removed]: [2026-06-11] Benchmark integration from main web interface — removed Benchmark tab from sidebar, all benchmark Vue components (BenchmarkView, BenchmarkDashboard, BenchmarkConfigs, BenchmarkRun, BenchmarkResults, BenchmarkReports), and the `useBenchmark` composable; benchmark is now only available as a standalone tool under `src/benchmark/`
+- [Removed]: [2026-06-11] Benchmark-related frontend code — deleted `src/frontend/public/js/benchmark.js` (1154 lines), `src/frontend/src/utils.js` `renderMarkdownResults()` utility, and all benchmark WebSocket event handlers (benchmark_stdout, benchmark_stderr, benchmark_status, benchmark_exit, benchmark_error)
 - [Removed]: [2026-06-11] Reverted removal of standalone benchmark frontend — undoes the earlier decision to remove `src/benchmark/frontend/` and `src/benchmark/api-server.js`; the benchmark is now available as both a standalone tool and through the main Betty web interface
 
 ### Added

@@ -51,16 +51,35 @@
       <button class="sidebar-btn" :class="{ active: activeTab === 'chat' }" @click="$emit('switch-tab', 'chat')">
         <span class="icon">💬</span> Chat
       </button>
-      <button class="sidebar-btn" :class="{ active: activeTab === 'benchmark' }" @click="$emit('switch-tab', 'benchmark')">
-        <span class="icon">⚡</span> Benchmark
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Sessions</div>
+      <div class="session-list" v-if="sessions.length">
+        <button
+          class="session-item"
+          :class="{ active: activeSessionId === session.id }"
+          v-for="session in sessions"
+          :key="session.id"
+          @click="$emit('switch-session', session.id)"
+          @contextmenu.prevent="$emit('delete-session', session.id)"
+          title="Right-click to delete"
+        >
+          <span class="session-icon">💬</span>
+          <span class="session-name">{{ session.name }}</span>
+          <span class="session-count">{{ session.messageCount || 0 }}</span>
+        </button>
+      </div>
+      <div class="session-empty" v-else>
+        <span style="font-size:12px; color:var(--text-muted);">No sessions yet</span>
+      </div>
+      <button class="sidebar-btn" @click="$emit('new-session')">
+        <span class="icon">✦</span> New Session
       </button>
     </div>
 
     <div class="sidebar-section">
       <div class="sidebar-section-title">Actions</div>
-      <button class="sidebar-btn" @click="$emit('new-session')">
-        <span class="icon">✦</span> New Session
-      </button>
       <button class="sidebar-btn" @click="$emit('fork-session')">
         <span class="icon">↗</span> Fork Session
       </button>
@@ -102,6 +121,8 @@ const props = defineProps({
   selectedModelId: String,
   thinkingLevel: String,
   workspace: String,
+  sessions: Array,
+  activeSessionId: String,
 });
 
 const emit = defineEmits([
@@ -114,6 +135,8 @@ const emit = defineEmits([
   'show-clone',
   'model-change',
   'thinking-change',
+  'switch-session',
+  'delete-session',
 ]);
 
 const connectionStatusClass = computed(() => {
@@ -220,6 +243,60 @@ function onThinkingChange(level) {
   font-weight: 600;
 }
 
+.session-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.session-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.session-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.session-item.active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.session-icon {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.session-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-count {
+  font-size: 10px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.session-empty {
+  padding: 8px 12px;
+}
+
 .sidebar-btn {
   display: flex;
   align-items: center;
@@ -319,6 +396,9 @@ function onThinkingChange(level) {
   .sidebar.collapsed .sidebar-header,
   .sidebar.collapsed .sidebar-section {
     display: flex;
+  }
+  .session-list {
+    max-height: 150px;
   }
 }
 </style>

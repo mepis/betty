@@ -11,6 +11,8 @@
       :selected-model-id="selectedModelId"
       :thinking-level="thinkingLevel"
       :workspace="workspace"
+      :sessions="sessions"
+      :active-session-id="activeSessionId"
       @switch-tab="activeTab = $event"
       @show-workspace="showWorkspaceModal"
       @new-session="newSession"
@@ -20,6 +22,8 @@
       @show-clone="showCloneModal = true"
       @model-change="changeModel"
       @thinking-change="changeThinkingLevel"
+      @switch-session="switchSession"
+      @delete-session="deleteSession"
     />
 
     <template v-if="activeTab === 'chat'">
@@ -36,36 +40,17 @@
       />
     </template>
 
-    <template v-if="activeTab === 'benchmark'">
-      <BenchmarkView
-        :bench-status="benchStatus"
-        :test-run="benchTestRun"
-        :live-results="benchLiveResults"
-        :configs="benchConfigs"
-        :logs="benchLogs"
-        @start="startBenchmark"
-        @stop="stopBenchmark"
-        @save-report="showSaveReportModal"
-        @save-configs="saveBenchmarkConfigs"
-        @reset-configs="resetBenchmarkConfigs"
-        @clear-log="bench.clearLogs()"
-        @load-results="loadBenchmarkResults"
-      />
-    </template>
-
     <CloneModal :show="showCloneModal" @close="showCloneModal = false" />
     <ToastContainer />
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useWebSocket } from './composables/useWebSocket.js';
-import { useBenchmark } from './composables/useBenchmark.js';
 import { toast } from './composables/useToast.js';
 import Sidebar from './components/Sidebar.vue';
 import ChatView from './components/ChatView.vue';
-import BenchmarkView from './components/BenchmarkView.vue';
 import CloneModal from './components/CloneModal.vue';
 import ToastContainer from './components/ToastContainer.vue';
 
@@ -75,24 +60,22 @@ const sidebarCollapsed = ref(false);
 const showCloneModal = ref(false);
 
 const { connected, connect: connectWs, send, on, onAny } = useWebSocket();
-const bench = useBenchmark();
 
 const messages = ref([]);
 const isStreaming = ref(false);
 const streamingMsg = ref(null);
+const pendingStreamingMsgs = ref([]);
+const streamingMsgNeedsReset = ref(false);
 const models = ref([]);
 const currentModel = ref(null);
 const selectedModelId = ref('');
 const thinkingLevel = ref('medium');
 const workspace = ref('');
 const availableCommands = ref([]);
+const sessions = ref([]);
+const activeSessionId = ref('');
 
-// Benchmark reactive refs
-const benchStatus = ref('idle');
-const benchTestRun = ref(0);
-const benchLiveResults = ref([]);
-const benchConfigs = ref(null);
-const benchLogs = ref([]);
+
 
 // ─── WebSocket Setup ────────────────────────────────────────────────────
 function setupWebSocket() {
@@ -106,8 +89,30 @@ function setupWebSocket() {
     isStreaming.value = true;
   });
 
+  // Extract thinking text from a message regardless of format
+  // (top-level string or content block array)
+  function extractThinking(msg) {
+    if (typeof msg.thinking === 'string') return msg.thinking;
+    if (Array.isArray(msg.content)) {
+      const block = msg.content.find(b => b.type === 'thinking');
+      return block ? block.thinking : '';
+    }
+    return '';
+  }
+
+  // Extract text content from a message regardless of format
+  function extractText(msg) {
+    if (Array.isArray(msg.content)) {
+      return msg.content.filter(b => b.type === 'text').map(b => b.text).join('');
+    }
+    if (typeof msg.content === 'string') return msg.content;
+    return '';
+  }
+
   on('agent_end', (data) => {
     isStreaming.value = false;
+
+    // Add messages from the agent (only for the active/current session)
     if (data.messages) {
       for (const msg of data.messages) {
         if (msg.role === 'user') continue;
@@ -115,7 +120,48 @@ function setupWebSocket() {
           messages.value.push(msg);
         }
       }
+      // Update current session metadata
+      if (activeSessionId.value) {
+        const session = sessions.value.find(s => s.id === activeSessionId.value);
+        if (session) {
+          session.messageCount = (session.messageCount || 0) + (data.messages?.length || 0);
+          session.updatedAt = Date.now();
+        }
+      }
     }
+
+    // If there were streaming messages that weren't included in agent_end's
+    // messages, add them so the response isn't lost. Only add if no assistant
+    // message with the same content already exists (to avoid duplicates when
+    // agent_end does include the message with its real ID).
+    for (const pending of pendingStreamingMsgs.value) {
+      const hasContent = pending.content || pending.thinking;
+      const pendingText = pending.content || '';
+      const pendingThinking = pending.thinking || '';
+      const isDuplicate = messages.value.some(m =>
+        m.role === 'assistant' &&
+        extractText(m) === pendingText &&
+        extractThinking(m) === pendingThinking
+      );
+      if (hasContent && !isDuplicate) {
+        const contentBlocks = [];
+        if (pendingThinking) {
+          contentBlocks.push({ type: 'thinking', thinking: pendingThinking });
+        }
+        if (pendingText) {
+          contentBlocks.push({ type: 'text', text: pendingText });
+        }
+        messages.value.push({
+          id: pending.id,
+          role: 'assistant',
+          content: contentBlocks,
+          timestamp: new Date().toISOString(),
+        });
+      }
+    }
+    pendingStreamingMsgs.value = [];
+    streamingMsg.value = null;
+    streamingMsgNeedsReset.value = false;
   });
 
   on('message_update', (data) => {
@@ -124,7 +170,11 @@ function setupWebSocket() {
 
   on('message_end', () => {
     if (streamingMsg.value) {
-      streamingMsg.value = null;
+      // Save the completed streaming message for agent_end to process.
+      // Do NOT clear streamingMsg.value — keep the thinking visible on screen
+      // until agent_end adds the final message(s) to the messages array.
+      pendingStreamingMsgs.value.push({ ...streamingMsg.value });
+      streamingMsgNeedsReset.value = true;
     }
   });
 
@@ -170,9 +220,49 @@ function setupWebSocket() {
     showForkList(data.messages);
   });
 
-  on('session_new', () => {
+  on('session_new', (data) => {
     messages.value = [];
+    streamingMsg.value = null;
+    pendingStreamingMsgs.value = [];
+    streamingMsgNeedsReset.value = false;
+    if (data.sessionId) {
+      activeSessionId.value = data.sessionId;
+      // Add new session to the list
+      const newSession = {
+        id: data.sessionId,
+        name: data.sessionName || `Session ${new Date().toLocaleString()}`,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+        messageCount: 0,
+      };
+      sessions.value = [newSession, ...sessions.value];
+    }
     toast('New session started', 'success');
+  });
+
+  on('sessions_list', (data) => {
+    sessions.value = data.sessions || [];
+  });
+
+  on('session_switched', (data) => {
+    activeSessionId.value = data.sessionId;
+    messages.value = data.messages || [];
+    streamingMsg.value = null;
+    pendingStreamingMsgs.value = [];
+    streamingMsgNeedsReset.value = false;
+    toast('Session switched', 'info');
+  });
+
+  on('session_deleted', (data) => {
+    sessions.value = sessions.value.filter(s => s.id !== data.sessionId);
+    toast('Session deleted', 'info');
+  });
+
+  on('session_renamed', (data) => {
+    const idx = sessions.value.findIndex(s => s.id === data.session.id);
+    if (idx >= 0) {
+      sessions.value[idx] = data.session;
+    }
   });
 
   on('compacted', () => {
@@ -201,29 +291,6 @@ function setupWebSocket() {
     toast(data.message, 'error');
   });
 
-  // Benchmark events via WebSocket
-  on('benchmark_stdout', (data) => {
-    benchLogs.value.push({ text: data.message, type: 'stdout' });
-  });
-
-  on('benchmark_stderr', (data) => {
-    benchLogs.value.push({ text: data.message, type: 'stderr' });
-  });
-
-  on('benchmark_status', (data) => {
-    benchStatus.value = data.status;
-    benchTestRun.value = data.testRun;
-    if (data.liveResults) benchLiveResults.value = data.liveResults;
-  });
-
-  on('benchmark_exit', () => {
-    benchStatus.value = 'idle';
-  });
-
-  on('benchmark_error', (data) => {
-    benchStatus.value = 'error';
-    toast(`Benchmark error: ${data.message}`, 'error');
-  });
 }
 
 // ─── Streaming ──────────────────────────────────────────────────────────
@@ -231,26 +298,28 @@ function handleStreamingUpdate(data) {
   const evt = data.assistantMessageEvent;
   if (!evt) return;
 
-  if (evt.type === 'text_start' && !streamingMsg.value) {
+  if (evt.type === 'text_start' && (!streamingMsg.value || streamingMsgNeedsReset.value)) {
     streamingMsg.value = {
       id: 'streaming-' + Date.now(),
       content: '',
       thinking: '',
       tools: [],
     };
+    streamingMsgNeedsReset.value = false;
   }
 
   if (evt.type === 'text_delta' && streamingMsg.value) {
     streamingMsg.value.content += evt.delta;
   }
 
-  if (evt.type === 'thinking_start' && !streamingMsg.value) {
+  if (evt.type === 'thinking_start' && (!streamingMsg.value || streamingMsgNeedsReset.value)) {
     streamingMsg.value = {
       id: 'streaming-' + Date.now(),
       content: '',
       thinking: '',
       tools: [],
     };
+    streamingMsgNeedsReset.value = false;
   }
 
   if (evt.type === 'thinking_delta' && streamingMsg.value) {
@@ -292,11 +361,33 @@ function sendMessage({ text, images }) {
 function abortStream() {
   send({ type: 'abort' });
   isStreaming.value = false;
+  streamingMsg.value = null;
+  pendingStreamingMsgs.value = [];
+  streamingMsgNeedsReset.value = false;
   toast('Aborted', 'info');
 }
 
 function newSession() {
   send({ type: 'new_session' });
+}
+
+function switchSession(sessionId) {
+  if (!connected.value) {
+    toast('Not connected', 'error');
+    return;
+  }
+  send({ type: 'switch_session', sessionId });
+}
+
+function deleteSession(sessionId) {
+  const session = sessions.value.find(s => s.id === sessionId);
+  if (!session) return;
+  if (!confirm(`Delete "${session.name}"?`)) return;
+  send({ type: 'delete_session', sessionId });
+}
+
+function loadSessions() {
+  send({ type: 'list_sessions' });
 }
 
 function forkSession() {
@@ -435,58 +526,6 @@ function handleExtensionUI(req) {
   }
 }
 
-// ─── Benchmark ──────────────────────────────────────────────────────────
-async function startBenchmark() {
-  const result = await bench.startBenchmark();
-  if (result.success) {
-    toast('Benchmark started', 'success');
-  } else {
-    toast('Failed to start: ' + result.error, 'error');
-  }
-}
-
-async function stopBenchmark() {
-  const result = await bench.stopBenchmark();
-  if (result.success) {
-    toast('Benchmark stopping...', 'info');
-  } else {
-    toast('Failed to stop: ' + result.error, 'error');
-  }
-}
-
-function showSaveReportModal() {
-  const name = prompt('Report name (optional, press Cancel to use default):', '');
-  if (name !== null) {
-    bench.saveReport(name.trim()).then(data => {
-      if (data.success) {
-        toast(`Report saved`, 'success');
-      } else {
-        toast('Failed to save: ' + data.error, 'error');
-      }
-    });
-  }
-}
-
-async function saveBenchmarkConfigs() {
-  const data = await bench.saveConfigs();
-  if (data.success) {
-    toast('Configs saved', 'success');
-  } else {
-    toast('Failed to save: ' + data.error, 'error');
-  }
-}
-
-function resetBenchmarkConfigs() {
-  if (bench.originalConfigs.value) {
-    bench.configs.value = JSON.parse(JSON.stringify(bench.originalConfigs.value));
-    toast('Configs reset', 'info');
-  }
-}
-
-async function loadBenchmarkResults() {
-  // Triggered from results page
-}
-
 // ─── Keyboard Shortcuts ─────────────────────────────────────────────────
 function handleGlobalKeydown(e) {
   if (e.key === 'd' && (e.ctrlKey || e.metaKey)) {
@@ -513,40 +552,13 @@ onMounted(() => {
     send({ type: 'get_state' });
     send({ type: 'get_messages' });
     send({ type: 'get_commands' });
+    send({ type: 'list_sessions' });
   }, 1000);
 
-  // Setup benchmark SSE
-  bench.connectSSE(
-    (data) => {
-      benchStatus.value = data.status;
-      benchTestRun.value = data.testRun;
-      if (data.liveResults) benchLiveResults.value = data.liveResults;
-    },
-    (data) => {
-      benchLogs.value.push({ text: data.text, type: data.type });
-      if (data.status) benchStatus.value = data.status;
-      if (data.testRun !== undefined) benchTestRun.value = data.testRun;
-      if (data.liveResults) benchLiveResults.value = data.liveResults;
-    },
-    (data) => {
-      if (data.liveResults) benchLiveResults.value = data.liveResults;
-    }
-  );
-
-  // Load benchmark configs
-  bench.loadConfigs().then(() => {
-    benchConfigs.value = bench.configs.value;
-  });
-
-  // Sync benchmark configs ref
-  watch(() => bench.configs.value, (val) => {
-    benchConfigs.value = val;
-  }, { deep: true });
 });
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleGlobalKeydown);
-  bench.disconnectSSE();
 });
 </script>
 
