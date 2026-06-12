@@ -4,14 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Removed
+### Added
 
-- [Removed]: [2026-06-11] Standalone benchmark Vue 3 frontend — removed `frontend/` directory (Vue 3 SPA with Pinia, Vue Router, Tailwind CSS) and `api-server.js` (Express API server with SSE streaming); benchmark is now accessed through the main Betty web interface
-- [Removed]: [2026-06-11] Benchmark package scripts — removed `package.json` and `package-lock.json` from `src/benchmark/` as the benchmark no longer has its own npm package
+- [Added]: [2026-06-11] Standalone benchmark API server — restored `api-server.js` (Express server with SSE streaming, REST API, config CRUD, results retrieval, report management, build endpoint, clone endpoint, and kill-port endpoint)
+- [Added]: [2026-06-11] Standalone benchmark Vue 3 frontend — restored `frontend/` as a Vue 3 SPA with Vite 6, Pinia, Vue Router 4, and Tailwind CSS 4; Dashboard, Config, and Reports views with real-time SSE streaming
+- [Added]: [2026-06-11] Benchmark npm package — new `package.json` with Express, axios, cors, dotenv, and express-rate-limit dependencies; scripts for `dev`, `dev:frontend`, `build:frontend`, and `start`
 
 ### Changed
 
-- [Changed]: [2026-06-11] Benchmark README — updated to reflect integration into the main Betty web frontend; simplified quick start instructions; removed standalone server and remote access documentation
+- [Changed]: [2026-06-11] `.gitignore` — added `src/benchmark/frontend/dist/` to exclude future frontend build artifacts; current dist files are committed as initial seed
+
+### Removed
+
+- [Removed]: [2026-06-11] Reverted removal of standalone benchmark frontend — undoes the earlier decision to remove `frontend/` and `api-server.js`; the benchmark is now available as both a standalone tool and through the main Betty web interface
 
 ### Changed
 

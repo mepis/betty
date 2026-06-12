@@ -4,6 +4,20 @@
 
 ### Added
 
+- [Added]: [2026-06-11] Standalone benchmark API server — restored `src/benchmark/api-server.js` (Express server with SSE streaming, REST API, config CRUD, results retrieval, report management, build endpoint, clone endpoint, and kill-port endpoint); supports CORS, SPA fallback, and remote access via `API_HOST`/`API_PORT` env vars
+- [Added]: [2026-06-11] Standalone benchmark Vue 3 frontend — restored `src/benchmark/frontend/` as a Vue 3 SPA with Vite 6, Pinia state management, Vue Router 4, and Tailwind CSS 4; includes Dashboard (real-time SSE metrics, live results table, log viewer), Config (JSON + visual editing modes, build settings, profiles), and Reports (browse, view, delete saved reports) views
+- [Added]: [2026-06-11] Benchmark npm package — new `src/benchmark/package.json` with Express, axios, cors, dotenv, and express-rate-limit dependencies; scripts for `dev`, `dev:frontend`, `build:frontend`, and `start`
+
+### Changed
+
+- [Changed]: [2026-06-11] `.gitignore` — added `src/benchmark/frontend/dist/` to exclude future frontend build artifacts; current dist files are committed as initial seed
+
+### Removed
+
+- [Removed]: [2026-06-11] Reverted removal of standalone benchmark frontend — undoes the earlier decision to remove `src/benchmark/frontend/` and `src/benchmark/api-server.js`; the benchmark is now available as both a standalone tool and through the main Betty web interface
+
+### Added
+
 - [Added]: [2026-06-11] Vue 3 frontend rebuild — rebuilt the entire Betty web frontend from vanilla HTML/JS/CSS to Vue 3 + Vite; new component-based architecture with `App.vue` root, 13 Vue components (Sidebar, ChatView, ChatMessage, MessageInput, CommandPalette, BenchmarkView, BenchmarkDashboard, BenchmarkConfigs, BenchmarkRun, BenchmarkResults, BenchmarkReports, CloneModal, ToastContainer), 3 composables (useWebSocket, useBenchmark, useToast), and shared CSS variables; Vite build outputs to `src/frontend/dist/`
 - [Added]: [2026-06-11] Vite build tooling — added `vite` (^8.0.16), `vue` (^3.5.38), and `@vitejs/plugin-vue` (^6.0.7) dependencies; new `npm run build` and `npm run dev:vite` scripts in `package.json`
 - [Added]: [2026-06-11] Production/dev frontend serving — `server.js` now detects built frontend in `dist/` and serves production assets; falls back to `public/` for dev mode when no build exists

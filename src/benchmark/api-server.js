@@ -1,0 +1,1066 @@
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import fs from "fs";
+import { spawn, execSync } from "child_process";
+import { join, dirname, basename } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
+const PORT = parseInt(process.env.API_PORT, 10) || 3456;
+const API_HOST = process.env.API_HOST || '0.0.0.0';
+const BENCHMARK_DIR = __dirname;
+const FRONTEND_DIR = join(BENCHMARK_DIR, "frontend", "dist");
+const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
+const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
+const REPORTS_DIR = join(BENCHMARK_DIR, "reports");
+const PROFILES_DIR = join(BENCHMARK_DIR, "profiles");
+
+// Allowed CORS origins (comma-separated or * for all)
+const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
+
+// Ensure reports and profiles directories exist
+if (!fs.existsSync(REPORTS_DIR)) {
+  fs.mkdirSync(REPORTS_DIR, { recursive: true });
+}
+if (!fs.existsSync(PROFILES_DIR)) {
+  fs.mkdirSync(PROFILES_DIR, { recursive: true });
+}
+
+// Default config template
+const DEFAULT_CONFIGS = {
+  export_configs: {
+    GGML_CUDA_ENABLE_UNIFIED_MEMORY: "1",
+    CUDA_SCALE_LAUNCH_QUEUES: "4x",
+    LLAMA_CACHE: "",
+    GGML_CUDA_P2P: "on",
+    LLAMA_ARG_FIT: "on",
+    LLAMA_ARG_FIT_TARGET: "256",
+    LLAMA_ARG_FIT_CTX: "131072",
+  },
+  max_sys_mem: 93,
+  llama_port: 11434,
+  llama_host: "localhost",
+  model: "",
+  model_directory: "",
+  llama_cache: "",
+  gpu_selection: {
+    enabled: true,
+    gpus: [0],
+  },
+  split_params: {
+    layer_split: {
+      enabled: false,
+      value: "layer",
+    },
+    tensor_split: {
+      enabled: false,
+      value: "16,12,12",
+    },
+    primary_gpu: {
+      enabled: false,
+      value: 0,
+    },
+  },
+  spec_params: {
+    spec_type: {
+      enabled: false,
+      value: "draft-mtp",
+    },
+    spec_draft_n_max: {
+      enabled: false,
+      value: 3,
+    },
+  },
+  build_cores: 1,
+  skip_build: false,
+  build_make_params: {
+    enable_ccache: true,
+    enable_lto: true,
+    enable_cuda: true,
+    enable_cuda_fa: true,
+    enable_cuda_graphs: true,
+    enable_cuda_nccl: true,
+    enable_cuda_per_max_batch_size: true,
+    peer_batch_size: "512",
+    enable_cuda_peer_copy: true,
+    enable_cuda_custom_arch: true,
+    enable_cuda_fa_all_quants: true,
+    cuda_all_quants: true,
+    enable_cuda_fp16: true,
+    cuda_fp16: true,
+    enable_cuda_scheduled_max_copies: true,
+    cuda_max_scheduled_copies: 14,
+    enable_cuda_compression_level: false,
+    cuda_compression_level: 0,
+  },
+  cuda_configs: {
+    cuda_version: "12.6",
+    cudacxx: "/usr/local/cuda/bin/nvcc",
+  },
+  model_configs: {
+    temp: 0.6,
+    top_p: 0.95,
+    min_p: 0,
+    top_k: 20,
+  },
+  server_params: {
+    cont_batching: true,
+    flash_attn: {
+      enabled: true,
+      value: 1,
+    },
+    reasoning: {
+      enabled: true,
+      value: 1,
+    },
+    profiling: true,
+    presence_penalty: {
+      enabled: true,
+      value: 0,
+    },
+    reasoning_budget: {
+      enabled: true,
+      value: 2048,
+    },
+    reasoning_budget_message: {
+      enabled: true,
+      value: "Proceed to final answer.",
+    },
+    rope_scaling: {
+      enabled: true,
+      value: "yarn",
+    },
+    jinja: false,
+    parallel: {
+      enabled: true,
+      value: 1,
+    },
+    n_predict: {
+      enabled: false,
+      value: 512,
+    },
+    n_keep: {
+      enabled: false,
+      value: 0,
+    },
+    stream: {
+      enabled: true,
+      value: false,
+    },
+    cache_prompt: {
+      enabled: true,
+      value: true,
+    },
+    gpu_layers: {
+      enabled: true,
+      value: 999,
+    },
+  },
+  benchmark_messages: [
+    "Develop a design doc for a self-hosted tetris clone web-based game..",
+    "Audit the design doc.",
+    "Recommend optimizations.",
+    "Create a social-media marketing campaign for it.",
+  ],
+  test_params: {
+    context_length: 32768,
+    context_length_multiplier: 2,
+    context_length_max: 262144,
+    gpu_layer_offload: 999,
+    gpu_layer_offload_step: 0,
+    gpu_layer_off_max: 999,
+    batch_size: 128,
+    batch_size_step: 128,
+    batch_size_max: 16384,
+    u_batch_size: 64,
+    u_batch_size_step: 64,
+    u_batch_size_max: 4096,
+    cache_ram: 4096,
+    cache_ram_step: 1024,
+    cache_ram_max: 4096,
+  },
+};
+
+// Create default configs.json if it doesn't exist
+if (!fs.existsSync(CONFIGS_FILE)) {
+  fs.writeFileSync(CONFIGS_FILE, JSON.stringify(DEFAULT_CONFIGS, null, 2));
+  console.log(`Created default config file: ${CONFIGS_FILE}`);
+}
+
+// In-memory state
+let benchmarkProcess = null;
+let benchmarkStatus = "idle"; // idle | building | testing | error | stopped
+let currentTestRun = 0;
+let liveResults = [];
+let streamingClients = new Set();
+let currentReportName = null;
+let buildProcess = null;
+let buildStatus = "idle"; // idle | building | success | error
+
+// CORS configuration
+app.use(cors({
+  origin: CORS_ORIGIN === '*' ? '*' : CORS_ORIGIN.split(',').map(o => o.trim()),
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Type'],
+  credentials: true,
+}));
+
+app.use(express.json({ limit: "10mb" }));
+app.use(express.static(FRONTEND_DIR));
+
+//--- Config endpoints ---
+app.get("/api/configs", (_req, res) => {
+  try {
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    res.json({ success: true, data: configs });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.put("/api/configs", (_req, res) => {
+  try {
+    const configs = _req.body;
+    fs.writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
+    res.json({ success: true, message: "Config saved" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Profile endpoints ---
+app.get("/api/profiles", (_req, res) => {
+  try {
+    const files = fs.readdirSync(PROFILES_DIR).filter((f) => f.endsWith(".json"));
+    const profiles = files.map((file) => {
+      const stats = fs.statSync(join(PROFILES_DIR, file));
+      const name = file.replace(/\.json$/, "");
+      return {
+        name,
+        filename: file,
+        created: stats.birthtime,
+        modified: stats.mtime,
+      };
+    }).sort((a, b) => b.modified - a.modified);
+    res.json({ success: true, data: profiles });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get("/api/profile/:name", (req, res) => {
+  try {
+    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Profile not found" });
+    }
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    res.json({ success: true, data });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/profile", (req, res) => {
+  try {
+    const { name, data } = req.body;
+    if (!name || !data) {
+      return res.status(400).json({ success: false, error: "name and data required" });
+    }
+
+    // Sanitize name
+    const safeName = name.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filePath = join(PROFILES_DIR, `${safeName}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    res.json({ success: true, message: "Profile saved" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.delete("/api/profile/:name", (req, res) => {
+  try {
+    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Profile not found" });
+    }
+    fs.unlinkSync(filePath);
+    res.json({ success: true, message: "Profile deleted" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/profile/:name/load", (req, res) => {
+  try {
+    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Profile not found" });
+    }
+    const profile = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    // Write the profile's config to configs.json
+    fs.writeFileSync(CONFIGS_FILE, JSON.stringify(profile, null, 2));
+    res.json({ success: true, message: `Profile "${req.params.name}" loaded`, data: profile });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Status endpoint ---
+app.get("/api/status", (_req, res) => {
+  res.json({
+    success: true,
+    status: benchmarkStatus,
+    testRun: currentTestRun,
+    liveResults: liveResults,
+    processAlive: benchmarkProcess ? !benchmarkProcess.killed : false,
+    buildStatus,
+  });
+});
+
+//--- SSE stream endpoint ---
+app.get("/api/stream", (req, res) => {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("Retry-After", "3");
+  res.flushHeaders();
+
+  const client = { res };
+  streamingClients.add(client);
+
+  // Send initial status
+  sendToClient(client, "status", {
+    status: benchmarkStatus,
+    testRun: currentTestRun,
+    liveResults: liveResults,
+  });
+
+  // Send heartbeat
+  const heartbeat = setInterval(() => {
+    sendToClient(client, "heartbeat", { ts: Date.now() });
+  }, 15000);
+
+  req.on("close", () => {
+    streamingClients.delete(client);
+    clearInterval(heartbeat);
+  });
+});
+
+function sendToClient(client, event, data) {
+  if (!streamingClients.has(client)) return;
+  try {
+    client.res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+  } catch {}
+}
+
+function broadcast(event, data) {
+  for (const client of streamingClients) {
+    sendToClient(client, event, data);
+  }
+}
+
+//--- Run benchmark endpoint ---
+app.post("/api/run", (req, res) => {
+  if (benchmarkStatus !== "idle") {
+    return res.status(409).json({
+      success: false,
+      error: `Benchmark is already ${benchmarkStatus}`,
+    });
+  }
+
+  try {
+    // Read current configs
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const skipBuild = req.body.skipBuild ?? configs.skip_build;
+
+    benchmarkStatus = "building";
+    currentTestRun = 0;
+    liveResults = [];
+
+    // Wipe results file
+    fs.writeFileSync(RESULTS_FILE, "");
+
+    // Start the benchmark process
+    benchmarkProcess = spawn("node", ["index.js"], {
+      cwd: BENCHMARK_DIR,
+      env: {
+        ...process.env,
+        ...req.body.env,
+      },
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+
+    let stdoutBuffer = "";
+    let stderrBuffer = "";
+
+    benchmarkProcess.stdout.on("data", (data) => {
+      const text = data.toString();
+      stdoutBuffer += text;
+      broadcast("log", {
+        type: "stdout",
+        text,
+        status: benchmarkStatus,
+        testRun: currentTestRun,
+        liveResults: liveResults,
+      });
+      parseLogOutput(text);
+    });
+
+    benchmarkProcess.stderr.on("data", (data) => {
+      const text = data.toString();
+      stderrBuffer += text;
+      broadcast("log", {
+        type: "stderr",
+        text,
+        status: benchmarkStatus,
+        testRun: currentTestRun,
+        liveResults: liveResults,
+      });
+      parseLogOutput(text);
+    });
+
+    benchmarkProcess.on("close", (code) => {
+      benchmarkProcess = null;
+      if (code === 0) {
+        benchmarkStatus = "idle";
+        broadcast("status", {
+          status: "idle",
+          testRun: currentTestRun,
+          liveResults: liveResults,
+          finished: true,
+        });
+      } else {
+        benchmarkStatus = "error";
+        broadcast("status", {
+          status: "error",
+          error: `Process exited with code ${code}`,
+          testRun: currentTestRun,
+          liveResults: liveResults,
+          finished: true,
+        });
+      }
+    });
+
+    benchmarkProcess.on("error", (err) => {
+      benchmarkProcess = null;
+      benchmarkStatus = "error";
+      broadcast("status", {
+        status: "error",
+        error: err.message,
+        testRun: currentTestRun,
+        liveResults: liveResults,
+        finished: true,
+      });
+    });
+
+    res.json({ success: true, message: "Benchmark started" });
+  } catch (err) {
+    benchmarkStatus = "idle";
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Parse log output for live results ---
+function parseLogOutput(text) {
+  // Parse "========== Test Run #N =========="
+  const runMatch = text.match(/Test Run #(\d+)/);
+  if (runMatch) {
+    currentTestRun = parseInt(runMatch[1], 10);
+    broadcast("status", {
+      status: "testing",
+      testRun: currentTestRun,
+      liveResults: liveResults,
+    });
+  }
+
+  // Parse "Avg gen tokens/sec:    XXX"
+  const genMatch = text.match(/Avg gen tokens\/sec:\s+([\d.]+)/);
+  const promptMatch = text.match(/Avg prompt tokens\/sec:\s+([\d.]+)/);
+  const totalGenMatch = text.match(/Total tokens:\s+([\d.]+)\s*\(gen\)/);
+  const totalPromptMatch = text.match(/Total tokens:\s+[\d.]+\s*\(gen\) \/ ([\d.]+)/);
+  const totalTimeMatch = text.match(/Total time \(all msgs\):\s+([\d.]+)\s*ms/);
+  const memMatch = text.match(/Avg Mem Used \(GB\):\s+([\d.]+) \/ ([\d.]+)/);
+
+  if (genMatch && promptMatch) {
+    const runId = currentTestRun;
+    const existingIdx = liveResults.findIndex((r) => r.testRunId === runId);
+
+    const result = {
+      testRunId: runId,
+      avgGenTokensPerSec: parseFloat(genMatch[1]),
+      avgPromptTokensPerSec: parseFloat(promptMatch[1]),
+      totalGenTokens: totalGenMatch ? parseFloat(totalGenMatch[1]) : null,
+      totalPromptTokens: totalPromptMatch ? parseFloat(totalPromptMatch[1]) : null,
+      totalTimeMs: totalTimeMatch ? parseFloat(totalTimeMatch[1]) : null,
+      avgMemUsed: memMatch ? parseFloat(memMatch[1]) : null,
+      avgMemTotal: memMatch ? parseFloat(memMatch[2]) : null,
+    };
+
+    if (existingIdx >= 0) {
+      liveResults[existingIdx] = result;
+    } else {
+      liveResults.push(result);
+    }
+
+    broadcast("results", { liveResults });
+
+    // Save/update report after each test run completes
+    saveReport();
+  }
+}
+
+//--- Stop benchmark endpoint ---
+app.post("/api/stop", (_req, res) => {
+  if (!benchmarkProcess) {
+    return res.json({ success: true, message: "No benchmark running" });
+  }
+
+  try {
+    benchmarkProcess.kill("SIGTERM");
+    setTimeout(() => {
+      if (benchmarkProcess && !benchmarkProcess.killed) {
+        benchmarkProcess.kill("SIGKILL");
+      }
+    }, 5000);
+    benchmarkStatus = "stopped";
+    res.json({ success: true, message: "Benchmark stopping..." });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Reports endpoints ---
+app.get("/api/reports", (_req, res) => {
+  try {
+    const files = fs.readdirSync(REPORTS_DIR).filter((f) => f.endsWith(".json"));
+    const reports = files.map((file) => {
+      const stats = fs.statSync(join(REPORTS_DIR, file));
+      const name = file.replace(/\.json$/, "");
+      return {
+        name,
+        filename: file,
+        created: stats.birthtime,
+        modified: stats.mtime,
+      };
+    }).sort((a, b) => b.modified - a.modified);
+    res.json({ success: true, data: reports });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get("/api/report/:name", (req, res) => {
+  try {
+    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Report not found" });
+    }
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    res.json({ success: true, data });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/report", (req, res) => {
+  try {
+    const { name, data } = req.body;
+    if (!name || !data) {
+      return res.status(400).json({ success: false, error: "name and data required" });
+    }
+
+    // Sanitize name
+    const safeName = name.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filePath = join(REPORTS_DIR, `${safeName}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    res.json({ success: true, message: "Report saved" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.delete("/api/report/:name", (req, res) => {
+  try {
+    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Report not found" });
+    }
+    fs.unlinkSync(filePath);
+    res.json({ success: true, message: "Report deleted" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Auto-save report after each test run completes ---
+function saveReport() {
+  if (!currentReportName) {
+    // Generate report name on first save
+    try {
+      const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+      const modelBasename = configs.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
+      const today = new Date().toISOString().slice(0, 10);
+      currentReportName = `${today}-${modelBasename}`;
+    } catch {
+      currentReportName = `benchmark-${Date.now()}`;
+    }
+  }
+
+  try {
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const mdContent = fs.existsSync(RESULTS_FILE) ? fs.readFileSync(RESULTS_FILE, "utf8") : "";
+    const configsPerRun = extractConfigsPerRun(liveResults, configs);
+
+    const report = {
+      name: currentReportName,
+      savedAt: new Date().toISOString(),
+      mdContent,
+      liveResults: liveResults,
+      configsPerRun: configsPerRun,
+      configs: configs,
+    };
+
+    const filePath = join(REPORTS_DIR, `${currentReportName}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
+    console.log(`Report saved: ${filePath}`);
+  } catch (err) {
+    console.error(`Failed to save report: ${err.message}`);
+  }
+}
+
+//--- Helper: extract detailed test run configs from liveResults ---
+function extractConfigsPerRun(liveResults, configs) {
+  if (!liveResults || !configs) return [];
+  return liveResults.map((r) => {
+    const tp = configs.test_params || {};
+    const mc = configs.model_configs || {};
+    const sp = configs.server_params || {};
+    const sps = configs.split_params || {};
+    const gs = configs.gpu_selection || { enabled: false, gpus: [0] };
+
+    // Calculate config values based on test run progression
+    const contextLength = Math.min(
+      tp.context_length * Math.pow(tp.context_length_multiplier || 2, r.testRunId - 1),
+      tp.context_length_max || 262144,
+    );
+    const gpuLayerOffload = Math.min(
+      tp.gpu_layer_offload + (tp.gpu_layer_offload_step || 0) * (r.testRunId - 1),
+      tp.gpu_layer_off_max || 999,
+    );
+    const batchSize = Math.min(
+      tp.batch_size + (tp.batch_size_step || 128) * (r.testRunId - 1),
+      tp.batch_size_max || 16384,
+    );
+    const uBatchSize = Math.min(
+      tp.u_batch_size + (tp.u_batch_size_step || 64) * (r.testRunId - 1),
+      tp.u_batch_size_max || 4096,
+    );
+    const cacheRam = Math.min(
+      tp.cache_ram + (tp.cache_ram_step || 1024) * (r.testRunId - 1),
+      tp.cache_ram_max || 4096,
+    );
+
+    const tensorSplitValue = gs.enabled && gs.gpus && gs.gpus.length > 1
+      ? Array(gs.gpus.length).fill(Math.round(100 / gs.gpus.length)).join(",")
+      : "0";
+
+    return {
+      testRunId: r.testRunId,
+      testParameters: {
+        contextLength,
+        batchSize,
+        uBatchSize,
+        cacheRam,
+        gpuLayerOffload,
+      },
+      modelParameters: {
+        temperature: mc.temp,
+        topP: mc.top_p,
+        minP: mc.min_p,
+        topK: mc.top_k,
+      },
+      serverParameters: {
+        model: `${configs.model_directory || ""}/${configs.model || ""}`,
+        host: configs.llama_host || "localhost",
+        port: configs.llama_port || 11434,
+        flashAttn: sp.flash_attn?.enabled ? sp.flash_attn.value : null,
+        reasoning: sp.reasoning?.enabled ? sp.reasoning.value : null,
+        ropeScaling: sp.rope_scaling?.enabled ? sp.rope_scaling.value : null,
+        parallel: sp.parallel?.enabled ? sp.parallel.value : null,
+        contBatching: sp.cont_batching ? true : null,
+        gpuLayers: sp.gpu_layers?.enabled ? sp.gpu_layers.value : null,
+      },
+      splitParameters: {
+        layerSplit: sps.layer_split?.enabled ? sps.layer_split.value : null,
+        tensorSplit: sps.tensor_split?.enabled ? tensorSplitValue : null,
+        primaryGpu: sps.primary_gpu?.enabled ? (gs.enabled ? gs.gpus[0] : sps.primary_gpu.value) : null,
+        gpuSelection: gs.enabled ? gs.gpus : [0],
+      },
+      environment: {
+        GGML_CUDA_ENABLE_UNIFIED_MEMORY: configs.export_configs?.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
+        CUDA_SCALE_LAUNCH_QUEUES: configs.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
+        LLAMA_CACHE: configs.export_configs?.LLAMA_CACHE || configs.llama_cache || "",
+        GGML_CUDA_P2P: configs.export_configs?.GGML_CUDA_P2P || "on",
+        LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT || "on",
+        LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET || "256",
+        LLAMA_ARG_FIT_CTX: configs.export_configs?.LLAMA_ARG_FIT_CTX || "131072",
+        CUDACXX: configs.cuda_configs?.cudacxx || "",
+      },
+      cmakeFlags: {
+        GGML_CUDA: configs.build_make_params?.enable_cuda ? "1" : "",
+        GGML_CUDA_GRAPHS: configs.build_make_params?.enable_cuda_graphs ? "1" : "",
+        GGML_CUDA_FA: configs.build_make_params?.enable_cuda_fa ? "1" : "",
+        GGML_CUDA_FP16: configs.build_make_params?.enable_cuda_fp16 ? "true" : "",
+        GGML_CUDA_PEER_MAX_BATCH_SIZE: configs.build_make_params?.enable_cuda_per_max_batch_size ? configs.build_make_params.peer_batch_size : "",
+        GGML_SCHED_MAX_COPIES: configs.build_make_params?.enable_cuda_scheduled_max_copies ? configs.build_make_params.cuda_max_scheduled_copies : "",
+        GGML_CUDA_COMPRESSION_LEVEL: configs.build_make_params?.enable_cuda_compression_level ? configs.build_make_params.cuda_compression_level : "",
+        GGML_LTO: configs.build_make_params?.enable_lto ? "1" : "",
+        GGML_CCACHE: configs.build_make_params?.enable_ccache ? "1" : "",
+      },
+    };
+  });
+}
+
+//--- Save current results as report ---
+app.post("/api/save-report", (req, res) => {
+  try {
+    const { name } = req.body;
+
+    // Read configs first to get the model name
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const modelBasename = configs.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
+    const today = new Date().toISOString().slice(0, 10);
+    const defaultName = `${today}-${modelBasename}`;
+
+    const safeName = name || defaultName;
+
+    // Read the current results.md
+    const mdContent = fs.existsSync(RESULTS_FILE) ? fs.readFileSync(RESULTS_FILE, "utf8") : "";
+
+    // Extract detailed configs per test run
+    const configsPerRun = extractConfigsPerRun(liveResults, configs);
+
+    const report = {
+      name: safeName,
+      savedAt: new Date().toISOString(),
+      mdContent,
+      liveResults: liveResults,
+      configsPerRun: configsPerRun,
+      configs: configs,
+    };
+
+    const filePath = join(REPORTS_DIR, `${safeName}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
+    res.json({ success: true, message: `Report saved as ${safeName}` });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Get detailed configs for a specific test run in a report ---
+app.get("/api/report/:name/configs/:testRunId", (req, res) => {
+  try {
+    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Report not found" });
+    }
+    const report = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const configsPerRun = report.configsPerRun || [];
+    const config = configsPerRun.find((c) => c.testRunId === parseInt(req.params.testRunId, 10));
+    if (!config) {
+      return res.status(404).json({ success: false, error: "Test run config not found" });
+    }
+    res.json({ success: true, data: config });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Get current results.md ---
+app.get("/api/results", (_req, res) => {
+  try {
+    const content = fs.existsSync(RESULTS_FILE) ? fs.readFileSync(RESULTS_FILE, "utf8") : "";
+    res.json({ success: true, data: content });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- List models in a directory ---
+app.get("/api/models", (_req, res) => {
+  try {
+    const dir = _req.query.directory;
+    if (!dir) {
+      return res.status(400).json({ success: false, error: "directory query param required" });
+    }
+    if (!fs.existsSync(dir)) {
+      return res.json({ success: true, data: [] });
+    }
+    const files = fs.readdirSync(dir)
+      .filter(f => f.endsWith('.gguf') || f.endsWith('.bin') || f.endsWith('.safetensors'))
+      .sort();
+    res.json({ success: true, data: files });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Kill processes on llama_port ---
+app.post("/api/kill-port", (req, res) => {
+  try {
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const port = configs.llama_port || 11434;
+
+    // Find PIDs using the port
+    const pids = execSync(`lsof -ti :${port}`, { encoding: "utf8" })
+      .trim()
+      .split("\n")
+      .filter(Boolean);
+
+    if (pids.length === 0) {
+      return res.json({ success: true, message: `No processes found on port ${port}` });
+    }
+
+    // Kill each PID
+    const killed = [];
+    for (const pid of pids) {
+      try {
+        execSync(`kill -9 ${pid}`);
+        killed.push(pid);
+      } catch (err) {
+        console.error(`Failed to kill PID ${pid}: ${err.message}`);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `Killed ${killed.length} process(es) on port ${port}`,
+      killed,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Health check ---
+app.get("/api/health", (_req, res) => {
+  res.json({ status: "ok", uptime: process.uptime() });
+});
+
+//--- Build llama.cpp endpoint ---
+app.post("/api/build", async (req, res) => {
+  if (buildStatus !== "idle") {
+    return res.status(409).json({
+      success: false,
+      error: `Build is already ${buildStatus}`,
+    });
+  }
+
+  try {
+    buildStatus = "building";
+
+    // Set up SSE response
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    // Read configs to get build cores
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const buildCores = configs.build_cores || 1;
+
+    const buildProcess = spawn("node", ["index.js", "--build-only"], {
+      cwd: BENCHMARK_DIR,
+      env: {
+        ...process.env,
+        GGML_CUDA_ENABLE_UNIFIED_MEMORY: configs.export_configs?.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
+        CUDA_SCALE_LAUNCH_QUEUES: configs.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
+        LLAMA_CACHE: configs.export_configs?.LLAMA_CACHE || configs.llama_cache || "",
+        GGML_CUDA_P2P: configs.export_configs?.GGML_CUDA_P2P || "on",
+        LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT || "on",
+        LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET || "256",
+        LLAMA_ARG_FIT_CTX: configs.export_configs?.LLAMA_ARG_FIT_CTX || "131072",
+        CUDACXX: configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc",
+        PATH: `/usr/local/cuda-${configs.cuda_configs?.cuda_version || "12.6"}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
+      },
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+
+    let stdoutBuffer = "";
+    let stderrBuffer = "";
+
+    let progressInterval = setInterval(() => {
+      progressInterval++;
+      const pct = Math.min(90, 10 + Math.floor(progressInterval / 2));
+      res.write(`event: build-log\ndata: PROGRESS:${pct}\n\n`);
+    }, 3000);
+
+    buildProcess.stdout.on("data", (data) => {
+      const text = data.toString();
+      stdoutBuffer += text;
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: build-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    buildProcess.stderr.on("data", (data) => {
+      const text = data.toString();
+      stderrBuffer += text;
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: build-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    const buildResult = await new Promise((resolve, reject) => {
+      buildProcess.on("close", (code) => {
+        clearInterval(progressInterval);
+        if (code === 0) {
+          resolve({ success: true });
+        } else {
+          reject(new Error(`Build failed with exit code ${code}`));
+        }
+      });
+
+      buildProcess.on("error", (err) => {
+        clearInterval(progressInterval);
+        reject(err);
+      });
+    });
+
+    // Send final progress and completion
+    res.write(`event: build-log\ndata: PROGRESS:100\n\n`);
+    res.write(`event: build-log\ndata: STATUS:Build complete!\n\n`);
+    res.end();
+
+    buildStatus = "success";
+  } catch (err) {
+    res.write(`event: build-log\ndata: STATUS:Build failed\n\n`);
+    res.write(`event: build-log\ndata: ERROR: ${err.message}\n\n`);
+    res.end();
+    buildStatus = "error";
+  } finally {
+    // Reset after a delay so the UI can show the result
+    setTimeout(() => {
+      buildStatus = "idle";
+    }, 10000);
+  }
+});
+
+//--- Clone repository endpoint ---
+app.post("/api/clone", async (req, res) => {
+  try {
+    const { url, branch, dir } = req.body;
+
+    if (!url) {
+      return res.status(400).json({ success: false, error: "Repository URL is required" });
+    }
+
+    if (!dir) {
+      return res.status(400).json({ success: false, error: "Target directory is required" });
+    }
+
+    // Check if directory already exists
+    const targetPath = join(BENCHMARK_DIR, dir);
+    if (fs.existsSync(targetPath)) {
+      // Check if it's a git repo
+      const gitDir = join(targetPath, ".git");
+      if (fs.existsSync(gitDir)) {
+        return res.status(409).json({ success: false, error: `Directory "${dir}" already exists and appears to be a git repository` });
+      }
+      return res.status(409).json({ success: false, error: `Directory "${dir}" already exists` });
+    }
+
+    // Set up SSE response
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    // Build git clone command
+    const cloneArgs = ["clone", url, dir];
+    if (branch) {
+      cloneArgs.splice(1, 0, "-b", branch);
+    }
+    // Use depth=1 for faster cloning (shallow clone)
+    cloneArgs.splice(1, 0, "--depth", "1");
+
+    const gitProcess = spawn("git", cloneArgs, {
+      cwd: BENCHMARK_DIR,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+
+    let stdoutBuffer = "";
+    let stderrBuffer = "";
+
+    // Send progress updates
+    let progressInterval = setInterval(() => {
+      progressInterval++;
+      const pct = Math.min(80, 10 + Math.floor(progressInterval / 2));
+      res.write(`event: clone-log\ndata: PROGRESS:${pct}\n\n`);
+    }, 3000);
+
+    gitProcess.stdout.on("data", (data) => {
+      const text = data.toString();
+      stdoutBuffer += text;
+      // Stream each line
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: clone-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    gitProcess.stderr.on("data", (data) => {
+      const text = data.toString();
+      stderrBuffer += text;
+      text.split("\n").filter(Boolean).forEach(line => {
+        res.write(`event: clone-log\ndata: ${line}\n\n`);
+      });
+    });
+
+    const cloneResult = await new Promise((resolve, reject) => {
+      gitProcess.on("close", (code) => {
+        clearInterval(progressInterval);
+        if (code === 0) {
+          resolve({ success: true });
+        } else {
+          reject(new Error(`Git clone failed with exit code ${code}`));
+        }
+      });
+
+      gitProcess.on("error", (err) => {
+        clearInterval(progressInterval);
+        reject(err);
+      });
+    });
+
+    // Send final progress and completion
+    res.write(`event: clone-log\ndata: PROGRESS:100\n\n`);
+    res.write(`event: clone-log\ndata: STATUS:Clone complete!\n\n`);
+    res.end();
+
+  } catch (err) {
+    res.write(`event: clone-log\ndata: STATUS:Clone failed\n\n`);
+    res.write(`event: clone-log\ndata: ERROR: ${err.message}\n\n`);
+    res.end();
+  }
+});
+
+// SPA fallback: serve index.html for non-API routes
+app.get('*', (_req, res) => {
+  res.sendFile(join(FRONTEND_DIR, 'index.html'));
+});
+
+app.listen(PORT, API_HOST, () => {
+  console.log(`Benchmark API server running at http://${API_HOST === '0.0.0.0' ? 'localhost' : API_HOST}:${PORT}`);
+  console.log(`Frontend served from: ${FRONTEND_DIR}`);
+  console.log(`Config file: ${CONFIGS_FILE}`);
+  console.log(`Reports directory: ${REPORTS_DIR}`);
+  if (API_HOST === '0.0.0.0') {
+    console.log(`Accessible from remote machines on port ${PORT}`);
+  }
+});

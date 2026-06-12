@@ -1,0 +1,504 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { useBenchmarkStore } from '@/stores/benchmark'
+
+const API_BASE = import.meta.env.VITE_API_URL || ''
+const store = useBenchmarkStore()
+const selectedReport = ref(null)
+const loadingReport = ref(false)
+const deletingReport = ref(null)
+const showMdView = ref(false)
+
+// Modal state
+const showConfigModal = ref(false)
+const selectedTestRunId = ref(null)
+const loadingConfig = ref(false)
+const testRunConfig = ref(null)
+
+onMounted(async () => {
+  await store.fetchReports()
+})
+
+async function loadReport(name) {
+  loadingReport.value = true
+  selectedReport.value = null
+  showMdView.value = false
+  await store.fetchReport(name)
+  selectedReport.value = store.currentReport
+  loadingReport.value = false
+}
+
+async function deleteReport(name) {
+  if (!confirm(`Delete report "${name}"?`)) return
+  deletingReport.value = name
+  await store.deleteReport(name)
+  if (selectedReport.value?.name === name) {
+    selectedReport.value = null
+  }
+  deletingReport.value = null
+}
+
+async function openConfigModal(reportName, testRunId) {
+  selectedTestRunId.value = testRunId
+  showConfigModal.value = true
+  loadingConfig.value = true
+  testRunConfig.value = null
+  try {
+    const res = await axios.get(`${API_BASE}/api/report/${reportName}/configs/${testRunId}`)
+    if (res.data.success) {
+      testRunConfig.value = res.data.data
+    }
+  } catch (e) {
+    console.error('Failed to load test run config:', e)
+  }
+  loadingConfig.value = false
+}
+
+function closeConfigModal() {
+  showConfigModal.value = false
+  testRunConfig.value = null
+  selectedTestRunId.value = null
+}
+
+// Close modal on Escape key
+function handleKeydown(e) {
+  if (e.key === 'Escape') closeConfigModal()
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '—'
+  const d = new Date(dateStr)
+  return d.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
+
+function formatNumber(n) {
+  if (n === null || n === undefined) return '—'
+  return n.toLocaleString()
+}
+
+function formatTime(ms) {
+  if (!ms) return '—'
+  if (ms < 1000) return `${ms.toFixed(0)}ms`
+  return `${(ms / 1000).toFixed(1)}s`
+}
+
+function formatValue(v) {
+  if (v === null || v === undefined || v === '') return '—'
+  return String(v)
+}
+
+function formatBool(v) {
+  if (v === true) return '✓'
+  if (v === false) return '✗'
+  return formatValue(v)
+}
+
+function formatList(arr) {
+  if (!arr || !Array.isArray(arr) || arr.length === 0) return '—'
+  return arr.join(', ')
+}
+</script>
+
+<template>
+  <div class="space-y-6">
+    <!-- Reports List -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- List -->
+      <div class="card lg:col-span-1">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">
+            Reports
+            <span class="badge bg-bg-tertiary text-text-muted ml-2">{{ store.reports.length }}</span>
+          </h2>
+        </div>
+        <div class="space-y-1">
+          <div
+            v-for="report in store.reports"
+            :key="report.name"
+            @click="loadReport(report.name)"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-all"
+            :class="
+              selectedReport?.name === report.name
+                ? 'bg-accent-subtle'
+                : 'hover:bg-bg-tertiary'
+            "
+          >
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-medium truncate">{{ report.name }}</div>
+              <div class="text-xs text-text-muted">{{ formatDate(report.modified) }}</div>
+            </div>
+            <button
+              @click.stop="deleteReport(report.name)"
+              class="p-1 rounded-md text-text-muted hover:text-error hover:bg-error-subtle transition-all"
+              :disabled="deletingReport === report.name"
+            >
+              <svg v-if="deletingReport !== report.name" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              <svg v-else class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            </button>
+          </div>
+          <div v-if="store.reports.length === 0" class="py-8 text-center text-text-muted text-sm">
+            No reports yet.
+          </div>
+        </div>
+      </div>
+
+      <!-- Detail -->
+      <div class="lg:col-span-2">
+        <div v-if="loadingReport" class="card flex items-center justify-center h-64">
+          <svg class="w-6 h-6 animate-spin text-accent" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+        </div>
+
+        <div v-else-if="selectedReport" class="space-y-6">
+          <!-- Header -->
+          <div class="card">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h2 class="text-lg font-semibold">{{ selectedReport.name }}</h2>
+                <p class="text-xs text-text-muted mt-1">
+                  Saved {{ formatDate(selectedReport.savedAt) }}
+                </p>
+              </div>
+              <button
+                @click="showMdView = !showMdView"
+                class="btn btn-ghost btn-sm"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                {{ showMdView ? 'Results Table' : 'Raw Results' }}
+              </button>
+            </div>
+
+            <!-- Summary metrics -->
+            <div v-if="selectedReport.liveResults && selectedReport.liveResults.length > 0" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div>
+                <div class="stat-label">Total Runs</div>
+                <div class="stat-value text-accent">{{ selectedReport.liveResults.length }}</div>
+              </div>
+              <div>
+                <div class="stat-label">Avg Gen Tok/s</div>
+                <div class="stat-value text-info">
+                  {{ (selectedReport.liveResults.reduce((s, r) => s + (r.avgGenTokensPerSec || 0), 0) / selectedReport.liveResults.length).toFixed(2) }}
+                </div>
+              </div>
+              <div>
+                <div class="stat-label">Avg Prompt Tok/s</div>
+                <div class="stat-value text-info">
+                  {{ (selectedReport.liveResults.reduce((s, r) => s + (r.avgPromptTokensPerSec || 0), 0) / selectedReport.liveResults.length).toFixed(2) }}
+                </div>
+              </div>
+              <div>
+                <div class="stat-label">Best Gen Tok/s</div>
+                <div class="stat-value text-success">
+                  {{ Math.max(...selectedReport.liveResults.map(r => r.avgGenTokensPerSec || 0)).toFixed(2) }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Table -->
+          <div v-if="!showMdView && selectedReport.liveResults" class="card">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">Results Summary</h3>
+              <span class="text-xs text-text-muted">Click a row to view configs</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-border">
+                    <th class="text-left py-2 px-3 text-xs font-medium text-text-muted uppercase">#</th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Prompt/s</th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Gen/s</th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Time</th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Mem (GB)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(r, i) in selectedReport.liveResults"
+                    :key="r.testRunId"
+                    class="border-b border-border/50 last:border-0 cursor-pointer transition-colors"
+                    :class="[
+                      i % 2 === 0 ? '' : 'bg-bg-tertiary/30',
+                      'hover:bg-accent-subtle/50',
+                    ]"
+                    @click="openConfigModal(selectedReport.name, r.testRunId)"
+                  >
+                    <td class="py-2 px-3 font-mono text-xs">{{ r.testRunId }}</td>
+                    <td class="py-2 px-3 text-right font-mono text-xs">{{ r.avgPromptTokensPerSec?.toFixed(2) ?? '—' }}</td>
+                    <td class="py-2 px-3 text-right font-mono text-xs font-medium text-accent">{{ r.avgGenTokensPerSec?.toFixed(2) ?? '—' }}</td>
+                    <td class="py-2 px-3 text-right font-mono text-xs text-text-secondary">{{ formatTime(r.totalTimeMs) }}</td>
+                    <td class="py-2 px-3 text-right font-mono text-xs text-text-muted">{{ r.avgMemUsed != null ? `${r.avgMemUsed.toFixed(1)} / ${r.avgMemTotal?.toFixed(0) ?? '?'}` : '—' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Raw Markdown -->
+          <div v-if="showMdView && selectedReport.mdContent" class="card">
+            <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wider mb-4">Raw Results</h3>
+            <pre class="font-mono text-xs text-text-secondary whitespace-pre-wrap overflow-auto max-h-[600px]">{{ selectedReport.mdContent }}</pre>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div v-else class="card flex items-center justify-center h-64">
+          <div class="text-center">
+            <svg class="w-10 h-10 mx-auto mb-3 text-text-muted/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <p class="text-sm text-text-muted">Select a report to view details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Config Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showConfigModal" class="fixed inset-0 z-50 flex items-center justify-center" @keydown="handleKeydown">
+          <!-- Backdrop -->
+          <div
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            @click="closeConfigModal"
+          />
+
+          <!-- Modal -->
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-4xl max-h-[85vh] mx-4 flex flex-col">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
+              <div>
+                <h3 class="text-lg font-semibold text-text-primary">
+                  Test Run #{{ selectedTestRunId }} — Configuration
+                </h3>
+                <p class="text-xs text-text-muted mt-0.5">{{ selectedReport?.name }}</p>
+              </div>
+              <button
+                @click="closeConfigModal"
+                class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content -->
+            <div class="overflow-auto flex-1 p-6">
+              <div v-if="loadingConfig" class="flex items-center justify-center py-12">
+                <svg class="w-6 h-6 animate-spin text-accent" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              </div>
+
+              <div v-else-if="testRunConfig" class="space-y-6">
+                <!-- Test Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                    Test Parameters
+                  </h4>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Context Length</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.contextLength) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Batch Size</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.batchSize) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">U-Batch Size</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.uBatchSize) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Cache RAM (GB)</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.cacheRam) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">GPU Layers</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.testParameters?.gpuLayerOffload) }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Model Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    Model Parameters
+                  </h4>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Temperature</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.temperature) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Top P</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.topP) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Min P</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.minP) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Top K</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.modelParameters?.topK) }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Server Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                    </svg>
+                    Server Parameters
+                  </h4>
+                  <div class="bg-bg-tertiary rounded-lg p-4 space-y-2">
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Model</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.model) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Host</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.host) }}:{{ formatValue(testRunConfig.serverParameters?.port) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Flash Attention</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(testRunConfig.serverParameters?.flashAttn) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Reasoning</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(testRunConfig.serverParameters?.reasoning) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Rope Scaling</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.ropeScaling) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">GPU Layers</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.gpuLayers) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Parallel</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(testRunConfig.serverParameters?.parallel) }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-text-muted">Cont. Batching</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(testRunConfig.serverParameters?.contBatching) }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Split & GPU Parameters -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                    Split & GPU Parameters
+                  </h4>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">GPU Selection</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatList(testRunConfig.splitParameters?.gpuSelection) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Layer Split</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.splitParameters?.layerSplit) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Tensor Split</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.splitParameters?.tensorSplit) }}</div>
+                    </div>
+                    <div class="bg-bg-tertiary rounded-lg p-3">
+                      <div class="text-xs text-text-muted mb-1">Primary GPU</div>
+                      <div class="text-sm font-mono font-medium text-text-primary">{{ formatValue(testRunConfig.splitParameters?.primaryGpu) }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Environment Variables -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Environment Variables
+                  </h4>
+                  <div class="bg-bg-tertiary rounded-lg p-4 space-y-2">
+                    <div
+                      v-for="(val, key) in testRunConfig.environment"
+                      :key="key"
+                      class="flex justify-between"
+                    >
+                      <span class="text-xs text-text-muted font-mono">{{ key }}</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatValue(val) }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CMake Build Flags -->
+                <div>
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    CMake Build Flags
+                  </h4>
+                  <div class="bg-bg-tertiary rounded-lg p-4 space-y-2">
+                    <div
+                      v-for="(val, key) in testRunConfig.cmakeFlags"
+                      :key="key"
+                      class="flex justify-between"
+                    >
+                      <span class="text-xs text-text-muted font-mono">{{ key }}</span>
+                      <span class="text-xs font-mono text-text-primary">{{ formatBool(val) }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div v-else class="text-center py-12 text-text-muted">
+                <p class="text-sm">Failed to load configuration</p>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-end px-6 py-3 border-t border-border flex-shrink-0">
+              <button
+                @click="closeConfigModal"
+                class="btn btn-ghost btn-sm"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+  </div>
+</template>
