@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-11] Standalone benchmark Vue 3 frontend — removed `frontend/` directory (Vue 3 SPA with Pinia, Vue Router, Tailwind CSS) and `api-server.js` (Express API server with SSE streaming); benchmark is now accessed through the main Betty web interface
+- [Removed]: [2026-06-11] Benchmark package scripts — removed `package.json` and `package-lock.json` from `src/benchmark/` as the benchmark no longer has its own npm package
+
+### Changed
+
+- [Changed]: [2026-06-11] Benchmark README — updated to reflect integration into the main Betty web frontend; simplified quick start instructions; removed standalone server and remote access documentation
+
 ### Changed
 
 - [Changed]: [2026-06-09] Default the configuration editor to visual mode instead of JSON mode

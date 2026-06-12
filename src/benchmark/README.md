@@ -1,19 +1,20 @@
 # Betty Benchmark
 
-llama.cpp benchmark tool with a modern Vue 3 web frontend.
+llama.cpp benchmark tool — integrated into the Betty web frontend.
 
-## Quick Start
+## Running the Benchmark
+
+The benchmark is accessed through the Betty web interface. Start the server and navigate to the Benchmark tab.
 
 ```bash
-# Build frontend and start server (remote-accessible by default)
+# Start the Betty server (includes benchmark UI and API)
 npm start
 
-# Or just start the server (requires pre-built frontend)
+# Or in dev mode
 npm run dev
-
-# Frontend development mode (separate dev server with API proxy)
-npm run dev:frontend
 ```
+
+Then open `http://localhost:3000` and switch to the **Benchmark** tab.
 
 ## Build llama.cpp Only
 
@@ -29,78 +30,12 @@ The `--build-only` flag clones/pulls the llama.cpp repo and runs the full cmake 
 customized via `configs.json` (`build_make_params`, `cuda_configs`, etc.), then exits
 without running any benchmark tests. Useful for rebuilding after upstream changes.
 
-Server runs on port **3456** (configurable via `API_PORT`).
-
-## Remote Access
-
-The server binds to `0.0.0.0` by default, making it accessible from remote machines.
-
-### API Server (production)
-
-```bash
-# Default: accessible from any IP on port 3456
-API_PORT=3456 npm start
-
-# Custom port
-API_PORT=8080 npm start
-
-# Custom host
-API_HOST=192.168.1.100 npm start
-```
-
-Access from remote: `http://<server-ip>:3456`
-
-### Frontend Dev Server
-
-```bash
-# Bind to all interfaces (default)
-VITE_HOST=0.0.0.0 npm run dev:frontend
-
-# Point to remote API server
-VITE_API_URL=http://remote-host:3456 npm run dev:frontend
-```
-
-Access from remote: `http://<server-ip>:5173`
-
-## Environment Variables
-
-### API Server (`.env` or environment)
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `API_PORT` | `3456` | Port to listen on |
-| `API_HOST` | `0.0.0.0` | Host to bind to (`0.0.0.0` = all interfaces) |
-| `CORS_ORIGIN` | `*` | Allowed CORS origins (comma-separated or `*`) |
-
-### Frontend (`.env` or environment)
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `VITE_PORT` | `5173` | Vite dev server port |
-| `VITE_HOST` | `0.0.0.0` | Vite dev server host |
-| `VITE_API_URL` | `http://localhost:3456` | API server URL (for dev proxy or separate frontend) |
-
-## Architecture
-
-```
-┌─────────────┐     ┌──────────────────┐     ┌─────────────┐
-│  Remote     │     │  API Server      │     │  Benchmark  │
-│  Browser    │────▶│  (Express)       │────▶│  Process    │
-│             │     │                  │     │  (Node.js)  │
-│  Frontend   │     │  ┌────────────┐  │     │             │
-│  (SPA)      │     │  │ Static     │  │     │  llama.cpp  │
-│             │     │  │ Files      │  │     │  Server     │
-│  SSE Logs   │◀────│  └────────────┘  │     │             │
-│  & Results  │     │  ┌────────────┐  │     │             │
-│             │     │  │ REST API   │  │     │             │
-└─────────────┘     └──────────────────┘     └─────────────┘
-```
-
 ## API Endpoints
+
+The benchmark is served by the main Betty backend at `http://localhost:3000`:
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/api/health` | Health check |
 | `GET` | `/api/status` | Current benchmark status |
 | `GET` | `/api/stream` | SSE stream for live logs & results |
 | `POST` | `/api/run` | Start benchmark |
@@ -116,18 +51,19 @@ Access from remote: `http://<server-ip>:5173`
 ## Project Structure
 
 ```
-benchmark/
-├── api-server.js          # Express API server + static file serving
-├── index.js               # Benchmark runner
-├── configs.json           # Benchmark configuration
-├── results.md             # Raw results (auto-generated)
-├── reports/               # Saved reports (JSON)
-├── frontend/              # Vue 3 frontend source
-│   ├── src/
-│   │   ├── App.vue        # Layout + sidebar
-│   │   ├── stores/        # Pinia state management
-│   │   ├── views/         # Page components
-│   │   └── router/        # Vue Router config
-│   └── dist/              # Built frontend (served by API server)
+betty/
+├── src/
+│   ├── backend/
+│   │   └── server.js              # Main server (serves frontend + benchmark API)
+│   ├── frontend/
+│   │   └── public/
+│   │       ├── index.html         # Main app (chat + benchmark tab)
+│   │       ├── css/benchmark.css  # Benchmark UI styles
+│   │       └── js/benchmark.js    # Benchmark UI logic
+│   └── benchmark/
+│       ├── index.js               # Benchmark runner (spawns llama-server)
+│       ├── configs.json           # Benchmark configuration
+│       ├── results.md             # Raw results (auto-generated)
+│       └── reports/               # Saved reports (JSON)
 └── package.json
 ```

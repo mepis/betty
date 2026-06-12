@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-11] Standalone benchmark Vue 3 frontend — deleted `src/benchmark/frontend/` (Vue 3 SPA with Pinia, Vue Router, Tailwind CSS) and `src/benchmark/api-server.js` (Express API server); the benchmark is now accessed exclusively through the main Betty web interface's Benchmark tab
+- [Removed]: [2026-06-11] `npm run benchmark` script — removed from root `package.json` as the benchmark is no longer a standalone runnable module
+- [Removed]: [2026-06-11] Project-local `.pi/skills/` definitions — deleted local copies of skill files (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging) and all playwright-cli references and scripts
+
+### Changed
+
+- [Changed]: [2026-06-11] Benchmark README — updated `src/benchmark/README.md` to reflect integration into the main Betty web frontend; removed sections on standalone API server, remote access, environment variables, and architecture diagram; updated project structure to show the new layout under `betty/src/`
+- [Changed]: [2026-06-11] `.gitignore` — removed `src/benchmark/frontend/dist/` entry as the standalone frontend no longer exists
+
 ### Added
 
 - [Added]: [2026-06-10] Kill port API endpoint — new `POST /api/kill-port` endpoint in `api-server.js` that finds and forcefully kills all processes listening on the llama_port using `lsof -ti` and `kill -9`
