@@ -2,7 +2,19 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-11] Vue 3 frontend rebuild — rebuilt the entire Betty web frontend from vanilla HTML/JS/CSS to Vue 3 + Vite; new component-based architecture with `App.vue` root, 13 Vue components (Sidebar, ChatView, ChatMessage, MessageInput, CommandPalette, BenchmarkView, BenchmarkDashboard, BenchmarkConfigs, BenchmarkRun, BenchmarkResults, BenchmarkReports, CloneModal, ToastContainer), 3 composables (useWebSocket, useBenchmark, useToast), and shared CSS variables; Vite build outputs to `src/frontend/dist/`
+- [Added]: [2026-06-11] Vite build tooling — added `vite` (^8.0.16), `vue` (^3.5.38), and `@vitejs/plugin-vue` (^6.0.7) dependencies; new `npm run build` and `npm run dev:vite` scripts in `package.json`
+- [Added]: [2026-06-11] Production/dev frontend serving — `server.js` now detects built frontend in `dist/` and serves production assets; falls back to `public/` for dev mode when no build exists
+
+### Changed
+
+- [Changed]: [2026-06-11] Backend server.js — refactored `node:fs` imports to use consistent `await import()` style at top level; renamed `mkdirSync`, `writeFileSync`, `readdirSync`, `unlinkSync`, `statSync` to prefixed `_mkdirSync`, `_writeFileSync`, etc. to avoid conflicts with top-level `existsSync`
+
 ### Removed
+
+- [Removed]: [2026-06-11] Standalone benchmark Vue 3 frontend — deleted `src/benchmark/frontend/` (Vue 3 SPA with Pinia, Vue Router, Tailwind CSS) and `src/benchmark/api-server.js` (Express API server); the benchmark is now accessed exclusively through the main Betty web interface's Benchmark tab
 
 - [Removed]: [2026-06-11] Standalone benchmark Vue 3 frontend — deleted `src/benchmark/frontend/` (Vue 3 SPA with Pinia, Vue Router, Tailwind CSS) and `src/benchmark/api-server.js` (Express API server); the benchmark is now accessed exclusively through the main Betty web interface's Benchmark tab
 - [Removed]: [2026-06-11] `npm run benchmark` script — removed from root `package.json` as the benchmark is no longer a standalone runnable module

@@ -17,21 +17,41 @@ const app = express();
 const httpServer = createServer(app);
 app.use(express.json());
 
-// Inject env vars into the frontend
-const { readFileSync } = await import("node:fs");
-const frontendHtml = readFileSync(join(__dirname, "..", "frontend", "public", "index.html"), "utf8");
+// Serve Vue 3 frontend (built with Vite)
+const { readFileSync, existsSync } = await import("node:fs");
 const homeDir = process.env.HOME || "/home/" + (process.env.USER || "user");
+const frontendDist = join(__dirname, "..", "frontend", "dist");
 
-app.get("/", (req, res) => {
-  const modified = frontendHtml.replace(
-    '<head>',
-    `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)} };</script>`
-  );
-  res.send(modified);
-});
+// Check if we have a built frontend or fall back to dev mode
+const hasBuiltFrontend = existsSync(frontendDist);
 
-// Serve static files (JS, CSS, etc.)
-app.use(express.static(join(__dirname, "..", "frontend", "public")));
+if (hasBuiltFrontend) {
+  // Production: serve from dist/
+  const frontendHtml = readFileSync(join(frontendDist, "index.html"), "utf8");
+
+  app.get("/", (req, res) => {
+    const modified = frontendHtml.replace(
+      '<head>',
+      `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)} };</script>`
+    );
+    res.send(modified);
+  });
+
+  app.use(express.static(frontendDist));
+} else {
+  // Dev mode: serve from public/ (fallback)
+  const fallbackHtml = readFileSync(join(__dirname, "..", "frontend", "public", "index.html"), "utf8");
+
+  app.get("/", (req, res) => {
+    const modified = fallbackHtml.replace(
+      '<head>',
+      `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)} };</script>`
+    );
+    res.send(modified);
+  });
+
+  app.use(express.static(join(__dirname, "..", "frontend", "public")));
+}
 
 // Workspace state
 let currentWorkspace = DEFAULT_WORKSPACE;
@@ -791,9 +811,9 @@ const RESULTS_FILE = join(BENCHMARK_DIR, 'results.md');
 const REPORTS_DIR = join(BENCHMARK_DIR, 'reports');
 
 // Ensure reports directory exists
-import { mkdirSync, existsSync, writeFileSync, readdirSync, unlinkSync, statSync } from 'node:fs';
+const { mkdirSync: _mkdirSync, writeFileSync: _writeFileSync, readdirSync: _readdirSync, unlinkSync: _unlinkSync, statSync: _statSync } = await import('node:fs');
 if (!existsSync(REPORTS_DIR)) {
-  mkdirSync(REPORTS_DIR, { recursive: true });
+  _mkdirSync(REPORTS_DIR, { recursive: true });
 }
 
 // In-memory state for REST API
@@ -813,7 +833,7 @@ app.get('/api/configs', (req, res) => {
 app.put('/api/configs', (req, res) => {
   try {
     const configs = req.body;
-    writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
+    _writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
     res.json({ success: true, message: 'Config saved' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -910,10 +930,10 @@ app.get('/api/results', (req, res) => {
 app.get('/api/reports', (req, res) => {
   try {
     const files = existsSync(REPORTS_DIR)
-      ? readdirSync(REPORTS_DIR).filter(f => f.endsWith('.json'))
+      ? _readdirSync(REPORTS_DIR).filter(f => f.endsWith('.json'))
       : [];
     const reports = files.map(file => {
-      const stats = statSync(join(REPORTS_DIR, file));
+      const stats = _statSync(join(REPORTS_DIR, file));
       const name = file.replace(/\.json$/, '');
       return {
         name,
@@ -949,7 +969,7 @@ app.post('/api/report', (req, res) => {
     }
     const safeName = name.replace(/[^a-zA-Z0-9_-]/g, '_');
     const filePath = join(REPORTS_DIR, `${safeName}.json`);
-    writeFileSync(filePath, JSON.stringify(data, null, 2));
+    _writeFileSync(filePath, JSON.stringify(data, null, 2));
     res.json({ success: true, message: 'Report saved' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -962,7 +982,7 @@ app.delete('/api/report/:name', (req, res) => {
     if (!existsSync(filePath)) {
       return res.status(404).json({ success: false, error: 'Report not found' });
     }
-    unlinkSync(filePath);
+    _unlinkSync(filePath);
     res.json({ success: true, message: 'Report deleted' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -986,7 +1006,7 @@ app.post('/api/save-report', (req, res) => {
     };
 
     const filePath = join(REPORTS_DIR, `${safeName}.json`);
-    writeFileSync(filePath, JSON.stringify(report, null, 2));
+    _writeFileSync(filePath, JSON.stringify(report, null, 2));
     res.json({ success: true, message: `Report saved as ${safeName}` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
