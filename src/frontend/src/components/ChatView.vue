@@ -2,20 +2,46 @@
   <main class="main">
     <div class="chat-header">
       <div class="chat-header-left">
-        <button class="sidebar-toggle" @click="$emit('toggle-sidebar')">☰</button>
-        <h2>Session</h2>
+        <button class="sidebar-toggle" @click="$emit('toggle-sidebar')" title="Toggle sidebar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+        <h2>Chat</h2>
+      </div>
+      <div class="chat-header-right">
+        <div class="connection-badge" :class="{ connected, streaming: isStreaming }">
+          <span class="badge-dot"></span>
+        </div>
       </div>
     </div>
 
     <div class="messages" ref="messagesEl">
       <div v-if="!messages.length && !streamingMsg" class="empty-state">
-        <div class="icon">💬</div>
-        <h2>Welcome to Betty</h2>
-        <p>Your AI coding agent is ready. Start a conversation and it will help you write, debug, and refactor code.</p>
+        <div class="empty-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h2>How can I help?</h2>
+        <p>Ask me anything about your codebase, and I'll help you write, debug, and refactor.</p>
         <div class="suggestions">
-          <button class="suggestion-btn" @click="sendSuggestion('List the files in the current directory')">📂 List files in current directory</button>
-          <button class="suggestion-btn" @click="sendSuggestion('Explain how this project is structured')">🔍 Explain project structure</button>
-          <button class="suggestion-btn" @click="sendSuggestion('What tools are available to you?')">🛠️ What tools are available?</button>
+          <button class="suggestion-btn" @click="sendSuggestion('List the files in the current directory')">
+            <span class="suggestion-icon">📂</span>
+            <span>List files in current directory</span>
+          </button>
+          <button class="suggestion-btn" @click="sendSuggestion('Explain how this project is structured')">
+            <span class="suggestion-icon">🔍</span>
+            <span>Explain project structure</span>
+          </button>
+          <button class="suggestion-btn" @click="sendSuggestion('What tools are available to you?')">
+            <span class="suggestion-icon">🛠️</span>
+            <span>What tools are available?</span>
+          </button>
         </div>
       </div>
 
@@ -27,9 +53,17 @@
 
       <div v-if="streamingMsg" class="message assistant">
         <div class="message-header">
-          <div class="message-avatar">B</div>
+          <div class="message-avatar">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
           <span class="message-role">Betty</span>
-          <span class="message-time">just now</span>
+          <span class="typing-indicator">
+            <span></span><span></span><span></span>
+          </span>
         </div>
         <div class="message-content streaming-cursor" v-html="streamingHtml"></div>
       </div>
@@ -121,7 +155,6 @@ const streamingHtml = computed(() => {
   return html + renderMarkdown(props.streamingMsg.content);
 });
 
-// Watch input for command palette
 watch(inputText, (val) => {
   if (val.startsWith('/') && !showCommandPalette.value) {
     showCommandPalette.value = true;
@@ -131,7 +164,6 @@ watch(inputText, (val) => {
   }
 });
 
-// Auto-scroll
 watch(() => props.messages.length, () => {
   scrollToBottom();
 });
@@ -195,6 +227,7 @@ function navigateCommands(direction) {
   align-items: center;
   justify-content: space-between;
   background: var(--bg-secondary);
+  backdrop-filter: blur(8px);
 }
 
 .chat-header-left {
@@ -204,20 +237,21 @@ function navigateCommands(direction) {
 }
 
 .chat-header h2 {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .sidebar-toggle {
-  display: flex;
-  padding: 6px 10px;
+  display: none;
+  padding: 6px 8px;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-secondary);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.15s;
+  transition: all var(--transition-fast);
 }
 
 .sidebar-toggle:hover {
@@ -225,26 +259,54 @@ function navigateCommands(direction) {
   color: var(--text-primary);
 }
 
+.chat-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.connection-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--error);
+  transition: background var(--transition-fast);
+}
+
+.connection-badge.connected .badge-dot {
+  background: var(--success);
+}
+
+.connection-badge.streaming .badge-dot {
+  background: var(--warning);
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 .messages {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
+  padding: 24px 20px;
   scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
-}
-
-.messages::-webkit-scrollbar {
-  width: 6px;
-}
-
-.messages::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.messages::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 3px;
+  align-items: center;
 }
 
 .empty-state {
@@ -253,60 +315,109 @@ function navigateCommands(direction) {
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: var(--text-muted);
   text-align: center;
-  padding: 40px;
+  padding: 40px 20px;
+  max-width: 480px;
 }
 
-.empty-state .icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-  opacity: 0.5;
+.empty-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--accent-dim-soft);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 20px;
+  opacity: 0.7;
 }
 
 .empty-state h2 {
-  font-size: 20px;
-  color: var(--text-secondary);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
   margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 
 .empty-state p {
   font-size: 14px;
-  max-width: 400px;
-  line-height: 1.5;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 360px;
 }
 
-.empty-state .suggestions {
-  margin-top: 24px;
+.suggestions {
+  margin-top: 28px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
+  max-width: 380px;
 }
 
 .suggestion-btn {
-  padding: 10px 16px;
-  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-secondary);
-  border-radius: 8px;
+  border-radius: var(--radius);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 13.5px;
+  font-family: inherit;
+  transition: all var(--transition-fast);
   text-align: left;
-  transition: all 0.15s;
-  max-width: 400px;
 }
 
 .suggestion-btn:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
-  border-color: var(--accent);
+  border-color: var(--border-light);
+}
+
+.suggestion-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 6px;
+}
+
+.typing-indicator span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: typing 1.4s ease infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-2px); }
 }
 
 .sidebar-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 40;
 }
 
@@ -315,6 +426,16 @@ function navigateCommands(direction) {
 }
 
 @media (max-width: 768px) {
-  .sidebar-toggle { display: flex; }
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .messages {
+    padding: 16px 12px;
+  }
+
+  .chat-header {
+    padding: 10px 14px;
+  }
 }
 </style>

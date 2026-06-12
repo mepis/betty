@@ -14,15 +14,23 @@
            @dragover.prevent="isDragOver = true"
            @dragleave.prevent="isDragOver = false"
            @drop.prevent="onDrop">
-        <button class="image-attach-btn" @click="$refs.fileInput.click()" title="Attach image">
-          📷
+        <button class="attach-btn" @click="$refs.fileInput.click()" title="Attach image">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
         </button>
         <input ref="fileInput" type="file" accept="image/*" multiple style="display:none" @change="onFileSelect">
 
         <div class="image-preview-area" v-if="selectedImages.length">
           <div v-for="(img, i) in selectedImages" :key="i" class="image-preview-item">
             <img :src="img.dataUrl" :alt="img.name">
-            <button class="remove-image" @click="removeImage(i)">✕</button>
+            <button class="remove-image" @click="removeImage(i)">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -37,20 +45,27 @@
         ></textarea>
 
         <button v-if="!isStreaming" class="send-btn" :disabled="!connected || (!modelValue.trim() && !selectedImages.length)" @click="$emit('send')">
-          ➤
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
         </button>
-        <button v-else class="abort-btn" @click="$emit('abort')">■</button>
+        <button v-else class="abort-btn" @click="$emit('abort')" title="Stop generation">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="6" width="12" height="12" rx="2"/>
+          </svg>
+        </button>
       </div>
 
       <div class="input-hint">
-        <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line · <kbd>Esc</kbd> to abort · Drag & drop or 📷 for images
+        <span>Enter</span> to send · <span>Shift+Enter</span> new line · <span>/</span> commands · <span>Esc</span> stop
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref } from 'vue';
 import CommandPalette from './CommandPalette.vue';
 
 const props = defineProps({
@@ -72,12 +87,11 @@ const emit = defineEmits([
   'images-selected',
 ]);
 
-const inputEl = ref(null);
 const fileInput = ref(null);
 const selectedImages = ref([]);
 const isDragOver = ref(false);
 
-const placeholder = 'Message Betty... (drag & drop or click 📷 to attach images)';
+const placeholder = 'Message Betty...';
 
 function onKeydown(e) {
   if (props.showCommandPalette) {
@@ -133,10 +147,7 @@ function processFiles(files) {
 
   Array.from(files).forEach(file => {
     if (!file.type.startsWith('image/')) return;
-    if (file.size > 10 * 1024 * 1024) {
-      // Could show toast here
-      return;
-    }
+    if (file.size > 10 * 1024 * 1024) return;
     if (selectedImages.value.length >= 10) return;
 
     const reader = new FileReader();
@@ -177,36 +188,17 @@ function removeImage(index) {
   selectedImages.value.splice(index, 1);
   emit('images-selected', [...selectedImages.value]);
 }
-
-function clearImages() {
-  selectedImages.value = [];
-  emit('images-selected', []);
-}
-
-function getImages() {
-  return selectedImages.value.map(img => {
-    const commaIdx = img.dataUrl.indexOf(',');
-    const prefix = img.dataUrl.slice(0, commaIdx);
-    const base64Data = img.dataUrl.slice(commaIdx + 1);
-    const mimeMatch = prefix.match(/data:([^;]+)/);
-    const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
-    return { type: 'image', mimeType, data: base64Data };
-  });
-}
-
-// Expose for parent
-defineExpose({ clearImages, getImages });
 </script>
 
 <style scoped>
 .input-area {
-  padding: 16px 20px 20px;
+  padding: 14px 20px 18px;
   border-top: 1px solid var(--border);
   background: var(--bg-secondary);
 }
 
 .input-container {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
   position: relative;
 }
@@ -214,31 +206,32 @@ defineExpose({ clearImages, getImages });
 .input-wrapper {
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  gap: 6px;
   background: var(--bg-primary);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 8px 12px;
-  transition: border-color 0.15s;
+  border-radius: var(--radius);
+  padding: 8px 10px 8px 8px;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .input-wrapper:focus-within {
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim-soft);
 }
 
 .input-wrapper.streaming {
-  border-color: var(--yellow);
+  border-color: var(--warning);
 }
 
 .input-wrapper.drag-over {
   border-color: var(--accent);
-  background: rgba(88, 166, 255, 0.05);
+  background: var(--accent-dim-soft);
 }
 
-.image-attach-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+.attach-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
   border: none;
   background: transparent;
   color: var(--text-muted);
@@ -246,32 +239,30 @@ defineExpose({ clearImages, getImages });
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  transition: all 0.15s;
+  transition: all var(--transition-fast);
   flex-shrink: 0;
 }
 
-.image-attach-btn:hover {
+.attach-btn:hover {
   background: var(--bg-hover);
   color: var(--text-secondary);
 }
 
 .image-preview-area {
   display: flex;
-  gap: 8px;
-  padding: 4px 0;
+  gap: 6px;
   flex-wrap: wrap;
   position: absolute;
   bottom: 100%;
   left: 0;
   right: 0;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .image-preview-item {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -288,20 +279,18 @@ defineExpose({ clearImages, getImages });
   position: absolute;
   top: 2px;
   right: 2px;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   color: white;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  line-height: 1;
   opacity: 0;
-  transition: opacity 0.15s;
+  transition: opacity var(--transition-fast);
 }
 
 .image-preview-item:hover .remove-image {
@@ -317,10 +306,10 @@ defineExpose({ clearImages, getImages });
   font-family: inherit;
   resize: none;
   outline: none;
-  max-height: 200px;
+  max-height: 180px;
   min-height: 24px;
   line-height: 1.5;
-  padding: 2px 0;
+  padding: 3px 0;
 }
 
 .message-input::placeholder {
@@ -328,44 +317,53 @@ defineExpose({ clearImages, getImages });
 }
 
 .send-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
   border: none;
   background: var(--accent);
-  color: white;
+  color: var(--btn-primary-text);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  transition: all 0.15s;
+  transition: all var(--transition-fast);
   flex-shrink: 0;
 }
 
-.send-btn:hover { background: var(--accent-hover); }
+.send-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.send-btn:active {
+  transform: scale(0.98);
+}
+
 .send-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.25;
   cursor: not-allowed;
+  transform: none;
 }
 
 .abort-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
   border: none;
-  background: var(--red);
-  color: white;
+  background: var(--error-dim);
+  color: var(--error);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  transition: all 0.15s;
+  transition: all var(--transition-fast);
   flex-shrink: 0;
 }
 
-.abort-btn:hover { background: #da3633; }
+.abort-btn:hover {
+  background: rgba(248, 113, 113, 0.15);
+}
 
 .input-hint {
   text-align: center;
@@ -374,12 +372,8 @@ defineExpose({ clearImages, getImages });
   margin-top: 8px;
 }
 
-.input-hint kbd {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 1px 5px;
-  font-size: 10px;
-  font-family: inherit;
+.input-hint span {
+  color: var(--text-tertiary);
+  font-weight: 500;
 }
 </style>

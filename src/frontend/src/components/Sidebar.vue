@@ -1,60 +1,30 @@
 <template>
   <aside class="sidebar" :class="{ collapsed: isCollapsed }">
     <div class="sidebar-header">
-      <h1>
-        <span class="logo">B</span>
-        Betty
-      </h1>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Connection</div>
-      <div class="status-indicator">
-        <span class="status-dot" :class="connectionStatusClass"></span>
-        <span>{{ connectionText }}</span>
+      <div class="logo-group">
+        <div class="logo-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="logo-text">betty</span>
       </div>
-      <div class="model-info">{{ modelLabel }}</div>
     </div>
 
     <div class="sidebar-section">
-      <div class="sidebar-section-title">Model</div>
-      <select class="model-select" :value="selectedModelId" @change="onModelChange($event.target.value)">
-        <option v-if="!models.length" value="">Loading...</option>
-        <option v-for="m in models" :key="m.id" :value="m.id" :data-provider="m.provider">
-          {{ m.name || m.id }} ({{ m.provider }})
-        </option>
-      </select>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Thinking Level</div>
-      <select class="thinking-select" :value="thinkingLevel" @change="onThinkingChange($event.target.value)">
-        <option value="off">Off</option>
-        <option value="minimal">Minimal</option>
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-        <option value="xhigh">XHigh</option>
-      </select>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Workspace</div>
-      <button class="sidebar-btn" @click="$emit('show-workspace')">
-        <span class="icon">📁</span>
-        <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ workspaceLabel }}</span>
+      <button class="new-session-btn" @click="$emit('new-session')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        <span>New chat</span>
       </button>
     </div>
 
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Views</div>
-      <button class="sidebar-btn" :class="{ active: activeTab === 'chat' }" @click="$emit('switch-tab', 'chat')">
-        <span class="icon">💬</span> Chat
-      </button>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Sessions</div>
+    <div class="sidebar-section sidebar-section--scrollable">
+      <div class="section-label">Recent</div>
       <div class="session-list" v-if="sessions.length">
         <button
           class="session-item"
@@ -62,47 +32,103 @@
           v-for="session in sessions"
           :key="session.id"
           @click="$emit('switch-session', session.id)"
-          @contextmenu.prevent="$emit('delete-session', session.id)"
-          title="Right-click to delete"
+          @contextmenu.prevent="handleSessionContext($event, session.id)"
         >
-          <span class="session-icon">💬</span>
+          <svg class="session-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
           <span class="session-name">{{ session.name }}</span>
-          <span class="session-count">{{ session.messageCount || 0 }}</span>
+          <span class="session-meta">{{ session.messageCount || 0 }}</span>
         </button>
       </div>
       <div class="session-empty" v-else>
-        <span style="font-size:12px; color:var(--text-muted);">No sessions yet</span>
+        No conversations yet
       </div>
-      <button class="sidebar-btn" @click="$emit('new-session')">
-        <span class="icon">✦</span> New Session
-      </button>
     </div>
 
+    <div class="sidebar-divider"></div>
+
     <div class="sidebar-section">
-      <div class="sidebar-section-title">Actions</div>
-      <button class="sidebar-btn" @click="$emit('fork-session')">
-        <span class="icon">↗</span> Fork Session
-      </button>
-      <button class="sidebar-btn" @click="$emit('compact')">
-        <span class="icon">◈</span> Compact Context
-      </button>
-      <button class="sidebar-btn" @click="$emit('export')">
-        <span class="icon">↓</span> Export HTML
-      </button>
-      <button class="sidebar-btn" @click="$emit('show-clone')">
-        <span class="icon">↯</span> Clone Repository
-      </button>
+      <div class="section-label">Settings</div>
+
+      <div class="setting-group">
+        <label class="setting-label">Model</label>
+        <select class="setting-select" :value="selectedModelId" @change="onModelChange($event.target.value)">
+          <option v-if="!models.length" value="">Loading...</option>
+          <option v-for="m in models" :key="m.id" :value="m.id" :data-provider="m.provider">
+            {{ m.name || m.id }}
+          </option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Thinking</label>
+        <select class="setting-select" :value="thinkingLevel" @change="onThinkingChange($event.target.value)">
+          <option value="off">Off</option>
+          <option value="minimal">Minimal</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="xhigh">XHigh</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Workspace</label>
+        <button class="workspace-btn" @click="$emit('show-workspace')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="workspace-path">{{ workspaceLabel }}</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Actions</div>
+      <div class="action-grid">
+        <Tooltip text="Fork session">
+          <button class="action-btn" @click="$emit('fork-session')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h9"/>
+            </svg>
+          </button>
+        </Tooltip>
+        <Tooltip text="Compact context">
+          <button class="action-btn" @click="$emit('compact')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/>
+            </svg>
+          </button>
+        </Tooltip>
+        <Tooltip text="Export as HTML">
+          <button class="action-btn" @click="$emit('export')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </button>
+        </Tooltip>
+        <Tooltip text="Clone repository">
+          <button class="action-btn" @click="$emit('show-clone')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M16 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/><polyline points="8 8 12 4 16 8"/><line x1="12" y1="4" x2="12" y2="16"/>
+            </svg>
+          </button>
+        </Tooltip>
+      </div>
     </div>
 
     <div style="flex:1"></div>
 
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Keyboard Shortcuts</div>
-      <div style="font-size:12px; color:var(--text-secondary); line-height:1.8;">
-        <div><kbd>Enter</kbd> Send message</div>
-        <div><kbd>Shift</kbd>+<kbd>Enter</kbd> New line</div>
-        <div><kbd>Esc</kbd> Abort / Clear</div>
-        <div><kbd>Ctrl</kbd>+<kbd>D</kbd> Disconnect</div>
+    <div class="sidebar-footer">
+      <div class="connection-status" :class="{ streaming: isStreaming, connected: connected }">
+        <span class="status-dot"></span>
+        <span class="status-text">{{ connectionText }}</span>
+      </div>
+      <div class="current-model" v-if="currentModel">
+        <span class="model-name">{{ currentModel.name || currentModel.id }}</span>
       </div>
     </div>
   </aside>
@@ -110,6 +136,7 @@
 
 <script setup>
 import { computed } from 'vue';
+import Tooltip from './Tooltip.vue';
 
 const props = defineProps({
   activeTab: String,
@@ -139,38 +166,33 @@ const emit = defineEmits([
   'delete-session',
 ]);
 
-const connectionStatusClass = computed(() => {
-  if (props.isStreaming) return 'stream';
-  if (props.connected) return 'connected';
-  return '';
-});
-
 const connectionText = computed(() => {
-  if (props.isStreaming) return 'Streaming...';
+  if (props.isStreaming) return 'Streaming';
   if (props.connected) return 'Connected';
   return 'Disconnected';
 });
 
-const modelLabel = computed(() => {
-  if (props.currentModel) return `Model: ${props.currentModel.name || props.currentModel.id}`;
-  return 'Model: --';
-});
-
 const workspaceLabel = computed(() => {
-  if (!props.workspace) return 'Loading...';
+  if (!props.workspace) return '—';
   const home = window.__ENV?.HOME || '';
   let display = props.workspace;
   if (display.startsWith(home)) {
     display = '~' + display.slice(home.length);
   }
-  if (display.length > 30) {
-    display = '/' + display.split('/').slice(-3).join('/');
+  if (display.length > 28) {
+    display = '/' + display.split('/').slice(-2).join('/');
   }
   return display;
 });
 
+function handleSessionContext(event, sessionId) {
+  if (confirm('Delete this session?')) {
+    emit('delete-session', sessionId);
+  }
+}
+
 function onModelChange(modelId) {
-  const select = document.querySelector('.model-select');
+  const select = document.querySelector('.setting-select');
   const opt = select.options[select.selectedIndex];
   const provider = opt.dataset.provider;
   emit('model-change', { provider, modelId });
@@ -183,14 +205,14 @@ function onThinkingChange(level) {
 
 <style scoped>
 .sidebar {
-  width: 260px;
-  min-width: 260px;
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
   background: var(--bg-secondary);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  transition: width 0.2s ease, min-width 0.2s ease, opacity 0.2s ease;
+  transition: width var(--transition-slow), min-width var(--transition-slow), opacity var(--transition-slow);
   overflow: hidden;
 }
 
@@ -198,55 +220,92 @@ function onThinkingChange(level) {
   width: 0;
   min-width: 0;
   border-right: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.sidebar.collapsed .sidebar-header,
-.sidebar.collapsed .sidebar-section {
-  display: none;
-}
-
+/* Header */
 .sidebar-header {
-  padding: 16px;
+  padding: 18px 16px 14px;
   border-bottom: 1px solid var(--border);
 }
 
-.sidebar-header h1 {
-  font-size: 18px;
-  font-weight: 600;
+.logo-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.sidebar-header h1 .logo {
-  width: 24px;
-  height: 24px;
-  background: var(--accent);
-  border-radius: 6px;
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--accent-dim);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  color: var(--accent);
+  flex-shrink: 0;
 }
 
+.logo-text {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* New session button */
 .sidebar-section {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border);
+  padding: 12px;
 }
 
-.sidebar-section-title {
-  font-size: 11px;
+.new-session-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 14px;
+  background: var(--accent-dim);
+  border: 1px solid transparent;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+}
+
+.new-session-btn:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  opacity: 0.9;
+}
+
+/* Section label */
+.section-label {
+  font-size: 10.5px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  margin-left: 6px;
   font-weight: 600;
 }
 
-.session-list {
-  max-height: 200px;
+/* Session list */
+.sidebar-section--scrollable {
+  flex: 1;
   overflow-y: auto;
-  margin-bottom: 8px;
+  padding-bottom: 4px;
+}
+
+.session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .session-item {
@@ -254,15 +313,16 @@ function onThinkingChange(level) {
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 6px 12px;
+  padding: 7px 10px;
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  font-size: 12px;
-  border-radius: 6px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all var(--transition-fast);
   text-align: left;
+  font-family: inherit;
 }
 
 .session-item:hover {
@@ -271,13 +331,18 @@ function onThinkingChange(level) {
 }
 
 .session-item.active {
-  background: var(--bg-tertiary);
+  background: var(--bg-elevated);
   color: var(--text-primary);
 }
 
 .session-icon {
-  font-size: 12px;
   flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.session-item:hover .session-icon,
+.session-item.active .session-icon {
+  opacity: 0.8;
 }
 
 .session-name {
@@ -287,95 +352,184 @@ function onThinkingChange(level) {
   white-space: nowrap;
 }
 
-.session-count {
-  font-size: 10px;
+.session-meta {
+  font-size: 11px;
   color: var(--text-muted);
   flex-shrink: 0;
+  min-width: 18px;
+  text-align: right;
 }
 
 .session-empty {
-  padding: 8px 12px;
+  padding: 12px 10px;
+  font-size: 12.5px;
+  color: var(--text-muted);
 }
 
-.sidebar-btn {
+/* Divider */
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 12px;
+}
+
+/* Settings */
+.setting-group {
+  margin-bottom: 10px;
+}
+
+.setting-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+  margin-left: 6px;
+  font-weight: 500;
+}
+
+.setting-select {
+  width: 100%;
+  padding: 7px 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color var(--transition-fast);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2352525a' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+.setting-select:hover {
+  border-color: var(--border-light);
+}
+
+.setting-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.workspace-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   width: 100%;
-  padding: 8px 12px;
-  background: transparent;
-  border: none;
+  padding: 7px 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
   color: var(--text-secondary);
-  font-size: 13px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
   cursor: pointer;
-  transition: all 0.15s;
+  font-family: inherit;
+  transition: all var(--transition-fast);
   text-align: left;
 }
 
-.sidebar-btn:hover {
-  background: var(--bg-hover);
+.workspace-btn:hover {
+  border-color: var(--border-light);
   color: var(--text-primary);
 }
 
-.sidebar-btn .icon {
-  width: 16px;
-  text-align: center;
-  font-size: 14px;
+.workspace-path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
 }
 
-.sidebar-btn.active {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
+/* Action grid */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
 }
 
-.status-indicator {
+.action-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  font-size: 12px;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.action-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.action-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Footer */
+.sidebar-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
   color: var(--text-muted);
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--red);
+  background: var(--error);
   flex-shrink: 0;
+  transition: background var(--transition-fast);
 }
 
-.status-dot.connected { background: var(--green); }
-.status-dot.stream { background: var(--yellow); animation: pulse 1s infinite; }
+.connection-status.connected .status-dot {
+  background: var(--success);
+}
+
+.connection-status.streaming .status-dot {
+  background: var(--warning);
+  animation: pulse 1.5s ease infinite;
+}
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
 
-.model-info {
+.status-text {
+  font-weight: 500;
+}
+
+.current-model {
   font-size: 11px;
   color: var(--text-muted);
-  padding: 4px 12px 8px;
+  margin-left: 13px;
 }
 
-.thinking-select, .model-select {
-  width: 100%;
-  padding: 6px 8px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
+.model-name {
+  color: var(--text-secondary);
 }
 
-.thinking-select:focus, .model-select:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
+/* Mobile */
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
@@ -383,22 +537,14 @@ function onThinkingChange(level) {
     top: 0;
     bottom: 0;
     z-index: 50;
-    width: 260px;
-    min-width: 260px;
     transform: translateX(-100%);
-    transition: transform 0.2s ease;
+    transition: transform var(--transition-slow);
   }
-  .sidebar.open { transform: translateX(0); }
+  .sidebar.open {
+    transform: translateX(0);
+  }
   .sidebar.collapsed {
-    width: 260px;
-    min-width: 260px;
-  }
-  .sidebar.collapsed .sidebar-header,
-  .sidebar.collapsed .sidebar-section {
-    display: flex;
-  }
-  .session-list {
-    max-height: 150px;
+    transform: translateX(-100%);
   }
 }
 </style>

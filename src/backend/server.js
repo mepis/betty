@@ -67,7 +67,7 @@ let currentWorkspace = DEFAULT_WORKSPACE;
 // ─── Workspace API ──────────────────────────────────────────────────────────
 
 async function listDirectory(dir) {
-  const { readdir, stat } = await import("node:fs/promises");
+  const { readdir } = await import("node:fs/promises");
   const entries = await readdir(dir, { withFileTypes: true }).catch(() => []);
   const result = {
     path: dir,
@@ -78,14 +78,22 @@ async function listDirectory(dir) {
   for (const entry of entries) {
     const fullPath = join(dir, entry.name);
     if (entry.isDirectory()) {
-      result.directories.push(entry.name);
+      // Count items inside the directory
+      let itemCount = 0;
+      try {
+        const subEntries = await readdir(fullPath);
+        itemCount = subEntries.length;
+      } catch {
+        itemCount = '?';
+      }
+      result.directories.push({ name: entry.name, itemCount });
     } else if (entry.isFile()) {
       result.files.push(entry.name);
     }
   }
 
   // Sort: directories first, then files, both alphabetically
-  result.directories.sort();
+  result.directories.sort((a, b) => a.name.localeCompare(b.name));
   result.files.sort();
 
   return result;
@@ -137,7 +145,11 @@ app.post("/api/workspace", async (req, res) => {
 
 app.get("/api/directory", async (req, res) => {
   try {
-    const dir = req.query.path || currentWorkspace;
+    let dir = req.query.path || currentWorkspace;
+    // Resolve relative paths
+    if (!dir.startsWith("/")) {
+      dir = join(process.env.HOME || "/", dir);
+    }
     const result = await listDirectory(dir);
     res.json(result);
   } catch (err) {

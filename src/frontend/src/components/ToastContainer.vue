@@ -6,7 +6,18 @@
       class="toast"
       :class="t.type"
     >
-      {{ t.message }}
+      <div class="toast-icon">
+        <svg v-if="t.type === 'success'" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <svg v-else-if="t.type === 'error'" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+        <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+      </div>
+      <span class="toast-message">{{ t.message }}</span>
     </div>
   </div>
 </template>
@@ -24,26 +35,45 @@ import { toasts } from '../composables/useToast.js';
   display: flex;
   flex-direction: column;
   gap: 8px;
+  pointer-events: none;
 }
 
 .toast {
-  padding: 10px 16px;
-  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-size: 13px;
   color: var(--text-primary);
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow: var(--shadow);
+  max-width: 340px;
   animation: slideIn 0.2s ease;
-  max-width: 350px;
+  pointer-events: auto;
 }
 
-.toast.error { border-left: 3px solid var(--red); }
-.toast.success { border-left: 3px solid var(--green); }
-.toast.info { border-left: 3px solid var(--accent); }
+.toast-icon {
+  flex-shrink: 0;
+}
+
+.toast.success .toast-icon { color: var(--success); }
+.toast.error .toast-icon { color: var(--error); }
+.toast.info .toast-icon { color: var(--info); }
+
+.toast-message {
+  flex: 1;
+  line-height: 1.4;
+}
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
+  from { opacity: 0; transform: translateX(16px); }
   to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(16px); }
 }
 </style>

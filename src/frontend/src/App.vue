@@ -14,7 +14,7 @@
       :sessions="sessions"
       :active-session-id="activeSessionId"
       @switch-tab="activeTab = $event"
-      @show-workspace="showWorkspaceModal"
+      @show-workspace="showFolderPicker = true"
       @new-session="newSession"
       @fork-session="forkSession"
       @compact="compactSession"
@@ -41,6 +41,7 @@
     </template>
 
     <CloneModal :show="showCloneModal" @close="showCloneModal = false" />
+    <FolderPicker :show="showFolderPicker" @close="showFolderPicker = false" @select="workspace = $event" />
     <ToastContainer />
   </div>
 </template>
@@ -52,12 +53,14 @@ import { toast } from './composables/useToast.js';
 import Sidebar from './components/Sidebar.vue';
 import ChatView from './components/ChatView.vue';
 import CloneModal from './components/CloneModal.vue';
+import FolderPicker from './components/FolderPicker.vue';
 import ToastContainer from './components/ToastContainer.vue';
 
 // ─── State ──────────────────────────────────────────────────────────────
 const activeTab = ref('chat');
 const sidebarCollapsed = ref(false);
 const showCloneModal = ref(false);
+const showFolderPicker = ref(false);
 
 const { connected, connect: connectWs, send, on, onAny } = useWebSocket();
 
@@ -459,26 +462,6 @@ function toggleSidebar() {
   }
 }
 
-function showWorkspaceModal() {
-  const currentPath = workspace.value || '/';
-  const newPath = prompt('Enter workspace path:', currentPath);
-  if (newPath !== null && newPath.trim()) {
-    fetch('/api/workspace', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ path: newPath.trim() }),
-    })
-    .then(r => r.json())
-    .then(data => {
-      if (data.workspace) {
-        workspace.value = data.workspace;
-        toast(`Workspace set to: ${newPath.trim()}`, 'success');
-      }
-    })
-    .catch(err => toast('Failed to set workspace: ' + err.message, 'error'));
-  }
-}
-
 // ─── Extension UI ───────────────────────────────────────────────────────
 function handleExtensionUI(req) {
   switch (req.method) {
@@ -570,7 +553,9 @@ onUnmounted(() => {
 
 html, body {
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: var(--bg-primary);
   color: var(--text-primary);
   overflow: hidden;
@@ -581,51 +566,238 @@ html, body {
   height: 100vh;
 }
 
-/* Shared styles */
-.message-content p { margin-bottom: 8px; }
-.message-content p:last-child { margin-bottom: 0; }
-.message-content strong { font-weight: 600; color: var(--text-primary); }
-.message-content em { font-style: italic; color: var(--text-secondary); }
-.message-content a { color: var(--accent); text-decoration: none; }
-.message-content a:hover { text-decoration: underline; }
-.message-content ul, .message-content ol { margin: 8px 0; padding-left: 24px; }
-.message-content li { margin-bottom: 4px; }
+/* Shared content styles */
+.message-content {
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.message-content p {
+  margin-bottom: 10px;
+}
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+.message-content strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.message-content em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.message-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+.message-content a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.message-content ul, .message-content ol {
+  margin: 10px 0;
+  padding-left: 22px;
+}
+.message-content li {
+  margin-bottom: 4px;
+}
+
 .message-content h1, .message-content h2, .message-content h3,
-.message-content h4, .message-content h5, .message-content h6 { margin: 16px 0 8px; font-weight: 600; }
+.message-content h4, .message-content h5, .message-content h6 {
+  margin: 20px 0 10px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
 .message-content h1 { font-size: 1.5em; }
 .message-content h2 { font-size: 1.3em; }
 .message-content h3 { font-size: 1.15em; }
-.message-content blockquote { border-left: 3px solid var(--accent); padding-left: 12px; margin: 8px 0; color: var(--text-secondary); }
-.message-content hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
 
-.code-block { margin: 10px 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--code-bg); }
-.code-header { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border); font-size: 12px; color: var(--text-muted); }
-.code-copy { padding: 2px 8px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); border-radius: 4px; cursor: pointer; font-size: 11px; transition: all 0.15s; }
-.code-copy:hover { background: var(--bg-hover); color: var(--text-primary); }
-.code-copy.copied { color: var(--green); border-color: var(--green); }
-.code-block pre { padding: 12px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
-.code-block code { font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace; background: none; padding: 0; font-size: inherit; }
+.message-content blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+  margin: 12px 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
 
-.message-content > code { font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace; background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; border: 1px solid var(--border); }
+.message-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
 
-.thinking-block { margin: 8px 0; border-radius: 8px; border: 1px solid var(--border); background: rgba(210, 153, 34, 0.05); overflow: hidden; }
-.thinking-header { padding: 6px 12px; background: rgba(210, 153, 34, 0.08); border-bottom: 1px solid var(--border); font-size: 12px; color: var(--yellow); cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
-.thinking-header:hover { background: rgba(210, 153, 34, 0.12); }
-.thinking-content { padding: 10px 12px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; max-height: 200px; overflow-y: auto; }
+/* Code blocks */
+.code-block {
+  margin: 12px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--code-border);
+  background: var(--code-bg);
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--code-border);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.code-copy {
+  padding: 3px 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+.code-copy:hover {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  border-color: var(--border-light);
+}
+.code-copy.copied {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.code-block pre {
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.code-block code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.message-content > code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.88em;
+  border: 1px solid var(--code-border);
+  color: var(--text-secondary);
+}
+
+/* Thinking blocks */
+.thinking-block {
+  margin: 10px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--warning-dim);
+  overflow: hidden;
+}
+
+.thinking-header {
+  padding: 8px 14px;
+  background: rgba(251, 191, 36, 0.04);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--warning);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  font-weight: 500;
+  transition: background var(--transition-fast);
+}
+.thinking-header:hover {
+  background: rgba(251, 191, 36, 0.07);
+}
+
+.thinking-content {
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-height: 200px;
+  overflow-y: auto;
+}
 .thinking-content.collapsed { display: none; }
 
-.tool-call { margin: 8px 0; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-secondary); overflow: hidden; }
-.tool-header { padding: 6px 12px; background: rgba(88, 166, 255, 0.05); border-bottom: 1px solid var(--border); font-size: 12px; color: var(--accent); cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
-.tool-content { padding: 8px 12px; font-size: 12px; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; white-space: pre-wrap; word-break: break-all; max-height: 150px; overflow-y: auto; }
+/* Tool call blocks */
+.tool-call {
+  margin: 10px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.tool-header {
+  padding: 8px 14px;
+  background: var(--accent-dim-soft);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  font-weight: 500;
+  transition: background var(--transition-fast);
+}
+.tool-header:hover {
+  background: var(--accent-dim);
+}
+
+.tool-content {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 150px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
 .tool-content.collapsed { display: none; }
 
-.streaming-cursor::after { content: '▋'; animation: blink 1s infinite; color: var(--accent); }
-@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+/* Streaming cursor */
+.streaming-cursor::after {
+  content: '▋';
+  animation: blink 1s infinite;
+  color: var(--accent);
+  margin-left: 2px;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* Selection */
+::selection {
+  background: var(--accent-dim);
+  color: var(--text-primary);
+}
 
 /* Global functions for inline handlers */
 </style>

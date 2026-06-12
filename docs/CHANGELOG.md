@@ -4,6 +4,33 @@
 
 ### Added
 
+- [Added]: [2026-06-11] FolderPicker component — new Vue 3 directory browser modal for workspace selection with breadcrumb navigation, directory listing with item counts, loading/error states, and path confirmation
+- [Added]: [2026-06-11] Tooltip component — reusable Vue 3 tooltip with hover-triggered delayed appearance (200ms show, 100ms hide), positioned above or below the trigger element, with smooth enter/leave transitions
+- [Added]: [2026-06-11] New design token system — semantic color tokens (success, warning, error, info with dim variants), transition timing variables (--transition-fast, --transition, --transition-slow), refined radius tokens (--radius-sm, --radius, --radius-lg), and shadow tokens (--shadow-sm, --shadow, --shadow-lg)
+- [Added]: [2026-06-11] Inline SVG icons throughout — replaced all emoji icons with semantic SVG icons in Sidebar (logo, session, action buttons), ChatView (connection badge, typing indicator, sidebar toggle), ChatMessage (assistant avatar), MessageInput (attach, send, abort), CloneModal (header icon, close, status indicators), CommandPalette (header, command icons), and ToastContainer (success, error, info)
+
+### Changed
+
+- [Changed]: [2026-06-11] Complete UI redesign — switched color scheme from GitHub-dark blue tones (#58a6ff accent) to refined dark theme with purple accent (#a78bfa); redesigned backgrounds to near-black (#09090b, #0c0c0e, #111114) with subtle elevated states; updated all text colors for improved contrast
+- [Changed]: [2026-06-11] Sidebar — complete layout redesign with new logo (SVG icon + text), "New chat" button, "Recent" session list with scrollable area, "Settings" section (model, thinking, workspace), "Actions" section with 2x2 grid layout for fork/compact/export/clone, and footer with connection status + current model; collapsed state now hides via pointer-events instead of display:none
+- [Changed]: [2026-06-11] CloneModal — redesigned with SVG icons, animated overlay (fadeIn + slideUp), progress track redesign, ghost cancel button, status icons with spin animation, and cleaner field styling with optional label indicator
+- [Changed]: [2026-06-11] MessageInput — simplified placeholder text, updated hint text (replaced <kbd> elements with <span>), refined button hover/active states with scale transforms, updated abort button to use error color theme, reduced padding and max-height
+- [Changed]: [2026-06-11] ChatView — new connection badge in header with animated dot, typing indicator with three-dot animation, improved empty state layout, refined suggestion buttons
+- [Changed]: [2026-06-11] ChatMessage — replaced emoji avatar with SVG icon, refined avatar colors using new semantic tokens, updated message bubble styling
+- [Changed]: [2026-06-11] CommandPalette — SVG icon in header, refined padding and sizing, updated to use --bg-elevated for background
+- [Changed]: [2026-06-11] ToastContainer — icon-based toast notifications with semantic color icons (checkmark, X, info), improved layout with flex gap, added pointer-events handling
+- [Changed]: [2026-06-11] App.vue — integrated FolderPicker component, removed unused `nextTick` import from Vue
+- [Changed]: [2026-06-11] index.html — updated page title to "Betty - AI Coding Agent"
+- [Changed]: [2026-06-11] CSS variable naming — consolidated border tokens (--border, --border-light, --border-subtle), cleaned up color aliases (removed --accent-green/cyan/orange/red in favor of semantic --success/warning/error), unified button variables using accent-derived values
+
+### Removed
+
+- [Removed]: [2026-06-11] Emoji icons — removed all emoji icons from UI components (💬, 📷, ➤, ■, 🧠, 🔧, ⚡, ✕, ✓, ↗, ◈, ↓, ↯, 📁, ✦, ❓, ⌨️, 🗑️, 📂, 🔍, 🛠️, 🧠) and replaced with SVG equivalents
+- [Removed]: [2026-06-11] MessageInput `defineExpose` methods — removed `clearImages()` and `getImages()` methods that were exposed to parent component; image handling now managed internally
+- [Removed]: [2026-06-11] Image size validation comment — removed 10MB image size check comment in MessageInput file processing
+
+### Added
+
 - [Added]: [2026-06-11] Persistent session management — new file-based session store (`src/backend/session-store.js`) with CRUD operations (create, load, update, delete, list); sessions persisted to `~/.betty/sessions/` as JSON files with message history, metadata, and auto-timestamps
 - [Added]: [2026-06-11] Session management in main web interface — sidebar session list with active indicator, message count, right-click-to-delete; WebSocket events for session CRUD (new, switch, delete, rename, list); session-aware message persistence with debounced saves
 - [Added]: [2026-06-11] Environment variable example — `.env.example` documenting all configurable Betty server options (port, host, workspace, API keys for all supported providers)
