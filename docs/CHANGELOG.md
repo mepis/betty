@@ -2,9 +2,30 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-13] Admin routes (`src/backend/routes/admin.js`) — Express Router with `GET /api/admin/users` (list all users), `PATCH /api/admin/users/:id` (update user role), and `DELETE /api/admin/users/:id` (delete user); all routes require admin role via `authorize("admin")` middleware; includes self-deletion prevention and self-demote prevention
+- [Added]: [2026-06-13] Users page (`src/frontend/src/pages/UsersPage.vue`) — Vue 3 admin-only page with user management table showing user name, email, role, created date, and last login; stats bar with total/admin/regular user counts; inline role change dropdown per user; delete button with confirmation; forbidden state for non-admin users; avatar initials display
+- [Added]: [2026-06-13] Session persistence toggle — new `SESSIONS_ENABLED` environment variable (default `true`); when set to `false`, all session store operations become no-ops (no disk I/O); exported from `session-store.js` for server startup logging
+- [Added]: [2026-06-13] `.env.example` — added `SESSIONS_ENABLED` documentation for session persistence toggle
+
 ### Changed
 
-- [Changed]: [2026-06-12] `.gitignore` — added `.playwright-cli/` to ignore Playwright CLI runtime artifacts (console logs, page YAML dumps); added `test-*.mjs` to ignore ad-hoc debugging scripts
+- [Changed]: [2026-06-13] `server.js` — added admin routes mounting at `/api/admin` under `authenticate` middleware; added `SESSIONS_ENABLED` import and startup logging; changed `DEFAULT_WORKSPACE` to resolve relative to `__dirname` instead of `$HOME`; moved `AUTH_ENABLED` declaration earlier in file
+- [Changed]: [2026-06-13] `user-store.js` — `updateUser()` now allows `role` field updates (in addition to `email`, `name`, `lastLogin`) when the value is a valid role (`admin` or `user`); role changes are gated through the admin endpoint which has its own authorization checks
+- [Changed]: [2026-06-13] `Sidebar.vue` — removed "Recent" session list section (session management moved to server-side); removed "Export as HTML" action button; removed `sessions` and `activeSessionId` props; removed `switch-session`, `delete-session`, and `export` emit events; removed `handleSessionContext` function and all session list CSS; added "Users" nav button with user icon; changed action grid from 4 to 3 columns
+- [Changed]: [2026-06-13] `App.vue` — added Users page routing via `activeTab` switch; imported and conditionally renders `UsersPage` component; passes `show-users` event to Sidebar
+- [Changed]: [2026-06-13] `api-server.js` — fixed stdout/stderr parsing to use proper line buffering via `processStdoutChunk()`/`processStderrChunk()` helpers instead of calling `parseLogOutput()` on raw data chunks; added buffer flush on process close to handle partial last lines; added `stdoutLineBuffer` and `stderrLineBuffer` variables
+- [Changed]: [2026-06-13] Benchmark frontend dist — rebuilt with new asset hashes (`index-BHalDcZS.js`, `index-CmiYsUn0.css`); deleted old `index-DYx4eSao.css`
+
+### Removed
+
+- [Removed]: [2026-06-13] Session list from sidebar — removed client-side session list UI (recent conversations, right-click delete) since session management is now handled server-side via WebSocket events
+- [Removed]: [2026-06-13] Export as HTML button — removed the "Export as HTML" action button from the sidebar action grid
+
+### Fixed
+
+- [Fixed]: [2026-06-13] Benchmark log parsing race condition — stdout/stderr data chunks may contain partial lines; the old code passed raw chunks directly to `parseLogOutput()` which could miss or misparse metrics; now uses line-buffering helpers that accumulate data and only parse complete lines, with final flush on process close
 
 ### Added
 

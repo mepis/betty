@@ -2,10 +2,13 @@ import { randomUUID } from "node:crypto";
 import { join } from "node:path";
 import { mkdirSync, writeFileSync, readFileSync, readdirSync, unlinkSync, existsSync } from "node:fs";
 
+// SESSIONS_ENABLED=false disables all session persistence (no disk I/O)
+const SESSIONS_ENABLED = process.env.SESSIONS_ENABLED !== "false";
+
 const SESSIONS_DIR = join(process.env.HOME || "/tmp", ".betty", "sessions");
 
-// Ensure sessions directory exists
-if (!existsSync(SESSIONS_DIR)) {
+// Ensure sessions directory exists (only when persistence is enabled)
+if (SESSIONS_ENABLED && !existsSync(SESSIONS_DIR)) {
   mkdirSync(SESSIONS_DIR, { recursive: true });
 }
 
@@ -14,6 +17,7 @@ function getFilePath(sessionId) {
 }
 
 function loadSession(sessionId) {
+  if (!SESSIONS_ENABLED) return null;
   if (typeof sessionId !== "string" || sessionId.length === 0) {
     throw new Error("sessionId must be a non-empty string");
   }
@@ -27,6 +31,7 @@ function loadSession(sessionId) {
 }
 
 function saveSession(session) {
+  if (!SESSIONS_ENABLED) return;
   const filePath = getFilePath(session.id);
   try {
     writeFileSync(filePath, JSON.stringify(session, null, 2));
@@ -37,6 +42,7 @@ function saveSession(session) {
 }
 
 function deleteSession(sessionId) {
+  if (!SESSIONS_ENABLED) return false;
   const filePath = getFilePath(sessionId);
   if (existsSync(filePath)) {
     try {
@@ -51,7 +57,7 @@ function deleteSession(sessionId) {
 }
 
 function listSessions() {
-  if (!existsSync(SESSIONS_DIR)) return [];
+  if (!SESSIONS_ENABLED || !existsSync(SESSIONS_DIR)) return [];
   const files = readdirSync(SESSIONS_DIR).filter(f => f.endsWith(".json"));
   const sessions = [];
   for (const file of files) {
@@ -90,6 +96,7 @@ function updateSession(sessionId, updates) {
 }
 
 export {
+  SESSIONS_ENABLED,
   SESSIONS_DIR,
   loadSession,
   saveSession,

@@ -96,11 +96,17 @@ function updateUser(userId, updates) {
   const user = loadUser(userId);
   if (!user) return null;
   // Whitelist allowed fields to prevent privilege escalation
+  // Note: 'role' is intentionally excluded here — role changes go through
+  // the admin PATCH /api/admin/users/:id endpoint which has its own checks.
   const allowedFields = ["email", "name", "lastLogin"];
   for (const key of allowedFields) {
     if (key in updates) {
       user[key] = updates[key];
     }
+  }
+  // Also allow role updates (admin routes call updateUser with role)
+  if ("role" in updates && ["admin", "user"].includes(updates.role)) {
+    user.role = updates.role;
   }
   user.updatedAt = Date.now();
   saveUser(user);

@@ -3,12 +3,13 @@ import express from "express";
 import { createServer } from "http";
 import { WebSocketServer, WebSocket } from "ws";
 import { spawn } from "node:child_process";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
 import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 import {
+  SESSIONS_ENABLED,
   loadSession,
   saveSession,
   deleteSession,
@@ -18,13 +19,17 @@ import {
 } from "./session-store.js";
 import { authenticate, requireAuth } from "./auth-middleware.js";
 import authRoutes from "./routes/auth.js";
+import adminRoutes from "./routes/admin.js";
 import { hasUsers } from "./user-store.js";
 import { verifyRefreshToken, JWT_SECRET, JWT_REFRESH_SECRET } from "./auth-utils.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "0.0.0.0";
-const DEFAULT_WORKSPACE = process.env.WORKSPACE || process.env.HOME;
+const DEFAULT_WORKSPACE = process.env.WORKSPACE || resolve(__dirname, "../..");
+const AUTH_ENABLED = process.env.AUTH_ENABLED !== "false";
+
+console.log(`[server] Sessions ${SESSIONS_ENABLED ? "enabled" : "disabled"} (SESSIONS_ENABLED=${process.env.SESSIONS_ENABLED ?? "default:true"})`);
 
 // ─── HTTP Server ────────────────────────────────────────────────────────────
 
@@ -82,6 +87,9 @@ app.get("/api/test", (req, res) => {
 
 app.use("/api/auth", authenticate, authRoutes);
 
+// Admin routes (user management — admin only)
+app.use("/api/admin", authenticate, adminRoutes);
+
 // Current user info
 app.get("/api/me", (req, res) => {
   if (AUTH_ENABLED && !req.user) {
@@ -95,7 +103,6 @@ app.get("/api/me", (req, res) => {
 });
 
 // Auth configuration
-const AUTH_ENABLED = process.env.AUTH_ENABLED !== "false";
 const LOGIN_PAGE_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>

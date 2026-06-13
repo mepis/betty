@@ -409,7 +409,7 @@ app.post("/api/run", (req, res) => {
         testRun: currentTestRun,
         liveResults: liveResults,
       });
-      parseLogOutput(text);
+      processStdoutChunk(text);
     });
 
     benchmarkProcess.stderr.on("data", (data) => {
@@ -422,11 +422,20 @@ app.post("/api/run", (req, res) => {
         testRun: currentTestRun,
         liveResults: liveResults,
       });
-      parseLogOutput(text);
+      processStderrChunk(text);
     });
 
     benchmarkProcess.on("close", (code) => {
       benchmarkProcess = null;
+      // Flush any remaining buffered lines from the process output
+      if (stdoutLineBuffer.trim()) {
+        parseLogOutput(stdoutLineBuffer);
+        stdoutLineBuffer = "";
+      }
+      if (stderrLineBuffer.trim()) {
+        parseLogOutput(stderrLineBuffer);
+        stderrLineBuffer = "";
+      }
       if (code === 0) {
         benchmarkStatus = "idle";
         broadcast("status", {
@@ -466,7 +475,11 @@ app.post("/api/run", (req, res) => {
   }
 });
 
-//--- Parse log output for live results ---
+//--- Line buffer for parsing complete lines from stream data ---
+let stdoutLineBuffer = "";
+let stderrLineBuffer = "";
+
+//--- Parse log output for live results (called with complete lines) ---
 function parseLogOutput(text) {
   // Parse "========== Test Run #N =========="
   const runMatch = text.match(/Test Run #(\d+)/);
@@ -512,6 +525,31 @@ function parseLogOutput(text) {
 
     // Save/update report after each test run completes
     saveReport();
+  }
+}
+
+//--- Process a chunk of raw stdout/stderr data, splitting into complete lines ---
+function processStdoutChunk(text) {
+  stdoutLineBuffer += text;
+  const lines = stdoutLineBuffer.split("\n");
+  // Keep the last element as a potential partial line
+  stdoutLineBuffer = lines.pop() || "";
+  for (const line of lines) {
+    if (line.trim()) {
+      parseLogOutput(line);
+    }
+  }
+}
+
+function processStderrChunk(text) {
+  stderrLineBuffer += text;
+  const lines = stderrLineBuffer.split("\n");
+  // Keep the last element as a potential partial line
+  stderrLineBuffer = lines.pop() || "";
+  for (const line of lines) {
+    if (line.trim()) {
+      parseLogOutput(line);
+    }
   }
 }
 

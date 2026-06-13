@@ -23,29 +23,6 @@
       </button>
     </div>
 
-    <div class="sidebar-section sidebar-section--scrollable">
-      <div class="section-label">Recent</div>
-      <div class="session-list" v-if="sessions.length">
-        <button
-          class="session-item"
-          :class="{ active: activeSessionId === session.id }"
-          v-for="session in sessions"
-          :key="session.id"
-          @click="$emit('switch-session', session.id)"
-          @contextmenu.prevent="handleSessionContext($event, session.id)"
-        >
-          <svg class="session-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-          <span class="session-name">{{ session.name }}</span>
-          <span class="session-meta">{{ session.messageCount || 0 }}</span>
-        </button>
-      </div>
-      <div class="session-empty" v-else>
-        No conversations yet
-      </div>
-    </div>
-
     <div class="sidebar-divider"></div>
 
     <div class="sidebar-section">
@@ -82,6 +59,18 @@
           <span class="workspace-path">{{ workspaceLabel }}</span>
         </button>
       </div>
+
+      <div class="setting-group">
+        <button class="nav-btn" @click="$emit('show-users')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span>Users</span>
+        </button>
+      </div>
     </div>
 
     <div class="sidebar-divider"></div>
@@ -103,13 +92,7 @@
             </svg>
           </button>
         </Tooltip>
-        <Tooltip text="Export as HTML">
-          <button class="action-btn" @click="$emit('export')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-          </button>
-        </Tooltip>
+
         <Tooltip text="Clone repository">
           <button class="action-btn" @click="$emit('show-clone')">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -161,23 +144,20 @@ const props = defineProps({
   selectedModelId: String,
   thinkingLevel: String,
   workspace: String,
-  sessions: Array,
-  activeSessionId: String,
   userName: String,
 });
 
 const emit = defineEmits([
   'switch-tab',
   'show-workspace',
+  'show-users',
   'new-session',
   'fork-session',
   'compact',
-  'export',
+
   'show-clone',
   'model-change',
   'thinking-change',
-  'switch-session',
-  'delete-session',
   'logout',
 ]);
 
@@ -199,12 +179,6 @@ const workspaceLabel = computed(() => {
   }
   return display;
 });
-
-function handleSessionContext(event, sessionId) {
-  if (confirm('Delete this session?')) {
-    emit('delete-session', sessionId);
-  }
-}
 
 function onModelChange(modelId) {
   const select = document.querySelector('.setting-select');
@@ -310,77 +284,6 @@ function onThinkingChange(level) {
   font-weight: 600;
 }
 
-/* Session list */
-.sidebar-section--scrollable {
-  flex: 1;
-  overflow-y: auto;
-  padding-bottom: 4px;
-}
-
-.session-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.session-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 7px 10px;
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 13px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-align: left;
-  font-family: inherit;
-}
-
-.session-item:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-.session-item.active {
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-}
-
-.session-icon {
-  flex-shrink: 0;
-  opacity: 0.5;
-}
-
-.session-item:hover .session-icon,
-.session-item.active .session-icon {
-  opacity: 0.8;
-}
-
-.session-name {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.session-meta {
-  font-size: 11px;
-  color: var(--text-muted);
-  flex-shrink: 0;
-  min-width: 18px;
-  text-align: right;
-}
-
-.session-empty {
-  padding: 12px 10px;
-  font-size: 12.5px;
-  color: var(--text-muted);
-}
-
 /* Divider */
 .sidebar-divider {
   height: 1px;
@@ -451,6 +354,28 @@ function onThinkingChange(level) {
   color: var(--text-primary);
 }
 
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 7px 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+
+.nav-btn:hover {
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
 .workspace-path {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -461,7 +386,7 @@ function onThinkingChange(level) {
 /* Action grid */
 .action-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
 

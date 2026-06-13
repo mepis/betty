@@ -25,6 +25,7 @@
         :user-name="authStore.user?.name"
         @switch-tab="activeTab = $event"
         @show-workspace="showFolderPicker = true"
+        @show-users="activeTab = 'users'"
         @new-session="newSession"
         @fork-session="forkSession"
         @compact="compactSession"
@@ -50,6 +51,10 @@
         />
       </template>
 
+      <template v-if="activeTab === 'users'">
+        <UsersPage @close="activeTab = 'chat'" />
+      </template>
+
       <CloneModal :show="showCloneModal" @close="showCloneModal = false" />
       <FolderPicker :show="showFolderPicker" @close="showFolderPicker = false" @select="workspace = $event" />
       <ToastContainer />
@@ -71,6 +76,7 @@ import FolderPicker from './components/FolderPicker.vue';
 import ToastContainer from './components/ToastContainer.vue';
 import LoginPage from './pages/LoginPage.vue';
 import RegisterPage from './pages/RegisterPage.vue';
+import UsersPage from './pages/UsersPage.vue';
 
 // ─── State ──────────────────────────────────────────────────────────────
 const activeTab = ref('chat');
