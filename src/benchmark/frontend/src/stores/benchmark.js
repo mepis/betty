@@ -25,6 +25,13 @@ export const useBenchmarkStore = defineStore('benchmark', {
     buildStatus: 'idle', // idle | building | success | error
     buildLogs: [],
     buildProgress: 0,
+    // System memory
+    systemMemory: {
+      totalGB: 0,
+      usedGB: 0,
+      availableGB: 0,
+      percentUsed: 0,
+    },
   }),
 
   getters: {
@@ -447,6 +454,17 @@ export const useBenchmarkStore = defineStore('benchmark', {
       this.buildLogs = []
       this.buildProgress = 0
       this.buildStatus = 'idle'
+    },
+
+    async fetchSystemStatus() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/system-status`)
+        if (res.data.success) {
+          this.systemMemory = res.data.data
+        }
+      } catch (e) {
+        // Silently fail - not critical for dashboard
+      }
     },
   },
 })

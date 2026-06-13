@@ -14,6 +14,7 @@ const saveReportSuccess = ref(false)
 const killingPort = ref(false)
 const killPortSuccess = ref('')
 const pollingTimer = ref(null)
+const systemMemoryTimer = ref(null)
 
 // Auto-scroll logs
 watch(
@@ -44,12 +45,22 @@ onMounted(async () => {
   pollingTimer.value = setInterval(async () => {
     await store.fetchStatus()
   }, 5000)
+
+  // Poll system memory every 5 seconds
+  systemMemoryTimer.value = setInterval(async () => {
+    await store.fetchSystemStatus()
+  }, 5000)
+  // Fetch immediately on mount
+  await store.fetchSystemStatus()
 })
 
 onUnmounted(() => {
   store.disconnectSSE()
   if (pollingTimer.value) {
     clearInterval(pollingTimer.value)
+  }
+  if (systemMemoryTimer.value) {
+    clearInterval(systemMemoryTimer.value)
   }
 })
 
@@ -155,6 +166,24 @@ function statusBg(status) {
             <span class="text-sm font-medium" :class="store.sseConnected ? 'text-success' : 'text-text-muted'">
               {{ store.sseConnected ? 'Connected' : 'Disconnected' }}
             </span>
+          </div>
+          <div class="pt-2 border-t border-border">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-sm text-text-muted">Memory</span>
+              <span class="text-sm font-mono font-medium">
+                {{ store.systemMemory.usedGB.toFixed(1) }} / {{ store.systemMemory.totalGB.toFixed(1) }} GB
+              </span>
+            </div>
+            <div class="w-full h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
+              <div
+                class="h-full rounded-full transition-all duration-500"
+                :class="store.systemMemory.percentUsed > 90 ? 'bg-error' : store.systemMemory.percentUsed > 70 ? 'bg-warning' : 'bg-success'"
+                :style="{ width: `${Math.min(store.systemMemory.percentUsed, 100)}%` }"
+              />
+            </div>
+            <div class="text-right">
+              <span class="text-xs text-text-muted">{{ store.systemMemory.percentUsed }}% used</span>
+            </div>
           </div>
         </div>
       </div>

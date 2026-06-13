@@ -967,6 +967,51 @@ app.post("/api/kill-port", (req, res) => {
   }
 });
 
+//--- System status endpoint ---
+app.get("/api/system-status", (_req, res) => {
+  try {
+    const meminfo = fs.readFileSync("/proc/meminfo", "utf8");
+    const lines = meminfo.split("\n");
+    let totalKB = 0;
+    let availableKB = 0;
+    let buffersKB = 0;
+    let cachedKB = 0;
+    let sReclaimableKB = 0;
+
+    for (const line of lines) {
+      const match = line.match(/^(\w+)\s*:\s*(\d+)\s*kB/);
+      if (match) {
+        const key = match[1];
+        const value = parseInt(match[2], 10);
+        if (key === "MemTotal") totalKB = value;
+        else if (key === "MemAvailable") availableKB = value;
+        else if (key === "Buffers") buffersKB = value;
+        else if (key === "Cached") cachedKB = value;
+        else if (key === "SReclaimable") sReclaimableKB = value;
+      }
+    }
+
+    const totalGB = totalKB / (1024 * 1024);
+    const availableGB = availableKB / (1024 * 1024);
+    // Used = total - available (available already accounts for buffers/cache)
+    const usedGB = totalGB - availableGB;
+
+    res.json({
+      success: true,
+      data: {
+        totalGB: Math.round(totalGB * 100) / 100,
+        usedGB: Math.round(usedGB * 100) / 100,
+        availableGB: Math.round(availableGB * 100) / 100,
+        totalMB: Math.round(totalKB / 1024),
+        usedMB: Math.round((usedGB * 1024)),
+        percentUsed: totalKB > 0 ? Math.round((usedGB / totalGB) * 100) : 0,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Health check ---
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });
