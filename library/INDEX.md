@@ -16,6 +16,7 @@
 | [Using Go to Build Agentic Systems](topics/using-go-to-build-agentic-systems/) | 2026-05-29 | Complete | golang, ai, agent, tool-calling, mcp, llm, framework |
 | [pi.dev SDK](topics/pi-dev-sdk/) | 2026-06-03 | Complete | pi.dev, SDK, agent-harness, TypeScript, coding-agent, OpenClaw, extensions, RPC, Lit |
 | [Opencode.ai Directory Restriction Mechanisms](topics/opencode-ai-directory-restriction/) | 2026-06-04 | Complete | opencode, agent-harness, security, permissions, sandboxing, directory-restriction, filesystem, anomaly |
+| [Opencode Web UI Chat Message Handling](topics/opencode-web-ui-chat-message-handling/) | 2026-06-12 | Complete | opencode, web-ui, chat, message-handling, SolidJS, streaming, virtualization, agent-harness |
 
 ## Detail
 
@@ -202,3 +203,20 @@ OpenCode.ai (by Anomaly) restricts AI agents to specific directories through a p
 - **Subagent permission inheritance changed May 2026:** PR #26597 introduced parent deny inheritance; fixed by PR #26845/#27201 to only inherit edit-class denies
 - **No OS-level sandboxing:** Docker container isolation recommended for production; symlink escape vulnerabilities patched multiple times (issues #8313, #6403; PRs #7515, #8727, #10366, #11351)
 - **Per-agent filesystem path boundaries remain unimplemented:** Issue #5529 (Dec 2025, 11+ 👍) proposes fs.allow/fs.deny but no implementation exists
+
+---
+
+## Opencode Web UI Chat Message Handling
+
+**Date:** 2026-06-12
+
+OpenCode's web UI handles chat messages through a 5-layer architecture: SDK type definitions → WebSocket event stream → directory-level sync with optimistic updates → virtualized timeline rendering → part-specific tool rendering. Built on Solid.js with fine-grained reactivity.
+
+**Key findings:**
+- **WebSocket event-driven sync** — Server pushes `message.updated`, `message.part.updated`, `message.part.delta` (streaming) events; client applies via event reducer with binary search O(log n) upserts
+- **Optimistic UI** — Messages render immediately before server confirmation, then reconcile
+- **User messages as anchors** — Only `UserMessage[]` drives the timeline; assistant messages grouped under parent via `parentID`
+- **11 part types** — Text, reasoning, tool, file, subtask, step-start/finish, snapshot, patch, agent, retry, compaction
+- **Context tool grouping** — Consecutive `read`/`glob`/`grep`/`list` calls collapsed into single collapsible
+- **Paced streaming** — ~24ms intervals snapping to word boundaries; auto-scroll with 90-frame grace period
+- **Virtualized rendering** — `virtua/solid` with 16-session row cache; row reuse by equality check
