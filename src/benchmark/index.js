@@ -1017,12 +1017,27 @@ async function runTestRun() {
       // Add the user's message to the chat history
       chatHistory.push({ role: "user", content: benchmarkMessages[i] });
 
+      // Broadcast message start (prompt being sent)
+      console.log(
+        `BENCHMARK_JSON:{"type":"message-start","testRunId":${testRunId},"messageIndex":${i + 1},"prompt":"${benchmarkMessages[i].replace(/"/g, '\\"')}"}`,
+      );
+
       // Send all accumulated messages to the chat endpoint
       const result = await sendChat(chatHistory);
       result.messageIndex = i + 1;
       result.totalMessagesInContext = chatHistory.length;
       result.mem = getMem();
       messageResults.push(result);
+
+      // Broadcast LLM response received
+      const responseEscaped = result.responseText
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"')
+        .replace(/\n/g, '\\n')
+        .replace(/\r/g, '\\r');
+      console.log(
+        `BENCHMARK_JSON:{"type":"message-complete","testRunId":${testRunId},"messageIndex":${i + 1},"prompt":"${benchmarkMessages[i].replace(/"/g, '\\"')}","response":"${responseEscaped}","promptTokens":${result.promptTokens},"generatedTokens":${result.generatedTokens},"totalTimeMs":${result.totalTimeMs}}`,
+      );
 
       // Add the assistant's response to the chat history for the next turn
       chatHistory.push({ role: "assistant", content: result.responseText });
@@ -1040,6 +1055,11 @@ async function runTestRun() {
       break;
     }
   }
+
+  // Broadcast test run complete
+  console.log(
+    `BENCHMARK_JSON:{"type":"test-run-complete","testRunId":${testRunId}}`,
+  );
 
   // Stop server
   await stopLlamaServer();

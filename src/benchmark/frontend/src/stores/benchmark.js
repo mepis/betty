@@ -19,6 +19,8 @@ export const useBenchmarkStore = defineStore('benchmark', {
     profiles: [],
     error: null,
     sseConnected: false,
+    // Benchmark messages (test prompts and LLM responses)
+    benchmarkMessages: [],
     // Build state
     buildStatus: 'idle', // idle | building | success | error
     buildLogs: [],
@@ -251,6 +253,15 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async fetchMessages() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/messages`)
+        if (res.data.success) this.benchmarkMessages = res.data.data
+      } catch (e) {
+        this.error = e.message
+      }
+    },
+
     connectSSE() {
       if (this.sseConnected) return
 
@@ -270,6 +281,22 @@ export const useBenchmarkStore = defineStore('benchmark', {
       eventSource.addEventListener('results', (e) => {
         const data = JSON.parse(e.data)
         this.liveResults = data.liveResults || []
+        lastStatusReceived = Date.now()
+      })
+
+      eventSource.addEventListener('message-start', (e) => {
+        const data = JSON.parse(e.data)
+        lastStatusReceived = Date.now()
+      })
+
+      eventSource.addEventListener('message-complete', (e) => {
+        const data = JSON.parse(e.data)
+        lastStatusReceived = Date.now()
+      })
+
+      eventSource.addEventListener('test-run-complete', (e) => {
+        const data = JSON.parse(e.data)
+        this.benchmarkMessages = data.messages || []
         lastStatusReceived = Date.now()
       })
 
@@ -345,6 +372,10 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
     clearLogs() {
       this.logs = []
+    },
+
+    clearMessages() {
+      this.benchmarkMessages = []
     },
 
     //--- Build actions ---

@@ -6,6 +6,24 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-13] Structured benchmark message streaming — `BENCHMARK_JSON:` prefixed JSON lines emitted from `index.js` during benchmark runs, carrying `message-start`, `message-complete`, and `test-run-complete` events with full prompt/response text, token counts, and timing
+- [Added]: [2026-06-13] `GET /api/messages` endpoint — REST endpoint returning all collected benchmark messages (test prompts and LLM responses) grouped by test run ID
+- [Added]: [2026-06-13] Benchmark messages viewer in Dashboard — right-column panel displaying structured test run messages with prompt/response pairs, token counts, timing, and per-message badges
+- [Added]: [2026-06-13] SSE event listeners for `message-start`, `message-complete`, and `test-run-complete` in the Pinia store; `fetchMessages()` and `clearMessages()` store actions
+
+### Changed
+
+- [Changed]: [2026-06-13] `api-server.js` — added `benchmarkMessages` and `currentTestRunMessages` arrays; `parseBenchmarkJSON()` function to extract structured JSON from benchmark stdout; reset message arrays on new benchmark start
+- [Changed]: [2026-06-13] `index.js` — emit `BENCHMARK_JSON:` structured messages at message-start, message-complete, and test-run-complete points, with proper escaping for embedded quotes and newlines
+- [Changed]: [2026-06-13] Dashboard layout — reorganized from stacked single-column to two-column grid (results/logs on left, messages on right); combined metrics into single card with run count; added collapsible log viewer with maximize/minimize toggle and line numbers
+- [Changed]: [2026-06-13] Benchmark frontend dist — rebuilt with updated asset hashes (`index-oSA0TkQC.js`, `index-FnvWUHyx.css`)
+
+### Fixed
+
+- [Fixed]: [2026-06-13] Duplicate `.env.production` file renamed to `.env.productions` (typo) — both files are now tracked
+
+### Added
+
 - [Added]: [2026-06-11] Standalone benchmark API server — restored `api-server.js` (Express server with SSE streaming, REST API, config CRUD, results retrieval, report management, build endpoint, clone endpoint, and kill-port endpoint)
 - [Added]: [2026-06-11] Standalone benchmark Vue 3 frontend — restored `frontend/` as a Vue 3 SPA with Vite 6, Pinia, Vue Router 4, and Tailwind CSS 4; Dashboard, Config, and Reports views with real-time SSE streaming
 - [Added]: [2026-06-11] Benchmark npm package — new `package.json` with Express, axios, cors, dotenv, and express-rate-limit dependencies; scripts for `dev`, `dev:frontend`, `build:frontend`, and `start`

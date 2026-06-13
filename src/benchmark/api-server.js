@@ -197,6 +197,8 @@ let benchmarkStatus = "idle"; // idle | building | testing | error | stopped
 let currentTestRun = 0;
 let liveResults = [];
 let streamingClients = new Set();
+let benchmarkMessages = [];
+let currentTestRunMessages = [];
 let currentReportName = null;
 let buildProcess = null;
 let buildStatus = "idle"; // idle | building | success | error
@@ -228,6 +230,21 @@ app.put("/api/configs", (_req, res) => {
     const configs = _req.body;
     fs.writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
     res.json({ success: true, message: "Config saved" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Benchmark messages endpoint ---
+app.get("/api/messages", (_req, res) => {
+  try {
+    res.json({
+      success: true,
+      data: benchmarkMessages.map((bm) => ({
+        testRunId: bm.testRunId,
+        messages: bm.messages,
+      })),
+    });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -382,6 +399,8 @@ app.post("/api/run", (req, res) => {
     benchmarkStatus = "building";
     currentTestRun = 0;
     liveResults = [];
+    benchmarkMessages = [];
+    currentTestRunMessages = [];
 
     // Wipe results file
     fs.writeFileSync(RESULTS_FILE, "");
@@ -479,8 +498,70 @@ app.post("/api/run", (req, res) => {
 let stdoutLineBuffer = "";
 let stderrLineBuffer = "";
 
+//--- Parse benchmark JSON messages (structured data from benchmark process) ---
+function parseBenchmarkJSON(line) {
+  if (!line.startsWith('BENCHMARK_JSON:')) return false;
+  try {
+    const jsonStr = line.slice('BENCHMARK_JSON:'.length);
+    const data = JSON.parse(jsonStr);
+
+    switch (data.type) {
+      case 'message-start':
+        broadcast('message-start', {
+          testRunId: data.testRunId,
+          messageIndex: data.messageIndex,
+          prompt: data.prompt,
+        });
+        break;
+
+      case 'message-complete':
+        currentTestRunMessages.push({
+          messageIndex: data.messageIndex,
+          prompt: data.prompt,
+          response: data.response,
+          promptTokens: data.promptTokens,
+          generatedTokens: data.generatedTokens,
+          totalTimeMs: data.totalTimeMs,
+        });
+        broadcast('message-complete', {
+          testRunId: data.testRunId,
+          messageIndex: data.messageIndex,
+          prompt: data.prompt,
+          response: data.response,
+          promptTokens: data.promptTokens,
+          generatedTokens: data.generatedTokens,
+          totalTimeMs: data.totalTimeMs,
+        });
+        break;
+
+      case 'test-run-complete':
+        benchmarkMessages.push({
+          testRunId: data.testRunId,
+          messages: [...currentTestRunMessages],
+        });
+        currentTestRunMessages = [];
+        broadcast('test-run-complete', {
+          testRunId: data.testRunId,
+          messages: benchmarkMessages.map((bm) => ({
+            testRunId: bm.testRunId,
+            messages: bm.messages,
+          })),
+        });
+        break;
+    }
+
+    return true;
+  } catch (e) {
+    // Not a valid BENCHMARK_JSON line, ignore
+    return false;
+  }
+}
+
 //--- Parse log output for live results (called with complete lines) ---
 function parseLogOutput(text) {
+  // Check for structured benchmark JSON first
+  if (parseBenchmarkJSON(text)) return;
+
   // Parse "========== Test Run #N =========="
   const runMatch = text.match(/Test Run #(\d+)/);
   if (runMatch) {
