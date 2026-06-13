@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-13] Missing closing `</div>` tag in Dashboard.vue template that caused Vue render errors
+
 ### Added
+
+- [Added]: [2026-06-13] `.gitignore` for benchmark frontend to exclude local `.env` files while keeping `.env.example`
 
 - [Added]: [2026-06-13] Structured benchmark message streaming — `BENCHMARK_JSON:` prefixed JSON lines emitted from `index.js` during benchmark runs, carrying `message-start`, `message-complete`, and `test-run-complete` events with full prompt/response text, token counts, and timing
 - [Added]: [2026-06-13] `GET /api/messages` endpoint — REST endpoint returning all collected benchmark messages (test prompts and LLM responses) grouped by test run ID

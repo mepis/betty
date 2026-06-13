@@ -268,6 +268,7 @@ function statusBg(status) {
           />
         </div>
       </div>
+    </div>
 
     <!-- Live Results & Messages Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
