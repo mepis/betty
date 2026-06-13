@@ -130,6 +130,19 @@
       <div class="current-model" v-if="currentModel">
         <span class="model-name">{{ currentModel.name || currentModel.id }}</span>
       </div>
+      <div v-if="userName" class="user-footer">
+        <div class="user-info">
+          <div class="user-avatar">{{ userName.charAt(0).toUpperCase() }}</div>
+          <span class="user-name">{{ userName }}</span>
+        </div>
+        <button class="logout-btn" @click="$emit('logout')" title="Logout">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </aside>
 </template>
@@ -150,6 +163,7 @@ const props = defineProps({
   workspace: String,
   sessions: Array,
   activeSessionId: String,
+  userName: String,
 });
 
 const emit = defineEmits([
@@ -164,6 +178,7 @@ const emit = defineEmits([
   'thinking-change',
   'switch-session',
   'delete-session',
+  'logout',
 ]);
 
 const connectionText = computed(() => {
@@ -527,6 +542,65 @@ function onThinkingChange(level) {
 
 .model-name {
   color: var(--text-secondary);
+}
+
+.user-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0 0;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 120px;
+}
+
+.logout-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.logout-btn:hover {
+  background: var(--error-dim);
+  color: var(--error);
 }
 
 /* Mobile */

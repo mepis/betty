@@ -4,6 +4,23 @@ A web-based chat interface for the [pi coding agent](https://pi.dev), accessible
 
 ## Features
 
+- 🔐 **User authentication** — JWT-based login with secure password hashing
+- 👤 **Multi-user support** — First user becomes admin automatically
+- 🔄 **Persistent sessions** — httpOnly cookies with automatic refresh
+- 📱 **Responsive design** — Works on mobile and desktop
+- 💬 Real-time chat with streaming responses
+- 🖼️ **Image attachments** - drag & drop or click 📷 to attach images (up to 10MB each, max 10 images)
+- 🧠 Thinking block display (collapsible)
+- 🔧 Tool call visibility (bash, read, edit, write, etc.)
+- 📋 Code block rendering with copy buttons
+- 🎨 Dark theme with clean typography
+- 📱 Responsive design (works on mobile)
+- 🔄 Auto-reconnect on disconnection
+- 📂 Session management (new, fork, compact)
+- ⚡ Model and thinking level controls
+- 🖥️ Extension UI support (dialogs, confirmations)
+- 📁 **Workspace selector** - switch between projects/repos
+
 - 💬 Real-time chat with streaming responses
 - 🖼️ **Image attachments** - drag & drop or click 📷 to attach images (up to 10MB each, max 10 images)
 - 🧠 Thinking block display (collapsible)
@@ -38,6 +55,38 @@ Open `http://localhost:3000` in your browser.
 | `PORT` | `3000` | HTTP server port |
 | `HOST` | `0.0.0.0` | Bind address (use `0.0.0.0` for remote access) |
 | `WORKSPACE` | `$HOME` | Default working directory for the agent |
+| `AUTH_ENABLED` | `true` | Enable/disable authentication |
+| `JWT_SECRET` | *(generated)* | Secret key for signing access tokens |
+| `JWT_REFRESH_SECRET` | *(generated)* | Secret key for signing refresh tokens |
+| `JWT_EXPIRES_IN` | `24h` | Access token expiration time |
+| `JWT_REFRESH_EXPIRES_IN` | `7d` | Refresh token expiration time |
+
+### Authentication
+
+Betty includes built-in user authentication to protect access to the coding agent.
+
+**Getting started:**
+1. Start Betty for the first time
+2. You'll be redirected to the registration page
+3. Create your admin account (first user is always admin)
+4. You'll be logged in automatically and redirected to the chat
+
+**Additional users:**
+- From the login page, click "Create one" to register new accounts
+- Each user gets their own sessions and workspace access
+
+**Security features:**
+- Passwords are hashed with bcrypt (cost factor 12)
+- Sessions use httpOnly cookies (immune to XSS token theft)
+- Access tokens expire after 24 hours
+- Refresh tokens allow silent re-authentication for 7 days
+- Rate limiting on login (10/min) and registration (3/min)
+
+**Disabling authentication:**
+Set `AUTH_ENABLED=false` in your `.env` file. This is useful for single-user setups or local development.
+
+**Token rotation:**
+To change JWT secrets (e.g., after a security concern), update the secrets in `.env` and restart Betty. All existing sessions will be invalidated.
 
 ### Remote Access
 

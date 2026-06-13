@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { authStore } from '../stores/auth.js';
 
 export function useWebSocket() {
   const ws = ref(null);
@@ -10,6 +11,11 @@ export function useWebSocket() {
 
   function connect() {
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    // Include auth token in WebSocket URL
+    const token = authStore.user ? '' : '';
+    // We don't have direct access to the token cookie from JS,
+    // but the server-side auth middleware handles cookie-based auth
+    // For WebSocket, we use the cookie automatically via credentials
     ws.value = new WebSocket(`${protocol}//${location.host}/ws`);
 
     ws.value.onopen = () => {
@@ -17,9 +23,15 @@ export function useWebSocket() {
       status.value = 'connected';
     };
 
-    ws.value.onclose = () => {
+    ws.value.onclose = (event) => {
       connected.value = false;
       status.value = 'disconnected';
+      // If closed with 401, redirect to login
+      if (event.code === 401) {
+        authStore.logout();
+        window.location.href = '/login';
+        return;
+      }
       setTimeout(connect, 3000);
     };
 

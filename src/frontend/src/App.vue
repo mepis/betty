@@ -1,74 +1,91 @@
 <template>
-  <div class="app">
-    <Sidebar
-      v-if="activeTab === 'chat'"
-      :active-tab="activeTab"
-      :is-collapsed="sidebarCollapsed"
-      :connected="connected"
-      :is-streaming="isStreaming"
-      :models="models"
-      :current-model="currentModel"
-      :selected-model-id="selectedModelId"
-      :thinking-level="thinkingLevel"
-      :workspace="workspace"
-      :sessions="sessions"
-      :active-session-id="activeSessionId"
-      @switch-tab="activeTab = $event"
-      @show-workspace="showFolderPicker = true"
-      @new-session="newSession"
-      @fork-session="forkSession"
-      @compact="compactSession"
-      @export="exportHtml"
-      @show-clone="showCloneModal = true"
-      @model-change="changeModel"
-      @thinking-change="changeThinkingLevel"
-      @switch-session="switchSession"
-      @delete-session="deleteSession"
-    />
+  <!-- Auth guard: show login/register when not authenticated -->
+  <template v-if="!authStore.isAuthenticated && !authChecking">
+    <LoginPage v-if="!authStore.authEnabled || authStore.user" />
+    <LoginPage v-else-if="currentPath === '/login'" />
+    <RegisterPage v-else-if="currentPath === '/register'" />
+    <LoginPage v-else />
+  </template>
 
-    <template v-if="activeTab === 'chat'">
-      <ChatView
-        :messages="messages"
-        :is-streaming="isStreaming"
+  <!-- Main app: only when authenticated -->
+  <template v-else>
+    <div class="app">
+      <Sidebar
+        :active-tab="activeTab"
+        :is-collapsed="sidebarCollapsed"
         :connected="connected"
-        :streaming-msg="streamingMsg"
-        :available-commands="availableCommands"
-        @send="sendMessage"
-        @abort="abortStream"
-        @toggle-sidebar="toggleSidebar"
-        @select-command="selectCommand"
+        :is-streaming="isStreaming"
+        :models="models"
+        :current-model="currentModel"
+        :selected-model-id="selectedModelId"
+        :thinking-level="thinkingLevel"
+        :workspace="workspace"
+        :sessions="sessions"
+        :active-session-id="activeSessionId"
+        :user-name="authStore.user?.name"
+        @switch-tab="activeTab = $event"
+        @show-workspace="showFolderPicker = true"
+        @new-session="newSession"
+        @fork-session="forkSession"
+        @compact="compactSession"
+        @export="exportHtml"
+        @show-clone="showCloneModal = true"
+        @model-change="changeModel"
+        @thinking-change="changeThinkingLevel"
+        @switch-session="switchSession"
+        @delete-session="deleteSession"
+        @logout="handleLogout"
       />
-    </template>
 
-    <CloneModal :show="showCloneModal" @close="showCloneModal = false" />
-    <FolderPicker :show="showFolderPicker" @close="showFolderPicker = false" @select="workspace = $event" />
-    <ToastContainer />
-  </div>
+      <template v-if="activeTab === 'chat'">
+        <ChatView
+          :messages="messages"
+          :is-streaming="isStreaming"
+          :connected="connected"
+          :available-commands="availableCommands"
+          @send="sendMessage"
+          @abort="abortStream"
+          @toggle-sidebar="toggleSidebar"
+          @select-command="selectCommand"
+        />
+      </template>
+
+      <CloneModal :show="showCloneModal" @close="showCloneModal = false" />
+      <FolderPicker :show="showFolderPicker" @close="showFolderPicker = false" @select="workspace = $event" />
+      <ToastContainer />
+    </div>
+  </template>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useWebSocket } from './composables/useWebSocket.js';
+import { useStreaming } from './composables/useStreaming.js';
+import { hasMessageById } from './composables/useMessageStore.js';
 import { toast } from './composables/useToast.js';
+import { authStore } from './stores/auth.js';
 import Sidebar from './components/Sidebar.vue';
 import ChatView from './components/ChatView.vue';
 import CloneModal from './components/CloneModal.vue';
 import FolderPicker from './components/FolderPicker.vue';
 import ToastContainer from './components/ToastContainer.vue';
+import LoginPage from './pages/LoginPage.vue';
+import RegisterPage from './pages/RegisterPage.vue';
 
 // ─── State ──────────────────────────────────────────────────────────────
 const activeTab = ref('chat');
 const sidebarCollapsed = ref(false);
 const showCloneModal = ref(false);
 const showFolderPicker = ref(false);
+const authChecking = ref(true);
+const currentPath = ref(window.location.pathname);
 
 const { connected, connect: connectWs, send, on, onAny } = useWebSocket();
 
 const messages = ref([]);
 const isStreaming = ref(false);
-const streamingMsg = ref(null);
-const pendingStreamingMsgs = ref([]);
-const streamingMsgNeedsReset = ref(false);
+const streamingMsgId = ref(null); // ID of the message currently streaming
+const { displayText: streamingText, thinkingText: streamingThinking, appendDelta, appendThinkingDelta, complete: completeStreaming, reset: resetStreaming } = useStreaming();
 const models = ref([]);
 const currentModel = ref(null);
 const selectedModelId = ref('');
@@ -90,36 +107,49 @@ function setupWebSocket() {
 
   on('agent_start', () => {
     isStreaming.value = true;
+    resetStreaming();
+    // Add streaming message to the main array immediately
+    const streamId = 'streaming-' + Date.now();
+    streamingMsgId.value = streamId;
+    messages.value.push({
+      id: streamId,
+      role: 'assistant',
+      content: '',
+      thinking: '',
+      isStreaming: true,
+      timestamp: new Date().toISOString(),
+    });
   });
-
-  // Extract thinking text from a message regardless of format
-  // (top-level string or content block array)
-  function extractThinking(msg) {
-    if (typeof msg.thinking === 'string') return msg.thinking;
-    if (Array.isArray(msg.content)) {
-      const block = msg.content.find(b => b.type === 'thinking');
-      return block ? block.thinking : '';
-    }
-    return '';
-  }
-
-  // Extract text content from a message regardless of format
-  function extractText(msg) {
-    if (Array.isArray(msg.content)) {
-      return msg.content.filter(b => b.type === 'text').map(b => b.text).join('');
-    }
-    if (typeof msg.content === 'string') return msg.content;
-    return '';
-  }
 
   on('agent_end', (data) => {
     isStreaming.value = false;
+    completeStreaming();
 
-    // Add messages from the agent (only for the active/current session)
+    // Finalize the streaming message in the array
+    if (streamingMsgId.value) {
+      const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+      if (streamMsg) {
+        streamMsg.isStreaming = false;
+        // If agent_end provided the final message with a real ID, replace the streaming one
+        if (data.messages && data.messages.length > 0) {
+          const finalMsg = data.messages[data.messages.length - 1];
+          if (finalMsg && finalMsg.role === 'assistant' && finalMsg.id !== streamingMsgId.value) {
+            // Replace streaming message with the final one
+            const idx = messages.value.findIndex(m => m.id === streamingMsgId.value);
+            if (idx >= 0) {
+              messages.value[idx] = finalMsg;
+            }
+          }
+        }
+      }
+      streamingMsgId.value = null;
+    }
+
+    // Add any additional messages from the agent
     if (data.messages) {
       for (const msg of data.messages) {
         if (msg.role === 'user') continue;
-        if (!messages.value.find(m => m.id === msg.id)) {
+        if (!hasMessageById(messages.value, msg.id)) {
           messages.value.push(msg);
         }
       }
@@ -132,52 +162,38 @@ function setupWebSocket() {
         }
       }
     }
-
-    // If there were streaming messages that weren't included in agent_end's
-    // messages, add them so the response isn't lost. Only add if no assistant
-    // message with the same content already exists (to avoid duplicates when
-    // agent_end does include the message with its real ID).
-    for (const pending of pendingStreamingMsgs.value) {
-      const hasContent = pending.content || pending.thinking;
-      const pendingText = pending.content || '';
-      const pendingThinking = pending.thinking || '';
-      const isDuplicate = messages.value.some(m =>
-        m.role === 'assistant' &&
-        extractText(m) === pendingText &&
-        extractThinking(m) === pendingThinking
-      );
-      if (hasContent && !isDuplicate) {
-        const contentBlocks = [];
-        if (pendingThinking) {
-          contentBlocks.push({ type: 'thinking', thinking: pendingThinking });
-        }
-        if (pendingText) {
-          contentBlocks.push({ type: 'text', text: pendingText });
-        }
-        messages.value.push({
-          id: pending.id,
-          role: 'assistant',
-          content: contentBlocks,
-          timestamp: new Date().toISOString(),
-        });
-      }
-    }
-    pendingStreamingMsgs.value = [];
-    streamingMsg.value = null;
-    streamingMsgNeedsReset.value = false;
   });
 
   on('message_update', (data) => {
-    handleStreamingUpdate(data);
+    const evt = data.assistantMessageEvent;
+    if (!evt) return;
+
+    // Update the streaming message in the main array
+    if (streamingMsgId.value) {
+      const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+      if (!streamMsg) return;
+
+      if (evt.type === 'text_delta') {
+        appendDelta(evt.delta);
+        streamMsg.content = streamingText.value;
+      }
+      if (evt.type === 'thinking_delta') {
+        appendThinkingDelta(evt.delta);
+        streamMsg.thinking = streamingThinking.value;
+      }
+    }
   });
 
   on('message_end', () => {
-    if (streamingMsg.value) {
-      // Save the completed streaming message for agent_end to process.
-      // Do NOT clear streamingMsg.value — keep the thinking visible on screen
-      // until agent_end adds the final message(s) to the messages array.
-      pendingStreamingMsgs.value.push({ ...streamingMsg.value });
-      streamingMsgNeedsReset.value = true;
+    // Streaming content is done being received; finalize pacing
+    completeStreaming();
+    if (streamingMsgId.value) {
+      const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+      if (streamMsg) {
+        // Ensure final content is set
+        streamMsg.content = streamingText.value;
+        streamMsg.thinking = streamingThinking.value;
+      }
     }
   });
 
@@ -225,9 +241,8 @@ function setupWebSocket() {
 
   on('session_new', (data) => {
     messages.value = [];
-    streamingMsg.value = null;
-    pendingStreamingMsgs.value = [];
-    streamingMsgNeedsReset.value = false;
+    resetStreaming();
+    streamingMsgId.value = null;
     if (data.sessionId) {
       activeSessionId.value = data.sessionId;
       // Add new session to the list
@@ -250,9 +265,8 @@ function setupWebSocket() {
   on('session_switched', (data) => {
     activeSessionId.value = data.sessionId;
     messages.value = data.messages || [];
-    streamingMsg.value = null;
-    pendingStreamingMsgs.value = [];
-    streamingMsgNeedsReset.value = false;
+    resetStreaming();
+    streamingMsgId.value = null;
     toast('Session switched', 'info');
   });
 
@@ -296,40 +310,6 @@ function setupWebSocket() {
 
 }
 
-// ─── Streaming ──────────────────────────────────────────────────────────
-function handleStreamingUpdate(data) {
-  const evt = data.assistantMessageEvent;
-  if (!evt) return;
-
-  if (evt.type === 'text_start' && (!streamingMsg.value || streamingMsgNeedsReset.value)) {
-    streamingMsg.value = {
-      id: 'streaming-' + Date.now(),
-      content: '',
-      thinking: '',
-      tools: [],
-    };
-    streamingMsgNeedsReset.value = false;
-  }
-
-  if (evt.type === 'text_delta' && streamingMsg.value) {
-    streamingMsg.value.content += evt.delta;
-  }
-
-  if (evt.type === 'thinking_start' && (!streamingMsg.value || streamingMsgNeedsReset.value)) {
-    streamingMsg.value = {
-      id: 'streaming-' + Date.now(),
-      content: '',
-      thinking: '',
-      tools: [],
-    };
-    streamingMsgNeedsReset.value = false;
-  }
-
-  if (evt.type === 'thinking_delta' && streamingMsg.value) {
-    streamingMsg.value.thinking += evt.delta;
-  }
-}
-
 // ─── Actions ────────────────────────────────────────────────────────────
 function sendMessage({ text, images }) {
   if ((!text && !images.length) || !connected.value) return;
@@ -364,9 +344,12 @@ function sendMessage({ text, images }) {
 function abortStream() {
   send({ type: 'abort' });
   isStreaming.value = false;
-  streamingMsg.value = null;
-  pendingStreamingMsgs.value = [];
-  streamingMsgNeedsReset.value = false;
+  resetStreaming();
+  // Remove the streaming message from the array
+  if (streamingMsgId.value) {
+    messages.value = messages.value.filter(m => m.id !== streamingMsgId.value);
+    streamingMsgId.value = null;
+  }
   toast('Aborted', 'info');
 }
 
@@ -462,6 +445,11 @@ function toggleSidebar() {
   }
 }
 
+function handleLogout() {
+  authStore.logout();
+  window.location.href = '/login';
+}
+
 // ─── Extension UI ───────────────────────────────────────────────────────
 function handleExtensionUI(req) {
   switch (req.method) {
@@ -518,26 +506,32 @@ function handleGlobalKeydown(e) {
 }
 
 // ─── Lifecycle ──────────────────────────────────────────────────────────
-onMounted(() => {
-  setupWebSocket();
-  connectWs();
-  document.addEventListener('keydown', handleGlobalKeydown);
+onMounted(async () => {
+  // Initialize auth first
+  await authStore.init();
+  authChecking.value = false;
 
-  // Load workspace
-  fetch('/api/workspace')
-    .then(r => r.json())
-    .then(data => { workspace.value = data.workspace; })
-    .catch(() => {});
+  // Only set up WebSocket and app if authenticated
+  if (authStore.isAuthenticated) {
+    setupWebSocket();
+    connectWs();
+    document.addEventListener('keydown', handleGlobalKeydown);
 
-  // Initial requests after connection
-  setTimeout(() => {
-    send({ type: 'get_available_models' });
-    send({ type: 'get_state' });
-    send({ type: 'get_messages' });
-    send({ type: 'get_commands' });
-    send({ type: 'list_sessions' });
-  }, 1000);
+    // Load workspace
+    fetch('/api/workspace')
+      .then(r => r.json())
+      .then(data => { workspace.value = data.workspace; })
+      .catch(() => {});
 
+    // Initial requests after connection
+    setTimeout(() => {
+      send({ type: 'get_available_models' });
+      send({ type: 'get_state' });
+      send({ type: 'get_messages' });
+      send({ type: 'get_commands' });
+      send({ type: 'list_sessions' });
+    }, 1000);
+  }
 });
 
 onUnmounted(() => {
@@ -631,6 +625,32 @@ html, body {
   margin: 20px 0;
 }
 
+.message-content del {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.message-content table {
+  border-collapse: collapse;
+  margin: 12px 0;
+  width: 100%;
+  font-size: 13.5px;
+}
+.message-content th,
+.message-content td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+.message-content th {
+  background: var(--bg-tertiary);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.message-content tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.01);
+}
+
 /* Code blocks */
 .code-block {
   margin: 12px 0;
@@ -688,6 +708,63 @@ html, body {
   font-size: inherit;
 }
 
+/* highlight.js overrides within code blocks */
+.code-block pre code.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.code-block pre code.hljs .hljs-keyword {
+  color: #c678dd;
+}
+.code-block pre code.hljs .hljs-string {
+  color: #98c379;
+}
+.code-block pre code.hljs .hljs-number {
+  color: #d19a66;
+}
+.code-block pre code.hljs .hljs-comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.code-block pre code.hljs .hljs-function {
+  color: #61afef;
+}
+.code-block pre code.hljs .hljs-title {
+  color: #e5c07b;
+}
+.code-block pre code.hljs .hljs-type {
+  color: #e5c07b;
+}
+.code-block pre code.hljs .hljs-attr {
+  color: #d19a66;
+}
+.code-block pre code.hljs .hljs-built_in {
+  color: #56b6c2;
+}
+.code-block pre code.hljs .hljs-variable {
+  color: #e06c75;
+}
+.code-block pre code.hljs .hljs-operator {
+  color: #56b6c2;
+}
+.code-block pre code.hljs .hljs-tag {
+  color: #e06c75;
+}
+.code-block pre code.hljs .hljs-params {
+  color: #e06c75;
+}
+.code-block pre code.hljs .hljs-property {
+  color: #e06c75;
+}
+.code-block pre code.hljs .hljs-literal {
+  color: #d19a66;
+}
+.code-block pre code.hljs .hljs-meta {
+  color: #61afef;
+}
+
 .message-content > code {
   font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
   background: var(--code-bg);
@@ -734,46 +811,6 @@ html, body {
   overflow-y: auto;
 }
 .thinking-content.collapsed { display: none; }
-
-/* Tool call blocks */
-.tool-call {
-  margin: 10px 0;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  overflow: hidden;
-}
-
-.tool-header {
-  padding: 8px 14px;
-  background: var(--accent-dim-soft);
-  border-bottom: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--accent);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  user-select: none;
-  font-weight: 500;
-  transition: background var(--transition-fast);
-}
-.tool-header:hover {
-  background: var(--accent-dim);
-}
-
-.tool-content {
-  padding: 10px 14px;
-  font-size: 12px;
-  color: var(--text-secondary);
-  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-  white-space: pre-wrap;
-  word-break: break-all;
-  max-height: 150px;
-  overflow-y: auto;
-  line-height: 1.5;
-}
-.tool-content.collapsed { display: none; }
 
 /* Streaming cursor */
 .streaming-cursor::after {

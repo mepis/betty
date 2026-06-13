@@ -4,6 +4,43 @@
 
 ### Added
 
+- [Added]: [2026-06-12] JWT-based user authentication — bcrypt password hashing (cost 12), httpOnly cookie sessions with automatic refresh, rate limiting on login (10/min) and registration (3/min), role-based access control (admin/user), first-user becomes admin automatically; configurable via `AUTH_ENABLED`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `JWT_EXPIRES_IN`, `JWT_REFRESH_EXPIRES_IN`
+- [Added]: [2026-06-12] Auth middleware (`src/backend/auth-middleware.js`) — `authenticate` middleware supporting Bearer token and cookie auth with graceful fallback for HTML requests; `requireAuth` for hard 401 enforcement; `authorize(...roles)` factory for role-based access
+- [Added]: [2026-06-12] Auth utilities (`src/backend/auth-utils.js`) — `hashPassword`, `verifyPassword`, `generateTokens`, `verifyAccessToken`, `verifyRefreshToken`, `refreshAccessToken` with configurable JWT secrets and expiration via environment variables
+- [Added]: [2026-06-12] User store (`src/backend/user-store.js`) — file-based user persistence in `~/.betty/users/` with CRUD operations (create, load, save, delete, list, update), email lookup, and `hasUsers()` check
+- [Added]: [2026-06-12] Auth routes (`src/backend/routes/auth.js`) — Express Router with `/register`, `/login`, `/logout`, `/refresh`, `/me`, `/status` endpoints; in-memory rate limiting; httpOnly cookie session management
+- [Added]: [2026-06-12] Login page (`src/frontend/src/pages/LoginPage.vue`) — Vue 3 login form with email/password, loading states, error display, first-user notice, and register link
+- [Added]: [2026-06-12] Register page (`src/frontend/src/pages/RegisterPage.vue`) — Vue 3 registration form with name, email, password + confirm, password strength indicator, validation, and success/error states
+- [Added]: [2026-06-12] Auth store (`src/frontend/src/stores/auth.js`) — reactive auth state with `login`, `register`, `logout`, `init` actions; 401 auto-redirect; server-side auth status check on init
+- [Added]: [2026-06-12] Streaming composable (`src/frontend/src/composables/useStreaming.js`) — paced text streaming with word-boundary snapping at ~24ms intervals; `createMessageStreaming` factory for dual text+thinking streams
+- [Added]: [2026-06-12] Auto-scroll composable (`src/frontend/src/composables/useAutoScroll.js`) — gesture-aware auto-scroll with 90-frame grace period, user scroll intent detection, and floating "jump to bottom" button during streaming
+- [Added]: [2026-06-12] Virtual list composable (`src/frontend/src/composables/useVirtualList.js`) — lightweight virtualization for variable-height message lists with estimated heights, real measurement on demand, and configurable buffer count
+- [Added]: [2026-06-12] Message store utilities (`src/frontend/src/composables/useMessageStore.js`) — `binarySearchById`, `hasMessageById`, `findMessageIndexById` for efficient message lookup
+- [Added]: [2026-06-12] User footer in Sidebar — user avatar (initial), display name, and logout button in sidebar footer
+- [Added]: [2026-06-12] WebSocket authentication — `verifyClient` callback on WebSocket server checks access token from cookies or query string; rejects unauthenticated connections with 401
+- [Added]: [2026-06-12] Protected API routes — all `/api/*` endpoints now wrapped with `protectApi` middleware when auth is enabled
+- [Added]: [2026-06-12] Auth pages in server.js — `/login` and `/register` HTML pages served before static middleware; auto-redirect to login when unauthenticated
+- [Added]: [2026-06-12] `bcrypt`, `cookie-parser`, `jsonwebtoken` backend dependencies for authentication
+- [Added]: [2026-06-12] `marked` and `highlight.js` frontend dependencies for syntax-highlighted markdown rendering
+
+### Changed
+
+- [Changed]: [2026-06-12] `server.js` — added auth middleware, user store, auth routes, login/register HTML pages, WebSocket authentication, and `protectApi` wrapper for all API endpoints; `AUTH_ENABLED` env var to toggle authentication on/off
+- [Changed]: [2026-06-12] `App.vue` — auth guard wrapping the entire app; shows LoginPage/RegisterPage when not authenticated; passes `userName` to Sidebar; handles logout via auth store
+- [Changed]: [2026-06-12] `ChatView.vue` — integrated virtual list rendering for sessions with 50+ messages; auto-scroll composable replacing manual scroll; streaming message now part of messages array instead of separate prop; removed `streamingMsg` prop
+- [Changed]: [2026-06-12] `ChatMessage.vue` — added typing indicator and shimmer animation for streaming; grouped context tools (read, glob, grep, list) into collapsible "Gathering context" groups; tool state icons (pending/running/completed/error); content visibility guard
+- [Changed]: [2026-06-12] `Sidebar.vue` — added `userName` prop and `logout` event; user footer with avatar, name, and logout button
+- [Changed]: [2026-06-12] `useWebSocket.js` — integrated auth store; redirects to login on 401 WebSocket close; passes cookies for server-side auth verification
+- [Changed]: [2026-06-12] `utils.js` — replaced custom markdown renderer with `marked` + `highlight.js` for proper GFM support and syntax-highlighted code blocks
+- [Changed]: [2026-06-12] `main.js` — added `highlight.js` atom-one-dark theme import
+- [Changed]: [2026-06-12] `.env.example` — added authentication configuration section with `AUTH_ENABLED`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `JWT_EXPIRES_IN`, `JWT_REFRESH_EXPIRES_IN`
+- [Changed]: [2026-06-12] `README.md` — added authentication feature highlights, environment variable documentation, authentication getting-started guide, security features description, and token rotation instructions
+
+### Removed
+
+- [Removed]: [2026-06-12] Custom markdown renderer in `utils.js` — replaced with `marked` library for full GFM support, proper code block handling, and syntax highlighting via `highlight.js`
+- [Removed]: [2026-06-12] Separate streaming message display in `ChatView.vue` — streaming messages are now part of the main messages array with `isStreaming` flag instead of a separate `streamingMsg` prop and dedicated template block
+
 - [Added]: [2026-06-11] FolderPicker component — new Vue 3 directory browser modal for workspace selection with breadcrumb navigation, directory listing with item counts, loading/error states, and path confirmation
 - [Added]: [2026-06-11] Tooltip component — reusable Vue 3 tooltip with hover-triggered delayed appearance (200ms show, 100ms hide), positioned above or below the trigger element, with smooth enter/leave transitions
 - [Added]: [2026-06-11] New design token system — semantic color tokens (success, warning, error, info with dim variants), transition timing variables (--transition-fast, --transition, --transition-slow), refined radius tokens (--radius-sm, --radius, --radius-lg), and shadow tokens (--shadow-sm, --shadow, --shadow-lg)

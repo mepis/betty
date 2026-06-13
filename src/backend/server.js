@@ -5,6 +5,8 @@ import { spawn } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
+import cookieParser from "cookie-parser";
+import jwt from "jsonwebtoken";
 import {
   loadSession,
   saveSession,
@@ -13,6 +15,10 @@ import {
   createSession,
   updateSession,
 } from "./session-store.js";
+import { authenticate, requireAuth } from "./auth-middleware.js";
+import authRoutes from "./routes/auth.js";
+import { hasUsers } from "./user-store.js";
+import { verifyRefreshToken } from "./auth-utils.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
@@ -24,6 +30,319 @@ const DEFAULT_WORKSPACE = process.env.WORKSPACE || process.env.HOME;
 const app = express();
 const httpServer = createServer(app);
 app.use(express.json());
+app.use(cookieParser());
+
+// ─── Auth Pages & Routes (MUST be before static middleware) ────────────────
+
+app.get("/login", (req, res) => {
+  if (!AUTH_ENABLED) {
+    return res.redirect("/");
+  }
+  // Check if already authenticated
+  if (req.user) {
+    return res.redirect("/");
+  }
+  res.send(LOGIN_PAGE_HTML);
+});
+
+app.get("/register", (req, res) => {
+  if (!AUTH_ENABLED) {
+    return res.redirect("/");
+  }
+  // Check if already authenticated
+  if (req.user) {
+    return res.redirect("/");
+  }
+  // Only allow registration if users exist (redirect to login) or no users (allow)
+  res.send(REGISTER_PAGE_HTML);
+});
+
+// ─── Auth Routes ────────────────────────────────────────────────────────────
+
+// Public status endpoint (must be before mounted auth routes)
+app.get("/api/auth/status", (req, res) => {
+  const authEnabled = process.env.AUTH_ENABLED !== "false";
+  res.json({
+    authEnabled,
+    hasUsers: hasUsers(),
+    isAuthenticated: !!req.user,
+  });
+});
+
+// Debug: simple test route
+console.log("[debug] Registering /api/test route, app._router.stack length:", app._router?.stack?.length || 0);
+app.get("/api/test", (req, res) => {
+  console.log("[debug] /api/test requested");
+  res.json({ ok: true });
+});
+
+app.use("/api/auth", authenticate, authRoutes);
+
+// Logout endpoint
+app.post("/api/auth/logout", (req, res) => {
+  res.clearCookie("access_token");
+  res.clearCookie("refresh_token");
+  res.json({ message: "Logged out successfully" });
+});
+
+// Current user info
+app.get("/api/me", (req, res) => {
+  if (AUTH_ENABLED && !req.user) {
+    return res.status(401).json({ error: "Not authenticated" });
+  }
+  if (req.user) {
+    res.json({ user: req.user });
+  } else {
+    res.json({ user: null });
+  }
+});
+
+// Auth configuration
+const AUTH_ENABLED = process.env.AUTH_ENABLED !== "false";
+const LOGIN_PAGE_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betty - Login</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d0d0d; color: #e5e5e5; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .login-container { width: 100%; max-width: 400px; padding: 20px; }
+    .login-header { text-align: center; margin-bottom: 32px; }
+    .login-header h1 { font-size: 28px; font-weight: 600; color: #e5e5e5; margin-bottom: 8px; }
+    .login-header p { font-size: 14px; color: #888; }
+    .login-form { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 500; color: #888; margin-bottom: 6px; }
+    .form-group input { width: 100%; padding: 10px 14px; background: #0d0d0d; border: 1px solid #2a2a2a; border-radius: 8px; color: #e5e5e5; font-size: 14px; outline: none; transition: border-color 0.2s; }
+    .form-group input:focus { border-color: #6366f1; }
+    .form-group input::placeholder { color: #555; }
+    .login-btn { width: 100%; padding: 12px; background: #6366f1; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.2s; }
+    .login-btn:hover { opacity: 0.9; }
+    .login-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .error-msg { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
+    .error-msg.show { display: block; }
+    .register-link { text-align: center; margin-top: 16px; font-size: 13px; color: #888; }
+    .register-link a { color: #6366f1; text-decoration: none; }
+    .register-link a:hover { text-decoration: underline; }
+    .first-user-notice { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); color: #a5b4fc; padding: 10px 14px; border-radius: 8px; font-size: 12px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Betty</h1>
+      <p>Sign in to access the coding agent</p>
+    </div>
+    <div id="notice" class="first-user-notice" style="display:none"></div>
+    <div id="error" class="error-msg"></div>
+    <form id="loginForm" class="login-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="login-btn" id="submitBtn">Sign in</button>
+    </form>
+    <div class="register-link" id="registerLink" style="display:none">
+      Don't have an account? <a href="/register">Create one</a>
+    </div>
+  </div>
+  <script>
+    const notice = document.getElementById('notice');
+    const error = document.getElementById('error');
+    const form = document.getElementById('loginForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const registerLink = document.getElementById('registerLink');
+
+    // Check if this is the first user (show register link)
+    fetch('/api/auth/status')
+      .then(r => r.json())
+      .then(data => {
+        if (data.authEnabled && !data.hasUsers) {
+          notice.style.display = 'block';
+          notice.textContent = 'No accounts exist yet. You will create the admin account on the registration page.';
+          registerLink.style.display = 'none';
+        } else if (data.authEnabled && data.hasUsers) {
+          registerLink.style.display = 'block';
+        }
+      }).catch(() => {});
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing in...';
+      error.classList.remove('show');
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+          credentials: 'include'
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          error.textContent = data.error || 'Login failed';
+          error.classList.add('show');
+        } else {
+          window.location.href = '/';
+        }
+      } catch (err) {
+        error.textContent = 'Connection error. Please try again.';
+        error.classList.add('show');
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Sign in';
+    });
+  </script>
+</body>
+</html>`;
+
+const REGISTER_PAGE_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betty - Register</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d0d0d; color: #e5e5e5; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .register-container { width: 100%; max-width: 400px; padding: 20px; }
+    .register-header { text-align: center; margin-bottom: 32px; }
+    .register-header h1 { font-size: 28px; font-weight: 600; color: #e5e5e5; margin-bottom: 8px; }
+    .register-header p { font-size: 14px; color: #888; }
+    .register-form { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 500; color: #888; margin-bottom: 6px; }
+    .form-group input { width: 100%; padding: 10px 14px; background: #0d0d0d; border: 1px solid #2a2a2a; border-radius: 8px; color: #e5e5e5; font-size: 14px; outline: none; transition: border-color 0.2s; }
+    .form-group input:focus { border-color: #6366f1; }
+    .form-group input::placeholder { color: #555; }
+    .register-btn { width: 100%; padding: 12px; background: #6366f1; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.2s; }
+    .register-btn:hover { opacity: 0.9; }
+    .register-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .error-msg { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
+    .error-msg.show { display: block; }
+    .success-msg { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #22c55e; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
+    .success-msg.show { display: block; }
+    .login-link { text-align: center; margin-top: 16px; font-size: 13px; color: #888; }
+    .login-link a { color: #6366f1; text-decoration: none; }
+    .login-link a:hover { text-decoration: underline; }
+    .password-strength { height: 3px; border-radius: 2px; margin-top: 6px; transition: all 0.3s; }
+    .strength-weak { background: #ef4444; width: 33%; }
+    .strength-medium { background: #f59e0b; width: 66%; }
+    .strength-strong { background: #22c55e; width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <div class="register-header">
+      <h1>Betty</h1>
+      <p>Create your account</p>
+    </div>
+    <div id="error" class="error-msg"></div>
+    <div id="success" class="success-msg"></div>
+    <form id="registerForm" class="register-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="At least 6 characters" required minlength="6" autocomplete="new-password">
+        <div id="strengthBar" class="password-strength"></div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Repeat your password" required autocomplete="new-password">
+      </div>
+      <button type="submit" class="register-btn" id="submitBtn">Create account</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="/login">Sign in</a>
+    </div>
+  </div>
+  <script>
+    const error = document.getElementById('error');
+    const success = document.getElementById('success');
+    const form = document.getElementById('registerForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const strengthBar = document.getElementById('strengthBar');
+    const passwordInput = document.getElementById('password');
+
+    passwordInput.addEventListener('input', () => {
+      const val = passwordInput.value;
+      strengthBar.className = 'password-strength';
+      if (val.length === 0) return;
+      if (val.length < 8) strengthBar.classList.add('strength-weak');
+      else if (val.length < 12) strengthBar.classList.add('strength-medium');
+      else strengthBar.classList.add('strength-strong');
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Client-side validation
+      if (password !== confirmPassword) {
+        error.textContent = 'Passwords do not match';
+        error.classList.add('show');
+        return;
+      }
+      if (password.length < 6) {
+        error.textContent = 'Password must be at least 6 characters';
+        error.classList.add('show');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating account...';
+      error.classList.remove('show');
+      success.classList.remove('show');
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password }),
+          credentials: 'include'
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          error.textContent = data.error || 'Registration failed';
+          error.classList.add('show');
+        } else {
+          success.textContent = data.message || 'Account created! Redirecting...';
+          success.classList.add('show');
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 1500);
+        }
+      } catch (err) {
+        error.textContent = 'Connection error. Please try again.';
+        error.classList.add('show');
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Create account';
+    });
+  </script>
+</body>
+</html>`;
 
 // Serve Vue 3 frontend (built with Vite)
 const { readFileSync, existsSync } = await import("node:fs");
@@ -33,32 +352,35 @@ const frontendDist = join(__dirname, "..", "frontend", "dist");
 // Check if we have a built frontend or fall back to dev mode
 const hasBuiltFrontend = existsSync(frontendDist);
 
-if (hasBuiltFrontend) {
-  // Production: serve from dist/
-  const frontendHtml = readFileSync(join(frontendDist, "index.html"), "utf8");
+function serveFrontend(req, res) {
+  // Check if authenticated (or auth disabled)
+  if (AUTH_ENABLED && !req.user) {
+    return res.redirect("/login");
+  }
 
-  app.get("/", (req, res) => {
+  if (hasBuiltFrontend) {
+    const frontendHtml = readFileSync(join(frontendDist, "index.html"), "utf8");
     const modified = frontendHtml.replace(
       '<head>',
-      `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)} };</script>`
+      `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)}, AUTH_ENABLED: ${AUTH_ENABLED} };</script>`
     );
-    res.send(modified);
-  });
-
-  app.use(express.static(frontendDist));
-} else {
-  // Dev mode: serve from public/ (fallback)
-  const fallbackHtml = readFileSync(join(__dirname, "..", "frontend", "public", "index.html"), "utf8");
-
-  app.get("/", (req, res) => {
+    return res.send(modified);
+  } else {
+    const fallbackHtml = readFileSync(join(__dirname, "..", "frontend", "public", "index.html"), "utf8");
     const modified = fallbackHtml.replace(
       '<head>',
-      `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)} };</script>`
+      `<head><script>window.__ENV = { HOME: ${JSON.stringify(homeDir)}, AUTH_ENABLED: ${AUTH_ENABLED} };</script>`
     );
-    res.send(modified);
-  });
+    return res.send(modified);
+  }
+}
 
-  app.use(express.static(join(__dirname, "..", "frontend", "public")));
+if (hasBuiltFrontend) {
+  app.get("/", authenticate, serveFrontend);
+  // app.use(express.static(frontendDist));  // TEMPORARILY DISABLED
+} else {
+  app.get("/", authenticate, serveFrontend);
+  // app.use(express.static(join(__dirname, "..", "frontend", "public")));  // TEMPORARILY DISABLED
 }
 
 // Workspace state
@@ -99,11 +421,21 @@ async function listDirectory(dir) {
   return result;
 }
 
-app.get("/api/workspace", (req, res) => {
+// ─── Protected API Routes ───────────────────────────────────────────────────
+
+function protectApi(req, res, next) {
+  if (!AUTH_ENABLED) return next();
+  if (!req.user) {
+    return res.status(401).json({ error: "Authentication required" });
+  }
+  next();
+}
+
+app.get("/api/workspace", protectApi, (req, res) => {
   res.json({ workspace: currentWorkspace });
 });
 
-app.post("/api/workspace", async (req, res) => {
+app.post("/api/workspace", protectApi, async (req, res) => {
   try {
     const { path } = req.body;
     if (!path) {
@@ -143,7 +475,7 @@ app.post("/api/workspace", async (req, res) => {
   }
 });
 
-app.get("/api/directory", async (req, res) => {
+app.get("/api/directory", protectApi, async (req, res) => {
   try {
     let dir = req.query.path || currentWorkspace;
     // Resolve relative paths
@@ -159,7 +491,53 @@ app.get("/api/directory", async (req, res) => {
 
 // ─── WebSocket Server ───────────────────────────────────────────────────────
 
-const wss = new WebSocketServer({ server: httpServer, path: "/ws" });
+function authenticateWs(req) {
+  if (!AUTH_ENABLED) return true;
+
+  // Check query string token (for WebSocket connections)
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  const tokenFromQuery = url.searchParams.get("token");
+  if (tokenFromQuery) {
+    try {
+      jwt.verify(tokenFromQuery, JWT_SECRET);
+      return true;
+    } catch {
+      try {
+        jwt.verify(tokenFromQuery, JWT_REFRESH_SECRET);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+  }
+
+  // Check cookie (httpOnly cookies are sent automatically)
+  const cookieHeader = req.headers.cookie || '';
+  const accessTokenMatch = cookieHeader.match(/access_token=([^;]+)/);
+  if (accessTokenMatch) {
+    try {
+      jwt.verify(accessTokenMatch[1], JWT_SECRET);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  return false;
+}
+
+const wss = new WebSocketServer({ 
+  server: httpServer, 
+  path: "/ws",
+  verifyClient: (info, callback) => {
+    const authenticated = authenticateWs(info.req);
+    if (AUTH_ENABLED && !authenticated) {
+      console.log("[ws] Rejected unauthenticated connection from", info.req.socket.remoteAddress);
+      return callback(false, 401, "Unauthorized");
+    }
+    callback(true);
+  }
+});
 
 // ─── RPC Agent Manager ──────────────────────────────────────────────────────
 
@@ -888,28 +1266,28 @@ const benchmark = new BenchmarkManager();
 
 // ─── API Routes ─────────────────────────────────────────────────────────────
 
-app.get('/api/benchmark/config', async (req, res) => {
+app.get('/api/benchmark/config', protectApi, async (req, res) => {
   if (!benchmark.config) {
     await benchmark.loadConfig();
   }
   res.json(benchmark.config);
 });
 
-app.post('/api/benchmark/start', async (req, res) => {
+app.post('/api/benchmark/start', protectApi, async (req, res) => {
   const result = await benchmark.start();
   res.json(result);
 });
 
-app.post('/api/benchmark/stop', (req, res) => {
+app.post('/api/benchmark/stop', protectApi, (req, res) => {
   const result = benchmark.stop();
   res.json(result);
 });
 
-app.get('/api/benchmark/status', async (req, res) => {
+app.get('/api/benchmark/status', protectApi, async (req, res) => {
   res.json(benchmark.getStatus());
 });
 
-app.get('/api/benchmark/results', async (req, res) => {
+app.get('/api/benchmark/results', protectApi, async (req, res) => {
   const results = await benchmark.getResults();
   res.json({ results });
 });
@@ -932,7 +1310,7 @@ let benchmarkSSEClients = new Set();
 let sseHeartbeats = new Map();
 
 // Config endpoints
-app.get('/api/configs', (req, res) => {
+app.get('/api/configs', protectApi, (req, res) => {
   try {
     const configs = JSON.parse(readFileSync(CONFIGS_FILE, 'utf8'));
     res.json({ success: true, data: configs });
@@ -941,7 +1319,7 @@ app.get('/api/configs', (req, res) => {
   }
 });
 
-app.put('/api/configs', (req, res) => {
+app.put('/api/configs', protectApi, (req, res) => {
   try {
     const configs = req.body;
     _writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
@@ -952,7 +1330,7 @@ app.put('/api/configs', (req, res) => {
 });
 
 // Status endpoint
-app.get('/api/status', (req, res) => {
+app.get('/api/status', protectApi, (req, res) => {
   res.json({
     success: true,
     status: benchmark.benchmarkStatus,
@@ -963,7 +1341,7 @@ app.get('/api/status', (req, res) => {
 });
 
 // SSE stream endpoint
-app.get('/api/stream', (req, res) => {
+app.get('/api/stream', protectApi, (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
@@ -1001,7 +1379,7 @@ function sendSSE(client, event, data) {
 }
 
 // Run endpoint
-app.post('/api/run', async (req, res) => {
+app.post('/api/run', protectApi, async (req, res) => {
   if (benchmark.isRunning) {
     return res.status(409).json({
       success: false,
@@ -1022,13 +1400,13 @@ app.post('/api/run', async (req, res) => {
 });
 
 // Stop endpoint
-app.post('/api/stop', (req, res) => {
+app.post('/api/stop', protectApi, (req, res) => {
   const result = benchmark.stop();
   res.json(result);
 });
 
 // Results endpoint
-app.get('/api/results', (req, res) => {
+app.get('/api/results', protectApi, (req, res) => {
   try {
     const content = existsSync(RESULTS_FILE) ? readFileSync(RESULTS_FILE, 'utf8') : '';
     res.json({ success: true, data: content });
@@ -1038,7 +1416,7 @@ app.get('/api/results', (req, res) => {
 });
 
 // Reports endpoints
-app.get('/api/reports', (req, res) => {
+app.get('/api/reports', protectApi, (req, res) => {
   try {
     const files = existsSync(REPORTS_DIR)
       ? _readdirSync(REPORTS_DIR).filter(f => f.endsWith('.json'))
@@ -1059,7 +1437,7 @@ app.get('/api/reports', (req, res) => {
   }
 });
 
-app.get('/api/report/:name', (req, res) => {
+app.get('/api/report/:name', protectApi, (req, res) => {
   try {
     const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
     if (!existsSync(filePath)) {
@@ -1072,7 +1450,7 @@ app.get('/api/report/:name', (req, res) => {
   }
 });
 
-app.post('/api/report', (req, res) => {
+app.post('/api/report', protectApi, (req, res) => {
   try {
     const { name, data } = req.body;
     if (!name || !data) {
@@ -1087,7 +1465,7 @@ app.post('/api/report', (req, res) => {
   }
 });
 
-app.delete('/api/report/:name', (req, res) => {
+app.delete('/api/report/:name', protectApi, (req, res) => {
   try {
     const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
     if (!existsSync(filePath)) {
@@ -1101,7 +1479,7 @@ app.delete('/api/report/:name', (req, res) => {
 });
 
 // Save current results as report
-app.post('/api/save-report', (req, res) => {
+app.post('/api/save-report', protectApi, (req, res) => {
   try {
     const { name } = req.body;
     const safeName = name || `benchmark-${new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-')}`;

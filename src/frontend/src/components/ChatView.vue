@@ -45,28 +45,40 @@
         </div>
       </div>
 
-      <ChatMessage
-        v-for="msg in messages"
-        :key="msg.id"
-        :msg="msg"
-      />
+      <!-- Non-virtualized rendering (small sessions) -->
+      <template v-if="!shouldVirtualize">
+        <ChatMessage
+          v-for="msg in messages"
+          :key="msg.id"
+          :msg="msg"
+          :is-streaming="msg.isStreaming"
+        />
+      </template>
 
-      <div v-if="streamingMsg" class="message assistant">
-        <div class="message-header">
-          <div class="message-avatar">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <span class="message-role">Betty</span>
-          <span class="typing-indicator">
-            <span></span><span></span><span></span>
-          </span>
-        </div>
-        <div class="message-content streaming-cursor" v-html="streamingHtml"></div>
-      </div>
+      <!-- Virtualized rendering (large sessions) -->
+      <template v-else>
+        <div class="virtual-spacer" :style="{ height: visibleRange.offsetTop + 'px' }" v-if="visibleRange.offsetTop > 0"></div>
+        <ChatMessage
+          v-for="{ index, item: msg } in visibleItems"
+          :key="msg.id"
+          :ref="(el) => el && measureItem(index, el)"
+          :msg="msg"
+          :is-streaming="msg.isStreaming"
+        />
+        <div class="virtual-spacer" :style="{ height: visibleRange.offsetBottom + 'px' }" v-if="visibleRange.offsetBottom > 0"></div>
+      </template>
+
+      <!-- Jump to bottom button -->
+      <button
+        v-if="showResumeButton"
+        class="resume-btn"
+        @click="scrollToBottom"
+        title="Jump to bottom"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
     </div>
 
     <MessageInput
@@ -90,8 +102,9 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, nextTick } from 'vue';
-import { renderMarkdown } from '../utils.js';
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
+import { useAutoScroll } from '../composables/useAutoScroll.js';
+import { useVirtualList } from '../composables/useVirtualList.js';
 import ChatMessage from './ChatMessage.vue';
 import MessageInput from './MessageInput.vue';
 
@@ -99,7 +112,6 @@ const props = defineProps({
   messages: Array,
   isStreaming: Boolean,
   connected: Boolean,
-  streamingMsg: Object,
   availableCommands: Array,
 });
 
@@ -117,6 +129,14 @@ const sidebarOpen = ref(false);
 const showCommandPalette = ref(false);
 const commandSelectedIndex = ref(0);
 const selectedImages = ref([]);
+
+// Auto-scroll
+const { showResumeButton, onContentChange, onUserScroll, scrollToBottom: autoScrollToBottom } = useAutoScroll(messagesEl, () => props.isStreaming);
+
+// Virtualization — enabled for sessions with many messages
+const VIRTUAL_THRESHOLD = 50;
+const shouldVirtualize = computed(() => props.messages.length >= VIRTUAL_THRESHOLD);
+const { visibleItems, visibleRange, totalHeight, getOffsetTop, onScroll: onVirtualScroll, measureItem } = useVirtualList(props.messages, messagesEl);
 
 const BUILT_IN_COMMANDS = [
   { name: 'help', description: 'Show help and available commands', icon: '❓' },
@@ -140,21 +160,6 @@ const filteredCommands = computed(() => {
     );
 });
 
-const streamingHtml = computed(() => {
-  if (!props.streamingMsg) return '';
-  let html = '';
-  if (props.streamingMsg.thinking) {
-    html += `<div class="thinking-block">
-      <div class="thinking-header" onclick="toggleThinking(this)">
-        🧠 <span>Thinking</span>
-        <span style="margin-left:auto; font-size:10px">▼</span>
-      </div>
-      <div class="thinking-content">${renderMarkdown(props.streamingMsg.thinking)}</div>
-    </div>`;
-  }
-  return html + renderMarkdown(props.streamingMsg.content);
-});
-
 watch(inputText, (val) => {
   if (val.startsWith('/') && !showCommandPalette.value) {
     showCommandPalette.value = true;
@@ -168,15 +173,18 @@ watch(() => props.messages.length, () => {
   scrollToBottom();
 });
 
-watch(() => props.streamingMsg?.content, () => {
+// Watch the last streaming message's content for auto-scroll during streaming
+watch(() => {
+  const last = props.messages[props.messages.length - 1];
+  return last?.isStreaming ? last.content : null;
+}, () => {
   scrollToBottom();
 });
 
 function scrollToBottom() {
+  onContentChange();
   nextTick(() => {
-    if (messagesEl.value) {
-      messagesEl.value.scrollTop = messagesEl.value.scrollHeight;
-    }
+    autoScrollToBottom();
   });
 }
 
@@ -210,6 +218,20 @@ function navigateCommands(direction) {
   if (commandSelectedIndex.value < 0) commandSelectedIndex.value = filteredCommands.value.length - 1;
   if (commandSelectedIndex.value >= filteredCommands.value.length) commandSelectedIndex.value = 0;
 }
+
+onMounted(() => {
+  if (messagesEl.value) {
+    messagesEl.value.addEventListener('scroll', onUserScroll, { passive: true });
+    messagesEl.value.addEventListener('scroll', onVirtualScroll, { passive: true });
+  }
+});
+
+onUnmounted(() => {
+  if (messagesEl.value) {
+    messagesEl.value.removeEventListener('scroll', onUserScroll);
+    messagesEl.value.removeEventListener('scroll', onVirtualScroll);
+  }
+});
 </script>
 
 <style scoped>
@@ -307,6 +329,47 @@ function navigateCommands(direction) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+/* Virtual list spacer */
+.virtual-spacer {
+  width: 100%;
+  max-width: 720px;
+  flex-shrink: 0;
+}
+
+/* Jump to bottom button */
+.resume-btn {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: all var(--transition-fast);
+  animation: fadeInUp 0.2s ease;
+  z-index: 5;
+}
+
+.resume-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+  transform: translateX(-50%) scale(1.05);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 .empty-state {
