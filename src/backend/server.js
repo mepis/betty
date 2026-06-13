@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import { WebSocketServer, WebSocket } from "ws";
@@ -18,7 +19,7 @@ import {
 import { authenticate, requireAuth } from "./auth-middleware.js";
 import authRoutes from "./routes/auth.js";
 import { hasUsers } from "./user-store.js";
-import { verifyRefreshToken } from "./auth-utils.js";
+import { verifyRefreshToken, JWT_SECRET, JWT_REFRESH_SECRET } from "./auth-utils.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
@@ -29,8 +30,11 @@ const DEFAULT_WORKSPACE = process.env.WORKSPACE || process.env.HOME;
 
 const app = express();
 const httpServer = createServer(app);
-app.use(express.json());
+app.use(express.json({ strict: false }));
 app.use(cookieParser());
+
+// Run auth middleware on every request so req.user is populated
+app.use(authenticate);
 
 // ─── Auth Pages & Routes (MUST be before static middleware) ────────────────
 
@@ -78,13 +82,6 @@ app.get("/api/test", (req, res) => {
 
 app.use("/api/auth", authenticate, authRoutes);
 
-// Logout endpoint
-app.post("/api/auth/logout", (req, res) => {
-  res.clearCookie("access_token");
-  res.clearCookie("refresh_token");
-  res.json({ message: "Logged out successfully" });
-});
-
 // Current user info
 app.get("/api/me", (req, res) => {
   if (AUTH_ENABLED && !req.user) {
@@ -108,6 +105,8 @@ const LOGIN_PAGE_HTML = `<!DOCTYPE html>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d0d0d; color: #e5e5e5; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: #6366f1; color: white; padding: 8px 16px; z-index: 100; font-size: 14px; text-decoration: none; border-radius: 0 0 4px 0; }
+    .skip-link:focus { top: 0; }
     .login-container { width: 100%; max-width: 400px; padding: 20px; }
     .login-header { text-align: center; margin-bottom: 32px; }
     .login-header h1 { font-size: 28px; font-weight: 600; color: #e5e5e5; margin-bottom: 8px; }
@@ -130,7 +129,8 @@ const LOGIN_PAGE_HTML = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <div class="login-container">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="login-container" id="main">
     <div class="login-header">
       <h1>Betty</h1>
       <p>Sign in to access the coding agent</p>
@@ -161,8 +161,12 @@ const LOGIN_PAGE_HTML = `<!DOCTYPE html>
 
     // Check if this is the first user (show register link)
     fetch('/api/auth/status')
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) return null;
+        return r.json();
+      })
       .then(data => {
+        if (!data) return;
         if (data.authEnabled && !data.hasUsers) {
           notice.style.display = 'block';
           notice.textContent = 'No accounts exist yet. You will create the admin account on the registration page.';
@@ -215,6 +219,8 @@ const REGISTER_PAGE_HTML = `<!DOCTYPE html>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d0d0d; color: #e5e5e5; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: #6366f1; color: white; padding: 8px 16px; z-index: 100; font-size: 14px; text-decoration: none; border-radius: 0 0 4px 0; }
+    .skip-link:focus { top: 0; }
     .register-container { width: 100%; max-width: 400px; padding: 20px; }
     .register-header { text-align: center; margin-bottom: 32px; }
     .register-header h1 { font-size: 28px; font-weight: 600; color: #e5e5e5; margin-bottom: 8px; }
@@ -242,7 +248,8 @@ const REGISTER_PAGE_HTML = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <div class="register-container">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="register-container" id="main">
     <div class="register-header">
       <h1>Betty</h1>
       <p>Create your account</p>
@@ -377,10 +384,10 @@ function serveFrontend(req, res) {
 
 if (hasBuiltFrontend) {
   app.get("/", authenticate, serveFrontend);
-  // app.use(express.static(frontendDist));  // TEMPORARILY DISABLED
+  app.use(express.static(frontendDist));
 } else {
   app.get("/", authenticate, serveFrontend);
-  // app.use(express.static(join(__dirname, "..", "frontend", "public")));  // TEMPORARILY DISABLED
+  app.use(express.static(join(__dirname, "..", "frontend", "public")));
 }
 
 // Workspace state
@@ -406,7 +413,7 @@ async function listDirectory(dir) {
         const subEntries = await readdir(fullPath);
         itemCount = subEntries.length;
       } catch {
-        itemCount = '?';
+        itemCount = null;
       }
       result.directories.push({ name: entry.name, itemCount });
     } else if (entry.isFile()) {
@@ -442,8 +449,17 @@ app.post("/api/workspace", protectApi, async (req, res) => {
       return res.status(400).json({ error: "Path is required" });
     }
 
-    // Resolve relative paths
+    // Validate path — reject traversal attempts
+    if (path.includes("..")) {
+      return res.status(400).json({ error: "Invalid path: traversal not allowed" });
+    }
+    // Resolve relative paths relative to HOME
     const resolved = !path.startsWith("/") ? join(process.env.HOME, path) : path;
+    // Ensure resolved path is within HOME
+    const homeDir = process.env.HOME || "/";
+    if (resolved !== homeDir && !resolved.startsWith(homeDir + "/")) {
+      return res.status(403).json({ error: "Path must be within home directory" });
+    }
 
     // Check if directory exists
     const { stat } = await import("node:fs/promises");
@@ -478,9 +494,18 @@ app.post("/api/workspace", protectApi, async (req, res) => {
 app.get("/api/directory", protectApi, async (req, res) => {
   try {
     let dir = req.query.path || currentWorkspace;
+    // Validate path — reject traversal attempts
+    if (req.query.path && req.query.path.includes("..")) {
+      return res.status(400).json({ error: "Invalid path: traversal not allowed" });
+    }
     // Resolve relative paths
     if (!dir.startsWith("/")) {
       dir = join(process.env.HOME || "/", dir);
+    }
+    // Ensure resolved path is within HOME
+    const homeDir = process.env.HOME || "/";
+    if (dir !== homeDir && !dir.startsWith(homeDir + "/")) {
+      return res.status(403).json({ error: "Path must be within home directory" });
     }
     const result = await listDirectory(dir);
     res.json(result);
@@ -519,6 +544,16 @@ function authenticateWs(req) {
       jwt.verify(accessTokenMatch[1], JWT_SECRET);
       return true;
     } catch {
+      // Try refresh token cookie as fallback
+      const refreshTokenMatch = cookieHeader.match(/refresh_token=([^;]+)/);
+      if (refreshTokenMatch) {
+        try {
+          jwt.verify(refreshTokenMatch[1], JWT_REFRESH_SECRET);
+          return true;
+        } catch {
+          return false;
+        }
+      }
       return false;
     }
   }
@@ -591,7 +626,12 @@ class RpcAgent {
       args.push("--api-key", keyEnv);
     }
 
-    console.log(`[rpc] Starting pi with: pi ${args.join(" ")}`);
+    // Redact API key from log output
+    const safeArgs = args.map((arg, i) => {
+      if (i > 0 && args[i - 1] === "--api-key") return "***REDACTED***";
+      return arg;
+    });
+    console.log(`[rpc] Starting pi with: pi ${safeArgs.join(" ")}`);
     console.log(`[rpc] Working directory: ${currentWorkspace}`);
 
     return new Promise((resolve, reject) => {
@@ -614,16 +654,16 @@ class RpcAgent {
         this.emit("exit", code, signal);
       });
 
+      const startupTimeout = setTimeout(() => {
+        resolve();
+      }, 3000);
+
       this.proc.on("error", (err) => {
+        clearTimeout(startupTimeout);
         console.error(`[rpc] Error: ${err.message}`);
         this.emit("error", err);
         reject(err);
       });
-
-      // Safety timeout - resolve after a short delay
-      setTimeout(() => {
-        resolve();
-      }, 3000);
     });
   }
 
@@ -642,8 +682,7 @@ class RpcAgent {
       bedrock: "AWS_ACCESS_KEY_ID",
       mistral: "MISTRAL_API_KEY",
       fireworks: "FIREWORKS_API_KEY",
-      together: "TOGETHEI_API_KEY",
-      openai: "OPENAI_API_KEY",
+      together: "TOGETHER_API_KEY",
     };
     return process.env[envMap[provider] || ""];
   }
@@ -691,6 +730,9 @@ class RpcAgent {
   }
 
   async send(command) {
+    if (command == null || typeof command !== "object") {
+      throw new Error("RpcAgent.send() requires a non-null object command");
+    }
     if (!this.proc || !this.proc.stdin || this.proc.stdin.destroyed) {
       throw new Error("RPC agent not running");
     }
@@ -703,6 +745,12 @@ class RpcAgent {
       }, 60000);
 
       this.pendingRequests.set(id, { resolve, reject, timeout });
+      if (!this.proc.stdin.writable) {
+        this.pendingRequests.delete(id);
+        clearTimeout(timeout);
+        reject(new Error("RPC agent stdin is not writable"));
+        return;
+      }
       this.proc.stdin.write(JSON.stringify(command) + "\n");
     });
   }
@@ -1232,12 +1280,14 @@ class BenchmarkManager {
     console.log('[benchmark] Stopping benchmark...');
     this.benchmarkStatus = 'stopped';
     this.emit('status', 'stopped', { testRun: this.currentTestRun, liveResults: this.liveResults });
-    this.proc.kill('SIGTERM');
+    const proc = this.proc;
+    this.proc = null;
+    proc.kill('SIGTERM');
 
     // Force kill after 5 seconds
     setTimeout(() => {
-      if (this.proc) {
-        this.proc.kill('SIGKILL');
+      if (proc.killed === false) {
+        proc.kill('SIGKILL');
       }
     }, 5000);
 
@@ -1322,6 +1372,22 @@ app.get('/api/configs', protectApi, (req, res) => {
 app.put('/api/configs', protectApi, (req, res) => {
   try {
     const configs = req.body;
+    // Validate config structure — must be an object with expected keys
+    if (typeof configs !== 'object' || configs === null || Array.isArray(configs)) {
+      return res.status(400).json({ success: false, error: 'Config must be a JSON object' });
+    }
+    // Validate each config entry has required fields
+    for (const [key, value] of Object.entries(configs)) {
+      if (typeof key !== 'string' || typeof value !== 'object' || value === null) {
+        return res.status(400).json({ success: false, error: `Invalid config entry: ${key}` });
+      }
+      if (!value.provider || typeof value.provider !== 'string') {
+        return res.status(400).json({ success: false, error: `Config entry ${key} missing 'provider'` });
+      }
+      if (!value.model || typeof value.model !== 'string') {
+        return res.status(400).json({ success: false, error: `Config entry ${key} missing 'model'` });
+      }
+    }
     _writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
     res.json({ success: true, message: 'Config saved' });
   } catch (err) {
@@ -1375,7 +1441,10 @@ function sendSSE(client, event, data) {
   if (!benchmarkSSEClients.has(client)) return;
   try {
     client.res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
-  } catch {}
+  } catch (err) {
+    console.error(`[sse] Write error for client, removing: ${err.message}`);
+    benchmarkSSEClients.delete(client);
+  }
 }
 
 // Run endpoint
@@ -1440,6 +1509,10 @@ app.get('/api/reports', protectApi, (req, res) => {
 app.get('/api/report/:name', protectApi, (req, res) => {
   try {
     const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
+    // Validate resolved path stays within REPORTS_DIR
+    if (!filePath.startsWith(REPORTS_DIR + "/") && filePath !== REPORTS_DIR) {
+      return res.status(400).json({ success: false, error: 'Invalid report name' });
+    }
     if (!existsSync(filePath)) {
       return res.status(404).json({ success: false, error: 'Report not found' });
     }
@@ -1456,9 +1529,18 @@ app.post('/api/report', protectApi, (req, res) => {
     if (!name || !data) {
       return res.status(400).json({ success: false, error: 'name and data required' });
     }
+    if (typeof data !== 'object' || data === null || Array.isArray(data) === false && typeof data !== 'object') {
+      return res.status(400).json({ success: false, error: 'data must be an object' });
+    }
     const safeName = name.replace(/[^a-zA-Z0-9_-]/g, '_');
     const filePath = join(REPORTS_DIR, `${safeName}.json`);
-    _writeFileSync(filePath, JSON.stringify(data, null, 2));
+    let jsonStr;
+    try {
+      jsonStr = JSON.stringify(data, null, 2);
+    } catch (stringifyErr) {
+      return res.status(400).json({ success: false, error: 'data is not JSON-serializable' });
+    }
+    _writeFileSync(filePath, jsonStr);
     res.json({ success: true, message: 'Report saved' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -1468,6 +1550,10 @@ app.post('/api/report', protectApi, (req, res) => {
 app.delete('/api/report/:name', protectApi, (req, res) => {
   try {
     const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
+    // Validate resolved path stays within REPORTS_DIR
+    if (!filePath.startsWith(REPORTS_DIR + "/") && filePath !== REPORTS_DIR) {
+      return res.status(400).json({ success: false, error: 'Invalid report name' });
+    }
     if (!existsSync(filePath)) {
       return res.status(404).json({ success: false, error: 'Report not found' });
     }
@@ -1575,6 +1661,17 @@ benchmark.on('results', ({ liveResults }) => {
   }
 });
 
+// ─── Global Error Handler ───────────────────────────────────────────────────
+// Catches body-parser errors (e.g. non-object JSON) and all other unhandled errors.
+// Prevents Express's default handler from exposing HTML stack traces.
+app.use((err, req, res, next) => {
+  console.error(`[error] ${err.status || 500} - ${err.message}`);
+  if (err.type === "entity.parse.failed") {
+    return res.status(400).json({ success: false, error: "Invalid JSON body" });
+  }
+  res.status(err.status || 500).json({ success: false, error: "Internal server error" });
+});
+
 // ─── Start Everything ───────────────────────────────────────────────────────
 
 async function main() {
@@ -1609,8 +1706,23 @@ async function main() {
   process.on("SIGTERM", () => shutdown());
 }
 
-async function shutdown() {
+function shutdown() {
   console.log("\n[server] Shutting down...");
+  // Clear pending message saves
+  for (const [, timer] of pendingMessageSaves) {
+    clearTimeout(timer);
+  }
+  pendingMessageSaves.clear();
+  // Clear SSE heartbeats
+  for (const [, timer] of sseHeartbeats) {
+    clearInterval(timer);
+  }
+  sseHeartbeats.clear();
+  // Close benchmark SSE clients
+  for (const client of benchmarkSSEClients) {
+    try { client.res.end(); } catch {}
+  }
+  benchmarkSSEClients.clear();
   agent.stop();
   for (const [, client] of clients) {
     client.ws.close();

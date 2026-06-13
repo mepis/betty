@@ -14,6 +14,9 @@ function getFilePath(sessionId) {
 }
 
 function loadSession(sessionId) {
+  if (typeof sessionId !== "string" || sessionId.length === 0) {
+    throw new Error("sessionId must be a non-empty string");
+  }
   const filePath = getFilePath(sessionId);
   if (!existsSync(filePath)) return null;
   try {
@@ -25,13 +28,23 @@ function loadSession(sessionId) {
 
 function saveSession(session) {
   const filePath = getFilePath(session.id);
-  writeFileSync(filePath, JSON.stringify(session, null, 2));
+  try {
+    writeFileSync(filePath, JSON.stringify(session, null, 2));
+  } catch (err) {
+    console.error(`[session-store] Failed to save session ${session.id}: ${err.message}`);
+    throw err;
+  }
 }
 
 function deleteSession(sessionId) {
   const filePath = getFilePath(sessionId);
   if (existsSync(filePath)) {
-    unlinkSync(filePath);
+    try {
+      unlinkSync(filePath);
+    } catch (err) {
+      console.error(`[session-store] Failed to delete session ${sessionId}: ${err.message}`);
+      return false;
+    }
     return true;
   }
   return false;
@@ -45,14 +58,14 @@ function listSessions() {
     const session = loadSession(file.replace(".json", ""));
     if (session) sessions.push(session);
   }
-  return sessions.sort((a, b) => b.updatedAt - a.updatedAt);
+  return sessions.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
 }
 
 function createSession() {
   const now = Date.now();
   const session = {
     id: randomUUID(),
-    name: `Session ${new Date().toLocaleString()}`,
+    name: `Session ${new Date().toISOString()}`,
     createdAt: now,
     updatedAt: now,
     messageCount: 0,
@@ -64,7 +77,13 @@ function createSession() {
 function updateSession(sessionId, updates) {
   const session = loadSession(sessionId);
   if (!session) return null;
-  Object.assign(session, updates);
+  // Whitelist allowed fields to prevent corruption
+  const allowedFields = ["name", "messageCount", "messages"];
+  for (const key of allowedFields) {
+    if (key in updates) {
+      session[key] = updates[key];
+    }
+  }
   session.updatedAt = Date.now();
   saveSession(session);
   return session;

@@ -9,6 +9,11 @@ import { loadUser } from "./user-store.js";
  * Sets req.user if valid, otherwise calls next() without setting user.
  */
 function authenticate(req, res, next) {
+  // If auth is globally disabled, skip verification
+  if (process.env.AUTH_ENABLED === "false") {
+    return next();
+  }
+
   let token = null;
 
   // Check Authorization header
@@ -25,7 +30,7 @@ function authenticate(req, res, next) {
   if (!token) {
     // Return 401 if this is an API or WebSocket request
     if (req.headers["x-request-type"] === "api" || req.headers["upgrade"] === "websocket") {
-      return res.status(401).json({ error: "Authentication required" });
+      return res.status(401).json({ error: "Authentication failed" });
     }
     // For HTML requests, don't block — let the frontend handle redirect
     return next();
@@ -34,7 +39,7 @@ function authenticate(req, res, next) {
   const decoded = verifyAccessToken(token);
   if (!decoded) {
     if (req.headers["x-request-type"] === "api" || req.headers["upgrade"] === "websocket") {
-      return res.status(401).json({ error: "Invalid or expired token" });
+      return res.status(401).json({ error: "Authentication failed" });
     }
     return next();
   }
@@ -43,7 +48,7 @@ function authenticate(req, res, next) {
   const user = loadUser(decoded.userId);
   if (!user) {
     if (req.headers["x-request-type"] === "api" || req.headers["upgrade"] === "websocket") {
-      return res.status(401).json({ error: "User not found" });
+      return res.status(401).json({ error: "Authentication failed" });
     }
     return next();
   }
@@ -68,13 +73,15 @@ function requireAuth(req, res, next) {
 /**
  * Role-based authorization factory.
  * Usage: authorize('admin') or authorize('admin', 'user')
+ * If called with no arguments, allows all authenticated users.
  */
 function authorize(...roles) {
   return (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({ error: "Authentication required" });
     }
-    if (!roles.includes(req.user.role)) {
+    // Empty role list means allow all authenticated users
+    if (roles.length > 0 && !roles.includes(req.user.role)) {
       return res.status(403).json({ error: "Insufficient permissions" });
     }
     next();

@@ -209,6 +209,7 @@ function abortStream() {
 
 function selectCommand(name) {
   showCommandPalette.value = false;
+  inputText.value = '';
   emit('select-command', name);
 }
 

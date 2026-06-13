@@ -1,12 +1,31 @@
 import { Router } from "express";
 import { createUser, getUserByEmail, updateUser, hasUsers } from "../user-store.js";
-import { hashPassword, verifyPassword, generateTokens } from "../auth-utils.js";
+import { hashPassword, verifyPassword, generateTokens, refreshAccessToken } from "../auth-utils.js";
 
 const router = Router();
 
 // ─── Rate Limiting (simple in-memory) ───────────────────────────────────────
 
 const rateLimits = new Map();
+
+// Periodically prune expired keys to prevent memory leak
+const RATE_LIMIT_PRUNE_INTERVAL = 60_000; // 1 minute
+setInterval(() => {
+  const now = Date.now();
+  // Collect keys to delete first to avoid modifying Map during iteration
+  const keysToDelete = [];
+  for (const [key, window] of rateLimits) {
+    const recent = window.filter(t => now - t < 60_000); // Keep only entries within 1 minute
+    if (recent.length === 0) {
+      keysToDelete.push(key);
+    } else {
+      rateLimits.set(key, recent);
+    }
+  }
+  for (const key of keysToDelete) {
+    rateLimits.delete(key);
+  }
+}, RATE_LIMIT_PRUNE_INTERVAL);
 
 function checkRateLimit(key, maxAttempts, windowMs) {
   const now = Date.now();
@@ -34,12 +53,27 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ error: "Email and password are required" });
     }
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    // Validate email length (RFC 5321 max)
+    if (email.length > 254) {
+      return res.status(400).json({ error: "Email must be 254 characters or less" });
+    }
+
     if (name && name.length > 100) {
       return res.status(400).json({ error: "Name must be 100 characters or less" });
     }
 
     if (password.length < 6) {
       return res.status(400).json({ error: "Password must be at least 6 characters" });
+    }
+
+    if (Buffer.byteLength(password, 'utf8') > 72) {
+      return res.status(400).json({ error: "Password must be 72 bytes or less" });
     }
 
     // Rate limit: 3 attempts per minute
@@ -56,7 +90,7 @@ router.post("/register", async (req, res) => {
 
     // Hash password and create user
     const passwordHash = await hashPassword(password);
-    const isFirstUser = !existing && (await import("../user-store.js")).hasUsers() === false;
+    const isFirstUser = !hasUsers();
     const user = createUser({
       email,
       passwordHash,
@@ -109,6 +143,16 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ error: "Email and password are required" });
     }
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    if (Buffer.byteLength(password, 'utf8') > 72) {
+      return res.status(400).json({ error: "Password must be 72 bytes or less" });
+    }
+
     // Rate limit: 10 attempts per minute
     const rateKey = `login:${req.ip}`;
     if (!checkRateLimit(rateKey, 10, 60_000)) {
@@ -117,12 +161,14 @@ router.post("/login", async (req, res) => {
 
     // Find user
     const user = getUserByEmail(email);
-    if (!user) {
-      return res.status(401).json({ error: "Invalid email or password" });
+    let valid = false;
+    if (user) {
+      valid = await verifyPassword(password, user.passwordHash);
+    } else {
+      // Always perform a bcrypt comparison to prevent timing attacks
+      const dummyHash = await hashPassword("dummy_password_for_timing_attack_prevention");
+      valid = await verifyPassword(password, dummyHash);
     }
-
-    // Verify password
-    const valid = await verifyPassword(password, user.passwordHash);
     if (!valid) {
       return res.status(401).json({ error: "Invalid email or password" });
     }
@@ -170,16 +216,14 @@ router.post("/logout", (req, res) => {
 
 // ─── POST /api/auth/refresh ────────────────────────────────────────────────
 
-router.post("/refresh", (req, res) => {
-  const refreshToken = req.cookies.get("refresh_token")?.value;
+router.post("/refresh", async (req, res) => {
+  const refreshToken = req.cookies.refresh_token;
 
   if (!refreshToken) {
     return res.status(401).json({ error: "Refresh token required" });
   }
 
-  // Import refresh function
-  const { refreshAccessToken } = require("../auth-utils.js");
-  const newAccessToken = refreshAccessToken(refreshToken);
+  const newAccessToken = await refreshAccessToken(refreshToken);
 
   if (!newAccessToken) {
     // Invalid refresh token — clear all cookies
@@ -205,18 +249,6 @@ router.get("/me", (req, res) => {
     return res.status(401).json({ error: "Not authenticated" });
   }
   res.json({ user: req.user });
-});
-
-// ─── GET /api/auth/status ──────────────────────────────────────────────────
-
-router.get("/status", (req, res) => {
-  // Public endpoint — tells frontend whether auth is enabled and if users exist
-  const authEnabled = process.env.AUTH_ENABLED !== "false";
-  res.json({
-    authEnabled,
-    hasUsers: hasUsers(),
-    isAuthenticated: !!req.user,
-  });
 });
 
 export default router;

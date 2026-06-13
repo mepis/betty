@@ -14,6 +14,9 @@ function getFilePath(userId) {
 }
 
 function loadUser(userId) {
+  if (typeof userId !== "string" || userId.length === 0) {
+    throw new Error("userId must be a non-empty string");
+  }
   const filePath = getFilePath(userId);
   if (!existsSync(filePath)) return null;
   try {
@@ -25,13 +28,23 @@ function loadUser(userId) {
 
 function saveUser(user) {
   const filePath = getFilePath(user.id);
-  writeFileSync(filePath, JSON.stringify(user, null, 2));
+  try {
+    writeFileSync(filePath, JSON.stringify(user, null, 2));
+  } catch (err) {
+    console.error(`[user-store] Failed to save user ${user.id}: ${err.message}`);
+    throw err;
+  }
 }
 
 function deleteUser(userId) {
   const filePath = getFilePath(userId);
   if (existsSync(filePath)) {
-    unlinkSync(filePath);
+    try {
+      unlinkSync(filePath);
+    } catch (err) {
+      console.error(`[user-store] Failed to delete user ${userId}: ${err.message}`);
+      return false;
+    }
     return true;
   }
   return false;
@@ -61,7 +74,7 @@ function listUsers() {
       users.push(publicUser);
     }
   }
-  return users.sort((a, b) => b.createdAt - a.createdAt);
+  return users.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 }
 
 function createUser({ email, passwordHash, name, role = "user" }) {
@@ -82,7 +95,13 @@ function createUser({ email, passwordHash, name, role = "user" }) {
 function updateUser(userId, updates) {
   const user = loadUser(userId);
   if (!user) return null;
-  Object.assign(user, updates);
+  // Whitelist allowed fields to prevent privilege escalation
+  const allowedFields = ["email", "name", "lastLogin"];
+  for (const key of allowedFields) {
+    if (key in updates) {
+      user[key] = updates[key];
+    }
+  }
   user.updatedAt = Date.now();
   saveUser(user);
   return user;

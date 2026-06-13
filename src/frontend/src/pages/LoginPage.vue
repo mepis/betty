@@ -17,7 +17,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
         </svg>
-        No accounts exist yet. You will create the admin account on the registration page.
+        No accounts exist yet. <a href="/register">Create the admin account</a> on the registration page.
       </div>
 
       <div v-if="error" class="error-msg">
@@ -61,7 +61,7 @@
         </button>
       </form>
 
-      <div v-if="hasUsers" class="register-link">
+      <div class="register-link">
         Don't have an account? <a href="/register">Create one</a>
       </div>
     </div>
@@ -164,6 +164,11 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.first-user-notice a {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 .error-msg {

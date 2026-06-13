@@ -41,6 +41,61 @@
 - [Removed]: [2026-06-12] Custom markdown renderer in `utils.js` — replaced with `marked` library for full GFM support, proper code block handling, and syntax highlighting via `highlight.js`
 - [Removed]: [2026-06-12] Separate streaming message display in `ChatView.vue` — streaming messages are now part of the main messages array with `isStreaming` flag instead of a separate `streamingMsg` prop and dedicated template block
 
+### Security
+
+- [Security]: [2026-06-12] JWT secrets are now mandatory — `JWT_SECRET` and `JWT_REFRESH_SECRET` must be set via environment variables; server exits with a helpful error message if either is missing (no more hardcoded fallback secrets)
+- [Security]: [2026-06-12] Path traversal prevention — `/api/workspace` and `/api/directory` now reject paths containing `..` and enforce that resolved paths stay within the user's home directory
+- [Security]: [2026-06-12] Privilege escalation prevention — `updateUser()` and `updateSession()` now use a whitelist of allowed fields instead of `Object.assign()`, preventing users from modifying `role`, `passwordHash`, `createdAt`, or `id`
+- [Security]: [2026-06-12] Timing attack mitigation on login — when no user is found, the server still performs a bcrypt comparison against a dummy hash to prevent user enumeration via response timing
+- [Security]: [2026-06-12] API key redaction in logs — `RpcAgent` startup log now replaces the actual API key value with `***REDACTED***` instead of printing it in plaintext
+- [Security]: [2026-06-12] Input validation on auth endpoints — email format validation (RFC 5321 regex, 254-char limit), password byte-length limit (72 bytes for bcrypt), and non-empty string checks on password/hash/user fields
+- [Security]: [2026-06-12] Report path validation — `/api/report/:name` endpoints now validate that the resolved file path stays within `REPORTS_DIR` to prevent directory traversal
+- [Security]: [2026-06-12] Config validation — `PUT /api/configs` validates that the body is a JSON object and each entry has required `provider` and `model` string fields
+- [Security]: [2026-06-12] Global error handler — Express error middleware catches body-parser errors and all unhandled errors, returning JSON responses instead of HTML stack traces
+
+### Fixed
+
+- [Fixed]: [2026-06-12] Cookie access in refresh endpoint — changed from `req.cookies.get("refresh_token")?.value` (cookie-parser v1 API) to `req.cookies.refresh_token` (correct API)
+- [Fixed]: [2026-06-12] Refresh token now returns full user payload — `refreshAccessToken()` loads the user from store and includes `email` and `role` in the new access token instead of a minimal `{ userId, type: "refreshed" }` payload
+- [Fixed]: [2026-06-12] `refreshAccessToken()` is now async — properly awaits user store import and user lookup
+- [Fixed]: [2026-06-12] WebSocket authentication fallback — if access token verification fails, the server now attempts to verify the refresh token cookie as a fallback
+- [Fixed]: [2026-06-12] Benchmark process kill race condition — `BenchmarkManager.stop()` now captures `this.proc` in a local variable before setting `this.proc = null`, preventing SIGKILL from being sent to a new process started during the 5s grace period
+- [Fixed]: [2026-06-12] SSE write errors now remove the client — `sendSSE()` catches write errors, logs them, and removes the dead client from the SSE client set instead of silently failing
+- [Fixed]: [2026-06-12] Graceful shutdown cleanup — `shutdown()` now clears pending message save timers, SSE heartbeats, and closes all SSE client connections before stopping the RPC agent
+- [Fixed]: [2026-06-12] RPC agent startup timeout — moved `setTimeout` before `proc.on("error")` to prevent the timeout from firing after error rejection; timeout is now properly cleared on error
+- [Fixed]: [2026-06-12] `RpcAgent.send()` validates input and checks stdin writability — rejects `null`/non-object commands and cleans up pending requests if stdin is not writable
+- [Fixed]: [2026-06-12] `TOGETHEI_API_KEY` typo — corrected to `TOGETHER_API_KEY` in the provider-to-env-var map
+- [Fixed]: [2026-06-12] `listDirectory()` returns `null` for unreadable directories instead of the string `'?'` which broke JSON serialization
+- [Fixed]: [2026-06-12] `listSessions()` and `listUsers()` handle missing timestamps — uses `(b.updatedAt || 0) - (a.updatedAt || 0)` to avoid NaN sorting
+- [Fixed]: [2026-06-12] Session name uses ISO timestamp — `createSession()` now uses `toISOString()` instead of `toLocaleString()` for consistent naming across locales
+- [Fixed]: [2026-06-12] `authorize()` with no arguments allows all authenticated users — empty role list no longer blocks access
+- [Fixed]: [2026-06-12] Duplicate logout route removed — the duplicate `POST /api/auth/logout` in `server.js` was removed since it already exists in the auth router
+- [Fixed]: [2026-06-12] `hasUsers()` call simplified in register route — removed redundant dynamic import, using the already-imported function directly
+- [Fixed]: [2026-06-12] `AUTH_ENABLED=false` skip in auth middleware — when auth is globally disabled, `authenticate()` skips token verification entirely
+- [Fixed]: [2026-06-12] Auth error messages unified — API/WebSocket auth failures now return "Authentication failed" instead of exposing specific failure reasons ("Invalid or expired token", "User not found")
+- [Fixed]: [2026-06-12] Rate limit memory leak — periodic pruning interval (60s) cleans up expired rate limit entries from the in-memory map
+- [Fixed]: [2026-06-12] `dotenv/config` imported at top of `server.js` — ensures environment variables are loaded before any module reads `process.env`
+- [Fixed]: [2026-06-12] Static middleware re-enabled — removed `// TEMPORARILY DISABLED` comments on `express.static()` calls for both built and dev frontends
+- [Fixed]: [2026-06-12] `express.json()` uses `strict: false` — allows non-object JSON bodies (arrays, strings) without throwing
+- [Fixed]: [2026-06-12] Login page `/api/auth/status` fetch handles errors — wraps response check in a safe `.then()` that returns `null` on non-OK responses
+
+### Changed
+
+- [Changed]: [2026-06-12] `auth-middleware.js` — added `AUTH_ENABLED=false` skip, unified error messages, `authorize()` with no args allows all authenticated users
+- [Changed]: [2026-06-12] `auth-utils.js` — JWT secrets now required (no defaults), added input validation on all public functions, `refreshAccessToken()` is async and returns full user payload, exported `JWT_SECRET` and `JWT_REFRESH_SECRET` for WebSocket verification
+- [Changed]: [2026-06-12] `routes/auth.js` — email format validation, password byte-length limit, timing attack mitigation on login, rate limit pruning interval, removed `/api/auth/status` endpoint (no longer needed)
+- [Changed]: [2026-06-12] `server.js` — `authenticate` middleware runs globally on every request; path traversal prevention on workspace/directory endpoints; config validation on PUT /api/configs; report path validation; global error handler; `dotenv/config` import; static middleware re-enabled; API key redaction in logs; graceful shutdown cleanup
+- [Changed]: [2026-06-12] `session-store.js` — input validation on `loadSession()`, error handling on `saveSession()` and `deleteSession()`, whitelist-based `updateSession()`, ISO timestamp in session names, NaN-safe sorting
+- [Changed]: [2026-06-12] `user-store.js` — input validation on `loadUser()`, error handling on `saveUser()` and `deleteUser()`, whitelist-based `updateUser()`, NaN-safe sorting
+- [Changed]: [2026-06-12] `LoginPage.vue` — first-user notice now includes a link to `/register`; register link always visible (not gated by `hasUsers`); styled link in first-user notice
+- [Changed]: [2026-06-12] `ChatView.vue` — `selectCommand()` now clears `inputText` before emitting the command event
+- [Changed]: [2026-06-12] Login/register HTML pages in `server.js` — added skip-link for keyboard accessibility
+- [Changed]: [2026-06-12] `src/benchmark/configs.json` — reset to minimal default config with a single `test` entry
+
+### Added
+
+- [Added]: [2026-06-12] `playwright` dependency added to `package.json` for browser automation testing
+
 - [Added]: [2026-06-11] FolderPicker component — new Vue 3 directory browser modal for workspace selection with breadcrumb navigation, directory listing with item counts, loading/error states, and path confirmation
 - [Added]: [2026-06-11] Tooltip component — reusable Vue 3 tooltip with hover-triggered delayed appearance (200ms show, 100ms hide), positioned above or below the trigger element, with smooth enter/leave transitions
 - [Added]: [2026-06-11] New design token system — semantic color tokens (success, warning, error, info with dim variants), transition timing variables (--transition-fast, --transition, --transition-slow), refined radius tokens (--radius-sm, --radius, --radius-lg), and shadow tokens (--shadow-sm, --shadow, --shadow-lg)
