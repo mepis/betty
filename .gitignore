@@ -9,3 +9,5 @@ src/benchmark/reports/*
 src/frontend/dist/
 src/benchmark/frontend/dist/
 .agents/
+.playwright-cli/
+test-*.mjs

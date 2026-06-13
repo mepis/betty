@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-12] `.gitignore` — added `.playwright-cli/` to ignore Playwright CLI runtime artifacts (console logs, page YAML dumps); added `test-*.mjs` to ignore ad-hoc debugging scripts
+
 ### Added
 
 - [Added]: [2026-06-12] JWT-based user authentication — bcrypt password hashing (cost 12), httpOnly cookie sessions with automatic refresh, rate limiting on login (10/min) and registration (3/min), role-based access control (admin/user), first-user becomes admin automatically; configurable via `AUTH_ENABLED`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `JWT_EXPIRES_IN`, `JWT_REFRESH_EXPIRES_IN`
