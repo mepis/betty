@@ -185,10 +185,46 @@ const DEFAULT_CONFIGS = {
   },
 };
 
+// Deep-merge helper: adds missing keys from `defaults` into `target` (mutates target)
+function deepMerge(target, defaults) {
+  let updated = false;
+  for (const key of Object.keys(defaults)) {
+    if (!(key in target)) {
+      target[key] = JSON.parse(JSON.stringify(defaults[key]));
+      updated = true;
+    } else if (
+      typeof defaults[key] === "object" &&
+      defaults[key] !== null &&
+      !Array.isArray(defaults[key]) &&
+      typeof target[key] === "object" &&
+      target[key] !== null &&
+      !Array.isArray(target[key])
+    ) {
+      if (deepMerge(target[key], defaults[key])) updated = true;
+    }
+  }
+  return updated;
+}
+
+// Sync: ensure configs.json has all default keys; add missing ones automatically
+function syncConfigDefaults() {
+  try {
+    const current = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    if (deepMerge(current, DEFAULT_CONFIGS)) {
+      fs.writeFileSync(CONFIGS_FILE, JSON.stringify(current, null, 2));
+      console.log(`[config] Updated configs.json with missing default keys`);
+    }
+  } catch (err) {
+    console.error(`[config] Failed to sync defaults: ${err.message}`);
+  }
+}
+
 // Create default configs.json if it doesn't exist
 if (!fs.existsSync(CONFIGS_FILE)) {
   fs.writeFileSync(CONFIGS_FILE, JSON.stringify(DEFAULT_CONFIGS, null, 2));
   console.log(`Created default config file: ${CONFIGS_FILE}`);
+} else {
+  syncConfigDefaults();
 }
 
 // In-memory state

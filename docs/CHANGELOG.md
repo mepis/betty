@@ -9,6 +9,12 @@
 
 ### Added
 
+- [Added]: [2026-06-14] Benchmark `configs.json` — expanded from minimal test config to comprehensive production config with GPU selection, split params, spec params, build params, CUDA configs, model configs, server params, benchmark messages, and test params sections
+- [Added]: [2026-06-14] Benchmark `api-server.js` — `deepMerge()` helper and `syncConfigDefaults()` function that auto-populates missing keys from `DEFAULT_CONFIGS` into `configs.json` on startup, preventing config drift
+- [Added]: [2026-06-14] Benchmark `AGENTS.md` — project rules documentation enforcing that `DEFAULT_CONFIGS` in `api-server.js` and `configs.json` must be kept in sync; every change to one must be reflected in the other
+
+### Added
+
 - [Added]: [2026-06-14] Benchmark `NET_INTERFACE` env var — new `NET_INTERFACE` option in `.env`/`.env.example` (default `eth0`) for configuring which network interface to use for auto-detecting the machine's IP address in the benchmark deployment script
 
 ### Changed
