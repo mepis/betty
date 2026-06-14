@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-14] Streaming thinking display — `ChatMessage.vue` now renders the top-level `thinking` property during streaming via the `contentHtml` computed property, producing a collapsible "Thinking" block (matching the existing `thinking` block type in multi-block content); `App.vue` added `watch` handlers on `streamingText` and `streamingThinking` to propagate paced display text back into the message object so `ChatMessage` re-renders reactively
+
+### Changed
+
+- [Changed]: [2026-06-14] `App.vue` — renamed import from `useStreaming` to `createMessageStreaming` to match the factory function export in `useStreaming.js`
+
 ### Added
 
 - [Added]: [2026-06-14] User creation endpoint (`src/backend/routes/admin.js`) — new `POST /api/admin/users` route for admin user creation with email format validation, password length enforcement (min 6 chars), duplicate email detection (409 conflict), role assignment (defaults to "user", first user auto-promoted to "admin"), and password hashing via bcrypt; returns 201 with safe user object (password hash excluded)

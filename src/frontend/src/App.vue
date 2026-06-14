@@ -67,7 +67,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useWebSocket } from './composables/useWebSocket.js';
-import { useStreaming } from './composables/useStreaming.js';
+import { createMessageStreaming } from './composables/useStreaming.js';
 import { hasMessageById } from './composables/useMessageStore.js';
 import { toast } from './composables/useToast.js';
 import { authStore } from './stores/auth.js';
@@ -93,7 +93,7 @@ const { connected, connect: connectWs, send, on, onAny } = useWebSocket();
 const messages = ref([]);
 const isStreaming = ref(false);
 const streamingMsgId = ref(null); // ID of the message currently streaming
-const { displayText: streamingText, thinkingText: streamingThinking, appendDelta, appendThinkingDelta, complete: completeStreaming, reset: resetStreaming } = useStreaming();
+const { displayText: streamingText, thinkingText: streamingThinking, appendDelta, appendThinkingDelta, complete: completeStreaming, reset: resetStreaming } = createMessageStreaming();
 const models = ref([]);
 const currentModel = ref(null);
 const selectedModelId = ref('');
@@ -106,7 +106,21 @@ const contextTokens = ref(null);
 const contextLimit = ref(null);
 let statsInterval = null;
 
+// Keep the streaming message's content in sync with the paced display text.
+// The pacing loop updates streamingText/streamingThinking asynchronously via
+// setTimeout, so we need watchers to propagate those changes back into the
+// message object that ChatMessage renders.
+watch(streamingText, (text) => {
+  if (!streamingMsgId.value) return;
+  const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+  if (streamMsg) streamMsg.content = text;
+});
 
+watch(streamingThinking, (thinking) => {
+  if (!streamingMsgId.value) return;
+  const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+  if (streamMsg) streamMsg.thinking = thinking;
+});
 
 // ─── WebSocket Setup ────────────────────────────────────────────────────
 function setupWebSocket() {

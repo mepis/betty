@@ -160,6 +160,18 @@ const contentHtml = computed(() => {
     textContent = props.msg.content;
   }
 
+  // Render thinking content from top-level `thinking` property (streaming case)
+  const thinkingText = getThinkingContent();
+  if (thinkingText) {
+    html = `<div class="thinking-block">
+      <div class="thinking-header" onclick="toggleThinking(this)">
+        🧠 <span>Thinking</span>
+        <span style="margin-left:auto; font-size:10px">▼</span>
+      </div>
+      <div class="thinking-content">${renderMarkdown(thinkingText)}</div>
+    </div>` + html;
+  }
+
   return html + renderMarkdown(textContent);
 });
 
