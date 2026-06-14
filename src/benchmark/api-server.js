@@ -455,6 +455,10 @@ app.post("/api/run", (req, res) => {
         parseLogOutput(stderrLineBuffer);
         stderrLineBuffer = "";
       }
+      // Flush any remaining summary block
+      if (inSummaryBlock) {
+        flushSummary();
+      }
       if (code === 0) {
         benchmarkStatus = "idle";
         broadcast("status", {
@@ -497,6 +501,10 @@ app.post("/api/run", (req, res) => {
 //--- Line buffer for parsing complete lines from stream data ---
 let stdoutLineBuffer = "";
 let stderrLineBuffer = "";
+
+//--- Summary block buffer for multi-line result parsing ---
+let summaryBuffer = {};
+let inSummaryBlock = false;
 
 //--- Parse benchmark JSON messages (structured data from benchmark process) ---
 function parseBenchmarkJSON(line) {
@@ -557,6 +565,43 @@ function parseBenchmarkJSON(line) {
   }
 }
 
+//--- Flush accumulated summary data into liveResults ---
+function flushSummary() {
+  if (!inSummaryBlock || (summaryBuffer.avgGenTokensPerSec === undefined && summaryBuffer.avgPromptTokensPerSec === undefined)) {
+    inSummaryBlock = false;
+    summaryBuffer = {};
+    return;
+  }
+
+  const runId = summaryBuffer.testRunId || currentTestRun;
+  const existingIdx = liveResults.findIndex((r) => r.testRunId === runId);
+
+  const result = {
+    testRunId: runId,
+    avgGenTokensPerSec: summaryBuffer.avgGenTokensPerSec,
+    avgPromptTokensPerSec: summaryBuffer.avgPromptTokensPerSec,
+    totalGenTokens: summaryBuffer.totalGenTokens,
+    totalPromptTokens: summaryBuffer.totalPromptTokens,
+    totalTimeMs: summaryBuffer.totalTimeMs,
+    avgMemUsed: summaryBuffer.avgMemUsed,
+    avgMemTotal: summaryBuffer.avgMemTotal,
+  };
+
+  if (existingIdx >= 0) {
+    liveResults[existingIdx] = result;
+  } else {
+    liveResults.push(result);
+  }
+
+  broadcast("results", { liveResults });
+
+  // Save/update report after each test run completes
+  saveReport();
+
+  inSummaryBlock = false;
+  summaryBuffer = {};
+}
+
 //--- Parse log output for live results (called with complete lines) ---
 function parseLogOutput(text) {
   // Check for structured benchmark JSON first
@@ -573,39 +618,36 @@ function parseLogOutput(text) {
     });
   }
 
-  // Parse "Avg gen tokens/sec:    XXX"
-  const genMatch = text.match(/Avg gen tokens\/sec:\s+([\d.]+)/);
-  const promptMatch = text.match(/Avg prompt tokens\/sec:\s+([\d.]+)/);
-  const totalGenMatch = text.match(/Total tokens:\s+([\d.]+)\s*\(gen\)/);
-  const totalPromptMatch = text.match(/Total tokens:\s+[\d.]+\s*\(gen\) \/ ([\d.]+)/);
-  const totalTimeMatch = text.match(/Total time \(all msgs\):\s+([\d.]+)\s*ms/);
-  const memMatch = text.match(/Avg Mem Used \(GB\):\s+([\d.]+) \/ ([\d.]+)/);
+  // Parse "=== Test Run #N Summary ===" — marks start of summary block
+  if (text.includes("Summary ===") && text.includes("Test Run")) {
+    inSummaryBlock = true;
+    summaryBuffer = { testRunId: currentTestRun };
+    return;
+  }
 
-  if (genMatch && promptMatch) {
-    const runId = currentTestRun;
-    const existingIdx = liveResults.findIndex((r) => r.testRunId === runId);
+  // Parse individual summary lines (accumulated across the block)
+  if (inSummaryBlock) {
+    const genMatch = text.match(/Avg gen tokens\/sec:\s+([\d.]+)/);
+    const promptMatch = text.match(/Avg prompt tokens\/sec:\s+([\d.]+)/);
+    const totalGenMatch = text.match(/Total tokens:\s+([\d.]+)\s*\(gen\)/);
+    const totalPromptMatch = text.match(/Total tokens:\s+[\d.]+\s*\(gen\) \/ ([\d.]+)/);
+    const totalTimeMatch = text.match(/Total time \(all msgs\):\s+([\d.]+)\s*ms/);
+    const memMatch = text.match(/Avg Mem Used \(GB\):\s+([\d.]+) \/ ([\d.]+)/);
 
-    const result = {
-      testRunId: runId,
-      avgGenTokensPerSec: parseFloat(genMatch[1]),
-      avgPromptTokensPerSec: parseFloat(promptMatch[1]),
-      totalGenTokens: totalGenMatch ? parseFloat(totalGenMatch[1]) : null,
-      totalPromptTokens: totalPromptMatch ? parseFloat(totalPromptMatch[1]) : null,
-      totalTimeMs: totalTimeMatch ? parseFloat(totalTimeMatch[1]) : null,
-      avgMemUsed: memMatch ? parseFloat(memMatch[1]) : null,
-      avgMemTotal: memMatch ? parseFloat(memMatch[2]) : null,
-    };
-
-    if (existingIdx >= 0) {
-      liveResults[existingIdx] = result;
-    } else {
-      liveResults.push(result);
+    if (genMatch) summaryBuffer.avgGenTokensPerSec = parseFloat(genMatch[1]);
+    if (promptMatch) summaryBuffer.avgPromptTokensPerSec = parseFloat(promptMatch[1]);
+    if (totalGenMatch) summaryBuffer.totalGenTokens = parseFloat(totalGenMatch[1]);
+    if (totalPromptMatch) summaryBuffer.totalPromptTokens = parseFloat(totalPromptMatch[1]);
+    if (totalTimeMatch) summaryBuffer.totalTimeMs = parseFloat(totalTimeMatch[1]);
+    if (memMatch) {
+      summaryBuffer.avgMemUsed = parseFloat(memMatch[1]);
+      summaryBuffer.avgMemTotal = parseFloat(memMatch[2]);
     }
 
-    broadcast("results", { liveResults });
-
-    // Save/update report after each test run completes
-    saveReport();
+    // Flush when we hit the last summary line (memory line or end of block)
+    if (memMatch || text.trim() === "" || text.startsWith("BENCHMARK_JSON")) {
+      flushSummary();
+    }
   }
 }
 

@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-14] `api-server.js` — refactored benchmark summary parsing from single-line matching to a multi-line block-based approach; introduced `summaryBuffer` and `inSummaryBlock` state to accumulate metrics across lines within a `=== Test Run #N Summary ===` block; added `flushSummary()` helper that assembles the accumulated fields into `liveResults` and triggers `saveReport()`; added summary flush on process close to handle truncated output
+
 ### Fixed
 
 - [Fixed]: [2026-06-14] Benchmark Dashboard empty states — show contextual messages when benchmark is running ("No results yet. Benchmark is running..." / "No logs yet. Build in progress...") instead of generic "No results yet" / "No logs yet" text, improving UX during active runs
