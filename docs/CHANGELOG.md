@@ -8,8 +8,6 @@
 
 ### Added
 
-### Changed
-
 - [Added]: [2026-06-13] Admin routes (`src/backend/routes/admin.js`) — Express Router with `GET /api/admin/users` (list all users), `PATCH /api/admin/users/:id` (update user role), and `DELETE /api/admin/users/:id` (delete user); all routes require admin role via `authorize("admin")` middleware; includes self-deletion prevention and self-demote prevention
 - [Added]: [2026-06-13] Users page (`src/frontend/src/pages/UsersPage.vue`) — Vue 3 admin-only page with user management table showing user name, email, role, created date, and last login; stats bar with total/admin/regular user counts; inline role change dropdown per user; delete button with confirmation; forbidden state for non-admin users; avatar initials display
 - [Added]: [2026-06-13] Session persistence toggle — new `SESSIONS_ENABLED` environment variable (default `true`); when set to `false`, all session store operations become no-ops (no disk I/O); exported from `session-store.js` for server startup logging
@@ -23,6 +21,7 @@
 - [Changed]: [2026-06-13] `App.vue` — added Users page routing via `activeTab` switch; imported and conditionally renders `UsersPage` component; passes `show-users` event to Sidebar
 - [Changed]: [2026-06-13] `api-server.js` — fixed stdout/stderr parsing to use proper line buffering via `processStdoutChunk()`/`processStderrChunk()` helpers instead of calling `parseLogOutput()` on raw data chunks; added buffer flush on process close to handle partial last lines; added `stdoutLineBuffer` and `stderrLineBuffer` variables
 - [Changed]: [2026-06-13] Benchmark frontend dist — rebuilt with new asset hashes (`index-BHalDcZS.js`, `index-CmiYsUn0.css`); deleted old `index-DYx4eSao.css`
+- [Changed]: [2026-06-14] Benchmark frontend `.env.production` — updated `VITE_API_URL` from `http://100.105.3.99:3456` to `http://100.88.77.33:3456` to point to the new API server address
 
 ### Removed
 
