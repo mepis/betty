@@ -6,7 +6,7 @@
     "dev:server": "node api-server.js",
     "dev:frontend": "cd frontend && npm run dev",
     "build:frontend": "cd frontend && npm run build",
-    "start": "npm run build:frontend && node api-server.js"
+    "start": "bash scripts/update-api-url.sh && npm run build:frontend && node api-server.js"
   },
   "dependencies": {
     "axios": "^1.7.0",
