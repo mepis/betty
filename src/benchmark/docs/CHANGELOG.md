@@ -6,26 +6,6 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- [Added]: [2026-06-13] Modular benchmark engine (`benchmark-engine.js`) — reusable `BenchmarkEngine` class with all test logic (HTTP calls, parameter advancement, build orchestration, results writing) importable by both CLI and API server
-
-### Changed
-
-- [Changed]: [2026-06-13] `index.js` — refactored from ~1246-line monolith to ~95-line thin CLI wrapper around `BenchmarkEngine`; supports `--no-build` and `--build-only` flags
-- [Changed]: [2026-06-13] `api-server.js` — replaced subprocess-based benchmark execution (spawning `index.js` + parsing stdout with regex) with direct `BenchmarkEngine` calls; no more child processes, no more fragile stdout parsing
-- [Changed]: [2026-06-13] `api-server.js` — removed embedded `DEFAULT_CONFIGS` (now imported from `benchmark-engine.js`); simplified config save to use `saveConfigs()` helper
-- [Changed]: [2026-06-13] `api-server.js` — replaced inline system memory parsing with `getSystemMemory()` from engine module
-- [Changed]: [2026-06-13] `api-server.js` — replaced inline build logic with `runBuild()`, `runClone()`, `runPull()` from engine module
-- [Changed]: [2026-06-13] `api-server.js` — removed `/api/clone` endpoint (no longer needed; engine handles cloning internally)
-- [Changed]: [2026-06-13] SSE events now carry structured data via engine callbacks instead of regex-parsed stdout chunks
-- [Changed]: [2026-06-13] `README.md` — added architecture documentation explaining the modular engine design and CLI usage
-
-### Removed
-
-- [Removed]: [2026-06-13] `frontend/.env.productions` — typo file (should have been `.env.production` but not needed)
-- [Removed]: [2026-06-13] All subprocess management code from `api-server.js` (child_process spawn, execSync for benchmark execution, stdout/stderr buffers, line parsing functions)
-- [Removed]: [2026-06-13] All stdout parsing logic from `api-server.js` (processStdoutChunk, processStderrChunk, parseLogOutput, parseBenchmarkJSON functions)
-- [Removed]: [2026-06-13] Inline `DEFAULT_CONFIGS`, `extractConfigsPerRun`, `saveReport`, `getSystemMemory`, and other duplicated functions from `api-server.js` (now imported from `benchmark-engine.js`)
-
 - [Added]: [2026-06-13] System memory monitoring in Dashboard Status panel — new `GET /api/system-status` endpoint reads `/proc/meminfo` and returns total/used/available GB and usage percentage; frontend displays a color-coded progress bar (green/yellow/red) that polls every 5 seconds
 
 ### Fixed
