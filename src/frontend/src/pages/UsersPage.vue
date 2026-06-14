@@ -10,6 +10,13 @@
         </button>
         <h1>User Management</h1>
       </div>
+      <button v-if="isAdmin" class="create-user-btn" @click="openCreateModal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Create User
+      </button>
     </div>
 
     <div v-if="loading" class="loading-state">
@@ -34,6 +41,94 @@
     </div>
 
     <template v-else>
+      <!-- Create User Modal -->
+      <div v-if="showCreateModal" class="modal-overlay" @click.self="closeCreateModal">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Create New User</h2>
+            <button class="modal-close" @click="closeCreateModal">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+
+          <div v-if="createError" class="error-msg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+            </svg>
+            {{ createError }}
+          </div>
+
+          <div v-if="createSuccess" class="success-msg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            {{ createSuccess }}
+          </div>
+
+          <form class="create-form" @submit.prevent="handleCreateUser">
+            <div class="form-group">
+              <label for="new-name">Name</label>
+              <input
+                id="new-name"
+                v-model="newUserName"
+                type="text"
+                placeholder="User's name"
+                :disabled="creatingUser"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="new-email">Email</label>
+              <input
+                id="new-email"
+                v-model="newUserEmail"
+                type="email"
+                placeholder="user@example.com"
+                required
+                :disabled="creatingUser"
+                autofocus
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="new-password">Password</label>
+              <input
+                id="new-password"
+                v-model="newUserPassword"
+                type="password"
+                placeholder="At least 6 characters"
+                required
+                minlength="6"
+                :disabled="creatingUser"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="new-role">Role</label>
+              <select
+                id="new-role"
+                v-model="newUserRole"
+                :disabled="creatingUser"
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="cancel-btn" @click="closeCreateModal" :disabled="creatingUser">Cancel</button>
+              <button type="submit" class="submit-btn" :disabled="creatingUser || !isCreateValid">
+                <span v-if="creatingUser" class="spinner-sm"></span>
+                <span>{{ creatingUser ? 'Creating...' : 'Create User' }}</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       <!-- Stats bar -->
       <div class="stats-bar">
         <div class="stat">
@@ -124,8 +219,25 @@ const users = ref([]);
 const loading = ref(true);
 const error = ref('');
 
-const currentUserId = computed(() => authStore.user?.id || '');
-const isAdmin = computed(() => authStore.user?.role === 'admin');
+// Create user modal state
+const showCreateModal = ref(false);
+const newUserName = ref('');
+const newUserEmail = ref('');
+const newUserPassword = ref('');
+const newUserRole = ref('user');
+const creatingUser = ref(false);
+const createError = ref('');
+const createSuccess = ref('');
+
+const isCreateValid = computed(() => {
+  return newUserEmail.value &&
+    newUserEmail.value.includes('@') &&
+    newUserPassword.value &&
+    newUserPassword.value.length >= 6;
+});
+
+const currentUserId = computed(() => authStore.user.value?.id || '');
+const isAdmin = computed(() => authStore.user.value?.role === 'admin');
 const adminCount = computed(() => users.value.filter(u => u.role === 'admin').length);
 const userCount = computed(() => users.value.filter(u => u.role === 'user').length);
 
@@ -227,6 +339,62 @@ function formatDate(ts) {
   });
 }
 
+function openCreateModal() {
+  showCreateModal.value = true;
+  newUserName.value = '';
+  newUserEmail.value = '';
+  newUserPassword.value = '';
+  newUserRole.value = 'user';
+  createError.value = '';
+  createSuccess.value = '';
+}
+
+function closeCreateModal() {
+  showCreateModal.value = false;
+  createError.value = '';
+  createSuccess.value = '';
+}
+
+async function handleCreateUser() {
+  createError.value = '';
+  createSuccess.value = '';
+  creatingUser.value = true;
+
+  try {
+    const res = await fetch('/api/admin/users', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Request-Type': 'api',
+      },
+      body: JSON.stringify({
+        name: newUserName.value || undefined,
+        email: newUserEmail.value,
+        password: newUserPassword.value,
+        role: newUserRole.value,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || 'Failed to create user');
+    }
+
+    users.value.unshift(data.user);
+    createSuccess.value = 'User created successfully';
+    newUserName.value = '';
+    newUserEmail.value = '';
+    newUserPassword.value = '';
+    newUserRole.value = 'user';
+  } catch (err) {
+    createError.value = err.message || 'Failed to create user';
+  } finally {
+    creatingUser.value = false;
+  }
+}
+
 onMounted(() => {
   loadUsers();
 });
@@ -243,6 +411,9 @@ onMounted(() => {
 
 /* Header */
 .page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 24px;
 }
 
@@ -250,6 +421,26 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.create-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity var(--transition-fast);
+}
+
+.create-user-btn:hover {
+  opacity: 0.9;
 }
 
 .back-btn {
@@ -562,10 +753,219 @@ onMounted(() => {
   border-color: rgba(248, 113, 113, 0.3);
 }
 
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.modal-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.create-form {
+  padding: 24px;
+}
+
+.create-form .form-group {
+  margin-bottom: 16px;
+}
+
+.create-form .form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.create-form .form-group input,
+.create-form .form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  font-family: inherit;
+}
+
+.create-form .form-group input:focus,
+.create-form .form-group select:focus {
+  border-color: var(--accent);
+}
+
+.create-form .form-group input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.create-form .form-group input:disabled,
+.create-form .form-group select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.create-form .form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2352525a' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.cancel-btn {
+  padding: 10px 18px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--border-light);
+}
+
+.cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  padding: 10px 18px;
+  background: var(--accent);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner-sm {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.error-msg {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin: 16px 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.success-msg {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin: 16px 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .users-page {
     padding: 16px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .create-user-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .stats-bar {

@@ -1,11 +1,63 @@
 import { Router } from "express";
-import { listUsers, deleteUser, loadUser, saveUser } from "../user-store.js";
+import { listUsers, deleteUser, loadUser, saveUser, createUser, getUserByEmail, hasUsers, updateUser } from "../user-store.js";
 import { authorize } from "../auth-middleware.js";
+import { hashPassword } from "../auth-utils.js";
 
 const router = Router();
 
 // All routes require admin role
 router.use(authorize("admin"));
+
+// ─── POST /api/admin/users ────────────────────────────────────────────────
+
+router.post("/users", async (req, res) => {
+  try {
+    const { name, email, password, role } = req.body;
+
+    // Validate input
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email and password are required" });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ error: "Password must be at least 6 characters" });
+    }
+
+    // Validate role
+    const userRole = role && ["admin", "user"].includes(role) ? role : "user";
+
+    // Check if user already exists
+    const existing = getUserByEmail(email);
+    if (existing) {
+      return res.status(409).json({ error: "An account with this email already exists" });
+    }
+
+    // Hash password and create user
+    const passwordHash = await hashPassword(password);
+    const isFirstUser = !hasUsers();
+    const user = createUser({
+      email,
+      passwordHash,
+      name: name || email.split("@")[0],
+      role: isFirstUser ? "admin" : userRole,
+    });
+
+    // Update last login
+    updateUser(user.id, { lastLogin: Date.now() });
+
+    const { passwordHash: _, ...safeUser } = user;
+    res.status(201).json({ user: safeUser });
+  } catch (err) {
+    console.error("[admin] Failed to create user:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 // ─── GET /api/admin/users ─────────────────────────────────────────────────
 

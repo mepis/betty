@@ -12,6 +12,14 @@
         <h2>Chat</h2>
       </div>
       <div class="chat-header-right">
+        <div v-if="contextTokens != null && contextLimit != null" class="context-badge" :class="contextColorClass">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          <span>{{ formatContext(contextTokens) }} / {{ formatContext(contextLimit) }}</span>
+        </div>
         <div class="connection-badge" :class="{ connected, streaming: isStreaming }">
           <span class="badge-dot"></span>
         </div>
@@ -113,6 +121,8 @@ const props = defineProps({
   isStreaming: Boolean,
   connected: Boolean,
   availableCommands: Array,
+  contextTokens: { type: Number, default: null },
+  contextLimit: { type: Number, default: null },
 });
 
 const emit = defineEmits([
@@ -136,6 +146,26 @@ const { showResumeButton, onContentChange, onUserScroll, scrollToBottom: autoScr
 // Virtualization — enabled for sessions with many messages
 const VIRTUAL_THRESHOLD = 50;
 const shouldVirtualize = computed(() => props.messages.length >= VIRTUAL_THRESHOLD);
+
+// Context size helpers
+function formatContext(tokens) {
+  if (tokens == null) return '—';
+  if (tokens >= 1000000) return (tokens / 1000000).toFixed(1) + 'M';
+  if (tokens >= 1000) return (tokens / 1000).toFixed(1) + 'K';
+  return tokens.toString();
+}
+
+const contextPercent = computed(() => {
+  if (props.contextTokens == null || props.contextLimit == null) return 0;
+  return (props.contextTokens / props.contextLimit) * 100;
+});
+
+const contextColorClass = computed(() => {
+  const pct = contextPercent.value;
+  if (pct >= 90) return 'context-danger';
+  if (pct >= 75) return 'context-warning';
+  return '';
+});
 const { visibleItems, visibleRange, totalHeight, getOffsetTop, onScroll: onVirtualScroll, measureItem } = useVirtualList(props.messages, messagesEl);
 
 const BUILT_IN_COMMANDS = [
@@ -285,6 +315,36 @@ onUnmounted(() => {
 .chat-header-right {
   display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+.context-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.context-badge svg {
+  flex-shrink: 0;
+}
+
+.context-badge.context-warning {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+
+.context-badge.context-danger {
+  color: var(--error);
+  border-color: var(--error);
 }
 
 .connection-badge {

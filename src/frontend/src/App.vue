@@ -44,6 +44,8 @@
           :is-streaming="isStreaming"
           :connected="connected"
           :available-commands="availableCommands"
+          :context-tokens="contextTokens"
+          :context-limit="contextLimit"
           @send="sendMessage"
           @abort="abortStream"
           @toggle-sidebar="toggleSidebar"
@@ -100,6 +102,9 @@ const workspace = ref('');
 const availableCommands = ref([]);
 const sessions = ref([]);
 const activeSessionId = ref('');
+const contextTokens = ref(null);
+const contextLimit = ref(null);
+let statsInterval = null;
 
 
 
@@ -168,6 +173,8 @@ function setupWebSocket() {
         }
       }
     }
+    // Refresh context stats after each agent turn
+    fetchSessionStats();
   });
 
   on('message_update', (data) => {
@@ -290,6 +297,14 @@ function setupWebSocket() {
 
   on('compacted', () => {
     toast('Context compacted', 'success');
+    fetchSessionStats();
+  });
+
+  on('session_stats', (data) => {
+    if (data.data && data.data.contextUsage) {
+      contextTokens.value = data.data.contextUsage.tokens;
+      contextLimit.value = data.data.contextUsage.contextWindow;
+    }
   });
 
   on('html_exported', (data) => {
@@ -314,6 +329,11 @@ function setupWebSocket() {
     toast(data.message, 'error');
   });
 
+}
+
+// ─── Session Stats ──────────────────────────────────────────────────────
+function fetchSessionStats() {
+  send({ type: 'get_session_stats' });
 }
 
 // ─── Actions ────────────────────────────────────────────────────────────
@@ -536,12 +556,19 @@ onMounted(async () => {
       send({ type: 'get_messages' });
       send({ type: 'get_commands' });
       send({ type: 'list_sessions' });
+      send({ type: 'get_session_stats' });
     }, 1000);
+
+    // Refresh session stats periodically
+    statsInterval = setInterval(() => {
+      send({ type: 'get_session_stats' });
+    }, 15000);
   }
 });
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleGlobalKeydown);
+  if (statsInterval) clearInterval(statsInterval);
 });
 </script>
 

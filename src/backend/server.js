@@ -820,6 +820,10 @@ class RpcAgent {
     return this.send({ type: "export_html" });
   }
 
+  async getSessionStats() {
+    return this.send({ type: "get_session_stats" });
+  }
+
   stop() {
     if (this.proc) {
       // Detach exit/error handlers so killing the process doesn't
@@ -1013,6 +1017,12 @@ wss.on("connection", (ws) => {
         case "export_html": {
           const resp = await agent.exportHtml();
           ws.send(JSON.stringify({ type: "html_exported", success: resp.success, data: resp.data }));
+          break;
+        }
+
+        case "get_session_stats": {
+          const resp = await agent.getSessionStats();
+          ws.send(JSON.stringify({ type: "session_stats", success: resp.success, data: resp.data }));
           break;
         }
 

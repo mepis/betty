@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-14] User creation endpoint (`src/backend/routes/admin.js`) — new `POST /api/admin/users` route for admin user creation with email format validation, password length enforcement (min 6 chars), duplicate email detection (409 conflict), role assignment (defaults to "user", first user auto-promoted to "admin"), and password hashing via bcrypt; returns 201 with safe user object (password hash excluded)
+- [Added]: [2026-06-14] Context usage display — real-time context window token tracking: `RpcAgent.getSessionStats()` in `server.js` sends `get_session_stats` RPC command; new WebSocket `session_stats` handler in `App.vue`; context token badge in `ChatView.vue` header showing "used / limit" with color-coded warnings (yellow at 75%, red at 90%); stats refresh after every agent turn, after compaction, and every 15 seconds
+- [Added]: [2026-06-14] Create User modal (`src/frontend/src/pages/UsersPage.vue`) — admin-only "Create User" button opens a modal form with name, email, password, and role fields; client-side validation (email format, password length), loading spinner during creation, success/error messages, and auto-refresh of user list on success
+
+### Fixed
+
+- [Fixed]: [2026-06-14] UsersPage reactivity — changed `authStore.user?.id` and `authStore.user?.role` to `authStore.user.value?.id` and `authStore.user.value?.role` to correctly access the reactive Pinia store ref
+
 ### Changed
 
 - [Changed]: [2026-06-14] `api-server.js` — refactored benchmark summary parsing from single-line matching to a multi-line block-based approach; introduced `summaryBuffer` and `inSummaryBlock` state to accumulate metrics across lines within a `=== Test Run #N Summary ===` block; added `flushSummary()` helper that assembles the accumulated fields into `liveResults` and triggers `saveReport()`; added summary flush on process close to handle truncated output
