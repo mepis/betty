@@ -795,6 +795,130 @@ function saveReport() {
   }
 }
 
+//--- Helper: reconstruct cmake build command from configs ---
+function getBuildCommand(configs, testRunConfig) {
+  const bp = configs.build_make_params || {};
+  const cf = testRunConfig?.cmakeFlags || {};
+  const buildCores = configs.build_cores || 1;
+
+  const flags = [];
+  if (bp.enable_ccache) flags.push("-DGGML_CCACHE=1");
+  if (bp.enable_lto) flags.push("-DGGML_LTO=1");
+  if (bp.enable_cuda) flags.push("-DGGML_CUDA=1");
+  if (bp.enable_cuda_fa) flags.push("-DGGML_CUDA_FA=1");
+  if (bp.enable_cuda_graphs) flags.push("-DGGML_CUDA_GRAPHS=1");
+  if (bp.enable_cuda_nccl) flags.push("-DGGML_CUDA_NCCL=1");
+  if (bp.enable_cuda_per_max_batch_size) flags.push(`-DGGML_CUDA_PEER_MAX_BATCH_SIZE=${bp.peer_batch_size}`);
+  if (bp.enable_cuda_peer_copy) flags.push("-DGGML_CUDA_PEER_COPY=1");
+  if (bp.enable_cuda_custom_arch) flags.push('-DCMAKE_CUDA_ARCHITECTURES="86-real;120-real"');
+  if (bp.enable_cuda_fa_all_quants) flags.push(`-DGGML_CUDA_FA_ALL_QUANTS=${bp.cuda_all_quants}`);
+  if (bp.enable_cuda_fp16) flags.push(`-DGGML_CUDA_FP16=${bp.cuda_fp16}`);
+  if (bp.enable_cuda_scheduled_max_copies) flags.push(`-DGGML_SCHED_MAX_COPIES=${bp.cuda_max_scheduled_copies}`);
+  if (bp.enable_cuda_compression_level) flags.push(`-DGGML_CUDA_COMPRESSION_LEVEL=${bp.cuda_compression_level}`);
+
+  const cmakeCmd = `cmake -B build -DCMAKE_BUILD_TYPE=Release ${flags.join(" ")}`;
+  const makeCmd = `cmake --build build --config Release -j ${buildCores} --clean-first`;
+
+  // Build env exports
+  const ec = configs.export_configs || {};
+  const cudaVer = configs.cuda_configs?.cuda_version || "12.6";
+  const envLines = [
+    `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=${ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1"}`,
+    `export CUDA_SCALE_LAUNCH_QUEUES=${ec.CUDA_SCALE_LAUNCH_QUEUES || "4x"}`,
+    `export LLAMA_CACHE=${ec.LLAMA_CACHE || configs.llama_cache || ""}`,
+    `export CUDACXX=${configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
+    `export GGML_CUDA_P2P=${ec.GGML_CUDA_P2P || "on"}`,
+    `export PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
+    `export LLAMA_ARG_FIT=${ec.LLAMA_ARG_FIT || "on"}`,
+    `export LLAMA_ARG_FIT_TARGET=${ec.LLAMA_ARG_FIT_TARGET || "256"}`,
+    `export LLAMA_ARG_FIT_CTX=${ec.LLAMA_ARG_FIT_CTX || "131072"}`,
+  ];
+
+  return {
+    env: envLines,
+    cmake: cmakeCmd,
+    make: makeCmd,
+    full: envLines.join(" && ") + ` && cd llama.cpp && ${cmakeCmd} && ${makeCmd}`,
+  };
+}
+
+//--- Helper: reconstruct llama-server launch command from configs ---
+function getLaunchCommand(configs, testRunConfig) {
+  const sp = configs.server_params || {};
+  const sps = configs.split_params || {};
+  const mc = configs.model_configs || {};
+  const gs = configs.gpu_selection || { enabled: false, gpus: [0] };
+  const sp2 = configs.spec_params || {};
+
+  const server = testRunConfig?.serverParameters || {};
+  const test = testRunConfig?.testParameters || {};
+  const split = testRunConfig?.splitParameters || {};
+  const env = testRunConfig?.environment || {};
+
+  const tp = configs.test_params || {};
+  const contextLength = test.contextLength || tp.context_length || 0;
+  const gpuLayerOffload = test.gpuLayerOffload || tp.gpu_layer_offload || 0;
+  const batchSize = test.batchSize || tp.batch_size || 0;
+  const uBatchSize = test.uBatchSize || tp.u_batch_size || 0;
+  const cacheRam = test.cacheRam || tp.cache_ram || 0;
+
+  const tensorSplitValue = gs.enabled && gs.gpus && gs.gpus.length > 1
+    ? Array(gs.gpus.length).fill(Math.round(100 / gs.gpus.length)).join(",")
+    : "0";
+  const primaryGpu = gs.enabled ? gs.gpus[0] : 0;
+
+  const modelPath = server.model || `${configs.model_directory}/${configs.model}`;
+  const port = server.port || configs.llama_port || 11434;
+  const host = server.host || configs.llama_host || "localhost";
+
+  const parts = [
+    `./llama-server`,
+    `-m ${modelPath}`,
+    `--port ${port} --host ${host}`,
+    `-c ${contextLength} -ngl ${gpuLayerOffload}`,
+    `--temp ${mc.temp} --top-p ${mc.top_p} --min-p ${mc.min_p} --top-k ${mc.top_k}`,
+    `--batch-size ${batchSize} --ubatch-size ${uBatchSize}`,
+    `--cache-ram ${cacheRam}`,
+  ];
+
+  if (sp.cont_batching) parts.push("--cont-batching");
+  if (sp.flash_attn?.enabled) parts.push(`--flash-attn ${sp.flash_attn.value}`);
+  if (sp.reasoning?.enabled) parts.push(`--reasoning ${sp.reasoning.value}`);
+  if (sp.profiling) parts.push("-e");
+  if (sp.presence_penalty?.enabled) parts.push(`--presence-penalty ${sp.presence_penalty.value}`);
+  if (sp.reasoning_budget?.enabled) parts.push(`--reasoning-budget ${sp.reasoning_budget.value}`);
+  if (sp.reasoning_budget_message?.enabled) parts.push(`--reasoning-budget-message "${sp.reasoning_budget_message.value}"`);
+  if (sp.rope_scaling?.enabled) parts.push(`--rope-scaling ${sp.rope_scaling.value}`);
+  if (sp.jinja) parts.push("--jinja");
+  if (sp.parallel?.enabled) parts.push(`--parallel ${sp.parallel.value}`);
+  if (sps.layer_split?.enabled) parts.push(`--split-mode ${sps.layer_split.value}`);
+  if (sps.tensor_split?.enabled) parts.push(`--tensor-split ${tensorSplitValue}`);
+  if (sps.primary_gpu?.enabled) parts.push(`--main-gpu ${primaryGpu}`);
+  if (sp2.spec_type?.enabled) parts.push(`--spec-type ${sp2.spec_type.value}`);
+  if (sp2.spec_draft_n_max?.enabled) parts.push(`--spec-draft-n-max ${sp2.spec_draft_n_max.value}`);
+
+  // Build env exports
+  const ec = configs.export_configs || {};
+  const cudaVer = configs.cuda_configs?.cuda_version || "12.6";
+  const envLines = [
+    `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=${env.GGML_CUDA_ENABLE_UNIFIED_MEMORY || ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1"}`,
+    `export CUDA_SCALE_LAUNCH_QUEUES=${env.CUDA_SCALE_LAUNCH_QUEUES || ec.CUDA_SCALE_LAUNCH_QUEUES || "4x"}`,
+    `export LLAMA_CACHE=${env.LLAMA_CACHE || ec.LLAMA_CACHE || configs.llama_cache || ""}`,
+    `export CUDACXX=${env.CUDACXX || configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
+    `export GGML_CUDA_P2P=${env.GGML_CUDA_P2P || ec.GGML_CUDA_P2P || "on"}`,
+    `export PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
+    `export LLAMA_ARG_FIT=${env.LLAMA_ARG_FIT || ec.LLAMA_ARG_FIT || "on"}`,
+    `export LLAMA_ARG_FIT_TARGET=${env.LLAMA_ARG_FIT_TARGET || ec.LLAMA_ARG_FIT_TARGET || "256"}`,
+    `export LLAMA_ARG_FIT_CTX=${env.LLAMA_ARG_FIT_CTX || ec.LLAMA_ARG_FIT_CTX || "131072"}`,
+  ];
+
+  return {
+    env: envLines,
+    command: parts.join(" \\"),
+    full: envLines.join(" && ") + ` && cd llama.cpp/build/bin && ${parts.join(" ")}`,
+  };
+}
+
 //--- Helper: extract detailed test run configs from liveResults ---
 function extractConfigsPerRun(liveResults, configs) {
   if (!liveResults || !configs) return [];
@@ -938,6 +1062,25 @@ app.get("/api/report/:name/configs/:testRunId", (req, res) => {
       return res.status(404).json({ success: false, error: "Test run config not found" });
     }
     res.json({ success: true, data: config });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Get build and launch commands for a specific test run in a report ---
+app.get("/api/report/:name/commands/:testRunId", (req, res) => {
+  try {
+    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Report not found" });
+    }
+    const report = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const configsPerRun = report.configsPerRun || [];
+    const config = configsPerRun.find((c) => c.testRunId === parseInt(req.params.testRunId, 10));
+    // Fall back to generating from top-level configs if per-run data is missing (older reports)
+    const buildCmd = getBuildCommand(report.configs, config || {});
+    const launchCmd = getLaunchCommand(report.configs, config || {});
+    res.json({ success: true, data: { build: buildCmd, launch: launchCmd, hasPerRunConfig: !!config } });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

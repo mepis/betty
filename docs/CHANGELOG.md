@@ -4,6 +4,15 @@
 
 ### Added
 
+- [Added]: [2026-06-14] Reproduce commands in benchmark reports — new `getBuildCommand()` and `getLaunchCommand()` helpers in `api-server.js` reconstruct full cmake/make build and llama-server launch commands from report configs including per-test-run overrides; new `GET /api/report/:name/commands/:testRunId` endpoint; `Reports.vue` config modal now shows a "Reproduce Commands" section with Build and Launch command blocks and copy-to-clipboard buttons
+
+### Changed
+
+- [Changed]: [2026-06-14] Benchmark frontend `.env.production` — updated `VITE_API_URL` from `http://100.88.77.33:3456` to `http://100.105.3.99:3456`
+- [Changed]: [2026-06-14] Benchmark frontend dist — rebuilt with new asset hashes
+
+### Added
+
 - [Added]: [2026-06-14] Real-time tool execution display — WebSocket event handlers for `tool_execution_start`, `tool_execution_update`, and `tool_execution_end` in `App.vue`; `pendingToolCalls` reactive map tracking tool call lifecycle; temporary tool messages cleaned up on stream end and abort; `ChatMessage.vue` renders `toolResult` role messages with collapsible blocks, state icons (⏳/✅/❌), and status classes (`tool-running`, `tool-completed`, `tool-error`); thinking blocks with collapsible display via `toggleThinking()` and `toggleTool()` global functions
 
 ### Changed

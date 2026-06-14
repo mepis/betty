@@ -15,6 +15,26 @@ const showConfigModal = ref(false)
 const selectedTestRunId = ref(null)
 const loadingConfig = ref(false)
 const testRunConfig = ref(null)
+const commands = ref(null)
+const copiedTab = ref(null) // 'build' or 'launch'
+
+async function loadCommands(reportName, testRunId) {
+  try {
+    const res = await axios.get(`${API_BASE}/api/report/${reportName}/commands/${testRunId}`)
+    if (res.data.success) {
+      commands.value = res.data.data
+    }
+  } catch (e) {
+    console.error('Failed to load commands:', e)
+  }
+}
+
+function copyToClipboard(text, tab) {
+  navigator.clipboard.writeText(text).then(() => {
+    copiedTab.value = tab
+    setTimeout(() => { copiedTab.value = null }, 2000)
+  }).catch(() => {})
+}
 
 onMounted(async () => {
   await store.fetchReports()
@@ -44,10 +64,18 @@ async function openConfigModal(reportName, testRunId) {
   showConfigModal.value = true
   loadingConfig.value = true
   testRunConfig.value = null
+  commands.value = null
+  copiedTab.value = null
   try {
-    const res = await axios.get(`${API_BASE}/api/report/${reportName}/configs/${testRunId}`)
-    if (res.data.success) {
-      testRunConfig.value = res.data.data
+    const [configRes, cmdRes] = await Promise.all([
+      axios.get(`${API_BASE}/api/report/${reportName}/configs/${testRunId}`),
+      axios.get(`${API_BASE}/api/report/${reportName}/commands/${testRunId}`),
+    ])
+    if (configRes.data.success) {
+      testRunConfig.value = configRes.data.data
+    }
+    if (cmdRes.data.success) {
+      commands.value = cmdRes.data.data
     }
   } catch (e) {
     console.error('Failed to load test run config:', e)
@@ -58,7 +86,9 @@ async function openConfigModal(reportName, testRunId) {
 function closeConfigModal() {
   showConfigModal.value = false
   testRunConfig.value = null
+  commands.value = null
   selectedTestRunId.value = null
+  copiedTab.value = null
 }
 
 // Close modal on Escape key
@@ -478,6 +508,74 @@ function formatList(arr) {
                       <span class="text-xs text-text-muted font-mono">{{ key }}</span>
                       <span class="text-xs font-mono text-text-primary">{{ formatBool(val) }}</span>
                     </div>
+                  </div>
+                </div>
+
+                <!-- Build & Launch Commands -->
+                <div v-if="commands">
+                  <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Reproduce Commands
+                  </h4>
+
+                  <!-- Tabs -->
+                  <div class="flex gap-2 mb-3">
+                    <button
+                      class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+                      :class="copiedTab !== 'launch' ? 'bg-accent-subtle text-accent' : 'bg-bg-tertiary text-text-muted'"
+                      @click="copiedTab = null"
+                    >
+                      Build
+                    </button>
+                    <button
+                      class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+                      :class="copiedTab !== 'build' ? 'bg-accent-subtle text-accent' : 'bg-bg-tertiary text-text-muted'"
+                      @click="copiedTab = null"
+                    >
+                      Launch
+                    </button>
+                  </div>
+
+                  <!-- Build Command -->
+                  <div class="mb-3">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-xs text-text-muted">Build (cmake + make)</span>
+                      <button
+                        @click="copyToClipboard(commands.build.full, 'build')"
+                        class="btn btn-ghost btn-xs flex items-center gap-1.5"
+                      >
+                        <svg v-if="copiedTab !== 'build'" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        <svg v-else class="w-3 h-3 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {{ copiedTab === 'build' ? 'Copied!' : 'Copy' }}
+                      </button>
+                    </div>
+                    <pre class="bg-bg-tertiary rounded-lg p-3 text-xs font-mono text-text-secondary overflow-x-auto whitespace-pre-wrap">{{ commands.build.full }}</pre>
+                  </div>
+
+                  <!-- Launch Command -->
+                  <div>
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-xs text-text-muted">Launch (llama-server)</span>
+                      <button
+                        @click="copyToClipboard(commands.launch.full, 'launch')"
+                        class="btn btn-ghost btn-xs flex items-center gap-1.5"
+                      >
+                        <svg v-if="copiedTab !== 'launch'" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        <svg v-else class="w-3 h-3 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {{ copiedTab === 'launch' ? 'Copied!' : 'Copy' }}
+                      </button>
+                    </div>
+                    <pre class="bg-bg-tertiary rounded-lg p-3 text-xs font-mono text-text-secondary overflow-x-auto whitespace-pre-wrap">{{ commands.launch.full }}</pre>
                   </div>
                 </div>
               </div>
