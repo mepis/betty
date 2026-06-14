@@ -272,7 +272,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
     connectSSE() {
       if (this.sseConnected) return
 
-      const eventSource = new EventSource(`${API_BASE}/api/stream`)
+      const eventSource = new EventSource(`${API_BASE}/api/stream`, { withCredentials: true })
       let reconnectTimer = null
       let lastStatusReceived = Date.now()
 
@@ -288,6 +288,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
       eventSource.addEventListener('results', (e) => {
         const data = JSON.parse(e.data)
         this.liveResults = data.liveResults || []
+        this.processAlive = true
         lastStatusReceived = Date.now()
       })
 
@@ -304,6 +305,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
       eventSource.addEventListener('test-run-complete', (e) => {
         const data = JSON.parse(e.data)
         this.benchmarkMessages = data.messages || []
+        this.processAlive = true
         lastStatusReceived = Date.now()
       })
 

@@ -26,6 +26,8 @@
 ### Fixed
 
 - [Fixed]: [2026-06-13] Benchmark log parsing race condition — stdout/stderr data chunks may contain partial lines; the old code passed raw chunks directly to `parseLogOutput()` which could miss or misparse metrics; now uses line-buffering helpers that accumulate data and only parse complete lines, with final flush on process close
+- [Fixed]: [2026-06-13] Benchmark SSE connection — added `withCredentials: true` to EventSource so cookies/credentials are sent with SSE requests, enabling authenticated SSE streams behind auth middleware
+- [Fixed]: [2026-06-13] Benchmark `processAlive` state — set `processAlive` to `true` in `results` and `test-run-complete` SSE event handlers so the frontend correctly tracks whether the benchmark process is still running
 
 ### Added
 
