@@ -4,9 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-14] Tabbed visual editor in Config.vue — split configuration options into "Build Options" and "Other Options" tabs for better organization and usability
+- [Added]: [2026-06-14] Pi agent project configuration — `.pi/` directory with skills (commit-and-push, deep-research, planning, playwright-cli, project-docs, testing-debugging, orchestrator), agents (reviewer, worker, scout), settings, and AGENTS.md
+
+### Changed
+
+- [Changed]: [2026-06-14] Benchmark frontend dist — rebuilt with updated asset hashes (`index-BOj5lmc8.js`, `index-2gyIUBI_.css`) after Config.vue tab interface changes
+
 ### Removed
 
 - [Removed]: [2026-06-14] Revert modularization of benchmark engine — consolidate `benchmark-engine.js` module back into `index.js` and `api-server.js`; restores subprocess-based execution, stdout/stderr parsing, and inline build/clone logic in the API server
+- [Removed]: [2026-06-14] Flat visual editor layout in Config.vue — replaced with tabbed interface separating build-specific options from general/environment/model configurations
 
 ### Added
 

@@ -15,6 +15,7 @@ const newGpuIndex = ref(0)
 const showBuildLogs = ref(false)
 const buildLogContainer = ref(null)
 const buildLogAnchor = ref(null)
+const activeTab = ref('build') // 'build' | 'other'
 
 // Profile state
 const profiles = ref([])
@@ -536,59 +537,26 @@ function normalizeBuildParams(configs) {
 
       <!-- Visual Editor -->
       <div v-else class="space-y-4 max-h-[600px] overflow-auto pr-2">
-        <config-section
-          title="General"
-          :items="[
-            { key: 'max_sys_mem', label: 'Max System Memory (%)', type: 'number' },
-            { key: 'llama_port', label: 'Llama Port', type: 'number' },
-            { key: 'llama_host', label: 'Llama Host', type: 'text' },
-            { key: 'model', label: 'Model', type: 'select' },
-            { key: 'model_directory', label: 'Model Directory', type: 'text' },
-            { key: 'llama_cache', label: 'Llama Cache', type: 'text' },
-            { key: 'build_cores', label: 'Build Cores', type: 'number' },
-            { key: 'skip_build', label: 'Skip Build', type: 'boolean' },
-          ]"
-          :model-options="modelOptions"
-          v-model="visualConfigs"
-        />
-
-        <!-- Environment Export Configs -->
-        <config-section
-          title="Environment Exports"
-          :items="[
-            { key: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', label: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', type: 'text' },
-            { key: 'CUDA_SCALE_LAUNCH_QUEUES', label: 'CUDA_SCALE_LAUNCH_QUEUES', type: 'text' },
-            { key: 'LLAMA_CACHE', label: 'LLAMA_CACHE', type: 'text' },
-            { key: 'GGML_CUDA_P2P', label: 'GGML_CUDA_P2P', type: 'text' },
-            { key: 'LLAMA_ARG_FIT', label: 'LLAMA_ARG_FIT', type: 'text' },
-            { key: 'LLAMA_ARG_FIT_TARGET', label: 'LLAMA_ARG_FIT_TARGET', type: 'text' },
-            { key: 'LLAMA_ARG_FIT_CTX', label: 'LLAMA_ARG_FIT_CTX', type: 'text' },
-          ]"
-          v-model="visualConfigs.export_configs"
-        />
-
-        <!-- Benchmark Messages -->
-        <div class="space-y-3">
-          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Benchmark Messages</h4>
-          <p class="text-xs text-text-muted">
-            Messages used to fill context during benchmarking. Each message is sent sequentially with accumulated history.
-          </p>
-          <div class="space-y-2">
-            <div
-              v-for="(msg, idx) in visualConfigs.benchmark_messages"
-              :key="idx"
-              class="space-y-1"
-            >
-              <label class="text-xs text-text-muted">Message {{ idx + 1 }}</label>
-              <textarea
-                :value="msg"
-                @input="updateBenchmarkMessage(idx, $event.target.value)"
-                class="textarea font-mono text-xs h-16"
-                placeholder="Enter benchmark message..."
-              />
-            </div>
-          </div>
+        <!-- Tab navigation -->
+        <div class="flex items-center gap-2 mb-2">
+          <button
+            @click="activeTab = 'build'"
+            class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+            :class="activeTab === 'build' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
+          >
+            Build Options
+          </button>
+          <button
+            @click="activeTab = 'other'"
+            class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+            :class="activeTab === 'other' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
+          >
+            Other Options
+          </button>
         </div>
+
+        <!-- Build Options Tab -->
+        <div v-show="activeTab === 'build'" class="space-y-4">
 
         <!-- Build Settings -->
         <div class="space-y-4">
@@ -746,6 +714,66 @@ function normalizeBuildParams(configs) {
             </div>
           </div>
         </div>
+        </div>
+
+        <!-- Other Options Tab -->
+        <div v-show="activeTab === 'other'" class="space-y-4">
+
+        <config-section
+          title="General"
+          :items="[
+            { key: 'max_sys_mem', label: 'Max System Memory (%)', type: 'number' },
+            { key: 'llama_port', label: 'Llama Port', type: 'number' },
+            { key: 'llama_host', label: 'Llama Host', type: 'text' },
+            { key: 'model', label: 'Model', type: 'select' },
+            { key: 'model_directory', label: 'Model Directory', type: 'text' },
+            { key: 'llama_cache', label: 'Llama Cache', type: 'text' },
+            { key: 'build_cores', label: 'Build Cores', type: 'number' },
+            { key: 'skip_build', label: 'Skip Build', type: 'boolean' },
+          ]"
+          :model-options="modelOptions"
+          v-model="visualConfigs"
+        />
+
+        <!-- Environment Export Configs -->
+        <config-section
+          title="Environment Exports"
+          :items="[
+            { key: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', label: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', type: 'text' },
+            { key: 'CUDA_SCALE_LAUNCH_QUEUES', label: 'CUDA_SCALE_LAUNCH_QUEUES', type: 'text' },
+            { key: 'LLAMA_CACHE', label: 'LLAMA_CACHE', type: 'text' },
+            { key: 'GGML_CUDA_P2P', label: 'GGML_CUDA_P2P', type: 'text' },
+            { key: 'LLAMA_ARG_FIT', label: 'LLAMA_ARG_FIT', type: 'text' },
+            { key: 'LLAMA_ARG_FIT_TARGET', label: 'LLAMA_ARG_FIT_TARGET', type: 'text' },
+            { key: 'LLAMA_ARG_FIT_CTX', label: 'LLAMA_ARG_FIT_CTX', type: 'text' },
+          ]"
+          v-model="visualConfigs.export_configs"
+        />
+
+        <!-- Benchmark Messages -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Benchmark Messages</h4>
+          <p class="text-xs text-text-muted">
+            Messages used to fill context during benchmarking. Each message is sent sequentially with accumulated history.
+          </p>
+          <div class="space-y-2">
+            <div
+              v-for="(msg, idx) in visualConfigs.benchmark_messages"
+              :key="idx"
+              class="space-y-1"
+            >
+              <label class="text-xs text-text-muted">Message {{ idx + 1 }}</label>
+              <textarea
+                :value="msg"
+                @input="updateBenchmarkMessage(idx, $event.target.value)"
+                class="textarea font-mono text-xs h-16"
+                placeholder="Enter benchmark message..."
+              />
+            </div>
+          </div>
+        </div>
+
+
 
         <config-section
           title="Model Configs"
@@ -909,6 +937,7 @@ function normalizeBuildParams(configs) {
               </span>
             </div>
           </div>
+        </div>
         </div>
       </div>
 
