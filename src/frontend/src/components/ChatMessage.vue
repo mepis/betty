@@ -3,6 +3,7 @@
     <div class="message-header">
       <div class="message-avatar" :class="msg.role">
         <span v-if="msg.role === 'user'">Y</span>
+        <span v-else-if="msg.role === 'toolResult'">🔧</span>
         <svg v-else width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M12 2L2 7l10 5 10-5-10-5z"/>
           <path d="M2 17l10 5 10-5"/>
@@ -34,6 +35,13 @@ const props = defineProps({
 const hasContent = computed(() => {
   const text = getTextContent();
   const thinking = getThinkingContent();
+  // Tool results always have content (even if empty string)
+  if (props.msg.role === 'toolResult') return true;
+  // Check for tool call blocks
+  if (Array.isArray(props.msg.content)) {
+    const hasToolCalls = props.msg.content.some(b => b.type === 'toolCall');
+    if (hasToolCalls) return true;
+  }
   return text || thinking;
 });
 
@@ -54,7 +62,11 @@ function getThinkingContent() {
   return '';
 }
 
-const role = computed(() => props.msg.role === 'user' ? 'You' : 'Betty');
+const role = computed(() => {
+  if (props.msg.role === 'user') return 'You';
+  if (props.msg.role === 'toolResult') return 'Tool Result';
+  return 'Betty';
+});
 const time = computed(() => {
   if (props.msg.timestamp) return new Date(props.msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   return '';
@@ -85,6 +97,29 @@ const contentHtml = computed(() => {
       return content ? imagesHtml + '<br>' + escapeHtml(content) : imagesHtml;
     }
     return escapeHtml(content);
+  }
+
+  // Tool result messages
+  if (props.msg.role === 'toolResult') {
+    const toolName = props.msg.toolName || (props.msg.name || 'tool');
+    const isError = props.msg.isError || props.msg.stopReason === 'error';
+    const isRunning = props.msg.status === 'running';
+    let resultText = '';
+    if (Array.isArray(props.msg.content)) {
+      resultText = props.msg.content.filter(b => b.type === 'text').map(b => b.text).join('\n');
+    } else if (typeof props.msg.content === 'string') {
+      resultText = props.msg.content;
+    }
+    const stateClass = isRunning ? 'tool-running' : (isError ? 'tool-error' : 'tool-completed');
+    const stateIcon = isRunning ? '⏳' : (isError ? '❌' : '✅');
+    return `<div class="tool-call ${stateClass}">
+      <div class="tool-header" onclick="toggleTool(this)">
+        <span class="tool-state-icon">${stateIcon}</span>
+        <span>${escapeHtml(toolName)}</span>
+        <span style="margin-left:auto; font-size:10px">▼</span>
+      </div>
+      <div class="tool-content collapsed">${resultText ? escapeHtml(resultText) : (isRunning ? '<em>Running...</em>' : '<em>No output</em>')}</div>
+    </div>`;
   }
 
   // Context tools that should be grouped together
@@ -139,19 +174,20 @@ const contentHtml = computed(() => {
       </div>`;
     } else if (item.type === 'tool') {
       // Individual tool call
-      const block = item.block;
-      const stateClass = block.status ? `tool-${block.status}` : '';
-      const stateIcon = TOOL_STATE_ICONS[block.status] || '🔧';
-      const args = block.arguments || {};
+      const toolBlock = item.block;
+      const stateClass = toolBlock.status ? `tool-${toolBlock.status}` : '';
+      const stateIcon = TOOL_STATE_ICONS[toolBlock.status] || '🔧';
+      const args = toolBlock.arguments || {};
       const path = args.path || args.file || args.pattern || '';
+      const resultText = toolBlock.result !== undefined ? escapeHtml(JSON.stringify(toolBlock.result, null, 2)) : '';
       html += `<div class="tool-call ${stateClass}">
         <div class="tool-header" onclick="toggleTool(this)">
           <span class="tool-state-icon">${stateIcon}</span>
-          <span>${escapeHtml(block.name)}</span>
+          <span>${escapeHtml(toolBlock.name)}</span>
           ${path ? `<span class="tool-path">${escapeHtml(path)}</span>` : ''}
           <span style="margin-left:auto; font-size:10px">▼</span>
         </div>
-        <div class="tool-content">${escapeHtml(JSON.stringify(args, null, 2))}</div>
+        <div class="tool-content collapsed">${escapeHtml(JSON.stringify(args, null, 2))}${resultText ? '\n\n--- Result ---\n' + resultText : ''}</div>
       </div>`;
     }
   }
@@ -225,6 +261,21 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+// Global toggle functions for v-html onclick handlers
+window.toggleTool = function(header) {
+  const content = header.nextElementSibling;
+  if (content && content.classList.contains('tool-content')) {
+    content.classList.toggle('collapsed');
+  }
+};
+
+window.toggleThinking = function(header) {
+  const content = header.nextElementSibling;
+  if (content && content.classList.contains('thinking-content')) {
+    content.classList.toggle('collapsed');
+  }
+};
 </script>
 
 <style scoped>
@@ -330,6 +381,50 @@ function escapeHtml(text) {
 .message.assistant .message-avatar {
   background: var(--accent-dim);
   color: var(--accent);
+}
+
+.message.toolResult .message-avatar {
+  background: var(--info-dim);
+  color: var(--info);
+}
+
+/* Thinking blocks */
+.thinking-block {
+  margin: 10px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.thinking-header {
+  padding: 8px 14px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  font-weight: 500;
+  transition: background var(--transition-fast);
+}
+
+.thinking-header:hover {
+  background: var(--bg-tertiary);
+}
+
+.thinking-content {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.thinking-content.collapsed {
+  display: none;
 }
 
 .message-role {

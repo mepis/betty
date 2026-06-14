@@ -106,6 +106,9 @@ const contextTokens = ref(null);
 const contextLimit = ref(null);
 let statsInterval = null;
 
+// Track pending tool calls for real-time display
+const pendingToolCalls = ref(new Map()); // toolCallId -> { name, args, status, result }
+
 // Keep the streaming message's content in sync with the paced display text.
 // The pacing loop updates streamingText/streamingThinking asynchronously via
 // setTimeout, so we need watchers to propagate those changes back into the
@@ -149,6 +152,10 @@ function setupWebSocket() {
   on('agent_end', (data) => {
     isStreaming.value = false;
     completeStreaming();
+
+    // Remove temporary tool execution messages (they'll be replaced by final messages)
+    messages.value = messages.value.filter(m => !m.id.startsWith('tool-'));
+    pendingToolCalls.value.clear();
 
     // Finalize the streaming message in the array
     if (streamingMsgId.value) {
@@ -224,6 +231,58 @@ function setupWebSocket() {
     }
   });
 
+  // ─── Tool Execution Events (real-time tool call display) ───
+  on('tool_execution_start', (data) => {
+    const toolMsgId = 'tool-' + data.toolCallId;
+    // Check if this tool message already exists
+    if (!hasMessageById(messages.value, toolMsgId)) {
+      messages.value.push({
+        id: toolMsgId,
+        role: 'toolResult',
+        toolName: data.toolName,
+        content: '',
+        arguments: data.args || {},
+        isError: false,
+        status: 'running',
+        timestamp: new Date().toISOString(),
+      });
+    }
+    pendingToolCalls.value.set(data.toolCallId, {
+      name: data.toolName,
+      args: data.args || {},
+      status: 'running',
+      result: undefined,
+    });
+  });
+
+  on('tool_execution_update', (data) => {
+    const toolMsgId = 'tool-' + data.toolCallId;
+    const toolMsg = messages.value.find(m => m.id === toolMsgId);
+    if (toolMsg && data.partialResult) {
+      toolMsg.content = data.partialResult.content || '';
+      toolMsg.status = 'running';
+    }
+    if (pendingToolCalls.value.has(data.toolCallId)) {
+      pendingToolCalls.value.get(data.toolCallId).result = data.partialResult;
+    }
+  });
+
+  on('tool_execution_end', (data) => {
+    const toolMsgId = 'tool-' + data.toolCallId;
+    const toolMsg = messages.value.find(m => m.id === toolMsgId);
+    if (toolMsg) {
+      toolMsg.content = data.result?.content || '';
+      toolMsg.isError = data.isError || false;
+      toolMsg.status = data.isError ? 'error' : 'completed';
+      toolMsg.details = data.result?.details;
+    }
+    if (pendingToolCalls.value.has(data.toolCallId)) {
+      const tc = pendingToolCalls.value.get(data.toolCallId);
+      tc.result = data.result;
+      tc.status = data.isError ? 'error' : 'completed';
+    }
+  });
+
   on('messages', (data) => {
     messages.value = data.messages || [];
   });
@@ -270,6 +329,7 @@ function setupWebSocket() {
     messages.value = [];
     resetStreaming();
     streamingMsgId.value = null;
+    pendingToolCalls.value.clear();
     if (data.sessionId) {
       activeSessionId.value = data.sessionId;
       // Add new session to the list
@@ -385,11 +445,12 @@ function abortStream() {
   send({ type: 'abort' });
   isStreaming.value = false;
   resetStreaming();
-  // Remove the streaming message from the array
+  // Remove the streaming message and temporary tool messages from the array
   if (streamingMsgId.value) {
-    messages.value = messages.value.filter(m => m.id !== streamingMsgId.value);
+    messages.value = messages.value.filter(m => m.id !== streamingMsgId.value && !m.id.startsWith('tool-'));
     streamingMsgId.value = null;
   }
+  pendingToolCalls.value.clear();
   toast('Aborted', 'info');
 }
 

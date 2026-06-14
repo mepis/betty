@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-14] Real-time tool execution display — WebSocket event handlers for `tool_execution_start`, `tool_execution_update`, and `tool_execution_end` in `App.vue`; `pendingToolCalls` reactive map tracking tool call lifecycle; temporary tool messages cleaned up on stream end and abort; `ChatMessage.vue` renders `toolResult` role messages with collapsible blocks, state icons (⏳/✅/❌), and status classes (`tool-running`, `tool-completed`, `tool-error`); thinking blocks with collapsible display via `toggleThinking()` and `toggleTool()` global functions
+
+### Changed
+
+- [Changed]: [2026-06-14] `ChatMessage.vue` — tool call content blocks now default to collapsed state with `▼` toggle arrow; result text appended below arguments with `--- Result ---` separator; `hasContent` computed property accounts for `toolResult` role and `toolCall` content blocks
+
+### Removed
+
+- [Removed]: [2026-06-14] `src/benchmark/frontend/.env.productions` — removed environment file containing hardcoded API URL (`http://100.105.3.99:3456`)
+- [Removed]: [2026-06-14] Benchmark `dev` npm script — replaced `dev` (which built frontend then ran server) with `dev:server` (runs server only) in `src/benchmark/package.json`
+
+### Added
+
+- [Added]: [2026-06-14] `.pi/skills/` — project-local skill definitions (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging)
+- [Added]: [2026-06-14] `sh_scripts/install_betty.sh` — automated installation script for Betty (system dependencies, Intel OneAPI, CUDA 13.3, Pi, systemd service)
+- [Added]: [2026-06-14] `sh_scripts/install_llama.sh` — automated installation script for llama.cpp (clone, build with CUDA/NCCL/Flash Attention, systemd service)
+
 ### Fixed
 
 - [Fixed]: [2026-06-14] Streaming thinking display — `ChatMessage.vue` now renders the top-level `thinking` property during streaming via the `contentHtml` computed property, producing a collapsible "Thinking" block (matching the existing `thinking` block type in multi-block content); `App.vue` added `watch` handlers on `streamingText` and `streamingThinking` to propagate paced display text back into the message object so `ChatMessage` re-renders reactively
