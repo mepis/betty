@@ -2,7 +2,13 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-14] Benchmark Dashboard empty states — show contextual messages when benchmark is running ("No results yet. Benchmark is running..." / "No logs yet. Build in progress...") instead of generic "No results yet" / "No logs yet" text, improving UX during active runs
+
 ### Added
+
+### Changed
 
 - [Added]: [2026-06-13] Admin routes (`src/backend/routes/admin.js`) — Express Router with `GET /api/admin/users` (list all users), `PATCH /api/admin/users/:id` (update user role), and `DELETE /api/admin/users/:id` (delete user); all routes require admin role via `authorize("admin")` middleware; includes self-deletion prevention and self-demote prevention
 - [Added]: [2026-06-13] Users page (`src/frontend/src/pages/UsersPage.vue`) — Vue 3 admin-only page with user management table showing user name, email, role, created date, and last login; stats bar with total/admin/regular user counts; inline role change dropdown per user; delete button with confirmation; forbidden state for non-admin users; avatar initials display

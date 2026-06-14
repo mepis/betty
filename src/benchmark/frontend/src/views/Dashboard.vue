@@ -342,7 +342,8 @@ function statusBg(status) {
                     <svg class="w-8 h-8 mx-auto mb-2 text-text-muted/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
-                    No results yet. Start a benchmark to see data.
+                    <span v-if="store.isRunning">No results yet. Benchmark is running...</span>
+                    <span v-else>No results yet. Start a benchmark to see data.</span>
                   </td>
                 </tr>
               </tbody>
@@ -395,7 +396,10 @@ function statusBg(status) {
             class="bg-bg-primary rounded-lg p-4 font-mono text-xs overflow-auto transition-all duration-300"
             :class="logsMaximized ? 'max-h-[calc(100vh-14rem)]' : 'max-h-80'"
           >
-            <div v-if="store.logs.length === 0" class="text-text-muted">No logs yet.</div>
+            <div v-if="store.logs.length === 0" class="text-text-muted">
+              <span v-if="store.isRunning">No logs yet. Build in progress...</span>
+              <span v-else>No logs yet.</span>
+            </div>
             <div
               v-for="(log, i) in store.logs"
               :key="i"
