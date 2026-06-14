@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-14] Benchmark `configs.json` — reset to minimal default config with a single `test` entry; removed all GPU, server, build, model, and benchmark parameters
+- [Changed]: [2026-06-14] Benchmark `.pi/AGENTS.md` — added Rule 13 prohibiting direct modification of `configs.json` to prevent accidental config corruption
+
 ### Added
 
 - [Added]: [2026-06-14] Benchmark `NET_INTERFACE` env var — new `NET_INTERFACE` option in `.env`/`.env.example` (default `eth0`) for configuring which network interface to use for auto-detecting the machine's IP address in the benchmark deployment script

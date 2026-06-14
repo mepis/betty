@@ -90,3 +90,7 @@ Before every commit to this repo, update `docs/CHANGELOG.md`.
 Summarize all changes since the last release under the `[Unreleased]` section,
 categorized as Added, Changed, Fixed, or Removed.
 This applies to changes made by any session or tool — never skip the changelog.
+
+## Rule 13 — Never alter configs.json
+
+**Never modify, delete, or write to `configs.json`.** It is treated as immutable configuration. If configuration changes are needed, use the proper mechanism for that purpose instead of editing this file directly.
