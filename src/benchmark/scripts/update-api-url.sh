@@ -26,11 +26,11 @@ if [ -z "$MY_IP" ]; then
   exit 1
 fi
 
-# Also update API_HOST in root .env
-if [ -f "$ROOT_ENV" ]; then
-  sed -i "s|^API_HOST=.*|API_HOST=$MY_IP|" "$ROOT_ENV"
-  echo "Updated API_HOST in $ROOT_ENV to $MY_IP"
-fi
+# # Also update API_HOST in root .env
+# if [ -f "$ROOT_ENV" ]; then
+#   sed -i "s|^API_HOST=.*|API_HOST=$MY_IP|" "$ROOT_ENV"
+#   echo "Updated API_HOST in $ROOT_ENV to $MY_IP"
+# fi
 
 sed -i "s|^VITE_API_URL=.*|VITE_API_URL=http://$MY_IP|" "$ENV_FILE"
 echo "Updated VITE_API_URL in $ENV_FILE to http://$MY_IP"

@@ -9,6 +9,7 @@
 ### Changed
 
 - [Changed]: [2026-06-14] Benchmark `update-api-url.sh` — rewrote script to auto-detect the machine's IP address from the configured network interface instead of using a hardcoded IP; also updates `API_HOST` in root `.env` to the detected IP; reads `NET_INTERFACE` from `.env` with `eth0` fallback
+- [Changed]: [2026-06-14] Benchmark `update-api-url.sh` — commented out the section that updates `API_HOST` in root `.env`, since that behavior is no longer needed; the script now only updates `VITE_API_URL` in `frontend/.env.production`
 - [Changed]: [2026-06-14] Benchmark frontend `.env.production` — updated `VITE_API_URL` from `http://100.105.3.99:3456` to `http://192.168.2.3`
 
 ### Added
