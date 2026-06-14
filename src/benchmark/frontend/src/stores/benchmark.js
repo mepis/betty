@@ -25,6 +25,9 @@ export const useBenchmarkStore = defineStore('benchmark', {
     buildStatus: 'idle', // idle | building | success | error
     buildLogs: [],
     buildProgress: 0,
+    // Systemd service
+    serviceActive: false,
+
     // System memory
     systemMemory: {
       totalGB: 0,
@@ -456,6 +459,45 @@ export const useBenchmarkStore = defineStore('benchmark', {
       this.buildLogs = []
       this.buildProgress = 0
       this.buildStatus = 'idle'
+    },
+
+    async startService() {
+      try {
+        const res = await axios.post(`${API_BASE}/api/service/start`)
+        if (res.data.success) {
+          await this.fetchServiceStatus()
+          return true
+        }
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
+    async stopService() {
+      try {
+        const res = await axios.post(`${API_BASE}/api/service/stop`)
+        if (res.data.success) {
+          await this.fetchServiceStatus()
+          return true
+        }
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
+    async fetchServiceStatus() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/service/status`)
+        if (res.data.success) {
+          this.serviceActive = res.data.active
+        }
+      } catch {
+        this.serviceActive = false
+      }
     },
 
     async fetchSystemStatus() {

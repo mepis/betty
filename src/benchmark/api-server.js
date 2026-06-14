@@ -1115,6 +1115,34 @@ app.get("/api/models", (_req, res) => {
   }
 });
 
+//--- Systemd service control ---
+app.post("/api/service/start", (_req, res) => {
+  try {
+    execSync("systemctl --user start llama.service");
+    res.json({ success: true, message: "llama.service started" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/service/stop", (_req, res) => {
+  try {
+    execSync("systemctl --user stop llama.service");
+    res.json({ success: true, message: "llama.service stopped" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get("/api/service/status", (_req, res) => {
+  try {
+    const output = execSync("systemctl --user is-active llama.service").toString().trim();
+    res.json({ success: true, active: output === "active" });
+  } catch {
+    res.json({ success: true, active: false });
+  }
+});
+
 //--- Kill processes on llama_port ---
 app.post("/api/kill-port", (req, res) => {
   try {

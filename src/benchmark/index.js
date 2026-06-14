@@ -143,6 +143,18 @@ async function ensureNoLlamaServer() {
 }
 
 async function main() {
+  // Stop the llama.cpp user service before starting the benchmark
+  await new Promise((resolve) => {
+    exec("systemctl --user stop llama.service", (err) => {
+      if (err) {
+        console.log(`Note: llama.cpp.service is not running or could not be stopped: ${err.message}`);
+      } else {
+        console.log("Stopped llama.cpp.service");
+      }
+      resolve();
+    });
+  });
+
   console.log("=== llama.cpp Benchmark Starting ===");
   console.log(`Server URL: ${llamaUrl}`);
   console.log(`Model: ${configs.model_directory}/${configs.model}`);
