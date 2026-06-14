@@ -4,10 +4,12 @@
 
 ### Added
 
+- [Added]: [2026-06-14] Comprehensive project documentation — new `docs/architecture.md` (system design, data flow diagrams, component relationships, security architecture), `docs/index.md` (documentation index with quick links), and `docs/backend/` (7 module docs: server, auth-middleware, auth-utils, session-store, user-store, routes-auth, routes-admin)
 - [Added]: [2026-06-14] Reproduce commands in benchmark reports — new `getBuildCommand()` and `getLaunchCommand()` helpers in `api-server.js` reconstruct full cmake/make build and llama-server launch commands from report configs including per-test-run overrides; new `GET /api/report/:name/commands/:testRunId` endpoint; `Reports.vue` config modal now shows a "Reproduce Commands" section with Build and Launch command blocks and copy-to-clipboard buttons
 
 ### Changed
 
+- [Changed]: [2026-06-14] Compaction token reserve — reduced `reserveTokens` from 24576 to 8192 in `.pi/settings.json` to allow more tokens in the compaction window
 - [Changed]: [2026-06-14] Benchmark frontend `.env.production` — updated `VITE_API_URL` from `http://100.88.77.33:3456` to `http://100.105.3.99:3456`
 - [Changed]: [2026-06-14] Benchmark frontend dist — rebuilt with new asset hashes
 
