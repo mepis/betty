@@ -53,6 +53,13 @@
         />
       </template>
 
+      <template v-if="activeTab === 'terminal'">
+        <Terminal
+          :connected="connected"
+          @close="activeTab = 'chat'"
+        />
+      </template>
+
       <template v-if="activeTab === 'users'">
         <UsersPage @close="activeTab = 'chat'" />
       </template>
@@ -73,6 +80,7 @@ import { toast } from './composables/useToast.js';
 import { authStore } from './stores/auth.js';
 import Sidebar from './components/Sidebar.vue';
 import ChatView from './components/ChatView.vue';
+import Terminal from './components/Terminal.vue';
 import CloneModal from './components/CloneModal.vue';
 import FolderPicker from './components/FolderPicker.vue';
 import ToastContainer from './components/ToastContainer.vue';
@@ -603,6 +611,10 @@ function handleGlobalKeydown(e) {
   if (e.key === 'd' && (e.ctrlKey || e.metaKey)) {
     e.preventDefault();
     // Disconnect
+  }
+  // Escape closes the terminal
+  if (e.key === 'Escape' && activeTab.value === 'terminal') {
+    activeTab.value = 'chat';
   }
 }
 

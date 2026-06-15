@@ -2,9 +2,13 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-15] Terminal emulator — new `Terminal.vue` component using xterm.js with FitAddon, `useTerminal.js` composable for WebSocket bridge, `TerminalManager` class on backend using node-pty for PTY spawning, new "Terminal" tab in sidebar, auto-fit on resize, dark theme colors matching Betty's palette, Escape key to close terminal
+
 ### Removed
 
-- [Removed]: [2026-06-15] Root-level ad-hoc agent definitions (`.pi/agents/reviewer.md`, `scout.md`, `worker.md`) — replaced by project-local skill system in `.pi/skills/`
+- [Removed]: [2026-06-15] Local `.pi/skills/` skill definitions (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging) — replaced by built-in system skills loaded from `~/.pi/agent/skills/`
 
 ### Changed
 

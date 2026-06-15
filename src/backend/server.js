@@ -1059,6 +1059,57 @@ wss.on("connection", (ws) => {
           break;
         }
 
+        case "terminal": {
+          try {
+            switch (msg.action) {
+              case "open": {
+                const cols = Math.max(10, Math.min(msg.cols || 80, 500));
+                const rows = Math.max(5, Math.min(msg.rows || 24, 200));
+                const result = terminalManager.create(clientId, cols, rows);
+                if (!result.success) {
+                  ws.send(JSON.stringify({ type: "terminal", action: "error", message: result.error }));
+                  break;
+                }
+                ws.send(JSON.stringify({ type: "terminal", action: "opened", cols: result.cols, rows: result.rows }));
+                // Set up data forwarding from PTY to this client.
+                // Base64-encode binary-safe: node-pty can output null bytes and
+                // non-UTF-8 sequences that JSON.stringify corrupts.
+                terminalManager.onData(clientId, (data) => {
+                  try {
+                    const encoded = Buffer.isBuffer(data) ? data.toString('base64') : Buffer.from(data, 'utf8').toString('base64');
+                    ws.send(JSON.stringify({ type: "terminal", action: "output", data: encoded }));
+                  } catch {}
+                });
+                break;
+              }
+              case "input": {
+                const result = terminalManager.write(clientId, msg.data);
+                if (!result.success) {
+                  ws.send(JSON.stringify({ type: "terminal", action: "error", message: result.error }));
+                }
+                break;
+              }
+              case "resize": {
+                const result = terminalManager.resize(clientId, msg.cols, msg.rows);
+                if (!result.success) {
+                  ws.send(JSON.stringify({ type: "terminal", action: "error", message: result.error }));
+                }
+                break;
+              }
+              case "close": {
+                terminalManager.destroy(clientId);
+                ws.send(JSON.stringify({ type: "terminal", action: "closed" }));
+                break;
+              }
+              default:
+                ws.send(JSON.stringify({ type: "terminal", action: "error", message: `Unknown action: ${msg.action}` }));
+            }
+          } catch (err) {
+            ws.send(JSON.stringify({ type: "terminal", action: "error", message: err.message }));
+          }
+          break;
+        }
+
         default:
           ws.send(JSON.stringify({ type: "error", message: `Unknown command: ${msg.type}` }));
       }
@@ -1068,11 +1119,14 @@ wss.on("connection", (ws) => {
   });
 
   ws.on("close", () => {
+    // Clean up terminal PTY when client disconnects
+    terminalManager.destroy(clientId);
     clients.delete(clientId);
   });
 
   ws.on("error", (err) => {
     console.error(`[ws client ${clientId}] Error:`, err.message);
+    terminalManager.destroy(clientId);
     clients.delete(clientId);
   });
 });
@@ -1328,6 +1382,98 @@ class BenchmarkManager {
     }
   }
 }
+
+// ─── Terminal (PTY) Manager ─────────────────────────────────────────────────
+
+class TerminalManager {
+  constructor() {
+    this.terminals = new Map(); // clientId -> { pty, cols, rows, onDataCallback }
+  }
+
+  create(clientId, cols = 80, rows = 24) {
+    if (this.terminals.has(clientId)) {
+      return { success: false, error: 'Terminal already exists for this client' };
+    }
+
+    const shell = process.env.SHELL || 'bash';
+    const pty = require('node-pty').spawn(shell, [], {
+      name: 'xterm-256color',
+      cols,
+      rows,
+      cwd: currentWorkspace,
+      env: { ...process.env, TERM: 'xterm-256color' },
+    });
+
+    const terminal = { pty, cols, rows, onDataCallback: null };
+    this.terminals.set(clientId, terminal);
+
+    // Forward PTY output to the registered callback (set synchronously to avoid
+    // losing the shell banner that appears during PTY initialization)
+    pty.onData((data) => {
+      if (terminal.onDataCallback) {
+        terminal.onDataCallback(data);
+      }
+    });
+
+    console.log(`[terminal] Created PTY for client ${clientId}: ${shell} (${cols}x${rows})`);
+    return { success: true, cols, rows };
+  }
+
+  write(clientId, data) {
+    const terminal = this.terminals.get(clientId);
+    if (!terminal) {
+      return { success: false, error: 'Terminal not found' };
+    }
+    try {
+      terminal.pty.write(data);
+      return { success: true };
+    } catch (err) {
+      return { success: false, error: err.message };
+    }
+  }
+
+  resize(clientId, cols, rows) {
+    const terminal = this.terminals.get(clientId);
+    if (!terminal) {
+      return { success: false, error: 'Terminal not found' };
+    }
+    try {
+      terminal.pty.resize(cols, rows);
+      terminal.cols = cols;
+      terminal.rows = rows;
+      return { success: true };
+    } catch (err) {
+      return { success: false, error: err.message };
+    }
+  }
+
+  onData(clientId, callback) {
+    const terminal = this.terminals.get(clientId);
+    if (!terminal) return;
+    terminal.onDataCallback = callback;
+  }
+
+  destroy(clientId) {
+    const terminal = this.terminals.get(clientId);
+    if (!terminal) return { success: false, error: 'Terminal not found' };
+    try {
+      terminal.pty.kill();
+    } catch {}
+    // Clear the callback to prevent orphaned references to the WebSocket
+    terminal.onDataCallback = null;
+    this.terminals.delete(clientId);
+    console.log(`[terminal] Destroyed PTY for client ${clientId}`);
+    return { success: true };
+  }
+
+  destroyAll() {
+    for (const clientId of this.terminals.keys()) {
+      this.destroy(clientId);
+    }
+  }
+}
+
+const terminalManager = new TerminalManager();
 
 const benchmark = new BenchmarkManager();
 
@@ -1741,6 +1887,7 @@ function shutdown() {
   }
   benchmarkSSEClients.clear();
   agent.stop();
+  terminalManager.destroyAll();
   for (const [, client] of clients) {
     client.ws.close();
   }
