@@ -2,8 +2,13 @@
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-15] Root-level ad-hoc agent definitions (`.pi/agents/reviewer.md`, `scout.md`, `worker.md`) — replaced by project-local skill system in `.pi/skills/`
+
 ### Changed
 
+- [Changed]: [2026-06-15] `package.json` — added `benchmark` script (`node src/benchmark/index.js`) to run the benchmark directly from the root package
 - [Changed]: [2026-06-14] Benchmark `configs.json` — reset to minimal default config with a single `test` entry; removed all GPU, server, build, model, and benchmark parameters
 - [Changed]: [2026-06-14] Benchmark `.pi/AGENTS.md` — added Rule 13 prohibiting direct modification of `configs.json` to prevent accidental config corruption
 

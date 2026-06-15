@@ -8,7 +8,8 @@
     "build": "cd src/frontend && npx vite build",
     "start": "npm run build && HOST=0.0.0.0 PORT=3000 node src/backend/server.js",
     "dev": "node src/backend/server.js",
-    "dev:vite": "cd src/frontend && npx vite"
+    "dev:vite": "cd src/frontend && npx vite",
+    "benchmark": "node src/benchmark/index.js"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^6.0.7",
