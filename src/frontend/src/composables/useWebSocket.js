@@ -5,17 +5,13 @@ export function useWebSocket() {
   const ws = ref(null);
   const connected = ref(false);
   const status = ref('disconnected'); // disconnected, connected, streaming
+  const clientId = ref(null);
 
   const eventHandlers = new Map();
   const globalHandlers = [];
 
   function connect() {
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-    // Include auth token in WebSocket URL
-    const token = authStore.user ? '' : '';
-    // We don't have direct access to the token cookie from JS,
-    // but the server-side auth middleware handles cookie-based auth
-    // For WebSocket, we use the cookie automatically via credentials
     ws.value = new WebSocket(`${protocol}//${location.host}/ws`);
 
     ws.value.onopen = () => {
@@ -26,7 +22,6 @@ export function useWebSocket() {
     ws.value.onclose = (event) => {
       connected.value = false;
       status.value = 'disconnected';
-      // If closed with 401, redirect to login
       if (event.code === 401) {
         authStore.logout();
         window.location.href = '/login';
@@ -42,6 +37,10 @@ export function useWebSocket() {
     ws.value.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
+        // Capture clientId from the initial connection message
+        if (data.type === 'connected' && data.clientId) {
+          clientId.value = data.clientId;
+        }
         if (eventHandlers.has(data.type)) {
           for (const handler of eventHandlers.get(data.type)) {
             handler(data);
@@ -84,6 +83,7 @@ export function useWebSocket() {
     ws,
     connected,
     status,
+    clientId,
     connect,
     send,
     on,

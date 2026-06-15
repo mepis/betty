@@ -4,11 +4,17 @@
 
 ### Added
 
-- [Added]: [2026-06-15] Terminal emulator — new `Terminal.vue` component using xterm.js with FitAddon, `useTerminal.js` composable for WebSocket bridge, `TerminalManager` class on backend using node-pty for PTY spawning, new "Terminal" tab in sidebar, auto-fit on resize, dark theme colors matching Betty's palette, Escape key to close terminal
+- [Added]: [2026-06-15] `useWebSocket.removeListener()` — new method to remove a specific event handler by reference, used by terminal composable for proper cleanup
 
 ### Removed
 
+- [Removed]: [2026-06-15] Terminal emulator — removed `Terminal.vue`, `useTerminal.js` composable, `TerminalManager` class, terminal tab from sidebar, `@xterm/xterm` and `@xterm/addon-fit` frontend deps, `node-pty` backend dep, and `useWebSocket.removeListener()` (was terminal-only)
 - [Removed]: [2026-06-15] Local `.pi/skills/` skill definitions (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging) — replaced by built-in system skills loaded from `~/.pi/agent/skills/`
+
+### Fixed
+
+- [Fixed]: [2026-06-15] `useWebSocket` — consolidated two `onmessage` handlers into one (clientId capture + event dispatch)
+- [Fixed]: [2026-06-15] `useWebSocket` — now exposes `clientId` from initial connection message
 
 ### Changed
 
