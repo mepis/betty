@@ -6,12 +6,18 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-14] Collapsible message panels in Dashboard — click-to-toggle expand/collapse for each test run message, with animated chevron indicator, reducing visual clutter when reviewing many messages
+
+### Added
+
 - [Added]: [2026-06-14] AGENTS.md rule — always close the API server (`api-server.js`) when done to prevent port conflicts and resource waste
 
 ### Changed
 
+- [Changed]: [2026-06-14] `frontend/src/views/Dashboard.vue` — added collapsible message panels with toggle/expand state management, clickable message headers with animated chevron, and `v-show` conditional rendering for message content
 - [Changed]: [2026-06-14] `frontend/src/stores/benchmark.js` — added SSE connection readiness check in `startBenchmark()` (waits for SSE before starting benchmark, with 5s timeout); added `_connectingSSE` flag to prevent duplicate SSE connections and properly reset it on open/close/error events
 - [Changed]: [2026-06-14] `api-server.js` — set `benchmarkStatus = "testing"` when `Test Run #` is detected in log output, ensuring status is properly reported during test execution
+- [Changed]: [2026-06-14] Benchmark frontend dist — rebuilt with updated asset hashes (`index-Dxj_HuZ8.js`, `index-sJZeiiaB.css`) after collapsible message panel improvements
 - [Changed]: [2026-06-14] Benchmark frontend dist — rebuilt with updated asset hashes (`index-CHrFtl5B.js`, `index-2gyIUBI_.css`) after SSE connection improvements
 
 ### Changed
