@@ -6,6 +6,20 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-14] AGENTS.md rule — always close the API server (`api-server.js`) when done to prevent port conflicts and resource waste
+
+### Changed
+
+- [Changed]: [2026-06-14] `api-server.js` — added `res.flush()` calls throughout all SSE endpoints (`/api/stream`, `/api/build`, `/api/clone`) to ensure real-time event delivery; added `Transfer-Encoding`, `Cache-Control`, `Connection`, and `Retry-After` to CORS exposed headers
+
+### Fixed
+
+- [Fixed]: [2026-06-14] `frontend/src/stores/benchmark.js` — removed `withCredentials: true` from EventSource constructor to prevent CORS issues with SSE connections
+- [Fixed]: [2026-06-14] `VITE_API_URL` in `.env.production`, `scripts/update-api-url.sh`, and production dist — added missing port `:3456` to API URL so the frontend connects to the correct server address
+- [Fixed]: [2026-06-14] `scripts/update-api-url.sh` — added fallback IP detection when the configured network interface is unavailable; now falls back to the first non-loopback IPv4 address
+
+### Added
+
 - [Added]: [2026-06-14] Tabbed visual editor in Config.vue — split configuration options into "Build Options" and "Other Options" tabs for better organization and usability
 - [Added]: [2026-06-14] Pi agent project configuration — `.pi/` directory with skills (commit-and-push, deep-research, planning, playwright-cli, project-docs, testing-debugging, orchestrator), agents (reviewer, worker, scout), settings, and AGENTS.md
 

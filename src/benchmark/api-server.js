@@ -244,7 +244,7 @@ app.use(cors({
   origin: CORS_ORIGIN === '*' ? '*' : CORS_ORIGIN.split(',').map(o => o.trim()),
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Content-Type'],
+  exposedHeaders: ['Content-Type', 'Transfer-Encoding', 'Cache-Control', 'Connection', 'Retry-After'],
   credentials: true,
 }));
 
@@ -408,7 +408,9 @@ app.get("/api/stream", (req, res) => {
 function sendToClient(client, event, data) {
   if (!streamingClients.has(client)) return;
   try {
-    client.res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+    const msg = `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
+    client.res.write(msg);
+    client.res.flush();
   } catch {}
 }
 
@@ -1312,6 +1314,7 @@ app.post("/api/build", async (req, res) => {
       progressInterval++;
       const pct = Math.min(90, 10 + Math.floor(progressInterval / 2));
       res.write(`event: build-log\ndata: PROGRESS:${pct}\n\n`);
+      res.flush();
     }, 3000);
 
     buildProcess.stdout.on("data", (data) => {
@@ -1320,6 +1323,7 @@ app.post("/api/build", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: build-log\ndata: ${line}\n\n`);
       });
+      res.flush();
     });
 
     buildProcess.stderr.on("data", (data) => {
@@ -1328,6 +1332,7 @@ app.post("/api/build", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: build-log\ndata: ${line}\n\n`);
       });
+      res.flush();
     });
 
     const buildResult = await new Promise((resolve, reject) => {
@@ -1349,12 +1354,14 @@ app.post("/api/build", async (req, res) => {
     // Send final progress and completion
     res.write(`event: build-log\ndata: PROGRESS:100\n\n`);
     res.write(`event: build-log\ndata: STATUS:Build complete!\n\n`);
+    res.flush();
     res.end();
 
     buildStatus = "success";
   } catch (err) {
     res.write(`event: build-log\ndata: STATUS:Build failed\n\n`);
     res.write(`event: build-log\ndata: ERROR: ${err.message}\n\n`);
+    res.flush();
     res.end();
     buildStatus = "error";
   } finally {
@@ -1416,6 +1423,7 @@ app.post("/api/clone", async (req, res) => {
       progressInterval++;
       const pct = Math.min(80, 10 + Math.floor(progressInterval / 2));
       res.write(`event: clone-log\ndata: PROGRESS:${pct}\n\n`);
+      res.flush();
     }, 3000);
 
     gitProcess.stdout.on("data", (data) => {
@@ -1425,6 +1433,7 @@ app.post("/api/clone", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: clone-log\ndata: ${line}\n\n`);
       });
+      res.flush();
     });
 
     gitProcess.stderr.on("data", (data) => {
@@ -1433,6 +1442,7 @@ app.post("/api/clone", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: clone-log\ndata: ${line}\n\n`);
       });
+      res.flush();
     });
 
     const cloneResult = await new Promise((resolve, reject) => {
@@ -1454,11 +1464,13 @@ app.post("/api/clone", async (req, res) => {
     // Send final progress and completion
     res.write(`event: clone-log\ndata: PROGRESS:100\n\n`);
     res.write(`event: clone-log\ndata: STATUS:Clone complete!\n\n`);
+    res.flush();
     res.end();
 
   } catch (err) {
     res.write(`event: clone-log\ndata: STATUS:Clone failed\n\n`);
     res.write(`event: clone-log\ndata: ERROR: ${err.message}\n\n`);
+    res.flush();
     res.end();
   }
 });

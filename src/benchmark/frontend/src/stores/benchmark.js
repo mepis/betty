@@ -275,7 +275,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
     connectSSE() {
       if (this.sseConnected) return
 
-      const eventSource = new EventSource(`${API_BASE}/api/stream`, { withCredentials: true })
+      const eventSource = new EventSource(`${API_BASE}/api/stream`)
       let reconnectTimer = null
       let lastStatusReceived = Date.now()
 

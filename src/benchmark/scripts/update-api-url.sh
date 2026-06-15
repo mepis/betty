@@ -20,17 +20,21 @@ if [ -f "$ROOT_ENV" ]; then
 fi
 
 # Detect the machine's IP address on the configured interface
-MY_IP=$(ip -4 addr show "$NET_INTERFACE" 2>/dev/null | awk '/inet / {print $2}' | cut -d/ -f1)
+MY_IP=$(ip -4 addr show "$NET_INTERFACE" 2>/dev/null | awk '/inet / {print $2}' | cut -d/ -f1 || true)
 if [ -z "$MY_IP" ]; then
-  echo "ERROR: Could not detect machine IP address"
-  exit 1
+  echo "WARNING: Interface '$NET_INTERFACE' not found or has no IPv4 address. Falling back to first usable interface..."
+  # Fall back to the first non-loopback IP address
+  MY_IP=$(ip -4 addr show | awk '/inet / && !/127\.0\.0\.1/ {print $2; exit}' | cut -d/ -f1 || true)
+  if [ -z "$MY_IP" ]; then
+    echo "ERROR: Could not detect machine IP address"
+    exit 1
+  fi
+  echo "Using fallback IP: $MY_IP"
 fi
 
-# # Also update API_HOST in root .env
-# if [ -f "$ROOT_ENV" ]; then
-#   sed -i "s|^API_HOST=.*|API_HOST=$MY_IP|" "$ROOT_ENV"
-#   echo "Updated API_HOST in $ROOT_ENV to $MY_IP"
-# fi
+# Note: API_HOST is intentionally not set here so it defaults to 0.0.0.0
+# (all interfaces) in api-server.js, making the server accessible from
+# both localhost and remote machines.
 
-sed -i "s|^VITE_API_URL=.*|VITE_API_URL=http://$MY_IP|" "$ENV_FILE"
-echo "Updated VITE_API_URL in $ENV_FILE to http://$MY_IP"
+sed -i "s|^VITE_API_URL=.*|VITE_API_URL=http://$MY_IP:3456|" "$ENV_FILE"
+echo "Updated VITE_API_URL in $ENV_FILE to http://$MY_IP:3456"
