@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-14] `frontend/src/stores/benchmark.js` — added SSE connection readiness check in `startBenchmark()` (waits for SSE before starting benchmark, with 5s timeout); added `_connectingSSE` flag to prevent duplicate SSE connections and properly reset it on open/close/error events
+- [Changed]: [2026-06-14] `api-server.js` — set `benchmarkStatus = "testing"` when `Test Run #` is detected in log output, ensuring status is properly reported during test execution
+- [Changed]: [2026-06-14] Benchmark frontend dist — rebuilt with updated asset hashes (`index-CHrFtl5B.js`, `index-2gyIUBI_.css`) after SSE connection improvements
+
+### Changed
+
 - [Changed]: [2026-06-14] `api-server.js` — added `res.flush()` calls throughout all SSE endpoints (`/api/stream`, `/api/build`, `/api/clone`) to ensure real-time event delivery; added `Transfer-Encoding`, `Cache-Control`, `Connection`, and `Retry-After` to CORS exposed headers
 
 ### Fixed

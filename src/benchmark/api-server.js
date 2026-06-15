@@ -649,6 +649,7 @@ function parseLogOutput(text) {
   const runMatch = text.match(/Test Run #(\d+)/);
   if (runMatch) {
     currentTestRun = parseInt(runMatch[1], 10);
+    benchmarkStatus = "testing";
     broadcast("status", {
       status: "testing",
       testRun: currentTestRun,

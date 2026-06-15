@@ -170,6 +170,23 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
     async startBenchmark(env = {}) {
       try {
+        // Wait for SSE connection to be established before starting
+        // This ensures we receive status updates (building -> testing -> idle)
+        const sseReady = await new Promise((resolve) => {
+          if (this.sseConnected) { resolve(true); return }
+          const check = setInterval(() => {
+            if (this.sseConnected || this._connectingSSE === false) {
+              clearInterval(check)
+              resolve(this.sseConnected)
+            }
+          }, 50)
+          // Timeout after 5 seconds
+          setTimeout(() => {
+            clearInterval(check)
+            resolve(false)
+          }, 5000)
+        })
+
         const res = await axios.post(`${API_BASE}/api/run`, { env })
         if (res.data.success) {
           this.status = 'building'
@@ -273,7 +290,10 @@ export const useBenchmarkStore = defineStore('benchmark', {
     },
 
     connectSSE() {
+      if (this._connectingSSE) return
       if (this.sseConnected) return
+
+      this._connectingSSE = true
 
       const eventSource = new EventSource(`${API_BASE}/api/stream`)
       let reconnectTimer = null
@@ -344,6 +364,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
             eventSource.close()
             this._sse = null
             this.sseConnected = false
+            this._connectingSSE = false
             // Reconnect after a delay
             setTimeout(() => {
               if (!this._sse) {
@@ -356,6 +377,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
       eventSource.onopen = () => {
         this.sseConnected = true
+        this._connectingSSE = false
         if (this._reconnectTimer) {
           clearTimeout(this._reconnectTimer)
           this._reconnectTimer = null
@@ -371,6 +393,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
         this._sse.close()
         this._sse = null
         this.sseConnected = false
+        this._connectingSSE = false
       }
       if (this._reconnectTimer) {
         clearTimeout(this._reconnectTimer)
