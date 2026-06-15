@@ -17,6 +17,9 @@ const loadingConfig = ref(false)
 const testRunConfig = ref(null)
 const commands = ref(null)
 const copiedTab = ref(null) // 'build' or 'launch'
+const installingService = ref(false)
+const serviceInstallResult = ref(null)
+const serviceInstallError = ref(null)
 
 async function loadCommands(reportName, testRunId) {
   try {
@@ -89,6 +92,30 @@ function closeConfigModal() {
   commands.value = null
   selectedTestRunId.value = null
   copiedTab.value = null
+  installingService.value = false
+  serviceInstallResult.value = null
+  serviceInstallError.value = null
+}
+
+async function installService() {
+  if (!selectedReport.value || !selectedTestRunId.value) return
+  installingService.value = true
+  serviceInstallResult.value = null
+  serviceInstallError.value = null
+  try {
+    const res = await axios.post(`${API_BASE}/api/service/install`, {
+      reportName: selectedReport.value.name,
+      testRunId: selectedTestRunId.value,
+    })
+    if (res.data.success) {
+      serviceInstallResult.value = res.data
+    } else {
+      serviceInstallError.value = res.data.error || 'Installation failed'
+    }
+  } catch (e) {
+    serviceInstallError.value = e.message || 'Installation failed'
+  }
+  installingService.value = false
 }
 
 // Close modal on Escape key
@@ -576,6 +603,73 @@ function formatList(arr) {
                       </button>
                     </div>
                     <pre class="bg-bg-tertiary rounded-lg p-3 text-xs font-mono text-text-secondary overflow-x-auto whitespace-pre-wrap">{{ commands.launch.full }}</pre>
+                  </div>
+
+                  <!-- Install as Systemd Service -->
+                  <div class="mt-4 pt-4 border-t border-border">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                        </svg>
+                        <span class="text-xs font-medium text-text-secondary">Systemd Service</span>
+                      </div>
+                      <button
+                        @click="installService"
+                        class="btn btn-success btn-xs flex items-center gap-1.5"
+                        :disabled="installingService"
+                      >
+                        <svg v-if="!installingService" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <svg v-else class="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        {{ installingService ? 'Installing...' : 'Install' }}
+                      </button>
+                    </div>
+                    <p class="text-xs text-text-muted mb-2">Installs the launch command as a user systemd service that auto-restarts on failure.</p>
+
+                    <!-- Success result -->
+                    <div v-if="serviceInstallResult" class="bg-success-subtle border border-success/30 rounded-lg p-3 space-y-1">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="text-xs font-medium text-success">{{ serviceInstallResult.message }}</span>
+                      </div>
+                      <div v-if="serviceInstallResult.serviceName" class="text-xs font-mono text-text-secondary ml-6">
+                        Service: {{ serviceInstallResult.serviceName }}
+                      </div>
+                      <div v-if="serviceInstallResult.warning" class="text-xs text-warning ml-6">
+                        ⚠ {{ serviceInstallResult.warning }}
+                      </div>
+                      <div class="flex gap-2 mt-2 ml-6">
+                        <button
+                          @click="() => copyToClipboard('systemctl --user status ' + serviceInstallResult.serviceName, 'service-status')"
+                          class="btn btn-ghost btn-xs"
+                        >
+                          Copy status command
+                        </button>
+                        <button
+                          @click="() => copyToClipboard('systemctl --user stop ' + serviceInstallResult.serviceName, 'service-stop')"
+                          class="btn btn-ghost btn-xs"
+                        >
+                          Copy stop command
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Error result -->
+                    <div v-if="serviceInstallError" class="bg-error-subtle border border-error/30 rounded-lg p-3">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="text-xs font-medium text-error">{{ serviceInstallError }}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

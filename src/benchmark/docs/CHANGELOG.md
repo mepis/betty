@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-14] Systemd service installation from benchmark reports — new `POST /api/service/install` endpoint that creates a user-level systemd service from a report's launch command, with auto-restart on failure; UI button in Reports.vue modal with success/error feedback and copy-to-clipboard for status/stop commands
+
+### Added
+
 - [Added]: [2026-06-14] Collapsible message panels in Dashboard — click-to-toggle expand/collapse for each test run message, with animated chevron indicator, reducing visual clutter when reviewing many messages
 
 ### Added

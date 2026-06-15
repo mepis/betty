@@ -1182,6 +1182,113 @@ app.get("/api/service/status", (_req, res) => {
   }
 });
 
+//--- Install a systemd service from a report's launch command ---
+app.post("/api/service/install", (req, res) => {
+  try {
+    const { reportName, testRunId } = req.body;
+    if (!reportName || !testRunId) {
+      return res.status(400).json({ success: false, error: "reportName and testRunId are required" });
+    }
+
+    // Get the report
+    const filePath = join(REPORTS_DIR, `${reportName}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Report not found" });
+    }
+    const report = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const configsPerRun = report.configsPerRun || [];
+    const config = configsPerRun.find((c) => c.testRunId === parseInt(testRunId, 10));
+    const launchCmd = getLaunchCommand(report.configs, config || {});
+
+    // Get the model path for the service
+    const modelPath = launchCmd.command.match(/-m ([^\s]+)/)?.[1] || "";
+    const port = (config?.serverParameters?.port || report.configs?.llama_port || 11434);
+    const host = (config?.serverParameters?.host || report.configs?.llama_host || "localhost");
+
+    // Get the llama-server executable path
+    const llamaServerPath = join(BENCHMARK_DIR, "llama.cpp", "build", "bin", "llama-server");
+    const serviceUser = process.env.USER || "jon";
+
+    // Build environment file content
+    const envContent = launchCmd.env.join("\n") + "\n";
+    const envFile = join("/home", serviceUser, ".config", "systemd", "user", "llama-benchmark.env");
+
+    // Build service file content
+    const serviceName = `llama-benchmark-${reportName.replace(/[^a-zA-Z0-9_-]/g, "-")}-${testRunId}.service`;
+    const serviceFile = join("/home", serviceUser, ".config", "systemd", "user", serviceName);
+
+    const serviceContent = `[Unit]
+Description=Llama.cpp Benchmark Service - ${reportName} (Run #${testRunId})
+After=network.target
+
+[Service]
+Type=simple
+User=${serviceUser}
+EnvironmentFile=${envFile}
+ExecStart=${llamaServerPath} ${launchCmd.command}
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=llama-benchmark
+
+[Install]
+WantedBy=default.target
+`;
+
+    // Ensure systemd user directory exists
+    const systemdDir = join("/home", serviceUser, ".config", "systemd", "user");
+    try {
+      execSync(`mkdir -p ${systemdDir}`);
+    } catch {
+      // Directory might already exist or we might not have permission
+    }
+
+    // Write environment file
+    try {
+      execSync(`cat > ${envFile} << 'ENVEOF'
+${envContent}ENVEOF`);
+    } catch (err) {
+      console.error(`Failed to write env file: ${err.message}`);
+    }
+
+    // Write service file
+    try {
+      execSync(`cat > ${serviceFile} << 'SVCEOF'
+${serviceContent}SVCEOF`);
+    } catch (err) {
+      console.error(`Failed to write service file: ${err.message}`);
+    }
+
+    // Reload systemd daemon and enable + start the service
+    try {
+      execSync(`systemctl --user daemon-reload`);
+      execSync(`systemctl --user enable ${serviceName}`);
+      execSync(`systemctl --user start ${serviceName}`);
+    } catch (err) {
+      console.error(`Failed to start service: ${err.message}`);
+      return res.json({
+        success: true,
+        message: `Service file installed as ${serviceName}`,
+        warning: err.message,
+        serviceName,
+        envFile,
+        serviceFile,
+      });
+    }
+
+    res.json({
+      success: true,
+      message: `Service ${serviceName} installed and started`,
+      serviceName,
+      envFile,
+      serviceFile,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Kill processes on llama_port ---
 app.post("/api/kill-port", (req, res) => {
   try {
