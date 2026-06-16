@@ -118,7 +118,7 @@ const contentHtml = computed(() => {
         <span>${escapeHtml(toolName)}</span>
         <span style="margin-left:auto; font-size:10px">▼</span>
       </div>
-      <div class="tool-content collapsed">${resultText ? escapeHtml(resultText) : (isRunning ? '<em>Running...</em>' : '<em>No output</em>')}</div>
+      <div class="tool-content">${resultText ? escapeHtml(resultText) : (isRunning ? '<em>Running...</em>' : '<em>No output</em>')}</div>
     </div>`;
   }
 
@@ -170,7 +170,7 @@ const contentHtml = computed(() => {
           <span class="context-tool-summary">${summary}</span>
           <span style="margin-left:auto; font-size:10px">▼</span>
         </div>
-        <div class="context-tool-content collapsed">${details}</div>
+        <div class="context-tool-content">${details}</div>
       </div>`;
     } else if (item.type === 'tool') {
       // Individual tool call
@@ -187,7 +187,7 @@ const contentHtml = computed(() => {
           ${path ? `<span class="tool-path">${escapeHtml(path)}</span>` : ''}
           <span style="margin-left:auto; font-size:10px">▼</span>
         </div>
-        <div class="tool-content collapsed">${escapeHtml(JSON.stringify(args, null, 2))}${resultText ? '\n\n--- Result ---\n' + resultText : ''}</div>
+        <div class="tool-content">${escapeHtml(JSON.stringify(args, null, 2))}${resultText ? '\n\n--- Result ---\n' + resultText : ''}</div>
       </div>`;
     }
   }

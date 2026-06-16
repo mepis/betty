@@ -1,0 +1,93 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {},
+  "tools": {},
+  "autoupdate": true,
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 20000,
+    "tail_turns": 5
+  },
+  "experimental": {
+    "batch_tool": true
+  },
+  "server": {
+    "port": 4096,
+    "hostname": "100.105.3.99",
+    "mdns": true,
+    "cors": ["*"]
+  },
+  "permission": {
+    "question": "allow",
+    "webfetch": "deny",
+    "todoread": "allow",
+    "todowrite": "allow",
+    "skill": {
+      "*": "allow"
+    },
+    "edit": "allow",
+    "lsp": "allow",
+    "list": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "read": "allow",
+    "bash": "allow"
+  },
+  "provider": {
+    "Merlin": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Merlin",
+      "options": {
+        "baseURL": "http://10.16.2.209:11434/v1"
+      },
+      "models": {
+        "glm-4.7-flash:q4_K_M": {
+          "name": "glm-4.7-flash:q4_K_M"
+        }
+      }
+    },
+    "Betty": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Betty",
+      "options": {
+        "baseURL": "http://100.88.77.33:11434/v1",
+        "setCacheKey": true
+      },
+      "models": {
+        "Qwen3.6-35B-A3B-Q8_0": {
+          "name": "Qwen3.6-35B-A3B-Q8_0",
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          }
+        }
+      }
+    },
+    "Legion": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Legion",
+      "options": {
+        "baseURL": "http://100.105.3.99:11434/v1",
+        "setCacheKey": true
+      },
+      "models": {
+        "gemma-4-26B-A4B-it-MXFP4_MOE": {
+          "name": "gemma-4-26B-A4B-it-MXFP4_MOE",
+          "limit": {
+            "context": 65536,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          }
+        }
+      }
+    }
+  }
+}

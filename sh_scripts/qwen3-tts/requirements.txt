@@ -1,0 +1,10 @@
+qwen-tts>=0.1.1
+fastapi>=0.115.0
+uvicorn>=0.34.0
+torch>=2.5.0
+torchaudio
+soundfile
+librosa
+numpy
+flash-attn  # optional - requires CUDA 12.x, may fail to build from source on newer Python versions
+
