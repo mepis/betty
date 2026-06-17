@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import fs from "fs";
 import { spawn, execSync } from "child_process";
+import { Transform } from "stream";
 import { join, dirname, basename } from "path";
 import { fileURLToPath } from "url";
 
@@ -1561,8 +1562,6 @@ app.post("/api/hf/download", async (req, res) => {
 
     const total = downloadResponse.headers.get("content-length");
     const totalSize = total ? parseInt(total, 10) : 0;
-    let downloaded = 0;
-    const fileStream = fs.createWriteStream(filePath);
 
     // Track download in memory
     hfDownloads.set(modelId, {
@@ -1574,26 +1573,40 @@ app.post("/api/hf/download", async (req, res) => {
       filePath: filePath,
     });
 
-    downloadResponse.body.on("data", (chunk) => {
-      downloaded += chunk.length;
-      const progress = totalSize > 0 ? Math.round((downloaded / totalSize) * 100) : Math.min(99, Math.round((downloaded / (1024 * 1024 * 100)) * 100));
+    // Use a Transform stream to track progress while piping to file.
+    // This avoids the Node.js anti-pattern of attaching both a 'data' listener
+    // and pipe() to the same stream, which causes a race condition where data
+    // may be lost or the file stream may not receive the data properly.
+    let downloaded = 0;
+    const progressTransform = new Transform({
+      transform(chunk, encoding, callback) {
+        downloaded += chunk.length;
+        const progress = totalSize > 0 ? Math.round((downloaded / totalSize) * 100) : Math.min(99, Math.round((downloaded / (1024 * 1024 * 100)) * 100));
 
-      hfDownloads.set(modelId, {
-        status: "downloading",
-        progress,
-        total: totalSize,
-        downloaded,
-        filename,
-        filePath,
-      });
+        hfDownloads.set(modelId, {
+          status: "downloading",
+          progress,
+          total: totalSize,
+          downloaded,
+          filename,
+          filePath,
+        });
 
-      res.write(`event: hf-download\ndata: PROGRESS:${progress}\n\n`);
-      res.write(`event: hf-download\ndata: DOWNLOADED:${downloaded}\n\n`);
-      res.flush();
+        // Combine progress and downloaded bytes into a single event to avoid
+        // the frontend receiving separate PROGRESS and DOWNLOADED events that
+        // would reset the progress bar to 0% when DOWNLOADED fires.
+        res.write(`event: hf-download\ndata: PROGRESS:${progress}:${downloaded}\n\n`);
+        res.flush();
+
+        // Pass the chunk through unchanged
+        callback(null, chunk);
+      },
     });
 
+    const fileStream = fs.createWriteStream(filePath);
+
     await new Promise((resolve, reject) => {
-      downloadResponse.body.pipe(fileStream);
+      downloadResponse.body.pipe(progressTransform).pipe(fileStream);
       fileStream.on("finish", () => {
         fileStream.close(() => {
           hfDownloads.set(modelId, {

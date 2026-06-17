@@ -651,11 +651,11 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
             if (currentEvent === 'hf-download' && currentData) {
               if (currentData.startsWith('PROGRESS:')) {
-                const progress = parseInt(currentData.slice('PROGRESS:'.length), 10)
-                if (onProgress) onProgress(progress, 0)
-              } else if (currentData.startsWith('DOWNLOADED:')) {
-                const downloaded = parseInt(currentData.slice('DOWNLOADED:'.length), 10)
-                if (onProgress) onProgress(0, downloaded)
+                // Format: PROGRESS:percentage:downloadedBytes
+                const parts = currentData.slice('PROGRESS:'.length).split(':')
+                const progress = parseInt(parts[0], 10)
+                const downloaded = parts[1] ? parseInt(parts[1], 10) : 0
+                if (onProgress) onProgress(progress, downloaded)
               } else if (currentData.startsWith('STATUS:Download complete')) {
                 this.hfError = null
               } else if (currentData.startsWith('STATUS:Download failed') || currentData.startsWith('ERROR:')) {

@@ -15,6 +15,8 @@
 
 ### Fixed
 
+- [Fixed]: [2026-06-17] Model download progress — fixed race condition in `api-server.js` where both a `data` event listener and `pipe()` were attached to the same fetch response body stream, causing data loss and stalled progress; replaced with a `Transform` stream that tracks progress while piping to the file; combined separate `PROGRESS` and `DOWNLOADED` SSE events into a single `PROGRESS:percentage:bytes` event to prevent the frontend progress bar from resetting to 0% when `DOWNLOADED` events fired
+
 - [Added]: [2026-06-17] HuggingFace model search and download — new "Models" page in the benchmark frontend for browsing and downloading models from HuggingFace; backend API endpoints for searching models (`GET /api/hf/search`), fetching model details (`GET /api/hf/model/:id`), listing model files (`GET /api/hf/model/:id/files`), streaming downloads with progress (`POST /api/hf/download`), managing downloaded models (`GET /api/hf/downloads`, `DELETE /api/hf/download/:modelId`); downloads are saved to `hf_downloads/` directory with real-time progress tracking via SSE
 
 ### Removed
