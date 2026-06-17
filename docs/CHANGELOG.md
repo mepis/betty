@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-17] Simplified installation system — new `install.sh` with menu-driven options (APT packages, CUDA 13.2, systemd user service); `scripts/init-apt.sh` for build tools and libraries, `scripts/init-cuda.sh` for CUDA 13.2 on Ubuntu 24.04, `scripts/install-service.sh` for systemd user service setup; `src/benchmark/.env.example` for benchmark API server configuration
+
+### Changed
+
+- [Changed]: [2026-06-17] `.env.example` — completely rewritten from minimal API server config to comprehensive Betty web frontend configuration with sections for server settings (PORT, HOST, WORKSPACE), session persistence, JWT-based authentication (AUTH_ENABLED, JWT_SECRET, JWT_REFRESH_SECRET, JWT_EXPIRES_IN, JWT_REFRESH_EXPIRES_IN), and API key slots for all supported providers (Anthropic, OpenAI, Google, DeepSeek, xAI, Groq, Cerebras, OpenRouter, Vertex, AWS, Mistral, Fireworks, Together)
+
+### Removed
+
+- [Removed]: [2026-06-17] `sh_scripts/` directory (234 files) — removed all old infrastructure scripts: `init_ubuntu.sh`, `install_betty.sh`, llama.cpp management (install, benchmark, model scripts), MariaDB installation, Qdrant installation and runtime data (accidentally tracked vector storage, WAL, and segment files), Qwen3 TTS service, and SearXNG installation; replaced with simplified `install.sh` and `scripts/` directory
+
 ### Fixed
 
 - [Fixed]: [2026-06-17] Service install — `POST /api/service/install` now uses a shared `llama.service` name instead of unique per-run names; stops the existing service before overwriting files, strips the `./llama-server` prefix from command args to avoid path duplication, and adds proper error handling with HTTP 500 responses and file cleanup on failure at every step (env file write, service file write, daemon-reload, enable, start)
