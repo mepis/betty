@@ -12,7 +12,7 @@
   "llama_port": 11434,
   "llama_host": "100.105.3.99",
   "model": "gemma-4-E2B_q4_0-it.gguf",
-  "model_directory": "/home/jon/.llm_models",
+  "model_directory": "/home/jon/git/betty/src/benchmark/hf_downloads",
   "llama_cache": "/home/jon/.llama_cache",
   "gpu_selection": {
     "enabled": false,

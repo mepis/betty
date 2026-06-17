@@ -7,8 +7,6 @@ const store = useBenchmarkStore()
 const saving = ref(false)
 const saveSuccess = ref(false)
 const saveError = ref('')
-const configsJson = ref('')
-const editMode = ref('visual') // 'json' or 'visual'
 const visualConfigs = ref({})
 const modelOptions = ref([])
 const newGpuIndex = ref(0)
@@ -48,12 +46,7 @@ async function handleSaveProfile() {
   profileMessageError.value = false
 
   try {
-    let configs
-    if (editMode.value === 'json') {
-      configs = JSON.parse(configsJson.value)
-    } else {
-      configs = flattenBuildParams(JSON.parse(JSON.stringify(visualConfigs.value)))
-    }
+    const configs = flattenBuildParams(JSON.parse(JSON.stringify(visualConfigs.value)))
     const ok = await store.saveProfile(profileName.value.trim(), configs)
     if (ok) {
       profileMessage.value = `Profile "${profileName.value}" saved successfully`
@@ -85,9 +78,6 @@ async function handleLoadProfile(name) {
       if (store.configs) {
         visualConfigs.value = normalizeBuildParams(JSON.parse(JSON.stringify(store.configs)))
         await fetchModelsForDirectory(store.configs.model_directory || '')
-        if (editMode.value === 'json') {
-          configsJson.value = JSON.stringify(store.configs, null, 2)
-        }
       }
     } else {
       profileMessage.value = 'Failed to load profile'
@@ -154,7 +144,6 @@ watch(
 onMounted(async () => {
   await store.fetchConfigs()
   if (store.configs) {
-    configsJson.value = JSON.stringify(store.configs, null, 2)
     visualConfigs.value = normalizeBuildParams(
       JSON.parse(JSON.stringify(store.configs))
     )
@@ -162,19 +151,6 @@ onMounted(async () => {
   }
   await loadProfiles()
 })
-
-function switchMode(mode) {
-  editMode.value = mode
-  if (mode === 'json' && store.configs) {
-    configsJson.value = JSON.stringify(store.configs, null, 2)
-  }
-  if (mode === 'visual' && store.configs) {
-    visualConfigs.value = normalizeBuildParams(
-      JSON.parse(JSON.stringify(store.configs))
-    )
-    fetchModelsForDirectory(store.configs.model_directory || '')
-  }
-}
 
 function flattenBuildParams(configs) {
   const params = configs.build_make_params || {}
@@ -207,12 +183,7 @@ async function handleSave() {
   saving.value = true
 
   try {
-    let configs
-    if (editMode.value === 'json') {
-      configs = JSON.parse(configsJson.value)
-    } else {
-      configs = flattenBuildParams(JSON.parse(JSON.stringify(visualConfigs.value)))
-    }
+    const configs = flattenBuildParams(JSON.parse(JSON.stringify(visualConfigs.value)))
     const ok = await store.saveConfigs(configs)
     if (ok) {
       saveSuccess.value = true
@@ -228,14 +199,10 @@ async function handleSave() {
 
 function handleReset() {
   if (store.configs) {
-    if (editMode.value === 'json') {
-      configsJson.value = JSON.stringify(store.configs, null, 2)
-    } else {
-      visualConfigs.value = normalizeBuildParams(
-        JSON.parse(JSON.stringify(store.configs))
-      )
-      fetchModelsForDirectory(store.configs.model_directory || '')
-    }
+    visualConfigs.value = normalizeBuildParams(
+      JSON.parse(JSON.stringify(store.configs))
+    )
+    fetchModelsForDirectory(store.configs.model_directory || '')
   }
   saveError.value = ''
 }
@@ -508,35 +475,7 @@ function normalizeBuildParams(configs) {
 
     <!-- Editor -->
     <div class="card">
-      <!-- Mode tabs -->
-      <div class="flex items-center gap-2 mb-4">
-        <button
-          @click="switchMode('visual')"
-          class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-          :class="editMode === 'visual' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
-        >
-          Visual Editor
-        </button>
-        <button
-          @click="switchMode('json')"
-          class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-          :class="editMode === 'json' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
-        >
-          JSON Editor
-        </button>
-      </div>
-
-      <!-- JSON Editor -->
-      <div v-if="editMode === 'json'">
-        <textarea
-          v-model="configsJson"
-          class="textarea font-mono text-xs h-[600px]"
-          spellcheck="false"
-        />
-      </div>
-
-      <!-- Visual Editor -->
-      <div v-else class="space-y-4 max-h-[600px] overflow-auto pr-2">
+      <div class="space-y-4 max-h-[600px] overflow-auto pr-2">
         <!-- Tab navigation -->
         <div class="flex items-center gap-2 mb-2">
           <button
@@ -725,8 +664,7 @@ function normalizeBuildParams(configs) {
             { key: 'max_sys_mem', label: 'Max System Memory (%)', type: 'number' },
             { key: 'llama_port', label: 'Llama Port', type: 'number' },
             { key: 'llama_host', label: 'Llama Host', type: 'text' },
-            { key: 'model', label: 'Model', type: 'select' },
-            { key: 'model_directory', label: 'Model Directory', type: 'text' },
+            { key: 'model', label: 'Model (auto-populated from model_directory)', type: 'select' },
             { key: 'llama_cache', label: 'Llama Cache', type: 'text' },
             { key: 'build_cores', label: 'Build Cores', type: 'number' },
             { key: 'skip_build', label: 'Skip Build', type: 'boolean' },

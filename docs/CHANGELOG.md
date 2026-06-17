@@ -4,6 +4,17 @@
 
 ### Added
 
+- [Added]: [2026-06-17] Recursive model file discovery — new `findModelFiles()` helper in `api-server.js` that recursively scans model directories for `.gguf`, `.bin`, and `.safetensors` files, enabling model selection from nested HuggingFace download structures
+
+### Changed
+
+- [Changed]: [2026-06-17] Benchmark config UI simplified — removed JSON editor mode from `Config.vue`; the config page now uses visual editing only, removing ~78 lines of JSON editor UI, mode-switching logic, and related state management
+- [Changed]: [2026-06-17] Model selection auto-populated — the model dropdown in the config UI is now auto-populated from the configured `model_directory`, and the label clarifies this behavior; the `model_directory` text field was removed as a manual input
+- [Changed]: [2026-06-17] Default model directory set — changed default `model_directory` in `api-server.js` from empty string to `"hf_downloads"` to match the HuggingFace download directory created by the new Models page
+- [Changed]: [2026-06-17] Benchmark `configs.json` model directory — updated `model_directory` from `/home/jon/.llm_models` to `/home/jon/git/betty/src/benchmark/hf_downloads` to use the local HF downloads path
+
+### Fixed
+
 - [Added]: [2026-06-17] HuggingFace model search and download — new "Models" page in the benchmark frontend for browsing and downloading models from HuggingFace; backend API endpoints for searching models (`GET /api/hf/search`), fetching model details (`GET /api/hf/model/:id`), listing model files (`GET /api/hf/model/:id/files`), streaming downloads with progress (`POST /api/hf/download`), managing downloaded models (`GET /api/hf/downloads`, `DELETE /api/hf/download/:modelId`); downloads are saved to `hf_downloads/` directory with real-time progress tracking via SSE
 
 ### Removed

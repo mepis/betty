@@ -45,7 +45,7 @@ const DEFAULT_CONFIGS = {
   llama_port: 11434,
   llama_host: "localhost",
   model: "",
-  model_directory: "",
+  model_directory: "hf_downloads",
   llama_cache: "",
   gpu_selection: {
     enabled: true,
@@ -1135,6 +1135,24 @@ app.get("/api/results", (_req, res) => {
   }
 });
 
+//--- Recursively find model files in a directory ---
+function findModelFiles(dir, baseDir = dir) {
+  const results = [];
+  if (!fs.existsSync(dir)) return results;
+
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...findModelFiles(fullPath, baseDir));
+    } else if (entry.isFile() && (entry.name.endsWith('.gguf') || entry.name.endsWith('.bin') || entry.name.endsWith('.safetensors'))) {
+      // Return path relative to the base directory
+      results.push(fullPath.replace(baseDir + '/', ''));
+    }
+  }
+  return results.sort();
+}
+
 //--- List models in a directory ---
 app.get("/api/models", (_req, res) => {
   try {
@@ -1142,12 +1160,7 @@ app.get("/api/models", (_req, res) => {
     if (!dir) {
       return res.status(400).json({ success: false, error: "directory query param required" });
     }
-    if (!fs.existsSync(dir)) {
-      return res.json({ success: true, data: [] });
-    }
-    const files = fs.readdirSync(dir)
-      .filter(f => f.endsWith('.gguf') || f.endsWith('.bin') || f.endsWith('.safetensors'))
-      .sort();
+    const files = findModelFiles(dir);
     res.json({ success: true, data: files });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
