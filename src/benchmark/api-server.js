@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import fs from "fs";
 import { spawn, execSync } from "child_process";
-import { Transform } from "stream";
+import { Transform, Readable } from "stream";
 import { join, dirname, basename } from "path";
 import { fileURLToPath } from "url";
 
@@ -11,6 +11,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+
+// Express 4 has no res.flush() — use socket flush as a fallback
+function safeFlush(res) {
+  if (typeof res.flush === "function") {
+    res.flush();
+  } else if (res.socket && typeof res.socket.write === "function") {
+    res.socket.write("");
+  }
+}
 const PORT = parseInt(process.env.API_PORT, 10) || 3456;
 const API_HOST = process.env.API_HOST || '0.0.0.0';
 const BENCHMARK_DIR = __dirname;
@@ -411,7 +420,7 @@ function sendToClient(client, event, data) {
   try {
     const msg = `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
     client.res.write(msg);
-    client.res.flush();
+    safeFlush(client.res);
   } catch {}
 }
 
@@ -1542,7 +1551,7 @@ app.post("/api/hf/download", async (req, res) => {
       res.write(`event: hf-download\ndata: PROGRESS:100\n\n`);
       res.write(`event: hf-download\ndata: STATUS:Download complete\n\n`);
       res.write(`event: hf-download\ndata: FILE:${filePath}\n\n`);
-      res.flush();
+      safeFlush(res);
       res.end();
       return;
     }
@@ -1555,7 +1564,7 @@ app.post("/api/hf/download", async (req, res) => {
     if (!downloadResponse.ok) {
       res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
       res.write(`event: hf-download\ndata: ERROR: HTTP ${downloadResponse.status}\n\n`);
-      res.flush();
+      safeFlush(res);
       res.end();
       return;
     }
@@ -1596,7 +1605,7 @@ app.post("/api/hf/download", async (req, res) => {
         // the frontend receiving separate PROGRESS and DOWNLOADED events that
         // would reset the progress bar to 0% when DOWNLOADED fires.
         res.write(`event: hf-download\ndata: PROGRESS:${progress}:${downloaded}\n\n`);
-        res.flush();
+        safeFlush(res);
 
         // Pass the chunk through unchanged
         callback(null, chunk);
@@ -1606,7 +1615,11 @@ app.post("/api/hf/download", async (req, res) => {
     const fileStream = fs.createWriteStream(filePath);
 
     await new Promise((resolve, reject) => {
-      downloadResponse.body.pipe(progressTransform).pipe(fileStream);
+      const bodyStream = Readable.fromWeb(downloadResponse.body);
+      bodyStream.on("error", (err) => {
+        reject(err);
+      });
+      bodyStream.pipe(progressTransform).pipe(fileStream);
       fileStream.on("finish", () => {
         fileStream.close(() => {
           hfDownloads.set(modelId, {
@@ -1620,7 +1633,7 @@ app.post("/api/hf/download", async (req, res) => {
           res.write(`event: hf-download\ndata: PROGRESS:100\n\n`);
           res.write(`event: hf-download\ndata: STATUS:Download complete\n\n`);
           res.write(`event: hf-download\ndata: FILE:${filePath}\n\n`);
-          res.flush();
+          safeFlush(res);
           res.end();
           resolve();
         });
@@ -1635,7 +1648,7 @@ app.post("/api/hf/download", async (req, res) => {
         });
         res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
         res.write(`event: hf-download\ndata: ERROR: ${err.message}\n\n`);
-        res.flush();
+        safeFlush(res);
         res.end();
         reject(err);
       });
@@ -1644,7 +1657,7 @@ app.post("/api/hf/download", async (req, res) => {
     try {
       res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
       res.write(`event: hf-download\ndata: ERROR: ${err.message}\n\n`);
-      res.flush();
+      safeFlush(res);
       res.end();
     } catch {}
   }
@@ -1749,7 +1762,7 @@ app.post("/api/build", async (req, res) => {
       progressInterval++;
       const pct = Math.min(90, 10 + Math.floor(progressInterval / 2));
       res.write(`event: build-log\ndata: PROGRESS:${pct}\n\n`);
-      res.flush();
+      safeFlush(res);
     }, 3000);
 
     buildProcess.stdout.on("data", (data) => {
@@ -1758,7 +1771,7 @@ app.post("/api/build", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: build-log\ndata: ${line}\n\n`);
       });
-      res.flush();
+      safeFlush(res);
     });
 
     buildProcess.stderr.on("data", (data) => {
@@ -1767,7 +1780,7 @@ app.post("/api/build", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: build-log\ndata: ${line}\n\n`);
       });
-      res.flush();
+      safeFlush(res);
     });
 
     const buildResult = await new Promise((resolve, reject) => {
@@ -1789,14 +1802,14 @@ app.post("/api/build", async (req, res) => {
     // Send final progress and completion
     res.write(`event: build-log\ndata: PROGRESS:100\n\n`);
     res.write(`event: build-log\ndata: STATUS:Build complete!\n\n`);
-    res.flush();
+    safeFlush(res);
     res.end();
 
     buildStatus = "success";
   } catch (err) {
     res.write(`event: build-log\ndata: STATUS:Build failed\n\n`);
     res.write(`event: build-log\ndata: ERROR: ${err.message}\n\n`);
-    res.flush();
+    safeFlush(res);
     res.end();
     buildStatus = "error";
   } finally {
@@ -1858,7 +1871,7 @@ app.post("/api/clone", async (req, res) => {
       progressInterval++;
       const pct = Math.min(80, 10 + Math.floor(progressInterval / 2));
       res.write(`event: clone-log\ndata: PROGRESS:${pct}\n\n`);
-      res.flush();
+      safeFlush(res);
     }, 3000);
 
     gitProcess.stdout.on("data", (data) => {
@@ -1868,7 +1881,7 @@ app.post("/api/clone", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: clone-log\ndata: ${line}\n\n`);
       });
-      res.flush();
+      safeFlush(res);
     });
 
     gitProcess.stderr.on("data", (data) => {
@@ -1877,7 +1890,7 @@ app.post("/api/clone", async (req, res) => {
       text.split("\n").filter(Boolean).forEach(line => {
         res.write(`event: clone-log\ndata: ${line}\n\n`);
       });
-      res.flush();
+      safeFlush(res);
     });
 
     const cloneResult = await new Promise((resolve, reject) => {
@@ -1899,13 +1912,13 @@ app.post("/api/clone", async (req, res) => {
     // Send final progress and completion
     res.write(`event: clone-log\ndata: PROGRESS:100\n\n`);
     res.write(`event: clone-log\ndata: STATUS:Clone complete!\n\n`);
-    res.flush();
+    safeFlush(res);
     res.end();
 
   } catch (err) {
     res.write(`event: clone-log\ndata: STATUS:Clone failed\n\n`);
     res.write(`event: clone-log\ndata: ERROR: ${err.message}\n\n`);
-    res.flush();
+    safeFlush(res);
     res.end();
   }
 });

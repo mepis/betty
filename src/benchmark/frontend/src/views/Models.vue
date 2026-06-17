@@ -15,9 +15,13 @@ const downloading = ref(false)
 const downloadProgress = ref(0)
 const downloadedFiles = ref([])
 const downloadingFile = ref('')
-const downloadError = ref('')
-const downloadSuccess = ref('')
 const showDetails = ref(false)
+const toast = ref({ show: false, message: '', type: '' }) // type: 'success' | 'error'
+
+function showToast(message, type = 'success') {
+  toast.value = { show: true, message, type }
+  setTimeout(() => { toast.value.show = false }, 4000)
+}
 const showFilePicker = ref(false)
 const filesLoading = ref(false)
 const selectedFile = ref('')
@@ -131,8 +135,6 @@ async function handleDownload() {
   if (!selectedModel.value || downloading.value) return
   downloading.value = true
   downloadProgress.value = 0
-  downloadError.value = ''
-  downloadSuccess.value = ''
   downloadingFile.value = selectedFile.value || 'auto'
 
   try {
@@ -145,17 +147,13 @@ async function handleDownload() {
       }
     )
     if (store.hfError) {
-      downloadError.value = store.hfError
+      showToast(store.hfError, 'error')
       store.hfError = null
     } else {
-      downloadSuccess.value = 'Download complete!'
-      setTimeout(() => {
-        downloadSuccess.value = ''
-        downloading.value = false
-      }, 3000)
+      showToast('Download complete!', 'success')
     }
   } catch (e) {
-    downloadError.value = e.message || 'Download failed'
+    showToast(e.message || 'Download failed', 'error')
   }
   downloading.value = false
 }
@@ -554,28 +552,37 @@ onMounted(async () => {
           </button>
         </div>
 
-        <!-- Download Success/Error Messages -->
-        <div v-if="downloadSuccess || downloadError" class="absolute bottom-20 left-6 right-6">
-          <div
-            v-if="downloadSuccess"
-            class="bg-success-subtle border border-success/30 rounded-lg p-3 text-sm text-success flex items-center gap-2"
-          >
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {{ downloadSuccess }}
-          </div>
-          <div
-            v-if="downloadError"
-            class="bg-error-subtle border border-error/30 rounded-lg p-3 text-sm text-error flex items-center gap-2"
-          >
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {{ downloadError }}
-          </div>
-        </div>
       </div>
     </div>
+
+    <!-- Toast Notification -->
+    <Transition name="toast">
+      <div v-if="toast.show" class="fixed bottom-6 right-6 z-[100] max-w-sm">
+        <div
+          class="rounded-lg p-4 shadow-lg border flex items-center gap-3"
+          :class="toast.type === 'success' ? 'bg-success-subtle border-success/30 text-success' : 'bg-error-subtle border-error/30 text-error'"
+        >
+          <svg v-if="toast.type === 'success'" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <svg v-else class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-sm">{{ toast.message }}</span>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
+
+<style scoped>
+.toast-enter-active,
+.toast-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+</style>

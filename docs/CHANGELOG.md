@@ -16,6 +16,8 @@
 ### Fixed
 
 - [Fixed]: [2026-06-17] Model download progress — fixed race condition in `api-server.js` where both a `data` event listener and `pipe()` were attached to the same fetch response body stream, causing data loss and stalled progress; replaced with a `Transform` stream that tracks progress while piping to the file; combined separate `PROGRESS` and `DOWNLOADED` SSE events into a single `PROGRESS:percentage:bytes` event to prevent the frontend progress bar from resetting to 0% when `DOWNLOADED` events fired
+- [Fixed]: [2026-06-17] Model download broken on Node.js 24 — `fetch()` returns a web `ReadableStream` which has no `.pipe()` method; wrapped `downloadResponse.body` in `Readable.fromWeb()` before piping; replaced all `res.flush()` calls with `safeFlush()` helper (Express 4 has no `res.flush()`)
+- [Fixed]: [2026-06-17] Download error message overlaid GGUF file list — replaced absolute-positioned error/success messages inside the modal with a toast notification in the bottom-right corner
 
 - [Added]: [2026-06-17] HuggingFace model search and download — new "Models" page in the benchmark frontend for browsing and downloading models from HuggingFace; backend API endpoints for searching models (`GET /api/hf/search`), fetching model details (`GET /api/hf/model/:id`), listing model files (`GET /api/hf/model/:id/files`), streaming downloads with progress (`POST /api/hf/download`), managing downloaded models (`GET /api/hf/downloads`, `DELETE /api/hf/download/:modelId`); downloads are saved to `hf_downloads/` directory with real-time progress tracking via SSE
 
