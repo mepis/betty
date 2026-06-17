@@ -4,11 +4,17 @@ import cors from "cors";
 import fs from "fs";
 import { spawn, execSync } from "child_process";
 import { Transform, Readable } from "stream";
-import { join, dirname, basename } from "path";
+import { join, dirname, basename, isAbsolute, resolve } from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Resolve relative config paths to absolute (relative to benchmark dir)
+function resolveConfigPath(p) {
+  if (!p) return "";
+  return isAbsolute(p) ? p : resolve(__dirname, p);
+}
 
 const app = express();
 
@@ -44,6 +50,7 @@ function ensureDirectory(dir, label) {
 ensureDirectory(REPORTS_DIR, "reports");
 ensureDirectory(PROFILES_DIR, "profiles");
 ensureDirectory(HF_DOWNLOAD_DIR, "hf_downloads");
+ensureDirectory(join(BENCHMARK_DIR, "llama_cache"), "llama_cache");
 
 // Default config template
 const DEFAULT_CONFIGS = {
@@ -61,7 +68,7 @@ const DEFAULT_CONFIGS = {
   llama_host: "localhost",
   model: "",
   model_directory: "hf_downloads",
-  llama_cache: "",
+  llama_cache: "llama_cache",
   gpu_selection: {
     enabled: true,
     gpus: [0],
@@ -111,6 +118,8 @@ const DEFAULT_CONFIGS = {
     cuda_max_scheduled_copies: 14,
     enable_cuda_compression_level: false,
     cuda_compression_level: 0,
+    enable_ggml_cuda_force_mmq: false,
+    enable_ggml_native: false,
   },
   cuda_configs: {
     cuda_version: "12.6",
@@ -869,6 +878,8 @@ function getBuildCommand(configs, testRunConfig) {
   if (bp.enable_cuda_fp16) flags.push(`-DGGML_CUDA_FP16=${bp.cuda_fp16}`);
   if (bp.enable_cuda_scheduled_max_copies) flags.push(`-DGGML_SCHED_MAX_COPIES=${bp.cuda_max_scheduled_copies}`);
   if (bp.enable_cuda_compression_level) flags.push(`-DGGML_CUDA_COMPRESSION_LEVEL=${bp.cuda_compression_level}`);
+  if (bp.enable_ggml_cuda_force_mmq) flags.push("-DGGML_CUDA_FORCE_MMQ=on");
+  if (bp.enable_ggml_native) flags.push("-DGGML_NATIVE=on");
 
   const cmakeCmd = `cmake -B build -DCMAKE_BUILD_TYPE=Release ${flags.join(" ")}`;
   const makeCmd = `cmake --build build --config Release -j ${buildCores} --clean-first`;
@@ -879,7 +890,7 @@ function getBuildCommand(configs, testRunConfig) {
   const envLines = [
     `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=${ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1"}`,
     `export CUDA_SCALE_LAUNCH_QUEUES=${ec.CUDA_SCALE_LAUNCH_QUEUES || "4x"}`,
-    `export LLAMA_CACHE=${ec.LLAMA_CACHE || configs.llama_cache || ""}`,
+    `export LLAMA_CACHE=${resolveConfigPath(ec.LLAMA_CACHE || configs.llama_cache || "")}`,
     `export CUDACXX=${configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
     `export GGML_CUDA_P2P=${ec.GGML_CUDA_P2P || "on"}`,
     `export PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
@@ -921,7 +932,7 @@ function getLaunchCommand(configs, testRunConfig) {
     : "0";
   const primaryGpu = gs.enabled ? gs.gpus[0] : 0;
 
-  const modelPath = server.model || `${configs.model_directory}/${configs.model}`;
+  const modelPath = server.model || `${resolveConfigPath(configs.model_directory)}/${configs.model}`;
   const port = server.port || configs.llama_port || 11434;
   const host = server.host || configs.llama_host || "localhost";
 
@@ -957,7 +968,7 @@ function getLaunchCommand(configs, testRunConfig) {
   const envLines = [
     `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=${env.GGML_CUDA_ENABLE_UNIFIED_MEMORY || ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1"}`,
     `export CUDA_SCALE_LAUNCH_QUEUES=${env.CUDA_SCALE_LAUNCH_QUEUES || ec.CUDA_SCALE_LAUNCH_QUEUES || "4x"}`,
-    `export LLAMA_CACHE=${env.LLAMA_CACHE || ec.LLAMA_CACHE || configs.llama_cache || ""}`,
+    `export LLAMA_CACHE=${resolveConfigPath(env.LLAMA_CACHE || ec.LLAMA_CACHE || configs.llama_cache || "")}`,
     `export CUDACXX=${env.CUDACXX || configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
     `export GGML_CUDA_P2P=${env.GGML_CUDA_P2P || ec.GGML_CUDA_P2P || "on"}`,
     `export PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
@@ -1025,7 +1036,7 @@ function extractConfigsPerRun(liveResults, configs) {
         topK: mc.top_k,
       },
       serverParameters: {
-        model: `${configs.model_directory || ""}/${configs.model || ""}`,
+        model: `${resolveConfigPath(configs.model_directory)}/${configs.model || ""}`,
         host: configs.llama_host || "localhost",
         port: configs.llama_port || 11434,
         flashAttn: sp.flash_attn?.enabled ? sp.flash_attn.value : null,
@@ -1044,7 +1055,7 @@ function extractConfigsPerRun(liveResults, configs) {
       environment: {
         GGML_CUDA_ENABLE_UNIFIED_MEMORY: configs.export_configs?.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
         CUDA_SCALE_LAUNCH_QUEUES: configs.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
-        LLAMA_CACHE: configs.export_configs?.LLAMA_CACHE || configs.llama_cache || "",
+        LLAMA_CACHE: resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache || ""),
         GGML_CUDA_P2P: configs.export_configs?.GGML_CUDA_P2P || "on",
         LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT || "on",
         LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET || "256",
@@ -1175,7 +1186,8 @@ app.get("/api/models", (_req, res) => {
     if (!dir) {
       return res.status(400).json({ success: false, error: "directory query param required" });
     }
-    const files = findModelFiles(dir);
+    const resolvedDir = resolveConfigPath(dir);
+    const files = findModelFiles(resolvedDir);
     res.json({ success: true, data: files });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -1775,7 +1787,7 @@ app.post("/api/build", async (req, res) => {
         ...process.env,
         GGML_CUDA_ENABLE_UNIFIED_MEMORY: configs.export_configs?.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
         CUDA_SCALE_LAUNCH_QUEUES: configs.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
-        LLAMA_CACHE: configs.export_configs?.LLAMA_CACHE || configs.llama_cache || "",
+        LLAMA_CACHE: resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache || ""),
         GGML_CUDA_P2P: configs.export_configs?.GGML_CUDA_P2P || "on",
         LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT || "on",
         LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET || "256",

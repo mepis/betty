@@ -3,7 +3,7 @@ import axios from "axios";
 import fs from "fs";
 import { spawn, exec } from "child_process";
 import { fileURLToPath } from "url";
-import { dirname, join } from "path";
+import { dirname, join, isAbsolute, resolve } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,6 +11,17 @@ const __dirname = dirname(__filename);
 const configs = JSON.parse(
   fs.readFileSync(join(__dirname, "configs.json"), "utf8"),
 );
+
+// Resolve relative config paths to absolute paths (relative to benchmark dir)
+function resolveConfigPath(p) {
+  if (!p) return "";
+  return isAbsolute(p) ? p : resolve(__dirname, p);
+}
+
+// Pre-resolve paths used by llama-server
+const MODEL_DIR = resolveConfigPath(configs.model_directory);
+const LLAMA_CACHE = resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache);
+
 const llamaUrl = `http://${configs.llama_host}:${configs.llama_port}`;
 
 //--- CLI arguments ---
@@ -157,7 +168,7 @@ async function main() {
 
   console.log("=== llama.cpp Benchmark Starting ===");
   console.log(`Server URL: ${llamaUrl}`);
-  console.log(`Model: ${configs.model_directory}/${configs.model}`);
+  console.log(`Model: ${MODEL_DIR}/${configs.model}`);
   console.log(`Results file: ${resultsFile}`);
 
   // Wipe the report file on startup
@@ -459,7 +470,7 @@ function buildEnv() {
     ...process.env,
     GGML_CUDA_ENABLE_UNIFIED_MEMORY: ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
     CUDA_SCALE_LAUNCH_QUEUES: ec.CUDA_SCALE_LAUNCH_QUEUES || "4x",
-    LLAMA_CACHE: ec.LLAMA_CACHE || configs.llama_cache || "",
+    LLAMA_CACHE: LLAMA_CACHE,
     CUDACXX: configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc",
     GGML_CUDA_P2P: ec.GGML_CUDA_P2P || "on",
     PATH: `/usr/local/cuda-${configs.cuda_configs?.cuda_version || "12.6"}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
@@ -530,6 +541,12 @@ function getBuildScript() {
   if (buildParams.enable_cuda_compression_level) {
     flags.push(`-DGGML_CUDA_COMPRESSION_LEVEL=${cudaCompression}`);
   }
+  if (buildParams.enable_ggml_cuda_force_mmq) {
+    flags.push(`-DGGML_CUDA_FORCE_MMQ=on`);
+  }
+  if (buildParams.enable_ggml_native) {
+    flags.push(`-DGGML_NATIVE=on`);
+  }
 
   return {
     command: `cmake -B build -DCMAKE_BUILD_TYPE=Release ${flags.join(" ")}`,
@@ -542,7 +559,7 @@ function getRunScript() {
   const sp = configs.server_params;
   const sps = configs.split_params;
   const parts = [
-    `./llama-server -m ${configs.model_directory}/${configs.model} `,
+    `./llama-server -m ${MODEL_DIR}/${configs.model} `,
     `--port ${configs.llama_port} --host ${configs.llama_host} `,
     `-c ${contextLength} -ngl ${gpuLayerOffload} `,
     `--temp ${configs.model_configs.temp} `,
@@ -912,7 +929,7 @@ function getServerParamsSnapshot() {
   const sp = configs.server_params;
   const sps = configs.split_params;
   return {
-    model: `${configs.model_directory}/${configs.model}`,
+    model: `${MODEL_DIR}/${configs.model}`,
     host: configs.llama_host,
     port: configs.llama_port,
     contextLength,
@@ -971,6 +988,8 @@ function getCmakeFlagsSnapshot() {
     flags.GGML_SCHED_MAX_COPIES = schedMaxCopies;
   if (bp.enable_cuda_compression_level)
     flags.GGML_CUDA_COMPRESSION_LEVEL = cudaCompression;
+  if (bp.enable_ggml_cuda_force_mmq) flags.GGML_CUDA_FORCE_MMQ = "on";
+  if (bp.enable_ggml_native) flags.GGML_NATIVE = "on";
   return flags;
 }
 
@@ -1171,7 +1190,7 @@ async function runTestRun() {
 function writeResultsToMarkdown() {
   let md = "# llama.cpp Benchmark Results\n\n";
   md += `Generated: ${new Date().toISOString()}\n\n`;
-  md += `Model: ${configs.model_directory}/${configs.model}\n\n`;
+  md += `Model: ${MODEL_DIR}/${configs.model}\n\n`;
   md += `---\n\n`;
 
   // Table 1: Per-message results

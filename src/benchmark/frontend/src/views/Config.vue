@@ -157,7 +157,7 @@ function flattenBuildParams(configs) {
   const flat = {}
   for (const [key, val] of Object.entries(params)) {
     if (typeof val === 'object' && val !== null && 'enabled' in val) {
-      flat[key] = val.value
+      flat[key] = val.enabled ? (val.value || true) : false
     } else {
       flat[key] = val
     }
@@ -168,7 +168,7 @@ function flattenBuildParams(configs) {
   const cudaFlat = {}
   for (const [key, val] of Object.entries(cuda)) {
     if (typeof val === 'object' && val !== null && 'enabled' in val) {
-      cudaFlat[key] = val.value
+      cudaFlat[key] = val.enabled ? (val.value || true) : false
     } else {
       cudaFlat[key] = val
     }
@@ -283,6 +283,20 @@ function toggleBuildParam(key) {
   }
   visualConfigs.value.build_make_params[key].enabled =
     !visualConfigs.value.build_make_params[key].enabled
+
+  // Mutual exclusion: GGML Native vs Custom CUDA Architecture
+  if (key === 'enable_ggml_native' && visualConfigs.value.build_make_params[key].enabled) {
+    if (!visualConfigs.value.build_make_params.enable_cuda_custom_arch) {
+      visualConfigs.value.build_make_params.enable_cuda_custom_arch = { enabled: false, value: '' }
+    }
+    visualConfigs.value.build_make_params.enable_cuda_custom_arch.enabled = false
+  }
+  if (key === 'enable_cuda_custom_arch' && visualConfigs.value.build_make_params[key].enabled) {
+    if (!visualConfigs.value.build_make_params.enable_ggml_native) {
+      visualConfigs.value.build_make_params.enable_ggml_native = { enabled: false, value: '' }
+    }
+    visualConfigs.value.build_make_params.enable_ggml_native.enabled = false
+  }
 }
 
 function updateBuildParamValue(key, type, value) {
@@ -348,7 +362,7 @@ function normalizeBuildParams(configs) {
   const normalized = {}
   for (const [key, val] of Object.entries(params)) {
     if (typeof val === 'boolean') {
-      normalized[key] = { enabled: val, value: val }
+      normalized[key] = { enabled: val, value: val ? '1' : '' }
     } else {
       normalized[key] = { enabled: true, value: val }
     }
@@ -624,6 +638,8 @@ function normalizeBuildParams(configs) {
                 { key: 'enable_cuda_fp16', label: 'Enable FP16', type: 'boolean' },
                 { key: 'enable_cuda_scheduled_max_copies', label: 'Scheduled Max Copies', type: 'boolean' },
                 { key: 'enable_cuda_compression_level', label: 'Compression Level', type: 'boolean' },
+                { key: 'enable_ggml_cuda_force_mmq', label: 'Force MMQ', type: 'boolean' },
+                { key: 'enable_ggml_native', label: 'GGML Native', type: 'boolean' },
               ]"
               :key="param.key"
               class="flex items-center justify-between gap-4"
@@ -740,7 +756,6 @@ function normalizeBuildParams(configs) {
             { key: 'llama_port', label: 'Llama Port', type: 'number' },
             { key: 'llama_host', label: 'Llama Host', type: 'text' },
             { key: 'model', label: 'Model (auto-populated from model_directory)', type: 'select' },
-            { key: 'llama_cache', label: 'Llama Cache', type: 'text' },
             { key: 'build_cores', label: 'Build Cores', type: 'number' },
             { key: 'skip_build', label: 'Skip Build', type: 'boolean' },
           ]"
@@ -754,7 +769,6 @@ function normalizeBuildParams(configs) {
           :items="[
             { key: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', label: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', type: 'text' },
             { key: 'CUDA_SCALE_LAUNCH_QUEUES', label: 'CUDA_SCALE_LAUNCH_QUEUES', type: 'text' },
-            { key: 'LLAMA_CACHE', label: 'LLAMA_CACHE', type: 'text' },
             { key: 'GGML_CUDA_P2P', label: 'GGML_CUDA_P2P', type: 'text' },
             { key: 'LLAMA_ARG_FIT', label: 'LLAMA_ARG_FIT', type: 'text' },
             { key: 'LLAMA_ARG_FIT_TARGET', label: 'LLAMA_ARG_FIT_TARGET', type: 'text' },

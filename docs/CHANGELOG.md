@@ -13,6 +13,9 @@
 
 ### Added
 
+- [Added]: [2026-06-17] Path resolution for benchmark config — added `resolveConfigPath()` helper in `api-server.js` and `index.js` to resolve relative model and cache paths to absolute paths (relative to benchmark directory); `model_directory` and `llama_cache` now use relative paths (`hf_downloads`, `llama_cache`) in `configs.json` instead of hardcoded absolute paths; resolved paths applied in build commands, server launch, environment variables, report extraction, and model listing
+- [Added]: [2026-06-17] Dashboard details modal — replaced inline collapsible message panels with a centered modal (Teleport + Transition) for viewing test run messages; results table now has a Details button per row; messages display in a scrollable modal with prompt/response sections
+- [Added]: [2026-06-17] New CUDA build options — added `enable_ggml_cuda_force_mmq` (Force MMQ, `-DGGML_CUDA_FORCE_MMQ=on`) and `enable_ggml_native` (GGML Native, `-DGGML_NATIVE=on`) toggles to the Config page; `enable_ggml_native` and `enable_cuda_custom_arch` are mutually exclusive in the UI; defaults added to `configs.json`, `api-server.js`, and `index.js`
 - [Added]: [2026-06-17] Simplified installation system — new `install.sh` with menu-driven options (APT packages, CUDA 13.2, systemd user service); `scripts/init-apt.sh` for build tools and libraries, `scripts/init-cuda.sh` for CUDA 13.2 on Ubuntu 24.04, `scripts/install-service.sh` for systemd user service setup; `src/benchmark/.env.example` for benchmark API server configuration
 
 ### Changed

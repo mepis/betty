@@ -18,23 +18,9 @@ const serviceSuccess = ref('')
 const pollingTimer = ref(null)
 const systemMemoryTimer = ref(null)
 
-// Collapsible message panels: Set of "runIdx-msgIdx" keys that are expanded
-const expandedMessages = ref(new Set())
-
-function toggleMessage(runIdx, msgIdx) {
-  const key = `${runIdx}-${msgIdx}`
-  const next = new Set(expandedMessages.value)
-  if (next.has(key)) {
-    next.delete(key)
-  } else {
-    next.add(key)
-  }
-  expandedMessages.value = next
-}
-
-function isMessageExpanded(runIdx, msgIdx) {
-  return expandedMessages.value.has(`${runIdx}-${msgIdx}`)
-}
+// Details modal
+const showModal = ref(false)
+const selectedTestRunId = ref(null)
 
 // Auto-scroll logs
 watch(
@@ -174,6 +160,24 @@ function statusColor(status) {
     case 'stopped': return 'text-text-secondary'
     default: return 'text-text-muted'
   }
+}
+
+function openDetailsModal(testRunId) {
+  selectedTestRunId.value = testRunId
+  showModal.value = true
+}
+
+function closeDetailsModal() {
+  showModal.value = false
+  selectedTestRunId.value = null
+}
+
+function selectedTestRunMessages() {
+  if (selectedTestRunId.value == null) return []
+  const entry = store.benchmarkMessages.find(
+    (tr) => tr.testRunId === selectedTestRunId.value,
+  )
+  return entry ? entry.messages : []
 }
 
 function statusBg(status) {
@@ -377,10 +381,8 @@ function statusBg(status) {
       </div>
     </div>
 
-    <!-- Live Results & Messages Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <!-- Left Column: Live Results + Logs -->
-      <div class="space-y-6">
+    <!-- Live Results & Logs -->
+    <div class="space-y-6">
         <!-- Results Table -->
         <div class="card">
           <div class="flex items-center justify-between mb-4">
@@ -397,6 +399,7 @@ function statusBg(status) {
                   <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Total Tokens</th>
                   <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Total Time</th>
                   <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Mem (GB)</th>
+                  <th class="text-right py-2.5 px-3 text-xs font-medium text-text-muted uppercase tracking-wider"></th>
                 </tr>
               </thead>
               <tbody>
@@ -414,9 +417,22 @@ function statusBg(status) {
                   </td>
                   <td class="py-2.5 px-3 text-right font-mono text-xs text-text-secondary">{{ formatTime(result.totalTimeMs) }}</td>
                   <td class="py-2.5 px-3 text-right font-mono text-xs text-text-muted">{{ result.avgMemUsed != null ? `${result.avgMemUsed.toFixed(1)} / ${result.avgMemTotal?.toFixed(0) ?? '?'}` : '—' }}</td>
+                  <td class="py-2.5 px-3 text-right">
+                    <button
+                      @click="openDetailsModal(result.testRunId)"
+                      class="btn btn-ghost btn-xs inline-flex items-center gap-1"
+                      title="View test messages"
+                    >
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      Details
+                    </button>
+                  </td>
                 </tr>
                 <tr v-if="store.liveResults.length === 0">
-                  <td colspan="6" class="py-12 text-center text-text-muted text-sm">
+                  <td colspan="7" class="py-12 text-center text-text-muted text-sm">
                     <svg class="w-8 h-8 mx-auto mb-2 text-text-muted/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
@@ -492,90 +508,87 @@ function statusBg(status) {
         </div>
       </div>
 
-      <!-- Right Column: Test Messages & LLM Responses -->
-      <div class="card">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">Test Messages &amp; LLM Responses</h2>
-          <span class="text-xs text-text-muted">{{ store.benchmarkMessages.length }} test runs</span>
-        </div>
-        <div class="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+    <!-- Details Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center">
+          <!-- Backdrop -->
           <div
-            v-for="(testRun, runIdx) in store.benchmarkMessages"
-            :key="testRun.testRunId"
-            class="relative"
-          >
-            <!-- Test Run Separator -->
-            <div class="flex items-center gap-3 mb-3">
-              <div class="flex-1 h-px bg-border" />
-              <span class="text-xs font-semibold text-text-secondary uppercase tracking-wider bg-bg-primary px-2 py-0.5 rounded">
-                Test Run #{{ testRun.testRunId }}
-              </span>
-              <div class="flex-1 h-px bg-border" />
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            @click="closeDetailsModal"
+          />
+
+          <!-- Modal -->
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-4xl max-h-[85vh] mx-4 flex flex-col">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
+              <div>
+                <h3 class="text-lg font-semibold text-text-primary">
+                  Test Run #{{ selectedTestRunId }} — Messages
+                </h3>
+                <p class="text-xs text-text-muted mt-0.5">{{ selectedTestRunMessages().length }} message{{ selectedTestRunMessages().length !== 1 ? 's' : '' }}</p>
+              </div>
+              <button
+                @click="closeDetailsModal"
+                class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
 
-            <!-- Messages for this test run -->
-            <div class="space-y-3">
-              <div
-                v-for="(msg, msgIdx) in testRun.messages"
-                :key="msg.messageIndex"
-                class="rounded-lg border border-border/50 overflow-hidden"
-              >
-                <!-- Message Header (clickable to toggle) -->
-                <div
-                  @click="toggleMessage(runIdx, msgIdx)"
-                  class="flex items-center gap-2 px-3 py-2 bg-bg-tertiary/50 border-b border-border/50 cursor-pointer hover:bg-bg-tertiary/80 transition-colors"
-                >
-                  <svg
-                    class="w-3.5 h-3.5 text-text-muted transition-transform flex-shrink-0"
-                    :class="isMessageExpanded(runIdx, msgIdx) ? '' : '-rotate-90'"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span class="badge bg-bg-secondary text-text-muted text-xs">Msg {{ msg.messageIndex }}</span>
-                  <span class="text-xs text-text-muted">{{ msg.promptTokens }} prompt tokens · {{ msg.generatedTokens }} generated · {{ formatTime(msg.totalTimeMs) }}</span>
-                </div>
+            <!-- Content -->
+            <div class="overflow-auto flex-1 p-6">
+              <div v-if="selectedTestRunMessages().length === 0" class="flex flex-col items-center justify-center py-12 text-text-muted">
+                <svg class="w-10 h-10 mb-3 text-text-muted/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                </svg>
+                <span class="text-sm">No messages available for this test run yet.</span>
+              </div>
 
-                <!-- Collapsible Content -->
-                <div v-show="isMessageExpanded(runIdx, msgIdx)" class="overflow-hidden transition-all duration-200">
-                  <!-- Prompt (User Message) -->
-                  <div class="px-3 py-2">
-                    <div class="flex items-center gap-1.5 mb-1">
-                      <svg class="w-3 h-3 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <div v-else class="space-y-4">
+                <div
+                  v-for="(msg, msgIdx) in selectedTestRunMessages()"
+                  :key="msg.messageIndex"
+                  class="rounded-lg border border-border/50 overflow-hidden"
+                >
+                  <!-- Message Header -->
+                  <div class="flex items-center gap-2 px-4 py-3 bg-bg-tertiary/50 border-b border-border/50">
+                    <span class="badge bg-bg-secondary text-text-muted text-xs">Msg {{ msg.messageIndex }}</span>
+                    <span class="text-xs text-text-muted">{{ msg.promptTokens }} prompt tokens · {{ msg.generatedTokens }} generated · {{ formatTime(msg.totalTimeMs) }}</span>
+                  </div>
+
+                  <!-- Prompt -->
+                  <div class="px-4 py-3">
+                    <div class="flex items-center gap-1.5 mb-2">
+                      <svg class="w-3.5 h-3.5 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                       </svg>
-                      <span class="text-xs font-medium text-info">Prompt</span>
+                      <span class="text-xs font-semibold text-info uppercase tracking-wider">Prompt</span>
                     </div>
-                    <div class="text-xs text-text-secondary pl-5 leading-relaxed break-words">{{ msg.prompt }}</div>
+                    <div class="text-sm text-text-secondary leading-relaxed break-words bg-bg-primary rounded-lg p-3">{{ msg.prompt }}</div>
                   </div>
 
                   <!-- Divider -->
-                  <div class="mx-3 h-px bg-border/50" />
+                  <div class="mx-4 h-px bg-border/50" />
 
                   <!-- LLM Response -->
-                  <div class="px-3 py-2">
-                    <div class="flex items-center gap-1.5 mb-1">
-                      <svg class="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <div class="px-4 py-3">
+                    <div class="flex items-center gap-1.5 mb-2">
+                      <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
-                      <span class="text-xs font-medium text-accent">LLM Response</span>
+                      <span class="text-xs font-semibold text-accent uppercase tracking-wider">LLM Response</span>
                     </div>
-                    <div class="text-xs text-text-secondary pl-5 leading-relaxed break-words whitespace-pre-wrap">{{ msg.response }}</div>
+                    <div class="text-sm text-text-secondary leading-relaxed break-words whitespace-pre-wrap bg-bg-primary rounded-lg p-3">{{ msg.response }}</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Empty state -->
-          <div v-if="store.benchmarkMessages.length === 0" class="flex flex-col items-center justify-center py-12 text-text-muted">
-            <svg class="w-10 h-10 mb-3 text-text-muted/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-            </svg>
-            <span class="text-sm">No messages yet. Start a benchmark to see test prompts and LLM responses.</span>
-          </div>
         </div>
-      </div>
-    </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
