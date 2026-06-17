@@ -1376,6 +1376,307 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });
 });
 
+//--- HuggingFace Model Search & Download ---
+const HF_DOWNLOAD_DIR = join(BENCHMARK_DIR, "hf_downloads");
+if (!fs.existsSync(HF_DOWNLOAD_DIR)) {
+  fs.mkdirSync(HF_DOWNLOAD_DIR, { recursive: true });
+}
+
+// Track active HF downloads
+let hfDownloads = new Map(); // modelId -> { status, progress, total, downloaded, error }
+
+// Search HuggingFace models (uses the free Inference API, no auth needed)
+app.get("/api/hf/search", async (req, res) => {
+  try {
+    const { q, limit = 20, sort = "downloads", direction = -1, filter } = req.query;
+
+    if (!q || !q.trim()) {
+      return res.json({ success: true, data: [] });
+    }
+
+    let searchUrl = `https://huggingface.co/api/models?search=${encodeURIComponent(q.trim())}&limit=${limit}&sort=${sort}&direction=${direction}`;
+    if (filter) {
+      searchUrl += `&filter=${encodeURIComponent(filter)}`;
+    }
+
+    const response = await fetch(searchUrl, {
+      headers: {
+        "User-Agent": "betty-benchmark/1.0",
+      },
+    });
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        success: false,
+        error: `HuggingFace API error: ${response.status} ${response.statusText}`,
+      });
+    }
+
+    const models = await response.json();
+    res.json({ success: true, data: models });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Get model details (tags, pipeline_tag, etc.)
+app.get("/api/hf/model/:id", async (req, res) => {
+  try {
+    const modelId = req.params.id;
+    const response = await fetch(`https://huggingface.co/api/models/${modelId}`, {
+      headers: { "User-Agent": "betty-benchmark/1.0" },
+    });
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        success: false,
+        error: `HuggingFace API error: ${response.status}`,
+      });
+    }
+
+    const model = await response.json();
+    res.json({ success: true, data: model });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// List available files for a model
+app.get("/api/hf/model/:id/files", async (req, res) => {
+  try {
+    const modelId = req.params.id;
+    const response = await fetch(`https://huggingface.co/api/models/${modelId}/tree/main`, {
+      headers: { "User-Agent": "betty-benchmark/1.0" },
+    });
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        success: false,
+        error: `HuggingFace API error: ${response.status}`,
+      });
+    }
+
+    const files = await response.json();
+    res.json({ success: true, data: files });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Download a model file from HuggingFace with progress streaming
+app.post("/api/hf/download", async (req, res) => {
+  try {
+    const { modelId, filename, targetDir } = req.body;
+
+    if (!modelId) {
+      return res.status(400).json({ success: false, error: "modelId is required" });
+    }
+
+    // Set up SSE response for progress updates
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    const downloadDir = targetDir || HF_DOWNLOAD_DIR;
+    if (!fs.existsSync(downloadDir)) {
+      fs.mkdirSync(downloadDir, { recursive: true });
+    }
+
+    // Determine the file path
+    const safeModelId = modelId.replace(/[\/]/g, "_");
+    const modelSubDir = join(downloadDir, safeModelId);
+    if (!fs.existsSync(modelSubDir)) {
+      fs.mkdirSync(modelSubDir, { recursive: true });
+    }
+
+    // If no specific file, default to the first .gguf file found
+    let downloadUrl;
+    if (filename) {
+      downloadUrl = `https://huggingface.co/${modelId}/resolve/main/${filename}`;
+    } else {
+      // Find the first .gguf file
+      const filesResponse = await fetch(`https://huggingface.co/api/models/${modelId}/tree/main`, {
+        headers: { "User-Agent": "betty-benchmark/1.0" },
+      });
+      if (filesResponse.ok) {
+        const files = await filesResponse.json();
+        const ggufFile = files.find(f => f.path && f.path.endsWith('.gguf'));
+        if (ggufFile) {
+          filename = ggufFile.path;
+          downloadUrl = `https://huggingface.co/${modelId}/resolve/main/${filename}`;
+        } else {
+          // Fall back to first file that looks like a model
+          const firstFile = files.find(f => f.path && !f.path.endsWith('/'));
+          if (firstFile) {
+            filename = firstFile.path;
+            downloadUrl = `https://huggingface.co/${modelId}/resolve/main/${filename}`;
+          }
+        }
+      }
+    }
+
+    if (!downloadUrl) {
+      return res.status(400).json({ success: false, error: "Could not determine file to download" });
+    }
+
+    const filePath = join(modelSubDir, filename.split("/").pop());
+
+    // Check if file already exists
+    if (fs.existsSync(filePath)) {
+      const stat = fs.statSync(filePath);
+      res.write(`event: hf-download\ndata: PROGRESS:100\n\n`);
+      res.write(`event: hf-download\ndata: STATUS:Download complete\n\n`);
+      res.write(`event: hf-download\ndata: FILE:${filePath}\n\n`);
+      res.flush();
+      res.end();
+      return;
+    }
+
+    // Stream the download
+    const downloadResponse = await fetch(downloadUrl, {
+      headers: { "User-Agent": "betty-benchmark/1.0" },
+    });
+
+    if (!downloadResponse.ok) {
+      res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
+      res.write(`event: hf-download\ndata: ERROR: HTTP ${downloadResponse.status}\n\n`);
+      res.flush();
+      res.end();
+      return;
+    }
+
+    const total = downloadResponse.headers.get("content-length");
+    const totalSize = total ? parseInt(total, 10) : 0;
+    let downloaded = 0;
+    const fileStream = fs.createWriteStream(filePath);
+
+    // Track download in memory
+    hfDownloads.set(modelId, {
+      status: "downloading",
+      progress: 0,
+      total: totalSize,
+      downloaded: 0,
+      filename: filename,
+      filePath: filePath,
+    });
+
+    downloadResponse.body.on("data", (chunk) => {
+      downloaded += chunk.length;
+      const progress = totalSize > 0 ? Math.round((downloaded / totalSize) * 100) : Math.min(99, Math.round((downloaded / (1024 * 1024 * 100)) * 100));
+
+      hfDownloads.set(modelId, {
+        status: "downloading",
+        progress,
+        total: totalSize,
+        downloaded,
+        filename,
+        filePath,
+      });
+
+      res.write(`event: hf-download\ndata: PROGRESS:${progress}\n\n`);
+      res.write(`event: hf-download\ndata: DOWNLOADED:${downloaded}\n\n`);
+      res.flush();
+    });
+
+    await new Promise((resolve, reject) => {
+      downloadResponse.body.pipe(fileStream);
+      fileStream.on("finish", () => {
+        fileStream.close(() => {
+          hfDownloads.set(modelId, {
+            status: "complete",
+            progress: 100,
+            total: totalSize,
+            downloaded,
+            filename,
+            filePath,
+          });
+          res.write(`event: hf-download\ndata: PROGRESS:100\n\n`);
+          res.write(`event: hf-download\ndata: STATUS:Download complete\n\n`);
+          res.write(`event: hf-download\ndata: FILE:${filePath}\n\n`);
+          res.flush();
+          res.end();
+          resolve();
+        });
+      });
+      fileStream.on("error", (err) => {
+        hfDownloads.set(modelId, {
+          status: "error",
+          progress: 0,
+          total: 0,
+          downloaded: 0,
+          error: err.message,
+        });
+        res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
+        res.write(`event: hf-download\ndata: ERROR: ${err.message}\n\n`);
+        res.flush();
+        res.end();
+        reject(err);
+      });
+    });
+  } catch (err) {
+    try {
+      res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
+      res.write(`event: hf-download\ndata: ERROR: ${err.message}\n\n`);
+      res.flush();
+      res.end();
+    } catch {}
+  }
+});
+
+// Get download progress
+app.get("/api/hf/download/:modelId", (req, res) => {
+  const modelId = req.params.modelId;
+  const download = hfDownloads.get(modelId);
+  if (download) {
+    res.json({ success: true, data: download });
+  } else {
+    res.json({ success: true, data: null });
+  }
+});
+
+// List downloaded HF models
+app.get("/api/hf/downloads", (req, res) => {
+  try {
+    const entries = [];
+    if (fs.existsSync(HF_DOWNLOAD_DIR)) {
+      const dirs = fs.readdirSync(HF_DOWNLOAD_DIR).filter(d => {
+        const dirPath = join(HF_DOWNLOAD_DIR, d);
+        return fs.statSync(dirPath).isDirectory();
+      });
+      for (const dir of dirs) {
+        const files = fs.readdirSync(join(HF_DOWNLOAD_DIR, dir))
+          .filter(f => f.endsWith(".gguf"))
+          .map(f => {
+            const stat = fs.statSync(join(HF_DOWNLOAD_DIR, dir, f));
+            return { name: f, size: stat.size, modified: stat.mtime };
+          });
+        entries.push({ modelId: dir, files });
+      }
+    }
+    res.json({ success: true, data: entries });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Delete a downloaded HF model
+app.delete("/api/hf/download/:modelId", (req, res) => {
+  try {
+    const modelId = req.params.modelId;
+    const modelDir = join(HF_DOWNLOAD_DIR, modelId);
+    if (fs.existsSync(modelDir)) {
+      fs.rmSync(modelDir, { recursive: true });
+      hfDownloads.delete(modelId);
+      res.json({ success: true, message: `Deleted ${modelId}` });
+    } else {
+      res.status(404).json({ success: false, error: "Model not found" });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Build llama.cpp endpoint ---
 app.post("/api/build", async (req, res) => {
   if (buildStatus !== "idle") {

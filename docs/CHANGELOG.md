@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-17] HuggingFace model search and download — new "Models" page in the benchmark frontend for browsing and downloading models from HuggingFace; backend API endpoints for searching models (`GET /api/hf/search`), fetching model details (`GET /api/hf/model/:id`), listing model files (`GET /api/hf/model/:id/files`), streaming downloads with progress (`POST /api/hf/download`), managing downloaded models (`GET /api/hf/downloads`, `DELETE /api/hf/download/:modelId`); downloads are saved to `hf_downloads/` directory with real-time progress tracking via SSE
+
 ### Removed
 
 - [Removed]: [2026-06-17] Betty web frontend — deleted entire Vue.js SPA (`src/frontend/`) including 45 files: App.vue, 13 Vue components (Sidebar, ChatView, ChatMessage, MessageInput, CommandPalette, CloneModal, ToastContainer, Tooltip, FolderPicker, LoginPage, RegisterPage, UsersPage), 9 composables (useWebSocket, useChatWebSocket, useChatState, useStreaming, useAutoScroll, useVirtualList, useMessageStore, useToast), Pinia auth store, message renderers, types, utils, CSS variables, and Vite config

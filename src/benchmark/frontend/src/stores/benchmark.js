@@ -35,6 +35,12 @@ export const useBenchmarkStore = defineStore('benchmark', {
       availableGB: 0,
       percentUsed: 0,
     },
+    // HuggingFace
+    hfSearchResults: [],
+    hfModelDetails: null,
+    hfModelFiles: [],
+    hfDownloads: [],
+    hfError: null,
   }),
 
   getters: {
@@ -427,38 +433,53 @@ export const useBenchmarkStore = defineStore('benchmark', {
         const reader = response.body.getReader()
         const decoder = new TextDecoder()
 
+        let buffer = ''
+
         while (true) {
           const { done, value } = await reader.read()
           if (done) break
 
-          const chunk = decoder.decode(value, { stream: true })
-          const lines = chunk.split('\n')
+          buffer += decoder.decode(value, { stream: true })
 
-          for (const line of lines) {
-            if (line.startsWith('event: build-log\ndata: ')) {
-              const data = line.slice('event: build-log\ndata: '.length)
+          // Parse SSE format: events separated by blank lines
+          const parts = buffer.split('\n\n')
+          buffer = parts.pop() || ''
 
-              if (data.startsWith('PROGRESS:')) {
-                this.buildProgress = parseInt(data.slice('PROGRESS:'.length), 10)
-              } else if (data.startsWith('STATUS:')) {
-                const status = data.slice('STATUS:'.length)
+          for (const eventBlock of parts) {
+            const eventLines = eventBlock.split('\n')
+            let currentEvent = ''
+            let currentData = ''
+
+            for (const line of eventLines) {
+              if (line.startsWith('event: ')) {
+                currentEvent = line.slice('event: '.length)
+              } else if (line.startsWith('data: ')) {
+                currentData = line.slice('data: '.length)
+              }
+            }
+
+            if (currentEvent === 'build-log' && currentData) {
+              if (currentData.startsWith('PROGRESS:')) {
+                this.buildProgress = parseInt(currentData.slice('PROGRESS:'.length), 10)
+              } else if (currentData.startsWith('STATUS:')) {
+                const status = currentData.slice('STATUS:'.length)
                 if (status === 'Build complete!') {
                   this.buildStatus = 'success'
                   this.buildProgress = 100
                 } else if (status === 'Build failed') {
                   this.buildStatus = 'error'
                 }
-              } else if (data.startsWith('ERROR: ')) {
+              } else if (currentData.startsWith('ERROR: ')) {
                 this.buildStatus = 'error'
                 this.buildLogs.push({
                   type: 'error',
-                  text: data,
+                  text: currentData,
                   timestamp: Date.now(),
                 })
-              } else if (data) {
+              } else if (currentData) {
                 this.buildLogs.push({
                   type: 'log',
-                  text: data,
+                  text: currentData,
                   timestamp: Date.now(),
                 })
               }
@@ -531,6 +552,152 @@ export const useBenchmarkStore = defineStore('benchmark', {
         }
       } catch (e) {
         // Silently fail - not critical for dashboard
+      }
+    },
+
+    //--- HuggingFace actions ---
+    async searchHfModels(query, limit = 20, filter = null) {
+      try {
+        const params = { q: query, limit };
+        if (filter) params.filter = filter;
+        const res = await axios.get(`${API_BASE}/api/hf/search`, {
+          params,
+        })
+        if (res.data.success) {
+          this.hfSearchResults = res.data.data
+          this.hfError = null
+          return true
+        }
+        this.hfError = res.data.error
+        return false
+      } catch (e) {
+        this.hfError = e.message
+        return false
+      }
+    },
+
+    async fetchHfModelDetails(modelId) {
+      try {
+        const res = await axios.get(`${API_BASE}/api/hf/model/${encodeURIComponent(modelId)}`)
+        if (res.data.success) {
+          this.hfModelDetails = res.data.data
+          this.hfError = null
+          return true
+        }
+        this.hfError = res.data.error
+        return false
+      } catch (e) {
+        this.hfError = e.message
+        return false
+      }
+    },
+
+    async fetchHfModelFiles(modelId) {
+      try {
+        const res = await axios.get(`${API_BASE}/api/hf/model/${encodeURIComponent(modelId)}/files`)
+        if (res.data.success) {
+          this.hfModelFiles = res.data.data
+          this.hfError = null
+          return true
+        }
+        this.hfError = res.data.error
+        return false
+      } catch (e) {
+        this.hfError = e.message
+        return false
+      }
+    },
+
+    async downloadHfModel(modelId, filename, onProgress) {
+      try {
+        this.hfError = null
+
+        const response = await fetch(`${API_BASE}/api/hf/download`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ modelId, filename }),
+        })
+
+        const reader = response.body.getReader()
+        const decoder = new TextDecoder()
+
+        let currentEvent = ''
+        let currentData = ''
+        let buffer = ''
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+
+          buffer += decoder.decode(value, { stream: true })
+
+          // Parse SSE format: events are separated by blank lines
+          // Each event has optional 'event: ...' and required 'data: ...' lines
+          const parts = buffer.split('\n\n')
+          buffer = parts.pop() || ''
+
+          for (const eventBlock of parts) {
+            const eventLines = eventBlock.split('\n')
+            currentEvent = ''
+            currentData = ''
+
+            for (const line of eventLines) {
+              if (line.startsWith('event: ')) {
+                currentEvent = line.slice('event: '.length)
+              } else if (line.startsWith('data: ')) {
+                currentData = line.slice('data: '.length)
+              }
+            }
+
+            if (currentEvent === 'hf-download' && currentData) {
+              if (currentData.startsWith('PROGRESS:')) {
+                const progress = parseInt(currentData.slice('PROGRESS:'.length), 10)
+                if (onProgress) onProgress(progress, 0)
+              } else if (currentData.startsWith('DOWNLOADED:')) {
+                const downloaded = parseInt(currentData.slice('DOWNLOADED:'.length), 10)
+                if (onProgress) onProgress(0, downloaded)
+              } else if (currentData.startsWith('STATUS:Download complete')) {
+                this.hfError = null
+              } else if (currentData.startsWith('STATUS:Download failed') || currentData.startsWith('ERROR:')) {
+                this.hfError = currentData.replace('ERROR: ', '')
+              }
+            }
+          }
+        }
+
+        return !this.hfError
+      } catch (e) {
+        this.hfError = e.message
+        return false
+      }
+    },
+
+    async fetchHfDownloads() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/hf/downloads`)
+        if (res.data.success) {
+          this.hfDownloads = res.data.data
+          return true
+        }
+        return false
+      } catch (e) {
+        this.hfError = e.message
+        return false
+      }
+    },
+
+    async deleteHfDownload(modelId) {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/hf/download/${encodeURIComponent(modelId)}`)
+        if (res.data.success) {
+          this.hfDownloads = this.hfDownloads.filter(d => d.modelId !== modelId)
+          return true
+        }
+        this.hfError = res.data.error
+        return false
+      } catch (e) {
+        this.hfError = e.message
+        return false
       }
     },
   },
