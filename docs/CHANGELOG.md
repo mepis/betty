@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-17] Directory initialization in `api-server.js` — refactored inline `fs.existsSync`/`fs.mkdirSync` blocks into a reusable `ensureDirectory(dir, label)` function with startup logging; moved `HF_DOWNLOAD_DIR` declaration to the top-level constants section alongside `REPORTS_DIR` and `PROFILES_DIR`
+- [Changed]: [2026-06-17] Benchmark frontend dist — rebuilt with new asset hashes (`index-BdGeN4g4.js`)
+
 ### Added
 
 - [Added]: [2026-06-17] Simplified installation system — new `install.sh` with menu-driven options (APT packages, CUDA 13.2, systemd user service); `scripts/init-apt.sh` for build tools and libraries, `scripts/init-cuda.sh` for CUDA 13.2 on Ubuntu 24.04, `scripts/install-service.sh` for systemd user service setup; `src/benchmark/.env.example` for benchmark API server configuration

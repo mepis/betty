@@ -28,17 +28,22 @@ const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(BENCHMARK_DIR, "reports");
 const PROFILES_DIR = join(BENCHMARK_DIR, "profiles");
+const HF_DOWNLOAD_DIR = join(BENCHMARK_DIR, "hf_downloads");
 
 // Allowed CORS origins (comma-separated or * for all)
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
 
-// Ensure reports and profiles directories exist
-if (!fs.existsSync(REPORTS_DIR)) {
-  fs.mkdirSync(REPORTS_DIR, { recursive: true });
+// Ensure required directories exist on startup
+function ensureDirectory(dir, label) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+    console.log(`[startup] Created directory: ${dir}`);
+  }
 }
-if (!fs.existsSync(PROFILES_DIR)) {
-  fs.mkdirSync(PROFILES_DIR, { recursive: true });
-}
+
+ensureDirectory(REPORTS_DIR, "reports");
+ensureDirectory(PROFILES_DIR, "profiles");
+ensureDirectory(HF_DOWNLOAD_DIR, "hf_downloads");
 
 // Default config template
 const DEFAULT_CONFIGS = {
@@ -1431,11 +1436,6 @@ app.get("/api/health", (_req, res) => {
 });
 
 //--- HuggingFace Model Search & Download ---
-const HF_DOWNLOAD_DIR = join(BENCHMARK_DIR, "hf_downloads");
-if (!fs.existsSync(HF_DOWNLOAD_DIR)) {
-  fs.mkdirSync(HF_DOWNLOAD_DIR, { recursive: true });
-}
-
 // Track active HF downloads
 let hfDownloads = new Map(); // modelId -> { status, progress, total, downloaded, error }
 
