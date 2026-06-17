@@ -2,7 +2,46 @@
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-17] Betty web frontend — deleted entire Vue.js SPA (`src/frontend/`) including 45 files: App.vue, 13 Vue components (Sidebar, ChatView, ChatMessage, MessageInput, CommandPalette, CloneModal, ToastContainer, Tooltip, FolderPicker, LoginPage, RegisterPage, UsersPage), 9 composables (useWebSocket, useChatWebSocket, useChatState, useStreaming, useAutoScroll, useVirtualList, useMessageStore, useToast), Pinia auth store, message renderers, types, utils, CSS variables, and Vite config
+- [Removed]: [2026-06-17] Betty backend server — deleted entire Express server (`src/backend/`) including 7 files: server.js (1755 lines), auth-middleware.js, auth-utils.js, routes/auth.js, routes/admin.js, session-store.js, user-store.js; removed JWT authentication, bcrypt password hashing, cookie-based sessions, role-based access control, session persistence, and WebSocket server
+- [Removed]: [2026-06-17] Benchmark standalone frontend files — deleted `src/benchmark/public/index.html` (3006 lines vanilla JS dashboard), `src/benchmark/public/css/benchmark.css` (1316 lines), and `src/benchmark/index.html`
+
 ### Changed
+
+- [Changed]: [2026-06-17] Project renamed from "betty-web" to "llama-benchmark" — package.json name and package-lock.json updated
+- [Changed]: [2026-06-17] Dependency tree drastically simplified — removed vue (^3.5.38), vite (^8.0.16), @vitejs/plugin-vue, ws (^8.18.0), jsonwebtoken, bcrypt, cookie-parser, dompurify, highlight.js, marked, playwright; retained only express, axios, cors, dotenv, express-rate-limit
+- [Changed]: [2026-06-17] `.env.example` simplified from 51 lines (server, sessions, auth, API keys for 14 providers) to 9 lines (API_PORT, API_HOST, NET_INTERFACE, CORS_ORIGIN)
+- [Changed]: [2026-06-17] README.md — removed reference to Express serving static frontend; now only describes API endpoint functionality
+- [Changed]: [2026-06-17] `package.json` scripts — replaced `start`/`build`/`dev`/`benchmark` with `build:frontend` (build benchmark frontend) and `start` (update API URL, build frontend, run api-server.js)
+- [Changed]: [2026-06-17] `.gitignore` — removed `src/frontend/dist/` entry as the frontend directory no longer exists
+
+### Fixed
+
+- [Fixed]: [2026-06-17] package-lock.json — regenerated with simplified dependency tree matching new package.json
+
+### Overview
+
+This commit removes the entire Betty web frontend and backend codebase, reducing the project from a full-stack web application (Vue 3 SPA + Express server with JWT auth, sessions, chat) to a focused llama.cpp benchmarking tool. The benchmark infrastructure under `src/benchmark/` (api-server.js, index.js, benchmark frontend, configs, reports) remains intact and fully functional.
+
+### Breaking Changes
+
+- The Betty web chat interface is no longer available; users must access the benchmark tool directly via `npm start`
+- All authentication, session management, and user features have been removed
+- The project name changed from `betty-web` to `llama-benchmark`
+- npm dependencies changed: no longer requires Node.js build tools for Vue/Vite; only express-based server dependencies remain
+- `npm start` now runs the benchmark API server instead of the Betty web server
+
+### Changelog:
+- [Removed]: Betty web frontend (Vue 3 SPA with 45 files: components, composables, pages, stores, utilities)
+- [Removed]: Betty backend server (Express with JWT auth, sessions, user management, 7 files)
+- [Removed]: Benchmark standalone vanilla JS frontend (public/index.html, benchmark.css)
+- [Changed]: Project renamed from "betty-web" to "llama-benchmark"
+- [Changed]: Dependency tree simplified from 14+ packages to 5 core packages
+- [Changed]: `.env.example` reduced from 51 to 9 lines
+- [Changed]: README.md updated to reflect simplified architecture
+- [Fixed]: package-lock.json regenerated for new dependency tree
 
 - [Changed]: [2026-06-16] Frontend architecture — refactored monolithic `App.vue` into well-separated modules:
   - `src/frontend/src/types.js` — JSDoc type definitions (`BaseMessage`, `UserMessage`, `AssistantStreamingMessage`, `AssistantFinalMessage`, `ContentBlock`, `ToolCallState`, `Session`, `ModelInfo`)

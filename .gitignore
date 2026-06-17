@@ -6,7 +6,6 @@ src/benchmark/results.md
 src/benchmark/.playwright-cli/
 src/benchmark/configs.json
 src/benchmark/reports/*
-src/frontend/dist/
 src/benchmark/frontend/dist/
 .agents/
 .playwright-cli/

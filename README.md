@@ -170,7 +170,7 @@ Images are displayed as thumbnails in the chat alongside your message text.
 Browser ←→ WebSocket ←→ Node.js Server ←→ pi (RPC mode)
 ```
 
-- **Express** serves the static frontend and provides workspace API endpoints
+- **Express** provides API endpoints
 - **WebSocket** handles real-time bidirectional communication
 - **pi --mode rpc** runs as a managed subprocess with the selected working directory
 - The JSONL RPC protocol bridges WebSocket messages to the agent
