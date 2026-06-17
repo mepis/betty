@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-17] Benchmark restart after error — `POST /api/run` in `api-server.js` now allows starting a new benchmark when the previous run ended in "error" or "stopped" state (in addition to "idle"), removing the need to manually reset state
+
+### Changed
+
+- [Changed]: [2026-06-17] Benchmark `configs.json` model — changed default model from `gemma-4-E2B_q4_0-it.gguf` to `unsloth_gemma-4-12B-it-qat-GGUF/gemma-4-12B-it-qat-UD-Q4_K_XL.gguf` to use the QAT-quantized Unsloth variant
+
 ### Added
 
 - [Added]: [2026-06-17] Recursive model file discovery — new `findModelFiles()` helper in `api-server.js` that recursively scans model directories for `.gguf`, `.bin`, and `.safetensors` files, enabling model selection from nested HuggingFace download structures

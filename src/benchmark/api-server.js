@@ -432,7 +432,7 @@ function broadcast(event, data) {
 
 //--- Run benchmark endpoint ---
 app.post("/api/run", (req, res) => {
-  if (benchmarkStatus !== "idle") {
+  if (benchmarkStatus !== "idle" && benchmarkStatus !== "error" && benchmarkStatus !== "stopped") {
     return res.status(409).json({
       success: false,
       error: `Benchmark is already ${benchmarkStatus}`,
