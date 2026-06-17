@@ -17,6 +17,7 @@
 | [pi.dev SDK](topics/pi-dev-sdk/) | 2026-06-03 | Complete | pi.dev, SDK, agent-harness, TypeScript, coding-agent, OpenClaw, extensions, RPC, Lit |
 | [Opencode.ai Directory Restriction Mechanisms](topics/opencode-ai-directory-restriction/) | 2026-06-04 | Complete | opencode, agent-harness, security, permissions, sandboxing, directory-restriction, filesystem, anomaly |
 | [Opencode Web UI Chat Message Handling](topics/opencode-web-ui-chat-message-handling/) | 2026-06-12 | Complete | opencode, web-ui, chat, message-handling, SolidJS, streaming, virtualization, agent-harness |
+| [Searching for and Downloading Models from Huggingface for llama.cpp](topics/huggingface-models-llama-cpp/) | 2026-06-17 | Complete | huggingface, gguf, llama.cpp, model-download, quantization, hf_transfer, model-management |
 
 ## Detail
 
@@ -220,3 +221,18 @@ OpenCode's web UI handles chat messages through a 5-layer architecture: SDK type
 - **Context tool grouping** — Consecutive `read`/`glob`/`grep`/`list` calls collapsed into single collapsible
 - **Paced streaming** — ~24ms intervals snapping to word boundaries; auto-scroll with 90-frame grace period
 - **Virtualized rendering** — `virtua/solid` with 16-session row cache; row reuse by equality check
+
+---
+
+## Searching for and Downloading Models from Huggingface for llama.cpp
+
+**Date:** 2026-06-17
+
+This research covers the complete ecosystem for discovering, evaluating, and downloading GGUF-format language models from Hugging Face for use with llama.cpp. Hugging Face hosts over 183,000 GGUF-compatible models as of 2026, making it the largest repository of GGUF files. The research maps three download mechanisms (llama.cpp's `-hf` flag, `huggingface-cli`, `hf_transfer`), the model provider ecosystem (bartowski, unsloth, ggml-org), llama.cpp's model management system (router mode, presets), and third-party discovery tools.
+
+**Key findings:**
+- Three download mechanisms serve different use cases: llama.cpp's `-hf` flag is simplest (one command), `huggingface-cli` offers maximum flexibility (selective files, resume, custom dirs), and `hf_transfer` delivers >1GB/s speeds for large files
+- The GGUF provider ecosystem has consolidated around bartowski (50+ architectures), unsloth (Unsloth-distilled GGUFs), and ggml-org (official collection)
+- llama.cpp's model management system (Dec 2025) brings Ollama-style multi-model capabilities via router mode with INI preset files
+- The March 2026 cache migration to `~/.cache/huggingface/hub/` resolved interoperability issues with other Hugging Face tools
+- Ollama natively supports Hugging Face GGUF URLs since Oct 2024 (`ollama run hf.co/user/model:quant`)
