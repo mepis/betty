@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-16] `sh_scripts/llama/install.sh` — switched active model from `Qwen3.6-35B-A3B-Q8_0` to `Qwen3.6-27B-Q8_0-mtp`
+- [Changed]: [2026-06-16] `sh_scripts/llama/models/Qwen3.6-27B-Q8_0-mtp.sh` — switched model file from `Qwen3.6-27B-Q8_0.gguf` to `Qwen3.6-27B-UD-Q6_K_XL.gguf`, reduced context from 262144 to 131072, reduced parallelism from 2 to 1
+
+### Removed
+
+- [Removed]: [2026-06-16] `sh_scripts/opencode/` — entire opencode directory (install scripts, skills, config, README) removed
+
 ### Added
 
 - [Added]: [2026-06-15] `useWebSocket.removeListener()` — new method to remove a specific event handler by reference, used by terminal composable for proper cleanup
