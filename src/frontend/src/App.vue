@@ -142,6 +142,7 @@ function setupWebSocket() {
       role: 'assistant',
       content: '',
       thinking: '',
+      toolCalls: [],
       isStreaming: true,
       timestamp: new Date().toISOString(),
     });
@@ -231,19 +232,18 @@ function setupWebSocket() {
 
   // ─── Tool Execution Events (real-time tool call display) ───
   on('tool_execution_start', (data) => {
-    const toolMsgId = 'tool-' + data.toolCallId;
-    // Check if this tool message already exists
-    if (!hasMessageById(messages.value, toolMsgId)) {
-      messages.value.push({
-        id: toolMsgId,
-        role: 'toolResult',
-        toolName: data.toolName,
-        content: '',
-        arguments: data.args || {},
-        isError: false,
+    const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+    if (streamMsg) {
+      streamMsg.toolCalls.push({
+        toolCallId: data.toolCallId,
+        name: data.toolName,
+        args: data.args || {},
         status: 'running',
-        timestamp: new Date().toISOString(),
+        result: undefined,
+        details: undefined,
+        isError: false,
       });
+      streamMsg.toolCalls = [...streamMsg.toolCalls]; // trigger reactivity
     }
     pendingToolCalls.value.set(data.toolCallId, {
       name: data.toolName,
@@ -254,11 +254,15 @@ function setupWebSocket() {
   });
 
   on('tool_execution_update', (data) => {
-    const toolMsgId = 'tool-' + data.toolCallId;
-    const toolMsg = messages.value.find(m => m.id === toolMsgId);
-    if (toolMsg && data.partialResult) {
-      toolMsg.content = data.partialResult.content || '';
-      toolMsg.status = 'running';
+    const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+    if (streamMsg) {
+      const tc = streamMsg.toolCalls.find(t => t.toolCallId === data.toolCallId);
+      if (tc && data.partialResult) {
+        tc.result = data.partialResult.content || '';
+        tc.details = data.partialResult.details;
+        tc.status = 'running';
+        streamMsg.toolCalls = [...streamMsg.toolCalls]; // trigger reactivity
+      }
     }
     if (pendingToolCalls.value.has(data.toolCallId)) {
       pendingToolCalls.value.get(data.toolCallId).result = data.partialResult;
@@ -266,13 +270,16 @@ function setupWebSocket() {
   });
 
   on('tool_execution_end', (data) => {
-    const toolMsgId = 'tool-' + data.toolCallId;
-    const toolMsg = messages.value.find(m => m.id === toolMsgId);
-    if (toolMsg) {
-      toolMsg.content = data.result?.content || '';
-      toolMsg.isError = data.isError || false;
-      toolMsg.status = data.isError ? 'error' : 'completed';
-      toolMsg.details = data.result?.details;
+    const streamMsg = messages.value.find(m => m.id === streamingMsgId.value);
+    if (streamMsg) {
+      const tc = streamMsg.toolCalls.find(t => t.toolCallId === data.toolCallId);
+      if (tc) {
+        tc.result = data.result?.content || '';
+        tc.details = data.result?.details;
+        tc.isError = data.isError || false;
+        tc.status = data.isError ? 'error' : 'completed';
+        streamMsg.toolCalls = [...streamMsg.toolCalls]; // trigger reactivity
+      }
     }
     if (pendingToolCalls.value.has(data.toolCallId)) {
       const tc = pendingToolCalls.value.get(data.toolCallId);
@@ -955,6 +962,13 @@ window.toggleThinking = function(header) {
 };
 
 window.toggleTool = function(header) {
+  const content = header.nextElementSibling;
+  const arrow = header.querySelector('span:last-child');
+  content.classList.toggle('collapsed');
+  arrow.textContent = content.classList.contains('collapsed') ? '▼' : '▲';
+};
+
+window.toggleSubagent = function(header) {
   const content = header.nextElementSibling;
   const arrow = header.querySelector('span:last-child');
   content.classList.toggle('collapsed');

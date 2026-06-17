@@ -4,8 +4,12 @@
 
 ### Changed
 
-- [Changed]: [2026-06-16] `sh_scripts/llama/install.sh` — switched active model from `Qwen3.6-35B-A3B-Q8_0` to `Qwen3.6-27B-Q8_0-mtp`
-- [Changed]: [2026-06-16] `sh_scripts/llama/models/Qwen3.6-27B-Q8_0-mtp.sh` — switched model file from `Qwen3.6-27B-Q8_0.gguf` to `Qwen3.6-27B-UD-Q6_K_XL.gguf`, reduced context from 262144 to 131072, reduced parallelism from 2 to 1
+- [Changed]: [2026-06-16] Frontend — primary LLM response text now renders first (unwrapped), followed by all secondary content (thinking, tool calls, subagent calls, context tools) as collapsible panels below.
+- [Changed]: [2026-06-16] Frontend — subagent calls now render as dedicated collapsible panels showing agent name, mode, task preview, per-agent results, usage stats, and output (instead of raw JSON).
+- [Changed]: [2026-06-16] Frontend — tool calls and responses now render as collapsible panels inside the assistant message (matching thinking block pattern). Tool execution events during streaming no longer create separate "Tool Result" messages; instead they are integrated into the streaming assistant message's `toolCalls` array. All collapsible panels (thinking, tool calls, context tool groups) now start collapsed by default.
+- [Changed]: [2026-06-16] Frontend — fixed arrow indicator (▼/▲) not updating when toggling tool call panels (duplicate `window.toggleTool`/`window.toggleThinking` in ChatMessage.vue overwrote the correct versions in App.vue)
+- [Changed]: [2026-06-16] `sh_scripts/llama/install.sh` — increased `GGML_CUDA_PEER_MAX_BATCH_SIZE` from 256 to 512 for improved multi-GPU peer-to-peer batch throughput
+- [Changed]: [2026-06-16] `sh_scripts/llama/models/Qwen3.6-27B-Q8_0-mtp.sh` — increased context from 131072 to 262144, increased parallelism from 1 to 2
 
 ### Removed
 

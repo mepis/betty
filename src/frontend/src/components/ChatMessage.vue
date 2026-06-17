@@ -3,7 +3,6 @@
     <div class="message-header">
       <div class="message-avatar" :class="msg.role">
         <span v-if="msg.role === 'user'">Y</span>
-        <span v-else-if="msg.role === 'toolResult'">🔧</span>
         <svg v-else width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M12 2L2 7l10 5 10-5-10-5z"/>
           <path d="M2 17l10 5 10-5"/>
@@ -19,7 +18,7 @@
       </span>
       <span class="message-time" v-if="time">{{ time }}</span>
     </div>
-    <div v-if="hasContent || isStreaming" class="message-content" :class="{ 'streaming-cursor': isStreaming }" v-html="contentHtml"></div>
+    <div v-if="hasContent || isStreaming" class="message-content" v-html="contentHtml"></div>
   </div>
 </template>
 
@@ -35,13 +34,13 @@ const props = defineProps({
 const hasContent = computed(() => {
   const text = getTextContent();
   const thinking = getThinkingContent();
-  // Tool results always have content (even if empty string)
-  if (props.msg.role === 'toolResult') return true;
   // Check for tool call blocks
   if (Array.isArray(props.msg.content)) {
     const hasToolCalls = props.msg.content.some(b => b.type === 'toolCall');
     if (hasToolCalls) return true;
   }
+  // Check for streaming tool calls
+  if (Array.isArray(props.msg.toolCalls) && props.msg.toolCalls.length > 0) return true;
   return text || thinking;
 });
 
@@ -64,7 +63,6 @@ function getThinkingContent() {
 
 const role = computed(() => {
   if (props.msg.role === 'user') return 'You';
-  if (props.msg.role === 'toolResult') return 'Tool Result';
   return 'Betty';
 });
 const time = computed(() => {
@@ -99,45 +97,22 @@ const contentHtml = computed(() => {
     return escapeHtml(content);
   }
 
-  // Tool result messages
-  if (props.msg.role === 'toolResult') {
-    const toolName = props.msg.toolName || (props.msg.name || 'tool');
-    const isError = props.msg.isError || props.msg.stopReason === 'error';
-    const isRunning = props.msg.status === 'running';
-    let resultText = '';
-    if (Array.isArray(props.msg.content)) {
-      resultText = props.msg.content.filter(b => b.type === 'text').map(b => b.text).join('\n');
-    } else if (typeof props.msg.content === 'string') {
-      resultText = props.msg.content;
-    }
-    const stateClass = isRunning ? 'tool-running' : (isError ? 'tool-error' : 'tool-completed');
-    const stateIcon = isRunning ? '⏳' : (isError ? '❌' : '✅');
-    return `<div class="tool-call ${stateClass}">
-      <div class="tool-header" onclick="toggleTool(this)">
-        <span class="tool-state-icon">${stateIcon}</span>
-        <span>${escapeHtml(toolName)}</span>
-        <span style="margin-left:auto; font-size:10px">▼</span>
-      </div>
-      <div class="tool-content">${resultText ? escapeHtml(resultText) : (isRunning ? '<em>Running...</em>' : '<em>No output</em>')}</div>
-    </div>`;
-  }
-
   // Context tools that should be grouped together
   const CONTEXT_TOOLS = new Set(['read', 'glob', 'grep', 'list']);
 
-  let html = '';
+  let secondaryHtml = '';
   let textContent = '';
   const toolBlocks = [];
 
   if (Array.isArray(props.msg.content)) {
     for (const block of props.msg.content) {
       if (block.type === 'thinking') {
-        html += `<div class="thinking-block">
+        secondaryHtml += `<div class="thinking-block">
           <div class="thinking-header" onclick="toggleThinking(this)">
             🧠 <span>Thinking</span>
             <span style="margin-left:auto; font-size:10px">▼</span>
           </div>
-          <div class="thinking-content">${renderMarkdown(block.thinking)}</div>
+          <div class="thinking-content collapsed">${renderMarkdown(block.thinking)}</div>
         </div>`;
       } else if (block.type === 'text') {
         textContent += block.text;
@@ -163,32 +138,45 @@ const contentHtml = computed(() => {
         const path = args.path || args.file || args.pattern || args.directory || '';
         return `<div class="context-tool-item">${escapeHtml(path || t.name)}</div>`;
       }).join('');
-      html += `<div class="context-tool-group">
+      secondaryHtml += `<div class="context-tool-group">
         <div class="context-tool-header" onclick="toggleTool(this)">
           <span class="context-tool-icon">📂</span>
           <span>Gathering context (${item.tools.length})</span>
           <span class="context-tool-summary">${summary}</span>
           <span style="margin-left:auto; font-size:10px">▼</span>
         </div>
-        <div class="context-tool-content">${details}</div>
+        <div class="context-tool-content collapsed">${details}</div>
       </div>`;
     } else if (item.type === 'tool') {
       // Individual tool call
       const toolBlock = item.block;
-      const stateClass = toolBlock.status ? `tool-${toolBlock.status}` : '';
-      const stateIcon = TOOL_STATE_ICONS[toolBlock.status] || '🔧';
-      const args = toolBlock.arguments || {};
-      const path = args.path || args.file || args.pattern || '';
-      const resultText = toolBlock.result !== undefined ? escapeHtml(JSON.stringify(toolBlock.result, null, 2)) : '';
-      html += `<div class="tool-call ${stateClass}">
-        <div class="tool-header" onclick="toggleTool(this)">
-          <span class="tool-state-icon">${stateIcon}</span>
-          <span>${escapeHtml(toolBlock.name)}</span>
-          ${path ? `<span class="tool-path">${escapeHtml(path)}</span>` : ''}
-          <span style="margin-left:auto; font-size:10px">▼</span>
-        </div>
-        <div class="tool-content">${escapeHtml(JSON.stringify(args, null, 2))}${resultText ? '\n\n--- Result ---\n' + resultText : ''}</div>
-      </div>`;
+      if (toolBlock.name === 'subagent') {
+        // Render as subagent block
+        const tc = {
+          name: toolBlock.name,
+          args: toolBlock.arguments || {},
+          status: toolBlock.status || 'completed',
+          result: toolBlock.result,
+          details: toolBlock.details,
+          isError: toolBlock.status === 'error',
+        };
+        secondaryHtml += renderSubagentBlock(tc);
+      } else {
+        const stateClass = toolBlock.status ? `tool-${toolBlock.status}` : '';
+        const stateIcon = TOOL_STATE_ICONS[toolBlock.status] || '🔧';
+        const args = toolBlock.arguments || {};
+        const path = args.path || args.file || args.pattern || '';
+        const resultText = toolBlock.result !== undefined ? escapeHtml(JSON.stringify(toolBlock.result, null, 2)) : '';
+        secondaryHtml += `<div class="tool-call ${stateClass}">
+          <div class="tool-header" onclick="toggleTool(this)">
+            <span class="tool-state-icon">${stateIcon}</span>
+            <span>${escapeHtml(toolBlock.name)}</span>
+            ${path ? `<span class="tool-path">${escapeHtml(path)}</span>` : ''}
+            <span style="margin-left:auto; font-size:10px">▼</span>
+          </div>
+          <div class="tool-content collapsed">${escapeHtml(JSON.stringify(args, null, 2))}${resultText ? '\n\n--- Result ---\n' + resultText : ''}</div>
+        </div>`;
+      }
     }
   }
 
@@ -199,16 +187,50 @@ const contentHtml = computed(() => {
   // Render thinking content from top-level `thinking` property (streaming case)
   const thinkingText = getThinkingContent();
   if (thinkingText) {
-    html = `<div class="thinking-block">
+    secondaryHtml += `<div class="thinking-block">
       <div class="thinking-header" onclick="toggleThinking(this)">
         🧠 <span>Thinking</span>
         <span style="margin-left:auto; font-size:10px">▼</span>
       </div>
-      <div class="thinking-content">${renderMarkdown(thinkingText)}</div>
-    </div>` + html;
+      <div class="thinking-content collapsed">${renderMarkdown(thinkingText)}</div>
+    </div>`;
   }
 
-  return html + renderMarkdown(textContent);
+  // Render streaming tool calls from msg.toolCalls
+  if (Array.isArray(props.msg.toolCalls) && props.msg.toolCalls.length > 0) {
+    for (const tc of props.msg.toolCalls) {
+      if (tc.name === 'subagent') {
+        secondaryHtml += renderSubagentBlock(tc);
+      } else {
+        const stateClass = tc.status ? `tool-${tc.status}` : '';
+        const stateIcon = tc.status === 'running' ? '⏳' : (tc.isError ? '❌' : '✅');
+        let resultText = '';
+        if (tc.result !== undefined && tc.result !== null) {
+          if (typeof tc.result === 'string') {
+            resultText = escapeHtml(tc.result);
+          } else {
+            resultText = escapeHtml(JSON.stringify(tc.result, null, 2));
+          }
+        }
+        secondaryHtml += `<div class="tool-call ${stateClass}">
+          <div class="tool-header" onclick="toggleTool(this)">
+            <span class="tool-state-icon">${stateIcon}</span>
+            <span>${escapeHtml(tc.name)}</span>
+            <span style="margin-left:auto; font-size:10px">▼</span>
+          </div>
+          <div class="tool-content collapsed">${resultText || (tc.status === 'running' ? '<em>Running...</em>' : '<em>No output</em>')}</div>
+        </div>`;
+      }
+    }
+  }
+
+  // Primary text first, secondary content (collapsible panels) after
+  let primaryHtml = '';
+  if (textContent) {
+    const primaryClass = props.isStreaming ? 'primary-response streaming-cursor' : 'primary-response';
+    primaryHtml = `<div class="${primaryClass}">${renderMarkdown(textContent)}</div>`;
+  }
+  return primaryHtml + secondaryHtml;
 });
 
 // Tool grouping logic
@@ -262,20 +284,77 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// Global toggle functions for v-html onclick handlers
-window.toggleTool = function(header) {
-  const content = header.nextElementSibling;
-  if (content && content.classList.contains('tool-content')) {
-    content.classList.toggle('collapsed');
+function renderSubagentBlock(tc) {
+  const stateClass = tc.status ? `tool-${tc.status}` : '';
+  const stateIcon = tc.status === 'running' ? '⏳' : (tc.isError ? '❌' : '✅');
+  const args = tc.args || {};
+  const mode = args.mode || 'single';
+  const agent = args.agent || (mode === 'single' ? 'unknown' : '');
+  const task = args.task || '';
+  const modeLabel = mode === 'single' ? `→ ${escapeHtml(agent)}` : `${mode} (${(args.tasks || []).length || 0})`;
+  
+  // Extract result text
+  let resultText = '';
+  if (tc.result !== undefined && tc.result !== null) {
+    if (typeof tc.result === 'string') {
+      resultText = tc.result;
+    } else if (Array.isArray(tc.result)) {
+      // content array: [{ type: "text", text: "..." }]
+      resultText = tc.result.filter(b => b.type === 'text').map(b => b.text).join('\n');
+    } else {
+      resultText = JSON.stringify(tc.result, null, 2);
+    }
   }
-};
+  
+  // Extract details
+  const details = tc.details;
+  let detailsHtml = '';
+  if (details && details.results && details.results.length > 0) {
+    for (const r of details.results) {
+      const rAgent = r.agent || 'unknown';
+      const rTask = r.task || '';
+      const rStatus = r.exitCode === 0 ? '✅' : '❌';
+      const rUsage = r.usage ? `${rUsageString(r.usage)}` : '';
+      const rModel = r.model ? ` (${escapeHtml(r.model)})` : '';
+      const rStderr = r.stderr ? `<div class="subagent-stderr">${escapeHtml(r.stderr.slice(0, 500))}</div>` : '';
+      const rError = r.errorMessage ? `<div class="subagent-error">${escapeHtml(r.errorMessage)}</div>` : '';
+      detailsHtml += `<div class="subagent-result-item">
+        <div class="subagent-result-header">${rStatus} ${escapeHtml(rAgent)}${rModel}</div>
+        <div class="subagent-task">${escapeHtml(rTask)}</div>
+        ${rUsage ? `<div class="subagent-usage">${rUsage}</div>` : ''}
+        ${rError}
+        ${rStderr}
+      </div>`;
+    }
+  }
+  
+  const contentHtml = resultText ? `<div class="subagent-output">${renderMarkdown(resultText)}</div>` : (tc.status === 'running' ? '<div class="subagent-output"><em>Running...</em></div>' : '');
+  
+  return `<div class="subagent-block tool-call ${stateClass}">
+    <div class="subagent-header" onclick="toggleSubagent(this)">
+      <span class="tool-state-icon">${stateIcon}</span>
+      <span class="subagent-icon">🤖</span>
+      <span>Subagent</span>
+      <span class="subagent-mode">${modeLabel}</span>
+      ${task ? `<span class="subagent-task-preview">${escapeHtml(task.slice(0, 60))}${task.length > 60 ? '…' : ''}</span>` : ''}
+      <span style="margin-left:auto; font-size:10px">▼</span>
+    </div>
+    <div class="subagent-content collapsed">
+      ${task ? `<div class="subagent-task">${escapeHtml(task)}</div>` : ''}
+      ${detailsHtml}
+      ${contentHtml}
+    </div>
+  </div>`;
+}
 
-window.toggleThinking = function(header) {
-  const content = header.nextElementSibling;
-  if (content && content.classList.contains('thinking-content')) {
-    content.classList.toggle('collapsed');
-  }
-};
+function rUsageString(usage) {
+  const parts = [];
+  if (usage.inputTokens) parts.push(`${usage.inputTokens} in`);
+  if (usage.outputTokens) parts.push(`${usage.outputTokens} out`);
+  if (usage.totalTokens) parts.push(`${usage.totalTokens} total`);
+  return parts.join(', ');
+}
+
 </script>
 
 <style scoped>
@@ -383,11 +462,6 @@ window.toggleThinking = function(header) {
   color: var(--accent);
 }
 
-.message.toolResult .message-avatar {
-  background: var(--info-dim);
-  color: var(--info);
-}
-
 /* Thinking blocks */
 .thinking-block {
   margin: 10px 0;
@@ -476,6 +550,13 @@ window.toggleThinking = function(header) {
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
+}
+
+/* Primary response — the main LLM text, not wrapped in a panel */
+.primary-response {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-primary);
 }
 
 /* Context tool group — collapsed consecutive context tools */
@@ -605,5 +686,123 @@ window.toggleThinking = function(header) {
 
 .tool-content.collapsed {
   display: none;
+}
+
+/* Subagent block */
+.subagent-block {
+  margin: 10px 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.subagent-header {
+  padding: 8px 14px;
+  background: var(--accent-dim-soft);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  font-weight: 500;
+  transition: background var(--transition-fast);
+}
+
+.subagent-header:hover {
+  background: var(--accent-dim);
+}
+
+.subagent-icon {
+  font-size: 14px;
+}
+
+.subagent-mode {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.subagent-task-preview {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.subagent-content {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.subagent-content.collapsed {
+  display: none;
+}
+
+.subagent-task {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.subagent-result-item {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.subagent-result-item:last-child {
+  border-bottom: none;
+}
+
+.subagent-result-header {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.subagent-usage {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  margin-top: 2px;
+}
+
+.subagent-stderr {
+  font-size: 11px;
+  color: var(--warning);
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  margin-top: 4px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.subagent-error {
+  font-size: 11px;
+  color: var(--error);
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  margin-top: 4px;
+}
+
+.subagent-output {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 </style>
