@@ -27,37 +27,39 @@ const activeNav = computed(() => route.path)
       ]"
     >
       <!-- Logo -->
-      <div class="flex items-center gap-3 px-4 py-5 border-b border-border">
-        <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-          <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
+      <div class="flex items-center justify-between gap-3 px-4 py-5 border-b border-border">
+        <div class="flex items-center gap-3">
+          <template v-if="sidebarOpen">
+            <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <span class="font-semibold text-lg tracking-tight">Betty</span>
+          </template>
+          <button
+            v-else
+            @click="sidebarOpen = !sidebarOpen"
+            class="flex items-center justify-center p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all duration-200"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
-        <span v-if="sidebarOpen" class="font-semibold text-lg tracking-tight">Betty</span>
+        <button
+          v-if="sidebarOpen"
+          @click="sidebarOpen = !sidebarOpen"
+          class="flex items-center justify-center p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all duration-200"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          </svg>
+        </button>
       </div>
 
-      <!-- Nav -->
-      <nav class="flex-1 py-4 px-2 space-y-1">
-        <router-link
-          v-for="item in navItems"
-          :key="item.path"
-          :to="item.path"
-          class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
-          :class="
-            activeNav === item.path
-              ? 'bg-accent-subtle text-accent'
-              : 'text-text-secondary hover:text-text-primary hover:bg-bg-tertiary'
-          "
-        >
-          <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" :d="item.icon" />
-          </svg>
-          <span v-if="sidebarOpen">{{ item.name }}</span>
-        </router-link>
-      </nav>
-
       <!-- Status indicator -->
-      <div class="p-3 border-t border-border">
+      <div class="p-3">
         <div
           class="flex items-center gap-2 px-3 py-2 rounded-lg"
           :class="
@@ -90,15 +92,25 @@ const activeNav = computed(() => route.path)
         </div>
       </div>
 
-      <!-- Toggle -->
-      <button
-        @click="sidebarOpen = !sidebarOpen"
-        class="flex items-center justify-center gap-2 px-3 py-2 m-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all duration-200"
-      >
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-        </svg>
-      </button>
+      <!-- Nav -->
+      <nav class="flex-1 py-4 px-2 space-y-1">
+        <router-link
+          v-for="item in navItems"
+          :key="item.path"
+          :to="item.path"
+          class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
+          :class="
+            activeNav === item.path
+              ? 'bg-accent-subtle text-accent'
+              : 'text-text-secondary hover:text-text-primary hover:bg-bg-tertiary'
+          "
+        >
+          <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" :d="item.icon" />
+          </svg>
+          <span v-if="sidebarOpen">{{ item.name }}</span>
+        </router-link>
+      </nav>
     </aside>
 
     <!-- Main content -->

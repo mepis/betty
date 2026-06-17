@@ -4,6 +4,10 @@
 
 ### Changed
 
+- [Changed]: [2026-06-17] Benchmark sidebar layout — reorganized `App.vue` sidebar: moved toggle button into the header area (expand chevron when collapsed, collapse chevron when expanded), placed logo and title inline in expanded state; moved nav section below the status indicator for better visual hierarchy
+- [Changed]: [2026-06-17] Benchmark Config page — moved "Build llama.cpp" card to the top of the page (before config editing sections) for more prominent access; removed redundant "Info" card; renamed "Other Options" tab to "Run Options" for clarity
+- [Changed]: [2026-06-17] Benchmark `configs.json` — increased `cuda_compression_level` from 0 to 3 for improved CUDA copy compression
+- [Changed]: [2026-06-17] Benchmark frontend dist — rebuilt with new asset hashes (`index-CFVbRMtU.js`, `index-BC6bVitZ.css`)
 - [Changed]: [2026-06-17] Directory initialization in `api-server.js` — refactored inline `fs.existsSync`/`fs.mkdirSync` blocks into a reusable `ensureDirectory(dir, label)` function with startup logging; moved `HF_DOWNLOAD_DIR` declaration to the top-level constants section alongside `REPORTS_DIR` and `PROFILES_DIR`
 - [Changed]: [2026-06-17] Benchmark frontend dist — rebuilt with new asset hashes (`index-BdGeN4g4.js`)
 
