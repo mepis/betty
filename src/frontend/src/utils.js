@@ -1,5 +1,6 @@
 import { marked } from 'marked';
 import hljs from 'highlight.js';
+import DOMPurify from 'dompurify';
 
 // Configure marked with highlight.js
 marked.setOptions({
@@ -35,17 +36,17 @@ export function renderMarkdown(text) {
   const rawHtml = marked.parse(text);
 
   // Post-process to add our custom classes and copy buttons to code blocks
-  return rawHtml
+  const processedHtml = rawHtml
     // Wrap fenced code blocks with our custom container
     .replace(
       /<pre><code class="language-(\w+)?"(?:[^>]*)?>([\s\S]*?)<\/code><\/pre>/g,
       (match, lang, code) => {
         const langLabel = lang || 'code';
         const id = 'code-' + Math.random().toString(36).slice(2, 8);
-        return `<div class="code-block">
+        return `<div class="code-block" data-copy-id="${id}">
           <div class="code-header">
             <span>${escapeHtml(langLabel)}</span>
-            <button class="code-copy" onclick="copyCode('${id}', this)">Copy</button>
+            <button class="code-copy" type="button">Copy</button>
           </div>
           <pre><code id="${id}">${code}</code></pre>
         </div>`;
@@ -56,15 +57,20 @@ export function renderMarkdown(text) {
       /<pre><code>([\s\S]*?)<\/code><\/pre>/g,
       (match, code) => {
         const id = 'code-' + Math.random().toString(36).slice(2, 8);
-        return `<div class="code-block">
+        return `<div class="code-block" data-copy-id="${id}">
           <div class="code-header">
             <span>code</span>
-            <button class="code-copy" onclick="copyCode('${id}', this)">Copy</button>
+            <button class="code-copy" type="button">Copy</button>
           </div>
           <pre><code id="${id}">${code}</code></pre>
         </div>`;
       }
     );
+
+  // Sanitize the final HTML to prevent XSS
+  return DOMPurify.sanitize(processedHtml, {
+    ADD_ATTR: ['data-copy-id', 'data-toggle', 'role', 'tabindex'],
+  });
 }
 
 export function formatNumber(n) {

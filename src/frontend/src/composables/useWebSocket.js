@@ -1,6 +1,23 @@
 import { ref } from 'vue';
 import { authStore } from '../stores/auth.js';
 
+/**
+ * WebSocket composable for real-time communication with the Betty server.
+ *
+ * Manages connection lifecycle (auto-reconnect on close), event handler
+ * registration via `on(type, handler)`, and message sending via `send(msg)`.
+ *
+ * @returns {Object} WebSocket composable API
+ * @property {import('vue').Ref<WebSocket|null>} ws - Current WebSocket instance
+ * @property {import('vue').Ref<boolean>} connected - Connection state
+ * @property {import('vue').Ref<string>} status - 'disconnected' | 'connected' | 'streaming'
+ * @property {import('vue').Ref<string|null>} clientId - Server-assigned client ID
+ * @property {Function} connect - Establish WebSocket connection
+ * @property {Function} send - Send a JSON message
+ * @property {Function} on - Register handler for a specific event type
+ * @property {Function} onAny - Register global handler for all events
+ * @property {Function} disconnect - Close the WebSocket connection
+ */
 export function useWebSocket() {
   const ws = ref(null);
   const connected = ref(false);

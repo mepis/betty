@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="messages" ref="messagesEl">
+    <div class="messages" ref="messagesEl" aria-live="polite">
       <div v-if="!messages.length && !streamingMsg" class="empty-state">
         <div class="empty-icon">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -124,6 +124,11 @@ const props = defineProps({
   contextTokens: { type: Number, default: null },
   contextLimit: { type: Number, default: null },
 });
+
+// The message currently being streamed (for empty-state check)
+const streamingMsg = computed(
+  () => props.messages?.find(m => m.isStreaming) ?? null,
+);
 
 const emit = defineEmits([
   'send',
@@ -605,6 +610,7 @@ onUnmounted(() => {
   padding-left: 0;
 }
 
+/* Streaming cursor */
 .streaming-cursor::after {
   content: '▋';
   animation: blink 1s infinite;

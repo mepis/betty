@@ -4,6 +4,44 @@
 
 ### Changed
 
+- [Changed]: [2026-06-16] Frontend architecture — refactored monolithic `App.vue` into well-separated modules:
+  - `src/frontend/src/types.js` — JSDoc type definitions (`BaseMessage`, `UserMessage`, `AssistantStreamingMessage`, `AssistantFinalMessage`, `ContentBlock`, `ToolCallState`, `Session`, `ModelInfo`)
+  - `src/frontend/src/composables/useChatState.js` — module singleton with ALL chat state (messages, streaming, sessions, models, etc.) and actions (sendMessage, abortStream, newSession, switchSession, deleteSession, forkSession, compactSession, exportHtml, changeModel, changeThinkingLevel, selectCommand, fetchSessionStats). Exposes `bindSend()` for dependency injection.
+  - `src/frontend/src/composables/useChatWebSocket.js` — `setupChatEventHandlers(ws, chatState)` function registering all WebSocket event handlers (`agent_start`, `agent_end`, `message_update`, `message_end`, `tool_execution_*`, `messages`, `state`, `models`, `model_set`, `thinking_level_set`, `commands`, `fork_messages`, `session_*`, `compacted`, `session_stats`, `html_exported`, `agent_exit`, `agent_error`, `extension_ui_request`, `error`, `agent_status`). All handlers reference `chatState` refs/actions.
+  - `src/frontend/src/message-renderers.js` — pure rendering functions (`renderUserMessage`, `renderAssistantMessage`, `renderThinkingBlock`, `renderToolCallBlock`, `renderSubagentBlock`, `renderContextToolGroup`, `groupContextTools`) with constants (`CONTEXT_TOOL_ICONS`, `CONTEXT_TOOLS`, `TOOL_STATE_ICONS`) and helpers (`safeStringify`, `rUsageString`, `isSafeImageUrl`)
+  - `App.vue` — reduced from ~400 lines of script to ~100 lines. Now imports `chatState` and `setupChatEventHandlers`, keeping only template, auth state, UI state (activeTab, sidebarCollapsed, modals), lifecycle hooks, and keyboard shortcuts.
+  - `ChatMessage.vue` — `contentHtml` computed reduced to a 3-line wrapper delegating to `renderUserMessage()` / `renderAssistantMessage()`. All rendering logic moved to `message-renderers.js`.
+- [Changed]: [2026-06-16] `useWebSocket.js` — added JSDoc annotations documenting the composable API
+
+### Security
+
+- [Security]: [2026-06-16] Markdown rendering — added `dompurify` dependency and `DOMPurify.sanitize()` in `renderMarkdown()` to prevent XSS attacks via user-supplied markdown content
+- [Security]: [2026-06-16] Image URL sanitization — added `isSafeImageUrl()` guard in `ChatMessage.vue` to only render images with `data:` or `/` prefixed URLs, blocking external/malicious image sources
+
+### Fixed
+
+- [Fixed]: [2026-06-16] Image display — `sendMessage()` in `App.vue` now uses `img.dataUrl` instead of `img.name` for image URLs, and each image gets its own content block entry (fixing broken image thumbnails in user messages)
+- [Fixed]: [2026-06-16] Duplicate thinking blocks — `contentHtml` in `ChatMessage.vue` now tracks `thinkingRenderedFromBlocks` to avoid rendering the same thinking content twice (once from content blocks, once from top-level `thinking` property)
+- [Fixed]: [2026-06-16] `getTextContent()` undefined strings — changed `.map(b => b.text)` to `.map(b => b.text || '')` to prevent "undefined" appearing in rendered text when content blocks have missing text fields
+- [Fixed]: [2026-06-16] `JSON.stringify` circular references — replaced all `JSON.stringify()` calls in `ChatMessage.vue` with `safeStringify()` helper that detects circular references and catches serialization errors
+- [Fixed]: [2026-06-16] WebSocket disconnect handling — added `watch` on `connected` state in `App.vue` to reset streaming state, remove streaming messages, and clear pending tool calls when the WebSocket drops
+- [Fixed]: [2026-06-16] `copyCode` error handling — added `.catch()` to `navigator.clipboard.writeText()` to display "Failed" feedback when clipboard access is denied
+
+- [Changed]: [2026-06-16] `package.json` — added `dompurify` (^3.2.3) dependency for HTML sanitization
+- [Changed]: [2026-06-16] `ChatMessage.vue` — removed duplicate `escapeHtml()` function, now imported from `utils.js`
+- [Changed]: [2026-06-16] `ChatMessage.vue` — removed duplicate `.streaming-cursor::after` and `@keyframes blink` CSS (kept in `App.vue` for v-html content)
+- [Changed]: [2026-06-16] `ChatView.vue` — removed duplicate `.streaming-cursor::after` and `@keyframes blink` CSS
+- [Changed]: [2026-06-16] `ChatMessage.vue` — moved `CONTEXT_TOOLS` Set to module scope and removed parameter from `groupContextTools()`
+- [Changed]: [2026-06-16] `ChatMessage.vue` — replaced `time` computed with `watch` + `ref` for memoization
+- [Changed]: [2026-06-16] `ChatMessage.vue` — `defineProps` now uses `{ type: Object, default: () => ({}) }` for `msg` prop as a null guard
+- [Changed]: [2026-06-16] `App.vue` — global window functions (`toggleThinking`, `toggleTool`, `toggleSubagent`, `copyCode`) are now cleaned up on component unmount
+
+### Added
+
+- [Added]: [2026-06-16] Accessibility — added `role="button"`, `tabindex="0"`, and `onkeydown` handlers to all toggle headers (thinking, tool, context-tool, subagent) in `ChatMessage.vue` for keyboard navigation
+- [Added]: [2026-06-16] Accessibility — added `aria-live="polite"` to the messages container in `ChatView.vue` for screen reader announcements
+- [Added]: [2026-06-16] `safeStringify()` helper in `ChatMessage.vue` — guards against circular references and unserializable objects in `JSON.stringify()` calls
+
 - [Changed]: [2026-06-16] Frontend — primary LLM response text now renders first (unwrapped), followed by all secondary content (thinking, tool calls, subagent calls, context tools) as collapsible panels below.
 - [Changed]: [2026-06-16] Frontend — subagent calls now render as dedicated collapsible panels showing agent name, mode, task preview, per-agent results, usage stats, and output (instead of raw JSON).
 - [Changed]: [2026-06-16] Frontend — tool calls and responses now render as collapsible panels inside the assistant message (matching thinking block pattern). Tool execution events during streaming no longer create separate "Tool Result" messages; instead they are integrated into the streaming assistant message's `toolCalls` array. All collapsible panels (thinking, tool calls, context tool groups) now start collapsed by default.
@@ -15,11 +53,8 @@
 
 - [Removed]: [2026-06-16] `sh_scripts/opencode/` — entire opencode directory (install scripts, skills, config, README) removed
 
-### Added
-
 - [Added]: [2026-06-15] `useWebSocket.removeListener()` — new method to remove a specific event handler by reference, used by terminal composable for proper cleanup
 
-### Removed
 
 - [Removed]: [2026-06-15] Terminal emulator — removed `Terminal.vue`, `useTerminal.js` composable, `TerminalManager` class, terminal tab from sidebar, `@xterm/xterm` and `@xterm/addon-fit` frontend deps, `node-pty` backend dep, and `useWebSocket.removeListener()` (was terminal-only)
 - [Removed]: [2026-06-15] Local `.pi/skills/` skill definitions (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging) — replaced by built-in system skills loaded from `~/.pi/agent/skills/`
@@ -41,7 +76,6 @@
 - [Added]: [2026-06-14] Benchmark `api-server.js` — `deepMerge()` helper and `syncConfigDefaults()` function that auto-populates missing keys from `DEFAULT_CONFIGS` into `configs.json` on startup, preventing config drift
 - [Added]: [2026-06-14] Benchmark `AGENTS.md` — project rules documentation enforcing that `DEFAULT_CONFIGS` in `api-server.js` and `configs.json` must be kept in sync; every change to one must be reflected in the other
 
-### Added
 
 - [Added]: [2026-06-14] Benchmark `NET_INTERFACE` env var — new `NET_INTERFACE` option in `.env`/`.env.example` (default `eth0`) for configuring which network interface to use for auto-detecting the machine's IP address in the benchmark deployment script
 
@@ -332,7 +366,6 @@
 
 - [Removed]: [2026-06-09] Old llama.cpp documentation directory — deleted `docs/llama-cpp/` (18 files) as part of the directory rename to `llama.cpp_docs/`
 
-### Removed
 
 - [Removed]: [2026-06-09] Unnecessary columns from live results table — removed `Ctx Len`, `Batch`, and `GPU Layers` columns from the Dashboard live results table; these fields were always showing `—` since they are not included in the parsed `liveResults` data from `api-server.js`
 
