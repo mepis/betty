@@ -4,6 +4,14 @@
 
 ### Fixed
 
+- [Fixed]: [2026-06-17] Service install — `POST /api/service/install` now uses a shared `llama.service` name instead of unique per-run names; stops the existing service before overwriting files, strips the `./llama-server` prefix from command args to avoid path duplication, and adds proper error handling with HTTP 500 responses and file cleanup on failure at every step (env file write, service file write, daemon-reload, enable, start)
+
+### Changed
+
+- [Changed]: [2026-06-17] Service install UI text — updated `Reports.vue` to reflect that the install command now uses `llama.service` and overwrites any previous install
+
+### Fixed
+
 - [Fixed]: [2026-06-17] Benchmark restart after error — `POST /api/run` in `api-server.js` now allows starting a new benchmark when the previous run ended in "error" or "stopped" state (in addition to "idle"), removing the need to manually reset state
 
 ### Changed

@@ -629,7 +629,7 @@ function formatList(arr) {
                         {{ installingService ? 'Installing...' : 'Install' }}
                       </button>
                     </div>
-                    <p class="text-xs text-text-muted mb-2">Installs the launch command as a user systemd service that auto-restarts on failure.</p>
+                    <p class="text-xs text-text-muted mb-2">Installs the launch command as <code>llama.service</code>. Overwrites any previous install — the running service is restarted automatically.</p>
 
                     <!-- Success result -->
                     <div v-if="serviceInstallResult" class="bg-success-subtle border border-success/30 rounded-lg p-3 space-y-1">

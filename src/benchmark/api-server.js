@@ -1236,9 +1236,13 @@ app.post("/api/service/install", (req, res) => {
     const envContent = launchCmd.env.join("\n") + "\n";
     const envFile = join("/home", serviceUser, ".config", "systemd", "user", "llama-benchmark.env");
 
-    // Build service file content
-    const serviceName = `llama-benchmark-${reportName.replace(/[^a-zA-Z0-9_-]/g, "-")}-${testRunId}.service`;
+    // Build service file content — use the shared llama.service name
+    const serviceName = "llama.service";
     const serviceFile = join("/home", serviceUser, ".config", "systemd", "user", serviceName);
+
+    // Strip the "./llama-server" prefix from launchCmd.command to avoid duplication
+    // (llamaServerPath already provides the full binary path)
+    const commandArgs = launchCmd.command.replace(/^\.\/llama-server\s*/, "");
 
     const serviceContent = `[Unit]
 Description=Llama.cpp Benchmark Service - ${reportName} (Run #${testRunId})
@@ -1248,7 +1252,7 @@ After=network.target
 Type=simple
 User=${serviceUser}
 EnvironmentFile=${envFile}
-ExecStart=${llamaServerPath} ${launchCmd.command}
+ExecStart=${llamaServerPath} ${commandArgs}
 Restart=on-failure
 RestartSec=5
 StandardOutput=journal
@@ -1258,6 +1262,13 @@ SyslogIdentifier=llama-benchmark
 [Install]
 WantedBy=default.target
 `;
+
+    // Stop the existing service (if running) before overwriting its files
+    try {
+      execSync(`systemctl --user stop ${serviceName}`);
+    } catch {
+      // Service may not be running — that's fine
+    }
 
     // Ensure systemd user directory exists
     const systemdDir = join("/home", serviceUser, ".config", "systemd", "user");
@@ -1273,6 +1284,7 @@ WantedBy=default.target
 ${envContent}ENVEOF`);
     } catch (err) {
       console.error(`Failed to write env file: ${err.message}`);
+      return res.status(500).json({ success: false, error: `Failed to write env file: ${err.message}` });
     }
 
     // Write service file
@@ -1281,23 +1293,42 @@ ${envContent}ENVEOF`);
 ${serviceContent}SVCEOF`);
     } catch (err) {
       console.error(`Failed to write service file: ${err.message}`);
+      return res.status(500).json({ success: false, error: `Failed to write service file: ${err.message}` });
     }
 
-    // Reload systemd daemon and enable + start the service
+    // Helper to clean up written files on failure
+    const cleanup = () => {
+      try { fs.unlinkSync(envFile); } catch {}
+      try { fs.unlinkSync(serviceFile); } catch {}
+    };
+
+    // Reload systemd daemon
     try {
       execSync(`systemctl --user daemon-reload`);
+    } catch (err) {
+      console.error(`Failed to reload systemd: ${err.message}`);
+      cleanup();
+      return res.status(500).json({ success: false, error: `daemon-reload failed: ${err.message}` });
+    }
+
+    // Enable the service
+    try {
       execSync(`systemctl --user enable ${serviceName}`);
+    } catch (err) {
+      console.error(`Failed to enable service: ${err.message}`);
+      cleanup();
+      return res.status(500).json({ success: false, error: `enable failed: ${err.message}` });
+    }
+
+    // Start the service
+    try {
       execSync(`systemctl --user start ${serviceName}`);
     } catch (err) {
       console.error(`Failed to start service: ${err.message}`);
-      return res.json({
-        success: true,
-        message: `Service file installed as ${serviceName}`,
-        warning: err.message,
-        serviceName,
-        envFile,
-        serviceFile,
-      });
+      // Disable and remove the service files so the user isn't left with a broken service
+      try { execSync(`systemctl --user disable ${serviceName}`); } catch {}
+      cleanup();
+      return res.status(500).json({ success: false, error: `start failed: ${err.message}` });
     }
 
     res.json({
