@@ -87,7 +87,7 @@ async function handleSaveReport() {
   if (savingReport.value) return
   savingReport.value = true
   saveReportSuccess.value = false
-  const ok = await store.saveReport(reportName.value || undefined)
+  const ok = await store.saveReport(reportName.value)
   if (ok) {
     saveReportSuccess.value = true
     reportName.value = ''

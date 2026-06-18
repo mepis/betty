@@ -267,7 +267,8 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
     async saveReport(name) {
       try {
-        const res = await axios.post(`${API_BASE}/api/save-report`, { name })
+        const payload = name ? { name } : {}
+        const res = await axios.post(`${API_BASE}/api/save-report`, payload)
         return res.data.success
       } catch (e) {
         this.error = e.message

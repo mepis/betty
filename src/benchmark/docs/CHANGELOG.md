@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-18] configs.json — `GGML_CUDA_P2P` disabled ("on" → "off"); model updated to `unsloth_gemma-4-E2B-it-GGUF/gemma-4-E2B-it-UD-Q6_K_XL.gguf`; `enable_cuda_graphs` normalized to string "1"; `enable_cuda_fp16` enabled; `enable_cuda_compression_level` enabled with level 3
+
+### Fixed
+
+- [Fixed]: [2026-06-18] `frontend/src/stores/benchmark.js` — `saveReport` now sends `{}` when no name provided instead of `{ name: undefined }`, preventing undefined name in saved reports; caller in Dashboard.vue passes `reportName.value` directly
+
 ### Added
 
 - [Changed]: [2026-06-18] configs.json — updated CUDA version from 13.2 to 13.3 (`cuda_version` and `cudacxx` path); enabled `enable_cuda_graphs`; disabled `enable_cuda_per_max_batch_size`, `enable_cuda_peer_copy`, and `enable_cuda_scheduled_max_copies`
