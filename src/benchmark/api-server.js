@@ -2326,6 +2326,16 @@ app.post("/api/git/update", async (_req, res) => {
   }
 });
 
+//--- Journalctl logs endpoint ---
+app.get('/api/logs', (_req, res) => {
+  try {
+    const logs = execSync('journalctl --user -r -u llama.service -n 1000 --no-pager', { encoding: 'utf8' });
+    res.json({ success: true, data: logs });
+  } catch (err) {
+    res.json({ success: true, data: `Error fetching logs: ${err.message}` });
+  }
+});
+
 //--- Docs endpoints ---
 const DOCS_DIR = join(__dirname, '..', '..', 'docs');
 

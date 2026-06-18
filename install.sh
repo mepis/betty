@@ -12,9 +12,16 @@ install_apt() {
 
 install_cuda() {
   echo "========================================"
-  echo " Running: init-cuda.sh"
+  echo " Running: init-cuda13.3.sh"
   echo "========================================"
-  bash "$SCRIPTS_DIR/init-cuda.sh"
+  bash "$SCRIPTS_DIR/init-cuda13.3.sh"
+}
+
+install_cuda12() {
+  echo "========================================"
+  echo " Running: init-cuda12.9.sh"
+  echo "========================================"
+  bash "$SCRIPTS_DIR/init-cuda12.9.sh"
 }
 
 install_service() {
@@ -29,11 +36,17 @@ echo "  Betty Installation"
 echo "============================================"
 echo ""
 echo "  1) Install APT packages (build tools, libraries)"
-echo "  2) Install CUDA 13.2"
-echo "  3) Install systemd user service"
-echo "  4) Run all (APT -> CUDA -> Service)"
+echo "  2) Install CUDA 13.3"
+echo "  3) Install CUDA 12.9  (for older GPUs)"
+echo "  4) Install systemd user service"
 echo ""
-echo -n "  Choose an option [1-4]: "
+echo "  5) Run all (APT -> CUDA 13.3 -> Service)"
+echo ""
+echo "  NOTE: CUDA 12.9 is NOT included in 'Run all' because it"
+echo "        conflicts with CUDA 13.3. Choose option 3 if you need"
+echo "        CUDA 12.9 for an older GPU."
+echo ""
+echo -n "  Choose an option [1-5]: "
 read -r choice
 
 case "$choice" in
@@ -44,17 +57,22 @@ case "$choice" in
     install_cuda
     ;;
   3)
-    install_service
+    install_cuda12
     ;;
   4)
+    install_service
+    ;;
+  5)
     install_apt
     install_cuda
     install_service
     echo ""
     echo "==> All installations complete."
+    echo "    (CUDA 12.9 not included — it conflicts with CUDA 13.3.)"
+    echo "    To install CUDA 12.9 separately, choose option 3."
     ;;
   *)
-    echo "Invalid option. Choose 1-4."
+    echo "Invalid option. Choose 1-5."
     exit 1
     ;;
 esac

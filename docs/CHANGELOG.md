@@ -6,10 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-18] Systemd service logs page — new `/logs` route in benchmark frontend with `Logs.vue` component that fetches and displays `journalctl` output from `llama.service` with auto-refresh (5s), auto-scroll toggle, and manual refresh button; backed by new `GET /api/logs` endpoint in `api-server.js`
+
 - [Added]: [2026-06-18] Systemd service editor — new "Edit Service" button in Config.vue configs panel that opens a modal for editing the installed llama.service (ExecStart command, environment variables, restart policy); shows "No service installed" message if no service exists; saves trigger daemon-reload and restart; backed by `GET /api/service/config` and `POST /api/service/update` endpoints
 
 ### Changed
 
+- [Changed]: [2026-06-18] CUDA installation replaced with version-specific scripts — deleted `scripts/init-cuda.sh` (CUDA 13.2); added `scripts/init-cuda13.3.sh` (CUDA 13.3 for newer GPUs) and `scripts/init-cuda12.9.sh` (CUDA 12.9 for older GPUs); updated `install.sh` menu to offer both CUDA versions separately, with 12.9 excluded from "Run all" due to conflicts
 - [Changed]: [2026-06-18] `src/benchmark/api-server.js` — removed `export` prefix from environment variable lines in `getLaunchCommand()` (they are now `KEY=VALUE` pairs joined with `&&`); simplified `command` field to use plain `join(" ")` instead of `join(" \\\")`
 
 ### Fixed
