@@ -41,7 +41,6 @@ const benchmarkMessages = configs.benchmark_messages || [
 
 //--- Configurable test parameters ---
 const memTimer = 5000;
-let isRunning = true;
 
 //--- Error tracking ---
 const maxErrors = 10;
@@ -78,27 +77,114 @@ console.log(
 );
 
 // Test variables (Do not remove)
-// (Do not remove comment) # common contet size windows: 16384, 32768, 65536, 131072, 262144, 524288
+// (Do not remove comment) # common context size windows: 16384, 32768, 65536, 131072, 262144, 524288
 const testParams = configs.test_params;
-let contextLength = testParams.context_length;
-const contextLengthMultiplier = testParams.context_length_multiplier;
-const contextLengthMax = testParams.context_length_max;
 
-let gpuLayerOffload = testParams.gpu_layer_offload;
-const gpuLayerOffloadStep = testParams.gpu_layer_offload_step;
-const gpuLayerOffMax = testParams.gpu_layer_off_max;
+// --- Grid search helpers ---
+function generateValueArray(start, step, max) {
+  if (step === 0 || step === "0") {
+    return [start];
+  }
+  const values = [];
+  for (let v = start; v <= max; v += step) {
+    values.push(v);
+  }
+  // Ensure max is included if not already reached due to floating point
+  if (values[values.length - 1] !== max) {
+    values.push(max);
+  }
+  return values;
+}
 
-let batchSize = testParams.batch_size;
-const batchSizeStep = testParams.batch_size_step;
-const batchSizeMax = testParams.batch_size_max;
+function generateValueArrays() {
+  return {
+    contextLength: generateMultiplicativeArray(
+      testParams.context_length,
+      testParams.context_length_multiplier,
+      testParams.context_length_max,
+    ),
+    gpuLayerOffload: generateValueArray(
+      testParams.gpu_layer_offload,
+      testParams.gpu_layer_offload_step,
+      testParams.gpu_layer_off_max,
+    ),
+    batchSize: generateValueArray(
+      testParams.batch_size,
+      testParams.batch_size_step,
+      testParams.batch_size_max,
+    ),
+    uBatchSize: generateValueArray(
+      testParams.u_batch_size,
+      testParams.u_batch_size_step,
+      testParams.u_batch_size_max,
+    ),
+    cacheRam: generateValueArray(
+      testParams.cache_ram,
+      testParams.cache_ram_step,
+      testParams.cache_ram_max,
+    ),
+  };
+}
 
-let uBatchSize = testParams.u_batch_size;
-const uBatchSizeStep = testParams.u_batch_size_step;
-const uBatchSizeMax = testParams.u_batch_size_max;
+// Handle multiplicative params (e.g., context_length with multiplier)
+function generateMultiplicativeArray(start, multiplier, max) {
+  const values = [];
+  for (let v = start; v <= max; v *= multiplier) {
+    values.push(v);
+  }
+  if (values[values.length - 1] !== max) {
+    values.push(max);
+  }
+  return values;
+}
 
-let cacheRam = testParams.cache_ram;
-const cacheRamStep = testParams.cache_ram_step;
-const cacheRamMax = testParams.cache_ram_max;
+function cartesianProduct(arrays) {
+  const keys = Object.keys(arrays);
+  const result = [[]];
+  for (const key of keys) {
+    const values = arrays[key];
+    const newResult = [];
+    for (const combo of result) {
+      for (const val of values) {
+        newResult.push([...combo, { key, val }]);
+      }
+    }
+    result.length = 0;
+    result.push(...newResult);
+  }
+  return result;
+}
+
+function applyCombo(combo) {
+  for (const { key, val } of combo) {
+    switch (key) {
+      case "contextLength":
+        contextLength = val;
+        break;
+      case "gpuLayerOffload":
+        gpuLayerOffload = val;
+        break;
+      case "batchSize":
+        batchSize = val;
+        break;
+      case "uBatchSize":
+        uBatchSize = val;
+        break;
+      case "cacheRam":
+        cacheRam = val;
+        break;
+    }
+  }
+}
+
+// --- End grid search helpers ---
+
+// Test variables (initialized from first combo, overwritten each iteration)
+let contextLength = 0;
+let gpuLayerOffload = 0;
+let batchSize = 0;
+let uBatchSize = 0;
+let cacheRam = 0;
 
 // End Test variables ------------------------
 
@@ -204,22 +290,52 @@ async function main() {
     }
 
     if (initResult.success) {
-      while (isRunning) {
+      // Generate the full cartesian product grid
+      const valueArrays = generateValueArrays();
+      const combinations = cartesianProduct(valueArrays);
+      const totalCombinations = combinations.length;
+
+      console.log("\n" + "=".repeat(60));
+      console.log("GRID SEARCH CONFIGURATION");
+      console.log("=".repeat(60));
+      for (const [key, values] of Object.entries(valueArrays)) {
+        console.log(`  ${key}: [${values.join(", ")}] (${values.length} values)`);
+      }
+      console.log(`  Total combinations: ${totalCombinations}`);
+
+      if (totalCombinations > 10000) {
+        console.log(
+          `\nWARNING: Grid contains ${totalCombinations.toLocaleString()} combinations.`,
+        );
+        console.log(
+          "  At ~30s per run, this will take ~" +
+            Math.round(totalCombinations * 30 / 3600) +
+            " hours. Consider reducing grid size.",
+        );
+      }
+      console.log("=".repeat(60) + "\n");
+
+      // Iterate over every combination
+      for (let i = 0; i < combinations.length; i++) {
+        const combo = combinations[i];
+        applyCombo(combo);
+
         const result = await runTestRun();
         if (errorCount >= maxErrors) {
           console.error(`\nReached ${maxErrors} errors. Stopping benchmark.`);
-          isRunning = false;
+          break;
         }
         // Write results after each test run for incremental reporting
         writeResultsToMarkdown();
-        // Skip the "all variables at max" check if this run was aborted (configs not advanced)
-        if (!result?.aborted && areAllVariablesAtMax()) {
-          console.log(
-            "\nAll test variables reached their maximum values. Benchmark complete.",
-          );
-          isRunning = false;
-        }
+
+        // Progress indicator
+        const pct = ((i + 1) / totalCombinations * 100).toFixed(1);
+        process.stdout.write(
+          `\r  Progress: ${i + 1}/${totalCombinations} (${pct}%)`,
+        );
       }
+
+      console.log("\n\nAll combinations tested. Benchmark complete.");
     } else {
       console.error("\n" + "=".repeat(60));
       console.error("BENCHMARK ABORTED");
@@ -255,32 +371,6 @@ async function main() {
   writeResultsToMarkdown();
   console.log("Benchmark complete. Results saved to", resultsFile);
   process.exit(0);
-}
-
-//--- Config update: advance to next test configuration ---
-function updateConfigs() {
-  contextLength = Math.min(
-    contextLength * contextLengthMultiplier,
-    contextLengthMax,
-  );
-  gpuLayerOffload = Math.min(
-    gpuLayerOffload + gpuLayerOffloadStep,
-    gpuLayerOffMax,
-  );
-  batchSize = (batchSize + batchSizeStep) >= batchSizeMax ? batchSizeMax : batchSize + batchSizeStep;
-  uBatchSize = (uBatchSize + uBatchSizeStep) >= uBatchSizeMax ? uBatchSizeMax : uBatchSize + uBatchSizeStep;
-  cacheRam = (cacheRam + cacheRamStep) >= cacheRamMax ? cacheRamMax : cacheRam + cacheRamStep;
-}
-
-//--- Check if all test variables have reached their maximum values ---
-function areAllVariablesAtMax() {
-  return (
-    contextLength >= contextLengthMax &&
-    gpuLayerOffload >= gpuLayerOffMax &&
-    batchSize >= batchSizeMax &&
-    uBatchSize >= uBatchSizeMax &&
-    cacheRam >= cacheRamMax
-  );
 }
 
 //--- Controller: init repo, build, then enter benchmark loop ---
@@ -1199,8 +1289,6 @@ async function runTestRun() {
     `  Avg Mem Used (GB):     ${testRunResult.averages.avgMemUsed} / ${testRunResult.averages.avgMemTotal}`,
   );
 
-  // Update configs for next iteration
-  updateConfigs();
 }
 
 //--- Write all results to a markdown file ---

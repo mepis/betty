@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-18] Grid search benchmark mode — replaces sequential parameter stepping with full cartesian product grid search over context length, GPU layer offload, batch size, uBatch size, and cache RAM; includes progress indicator, grid size warnings, and multiplicative step support for context length
+
 - [Added]: [2026-06-18] Default report filename in Dashboard.vue — auto-populates `reportName` with `YYYY-MM-DD_HH-MM-SS_<model>` format on mount, using the configured model name with sanitized characters
 
 ### Changed
