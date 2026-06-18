@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-18] `src/benchmark/index.js` — tensor split parameter now correctly uses `sps.tensor_split.value` as primary source with `tensorSplitValue` as fallback, applied in `getRunScript()`, `getServerParamsSnapshot()`, and `runTestRun()`
+
 ### Added
 
 - [Added]: [2026-06-18] Git update feature — new `POST /api/git/update` endpoint that pulls latest changes and restarts the llama.service; "Update Available" button in sidebar triggers the update; toast notification banner with success/error feedback
