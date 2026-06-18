@@ -1,11 +1,12 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useBenchmarkStore } from '@/stores/benchmark'
 
 const store = useBenchmarkStore()
 const route = useRoute()
 const sidebarOpen = ref(true)
+const gitUpdateTimer = ref(null)
 
 const navItems = [
   { name: 'Run Tests', path: '/', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
@@ -16,6 +17,19 @@ const navItems = [
 ]
 
 const activeNav = computed(() => route.path)
+
+onMounted(() => {
+  store.fetchGitUpdateStatus()
+  gitUpdateTimer.value = setInterval(() => {
+    store.fetchGitUpdateStatus()
+  }, 60 * 60 * 1000)
+})
+
+onUnmounted(() => {
+  if (gitUpdateTimer.value) {
+    clearInterval(gitUpdateTimer.value)
+  }
+})
 </script>
 
 <template>
@@ -90,6 +104,16 @@ const activeNav = computed(() => route.path)
           ">
             {{ store.isRunning ? 'Running' : store.isError ? 'Error' : 'Idle' }}
           </span>
+        </div>
+      </div>
+
+      <!-- Update available -->
+      <div v-if="sidebarOpen && store.hasUpdate" class="p-3 pt-0">
+        <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-warning-subtle border border-warning/20">
+          <svg class="w-3.5 h-3.5 text-warning flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          </svg>
+          <span class="text-xs font-medium text-warning">Update Available</span>
         </div>
       </div>
 

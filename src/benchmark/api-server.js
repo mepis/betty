@@ -52,6 +52,29 @@ ensureDirectory(PROFILES_DIR, "profiles");
 ensureDirectory(HF_DOWNLOAD_DIR, "hf_downloads");
 ensureDirectory(join(BENCHMARK_DIR, "llama_cache"), "llama_cache");
 
+//--- Git update check ---
+let gitUpdateCache = { hasUpdate: false, localCommit: null, remoteCommit: null, lastChecked: null };
+let gitUpdateTimer = null;
+
+function checkGitUpdate() {
+  try {
+    const localCommit = execSync('git rev-parse HEAD', { cwd: BENCHMARK_DIR, encoding: 'utf8' }).trim();
+    const remoteCommit = execSync('git rev-parse origin/HEAD', { cwd: BENCHMARK_DIR, encoding: 'utf8' }).trim();
+    const hasUpdate = localCommit !== remoteCommit;
+    gitUpdateCache = { hasUpdate, localCommit: localCommit.slice(0, 7), remoteCommit: remoteCommit.slice(0, 7), lastChecked: new Date().toISOString() };
+  } catch (err) {
+    // If git commands fail (not a git repo, no origin, etc.), keep current cache
+    console.log('[git-update] Failed to check for updates:', err.message);
+  }
+}
+
+function startGitUpdatePolling() {
+  checkGitUpdate(); // initial check
+  gitUpdateTimer = setInterval(checkGitUpdate, 60 * 60 * 1000);
+}
+
+startGitUpdatePolling();
+
 // Default config template
 const DEFAULT_CONFIGS = {
   export_configs: {
@@ -2088,6 +2111,11 @@ app.post("/api/clone", async (req, res) => {
     safeFlush(res);
     res.end();
   }
+});
+
+//--- Git update check endpoint ---
+app.get("/api/git/update-status", (_req, res) => {
+  res.json({ success: true, data: gitUpdateCache });
 });
 
 //--- Docs endpoints ---

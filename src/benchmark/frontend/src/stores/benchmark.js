@@ -45,6 +45,9 @@ export const useBenchmarkStore = defineStore('benchmark', {
     hfModelFiles: [],
     hfDownloads: [],
     hfError: null,
+
+    // Git update check
+    gitUpdate: { hasUpdate: false, localCommit: null, remoteCommit: null, lastChecked: null },
   }),
 
   getters: {
@@ -77,6 +80,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
       )
       return Math.round((sum / state.liveResults.length) * 100) / 100
     },
+    hasUpdate: (state) => state.gitUpdate.hasUpdate,
   },
 
   actions: {
@@ -741,6 +745,17 @@ export const useBenchmarkStore = defineStore('benchmark', {
       } catch (e) {
         this.hfError = e.message
         return false
+      }
+    },
+
+    async fetchGitUpdateStatus() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/git/update-status`)
+        if (res.data.success) {
+          this.gitUpdate = res.data.data
+        }
+      } catch {
+        // Silently fail
       }
     },
   },
