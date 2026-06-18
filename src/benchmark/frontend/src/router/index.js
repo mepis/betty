@@ -3,6 +3,7 @@ import Dashboard from '@/views/Dashboard.vue'
 import Config from '@/views/Config.vue'
 import Reports from '@/views/Reports.vue'
 import Models from '@/views/Models.vue'
+import Docs from '@/views/Docs.vue'
 
 const routes = [
   {
@@ -27,6 +28,15 @@ const routes = [
     meta: {
       title: 'Models',
       description: 'Search and download models from HuggingFace',
+    },
+  },
+  {
+    path: '/docs',
+    name: 'docs',
+    component: Docs,
+    meta: {
+      title: 'Docs',
+      description: 'Project documentation and guides',
     },
   },
 ]

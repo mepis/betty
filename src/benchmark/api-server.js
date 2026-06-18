@@ -1980,6 +1980,55 @@ app.post("/api/clone", async (req, res) => {
   }
 });
 
+//--- Docs endpoints ---
+const DOCS_DIR = join(__dirname, '..', '..', 'docs');
+
+function resolveDocRef(content, filename) {
+  // Replace [[filename]] with link to the doc
+  return content.replace(/\[\[([\w-]+)\]\]/g, (_match, ref) => {
+    const refFile = ref.endsWith('.md') ? ref : `${ref}.md`;
+    return `[${ref}](${refFile})`;
+  });
+}
+
+app.get('/api/docs', (_req, res) => {
+  try {
+    if (!fs.existsSync(DOCS_DIR)) {
+      return res.status(404).json({ success: false, error: 'Docs directory not found' });
+    }
+    const files = fs.readdirSync(DOCS_DIR)
+      .filter(f => f.endsWith('.md'))
+      .sort((a, b) => {
+        // Sort index.md first, then alphabetically
+        if (a === 'index.md') return -1;
+        if (b === 'index.md') return 1;
+        return a.localeCompare(b);
+      })
+      .map(f => {
+        const name = f.replace(/\.md$/, '');
+        const title = name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        return { name, filename: f, title };
+      });
+    res.json({ success: true, data: files });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/docs/:filename', (req, res) => {
+  try {
+    const filePath = join(DOCS_DIR, req.params.filename);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: 'Doc not found' });
+    }
+    const content = fs.readFileSync(filePath, 'utf8');
+    const rendered = resolveDocRef(content, req.params.filename);
+    res.json({ success: true, data: rendered });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // SPA fallback: serve index.html for non-API routes
 app.get('*', (_req, res) => {
   res.sendFile(join(FRONTEND_DIR, 'index.html'));

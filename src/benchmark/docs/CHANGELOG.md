@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-18] Docs page in benchmark frontend — new Docs.vue view with sidebar navigation, Markdown rendering via `marked`, and support for internal `[[filename]]` cross-references; added `GET /api/docs` and `GET /api/docs/:filename` endpoints in api-server.js to list and serve docs from the docs directory; added Docs route and nav item
+
 - [Added]: [2026-06-18] Complete documentation overhaul — removed old chat-interface docs (architecture.md, backend docs, frontend docs, llama.cpp CLI docs, frontend-improvements-report.md); added new benchmark-focused docs: USER-MANUAL.md, dashboard.md, config.md, models.md, reports.md, configuration-reference.md, api-reference.md, troubleshooting.md
 - [Added]: [2026-06-18] 8 new library topic pages for Betty project documentation: betty-project/, betty-architecture/, betty-api-reference/, betty-benchmark-engine/, betty-frontend/, betty-configuration/, betty-installation/, betty-qa/
 - [Added]: [2026-06-18] 6 new library tag pages: betty.md, configuration.md, express.md, installation.md, sse.md, vue.js.md
