@@ -22,6 +22,8 @@ const serviceLoading = ref(false)
 const serviceSuccess = ref('')
 const deletingBuild = ref(false)
 const deleteBuildSuccess = ref('')
+const deletingLlama = ref(false)
+const deleteLlamaSuccess = ref('')
 
 function showToast(message, type = 'success') {
   toast.value = { show: true, message, type }
@@ -428,6 +430,22 @@ async function handleDeleteBuild() {
   deletingBuild.value = false
 }
 
+async function handleDeleteLlama() {
+  if (deletingLlama.value) return
+  if (!confirm('Delete the entire llama.cpp repository? This will remove the cloned repository, all builds, and all intermediate files. This action cannot be undone.')) return
+  deletingLlama.value = true
+  deleteLlamaSuccess.value = ''
+  const result = await store.deleteLlamaDir()
+  if (result.success) {
+    deleteLlamaSuccess.value = result.message
+    setTimeout(() => (deleteLlamaSuccess.value = ''), 4000)
+  } else {
+    deleteLlamaSuccess.value = result.message || 'Failed to delete llama.cpp repository'
+    setTimeout(() => (deleteLlamaSuccess.value = ''), 4000)
+  }
+  deletingLlama.value = false
+}
+
 function normalizeBuildParams(configs) {
   const params = configs.build_make_params || {}
   const normalized = {}
@@ -446,6 +464,14 @@ function normalizeBuildParams(configs) {
     cudaNormalized[key] = { enabled: true, value: val }
   }
   configs.cuda_configs = cudaNormalized
+
+  // Normalize export_configs: convert string LLAMA_ARG_FIT to boolean
+  const ec = configs.export_configs || {}
+  if (typeof ec.LLAMA_ARG_FIT === 'string') {
+    ec.LLAMA_ARG_FIT = ec.LLAMA_ARG_FIT === 'on'
+  }
+  configs.export_configs = ec
+
   return configs
 }
 </script>
@@ -503,7 +529,7 @@ function normalizeBuildParams(configs) {
           <div
             v-for="profile in profiles"
             :key="profile.name"
-            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-bg-tertiary transition-all"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-bg-card-hover transition-all"
           >
             <div class="flex-1 min-w-0">
               <div class="text-sm font-medium truncate">{{ profile.name }}</div>
@@ -632,31 +658,65 @@ function normalizeBuildParams(configs) {
 
     <!-- Editor -->
     <div class="card">
-      <div class="space-y-4 max-h-[600px] overflow-auto pr-2">
-        <!-- Tab navigation -->
-        <div class="flex items-center gap-2 mb-2">
-          <button
-            @click="activeTab = 'build'"
-            class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-            :class="activeTab === 'build' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
-          >
-            Build Options
-          </button>
-          <button
-            @click="activeTab = 'other'"
-            class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-            :class="activeTab === 'other' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
-          >
-            Run Options
-          </button>
-        </div>
+      <!-- Tab navigation (fixed, does not scroll) -->
+      <div class="flex items-center gap-2 mb-2">
+        <button
+          @click="activeTab = 'build'"
+          class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+          :class="activeTab === 'build' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-card-hover'"
+        >
+          Build Options
+        </button>
+        <button
+          @click="activeTab = 'other'"
+          class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+          :class="activeTab === 'other' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-card-hover'"
+        >
+          Run Options
+        </button>
+      </div>
 
+      <!-- Tab content (scrollable) -->
+      <div class="space-y-4 max-h-[600px] overflow-auto pr-2">
         <!-- Build Options Tab -->
         <div v-show="activeTab === 'build'" class="space-y-4">
 
         <!-- Build Settings -->
         <div class="space-y-4">
           <h3 class="text-sm font-semibold text-text-primary">Build Settings</h3>
+
+          <!-- Build Execution -->
+          <div class="space-y-2">
+            <h5 class="text-base font-medium text-text-muted">Build Execution</h5>
+            <div
+              v-for="param in [
+                { key: 'build_cores', label: 'Build Cores', type: 'number' },
+                { key: 'skip_build', label: 'Skip Build', type: 'boolean' },
+              ]"
+              :key="param.key"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
+            >
+              <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              <input
+                v-if="param.type === 'number'"
+                type="number"
+                :value="visualConfigs[param.key] ?? ''"
+                @input="visualConfigs = { ...visualConfigs, [param.key]: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+              <button
+                v-else
+                @click="visualConfigs = { ...visualConfigs, [param.key]: !visualConfigs[param.key] }"
+                class="relative w-10 h-5 rounded-full transition-colors"
+                :class="visualConfigs[param.key] ? 'bg-accent' : 'bg-bg-tertiary'"
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                  :class="visualConfigs[param.key] ? 'translate-x-5' : ''"
+                />
+              </button>
+            </div>
+          </div>
 
           <!-- Basic Build Options -->
           <div class="space-y-2">
@@ -667,7 +727,7 @@ function normalizeBuildParams(configs) {
                 { key: 'enable_lto', label: 'Enable LTO', type: 'boolean' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <button
@@ -710,7 +770,7 @@ function normalizeBuildParams(configs) {
                 { key: 'enable_ggml_native', label: 'Enable GGML Native', type: 'boolean' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <button
@@ -746,7 +806,7 @@ function normalizeBuildParams(configs) {
               :key="param.key"
               class="space-y-1"
             >
-              <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
                 <label class="text-sm text-text-secondary">{{ param.label }}</label>
                 <input
                   :type="param.type === 'number' ? 'number' : 'text'"
@@ -767,7 +827,7 @@ function normalizeBuildParams(configs) {
                 { key: 'cuda_all_quants', label: 'Enable CUDA All Quants', type: 'boolean' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <button
@@ -800,7 +860,7 @@ function normalizeBuildParams(configs) {
                 { key: 'cudacxx', label: 'NVCC Path', type: 'text' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <input
@@ -824,8 +884,7 @@ function normalizeBuildParams(configs) {
             { key: 'llama_port', label: 'Llama Port', type: 'number' },
             { key: 'llama_host', label: 'Llama Host', type: 'text' },
             { key: 'model', label: 'Model (auto-populated from model_directory)', type: 'select' },
-            { key: 'build_cores', label: 'Build Cores', type: 'number' },
-            { key: 'skip_build', label: 'Skip Build', type: 'boolean' },
+            { key: 'gpu_layer_offload', label: 'GPU Layer Offload', type: 'number' },
           ]"
           :model-options="modelOptions"
           v-model="visualConfigs"
@@ -838,12 +897,47 @@ function normalizeBuildParams(configs) {
             { key: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', label: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', type: 'text' },
             { key: 'CUDA_SCALE_LAUNCH_QUEUES', label: 'CUDA_SCALE_LAUNCH_QUEUES', type: 'text' },
             { key: 'GGML_CUDA_P2P', label: 'GGML_CUDA_P2P', type: 'text' },
-            { key: 'LLAMA_ARG_FIT', label: 'LLAMA_ARG_FIT', type: 'text' },
-            { key: 'LLAMA_ARG_FIT_TARGET', label: 'LLAMA_ARG_FIT_TARGET', type: 'text' },
-            { key: 'LLAMA_ARG_FIT_CTX', label: 'LLAMA_ARG_FIT_CTX', type: 'text' },
           ]"
           v-model="visualConfigs.export_configs"
         />
+
+        <!-- LLAMA_ARG_FIT Toggle -->
+        <div class="space-y-2">
+          <h5 class="text-base font-medium text-text-muted">LLAMA ARG FIT</h5>
+          <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
+            <label class="text-sm text-text-secondary">Enable LLAMA_ARG_FIT</label>
+            <button
+              @click="visualConfigs.export_configs = { ...visualConfigs.export_configs, LLAMA_ARG_FIT: !visualConfigs.export_configs?.LLAMA_ARG_FIT }"
+              class="relative w-10 h-5 rounded-full transition-colors"
+              :class="visualConfigs.export_configs?.LLAMA_ARG_FIT ? 'bg-accent' : 'bg-bg-tertiary'"
+            >
+              <span
+                class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                :class="visualConfigs.export_configs?.LLAMA_ARG_FIT ? 'translate-x-5' : ''"
+              />
+            </button>
+          </div>
+          <div v-if="visualConfigs.export_configs?.LLAMA_ARG_FIT" class="space-y-2 ml-1">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
+              <label class="text-sm text-text-secondary">LLAMA_ARG_FIT_TARGET</label>
+              <input
+                type="number"
+                :value="visualConfigs.export_configs?.LLAMA_ARG_FIT_TARGET ?? 256"
+                @input="visualConfigs.export_configs = { ...visualConfigs.export_configs, LLAMA_ARG_FIT_TARGET: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
+              <label class="text-sm text-text-secondary">LLAMA_ARG_FIT_CTX</label>
+              <input
+                type="number"
+                :value="visualConfigs.export_configs?.LLAMA_ARG_FIT_CTX ?? 131072"
+                @input="visualConfigs.export_configs = { ...visualConfigs.export_configs, LLAMA_ARG_FIT_CTX: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+        </div>
 
         <!-- Benchmark Messages -->
         <div class="space-y-3">
@@ -855,7 +949,7 @@ function normalizeBuildParams(configs) {
             <div
               v-for="(msg, idx) in visualConfigs.benchmark_messages"
               :key="idx"
-              class="space-y-1 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
+              class="space-y-1 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
             >
               <label class="text-xs text-text-muted">Message {{ idx + 1 }}</label>
               <textarea
@@ -880,25 +974,6 @@ function normalizeBuildParams(configs) {
           ]"
           v-model="visualConfigs.model_configs"
         />
-        <config-section
-          title="Test Parameters"
-          :items="[
-            { key: 'context_length', label: 'Context Length', type: 'number' },
-            { key: 'context_length_multiplier', label: 'Context Length Multiplier', type: 'number' },
-            { key: 'context_length_max', label: 'Context Length Max', type: 'number' },
-            { key: 'gpu_layer_offload', label: 'GPU Layer Offload', type: 'number' },
-            { key: 'batch_size', label: 'Batch Size', type: 'number' },
-            { key: 'batch_size_step', label: 'Batch Size Step', type: 'number' },
-            { key: 'batch_size_max', label: 'Batch Size Max', type: 'number' },
-            { key: 'u_batch_size', label: 'U Batch Size', type: 'number' },
-            { key: 'u_batch_size_step', label: 'U Batch Size Step', type: 'number' },
-            { key: 'u_batch_size_max', label: 'U Batch Size Max', type: 'number' },
-            { key: 'cache_ram', label: 'Cache RAM (GB)', type: 'number' },
-            { key: 'cache_ram_step', label: 'Cache RAM Step', type: 'number' },
-            { key: 'cache_ram_max', label: 'Cache RAM Max', type: 'number' },
-          ]"
-          v-model="visualConfigs.test_params"
-        />
 
         <!-- Spec Params -->
         <div class="space-y-3">
@@ -911,7 +986,7 @@ function normalizeBuildParams(configs) {
             :key="param.key"
             class="space-y-2"
           >
-            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
               <span class="text-sm text-text-secondary">{{ param.label }}</span>
               <button
                 @click="toggleSpecParam(param.key)"
@@ -949,7 +1024,7 @@ function normalizeBuildParams(configs) {
             :key="param.key"
             class="space-y-2"
           >
-            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
               <span class="text-sm text-text-secondary">{{ param.label }}</span>
               <button
                 @click="toggleSplitParam(param.key)"
@@ -974,7 +1049,7 @@ function normalizeBuildParams(configs) {
         </div>
         <div class="space-y-3">
           <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">GPU Selection</h4>
-          <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+          <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
             <label class="text-sm text-text-secondary">Enable GPU Selection</label>
             <button
               @click="toggleGpuEnabled()"
@@ -1033,10 +1108,140 @@ function normalizeBuildParams(configs) {
             </div>
           </div>
         </div>
+
+        <!-- Test Parameters -->
+        <div class="space-y-3">
+          <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">Test Parameters</h4>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Context Length</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.context_length ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, context_length: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Context Length Multiplier</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.context_length_multiplier ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, context_length_multiplier: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Context Length Max</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.context_length_max ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, context_length_max: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+
+          <div class="border-t border-border"></div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Batch Size</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.batch_size ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, batch_size: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Batch Size Step</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.batch_size_step ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, batch_size_step: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Batch Size Max</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.batch_size_max ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, batch_size_max: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+
+          <div class="border-t border-border"></div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">U Batch Size</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.u_batch_size ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, u_batch_size: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">U Batch Size Step</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.u_batch_size_step ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, u_batch_size_step: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">U Batch Size Max</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.u_batch_size_max ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, u_batch_size_max: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+
+          <div class="border-t border-border"></div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Cache RAM (GB)</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.cache_ram ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, cache_ram: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Cache RAM Step</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.cache_ram_step ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, cache_ram_step: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">Cache RAM Max</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.cache_ram_max ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, cache_ram_max: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+        </div>
         </div>
       </div>
 
-      <!-- Actions -->
+      <!-- Actions (fixed, does not scroll) -->
       <div class="flex items-center justify-between mt-4 pt-4 border-t border-border">
         <div class="flex items-center gap-3">
           <button
@@ -1053,7 +1258,7 @@ function normalizeBuildParams(configs) {
           <button
             v-if="!store.isRunning"
             @click="handleServiceStop"
-            class="btn btn-ghost btn-xs"
+            class="btn btn-warning btn-xs"
             :disabled="serviceLoading"
           >
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1072,9 +1277,20 @@ function normalizeBuildParams(configs) {
             </svg>
             {{ deletingBuild ? 'Deleting...' : 'Delete Build' }}
           </button>
+          <button
+            @click="handleDeleteLlama"
+            class="btn btn-error btn-xs"
+            :disabled="deletingLlama"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            {{ deletingLlama ? 'Deleting...' : 'Delete Llama' }}
+          </button>
           <span v-if="killPortSuccess" class="text-xs text-success">{{ killPortSuccess }}</span>
           <span v-if="serviceSuccess" class="text-xs text-success">{{ serviceSuccess }}</span>
           <span v-if="deleteBuildSuccess" class="text-xs text-success">{{ deleteBuildSuccess }}</span>
+          <span v-if="deleteLlamaSuccess" class="text-xs text-success">{{ deleteLlamaSuccess }}</span>
           <span class="text-xs text-text-muted">
             {{ saveSuccess ? '✓ Saved successfully' : saveError }}
           </span>

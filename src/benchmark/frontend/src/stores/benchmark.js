@@ -34,6 +34,8 @@ export const useBenchmarkStore = defineStore('benchmark', {
       usedGB: 0,
       availableGB: 0,
       percentUsed: 0,
+      cpuUsage: 0,
+      cpuCores: [],
     },
     // HuggingFace
     hfSearchResults: [],
@@ -238,6 +240,19 @@ export const useBenchmarkStore = defineStore('benchmark', {
     async deleteBuildDir() {
       try {
         const res = await axios.delete(`${API_BASE}/api/build/delete`)
+        if (res.data.success) {
+          return { success: true, message: res.data.message }
+        }
+        return { success: false, message: res.data.error }
+      } catch (e) {
+        this.error = e.message
+        return { success: false, message: e.message }
+      }
+    },
+
+    async deleteLlamaDir() {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/build/llama/delete`)
         if (res.data.success) {
           return { success: true, message: res.data.message }
         }

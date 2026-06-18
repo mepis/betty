@@ -59,9 +59,7 @@ const DEFAULT_CONFIGS = {
     CUDA_SCALE_LAUNCH_QUEUES: "4x",
     LLAMA_CACHE: "",
     GGML_CUDA_P2P: "on",
-    LLAMA_ARG_FIT: "on",
-    LLAMA_ARG_FIT_TARGET: "256",
-    LLAMA_ARG_FIT_CTX: "131072",
+    LLAMA_ARG_FIT: true,
   },
   max_sys_mem: 93,
   llama_port: 11434,
@@ -894,9 +892,13 @@ function getBuildCommand(configs, testRunConfig) {
     `export CUDACXX=${configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
     `export GGML_CUDA_P2P=${ec.GGML_CUDA_P2P || "on"}`,
     `export PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
-    `export LLAMA_ARG_FIT=${ec.LLAMA_ARG_FIT || "on"}`,
-    `export LLAMA_ARG_FIT_TARGET=${ec.LLAMA_ARG_FIT_TARGET || "256"}`,
-    `export LLAMA_ARG_FIT_CTX=${ec.LLAMA_ARG_FIT_CTX || "131072"}`,
+    `export LLAMA_ARG_FIT=${ec.LLAMA_ARG_FIT ? "on" : "off"}`,
+    ...(ec.LLAMA_ARG_FIT && ec.LLAMA_ARG_FIT_TARGET !== undefined && ec.LLAMA_ARG_FIT_TARGET !== null
+      ? [`export LLAMA_ARG_FIT_TARGET=${ec.LLAMA_ARG_FIT_TARGET}`]
+      : []),
+    ...(ec.LLAMA_ARG_FIT && ec.LLAMA_ARG_FIT_CTX !== undefined && ec.LLAMA_ARG_FIT_CTX !== null
+      ? [`export LLAMA_ARG_FIT_CTX=${ec.LLAMA_ARG_FIT_CTX}`]
+      : []),
   ];
 
   return {
@@ -972,9 +974,13 @@ function getLaunchCommand(configs, testRunConfig) {
     `export CUDACXX=${env.CUDACXX || configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
     `export GGML_CUDA_P2P=${env.GGML_CUDA_P2P || ec.GGML_CUDA_P2P || "on"}`,
     `export PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
-    `export LLAMA_ARG_FIT=${env.LLAMA_ARG_FIT || ec.LLAMA_ARG_FIT || "on"}`,
-    `export LLAMA_ARG_FIT_TARGET=${env.LLAMA_ARG_FIT_TARGET || ec.LLAMA_ARG_FIT_TARGET || "256"}`,
-    `export LLAMA_ARG_FIT_CTX=${env.LLAMA_ARG_FIT_CTX || ec.LLAMA_ARG_FIT_CTX || "131072"}`,
+    `export LLAMA_ARG_FIT=${(env.LLAMA_ARG_FIT ?? ec.LLAMA_ARG_FIT ?? true) ? "on" : "off"}`,
+    ...((env.LLAMA_ARG_FIT ?? ec.LLAMA_ARG_FIT ?? true) && (env.LLAMA_ARG_FIT_TARGET ?? ec.LLAMA_ARG_FIT_TARGET) !== undefined && (env.LLAMA_ARG_FIT_TARGET ?? ec.LLAMA_ARG_FIT_TARGET) !== null
+      ? [`export LLAMA_ARG_FIT_TARGET=${env.LLAMA_ARG_FIT_TARGET ?? ec.LLAMA_ARG_FIT_TARGET}`]
+      : []),
+    ...((env.LLAMA_ARG_FIT ?? ec.LLAMA_ARG_FIT ?? true) && (env.LLAMA_ARG_FIT_CTX ?? ec.LLAMA_ARG_FIT_CTX) !== undefined && (env.LLAMA_ARG_FIT_CTX ?? ec.LLAMA_ARG_FIT_CTX) !== null
+      ? [`export LLAMA_ARG_FIT_CTX=${env.LLAMA_ARG_FIT_CTX ?? ec.LLAMA_ARG_FIT_CTX}`]
+      : []),
   ];
 
   return {
@@ -1057,9 +1063,13 @@ function extractConfigsPerRun(liveResults, configs) {
         CUDA_SCALE_LAUNCH_QUEUES: configs.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
         LLAMA_CACHE: resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache || ""),
         GGML_CUDA_P2P: configs.export_configs?.GGML_CUDA_P2P || "on",
-        LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT || "on",
-        LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET || "256",
-        LLAMA_ARG_FIT_CTX: configs.export_configs?.LLAMA_ARG_FIT_CTX || "131072",
+        LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT ?? true,
+        ...(configs.export_configs?.LLAMA_ARG_FIT && configs.export_configs?.LLAMA_ARG_FIT_TARGET !== undefined && configs.export_configs?.LLAMA_ARG_FIT_TARGET !== null
+          ? { LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET }
+          : {}),
+        ...(configs.export_configs?.LLAMA_ARG_FIT && configs.export_configs?.LLAMA_ARG_FIT_CTX !== undefined && configs.export_configs?.LLAMA_ARG_FIT_CTX !== null
+          ? { LLAMA_ARG_FIT_CTX: configs.export_configs?.LLAMA_ARG_FIT_CTX }
+          : {}),
         CUDACXX: configs.cuda_configs?.cudacxx || "",
       },
       cmakeFlags: {
@@ -1398,7 +1408,7 @@ app.post("/api/kill-port", (req, res) => {
 });
 
 //--- System status endpoint ---
-app.get("/api/system-status", (_req, res) => {
+app.get("/api/system-status", async (_req, res) => {
   try {
     const meminfo = fs.readFileSync("/proc/meminfo", "utf8");
     const lines = meminfo.split("\n");
@@ -1426,6 +1436,74 @@ app.get("/api/system-status", (_req, res) => {
     // Used = total - available (available already accounts for buffers/cache)
     const usedGB = totalGB - availableGB;
 
+    // CPU usage from /proc/stat
+    let cpuUsage = 0;
+    let cpuCores = [];
+    try {
+      const statData = fs.readFileSync('/proc/stat', 'utf8').split('\n');
+      const cpuLine = statData[0];
+      const [, user1, nice1, system1, idle1, iowait1, irq1, softirq1, steal1] = cpuLine.split(/\s+/);
+      const total1 = parseInt(user1, 10) + parseInt(nice1, 10) + parseInt(system1, 10) + parseInt(idle1, 10) + parseInt(iowait1, 10) + parseInt(irq1, 10) + parseInt(softirq1, 10) + parseInt(steal1, 10);
+      const idleTotal1 = parseInt(idle1, 10) + parseInt(iowait1, 10);
+
+      // Per-core snapshots
+      const core1 = {};
+      statData.forEach((line) => {
+        const coreMatch = line.match(/^(cpu\d+)\s+(.+)/);
+        if (coreMatch) {
+          const [, name, values] = coreMatch;
+          const nums = values.split(/\s+/).map(Number);
+          core1[name] = nums;
+        }
+      });
+
+      // Short delay to measure delta
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      const statData2 = fs.readFileSync('/proc/stat', 'utf8').split('\n');
+      const cpuLine2 = statData2[0];
+      const [, user2, nice2, system2, idle2, iowait2, irq2, softirq2, steal2] = cpuLine2.split(/\s+/);
+      const total2 = parseInt(user2, 10) + parseInt(nice2, 10) + parseInt(system2, 10) + parseInt(idle2, 10) + parseInt(iowait2, 10) + parseInt(irq2, 10) + parseInt(softirq2, 10) + parseInt(steal2, 10);
+      const idleTotal2 = parseInt(idle2, 10) + parseInt(iowait2, 10);
+
+      const totalDelta = total2 - total1;
+      const idleDelta = idleTotal2 - idleTotal1;
+      if (totalDelta > 0) {
+        cpuUsage = Math.round(((totalDelta - idleDelta) / totalDelta) * 100);
+      }
+
+      // Per-core snapshots after delay
+      const core2 = {};
+      statData2.forEach((line) => {
+        const coreMatch = line.match(/^(cpu\d+)\s+(.+)/);
+        if (coreMatch) {
+          const [, name, values] = coreMatch;
+          const nums = values.split(/\s+/).map(Number);
+          core2[name] = nums;
+        }
+      });
+
+      // Calculate per-core usage
+      const coreNames = Object.keys(core1).sort((a, b) => {
+        const numA = parseInt(a.slice(3), 10);
+        const numB = parseInt(b.slice(3), 10);
+        return numA - numB;
+      });
+
+      for (const name of coreNames) {
+        const t1 = core1[name].reduce((s, v) => s + v, 0);
+        const i1 = core1[name][3] + core1[name][4]; // idle + iowait
+        const t2 = core2[name].reduce((s, v) => s + v, 0);
+        const i2 = core2[name][3] + core2[name][4];
+        const td = t2 - t1;
+        const id = i2 - i1;
+        const pct = td > 0 ? Math.round(((td - id) / td) * 100) : 0;
+        cpuCores.push({ name, usage: pct });
+      }
+    } catch {
+      // Silently fail if /proc/stat is unavailable
+    }
+
     res.json({
       success: true,
       data: {
@@ -1435,6 +1513,8 @@ app.get("/api/system-status", (_req, res) => {
         totalMB: Math.round(totalKB / 1024),
         usedMB: Math.round((usedGB * 1024)),
         percentUsed: totalKB > 0 ? Math.round((usedGB / totalGB) * 100) : 0,
+        cpuUsage,
+        cpuCores,
       },
     });
   } catch (err) {
@@ -1774,6 +1854,21 @@ app.delete("/api/build/delete", (req, res) => {
   }
 });
 
+//--- Delete llama.cpp repository ---
+app.delete("/api/build/llama/delete", (req, res) => {
+  try {
+    const llamaDir = join(BENCHMARK_DIR, "llama.cpp");
+    if (fs.existsSync(llamaDir)) {
+      fs.rmSync(llamaDir, { recursive: true, force: true });
+      res.json({ success: true, message: "llama.cpp repository deleted" });
+    } else {
+      res.json({ success: true, message: "llama.cpp repository does not exist" });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Build llama.cpp endpoint ---
 app.post("/api/build", async (req, res) => {
   if (buildStatus !== "idle") {
@@ -1804,9 +1899,13 @@ app.post("/api/build", async (req, res) => {
         CUDA_SCALE_LAUNCH_QUEUES: configs.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
         LLAMA_CACHE: resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache || ""),
         GGML_CUDA_P2P: configs.export_configs?.GGML_CUDA_P2P || "on",
-        LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT || "on",
-        LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET || "256",
-        LLAMA_ARG_FIT_CTX: configs.export_configs?.LLAMA_ARG_FIT_CTX || "131072",
+        LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT ?? true,
+        ...(configs.export_configs?.LLAMA_ARG_FIT && configs.export_configs?.LLAMA_ARG_FIT_TARGET !== undefined && configs.export_configs?.LLAMA_ARG_FIT_TARGET !== null
+          ? { LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET }
+          : {}),
+        ...(configs.export_configs?.LLAMA_ARG_FIT && configs.export_configs?.LLAMA_ARG_FIT_CTX !== undefined && configs.export_configs?.LLAMA_ARG_FIT_CTX !== null
+          ? { LLAMA_ARG_FIT_CTX: configs.export_configs?.LLAMA_ARG_FIT_CTX }
+          : {}),
         CUDACXX: configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc",
         PATH: `/usr/local/cuda-${configs.cuda_configs?.cuda_version || "12.6"}/bin${process.env.PATH ? ":" + process.env.PATH : ""}`,
       },

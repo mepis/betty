@@ -18,6 +18,9 @@ const systemMemoryTimer = ref(null)
 const showModal = ref(false)
 const selectedTestRunId = ref(null)
 
+// CPU cores modal
+const showCpuModal = ref(false)
+
 // Auto-scroll logs
 watch(
   () => store.logs.length,
@@ -125,6 +128,14 @@ function closeDetailsModal() {
   selectedTestRunId.value = null
 }
 
+function closeCpuModal() {
+  showCpuModal.value = false
+}
+
+function openCpuModal() {
+  showCpuModal.value = true
+}
+
 function selectedTestRunMessages() {
   if (selectedTestRunId.value == null) return []
   const entry = store.benchmarkMessages.find(
@@ -147,8 +158,8 @@ function statusBg(status) {
 
 <template>
   <div class="space-y-6">
-    <!-- Status, Metrics & Controls -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Status, System, Metrics & Controls -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
       <!-- Status Card -->
       <div class="card">
         <div class="flex items-center justify-between mb-4">
@@ -175,23 +186,54 @@ function statusBg(status) {
               {{ store.sseConnected ? 'Connected' : 'Disconnected' }}
             </span>
           </div>
+        </div>
+      </div>
+
+      <!-- System Card -->
+      <div class="card">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">System</h2>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-sm text-text-muted">Memory</span>
+            <span class="text-sm font-mono font-medium">
+              {{ store.systemMemory.usedGB.toFixed(1) }} / {{ store.systemMemory.totalGB.toFixed(1) }} GB
+            </span>
+          </div>
+          <div class="w-full h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
+            <div
+              class="h-full rounded-full transition-all duration-500"
+              :class="store.systemMemory.percentUsed > 90 ? 'bg-error' : store.systemMemory.percentUsed > 70 ? 'bg-warning' : 'bg-success'"
+              :style="{ width: `${Math.min(store.systemMemory.percentUsed, 100)}%` }"
+            />
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-text-muted">{{ store.systemMemory.percentUsed }}% used</span>
+          </div>
+
           <div class="pt-2 border-t border-border">
             <div class="flex items-center justify-between mb-1.5">
-              <span class="text-sm text-text-muted">Memory</span>
-              <span class="text-sm font-mono font-medium">
-                {{ store.systemMemory.usedGB.toFixed(1) }} / {{ store.systemMemory.totalGB.toFixed(1) }} GB
-              </span>
+              <span class="text-sm text-text-muted">CPU</span>
+              <span class="text-sm font-mono font-medium">{{ store.systemMemory.cpuUsage }}%</span>
             </div>
             <div class="w-full h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
               <div
                 class="h-full rounded-full transition-all duration-500"
-                :class="store.systemMemory.percentUsed > 90 ? 'bg-error' : store.systemMemory.percentUsed > 70 ? 'bg-warning' : 'bg-success'"
-                :style="{ width: `${Math.min(store.systemMemory.percentUsed, 100)}%` }"
+                :class="store.systemMemory.cpuUsage > 90 ? 'bg-error' : store.systemMemory.cpuUsage > 70 ? 'bg-warning' : 'bg-success'"
+                :style="{ width: `${Math.min(store.systemMemory.cpuUsage, 100)}%` }"
               />
             </div>
             <div class="text-right">
-              <span class="text-xs text-text-muted">{{ store.systemMemory.percentUsed }}% used</span>
+              <span class="text-xs text-text-muted">{{ store.systemMemory.cpuUsage }}% used</span>
             </div>
+            <button
+              @click="openCpuModal"
+              class="w-full mt-1 text-xs text-text-muted hover:text-text-secondary transition-colors"
+              title="Click to view per-core breakdown"
+            >
+              Per-core details →
+            </button>
           </div>
         </div>
       </div>
@@ -498,6 +540,67 @@ function statusBg(status) {
                       <span class="text-xs font-semibold text-accent uppercase tracking-wider">LLM Response</span>
                     </div>
                     <div class="text-sm text-text-secondary leading-relaxed break-words whitespace-pre-wrap bg-bg-primary rounded-lg p-3">{{ msg.response }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
+    <!-- CPU Cores Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showCpuModal" class="fixed inset-0 z-50 flex items-center justify-center">
+          <!-- Backdrop -->
+          <div
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            @click="closeCpuModal"
+          />
+
+          <!-- Modal -->
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-lg mx-4">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-border">
+              <div>
+                <h3 class="text-lg font-semibold text-text-primary">CPU Cores</h3>
+                <p class="text-xs text-text-muted mt-0.5">{{ store.systemMemory.cpuCores.length }} cores · {{ store.systemMemory.cpuUsage }}% overall</p>
+              </div>
+              <button
+                @click="closeCpuModal"
+                class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <div v-if="store.systemMemory.cpuCores.length === 0" class="flex flex-col items-center justify-center py-8 text-text-muted">
+                <svg class="w-10 h-10 mb-3 text-text-muted/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
+                </svg>
+                <span class="text-sm">No CPU data available.</span>
+              </div>
+
+              <div v-else class="space-y-3">
+                <div
+                  v-for="core in store.systemMemory.cpuCores"
+                  :key="core.name"
+                  class="flex items-center gap-3"
+                >
+                  <span class="text-xs font-mono font-medium text-text-muted w-16 flex-shrink-0">{{ core.name }}</span>
+                  <div class="flex-1 h-5 bg-bg-tertiary rounded-full overflow-hidden">
+                    <div
+                      class="h-full rounded-full transition-all duration-500 flex items-center justify-end pr-1.5"
+                      :class="core.usage > 90 ? 'bg-error' : core.usage > 70 ? 'bg-warning' : 'bg-success'"
+                      :style="{ width: `${Math.min(core.usage, 100)}%` }"
+                    >
+                      <span v-if="core.usage > 15" class="text-[10px] font-mono font-medium text-bg-primary">{{ core.usage }}%</span>
+                    </div>
                   </div>
                 </div>
               </div>

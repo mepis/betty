@@ -4,7 +4,7 @@
     "CUDA_SCALE_LAUNCH_QUEUES": "4x",
     "LLAMA_CACHE": "llama_cache",
     "GGML_CUDA_P2P": "on",
-    "LLAMA_ARG_FIT": "on",
+    "LLAMA_ARG_FIT": true,
     "LLAMA_ARG_FIT_TARGET": "256",
     "LLAMA_ARG_FIT_CTX": "131072"
   },
@@ -66,9 +66,9 @@
     "enable_cuda_scheduled_max_copies": "1",
     "cuda_max_scheduled_copies": 10,
     "enable_cuda_compression_level": false,
-    "cuda_compression_level": true,
+    "cuda_compression_level": "1",
     "enable_ggml_cuda_force_mmq": false,
-    "enable_ggml_native": true
+    "enable_ggml_native": "1"
   },
   "cuda_configs": {
     "cuda_version": "13.3",
@@ -155,5 +155,6 @@
     "cache_ram": 4096,
     "cache_ram_step": 1024,
     "cache_ram_max": 4096
-  }
+  },
+  "gpu_layer_offload": 999
 }
