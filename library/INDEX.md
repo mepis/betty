@@ -19,6 +19,19 @@
 | [Opencode Web UI Chat Message Handling](topics/opencode-web-ui-chat-message-handling/) | 2026-06-12 | Complete | opencode, web-ui, chat, message-handling, SolidJS, streaming, virtualization, agent-harness |
 | [Searching for and Downloading Models from Huggingface for llama.cpp](topics/huggingface-models-llama-cpp/) | 2026-06-17 | Complete | huggingface, gguf, llama.cpp, model-download, quantization, hf_transfer, model-management |
 
+## Project Documentation
+
+| Topic | Status | Tags |
+|-------|--------|------|
+| [Betty Project Overview](topics/betty-project/) | Complete | betty, benchmark, vue.js, express, sse, llama.cpp, configuration, installation, huggingface, web-ui |
+| [Betty Architecture](topics/betty-architecture/) | Complete | betty, architecture, sse, express, llama.cpp, configuration, data-flow |
+| [Betty API Reference](topics/betty-api-reference/) | Complete | betty, api, express, sse, huggingface, llama.cpp, configuration |
+| [Betty Benchmark Engine](topics/betty-benchmark-engine/) | Complete | betty, benchmark, llama.cpp, performance, metrics, cuda |
+| [Betty Frontend](topics/betty-frontend/) | Complete | betty, vue.js, frontend, pinia, tailwind, sse, web-ui |
+| [Betty Configuration](topics/betty-configuration/) | Complete | betty, configuration, json, llama.cpp, cuda, cmake |
+| [Betty Installation](topics/betty-installation/) | Complete | betty, installation, ubuntu, cuda, systemd, apt, service |
+| [Betty QA / Usage Examples](topics/betty-qa/) | Complete | betty, qa, usage, examples, troubleshooting, benchmark, installation, huggingface |
+
 ## Detail
 
 ### llama.cpp CUDA Flags Performance Impact

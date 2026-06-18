@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-18] Complete documentation overhaul — removed old chat-interface docs (architecture.md, backend docs, frontend docs, llama.cpp CLI docs, frontend-improvements-report.md); added new benchmark-focused docs: USER-MANUAL.md, dashboard.md, config.md, models.md, reports.md, configuration-reference.md, api-reference.md, troubleshooting.md
+- [Added]: [2026-06-18] 8 new library topic pages for Betty project documentation: betty-project/, betty-architecture/, betty-api-reference/, betty-benchmark-engine/, betty-frontend/, betty-configuration/, betty-installation/, betty-qa/
+- [Added]: [2026-06-18] 6 new library tag pages: betty.md, configuration.md, express.md, installation.md, sse.md, vue.js.md
 - [Added]: [2026-06-14] Systemd service installation from benchmark reports — new `POST /api/service/install` endpoint that creates a user-level systemd service from a report's launch command, with auto-restart on failure; UI button in Reports.vue modal with success/error feedback and copy-to-clipboard for status/stop commands
 
 ### Added
@@ -18,6 +21,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-18] README.md — repositioned Betty from "web-based chat interface for pi coding agent" to "web-based benchmarking tool for llama.cpp"; updated features, quick start, and documentation links
+- [Changed]: [2026-06-18] docs/index.md — replaced old documentation index with new benchmark-focused index pointing to updated docs
+- [Changed]: [2026-06-18] library/INDEX.md — added "Project Documentation" section with 8 Betty topic entries
+- [Changed]: [2026-06-18] library/tags/benchmark.md, huggingface.md, llama.cpp.md — added Betty project documentation references, reorganized into "Project Documentation" and "Research Topics" sections
+- [Changed]: [2026-06-18] Benchmark frontend Config.vue — fixed service stop button visibility logic (removed `store.serviceActive &&` condition), changed stop button style from danger to ghost
+- [Changed]: [2026-06-18] Benchmark frontend dist — rebuilt with new asset hashes (`index-CPhsgIe-.js`, `index-JlmzCPAq.css`)
 - [Changed]: [2026-06-14] `frontend/src/views/Dashboard.vue` — added collapsible message panels with toggle/expand state management, clickable message headers with animated chevron, and `v-show` conditional rendering for message content
 - [Changed]: [2026-06-14] `frontend/src/stores/benchmark.js` — added SSE connection readiness check in `startBenchmark()` (waits for SSE before starting benchmark, with 5s timeout); added `_connectingSSE` flag to prevent duplicate SSE connections and properly reset it on open/close/error events
 - [Changed]: [2026-06-14] `api-server.js` — set `benchmarkStatus = "testing"` when `Test Run #` is detected in log output, ensuring status is properly reported during test execution
@@ -88,6 +97,7 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
+- [Removed]: [2026-06-18] Old documentation — deleted docs/CHANGELOG.md (merged into src/benchmark/docs/CHANGELOG.md), architecture.md, backend/ directory (9 files), llama.cpp_docs/ directory (20 files), frontend-improvements-report.md, old docs/index.md
 - [Removed]: [2026-06-11] Reverted removal of standalone benchmark frontend — undoes the earlier decision to remove `frontend/` and `api-server.js`; the benchmark is now available as both a standalone tool and through the main Betty web interface
 
 ### Changed
