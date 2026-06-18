@@ -1002,24 +1002,24 @@ function getLaunchCommand(configs, testRunConfig) {
   const ec = configs.export_configs || {};
   const cudaVer = configs.cuda_configs?.cuda_version || "12.6";
   const envLines = [
-    `export GGML_CUDA_ENABLE_UNIFIED_MEMORY=${env.GGML_CUDA_ENABLE_UNIFIED_MEMORY || ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1"}`,
-    `export CUDA_SCALE_LAUNCH_QUEUES=${env.CUDA_SCALE_LAUNCH_QUEUES || ec.CUDA_SCALE_LAUNCH_QUEUES || "4x"}`,
-    `export LLAMA_CACHE=${resolveConfigPath(env.LLAMA_CACHE || ec.LLAMA_CACHE || configs.llama_cache || "")}`,
-    `export CUDACXX=${env.CUDACXX || configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
-    `export GGML_CUDA_P2P=${env.GGML_CUDA_P2P || ec.GGML_CUDA_P2P || "on"}`,
-    `export PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
-    `export LLAMA_ARG_FIT=${(env.LLAMA_ARG_FIT ?? ec.LLAMA_ARG_FIT ?? true) ? "on" : "off"}`,
+    `GGML_CUDA_ENABLE_UNIFIED_MEMORY=${env.GGML_CUDA_ENABLE_UNIFIED_MEMORY || ec.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1"}`,
+    `CUDA_SCALE_LAUNCH_QUEUES=${env.CUDA_SCALE_LAUNCH_QUEUES || ec.CUDA_SCALE_LAUNCH_QUEUES || "4x"}`,
+    `LLAMA_CACHE=${resolveConfigPath(env.LLAMA_CACHE || ec.LLAMA_CACHE || configs.llama_cache || "")}`,
+    `CUDACXX=${env.CUDACXX || configs.cuda_configs?.cudacxx || "/usr/local/cuda/bin/nvcc"}`,
+    `GGML_CUDA_P2P=${env.GGML_CUDA_P2P || ec.GGML_CUDA_P2P || "on"}`,
+    `PATH=/usr/local/cuda-${cudaVer}/bin:$PATH`,
+    `LLAMA_ARG_FIT=${(env.LLAMA_ARG_FIT ?? ec.LLAMA_ARG_FIT ?? true) ? "on" : "off"}`,
     ...((env.LLAMA_ARG_FIT ?? ec.LLAMA_ARG_FIT ?? true) && (env.LLAMA_ARG_FIT_TARGET ?? ec.LLAMA_ARG_FIT_TARGET) !== undefined && (env.LLAMA_ARG_FIT_TARGET ?? ec.LLAMA_ARG_FIT_TARGET) !== null
-      ? [`export LLAMA_ARG_FIT_TARGET=${env.LLAMA_ARG_FIT_TARGET ?? ec.LLAMA_ARG_FIT_TARGET}`]
+      ? [`LLAMA_ARG_FIT_TARGET=${env.LLAMA_ARG_FIT_TARGET ?? ec.LLAMA_ARG_FIT_TARGET}`]
       : []),
     ...((env.LLAMA_ARG_FIT ?? ec.LLAMA_ARG_FIT ?? true) && (env.LLAMA_ARG_FIT_CTX ?? ec.LLAMA_ARG_FIT_CTX) !== undefined && (env.LLAMA_ARG_FIT_CTX ?? ec.LLAMA_ARG_FIT_CTX) !== null
-      ? [`export LLAMA_ARG_FIT_CTX=${env.LLAMA_ARG_FIT_CTX ?? ec.LLAMA_ARG_FIT_CTX}`]
+      ? [`LLAMA_ARG_FIT_CTX=${env.LLAMA_ARG_FIT_CTX ?? ec.LLAMA_ARG_FIT_CTX}`]
       : []),
   ];
 
   return {
     env: envLines,
-    command: parts.join(" \\"),
+    command: parts.join(" "),
     full: envLines.join(" && ") + ` && cd llama.cpp/build/bin && ${parts.join(" ")}`,
   };
 }
