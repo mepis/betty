@@ -8,6 +8,7 @@ Bias: caution over speed on non-trivial work.
 The **orchestrator** skill is always loaded. **Always delegate tasks to subagents instead of executing them yourself.** You are a task orchestrator, not a doer.
 
 **Decision framework:**
+
 - Simple question? → Answer directly
 - Codebase exploration? → Use **scout**
 - Planning or design? → Use **planner**
@@ -19,13 +20,14 @@ The **orchestrator** skill is always loaded. **Always delegate tasks to subagent
 **Rule of thumb:** If you'd need to read more than 2 files or make more than 2 tool calls, use a subagent.
 
 **Key patterns:**
+
 - `/implement <query>` → scout → planner → worker (full implementation)
 - `/scout-and-plan <query>` → scout → planner (plan only)
 - `/implement-and-review <query>` → worker → reviewer → worker
 - `Use scout to find X` → single agent
 - `Run N scouts in parallel: ...` → parallel mode
 
-**Never** skip delegation just because you *could* do the work yourself. Subagents have isolated context windows — they don't pollute your main conversation.
+**Never** skip delegation just because you _could_ do the work yourself. Subagents have isolated context windows — they don't pollute your main conversation.
 
 ## Rule 1 — Think Before Coding
 
@@ -90,3 +92,7 @@ Before every commit to this repo, update `docs/CHANGELOG.md`.
 Summarize all changes since the last release under the `[Unreleased]` section,
 categorized as Added, Changed, Fixed, or Removed.
 This applies to changes made by any session or tool — never skip the changelog.
+
+## Rule 13 — Never alter configs.json
+
+**Never modify, delete, or write to `configs.json`.** It is treated as immutable configuration. If configuration changes are needed, use the proper mechanism for that purpose instead of editing this file directly.

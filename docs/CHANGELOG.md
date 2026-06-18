@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-18] Git update checking — backend polls `git rev-parse` every hour to detect upstream updates; new `GET /api/git/update-status` endpoint; frontend sidebar shows "Update Available" warning badge when remote is ahead
+
+### Changed
+
+- [Changed]: [2026-06-18] `.pi/` config consolidated to project root — moved agents (reviewer, scout, worker) and skills (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging) from `src/benchmark/.pi/` to `.pi/`; removed `src/benchmark/.pi/` and `src/benchmark/docs/CHANGELOG.md`
+
+### Added
+
+- [Added]: [2026-06-18] Rule 13 — Never alter `configs.json` — added AGENTS.md rule treating `configs.json` as immutable configuration
+
 ### Changed
 
 - [Changed]: [2026-06-18] configs.json — `GGML_CUDA_P2P` disabled ("on" → "off"); model updated to `unsloth_gemma-4-E2B-it-GGUF/gemma-4-E2B-it-UD-Q6_K_XL.gguf`; `enable_cuda_graphs` normalized to string "1"; `enable_cuda_fp16` enabled; `enable_cuda_compression_level` enabled with level 3
