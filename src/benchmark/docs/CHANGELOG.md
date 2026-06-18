@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-18] Current launch command display — new `GET /api/launch-command` endpoint and collapsible launch command section in Dashboard sidebar; store auto-refreshes the command on every SSE status update
+
 - [Added]: [2026-06-18] CPU usage monitoring — `GET /api/system-status` now reads `/proc/stat` with a 500ms delta to compute overall CPU percentage and per-core usage breakdown; frontend Dashboard.vue displays a System card with memory and CPU progress bars, plus a per-core details modal
 
 - [Added]: [2026-06-18] Delete llama.cpp repository — new `DELETE /api/build/llama/delete` endpoint and corresponding "Delete Llama" button in Config.vue with confirmation dialog; removes the entire cloned llama.cpp directory recursively
@@ -15,6 +17,8 @@ All notable changes to this project will be documented in this file.
 - [Added]: [2026-06-18] LLAMA_ARG_FIT toggle in Config.vue — dedicated toggle control with conditional LLAMA_ARG_FIT_TARGET and LLAMA_ARG_FIT_CTX number inputs that only appear when FIT is enabled
 
 ### Changed
+
+- [Changed]: [2026-06-18] Dashboard controls reorganized — start/stop buttons and save report moved from sidebar to the Live Results table header for a more compact layout; nav label changed from "Dashboard" to "Run Tests"
 
 - [Changed]: [2026-06-18] `LLAMA_ARG_FIT` refactored from string ("on"/"off") to boolean (true/false) across api-server.js, index.js, configs.json, and Config.vue; `LLAMA_ARG_FIT_TARGET` and `LLAMA_ARG_FIT_CTX` are now conditionally included only when FIT is enabled
 

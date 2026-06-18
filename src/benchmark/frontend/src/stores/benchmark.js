@@ -27,6 +27,8 @@ export const useBenchmarkStore = defineStore('benchmark', {
     buildProgress: 0,
     // Systemd service
     serviceActive: false,
+    // Current launch command
+    launchCommand: null,
 
     // System memory
     systemMemory: {
@@ -333,13 +335,15 @@ export const useBenchmarkStore = defineStore('benchmark', {
       let reconnectTimer = null
       let lastStatusReceived = Date.now()
 
-      eventSource.addEventListener('status', (e) => {
+      eventSource.addEventListener('status', async (e) => {
         const data = JSON.parse(e.data)
         this.status = data.status
         this.testRun = data.testRun
         this.liveResults = data.liveResults || []
         this.processAlive = true
         lastStatusReceived = Date.now()
+        // Refresh launch command when status changes (configs may have advanced)
+        await this.fetchLaunchCommand()
       })
 
       eventSource.addEventListener('results', (e) => {
@@ -568,6 +572,17 @@ export const useBenchmarkStore = defineStore('benchmark', {
         }
       } catch {
         this.serviceActive = false
+      }
+    },
+
+    async fetchLaunchCommand() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/launch-command`)
+        if (res.data.success) {
+          this.launchCommand = res.data.data
+        }
+      } catch {
+        this.launchCommand = null
       }
     },
 

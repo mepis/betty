@@ -398,6 +398,17 @@ app.get("/api/status", (_req, res) => {
   });
 });
 
+//--- Current launch command endpoint ---
+app.get("/api/launch-command", (_req, res) => {
+  try {
+    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const launchCmd = getLaunchCommand(configs, {});
+    res.json({ success: true, data: launchCmd });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- SSE stream endpoint ---
 app.get("/api/stream", (req, res) => {
   res.setHeader("Content-Type", "text/event-stream");

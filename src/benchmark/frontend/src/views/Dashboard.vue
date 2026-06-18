@@ -7,6 +7,7 @@ const logContainer = ref(null)
 const showLogs = ref(true)
 const logsMaximized = ref(false)
 const showEnvInput = ref(false)
+const showLaunchCommand = ref(false)
 const envInput = ref('')
 const savingReport = ref(false)
 const reportName = ref('')
@@ -45,6 +46,7 @@ onMounted(async () => {
   await store.fetchConfigs()
   await store.fetchResults()
   await store.fetchServiceStatus()
+  await store.fetchLaunchCommand()
   store.connectSSE()
 
   // Poll for status updates as backup
@@ -267,29 +269,6 @@ function statusBg(status) {
         </div>
         <div class="space-y-3">
           <button
-            v-if="!store.isRunning"
-            @click="handleStart"
-            class="btn btn-success w-full"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {{ store.isError ? 'Restart Benchmark' : store.isStopped ? 'Restart Benchmark' : 'Start Benchmark' }}
-          </button>
-
-          <button
-            v-if="store.isRunning"
-            @click="handleStop"
-            class="btn btn-danger w-full"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-            </svg>
-            Stop
-          </button>
-          <button
             v-if="store.isRunning"
             @click="showEnvInput = !showEnvInput"
             class="btn btn-ghost w-full"
@@ -299,31 +278,6 @@ function statusBg(status) {
             </svg>
             Environment
           </button>
-
-          <!-- Save report -->
-          <div class="pt-2 border-t border-border">
-            <div class="flex items-center gap-2">
-              <input
-                v-model="reportName"
-                :placeholder="store.liveResults.length > 0 ? 'Report name...' : 'No results to save'"
-                class="input w-full"
-                :disabled="store.liveResults.length === 0 || savingReport"
-                @keyup.enter="handleSaveReport"
-              />
-              <button
-                @click="handleSaveReport"
-                class="btn btn-primary btn-sm"
-                :disabled="store.liveResults.length === 0 || savingReport"
-              >
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                </svg>
-                {{ savingReport ? 'Saving...' : 'Save' }}
-              </button>
-            </div>
-            <span v-if="saveReportSuccess" class="text-xs text-success">Saved!</span>
-
-          </div>
         </div>
 
         <!-- Environment input -->
@@ -336,6 +290,26 @@ function statusBg(status) {
             rows="3"
           />
         </div>
+
+        <!-- Current launch command -->
+        <div v-if="store.launchCommand" class="mt-3 pt-3 border-t border-border">
+          <button
+            @click="showLaunchCommand = !showLaunchCommand"
+            class="flex items-center gap-2 text-xs font-medium text-text-muted hover:text-text-secondary transition-colors w-full"
+          >
+            <svg
+              class="w-3.5 h-3.5 transition-transform"
+              :class="showLaunchCommand ? '-rotate-90' : ''"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            Current Launch Command
+          </button>
+          <div v-show="showLaunchCommand" class="mt-2 bg-bg-primary rounded-lg p-2.5 overflow-x-auto">
+            <pre class="text-[11px] font-mono text-text-secondary whitespace-pre-wrap break-all leading-relaxed">{{ store.launchCommand.full }}</pre>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -343,9 +317,52 @@ function statusBg(status) {
     <div class="space-y-6">
         <!-- Results Table -->
         <div class="card">
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
             <h2 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">Live Results</h2>
-            <span class="text-xs text-text-muted">{{ store.liveResults.length }} entries</span>
+            <div class="flex items-center gap-2">
+              <button
+                v-if="!store.isRunning"
+                @click="handleStart"
+                class="btn btn-success btn-sm"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {{ store.isError ? 'Restart Benchmark' : store.isStopped ? 'Restart Benchmark' : 'Start Benchmark' }}
+              </button>
+              <button
+                v-if="store.isRunning"
+                @click="handleStop"
+                class="btn btn-danger btn-sm"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+                </svg>
+                Stop
+              </button>
+              <span class="text-xs text-text-muted">{{ store.liveResults.length }} entries</span>
+              <div class="flex items-center gap-2">
+                <input
+                  v-model="reportName"
+                  :placeholder="store.liveResults.length > 0 ? 'Report name...' : 'No results to save'"
+                  class="input input-sm w-36"
+                  :disabled="store.liveResults.length === 0 || savingReport"
+                  @keyup.enter="handleSaveReport"
+                />
+                <button
+                  @click="handleSaveReport"
+                  class="btn btn-primary btn-sm"
+                  :disabled="store.liveResults.length === 0 || savingReport"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                  </svg>
+                  {{ savingReport ? 'Saving...' : 'Save' }}
+                </button>
+              </div>
+            </div>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
