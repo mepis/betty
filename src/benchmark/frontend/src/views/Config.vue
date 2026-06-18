@@ -900,9 +900,10 @@ function normalizeBuildParams(configs) {
           title="Environment Exports"
           :items="[
             { key: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', label: 'GGML_CUDA_ENABLE_UNIFIED_MEMORY', type: 'text' },
-            { key: 'CUDA_SCALE_LAUNCH_QUEUES', label: 'CUDA_SCALE_LAUNCH_QUEUES', type: 'text' },
+            { key: 'CUDA_SCALE_LAUNCH_QUEUES', label: 'CUDA_SCALE_LAUNCH_QUEUES', type: 'select' },
             { key: 'GGML_CUDA_P2P', label: 'GGML_CUDA_P2P', type: 'text' },
           ]"
+          :queue-options="['1x', '4x', '8x']"
           v-model="visualConfigs.export_configs"
         />
 

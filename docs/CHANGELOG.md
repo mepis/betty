@@ -4,8 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-18] `CUDA_SCALE_LAUNCH_QUEUES` now uses a select dropdown with configurable queue options (1x, 4x, 8x) in Config.vue
+
 ### Changed
 
+- [Changed]: [2026-06-18] `configs.json` — normalized `enable_cuda_fp16` and `enable_cuda_compression_level` from boolean to string values
+- [Changed]: [2026-06-18] Frontend dist rebuilt with new asset hashes (`index-GQWHgjsa.js`, `index-DKrWg_nR.css`)
 - [Changed]: [2026-06-18] `package.json` start script — added `npm install` step in frontend build process to ensure dependencies are present before building
 
 ### Added

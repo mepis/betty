@@ -61,11 +61,11 @@
     "enable_cuda_custom_arch": false,
     "enable_cuda_fa_all_quants": "1",
     "cuda_all_quants": "1",
-    "enable_cuda_fp16": true,
+    "enable_cuda_fp16": "1",
     "cuda_fp16": "1",
     "enable_cuda_scheduled_max_copies": false,
     "cuda_max_scheduled_copies": 10,
-    "enable_cuda_compression_level": true,
+    "enable_cuda_compression_level": "1",
     "cuda_compression_level": 3,
     "enable_ggml_cuda_force_mmq": false,
     "enable_ggml_native": "1"
