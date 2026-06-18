@@ -7,7 +7,7 @@ src/benchmark/hf_downloads/
 src/benchmark/.playwright-cli/
 src/benchmark/configs.json
 src/benchmark/reports/*
-src/benchmark/frontend/dist/
+src/benchmark/frontend/dist/*
 .agents/
 .playwright-cli/
 test-*.mjs

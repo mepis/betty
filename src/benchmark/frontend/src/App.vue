@@ -7,6 +7,7 @@ const store = useBenchmarkStore()
 const route = useRoute()
 const sidebarOpen = ref(true)
 const gitUpdateTimer = ref(null)
+const updating = ref(false)
 
 const navItems = [
   { name: 'Run Tests', path: '/', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
@@ -30,6 +31,22 @@ onUnmounted(() => {
     clearInterval(gitUpdateTimer.value)
   }
 })
+
+async function handleUpdate() {
+  updating.value = true
+  try {
+    const result = await store.performUpdate()
+    if (result.success) {
+      store.showNotification('success', 'Updated and restarted successfully')
+    } else {
+      store.showNotification('error', result.error || 'Update failed')
+    }
+  } catch (e) {
+    store.showNotification('error', e.message || 'Update failed')
+  } finally {
+    updating.value = false
+  }
+}
 </script>
 
 <template>
@@ -109,12 +126,19 @@ onUnmounted(() => {
 
       <!-- Update available -->
       <div v-if="sidebarOpen && store.hasUpdate" class="p-3 pt-0">
-        <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-warning-subtle border border-warning/20">
-          <svg class="w-3.5 h-3.5 text-warning flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <button
+          @click="handleUpdate"
+          :disabled="updating"
+          class="flex items-center gap-2 px-3 py-2 rounded-lg bg-warning-subtle border border-warning/20 w-full transition-all duration-200 hover:bg-warning/20 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <svg v-if="!updating" class="w-3.5 h-3.5 text-warning flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
-          <span class="text-xs font-medium text-warning">Update Available</span>
-        </div>
+          <svg v-else class="w-3.5 h-3.5 text-warning flex-shrink-0 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span class="text-xs font-medium text-warning">{{ updating ? 'Updating...' : 'Update Available' }}</span>
+        </button>
       </div>
 
       <!-- Nav -->
@@ -169,6 +193,41 @@ onUnmounted(() => {
 
       <!-- Page content -->
       <div class="p-6">
+        <!-- Notification banner -->
+        <Transition
+          enter-active-class="transition duration-300 ease-out"
+          enter-from-class="transform -translate-y-2 opacity-0"
+          enter-to-class="transform translate-y-0 opacity-100"
+          leave-active-class="transition duration-200 ease-in"
+          leave-from-class="transform translate-y-0 opacity-100"
+          leave-to-class="transform -translate-y-2 opacity-0"
+        >
+          <div v-if="store.notification.type" class="fixed top-4 right-4 z-50 max-w-md">
+            <div
+              class="flex items-start gap-3 px-4 py-3 rounded-lg shadow-lg border"
+              :class="
+                store.notification.type === 'success'
+                  ? 'bg-success/10 border-success/30 text-success'
+                  : 'bg-error/10 border-error/30 text-error'
+              "
+            >
+              <svg v-if="store.notification.type === 'success'" class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <svg v-else class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div class="flex-1">
+                <p class="text-sm font-medium">{{ store.notification.message }}</p>
+              </div>
+              <button @click="store.clearNotification()" class="flex-shrink-0 text-current opacity-60 hover:opacity-100 transition-opacity">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </Transition>
         <router-view />
       </div>
     </main>

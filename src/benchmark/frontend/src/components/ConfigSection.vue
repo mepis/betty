@@ -7,6 +7,7 @@ const props = defineProps({
   modelValue: { type: Object, required: true },
   modelOptions: { type: Array, default: () => [] },
   queueOptions: { type: Array, default: () => ['1x', '4x', '8x'] },
+  p2pOptions: { type: Array, default: () => ['off', 'on'] },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -84,7 +85,7 @@ const closeDropdown = () => {
                   — Select —
                 </button>
                 <button
-                  v-for="opt in item.key === 'CUDA_SCALE_LAUNCH_QUEUES' ? queueOptions : modelOptions"
+                  v-for="opt in item.key === 'CUDA_SCALE_LAUNCH_QUEUES' ? queueOptions : item.key === 'GGML_CUDA_P2P' ? p2pOptions : modelOptions"
                   :key="opt"
                   @click="selectOption(item.key, opt)"
                   class="w-full text-left px-3 py-1.5 text-xs transition-colors"

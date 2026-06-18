@@ -2118,6 +2118,61 @@ app.get("/api/git/update-status", (_req, res) => {
   res.json({ success: true, data: gitUpdateCache });
 });
 
+//--- Git update (pull + restart service) endpoint ---
+app.post("/api/git/update", async (_req, res) => {
+  try {
+    // Check if the service exists and is enabled
+    let isServiceEnabled;
+    try {
+      const enabledOutput = execSync("systemctl --user is-enabled llama.service", { encoding: "utf8" }).trim();
+      isServiceEnabled = enabledOutput === "enabled";
+    } catch {
+      // Service doesn't exist or is disabled
+      return res.json({
+        success: false,
+        error: "Service 'llama.service' does not exist or is not enabled. Enable it first with 'systemctl --user enable llama.service'.",
+      });
+    }
+
+    // Check if we're in the correct repo directory
+    const gitDir = join(BENCHMARK_DIR, ".git");
+    if (!fs.existsSync(gitDir)) {
+      return res.json({
+        success: false,
+        error: "Not a git repository. Please initialize or clone the repository first.",
+      });
+    }
+
+    // Pull latest changes
+    try {
+      execSync("git pull", { cwd: BENCHMARK_DIR, encoding: "utf8" });
+    } catch (err) {
+      return res.json({
+        success: false,
+        error: `Git pull failed: ${err.message}`,
+      });
+    }
+
+    // Reload systemd and restart the service
+    try {
+      execSync("systemctl --user daemon-reload");
+      execSync("systemctl --user restart llama.service");
+    } catch (err) {
+      return res.json({
+        success: false,
+        error: `Service restart failed: ${err.message}`,
+      });
+    }
+
+    // Refresh the git update cache
+    checkGitUpdate();
+
+    res.json({ success: true, message: "Updated and restarted successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Docs endpoints ---
 const DOCS_DIR = join(__dirname, '..', '..', 'docs');
 

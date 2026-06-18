@@ -48,6 +48,9 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
     // Git update check
     gitUpdate: { hasUpdate: false, localCommit: null, remoteCommit: null, lastChecked: null },
+
+    // Notification
+    notification: { type: null, message: null },
   }),
 
   getters: {
@@ -757,6 +760,30 @@ export const useBenchmarkStore = defineStore('benchmark', {
       } catch {
         // Silently fail
       }
+    },
+
+    async performUpdate() {
+      try {
+        const res = await axios.post(`${API_BASE}/api/git/update`)
+        if (res.data.success) {
+          await this.fetchGitUpdateStatus()
+          return { success: true }
+        }
+        return { success: false, error: res.data.error }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    },
+
+    showNotification(type, message) {
+      this.notification = { type, message }
+      setTimeout(() => {
+        this.notification = { type: null, message: null }
+      }, 6000)
+    },
+
+    clearNotification() {
+      this.notification = { type: null, message: null }
     },
   },
 })

@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-18] Git update feature — new `POST /api/git/update` endpoint that pulls latest changes and restarts the llama.service; "Update Available" button in sidebar triggers the update; toast notification banner with success/error feedback
 - [Added]: [2026-06-18] `CUDA_SCALE_LAUNCH_QUEUES` now uses a select dropdown with configurable queue options (1x, 4x, 8x) in Config.vue
 
 ### Changed
