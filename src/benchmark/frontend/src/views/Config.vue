@@ -2,6 +2,7 @@
 import { ref, onMounted, watch, nextTick } from 'vue'
 import { useBenchmarkStore } from '@/stores/benchmark'
 import ConfigSection from '@/components/ConfigSection.vue'
+import Tooltip from '@/components/Tooltip.vue'
 
 const store = useBenchmarkStore()
 const saving = ref(false)
@@ -691,12 +692,14 @@ function normalizeBuildParams(configs) {
             <div
               v-for="param in [
                 { key: 'build_cores', label: 'Build Cores', type: 'number' },
-                { key: 'skip_build', label: 'Skip Build', type: 'boolean' },
+                { key: 'skip_build', label: 'Skip Build', type: 'boolean', tooltip: 'Skips rebuilding llama.cpp between each test run' },
               ]"
               :key="param.key"
               class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
             >
-              <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              <Tooltip :text="param.tooltip">
+                <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              </Tooltip>
               <input
                 v-if="param.type === 'number'"
                 type="number"
@@ -723,13 +726,15 @@ function normalizeBuildParams(configs) {
             <h5 class="text-base font-medium text-text-muted">Basic Options</h5>
             <div
               v-for="param in [
-                { key: 'enable_ccache', label: 'Enable ccache', type: 'boolean' },
+                { key: 'enable_ccache', label: 'Enable ccache', type: 'boolean', tooltip: 'Improves llama.cpp rebuilding speed' },
                 { key: 'enable_lto', label: 'Enable LTO', type: 'boolean' },
               ]"
               :key="param.key"
               class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover"
             >
-              <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              <Tooltip :text="param.tooltip">
+                <label class="text-sm text-text-secondary">{{ param.label }}</label>
+              </Tooltip>
               <button
                 @click="toggleBuildParam(param.key)"
                 class="relative w-10 h-5 rounded-full transition-colors"

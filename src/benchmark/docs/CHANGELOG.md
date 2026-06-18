@@ -6,11 +6,17 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Changed]: [2026-06-18] configs.json — updated CUDA version from 13.2 to 13.3 (`cuda_version` and `cudacxx` path); enabled `enable_cuda_graphs`; disabled `enable_cuda_per_max_batch_size`, `enable_cuda_peer_copy`, and `enable_cuda_scheduled_max_copies`
+
 - [Added]: [2026-06-18] Current launch command display — new `GET /api/launch-command` endpoint and collapsible launch command section in Dashboard sidebar; store auto-refreshes the command on every SSE status update
 
 - [Added]: [2026-06-18] CPU usage monitoring — `GET /api/system-status` now reads `/proc/stat` with a 500ms delta to compute overall CPU percentage and per-core usage breakdown; frontend Dashboard.vue displays a System card with memory and CPU progress bars, plus a per-core details modal
 
+- [Added]: [2026-06-18] Tooltip component — new reusable `Tooltip.vue` component with floating tooltip that appears on hover/focus, positioned below trigger element, mounted to a fixed root container
+
 - [Added]: [2026-06-18] Delete llama.cpp repository — new `DELETE /api/build/llama/delete` endpoint and corresponding "Delete Llama" button in Config.vue with confirmation dialog; removes the entire cloned llama.cpp directory recursively
+
+- [Added]: [2026-06-18] Build parameter tooltips — added descriptive tooltips to "Skip Build" ("Skips rebuilding llama.cpp between each test run") and "Enable ccache" ("Improves llama.cpp rebuilding speed") labels in Config.vue Build Options sections
 
 - [Added]: [2026-06-18] Build Execution section in Config.vue — new controls for Build Cores (number) and Skip Build (toggle) in the Build Options tab
 
