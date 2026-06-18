@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-18] `scripts/install-service.sh` — service file PATH now derived from the actual npm binary location at install time instead of hardcoding the nvm node path, resolving 'env: node: No such file or directory' failures on machines with different nvm setups
+
 ### Added
 
 - [Added]: [2026-06-18] Systemd service logs page — new `/logs` route in benchmark frontend with `Logs.vue` component that fetches and displays `journalctl` output from `llama.service` with auto-refresh (5s), auto-scroll toggle, and manual refresh button; backed by new `GET /api/logs` endpoint in `api-server.js`
