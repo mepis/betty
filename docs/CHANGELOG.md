@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-18] `package.json` start script — added `npm install` step in frontend build process to ensure dependencies are present before building
+
 ### Added
 
 - [Added]: [2026-06-18] Git update checking — backend polls `git rev-parse` every hour to detect upstream updates; new `GET /api/git/update-status` endpoint; frontend sidebar shows "Update Available" warning badge when remote is ahead
