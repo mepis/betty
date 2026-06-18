@@ -380,7 +380,7 @@ function normalizeBuildParams(configs) {
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
     <!-- Profile Panel -->
     <div class="card">
       <div class="flex items-center justify-between mb-4">
@@ -561,6 +561,7 @@ function normalizeBuildParams(configs) {
         </div>
       </div>
     </div>
+  </div>
 
     <!-- Editor -->
     <div class="card">
@@ -592,14 +593,14 @@ function normalizeBuildParams(configs) {
 
           <!-- Basic Build Options -->
           <div class="space-y-2">
-            <h5 class="text-xs font-medium text-text-muted">Basic Options</h5>
+            <h5 class="text-base font-medium text-text-muted">Basic Options</h5>
             <div
               v-for="param in [
                 { key: 'enable_ccache', label: 'Enable ccache', type: 'boolean' },
                 { key: 'enable_lto', label: 'Enable LTO', type: 'boolean' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <button
@@ -625,24 +626,24 @@ function normalizeBuildParams(configs) {
 
           <!-- CUDA Build Options -->
           <div class="space-y-2">
-            <h5 class="text-xs font-medium text-text-muted">CUDA Options</h5>
+            <h5 class="text-base font-medium text-text-muted">CUDA Options</h5>
             <div
               v-for="param in [
                 { key: 'enable_cuda', label: 'Enable CUDA', type: 'boolean' },
                 { key: 'enable_cuda_fa', label: 'Enable Flash Attention', type: 'boolean' },
                 { key: 'enable_cuda_graphs', label: 'Enable CUDA Graphs', type: 'boolean' },
                 { key: 'enable_cuda_nccl', label: 'Enable NCCL', type: 'boolean' },
-                { key: 'enable_cuda_per_max_batch_size', label: 'Per-Max Batch Size', type: 'boolean' },
+                { key: 'enable_cuda_per_max_batch_size', label: 'Enable Per-Max Batch Size', type: 'boolean' },
                 { key: 'enable_cuda_peer_copy', label: 'Enable Peer Copy', type: 'boolean' },
-                { key: 'enable_cuda_custom_arch', label: 'Custom CUDA Architecture', type: 'boolean' },
+                { key: 'enable_cuda_custom_arch', label: 'Enable Custom CUDA Architecture', type: 'boolean' },
                 { key: 'enable_cuda_fp16', label: 'Enable FP16', type: 'boolean' },
-                { key: 'enable_cuda_scheduled_max_copies', label: 'Scheduled Max Copies', type: 'boolean' },
-                { key: 'enable_cuda_compression_level', label: 'Compression Level', type: 'boolean' },
-                { key: 'enable_ggml_cuda_force_mmq', label: 'Force MMQ', type: 'boolean' },
-                { key: 'enable_ggml_native', label: 'GGML Native', type: 'boolean' },
+                { key: 'enable_cuda_scheduled_max_copies', label: 'Enable Scheduled Max Copies', type: 'boolean' },
+                { key: 'enable_cuda_compression_level', label: 'Enable Compression Level', type: 'boolean' },
+                { key: 'enable_ggml_cuda_force_mmq', label: 'Enable Force MMQ', type: 'boolean' },
+                { key: 'enable_ggml_native', label: 'Enable GGML Native', type: 'boolean' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <button
@@ -668,7 +669,7 @@ function normalizeBuildParams(configs) {
 
           <!-- Build Parameter Values -->
           <div class="space-y-2">
-            <h5 class="text-xs font-medium text-text-muted">Build Parameters</h5>
+            <h5 class="text-base font-medium text-text-muted">Build Parameters</h5>
             <div
               v-for="param in [
                 { key: 'peer_batch_size', label: 'Peer Batch Size', type: 'text' },
@@ -678,7 +679,7 @@ function normalizeBuildParams(configs) {
               :key="param.key"
               class="space-y-1"
             >
-              <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
                 <label class="text-sm text-text-secondary">{{ param.label }}</label>
                 <input
                   :type="param.type === 'number' ? 'number' : 'text'"
@@ -692,14 +693,14 @@ function normalizeBuildParams(configs) {
 
           <!-- CUDA Quantization Options -->
           <div class="space-y-2">
-            <h5 class="text-xs font-medium text-text-muted">Quantization &amp; Precision</h5>
+            <h5 class="text-base font-medium text-text-muted">Quantization &amp; Precision</h5>
             <div
               v-for="param in [
                 { key: 'enable_cuda_fa_all_quants', label: 'Enable FA All Quants', type: 'boolean' },
-                { key: 'cuda_all_quants', label: 'CUDA All Quants', type: 'boolean' },
+                { key: 'cuda_all_quants', label: 'Enable CUDA All Quants', type: 'boolean' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <button
@@ -725,14 +726,14 @@ function normalizeBuildParams(configs) {
 
           <!-- CUDA Config -->
           <div class="space-y-2">
-            <h5 class="text-xs font-medium text-text-muted">CUDA Configuration</h5>
+            <h5 class="text-base font-medium text-text-muted">CUDA Configuration</h5>
             <div
               v-for="param in [
                 { key: 'cuda_version', label: 'CUDA Version', type: 'text' },
                 { key: 'cudacxx', label: 'NVCC Path', type: 'text' },
               ]"
               :key="param.key"
-              class="flex items-center justify-between gap-4"
+              class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
             >
               <label class="text-sm text-text-secondary">{{ param.label }}</label>
               <input
@@ -779,7 +780,7 @@ function normalizeBuildParams(configs) {
 
         <!-- Benchmark Messages -->
         <div class="space-y-3">
-          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Benchmark Messages</h4>
+          <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">Benchmark Messages</h4>
           <p class="text-xs text-text-muted">
             Messages used to fill context during benchmarking. Each message is sent sequentially with accumulated history.
           </p>
@@ -787,7 +788,7 @@ function normalizeBuildParams(configs) {
             <div
               v-for="(msg, idx) in visualConfigs.benchmark_messages"
               :key="idx"
-              class="space-y-1"
+              class="space-y-1 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary"
             >
               <label class="text-xs text-text-muted">Message {{ idx + 1 }}</label>
               <textarea
@@ -834,7 +835,7 @@ function normalizeBuildParams(configs) {
 
         <!-- Spec Params -->
         <div class="space-y-3">
-          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Spec Params</h4>
+          <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">Spec Params</h4>
           <div
             v-for="param in [
               { key: 'spec_type', label: 'Spec Type', type: 'text' },
@@ -843,7 +844,7 @@ function normalizeBuildParams(configs) {
             :key="param.key"
             class="space-y-2"
           >
-            <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
               <span class="text-sm text-text-secondary">{{ param.label }}</span>
               <button
                 @click="toggleSpecParam(param.key)"
@@ -871,7 +872,7 @@ function normalizeBuildParams(configs) {
 
         <!-- Split Params -->
         <div class="space-y-3">
-          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">Split Params</h4>
+          <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">Split Params</h4>
           <div
             v-for="param in [
               { key: 'layer_split', label: 'Layer Split', type: 'text' },
@@ -881,7 +882,7 @@ function normalizeBuildParams(configs) {
             :key="param.key"
             class="space-y-2"
           >
-            <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
               <span class="text-sm text-text-secondary">{{ param.label }}</span>
               <button
                 @click="toggleSplitParam(param.key)"
@@ -905,8 +906,8 @@ function normalizeBuildParams(configs) {
           </div>
         </div>
         <div class="space-y-3">
-          <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">GPU Selection</h4>
-          <div class="flex items-center justify-between gap-4">
+          <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">GPU Selection</h4>
+          <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
             <label class="text-sm text-text-secondary">Enable GPU Selection</label>
             <button
               @click="toggleGpuEnabled()"
@@ -985,5 +986,4 @@ function normalizeBuildParams(configs) {
         </div>
       </div>
     </div>
-  </div>
 </template>

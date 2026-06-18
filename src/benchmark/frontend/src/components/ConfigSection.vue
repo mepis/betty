@@ -17,8 +17,8 @@ const update = (key, value) => {
 
 <template>
   <div class="space-y-3">
-    <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider">{{ title }}</h4>
-    <div v-for="item in items" :key="item.key" class="flex items-center justify-between gap-4">
+    <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">{{ title }}</h4>
+    <div v-for="item in items" :key="item.key" class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
       <label class="text-sm text-text-secondary min-w-[180px]">{{ item.label }}</label>
       <template v-if="item.type === 'boolean'">
         <button

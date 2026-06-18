@@ -71,7 +71,7 @@
     "enable_ggml_native": false
   },
   "cuda_configs": {
-    "cuda_version": "13.2",
+    "cuda_version": "13.3",
     "cudacxx": "/usr/local/cuda-13.2/bin/nvcc"
   },
   "model_configs": {

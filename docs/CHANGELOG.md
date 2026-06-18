@@ -4,6 +4,14 @@
 
 ### Changed
 
+- [Changed]: [2026-06-17] Benchmark Config page — improved section headings from `text-xs` to `text-base` for better readability; added hover styling (`rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary`) to all config item rows in `ConfigSection.vue` and `Config.vue`
+- [Changed]: [2026-06-17] Benchmark Config page — added "Enable" prefix to all boolean toggle labels for consistency (e.g., "Per-Max Batch Size" → "Enable Per-Max Batch Size")
+- [Changed]: [2026-06-17] Benchmark Config page — switched profile panel layout from single-column `space-y-6` to two-column grid (`grid-cols-1 lg:grid-cols-2`) for better space utilization
+- [Changed]: [2026-06-17] Benchmark `configs.json` — updated `cuda_version` from `13.2` to `13.3`
+- [Changed]: [2026-06-17] Benchmark frontend dist — rebuilt with new asset hashes (`index-u7Zdxtv0.js`, `index-DJzE2Bb_.css`)
+
+### Changed
+
 - [Changed]: [2026-06-17] Benchmark sidebar layout — reorganized `App.vue` sidebar: moved toggle button into the header area (expand chevron when collapsed, collapse chevron when expanded), placed logo and title inline in expanded state; moved nav section below the status indicator for better visual hierarchy
 - [Changed]: [2026-06-17] Benchmark Config page — moved "Build llama.cpp" card to the top of the page (before config editing sections) for more prominent access; removed redundant "Info" card; renamed "Other Options" tab to "Run Options" for clarity
 - [Changed]: [2026-06-17] Benchmark `configs.json` — increased `cuda_compression_level` from 0 to 3 for improved CUDA copy compression
