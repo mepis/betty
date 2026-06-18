@@ -49,6 +49,13 @@ onMounted(async () => {
   await store.fetchLaunchCommand()
   store.connectSSE()
 
+  // Set default report filename: date_time_model
+  const now = new Date()
+  const dateStr = now.toISOString().slice(0, 10).replace(/-/g, '-') // YYYY-MM-DD
+  const timeStr = now.toTimeString().slice(0, 8).replace(/:/g, '-') // HH-MM-SS
+  const modelName = (store.configs?.model || 'unknown').replace(/[^a-zA-Z0-9_-]/g, '_')
+  reportName.value = `${dateStr}_${timeStr}_${modelName}`
+
   // Poll for status updates as backup
   pollingTimer.value = setInterval(async () => {
     await store.fetchStatus()

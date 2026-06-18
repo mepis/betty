@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-18] Default report filename in Dashboard.vue — auto-populates `reportName` with `YYYY-MM-DD_HH-MM-SS_<model>` format on mount, using the configured model name with sanitized characters
+
 ### Changed
 
 - [Changed]: [2026-06-18] Renamed `deep-research` skill to `research` — moved from `.pi/skills/deep-research/` to `.pi/skills/research/` with updated name in frontmatter and heading; functionality unchanged
