@@ -1,10 +1,10 @@
 ---
-name: deep-research
+name: research
 description: "Execute deep, multi-phase, structured research on a topic ($TOPIC) using web search and browser automation. Produces a comprehensive analytical report with citations, and automatically archives findings to the library."
 allowed-tools: Bash(playwright-cli:*) Bash(jq:*) Bash(grep:*) Bash(git:*)
 ---
 
-# Deep Research Skill
+# Research Skill
 
 Run a 3-phase research workflow on the given topic and produce a formal analytical report with MLA citations. **After completion, automatically archive the research to the library** for persistent knowledge accumulation.
 
@@ -79,6 +79,7 @@ cd library && git add -A && git commit -m "Add <topic> research" && git push
 ### 4. Library Cleanup
 
 During Phase 3 gap analysis, check for and address:
+
 - Stale state files in `.agents/deep-research/` (clean up after library write)
 - Duplicate or outdated entries in the library (flag for manual review)
 - Missing tag files for new tags discovered during research
@@ -176,6 +177,7 @@ playwright-cli close
 Before abandoning a search provider due to a CAPTCHA, attempt the following strategies in order:
 
 1. **Wait and retry** — Some CAPTCHAs (especially Cloudflare challenges) auto-solve after a delay:
+
    ```bash
    playwright-cli --raw eval "new Promise(r => setTimeout(r, 15000))"
    playwright-cli snapshot
@@ -183,11 +185,13 @@ Before abandoning a search provider due to a CAPTCHA, attempt the following stra
    ```
 
 2. **Identify the CAPTCHA type:**
+
    ```bash
    playwright-cli --raw eval "document.querySelector('iframe[src*=recaptcha], iframe[src*=hcaptcha], .cf-challenge, #challenge-form')"
    ```
 
 3. **For reCAPTCHA/hCaptcha** — Image/text-based challenges:
+
    ```bash
    playwright-cli screenshot
    playwright-cli snapshot
@@ -195,6 +199,7 @@ Before abandoning a search provider due to a CAPTCHA, attempt the following stra
    ```
 
 4. **For Cloudflare challenges** — Usually resolve with waiting:
+
    ```bash
    playwright-cli --raw eval "new Promise(r => setTimeout(r, 30000))"
    playwright-cli snapshot
@@ -202,6 +207,7 @@ Before abandoning a search provider due to a CAPTCHA, attempt the following stra
    ```
 
 5. **For image-based CAPTCHAs** — Select images based on the prompt:
+
    ```bash
    playwright-cli screenshot
    playwright-cli snapshot
@@ -223,21 +229,21 @@ Before abandoning a search provider due to a CAPTCHA, attempt the following stra
 
 ### Search Provider Reliability
 
-| Provider | Reliable? | Notes |
-|---|---|---|
-| **SearxNG** | ✅ Yes | Primary provider. Fast, returns clean JSON. Use first. |
-| **Bing** | ✅ Yes | Most reliable browser-based fallback. Always works. |
-| **Brave** | ⚠️ Sometimes | Works most of the time. May return fewer results. |
-| **Yahoo** | ⚠️ Sometimes | Underlying results may be Bing-sourced. |
-| **Ecosia** | ⚠️ Sometimes | May have rate limits. Similar to Bing. |
-| **Qwant** | ⚠️ Sometimes | European provider. May have incomplete results. |
+| Provider    | Reliable?    | Notes                                                  |
+| ----------- | ------------ | ------------------------------------------------------ |
+| **SearxNG** | ✅ Yes       | Primary provider. Fast, returns clean JSON. Use first. |
+| **Bing**    | ✅ Yes       | Most reliable browser-based fallback. Always works.    |
+| **Brave**   | ⚠️ Sometimes | Works most of the time. May return fewer results.      |
+| **Yahoo**   | ⚠️ Sometimes | Underlying results may be Bing-sourced.                |
+| **Ecosia**  | ⚠️ Sometimes | May have rate limits. Similar to Bing.                 |
+| **Qwant**   | ⚠️ Sometimes | European provider. May have incomplete results.        |
 
 #### Providers that frequently show CAPTCHAs
 
-| Provider | CAPTCHA Frequency | Notes |
-|---|---|---|
-| **Google** | Very High | Blocks headless browsers. Attempt solving once; if it fails, skip. |
-| **DuckDuckGo** | Very High | Detects headless browsers immediately. Attempt solving once; if it fails, skip. |
+| Provider       | CAPTCHA Frequency | Notes                                                                           |
+| -------------- | ----------------- | ------------------------------------------------------------------------------- |
+| **Google**     | Very High         | Blocks headless browsers. Attempt solving once; if it fails, skip.              |
+| **DuckDuckGo** | Very High         | Detects headless browsers immediately. Attempt solving once; if it fails, skip. |
 
 ## STATE MANAGEMENT
 
@@ -262,6 +268,7 @@ stopping_criteria: ""
 ## Phase 0: Library Check
 
 existing_entries:
+
 - topic: ""
   slug: ""
   relevance: "high|medium|low"
@@ -302,11 +309,11 @@ phase_3_complete: false
 
 ### State Operations
 
-| Event | Action |
-|---|---|
-| Skill activated | Read state file. If `status: "active"`, resume from `current_phase`. Otherwise initialize new state. |
-| After each phase | Populate section, set completion flag, update timestamp, write file |
-| On completion | Set `status: "completed"`, record `stopping_criteria`, create checkpoint copy, **write to library** |
+| Event            | Action                                                                                               |
+| ---------------- | ---------------------------------------------------------------------------------------------------- |
+| Skill activated  | Read state file. If `status: "active"`, resume from `current_phase`. Otherwise initialize new state. |
+| After each phase | Populate section, set completion flag, update timestamp, write file                                  |
+| On completion    | Set `status: "completed"`, record `stopping_criteria`, create checkpoint copy, **write to library**  |
 
 ### Cross-Session Continuity
 
@@ -328,6 +335,7 @@ Always run phases sequentially. Proceed to the next phase **only** when the curr
 4. Set `phase_0_complete: true`
 
 **Example:**
+
 ```bash
 cat library/INDEX.md
 ls library/topics/ 2>/dev/null
@@ -401,11 +409,13 @@ cat library/topics/existing-topic/index.md 2>/dev/null
 **Action:**
 
 1. **Create topic directory:**
+
    ```bash
    mkdir -p library/topics/<topic-slug>/entries
    ```
 
 2. **Copy artifacts:**
+
    ```bash
    cp .agents/deep-research/REPORT.md library/topics/<topic-slug>/report.md
    cp .agents/deep-research/STATE.md library/topics/<topic-slug>/state.md
@@ -428,6 +438,7 @@ cat library/topics/existing-topic/index.md 2>/dev/null
    - Add link to the new topic entry in existing tag files
 
 6. **Commit and push:**
+
    ```bash
    cd library && git add -A && git commit -m "Add <topic> research" && git push
    ```

@@ -1006,7 +1006,6 @@ function normalizeBuildParams(configs) {
             { key: 'llama_port', label: 'Llama Port', type: 'number' },
             { key: 'llama_host', label: 'Llama Host', type: 'text' },
             { key: 'model', label: 'Model (auto-populated from model_directory)', type: 'select' },
-            { key: 'gpu_layer_offload', label: 'GPU Layer Offload', type: 'number' },
           ]"
           :model-options="modelOptions"
           v-model="visualConfigs"
@@ -1325,6 +1324,38 @@ function normalizeBuildParams(configs) {
                 type="number"
                 :value="visualConfigs.test_params?.u_batch_size_max ?? ''"
                 @input="visualConfigs.test_params = { ...visualConfigs.test_params, u_batch_size_max: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+          </div>
+
+          <div class="border-t border-border"></div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">GPU Layer Offload</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.gpu_layer_offload ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, gpu_layer_offload: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">GPU Layer Offload Step</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.gpu_layer_offload_step ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, gpu_layer_offload_step: Number($event.target.value) }"
+                class="input w-40 text-xs"
+              />
+            </div>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary">
+              <label class="text-sm text-text-secondary min-w-[180px]">GPU Layer Offload Max</label>
+              <input
+                type="number"
+                :value="visualConfigs.test_params?.gpu_layer_offload_max ?? ''"
+                @input="visualConfigs.test_params = { ...visualConfigs.test_params, gpu_layer_offload_max: Number($event.target.value) }"
                 class="input w-40 text-xs"
               />
             </div>

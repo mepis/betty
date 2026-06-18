@@ -4,7 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-18] Renamed `deep-research` skill to `research` — moved from `.pi/skills/deep-research/` to `.pi/skills/research/` with updated name in frontmatter and heading; functionality unchanged
+- [Changed]: [2026-06-18] `src/benchmark/index.js` — replaced `Math.min` with explicit `>=` comparison for batch size, uBatchSize, and cacheRam boundary checks to correctly cap at maximum when step would exceed it
+
 ### Added
+
+- [Added]: [2026-06-18] GPU Layer Offload controls in Config.vue — three new inputs for `gpu_layer_offload`, `gpu_layer_offload_step`, and `gpu_layer_offload_max` in the Test Parameters section; removed `gpu_layer_offload` from the build params select list
 
 - [Added]: [2026-06-18] Custom CUDA architecture input — new text field in Config.vue to specify CMAKE_CUDA_ARCHITECTURES value (e.g. "86-real;120-real") instead of hardcoding it; value is used in both build script and cmake flags snapshot
 

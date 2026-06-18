@@ -267,9 +267,9 @@ function updateConfigs() {
     gpuLayerOffload + gpuLayerOffloadStep,
     gpuLayerOffMax,
   );
-  batchSize = Math.min(batchSize + batchSizeStep, batchSizeMax);
-  uBatchSize = Math.min(uBatchSize + uBatchSizeStep, uBatchSizeMax);
-  cacheRam = Math.min(cacheRam + cacheRamStep, cacheRamMax);
+  batchSize = (batchSize + batchSizeStep) >= batchSizeMax ? batchSizeMax : batchSize + batchSizeStep;
+  uBatchSize = (uBatchSize + uBatchSizeStep) >= uBatchSizeMax ? uBatchSizeMax : uBatchSize + uBatchSizeStep;
+  cacheRam = (cacheRam + cacheRamStep) >= cacheRamMax ? cacheRamMax : cacheRam + cacheRamStep;
 }
 
 //--- Check if all test variables have reached their maximum values ---
