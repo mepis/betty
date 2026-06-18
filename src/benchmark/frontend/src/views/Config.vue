@@ -414,6 +414,21 @@ async function handleKillPort() {
   killingPort.value = false
 }
 
+async function handleServiceStart() {
+  if (serviceLoading.value) return
+  serviceLoading.value = true
+  serviceSuccess.value = ''
+  const ok = await store.startService()
+  if (ok) {
+    serviceSuccess.value = 'llama.service started'
+    setTimeout(() => (serviceSuccess.value = ''), 3000)
+  } else {
+    serviceSuccess.value = 'Failed to start service'
+    setTimeout(() => (serviceSuccess.value = ''), 3000)
+  }
+  serviceLoading.value = false
+}
+
 async function handleServiceStop() {
   if (serviceLoading.value) return
   serviceLoading.value = true
@@ -886,6 +901,21 @@ function normalizeBuildParams(configs) {
             </div>
           </div>
 
+          <!-- Custom CUDA Architecture Value -->
+          <div v-if="visualConfigs.build_make_params?.enable_cuda_custom_arch?.enabled" class="space-y-2">
+            <h5 class="text-base font-medium text-text-muted">Custom CUDA Architecture</h5>
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
+              <label class="text-sm text-text-secondary">CUDA Architectures</label>
+              <input
+                type="text"
+                :value="visualConfigs.build_make_params?.cuda_custom_architectures?.value ?? ''"
+                @input="updateBuildParamValue('cuda_custom_architectures', 'text', $event.target.value)"
+                class="input w-40 text-xs"
+                placeholder="e.g. 86-real;120-real"
+              />
+            </div>
+          </div>
+
           <!-- Build Parameter Values -->
           <div class="space-y-2">
             <h5 class="text-base font-medium text-text-muted">Build Parameters</h5>
@@ -1350,7 +1380,19 @@ function normalizeBuildParams(configs) {
             {{ killingPort ? 'Killing...' : 'Kill Port' }}
           </button>
           <button
-            v-if="!store.isRunning"
+            v-if="!store.isRunning && !store.serviceActive"
+            @click="handleServiceStart"
+            class="btn btn-success btn-xs"
+            :disabled="serviceLoading"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {{ serviceLoading ? 'Starting...' : 'Start llama.service' }}
+          </button>
+          <button
+            v-if="!store.isRunning && store.serviceActive"
             @click="handleServiceStop"
             class="btn btn-warning btn-xs"
             :disabled="serviceLoading"

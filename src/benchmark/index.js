@@ -543,7 +543,8 @@ function getBuildScript() {
     flags.push(`-DGGML_CUDA_PEER_COPY=1`);
   }
   if (buildParams.enable_cuda_custom_arch) {
-    flags.push(`-DCMAKE_CUDA_ARCHITECTURES="86-real;120-real"`);
+    const arch = buildParams.cuda_custom_architectures || '86-real;120-real';
+    flags.push(`-DCMAKE_CUDA_ARCHITECTURES="${arch}"`);
   }
   if (buildParams.enable_cuda_fa_all_quants) {
     flags.push(`-DGGML_CUDA_FA_ALL_QUANTS=${allQuants}`);
@@ -997,7 +998,7 @@ function getCmakeFlagsSnapshot() {
     flags.GGML_CUDA_PEER_MAX_BATCH_SIZE = peerBatchSize;
   if (bp.enable_cuda_peer_copy) flags.GGML_CUDA_PEER_COPY = "1";
   if (bp.enable_cuda_custom_arch)
-    flags.CMAKE_CUDA_ARCHITECTURES = "86-real;120-real";
+    flags.CMAKE_CUDA_ARCHITECTURES = bp.cuda_custom_architectures || "86-real;120-real";
   if (bp.enable_cuda_fa_all_quants) flags.GGML_CUDA_FA_ALL_QUANTS = allQuants;
   if (bp.enable_cuda_fp16) flags.GGML_CUDA_FP16 = cudaFp16;
   if (bp.enable_cuda_scheduled_max_copies)

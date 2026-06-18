@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-18] Custom CUDA architecture input — new text field in Config.vue to specify CMAKE_CUDA_ARCHITECTURES value (e.g. "86-real;120-real") instead of hardcoding it; value is used in both build script and cmake flags snapshot
+
+### Added
+
+- [Added]: [2026-06-18] Service start button — new "Start llama.service" button in Config.vue controls panel that starts the systemd service; only visible when benchmark is not running and service is inactive; paired with existing stop button
+
 ### Fixed
 
 - [Fixed]: [2026-06-18] `scripts/install-service.sh` — service file PATH now derived from the actual npm binary location at install time instead of hardcoding the nvm node path, resolving 'env: node: No such file or directory' failures on machines with different nvm setups
