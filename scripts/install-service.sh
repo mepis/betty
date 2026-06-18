@@ -3,6 +3,7 @@ set -euo pipefail
 
 APP_NAME=llama-benchmark
 PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+NPM_PATH="$(command -v npm)"
 
 echo "==> Creating systemd user service directory..."
 mkdir -p "$HOME/.config/systemd/user"
@@ -16,10 +17,11 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=$PROJECT_DIR
-ExecStart=npm run start
+ExecStart=$NPM_PATH run start
 Restart=on-failure
 RestartSec=5
 Environment=HOME=$HOME
+Environment=PATH=/home/jon/.nvm/versions/node/v24.16.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 [Install]
 WantedBy=default.target
