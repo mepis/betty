@@ -1759,6 +1759,21 @@ app.delete("/api/hf/download/:modelId", (req, res) => {
   }
 });
 
+//--- Delete llama.cpp build directory ---
+app.delete("/api/build/delete", (req, res) => {
+  try {
+    const buildDir = join(BENCHMARK_DIR, "llama.cpp", "build");
+    if (fs.existsSync(buildDir)) {
+      fs.rmSync(buildDir, { recursive: true, force: true });
+      res.json({ success: true, message: "Build directory deleted" });
+    } else {
+      res.json({ success: true, message: "Build directory does not exist" });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Build llama.cpp endpoint ---
 app.post("/api/build", async (req, res) => {
   if (buildStatus !== "idle") {
@@ -1826,11 +1841,11 @@ app.post("/api/build", async (req, res) => {
       safeFlush(res);
     });
 
-    const buildResult = await new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       buildProcess.on("close", (code) => {
         clearInterval(progressInterval);
         if (code === 0) {
-          resolve({ success: true });
+          resolve();
         } else {
           reject(new Error(`Build failed with exit code ${code}`));
         }
@@ -1842,12 +1857,11 @@ app.post("/api/build", async (req, res) => {
       });
     });
 
-    // Send final progress and completion
+    // Send final progress and completion (only on success)
     res.write(`event: build-log\ndata: PROGRESS:100\n\n`);
     res.write(`event: build-log\ndata: STATUS:Build complete!\n\n`);
     safeFlush(res);
     res.end();
-
     buildStatus = "success";
   } catch (err) {
     res.write(`event: build-log\ndata: STATUS:Build failed\n\n`);

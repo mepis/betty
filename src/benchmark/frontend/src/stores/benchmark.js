@@ -235,6 +235,19 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async deleteBuildDir() {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/build/delete`)
+        if (res.data.success) {
+          return { success: true, message: res.data.message }
+        }
+        return { success: false, message: res.data.error }
+      } catch (e) {
+        this.error = e.message
+        return { success: false, message: e.message }
+      }
+    },
+
     async saveReport(name) {
       try {
         const res = await axios.post(`${API_BASE}/api/save-report`, { name })
@@ -423,7 +436,6 @@ export const useBenchmarkStore = defineStore('benchmark', {
     async buildLlamaCpp() {
       try {
         this.buildStatus = 'building'
-        this.buildLogs = []
         this.buildProgress = 0
 
         const response = await fetch(`${API_BASE}/api/build`, {

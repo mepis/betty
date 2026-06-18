@@ -10,10 +10,23 @@ const saveError = ref('')
 const visualConfigs = ref({})
 const modelOptions = ref([])
 const newGpuIndex = ref(0)
-const showBuildLogs = ref(false)
 const buildLogContainer = ref(null)
 const buildLogAnchor = ref(null)
+const showBuildLogs = ref(false)
+const buildClicked = ref(false)
 const activeTab = ref('build') // 'build' | 'other'
+const toast = ref({ show: false, message: '', type: '' }) // type: 'success' | 'error'
+const killingPort = ref(false)
+const killPortSuccess = ref('')
+const serviceLoading = ref(false)
+const serviceSuccess = ref('')
+const deletingBuild = ref(false)
+const deleteBuildSuccess = ref('')
+
+function showToast(message, type = 'success') {
+  toast.value = { show: true, message, type }
+  setTimeout(() => { toast.value.show = false }, 4000)
+}
 
 // Profile state
 const profiles = ref([])
@@ -353,8 +366,66 @@ function formatDate(dateStr) {
 
 async function handleBuild() {
   if (store.isBuilding) return
-  showBuildLogs.value = true
-  await store.buildLlamaCpp()
+  buildClicked.value = true
+  const ok = await store.buildLlamaCpp()
+  if (ok) {
+    showToast('Build successful', 'success')
+  } else {
+    showToast('Build failed', 'error')
+  }
+}
+
+function handleBuildReset() {
+  store.buildLogs = []
+  store.buildProgress = 0
+  store.buildStatus = 'idle'
+  buildClicked.value = false
+}
+
+async function handleKillPort() {
+  if (killingPort.value) return
+  killingPort.value = true
+  killPortSuccess.value = ''
+  const result = await store.killPort()
+  if (result.success) {
+    killPortSuccess.value = result.message
+    setTimeout(() => (killPortSuccess.value = ''), 4000)
+  } else {
+    killPortSuccess.value = result.message || 'Failed to kill processes'
+    setTimeout(() => (killPortSuccess.value = ''), 4000)
+  }
+  killingPort.value = false
+}
+
+async function handleServiceStop() {
+  if (serviceLoading.value) return
+  serviceLoading.value = true
+  serviceSuccess.value = ''
+  const ok = await store.stopService()
+  if (ok) {
+    serviceSuccess.value = 'llama.service stopped'
+    setTimeout(() => (serviceSuccess.value = ''), 3000)
+  } else {
+    serviceSuccess.value = 'Failed to stop service'
+    setTimeout(() => (serviceSuccess.value = ''), 3000)
+  }
+  serviceLoading.value = false
+}
+
+async function handleDeleteBuild() {
+  if (deletingBuild.value) return
+  if (!confirm('Delete the llama.cpp build directory? This will remove all compiled binaries and intermediate files.')) return
+  deletingBuild.value = true
+  deleteBuildSuccess.value = ''
+  const result = await store.deleteBuildDir()
+  if (result.success) {
+    deleteBuildSuccess.value = result.message
+    setTimeout(() => (deleteBuildSuccess.value = ''), 4000)
+  } else {
+    deleteBuildSuccess.value = result.message || 'Failed to delete build directory'
+    setTimeout(() => (deleteBuildSuccess.value = ''), 4000)
+  }
+  deletingBuild.value = false
 }
 
 function normalizeBuildParams(configs) {
@@ -485,29 +556,31 @@ function normalizeBuildParams(configs) {
             </p>
           </div>
         </div>
-        <span v-if="store.buildSuccess" class="badge bg-success-subtle text-success">✓ Built</span>
-        <span v-if="store.buildError" class="badge bg-error-subtle text-error">✗ Failed</span>
       </div>
 
-      <!-- Build button -->
-      <div class="flex items-center gap-3">
+      <!-- Action buttons -->
+      <div class="flex items-center gap-2">
         <button
+          v-if="!buildClicked"
           @click="handleBuild"
           class="btn btn-primary"
-          :disabled="store.isBuilding"
         >
-          <svg v-if="!store.isBuilding" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-          <svg v-else class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-          {{ store.isBuilding ? 'Building...' : store.buildSuccess ? 'Build Successful' : store.buildError ? 'Build Failed — Retry' : 'Build llama.cpp' }}
+          Build
         </button>
 
         <button
-          v-if="store.buildLogs.length > 0"
+          v-if="buildClicked"
+          @click="handleBuildReset"
+          class="btn btn-ghost btn-sm"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          Reset
+        </button>
+
+        <button
+          v-if="buildClicked && store.buildLogs.length > 0"
           @click="showBuildLogs = !showBuildLogs"
           class="btn btn-ghost btn-sm"
         >
@@ -519,7 +592,7 @@ function normalizeBuildParams(configs) {
       </div>
 
       <!-- Progress bar -->
-      <div v-if="store.buildProgress > 0" class="space-y-1 mt-4">
+      <div v-if="buildClicked" class="space-y-1 mt-4">
         <div class="flex items-center justify-between text-xs">
           <span class="text-text-muted">Progress</span>
           <span class="font-mono text-text-secondary">{{ store.buildProgress }}%</span>
@@ -537,12 +610,6 @@ function normalizeBuildParams(configs) {
       <div v-if="showBuildLogs && store.buildLogs.length > 0" class="space-y-2 mt-4">
         <div class="flex items-center justify-between">
           <h5 class="text-xs font-medium text-text-muted">Build Output</h5>
-          <button
-            @click="store.clearBuildLogs()"
-            class="btn btn-ghost btn-xs"
-          >
-            Clear
-          </button>
         </div>
         <div
           ref="buildLogContainer"
@@ -971,9 +1038,47 @@ function normalizeBuildParams(configs) {
 
       <!-- Actions -->
       <div class="flex items-center justify-between mt-4 pt-4 border-t border-border">
-        <span class="text-xs text-text-muted">
-          {{ saveSuccess ? '✓ Saved successfully' : saveError }}
-        </span>
+        <div class="flex items-center gap-3">
+          <button
+            v-if="!store.isRunning"
+            @click="handleKillPort"
+            class="btn btn-warning btn-xs"
+            :disabled="killingPort"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+            {{ killingPort ? 'Killing...' : 'Kill Port' }}
+          </button>
+          <button
+            v-if="store.serviceActive && !store.isRunning"
+            @click="handleServiceStop"
+            class="btn btn-danger btn-xs"
+            :disabled="serviceLoading"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+            </svg>
+            {{ serviceLoading ? 'Stopping...' : 'Stop llama.service' }}
+          </button>
+          <button
+            @click="handleDeleteBuild"
+            class="btn btn-warning btn-xs"
+            :disabled="deletingBuild"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            {{ deletingBuild ? 'Deleting...' : 'Delete Build' }}
+          </button>
+          <span v-if="killPortSuccess" class="text-xs text-success">{{ killPortSuccess }}</span>
+          <span v-if="serviceSuccess" class="text-xs text-success">{{ serviceSuccess }}</span>
+          <span v-if="deleteBuildSuccess" class="text-xs text-success">{{ deleteBuildSuccess }}</span>
+          <span class="text-xs text-text-muted">
+            {{ saveSuccess ? '✓ Saved successfully' : saveError }}
+          </span>
+        </div>
         <div class="flex items-center gap-2">
           <button @click="handleReset" class="btn btn-ghost btn-sm">Reset</button>
           <button
@@ -985,5 +1090,35 @@ function normalizeBuildParams(configs) {
           </button>
         </div>
       </div>
+
+      <!-- Toast Notification -->
+      <Transition name="toast">
+        <div v-if="toast.show" class="fixed bottom-6 right-6 z-[100] max-w-sm">
+          <div
+            class="rounded-lg p-4 shadow-lg border flex items-center gap-3"
+            :class="toast.type === 'success' ? 'bg-success-subtle border-success/30 text-success' : 'bg-error-subtle border-error/30 text-error'"
+          >
+            <svg v-if="toast.type === 'success'" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <svg v-else class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-sm">{{ toast.message }}</span>
+          </div>
+        </div>
+      </Transition>
     </div>
 </template>
+
+<style scoped>
+.toast-enter-active,
+.toast-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+</style>

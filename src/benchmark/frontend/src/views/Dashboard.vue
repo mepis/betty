@@ -11,10 +11,6 @@ const envInput = ref('')
 const savingReport = ref(false)
 const reportName = ref('')
 const saveReportSuccess = ref(false)
-const killingPort = ref(false)
-const killPortSuccess = ref('')
-const serviceLoading = ref(false)
-const serviceSuccess = ref('')
 const pollingTimer = ref(null)
 const systemMemoryTimer = ref(null)
 
@@ -95,50 +91,7 @@ async function handleSaveReport() {
   savingReport.value = false
 }
 
-async function handleKillPort() {
-  if (killingPort.value) return
-  killingPort.value = true
-  killPortSuccess.value = ''
-  const result = await store.killPort()
-  if (result.success) {
-    killPortSuccess.value = result.message
-    setTimeout(() => (killPortSuccess.value = ''), 4000)
-  } else {
-    killPortSuccess.value = result.message || 'Failed to kill processes'
-    setTimeout(() => (killPortSuccess.value = ''), 4000)
-  }
-  killingPort.value = false
-}
 
-async function handleServiceStart() {
-  if (serviceLoading.value) return
-  serviceLoading.value = true
-  serviceSuccess.value = ''
-  const ok = await store.startService()
-  if (ok) {
-    serviceSuccess.value = 'llama.service started'
-    setTimeout(() => (serviceSuccess.value = ''), 3000)
-  } else {
-    serviceSuccess.value = 'Failed to start service'
-    setTimeout(() => (serviceSuccess.value = ''), 3000)
-  }
-  serviceLoading.value = false
-}
-
-async function handleServiceStop() {
-  if (serviceLoading.value) return
-  serviceLoading.value = true
-  serviceSuccess.value = ''
-  const ok = await store.stopService()
-  if (ok) {
-    serviceSuccess.value = 'llama.service stopped'
-    setTimeout(() => (serviceSuccess.value = ''), 3000)
-  } else {
-    serviceSuccess.value = 'Failed to stop service'
-    setTimeout(() => (serviceSuccess.value = ''), 3000)
-  }
-  serviceLoading.value = false
-}
 
 function formatTime(ms) {
   if (!ms) return '—'
@@ -282,17 +235,7 @@ function statusBg(status) {
             </svg>
             {{ store.isError ? 'Restart Benchmark' : store.isStopped ? 'Restart Benchmark' : 'Start Benchmark' }}
           </button>
-          <button
-            v-if="!store.isRunning"
-            @click="handleKillPort"
-            class="btn btn-warning w-full"
-            :disabled="killingPort"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-            </svg>
-            {{ killingPort ? 'Killing...' : 'Kill Port' }}
-          </button>
+
           <button
             v-if="store.isRunning"
             @click="handleStop"
@@ -313,32 +256,6 @@ function statusBg(status) {
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
             </svg>
             Environment
-          </button>
-
-          <!-- Systemd service controls -->
-          <button
-            v-if="!store.serviceActive && !store.isRunning"
-            @click="handleServiceStart"
-            class="btn btn-success w-full"
-            :disabled="serviceLoading"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {{ serviceLoading ? 'Starting...' : 'Start llama.service' }}
-          </button>
-          <button
-            v-if="store.serviceActive && !store.isRunning"
-            @click="handleServiceStop"
-            class="btn btn-danger w-full"
-            :disabled="serviceLoading"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-            </svg>
-            {{ serviceLoading ? 'Stopping...' : 'Stop llama.service' }}
           </button>
 
           <!-- Save report -->
@@ -363,8 +280,7 @@ function statusBg(status) {
               </button>
             </div>
             <span v-if="saveReportSuccess" class="text-xs text-success">Saved!</span>
-            <span v-if="killPortSuccess" class="text-xs text-success block">{{ killPortSuccess }}</span>
-            <span v-if="serviceSuccess" class="text-xs text-success block">{{ serviceSuccess }}</span>
+
           </div>
         </div>
 

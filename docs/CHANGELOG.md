@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-17] Benchmark Config page — new `DELETE /api/build/delete` API endpoint to remove the llama.cpp build directory; new `deleteBuildDir()` store action and "Delete Build" button with confirmation dialog in Config.vue
+- [Added]: [2026-06-17] Benchmark Config page — toast notification system for build success/failure, kill port, service stop, and delete build actions with animated slide-up transition and auto-dismiss after 4 seconds
+- [Added]: [2026-06-17] Benchmark Config page — build reset button to clear build state (logs, progress, status) and return to pre-build UI; build button hidden after first click, replaced by reset button
+- [Added]: [2026-06-17] Benchmark Config page — moved Kill Port, Stop llama.service, and Delete Build action buttons from Dashboard.vue to Config.vue for better grouping with build controls
+
+### Changed
+
+- [Changed]: [2026-06-17] Benchmark `configs.json` — disabled `enable_cuda_graphs`, `enable_cuda_custom_arch`, and `enable_cuda_fp16` (set to `false`); reduced `cuda_max_scheduled_copies` from 14 to 10; swapped `cuda_compression_level` from `3` to `true` (boolean toggle); enabled `enable_ggml_native` (set to `true`)
+- [Changed]: [2026-06-17] Benchmark `api-server.js` — simplified build endpoint Promise resolution (no longer returns a value); removed unnecessary blank line after SSE completion event
+- [Changed]: [2026-06-17] Benchmark `index.js` — improved initialization failure display with formatted error block showing reason and detail before exit (replaced silent `return`)
+- [Changed]: [2026-06-17] Benchmark `Dashboard.vue` — removed Kill Port and systemd service start/stop buttons and their associated state variables (moved to Config.vue)
+- [Changed]: [2026-06-17] Benchmark `benchmark.js` store — removed `this.buildLogs = []` reset from `buildLlamaCpp()` (no longer needed since build reset is handled separately)
+- [Changed]: [2026-06-17] Benchmark frontend dist — rebuilt with new asset hashes (`index-DrO60f4F.js`, `index-BycVD7Bx.css`)
+
 ### Changed
 
 - [Changed]: [2026-06-17] Benchmark Config page — improved section headings from `text-xs` to `text-base` for better readability; added hover styling (`rounded-lg px-3 py-2 transition-colors hover:bg-bg-tertiary`) to all config item rows in `ConfigSection.vue` and `Config.vue`

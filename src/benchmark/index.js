@@ -183,7 +183,15 @@ async function main() {
   try {
     const initResult = await initController();
     if (!initResult.success) {
-      return;
+      console.error("\n" + "=".repeat(60));
+      console.error("INITIALIZATION FAILURE");
+      console.error("=".repeat(60));
+      console.error(`Reason: ${initResult.reason}`);
+      if (initResult.detail) {
+        console.error(`\nDetail: ${initResult.detail}`);
+      }
+      console.error("=".repeat(60));
+      process.exit(1);
     }
 
     if (cliBuildOnly) {
