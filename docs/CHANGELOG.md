@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-18] Systemd service editor — new "Edit Service" button in Config.vue configs panel that opens a modal for editing the installed llama.service (ExecStart command, environment variables, restart policy); shows "No service installed" message if no service exists; saves trigger daemon-reload and restart; backed by `GET /api/service/config` and `POST /api/service/update` endpoints
+
+### Changed
+
+- [Changed]: [2026-06-18] `src/benchmark/api-server.js` — removed `export` prefix from environment variable lines in `getLaunchCommand()` (they are now `KEY=VALUE` pairs joined with `&&`); simplified `command` field to use plain `join(" ")` instead of `join(" \\\")`
+
 ### Fixed
 
 - [Fixed]: [2026-06-18] `src/benchmark/index.js` — tensor split parameter now correctly uses `sps.tensor_split.value` as primary source with `tensorSplitValue` as fallback, applied in `getRunScript()`, `getServerParamsSnapshot()`, and `runTestRun()`

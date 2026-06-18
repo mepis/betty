@@ -21,6 +21,20 @@ const killingPort = ref(false)
 const killPortSuccess = ref('')
 const serviceLoading = ref(false)
 const serviceSuccess = ref('')
+
+// Service edit modal
+const showServiceModal = ref(false)
+const serviceConfig = ref(null)
+const loadingServiceConfig = ref(false)
+const savingService = ref(false)
+const serviceSaveSuccess = ref('')
+const serviceSaveError = ref('')
+const serviceEditForm = ref({
+  execStart: '',
+  envVars: {},
+  restart: 'on-failure',
+  restartSec: 5,
+})
 const deletingBuild = ref(false)
 const deleteBuildSuccess = ref('')
 const deletingLlama = ref(false)
@@ -429,6 +443,79 @@ async function handleDeleteBuild() {
     setTimeout(() => (deleteBuildSuccess.value = ''), 4000)
   }
   deletingBuild.value = false
+}
+
+async function openServiceModal() {
+  showServiceModal.value = true
+  loadingServiceConfig.value = true
+  serviceSaveSuccess.value = ''
+  serviceSaveError.value = ''
+  try {
+    const config = await store.fetchServiceConfig()
+    if (config.exists) {
+      serviceEditForm.value = {
+        execStart: config.execStart || '',
+        envVars: { ...config.envVars },
+        restart: config.restart || 'on-failure',
+        restartSec: config.restartSec || 5,
+      }
+    }
+    serviceConfig.value = config
+  } catch (e) {
+    console.error('Failed to load service config:', e)
+  }
+  loadingServiceConfig.value = false
+}
+
+function closeServiceModal() {
+  showServiceModal.value = false
+  serviceConfig.value = null
+  serviceSaveSuccess.value = ''
+  serviceSaveError.value = ''
+}
+
+async function handleSaveService() {
+  if (savingService.value) return
+  savingService.value = true
+  serviceSaveSuccess.value = ''
+  serviceSaveError.value = ''
+  try {
+    const result = await store.updateServiceConfig(serviceEditForm.value)
+    if (result.success) {
+      serviceSaveSuccess.value = result.message || 'Service updated successfully'
+      setTimeout(() => { serviceSaveSuccess.value = '' }, 4000)
+    } else {
+      serviceSaveError.value = result.error || 'Failed to update service'
+    }
+  } catch (e) {
+    serviceSaveError.value = e.message || 'Failed to update service'
+  }
+  savingService.value = false
+}
+
+function addEnvVar() {
+  serviceEditForm.value.envVars[''] = ''
+}
+
+function removeEnvVar(key) {
+  const newEnv = { ...serviceEditForm.value.envVars }
+  delete newEnv[key]
+  serviceEditForm.value.envVars = newEnv
+}
+
+function updateEnvVarKey(oldKey, newKey) {
+  if (oldKey === newKey) return
+  const newEnv = { ...serviceEditForm.value.envVars }
+  const value = newEnv[oldKey]
+  delete newEnv[oldKey]
+  newEnv[newKey] = value
+  serviceEditForm.value.envVars = newEnv
+}
+
+function updateEnvVarValue(key, value) {
+  const newEnv = { ...serviceEditForm.value.envVars }
+  newEnv[key] = value
+  serviceEditForm.value.envVars = newEnv
 }
 
 async function handleDeleteLlama() {
@@ -1275,6 +1362,16 @@ function normalizeBuildParams(configs) {
             {{ serviceLoading ? 'Stopping...' : 'Stop llama.service' }}
           </button>
           <button
+            @click="openServiceModal"
+            class="btn btn-ghost btn-xs"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Edit Service
+          </button>
+          <button
             @click="handleDeleteBuild"
             class="btn btn-warning btn-xs"
             :disabled="deletingBuild"
@@ -1332,6 +1429,193 @@ function normalizeBuildParams(configs) {
         </div>
       </Transition>
     </div>
+
+    <!-- Service Edit Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showServiceModal" class="fixed inset-0 z-50 flex items-center justify-center" @keydown="(e) => { if (e.key === 'Escape') closeServiceModal() }">
+          <!-- Backdrop -->
+          <div
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            @click="closeServiceModal"
+          />
+
+          <!-- Modal -->
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] mx-4 flex flex-col">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+                <div>
+                  <h3 class="text-lg font-semibold text-text-primary">Edit Systemd Service</h3>
+                  <p class="text-xs text-text-muted mt-0.5">Configure the llama.service systemd user service</p>
+                </div>
+              </div>
+              <button
+                @click="closeServiceModal"
+                class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content -->
+            <div class="overflow-auto flex-1 p-6">
+              <!-- Loading state -->
+              <div v-if="loadingServiceConfig" class="flex items-center justify-center py-12">
+                <svg class="w-6 h-6 animate-spin text-accent" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              </div>
+
+              <!-- No service installed -->
+              <div v-else-if="serviceConfig && !serviceConfig.exists" class="text-center py-12">
+                <svg class="w-12 h-12 mx-auto mb-4 text-text-muted/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+                <h4 class="text-base font-medium text-text-primary mb-2">No Systemd Service Installed</h4>
+                <p class="text-sm text-text-muted mb-4 max-w-md mx-auto">
+                  To install a systemd service, go to the Reports page, select a report, click on a test run row to view its configuration, and use the "Install" button to install the launch command as a service.
+                </p>
+                <button
+                  @click="closeServiceModal"
+                  class="btn btn-primary btn-sm"
+                >
+                  Go to Reports
+                </button>
+              </div>
+
+              <!-- Edit form -->
+              <div v-else-if="serviceConfig && serviceConfig.exists" class="space-y-6">
+                <!-- ExecStart command -->
+                <div>
+                  <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">ExecStart Command</label>
+                  <textarea
+                    v-model="serviceEditForm.execStart"
+                    class="textarea font-mono text-xs mt-2 h-20"
+                    placeholder="/path/to/llama-server --port 11434 ..."
+                  />
+                  <p class="text-xs text-text-muted mt-1">Full command to execute, without the leading path to the binary</p>
+                </div>
+
+                <!-- Environment Variables -->
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Environment Variables</label>
+                    <button
+                      @click="addEnvVar"
+                      class="btn btn-ghost btn-xs flex items-center gap-1"
+                    >
+                      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                      </svg>
+                      Add Variable
+                    </button>
+                  </div>
+                  <div class="space-y-2">
+                    <div
+                      v-for="(value, key) in serviceEditForm.envVars"
+                      :key="key"
+                      class="flex items-center gap-2"
+                    >
+                      <input
+                        :value="key"
+                        @input="updateEnvVarKey(key, $event.target.value)"
+                        class="input flex-1 font-mono text-xs"
+                        placeholder="KEY"
+                      />
+                      <span class="text-text-muted text-xs">=</span>
+                      <input
+                        :value="value"
+                        @input="updateEnvVarValue(key, $event.target.value)"
+                        class="input flex-1 font-mono text-xs"
+                        placeholder="value"
+                      />
+                      <button
+                        @click="removeEnvVar(key)"
+                        class="p-1.5 rounded-md text-text-muted hover:text-error hover:bg-error-subtle transition-all"
+                        title="Remove variable"
+                      >
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Restart Policy -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Restart Policy</label>
+                    <select
+                      v-model="serviceEditForm.restart"
+                      class="input mt-2"
+                    >
+                      <option value="no">No</option>
+                      <option value="on-success">On Success</option>
+                      <option value="on-failure">On Failure</option>
+                      <option value="always">Always</option>
+                      <option value="on-abnormal">On Abnormal</option>
+                      <option value="on-watchdog">On Watchdog</option>
+                      <option value="on-abort">On Abort</option>
+                      <option value="on-failure-proc-sigterm">On Failure (SigTerm)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Restart Sec (seconds)</label>
+                    <input
+                      type="number"
+                      min="0"
+                      max="3600"
+                      v-model.number="serviceEditForm.restartSec"
+                      class="input mt-2"
+                    />
+                  </div>
+                </div>
+
+                <!-- Save success/error messages -->
+                <div v-if="serviceSaveSuccess" class="bg-success-subtle border border-success/30 rounded-lg p-3 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-xs font-medium text-success">{{ serviceSaveSuccess }}</span>
+                </div>
+                <div v-if="serviceSaveError" class="bg-error-subtle border border-error/30 rounded-lg p-3 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-error flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-xs font-medium text-error">{{ serviceSaveError }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-end px-6 py-3 border-t border-border flex-shrink-0 gap-2">
+              <button
+                @click="closeServiceModal"
+                class="btn btn-ghost btn-sm"
+              >
+                Cancel
+              </button>
+              <button
+                v-if="serviceConfig && serviceConfig.exists"
+                @click="handleSaveService"
+                class="btn btn-primary btn-sm"
+                :disabled="savingService || !serviceEditForm.execStart"
+              >
+                {{ savingService ? 'Saving...' : 'Save & Restart' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
 </template>
 
 <style scoped>

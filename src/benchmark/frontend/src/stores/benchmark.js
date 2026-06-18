@@ -583,6 +583,30 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async fetchServiceConfig() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/service/config`)
+        if (res.data.success) {
+          return res.data
+        }
+        return { success: false, exists: false }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    },
+
+    async updateServiceConfig(config) {
+      try {
+        const res = await axios.post(`${API_BASE}/api/service/update`, config)
+        if (res.data.success) {
+          return { success: true }
+        }
+        return { success: false, error: res.data.error }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    },
+
     async fetchLaunchCommand() {
       try {
         const res = await axios.get(`${API_BASE}/api/launch-command`)

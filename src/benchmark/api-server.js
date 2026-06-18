@@ -1266,6 +1266,159 @@ app.get("/api/service/status", (_req, res) => {
   }
 });
 
+//--- Read current systemd service configuration ---
+app.get("/api/service/config", (_req, res) => {
+  try {
+    const serviceUser = process.env.USER || "jon";
+    const serviceName = "llama.service";
+    const serviceFile = join("/home", serviceUser, ".config", "systemd", "user", serviceName);
+    const envFile = join("/home", serviceUser, ".config", "systemd", "user", "llama-benchmark.env");
+
+    // Check if service file exists
+    if (!fs.existsSync(serviceFile)) {
+      return res.json({ success: true, exists: false });
+    }
+
+    // Read and parse service file
+    const serviceContent = fs.readFileSync(serviceFile, "utf8");
+
+    // Extract ExecStart line
+    const execStartMatch = serviceContent.match(/^ExecStart=(.+)$/m);
+    const execStart = execStartMatch ? execStartMatch[1] : "";
+
+    // Extract Description line
+    const descMatch = serviceContent.match(/^Description=(.+)$/m);
+    const description = descMatch ? descMatch[1] : "";
+
+    // Extract Restart policy
+    const restartMatch = serviceContent.match(/^Restart=(.+)$/m);
+    const restart = restartMatch ? restartMatch[1] : "on-failure";
+
+    // Extract RestartSec
+    const restartSecMatch = serviceContent.match(/^RestartSec=(.+)$/m);
+    const restartSec = restartSecMatch ? parseInt(restartSecMatch[1], 10) : 5;
+
+    // Parse environment file into key-value pairs
+    let envVars = {};
+    if (fs.existsSync(envFile)) {
+      const envContent = fs.readFileSync(envFile, "utf8");
+      for (const line of envContent.split("\n")) {
+        const trimmed = line.trim();
+        if (trimmed && !trimmed.startsWith("#")) {
+          const eqIdx = trimmed.indexOf("=");
+          if (eqIdx > 0) {
+            const key = trimmed.substring(0, eqIdx);
+            const value = trimmed.substring(eqIdx + 1);
+            envVars[key] = value;
+          }
+        }
+      }
+    }
+
+    res.json({
+      success: true,
+      exists: true,
+      description,
+      execStart,
+      restart,
+      restartSec,
+      envVars,
+      serviceFile,
+      envFile,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Update systemd service configuration ---
+app.post("/api/service/update", (req, res) => {
+  try {
+    const { execStart, envVars, restart, restartSec } = req.body;
+
+    if (!execStart) {
+      return res.status(400).json({ success: false, error: "execStart is required" });
+    }
+
+    const serviceUser = process.env.USER || "jon";
+    const serviceName = "llama.service";
+    const serviceFile = join("/home", serviceUser, ".config", "systemd", "user", serviceName);
+    const envFile = join("/home", serviceUser, ".config", "systemd", "user", "llama-benchmark.env");
+
+    // Read existing service file to preserve other sections
+    if (!fs.existsSync(serviceFile)) {
+      return res.status(404).json({ success: false, error: "Service file not found. Install a service first." });
+    }
+
+    const serviceContent = fs.readFileSync(serviceFile, "utf8");
+
+    // Update ExecStart
+    let updatedService = serviceContent.replace(
+      /^ExecStart=.+$/m,
+      `ExecStart=${execStart}`
+    );
+
+    // Update Restart
+    if (restart) {
+      updatedService = updatedService.replace(
+        /^Restart=.+$/m,
+        `Restart=${restart}`
+      );
+    }
+
+    // Update RestartSec
+    if (restartSec !== undefined && restartSec !== null) {
+      updatedService = updatedService.replace(
+        /^RestartSec=.+$/m,
+        `RestartSec=${restartSec}`
+      );
+    }
+
+    // Write updated service file
+    try {
+      execSync(`cat > ${serviceFile} << 'SVCEOF'\n${updatedService}SVCEOF`);
+    } catch (err) {
+      console.error(`Failed to write service file: ${err.message}`);
+      return res.status(500).json({ success: false, error: `Failed to write service file: ${err.message}` });
+    }
+
+    // Write environment file
+    try {
+      const envContent = Object.entries(envVars || {})
+        .filter(([_, v]) => v !== undefined && v !== null)
+        .map(([k, v]) => `${k}=${v}`)
+        .join("\n") + "\n";
+      execSync(`cat > ${envFile} << 'ENVEOF'\n${envContent}ENVEOF`);
+    } catch (err) {
+      console.error(`Failed to write env file: ${err.message}`);
+      return res.status(500).json({ success: false, error: `Failed to write env file: ${err.message}` });
+    }
+
+    // Reload systemd daemon
+    try {
+      execSync("systemctl --user daemon-reload");
+    } catch (err) {
+      console.error(`Failed to reload systemd: ${err.message}`);
+      return res.status(500).json({ success: false, error: `daemon-reload failed: ${err.message}` });
+    }
+
+    // Restart the service
+    try {
+      execSync("systemctl --user restart llama.service");
+    } catch (err) {
+      console.error(`Failed to restart service: ${err.message}`);
+      return res.status(500).json({ success: false, error: `restart failed: ${err.message}` });
+    }
+
+    res.json({
+      success: true,
+      message: "Service updated, reloaded, and restarted",
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 //--- Install a systemd service from a report's launch command ---
 app.post("/api/service/install", (req, res) => {
   try {
