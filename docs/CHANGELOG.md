@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-19] Frontend routing — renamed `/config` route to `/settings` (Config.vue → Settings.vue); made Pi Chat the home route (`/`) and moved Dashboard to `/benchmark`
+
 ### Added
 
 - [Added]: [2026-06-19] Pi Chat — slash command autocomplete in message input: typing `/` at the start of a line shows a dropdown of 23 Pi SDK commands (mirrors TUI `BUILTIN_SLASH_COMMANDS`) with two-column layout (`/command` + description), arrow-key navigation, Enter/Tab to select, Escape/outside-click to dismiss, substring filtering, and auto-dismiss on backspace

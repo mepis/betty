@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '@/views/Dashboard.vue'
-import Config from '@/views/Config.vue'
+import Settings from '@/views/Settings.vue'
 import Reports from '@/views/Reports.vue'
 import Models from '@/views/Models.vue'
 import Docs from '@/views/Docs.vue'
@@ -9,14 +9,14 @@ import PiChat from '@/views/PiChat.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/benchmark',
     name: 'dashboard',
     component: Dashboard,
   },
   {
-    path: '/config',
-    name: 'config',
-    component: Config,
+    path: '/settings',
+    name: 'settings',
+    component: Settings,
   },
   {
     path: '/reports',
@@ -51,7 +51,7 @@ const routes = [
     },
   },
   {
-    path: '/pi',
+    path: '/',
     name: 'pi',
     component: PiChat,
     meta: {
