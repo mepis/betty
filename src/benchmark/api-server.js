@@ -2431,7 +2431,7 @@ function extractMessageText(message) {
 }
 
 // Helper: map agent event to SSE event and payload
-function mapAgentEvent(event) {
+function mapAgentEvent(event, sessionId) {
   switch (event.type) {
     case "message_update": {
       const ame = event.assistantMessageEvent;
@@ -2453,7 +2453,24 @@ function mapAgentEvent(event) {
       return { event: "pi-agent-start", data: {} };
     case "agent_end": {
       const usage = event.usage || {};
-      return { event: "pi-agent-end", data: { tokens: { input: usage.inputTokens || 0, output: usage.outputTokens || 0, total: usage.totalTokens || 0 }, cost: usage.cost || 0 } };
+      let contextUsageData = null;
+      if (sessionId) {
+        const sessEntry = piSessions.get(sessionId);
+        const cu = sessEntry?.session?.getContextUsage?.() || {};
+        contextUsageData = {
+          tokens: cu.tokens ?? null,
+          contextWindow: cu.contextWindow ?? 0,
+          percent: cu.percent ?? null,
+        };
+      }
+      return {
+        event: "pi-agent-end",
+        data: {
+          tokens: { input: usage.inputTokens || 0, output: usage.outputTokens || 0, total: usage.totalTokens || 0 },
+          cost: usage.cost || 0,
+          contextUsage: contextUsageData,
+        },
+      };
     }
     case "turn_start":
       return { event: "pi-turn-start", data: {} };
@@ -2468,7 +2485,7 @@ function mapAgentEvent(event) {
 
 // Helper: broadcast a mapped agent event to all clients of a session
 function broadcastPiEvent(sessionId, event) {
-  const mapped = mapAgentEvent(event);
+  const mapped = mapAgentEvent(event, sessionId);
   if (!mapped) return;
   const entry = piSessions.get(sessionId);
   if (!entry) return;
@@ -2556,10 +2573,12 @@ app.get("/api/pi/session/:id/stream", (req, res) => {
 
   // Send initial status
   const model = entry.session.model;
+  const contextWindow = model?.contextWindow ?? 0;
   sendPiToClient(client, "pi-status", {
     model: model ? `${model.provider}/${model.id}` : null,
     thinking: entry.session.thinkingLevel,
     streaming: entry.session.isStreaming,
+    contextWindow,
   });
 
   // Heartbeat

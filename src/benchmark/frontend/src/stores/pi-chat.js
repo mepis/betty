@@ -12,6 +12,8 @@ export const usePiChatStore = defineStore('piChat', {
     thinking: 'off',
     tokens: { input: 0, output: 0, total: 0 },
     cost: 0,
+    contextWindow: 0,
+    contextPercent: null,
     error: null,
     sseConnected: false,
     // Current assistant message being built
@@ -66,6 +68,9 @@ export const usePiChatStore = defineStore('piChat', {
         this.model = data.model
         this.thinking = data.thinking
         this.isStreaming = data.streaming
+        if (data.contextWindow) {
+          this.contextWindow = data.contextWindow
+        }
       })
 
       eventSource.addEventListener('pi-message-start', (e) => {
@@ -163,6 +168,10 @@ export const usePiChatStore = defineStore('piChat', {
         }
         if (data.cost !== undefined) {
           this.cost = data.cost
+        }
+        if (data.contextUsage) {
+          this.contextWindow = data.contextUsage.contextWindow || 0
+          this.contextPercent = data.contextUsage.percent
         }
       })
 

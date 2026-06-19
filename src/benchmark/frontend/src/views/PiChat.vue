@@ -291,9 +291,25 @@ function formatCost(cost) {
 }
 
 function formatTokens(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M'
   if (n >= 1000) return (n / 1000).toFixed(1) + 'k'
   return n.toString()
 }
+
+const contextUsageText = computed(() => {
+  if (!store.contextWindow) return null
+  if (store.contextPercent === null || store.contextPercent === undefined) {
+    return `?/${formatTokens(store.contextWindow)}`
+  }
+  return `${store.contextPercent.toFixed(1)}%/${formatTokens(store.contextWindow)}`
+})
+
+const contextUsageColor = computed(() => {
+  if (store.contextPercent === null || store.contextPercent === undefined) return 'text-text-muted'
+  if (store.contextPercent > 90) return 'text-error'
+  if (store.contextPercent > 70) return 'text-warning'
+  return 'text-text-muted'
+})
 
 function toggleToolCall(toolCall) {
   toolCall.expanded = !toolCall.expanded
@@ -547,6 +563,7 @@ function isLastAssistant(msg) {
           ↑{{ formatTokens(store.tokens.input) }} ↓{{ formatTokens(store.tokens.output) }}
         </span>
         <span v-if="store.cost > 0">{{ formatCost(store.cost) }}</span>
+        <span v-if="contextUsageText" :class="contextUsageColor">{{ contextUsageText }}</span>
         <span v-if="store.sseConnected" class="text-success">●</span>
         <span v-else class="text-error">●</span>
       </div>
