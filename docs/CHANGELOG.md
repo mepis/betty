@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-19] Pi Chat — assistant messages now render during SSE streaming; added `tick` counter to Pinia store to force computed re-evaluation when `currentAssistant` nested properties (`content`, `thinking`, `toolCalls`) are mutated by SSE events, which Vue's reactivity system previously missed because the object reference didn't change
 - [Fixed]: [2026-06-18] `src/benchmark/index.js` — `generateMultiplicativeArray` now guards against degenerate multipliers (≤1), zero start values, and start > max to prevent infinite loops and `RangeError: Invalid array length`
 
 ### Added

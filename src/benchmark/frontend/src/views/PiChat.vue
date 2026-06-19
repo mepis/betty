@@ -17,6 +17,7 @@ const textareaRef = ref(null)
 const scrollLock = ref(false)
 
 const allMessages = computed(() => {
+  store.tick  // force re-evaluation on nested mutations (content, thinking, toolCalls)
   const msgs = [...store.messages]
   if (store.currentAssistant) {
     msgs.push(store.currentAssistant)

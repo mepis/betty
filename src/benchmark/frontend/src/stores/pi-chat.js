@@ -18,6 +18,8 @@ export const usePiChatStore = defineStore('piChat', {
     currentAssistant: null,
     // Current tool call being built
     currentToolCall: null,
+    // Tick counter: incremented on every SSE mutation to force computed reactivity
+    tick: 0,
   }),
 
   getters: {
@@ -42,6 +44,7 @@ export const usePiChatStore = defineStore('piChat', {
           this.tokens = { input: 0, output: 0, total: 0 }
           this.cost = 0
           this.model = null
+          this.tick = 0
           this.connectSSE()
           return true
         }
@@ -88,6 +91,7 @@ export const usePiChatStore = defineStore('piChat', {
         const data = JSON.parse(e.data)
         if (this.currentAssistant) {
           this.currentAssistant.content += data.delta
+          this.tick++
         }
       })
 
@@ -95,6 +99,7 @@ export const usePiChatStore = defineStore('piChat', {
         const data = JSON.parse(e.data)
         if (this.currentAssistant) {
           this.currentAssistant.thinking += data.delta
+          this.tick++
         }
       })
 
@@ -110,6 +115,7 @@ export const usePiChatStore = defineStore('piChat', {
         }
         if (this.currentAssistant) {
           this.currentAssistant.toolCalls.push(this.currentToolCall)
+          this.tick++
         }
       })
 
@@ -117,6 +123,7 @@ export const usePiChatStore = defineStore('piChat', {
         const data = JSON.parse(e.data)
         if (this.currentToolCall) {
           this.currentToolCall.output = data.output || ''
+          this.tick++
         }
       })
 
@@ -126,6 +133,7 @@ export const usePiChatStore = defineStore('piChat', {
           this.currentToolCall.output = data.output || ''
           this.currentToolCall.success = data.success
           this.currentToolCall = null
+          this.tick++
         }
       })
 
@@ -135,6 +143,7 @@ export const usePiChatStore = defineStore('piChat', {
           this.currentAssistant.content = data.content || this.currentAssistant.content
           this.messages.push(this.currentAssistant)
           this.currentAssistant = null
+          this.tick++
         }
       })
 
@@ -234,6 +243,7 @@ export const usePiChatStore = defineStore('piChat', {
       this.tokens = { input: 0, output: 0, total: 0 }
       this.cost = 0
       this.model = null
+      this.tick = 0
     },
 
     clearError() {
