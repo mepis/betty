@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-19] Pi Chat — `mapAgentEvent()` now correctly reads `event.message?.role` (instead of `event.role`) and `event.assistantMessageEvent?.delta` (instead of `event.text_delta`/`event.thinking_delta`) from Pi SDK events; user messages and assistant text now appear in the chat UI
+- [Fixed]: [2026-06-19] Pi Chat — `AuthStorage` and `ModelRegistry` now load from `~/.pi/agent/auth.json` and `~/.pi/agent/models.json` respectively (via `getAgentDir()`), so the configured Ollama model is resolved and tokens are generated
+- [Fixed]: [2026-06-19] Pi Chat — CORS configuration fixed: `origin: true` (reflects request origin) with `credentials: false` when wildcard, avoiding the invalid `*` + `credentials: true` anti-pattern
+- [Fixed]: [2026-06-19] Pi Chat — removed hardcoded `VITE_API_URL` from `.env.development`; frontend uses relative URLs in dev mode. `.env.production` cleaned up (removed `VITE_PORT`/`VITE_HOST` settings) but retains production API URL
 - [Fixed]: [2026-06-19] Pi Chat — assistant messages now render during SSE streaming; added `tick` counter to Pinia store to force computed re-evaluation when `currentAssistant` nested properties (`content`, `thinking`, `toolCalls`) are mutated by SSE events, which Vue's reactivity system previously missed because the object reference didn't change
 - [Fixed]: [2026-06-18] `src/benchmark/index.js` — `generateMultiplicativeArray` now guards against degenerate multipliers (≤1), zero start values, and start > max to prevent infinite loops and `RangeError: Invalid array length`
 

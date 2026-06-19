@@ -6,7 +6,7 @@ import { spawn, execSync } from "child_process";
 import { Transform, Readable } from "stream";
 import { join, dirname, basename, isAbsolute, resolve } from "path";
 import { fileURLToPath } from "url";
-import { createAgentSession, AuthStorage, ModelRegistry, SessionManager } from "@earendil-works/pi-coding-agent";
+import { createAgentSession, AuthStorage, ModelRegistry, SessionManager, getAgentDir } from "@earendil-works/pi-coding-agent";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -286,12 +286,16 @@ let buildProcess = null;
 let buildStatus = "idle"; // idle | building | success | error
 
 // CORS configuration
+// Note: credentials=true is incompatible with origin='*' per the CORS spec.
+// When origin is '*', set credentials to false. When explicit origins are
+// configured, credentials can be enabled for those trusted origins.
+const corsWildcard = CORS_ORIGIN === '*';
 app.use(cors({
-  origin: CORS_ORIGIN === '*' ? '*' : CORS_ORIGIN.split(',').map(o => o.trim()),
+  origin: corsWildcard ? true : CORS_ORIGIN.split(',').map(o => o.trim()),
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   exposedHeaders: ['Content-Type', 'Transfer-Encoding', 'Cache-Control', 'Connection', 'Retry-After'],
-  credentials: true,
+  credentials: !corsWildcard,
 }));
 
 app.use(express.json({ limit: "10mb" }));
@@ -2384,8 +2388,8 @@ app.get('/api/docs/:filename', (req, res) => {
 // ============================================================================
 
 // Pi SDK initialization
-const piAuthStorage = AuthStorage.create();
-const piModelRegistry = ModelRegistry.create(piAuthStorage);
+const piAuthStorage = AuthStorage.create(join(getAgentDir(), "auth.json"));
+const piModelRegistry = ModelRegistry.create(piAuthStorage, join(getAgentDir(), "models.json"));
 // Map<sessionId, { session, clients: Set<{ res }>, heartbeat: NodeJS.Timer, unsubscribe: () => void, lastActivity: number }>
 const piSessions = new Map();
 
@@ -2412,18 +2416,33 @@ function generateSessionId() {
   return 'pi-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
 }
 
+// Helper: extract text content from a Pi message content array
+// Pi SDK messages have content as [{ type: "text", text: "..." }, ...]
+function extractMessageText(message) {
+  if (!message) return "";
+  if (typeof message.content === "string") return message.content;
+  if (Array.isArray(message.content)) {
+    return message.content
+      .filter((c) => c.type === "text")
+      .map((c) => c.text || "")
+      .join("");
+  }
+  return "";
+}
+
 // Helper: map agent event to SSE event and payload
 function mapAgentEvent(event) {
   switch (event.type) {
     case "message_update": {
-      if (event.text_delta) return { event: "pi-text", data: { delta: event.text_delta } };
-      if (event.thinking_delta) return { event: "pi-thinking", data: { delta: event.thinking_delta } };
+      const ame = event.assistantMessageEvent;
+      if (ame?.type === "text_delta") return { event: "pi-text", data: { delta: ame.delta || "" } };
+      if (ame?.type === "thinking_delta") return { event: "pi-thinking", data: { delta: ame.delta || "" } };
       return null;
     }
     case "message_start":
-      return { event: "pi-message-start", data: { role: event.role, content: event.content || "" } };
+      return { event: "pi-message-start", data: { role: event.message?.role, content: extractMessageText(event.message) } };
     case "message_end":
-      return { event: "pi-message-end", data: { role: event.role, content: event.content || "" } };
+      return { event: "pi-message-end", data: { role: event.message?.role, content: extractMessageText(event.message) } };
     case "tool_execution_start":
       return { event: "pi-tool-start", data: { id: event.toolCallId, name: event.toolName, params: event.input || {} } };
     case "tool_execution_update":
@@ -2490,10 +2509,11 @@ app.post("/api/pi/session", async (req, res) => {
 
     // Subscribe to agent events at session creation time (not per-client)
     const unsubscribe = session.subscribe((event) => {
-      // message_update can produce two separate SSE events
+      // message_update can produce two separate SSE events (text_delta and thinking_delta)
       if (event.type === "message_update") {
-        if (event.text_delta) broadcastPiEvent(sessionId, { ...event });
-        if (event.thinking_delta) broadcastPiEvent(sessionId, { ...event });
+        const ame = event.assistantMessageEvent;
+        if (ame?.type === "text_delta") broadcastPiEvent(sessionId, event);
+        if (ame?.type === "thinking_delta") broadcastPiEvent(sessionId, event);
         return;
       }
       broadcastPiEvent(sessionId, event);
