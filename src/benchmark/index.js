@@ -128,9 +128,17 @@ function generateValueArrays() {
 
 // Handle multiplicative params (e.g., context_length with multiplier)
 function generateMultiplicativeArray(start, multiplier, max) {
+  // Guard against degenerate cases that cause infinite loops
+  // multiplier <= 1: values never grow; start === 0: 0 * n = 0 forever; start > max: nothing to add
+  if (multiplier <= 1 || start === 0 || start > max) {
+    return start <= max && start !== 0 ? [start] : (start === 0 && max >= 0 ? [0, max] : []);
+  }
   const values = [];
-  for (let v = start; v <= max; v *= multiplier) {
-    values.push(v);
+  const maxIterations = 1000; // safety cap
+  for (let i = 0; i < maxIterations; i++) {
+    if (start > max) break;
+    values.push(start);
+    start *= multiplier;
   }
   if (values[values.length - 1] !== max) {
     values.push(max);

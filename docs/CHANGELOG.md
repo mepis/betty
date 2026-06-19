@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-18] `src/benchmark/index.js` — `generateMultiplicativeArray` now guards against degenerate multipliers (≤1), zero start values, and start > max to prevent infinite loops and `RangeError: Invalid array length`
+
 ### Added
 
 - [Added]: [2026-06-18] Grid search benchmark mode — replaces sequential parameter stepping with full cartesian product grid search over context length, GPU layer offload, batch size, uBatch size, and cache RAM; includes progress indicator, grid size warnings, and multiplicative step support for context length
