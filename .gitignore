@@ -11,3 +11,4 @@ src/benchmark/frontend/dist/*
 .agents/
 .playwright-cli/
 test-*.mjs
+.pi/models.json
