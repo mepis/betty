@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "update": "cd scripts && ./update.sh",
     "build:frontend": "cd src/benchmark/frontend && npm run build",
     "start": "npm install && bash src/benchmark/scripts/update-api-url.sh && cd src/benchmark/frontend && npm install && npm run build && cd ../../.. && node ./src/benchmark/api-server.js"
   },
