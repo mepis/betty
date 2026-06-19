@@ -11,6 +11,209 @@ marked.setOptions({
   gfm: true,
 })
 
+// Slash commands — mirrors TUI BUILTIN_SLASH_COMMANDS
+const SLASH_COMMANDS = [
+  { name: 'settings', description: 'Open settings menu' },
+  { name: 'model', description: 'Select model' },
+  { name: 'scoped-models', description: 'Enable/disable models for Ctrl+P cycling' },
+  { name: 'export', description: 'Export session (HTML default, or specify path: .html/.jsonl)' },
+  { name: 'import', description: 'Import and resume a session from a JSONL file' },
+  { name: 'share', description: 'Share session as a secret GitHub gist' },
+  { name: 'copy', description: 'Copy last agent message to clipboard' },
+  { name: 'name', description: 'Set session display name' },
+  { name: 'session', description: 'Show session info and stats' },
+  { name: 'changelog', description: 'Show changelog entries' },
+  { name: 'hotkeys', description: 'Show all keyboard shortcuts' },
+  { name: 'fork', description: 'Create a new fork from a previous user message' },
+  { name: 'clone', description: 'Duplicate the current session at the current position' },
+  { name: 'tree', description: 'Navigate session tree (switch branches)' },
+  { name: 'trust', description: 'Save project trust decision for future sessions' },
+  { name: 'login', description: 'Configure provider authentication' },
+  { name: 'logout', description: 'Remove provider authentication' },
+  { name: 'new', description: 'Start a new session' },
+  { name: 'compact', description: 'Manually compact the session context' },
+  { name: 'resume', description: 'Resume a different session' },
+  { name: 'reload', description: 'Reload keybindings, extensions, skills, prompts, and themes' },
+  { name: 'quit', description: 'Quit pi' },
+]
+
+// Slash command autocomplete state
+const showSlashMenu = ref(false)
+const slashSelectedIndex = ref(0)
+const slashMenuRef = ref(null)
+const slashPrefix = ref('') // reactive prefix for filtering
+
+// Get the current line text before cursor position in textarea
+function getTextBeforeCursor() {
+  const el = textareaRef.value
+  if (!el) return ''
+  const cursorPos = el.selectionStart
+  return el.value.slice(0, cursorPos)
+}
+
+// Get the current line (from last newline or start) before cursor
+function getCurrentLineBeforeCursor() {
+  const before = getTextBeforeCursor()
+  const lastNewline = before.lastIndexOf('\n')
+  return lastNewline === -1 ? before : before.slice(lastNewline + 1)
+}
+
+// Check if we're at the start of a line (or after whitespace) typing a /
+function isAtStartOfLine() {
+  const line = getCurrentLineBeforeCursor()
+  return line.trimStart().startsWith('/')
+}
+
+// Extract the command prefix after / (e.g. "/com" -> "com")
+function extractSlashPrefix() {
+  const line = getCurrentLineBeforeCursor()
+  const trimmed = line.trimStart()
+  if (!trimmed.startsWith('/')) return null
+  const afterSlash = trimmed.slice(1)
+  const spaceIdx = afterSlash.indexOf(' ')
+  return spaceIdx === -1 ? afterSlash : afterSlash.slice(0, spaceIdx)
+}
+
+// Filter commands matching the prefix (case-insensitive substring match)
+const slashFilteredCommands = computed(() => {
+  const prefix = slashPrefix.value
+  if (!prefix) return SLASH_COMMANDS
+  const lower = prefix.toLowerCase()
+  return SLASH_COMMANDS.filter(cmd => cmd.name.toLowerCase().includes(lower))
+})
+
+function showSlashMenuIfNeeded() {
+  const line = getCurrentLineBeforeCursor()
+  const trimmed = line.trimStart()
+  if (trimmed.startsWith('/') && !store.isStreaming) {
+    slashPrefix.value = extractSlashPrefix() || ''
+    showSlashMenu.value = true
+    slashSelectedIndex.value = 0
+  } else {
+    showSlashMenu.value = false
+    slashPrefix.value = ''
+  }
+}
+
+function hideSlashMenu() {
+  showSlashMenu.value = false
+  slashSelectedIndex.value = 0
+}
+
+function selectSlashCommand(item) {
+  const el = textareaRef.value
+  if (!el) return
+  const cursorPos = el.selectionStart
+  const before = el.value.slice(0, cursorPos)
+  const after = el.value.slice(cursorPos)
+  // Find the / command on current line and replace it
+  const lastNewline = before.lastIndexOf('\n')
+  const lineStart = lastNewline + 1
+  const currentLine = before.slice(lineStart)
+  const trimmed = currentLine.trimStart()
+  const indent = currentLine.slice(0, currentLine.length - trimmed.length)
+  const afterSlash = trimmed.slice(1)
+  const spaceIdx = afterSlash.indexOf(' ')
+  const commandPart = spaceIdx === -1 ? afterSlash : afterSlash.slice(0, spaceIdx + 1)
+  const remainder = spaceIdx === -1 ? '' : afterSlash.slice(spaceIdx)
+  // Replace: indent + /commandPart with /item.name + space
+  const newLine = indent + '/' + item.name + ' ' + remainder
+  el.value = before.slice(0, lineStart) + newLine + after
+  // Position cursor after the command name + space
+  const newCursorPos = lineStart + newLine.length - remainder.length
+  el.value = el.value // trigger v-model update
+  input.value = el.value
+  nextTick(() => {
+    el.focus()
+    el.setSelectionRange(newCursorPos, newCursorPos)
+  })
+  hideSlashMenu()
+}
+
+function handleKeydown(e) {
+  // Slash command autocomplete
+  if (e.key === '/' && !store.isStreaming && getTextBeforeCursor().trimStart() === '') {
+    // Typing / at start of line — will trigger showSlashMenuIfNeeded on next input
+    return
+  }
+
+  if (showSlashMenu.value && slashFilteredCommands.value.length > 0) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      slashSelectedIndex.value = (slashSelectedIndex.value + 1) % slashFilteredCommands.value.length
+      return
+    }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      slashSelectedIndex.value = (slashSelectedIndex.value - 1 + slashFilteredCommands.value.length) % slashFilteredCommands.value.length
+      return
+    }
+    if (e.key === 'Escape') {
+      e.preventDefault()
+      hideSlashMenu()
+      return
+    }
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      const selected = slashFilteredCommands.value[slashSelectedIndex.value]
+      if (selected) {
+        selectSlashCommand(selected)
+      }
+      return
+    }
+    if (e.key === 'Tab') {
+      e.preventDefault()
+      const selected = slashFilteredCommands.value[slashSelectedIndex.value]
+      if (selected) {
+        selectSlashCommand(selected)
+      }
+      return
+    }
+  }
+
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault()
+    hideSlashMenu()
+    sendMessage()
+  }
+}
+
+// Show/hide slash menu on input
+function handleInput() {
+  autoResize()
+  if (isAtStartOfLine() && !store.isStreaming) {
+    slashPrefix.value = extractSlashPrefix() || ''
+    showSlashMenuIfNeeded()
+  } else {
+    hideSlashMenu()
+  }
+}
+
+// Close slash menu on outside click
+function handleClickOutside(e) {
+  if (showSlashMenu.value) {
+    const textarea = textareaRef.value
+    const menu = slashMenuRef.value
+    if (textarea && menu) {
+      if (!textarea.contains(e.target) && !menu.contains(e.target)) {
+        hideSlashMenu()
+      }
+    }
+  }
+}
+
+// Watch for backspace that might cancel slash context
+watch(() => textareaRef.value?.value, () => {
+  if (showSlashMenu.value) {
+    const prefix = extractSlashPrefix()
+    if (!prefix && !isAtStartOfLine()) {
+      hideSlashMenu()
+    } else {
+      slashPrefix.value = prefix || ''
+    }
+  }
+})
+
 const input = ref('')
 const messagesRef = ref(null)
 const textareaRef = ref(null)
@@ -49,6 +252,7 @@ watch(() => store.currentAssistant, (val) => {
 }, { deep: false })
 
 onMounted(async () => {
+  document.addEventListener('click', handleClickOutside)
   if (!store.sessionId) {
     await store.createSession()
   }
@@ -56,6 +260,7 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
   store.disposeSession()
 })
 
@@ -71,13 +276,6 @@ async function sendMessage() {
   await store.sendPrompt(text)
   await nextTick()
   if (textareaRef.value) textareaRef.value.style.height = 'auto'
-}
-
-function handleKeydown(e) {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault()
-    sendMessage()
-  }
 }
 
 function autoResize() {
@@ -249,12 +447,64 @@ function isLastAssistant(msg) {
             ref="textareaRef"
             v-model="input"
             @keydown="handleKeydown"
-            @input="autoResize"
+            @input="handleInput"
             placeholder="Send a message... (Shift+Enter for new line)"
             rows="1"
             :disabled="store.isStreaming"
             class="w-full bg-bg-tertiary border border-border rounded-xl px-4 py-3 pr-4 text-sm text-text-primary placeholder:text-text-muted resize-none focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150"
           />
+
+          <!-- Slash command autocomplete dropdown -->
+          <transition
+            enter-active-class="transition duration-150 ease-out"
+            enter-from-class="opacity-0 -translate-y-1"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition duration-100 ease-in"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 -translate-y-1"
+          >
+            <div
+              v-if="showSlashMenu"
+              ref="slashMenuRef"
+              class="absolute bottom-full left-0 right-0 mb-2 bg-bg-secondary border border-border rounded-xl shadow-lg overflow-hidden z-50 max-h-52"
+            >
+              <div class="px-3 py-1.5 border-b border-border">
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-text-muted">Slash Commands</span>
+              </div>
+              <div class="overflow-y-auto max-h-44 py-1">
+                <template v-if="slashFilteredCommands.length > 0">
+                  <button
+                    v-for="(cmd, idx) in slashFilteredCommands.slice(0, 10)"
+                    :key="cmd.name"
+                    type="button"
+                    @mousedown.prevent="selectSlashCommand(cmd)"
+                    class="w-full flex items-center gap-3 px-3 py-1.5 text-left text-xs transition-colors"
+                    :class="idx === slashSelectedIndex ? 'bg-accent/10 text-accent' : 'text-text-secondary hover:bg-bg-tertiary'"
+                  >
+                    <span class="flex-shrink-0 w-4 text-center">
+                      <span v-if="idx === slashSelectedIndex">→</span>
+                      <span v-else class="opacity-0">·</span>
+                    </span>
+                    <span class="flex-shrink-0 font-mono font-medium min-w-[9rem] max-w-[9rem] truncate">
+                      /{{ cmd.name }}
+                    </span>
+                    <span class="text-text-muted truncate">{{ cmd.description }}</span>
+                  </button>
+                </template>
+                <div v-else class="px-3 py-2 text-xs text-text-muted italic">
+                  No matching commands
+                </div>
+              </div>
+              <div class="px-3 py-1.5 border-t border-border flex items-center justify-between">
+                <span class="text-[10px] text-text-muted">
+                  ↑↓ navigate · enter select · esc cancel
+                </span>
+                <span class="text-[10px] text-text-muted">
+                  {{ slashSelectedIndex + 1 }}/{{ slashFilteredCommands.length }}
+                </span>
+              </div>
+            </div>
+          </transition>
         </div>
         <button
           v-if="!store.isStreaming"
