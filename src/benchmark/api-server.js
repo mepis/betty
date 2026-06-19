@@ -963,9 +963,6 @@ function getLaunchCommand(configs, testRunConfig) {
   const uBatchSize = test.uBatchSize || tp.u_batch_size || 0;
   const cacheRam = test.cacheRam || tp.cache_ram || 0;
 
-  const tensorSplitValue = gs.enabled && gs.gpus && gs.gpus.length > 1
-    ? Array(gs.gpus.length).fill(Math.round(100 / gs.gpus.length)).join(",")
-    : "0";
   const primaryGpu = gs.enabled ? gs.gpus[0] : 0;
 
   const modelPath = server.model || `${resolveConfigPath(configs.model_directory)}/${configs.model}`;
@@ -993,7 +990,7 @@ function getLaunchCommand(configs, testRunConfig) {
   if (sp.jinja) parts.push("--jinja");
   if (sp.parallel?.enabled) parts.push(`--parallel ${sp.parallel.value}`);
   if (sps.layer_split?.enabled) parts.push(`--split-mode ${sps.layer_split.value}`);
-  if (sps.tensor_split?.enabled) parts.push(`--tensor-split ${tensorSplitValue}`);
+  if (sps.tensor_split?.enabled) parts.push(`--tensor-split ${sps.tensor_split.value}`);
   if (sps.primary_gpu?.enabled) parts.push(`--main-gpu ${primaryGpu}`);
   if (sp2.spec_type?.enabled) parts.push(`--spec-type ${sp2.spec_type.value}`);
   if (sp2.spec_draft_n_max?.enabled) parts.push(`--spec-draft-n-max ${sp2.spec_draft_n_max.value}`);
@@ -1056,10 +1053,6 @@ function extractConfigsPerRun(liveResults, configs) {
       tp.cache_ram_max || 4096,
     );
 
-    const tensorSplitValue = gs.enabled && gs.gpus && gs.gpus.length > 1
-      ? Array(gs.gpus.length).fill(Math.round(100 / gs.gpus.length)).join(",")
-      : "0";
-
     return {
       testRunId: r.testRunId,
       testParameters: {
@@ -1088,7 +1081,7 @@ function extractConfigsPerRun(liveResults, configs) {
       },
       splitParameters: {
         layerSplit: sps.layer_split?.enabled ? sps.layer_split.value : null,
-        tensorSplit: sps.tensor_split?.enabled ? tensorSplitValue : null,
+        tensorSplit: sps.tensor_split?.enabled ? sps.tensor_split.value : null,
         primaryGpu: sps.primary_gpu?.enabled ? (gs.enabled ? gs.gpus[0] : sps.primary_gpu.value) : null,
         gpuSelection: gs.enabled ? gs.gpus : [0],
       },

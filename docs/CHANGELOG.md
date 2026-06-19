@@ -42,7 +42,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- [Fixed]: [2026-06-18] `src/benchmark/index.js` — tensor split parameter now correctly uses `sps.tensor_split.value` as primary source with `tensorSplitValue` as fallback, applied in `getRunScript()`, `getServerParamsSnapshot()`, and `runTestRun()`
+- [Fixed]: [2026-06-18] `src/benchmark/index.js` and `api-server.js` — tensor split parameter now uses `sps.tensor_split.value` exclusively (removed auto-calculated `tensorSplitValue` fallback); applies to `getRunScript()`, `getServerParamsSnapshot()`, `runTestRun()`, `getLaunchCommand()`, and `extractConfigsPerRun()`
 - [Fixed]: [2026-06-18] `scripts/install-service.sh` — `llama-benchmark.service` now uses absolute path to `npm` and sets explicit `PATH` environment variable so systemd can find the nvm-installed node executable (was failing with exit code 203/EXEC)
 
 ### Added

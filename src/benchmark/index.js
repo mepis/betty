@@ -696,7 +696,7 @@ function getRunScript() {
   if (sps.layer_split.enabled)
     parts.push(`--split-mode ${sps.layer_split.value} `);
   if (sps.tensor_split.enabled)
-    parts.push(`--tensor-split ${sps.tensor_split.value || tensorSplitValue} `);
+    parts.push(`--tensor-split ${sps.tensor_split.value} `);
   if (sps.primary_gpu.enabled)
     parts.push(`--main-gpu ${primaryGpu} `);
 
@@ -1052,7 +1052,7 @@ function getServerParamsSnapshot() {
     minP: configs.model_configs.min_p,
     topK: configs.model_configs.top_k,
     layerSplit: sps.layer_split.enabled ? sps.layer_split.value : null,
-    tensorSplit: sps.tensor_split.enabled ? (sps.tensor_split.value || tensorSplitValue) : null,
+    tensorSplit: sps.tensor_split.enabled ? sps.tensor_split.value : null,
     primaryGpu: sps.primary_gpu.enabled ? primaryGpu : null,
     gpuSelection: gpuSelection.enabled
       ? selectedGpus.slice()
@@ -1247,7 +1247,7 @@ async function runTestRun() {
     minP: configs.model_configs.min_p,
     topK: configs.model_configs.top_k,
     layerSplit: sps.layer_split.enabled ? sps.layer_split.value : null,
-    tensorSplit: sps.tensor_split.enabled ? (sps.tensor_split.value || tensorSplitValue) : null,
+    tensorSplit: sps.tensor_split.enabled ? sps.tensor_split.value : null,
     primaryGpu: sps.primary_gpu.enabled ? primaryGpu : null,
     gpuSelection: gpuSelection.enabled
       ? selectedGpus.slice()
