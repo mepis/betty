@@ -7,6 +7,7 @@
     "start": "npm install && bash src/benchmark/scripts/update-api-url.sh && cd src/benchmark/frontend && npm install && npm run build && cd ../../.. && node ./src/benchmark/api-server.js"
   },
   "dependencies": {
+    "@earendil-works/pi-coding-agent": "^0.79.7",
     "axios": "^1.7.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.0",

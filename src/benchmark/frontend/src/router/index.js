@@ -5,6 +5,7 @@ import Reports from '@/views/Reports.vue'
 import Models from '@/views/Models.vue'
 import Docs from '@/views/Docs.vue'
 import Logs from '@/views/Logs.vue'
+import PiChat from '@/views/PiChat.vue'
 
 const routes = [
   {
@@ -47,6 +48,15 @@ const routes = [
     meta: {
       title: 'Logs',
       description: 'Systemd service logs from llama.service',
+    },
+  },
+  {
+    path: '/pi',
+    name: 'pi',
+    component: PiChat,
+    meta: {
+      title: 'Pi Chat',
+      description: 'Chat with an AI agent powered by Pi SDK',
     },
   },
 ]

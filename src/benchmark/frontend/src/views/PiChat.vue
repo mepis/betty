@@ -1,0 +1,421 @@
+<script setup>
+import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
+import { usePiChatStore } from '@/stores/pi-chat'
+import { marked } from 'marked'
+import DOMPurify from 'dompurify'
+
+const store = usePiChatStore()
+
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+})
+
+const input = ref('')
+const messagesRef = ref(null)
+const textareaRef = ref(null)
+const scrollLock = ref(false)
+
+const allMessages = computed(() => {
+  const msgs = [...store.messages]
+  if (store.currentAssistant) {
+    msgs.push(store.currentAssistant)
+  }
+  return msgs
+})
+
+async function scrollToBottom() {
+  if (!scrollLock.value) {
+    await nextTick()
+    if (messagesRef.value) {
+      messagesRef.value.scrollTop = messagesRef.value.scrollHeight
+    }
+  }
+}
+
+// Throttled auto-scroll: watch message count instead of deep-watching all messages
+let scrollRafId = null
+function throttledScrollToBottom() {
+  if (scrollRafId) return
+  scrollRafId = requestAnimationFrame(() => {
+    scrollRafId = null
+    scrollToBottom()
+  })
+}
+watch(() => store.messages.length, throttledScrollToBottom)
+watch(() => store.currentAssistant, (val) => {
+  if (val) throttledScrollToBottom()
+}, { deep: false })
+
+onMounted(async () => {
+  if (!store.sessionId) {
+    await store.createSession()
+  }
+  await scrollToBottom()
+})
+
+onUnmounted(() => {
+  store.disposeSession()
+})
+
+function renderMarkdown(text) {
+  if (!text) return ''
+  return DOMPurify.sanitize(marked.parse(text), { RETURN_DOM: false })
+}
+
+async function sendMessage() {
+  const text = input.value.trim()
+  if (!text || store.isStreaming) return
+  input.value = ''
+  await store.sendPrompt(text)
+  await nextTick()
+  if (textareaRef.value) textareaRef.value.style.height = 'auto'
+}
+
+function handleKeydown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault()
+    sendMessage()
+  }
+}
+
+function autoResize() {
+  const el = textareaRef.value
+  if (!el) return
+  el.style.height = 'auto'
+  el.style.height = Math.min(el.scrollHeight, 160) + 'px'
+}
+
+function formatCost(cost) {
+  if (cost === 0) return '$0.00'
+  return '$' + cost.toFixed(4)
+}
+
+function formatTokens(n) {
+  if (n >= 1000) return (n / 1000).toFixed(1) + 'k'
+  return n.toString()
+}
+
+function toggleToolCall(toolCall) {
+  toolCall.expanded = !toolCall.expanded
+}
+
+async function handleAbort() {
+  await store.abort()
+}
+
+function handleScroll() {
+  if (!messagesRef.value) return
+  const el = messagesRef.value
+  const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 40
+  scrollLock.value = !atBottom
+}
+
+function isLastAssistant(msg) {
+  if (msg.role !== 'assistant') return false
+  const msgs = allMessages.value
+  return msgs.length > 0 && msgs[msgs.length - 1] === msg
+}
+</script>
+
+<template>
+  <div class="flex flex-col h-[calc(100vh-8rem)]">
+    <!-- Messages area -->
+    <div
+      ref="messagesRef"
+      class="flex-1 overflow-y-auto px-6 py-4 space-y-6"
+      @scroll="handleScroll"
+    >
+      <!-- Empty state -->
+      <div v-if="allMessages.length === 0" class="flex flex-col items-center justify-center h-full text-center">
+        <div class="w-16 h-16 rounded-2xl bg-accent-subtle flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+          </svg>
+        </div>
+        <h2 class="text-lg font-semibold text-text-primary mb-1">Pi Chat</h2>
+        <p class="text-sm text-text-muted max-w-md">
+          Chat with an AI agent powered by Pi SDK. The agent can read files, run commands, edit code, and more.
+        </p>
+      </div>
+
+      <!-- Messages -->
+      <template v-for="msg in allMessages" :key="msg.id">
+        <!-- User message -->
+        <div v-if="msg.role === 'user'" class="flex justify-end">
+          <div class="max-w-[75%]">
+            <div class="bg-accent/20 text-accent rounded-2xl rounded-tr-sm px-4 py-3 text-sm">
+              {{ msg.content }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Assistant message -->
+        <div v-else-if="msg.role === 'assistant'" class="flex justify-start">
+          <div class="max-w-[85%] w-full space-y-3">
+            <!-- Thinking block -->
+            <details
+              v-if="msg.thinking"
+              class="group"
+              :open="false"
+            >
+              <summary class="flex items-center gap-2 cursor-pointer text-xs text-text-muted hover:text-text-secondary transition-colors select-none">
+                <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <span class="font-medium">Thinking</span>
+              </summary>
+              <div class="mt-2 ml-5 pl-3 border-l-2 border-border/50 text-xs text-text-muted font-mono whitespace-pre-wrap leading-relaxed">
+                {{ msg.thinking }}
+              </div>
+            </details>
+
+            <!-- Tool calls -->
+            <template v-for="tool in msg.toolCalls" :key="tool.id">
+              <details class="group" :open="tool.expanded">
+                <summary class="flex items-center gap-2 cursor-pointer text-xs text-text-muted hover:text-text-secondary transition-colors select-none">
+                  <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.049.58.025 1.193-.14 1.743" />
+                  </svg>
+                  <span class="font-medium">{{ tool.name }}</span>
+                  <span v-if="tool.success !== null" :class="tool.success ? 'text-success' : 'text-error'">
+                    {{ tool.success ? '✓' : '✗' }}
+                  </span>
+                </summary>
+                <div class="mt-2 ml-5 pl-3 border-l-2 border-border/50 space-y-2">
+                  <!-- Params -->
+                  <div class="text-xs text-text-muted">
+                    <span class="font-medium">Input:</span>
+                    <pre class="mt-1 bg-bg-tertiary rounded-lg p-2 overflow-x-auto text-xs text-text-secondary font-mono">{{ JSON.stringify(tool.params, null, 2) }}</pre>
+                  </div>
+                  <!-- Output -->
+                  <div v-if="tool.output" class="text-xs text-text-muted">
+                    <span class="font-medium">Output:</span>
+                    <pre class="mt-1 bg-bg-tertiary rounded-lg p-2 overflow-x-auto max-h-48 text-xs text-text-secondary font-mono whitespace-pre-wrap">{{ tool.output }}</pre>
+                  </div>
+                </div>
+              </details>
+            </template>
+
+            <!-- Message content (markdown) -->
+            <div
+              v-if="msg.content"
+              class="text-sm text-text-secondary leading-relaxed"
+            >
+              <div
+                v-if="!isLastAssistant(msg)"
+                v-html="renderMarkdown(msg.content)"
+                class="pi-prose"
+              />
+              <template v-else>
+                <!-- Streaming message: render markdown for completed part, show cursor for live part -->
+                <div v-html="renderMarkdown(msg.content)" class="pi-prose" />
+                <span v-if="store.isStreaming" class="inline-block w-2 h-4 bg-accent ml-0.5 animate-pulse" />
+              </template>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <!-- Error display -->
+      <div v-if="store.error" class="flex justify-start">
+        <div class="max-w-[75%]">
+          <div class="bg-error/10 border border-error/30 text-error rounded-2xl rounded-tl-sm px-4 py-3 text-sm">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+              </svg>
+              <span>{{ store.error }}</span>
+              <button @click="store.clearError()" class="ml-auto text-current opacity-60 hover:opacity-100">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input area -->
+    <div class="border-t border-border bg-bg-secondary px-6 py-3">
+      <div class="flex items-end gap-3">
+        <div class="flex-1 relative">
+          <textarea
+            ref="textareaRef"
+            v-model="input"
+            @keydown="handleKeydown"
+            @input="autoResize"
+            placeholder="Send a message... (Shift+Enter for new line)"
+            rows="1"
+            :disabled="store.isStreaming"
+            class="w-full bg-bg-tertiary border border-border rounded-xl px-4 py-3 pr-4 text-sm text-text-primary placeholder:text-text-muted resize-none focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150"
+          />
+        </div>
+        <button
+          v-if="!store.isStreaming"
+          @click="sendMessage"
+          :disabled="!input.trim()"
+          class="flex-shrink-0 w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-150"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+          </svg>
+        </button>
+        <button
+          v-else
+          @click="handleAbort"
+          class="flex-shrink-0 w-10 h-10 rounded-xl bg-error/20 text-error flex items-center justify-center hover:bg-error/30 transition-all duration-150"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Status footer -->
+    <div class="flex items-center justify-between px-6 py-2 border-t border-border bg-bg-secondary text-xs text-text-muted">
+      <div class="flex items-center gap-4">
+        <span v-if="store.model" class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+          </svg>
+          {{ store.model }}
+        </span>
+        <span v-if="store.isStreaming" class="flex items-center gap-1.5 text-accent">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+          Streaming
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span v-if="store.tokens.total > 0">
+          ↑{{ formatTokens(store.tokens.input) }} ↓{{ formatTokens(store.tokens.output) }}
+        </span>
+        <span v-if="store.cost > 0">{{ formatCost(store.cost) }}</span>
+        <span v-if="store.sseConnected" class="text-success">●</span>
+        <span v-else class="text-error">●</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+/* Markdown prose styles for Pi chat */
+:deep(.pi-prose h1) {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+:deep(.pi-prose h2) {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+:deep(.pi-prose h3) {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+:deep(.pi-prose p) {
+  margin-bottom: 0.75rem;
+}
+
+:deep(.pi-prose a) {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+:deep(.pi-prose ul) {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+:deep(.pi-prose ol) {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+:deep(.pi-prose li) {
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+:deep(.pi-prose code) {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-accent);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.375rem;
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+}
+
+:deep(.pi-prose pre) {
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+}
+
+:deep(.pi-prose pre code) {
+  background: transparent;
+  color: var(--color-text-secondary);
+  padding: 0;
+  font-size: 0.8125rem;
+}
+
+:deep(.pi-prose blockquote) {
+  border-left: 3px solid color-mix(in srgb, var(--color-accent) 50%, transparent);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+  background-color: color-mix(in srgb, var(--color-accent-subtle) 20%, transparent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--color-text-muted);
+}
+
+:deep(.pi-prose table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.75rem;
+}
+
+:deep(.pi-prose th) {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-bg-tertiary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+:deep(.pi-prose td) {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+:deep(.pi-prose hr) {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+</style>

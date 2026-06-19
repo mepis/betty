@@ -6,6 +6,7 @@ import { spawn, execSync } from "child_process";
 import { Transform, Readable } from "stream";
 import { join, dirname, basename, isAbsolute, resolve } from "path";
 import { fileURLToPath } from "url";
+import { createAgentSession, AuthStorage, ModelRegistry, SessionManager } from "@earendil-works/pi-coding-agent";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -2373,6 +2374,250 @@ app.get('/api/docs/:filename', (req, res) => {
     const content = fs.readFileSync(filePath, 'utf8');
     const rendered = resolveDocRef(content, req.params.filename);
     res.json({ success: true, data: rendered });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ============================================================================
+// Pi Chat Integration
+// ============================================================================
+
+// Pi SDK initialization
+const piAuthStorage = AuthStorage.create();
+const piModelRegistry = ModelRegistry.create(piAuthStorage);
+// Map<sessionId, { session, clients: Set<{ res }>, heartbeat: NodeJS.Timer, unsubscribe: () => void, lastActivity: number }>
+const piSessions = new Map();
+
+// Helper: send SSE event to a specific client
+function sendPiToClient(client, event, data) {
+  try {
+    const msg = `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
+    client.res.write(msg);
+    safeFlush(client.res);
+  } catch {}
+}
+
+// Helper: broadcast a raw SSE event to all clients of a session
+function broadcastPi(sessionId, event, data) {
+  const entry = piSessions.get(sessionId);
+  if (!entry) return;
+  for (const client of entry.clients) {
+    sendPiToClient(client, event, data);
+  }
+}
+
+// Helper: generate a simple session ID
+function generateSessionId() {
+  return 'pi-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+}
+
+// Helper: map agent event to SSE event and payload
+function mapAgentEvent(event) {
+  switch (event.type) {
+    case "message_update": {
+      if (event.text_delta) return { event: "pi-text", data: { delta: event.text_delta } };
+      if (event.thinking_delta) return { event: "pi-thinking", data: { delta: event.thinking_delta } };
+      return null;
+    }
+    case "message_start":
+      return { event: "pi-message-start", data: { role: event.role, content: event.content || "" } };
+    case "message_end":
+      return { event: "pi-message-end", data: { role: event.role, content: event.content || "" } };
+    case "tool_execution_start":
+      return { event: "pi-tool-start", data: { id: event.toolCallId, name: event.toolName, params: event.input || {} } };
+    case "tool_execution_update":
+      return { event: "pi-tool-update", data: { id: event.toolCallId, name: event.toolName, output: event.output || "" } };
+    case "tool_execution_end":
+      return { event: "pi-tool-end", data: { id: event.toolCallId, name: event.toolName, success: event.ok !== false, output: event.output || "" } };
+    case "agent_start":
+      return { event: "pi-agent-start", data: {} };
+    case "agent_end": {
+      const usage = event.usage || {};
+      return { event: "pi-agent-end", data: { tokens: { input: usage.inputTokens || 0, output: usage.outputTokens || 0, total: usage.totalTokens || 0 }, cost: usage.cost || 0 } };
+    }
+    case "turn_start":
+      return { event: "pi-turn-start", data: {} };
+    case "turn_end":
+      return { event: "pi-turn-end", data: {} };
+    case "error":
+      return { event: "pi-error", data: { message: event.message || "Unknown error" } };
+    default:
+      return null;
+  }
+}
+
+// Helper: broadcast a mapped agent event to all clients of a session
+function broadcastPiEvent(sessionId, event) {
+  const mapped = mapAgentEvent(event);
+  if (!mapped) return;
+  const entry = piSessions.get(sessionId);
+  if (!entry) return;
+  for (const client of entry.clients) {
+    sendPiToClient(client, mapped.event, mapped.data);
+  }
+}
+
+// Idle session cleanup — prune sessions idle for > 30 minutes, every 5 minutes
+const PI_SESSION_IDLE_TIMEOUT = 30 * 60 * 1000;
+const PI_SESSION_CLEANUP_INTERVAL = 5 * 60 * 1000;
+setInterval(() => {
+  const now = Date.now();
+  for (const [sid, entry] of piSessions) {
+    if (now - entry.lastActivity > PI_SESSION_IDLE_TIMEOUT) {
+      console.log(`[pi] Pruning idle session ${sid} (idle for ${(now - entry.lastActivity) / 1000 / 60 | 0} min)`);
+      for (const client of entry.clients) {
+        try { client.res.end(); } catch {}
+      }
+      if (entry.heartbeat) clearInterval(entry.heartbeat);
+      if (entry.unsubscribe) entry.unsubscribe();
+      try { entry.session.dispose(); } catch {}
+      piSessions.delete(sid);
+    }
+  }
+}, PI_SESSION_CLEANUP_INTERVAL);
+
+// POST /api/pi/session — create a new agent session
+app.post("/api/pi/session", async (req, res) => {
+  try {
+    const sessionId = generateSessionId();
+    const { session } = await createAgentSession({
+      cwd: process.cwd(),
+      sessionManager: SessionManager.inMemory(),
+      authStorage: piAuthStorage,
+      modelRegistry: piModelRegistry,
+    });
+
+    // Subscribe to agent events at session creation time (not per-client)
+    const unsubscribe = session.subscribe((event) => {
+      // message_update can produce two separate SSE events
+      if (event.type === "message_update") {
+        if (event.text_delta) broadcastPiEvent(sessionId, { ...event });
+        if (event.thinking_delta) broadcastPiEvent(sessionId, { ...event });
+        return;
+      }
+      broadcastPiEvent(sessionId, event);
+    });
+
+    piSessions.set(sessionId, {
+      session,
+      clients: new Set(),
+      heartbeat: null,
+      unsubscribe,
+      lastActivity: Date.now(),
+    });
+    console.log(`[pi] Created session ${sessionId}`);
+    res.json({ success: true, sessionId });
+  } catch (err) {
+    console.error("[pi] Failed to create session:", err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /api/pi/session/:id/stream — SSE stream for session events
+app.get("/api/pi/session/:id/stream", (req, res) => {
+  const sessionId = req.params.id;
+  const entry = piSessions.get(sessionId);
+  if (!entry) {
+    return res.status(404).json({ success: false, error: "Session not found" });
+  }
+
+  // Update activity timestamp
+  entry.lastActivity = Date.now();
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("Retry-After", "3");
+  res.flushHeaders();
+
+  const client = { res };
+  entry.clients.add(client);
+
+  // Send initial status
+  const model = entry.session.model;
+  sendPiToClient(client, "pi-status", {
+    model: model ? `${model.provider}/${model.id}` : null,
+    thinking: entry.session.thinkingLevel,
+    streaming: entry.session.isStreaming,
+  });
+
+  // Heartbeat
+  const heartbeat = setInterval(() => {
+    sendPiToClient(client, "pi-heartbeat", { ts: Date.now() });
+  }, 15000);
+  entry.heartbeat = heartbeat;
+
+  const cleanupClient = () => {
+    entry.clients.delete(client);
+    clearInterval(heartbeat);
+  };
+
+  req.on("close", cleanupClient);
+  res.on("error", cleanupClient);
+});
+
+// POST /api/pi/session/:id/prompt — send a prompt
+app.post("/api/pi/session/:id/prompt", async (req, res) => {
+  const sessionId = req.params.id;
+  const entry = piSessions.get(sessionId);
+  if (!entry) {
+    return res.status(404).json({ success: false, error: "Session not found" });
+  }
+  try {
+    const { text } = req.body;
+    if (!text) {
+      return res.status(400).json({ success: false, error: "text is required" });
+    }
+    // Update activity timestamp
+    entry.lastActivity = Date.now();
+    await entry.session.prompt(text, { expandPromptTemplates: false });
+    res.json({ success: true });
+  } catch (err) {
+    console.error(`[pi] Prompt error for ${sessionId}:`, err.message);
+    broadcastPi(sessionId, "pi-error", { message: err.message });
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /api/pi/session/:id/abort — abort current operation
+app.post("/api/pi/session/:id/abort", (req, res) => {
+  const sessionId = req.params.id;
+  const entry = piSessions.get(sessionId);
+  if (!entry) {
+    return res.status(404).json({ success: false, error: "Session not found" });
+  }
+  try {
+    // Update activity timestamp
+    entry.lastActivity = Date.now();
+    entry.session.agent.abort();
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// DELETE /api/pi/session/:id — dispose session
+app.delete("/api/pi/session/:id", (req, res) => {
+  const sessionId = req.params.id;
+  const entry = piSessions.get(sessionId);
+  if (!entry) {
+    return res.status(404).json({ success: false, error: "Session not found" });
+  }
+  try {
+    // Close all SSE connections
+    for (const client of entry.clients) {
+      try {
+        client.res.end();
+      } catch {}
+    }
+    if (entry.heartbeat) clearInterval(entry.heartbeat);
+    // Unsubscribe from agent events
+    if (entry.unsubscribe) entry.unsubscribe();
+    entry.session.dispose();
+    piSessions.delete(sessionId);
+    console.log(`[pi] Disposed session ${sessionId}`);
+    res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
