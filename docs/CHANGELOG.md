@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-19] Benchmark — increased llama-server health polling timeout from 2 minutes (120 retries) to 5 minutes (300 retries) to allow more time for model loading
 - [Changed]: [2026-06-19] Frontend routing — renamed `/config` route to `/settings` (Config.vue → Settings.vue); made Pi Chat the home route (`/`) and moved Dashboard to `/benchmark`
 
 ### Added

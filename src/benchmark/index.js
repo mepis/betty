@@ -803,7 +803,7 @@ function tryStartServer(runCmd, binaryPath) {
     // If server dies within 3 seconds, it likely failed to bind the port
     const earlyDeathTimer = setTimeout(() => {
       // Server survived 3 seconds — it's up, now poll for health
-      const maxHealthRetries = 120;
+      const maxHealthRetries = 300; // 5 minutes (1s interval)
       let retries = 0;
       const pollInterval = setInterval(async () => {
         retries++;
