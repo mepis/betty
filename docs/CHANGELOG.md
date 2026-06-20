@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- [Changed]: [2026-06-19] `src/benchmark/index.js` — reduced chat request timeout from 10 minutes to 5 minutes (`timeout: 600000` → `timeout: 300000`) to fail faster on unresponsive llama-server instances
-
-### Changed
-
 - [Changed]: [2026-06-19] Frontend routing — renamed `/config` route to `/settings` (Config.vue → Settings.vue); made Pi Chat the home route (`/`) and moved Dashboard to `/benchmark`
 
 ### Added

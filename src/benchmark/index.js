@@ -988,7 +988,7 @@ async function sendChat(messages) {
       payload.cache_prompt = configs.server_params.cache_prompt.value;
 
     const resp = await axios.post(`${llamaUrl}/chat/completions`, payload, {
-      timeout: 300000,
+      timeout: 600000,
     });
 
     const endTime = Date.now();
