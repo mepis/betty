@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-19] Pi Chat — `expandPromptTemplates` is now `true` in the prompt endpoint so slash commands (e.g., `/skill:research`) are properly expanded before being sent to the agent
 - [Fixed]: [2026-06-19] Settings.vue — wrapped left and right grid columns in proper `<div>` wrappers so the `lg:grid-cols-2` two-column layout renders correctly; left column includes Profile Panel and Build card with `space-y-4` spacing, right column contains the Editor card
 
 ### Changed
