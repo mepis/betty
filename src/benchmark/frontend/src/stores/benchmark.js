@@ -799,6 +799,18 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async runUpdate() {
+      try {
+        const res = await axios.post(`${API_BASE}/api/update`)
+        if (res.data.success) {
+          return { success: true, message: res.data.message }
+        }
+        return { success: false, error: res.data.error }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    },
+
     showNotification(type, message) {
       this.notification = { type, message }
       setTimeout(() => {

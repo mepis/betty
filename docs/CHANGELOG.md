@@ -20,6 +20,9 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-19] Settings — "Update" button in the Actions Panel: pulls latest git changes and restarts `llama-benchmark.service`; includes confirmation dialog, loading state, and success/error feedback
+- [Added]: [2026-06-19] Backend — `POST /api/update` endpoint that executes `scripts/update.sh` and returns output or error details
+- [Changed]: [2026-06-19] `scripts/update.sh` — replaced `stop` + `start` with `systemctl --user restart llama-benchmark.service` for atomic service restart
 - [Added]: [2026-06-19] Pi Chat — "New Session" button in the status footer: creates a fresh agent session (disposes current session, resets all state, connects new SSE stream); disabled while streaming to prevent mid-turn disruption
 - [Added]: [2026-06-19] Pi Chat — skills autocomplete in slash menu: `GET /api/pi/skills` endpoint lists all discovered skills via `loadSkills()` from the Pi SDK; skills are fetched on session connect and appear in the slash dropdown under a "Skills" section with `/skill:<name>` labels; keyboard navigation (arrow keys, Enter/Tab) works across both commands and skills together
 - [Added]: [2026-06-19] Pi Chat — slash command autocomplete in message input: typing `/` at the start of a line shows a dropdown of 23 Pi SDK commands (mirrors TUI `BUILTIN_SLASH_COMMANDS`) with two-column layout (`/command` + description), arrow-key navigation, Enter/Tab to select, Escape/outside-click to dismiss, substring filtering, and auto-dismiss on backspace

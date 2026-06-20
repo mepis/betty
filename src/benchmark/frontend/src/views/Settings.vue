@@ -39,6 +39,8 @@ const deletingBuild = ref(false)
 const deleteBuildSuccess = ref('')
 const deletingLlama = ref(false)
 const deleteLlamaSuccess = ref('')
+const updating = ref(false)
+const updateSuccess = ref('')
 
 function showToast(message, type = 'success') {
   toast.value = { show: true, message, type }
@@ -552,6 +554,22 @@ async function handleDeleteLlama() {
   deletingLlama.value = false
 }
 
+async function handleUpdate() {
+  if (updating.value) return
+  if (!confirm('Pull latest changes and restart llama-benchmark.service?')) return
+  updating.value = true
+  updateSuccess.value = ''
+  const result = await store.runUpdate()
+  if (result.success) {
+    updateSuccess.value = result.message || 'Update complete'
+    setTimeout(() => (updateSuccess.value = ''), 4000)
+  } else {
+    updateSuccess.value = result.error || 'Update failed'
+    setTimeout(() => (updateSuccess.value = ''), 4000)
+  }
+  updating.value = false
+}
+
 function normalizeBuildParams(configs) {
   const params = configs.build_make_params || {}
   const normalized = {}
@@ -747,6 +765,18 @@ function normalizeBuildParams(configs) {
           Edit Service
         </button>
 
+        <!-- Update -->
+        <button
+          @click="handleUpdate"
+          class="btn btn-primary btn-xs w-full"
+          :disabled="updating"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          {{ updating ? 'Updating...' : 'Update' }}
+        </button>
+
         <!-- Delete Build -->
         <button
           @click="handleDeleteBuild"
@@ -776,6 +806,7 @@ function normalizeBuildParams(configs) {
         <span v-if="serviceSuccess" class="text-xs text-success">{{ serviceSuccess }}</span>
         <span v-if="deleteBuildSuccess" class="text-xs text-success">{{ deleteBuildSuccess }}</span>
         <span v-if="deleteLlamaSuccess" class="text-xs text-success">{{ deleteLlamaSuccess }}</span>
+        <span v-if="updateSuccess" class="text-xs text-success">{{ updateSuccess }}</span>
       </div>
     </div>
     </div>

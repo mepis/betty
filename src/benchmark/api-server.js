@@ -2324,6 +2324,17 @@ app.post("/api/git/update", async (_req, res) => {
   }
 });
 
+//--- Run update script endpoint ---
+app.post("/api/update", (_req, res) => {
+  try {
+    const scriptPath = join(__dirname, '..', '..', 'scripts', 'update.sh');
+    const output = execSync(`/bin/bash ${scriptPath}`, { encoding: 'utf8' });
+    res.json({ success: true, message: 'Update complete', output: output.trim() });
+  } catch (err) {
+    res.json({ success: false, error: err.message || err.stderr?.toString() || 'Update failed' });
+  }
+});
+
 //--- Journalctl logs endpoint ---
 app.get('/api/logs', (_req, res) => {
   try {
