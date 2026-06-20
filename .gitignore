@@ -6,6 +6,7 @@ src/benchmark/results.md
 src/benchmark/hf_downloads/
 src/benchmark/.playwright-cli/
 src/benchmark/configs.json
+src/benchmark/configs.json/
 src/benchmark/reports/*
 src/benchmark/frontend/dist/*
 .agents/

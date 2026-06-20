@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-20] `src/benchmark/configs.json` — removed from git tracking and added both file and folder paths to `.gitignore` to prevent accidental commits of local benchmark configuration
+
 ### Added
 
 - [Added]: [2026-06-20] Benchmark frontend — version footer in the sidebar displays the app version (read from root `package.json` via Vite's `__APP_VERSION__` define); visible when sidebar is open
