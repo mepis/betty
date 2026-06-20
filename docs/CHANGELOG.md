@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-19] Settings.vue — moved Config Profiles panel from the left column to the right column; added `space-y-4` class to the right column wrapper so both columns have consistent vertical spacing between cards
 - [Changed]: [2026-06-19] Settings.vue — moved action buttons (Kill Port, Start/Stop Service, Edit Service, Delete Build, Delete Llama) from the Editor card footer into a dedicated collapsible "Actions Panel" card in the left column; adds `showActionsPanel` ref for collapse/expand toggle; buttons now display vertically with full-width layout and status messages contained within the panel
 
 ### Fixed
