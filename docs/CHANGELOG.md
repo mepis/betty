@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-19] Settings.vue — moved action buttons (Kill Port, Start/Stop Service, Edit Service, Delete Build, Delete Llama) from the Editor card footer into a dedicated collapsible "Actions Panel" card in the left column; adds `showActionsPanel` ref for collapse/expand toggle; buttons now display vertically with full-width layout and status messages contained within the panel
+
 ### Fixed
 
 - [Fixed]: [2026-06-19] Settings.vue — wrapped left and right grid columns in proper `<div>` wrappers so the `lg:grid-cols-2` two-column layout renders correctly; left column includes Profile Panel and Build card with `space-y-4` spacing, right column contains the Editor card

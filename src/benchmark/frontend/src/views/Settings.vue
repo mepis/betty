@@ -54,6 +54,9 @@ const profileAction = ref('') // 'save' | 'load' | 'delete'
 const profileMessage = ref('')
 const profileMessageError = ref(false)
 
+// Actions panel
+const showActionsPanel = ref(true)
+
 async function loadProfiles() {
   try {
     await store.fetchProfiles()
@@ -759,6 +762,112 @@ function normalizeBuildParams(configs) {
         </div>
       </div>
     </div>
+
+    <!-- Actions Panel -->
+    <div class="card">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <h3 class="text-sm font-semibold text-text-primary">Actions</h3>
+        </div>
+        <button
+          @click="showActionsPanel = !showActionsPanel"
+          class="btn btn-ghost btn-xs"
+        >
+          <svg class="w-4 h-4 transition-transform" :class="showActionsPanel ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+      <div v-if="showActionsPanel" class="space-y-3">
+        <!-- Kill Port -->
+        <button
+          v-if="!store.isRunning"
+          @click="handleKillPort"
+          class="btn btn-warning btn-xs w-full"
+          :disabled="killingPort"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+          </svg>
+          {{ killingPort ? 'Killing...' : 'Kill Port' }}
+        </button>
+
+        <!-- Start Service -->
+        <button
+          v-if="!store.isRunning && !store.serviceActive"
+          @click="handleServiceStart"
+          class="btn btn-success btn-xs w-full"
+          :disabled="serviceLoading"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {{ serviceLoading ? 'Starting...' : 'Start llama.service' }}
+        </button>
+
+        <!-- Stop Service -->
+        <button
+          v-if="!store.isRunning && store.serviceActive"
+          @click="handleServiceStop"
+          class="btn btn-warning btn-xs w-full"
+          :disabled="serviceLoading"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+          </svg>
+          {{ serviceLoading ? 'Stopping...' : 'Stop llama.service' }}
+        </button>
+
+        <!-- Edit Service -->
+        <button
+          @click="openServiceModal"
+          class="btn btn-ghost btn-xs w-full"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Edit Service
+        </button>
+
+        <!-- Delete Build -->
+        <button
+          @click="handleDeleteBuild"
+          class="btn btn-warning btn-xs w-full"
+          :disabled="deletingBuild"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+          {{ deletingBuild ? 'Deleting...' : 'Delete Build' }}
+        </button>
+
+        <!-- Delete Llama -->
+        <button
+          @click="handleDeleteLlama"
+          class="btn btn-error btn-xs w-full"
+          :disabled="deletingLlama"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+          {{ deletingLlama ? 'Deleting...' : 'Delete Llama' }}
+        </button>
+
+        <!-- Status messages -->
+        <span v-if="killPortSuccess" class="text-xs text-success">{{ killPortSuccess }}</span>
+        <span v-if="serviceSuccess" class="text-xs text-success">{{ serviceSuccess }}</span>
+        <span v-if="deleteBuildSuccess" class="text-xs text-success">{{ deleteBuildSuccess }}</span>
+        <span v-if="deleteLlamaSuccess" class="text-xs text-success">{{ deleteLlamaSuccess }}</span>
+      </div>
+    </div>
     </div>
 
     <!-- Right column -->
@@ -1402,80 +1511,9 @@ function normalizeBuildParams(configs) {
 
       <!-- Actions (fixed, does not scroll) -->
       <div class="flex items-center justify-between mt-4 pt-4 border-t border-border">
-        <div class="flex items-center gap-3">
-          <button
-            v-if="!store.isRunning"
-            @click="handleKillPort"
-            class="btn btn-warning btn-xs"
-            :disabled="killingPort"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-            </svg>
-            {{ killingPort ? 'Killing...' : 'Kill Port' }}
-          </button>
-          <button
-            v-if="!store.isRunning && !store.serviceActive"
-            @click="handleServiceStart"
-            class="btn btn-success btn-xs"
-            :disabled="serviceLoading"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {{ serviceLoading ? 'Starting...' : 'Start llama.service' }}
-          </button>
-          <button
-            v-if="!store.isRunning && store.serviceActive"
-            @click="handleServiceStop"
-            class="btn btn-warning btn-xs"
-            :disabled="serviceLoading"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-            </svg>
-            {{ serviceLoading ? 'Stopping...' : 'Stop llama.service' }}
-          </button>
-          <button
-            @click="openServiceModal"
-            class="btn btn-ghost btn-xs"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            Edit Service
-          </button>
-          <button
-            @click="handleDeleteBuild"
-            class="btn btn-warning btn-xs"
-            :disabled="deletingBuild"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
-            {{ deletingBuild ? 'Deleting...' : 'Delete Build' }}
-          </button>
-          <button
-            @click="handleDeleteLlama"
-            class="btn btn-error btn-xs"
-            :disabled="deletingLlama"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
-            {{ deletingLlama ? 'Deleting...' : 'Delete Llama' }}
-          </button>
-          <span v-if="killPortSuccess" class="text-xs text-success">{{ killPortSuccess }}</span>
-          <span v-if="serviceSuccess" class="text-xs text-success">{{ serviceSuccess }}</span>
-          <span v-if="deleteBuildSuccess" class="text-xs text-success">{{ deleteBuildSuccess }}</span>
-          <span v-if="deleteLlamaSuccess" class="text-xs text-success">{{ deleteLlamaSuccess }}</span>
-          <span class="text-xs text-text-muted">
-            {{ saveSuccess ? '✓ Saved successfully' : saveError }}
-          </span>
-        </div>
+        <span class="text-xs text-text-muted">
+          {{ saveSuccess ? '✓ Saved successfully' : saveError }}
+        </span>
         <div class="flex items-center gap-2">
           <button @click="handleReset" class="btn btn-ghost btn-sm">Reset</button>
           <button
