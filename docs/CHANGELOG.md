@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-20] Reports page — clickable column headers in the Results Summary table enable sorting by #, Prompt/s, Gen/s, Time, and Mem (GB). Active sort column is highlighted with a direction indicator (↑/↓)
+- [Added]: [2026-06-20] Benchmark frontend — version footer in the sidebar displays the app version (read from root `package.json` via Vite's `__APP_VERSION__` define); visible when sidebar is open
+
 ### Changed
 
 - [Changed]: [2026-06-20] `scripts/update.sh` — added `git stash` before `git pull` to prevent uncommitted local changes from blocking the update workflow
@@ -11,10 +16,6 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - [Removed]: [2026-06-20] `src/benchmark/configs.json` — removed from git tracking and added both file and folder paths to `.gitignore` to prevent accidental commits of local benchmark configuration
-
-### Added
-
-- [Added]: [2026-06-20] Benchmark frontend — version footer in the sidebar displays the app version (read from root `package.json` via Vite's `__APP_VERSION__` define); visible when sidebar is open
 
 ### Changed
 

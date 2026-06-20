@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 import { useBenchmarkStore } from '@/stores/benchmark'
 
@@ -9,6 +9,10 @@ const selectedReport = ref(null)
 const loadingReport = ref(false)
 const deletingReport = ref(null)
 const showMdView = ref(false)
+
+// Sorting state
+const sortKey = ref('testRunId')
+const sortAsc = ref(true)
 
 // Modal state
 const showConfigModal = ref(false)
@@ -161,6 +165,59 @@ function formatList(arr) {
   if (!arr || !Array.isArray(arr) || arr.length === 0) return '—'
   return arr.join(', ')
 }
+
+function toggleSort(key) {
+  if (sortKey.value === key) {
+    sortAsc.value = !sortAsc.value
+  } else {
+    sortKey.value = key
+    sortAsc.value = true
+  }
+}
+
+function sortIcon(key) {
+  if (sortKey.value !== key) return '↕'
+  return sortAsc.value ? '↑' : '↓'
+}
+
+function sortClass(key) {
+  return sortKey.value === key ? 'text-accent' : ''
+}
+
+const sortedResults = computed(() => {
+  if (!selectedReport.value?.liveResults) return []
+  const results = [...selectedReport.value.liveResults]
+  const key = sortKey.value
+  const dir = sortAsc.value ? 1 : -1
+  results.sort((a, b) => {
+    let va, vb
+    switch (key) {
+      case 'testRunId':
+        va = a.testRunId ?? 0
+        vb = b.testRunId ?? 0
+        return (va - vb) * dir
+      case 'avgPromptTokensPerSec':
+        va = a.avgPromptTokensPerSec ?? -Infinity
+        vb = b.avgPromptTokensPerSec ?? -Infinity
+        return (va - vb) * dir
+      case 'avgGenTokensPerSec':
+        va = a.avgGenTokensPerSec ?? -Infinity
+        vb = b.avgGenTokensPerSec ?? -Infinity
+        return (va - vb) * dir
+      case 'totalTimeMs':
+        va = a.totalTimeMs ?? -Infinity
+        vb = b.totalTimeMs ?? -Infinity
+        return (va - vb) * dir
+      case 'avgMemUsed':
+        va = a.avgMemUsed ?? -Infinity
+        vb = b.avgMemUsed ?? -Infinity
+        return (va - vb) * dir
+      default:
+        return 0
+    }
+  })
+  return results
+})
 </script>
 
 <template>
@@ -278,16 +335,16 @@ function formatList(arr) {
               <table class="w-full text-sm">
                 <thead>
                   <tr class="border-b border-border">
-                    <th class="text-left py-2 px-3 text-xs font-medium text-text-muted uppercase">#</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Prompt/s</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Gen/s</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Time</th>
-                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase">Mem (GB)</th>
+                    <th class="text-left py-2 px-3 text-xs font-medium text-text-muted uppercase cursor-pointer select-none hover:text-text-primary transition-colors" @click="toggleSort('testRunId')"># <span class="inline-block w-3 align-text-bottom" :class="sortClass('testRunId')">{{ sortIcon('testRunId') }}</span></th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase cursor-pointer select-none hover:text-text-primary transition-colors" @click="toggleSort('avgPromptTokensPerSec')">Prompt/s <span class="inline-block w-3 align-text-bottom text-right" :class="sortClass('avgPromptTokensPerSec')">{{ sortIcon('avgPromptTokensPerSec') }}</span></th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase cursor-pointer select-none hover:text-text-primary transition-colors" @click="toggleSort('avgGenTokensPerSec')">Gen/s <span class="inline-block w-3 align-text-bottom text-right" :class="sortClass('avgGenTokensPerSec')">{{ sortIcon('avgGenTokensPerSec') }}</span></th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase cursor-pointer select-none hover:text-text-primary transition-colors" @click="toggleSort('totalTimeMs')">Time <span class="inline-block w-3 align-text-bottom text-right" :class="sortClass('totalTimeMs')">{{ sortIcon('totalTimeMs') }}</span></th>
+                    <th class="text-right py-2 px-3 text-xs font-medium text-text-muted uppercase cursor-pointer select-none hover:text-text-primary transition-colors" @click="toggleSort('avgMemUsed')">Mem (GB) <span class="inline-block w-3 align-text-bottom text-right" :class="sortClass('avgMemUsed')">{{ sortIcon('avgMemUsed') }}</span></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
-                    v-for="(r, i) in selectedReport.liveResults"
+                    v-for="(r, i) in sortedResults"
                     :key="r.testRunId"
                     class="border-b border-border/50 last:border-0 cursor-pointer transition-colors"
                     :class="[
