@@ -162,6 +162,11 @@ async function handleUpdate() {
           <span v-if="sidebarOpen">{{ item.name }}</span>
         </router-link>
       </nav>
+
+      <!-- Version footer -->
+      <div class="px-4 py-3 border-t border-border">
+        <span v-if="sidebarOpen" class="text-xs text-text-muted">v{{ __APP_VERSION__ }}</span>
+      </div>
     </aside>
 
     <!-- Main content -->

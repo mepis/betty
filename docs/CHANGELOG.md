@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-20] Benchmark frontend — version footer in the sidebar displays the app version (read from root `package.json` via Vite's `__APP_VERSION__` define); visible when sidebar is open
+
 ### Changed
 
 - [Changed]: [2026-06-19] Settings.vue — moved Config Profiles panel from the left column to the right column; added `space-y-4` class to the right column wrapper so both columns have consistent vertical spacing between cards
