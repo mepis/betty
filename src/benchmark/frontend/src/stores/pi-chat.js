@@ -269,6 +269,23 @@ export const usePiChatStore = defineStore('piChat', {
       }
     },
 
+    async newSession() {
+      this.disconnectSSE()
+      this.sessionId = null
+      this.messages = []
+      this.currentAssistant = null
+      this.currentToolCall = null
+      this.isStreaming = false
+      this.error = null
+      this.tokens = { input: 0, output: 0, total: 0 }
+      this.cost = 0
+      this.model = null
+      this.contextWindow = 0
+      this.contextPercent = null
+      this.tick = 0
+      await this.createSession()
+    },
+
     clearError() {
       this.error = null
     },
