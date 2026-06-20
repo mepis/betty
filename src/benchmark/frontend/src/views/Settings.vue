@@ -581,6 +581,8 @@ function normalizeBuildParams(configs) {
 
 <template>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+    <!-- Left column -->
+    <div class="space-y-4">
     <!-- Profile Panel -->
     <div class="card">
       <div class="flex items-center justify-between mb-4">
@@ -757,8 +759,10 @@ function normalizeBuildParams(configs) {
         </div>
       </div>
     </div>
-  </div>
+    </div>
 
+    <!-- Right column -->
+    <div>
     <!-- Editor -->
     <div class="card">
       <!-- Tab navigation (fixed, does not scroll) -->
@@ -1502,6 +1506,8 @@ function normalizeBuildParams(configs) {
         </div>
       </Transition>
     </div>
+    </div>
+  </div>
 
     <!-- Service Edit Modal -->
     <Teleport to="body">

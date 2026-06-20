@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-19] Settings.vue — wrapped left and right grid columns in proper `<div>` wrappers so the `lg:grid-cols-2` two-column layout renders correctly; left column includes Profile Panel and Build card with `space-y-4` spacing, right column contains the Editor card
+
 ### Changed
 
 - [Changed]: [2026-06-19] Benchmark — increased llama-server health polling timeout from 2 minutes (120 retries) to 5 minutes (300 retries) to allow more time for model loading
