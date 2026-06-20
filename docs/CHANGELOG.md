@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-20] `scripts/update.sh` — added `git stash` before `git pull` to prevent uncommitted local changes from blocking the update workflow
+
 ### Removed
 
 - [Removed]: [2026-06-20] `src/benchmark/configs.json` — removed from git tracking and added both file and folder paths to `.gitignore` to prevent accidental commits of local benchmark configuration

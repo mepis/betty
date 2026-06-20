@@ -1,4 +1,5 @@
 #!/bin/bash
+git stash
 git pull
 systemctl --user restart llama-benchmark.service
 
