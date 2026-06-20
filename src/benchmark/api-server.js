@@ -6,7 +6,7 @@ import { spawn, execSync } from "child_process";
 import { Transform, Readable } from "stream";
 import { join, dirname, basename, isAbsolute, resolve } from "path";
 import { fileURLToPath } from "url";
-import { createAgentSession, AuthStorage, ModelRegistry, SessionManager, getAgentDir } from "@earendil-works/pi-coding-agent";
+import { createAgentSession, AuthStorage, ModelRegistry, SessionManager, getAgentDir, loadSkills } from "@earendil-works/pi-coding-agent";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -2658,6 +2658,21 @@ app.delete("/api/pi/session/:id", (req, res) => {
     console.log(`[pi] Disposed session ${sessionId}`);
     res.json({ success: true });
   } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /api/pi/skills — list discovered skills for autocomplete
+app.get("/api/pi/skills", (req, res) => {
+  try {
+    const result = loadSkills({ cwd: process.cwd(), skillPaths: [], includeDefaults: true });
+    const skills = result.skills.map((s) => ({
+      name: s.name,
+      description: s.description,
+    }));
+    res.json({ success: true, skills });
+  } catch (err) {
+    console.error("[pi] Failed to load skills:", err.message);
     res.status(500).json({ success: false, error: err.message });
   }
 });

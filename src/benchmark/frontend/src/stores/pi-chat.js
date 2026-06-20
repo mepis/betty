@@ -22,6 +22,7 @@ export const usePiChatStore = defineStore('piChat', {
     currentToolCall: null,
     // Tick counter: incremented on every SSE mutation to force computed reactivity
     tick: 0,
+    skills: [],
   }),
 
   getters: {
@@ -48,6 +49,7 @@ export const usePiChatStore = defineStore('piChat', {
           this.model = null
           this.tick = 0
           this.connectSSE()
+          this.fetchSkills()
           return true
         }
         return false
@@ -253,6 +255,18 @@ export const usePiChatStore = defineStore('piChat', {
       this.cost = 0
       this.model = null
       this.tick = 0
+    },
+
+    async fetchSkills() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/pi/skills`)
+        if (res.data.success) {
+          this.skills = res.data.skills
+        }
+      } catch (e) {
+        console.warn('[pi] Failed to fetch skills:', e.message)
+        this.skills = []
+      }
     },
 
     clearError() {

@@ -82,6 +82,32 @@ const slashFilteredCommands = computed(() => {
   return SLASH_COMMANDS.filter(cmd => cmd.name.toLowerCase().includes(lower))
 })
 
+// Combined items: filtered commands + matching skills
+const slashAllItems = computed(() => {
+  const commands = slashFilteredCommands.value.map(cmd => ({
+    type: 'command',
+    name: cmd.name,
+    description: cmd.description,
+    label: '/' + cmd.name,
+  }))
+  const prefix = slashPrefix.value
+  const skillItems = store.skills
+    .filter(skill => {
+      if (!prefix) return true
+      const lower = prefix.toLowerCase()
+      const fullLabel = 'skill:' + skill.name
+      return fullLabel.toLowerCase().includes(lower) || skill.name.toLowerCase().includes(lower)
+    })
+    .slice(0, 10)
+    .map(skill => ({
+      type: 'skill',
+      name: skill.name,
+      description: skill.description,
+      label: '/skill:' + skill.name,
+    }))
+  return { commands, skills: skillItems, all: [...commands, ...skillItems] }
+})
+
 function showSlashMenuIfNeeded() {
   const line = getCurrentLineBeforeCursor()
   const trimmed = line.trimStart()
@@ -117,7 +143,7 @@ function selectSlashCommand(item) {
   const commandPart = spaceIdx === -1 ? afterSlash : afterSlash.slice(0, spaceIdx + 1)
   const remainder = spaceIdx === -1 ? '' : afterSlash.slice(spaceIdx)
   // Replace: indent + /commandPart with /item.name + space
-  const newLine = indent + '/' + item.name + ' ' + remainder
+  const newLine = indent + item.label + ' ' + remainder
   el.value = before.slice(0, lineStart) + newLine + after
   // Position cursor after the command name + space
   const newCursorPos = lineStart + newLine.length - remainder.length
@@ -137,15 +163,15 @@ function handleKeydown(e) {
     return
   }
 
-  if (showSlashMenu.value && slashFilteredCommands.value.length > 0) {
+  if (showSlashMenu.value && slashAllItems.value.all.length > 0) {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      slashSelectedIndex.value = (slashSelectedIndex.value + 1) % slashFilteredCommands.value.length
+      slashSelectedIndex.value = (slashSelectedIndex.value + 1) % slashAllItems.value.all.length
       return
     }
     if (e.key === 'ArrowUp') {
       e.preventDefault()
-      slashSelectedIndex.value = (slashSelectedIndex.value - 1 + slashFilteredCommands.value.length) % slashFilteredCommands.value.length
+      slashSelectedIndex.value = (slashSelectedIndex.value - 1 + slashAllItems.value.all.length) % slashAllItems.value.all.length
       return
     }
     if (e.key === 'Escape') {
@@ -155,7 +181,7 @@ function handleKeydown(e) {
     }
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      const selected = slashFilteredCommands.value[slashSelectedIndex.value]
+      const selected = slashAllItems.value.all[slashSelectedIndex.value]
       if (selected) {
         selectSlashCommand(selected)
       }
@@ -163,7 +189,7 @@ function handleKeydown(e) {
     }
     if (e.key === 'Tab') {
       e.preventDefault()
-      const selected = slashFilteredCommands.value[slashSelectedIndex.value]
+      const selected = slashAllItems.value.all[slashSelectedIndex.value]
       if (selected) {
         selectSlashCommand(selected)
       }
@@ -484,14 +510,15 @@ function isLastAssistant(msg) {
               ref="slashMenuRef"
               class="absolute bottom-full left-0 right-0 mb-2 bg-bg-secondary border border-border rounded-xl shadow-lg overflow-hidden z-50 max-h-52"
             >
-              <div class="px-3 py-1.5 border-b border-border">
-                <span class="text-[10px] font-semibold uppercase tracking-wider text-text-muted">Slash Commands</span>
-              </div>
               <div class="overflow-y-auto max-h-44 py-1">
-                <template v-if="slashFilteredCommands.length > 0">
+                <!-- Slash Commands section -->
+                <template v-if="slashAllItems.commands.length > 0">
+                  <div class="px-3 py-1">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-text-muted">Slash Commands</span>
+                  </div>
                   <button
-                    v-for="(cmd, idx) in slashFilteredCommands.slice(0, 10)"
-                    :key="cmd.name"
+                    v-for="(cmd, idx) in slashAllItems.commands.slice(0, 10)"
+                    :key="'cmd-' + cmd.name"
                     type="button"
                     @mousedown.prevent="selectSlashCommand(cmd)"
                     class="w-full flex items-center gap-3 px-3 py-1.5 text-left text-xs transition-colors"
@@ -502,12 +529,37 @@ function isLastAssistant(msg) {
                       <span v-else class="opacity-0">·</span>
                     </span>
                     <span class="flex-shrink-0 font-mono font-medium min-w-[9rem] max-w-[9rem] truncate">
-                      /{{ cmd.name }}
+                      {{ cmd.label }}
                     </span>
                     <span class="text-text-muted truncate">{{ cmd.description }}</span>
                   </button>
                 </template>
-                <div v-else class="px-3 py-2 text-xs text-text-muted italic">
+
+                <!-- Skills section -->
+                <template v-if="slashAllItems.skills.length > 0">
+                  <div class="px-3 py-1 border-t border-border/50 mt-1">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-text-muted">Skills</span>
+                  </div>
+                  <button
+                    v-for="(skill, sIdx) in slashAllItems.skills"
+                    :key="'skill-' + skill.name"
+                    type="button"
+                    @mousedown.prevent="selectSlashCommand(skill)"
+                    class="w-full flex items-center gap-3 px-3 py-1.5 text-left text-xs transition-colors"
+                    :class="slashSelectedIndex >= slashAllItems.commands.length && (slashSelectedIndex - slashAllItems.commands.length) === sIdx ? 'bg-accent/10 text-accent' : 'text-text-secondary hover:bg-bg-tertiary'"
+                  >
+                    <span class="flex-shrink-0 w-4 text-center">
+                      <span v-if="slashSelectedIndex >= slashAllItems.commands.length && (slashSelectedIndex - slashAllItems.commands.length) === sIdx">→</span>
+                      <span v-else class="opacity-0">·</span>
+                    </span>
+                    <span class="flex-shrink-0 font-mono font-medium min-w-[9rem] max-w-[9rem] truncate">
+                      {{ skill.label }}
+                    </span>
+                    <span class="text-text-muted truncate">{{ skill.description }}</span>
+                  </button>
+                </template>
+
+                <div v-if="slashAllItems.all.length === 0" class="px-3 py-2 text-xs text-text-muted italic">
                   No matching commands
                 </div>
               </div>
@@ -516,7 +568,7 @@ function isLastAssistant(msg) {
                   ↑↓ navigate · enter select · esc cancel
                 </span>
                 <span class="text-[10px] text-text-muted">
-                  {{ slashSelectedIndex + 1 }}/{{ slashFilteredCommands.length }}
+                  {{ slashSelectedIndex + 1 }}/{{ slashAllItems.all.length }}
                 </span>
               </div>
             </div>

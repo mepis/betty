@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-19] Pi Chat — skills autocomplete in slash menu: `GET /api/pi/skills` endpoint lists all discovered skills via `loadSkills()` from the Pi SDK; skills are fetched on session connect and appear in the slash dropdown under a "Skills" section with `/skill:<name>` labels; keyboard navigation (arrow keys, Enter/Tab) works across both commands and skills together
 - [Added]: [2026-06-19] Pi Chat — slash command autocomplete in message input: typing `/` at the start of a line shows a dropdown of 23 Pi SDK commands (mirrors TUI `BUILTIN_SLASH_COMMANDS`) with two-column layout (`/command` + description), arrow-key navigation, Enter/Tab to select, Escape/outside-click to dismiss, substring filtering, and auto-dismiss on backspace
 - [Added]: [2026-06-19] Pi Chat integration — new `/pi` route with full chat UI (`PiChat.vue`) backed by Pi SDK agent sessions; includes Pinia store (`pi-chat.js`) for SSE event handling, session lifecycle management, prompt/abort/dispose operations, markdown rendering, collapsible thinking blocks, and tool call visualization; backend endpoints in `api-server.js` for session creation (`POST /api/pi/session`), SSE streaming (`GET /api/pi/session/:id/stream`), prompting (`POST /api/pi/session/:id/prompt`), abort (`POST /api/pi/session/:id/abort`), and disposal (`DELETE /api/pi/session/:id`); added `@earendil-works/pi-coding-agent` SDK dependency and `dompurify` for safe markdown rendering
 
