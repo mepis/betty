@@ -55,7 +55,7 @@ const routes = [
     name: 'pi',
     component: PiChat,
     meta: {
-      title: 'Pi Chat',
+      title: 'Chat',
       description: 'Chat with an AI agent powered by Pi SDK',
     },
   },
