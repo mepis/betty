@@ -24,7 +24,7 @@ See also: [[models]] • [[config]]
 3. **Download**
    - Click **Download**
    - Watch the progress bar
-   - File is saved to `hf_downloads/<model-id>/`
+   - File is saved to `~/.betty/models/<model-id>/`
 
 4. **Use the model**
    - Go to Settings tab
@@ -60,7 +60,7 @@ curl -X POST http://localhost:3456/api/hf/download \
 curl http://localhost:3456/api/hf/downloads
 
 # List models in a directory
-curl "http://localhost:3456/api/models?directory=hf_downloads"
+curl "http://localhost:3456/api/models?directory=~/.betty/models"
 
 # Delete a downloaded model
 curl -X DELETE "http://localhost:3456/api/hf/download/bartowski_Meta-Llama-3.1-8B-Instruct-GGUF"
@@ -82,7 +82,7 @@ Some models are split across multiple `.gguf` files. To download all parts:
 1. Search for the model
 2. Open model details
 3. Download each `.gguf` part sequentially
-4. All parts are saved to the same subdirectory under `hf_downloads/`
+4. All parts are saved to the same subdirectory under `~/.betty/models/`
 
 ## Example 6: Check Download Status
 

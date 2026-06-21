@@ -68,7 +68,7 @@ See also: [[dashboard]] • [[config]] • [[reports]]
 curl -X PUT http://localhost:3456/api/configs \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "hf_downloads/my-model/model.gguf",
+    "model": "~/.betty/models/my-model/model.gguf",
     "llama_port": 11434,
     "test_params": {
       "context_length": 32768,

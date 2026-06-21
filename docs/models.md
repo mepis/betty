@@ -35,7 +35,7 @@ Click any model to see:
 3. Click **Download**
 4. Watch the progress bar
 
-Downloads are saved to the `hf_downloads/` directory.
+Downloads are saved to the `~/.betty/models/` directory.
 
 ## Downloads Tab
 

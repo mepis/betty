@@ -105,7 +105,7 @@ systemctl --user restart llama.service
 
 **Fix:**
 1. Verify `model_directory` in Settings → General points to the correct directory
-2. Check that `.gguf` files exist: `ls -la src/backend/hf_downloads/`
+2. Check that `.gguf` files exist: `ls -la ~/.betty/models/`
 3. Refresh the model list by changing the model directory field and changing it back
 4. For multi-part models, ensure all parts are in the same subdirectory
 

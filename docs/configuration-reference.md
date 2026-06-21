@@ -25,7 +25,7 @@ See also: [[USER-MANUAL]]
   "llama_port": 11434,
   "llama_host": "localhost",
   "model": "path/to/model.gguf",
-  "model_directory": "hf_downloads",
+  "model_directory": "~/.betty/models",
   "llama_cache": "llama_cache",
   "gpu_selection": {
     "enabled": false,

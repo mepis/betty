@@ -278,7 +278,7 @@ betty/
 │   ├── results.md             # Raw benchmark output
 │   ├── profiles/              # Saved config profiles (stored in ~/.betty/profiles/)
 │   ├── reports/               # Saved benchmark reports
-│   ├── hf_downloads/          # Downloaded GGUF models
+│   ├── models/                # Downloaded GGUF models (~/.betty/models)
 │   ├── llama_cache/           # Llama.cpp cache
 │   ├── llama.cpp/             # Cloned llama.cpp repository
 │   └── frontend/

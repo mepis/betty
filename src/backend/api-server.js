@@ -96,7 +96,7 @@ const DEFAULT_CONFIGS = {
   llama_port: 11434,
   llama_host: "localhost",
   model: "",
-  model_directory: "~/.llm_models",
+  model_directory: "~/.betty/models",
   llama_cache: "llama_cache",
   gpu_selection: {
     enabled: true,
