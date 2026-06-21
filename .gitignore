@@ -9,6 +9,20 @@ src/benchmark/configs.json
 src/benchmark/configs.json/
 src/benchmark/reports/*
 src/benchmark/frontend/dist/*
+
+# Backend generated/downloaded files
+src/backend/llama.cpp/
+src/backend/hf_downloads/
+src/backend/node_modules/
+src/backend/reports/
+src/backend/results.md
+src/backend/.env
+src/backend/profiles/
+
+# Frontend generated files
+src/frontend/node_modules/
+src/frontend/dist/
+src/frontend/env.*
 .agents/
 .playwright-cli/
 test-*.mjs

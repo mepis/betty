@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-21] `src/backend/` — new backend directory containing the integrated benchmark server: `index.js` (benchmark runner spawning llama-server with grid search, health polling, and structured JSON output), `api-server.js` (Express API server with SSE streaming, REST endpoints for configs/profiles/reports/models/service control, Pi SDK agent session integration, HuggingFace model search/download, git update checking, and systemd service management), `scripts/update-api-url.sh` (auto-detects machine IP and updates frontend API URL)
+- [Added]: [2026-06-21] `src/frontend/` — new frontend directory containing the Vue 3 SPA: Vite 6 build with Tailwind CSS 4, Pinia state management, Vue Router 4; views include Dashboard (benchmark run controls, live results table, system monitoring), Settings (visual config editor with tabs, build options, config profiles, actions panel), Reports (saved benchmark reports with sortable results table and launch command viewer), Models (HuggingFace model search/download with progress), Pi Chat (agent chat UI with Pi SDK sessions, SSE streaming, thinking blocks, tool calls, slash commands, skills autocomplete), Docs (markdown documentation viewer with cross-references), Logs (systemd service log viewer with auto-refresh); Pinia stores for benchmark state and Pi chat session management with localStorage persistence; reusable components (Tooltip, ConfigSection)
+- [Added]: [2026-06-21] `.gitignore` — added exclusion rules for `src/backend/` generated files (llama.cpp, hf_downloads, node_modules, reports, results.md, .env, profiles) and `src/frontend/` generated files (node_modules, dist, env.*)
 - [Added]: [2026-06-21] Pi Chat session persistence — the Pi chat window (homepage) now persists the session ID and message history to `localStorage`. On page reload or navigation back, the session and all previous messages are restored automatically. The SSE connection is reconnected to the existing server session. Clicking "New Session" clears the persisted data and starts fresh.
 - [Added]: [2026-06-21] `.pi/APPEND_SYSTEM.md` — added system prompt append file directing the agent to consult `docs/` for comprehensive project documentation
 
@@ -30,7 +33,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- [Changed]: [2026-06-21] Benchmark frontend — updated `VITE_API_URL` in `.env.production` from `192.168.2.3:3456` to `100.88.77.33:3456`
+- [Changed]: [2026-06-21] Benchmark frontend — updated `VITE_API_URL` in `.env.production` from `100.88.77.33:3456` to `192.168.2.156:3456`
 
 ### Fixed
 
