@@ -40,8 +40,7 @@ const CONFIGS_FILE = join(BETTY_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(BETTY_DIR, "reports");
 const PROFILES_DIR = join(BETTY_DIR, "profiles");
-const LLM_MODELS_DIR = join(os.homedir(), ".llm_models");
-const HF_DOWNLOAD_DIR = LLM_MODELS_DIR;
+const MODELS_DIR = join(BETTY_DIR, "models");
 
 // Allowed CORS origins (comma-separated or * for all)
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
@@ -57,7 +56,7 @@ function ensureDirectory(dir, label) {
 ensureDirectory(BETTY_DIR, "~/.betty");
 ensureDirectory(REPORTS_DIR, "~/.betty/reports");
 ensureDirectory(PROFILES_DIR, "profiles");
-ensureDirectory(HF_DOWNLOAD_DIR, ".llm_models");
+ensureDirectory(MODELS_DIR, "~/.betty/models");
 ensureDirectory(join(BENCHMARK_DIR, "llama_cache"), "llama_cache");
 
 //--- Git update check ---
@@ -989,7 +988,7 @@ function getLaunchCommand(configs, testRunConfig) {
 
   const primaryGpu = gs.enabled ? gs.gpus[0] : 0;
 
-  const modelPath = server.model || `${join(os.homedir(), ".betty", "models")}/${configs.model}`;
+  const modelPath = server.model || `${MODELS_DIR}/${configs.model}`;
   const port = server.port || configs.llama_port || 11434;
   const host = server.host || configs.llama_host || "localhost";
 
@@ -1093,7 +1092,7 @@ function extractConfigsPerRun(liveResults, configs) {
         topK: mc.top_k,
       },
       serverParameters: {
-        model: `${join(os.homedir(), ".betty", "models")}/${configs.model || ""}`,
+        model: `${MODELS_DIR}/${configs.model || ""}`,
         host: configs.llama_host || "localhost",
         port: configs.llama_port || 11434,
         flashAttn: sp.flash_attn?.enabled ? sp.flash_attn.value : null,
@@ -1861,7 +1860,7 @@ app.post("/api/hf/download", async (req, res) => {
     res.setHeader("Connection", "keep-alive");
     res.flushHeaders();
 
-    const downloadDir = targetDir || HF_DOWNLOAD_DIR;
+    const downloadDir = targetDir || MODELS_DIR;
     if (!fs.existsSync(downloadDir)) {
       fs.mkdirSync(downloadDir, { recursive: true });
     }
@@ -2038,16 +2037,16 @@ app.get("/api/hf/download/:modelId", (req, res) => {
 app.get("/api/hf/downloads", (req, res) => {
   try {
     const entries = [];
-    if (fs.existsSync(HF_DOWNLOAD_DIR)) {
-      const dirs = fs.readdirSync(HF_DOWNLOAD_DIR).filter(d => {
-        const dirPath = join(HF_DOWNLOAD_DIR, d);
+    if (fs.existsSync(MODELS_DIR)) {
+      const dirs = fs.readdirSync(MODELS_DIR).filter(d => {
+        const dirPath = join(MODELS_DIR, d);
         return fs.statSync(dirPath).isDirectory();
       });
       for (const dir of dirs) {
-        const files = fs.readdirSync(join(HF_DOWNLOAD_DIR, dir))
+        const files = fs.readdirSync(join(MODELS_DIR, dir))
           .filter(f => f.endsWith(".gguf"))
           .map(f => {
-            const stat = fs.statSync(join(HF_DOWNLOAD_DIR, dir, f));
+            const stat = fs.statSync(join(MODELS_DIR, dir, f));
             return { name: f, size: stat.size, modified: stat.mtime };
           });
         entries.push({ modelId: dir, files });
@@ -2063,7 +2062,7 @@ app.get("/api/hf/downloads", (req, res) => {
 app.delete("/api/hf/download/:modelId", (req, res) => {
   try {
     const modelId = req.params.modelId;
-    const modelDir = join(HF_DOWNLOAD_DIR, modelId);
+    const modelDir = join(MODELS_DIR, modelId);
     if (fs.existsSync(modelDir)) {
       fs.rmSync(modelDir, { recursive: true });
       hfDownloads.delete(modelId);

@@ -24,7 +24,7 @@ function resolveConfigPath(p) {
 }
 
 // Pre-resolve paths used by llama-server
-const MODEL_DIR = join(os.homedir(), ".betty", "models");
+const MODELS_DIR = join(os.homedir(), ".betty", "models");
 const LLAMA_CACHE = resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache);
 
 const llamaUrl = `http://${configs.llama_host}:${configs.llama_port}`;
@@ -267,7 +267,7 @@ async function main() {
 
   console.log("=== llama.cpp Benchmark Starting ===");
   console.log(`Server URL: ${llamaUrl}`);
-  console.log(`Model: ${MODEL_DIR}/${configs.model}`);
+  console.log(`Model: ${MODELS_DIR}/${configs.model}`);
   console.log(`Results file: ${resultsFile}`);
 
   // Wipe the report file on startup
@@ -679,7 +679,7 @@ function getRunScript() {
   const sp = configs.server_params;
   const sps = configs.split_params;
   const parts = [
-    `./llama-server -m ${MODEL_DIR}/${configs.model} `,
+    `./llama-server -m ${MODELS_DIR}/${configs.model} `,
     `--port ${configs.llama_port} --host ${configs.llama_host} `,
     `-c ${contextLength} -ngl ${gpuLayerOffload} `,
     `--temp ${configs.model_configs.temp} `,
@@ -1049,7 +1049,7 @@ function getServerParamsSnapshot() {
   const sp = configs.server_params;
   const sps = configs.split_params;
   return {
-    model: `${MODEL_DIR}/${configs.model}`,
+    model: `${MODELS_DIR}/${configs.model}`,
     host: configs.llama_host,
     port: configs.llama_port,
     contextLength,
@@ -1308,7 +1308,7 @@ async function runTestRun() {
 function writeResultsToMarkdown() {
   let md = "# llama.cpp Benchmark Results\n\n";
   md += `Generated: ${new Date().toISOString()}\n\n`;
-  md += `Model: ${MODEL_DIR}/${configs.model}\n\n`;
+  md += `Model: ${MODELS_DIR}/${configs.model}\n\n`;
   md += `---\n\n`;
 
   // Table 1: Per-message results

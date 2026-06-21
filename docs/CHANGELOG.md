@@ -4,27 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-21] `src/backend/api-server.js` — consolidated `LLM_MODELS_DIR` and `HF_DOWNLOAD_DIR` into a single `MODELS_DIR` constant pointing to `~/.betty/models/`; removed the `~/.llm_models` path entirely; all model download, listing, and deletion endpoints now use the unified path
+- [Changed]: [2026-06-21] `src/backend/index.js` — renamed `MODEL_DIR` to `MODELS_DIR` for naming consistency with `api-server.js`; path remains `~/.betty/models/`
+- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.21` to `1.0.22`
+
 ### Fixed
 
 - [Fixed]: [2026-06-21] `src/frontend/src/stores/pi-chat.js` — `restoreSession()` is now async: after loading from localStorage it waits for SSE `onopen` (up to 3s); if SSE fails (stale/pruned session or timeout), it clears stale state and automatically creates a new session as a fallback
 - [Fixed]: [2026-06-21] `src/frontend/src/stores/pi-chat.js` — added `clearStaleSession()` action to disconnect SSE, clear localStorage, and reset all session-related state when the restored session is no longer valid
 - [Fixed]: [2026-06-21] `src/frontend/src/views/PiChat.vue` — simplified `onMounted` to a single `await store.restoreSession()` call since the store now handles the stale-session fallback internally
 
-### Changed
-
-- [Changed]: [2026-06-21] `src/backend/api-server.js` — moved `CONFIGS_FILE` from project-local `src/backend/configs.json` to user-level `~/.betty/configs.json`; removed `model_directory` from `DEFAULT_CONFIGS`; model path now hardcoded to `~/.betty/models/` instead of using `resolveConfigPath(configs.model_directory)`
-
-- [Changed]: [2026-06-21] `src/backend/index.js` — added `BETTY_DIR` constant for `~/.betty`; configs file now loaded from `~/.betty/configs.json` instead of project-local `src/backend/configs.json`; `MODEL_DIR` now hardcoded to `~/.betty/models/` instead of using `resolveConfigPath(configs.model_directory)`
-
-- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.19` to `1.0.20`
-
-- [Changed]: [2026-06-21] Model directory changed from `hf_downloads/` to `~/.betty/models/`; updated `configs.json`, `api-server.js` defaults, and all documentation
-
-- [Changed]: [2026-06-21] `src/backend/api-server.js` — introduced `BETTY_DIR` constant for `~/.betty`; moved `REPORTS_DIR` from `~/.betty` to `~/.betty/reports/` so reports are organized in a dedicated subdirectory; `PROFILES_DIR` remains at `~/.betty/profiles/` (now derived from `BETTY_DIR`); startup now ensures both `~/.betty` and `~/.betty/reports` directories exist
-
-- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.17` to `1.0.18`
-
-### Changed
+### Changed (earlier)
 
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — `PROFILES_DIR` changed from project-local `src/backend/profiles/` to user-level `~/.betty/profiles/`; profile storage now lives alongside reports and model downloads
 
