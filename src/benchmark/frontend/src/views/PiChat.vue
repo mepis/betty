@@ -365,7 +365,7 @@ function isLastAssistant(msg) {
 </script>
 
 <template>
-  <div class="flex flex-col h-[calc(100vh-8rem)]">
+  <div class="flex flex-col h-full">
     <!-- Messages area -->
     <div
       ref="messagesRef"

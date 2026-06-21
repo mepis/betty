@@ -167,7 +167,7 @@ async function handleUpdate() {
     </aside>
 
     <!-- Main content -->
-    <main class="flex-1 overflow-auto">
+    <main class="flex-1 flex flex-col min-h-0">
       <!-- Header -->
       <header class="sticky top-0 z-10 bg-bg-primary/80 backdrop-blur-xl border-b border-border">
         <div class="flex items-center justify-between px-6 py-3">
@@ -196,7 +196,7 @@ async function handleUpdate() {
       </header>
 
       <!-- Page content -->
-      <div>
+      <div class="flex-1 flex flex-col min-h-0">
         <!-- Notification banner -->
         <Transition
           enter-active-class="transition duration-300 ease-out"

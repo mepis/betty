@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-20] Benchmark frontend — restructured `App.vue` layout to use proper flex column hierarchy (`flex flex-col min-h-0` on `<main>` and page content `<div>`), enabling child views to use `h-full` instead of hardcoded `calc(100vh - X)` height values; `PiChat.vue` updated to use `h-full`
 - [Fixed]: [2026-06-20] Benchmark frontend — removed `p-6` padding class from the main page content container in `App.vue` to eliminate redundant default padding on the page body
 
 ### Changed
