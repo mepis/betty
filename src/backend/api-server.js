@@ -35,9 +35,9 @@ const PORT = parseInt(process.env.API_PORT, 10) || 3456;
 const API_HOST = process.env.API_HOST || '0.0.0.0';
 const BENCHMARK_DIR = __dirname;
 const FRONTEND_DIR = join(BENCHMARK_DIR, "..", "frontend", "dist");
-const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
-const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const BETTY_DIR = join(os.homedir(), ".betty");
+const CONFIGS_FILE = join(BETTY_DIR, "configs.json");
+const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(BETTY_DIR, "reports");
 const PROFILES_DIR = join(BETTY_DIR, "profiles");
 const LLM_MODELS_DIR = join(os.homedir(), ".llm_models");
@@ -96,7 +96,6 @@ const DEFAULT_CONFIGS = {
   llama_port: 11434,
   llama_host: "localhost",
   model: "",
-  model_directory: "~/.betty/models",
   llama_cache: "llama_cache",
   gpu_selection: {
     enabled: true,
@@ -990,7 +989,7 @@ function getLaunchCommand(configs, testRunConfig) {
 
   const primaryGpu = gs.enabled ? gs.gpus[0] : 0;
 
-  const modelPath = server.model || `${resolveConfigPath(configs.model_directory)}/${configs.model}`;
+  const modelPath = server.model || `${join(os.homedir(), ".betty", "models")}/${configs.model}`;
   const port = server.port || configs.llama_port || 11434;
   const host = server.host || configs.llama_host || "localhost";
 
@@ -1094,7 +1093,7 @@ function extractConfigsPerRun(liveResults, configs) {
         topK: mc.top_k,
       },
       serverParameters: {
-        model: `${resolveConfigPath(configs.model_directory)}/${configs.model || ""}`,
+        model: `${join(os.homedir(), ".betty", "models")}/${configs.model || ""}`,
         host: configs.llama_host || "localhost",
         port: configs.llama_port || 11434,
         flashAttn: sp.flash_attn?.enabled ? sp.flash_attn.value : null,

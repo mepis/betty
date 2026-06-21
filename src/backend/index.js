@@ -9,8 +9,9 @@ import { dirname, join, isAbsolute, resolve } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const BETTY_DIR = join(os.homedir(), ".betty");
 const configs = JSON.parse(
-  fs.readFileSync(join(__dirname, "configs.json"), "utf8"),
+  fs.readFileSync(join(BETTY_DIR, "configs.json"), "utf8"),
 );
 
 // Resolve relative config paths to absolute paths (relative to benchmark dir)
@@ -23,7 +24,7 @@ function resolveConfigPath(p) {
 }
 
 // Pre-resolve paths used by llama-server
-const MODEL_DIR = resolveConfigPath(configs.model_directory);
+const MODEL_DIR = join(os.homedir(), ".betty", "models");
 const LLAMA_CACHE = resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache);
 
 const llamaUrl = `http://${configs.llama_host}:${configs.llama_port}`;

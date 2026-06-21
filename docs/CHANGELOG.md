@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-21] `src/backend/api-server.js` — moved `CONFIGS_FILE` from project-local `src/backend/configs.json` to user-level `~/.betty/configs.json`; removed `model_directory` from `DEFAULT_CONFIGS`; model path now hardcoded to `~/.betty/models/` instead of using `resolveConfigPath(configs.model_directory)`
+
+- [Changed]: [2026-06-21] `src/backend/index.js` — added `BETTY_DIR` constant for `~/.betty`; configs file now loaded from `~/.betty/configs.json` instead of project-local `src/backend/configs.json`; `MODEL_DIR` now hardcoded to `~/.betty/models/` instead of using `resolveConfigPath(configs.model_directory)`
+
+- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.19` to `1.0.20`
+
 - [Changed]: [2026-06-21] Model directory changed from `hf_downloads/` to `~/.betty/models/`; updated `configs.json`, `api-server.js` defaults, and all documentation
 
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — introduced `BETTY_DIR` constant for `~/.betty`; moved `REPORTS_DIR` from `~/.betty` to `~/.betty/reports/` so reports are organized in a dedicated subdirectory; `PROFILES_DIR` remains at `~/.betty/profiles/` (now derived from `BETTY_DIR`); startup now ensures both `~/.betty` and `~/.betty/reports` directories exist
