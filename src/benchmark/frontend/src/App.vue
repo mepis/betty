@@ -196,7 +196,7 @@ async function handleUpdate() {
       </header>
 
       <!-- Page content -->
-      <div class="p-6">
+      <div>
         <!-- Notification banner -->
         <Transition
           enter-active-class="transition duration-300 ease-out"

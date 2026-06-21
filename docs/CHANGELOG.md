@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-20] Benchmark frontend — removed `p-6` padding class from the main page content container in `App.vue` to eliminate redundant default padding on the page body
+
 ### Changed
 
 - [Changed]: [2026-06-20] Settings.vue Actions Panel — unified all action button styles from semantic colors (`btn-warning`, `btn-success`, `btn-primary`, `btn-error`) to `btn-ghost` for visual consistency
