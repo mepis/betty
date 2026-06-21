@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-21] Pi Chat — made chat window responsive on small viewports: root container now uses `min-h-0` for proper flex collapsing, input area and status footer marked `flex-shrink-0` so the New Session button and controls never bleed off the bottom, status footer wraps gracefully with `flex-wrap gap-2` on narrow screens
 - [Fixed]: [2026-06-21] Pi Chat — added text wrapping to all markdown prose elements in `PiChat.vue`: `.pi-prose` container now uses `overflow-wrap: break-word` and `word-break: break-word` to prevent long words, URLs, and code from bleeding off screen; inline code, paragraphs, tables, and table cells all wrap; user and error message bubbles also wrapped with `break-words` class
 
 ### Added
