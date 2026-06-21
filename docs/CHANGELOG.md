@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-21] Pi Chat — added text wrapping to all markdown prose elements in `PiChat.vue`: `.pi-prose` container now uses `overflow-wrap: break-word` and `word-break: break-word` to prevent long words, URLs, and code from bleeding off screen; inline code, paragraphs, tables, and table cells all wrap; user and error message bubbles also wrapped with `break-words` class
+
 ### Added
 
 - [Added]: [2026-06-21] Documentation overhaul — added frontmatter tags to all existing docs (USER-MANUAL.md, api-reference.md, config.md, configuration-reference.md, dashboard.md, models.md, reports.md, troubleshooting.md); restructured docs/index.md into Getting Started, Feature Documentation, Reference, Practical Examples, and Support sections; added new docs: architecture.md (system design with Mermaid diagrams), logs.md, pi-chat.md, tags.md (tags index); added QA example docs: qa-installation.md, qa-benchmark-run.md, qa-model-download.md, qa-troubleshooting.md; added library/tags.md for library topic cross-reference; fixed wiki link format across all docs (removed pipe labels, e.g., `[[Dashboard|Dashboard]]` → `[[dashboard]]`)

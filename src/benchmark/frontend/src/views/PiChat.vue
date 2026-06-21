@@ -390,7 +390,7 @@ function isLastAssistant(msg) {
         <!-- User message -->
         <div v-if="msg.role === 'user'" class="flex justify-end">
           <div class="max-w-[75%]">
-            <div class="bg-accent/20 text-accent rounded-2xl rounded-tr-sm px-4 py-3 text-sm">
+            <div class="bg-accent/20 text-accent rounded-2xl rounded-tr-sm px-4 py-3 text-sm break-words">
               {{ msg.content }}
             </div>
           </div>
@@ -469,7 +469,7 @@ function isLastAssistant(msg) {
       <!-- Error display -->
       <div v-if="store.error" class="flex justify-start">
         <div class="max-w-[75%]">
-          <div class="bg-error/10 border border-error/30 text-error rounded-2xl rounded-tl-sm px-4 py-3 text-sm">
+          <div class="bg-error/10 border border-error/30 text-error rounded-2xl rounded-tl-sm px-4 py-3 text-sm break-words">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
@@ -640,6 +640,15 @@ function isLastAssistant(msg) {
 
 <style scoped>
 /* Markdown prose styles for Pi chat */
+
+/* Force text wrapping on the entire prose container */
+:deep(.pi-prose) {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
 :deep(.pi-prose h1) {
   font-size: 1.5rem;
   font-weight: 700;
@@ -665,6 +674,8 @@ function isLastAssistant(msg) {
 
 :deep(.pi-prose p) {
   margin-bottom: 0.75rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 :deep(.pi-prose a) {
@@ -697,6 +708,8 @@ function isLastAssistant(msg) {
   border-radius: 0.375rem;
   font-size: 0.8125rem;
   font-family: var(--font-mono);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 :deep(.pi-prose pre) {
@@ -706,9 +719,13 @@ function isLastAssistant(msg) {
   padding: 0.75rem;
   margin-bottom: 0.75rem;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 :deep(.pi-prose pre code) {
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
   background: transparent;
   color: var(--color-text-secondary);
   padding: 0;
@@ -728,6 +745,13 @@ function isLastAssistant(msg) {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 0.75rem;
+  table-layout: fixed;
+}
+
+:deep(.pi-prose td),
+:deep(.pi-prose th) {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 :deep(.pi-prose th) {
