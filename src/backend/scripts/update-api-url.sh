@@ -4,8 +4,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-ENV_FILE="$PROJECT_ROOT/frontend/.env.production"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)/src/frontend"
+ENV_FILE="$PROJECT_ROOT/.env.production"
 
 if [ ! -f "$ENV_FILE" ]; then
   echo "ERROR: $ENV_FILE not found"

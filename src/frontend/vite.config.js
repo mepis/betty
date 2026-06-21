@@ -1,12 +1,10 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
-import { fileURLToPath, URL } from 'node:url'
 import { readFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { join } from 'node:path'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const rootPkg = JSON.parse(readFileSync(join(__dirname, '../../../..', 'package.json'), 'utf-8'))
+const rootPkg = JSON.parse(readFileSync(join(process.cwd(), '../..', 'package.json'), 'utf-8'))
 const API_URL = process.env.VITE_API_URL || 'http://localhost:3456'
 
 export default defineConfig({
@@ -16,7 +14,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': join(process.cwd(), 'src')
     }
   },
   server: {

@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-21] Frontend directory relocated from `src/backend/frontend/` to `src/frontend/` — frontend is now a sibling of `src/backend/` rather than nested inside it; all path references updated in `package.json` scripts, `src/backend/api-server.js` (FRONTEND_DIR), `src/backend/scripts/update-api-url.sh` (PROJECT_ROOT/ENV_FILE), and `src/frontend/vite.config.js` (simplified path resolution using `process.cwd()`)
+- [Changed]: [2026-06-21] `src/frontend/vite.config.js` — removed unused imports (`fileURLToPath`, `URL`, `dirname`), replaced `__dirname`-based path resolution with `process.cwd()`-based paths for cleaner, more portable configuration
+- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.9` to `1.0.10`
 - [Changed]: [2026-06-21] `.pi/APPEND_SYSTEM.md` — expanded from a single-line instruction to a comprehensive project documentation lookup guide with categorized file listing, usage guidelines, and instructions about modifying pi via extensions, skills, and APPEND_SYSTEM.md
 - [Changed]: [2026-06-21] Version bump — `package.json` / `package-lock.json` bumped from `1.0.8` to `1.0.9`
 
