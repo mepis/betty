@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-21] `src/backend/api-server.js` — `REPORTS_DIR` changed from project-local `reports/` to user-level `~/.betty`; reports are now saved, listed, and loaded from `~/.betty` instead of the backend directory
+- [Changed]: [2026-06-21] `scripts/install-service.sh` — creates `~/.betty` directory on install if it does not exist
+- [Changed]: [2026-06-21] `src/backend/api-server.js` — model directory changed from project-relative `hf_downloads/` to user-level `~/.llm_models/`; added `LLM_MODELS_DIR` constant, aliased as `HF_DOWNLOAD_DIR`; `DEFAULT_CONFIGS.model_directory` now defaults to `"~/.llm_models"`
+- [Changed]: [2026-06-21] `src/backend/api-server.js` — `resolveConfigPath()` now expands `~/` prefix to `os.homedir()` for tilde-prefixed paths
+- [Changed]: [2026-06-21] `src/backend/index.js` — `resolveConfigPath()` now expands `~/` prefix to `os.homedir()` for tilde-prefixed paths
+- [Changed]: [2026-06-21] `scripts/install-service.sh` — creates `~/.llm_models` directory on install if it does not exist
+- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.13` to `1.0.14`
+
 ### Added
 
 - [Added]: [2026-06-21] `src/backend/scripts/update-api-url.sh` — automatically creates `src/frontend/.env.production` if missing: first copies from `.env.example` if available, otherwise generates the file with all required default values (`VITE_PORT`, `VITE_HOST`, `VITE_API_URL`)

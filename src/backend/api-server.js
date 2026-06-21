@@ -4,6 +4,7 @@ import cors from "cors";
 import fs from "fs";
 import { spawn, execSync } from "child_process";
 import { Transform, Readable } from "stream";
+import os from "os";
 import { join, dirname, basename, isAbsolute, resolve } from "path";
 import { fileURLToPath } from "url";
 import { createAgentSession, AuthStorage, ModelRegistry, SessionManager, getAgentDir, loadSkills } from "@earendil-works/pi-coding-agent";
@@ -14,6 +15,9 @@ const __dirname = dirname(__filename);
 // Resolve relative config paths to absolute (relative to benchmark dir)
 function resolveConfigPath(p) {
   if (!p) return "";
+  if (p.startsWith("~/")) {
+    p = os.homedir() + p.slice(1);
+  }
   return isAbsolute(p) ? p : resolve(__dirname, p);
 }
 
@@ -33,9 +37,10 @@ const BENCHMARK_DIR = __dirname;
 const FRONTEND_DIR = join(BENCHMARK_DIR, "..", "frontend", "dist");
 const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
-const REPORTS_DIR = join(BENCHMARK_DIR, "reports");
+const REPORTS_DIR = join(os.homedir(), ".betty");
 const PROFILES_DIR = join(BENCHMARK_DIR, "profiles");
-const HF_DOWNLOAD_DIR = join(BENCHMARK_DIR, "hf_downloads");
+const LLM_MODELS_DIR = join(os.homedir(), ".llm_models");
+const HF_DOWNLOAD_DIR = LLM_MODELS_DIR;
 
 // Allowed CORS origins (comma-separated or * for all)
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
@@ -48,9 +53,9 @@ function ensureDirectory(dir, label) {
   }
 }
 
-ensureDirectory(REPORTS_DIR, "reports");
+ensureDirectory(REPORTS_DIR, "~/.betty");
 ensureDirectory(PROFILES_DIR, "profiles");
-ensureDirectory(HF_DOWNLOAD_DIR, "hf_downloads");
+ensureDirectory(HF_DOWNLOAD_DIR, ".llm_models");
 ensureDirectory(join(BENCHMARK_DIR, "llama_cache"), "llama_cache");
 
 //--- Git update check ---
@@ -89,7 +94,7 @@ const DEFAULT_CONFIGS = {
   llama_port: 11434,
   llama_host: "localhost",
   model: "",
-  model_directory: "hf_downloads",
+  model_directory: "~/.llm_models",
   llama_cache: "llama_cache",
   gpu_selection: {
     enabled: true,

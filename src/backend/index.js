@@ -3,6 +3,7 @@ import axios from "axios";
 import fs from "fs";
 import { spawn, exec } from "child_process";
 import { fileURLToPath } from "url";
+import os from "os";
 import { dirname, join, isAbsolute, resolve } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +16,9 @@ const configs = JSON.parse(
 // Resolve relative config paths to absolute paths (relative to benchmark dir)
 function resolveConfigPath(p) {
   if (!p) return "";
+  if (p.startsWith("~/")) {
+    p = os.homedir() + p.slice(1);
+  }
   return isAbsolute(p) ? p : resolve(__dirname, p);
 }
 

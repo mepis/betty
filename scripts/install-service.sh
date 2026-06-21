@@ -9,6 +9,12 @@ NPM_DIR="$(dirname "$NPM_PATH")"
 echo "==> Creating systemd user service directory..."
 mkdir -p "$HOME/.config/systemd/user"
 
+echo "==> Creating model directory..."
+mkdir -p "$HOME/.llm_models"
+
+echo "==> Creating Betty data directory..."
+mkdir -p "$HOME/.betty"
+
 echo "==> Writing service file..."
 cat > "$HOME/.config/systemd/user/$APP_NAME.service" <<EOF
 [Unit]
