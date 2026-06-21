@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-21] `src/frontend/src/stores/pi-chat.js` — `restoreSession()` is now async: after loading from localStorage it waits for SSE `onopen` (up to 3s); if SSE fails (stale/pruned session or timeout), it clears stale state and automatically creates a new session as a fallback
+- [Fixed]: [2026-06-21] `src/frontend/src/stores/pi-chat.js` — added `clearStaleSession()` action to disconnect SSE, clear localStorage, and reset all session-related state when the restored session is no longer valid
+- [Fixed]: [2026-06-21] `src/frontend/src/views/PiChat.vue` — simplified `onMounted` to a single `await store.restoreSession()` call since the store now handles the stale-session fallback internally
+
 ### Changed
 
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — moved `CONFIGS_FILE` from project-local `src/backend/configs.json` to user-level `~/.betty/configs.json`; removed `model_directory` from `DEFAULT_CONFIGS`; model path now hardcoded to `~/.betty/models/` instead of using `resolveConfigPath(configs.model_directory)`

@@ -282,11 +282,8 @@ watch(() => store.currentAssistant, (val) => {
 
 onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
-  // Try to restore a persisted session first; create a new one if nothing saved
-  const restored = store.restoreSession()
-  if (!restored) {
-    await store.createSession()
-  }
+  // Restore session (validates SSE, auto-fallbacks to createSession on stale sessions)
+  await store.restoreSession()
   await scrollToBottom()
 })
 

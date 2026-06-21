@@ -95,10 +95,11 @@ export const usePiChatStore = defineStore('piChat', {
       }
     },
 
-    /** Restore a persisted session from localStorage and reconnect SSE */
-    restoreSession() {
+    /** Restore a persisted session from localStorage, validate via SSE, and fallback to a new session */
+    async restoreSession() {
       const saved = restoreSession()
       if (!saved?.sessionId) return false
+
       this.sessionId = saved.sessionId
       this.messages = saved.messages || []
       this.model = saved.model || null
@@ -108,9 +109,61 @@ export const usePiChatStore = defineStore('piChat', {
       this.contextWindow = saved.contextWindow || 0
       this.contextPercent = saved.contextPercent
       this.tick = 0
+
       this.connectSSE()
+
+      // Wait for SSE to confirm the session is alive (onopen) or confirm failure (onerror/timeout)
+      const sseOk = await new Promise((resolve) => {
+        const timeout = setTimeout(() => {
+          this.disconnectSSE()
+          resolve(false)
+        }, 3000)
+
+        const check = setInterval(() => {
+          if (this.sseConnected) {
+            clearTimeout(timeout)
+            clearInterval(check)
+            resolve(true)
+          } else if (!this._sse) {
+            // EventSource was closed (onerror fired, e.g. 404 for pruned session)
+            clearTimeout(timeout)
+            clearInterval(check)
+            resolve(false)
+          }
+        }, 50)
+      })
+
+      if (!sseOk) {
+        // Session is stale — clear and create fresh
+        this.clearStaleSession()
+        const created = await this.createSession()
+        if (!created) {
+          this.error = this.error || 'Failed to create a new session'
+        }
+        return created
+      }
+
       this.fetchSkills()
       return true
+    },
+
+    /** Reset all session-related state and clear localStorage (session was stale) */
+    clearStaleSession() {
+      this.disconnectSSE()
+      clearSessionStorage()
+      this.sessionId = null
+      this.messages = []
+      this.currentAssistant = null
+      this.currentToolCall = null
+      this.isStreaming = false
+      this.sseConnected = false
+      this.error = null
+      this.tokens = { input: 0, output: 0, total: 0 }
+      this.cost = 0
+      this.model = null
+      this.contextWindow = 0
+      this.contextPercent = null
+      this.tick = 0
     },
 
     /** Persist current messages after a message is added via SSE */
