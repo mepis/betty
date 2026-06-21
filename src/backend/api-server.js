@@ -1239,13 +1239,15 @@ function findModelFiles(dir, baseDir = dir) {
   return results.sort();
 }
 
+//--- Return the models directory path ---
+app.get("/api/models-dir", (_req, res) => {
+  res.json({ success: true, data: MODELS_DIR });
+});
+
 //--- List models in a directory ---
 app.get("/api/models", (_req, res) => {
   try {
-    const dir = _req.query.directory;
-    if (!dir) {
-      return res.status(400).json({ success: false, error: "directory query param required" });
-    }
+    const dir = _req.query.directory || MODELS_DIR;
     const resolvedDir = resolveConfigPath(dir);
     const files = findModelFiles(resolvedDir);
     res.json({ success: true, data: files });

@@ -16,6 +16,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
     currentReport: null,
     resultsMd: '',
     models: [],
+    modelsDir: null,
     profiles: [],
     error: null,
     sseConnected: false,
@@ -110,9 +111,20 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async fetchModelsDir() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/models-dir`)
+        if (res.data.success) this.modelsDir = res.data.data
+      } catch (e) {
+        this.error = e.message
+      }
+    },
+
     async fetchModels(directory) {
       try {
-        const res = await axios.get(`${API_BASE}/api/models`, { params: { directory } })
+        const dir = directory || this.modelsDir;
+        const params = dir ? { directory: dir } : {};
+        const res = await axios.get(`${API_BASE}/api/models`, { params })
         if (res.data.success) this.models = res.data.data
       } catch (e) {
         this.error = e.message

@@ -112,7 +112,7 @@ async function handleLoadProfile(name) {
       // Refresh visual configs
       if (store.configs) {
         visualConfigs.value = normalizeBuildParams(JSON.parse(JSON.stringify(store.configs)))
-        await fetchModelsForDirectory(store.configs.model_directory || '')
+        await fetchModelsForDirectory(store.configs.model_directory || store.modelsDir || '')
       }
     } else {
       profileMessage.value = 'Failed to load profile'
@@ -148,11 +148,12 @@ async function handleDeleteProfile(name) {
 }
 
 async function fetchModelsForDirectory(dir) {
-  if (!dir) {
+  const modelsDir = dir || store.modelsDir
+  if (!modelsDir) {
     modelOptions.value = []
     return
   }
-  await store.fetchModels(dir)
+  await store.fetchModels(modelsDir)
   modelOptions.value = store.models || []
 }
 
@@ -178,11 +179,12 @@ watch(
 
 onMounted(async () => {
   await store.fetchConfigs()
+  await store.fetchModelsDir()
   if (store.configs) {
     visualConfigs.value = normalizeBuildParams(
       JSON.parse(JSON.stringify(store.configs))
     )
-    await fetchModelsForDirectory(store.configs.model_directory || '')
+    await fetchModelsForDirectory(store.configs.model_directory || store.modelsDir || '')
   }
   await loadProfiles()
 })
@@ -237,7 +239,7 @@ function handleReset() {
     visualConfigs.value = normalizeBuildParams(
       JSON.parse(JSON.stringify(store.configs))
     )
-    fetchModelsForDirectory(store.configs.model_directory || '')
+    fetchModelsForDirectory(store.configs.model_directory || store.modelsDir || '')
   }
   saveError.value = ''
 }
