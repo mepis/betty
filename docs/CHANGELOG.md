@@ -13,6 +13,11 @@ All notable changes to this project will be documented in this file.
 - [Added]: [2026-06-20] Reports page — clickable column headers in the Results Summary table enable sorting by #, Prompt/s, Gen/s, Time, and Mem (GB). Active sort column is highlighted with a direction indicator (↑/↓)
 - [Added]: [2026-06-20] Benchmark frontend — version footer in the sidebar displays the app version (read from root `package.json` via Vite's `__APP_VERSION__` define); visible when sidebar is open
 
+### Removed
+
+- [Removed]: [2026-06-20] Benchmark frontend — removed version footer from the sidebar in `App.vue` (reverses the earlier addition of `v{{ __APP_VERSION__ }}` display)
+- [Changed]: [2026-06-20] Version bump — `package.json` / `package-lock.json` bumped from `1.0.4` to `1.0.5`
+
 ### Changed
 
 - [Changed]: [2026-06-20] `scripts/update.sh` — added `git stash` before `git pull` to prevent uncommitted local changes from blocking the update workflow
