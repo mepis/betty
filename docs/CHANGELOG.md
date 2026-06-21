@@ -4,11 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-21] `src/backend/api-server.js` — `findModelFiles()` now uses `path.relative()` instead of string `replace()` to compute relative paths, making it cross-platform safe and robust against trailing-slash edge cases
+
 ### Changed
 
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — consolidated `LLM_MODELS_DIR` and `HF_DOWNLOAD_DIR` into a single `MODELS_DIR` constant pointing to `~/.betty/models/`; removed the `~/.llm_models` path entirely; all model download, listing, and deletion endpoints now use the unified path
 - [Changed]: [2026-06-21] `src/backend/index.js` — renamed `MODEL_DIR` to `MODELS_DIR` for naming consistency with `api-server.js`; path remains `~/.betty/models/`
-- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.21` to `1.0.22`
+- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.22` to `1.0.23`
 
 ### Fixed
 

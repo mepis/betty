@@ -5,7 +5,7 @@ import fs from "fs";
 import { spawn, execSync } from "child_process";
 import { Transform, Readable } from "stream";
 import os from "os";
-import { join, dirname, basename, isAbsolute, resolve } from "path";
+import { join, dirname, basename, isAbsolute, resolve, relative } from "path";
 import { fileURLToPath } from "url";
 import { createAgentSession, AuthStorage, ModelRegistry, SessionManager, getAgentDir, loadSkills } from "@earendil-works/pi-coding-agent";
 
@@ -1233,7 +1233,7 @@ function findModelFiles(dir, baseDir = dir) {
       results.push(...findModelFiles(fullPath, baseDir));
     } else if (entry.isFile() && (entry.name.endsWith('.gguf') || entry.name.endsWith('.bin') || entry.name.endsWith('.safetensors'))) {
       // Return path relative to the base directory
-      results.push(fullPath.replace(baseDir + '/', ''));
+      results.push(relative(baseDir, fullPath));
     }
   }
   return results.sort();
