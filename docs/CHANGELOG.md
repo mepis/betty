@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-21] Project rules skill — new `project-rules` skill in `.pi/skills/project-rules/` containing all AGENTS.md rules for per-session auto-loading by the agent
+
+### Changed
+
+- [Changed]: [2026-06-21] Benchmark frontend — updated `VITE_API_URL` in `.env.production` from `192.168.2.3:3456` to `100.88.77.33:3456`
+
 ### Fixed
 
 - [Fixed]: [2026-06-20] `package.json` — fixed JSON syntax error: removed stray quote character from `""version"` key (was `""version": "1.0.7"`, now `"version": "1.0.7"`)
