@@ -11,8 +11,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- [Changed]: [2026-06-21] `src/frontend/src/App.vue` — sidebar nav item label changed from "Pi" to "Chat" for consistency with the route meta title
-- [Changed]: [2026-06-21] `src/frontend/src/views/PiChat.vue` — header title and empty-state heading changed from ""Pi Chat" to "Chat" for a cleaner label
+- [Changed]: [2026-06-21] `src/frontend/src/views/PiChat.vue` — header title and empty-state heading changed from "Pi Chat" to "Chat" for a cleaner label
 - [Changed]: [2026-06-21] `src/frontend/src/router/index.js` — route meta title changed from "Pi Chat" to "Chat"
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — `GET /api/models` no longer requires the `directory` query parameter; defaults to `MODELS_DIR` when omitted
 - [Changed]: [2026-06-21] `src/frontend/src/views/Settings.vue` — model directory fallback chain updated: uses `store.configs.model_directory` first, then `store.modelsDir`, ensuring models load correctly on initial page load before any profile is loaded
