@@ -87,7 +87,7 @@ Returns all benchmark messages collected during the current session (via SSE).
 
 ## Profile Endpoints
 
-Config profiles are stored as JSON files in the `profiles/` directory.
+Config profiles are stored as JSON files in `~/.betty/profiles/`.
 
 ### GET `/api/profiles`
 

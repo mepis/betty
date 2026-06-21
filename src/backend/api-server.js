@@ -38,7 +38,7 @@ const FRONTEND_DIR = join(BENCHMARK_DIR, "..", "frontend", "dist");
 const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(os.homedir(), ".betty");
-const PROFILES_DIR = join(BENCHMARK_DIR, "profiles");
+const PROFILES_DIR = join(REPORTS_DIR, "profiles");
 const LLM_MODELS_DIR = join(os.homedir(), ".llm_models");
 const HF_DOWNLOAD_DIR = LLM_MODELS_DIR;
 

@@ -36,7 +36,7 @@ graph TB
         Config[configs.json]
         Results[results.md]
         Reports[reports/*.json]
-        Profiles[profiles/*.json]
+        Profiles[~/.betty/profiles/*.json]
         Models[hf_downloads/*.gguf]
     end
 
@@ -219,7 +219,7 @@ graph LR
 1. **Startup**: `api-server.js` loads `configs.json`, merges missing keys from `DEFAULT_CONFIGS`
 2. **Edit**: Config.vue reads via `GET /api/configs`, edits visually, saves via `PUT /api/configs`
 3. **Run**: `index.js` reads `configs.json` on startup, passes values to cmake/llama-server
-4. **Profile**: Save/Load creates/deletes JSON files in `profiles/` directory
+4. **Profile**: Save/Load creates/deletes JSON files in `~/.betty/profiles/` directory
 5. **Report**: Auto-saves after each test run with full per-run configuration
 
 ### Environment Variables

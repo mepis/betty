@@ -17,7 +17,6 @@ src/backend/node_modules/
 src/backend/reports/
 src/backend/results.md
 src/backend/.env
-src/backend/profiles/
 
 # Frontend generated files
 src/frontend/node_modules/
@@ -33,5 +32,4 @@ src/benchmark/node_modules/
 src/benchmark/dist/
 src/benchmark/hf_downloads/
 src/benchmark/llama_cache/
-src/benchmark/profiles/
 src/benchmark/configs.json

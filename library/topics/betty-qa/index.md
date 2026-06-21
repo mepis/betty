@@ -125,7 +125,7 @@ In the **Downloads** tab, click the trash icon next to any model.
 3. Enter a profile name (e.g., "gemma-12b-32k")
 4. Click **Save**
 
-Profiles are saved as JSON files in `profiles/` directory.
+Profiles are saved as JSON files in `~/.betty/profiles/` directory.
 
 ### Load a Profile
 

@@ -228,7 +228,7 @@ graph LR
     File -->|read on start| Runner[index.js]
     Runner -->|build flags| CMake[cmake -DGGML_CUDA=1 ...]
     Runner -->|server flags| Server[./llama-server -m ...]
-    File -->|read on save| Profile[profiles/*.json]
+    File -->|read on save| Profile[~/.betty/profiles/*.json]
     File -->|read on save| Report[reports/*.json]
 ```
 
@@ -242,7 +242,7 @@ graph LR
 
 ## Profiles
 
-Profiles are independent JSON snapshots of configuration saved to `profiles/` directory.
+Profiles are independent JSON snapshots of configuration saved to `~/.betty/profiles/` directory.
 
 | Operation | API | Effect |
 |-----------|-----|--------|

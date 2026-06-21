@@ -276,7 +276,7 @@ betty/
 │   ├── api-server.js          # Express API server (entry point)
 │   ├── configs.json           # Benchmark configuration
 │   ├── results.md             # Raw benchmark output
-│   ├── profiles/              # Saved config profiles
+│   ├── profiles/              # Saved config profiles (stored in ~/.betty/profiles/)
 │   ├── reports/               # Saved benchmark reports
 │   ├── hf_downloads/          # Downloaded GGUF models
 │   ├── llama_cache/           # Llama.cpp cache
