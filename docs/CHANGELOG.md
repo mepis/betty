@@ -6,6 +6,15 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-21] `.pi/APPEND_SYSTEM.md` — expanded from a single-line instruction to a comprehensive project documentation lookup guide with categorized file listing, usage guidelines, and instructions about modifying pi via extensions, skills, and APPEND_SYSTEM.md
+- [Changed]: [2026-06-21] Version bump — `package.json` / `package-lock.json` bumped from `1.0.8` to `1.0.9`
+
+### Removed
+
+- [Removed]: [2026-06-21] `.pi/skills/project-docs-lookup/` — deleted the standalone skill; its documentation lookup content is now consolidated into `.pi/APPEND_SYSTEM.md` which is always loaded
+
+### Changed
+
 - [Changed]: [2026-06-21] Renamed `src/benchmark/` to `src/backend/` — full directory rename across entire project; all path references updated in package.json, .gitignore, docs, library topics, scripts, api-server.js, and plan-pi-chat.md; frontend now lives at `src/backend/frontend/` instead of `src/benchmark/frontend/`
 
 ### Removed
