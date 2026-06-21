@@ -37,8 +37,9 @@ const BENCHMARK_DIR = __dirname;
 const FRONTEND_DIR = join(BENCHMARK_DIR, "..", "frontend", "dist");
 const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
-const REPORTS_DIR = join(os.homedir(), ".betty");
-const PROFILES_DIR = join(REPORTS_DIR, "profiles");
+const BETTY_DIR = join(os.homedir(), ".betty");
+const REPORTS_DIR = join(BETTY_DIR, "reports");
+const PROFILES_DIR = join(BETTY_DIR, "profiles");
 const LLM_MODELS_DIR = join(os.homedir(), ".llm_models");
 const HF_DOWNLOAD_DIR = LLM_MODELS_DIR;
 
@@ -53,7 +54,8 @@ function ensureDirectory(dir, label) {
   }
 }
 
-ensureDirectory(REPORTS_DIR, "~/.betty");
+ensureDirectory(BETTY_DIR, "~/.betty");
+ensureDirectory(REPORTS_DIR, "~/.betty/reports");
 ensureDirectory(PROFILES_DIR, "profiles");
 ensureDirectory(HF_DOWNLOAD_DIR, ".llm_models");
 ensureDirectory(join(BENCHMARK_DIR, "llama_cache"), "llama_cache");

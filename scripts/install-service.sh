@@ -18,6 +18,10 @@ mkdir -p "$HOME/.betty"
 echo "==> Creating profiles directory..."
 mkdir -p "$HOME/.betty/profiles"
 
+echo "==> Creating profiles directory..."
+mkdir -p "$HOME/.betty/reports"
+
+
 echo "==> Writing service file..."
 cat > "$HOME/.config/systemd/user/$APP_NAME.service" <<EOF
 [Unit]
