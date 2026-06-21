@@ -2,6 +2,41 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
+const STORAGE_KEY = 'pi-chat-session'
+
+/** Persist session state to localStorage */
+function persistSession(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      sessionId: state.sessionId,
+      messages: state.messages,
+      model: state.model,
+      thinking: state.thinking,
+      tokens: state.tokens,
+      cost: state.cost,
+      contextWindow: state.contextWindow,
+      contextPercent: state.contextPercent,
+    }))
+  } catch {}
+}
+
+/** Restore session state from localStorage */
+function restoreSession() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    return JSON.parse(raw)
+  } catch {
+    return null
+  }
+}
+
+/** Clear persisted session from localStorage */
+function clearSessionStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY)
+  } catch {}
+}
 
 export const usePiChatStore = defineStore('piChat', {
   state: () => ({
@@ -48,6 +83,7 @@ export const usePiChatStore = defineStore('piChat', {
           this.cost = 0
           this.model = null
           this.tick = 0
+          persistSession(this.$state)
           this.connectSSE()
           this.fetchSkills()
           return true
@@ -57,6 +93,29 @@ export const usePiChatStore = defineStore('piChat', {
         this.error = e.response?.data?.error || e.message
         return false
       }
+    },
+
+    /** Restore a persisted session from localStorage and reconnect SSE */
+    restoreSession() {
+      const saved = restoreSession()
+      if (!saved?.sessionId) return false
+      this.sessionId = saved.sessionId
+      this.messages = saved.messages || []
+      this.model = saved.model || null
+      this.thinking = saved.thinking || 'off'
+      this.tokens = saved.tokens || { input: 0, output: 0, total: 0 }
+      this.cost = saved.cost || 0
+      this.contextWindow = saved.contextWindow || 0
+      this.contextPercent = saved.contextPercent
+      this.tick = 0
+      this.connectSSE()
+      this.fetchSkills()
+      return true
+    },
+
+    /** Persist current messages after a message is added via SSE */
+    _persistAfterMessage() {
+      persistSession(this.$state)
     },
 
     connectSSE() {
@@ -83,6 +142,7 @@ export const usePiChatStore = defineStore('piChat', {
             role: 'user',
             content: data.content || '',
           })
+          this._persistAfterMessage()
         } else if (data.role === 'assistant') {
           this.currentAssistant = {
             id: 'msg-' + Date.now(),
@@ -151,6 +211,7 @@ export const usePiChatStore = defineStore('piChat', {
           this.messages.push(this.currentAssistant)
           this.currentAssistant = null
           this.tick++
+          this._persistAfterMessage()
         }
       })
 
@@ -175,6 +236,7 @@ export const usePiChatStore = defineStore('piChat', {
           this.contextWindow = data.contextUsage.contextWindow || 0
           this.contextPercent = data.contextUsage.percent
         }
+        this._persistAfterMessage()
       })
 
       eventSource.addEventListener('pi-turn-end', () => {
@@ -245,6 +307,7 @@ export const usePiChatStore = defineStore('piChat', {
       try {
         await axios.delete(`${API_BASE}/api/pi/session/${this.sessionId}`)
       } catch {}
+      clearSessionStorage()
       this.sessionId = null
       this.messages = []
       this.currentAssistant = null
@@ -254,6 +317,8 @@ export const usePiChatStore = defineStore('piChat', {
       this.tokens = { input: 0, output: 0, total: 0 }
       this.cost = 0
       this.model = null
+      this.contextWindow = 0
+      this.contextPercent = null
       this.tick = 0
     },
 
@@ -271,6 +336,7 @@ export const usePiChatStore = defineStore('piChat', {
 
     async newSession() {
       this.disconnectSSE()
+      clearSessionStorage()
       this.sessionId = null
       this.messages = []
       this.currentAssistant = null

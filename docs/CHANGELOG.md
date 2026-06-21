@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-21] Pi Chat session persistence — the Pi chat window (homepage) now persists the session ID and message history to `localStorage`. On page reload or navigation back, the session and all previous messages are restored automatically. The SSE connection is reconnected to the existing server session. Clicking "New Session" clears the persisted data and starts fresh.
 - [Added]: [2026-06-21] `.pi/APPEND_SYSTEM.md` — added system prompt append file directing the agent to consult `docs/` for comprehensive project documentation
 
 ### Fixed

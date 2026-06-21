@@ -3,6 +3,9 @@ import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
 import { usePiChatStore } from '@/stores/pi-chat'
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
+import axios from 'axios'
+
+const API_BASE = import.meta.env.VITE_API_URL || ''
 
 const store = usePiChatStore()
 
@@ -279,7 +282,9 @@ watch(() => store.currentAssistant, (val) => {
 
 onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
-  if (!store.sessionId) {
+  // Try to restore a persisted session first; create a new one if nothing saved
+  const restored = store.restoreSession()
+  if (!restored) {
     await store.createSession()
   }
   await scrollToBottom()
@@ -287,7 +292,8 @@ onMounted(async () => {
 
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
-  store.disposeSession()
+  // Disconnect SSE but keep the session alive for persistence
+  store.disconnectSSE()
 })
 
 function renderMarkdown(text) {
@@ -342,6 +348,13 @@ function toggleToolCall(toolCall) {
 }
 
 async function handleNewSession() {
+  // Dispose the old server session before creating a new one
+  if (store.sessionId) {
+    store.disconnectSSE()
+    try {
+      await axios.delete(`${API_BASE}/api/pi/session/${store.sessionId}`)
+    } catch {}
+  }
   await store.newSession()
   await scrollToBottom()
 }
