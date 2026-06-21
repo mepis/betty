@@ -1,8 +1,12 @@
+---
+tags: [configuration, json, schema, reference]
+---
+
 # Configuration Reference
 
-All benchmark configuration is stored in `src/benchmark/configs.json`. This file is auto-generated and managed by the [[Config|Config]] page, but can be edited manually.
+All benchmark configuration is stored in `src/benchmark/configs.json`. This file is auto-generated and managed by the [[config]] page, but can be edited manually.
 
-See also: [[USER-MANUAL|User Manual]]
+See also: [[USER-MANUAL]]
 
 ## configs.json
 

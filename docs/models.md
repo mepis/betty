@@ -1,8 +1,12 @@
+---
+tags: [models, huggingface, gguf, download]
+---
+
 # Models
 
 The Models tab lets you discover, browse, and download GGUF models from HuggingFace.
 
-See also: [[USER-MANUAL|User Manual]]
+See also: [[USER-MANUAL]]
 
 ## Search Models
 

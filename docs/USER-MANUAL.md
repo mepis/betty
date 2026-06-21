@@ -1,3 +1,7 @@
+---
+tags: [user-manual, getting-started, installation, quick-start]
+---
+
 # Betty User Manual
 
 A comprehensive guide to using Betty — the llama.cpp benchmark tool.
@@ -116,10 +120,10 @@ Copy `.env.example` to `.env` and customize:
 
 3. **Download a model (optional):**
 
-   Go to the [[Models|Models]] tab, search for a GGUF model (e.g., "llama 3"), select a file, and download it.
+   Go to the [[models]] tab, search for a GGUF model (e.g., "llama 3"), select a file, and download it.
 
 4. **Run a benchmark:**
 
-   - Go to the [[Dashboard|Dashboard]] tab
+   - Go to the [[dashboard]] tab
    - Click **Start Benchmark**
    - Watch live results stream in the table and logs scroll in real time

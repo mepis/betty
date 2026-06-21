@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-21] Documentation overhaul — added frontmatter tags to all existing docs (USER-MANUAL.md, api-reference.md, config.md, configuration-reference.md, dashboard.md, models.md, reports.md, troubleshooting.md); restructured docs/index.md into Getting Started, Feature Documentation, Reference, Practical Examples, and Support sections; added new docs: architecture.md (system design with Mermaid diagrams), logs.md, pi-chat.md, tags.md (tags index); added QA example docs: qa-installation.md, qa-benchmark-run.md, qa-model-download.md, qa-troubleshooting.md; added library/tags.md for library topic cross-reference; fixed wiki link format across all docs (removed pipe labels, e.g., `[[Dashboard|Dashboard]]` → `[[dashboard]]`)
+- [Added]: [2026-06-21] project-docs-lookup skill — new `.pi/skills/project-docs-lookup/` skill for looking up project documentation in docs/ and other sources when answering questions
+- [Added]: [2026-06-21] AGENTS.md — added "Additional Documentation" section directing agents to consult `docs/` for comprehensive project documentation
+
+### Changed
+
+- [Changed]: [2026-06-21] docs/index.md — reorganized documentation index into categorized sections (Getting Started, Feature Documentation, Reference, Practical Examples, Support) with links to all existing and new pages
+
+### Added
+
 - [Added]: [2026-06-21] Project rules skill — new `project-rules` skill in `.pi/skills/project-rules/` containing all AGENTS.md rules for per-session auto-loading by the agent
 
 ### Changed

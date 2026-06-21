@@ -3,6 +3,10 @@
 These rules apply to every task unless explicitly overridden.
 Bias: caution over speed on non-trivial work.
 
+## Additional Documentation
+
+Comprehensive project documentation is available in `docs/` at the root of this repo. This includes the user manual, API reference, configuration guides, dashboard docs, model documentation, reports, troubleshooting, and the changelog. Consult these docs when working on features, configuration, or user-facing changes.
+
 ## Orchestrator Skill — Always Delegate to Subagents
 
 The **orchestrator** skill is always loaded. **Always delegate tasks to subagents instead of executing them yourself.** You are a task orchestrator, not a doer.

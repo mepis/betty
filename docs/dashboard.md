@@ -1,8 +1,12 @@
+---
+tags: [dashboard, benchmark, metrics, results, sse, monitoring]
+---
+
 # Dashboard
 
 The Dashboard is the main control panel. It shows benchmark status, live results, and system metrics.
 
-See also: [[USER-MANUAL|User Manual]] • [[reports|Reports]]
+See also: [[index]] • [[USER-MANUAL]] • [[reports]] • [[architecture]]
 
 ## Status Card
 

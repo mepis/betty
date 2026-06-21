@@ -1,8 +1,12 @@
+---
+tags: [api, express, endpoints, reference, sse]
+---
+
 # API Reference
 
 All API endpoints are relative to the server base URL (default `http://localhost:3456`).
 
-See also: [[USER-MANUAL|User Manual]]
+See also: [[USER-MANUAL]]
 
 ## Status & Control
 

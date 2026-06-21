@@ -1,8 +1,12 @@
+---
+tags: [config, build, cuda, profiles, gpu, cmake]
+---
+
 # Config
 
 The Config page lets you build llama.cpp and tune all benchmark parameters.
 
-See also: [[USER-MANUAL|User Manual]] • [[configuration-reference|Configuration Reference]]
+See also: [[USER-MANUAL]] • [[configuration-reference]]
 
 ## Build llama.cpp
 

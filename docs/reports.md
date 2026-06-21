@@ -1,12 +1,16 @@
+---
+tags: [reports, results, systemd, save]
+---
+
 # Reports
 
 The Reports tab lets you save and review benchmark results.
 
-See also: [[USER-MANUAL|User Manual]]
+See also: [[USER-MANUAL]]
 
 ## Saving a Report
 
-1. Run a benchmark on the [[Dashboard|Dashboard]]
+1. Run a benchmark on the [[dashboard]]
 2. When results are available, enter a name in the report input field
 3. Click **Save** (or press Enter)
 

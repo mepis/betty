@@ -1,12 +1,16 @@
+---
+tags: [troubleshooting, debugging, cuda, memory, systemd]
+---
+
 # Troubleshooting
 
 Common issues and solutions for Betty.
 
-See also: [[USER-MANUAL|User Manual]]
+See also: [[USER-MANUAL]]
 
 ## Build Fails
 
-- **Ensure CUDA toolkit is installed** and the NVCC path in [[Config|CUDA Configuration]] points to the correct `nvcc` binary
+- **Ensure CUDA toolkit is installed** and the NVCC path in [[config]] points to the correct `nvcc` binary
 - **Check that CMake is installed** (`cmake --version`)
 - **Verify GPU drivers** are up to date
 - **Use `--no-build`** to skip the build step if you already have a compiled llama.cpp binary
@@ -26,7 +30,7 @@ See also: [[USER-MANUAL|User Manual]]
 
 - Ensure `model_directory` in configs points to the correct directory
 - Check that the model file exists in that directory
-- Use the [[Models|Models]] tab to search and download models
+- Use the [[models]] tab to search and download models
 
 ## SSE Connection Drops
 
