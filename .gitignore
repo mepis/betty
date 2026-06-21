@@ -27,3 +27,11 @@ src/frontend/env.*
 .playwright-cli/
 test-*.mjs
 .pi/models.json
+
+# Benchmark directory generated files
+src/benchmark/node_modules/
+src/benchmark/dist/
+src/benchmark/hf_downloads/
+src/benchmark/llama_cache/
+src/benchmark/profiles/
+src/benchmark/configs.json

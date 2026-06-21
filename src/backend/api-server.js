@@ -299,7 +299,16 @@ app.use(cors({
 }));
 
 app.use(express.json({ limit: "10mb" }));
-app.use(express.static(FRONTEND_DIR));
+
+// Serve frontend static files if the build output exists
+if (fs.existsSync(FRONTEND_DIR)) {
+  app.use(express.static(FRONTEND_DIR));
+  console.log(`Frontend served from: ${FRONTEND_DIR}`);
+} else {
+  console.warn(`WARNING: Frontend build directory not found: ${FRONTEND_DIR}`);
+  console.warn(`  Run "npm run build:frontend" or "npm run start" to build the frontend.`);
+  console.warn(`  The API will still work, but the frontend UI will not be available.`);
+}
 
 //--- Config endpoints ---
 app.get("/api/configs", (_req, res) => {
@@ -472,7 +481,11 @@ function sendToClient(client, event, data) {
     const msg = `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
     client.res.write(msg);
     safeFlush(client.res);
-  } catch {}
+  } catch (err) {
+    // Client likely disconnected — remove from set to prevent further writes
+    streamingClients.delete(client);
+    console.error(`[sse] Error sending to client: ${err.message}`);
+  }
 }
 
 function broadcast(event, data) {
@@ -1236,8 +1249,31 @@ app.get("/api/models", (_req, res) => {
   }
 });
 
-//--- Systemd service control ---
+//--- Systemd service control (Linux only) ---
+function requireSystemd(res) {
+  if (process.platform !== 'linux') {
+    return res.status(501).json({
+      success: false,
+      error: `Systemd service control is not available on ${process.platform}. This feature requires Linux.`,
+    });
+  }
+  if (!commandExists('systemctl')) {
+    return res.status(501).json({
+      success: false,
+      error: 'systemctl is not installed. This feature requires systemd.',
+    });
+  }
+  return null; // OK to proceed
+}
+
+function commandExists(cmd) {
+  try { execSync(`command -v ${cmd}`, { encoding: 'utf8' }); return true; }
+  catch { return false; }
+}
+
 app.post("/api/service/start", (_req, res) => {
+  const notSupported = requireSystemd(res);
+  if (notSupported) return;
   try {
     execSync("systemctl --user start llama.service");
     res.json({ success: true, message: "llama.service started" });
@@ -1247,6 +1283,8 @@ app.post("/api/service/start", (_req, res) => {
 });
 
 app.post("/api/service/stop", (_req, res) => {
+  const notSupported = requireSystemd(res);
+  if (notSupported) return;
   try {
     execSync("systemctl --user stop llama.service");
     res.json({ success: true, message: "llama.service stopped" });
@@ -1256,6 +1294,8 @@ app.post("/api/service/stop", (_req, res) => {
 });
 
 app.get("/api/service/status", (_req, res) => {
+  const notSupported = requireSystemd(res);
+  if (notSupported) return;
   try {
     const output = execSync("systemctl --user is-active llama.service").toString().trim();
     res.json({ success: true, active: output === "active" });
@@ -1266,6 +1306,8 @@ app.get("/api/service/status", (_req, res) => {
 
 //--- Read current systemd service configuration ---
 app.get("/api/service/config", (_req, res) => {
+  const notSupported = requireSystemd(res);
+  if (notSupported) return;
   try {
     const serviceUser = process.env.USER || "jon";
     const serviceName = "llama.service";
@@ -1331,6 +1373,8 @@ app.get("/api/service/config", (_req, res) => {
 
 //--- Update systemd service configuration ---
 app.post("/api/service/update", (req, res) => {
+  const notSupported = requireSystemd(res);
+  if (notSupported) return;
   try {
     const { execStart, envVars, restart, restartSec } = req.body;
 
@@ -1419,6 +1463,8 @@ app.post("/api/service/update", (req, res) => {
 
 //--- Install a systemd service from a report's launch command ---
 app.post("/api/service/install", (req, res) => {
+  const notSupported = requireSystemd(res);
+  if (notSupported) return;
   try {
     const { reportName, testRunId } = req.body;
     if (!reportName || !testRunId) {
