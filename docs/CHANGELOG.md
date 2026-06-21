@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-21] Renamed `src/benchmark/` to `src/backend/` — full directory rename across entire project; all path references updated in package.json, .gitignore, docs, library topics, scripts, api-server.js, and plan-pi-chat.md; frontend now lives at `src/backend/frontend/` instead of `src/benchmark/frontend/`
+
+### Removed
+
+- [Removed]: [2026-06-21] `.env.example` — removed root-level environment example file (settings now managed via `src/backend/frontend/.env.production` and runtime detection)
+
 ### Added
 
 - [Added]: [2026-06-21] `src/backend/` — new backend directory containing the integrated benchmark server: `index.js` (benchmark runner spawning llama-server with grid search, health polling, and structured JSON output), `api-server.js` (Express API server with SSE streaming, REST endpoints for configs/profiles/reports/models/service control, Pi SDK agent session integration, HuggingFace model search/download, git update checking, and systemd service management), `scripts/update-api-url.sh` (auto-detects machine IP and updates frontend API URL)
@@ -65,7 +73,7 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
-- [Removed]: [2026-06-20] `src/benchmark/configs.json` — removed from git tracking and added both file and folder paths to `.gitignore` to prevent accidental commits of local benchmark configuration
+- [Removed]: [2026-06-20] `src/backend/configs.json` — removed from git tracking and added both file and folder paths to `.gitignore` to prevent accidental commits of local benchmark configuration
 
 ### Changed
 
@@ -99,7 +107,7 @@ All notable changes to this project will be documented in this file.
 - [Fixed]: [2026-06-19] Pi Chat — CORS configuration fixed: `origin: true` (reflects request origin) with `credentials: false` when wildcard, avoiding the invalid `*` + `credentials: true` anti-pattern
 - [Fixed]: [2026-06-19] Pi Chat — removed hardcoded `VITE_API_URL` from `.env.development`; frontend uses relative URLs in dev mode. `.env.production` cleaned up (removed `VITE_PORT`/`VITE_HOST` settings) but retains production API URL
 - [Fixed]: [2026-06-19] Pi Chat — assistant messages now render during SSE streaming; added `tick` counter to Pinia store to force computed re-evaluation when `currentAssistant` nested properties (`content`, `thinking`, `toolCalls`) are mutated by SSE events, which Vue's reactivity system previously missed because the object reference didn't change
-- [Fixed]: [2026-06-18] `src/benchmark/index.js` — `generateMultiplicativeArray` now guards against degenerate multipliers (≤1), zero start values, and start > max to prevent infinite loops and `RangeError: Invalid array length`
+- [Fixed]: [2026-06-18] `src/backend/index.js` — `generateMultiplicativeArray` now guards against degenerate multipliers (≤1), zero start values, and start > max to prevent infinite loops and `RangeError: Invalid array length`
 
 ### Added
 
@@ -110,7 +118,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - [Changed]: [2026-06-18] Renamed `deep-research` skill to `research` — moved from `.pi/skills/deep-research/` to `.pi/skills/research/` with updated name in frontmatter and heading; functionality unchanged
-- [Changed]: [2026-06-18] `src/benchmark/index.js` — replaced `Math.min` with explicit `>=` comparison for batch size, uBatchSize, and cacheRam boundary checks to correctly cap at maximum when step would exceed it
+- [Changed]: [2026-06-18] `src/backend/index.js` — replaced `Math.min` with explicit `>=` comparison for batch size, uBatchSize, and cacheRam boundary checks to correctly cap at maximum when step would exceed it
 
 ### Added
 
@@ -135,11 +143,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - [Changed]: [2026-06-18] CUDA installation replaced with version-specific scripts — deleted `scripts/init-cuda.sh` (CUDA 13.2); added `scripts/init-cuda13.3.sh` (CUDA 13.3 for newer GPUs) and `scripts/init-cuda12.9.sh` (CUDA 12.9 for older GPUs); updated `install.sh` menu to offer both CUDA versions separately, with 12.9 excluded from "Run all" due to conflicts
-- [Changed]: [2026-06-18] `src/benchmark/api-server.js` — removed `export` prefix from environment variable lines in `getLaunchCommand()` (they are now `KEY=VALUE` pairs joined with `&&`); simplified `command` field to use plain `join(" ")` instead of `join(" \\\")`
+- [Changed]: [2026-06-18] `src/backend/api-server.js` — removed `export` prefix from environment variable lines in `getLaunchCommand()` (they are now `KEY=VALUE` pairs joined with `&&`); simplified `command` field to use plain `join(" ")` instead of `join(" \\\")`
 
 ### Fixed
 
-- [Fixed]: [2026-06-18] `src/benchmark/index.js` and `api-server.js` — tensor split parameter now uses `sps.tensor_split.value` exclusively (removed auto-calculated `tensorSplitValue` fallback); applies to `getRunScript()`, `getServerParamsSnapshot()`, `runTestRun()`, `getLaunchCommand()`, and `extractConfigsPerRun()`
+- [Fixed]: [2026-06-18] `src/backend/index.js` and `api-server.js` — tensor split parameter now uses `sps.tensor_split.value` exclusively (removed auto-calculated `tensorSplitValue` fallback); applies to `getRunScript()`, `getServerParamsSnapshot()`, `runTestRun()`, `getLaunchCommand()`, and `extractConfigsPerRun()`
 - [Fixed]: [2026-06-18] `scripts/install-service.sh` — `llama-benchmark.service` now uses absolute path to `npm` and sets explicit `PATH` environment variable so systemd can find the nvm-installed node executable (was failing with exit code 203/EXEC)
 
 ### Added
@@ -159,7 +167,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- [Changed]: [2026-06-18] `.pi/` config consolidated to project root — moved agents (reviewer, scout, worker) and skills (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging) from `src/benchmark/.pi/` to `.pi/`; removed `src/benchmark/.pi/` and `src/benchmark/docs/CHANGELOG.md`
+- [Changed]: [2026-06-18] `.pi/` config consolidated to project root — moved agents (reviewer, scout, worker) and skills (commit-and-push, deep-research, orchestrator, planning, playwright-cli, project-docs, testing-debugging) from `src/backend/.pi/` to `.pi/`; removed `src/backend/.pi/` and `src/backend/docs/CHANGELOG.md`
 
 ### Added
 
@@ -298,11 +306,11 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- [Changed]: [2026-06-11] `.gitignore` — added `src/benchmark/frontend/dist/` to exclude future frontend build artifacts; current dist files are committed as initial seed
+- [Changed]: [2026-06-11] `.gitignore` — added `src/backend/frontend/dist/` to exclude future frontend build artifacts; current dist files are committed as initial seed
 
 ### Removed
 
-- [Removed]: [2026-06-18] Old documentation — deleted docs/CHANGELOG.md (merged into src/benchmark/docs/CHANGELOG.md), architecture.md, backend/ directory (9 files), llama.cpp_docs/ directory (20 files), frontend-improvements-report.md, old docs/index.md
+- [Removed]: [2026-06-18] Old documentation — deleted docs/CHANGELOG.md (merged into src/backend/docs/CHANGELOG.md), architecture.md, backend/ directory (9 files), llama.cpp_docs/ directory (20 files), frontend-improvements-report.md, old docs/index.md
 - [Removed]: [2026-06-11] Reverted removal of standalone benchmark frontend — undoes the earlier decision to remove `frontend/` and `api-server.js`; the benchmark is now available as both a standalone tool and through the main Betty web interface
 
 ### Changed

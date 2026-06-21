@@ -1,18 +1,1 @@
-# Dependencies
-node_modules/
-
-# Downloaded models
-hf_downloads/
-
-# Cloned llama.cpp repository
-llama.cpp/
-
-# Generated files
-results.md
-reports/
-
-# Local environment
-.env
-
-# Saved config profiles
 profiles/

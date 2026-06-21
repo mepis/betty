@@ -1,14 +1,14 @@
 node_modules/
 *.log
 .env
-src/benchmark/llama.cpp/
-src/benchmark/results.md
-src/benchmark/hf_downloads/
-src/benchmark/.playwright-cli/
-src/benchmark/configs.json
-src/benchmark/configs.json/
-src/benchmark/reports/*
-src/benchmark/frontend/dist/*
+src/backend/llama.cpp/
+src/backend/results.md
+src/backend/hf_downloads/
+src/backend/.playwright-cli/
+src/backend/configs.json
+src/backend/configs.json/
+src/backend/reports/*
+src/backend/frontend/dist/*
 
 # Backend generated/downloaded files
 src/backend/llama.cpp/

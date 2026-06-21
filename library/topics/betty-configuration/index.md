@@ -4,7 +4,7 @@ The configuration system manages all benchmark parameters through a JSON file (`
 
 ## Configuration File (`configs.json`)
 
-Located at `src/benchmark/configs.json`. Loaded on every API request and benchmark run.
+Located at `src/backend/configs.json`. Loaded on every API request and benchmark run.
 
 ### Structure
 

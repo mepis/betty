@@ -14,7 +14,7 @@ Practical examples for using Betty to run benchmarks, manage models, and configu
 2. Install Node.js dependencies:
    ```bash
    npm install
-   cd src/benchmark/frontend && npm install
+   cd src/backend/frontend && npm install
    ```
 
 3. Build the frontend:
@@ -274,7 +274,7 @@ sudo ufw status
 sudo ufw allow 3456/tcp
 
 # Verify the frontend .env.production has correct API URL
-cat src/benchmark/frontend/.env.production
+cat src/backend/frontend/.env.production
 ```
 
 ### GPU Not Detected

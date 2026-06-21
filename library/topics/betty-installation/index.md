@@ -108,7 +108,7 @@ Menu:
 
 ```bash
 npm install              # Backend dependencies
-cd src/benchmark/frontend && npm install  # Frontend dependencies
+cd src/backend/frontend && npm install  # Frontend dependencies
 ```
 
 ### Build Frontend
@@ -119,7 +119,7 @@ npm run build:frontend
 
 Or:
 ```bash
-cd src/benchmark/frontend && npm run build
+cd src/backend/frontend && npm run build
 ```
 
 ### Start the Server
@@ -131,7 +131,7 @@ npm start
 This runs:
 1. `scripts/update-api-url.sh` — detects machine IP, writes to `frontend/.env.production`
 2. `npm run build:frontend` — builds Vue.js app
-3. `node ./src/benchmark/api-server.js` — starts Express API server
+3. `node ./src/backend/api-server.js` — starts Express API server
 
 ### Start Manually (without URL auto-detection)
 
@@ -140,7 +140,7 @@ This runs:
 npm run build:frontend
 
 # Start server (use default port 3456)
-node src/benchmark/api-server.js
+node src/backend/api-server.js
 ```
 
 ## Remote Access Configuration
@@ -263,7 +263,7 @@ cmake --version
 ls /usr/local/cuda-*/include/cuda.h
 
 # Clear build cache
-rm -rf src/benchmark/llama.cpp/build
+rm -rf src/backend/llama.cpp/build
 ```
 
 ### Frontend Won't Load

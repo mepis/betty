@@ -75,7 +75,7 @@ npm start
 
 ### Benchmark Configuration
 
-All benchmark settings are stored in `src/benchmark/configs.json`, managed via the Config page. See [Configuration Reference](docs/configuration-reference.md) for the full schema.
+All benchmark settings are stored in `src/backend/configs.json`, managed via the Config page. See [Configuration Reference](docs/configuration-reference.md) for the full schema.
 
 ## Remote Access
 

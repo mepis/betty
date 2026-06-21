@@ -1,11 +1,11 @@
 {
   "name": "llama-benchmark",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "type": "module",
   "scripts": {
     "update": "cd scripts && ./update.sh",
-    "build:frontend": "cd src/benchmark/frontend && npm run build",
-    "start": "npm install && bash src/benchmark/scripts/update-api-url.sh && cd src/benchmark/frontend && npm install && npm run build && cd ../../.. && node ./src/benchmark/api-server.js"
+    "build:frontend": "cd src/backend/frontend && npm run build",
+    "start": "npm install && bash src/backend/scripts/update-api-url.sh && cd src/backend/frontend && npm install && npm run build && cd ../../.. && node ./src/backend/api-server.js"
   },
   "dependencies": {
     "@earendil-works/pi-coding-agent": "^0.79.7",

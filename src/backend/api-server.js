@@ -30,7 +30,7 @@ function safeFlush(res) {
 const PORT = parseInt(process.env.API_PORT, 10) || 3456;
 const API_HOST = process.env.API_HOST || '0.0.0.0';
 const BENCHMARK_DIR = __dirname;
-const FRONTEND_DIR = join(BENCHMARK_DIR, "../frontend", "dist");
+const FRONTEND_DIR = join(BENCHMARK_DIR, "frontend", "dist");
 const CONFIGS_FILE = join(BENCHMARK_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(BENCHMARK_DIR, "reports");

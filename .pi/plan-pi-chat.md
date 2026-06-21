@@ -13,7 +13,7 @@ The Pi SDK runs **server-side** in the Express process. The backend creates agen
 ### 1. Root `package.json` — Add Pi SDK dependency
 - Add `@earendil-works/pi-coding-agent` to dependencies
 
-### 2. `src/benchmark/api-server.js` — Add Pi agent endpoints
+### 2. `src/backend/api-server.js` — Add Pi agent endpoints
 - Initialize Pi SDK (AuthStorage, ModelRegistry, SessionManager) at startup
 - New endpoints:
   - `GET /api/pi/sessions` — list saved sessions
@@ -25,12 +25,12 @@ The Pi SDK runs **server-side** in the Express process. The backend creates agen
 - Store active sessions in a Map keyed by session ID
 - Map Pi SDK events → SSE events for the frontend
 
-### 3. `src/benchmark/frontend/src/stores/pi-chat.js` — Pinia store
+### 3. `src/backend/frontend/src/stores/pi-chat.js` — Pinia store
 - State: messages array, isStreaming, model info, token usage, cost, session ID, error state
 - Actions: connect SSE, sendPrompt, abort, newSession, loadSessions
 - SSE eventSource management (connect/disconnect on mount/unmount)
 
-### 4. `src/benchmark/frontend/src/views/PiChat.vue` — Chat UI component
+### 4. `src/backend/frontend/src/views/PiChat.vue` — Chat UI component
 - Full-height chat layout matching Pi TUI:
   - **Message area** (scrollable): user messages, assistant messages, thinking blocks, tool calls/results
   - **Input area** (sticky bottom): textarea for user input, send button
@@ -43,10 +43,10 @@ The Pi SDK runs **server-side** in the Express process. The backend creates agen
   - Streaming text animation
   - Multi-line input (Shift+Enter)
 
-### 5. `src/benchmark/frontend/src/router/index.js` — Add Pi route
+### 5. `src/backend/frontend/src/router/index.js` — Add Pi route
 - Add `/pi` route pointing to PiChat.vue
 
-### 6. `src/benchmark/frontend/src/App.vue` — Add Pi nav item
+### 6. `src/backend/frontend/src/App.vue` — Add Pi nav item
 - Add "Pi" nav item with chat icon
 
 ## SSE Event Protocol (Backend → Frontend)

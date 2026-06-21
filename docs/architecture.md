@@ -272,7 +272,7 @@ sequenceDiagram
 
 ```
 betty/
-├── src/benchmark/
+├── src/backend/
 │   ├── api-server.js          # Express API server (entry point)
 │   ├── configs.json           # Benchmark configuration
 │   ├── results.md             # Raw benchmark output

@@ -105,7 +105,7 @@ systemctl --user restart llama.service
 
 **Fix:**
 1. Verify `model_directory` in Settings → General points to the correct directory
-2. Check that `.gguf` files exist: `ls -la src/benchmark/hf_downloads/`
+2. Check that `.gguf` files exist: `ls -la src/backend/hf_downloads/`
 3. Refresh the model list by changing the model directory field and changing it back
 4. For multi-part models, ensure all parts are in the same subdirectory
 
@@ -142,5 +142,5 @@ nvidia-smi
 nvcc --version
 
 # Check configs
-cat src/benchmark/configs.json | python3 -m json.tool
+cat src/backend/configs.json | python3 -m json.tool
 ```
