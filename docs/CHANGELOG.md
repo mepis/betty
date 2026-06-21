@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-20] Settings.vue Actions Panel — unified all action button styles from semantic colors (`btn-warning`, `btn-success`, `btn-primary`, `btn-error`) to `btn-ghost` for visual consistency
+
 ### Added
 
 - [Added]: [2026-06-20] Reports page — clickable column headers in the Results Summary table enable sorting by #, Prompt/s, Gen/s, Time, and Mem (GB). Active sort column is highlighted with a direction indicator (↑/↓)

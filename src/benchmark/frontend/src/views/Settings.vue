@@ -716,7 +716,7 @@ function normalizeBuildParams(configs) {
         <button
           v-if="!store.isRunning"
           @click="handleKillPort"
-          class="btn btn-warning btn-xs w-full"
+          class="btn btn-ghost btn-xs w-full"
           :disabled="killingPort"
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -729,7 +729,7 @@ function normalizeBuildParams(configs) {
         <button
           v-if="!store.isRunning && !store.serviceActive"
           @click="handleServiceStart"
-          class="btn btn-success btn-xs w-full"
+          class="btn btn-ghost btn-xs w-full"
           :disabled="serviceLoading"
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -743,7 +743,7 @@ function normalizeBuildParams(configs) {
         <button
           v-if="!store.isRunning && store.serviceActive"
           @click="handleServiceStop"
-          class="btn btn-warning btn-xs w-full"
+          class="btn btn-ghost btn-xs w-full"
           :disabled="serviceLoading"
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -768,7 +768,7 @@ function normalizeBuildParams(configs) {
         <!-- Update -->
         <button
           @click="handleUpdate"
-          class="btn btn-primary btn-xs w-full"
+          class="btn btn-ghost btn-xs w-full"
           :disabled="updating"
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -780,7 +780,7 @@ function normalizeBuildParams(configs) {
         <!-- Delete Build -->
         <button
           @click="handleDeleteBuild"
-          class="btn btn-warning btn-xs w-full"
+          class="btn btn-ghost btn-xs w-full"
           :disabled="deletingBuild"
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -792,7 +792,7 @@ function normalizeBuildParams(configs) {
         <!-- Delete Llama -->
         <button
           @click="handleDeleteLlama"
-          class="btn btn-error btn-xs w-full"
+          class="btn btn-ghost btn-xs w-full"
           :disabled="deletingLlama"
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
