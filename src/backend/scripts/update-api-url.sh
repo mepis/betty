@@ -12,8 +12,23 @@ FRONTEND_DIR="$PROJECT_ROOT/src/frontend"
 ENV_FILE="$FRONTEND_DIR/.env.production"
 
 if [ ! -f "$ENV_FILE" ]; then
-  echo "ERROR: $ENV_FILE not found"
-  exit 1
+  ENV_EXAMPLE="$FRONTEND_DIR/.env.example"
+  if [ -f "$ENV_EXAMPLE" ]; then
+    cp "$ENV_EXAMPLE" "$ENV_FILE"
+    echo "Created $ENV_FILE from .env.example"
+  else
+    # Fallback: create with all required defaults if .env.example is also missing
+    cat > "$ENV_FILE" << 'EOF'
+# Frontend Development Server
+VITE_PORT=5173
+VITE_HOST=0.0.0.0
+
+# API URL (for dev server proxy or separate frontend deployment)
+# When API and frontend are on the same origin, leave empty for relative paths
+VITE_API_URL=
+EOF
+    echo "Created $ENV_FILE with default values"
+  fi
 fi
 
 # Read the network interface from root .env (default: auto-detect)

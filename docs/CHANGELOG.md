@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-21] `src/backend/scripts/update-api-url.sh` — automatically creates `src/frontend/.env.production` if missing: first copies from `.env.example` if available, otherwise generates the file with all required default values (`VITE_PORT`, `VITE_HOST`, `VITE_API_URL`)
+
+### Changed
+
+- [Changed]: [2026-06-21] Version bump — `package.json` / `package-lock.json` bumped from `1.0.11` to `1.0.12`
+
 ### Changed
 
 - [Changed]: [2026-06-21] `src/backend/scripts/update-api-url.sh` — removed `USE_EXPLICIT_API_URL` conditional: script now always detects the machine's IP and sets `VITE_API_URL` explicitly; falls back to a warning (leaving the URL as-is) if IP detection fails instead of silently using relative URLs
