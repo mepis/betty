@@ -2,9 +2,7 @@
 # Update VITE_API_URL in frontend/.env.production
 #
 # Cross-platform compatible: works on Linux, macOS, and WSL.
-# Uses relative URLs by default so the frontend works when served
-# by api-server.js (same-origin). Only sets an explicit IP when
-# the frontend is deployed separately from the API server.
+# Detects the machine's IP address and sets VITE_API_URL explicitly.
 
 set -euo pipefail
 
@@ -53,14 +51,6 @@ detect_ip() {
   echo "$ip"
 }
 
-# By default, use relative URLs (empty VITE_API_URL).
-# This works when the frontend is served by api-server.js (same-origin).
-# Only set an explicit IP if USE_EXPLICIT_API_URL=1 is set in .env.
-USE_EXPLICIT=""
-if [ -f "$ROOT_ENV" ]; then
-  USE_EXPLICIT=$(grep '^USE_EXPLICIT_API_URL=' "$ROOT_ENV" 2>/dev/null | head -1 | cut -d= -f2 | tr -d '[:space:]' || true)
-fi
-
 # Cross-platform in-place sed (works on both GNU sed and BSD/macOS sed)
 sed_inplace() {
   # $1 = sed expression, $2 = file
@@ -71,19 +61,11 @@ sed_inplace() {
   mv "$tmp" "$file"
 }
 
-if [ "$USE_EXPLICIT" = "1" ]; then
-  # Detect the machine's IP address and set it explicitly
-  MY_IP=$(detect_ip "$NET_INTERFACE")
-  if [ -n "$MY_IP" ] && [ "$MY_IP" != "127.0.0.1" ]; then
-    sed_inplace "s|^VITE_API_URL=.*|VITE_API_URL=http://$MY_IP:3456|" "$ENV_FILE"
-    echo "Updated VITE_API_URL in $ENV_FILE to http://$MY_IP:3456"
-  else
-    echo "WARNING: Could not detect machine IP. Leaving VITE_API_URL as-is."
-  fi
+# Detect the machine's IP address and set it explicitly
+MY_IP=$(detect_ip "$NET_INTERFACE")
+if [ -n "$MY_IP" ] && [ "$MY_IP" != "127.0.0.1" ]; then
+  sed_inplace "s|^VITE_API_URL=.*|VITE_API_URL=http://$MY_IP:3456|" "$ENV_FILE"
+  echo "Updated VITE_API_URL in $ENV_FILE to http://$MY_IP:3456"
 else
-  # Use relative URL (empty) — works when frontend is served by api-server.js
-  sed_inplace "s|^VITE_API_URL=.*|VITE_API_URL=|" "$ENV_FILE"
-  echo "Set VITE_API_URL to empty (relative URLs) in $ENV_FILE"
-  echo "NOTE: Frontend uses relative URLs (same-origin with api-server)."
-  echo "      To use an explicit IP, set USE_EXPLICIT_API_URL=1 in .env"
+  echo "WARNING: Could not detect machine IP. Leaving VITE_API_URL as-is."
 fi

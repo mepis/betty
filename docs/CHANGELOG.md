@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-21] `src/backend/scripts/update-api-url.sh` — removed `USE_EXPLICIT_API_URL` conditional: script now always detects the machine's IP and sets `VITE_API_URL` explicitly; falls back to a warning (leaving the URL as-is) if IP detection fails instead of silently using relative URLs
+- [Changed]: [2026-06-21] Version bump — `package.json` bumped from `1.0.10` to `1.0.11`
+
+### Changed
+
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — frontend static file serving is now conditional: checks if the build directory exists before mounting `express.static()`, logging a warning if missing so the API server still works without the frontend
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — SSE `sendToClient()` now catches write errors, removes the disconnected client from `streamingClients`, and logs the error instead of silently failing
 - [Changed]: [2026-06-21] `src/backend/api-server.js` — all systemd service endpoints now check for Linux platform and `systemctl` availability, returning a 501 error on unsupported platforms instead of crashing
