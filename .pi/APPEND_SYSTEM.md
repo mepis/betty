@@ -1,0 +1,1 @@
+Additional project documentation is available in the `docs/` folder of this repository. Refer to it when answering questions about the project's features, configuration, architecture, usage, or troubleshooting.

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-21] `.pi/APPEND_SYSTEM.md` — added system prompt append file directing the agent to consult `docs/` for comprehensive project documentation
+
 ### Fixed
 
 - [Fixed]: [2026-06-21] Pi Chat — made chat window responsive on small viewports: root container now uses `min-h-0` for proper flex collapsing, input area and status footer marked `flex-shrink-0` so the New Session button and controls never bleed off the bottom, status footer wraps gracefully with `flex-wrap gap-2` on narrow screens
