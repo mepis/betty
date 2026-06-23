@@ -2447,6 +2447,124 @@ app.get('/api/docs/:filename', (req, res) => {
   }
 });
 
+//--- Library endpoints ---
+const LIBRARY_DIR = join(__dirname, '..', '..', 'library');
+
+function slugToTitle(slug) {
+  return slug
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+function extractFrontmatter(content, key) {
+  const match = content.match(new RegExp(`^---\\n.*?${key}:\\s*["'](.*?)["'].*?\\n---`, 's'));
+  return match ? match[1] : null;
+}
+
+function parseTags(content) {
+  const match = content.match(/\*\*Tags:\*\*\s*([\s\S]*?)(?=\n\n|\n\*\*Overview|\n##)/);
+  if (!match) return [];
+  return match[1].split(',').map(t => t.trim()).filter(Boolean);
+}
+
+function parseDate(content) {
+  const match = content.match(/\*\*Research date:\*\*\s*([\d-]+)/);
+  if (match) return match[1];
+  const dateMatch = content.match(/\*\*Date:\*\*\s*([\d-]+)/);
+  return dateMatch ? dateMatch[1] : null;
+}
+
+function parseStatus(content) {
+  const match = content.match(/\*\*Status:\*\*\s*([\s\S]*?)(?=\n\n|\n\*\*Tags|\n##)/);
+  if (!match) return 'Unknown';
+  return match[1].trim().replace(/\n/g, ' ');
+}
+
+function parseSummary(content) {
+  const match = content.match(/\*\*Summary:\*\*\s*([\s\S]*?)(?=\n\*\*Key Findings:|\n\n---|\n\n##|\n\n## RAG|\n\n## Agent|\n\n## Using|\n\n## pi\.dev|\n\n## Opencode|\n\n## Searching|\n\n## llama\.cpp)/);
+  if (!match) return null;
+  return match[1].trim();
+}
+
+app.get('/api/library', (_req, res) => {
+  try {
+    if (!fs.existsSync(LIBRARY_DIR)) {
+      return res.status(404).json({ success: false, error: 'Library directory not found' });
+    }
+    const topicsDir = join(LIBRARY_DIR, 'topics');
+    if (!fs.existsSync(topicsDir)) {
+      return res.json({ success: true, data: [] });
+    }
+    const entries = fs.readdirSync(topicsDir).filter(f => fs.statSync(join(topicsDir, f)).isDirectory());
+    const topics = entries.map(slug => {
+      const indexPath = join(topicsDir, slug, 'index.md');
+      let title = slugToTitle(slug);
+      let date = null;
+      let tags = [];
+      let status = 'Unknown';
+      let summary = null;
+      if (fs.existsSync(indexPath)) {
+        const content = fs.readFileSync(indexPath, 'utf8');
+        // Try to extract title from H1
+        const h1Match = content.match(/^#\s+(.+)$/m);
+        if (h1Match) title = h1Match[1].trim();
+        date = parseDate(content);
+        tags = parseTags(content);
+        status = parseStatus(content);
+        summary = parseSummary(content);
+      }
+      return { slug, title, date, tags, status, summary, hasReport: fs.existsSync(join(topicsDir, slug, 'report.md')) };
+    }).sort((a, b) => {
+      if (a.date && b.date) return b.date.localeCompare(a.date);
+      if (a.date) return -1;
+      if (b.date) return 1;
+      return a.title.localeCompare(b.title);
+    });
+    res.json({ success: true, data: topics });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/library/topic/:slug', (req, res) => {
+  try {
+    const slug = req.params.slug;
+    const topicsDir = join(LIBRARY_DIR, 'topics', slug);
+    if (!fs.existsSync(topicsDir)) {
+      return res.status(404).json({ success: false, error: 'Topic not found' });
+    }
+    const result = { slug, topic: {}, entries: [] };
+    // Read index.md
+    const indexPath = join(topicsDir, 'index.md');
+    if (fs.existsSync(indexPath)) {
+      result.topic.index = fs.readFileSync(indexPath, 'utf8');
+    }
+    // Read report.md
+    const reportPath = join(topicsDir, 'report.md');
+    if (fs.existsSync(reportPath)) {
+      result.topic.report = fs.readFileSync(reportPath, 'utf8');
+    }
+    // Read state.md
+    const statePath = join(topicsDir, 'state.md');
+    if (fs.existsSync(statePath)) {
+      result.topic.state = fs.readFileSync(statePath, 'utf8');
+    }
+    // Read entries/
+    const entriesDir = join(topicsDir, 'entries');
+    if (fs.existsSync(entriesDir)) {
+      const entryFiles = fs.readdirSync(entriesDir).filter(f => f.endsWith('.md')).sort();
+      result.entries = entryFiles.map(f => ({
+        filename: f,
+        content: fs.readFileSync(join(entriesDir, f), 'utf8'),
+      }));
+    }
+    res.json({ success: true, data: result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // ============================================================================
 // Pi Chat Integration
 // ============================================================================

@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-23] `src/frontend/src/views/Library.vue` — new Library view to browse and read research topics from the library, with sidebar navigation, topic detail, report, state, and entry views
+- [Added]: [2026-06-23] `src/backend/api-server.js` — new `GET /api/library` endpoint lists all library topics with extracted metadata (title, date, tags, status, summary); new `GET /api/library/topic/:slug` endpoint returns full topic content (index.md, report.md, state.md, and entries/)
+- [Added]: [2026-06-23] Library navigation item added to sidebar in `src/frontend/src/App.vue` and route registered in `src/frontend/src/router/index.js`
+
+- [Added]: [2026-06-22] `library/topics/llama-cpp-parameters-reference/` — comprehensive analytical report covering all ~200+ llama.cpp parameters across 12 research categories: build config, CPU instruction sets, GPU backends, CLI parameters, sampling, speculative decoding, server deployment, environment variables, deprecated parameters, and presets
+- [Added]: [2026-06-22] `docs/llama-cpp-parameters.md` — comprehensive reference documentation for all llama.cpp build options, CLI parameters, server-specific parameters, environment variables, deprecated parameters, and presets (495 parameter entries across 6 sections)
+
 - [Added]: [2026-06-21] `src/backend/api-server.js` — new `GET /api/models-dir` endpoint returns the configured `MODELS_DIR` path so the frontend can discover the default models directory without prior knowledge
 - [Added]: [2026-06-21] `src/frontend/src/stores/benchmark.js` — new `modelsDir` state and `fetchModelsDir()` action to retrieve and cache the default models directory from the backend; `fetchModels()` now falls back to `modelsDir` when no directory is explicitly provided
 
