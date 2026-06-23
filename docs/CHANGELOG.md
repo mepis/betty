@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- [Added]: [2026-06-23] `src/frontend/src/views/Library.vue` — new Library view to browse and read research topics from the library, with sidebar navigation, topic detail, report, state, and entry views
+- [Added]: [2026-06-23] `src/frontend/src/views/Library.vue` — new Library view to browse and read research topics from the library, with sidebar navigation, topic detail, report, state, and entry views; dynamic index table showing all topics with date, status, tags, and summary preview; auto-refresh every 60s with manual refresh button
 - [Added]: [2026-06-23] `src/backend/api-server.js` — new `GET /api/library` endpoint lists all library topics with extracted metadata (title, date, tags, status, summary); new `GET /api/library/topic/:slug` endpoint returns full topic content (index.md, report.md, state.md, and entries/)
 - [Added]: [2026-06-23] Library navigation item added to sidebar in `src/frontend/src/App.vue` and route registered in `src/frontend/src/router/index.js`
 

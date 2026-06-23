@@ -14,4 +14,5 @@
 - [Optimized llama-server Settings for Qwen3.6-35B-A3B](../topics/optimized-llama-server-settings-qwen36-35b/) — llama-server optimization for MoE models (2026-05-28).
 - [llama.cpp gRPC Server](../topics/llama-cpp-grpc-server/) — gRPC-based inference servers on llama.cpp (2026-05-29).
 - [Searching for and Downloading Models from Huggingface for llama.cpp](../topics/huggingface-models-llama-cpp/) — GGUF model discovery and download (2026-06-17).
+- [llama.cpp Parameters Reference](../topics/llama-cpp-parameters-reference/) — Comprehensive analysis of ~200+ parameters: build config, CLI, server, sampling, speculative decoding, env vars (2026-06-22).
 - [OpenAI Compatible APIs](../topics/openai-compatible-apis/) — OpenAI-compatible API ecosystem including llama.cpp (2026-05-29).

@@ -18,6 +18,7 @@
 | [Opencode.ai Directory Restriction Mechanisms](topics/opencode-ai-directory-restriction/) | 2026-06-04 | Complete | opencode, agent-harness, security, permissions, sandboxing, directory-restriction, filesystem, anomaly |
 | [Opencode Web UI Chat Message Handling](topics/opencode-web-ui-chat-message-handling/) | 2026-06-12 | Complete | opencode, web-ui, chat, message-handling, SolidJS, streaming, virtualization, agent-harness |
 | [Searching for and Downloading Models from Huggingface for llama.cpp](topics/huggingface-models-llama-cpp/) | 2026-06-17 | Complete | huggingface, gguf, llama.cpp, model-download, quantization, hf_transfer, model-management |
+| [llama.cpp Parameters Reference](topics/llama-cpp-parameters-reference/) | 2026-06-22 | Complete | llama.cpp, parameter-reference, sampling, speculative-decoding, server-deployment, build-configuration, CUDA, GPU, inference |
 
 ## Project Documentation
 
@@ -249,3 +250,18 @@ This research covers the complete ecosystem for discovering, evaluating, and dow
 - llama.cpp's model management system (Dec 2025) brings Ollama-style multi-model capabilities via router mode with INI preset files
 - The March 2026 cache migration to `~/.cache/huggingface/hub/` resolved interoperability issues with other Hugging Face tools
 - Ollama natively supports Hugging Face GGUF URLs since Oct 2024 (`ollama run hf.co/user/model:quant`)
+
+## llama.cpp Parameters Reference
+
+**Date:** 2026-06-22
+
+This research provides a comprehensive analysis of all ~200+ parameters in the llama.cpp parameter reference documentation (3,162 lines). The research covers six major categories: Build Configuration (CMake options), Common CLI Parameters (model loading, generation, GPU offloading), Server-Specific Parameters (network, caching, endpoints, router), Sampling Parameters (temperature, top-k, top-p, repetition penalties, DRY, Mirostat), Speculative Decoding Parameters (draft models, n-gram modes), and Environment Variables (112 variables), plus Deprecated/Removed Parameters and Presets (15 presets).
+
+**Key findings:**
+- GPU acceleration is the single biggest performance lever: CUDA with cuBLAS provides 10-36% higher throughput than MMX kernels on Ampere+ GPUs, and CUDA Graphs reduce first-token latency by 20-50%
+- Speculative decoding is mathematically exact: it produces the same distribution as standard sampling with no quality trade-off, only speed trade-off. N-gram-based modes require no second model
+- Sampling order matters: the default sampler pipeline (`penalties → DRY → top-n-sigma → top-k → typical-p → top-p → min-p → XTC → temperature`) applies transformations sequentially
+- KV cache offloading is critical for memory-constrained setups: enabling `--kv-offload` allows fitting larger models on GPUs with limited VRAM by moving the KV cache to CPU RAM
+- Multi-GPU split modes serve different use cases: `layer` (pipelined) works best for inference, `row` (parallelized) for training-style setups, and `tensor` (experimental) for maximum throughput
+- The project has unified its naming: all `LLAMA_*` CMake options have been renamed to `GGML_*` for consistency, and deprecated draft parameters have been replaced with type-specific `--spec-*` names
+- 15 presets auto-download models from the `ggml-org` Hugging Face organization for common use cases (TTS, embeddings, code completion, vision, speculative decoding)

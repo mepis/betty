@@ -26,12 +26,16 @@ Cross-reference of all library topics organized by tag.
 
 | Tag | Topics |
 |-----|--------|
-| `llama.cpp` | [CUDA Flags Performance](topics/llama-cuda-flags-performance/), [gRPC Server](topics/llama-cpp-grpc-server/), [Qwen3.6 Settings](topics/optimized-llama-server-settings-qwen36-35b/), [HF Models](topics/huggingface-models-llama-cpp/) |
+| `llama.cpp` | [CUDA Flags Performance](topics/llama-cuda-flags-performance/), [gRPC Server](topics/llama-cpp-grpc-server/), [Qwen3.6 Settings](topics/optimized-llama-server-settings-qwen36-35b/), [HF Models](topics/huggingface-models-llama-cpp/), [Parameters Reference](topics/llama-cpp-parameters-reference/) |
 | `CUDA` | [CUDA Flags Performance](topics/llama-cuda-flags-performance/) |
 | `GPU` | [CUDA Flags Performance](topics/llama-cuda-flags-performance/), [Qwen3.6 Settings](topics/optimized-llama-server-settings-qwen36-35b/) |
 | `ggml` | [CUDA Flags Performance](topics/llama-cuda-flags-performance/) |
-| `gguf` | [HF Models](topics/huggingface-models-llama-cpp/) |
-| `quantization` | [Qwen3.6 Settings](topics/optimized-llama-server-settings-qwen36-35b/), [HF Models](topics/huggingface-models-llama-cpp/) |
+| `gguf` | [HF Models](topics/huggingface-models-llama-cpp/), [Parameters Reference](topics/llama-cpp-parameters-reference/) |
+| `quantization` | [Qwen3.6 Settings](topics/optimized-llama-server-settings-qwen36-35b/), [HF Models](topics/huggingface-models-llama-cpp/), [Parameters Reference](topics/llama-cpp-parameters-reference/) |
+| `sampling` | [Parameters Reference](topics/llama-cpp-parameters-reference/) |
+| `speculative-decoding` | [Parameters Reference](topics/llama-cpp-parameters-reference/) |
+| `server-deployment` | [Parameters Reference](topics/llama-cpp-parameters-reference/) |
+| `parameter-reference` | [Parameters Reference](topics/llama-cpp-parameters-reference/) |
 
 ## Agent Systems
 
@@ -50,7 +54,7 @@ Cross-reference of all library topics organized by tag.
 | `rag` | [RAG Systems](topics/rag-systems/) |
 | `embeddings` | [Qdrant](topics/qdrant/), [RAG Systems](topics/rag-systems/) |
 | `grpc` | [gRPC Server](topics/llama-cpp-grpc-server/) |
-| `inference` | [gRPC Server](topics/llama-cpp-grpc-server/) |
+| `inference` | [gRPC Server](topics/llama-cpp-grpc-server/), [Parameters Reference](topics/llama-cpp-parameters-reference/) |
 
 ## Frameworks & Languages
 
