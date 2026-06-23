@@ -7,7 +7,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - [Added]: [2026-06-23] `src/frontend/src/views/Library.vue` — new Library view to browse and read research topics from the library, with sidebar navigation, topic detail, report, state, and entry views; dynamic index table showing all topics with date, status, tags, and summary preview; auto-refresh every 60s with manual refresh button
-- [Added]: [2026-06-23] `src/backend/api-server.js` — new `GET /api/library` endpoint lists all library topics with extracted metadata (title, date, tags, status, summary); new `GET /api/library/topic/:slug` endpoint returns full topic content (index.md, report.md, state.md, and entries/)
+- [Added]: [2026-06-23] `src/frontend/src/views/Docs.vue` — dynamic index table showing all docs with title, description, and tags; auto-refresh every 60s with manual refresh button; matches Library view pattern
+- [Added]: [2026-06-23] `src/backend/api-server.js` — `GET /api/docs` now extracts frontmatter tags and description from each doc; new `GET /api/library` endpoint lists all library topics with extracted metadata (title, date, tags, status, summary); new `GET /api/library/topic/:slug` endpoint returns full topic content (index.md, report.md, state.md, and entries/)
 - [Added]: [2026-06-23] Library navigation item added to sidebar in `src/frontend/src/App.vue` and route registered in `src/frontend/src/router/index.js`
 
 - [Added]: [2026-06-22] `library/topics/llama-cpp-parameters-reference/` — comprehensive analytical report covering all ~200+ llama.cpp parameters across 12 research categories: build config, CPU instruction sets, GPU backends, CLI parameters, sampling, speculative decoding, server deployment, environment variables, deprecated parameters, and presets

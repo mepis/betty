@@ -2409,6 +2409,40 @@ function resolveDocRef(content, filename) {
   });
 }
 
+function parseFrontmatterTags(content) {
+  const match = content.match(/^---\n[\s\S]*?tags:\s*\[([^\]]+)\]/m);
+  if (!match) return [];
+  return match[1].split(',').map(t => t.trim()).filter(Boolean);
+}
+
+function extractDescription(content) {
+  // Get the first non-empty paragraph after the title and frontmatter,
+  // stopping at headings, code blocks, or table of contents
+  const lines = content.split('\n');
+  let inFrontmatter = false;
+  let foundTitle = false;
+  let inTOC = false;
+  const paragraphs = [];
+  for (const line of lines) {
+    if (line === '---') { inFrontmatter = !inFrontmatter; continue; }
+    if (inFrontmatter) continue;
+    if (!foundTitle && line.startsWith('# ')) { foundTitle = true; continue; }
+    if (foundTitle) {
+      // Stop at headings (h2+)
+      if (/^#{2,}\s/.test(line)) break;
+      // Detect table of contents
+      if (/^- \[/.test(line.trim()) || /^## Table/.test(line)) { inTOC = true; continue; }
+      if (inTOC && /^- \[/.test(line.trim())) continue;
+      if (inTOC && line.trim()) { inTOC = false; }
+      // Skip empty lines and code fences
+      if (!line.trim() || line.startsWith('```')) continue;
+      paragraphs.push(line.trim());
+      if (paragraphs.length >= 1) break; // Just the first paragraph
+    }
+  }
+  return paragraphs.join(' ').substring(0, 200);
+}
+
 app.get('/api/docs', (_req, res) => {
   try {
     if (!fs.existsSync(DOCS_DIR)) {
@@ -2425,7 +2459,10 @@ app.get('/api/docs', (_req, res) => {
       .map(f => {
         const name = f.replace(/\.md$/, '');
         const title = name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-        return { name, filename: f, title };
+        const content = fs.readFileSync(join(DOCS_DIR, f), 'utf8');
+        const tags = parseFrontmatterTags(content);
+        const description = extractDescription(content);
+        return { name, filename: f, title, tags, description };
       });
     res.json({ success: true, data: files });
   } catch (err) {
