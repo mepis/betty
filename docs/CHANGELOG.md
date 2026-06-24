@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-23] `src/frontend/src/components/MemoryBar.vue` — reusable memory usage bar component with color-coded progress (green <70%, yellow 70-90%, red >90%)
+- [Added]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — real-time memory usage bar in status panel; polls `systemMemory` from benchmark store every 5 seconds with color-coded progress bar
 - [Added]: [2026-06-23] `src/frontend/src/views/PiChat.vue` — real-time memory usage bar in status footer; polls `systemMemory` from benchmark store every 3 seconds with color-coded progress bar (green <70%, yellow 70-90%, red >90%)
 
 ### Changed

@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useBenchmarkStore } from '@/stores/benchmark'
 import SysInfoModal from '@/components/SysInfoModal.vue'
+import MemoryBar from '@/components/MemoryBar.vue'
 
 const store = useBenchmarkStore()
 const logContainer = ref(null)
@@ -50,6 +51,7 @@ onMounted(async () => {
   await store.fetchResults()
   await store.fetchServiceStatus()
   await store.fetchLaunchCommand()
+  await store.fetchSystemStatus()
   store.connectSSE()
 
   // Set default report filename: date_time_model
@@ -59,9 +61,10 @@ onMounted(async () => {
   const modelName = (store.configs?.model || 'unknown').replace(/[^a-zA-Z0-9_-]/g, '_')
   reportName.value = `${dateStr}_${timeStr}_${modelName}`
 
-  // Poll for status updates as backup
+  // Poll for status and system updates as backup
   pollingTimer.value = setInterval(async () => {
     await store.fetchStatus()
+    await store.fetchSystemStatus()
   }, 5000)
 
 })
@@ -219,6 +222,9 @@ function statusBg(status) {
             <div class="stat-label">Total Runs</div>
             <div class="stat-value text-text-primary">{{ store.totalRuns || '—' }}</div>
           </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-border">
+          <MemoryBar :store="store" />
         </div>
       </div>
 
