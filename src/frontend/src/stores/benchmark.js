@@ -352,7 +352,10 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
       this._connectingSSE = true
 
-      const eventSource = new EventSource(`${API_BASE}/api/stream`)
+      // Include auth token in SSE URL (EventSource doesn't support custom headers)
+      const token = localStorage.getItem('betty-token')
+      const tokenParam = token ? `?token=${encodeURIComponent(token)}` : ''
+      const eventSource = new EventSource(`${API_BASE}/api/stream${tokenParam}`)
       let reconnectTimer = null
       let lastStatusReceived = Date.now()
 

@@ -6,6 +6,20 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-24] User authentication and authorization with role-based access control (RBAC)
+- [Added]: [2026-06-24] `src/backend/auth/user-store.js` — File-based user storage with CRUD operations; stores users in `~/.betty/users.json`
+- [Added]: [2026-06-24] `src/backend/auth/middleware.js` — JWT authentication middleware (`authenticate`, `authorize`, `optionalAuth`) supporting Bearer tokens and SSE query param tokens
+- [Added]: [2026-06-24] `src/backend/auth/routes.js` — Auth API endpoints: `POST /api/auth/login`, `POST /api/auth/register`, `GET /api/auth/me`, `GET/PUT/DELETE /api/auth/users/:username`
+- [Added]: [2026-06-24] `src/frontend/src/stores/auth.js` — Pinia auth store with login, register, logout, session restoration, and axios 401 interceptor
+- [Added]: [2026-06-24] `src/frontend/src/views/Login.vue` — Login/register page with form validation and role selection
+- [Added]: [2026-06-24] `src/frontend/src/router/index.js` — Route guards for authentication and role-based access; redirects unauthenticated users to login
+- [Added]: [2026-06-24] `src/frontend/src/App.vue` — User info display in header, conditional sidebar navigation based on role, logout button
+- [Added]: [2026-06-24] Three roles: `admin` (full access), `operator` (run benchmarks, manage reports/profiles), `viewer` (read-only)
+- [Added]: [2026-06-24] First-user auto-promotion: the first registered user becomes admin automatically
+- [Added]: [2026-06-24] Default admin user created on first startup (username: `admin`, password: `admin` with warning)
+- [Added]: [2026-06-24] `BETTY_AUTH_ENABLED` env var to enable/disable authentication (default: true)
+- [Added]: [2026-06-24] `JWT_SECRET` auto-generation and persistence in `~/.betty/jwt-secret`
+- [Added]: [2026-06-24] SSE connections include JWT token via query parameter for authentication
 - [Added]: [2026-06-24] `src/backend/api-server.js` — new `DELETE /api/hf/download/active/:modelId` endpoint to cancel in-progress HuggingFace model downloads; new `GET /api/hf/active-downloads` endpoint to list active downloads with progress
 - [Added]: [2026-06-24] `src/backend/api-server.js` — AbortController-based download cancellation for HuggingFace model downloads, with cleanup of partial files and stream destruction
 - [Added]: [2026-06-24] `src/frontend/src/stores/benchmark.js` — `hfActiveDownloads` state, `fetchActiveDownloads()`, and `cancelActiveDownload()` methods
@@ -19,6 +33,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-24] `src/backend/api-server.js` — added role-based access control to all API routes; admin-only routes (build, service, git update, kill-port), operator+ routes (run, stop, configs PUT, profiles, reports), and viewer+ routes (status, configs GET, profiles GET, reports GET, models, HF, docs, logs, system-status, pi chat SSE)
+- [Changed]: [2026-06-24] `src/frontend/src/stores/benchmark.js` — SSE connections now include JWT token via query parameter for authentication
+- [Changed]: [2026-06-24] `src/frontend/src/stores/pi-chat.js` — SSE connections now include JWT token via query parameter for authentication
+- [Changed]: [2026-06-24] `src/frontend/src/main.js` — added axios 401 interceptor for automatic redirect to login on token expiration; added auth session restoration on app startup
+- [Changed]: [2026-06-24] `package.json` — added `bcrypt` and `jsonwebtoken` dependencies
+- [Changed]: [2026-06-24] `.env.example` — added authentication configuration variables (`BETTY_AUTH_ENABLED`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `ADMIN_PASSWORD`)
 - [Changed]: [2026-06-24] `src/frontend/src/App.vue` — sidebar navigation consolidated from 7 items (Chat, Benchmark, Models, Settings, Reports, Docs, Logs) to 3 items (Chat, Docs, Admin); replaced individual nav items with single Admin entry; removed Sys Info sidebar button and header conditional logic
 - [Changed]: [2026-06-24] `src/frontend/src/router/index.js` — added `/admin` route for the new Admin page
 - [Changed]: [2026-06-24] `src/frontend/src/views/PiChat.vue` — removed inline memory usage bar and related helper functions (`formatMemoryGB`, `memoryBarColor`)

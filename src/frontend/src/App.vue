@@ -1,10 +1,13 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useBenchmarkStore } from '@/stores/benchmark'
+import { useAuthStore } from '@/stores/auth'
 
 const store = useBenchmarkStore()
+const auth = useAuthStore()
 const route = useRoute()
+const router = useRouter()
 const sidebarOpen = ref(true)
 const gitUpdateTimer = ref(null)
 const updating = ref(false)
@@ -12,8 +15,32 @@ const updating = ref(false)
 const navItems = [
   { name: 'Chat', path: '/', icon: 'M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z' },
   { name: 'Docs', path: '/docs', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-  { name: 'Admin', path: '/admin', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+  { name: 'Admin', path: '/admin', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z', requiresRole: 'admin' },
 ]
+
+// Filter nav items based on user role
+const visibleNavItems = computed(() => {
+  return navItems.filter(item => {
+    if (!item.requiresRole) return true
+    const roleHierarchy = { admin: 3, operator: 2, viewer: 1 }
+    return (roleHierarchy[auth.user?.role] || 0) >= (roleHierarchy[item.requiresRole] || 0)
+  })
+})
+
+const roleLabel = computed(() => {
+  const labels = { admin: 'Admin', operator: 'Operator', viewer: 'Viewer' }
+  return labels[auth.user?.role] || ''
+})
+
+const roleColor = computed(() => {
+  const colors = { admin: 'text-warning', operator: 'text-info', viewer: 'text-text-muted' }
+  return colors[auth.user?.role] || 'text-text-muted'
+})
+
+async function handleLogout() {
+  auth.logout()
+  router.push('/login')
+}
 
 const activeNav = computed(() => route.path)
 
@@ -171,6 +198,25 @@ async function handleUpdate() {
             <h1 class="text-lg font-semibold tracking-tight">{{ route.meta.title || navItems.find(n => n.path === route.path)?.name || 'Dashboard' }}</h1>
           </div>
           <div class="flex items-center gap-3">
+            <!-- User info & logout -->
+            <div v-if="auth.isLoggedIn" class="flex items-center gap-2">
+              <div class="flex items-center gap-1.5 text-xs">
+                <svg class="w-3.5 h-3.5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+                <span class="text-text-secondary">{{ auth.user?.username }}</span>
+                <span :class="roleColor" class="font-medium">[{{ roleLabel }}]</span>
+              </div>
+              <button
+                @click="handleLogout"
+                class="flex items-center gap-1 px-2 py-1 rounded text-xs text-text-muted hover:text-error hover:bg-error-subtle transition-all duration-200"
+                title="Logout"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                </svg>
+              </button>
+            </div>
             <!-- Status badges -->
             <div v-if="store.liveResults.length > 0" class="flex items-center gap-3 text-xs">
               <div class="flex items-center gap-1.5 text-text-secondary">

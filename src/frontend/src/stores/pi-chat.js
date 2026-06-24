@@ -175,7 +175,10 @@ export const usePiChatStore = defineStore('piChat', {
       if (!this.sessionId) return
       if (this._sse) this.disconnectSSE()
 
-      const eventSource = new EventSource(`${API_BASE}/api/pi/session/${this.sessionId}/stream`)
+      // Include auth token in SSE URL (EventSource doesn't support custom headers)
+      const token = localStorage.getItem('betty-token')
+      const tokenParam = token ? `?token=${encodeURIComponent(token)}` : ''
+      const eventSource = new EventSource(`${API_BASE}/api/pi/session/${this.sessionId}/stream${tokenParam}`)
 
       eventSource.addEventListener('pi-status', (e) => {
         const data = JSON.parse(e.data)

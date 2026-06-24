@@ -20,6 +20,7 @@
 | [Searching for and Downloading Models from Huggingface for llama.cpp](topics/huggingface-models-llama-cpp/) | 2026-06-17 | Complete | huggingface, gguf, llama.cpp, model-download, quantization, hf_transfer, model-management |
 | [llama.cpp Parameters Reference](topics/llama-cpp-parameters-reference/) | 2026-06-22 | Complete | llama.cpp, parameter-reference, sampling, speculative-decoding, server-deployment, build-configuration, CUDA, GPU, inference |
 | [Nvidia 3060 12GB Memory Overclocking Results in Linux](topics/nvidia-3060-memory-overclocking-linux/) | 2026-06-23 | Complete | nvidia-3060, memory-overclocking, linux, gpu-overclocking, LLM-inference, NVML, nvidia-smi, GDDR6, bandwidth |
+| [Bug Tracing and Discovery Methods](topics/bug-tracing-and-discovery-methods/) | 2026-06-24 | Complete | bug-detection, debugging, static-analysis, dynamic-analysis, fuzzing, ai-debugging, automated-program-repair, code-review, SAST, testing, root-cause-analysis |
 
 ## Project Documentation
 
@@ -279,3 +280,17 @@ This research investigates memory overclocking on the NVIDIA GeForce RTX 3060 12
 - Energy efficiency improvement of 12.5% TPM/W with combined memory and core overclocking
 - Linux provides excellent overclocking tooling: NVML-based tools, CLI tools, GUI apps, and kernel-level control
 - The RTX 3060 12GB is power-limited at stock settings (170W), max configurable 187W
+
+## Bug Tracing and Discovery Methods
+
+**Date:** 2026-06-24
+**Status:** Complete
+
+This research provides a comprehensive analysis of the methods, tools, and emerging paradigms used to discover, trace, and resolve bugs in software systems. The field is undergoing a fundamental transformation — traditional rule-based detection tools are being augmented by AI-powered systems that reason about code context, reduce false positives dramatically, and autonomously repair defects.
+
+**Key findings:**
+- No single method achieves comprehensive bug detection; layered defense (static analysis + fuzzing + code review + testing) is essential
+- AI tools achieve 42-48% bug detection accuracy on real-world PRs and eliminate 94-98% of false positives from static analysis
+- Fuzzing remains irreplaceable for runtime bugs; recent advances include AI-driven fuzzing and 66× throughput improvement
+- Autonomous repair agents (RepairAgent, ICSE 2025) fixed 164 bugs on Defects4J autonomously
+- Professional debugging involves 12+ distinct strategies including forward/backward reasoning, bisection, and breakpoints

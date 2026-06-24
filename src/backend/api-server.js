@@ -7,7 +7,12 @@ import { Transform, Readable } from "stream";
 import os from "os";
 import { join, dirname, basename, isAbsolute, resolve, relative } from "path";
 import { fileURLToPath } from "url";
+import crypto from "crypto";
 import { createAgentSession, AuthStorage, ModelRegistry, SessionManager, getAgentDir, loadSkills } from "@earendil-works/pi-coding-agent";
+import { authenticate, authorize, optionalAuth } from "./auth/middleware.js";
+import { authRouter } from "./auth/routes.js";
+import { ensureUsersFile, hasUsers, getUserCount } from "./auth/user-store.js";
+import bcrypt from "bcrypt";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -44,6 +49,63 @@ const MODELS_DIR = join(BETTY_DIR, "models");
 
 // Allowed CORS origins (comma-separated or * for all)
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
+
+//--- Authentication configuration ---
+const AUTH_ENABLED = process.env.BETTY_AUTH_ENABLED !== "false";
+const JWT_SECRET = process.env.JWT_SECRET || generateJwtSecret();
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "24h";
+
+// Make JWT_SECRET available to auth routes module
+process.env.JWT_SECRET = JWT_SECRET;
+process.env.JWT_EXPIRES_IN = JWT_EXPIRES_IN;
+
+function generateJwtSecret() {
+  // Try to load persisted secret first
+  const secretFile = join(BETTY_DIR, "jwt-secret");
+  try {
+    if (fs.existsSync(secretFile)) {
+      const persisted = fs.readFileSync(secretFile, "utf-8").trim();
+      if (persisted.length >= 32) return persisted;
+    }
+  } catch (err) {
+    console.error(`[auth] Failed to load JWT secret: ${err.message}`);
+  }
+  // Generate new secret
+  const newSecret = crypto.randomBytes(48).toString("hex");
+  try {
+    fs.writeFileSync(secretFile, newSecret);
+    console.log(`[auth] Generated new JWT secret`);
+  } catch (err) {
+    console.error(`[auth] Failed to persist JWT secret: ${err.message}`);
+  }
+  return newSecret;
+}
+
+// Initialize auth: create default admin user if no users exist
+if (AUTH_ENABLED) {
+  try {
+    ensureUsersFile();
+    if (!hasUsers()) {
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin";
+      const passwordHash = bcrypt.hashSync(adminPassword, 10);
+      const users = [{
+        id: crypto.randomUUID(),
+        username: "admin",
+        passwordHash,
+        role: "admin",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      }];
+      fs.writeFileSync(join(BETTY_DIR, "users.json"), JSON.stringify(users, null, 2));
+      console.log(`[auth] Created default admin user (password: ${adminPassword})`);
+      console.log(`[auth] WARNING: Change the default password immediately!`);
+    } else {
+      console.log(`[auth] Authentication enabled, ${getUserCount()} user(s) configured`);
+    }
+  } catch (err) {
+    console.error(`[auth] Failed to initialize auth: ${err.message}`);
+  }
+}
 
 // Ensure required directories exist on startup
 function ensureDirectory(dir, label) {
@@ -315,6 +377,26 @@ if (fs.existsSync(FRONTEND_DIR)) {
   console.warn(`  The API will still work, but the frontend UI will not be available.`);
 }
 
+//--- Authentication routes (always public) ---
+app.use("/api/auth", authRouter);
+
+//--- Authentication middleware ---
+// Apply auth to all /api/* routes except auth routes, health, docs, and pi/skills
+if (AUTH_ENABLED) {
+  app.use("/api", (req, res, next) => {
+    // Exempt: login/register (public auth routes), health, docs, pi/skills
+    const exempt = [
+      "/api/auth/login",
+      "/api/auth/register",
+      "/api/health",
+      "/api/docs",
+      "/api/pi/skills",
+    ];
+    if (exempt.some((p) => req.path === p || req.path.startsWith(p + "/"))) return next();
+    authenticate(req, res, next);
+  });
+}
+
 //--- Config endpoints ---
 app.get("/api/configs", (_req, res) => {
   try {
@@ -325,7 +407,7 @@ app.get("/api/configs", (_req, res) => {
   }
 });
 
-app.put("/api/configs", (_req, res) => {
+app.put("/api/configs", authorize("admin"), (_req, res) => {
   try {
     const configs = _req.body;
     fs.writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
@@ -383,7 +465,7 @@ app.get("/api/profile/:name", (req, res) => {
   }
 });
 
-app.post("/api/profile", (req, res) => {
+app.post("/api/profile", authorize("admin", "operator"), (req, res) => {
   try {
     const { name, data } = req.body;
     if (!name || !data) {
@@ -400,7 +482,7 @@ app.post("/api/profile", (req, res) => {
   }
 });
 
-app.delete("/api/profile/:name", (req, res) => {
+app.delete("/api/profile/:name", authorize("admin"), (req, res) => {
   try {
     const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
     if (!fs.existsSync(filePath)) {
@@ -413,7 +495,7 @@ app.delete("/api/profile/:name", (req, res) => {
   }
 });
 
-app.post("/api/profile/:name/load", (req, res) => {
+app.post("/api/profile/:name/load", authorize("admin", "operator"), (req, res) => {
   try {
     const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
     if (!fs.existsSync(filePath)) {
@@ -500,7 +582,7 @@ function broadcast(event, data) {
 }
 
 //--- Run benchmark endpoint ---
-app.post("/api/run", (req, res) => {
+app.post("/api/run", authorize("admin", "operator"), (req, res) => {
   if (benchmarkStatus !== "idle" && benchmarkStatus !== "error" && benchmarkStatus !== "stopped") {
     return res.status(409).json({
       success: false,
@@ -795,7 +877,7 @@ function processStderrChunk(text) {
 }
 
 //--- Stop benchmark endpoint ---
-app.post("/api/stop", (_req, res) => {
+app.post("/api/stop", authorize("admin", "operator"), (_req, res) => {
   if (!benchmarkProcess) {
     return res.json({ success: true, message: "No benchmark running" });
   }
@@ -847,7 +929,7 @@ app.get("/api/report/:name", (req, res) => {
   }
 });
 
-app.post("/api/report", (req, res) => {
+app.post("/api/report", authorize("admin", "operator"), (req, res) => {
   try {
     const { name, data } = req.body;
     if (!name || !data) {
@@ -864,7 +946,7 @@ app.post("/api/report", (req, res) => {
   }
 });
 
-app.delete("/api/report/:name", (req, res) => {
+app.delete("/api/report/:name", authorize("admin"), (req, res) => {
   try {
     const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
     if (!fs.existsSync(filePath)) {
@@ -1138,7 +1220,7 @@ function extractConfigsPerRun(liveResults, configs) {
 }
 
 //--- Save current results as report ---
-app.post("/api/save-report", (req, res) => {
+app.post("/api/save-report", authorize("admin", "operator"), (req, res) => {
   try {
     const { name } = req.body;
 
@@ -1278,7 +1360,7 @@ function commandExists(cmd) {
   catch { return false; }
 }
 
-app.post("/api/service/start", (_req, res) => {
+app.post("/api/service/start", authorize("admin"), (_req, res) => {
   const notSupported = requireSystemd(res);
   if (notSupported) return;
   try {
@@ -1289,7 +1371,7 @@ app.post("/api/service/start", (_req, res) => {
   }
 });
 
-app.post("/api/service/stop", (_req, res) => {
+app.post("/api/service/stop", authorize("admin"), (_req, res) => {
   const notSupported = requireSystemd(res);
   if (notSupported) return;
   try {
@@ -1379,7 +1461,7 @@ app.get("/api/service/config", (_req, res) => {
 });
 
 //--- Update systemd service configuration ---
-app.post("/api/service/update", (req, res) => {
+app.post("/api/service/update", authorize("admin"), (req, res) => {
   const notSupported = requireSystemd(res);
   if (notSupported) return;
   try {
@@ -1469,7 +1551,7 @@ app.post("/api/service/update", (req, res) => {
 });
 
 //--- Install a systemd service from a report's launch command ---
-app.post("/api/service/install", (req, res) => {
+app.post("/api/service/install", authorize("admin"), (req, res) => {
   const notSupported = requireSystemd(res);
   if (notSupported) return;
   try {
@@ -1609,7 +1691,7 @@ ${serviceContent}SVCEOF`);
 });
 
 //--- Kill processes on llama_port ---
-app.post("/api/kill-port", (req, res) => {
+app.post("/api/kill-port", authorize("admin"), (req, res) => {
   try {
     const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
     const port = configs.llama_port || 11434;
@@ -1848,7 +1930,7 @@ app.get("/api/hf/model/:id/files", async (req, res) => {
 });
 
 // Download a model file from HuggingFace with progress streaming
-app.post("/api/hf/download", async (req, res) => {
+app.post("/api/hf/download", authorize("admin", "operator"), async (req, res) => {
   try {
     const { modelId, filename, targetDir } = req.body;
 
@@ -2082,7 +2164,7 @@ app.get("/api/hf/active-downloads", (req, res) => {
 });
 
 // Cancel an active download
-app.delete("/api/hf/download/active/:modelId", (req, res) => {
+app.delete("/api/hf/download/active/:modelId", authorize("admin", "operator"), (req, res) => {
   const modelId = req.params.modelId;
   const download = hfDownloads.get(modelId);
   if (!download || download.status !== "downloading") {
@@ -2143,7 +2225,7 @@ app.get("/api/hf/downloads", (req, res) => {
 });
 
 // Delete a downloaded HF model
-app.delete("/api/hf/download/:modelId", (req, res) => {
+app.delete("/api/hf/download/:modelId", authorize("admin", "operator"), (req, res) => {
   try {
     const modelId = req.params.modelId;
     const modelDir = join(MODELS_DIR, modelId);
@@ -2160,7 +2242,7 @@ app.delete("/api/hf/download/:modelId", (req, res) => {
 });
 
 //--- Delete llama.cpp build directory ---
-app.delete("/api/build/delete", (req, res) => {
+app.delete("/api/build/delete", authorize("admin"), (req, res) => {
   try {
     const buildDir = join(BENCHMARK_DIR, "llama.cpp", "build");
     if (fs.existsSync(buildDir)) {
@@ -2175,7 +2257,7 @@ app.delete("/api/build/delete", (req, res) => {
 });
 
 //--- Delete llama.cpp repository ---
-app.delete("/api/build/llama/delete", (req, res) => {
+app.delete("/api/build/llama/delete", authorize("admin"), (req, res) => {
   try {
     const llamaDir = join(BENCHMARK_DIR, "llama.cpp");
     if (fs.existsSync(llamaDir)) {
@@ -2190,7 +2272,7 @@ app.delete("/api/build/llama/delete", (req, res) => {
 });
 
 //--- Build llama.cpp endpoint ---
-app.post("/api/build", async (req, res) => {
+app.post("/api/build", authorize("admin"), async (req, res) => {
   if (buildStatus !== "idle") {
     return res.status(409).json({
       success: false,
@@ -2297,7 +2379,7 @@ app.post("/api/build", async (req, res) => {
 });
 
 //--- Clone repository endpoint ---
-app.post("/api/clone", async (req, res) => {
+app.post("/api/clone", authorize("admin"), async (req, res) => {
   try {
     const { url, branch, dir } = req.body;
 
@@ -2405,7 +2487,7 @@ app.get("/api/git/update-status", (_req, res) => {
 });
 
 //--- Git update (pull + restart service) endpoint ---
-app.post("/api/git/update", async (_req, res) => {
+app.post("/api/git/update", authorize("admin"), async (_req, res) => {
   try {
     // Check if the service exists and is enabled
     let isServiceEnabled;
@@ -2460,7 +2542,7 @@ app.post("/api/git/update", async (_req, res) => {
 });
 
 //--- Run update script endpoint ---
-app.post("/api/update", (_req, res) => {
+app.post("/api/update", authorize("admin"), (_req, res) => {
   try {
     const scriptPath = join(__dirname, '..', '..', 'scripts', 'update.sh');
     const output = execSync(`/bin/bash ${scriptPath}`, { encoding: 'utf8' });
@@ -2697,7 +2779,7 @@ setInterval(() => {
 }, PI_SESSION_CLEANUP_INTERVAL);
 
 // POST /api/pi/session — create a new agent session
-app.post("/api/pi/session", async (req, res) => {
+app.post("/api/pi/session", authorize("admin", "operator"), async (req, res) => {
   try {
     const sessionId = generateSessionId();
     const { session } = await createAgentSession({
@@ -2780,7 +2862,7 @@ app.get("/api/pi/session/:id/stream", (req, res) => {
 });
 
 // POST /api/pi/session/:id/prompt — send a prompt
-app.post("/api/pi/session/:id/prompt", async (req, res) => {
+app.post("/api/pi/session/:id/prompt", authorize("admin", "operator"), async (req, res) => {
   const sessionId = req.params.id;
   const entry = piSessions.get(sessionId);
   if (!entry) {
@@ -2803,7 +2885,7 @@ app.post("/api/pi/session/:id/prompt", async (req, res) => {
 });
 
 // POST /api/pi/session/:id/abort — abort current operation
-app.post("/api/pi/session/:id/abort", (req, res) => {
+app.post("/api/pi/session/:id/abort", authorize("admin", "operator"), (req, res) => {
   const sessionId = req.params.id;
   const entry = piSessions.get(sessionId);
   if (!entry) {
@@ -2820,7 +2902,7 @@ app.post("/api/pi/session/:id/abort", (req, res) => {
 });
 
 // DELETE /api/pi/session/:id — dispose session
-app.delete("/api/pi/session/:id", (req, res) => {
+app.delete("/api/pi/session/:id", authorize("admin"), (req, res) => {
   const sessionId = req.params.id;
   const entry = piSessions.get(sessionId);
   if (!entry) {
