@@ -19,6 +19,7 @@
 | [Opencode Web UI Chat Message Handling](topics/opencode-web-ui-chat-message-handling/) | 2026-06-12 | Complete | opencode, web-ui, chat, message-handling, SolidJS, streaming, virtualization, agent-harness |
 | [Searching for and Downloading Models from Huggingface for llama.cpp](topics/huggingface-models-llama-cpp/) | 2026-06-17 | Complete | huggingface, gguf, llama.cpp, model-download, quantization, hf_transfer, model-management |
 | [llama.cpp Parameters Reference](topics/llama-cpp-parameters-reference/) | 2026-06-22 | Complete | llama.cpp, parameter-reference, sampling, speculative-decoding, server-deployment, build-configuration, CUDA, GPU, inference |
+| [Nvidia 3060 12GB Memory Overclocking Results in Linux](topics/nvidia-3060-memory-overclocking-linux/) | 2026-06-23 | Complete | nvidia-3060, memory-overclocking, linux, gpu-overclocking, LLM-inference, NVML, nvidia-smi, GDDR6, bandwidth |
 
 ## Project Documentation
 
@@ -265,3 +266,16 @@ This research provides a comprehensive analysis of all ~200+ parameters in the l
 - Multi-GPU split modes serve different use cases: `layer` (pipelined) works best for inference, `row` (parallelized) for training-style setups, and `tensor` (experimental) for maximum throughput
 - The project has unified its naming: all `LLAMA_*` CMake options have been renamed to `GGML_*` for consistency, and deprecated draft parameters have been replaced with type-specific `--spec-*` names
 - 15 presets auto-download models from the `ggml-org` Hugging Face organization for common use cases (TTS, embeddings, code completion, vision, speculative decoding)
+
+## Nvidia 3060 12GB Memory Overclocking Results in Linux
+
+**Date:** 2026-06-23
+
+This research investigates memory overclocking on the NVIDIA GeForce RTX 3060 12GB under Linux, with focus on measurable performance gains for local LLM inference workloads. The RTX 3060 12GB is one of the most popular consumer GPUs for local LLM inference due to its 12GB VRAM, 360 GB/s memory bandwidth, and sub-$250 price point.
+
+**Key findings:**
+- Memory overclocking yields +800 to +1,400 MHz offsets (10–18.6% memory speed increase), translating to 384–427 GB/s effective bandwidth vs. stock 360 GB/s
+- LLM inference gains of 5–15% token-per-second from memory overclocking
+- Energy efficiency improvement of 12.5% TPM/W with combined memory and core overclocking
+- Linux provides excellent overclocking tooling: NVML-based tools, CLI tools, GUI apps, and kernel-level control
+- The RTX 3060 12GB is power-limited at stock settings (170W), max configurable 187W
