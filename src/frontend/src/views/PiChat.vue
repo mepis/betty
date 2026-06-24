@@ -248,6 +248,13 @@ const messagesRef = ref(null)
 const textareaRef = ref(null)
 const scrollLock = ref(false)
 
+function onToolCallRef(el, tool) {
+  // Set initial open state from tool.expanded (browser defaults to closed)
+  if (el && el.open !== tool.expanded) {
+    el.open = tool.expanded
+  }
+}
+
 const allMessages = computed(() => {
   store.tick  // force re-evaluation on nested mutations (content, thinking, toolCalls)
   const msgs = [...store.messages]
@@ -344,6 +351,14 @@ function toggleToolCall(toolCall) {
   toolCall.expanded = !toolCall.expanded
 }
 
+function handleToolToggle(event, tool) {
+  // @toggle fires before the browser applies the change.
+  // Use setTimeout to read the new open state after the browser updates it.
+  setTimeout(() => {
+    tool.expanded = event.target.open
+  }, 0)
+}
+
 async function handleNewSession() {
   // Dispose the old server session before creating a new one
   if (store.sessionId) {
@@ -413,7 +428,7 @@ function isLastAssistant(msg) {
             <details
               v-if="msg.thinking"
               class="group"
-              :open="false"
+              :open="!isLastAssistant(msg)"
             >
               <summary class="flex items-center gap-2 cursor-pointer text-xs text-text-muted hover:text-text-secondary transition-colors select-none">
                 <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -428,7 +443,11 @@ function isLastAssistant(msg) {
 
             <!-- Tool calls -->
             <template v-for="tool in msg.toolCalls" :key="tool.id">
-              <details class="group" :open="tool.expanded">
+              <details
+                class="group"
+                :ref="(el) => onToolCallRef(el, tool)"
+                @toggle="handleToolToggle($event, tool)"
+              >
                 <summary class="flex items-center gap-2 cursor-pointer text-xs text-text-muted hover:text-text-secondary transition-colors select-none">
                   <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

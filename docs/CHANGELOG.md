@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-23] `src/frontend/src/views/PiChat.vue` — thinking blocks now open by default for the latest assistant message and collapsed for older ones; tool call `<details>` elements now have two-way sync between native `open` state and Vue `tool.expanded` state so toggling persists correctly
+
 - [Changed]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — Controls panel moved from inline card to modal; new "Controls" button added next to Live Logs header; grid reduced from 4 to 2 columns (Status, Metrics); system memory/CPU polling removed from Dashboard and moved to Sys Info modal (1.5s refresh vs 5s)
 - [Changed]: [2026-06-23] `src/frontend/src/views/Docs.vue`, `Logs.vue`, `Models.vue`, `Reports.vue`, `Settings.vue`, `Dashboard.vue` — added `m-2` padding wrapper for consistent page margin across all views
 - [Changed]: [2026-06-23] `src/frontend/src/views/PiChat.vue` — input area and status footer background changed from `bg-bg-secondary` with borders to `bg-bg-primary` without borders; input flex alignment changed from `items-end` to `items-center`; footer padding adjusted for proper spacing
@@ -13,7 +15,7 @@ All notable changes to this project will be documented in this file.
 - [Changed]: [2026-06-23] `src/frontend/src/router/index.js` — removed route descriptions from Models, Logs, and PiChat meta; removed Library route entirely
 - [Changed]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — `showLaunchCommand` default changed from `false` to `true` (launch command visible by default)
 - [Changed]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — CPU modal per-core bar height reduced from `h-5` to `h-4`
-- [Changed]: [2026-06-23] Version bump — `package.json` / `package-lock.json` bumped from `1.0.28` to `1.0.30`
+- [Changed]: [2026-06-23] Version bump — `package.json` / `package-lock.json` bumped from `1.0.30` to `1.0.31`
 
 ### Added
 
