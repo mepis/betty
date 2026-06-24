@@ -52,8 +52,6 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
     // Notification
     notification: { type: null, message: null },
-    // Sys Info modal
-    showSysInfo: false,
   }),
 
   getters: {

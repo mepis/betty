@@ -7,8 +7,17 @@ import Docs from '@/views/Docs.vue'
 import Logs from '@/views/Logs.vue'
 import PiChat from '@/views/PiChat.vue'
 import SysInfo from '@/views/SysInfo.vue'
+import Admin from '@/views/Admin.vue'
 
 const routes = [
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin,
+    meta: {
+      title: 'Admin',
+    },
+  },
   {
     path: '/benchmark',
     name: 'dashboard',

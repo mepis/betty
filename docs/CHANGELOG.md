@@ -4,7 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-24] `src/frontend/src/views/Admin.vue` — new Admin page with tabbed interface providing unified access to Benchmark, Models, Settings, Reports, Logs, and Sys Info views
+
 ### Changed
+
+- [Changed]: [2026-06-24] `src/frontend/src/App.vue` — sidebar navigation consolidated from 7 items (Chat, Benchmark, Models, Settings, Reports, Docs, Logs) to 3 items (Chat, Docs, Admin); replaced individual nav items with single Admin entry; removed Sys Info sidebar button and header conditional logic
+- [Changed]: [2026-06-24] `src/frontend/src/router/index.js` — added `/admin` route for the new Admin page
+- [Changed]: [2026-06-24] `src/frontend/src/views/PiChat.vue` — removed inline memory usage bar and related helper functions (`formatMemoryGB`, `memoryBarColor`)
+- [Changed]: [2026-06-24] `package-lock.json` — version bumped from `1.0.32` to `1.0.34`
+
+### Removed
+
+- [Removed]: [2026-06-24] `.pi/skills/project-rules/SKILL.md` — deleted; project rules are now defined in `.pi/AGENTS.md` and `.pi/APPEND_SYSTEM.md`
+- [Removed]: [2026-06-24] `src/frontend/src/components/SysInfoModal.vue` — deleted; sys info functionality now accessible via Admin page tabs
+- [Removed]: [2026-06-24] `src/frontend/src/stores/benchmark.js` — removed `showSysInfo` state (no longer needed without modal)
+- [Removed]: [2026-06-24] `src/frontend/src/views/Dashboard.vue` — removed embedded SysInfoModal component reference
 
 - [Changed]: [2026-06-24] `.pi/AGENTS.md` — consolidated project documentation lookup guide from `.pi/APPEND_SYSTEM.md` into AGENTS.md as a new "Project Documentation Lookup" section; added "Modifying Pi" section and Rule 14 ("Favor this repo first"); updated Additional Documentation section to reference `src/docs/`
 - [Changed]: [2026-06-24] `.pi/skills/project-rules/SKILL.md` — simplified description from verbose multi-line text to concise "Always read this skill before responding."

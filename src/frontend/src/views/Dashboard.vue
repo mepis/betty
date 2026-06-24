@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useBenchmarkStore } from '@/stores/benchmark'
-import SysInfoModal from '@/components/SysInfoModal.vue'
 import MemoryBar from '@/components/MemoryBar.vue'
 
 const store = useBenchmarkStore()
@@ -628,7 +627,5 @@ function statusBg(status) {
       </Transition>
     </Teleport>
 
-    <!-- Sys Info Modal -->
-    <SysInfoModal />
   </div>
 </template>
