@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
 import { usePiChatStore } from '@/stores/pi-chat'
+import { useBenchmarkStore } from '@/stores/benchmark'
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
 import axios from 'axios'
@@ -8,6 +9,7 @@ import axios from 'axios'
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
 const store = usePiChatStore()
+const benchStore = useBenchmarkStore()
 
 marked.setOptions({
   breaks: true,
@@ -292,6 +294,11 @@ onMounted(async () => {
   // Restore session (validates SSE, auto-fallbacks to createSession on stale sessions)
   await store.restoreSession()
   await scrollToBottom()
+  // Fetch system status and poll periodically
+  await benchStore.fetchSystemStatus()
+  setInterval(async () => {
+    await benchStore.fetchSystemStatus()
+  }, 3000)
 })
 
 onUnmounted(() => {
@@ -387,6 +394,17 @@ function isLastAssistant(msg) {
   const msgs = allMessages.value
   return msgs.length > 0 && msgs[msgs.length - 1] === msg
 }
+
+function formatMemoryGB(gb) {
+  return gb.toFixed(1) + ' GB'
+}
+
+const memoryBarColor = computed(() => {
+  const pct = benchStore.systemMemory.percentUsed
+  if (pct > 90) return 'bg-error'
+  if (pct > 70) return 'bg-warning'
+  return 'bg-success'
+})
 </script>
 
 <template>
@@ -662,6 +680,23 @@ function isLastAssistant(msg) {
         <span v-if="contextUsageText" :class="contextUsageColor">{{ contextUsageText }}</span>
         <span v-if="store.sseConnected" class="text-success">●</span>
         <span v-else class="text-error">●</span>
+      </div>
+    </div>
+
+    <!-- Memory usage bar -->
+    <div class="flex-shrink-0 px-6 pb-3 bg-bg-primary">
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-text-muted whitespace-nowrap">Memory</span>
+        <div class="flex-1 h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-500"
+            :class="memoryBarColor"
+            :style="{ width: `${Math.min(benchStore.systemMemory.percentUsed, 100)}%` }"
+          />
+        </div>
+        <span class="text-xs font-mono text-text-muted whitespace-nowrap">
+          {{ formatMemoryGB(benchStore.systemMemory.usedGB) }} / {{ formatMemoryGB(benchStore.systemMemory.totalGB) }}
+        </span>
       </div>
     </div>
   </div>

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-23] `src/frontend/src/views/PiChat.vue` — real-time memory usage bar in status footer; polls `systemMemory` from benchmark store every 3 seconds with color-coded progress bar (green <70%, yellow 70-90%, red >90%)
+
 ### Changed
 
 - [Changed]: [2026-06-23] `src/frontend/src/views/PiChat.vue` — thinking blocks now open by default for the latest assistant message and collapsed for older ones; tool call `<details>` elements now have two-way sync between native `open` state and Vue `tool.expanded` state so toggling persists correctly
