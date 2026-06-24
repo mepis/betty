@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useBenchmarkStore } from '@/stores/benchmark'
+import SysInfoModal from '@/components/SysInfoModal.vue'
 
 const store = useBenchmarkStore()
 const route = useRoute()
@@ -16,7 +17,6 @@ const navItems = [
   { name: 'Settings', path: '/settings', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
   { name: 'Reports', path: '/reports', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
   { name: 'Docs', path: '/docs', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-  { name: 'Library', path: '/library', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
   { name: 'Logs', path: '/logs', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
 ]
 
@@ -162,6 +162,17 @@ async function handleUpdate() {
           </svg>
           <span v-if="sidebarOpen">{{ item.name }}</span>
         </router-link>
+
+        <!-- Sys Info button -->
+        <button
+          @click="store.showSysInfo = true"
+          class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 w-full text-left text-text-secondary hover:text-text-primary hover:bg-bg-tertiary"
+        >
+          <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+          </svg>
+          <span v-if="sidebarOpen">Sys Info</span>
+        </button>
       </nav>
 
 
@@ -170,11 +181,10 @@ async function handleUpdate() {
     <!-- Main content -->
     <main class="flex-1 flex flex-col min-h-0">
       <!-- Header -->
-      <header class="sticky top-0 z-10 bg-bg-primary/80 backdrop-blur-xl border-b border-border">
-        <div class="flex items-center justify-between px-6 py-3">
+      <header class="sticky top-0 z-10 bg-bg-primary/80 backdrop-blur-xl">
+        <div class="flex items-center justify-between px-6 py-5">
           <div>
-            <h1 class="text-lg font-semibold tracking-tight">{{ route.meta.title || navItems.find(n => n.path === route.path)?.name || 'Dashboard' }}</h1>
-            <p v-if="route.meta.description" class="text-xs text-text-muted mt-0.5">{{ route.meta.description }}</p>
+            <h1 class="text-lg font-semibold tracking-tight">{{ store.showSysInfo ? 'Sys Info' : route.meta.title || navItems.find(n => n.path === route.path)?.name || 'Dashboard' }}</h1>
           </div>
           <div class="flex items-center gap-3">
             <!-- Status badges -->
@@ -234,6 +244,7 @@ async function handleUpdate() {
           </div>
         </Transition>
         <router-view />
+        <SysInfoModal />
       </div>
     </main>
   </div>

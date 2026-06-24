@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col h-[calc(100vh-8rem)]">
+  <div class="m-2 flex flex-col h-[calc(100vh-8rem)]">
     <!-- Toolbar -->
     <div class="flex items-center justify-between mb-3">
       <div class="flex items-center gap-3">

@@ -375,7 +375,7 @@ function isLastAssistant(msg) {
 </script>
 
 <template>
-  <div class="flex flex-col h-full min-h-0">
+  <div class="m-2 flex flex-col h-full min-h-0">
     <!-- Messages area -->
     <div
       ref="messagesRef"
@@ -497,8 +497,8 @@ function isLastAssistant(msg) {
     </div>
 
     <!-- Input area -->
-    <div class="flex-shrink-0 border-t border-border bg-bg-secondary px-6 py-3">
-      <div class="flex items-end gap-3">
+    <div class="flex-shrink-0 bg-bg-primary px-6 py-3">
+      <div class="flex items-center gap-3">
         <div class="flex-1 relative">
           <textarea
             ref="textareaRef"
@@ -612,7 +612,7 @@ function isLastAssistant(msg) {
     </div>
 
     <!-- Status footer -->
-    <div class="flex-shrink-0 flex flex-wrap items-center justify-between gap-2 px-6 py-2 border-t border-border bg-bg-secondary text-xs text-text-muted">
+    <div class="flex-shrink-0 flex flex-wrap items-center justify-between gap-2 px-6 pt-2 pb-[30px] bg-bg-primary text-xs text-text-muted">
       <div class="flex items-center gap-4">
         <button
           @click="handleNewSession"

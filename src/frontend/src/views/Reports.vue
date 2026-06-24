@@ -221,7 +221,7 @@ const sortedResults = computed(() => {
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="m-2 space-y-6">
     <!-- Reports List -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <!-- List -->

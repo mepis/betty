@@ -1,19 +1,19 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useBenchmarkStore } from '@/stores/benchmark'
+import SysInfoModal from '@/components/SysInfoModal.vue'
 
 const store = useBenchmarkStore()
 const logContainer = ref(null)
 const showLogs = ref(true)
 const logsMaximized = ref(false)
 const showEnvInput = ref(false)
-const showLaunchCommand = ref(false)
+const showLaunchCommand = ref(true)
 const envInput = ref('')
 const savingReport = ref(false)
 const reportName = ref('')
 const saveReportSuccess = ref(false)
 const pollingTimer = ref(null)
-const systemMemoryTimer = ref(null)
 
 // Details modal
 const showModal = ref(false)
@@ -21,6 +21,9 @@ const selectedTestRunId = ref(null)
 
 // CPU cores modal
 const showCpuModal = ref(false)
+
+// Controls modal
+const showControlsModal = ref(false)
 
 // Auto-scroll logs
 watch(
@@ -61,21 +64,12 @@ onMounted(async () => {
     await store.fetchStatus()
   }, 5000)
 
-  // Poll system memory every 5 seconds
-  systemMemoryTimer.value = setInterval(async () => {
-    await store.fetchSystemStatus()
-  }, 5000)
-  // Fetch immediately on mount
-  await store.fetchSystemStatus()
 })
 
 onUnmounted(() => {
   store.disconnectSSE()
   if (pollingTimer.value) {
     clearInterval(pollingTimer.value)
-  }
-  if (systemMemoryTimer.value) {
-    clearInterval(systemMemoryTimer.value)
   }
 })
 
@@ -145,6 +139,14 @@ function openCpuModal() {
   showCpuModal.value = true
 }
 
+function closeControlsModal() {
+  showControlsModal.value = false
+}
+
+function openControlsModal() {
+  showControlsModal.value = true
+}
+
 function selectedTestRunMessages() {
   if (selectedTestRunId.value == null) return []
   const entry = store.benchmarkMessages.find(
@@ -166,9 +168,9 @@ function statusBg(status) {
 </script>
 
 <template>
-  <div class="space-y-6">
-    <!-- Status, System, Metrics & Controls -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+  <div class="m-2 space-y-6">
+    <!-- Status, Metrics & Controls -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Status Card -->
       <div class="card">
         <div class="flex items-center justify-between mb-4">
@@ -198,55 +200,6 @@ function statusBg(status) {
         </div>
       </div>
 
-      <!-- System Card -->
-      <div class="card">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">System</h2>
-        </div>
-        <div class="space-y-3">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-sm text-text-muted">Memory</span>
-            <span class="text-sm font-mono font-medium">
-              {{ store.systemMemory.usedGB.toFixed(1) }} / {{ store.systemMemory.totalGB.toFixed(1) }} GB
-            </span>
-          </div>
-          <div class="w-full h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
-            <div
-              class="h-full rounded-full transition-all duration-500"
-              :class="store.systemMemory.percentUsed > 90 ? 'bg-error' : store.systemMemory.percentUsed > 70 ? 'bg-warning' : 'bg-success'"
-              :style="{ width: `${Math.min(store.systemMemory.percentUsed, 100)}%` }"
-            />
-          </div>
-          <div class="text-right">
-            <span class="text-xs text-text-muted">{{ store.systemMemory.percentUsed }}% used</span>
-          </div>
-
-          <div class="pt-2 border-t border-border">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-sm text-text-muted">CPU</span>
-              <span class="text-sm font-mono font-medium">{{ store.systemMemory.cpuUsage }}%</span>
-            </div>
-            <div class="w-full h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
-              <div
-                class="h-full rounded-full transition-all duration-500"
-                :class="store.systemMemory.cpuUsage > 90 ? 'bg-error' : store.systemMemory.cpuUsage > 70 ? 'bg-warning' : 'bg-success'"
-                :style="{ width: `${Math.min(store.systemMemory.cpuUsage, 100)}%` }"
-              />
-            </div>
-            <div class="text-right">
-              <span class="text-xs text-text-muted">{{ store.systemMemory.cpuUsage }}% used</span>
-            </div>
-            <button
-              @click="openCpuModal"
-              class="w-full mt-1 text-xs text-text-muted hover:text-text-secondary transition-colors"
-              title="Click to view per-core breakdown"
-            >
-              Per-core details →
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Combined Metrics Card -->
       <div class="card">
         <div class="flex items-center justify-between mb-4">
@@ -269,55 +222,7 @@ function statusBg(status) {
         </div>
       </div>
 
-      <!-- Controls Card -->
-      <div class="card">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-sm font-semibold text-text-secondary uppercase tracking-wider">Controls</h2>
-        </div>
-        <div class="space-y-3">
-          <button
-            v-if="store.isRunning"
-            @click="showEnvInput = !showEnvInput"
-            class="btn btn-ghost w-full"
-          >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-            </svg>
-            Environment
-          </button>
-        </div>
 
-        <!-- Environment input -->
-        <div v-if="showEnvInput" class="mt-3 pt-3 border-t border-border">
-          <label class="block text-xs font-medium text-text-muted mb-2">Environment Variables (JSON)</label>
-          <textarea
-            v-model="envInput"
-            placeholder='{"API_KEY": "secret"}'
-            class="textarea h-20"
-            rows="3"
-          />
-        </div>
-
-        <!-- Current launch command -->
-        <div v-if="store.launchCommand" class="mt-3 pt-3 border-t border-border">
-          <button
-            @click="showLaunchCommand = !showLaunchCommand"
-            class="flex items-center gap-2 text-xs font-medium text-text-muted hover:text-text-secondary transition-colors w-full"
-          >
-            <svg
-              class="w-3.5 h-3.5 transition-transform"
-              :class="showLaunchCommand ? '-rotate-90' : ''"
-              fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-            Current Launch Command
-          </button>
-          <div v-show="showLaunchCommand" class="mt-2 bg-bg-primary rounded-lg p-2.5 overflow-x-auto">
-            <pre class="text-[11px] font-mono text-text-secondary whitespace-pre-wrap break-all leading-relaxed">{{ store.launchCommand.full }}</pre>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Live Results & Logs -->
@@ -443,6 +348,15 @@ function statusBg(status) {
               </svg>
               Live Logs
               <span class="badge bg-bg-tertiary text-text-muted ml-2">{{ store.logs.length }}</span>
+              <button
+                @click="openControlsModal"
+                class="btn btn-ghost btn-sm"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Controls
+              </button>
             </button>
             <div class="flex items-center gap-2">
               <button
@@ -617,7 +531,7 @@ function statusBg(status) {
                   class="flex items-center gap-3"
                 >
                   <span class="text-xs font-mono font-medium text-text-muted w-16 flex-shrink-0">{{ core.name }}</span>
-                  <div class="flex-1 h-5 bg-bg-tertiary rounded-full overflow-hidden">
+                  <div class="flex-1 h-4 bg-bg-tertiary rounded-full overflow-hidden">
                     <div
                       class="h-full rounded-full transition-all duration-500 flex items-center justify-end pr-1.5"
                       :class="core.usage > 90 ? 'bg-error' : core.usage > 70 ? 'bg-warning' : 'bg-success'"
@@ -633,5 +547,82 @@ function statusBg(status) {
         </div>
       </Transition>
     </Teleport>
+
+    <!-- Controls Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showControlsModal" class="fixed inset-0 z-50 flex items-center justify-center">
+          <!-- Backdrop -->
+          <div
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            @click="closeControlsModal"
+          />
+
+          <!-- Modal -->
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-[70%] mx-4">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-border">
+              <div>
+                <h3 class="text-lg font-semibold text-text-primary">Controls</h3>
+                <p class="text-xs text-text-muted mt-0.5">Benchmark environment and commands</p>
+              </div>
+              <button
+                @click="closeControlsModal"
+                class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 space-y-4">
+              <button
+                @click="showEnvInput = !showEnvInput"
+                class="btn btn-ghost"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+                Environment Variables
+              </button>
+
+              <div v-if="showEnvInput" class="border-t border-border pt-4">
+                <label class="block text-xs font-medium text-text-muted mb-2">Environment Variables (JSON)</label>
+                <textarea
+                  v-model="envInput"
+                  placeholder='{"API_KEY": "secret"}'
+                  class="textarea h-20"
+                  rows="3"
+                />
+              </div>
+
+              <div v-if="store.launchCommand" class="border-t border-border pt-4">
+                <button
+                  @click="showLaunchCommand = !showLaunchCommand"
+                  class="flex items-center gap-2 text-xs font-medium text-text-muted hover:text-text-secondary transition-colors w-full"
+                >
+                  <svg
+                    class="w-3.5 h-3.5 transition-transform"
+                    :class="showLaunchCommand ? '-rotate-90' : ''"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Current Launch Command
+                </button>
+                <div v-show="showLaunchCommand" class="mt-2 bg-bg-primary rounded-lg p-2.5 overflow-x-auto">
+                  <pre class="text-[11px] font-mono text-text-secondary whitespace-pre-wrap break-all leading-relaxed">{{ store.launchCommand.full }}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
+    <!-- Sys Info Modal -->
+    <SysInfoModal />
   </div>
 </template>

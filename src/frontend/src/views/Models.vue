@@ -201,7 +201,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="m-2 space-y-6">
     <!-- Tabs -->
     <div class="flex items-center gap-2">
       <button

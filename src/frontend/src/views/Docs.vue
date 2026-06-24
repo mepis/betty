@@ -118,7 +118,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex gap-6 h-[calc(100vh-8rem)]">
+  <div class="m-2 flex gap-6 h-[calc(100vh-8rem)]">
     <!-- Sidebar -->
     <aside class="w-56 flex-shrink-0 overflow-y-auto pr-2">
       <div class="flex items-center justify-between mb-3 px-2">

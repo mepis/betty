@@ -603,7 +603,7 @@ function normalizeBuildParams(configs) {
 </script>
 
 <template>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+  <div class="m-2 grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
     <!-- Left column -->
     <div class="space-y-4">
     <!-- Build llama.cpp -->

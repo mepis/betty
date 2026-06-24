@@ -4,9 +4,9 @@ import Settings from '@/views/Settings.vue'
 import Reports from '@/views/Reports.vue'
 import Models from '@/views/Models.vue'
 import Docs from '@/views/Docs.vue'
-import Library from '@/views/Library.vue'
 import Logs from '@/views/Logs.vue'
 import PiChat from '@/views/PiChat.vue'
+import SysInfo from '@/views/SysInfo.vue'
 
 const routes = [
   {
@@ -30,7 +30,6 @@ const routes = [
     component: Models,
     meta: {
       title: 'Models',
-      description: 'Search and download models from HuggingFace',
     },
   },
   {
@@ -39,16 +38,6 @@ const routes = [
     component: Docs,
     meta: {
       title: 'Docs',
-      description: 'Project documentation and guides',
-    },
-  },
-  {
-    path: '/library',
-    name: 'library',
-    component: Library,
-    meta: {
-      title: 'Library',
-      description: 'Research library and analysis reports',
     },
   },
   {
@@ -57,7 +46,14 @@ const routes = [
     component: Logs,
     meta: {
       title: 'Logs',
-      description: 'Systemd service logs from llama.service',
+    },
+  },
+  {
+    path: '/sys-info',
+    name: 'sys-info',
+    component: SysInfo,
+    meta: {
+      title: 'Sys Info',
     },
   },
   {
@@ -66,7 +62,6 @@ const routes = [
     component: PiChat,
     meta: {
       title: 'Chat',
-      description: 'Chat with an AI agent powered by Pi SDK',
     },
   },
 ]

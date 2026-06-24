@@ -4,7 +4,33 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — Controls panel moved from inline card to modal; new "Controls" button added next to Live Logs header; grid reduced from 4 to 2 columns (Status, Metrics); system memory/CPU polling removed from Dashboard and moved to Sys Info modal (1.5s refresh vs 5s)
+- [Changed]: [2026-06-23] `src/frontend/src/views/Docs.vue`, `Logs.vue`, `Models.vue`, `Reports.vue`, `Settings.vue`, `Dashboard.vue` — added `m-2` padding wrapper for consistent page margin across all views
+- [Changed]: [2026-06-23] `src/frontend/src/views/PiChat.vue` — input area and status footer background changed from `bg-bg-secondary` with borders to `bg-bg-primary` without borders; input flex alignment changed from `items-end` to `items-center`; footer padding adjusted for proper spacing
+- [Changed]: [2026-06-23] `src/frontend/src/App.vue` — header border removed; header padding increased from `py-3` to `py-5`; header title conditionally shows "Sys Info" when modal is open
+- [Changed]: [2026-06-23] `src/frontend/src/router/index.js` — removed route descriptions from Models, Logs, and PiChat meta; removed Library route entirely
+- [Changed]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — `showLaunchCommand` default changed from `false` to `true` (launch command visible by default)
+- [Changed]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — CPU modal per-core bar height reduced from `h-5` to `h-4`
+- [Changed]: [2026-06-23] Version bump — `package.json` / `package-lock.json` bumped from `1.0.28` to `1.0.30`
+
 ### Added
+
+- [Added]: [2026-06-23] `src/frontend/src/components/SystemStats.vue` — reusable component displaying system memory and CPU stats with progress bars and per-core breakdown
+- [Added]: [2026-06-23] `src/frontend/src/components/SysInfoModal.vue` — modal component that displays system stats overlay; triggered by new "Sys Info" sidebar button; polls system status every 1.5s while open
+- [Added]: [2026-06-23] `src/frontend/src/views/SysInfo.vue` — dedicated Sys Info view for standalone access via `/sys-info` route; polls system status every 5s
+- [Added]: [2026-06-23] "Sys Info" button added to sidebar in `src/frontend/src/App.vue` with icon; opens a modal showing real-time system memory and CPU stats
+- [Added]: [2026-06-23] `src/frontend/src/stores/benchmark.js` — new `showSysInfo` state for modal visibility control
+- [Added]: [2026-06-23] `src/frontend/src/router/index.js` — new `/sys-info` route registered
+- [Added]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — new Controls modal with environment variables editor and launch command viewer, accessible via "Controls" button next to Live Logs header
+
+### Removed
+
+- [Removed]: [2026-06-23] `src/frontend/src/views/Library.vue` — removed Library view for browsing research topics
+- [Removed]: [2026-06-23] `src/frontend/src/App.vue` — Library navigation item removed from sidebar
+- [Removed]: [2026-06-23] `src/frontend/src/router/index.js` — `/library` route removed
+- [Removed]: [2026-06-23] `src/backend/api-server.js` — `GET /api/library` and `GET /api/library/topic/:slug` endpoints removed along with all library parsing helpers (`slugToTitle`, `extractFrontmatter`, `parseTags`, `parseDate`, `parseStatus`, `parseSummary`)
 
 - [Added]: [2026-06-23] `src/frontend/src/views/Library.vue` — new Library view to browse and read research topics from the library, with sidebar navigation, topic detail, report, state, and entry views; dynamic index table showing all topics with date, status, tags, and summary preview; auto-refresh every 60s with manual refresh button
 - [Added]: [2026-06-23] `src/frontend/src/views/Docs.vue` — dynamic index table showing all docs with title, description, and tags; auto-refresh every 60s with manual refresh button; matches Library view pattern
