@@ -1,6 +1,6 @@
 ---
 name: project-rules
-description: Global project rules that apply to every task in every session. Always read this skill at the start of each session before doing any work. Applies to code changes, reviews, planning, exploration, testing, and all other tasks.
+description: Always read this skill before responding.
 ---
 
 # Project Rules

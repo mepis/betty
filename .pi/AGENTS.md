@@ -5,7 +5,7 @@ Bias: caution over speed on non-trivial work.
 
 ## Additional Documentation
 
-Comprehensive project documentation is available in `docs/` at the root of this repo. This includes the user manual, API reference, configuration guides, dashboard docs, model documentation, reports, troubleshooting, and the changelog. Consult these docs when working on features, configuration, or user-facing changes.
+Comprehensive project documentation is available in `src/docs/` in this repo. This includes the user manual, API reference, configuration guides, dashboard docs, model documentation, reports, troubleshooting, and the changelog. Consult these docs when working on features, configuration, or user-facing changes.
 
 ## Orchestrator Skill — Always Delegate to Subagents
 
@@ -32,6 +32,43 @@ The **orchestrator** skill is always loaded. **Always delegate tasks to subagent
 - `Run N scouts in parallel: ...` → parallel mode
 
 **Never** skip delegation just because you _could_ do the work yourself. Subagents have isolated context windows — they don't pollute your main conversation.
+
+# Project Documentation Lookup
+
+When searching for information about this project — its features, configuration, architecture, usage, or API — check the following locations **before** relying on your own knowledge or making assumptions.
+
+## Primary Source: `docs/` (repo root)
+
+The `docs/` directory at the root of this repository is the authoritative source for project documentation. Key files include:
+
+- **`docs/index.md`** — Overview and entry point
+- **`docs/USER-MANUAL.md`** — User-facing guide
+- **`docs/config.md`** / **`docs/configuration-reference.md`** — Configuration details
+- **`docs/api-reference.md`** — API documentation
+- **`docs/models.md`** — Model information
+- **`docs/dashboard.md`** — Dashboard details
+- **`docs/reports.md`** — Reports documentation
+- **`docs/troubleshooting.md`** — Common issues and fixes
+- **`docs/CHANGELOG.md`** — Version history
+
+## Other Locations
+
+- **`README.md`** (repo root) — Project summary, quick start, and high-level overview
+- **`library/`** — Archived research and reference materials
+- **`src/`** — Source code when docs are insufficient; read exports and comments
+
+## When to Use
+
+Always consult the docs when:
+
+- Asked about project features, configuration, or behavior
+- Uncertain about how a component works
+- Need to verify assumptions before making changes
+- Writing code that interacts with documented APIs or configurations
+
+# Modifying Pi
+
+Never modify yourself directly. Instead, utilize extensions, skills, and the APPEND_SYSTEM.md file in this repo so that any modifications can be committed and saved with the repo.
 
 ## Rule 1 — Think Before Coding
 
@@ -100,3 +137,7 @@ This applies to changes made by any session or tool — never skip the changelog
 ## Rule 13 — Never alter configs.json
 
 **Never modify, delete, or write to `configs.json`.** It is treated as immutable configuration. If configuration changes are needed, use the proper mechanism for that purpose instead of editing this file directly.
+
+## Rule 14 — Favor this repo first
+
+When searching for information, code, or references, always check this repo first before looking externally. The project's own source, `src/docs/`, `src/frontend/`, and `src/backend/` are the primary sources of truth. Only look outside the repo when the answer genuinely cannot be found here.

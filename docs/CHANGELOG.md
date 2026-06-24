@@ -4,7 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-24] `.pi/AGENTS.md` — consolidated project documentation lookup guide from `.pi/APPEND_SYSTEM.md` into AGENTS.md as a new "Project Documentation Lookup" section; added "Modifying Pi" section and Rule 14 ("Favor this repo first"); updated Additional Documentation section to reference `src/docs/`
+- [Changed]: [2026-06-24] `.pi/skills/project-rules/SKILL.md` — simplified description from verbose multi-line text to concise "Always read this skill before responding."
+
 ### Added
+
+- [Added]: [2026-06-24] `.pi/extensions/agents-md.ts` — Pi extension that injects `.pi/AGENTS.md` content into the agent system prompt via the `before_agent_start` hook, replacing the previous APPEND_SYSTEM.md approach
+
+### Removed
+
+- [Removed]: [2026-06-24] `.pi/APPEND_SYSTEM.md` — deleted; its documentation lookup content was consolidated into `.pi/AGENTS.md`
+- [Removed]: [2026-06-24] `.pi/plan-pi-chat.md` — deleted; Pi Chat integration plan is no longer needed (feature implemented)
 
 - [Added]: [2026-06-23] `src/frontend/src/components/MemoryBar.vue` — reusable memory usage bar component with color-coded progress (green <70%, yellow 70-90%, red >90%)
 - [Added]: [2026-06-23] `src/frontend/src/views/Dashboard.vue` — real-time memory usage bar in status panel; polls `systemMemory` from benchmark store every 5 seconds with color-coded progress bar
