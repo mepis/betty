@@ -6,6 +6,15 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-24] `src/backend/api-server.js` — new `DELETE /api/hf/download/active/:modelId` endpoint to cancel in-progress HuggingFace model downloads; new `GET /api/hf/active-downloads` endpoint to list active downloads with progress
+- [Added]: [2026-06-24] `src/backend/api-server.js` — AbortController-based download cancellation for HuggingFace model downloads, with cleanup of partial files and stream destruction
+- [Added]: [2026-06-24] `src/frontend/src/stores/benchmark.js` — `hfActiveDownloads` state, `fetchActiveDownloads()`, and `cancelActiveDownload()` methods
+- [Added]: [2026-06-24] `src/frontend/src/views/Models.vue` — "In Progress" section in Downloads tab showing active downloads with real-time progress bars and cancel buttons; auto-polling every 2s for download progress updates
+
+### Fixed
+
+- [Fixed]: [2026-06-24] `src/backend/api-server.js` — HuggingFace download cancellation now properly stops the fetch request, destroys streams, and cleans up partial files instead of leaving orphaned downloads
+
 - [Added]: [2026-06-24] `src/frontend/src/views/Admin.vue` — new Admin page with tabbed interface providing unified access to Benchmark, Models, Settings, Reports, Logs, and Sys Info views
 
 ### Changed

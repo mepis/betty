@@ -1917,9 +1917,22 @@ app.post("/api/hf/download", async (req, res) => {
       return;
     }
 
+    // Create an AbortController for this download so it can be cancelled
+    const abortController = new AbortController();
+    hfDownloads.set(modelId, {
+      status: "downloading",
+      progress: 0,
+      total: totalSize,
+      downloaded: 0,
+      filename: filename,
+      filePath: filePath,
+      abortController,
+    });
+
     // Stream the download
     const downloadResponse = await fetch(downloadUrl, {
       headers: { "User-Agent": "betty-benchmark/1.0" },
+      signal: abortController.signal,
     });
 
     if (!downloadResponse.ok) {
@@ -1933,23 +1946,17 @@ app.post("/api/hf/download", async (req, res) => {
     const total = downloadResponse.headers.get("content-length");
     const totalSize = total ? parseInt(total, 10) : 0;
 
-    // Track download in memory
-    hfDownloads.set(modelId, {
-      status: "downloading",
-      progress: 0,
-      total: totalSize,
-      downloaded: 0,
-      filename: filename,
-      filePath: filePath,
-    });
-
     // Use a Transform stream to track progress while piping to file.
     // This avoids the Node.js anti-pattern of attaching both a 'data' listener
     // and pipe() to the same stream, which causes a race condition where data
     // may be lost or the file stream may not receive the data properly.
     let downloaded = 0;
+    let bodyStream = null;
+    let fileStream = null;
     const progressTransform = new Transform({
       transform(chunk, encoding, callback) {
+        const current = hfDownloads.get(modelId);
+        if (current && current.status !== "downloading") return callback(null, chunk);
         downloaded += chunk.length;
         const progress = totalSize > 0 ? Math.round((downloaded / totalSize) * 100) : Math.min(99, Math.round((downloaded / (1024 * 1024 * 100)) * 100));
 
@@ -1960,6 +1967,9 @@ app.post("/api/hf/download", async (req, res) => {
           downloaded,
           filename,
           filePath,
+          abortController,
+          bodyStream: { get: () => bodyStream },
+          fileStream: { get: () => fileStream },
         });
 
         // Combine progress and downloaded bytes into a single event to avoid
@@ -1973,15 +1983,32 @@ app.post("/api/hf/download", async (req, res) => {
       },
     });
 
-    const fileStream = fs.createWriteStream(filePath);
+    fileStream = fs.createWriteStream(filePath);
+
+    // Store stream references for cancellation
+    hfDownloads.set(modelId, {
+      status: "downloading",
+      progress: 0,
+      total: totalSize,
+      downloaded: 0,
+      filename,
+      filePath,
+      abortController,
+      bodyStream: { get: () => bodyStream },
+      fileStream: { get: () => fileStream },
+    });
 
     await new Promise((resolve, reject) => {
-      const bodyStream = Readable.fromWeb(downloadResponse.body);
+      bodyStream = Readable.fromWeb(downloadResponse.body);
       bodyStream.on("error", (err) => {
+        const current = hfDownloads.get(modelId);
+        if (current && current.status !== "downloading") return;
         reject(err);
       });
       bodyStream.pipe(progressTransform).pipe(fileStream);
       fileStream.on("finish", () => {
+        const current = hfDownloads.get(modelId);
+        if (current && current.status !== "downloading") return;
         fileStream.close(() => {
           hfDownloads.set(modelId, {
             status: "complete",
@@ -2000,6 +2027,8 @@ app.post("/api/hf/download", async (req, res) => {
         });
       });
       fileStream.on("error", (err) => {
+        const current = hfDownloads.get(modelId);
+        if (current && current.status !== "downloading") return;
         hfDownloads.set(modelId, {
           status: "error",
           progress: 0,
@@ -2016,8 +2045,14 @@ app.post("/api/hf/download", async (req, res) => {
     });
   } catch (err) {
     try {
-      res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
-      res.write(`event: hf-download\ndata: ERROR: ${err.message}\n\n`);
+      // Check if this was a cancellation
+      const current = hfDownloads.get(modelId);
+      if (current && current.status === "cancelled") {
+        res.write(`event: hf-download\ndata: STATUS:Cancelled\n\n`);
+      } else {
+        res.write(`event: hf-download\ndata: STATUS:Download failed\n\n`);
+        res.write(`event: hf-download\ndata: ERROR: ${err.message}\n\n`);
+      }
       safeFlush(res);
       res.end();
     } catch {}
@@ -2033,6 +2068,53 @@ app.get("/api/hf/download/:modelId", (req, res) => {
   } else {
     res.json({ success: true, data: null });
   }
+});
+
+// List active (in-progress) downloads
+app.get("/api/hf/active-downloads", (req, res) => {
+  const active = [];
+  for (const [modelId, download] of hfDownloads) {
+    if (download.status === "downloading") {
+      active.push({ modelId, ...download });
+    }
+  }
+  res.json({ success: true, data: active });
+});
+
+// Cancel an active download
+app.delete("/api/hf/download/active/:modelId", (req, res) => {
+  const modelId = req.params.modelId;
+  const download = hfDownloads.get(modelId);
+  if (!download || download.status !== "downloading") {
+    hfDownloads.delete(modelId);
+    return res.json({ success: true, message: "Download not active" });
+  }
+  // Mark as cancelled to prevent further processing
+  // This flag is checked in the Transform stream and error handlers
+  hfDownloads.set(modelId, { ...download, status: "cancelled" });
+  // Abort the fetch request to stop the download
+  if (download.abortController) {
+    download.abortController.abort();
+  }
+  // Destroy the body stream if it exists (handles streaming phase)
+  const bodyStream = download.bodyStream?.get?.();
+  if (bodyStream) {
+    bodyStream.destroy();
+  }
+  // Destroy the file stream if it exists
+  const fileStream = download.fileStream?.get?.();
+  if (fileStream) {
+    fileStream.destroy();
+  }
+  // Delete partial file
+  try {
+    if (download.filePath && fs.existsSync(download.filePath)) {
+      fs.rmSync(download.filePath, { force: true });
+    }
+  } catch (err) {
+    console.error(`Failed to delete partial file for ${modelId}:`, err.message);
+  }
+  res.json({ success: true, message: `Cancelled download for ${modelId}` });
 });
 
 // List downloaded HF models

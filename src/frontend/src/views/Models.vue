@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useBenchmarkStore } from '@/stores/benchmark'
 
 const store = useBenchmarkStore()
@@ -27,6 +27,7 @@ const filesLoading = ref(false)
 const selectedFile = ref('')
 const downloadsTab = ref('search') // 'search' | 'downloads'
 const loadingDownloads = ref(false)
+let activeDownloadsPollInterval = null
 
 const modelTypes = computed(() => {
   const types = new Set()
@@ -163,10 +164,41 @@ async function loadDownloads() {
   try {
     await store.fetchHfDownloads()
     downloadedFiles.value = store.hfDownloads || []
+    // Also load active (in-progress) downloads
+    await store.fetchActiveDownloads()
+    startActiveDownloadsPolling()
   } catch (e) {
     console.error('Failed to load downloads:', e)
   }
   loadingDownloads.value = false
+}
+
+function startActiveDownloadsPolling() {
+  stopActiveDownloadsPolling()
+  // Poll every 2 seconds for active download progress
+  activeDownloadsPollInterval = setInterval(async () => {
+    if (downloadsTab.value !== 'downloads') return
+    try {
+      await store.fetchActiveDownloads()
+    } catch (e) {
+      console.error('Failed to poll active downloads:', e)
+    }
+  }, 2000)
+}
+
+function stopActiveDownloadsPolling() {
+  if (activeDownloadsPollInterval) {
+    clearInterval(activeDownloadsPollInterval)
+    activeDownloadsPollInterval = null
+  }
+}
+
+async function handleCancelDownload(modelId) {
+  try {
+    await store.cancelActiveDownload(modelId)
+  } catch (e) {
+    console.error('Failed to cancel download:', e)
+  }
 }
 
 async function handleDeleteDownload(modelId) {
@@ -195,8 +227,18 @@ function getModelIcon(model) {
   return '📦'
 }
 
+watch(downloadsTab, (newTab) => {
+  if (newTab !== 'downloads') {
+    stopActiveDownloadsPolling()
+  }
+})
+
 onMounted(async () => {
   await loadDownloads()
+})
+
+onUnmounted(() => {
+  stopActiveDownloadsPolling()
 })
 </script>
 
@@ -223,7 +265,7 @@ onMounted(async () => {
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
         Downloads
-        <span v-if="downloadedFiles.length" class="ml-1 badge bg-bg-tertiary text-text-muted text-xs">{{ downloadedFiles.length }}</span>
+        <span v-if="downloadedFiles.length || store.hfActiveDownloads.length" class="ml-1 badge bg-bg-tertiary text-text-muted text-xs">{{ downloadedFiles.length + store.hfActiveDownloads.length }}</span>
       </button>
     </div>
 
@@ -351,7 +393,7 @@ onMounted(async () => {
         </svg>
       </div>
 
-      <div v-else-if="downloadedFiles.length === 0" class="card flex flex-col items-center justify-center py-16 text-text-muted">
+      <div v-else-if="downloadedFiles.length === 0 && store.hfActiveDownloads.length === 0" class="card flex flex-col items-center justify-center py-16 text-text-muted">
         <svg class="w-12 h-12 mb-4 text-text-muted/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
@@ -359,7 +401,54 @@ onMounted(async () => {
         <p class="text-xs mt-1">Search for models to download GGUF files</p>
       </div>
 
-      <div v-else class="space-y-3">
+      <!-- Active downloads (in progress) -->
+      <div v-if="store.hfActiveDownloads.length > 0" class="space-y-3">
+        <h3 class="text-xs font-semibold text-text-muted uppercase tracking-wider flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          In Progress
+        </h3>
+        <div
+          v-for="active in store.hfActiveDownloads"
+          :key="active.modelId"
+          class="card border-accent/20"
+        >
+          <div class="flex items-center justify-between">
+            <div class="min-w-0 flex-1">
+              <h3 class="text-sm font-semibold text-text-primary">{{ active.modelId }}</h3>
+              <p class="text-xs text-text-muted mt-0.5">{{ active.filename }}</p>
+            </div>
+            <button
+              @click="handleCancelDownload(active.modelId)"
+              class="btn btn-ghost btn-xs text-text-muted hover:text-error"
+              title="Cancel download"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <!-- Progress bar -->
+          <div class="mt-3 space-y-1">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-text-muted">{{ formatSize(active.downloaded) }} / {{ formatSize(active.total) }}</span>
+              <span class="font-mono text-text-secondary">{{ active.progress }}%</span>
+            </div>
+            <div class="w-full h-2 bg-bg-tertiary rounded-full overflow-hidden">
+              <div
+                class="h-full rounded-full transition-all duration-300 bg-accent"
+                :style="{ width: active.progress + '%' }"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completed downloads -->
+      <div v-if="downloadedFiles.length > 0" class="space-y-3">
+        <h3 v-if="store.hfActiveDownloads.length > 0" class="text-xs font-semibold text-text-muted uppercase tracking-wider">Completed</h3>
         <div
           v-for="download in downloadedFiles"
           :key="download.modelId"

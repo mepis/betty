@@ -45,6 +45,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
     hfModelDetails: null,
     hfModelFiles: [],
     hfDownloads: [],
+    hfActiveDownloads: [],
     hfError: null,
 
     // Git update check
@@ -746,6 +747,8 @@ export const useBenchmarkStore = defineStore('benchmark', {
                 this.hfError = null
               } else if (currentData.startsWith('STATUS:Download failed') || currentData.startsWith('ERROR:')) {
                 this.hfError = currentData.replace('ERROR: ', '')
+              } else if (currentData.startsWith('STATUS:Cancelled')) {
+                this.hfError = 'Download cancelled'
               }
             }
           }
@@ -777,6 +780,36 @@ export const useBenchmarkStore = defineStore('benchmark', {
         const res = await axios.delete(`${API_BASE}/api/hf/download/${encodeURIComponent(modelId)}`)
         if (res.data.success) {
           this.hfDownloads = this.hfDownloads.filter(d => d.modelId !== modelId)
+          this.hfActiveDownloads = this.hfActiveDownloads.filter(d => d.modelId !== modelId)
+          return true
+        }
+        this.hfError = res.data.error
+        return false
+      } catch (e) {
+        this.hfError = e.message
+        return false
+      }
+    },
+
+    async fetchActiveDownloads() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/hf/active-downloads`)
+        if (res.data.success) {
+          this.hfActiveDownloads = res.data.data
+          return true
+        }
+        return false
+      } catch (e) {
+        this.hfError = e.message
+        return false
+      }
+    },
+
+    async cancelActiveDownload(modelId) {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/hf/download/active/${encodeURIComponent(modelId)}`)
+        if (res.data.success) {
+          this.hfActiveDownloads = this.hfActiveDownloads.filter(d => d.modelId !== modelId)
           return true
         }
         this.hfError = res.data.error
