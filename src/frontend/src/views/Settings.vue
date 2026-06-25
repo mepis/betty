@@ -706,7 +706,7 @@ function normalizeBuildParams(configs) {
 </script>
 
 <template>
-  <div class="m-2 grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+  <div class="m-2 grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
     <!-- Left column -->
     <div class="space-y-4">
     <!-- Build llama.cpp -->
@@ -916,7 +916,7 @@ function normalizeBuildParams(configs) {
     </div>
     </div>
 
-    <!-- Right column -->
+    <!-- Middle column -->
     <div class="space-y-4">
     <!-- Profile Panel -->
     <div class="card">
@@ -1097,7 +1097,10 @@ function normalizeBuildParams(configs) {
         </div>
       </div>
     </div>
+    </div>
 
+    <!-- Right column -->
+    <div class="space-y-4">
     <!-- Editor -->
     <div class="card">
       <!-- Tab navigation (fixed, does not scroll) -->

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-25] Admin Settings tab — expanded grid from 2 to 3 columns; moved Config Profiles and Service Profiles panels into the new middle column
+
 ### Added
 
 - [Added]: [2026-06-25] Service Config Profiles — save, list, load, and delete named snapshots of the current `llama.service` systemd configuration (ExecStart, env vars, restart settings); stored in `~/.betty/service-profiles/`; new panel in Admin Settings alongside Config Profiles
