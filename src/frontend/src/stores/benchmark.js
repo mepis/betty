@@ -139,6 +139,21 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async deleteLocalModel(filePath) {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/model/${encodeURIComponent(filePath)}`)
+        if (res.data.success) {
+          this.models = this.models.filter(m => m.path !== filePath)
+          return true
+        }
+        this.error = res.data.error
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
     async fetchProfiles() {
       try {
         const res = await axios.get(`${API_BASE}/api/profiles`)

@@ -390,13 +390,14 @@ app.use("/api/auth", authRouter);
 if (AUTH_ENABLED) {
   app.use("/api", (req, res, next) => {
     // Exempt: login/register (public auth routes), health, docs, library, pi/skills
+    // Note: req.path is relative to the mount point (/api), so use paths without /api prefix
     const exempt = [
-      "/api/auth/login",
-      "/api/auth/register",
-      "/api/health",
-      "/api/docs",
-      "/api/library",
-      "/api/pi/skills",
+      "/auth/login",
+      "/auth/register",
+      "/health",
+      "/docs",
+      "/library",
+      "/pi/skills",
     ];
     if (exempt.some((p) => req.path === p || req.path.startsWith(p + "/"))) return next();
     authenticate(req, res, next);
@@ -1503,11 +1504,17 @@ function findModelFiles(dir, baseDir = dir) {
     if (entry.isDirectory()) {
       results.push(...findModelFiles(fullPath, baseDir));
     } else if (entry.isFile() && (entry.name.endsWith('.gguf') || entry.name.endsWith('.bin') || entry.name.endsWith('.safetensors'))) {
-      // Return path relative to the base directory
-      results.push(relative(baseDir, fullPath));
+      // Return path relative to the base directory with file stats
+      const relPath = relative(baseDir, fullPath);
+      try {
+        const stat = fs.statSync(fullPath);
+        results.push({ path: relPath, size: stat.size, mtime: stat.mtimeMs });
+      } catch {
+        results.push({ path: relPath, size: 0, mtime: 0 });
+      }
     }
   }
-  return results.sort();
+  return results.sort((a, b) => a.path.localeCompare(b.path));
 }
 
 //--- Return the models directory path ---
@@ -1522,6 +1529,29 @@ app.get("/api/models", (_req, res) => {
     const resolvedDir = resolveConfigPath(dir);
     const files = findModelFiles(resolvedDir);
     res.json({ success: true, data: files });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Delete a local model file ---
+app.delete("/api/model/:path(*)", authorize("admin", "operator"), (req, res) => {
+  try {
+    const relPath = decodeURIComponent(req.params.path);
+    const fullPath = join(MODELS_DIR, relPath);
+    // Security: ensure the resolved path is within MODELS_DIR
+    const resolvedPath = resolve(fullPath);
+    if (!resolvedPath.startsWith(resolve(MODELS_DIR))) {
+      return res.status(400).json({ success: false, error: "Invalid path" });
+    }
+    if (!fs.existsSync(fullPath)) {
+      return res.status(404).json({ success: false, error: "File not found" });
+    }
+    if (!fs.statSync(fullPath).isFile()) {
+      return res.status(400).json({ success: false, error: "Not a file" });
+    }
+    fs.unlinkSync(fullPath);
+    res.json({ success: true, message: `Deleted ${relPath}` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -3075,6 +3105,25 @@ app.get('/api/library', (_req, res) => {
   }
 });
 
+app.get('/api/library/tags', (_req, res) => {
+  try {
+    if (!fs.existsSync(LIBRARY_DIR)) {
+      return res.status(404).json({ success: false, error: 'Library directory not found' });
+    }
+    const tagsDir = join(LIBRARY_DIR, 'tags');
+    if (!fs.existsSync(tagsDir)) {
+      return res.json({ success: true, data: [] });
+    }
+    const tagFiles = fs.readdirSync(tagsDir)
+      .filter(f => f.endsWith('.md'))
+      .map(f => f.replace(/\.md$/, ''))
+      .sort();
+    res.json({ success: true, data: tagFiles });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 app.get('/api/library/:topicSlug', (req, res) => {
   try {
     const topicDir = join(LIBRARY_DIR, 'topics', req.params.topicSlug);
@@ -3104,25 +3153,6 @@ app.get('/api/library/:topicSlug', (req, res) => {
     }
 
     res.json({ success: true, data: result });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-app.get('/api/library/tags', (_req, res) => {
-  try {
-    if (!fs.existsSync(LIBRARY_DIR)) {
-      return res.status(404).json({ success: false, error: 'Library directory not found' });
-    }
-    const tagsDir = join(LIBRARY_DIR, 'tags');
-    if (!fs.existsSync(tagsDir)) {
-      return res.json({ success: true, data: [] });
-    }
-    const tagFiles = fs.readdirSync(tagsDir)
-      .filter(f => f.endsWith('.md'))
-      .map(f => f.replace(/\.md$/, ''))
-      .sort();
-    res.json({ success: true, data: tagFiles });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

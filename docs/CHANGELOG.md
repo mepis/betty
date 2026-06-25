@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-25] Models Downloads tab — replaced HuggingFace download history with local models browser showing files from `~/.betty/models/`; models displayed grouped by directory with file sizes, type icons (🤖 .gguf, 📄 .bin, 🛡️ .safetensors), and delete buttons; new `DELETE /api/model/:path` backend endpoint with path traversal protection; `findModelFiles()` now returns `{ path, size, mtime }` objects instead of plain strings; store action `deleteLocalModel()` added to `benchmark.js`
+
+### Changed
+
 - [Added]: [2026-06-25] Research Library — re-added Library view (`Library.vue`) with sidebar topic navigation, tag-based filtering, topics table with summary/preview, and detail view showing index + full report; auto-refresh every 60s with manual refresh button; new backend endpoints: `GET /api/library` (list topics), `GET /api/library/:topicSlug` (topic detail with index/report/state), `GET /api/library/tags` (list tags), `GET /api/library/tag/:tagname` (filter by tag); `/api/library` added to auth exemptions
 
 ### Fixed

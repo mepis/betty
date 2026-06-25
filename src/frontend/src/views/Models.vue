@@ -13,7 +13,6 @@ const modelDetails = ref(null)
 const modelFiles = ref([])
 const downloading = ref(false)
 const downloadProgress = ref(0)
-const downloadedFiles = ref([])
 const downloadingFile = ref('')
 const showDetails = ref(false)
 const toast = ref({ show: false, message: '', type: '' }) // type: 'success' | 'error'
@@ -26,8 +25,7 @@ const showFilePicker = ref(false)
 const filesLoading = ref(false)
 const selectedFile = ref('')
 const downloadsTab = ref('search') // 'search' | 'downloads'
-const loadingDownloads = ref(false)
-let activeDownloadsPollInterval = null
+const loadingModels = ref(false)
 
 const modelTypes = computed(() => {
   const types = new Set()
@@ -159,55 +157,28 @@ async function handleDownload() {
   downloading.value = false
 }
 
-async function loadDownloads() {
-  loadingDownloads.value = true
+async function loadModels() {
+  loadingModels.value = true
   try {
-    await store.fetchHfDownloads()
-    downloadedFiles.value = store.hfDownloads || []
-    // Also load active (in-progress) downloads
-    await store.fetchActiveDownloads()
-    startActiveDownloadsPolling()
+    await store.fetchModelsDir()
+    await store.fetchModels()
   } catch (e) {
-    console.error('Failed to load downloads:', e)
+    console.error('Failed to load models:', e)
   }
-  loadingDownloads.value = false
+  loadingModels.value = false
 }
 
-function startActiveDownloadsPolling() {
-  stopActiveDownloadsPolling()
-  // Poll every 2 seconds for active download progress
-  activeDownloadsPollInterval = setInterval(async () => {
-    if (downloadsTab.value !== 'downloads') return
-    try {
-      await store.fetchActiveDownloads()
-    } catch (e) {
-      console.error('Failed to poll active downloads:', e)
+async function handleDeleteLocalModel(file) {
+  if (!confirm(`Delete "${file.path}"?`)) return
+  try {
+    const result = await store.deleteLocalModel(file.path)
+    if (result) {
+      showToast(`Deleted ${file.path}`, 'success')
+    } else {
+      showToast(store.error || 'Failed to delete', 'error')
     }
-  }, 2000)
-}
-
-function stopActiveDownloadsPolling() {
-  if (activeDownloadsPollInterval) {
-    clearInterval(activeDownloadsPollInterval)
-    activeDownloadsPollInterval = null
-  }
-}
-
-async function handleCancelDownload(modelId) {
-  try {
-    await store.cancelActiveDownload(modelId)
   } catch (e) {
-    console.error('Failed to cancel download:', e)
-  }
-}
-
-async function handleDeleteDownload(modelId) {
-  if (!confirm(`Delete downloaded model "${modelId}"?`)) return
-  try {
-    await store.deleteHfDownload(modelId)
-    downloadedFiles.value = downloadedFiles.value.filter(d => d.modelId !== modelId)
-  } catch (e) {
-    console.error('Failed to delete download:', e)
+    showToast(e.message || 'Failed to delete', 'error')
   }
 }
 
@@ -227,18 +198,35 @@ function getModelIcon(model) {
   return '📦'
 }
 
+function getFileIcon(path) {
+  if (path.endsWith('.gguf')) return '🤖'
+  if (path.endsWith('.bin')) return '📄'
+  if (path.endsWith('.safetensors')) return '🛡️'
+  return '📦'
+}
+
+const groupedModels = computed(() => {
+  const groups = {}
+  store.models.forEach(file => {
+    const parts = file.path.split('/')
+    const dir = parts.length > 1 ? parts.slice(0, -1).join('/') : '(root)'
+    if (!groups[dir]) groups[dir] = []
+    groups[dir].push(file)
+  })
+  return Object.entries(groups)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([dir, files]) => ({ dir, files: files.sort((a, b) => a.path.localeCompare(b.path)) }))
+})
+
 watch(downloadsTab, (newTab) => {
-  if (newTab !== 'downloads') {
-    stopActiveDownloadsPolling()
+  if (newTab === 'downloads') {
+    loadModels()
   }
 })
 
 onMounted(async () => {
-  await loadDownloads()
-})
-
-onUnmounted(() => {
-  stopActiveDownloadsPolling()
+  await store.fetchModelsDir()
+  await store.fetchModels()
 })
 </script>
 
@@ -257,7 +245,7 @@ onUnmounted(() => {
         Search Models
       </button>
       <button
-        @click="downloadsTab = 'downloads'; loadDownloads()"
+        @click="downloadsTab = 'downloads'"
         class="px-4 py-2 rounded-lg text-sm font-medium transition-all"
         :class="downloadsTab === 'downloads' ? 'bg-accent-subtle text-accent' : 'text-text-muted hover:text-text-primary hover:bg-bg-tertiary'"
       >
@@ -265,7 +253,7 @@ onUnmounted(() => {
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
         Downloads
-        <span v-if="downloadedFiles.length || store.hfActiveDownloads.length" class="ml-1 badge bg-bg-tertiary text-text-muted text-xs">{{ downloadedFiles.length + store.hfActiveDownloads.length }}</span>
+        <span v-if="store.models.length" class="ml-1 badge bg-bg-tertiary text-text-muted text-xs">{{ store.models.length }}</span>
       </button>
     </div>
 
@@ -386,101 +374,73 @@ onUnmounted(() => {
 
     <!-- Download Tab -->
     <div v-if="downloadsTab === 'downloads'" class="space-y-4">
-      <div v-if="loadingDownloads" class="card flex items-center justify-center py-12">
+      <!-- Loading state -->
+      <div v-if="loadingModels" class="card flex items-center justify-center py-12">
         <svg class="w-6 h-6 animate-spin text-accent" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
         </svg>
       </div>
 
-      <div v-else-if="downloadedFiles.length === 0 && store.hfActiveDownloads.length === 0" class="card flex flex-col items-center justify-center py-16 text-text-muted">
+      <!-- Empty state -->
+      <div v-else-if="store.models.length === 0" class="card flex flex-col items-center justify-center py-16 text-text-muted">
         <svg class="w-12 h-12 mb-4 text-text-muted/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
         </svg>
-        <p class="text-sm">No downloaded models yet</p>
-        <p class="text-xs mt-1">Search for models to download GGUF files</p>
+        <p class="text-sm">No local models found</p>
+        <p class="text-xs mt-1">Download models via the Search tab or place .gguf/.bin/.safetensors files in the models directory</p>
       </div>
 
-      <!-- Active downloads (in progress) -->
-      <div v-if="store.hfActiveDownloads.length > 0" class="space-y-3">
-        <h3 class="text-xs font-semibold text-text-muted uppercase tracking-wider flex items-center gap-2">
-          <svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-          In Progress
-        </h3>
-        <div
-          v-for="active in store.hfActiveDownloads"
-          :key="active.modelId"
-          class="card border-accent/20"
-        >
-          <div class="flex items-center justify-between">
-            <div class="min-w-0 flex-1">
-              <h3 class="text-sm font-semibold text-text-primary">{{ active.modelId }}</h3>
-              <p class="text-xs text-text-muted mt-0.5">{{ active.filename }}</p>
-            </div>
-            <button
-              @click="handleCancelDownload(active.modelId)"
-              class="btn btn-ghost btn-xs text-text-muted hover:text-error"
-              title="Cancel download"
-            >
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <!-- Progress bar -->
-          <div class="mt-3 space-y-1">
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-text-muted">{{ formatSize(active.downloaded) }} / {{ formatSize(active.total) }}</span>
-              <span class="font-mono text-text-secondary">{{ active.progress }}%</span>
-            </div>
-            <div class="w-full h-2 bg-bg-tertiary rounded-full overflow-hidden">
-              <div
-                class="h-full rounded-full transition-all duration-300 bg-accent"
-                :style="{ width: active.progress + '%' }"
-              />
-            </div>
-          </div>
+      <!-- Model list -->
+      <div v-else class="space-y-3">
+        <!-- Directory info -->
+        <div class="flex items-center justify-between px-1">
+          <p class="text-xs text-text-muted font-mono">{{ store.modelsDir || '~/.betty/models' }}</p>
+          <button
+            @click="loadModels"
+            class="btn btn-ghost btn-xs text-text-muted hover:text-text-primary"
+            title="Refresh model list"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Refresh
+          </button>
         </div>
-      </div>
 
-      <!-- Completed downloads -->
-      <div v-if="downloadedFiles.length > 0" class="space-y-3">
-        <h3 v-if="store.hfActiveDownloads.length > 0" class="text-xs font-semibold text-text-muted uppercase tracking-wider">Completed</h3>
-        <div
-          v-for="download in downloadedFiles"
-          :key="download.modelId"
-          class="card"
-        >
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="text-sm font-semibold text-text-primary">{{ download.modelId }}</h3>
-              <p class="text-xs text-text-muted mt-0.5">
-                {{ download.files.length }} file{{ download.files.length !== 1 ? 's' : '' }}
-              </p>
-            </div>
-            <div class="flex items-center gap-2">
-              <button
-                @click="handleDeleteDownload(download.modelId)"
-                class="btn btn-ghost btn-xs text-text-muted hover:text-error"
-                title="Delete downloaded model"
-              >
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
-              </button>
-            </div>
+        <!-- Grouped by directory -->
+        <div v-for="group in groupedModels" :key="group.dir" class="card">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xs font-semibold text-text-muted uppercase tracking-wider flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+              {{ group.dir }}
+            </h3>
+            <span class="text-xs text-text-muted">{{ group.files.length }} file{{ group.files.length !== 1 ? 's' : '' }}</span>
           </div>
-          <div class="mt-3 space-y-1">
+          <div class="space-y-1">
             <div
-              v-for="file in download.files"
-              :key="file.name"
-              class="flex items-center justify-between text-xs px-3 py-1.5 rounded bg-bg-tertiary/50"
+              v-for="file in group.files"
+              :key="file.path"
+              class="flex items-center justify-between text-xs px-3 py-2 rounded bg-bg-tertiary/50 hover:bg-bg-tertiary transition-colors"
             >
-              <span class="text-text-secondary truncate">{{ file.name }}</span>
-              <span class="text-text-muted flex-shrink-0 ml-2">{{ formatSize(file.size) }}</span>
+              <div class="flex items-center gap-2 min-w-0 flex-1">
+                <span class="text-base flex-shrink-0">{{ getFileIcon(file.path) }}</span>
+                <span class="text-text-secondary truncate font-mono">{{ file.path }}</span>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0 ml-3">
+                <span class="text-text-muted">{{ formatSize(file.size) }}</span>
+                <button
+                  @click="handleDeleteLocalModel(file)"
+                  class="btn btn-ghost btn-xs text-text-muted hover:text-error"
+                  title="Delete file"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
