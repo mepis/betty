@@ -705,6 +705,7 @@ function getRunScript() {
   if (sp.rope_scaling.enabled)
     parts.push(`--rope-scaling ${sp.rope_scaling.value} `);
   if (sp.jinja) parts.push(`--jinja `);
+  if (sp.chat_template_file) parts.push(`--chat-template-file "${resolveConfigPath(sp.chat_template_file)}" `);
   if (sp.parallel.enabled) parts.push(`--parallel ${sp.parallel.value} `);
   if (sps.layer_split.enabled)
     parts.push(`--split-mode ${sps.layer_split.value} `);
@@ -1072,6 +1073,7 @@ function getServerParamsSnapshot() {
       : [0],
     ropeScaling: sp.rope_scaling.enabled ? sp.rope_scaling.value : null,
     jinja: sp.jinja ? true : null,
+    chatTemplateFile: sp.chat_template_file || null,
     parallel: sp.parallel.enabled ? sp.parallel.value : null,
     contBatching: sp.cont_batching ? true : null,
     presencePenalty: sp.presence_penalty.enabled

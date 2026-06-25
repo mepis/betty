@@ -252,6 +252,7 @@ const DEFAULT_CONFIGS = {
       value: "yarn",
     },
     jinja: false,
+    chat_template_file: "",
     parallel: {
       enabled: true,
       value: 1,
@@ -1275,6 +1276,7 @@ function getLaunchCommand(configs, testRunConfig) {
   if (sp.reasoning_budget_message?.enabled) parts.push(`--reasoning-budget-message "${sp.reasoning_budget_message.value}"`);
   if (sp.rope_scaling?.enabled) parts.push(`--rope-scaling ${sp.rope_scaling.value}`);
   if (sp.jinja) parts.push("--jinja");
+  if (sp.chat_template_file) parts.push(`--chat-template-file "${resolveConfigPath(sp.chat_template_file)}"`);
   if (sp.parallel?.enabled) parts.push(`--parallel ${sp.parallel.value}`);
   if (sps.layer_split?.enabled) parts.push(`--split-mode ${sps.layer_split.value}`);
   if (sps.tensor_split?.enabled) parts.push(`--tensor-split ${sps.tensor_split.value}`);

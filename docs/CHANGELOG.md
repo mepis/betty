@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-25] Chat template file selection in Settings — dropdown to select a Jinja chat template file (`~/.betty/chat_templates/*.json`) when Jinja mode is enabled; `--chat-template-file` flag passed to llama.cpp in both launch command (`api-server.js`) and run script (`index.js`); chat templates fetched on Settings mount; helper functions `joinChatTemplatePath()` and `getTemplateName()` for path management
+
 - [Added]: [2026-06-25] Chat Templates management — download, list, and delete chat template files stored in `~/.betty/chat_templates/`; new `GET /api/chat-templates`, `POST /api/chat-templates/download` (SSE progress), and `DELETE /api/chat-templates/:filename` endpoints in `api-server.js`; new `ChatTemplates.vue` view with download form, progress bar, saved templates list, and toast notifications; new store actions `fetchChatTemplates()`, `downloadChatTemplate()`, `deleteChatTemplate()` in `benchmark.js`; "Chat Templates" tab added to Admin page; `~/.betty/chat_templates` directory created on install
 - [Added]: [2026-06-25] Server Params section in Settings — new config section exposing `jinja` (Jinja Template Mode) boolean toggle; `server_params` object auto-initialized in `normalizeBuildParams()` to prevent undefined errors
 - [Added]: [2026-06-25] Install script directories — `scripts/install-service.sh` now creates `~/.betty/library`, `~/.betty/users`, and `~/.betty/chat_templates` directories on install; fixed duplicate "profiles directory" echo (was printing twice, now correctly prints "reports directory")

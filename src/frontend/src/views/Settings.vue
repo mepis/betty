@@ -41,6 +41,7 @@ const deletingLlama = ref(false)
 const deleteLlamaSuccess = ref('')
 const updating = ref(false)
 const updateSuccess = ref('')
+const openDropdown = ref(null)
 
 function showToast(message, type = 'success') {
   toast.value = { show: true, message, type }
@@ -319,6 +320,7 @@ onMounted(async () => {
   }
   await loadProfiles()
   await loadServiceProfiles()
+  await store.fetchChatTemplates()
 })
 
 function flattenBuildParams(configs) {
@@ -506,6 +508,15 @@ function updateBenchmarkMessage(idx, value) {
     visualConfigs.value.benchmark_messages = []
   }
   visualConfigs.value.benchmark_messages[idx] = value
+}
+
+function joinChatTemplatePath(filename) {
+  return `~/.betty/chat_templates/${filename}`
+}
+
+function getTemplateName(path) {
+  if (!path) return ''
+  return path.split('/').pop()
 }
 
 function formatDate(dateStr) {
@@ -1406,6 +1417,45 @@ function normalizeBuildParams(configs) {
           v-model="visualConfigs.server_params"
         />
 
+        <!-- Chat Template Dropdown -->
+        <div v-if="visualConfigs.server_params?.jinja" class="space-y-2">
+          <h5 class="text-base font-medium text-text-muted">Chat Template</h5>
+          <div class="relative">
+            <button
+              @click="openDropdown = !openDropdown"
+              class="input w-full text-left flex items-center justify-between"
+            >
+              <span class="truncate">
+                {{ visualConfigs.server_params?.chat_template_file ? getTemplateName(visualConfigs.server_params.chat_template_file) : '— No Template —' }}
+              </span>
+              <svg class="w-4 h-4 text-text-muted flex-shrink-0 transition-transform" :class="openDropdown ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <Transition name="dropdown">
+              <div v-if="openDropdown" class="absolute z-10 mt-1 w-full bg-bg-secondary border border-border rounded-lg shadow-lg max-h-48 overflow-auto">
+                <button
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, chat_template_file: '' }; openDropdown = false"
+                  class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors first-rounded-t-lg"
+                >
+                  No Template
+                </button>
+                <div v-if="store.chatTemplates.length === 0" class="px-3 py-2 text-xs text-text-muted">
+                  No chat templates found
+                </div>
+                <button
+                  v-for="t in store.chatTemplates"
+                  :key="t.filename"
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, chat_template_file: joinChatTemplatePath(t.filename) }; openDropdown = false"
+                  class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors"
+                >
+                  {{ t.filename }}
+                </button>
+              </div>
+            </Transition>
+          </div>
+        </div>
+
         <!-- Environment Export Configs -->
         <config-section
           title="Environment Exports"
@@ -2130,5 +2180,14 @@ function normalizeBuildParams(configs) {
 .toast-leave-to {
   opacity: 0;
   transform: translateY(10px);
+}
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 </style>
