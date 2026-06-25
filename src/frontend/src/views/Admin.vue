@@ -29,13 +29,13 @@ const components = {
 <template>
   <div class="flex flex-col h-full">
     <!-- Tab bar -->
-    <div class="border-b border-border bg-bg-secondary px-4 pt-4">
+    <div class="border-b border-border px-4 pt-4">
       <div class="flex gap-1 overflow-x-auto">
         <button
           v-for="tab in tabs"
           :key="tab.key"
           @click="activeTab = tab.key"
-          class="px-4 py-2 text-sm font-medium rounded-t-lg transition-all duration-200 flex-shrink-0"
+          class="px-4 py-2 text-sm font-medium transition-all duration-200 flex-shrink-0"
           :class="
             activeTab === tab.key
               ? 'bg-bg-primary text-accent border-t-2 border-l border-r border-border'
