@@ -749,7 +749,7 @@ function normalizeBuildParams(configs) {
 </script>
 
 <template>
-  <div class="m-2 grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+  <div class="m-2 grid grid-cols-1 lg:grid-cols-[auto_1fr_1fr] gap-4 mb-6">
     <!-- Left column -->
     <div class="space-y-4">
     <!-- Actions Panel -->

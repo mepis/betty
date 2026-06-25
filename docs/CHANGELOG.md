@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-25] Settings.vue — fixed left column in admin settings grid to use auto width instead of equal third, preventing unnecessary horizontal stretching via `lg:grid-cols-[auto_1fr_1fr]`
+
 ### Changed
 
 - [Changed]: [2026-06-25] Settings.vue — moved "Build llama.cpp" card from left column to right column for improved layout organization
