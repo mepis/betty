@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-25] Settings.vue — moved "Build llama.cpp" card from left column to right column for improved layout organization
+
 ### Fixed
 
 - [Fixed]: [2026-06-25] Grid search combination generation refactored in `index.js` — batch size and uBatch size are now handled separately from static params (contextLength, gpuLayerOffload, cacheRam) via new `generateBatchPermutations()` function, avoiding wasteful full cartesian product generation followed by filtering; batch permutations are generated with the `batchSize >= uBatchSize` constraint built-in, and detailed batch permutation output added to grid search configuration display
