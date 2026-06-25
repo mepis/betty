@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-25] Service Profile View — "View" button in the Service Profiles list opens a read-only modal displaying the saved profile's description, ExecStart command, environment variables, restart policy, and restart delay; new `fetchServiceProfile(name)` method in benchmark store
+
+### Changed
+
+- [Changed]: [2026-06-25] Service Edit Modal — widened modal to `80vw` and increased ExecStart textarea height for better editing experience
+
 ### Changed
 
 - [Changed]: [2026-06-25] Admin Settings tab — expanded grid from 2 to 3 columns; moved Config Profiles and Service Profiles panels into the new middle column

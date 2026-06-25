@@ -65,6 +65,11 @@ const serviceProfileAction = ref('')
 const serviceProfileMessage = ref('')
 const serviceProfileMessageError = ref(false)
 
+// Service Profile View Modal state
+const showServiceProfileViewModal = ref(false)
+const viewingServiceProfile = ref(null)
+const loadingViewProfile = ref(false)
+
 // Actions panel
 const showActionsPanel = ref(true)
 
@@ -247,6 +252,30 @@ async function handleDeleteServiceProfile(name) {
   } finally {
     serviceProfileAction.value = ''
   }
+}
+
+async function openServiceProfileView(name) {
+  loadingViewProfile.value = true
+  viewingServiceProfile.value = null
+  try {
+    const data = await store.fetchServiceProfile(name)
+    if (data) {
+      viewingServiceProfile.value = data
+      showServiceProfileViewModal.value = true
+    } else {
+      showToast('Failed to load service profile', 'error')
+    }
+  } catch (e) {
+    console.error('Failed to load service profile:', e)
+    showToast('Failed to load service profile', 'error')
+  } finally {
+    loadingViewProfile.value = false
+  }
+}
+
+function closeServiceProfileViewModal() {
+  showServiceProfileViewModal.value = false
+  viewingServiceProfile.value = null
 }
 
 async function fetchModelsForDirectory(dir) {
@@ -1066,6 +1095,18 @@ function normalizeBuildParams(configs) {
               <div class="text-xs text-text-muted">{{ formatDate(profile.modified) }}</div>
             </div>
             <button
+              @click="openServiceProfileView(profile.name)"
+              class="btn btn-ghost btn-xs"
+              :disabled="loadingViewProfile"
+              title="View this profile"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              View
+            </button>
+            <button
               @click="handleLoadServiceProfile(profile.name)"
               class="btn btn-ghost btn-xs"
               :disabled="serviceProfileAction === 'load'"
@@ -1776,6 +1817,110 @@ function normalizeBuildParams(configs) {
     </div>
   </div>
 
+    <!-- Service Profile View Modal -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showServiceProfileViewModal" class="fixed inset-0 z-50 flex items-center justify-center" @keydown="(e) => { if (e.key === 'Escape') closeServiceProfileViewModal() }">
+          <!-- Backdrop -->
+          <div
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            @click="closeServiceProfileViewModal"
+          />
+
+          <!-- Modal -->
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] mx-4 flex flex-col">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+                <div>
+                  <h3 class="text-lg font-semibold text-text-primary">Service Profile</h3>
+                  <p class="text-xs text-text-muted mt-0.5">View saved systemd service configuration</p>
+                </div>
+              </div>
+              <button
+                @click="closeServiceProfileViewModal"
+                class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content -->
+            <div class="overflow-auto flex-1 p-6">
+              <!-- Loading state -->
+              <div v-if="loadingViewProfile" class="flex items-center justify-center py-12">
+                <svg class="w-6 h-6 animate-spin text-accent" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              </div>
+
+              <!-- Profile data display -->
+              <div v-else-if="viewingServiceProfile" class="space-y-5">
+                <!-- Description -->
+                <div>
+                  <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Description</label>
+                  <p class="text-sm text-text-primary mt-1">{{ viewingServiceProfile.description || '—' }}</p>
+                </div>
+
+                <!-- ExecStart -->
+                <div>
+                  <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">ExecStart Command</label>
+                  <div class="bg-bg-tertiary rounded-lg px-3 py-2 mt-1 font-mono text-xs text-text-primary break-all whitespace-pre-wrap">{{ viewingServiceProfile.execStart || '—' }}</div>
+                </div>
+
+                <!-- Environment Variables -->
+                <div>
+                  <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Environment Variables</label>
+                  <div class="mt-2 space-y-1">
+                    <div v-if="viewingServiceProfile.envVars && Object.keys(viewingServiceProfile.envVars).length > 0" class="space-y-1">
+                      <div
+                        v-for="(value, key) in viewingServiceProfile.envVars"
+                        :key="key"
+                        class="flex items-center gap-2 font-mono text-xs"
+                      >
+                        <span class="text-text-primary">{{ key }}</span>
+                        <span class="text-text-muted">=</span>
+                        <span class="text-text-primary">{{ value }}</span>
+                      </div>
+                    </div>
+                    <div v-else class="text-xs text-text-muted italic">None</div>
+                  </div>
+                </div>
+
+                <!-- Restart Policy + Restart Sec -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Restart Policy</label>
+                    <p class="text-sm text-text-primary mt-1">{{ viewingServiceProfile.restart || '—' }}</p>
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Restart Sec</label>
+                    <p class="text-sm text-text-primary mt-1">{{ viewingServiceProfile.restartSec ?? '—' }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-end px-6 py-3 border-t border-border flex-shrink-0">
+              <button
+                @click="closeServiceProfileViewModal"
+                class="btn btn-ghost btn-sm"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
     <!-- Service Edit Modal -->
     <Teleport to="body">
       <Transition name="modal">
@@ -1787,7 +1932,7 @@ function normalizeBuildParams(configs) {
           />
 
           <!-- Modal -->
-          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] mx-4 flex flex-col">
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-[80vw] max-h-[85vh] mx-4 flex flex-col">
             <!-- Header -->
             <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
               <div class="flex items-center gap-3">
@@ -1843,7 +1988,7 @@ function normalizeBuildParams(configs) {
                   <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">ExecStart Command</label>
                   <textarea
                     v-model="serviceEditForm.execStart"
-                    class="textarea font-mono text-xs mt-2 h-20"
+                    class="textarea font-mono text-xs mt-2 h-48"
                     placeholder="/path/to/llama-server --port 11434 ..."
                   />
                   <p class="text-xs text-text-muted mt-1">Full command to execute, without the leading path to the binary</p>

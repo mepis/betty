@@ -195,6 +195,17 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
+    async fetchServiceProfile(name) {
+      try {
+        const res = await axios.get(`${API_BASE}/api/service-profile/${name}`)
+        if (res.data.success) return res.data.data
+        return null
+      } catch (e) {
+        this.error = e.message
+        return null
+      }
+    },
+
     async saveServiceProfile(name, data) {
       try {
         const res = await axios.post(`${API_BASE}/api/service-profile`, { name, data })
