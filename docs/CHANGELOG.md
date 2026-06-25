@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-25] `scripts/update.sh` — update process now stops the service, installs npm dependencies in both root and `src/frontend/` directories, then restarts; replaces the previous approach of just stashing, pulling, and restarting without installing dependencies
+
 ### Added
 
 - [Added]: [2026-06-25] Database backend — MySQL (MariaDB) primary with SQLite fallback and JSON file last-resort fallback; unified `db.js` abstraction layer with `init()`, `query()`, `get()`, `all()`, `run()`, `jsonGet()`, `jsonAll()`, `jsonRun()`, `close()` methods; three-tier fallback: MySQL → SQLite (`~/.betty/betty.db`) → JSON files (`~/.betty/*.json`); new `db/schema.sql` with tables for users, configs, reports, profiles, service_profiles, chat_templates, settings, and migrations; new `db/data-layer.js` providing high-level functions for all data operations; new `db/json-store.js` implementing the same interface as `db.js` for JSON file fallback; new `db/migrate.js` CLI tool for bidirectional migration between SQLite, MySQL, and JSON files
