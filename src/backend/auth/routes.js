@@ -122,6 +122,44 @@ router.post("/register", async (req, res) => {
 });
 
 /**
+ * PUT /api/auth/password
+ * Change the current user's password. Requires current password verification.
+ */
+router.put("/password", authenticate, async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ success: false, error: "Current and new password required" });
+  }
+
+  if (newPassword.length < 8) {
+    return res.status(400).json({ success: false, error: "New password must be at least 8 characters" });
+  }
+
+  // Find the current user by id
+  const user = findUserById(req.user.id);
+  if (!user) {
+    return res.status(404).json({ success: false, error: "User not found" });
+  }
+
+  // Verify current password
+  const valid = await bcrypt.compare(currentPassword, user.passwordHash);
+  if (!valid) {
+    return res.status(401).json({ success: false, error: "Current password is incorrect" });
+  }
+
+  // Hash and save new password
+  const passwordHash = await bcrypt.hash(newPassword, 10);
+  const updated = updateUser(user.username, { passwordHash });
+
+  if (!updated) {
+    return res.status(500).json({ success: false, error: "Failed to update password" });
+  }
+
+  res.json({ success: true, message: "Password changed successfully" });
+});
+
+/**
  * GET /api/auth/me
  * Return the current authenticated user's info (no password hash).
  */

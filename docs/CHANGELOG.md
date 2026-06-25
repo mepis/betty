@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-24] User account settings page with self-service password change (`GET /account`)
+- [Added]: [2026-06-24] `PUT /api/auth/password` endpoint — authenticated users can change their own password with current password verification, minimum 8-char validation, and bcrypt rehashing
 - [Added]: [2026-06-24] User authentication and authorization with role-based access control (RBAC)
 - [Added]: [2026-06-24] `src/backend/auth/user-store.js` — File-based user storage with CRUD operations; stores users in `~/.betty/users.json`
 - [Added]: [2026-06-24] `src/backend/auth/middleware.js` — JWT authentication middleware (`authenticate`, `authorize`, `optionalAuth`) supporting Bearer tokens and SSE query param tokens

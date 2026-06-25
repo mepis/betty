@@ -8,6 +8,7 @@ import Logs from '@/views/Logs.vue'
 import PiChat from '@/views/PiChat.vue'
 import SysInfo from '@/views/SysInfo.vue'
 import Admin from '@/views/Admin.vue'
+import Account from '@/views/Account.vue'
 import Login from '@/views/Login.vue'
 
 const routes = [
@@ -86,6 +87,15 @@ const routes = [
     component: SysInfo,
     meta: {
       title: 'Sys Info',
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: Account,
+    meta: {
+      title: 'Account',
       requiresAuth: true,
     },
   },

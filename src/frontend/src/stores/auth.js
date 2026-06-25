@@ -120,6 +120,32 @@ export const useAuthStore = defineStore("auth", {
     },
 
     /**
+     * Change the current user's password.
+     */
+    async changePassword(currentPassword, newPassword) {
+      this.loading = true;
+      this.error = null;
+      try {
+        const { data } = await axios.put(
+          `${API_BASE}/api/auth/password`,
+          { currentPassword, newPassword },
+          { headers: { Authorization: `Bearer ${this.token}` } }
+        );
+        if (data.success) {
+          return true;
+        } else {
+          this.error = data.error || "Failed to change password";
+          return false;
+        }
+      } catch (err) {
+        this.error = err.response?.data?.error || "Network error";
+        return false;
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    /**
      * Set the error message (for clearing errors).
      */
     setError(message) {
