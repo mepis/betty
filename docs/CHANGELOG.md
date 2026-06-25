@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-25] Chat Templates management — download, list, and delete chat template files stored in `~/.betty/chat_templates/`; new `GET /api/chat-templates`, `POST /api/chat-templates/download` (SSE progress), and `DELETE /api/chat-templates/:filename` endpoints in `api-server.js`; new `ChatTemplates.vue` view with download form, progress bar, saved templates list, and toast notifications; new store actions `fetchChatTemplates()`, `downloadChatTemplate()`, `deleteChatTemplate()` in `benchmark.js`; "Chat Templates" tab added to Admin page; `~/.betty/chat_templates` directory created on install
+- [Added]: [2026-06-25] Server Params section in Settings — new config section exposing `jinja` (Jinja Template Mode) boolean toggle; `server_params` object auto-initialized in `normalizeBuildParams()` to prevent undefined errors
+- [Added]: [2026-06-25] Install script directories — `scripts/install-service.sh` now creates `~/.betty/library`, `~/.betty/users`, and `~/.betty/chat_templates` directories on install; fixed duplicate "profiles directory" echo (was printing twice, now correctly prints "reports directory")
+
+### Added
+
 - [Added]: [2026-06-25] Service Profile View — "View" button in the Service Profiles list opens a read-only modal displaying the saved profile's description, ExecStart command, environment variables, restart policy, and restart delay; new `fetchServiceProfile(name)` method in benchmark store
 
 ### Changed

@@ -47,6 +47,7 @@ const REPORTS_DIR = join(BETTY_DIR, "reports");
 const PROFILES_DIR = join(BETTY_DIR, "profiles");
 const SERVICE_PROFILES_DIR = join(BETTY_DIR, "service-profiles");
 const MODELS_DIR = join(BETTY_DIR, "models");
+const CHAT_TEMPLATES_DIR = join(BETTY_DIR, "chat_templates");
 
 // Allowed CORS origins (comma-separated or * for all)
 const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
@@ -121,6 +122,7 @@ ensureDirectory(REPORTS_DIR, "~/.betty/reports");
 ensureDirectory(PROFILES_DIR, "profiles");
 ensureDirectory(SERVICE_PROFILES_DIR, "service-profiles");
 ensureDirectory(MODELS_DIR, "~/.betty/models");
+ensureDirectory(CHAT_TEMPLATES_DIR, "~/.betty/chat_templates");
 ensureDirectory(join(BENCHMARK_DIR, "llama_cache"), "llama_cache");
 
 //--- Git update check ---
@@ -2416,6 +2418,150 @@ app.delete("/api/hf/download/:modelId", authorize("admin", "operator"), (req, re
     } else {
       res.status(404).json({ success: false, error: "Model not found" });
     }
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Chat Templates API ---
+
+// List chat template files
+app.get("/api/chat-templates", (_req, res) => {
+  try {
+    if (!fs.existsSync(CHAT_TEMPLATES_DIR)) {
+      return res.json({ success: true, data: [] });
+    }
+    const files = fs.readdirSync(CHAT_TEMPLATES_DIR)
+      .filter(f => !f.startsWith('.'))
+      .map(f => {
+        const fullPath = join(CHAT_TEMPLATES_DIR, f);
+        const stats = fs.statSync(fullPath);
+        return { filename: f, size: stats.size, modified: stats.mtime };
+      })
+      .sort((a, b) => b.modified - a.modified);
+    res.json({ success: true, data: files });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Download a chat template via wget with SSE progress
+app.post("/api/chat-templates/download", authorize("admin", "operator"), (req, res) => {
+  try {
+    const { url, filename } = req.body;
+
+    if (!url || !url.trim()) {
+      return res.status(400).json({ success: false, error: "URL is required" });
+    }
+
+    // Validate URL format and protocol
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(url.trim());
+    } catch {
+      return res.status(400).json({ success: false, error: "Invalid URL format" });
+    }
+    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+      return res.status(400).json({ success: false, error: "Only HTTP and HTTPS URLs are allowed" });
+    }
+
+    // Determine target filename
+    let targetFilename = filename || basename(parsedUrl.pathname);
+    // Sanitize filename
+    targetFilename = targetFilename.replace(/[^a-zA-Z0-9._\-]/g, '_');
+
+    if (!targetFilename) {
+      return res.status(400).json({ success: false, error: "Could not determine filename from URL" });
+    }
+
+    const targetPath = join(CHAT_TEMPLATES_DIR, targetFilename);
+
+    // Set up SSE response for progress updates
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    // Check if file already exists
+    if (fs.existsSync(targetPath)) {
+      const stat = fs.statSync(targetPath);
+      res.write(`event: chat-template\ndata: EXISTS:${targetFilename}\n\n`);
+      res.write(`event: chat-template\ndata: SIZE:${stat.size}\n\n`);
+      safeFlush(res);
+      res.end();
+      return;
+    }
+
+    const wget = spawn("wget", ["--no-clobber", "-O", targetPath, url.trim()]);
+
+    wget.stderr.on("data", (data) => {
+      const text = data.toString();
+      // Parse wget progress: look for percentage pattern like "34%"
+      const match = text.match(/(\d+)%/);
+      if (match) {
+        const progress = parseInt(match[1], 10);
+        // Try to get downloaded bytes from wget output
+        const sizeMatch = text.match(/(\d+(?:\.\d+)?)\s([KMGT]?B)/);
+        let downloaded = 0;
+        if (sizeMatch) {
+          const val = parseFloat(sizeMatch[1]);
+          const unit = sizeMatch[2];
+          if (unit === 'KB') downloaded = val * 1024;
+          else if (unit === 'MB') downloaded = val * 1024 * 1024;
+          else if (unit === 'GB') downloaded = val * 1024 * 1024 * 1024;
+          else downloaded = val;
+        }
+        res.write(`event: chat-template\ndata: PROGRESS:${progress}:${downloaded}\n\n`);
+        safeFlush(res);
+      }
+    });
+
+    wget.on("close", (code) => {
+      if (code === 0 && fs.existsSync(targetPath)) {
+        const stat = fs.statSync(targetPath);
+        res.write(`event: chat-template\ndata: FILE:${targetFilename}\n\n`);
+        res.write(`event: chat-template\ndata: SIZE:${stat.size}\n\n`);
+        safeFlush(res);
+      } else {
+        // Clean up partial file on failure
+        if (fs.existsSync(targetPath)) {
+          try { fs.unlinkSync(targetPath); } catch {}
+        }
+        res.write(`event: chat-template\ndata: ERROR:Download failed with code ${code}\n\n`);
+        safeFlush(res);
+      }
+      res.end();
+    });
+
+    wget.on("error", (err) => {
+      if (fs.existsSync(targetPath)) {
+        try { fs.unlinkSync(targetPath); } catch {}
+      }
+      res.write(`event: chat-template\ndata: ERROR:${err.message}\n\n`);
+      safeFlush(res);
+      res.end();
+    });
+  } catch (err) {
+    if (res.headersSent) {
+      res.write(`event: chat-template\ndata: ERROR:${err.message}\n\n`);
+      safeFlush(res);
+      res.end();
+    } else {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  }
+});
+
+// Delete a chat template file
+app.delete("/api/chat-templates/:filename", authorize("admin", "operator"), (req, res) => {
+  try {
+    const safeFilename = req.params.filename.replace(/[^a-zA-Z0-9._\-]/g, '_');
+    const filePath = join(CHAT_TEMPLATES_DIR, safeFilename);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Template not found" });
+    }
+    fs.unlinkSync(filePath);
+    res.json({ success: true, message: `Deleted ${safeFilename}` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

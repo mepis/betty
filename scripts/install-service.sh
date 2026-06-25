@@ -18,9 +18,17 @@ mkdir -p "$HOME/.betty/models"
 echo "==> Creating profiles directory..."
 mkdir -p "$HOME/.betty/profiles"
 
-echo "==> Creating profiles directory..."
+echo "==> Creating reports directory..."
 mkdir -p "$HOME/.betty/reports"
 
+echo "==> Creating library directory..."
+mkdir -p "$HOME/.betty/library"
+
+echo "==> Creating users directory..."
+mkdir -p "$HOME/.betty/users"
+
+echo "==> Creating chat templates directory..."
+mkdir -p "$HOME/.betty/chat_templates"
 
 echo "==> Writing service file..."
 cat > "$HOME/.config/systemd/user/$APP_NAME.service" <<EOF

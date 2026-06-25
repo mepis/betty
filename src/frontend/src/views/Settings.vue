@@ -730,6 +730,9 @@ function normalizeBuildParams(configs) {
   }
   configs.export_configs = ec
 
+  // Ensure server_params exists (for jinja and future params)
+  configs.server_params = configs.server_params || {}
+
   return configs
 }
 </script>
@@ -1392,6 +1395,15 @@ function normalizeBuildParams(configs) {
           ]"
           :model-options="modelOptions"
           v-model="visualConfigs"
+        />
+
+        <!-- Server Params -->
+        <config-section
+          title="Server Params"
+          :items="[
+            { key: 'jinja', label: 'Jinja Template Mode', type: 'boolean' },
+          ]"
+          v-model="visualConfigs.server_params"
         />
 
         <!-- Environment Export Configs -->

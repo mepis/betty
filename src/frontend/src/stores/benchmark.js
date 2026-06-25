@@ -54,6 +54,12 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
     // Notification
     notification: { type: null, message: null },
+
+    // Chat Templates
+    chatTemplates: [],
+    chatTemplateDownloading: false,
+    chatTemplateDownloadProgress: 0,
+    chatTemplateDownloadError: null,
   }),
 
   getters: {
@@ -929,6 +935,113 @@ export const useBenchmarkStore = defineStore('benchmark', {
 
     clearNotification() {
       this.notification = { type: null, message: null }
+    },
+
+    //--- Chat Template actions ---
+    async fetchChatTemplates() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/chat-templates`)
+        if (res.data.success) {
+          this.chatTemplates = res.data.data || []
+          return true
+        }
+        return false
+      } catch (e) {
+        this.chatTemplateDownloadError = e.message
+        return false
+      }
+    },
+
+    async downloadChatTemplate(url, filename, onProgress) {
+      try {
+        this.chatTemplateDownloadError = null
+        this.chatTemplateDownloading = true
+        this.chatTemplateDownloadProgress = 0
+
+        // Pass auth token as query param (SSE fetch can't use Authorization header reliably)
+        const token = localStorage.getItem('betty-token')
+        const tokenParam = token ? `?token=${encodeURIComponent(token)}` : ''
+        const response = await fetch(`${API_BASE}/api/chat-templates/download${tokenParam}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, filename }),
+        })
+
+        const reader = response.body.getReader()
+        const decoder = new TextDecoder()
+
+        let buffer = ''
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+
+          buffer += decoder.decode(value, { stream: true })
+
+          // Parse SSE format: events separated by blank lines
+          const parts = buffer.split('\n\n')
+          buffer = parts.pop() || ''
+
+          for (const eventBlock of parts) {
+            const eventLines = eventBlock.split('\n')
+            let currentEvent = ''
+            let currentData = ''
+
+            for (const line of eventLines) {
+              if (line.startsWith('event: ')) {
+                currentEvent = line.slice('event: '.length)
+              } else if (line.startsWith('data: ')) {
+                currentData = line.slice('data: '.length)
+              }
+            }
+
+            if (currentEvent === 'chat-template' && currentData) {
+              if (currentData.startsWith('PROGRESS:')) {
+                // Format: PROGRESS:percentage:downloadedBytes
+                const parts = currentData.slice('PROGRESS:'.length).split(':')
+                const progress = parseInt(parts[0], 10)
+                const downloaded = parts[1] ? parseInt(parts[1], 10) : 0
+                this.chatTemplateDownloadProgress = progress
+                if (onProgress) onProgress(progress, downloaded)
+              } else if (currentData.startsWith('FILE:')) {
+                // Download complete
+                const downloadedFilename = currentData.slice('FILE:'.length)
+                this.chatTemplateDownloadError = null
+                if (onProgress) onProgress(100, 0, downloadedFilename)
+              } else if (currentData.startsWith('EXISTS:')) {
+                // File already exists
+                const existingFilename = currentData.slice('EXISTS:'.length)
+                this.chatTemplateDownloadError = null
+                if (onProgress) onProgress(100, 0, existingFilename, true)
+              } else if (currentData.startsWith('ERROR:')) {
+                this.chatTemplateDownloadError = currentData.slice('ERROR:'.length)
+              }
+            }
+          }
+        }
+
+        this.chatTemplateDownloading = false
+        return !this.chatTemplateDownloadError
+      } catch (e) {
+        this.chatTemplateDownloadError = e.message
+        this.chatTemplateDownloading = false
+        return false
+      }
+    },
+
+    async deleteChatTemplate(filename) {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/chat-templates/${encodeURIComponent(filename)}`)
+        if (res.data.success) {
+          this.chatTemplates = this.chatTemplates.filter(t => t.filename !== filename)
+          return true
+        }
+        this.chatTemplateDownloadError = res.data.error
+        return false
+      } catch (e) {
+        this.chatTemplateDownloadError = e.message
+        return false
+      }
     },
   },
 })

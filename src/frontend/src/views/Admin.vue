@@ -4,6 +4,7 @@ import { ref, defineAsyncComponent } from 'vue'
 const tabs = [
   { name: 'Benchmark', key: 'benchmark' },
   { name: 'Models', key: 'models' },
+  { name: 'Chat Templates', key: 'chatTemplates' },
   { name: 'Settings', key: 'settings' },
   { name: 'Reports', key: 'reports' },
   { name: 'Logs', key: 'logs' },
@@ -15,6 +16,7 @@ const activeTab = ref('benchmark')
 const components = {
   benchmark: defineAsyncComponent(() => import('@/views/Dashboard.vue')),
   models: defineAsyncComponent(() => import('@/views/Models.vue')),
+  chatTemplates: defineAsyncComponent(() => import('@/views/ChatTemplates.vue')),
   settings: defineAsyncComponent(() => import('@/views/Settings.vue')),
   reports: defineAsyncComponent(() => import('@/views/Reports.vue')),
   logs: defineAsyncComponent(() => import('@/views/Logs.vue')),
