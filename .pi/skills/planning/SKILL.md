@@ -12,7 +12,7 @@ Create a detailed, actionable implementation plan for the user's request, then i
 
 ## Workflow
 
-1. **Research** — Understand the request, explore the codebase, and identify relevant patterns. Check for a `library/` folder if it exists.
+1. **Research** — Understand the request, explore the codebase, and identify relevant patterns. Check for a `~/.betty/library/` folder if it exists.
 2. **Web Research** — Search the web for current-year best practices and common design patterns relevant to the task (see **Web Research** below).
 3. **Plan** — Develop a phased implementation plan with concrete tasks. Write it to `.agents/plans/`. Incorporate findings from web research.
 4. **Review** — Self-validate: verify every step is atomic, dependencies are resolved, and acceptance criteria are clear.

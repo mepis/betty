@@ -292,7 +292,7 @@ betty/
 │       │   └── styles/        # CSS variables
 │       └── dist/              # Built frontend (served by Express)
 ├── docs/                      # Documentation
-├── library/                   # Research library
+├── ~/.betty/library/          # Research library
 ├── scripts/                   # Install scripts
 ├── package.json
 └── install.sh

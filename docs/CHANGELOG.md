@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-24] Research library moved from `library/` (repo-local) to `~/.betty/library/` (user home directory); updated all references in `.pi/AGENTS.md`, `.pi/skills/planning/SKILL.md`, `.pi/skills/project-docs/SKILL.md`, `.pi/skills/research/SKILL.md`, and `docs/architecture.md`
+
 ### Added
 
 - [Added]: [2026-06-24] User authentication and authorization with role-based access control (RBAC)
@@ -46,6 +50,7 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
+- [Removed]: [2026-06-24] `library/` — entire research library directory deleted from repo; library is now hosted externally at `~/.betty/library/`
 - [Removed]: [2026-06-24] `.pi/skills/project-rules/SKILL.md` — deleted; project rules are now defined in `.pi/AGENTS.md` and `.pi/APPEND_SYSTEM.md`
 - [Removed]: [2026-06-24] `src/frontend/src/components/SysInfoModal.vue` — deleted; sys info functionality now accessible via Admin page tabs
 - [Removed]: [2026-06-24] `src/frontend/src/stores/benchmark.js` — removed `showSysInfo` state (no longer needed without modal)

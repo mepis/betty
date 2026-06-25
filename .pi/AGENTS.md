@@ -54,7 +54,7 @@ The `docs/` directory at the root of this repository is the authoritative source
 ## Other Locations
 
 - **`README.md`** (repo root) — Project summary, quick start, and high-level overview
-- **`library/`** — Archived research and reference materials
+- **`~/.betty/library/`** — Archived research and reference materials
 - **`src/`** — Source code when docs are insufficient; read exports and comments
 
 ## When to Use

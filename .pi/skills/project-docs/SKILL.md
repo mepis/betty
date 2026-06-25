@@ -10,7 +10,7 @@ Create thorough, developer-focused documentation for this project. Do not stop t
 ## Output Location
 
 - Default: `<repo-root>/docs/`
-- Library (if `library/` folder exists): `<repo-root>/library/` — if `library/` does not exist, inform the user and skip this request.
+- Library (if `~/.betty/library/` folder exists): `~/.betty/library/` — if `~/.betty/library/` does not exist, inform the user and skip this request.
 - If documentation already exists, update it to match these standards.
 
 ## Page Requirements
@@ -22,11 +22,11 @@ Create thorough, developer-focused documentation for this project. Do not stop t
 
 ### Index Pages
 
-1. **Main index** (`docs/index.md` or `library/index.md`)
+1. **Main index** (`docs/index.md` or `~/.betty/library/index.md`)
    - Links to every documentation page.
    - Each entry includes a concise summary of the linked page.
 
-2. **Tag index** (`docs/tags.md` or `library/tags.md`)
+2. **Tag index** (`docs/tags.md` or `~/.betty/library/tags.md`)
    - Organized by categories.
    - Maps tags to their documentation pages.
 
@@ -57,7 +57,7 @@ Create thorough, developer-focused documentation for this project. Do not stop t
 
 1. Analyze the project source code and structure.
 2. Identify all functions, features, and architectural components.
-3. Create the folder tree under `docs/` (or `library/` if applicable).
+3. Create the folder tree under `docs/` (or `~/.betty/library/` if applicable).
 4. Create individual pages for each function and feature.
 5. Create the main index with summaries.
 6. Create the tag index organized by categories.

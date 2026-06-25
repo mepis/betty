@@ -18,7 +18,7 @@ Run a 3-phase research workflow on the given topic and produce a formal analytic
 
 ## LIBRARY INTEGRATION
 
-The library is located at `library/` (a Git repo). The skill performs **five library operations**:
+The library is located at `~/.betty/library/` (a Git repo). The skill performs **five library operations**:
 
 ### 1. Pre-Research Library Check (Phase 0)
 
@@ -26,16 +26,16 @@ Before starting research, check the library for existing entries on related topi
 
 ```bash
 # Read the master index
-cat library/INDEX.md
+cat ~/.betty/library/INDEX.md
 
 # Check for existing topic entries
-ls library/topics/
+ls ~/.betty/library/topics/
 
 # Read a specific topic entry if it exists
-cat library/topics/<topic-slug>/index.md 2>/dev/null
+cat ~/.betty/library/topics/<topic-slug>/index.md 2>/dev/null
 
 # Check tags for related topics
-ls library/tags/
+ls ~/.betty/library/tags/
 ```
 
 **Action:** If related entries exist, reference them during Phase 1 scoping to avoid duplication and build on prior research. Note any gaps in existing entries that your research should fill.
@@ -55,13 +55,13 @@ After research completes, create/update the library entry:
 
 ```bash
 # Create topic directory
-mkdir -p library/topics/<topic-slug>/entries
+mkdir -p ~/.betty/library/topics/<topic-slug>/entries
 
 # Copy report
-cp .agents/deep-research/REPORT.md library/topics/<topic-slug>/report.md
+cp .agents/deep-research/REPORT.md ~/.betty/library/topics/<topic-slug>/report.md
 
 # Copy state
-cp .agents/deep-research/STATE.md library/topics/<topic-slug>/state.md
+cp .agents/deep-research/STATE.md ~/.betty/library/topics/<topic-slug>/state.md
 
 # Create/update topic index
 # (write a concise index.md summarizing key findings, sub-topics, and file links)
@@ -73,7 +73,7 @@ cp .agents/deep-research/STATE.md library/topics/<topic-slug>/state.md
 # (add link to each relevant tag file)
 
 # Commit
-cd library && git add -A && git commit -m "Add <topic> research" && git push
+cd ~/.betty/library && git add -A && git commit -m "Add <topic> research" && git push
 ```
 
 ### 4. Library Cleanup
@@ -90,10 +90,10 @@ When searching for information, check the library first before doing web searche
 
 ```bash
 # Library has relevant info?
-grep -r "keyword" library/topics/ 2>/dev/null
+grep -r "keyword" ~/.betty/library/topics/ 2>/dev/null
 
 # Library already covers this sub-topic?
-cat library/topics/<topic-slug>/index.md 2>/dev/null
+cat ~/.betty/library/topics/<topic-slug>/index.md 2>/dev/null
 ```
 
 If the library already has comprehensive coverage of a sub-topic, skip redundant research and instead focus on gaps or updates.
@@ -219,7 +219,7 @@ Before abandoning a search provider due to a CAPTCHA, attempt the following stra
 
 ### Best Practices
 
-- **Check the library first** — Before researching, check `library/INDEX.md` for existing entries on related topics
+- **Check the library first** — Before researching, check `~/.betty/library/INDEX.md` for existing entries on related topics
 - Use advanced operators: `site:`, `filetype:`, `intitle:`, exact phrases, date ranges
 - Cross-verify claims across **3+ independent sources**
 - Prioritize authoritative sources: .edu, .gov, peer-reviewed journals, official documentation, well-regarded industry blogs
@@ -329,7 +329,7 @@ Always run phases sequentially. Proceed to the next phase **only** when the curr
 
 **Action:**
 
-1. Read `library/INDEX.md` and check `library/topics/` for existing entries
+1. Read `~/.betty/library/INDEX.md` and check `~/.betty/library/topics/` for existing entries
 2. For each existing entry, assess relevance and identify gaps your research should fill
 3. Record findings in the state file under `## Phase 0: Library Check`
 4. Set `phase_0_complete: true`
@@ -337,9 +337,9 @@ Always run phases sequentially. Proceed to the next phase **only** when the curr
 **Example:**
 
 ```bash
-cat library/INDEX.md
-ls library/topics/ 2>/dev/null
-cat library/topics/existing-topic/index.md 2>/dev/null
+cat ~/.betty/library/INDEX.md
+ls ~/.betty/library/topics/ 2>/dev/null
+cat ~/.betty/library/topics/existing-topic/index.md 2>/dev/null
 ```
 
 ---
@@ -411,17 +411,17 @@ cat library/topics/existing-topic/index.md 2>/dev/null
 1. **Create topic directory:**
 
    ```bash
-   mkdir -p library/topics/<topic-slug>/entries
+   mkdir -p ~/.betty/library/topics/<topic-slug>/entries
    ```
 
 2. **Copy artifacts:**
 
    ```bash
-   cp .agents/deep-research/REPORT.md library/topics/<topic-slug>/report.md
-   cp .agents/deep-research/STATE.md library/topics/<topic-slug>/state.md
+   cp .agents/deep-research/REPORT.md ~/.betty/library/topics/<topic-slug>/report.md
+   cp .agents/deep-research/STATE.md ~/.betty/library/topics/<topic-slug>/state.md
    ```
 
-3. **Create topic index** (`library/topics/<topic-slug>/index.md`):
+3. **Create topic index** (`~/.betty/library/topics/<topic-slug>/index.md`):
    - Topic name, research date, status
    - Tags (from the research)
    - Overview paragraph
@@ -429,18 +429,18 @@ cat library/topics/existing-topic/index.md 2>/dev/null
    - Sub-topics covered
    - Links to report.md and state.md
 
-4. **Update master INDEX.md** (`library/INDEX.md`):
+4. **Update master INDEX.md** (`~/.betty/library/INDEX.md`):
    - Add new entry to the table with topic, date, status, tags
    - Add detail section with summary and key findings
 
-5. **Update tag files** (`library/tags/<tag>.md`):
+5. **Update tag files** (`~/.betty/library/tags/<tag>.md`):
    - Create new tag files for any new tags discovered
    - Add link to the new topic entry in existing tag files
 
 6. **Commit and push:**
 
    ```bash
-   cd library && git add -A && git commit -m "Add <topic> research" && git push
+   cd ~/.betty/library && git add -A && git commit -m "Add <topic> research" && git push
    ```
 
 7. **Clean up:** Remove stale state files from `.agents/deep-research/` (keep the completed checkpoint and the main state/report)
@@ -533,7 +533,7 @@ Research "quantum error correction methods"
 → Phase 0: Check library for existing quantum/ML entries
 → Phases 1-3: Research
 → Phase 4: Generate report
-→ Phase 5: Archive to library/topics/quantum-error-correction-methods/
+→ Phase 5: Archive to ~/.betty/library/topics/quantum-error-correction-methods/
 
 Continue research
 → Skill reads state, resumes from last phase
