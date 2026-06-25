@@ -41,7 +41,8 @@ const deletingLlama = ref(false)
 const deleteLlamaSuccess = ref('')
 const updating = ref(false)
 const updateSuccess = ref('')
-const openDropdown = ref(null)
+const openChatTemplateDropdown = ref(false)
+const openMmprojDropdown = ref(false)
 
 function showToast(message, type = 'success') {
   toast.value = { show: true, message, type }
@@ -1426,20 +1427,20 @@ function normalizeBuildParams(configs) {
           <h5 class="text-base font-medium text-text-muted">Chat Template</h5>
           <div class="relative">
             <button
-              @click="openDropdown = !openDropdown"
+              @click="openChatTemplateDropdown = !openChatTemplateDropdown"
               class="input w-full text-left flex items-center justify-between"
             >
               <span class="truncate">
                 {{ visualConfigs.server_params?.chat_template_file ? getTemplateName(visualConfigs.server_params.chat_template_file) : '— No Template —' }}
               </span>
-              <svg class="w-4 h-4 text-text-muted flex-shrink-0 transition-transform" :class="openDropdown ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg class="w-4 h-4 text-text-muted flex-shrink-0 transition-transform" :class="openChatTemplateDropdown ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
             <Transition name="dropdown">
-              <div v-if="openDropdown" class="absolute z-10 mt-1 w-full bg-bg-secondary border border-border rounded-lg shadow-lg max-h-48 overflow-auto">
+              <div v-if="openChatTemplateDropdown" class="absolute z-10 mt-1 w-full bg-bg-secondary border border-border rounded-lg shadow-lg max-h-48 overflow-auto">
                 <button
-                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, chat_template_file: '' }; openDropdown = false"
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, chat_template_file: '' }; openChatTemplateDropdown = false"
                   class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors first-rounded-t-lg"
                 >
                   No Template
@@ -1450,7 +1451,7 @@ function normalizeBuildParams(configs) {
                 <button
                   v-for="t in store.chatTemplates"
                   :key="t.filename"
-                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, chat_template_file: joinChatTemplatePath(t.filename) }; openDropdown = false"
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, chat_template_file: joinChatTemplatePath(t.filename) }; openChatTemplateDropdown = false"
                   class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors"
                 >
                   {{ t.filename }}
@@ -1465,20 +1466,20 @@ function normalizeBuildParams(configs) {
           <h5 class="text-base font-medium text-text-muted">Multimodal Projector (mmproj)</h5>
           <div class="relative">
             <button
-              @click="openDropdown = !openDropdown"
+              @click="openMmprojDropdown = !openMmprojDropdown"
               class="input w-full text-left flex items-center justify-between"
             >
               <span class="truncate">
                 {{ visualConfigs.server_params?.mmproj?.value ? getMmprojName(visualConfigs.server_params.mmproj.value) : '— No Projector —' }}
               </span>
-              <svg class="w-4 h-4 text-text-muted flex-shrink-0 transition-transform" :class="openDropdown ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg class="w-4 h-4 text-text-muted flex-shrink-0 transition-transform" :class="openMmprojDropdown ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7 7" />
               </svg>
             </button>
             <Transition name="dropdown">
-              <div v-if="openDropdown" class="absolute z-10 mt-1 w-full bg-bg-secondary border border-border rounded-lg shadow-lg max-h-48 overflow-auto">
+              <div v-if="openMmprojDropdown" class="absolute z-10 mt-1 w-full bg-bg-secondary border border-border rounded-lg shadow-lg max-h-48 overflow-auto">
                 <button
-                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, mmproj: { ...visualConfigs.server_params.mmproj, value: '' } }; openDropdown = false"
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, mmproj: { ...visualConfigs.server_params.mmproj, value: '' } }; openMmprojDropdown = false"
                   class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors first-rounded-t-lg"
                 >
                   No Projector
@@ -1489,7 +1490,7 @@ function normalizeBuildParams(configs) {
                 <button
                   v-for="m in store.mmprojModels"
                   :key="m.filename"
-                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, mmproj: { ...visualConfigs.server_params.mmproj, value: joinMmprojPath(m.filename) } }; openDropdown = false"
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, mmproj: { ...visualConfigs.server_params.mmproj, value: joinMmprojPath(m.filename) } }; openMmprojDropdown = false"
                   class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors"
                 >
                   {{ m.filename }}

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-25] Settings.vue — chat template and mmproj model dropdown selectors in the Run Options tab now open independently; replaced single shared `openDropdown` ref with separate `openChatTemplateDropdown` and `openMmprojDropdown` refs so clicking one dropdown no longer toggles both
+
 ### Changed
 
 - [Changed]: [2026-06-25] Settings.vue — converted Actions panel buttons (Kill Port, Start/Stop Service, Edit Service, Update, Delete Build, Delete Llama) to text-only links with `text-sm text-text-muted hover:text-accent cursor-pointer` styling; removed icon SVGs and button classes; expanded Config Profiles and Service Profiles panels by default
