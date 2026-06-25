@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-25] Settings.vue — refined admin settings grid layout from `auto_1fr_1fr` to `1fr_3fr_3fr` for more balanced column proportions and better use of horizontal space
+
 ### Added
 
 - [Added]: [2026-06-25] MMPROJ (multimodal projector) support — `--mmproj` flag in Settings Run Options with toggle and dropdown to select mmproj model files from `~/.betty/models/`; `--mmproj` flag passed to llama.cpp in launch command; new `MMPROJ Models` admin tab with download form (URL + optional filename) and mmproj model file list with delete capability; new backend endpoints: `GET /api/mmproj-models`, `POST /api/mmproj/download` (SSE progress), `DELETE /api/mmproj/:filename`; new store actions `fetchMmprojModels()`, `downloadMmproj()`, `deleteMmproj()` in `benchmark.js`; `mmproj` config added to `DEFAULT_CONFIGS.server_params`
