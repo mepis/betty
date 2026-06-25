@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- [Changed]: [2026-06-25] Settings.vue — Actions panel buttons (Kill Port, Start/Stop Service, Edit Service, Update, Delete Build, Delete Llama) right-aligned as a group via `flex flex-col justify-end` with left-justified text; expanded Config Profiles and Service Profiles panels by default
+- [Changed]: [2026-06-25] Settings.vue — converted Actions panel buttons (Kill Port, Start/Stop Service, Edit Service, Update, Delete Build, Delete Llama) to text-only links with `text-sm text-text-muted hover:text-accent cursor-pointer` styling; removed icon SVGs and button classes; expanded Config Profiles and Service Profiles panels by default
 
 - [Changed]: [2026-06-25] Settings.vue — refined admin settings grid layout from `auto_1fr_1fr` to `1fr_3fr_3fr` for more balanced column proportions and better use of horizontal space
 
