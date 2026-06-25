@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Restored
+### Changed
 
-- [Restored]: [2026-06-25] Settings.vue — restored the Update button in the Actions panel to a proper button with icon, reverting the text-only link conversion from commit 03c5d58
+- [Changed]: [2026-06-25] Settings.vue — converted the Update button in the Actions panel to a text-only link with `text-sm text-text-muted hover:text-accent cursor-pointer` styling, matching the other Actions panel buttons; removed icon SVG and button classes
 
 ### Fixed
 
