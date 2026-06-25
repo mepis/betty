@@ -3205,6 +3205,11 @@ function extractLibraryTags(content) {
   if (tagMatch) {
     return tagMatch[1].split('\n').map(l => l.replace(/^- /, '').trim()).filter(Boolean);
   }
+  // Fallback: look for "**Tags:** tag1, tag2, tag3" on a single line
+  const singleLineMatch = content.match(/\*\*Tags:\*\*\s*([\S,\s]+?)(?:\n\n|\n##)/);
+  if (singleLineMatch) {
+    return singleLineMatch[1].split(',').map(t => t.trim()).filter(Boolean);
+  }
   return [];
 }
 

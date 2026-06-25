@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-25] Library page — fixed `extractLibraryTags()` to parse `**Tags:** tag1, tag2, tag3` format used in library topic index files; previously all topics showed empty tags
+
 ### Changed
 
 - [Changed]: [2026-06-25] Settings.vue — converted the Update button in the Actions panel to a text-only link with `text-sm text-text-muted hover:text-accent cursor-pointer` styling, matching the other Actions panel buttons; removed icon SVG and button classes
