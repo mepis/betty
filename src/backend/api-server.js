@@ -253,6 +253,10 @@ const DEFAULT_CONFIGS = {
     },
     jinja: false,
     chat_template_file: "",
+    mmproj: {
+      enabled: false,
+      value: "",
+    },
     parallel: {
       enabled: true,
       value: 1,
@@ -1281,6 +1285,7 @@ function getLaunchCommand(configs, testRunConfig) {
   if (sp.rope_scaling?.enabled) parts.push(`--rope-scaling ${sp.rope_scaling.value}`);
   if (sp.jinja) parts.push("--jinja");
   if (sp.chat_template_file) parts.push(`--chat-template-file "${resolveConfigPath(sp.chat_template_file)}"`);
+  if (sp.mmproj?.enabled && sp.mmproj.value) parts.push(`--mmproj "${resolveConfigPath(sp.mmproj.value)}"`);
   if (sp.parallel?.enabled) parts.push(`--parallel ${sp.parallel.value}`);
   if (sps.layer_split?.enabled) parts.push(`--split-mode ${sps.layer_split.value}`);
   if (sps.tensor_split?.enabled) parts.push(`--tensor-split ${sps.tensor_split.value}`);
@@ -2599,6 +2604,152 @@ app.delete("/api/chat-templates/:filename", authorize("admin", "operator"), (req
     }
     fs.unlinkSync(filePath);
     res.json({ success: true, message: `Deleted ${safeFilename}` });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- mmproj Model API ---
+
+// List mmproj model files
+app.get("/api/mmproj-models", (_req, res) => {
+  try {
+    if (!fs.existsSync(MODELS_DIR)) {
+      return res.json({ success: true, data: [] });
+    }
+    const files = findModelFiles(MODELS_DIR)
+      .filter(f => f.path.toLowerCase().includes('mmproj'))
+      .map(f => ({
+        filename: f.path,
+        size: f.size,
+        modified: f.mtime,
+      }))
+      .sort((a, b) => b.modified - a.modified);
+    res.json({ success: true, data: files });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Download an mmproj file via wget with SSE progress
+app.post("/api/mmproj/download", authorize("admin", "operator"), (req, res) => {
+  try {
+    const { url, filename } = req.body;
+
+    if (!url || !url.trim()) {
+      return res.status(400).json({ success: false, error: "URL is required" });
+    }
+
+    // Validate URL format and protocol
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(url.trim());
+    } catch {
+      return res.status(400).json({ success: false, error: "Invalid URL format" });
+    }
+    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+      return res.status(400).json({ success: false, error: "Only HTTP and HTTPS URLs are allowed" });
+    }
+
+    // Determine target filename
+    let targetFilename = filename || basename(parsedUrl.pathname);
+    // Sanitize filename
+    targetFilename = targetFilename.replace(/[^a-zA-Z0-9._\-]/g, '_');
+
+    if (!targetFilename) {
+      return res.status(400).json({ success: false, error: "Could not determine filename from URL" });
+    }
+
+    const targetPath = join(MODELS_DIR, targetFilename);
+
+    // Set up SSE response for progress updates
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
+
+    // Check if file already exists
+    if (fs.existsSync(targetPath)) {
+      const stat = fs.statSync(targetPath);
+      res.write(`event: mmproj\ndata: EXISTS:${targetFilename}\n\n`);
+      res.write(`event: mmproj\ndata: SIZE:${stat.size}\n\n`);
+      safeFlush(res);
+      res.end();
+      return;
+    }
+
+    const wget = spawn("wget", ["--no-clobber", "-O", targetPath, url.trim()]);
+
+    wget.stderr.on("data", (data) => {
+      const text = data.toString();
+      // Parse wget progress: look for percentage pattern like "34%"
+      const match = text.match(/(\d+)%/);
+      if (match) {
+        const progress = parseInt(match[1], 10);
+        // Try to get downloaded bytes from wget output
+        const sizeMatch = text.match(/(\d+(?:\.\d+)?)\s([KMGT]?B)/);
+        let downloaded = 0;
+        if (sizeMatch) {
+          const val = parseFloat(sizeMatch[1]);
+          const unit = sizeMatch[2];
+          if (unit === 'KB') downloaded = val * 1024;
+          else if (unit === 'MB') downloaded = val * 1024 * 1024;
+          else if (unit === 'GB') downloaded = val * 1024 * 1024 * 1024;
+          else downloaded = val;
+        }
+        res.write(`event: mmproj\ndata: PROGRESS:${progress}:${downloaded}\n\n`);
+        safeFlush(res);
+      }
+    });
+
+    wget.on("close", (code) => {
+      if (code === 0 && fs.existsSync(targetPath)) {
+        const stat = fs.statSync(targetPath);
+        res.write(`event: mmproj\ndata: FILE:${targetFilename}\n\n`);
+        res.write(`event: mmproj\ndata: SIZE:${stat.size}\n\n`);
+        safeFlush(res);
+      } else {
+        // Clean up partial file on failure
+        if (fs.existsSync(targetPath)) {
+          try { fs.unlinkSync(targetPath); } catch {}
+        }
+        res.write(`event: mmproj\ndata: ERROR:Download failed with code ${code}\n\n`);
+        safeFlush(res);
+      }
+      res.end();
+    });
+
+    wget.on("error", (err) => {
+      if (fs.existsSync(targetPath)) {
+        try { fs.unlinkSync(targetPath); } catch {}
+      }
+      res.write(`event: mmproj\ndata: ERROR:${err.message}\n\n`);
+      safeFlush(res);
+      res.end();
+    });
+  } catch (err) {
+    if (res.headersSent) {
+      res.write(`event: mmproj\ndata: ERROR:${err.message}\n\n`);
+      safeFlush(res);
+      res.end();
+    } else {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  }
+});
+
+// Delete an mmproj file
+app.delete("/api/mmproj/:filename", authorize("admin", "operator"), (req, res) => {
+  try {
+    const safeFilename = req.params.filename.replace(/[^a-zA-Z0-9._\-\/]/g, '_');
+    // Prevent directory traversal
+    const cleanPath = safeFilename.replace(/\.\./g, '');
+    const filePath = join(MODELS_DIR, cleanPath);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "mmproj file not found" });
+    }
+    fs.unlinkSync(filePath);
+    res.json({ success: true, message: `Deleted ${cleanPath}` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

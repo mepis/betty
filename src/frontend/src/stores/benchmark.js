@@ -60,6 +60,12 @@ export const useBenchmarkStore = defineStore('benchmark', {
     chatTemplateDownloading: false,
     chatTemplateDownloadProgress: 0,
     chatTemplateDownloadError: null,
+
+    // Mmproj Models
+    mmprojModels: [],
+    mmprojDownloading: false,
+    mmprojDownloadProgress: 0,
+    mmprojDownloadError: null,
   }),
 
   getters: {
@@ -780,14 +786,17 @@ export const useBenchmarkStore = defineStore('benchmark', {
       }
     },
 
-    async downloadHfModel(modelId, filename, onProgress) {
+    async downloadHfModel(modelId, filename, onProgress, customFilename) {
       try {
         this.hfError = null
+
+        const body = { modelId, filename }
+        if (customFilename) body.customFilename = customFilename
 
         const response = await fetch(`${API_BASE}/api/hf/download`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ modelId, filename }),
+          body: JSON.stringify(body),
         })
 
         const reader = response.body.getReader()
@@ -1055,6 +1064,96 @@ export const useBenchmarkStore = defineStore('benchmark', {
         return false
       } catch (e) {
         this.chatTemplateDownloadError = e.message
+        return false
+      }
+    },
+
+    // --- Mmproj Models ---
+
+    async fetchMmprojModels() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/mmproj-models`)
+        if (res.data.success) {
+          this.mmprojModels = res.data.data || []
+          return true
+        }
+        return false
+      } catch (e) {
+        this.mmprojDownloadError = e.message
+        return false
+      }
+    },
+
+    async downloadMmproj(url, filename, onProgress) {
+      this.mmprojDownloadError = null
+      this.mmprojDownloading = true
+      this.mmprojDownloadProgress = 0
+
+      try {
+        const response = await axios.post(
+          `${API_BASE}/api/mmproj/download`,
+          { url, filename },
+          { responseType: 'stream' }
+        )
+
+        const reader = response.data.getReader()
+        const decoder = new TextDecoder()
+        let buffer = ''
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split('\n')
+          buffer = lines.pop() || ''
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = line.slice(6)
+              const parts = data.split(':')
+              const type = parts[0]
+
+              if (type === 'PROGRESS') {
+                const progress = parseInt(parts[1], 10)
+                const downloaded = parts[2] ? parseInt(parts[2], 10) : 0
+                this.mmprojDownloadProgress = progress
+                if (onProgress) onProgress(progress, downloaded, null, false)
+              } else if (type === 'FILE') {
+                const fname = parts[1]
+                this.mmprojDownloadProgress = 100
+                if (onProgress) onProgress(100, 0, fname, false)
+              } else if (type === 'EXISTS') {
+                const fname = parts[1]
+                if (onProgress) onProgress(0, 0, fname, true)
+              } else if (type === 'ERROR') {
+                this.mmprojDownloadError = data.slice('ERROR:'.length)
+                if (onProgress) onProgress(0, 0, null, false, this.mmprojDownloadError)
+              }
+            }
+          }
+        }
+
+        this.mmprojDownloading = false
+        return !this.mmprojDownloadError
+      } catch (e) {
+        this.mmprojDownloadError = e.message
+        this.mmprojDownloading = false
+        return false
+      }
+    },
+
+    async deleteMmproj(filename) {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/mmproj/${encodeURIComponent(filename)}`)
+        if (res.data.success) {
+          this.mmprojModels = this.mmprojModels.filter(m => m.filename !== filename)
+          return true
+        }
+        this.mmprojDownloadError = res.data.error
+        return false
+      } catch (e) {
+        this.mmprojDownloadError = e.message
         return false
       }
     },

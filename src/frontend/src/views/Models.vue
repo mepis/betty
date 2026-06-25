@@ -24,6 +24,7 @@ function showToast(message, type = 'success') {
 const showFilePicker = ref(false)
 const filesLoading = ref(false)
 const selectedFile = ref('')
+const downloadFilename = ref('')
 const downloadsTab = ref('search') // 'search' | 'downloads'
 const loadingModels = ref(false)
 
@@ -98,6 +99,7 @@ async function handleSearch() {
 
 async function loadModelDetails(modelId) {
   try {
+    downloadFilename.value = ''
     // Search results already have all the info we need, so just show the modal
     modelDetails.value = store.hfModelDetails
     showDetails.value = true
@@ -143,7 +145,8 @@ async function handleDownload() {
       (progress, downloaded) => {
         downloadProgress.value = progress
         downloadingFile.value = `${selectedFile.value || 'auto'} (${formatSize(downloaded)})`
-      }
+      },
+      downloadFilename.value.trim() || undefined
     )
     if (store.hfError) {
       showToast(store.hfError, 'error')
@@ -452,7 +455,7 @@ onMounted(async () => {
       v-if="selectedModel && (showDetails || downloading)"
       class="fixed inset-0 z-50 flex items-center justify-center"
     >
-      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="selectedModel = null; showDetails = false; showFilePicker = false; downloading = false" />
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="selectedModel = null; showDetails = false; showFilePicker = false; downloading = false; downloadFilename = ''" />
       <div class="relative bg-bg-primary border border-border rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] mx-4 flex flex-col">
         <!-- Header -->
         <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
@@ -461,7 +464,7 @@ onMounted(async () => {
             <p class="text-xs text-text-muted mt-0.5">HuggingFace Model</p>
           </div>
           <button
-            @click="selectedModel = null; showDetails = false; showFilePicker = false; downloading = false"
+            @click="selectedModel = null; showDetails = false; showFilePicker = false; downloading = false; downloadFilename = ''"
             class="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-tertiary transition-all flex-shrink-0"
           >
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -556,6 +559,17 @@ onMounted(async () => {
                 <span v-if="file.size" class="text-xs text-text-muted flex-shrink-0 ml-2">{{ formatSize(file.size) }}</span>
               </div>
             </div>
+          </div>
+
+          <!-- Custom Filename Input -->
+          <div v-if="showFilePicker" class="mt-4 space-y-2">
+            <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">Custom Filename (optional)</label>
+            <input
+              v-model="downloadFilename"
+              placeholder="Save as custom filename..."
+              class="input w-full text-xs"
+              :disabled="downloading"
+            />
           </div>
 
           <!-- Download Progress -->

@@ -6,7 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-25] MMPROJ (multimodal projector) support — `--mmproj` flag in Settings Run Options with toggle and dropdown to select mmproj model files from `~/.betty/models/`; `--mmproj` flag passed to llama.cpp in launch command; new `MMPROJ Models` admin tab with download form (URL + optional filename) and mmproj model file list with delete capability; new backend endpoints: `GET /api/mmproj-models`, `POST /api/mmproj/download` (SSE progress), `DELETE /api/mmproj/:filename`; new store actions `fetchMmprojModels()`, `downloadMmproj()`, `deleteMmproj()` in `benchmark.js`; `mmproj` config added to `DEFAULT_CONFIGS.server_params`
+- [Added]: [2026-06-25] Models search download — optional custom filename field in the HuggingFace model download modal, allowing users to specify a custom output filename when downloading models
 - [Added]: [2026-06-25] Models Downloads tab — replaced HuggingFace download history with local models browser showing files from `~/.betty/models/`; models displayed grouped by directory with file sizes, type icons (🤖 .gguf, 📄 .bin, 🛡️ .safetensors), and delete buttons; new `DELETE /api/model/:path` backend endpoint with path traversal protection; `findModelFiles()` now returns `{ path, size, mtime }` objects instead of plain strings; store action `deleteLocalModel()` added to `benchmark.js`
+
+### Changed
+
+- [Changed]: [2026-06-25] `downloadHfModel()` store action now accepts an optional 4th parameter `customFilename` for specifying a custom output filename on download
 
 ### Changed
 

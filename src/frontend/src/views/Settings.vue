@@ -321,6 +321,7 @@ onMounted(async () => {
   await loadProfiles()
   await loadServiceProfiles()
   await store.fetchChatTemplates()
+  await store.fetchMmprojModels()
 })
 
 function flattenBuildParams(configs) {
@@ -515,6 +516,15 @@ function joinChatTemplatePath(filename) {
 }
 
 function getTemplateName(path) {
+  if (!path) return ''
+  return path.split('/').pop()
+}
+
+function joinMmprojPath(filename) {
+  return `~/.betty/models/${filename}`
+}
+
+function getMmprojName(path) {
   if (!path) return ''
   return path.split('/').pop()
 }
@@ -1417,6 +1427,24 @@ function normalizeBuildParams(configs) {
           v-model="visualConfigs.server_params"
         />
 
+        <!-- mmproj Toggle -->
+        <div class="space-y-2">
+          <h5 class="text-base font-medium text-text-muted">Multimodal Projector</h5>
+          <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
+            <label class="text-sm text-text-secondary">Enable mmproj</label>
+            <button
+              @click="visualConfigs.server_params = { ...visualConfigs.server_params, mmproj: { ...visualConfigs.server_params.mmproj, enabled: !visualConfigs.server_params?.mmproj?.enabled } }"
+              class="relative w-10 h-5 rounded-full transition-colors"
+              :class="visualConfigs.server_params?.mmproj?.enabled ? 'bg-accent' : 'bg-bg-tertiary'"
+            >
+              <span
+                class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                :class="visualConfigs.server_params?.mmproj?.enabled ? 'translate-x-5' : ''"
+              />
+            </button>
+          </div>
+        </div>
+
         <!-- Chat Template Dropdown -->
         <div v-if="visualConfigs.server_params?.jinja" class="space-y-2">
           <h5 class="text-base font-medium text-text-muted">Chat Template</h5>
@@ -1450,6 +1478,45 @@ function normalizeBuildParams(configs) {
                   class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors"
                 >
                   {{ t.filename }}
+                </button>
+              </div>
+            </Transition>
+          </div>
+        </div>
+
+        <!-- mmproj Model Dropdown -->
+        <div v-if="visualConfigs.server_params?.mmproj?.enabled" class="space-y-2">
+          <h5 class="text-base font-medium text-text-muted">Multimodal Projector (mmproj)</h5>
+          <div class="relative">
+            <button
+              @click="openDropdown = !openDropdown"
+              class="input w-full text-left flex items-center justify-between"
+            >
+              <span class="truncate">
+                {{ visualConfigs.server_params?.mmproj?.value ? getMmprojName(visualConfigs.server_params.mmproj.value) : '— No Projector —' }}
+              </span>
+              <svg class="w-4 h-4 text-text-muted flex-shrink-0 transition-transform" :class="openDropdown ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7 7" />
+              </svg>
+            </button>
+            <Transition name="dropdown">
+              <div v-if="openDropdown" class="absolute z-10 mt-1 w-full bg-bg-secondary border border-border rounded-lg shadow-lg max-h-48 overflow-auto">
+                <button
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, mmproj: { ...visualConfigs.server_params.mmproj, value: '' } }; openDropdown = false"
+                  class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors first-rounded-t-lg"
+                >
+                  No Projector
+                </button>
+                <div v-if="store.mmprojModels.length === 0" class="px-3 py-2 text-xs text-text-muted">
+                  No mmproj models found
+                </div>
+                <button
+                  v-for="m in store.mmprojModels"
+                  :key="m.filename"
+                  @click="visualConfigs.server_params = { ...visualConfigs.server_params, mmproj: { ...visualConfigs.server_params.mmproj, value: joinMmprojPath(m.filename) } }; openDropdown = false"
+                  class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-bg-card-hover transition-colors"
+                >
+                  {{ m.filename }}
                 </button>
               </div>
             </Transition>
