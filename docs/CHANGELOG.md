@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Restored
+
+- [Restored]: [2026-06-25] Settings.vue — restored the Update button in the Actions panel to a proper button with icon, reverting the text-only link conversion from commit 03c5d58
+
 ### Fixed
 
 - [Fixed]: [2026-06-25] Settings.vue — chat template and mmproj model dropdown selectors in the Run Options tab now open independently; replaced single shared `openDropdown` ref with separate `openChatTemplateDropdown` and `openMmprojDropdown` refs so clicking one dropdown no longer toggles both
