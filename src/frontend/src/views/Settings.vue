@@ -788,7 +788,7 @@ function normalizeBuildParams(configs) {
         <button
           v-if="!store.isRunning"
           @click="handleKillPort"
-          class="text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
+          class="block text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
           :disabled="killingPort"
         >
           Kill Port
@@ -798,7 +798,7 @@ function normalizeBuildParams(configs) {
         <button
           v-if="!store.isRunning && !store.serviceActive"
           @click="handleServiceStart"
-          class="text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
+          class="block text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
           :disabled="serviceLoading"
         >
           {{ serviceLoading ? 'Starting...' : 'Start llama.service' }}
@@ -808,7 +808,7 @@ function normalizeBuildParams(configs) {
         <button
           v-if="!store.isRunning && store.serviceActive"
           @click="handleServiceStop"
-          class="text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
+          class="block text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
           :disabled="serviceLoading"
         >
           {{ serviceLoading ? 'Stopping...' : 'Stop llama.service' }}
@@ -817,7 +817,7 @@ function normalizeBuildParams(configs) {
         <!-- Edit Service -->
         <button
           @click="openServiceModal"
-          class="text-sm text-text-muted hover:text-accent cursor-pointer"
+          class="block text-sm text-text-muted hover:text-accent cursor-pointer"
         >
           Edit Service
         </button>
@@ -825,7 +825,7 @@ function normalizeBuildParams(configs) {
         <!-- Update -->
         <button
           @click="handleUpdate"
-          class="text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
+          class="block text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
           :disabled="updating"
         >
           {{ updating ? 'Updating...' : 'Update' }}
@@ -834,7 +834,7 @@ function normalizeBuildParams(configs) {
         <!-- Delete Build -->
         <button
           @click="handleDeleteBuild"
-          class="text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
+          class="block text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
           :disabled="deletingBuild"
         >
           {{ deletingBuild ? 'Deleting...' : 'Delete Build' }}
@@ -843,7 +843,7 @@ function normalizeBuildParams(configs) {
         <!-- Delete Llama -->
         <button
           @click="handleDeleteLlama"
-          class="text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
+          class="block text-sm text-text-muted hover:text-accent cursor-pointer disabled:opacity-50 disabled:cursor-default"
           :disabled="deletingLlama"
         >
           {{ deletingLlama ? 'Deleting...' : 'Delete Llama' }}

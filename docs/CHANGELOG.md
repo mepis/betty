@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - [Changed]: [2026-06-25] Settings.vue — converted the Update button in the Actions panel to a text-only link with `text-sm text-text-muted hover:text-accent cursor-pointer` styling, matching the other Actions panel buttons; removed icon SVG and button classes
+- [Changed]: [2026-06-25] Settings.vue — added `block` class to all Actions panel buttons (Kill Port, Start/Stop Service, Edit Service, Update, Delete Build, Delete Llama) to ensure each button renders on its own line
 
 ### Fixed
 
