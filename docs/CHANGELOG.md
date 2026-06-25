@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-25] Grid search combination generation refactored in `index.js` — batch size and uBatch size are now handled separately from static params (contextLength, gpuLayerOffload, cacheRam) via new `generateBatchPermutations()` function, avoiding wasteful full cartesian product generation followed by filtering; batch permutations are generated with the `batchSize >= uBatchSize` constraint built-in, and detailed batch permutation output added to grid search configuration display
 - [Fixed]: [2026-06-25] Grid search now filters out invalid combinations where `batchSize < uBatchSize` in `index.js`; both `getLaunchCommand()` and `extractConfigsPerRun()` in `api-server.js` clamp `batchSize` to `Math.max(batchSize, uBatchSize)` so llama.cpp never receives an invalid ubatch > batch configuration
 
 ### Added

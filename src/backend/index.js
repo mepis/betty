@@ -168,6 +168,21 @@ function cartesianProduct(arrays) {
   return result;
 }
 
+// Generate batch-size permutations grouped by uBatchSize.
+// For each uBatchSize value, all batchSize values >= uBatchSize are yielded
+// before moving to the next uBatchSize.
+function generateBatchPermutations(uBatchSizes, batchSizes) {
+  const pairs = [];
+  for (const ub of uBatchSizes) {
+    for (const b of batchSizes) {
+      if (b >= ub) {
+        pairs.push({ uBatchSize: ub, batchSize: b });
+      }
+    }
+  }
+  return pairs;
+}
+
 function applyCombo(combo) {
   for (const { key, val } of combo) {
     switch (key) {
@@ -305,16 +320,28 @@ async function main() {
     if (initResult.success) {
       // Generate the full cartesian product grid
       const valueArrays = generateValueArrays();
-      const allCombinations = cartesianProduct(valueArrays);
-      // Filter out combinations where batchSize < uBatchSize (invalid)
-      const combinations = allCombinations.filter((combo) => {
-        let batch = 0, ubatch = 0;
-        for (const { key, val } of combo) {
-          if (key === "batchSize") batch = val;
-          if (key === "uBatchSize") ubatch = val;
+      const staticParams = {
+        contextLength: valueArrays.contextLength,
+        gpuLayerOffload: valueArrays.gpuLayerOffload,
+        cacheRam: valueArrays.cacheRam,
+      };
+      const staticCombinations = cartesianProduct(staticParams);
+      const batchPermutations = generateBatchPermutations(
+        valueArrays.uBatchSize,
+        valueArrays.batchSize,
+      );
+
+      // Build final combinations: for each static param combo, pair with each (uBatchSize, batchSize) permutation
+      const combinations = [];
+      for (const staticCombo of staticCombinations) {
+        for (const batchPerm of batchPermutations) {
+          combinations.push([
+            ...staticCombo,
+            { key: "uBatchSize", val: batchPerm.uBatchSize },
+            { key: "batchSize", val: batchPerm.batchSize },
+          ]);
         }
-        return batch >= ubatch;
-      });
+      }
       const totalCombinations = combinations.length;
 
       console.log("\n" + "=".repeat(60));
@@ -322,6 +349,11 @@ async function main() {
       console.log("=".repeat(60));
       for (const [key, values] of Object.entries(valueArrays)) {
         console.log(`  ${key}: [${values.join(", ")}] (${values.length} values)`);
+      }
+      console.log(`  Batch permutations (batchSize >= uBatchSize): ${batchPermutations.length}`);
+      for (const perm of batchPermutations) {
+        const validBatches = valueArrays.batchSize.filter(b => b >= perm.uBatchSize);
+        console.log(`    uBatch=${perm.uBatchSize}: batchSize=${validBatches.join(", ")}`);
       }
       console.log(`  Total combinations: ${totalCombinations}`);
 
