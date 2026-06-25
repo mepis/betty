@@ -712,7 +712,7 @@ async function handleDeleteLlama() {
 
 async function handleUpdate() {
   if (updating.value) return
-  if (!confirm('Pull latest changes and restart llama-benchmark.service?')) return
+  if (!confirm('Pull latest changes and restart betty.service?')) return
   updating.value = true
   updateSuccess.value = ''
   const result = await store.runUpdate()

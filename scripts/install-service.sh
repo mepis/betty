@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-APP_NAME=llama-benchmark
+APP_NAME=betty
 PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
 NPM_PATH="$(command -v npm)"
 NPM_DIR="$(dirname "$NPM_PATH")"
