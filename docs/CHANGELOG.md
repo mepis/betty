@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-25] Logs page — tabbed interface for switching between `llama.service` and `betty.service` logs; new `GET /api/logs/betty` backend endpoint fetching `betty.service` journalctl logs (last 1000 lines); each tab has independent loading/error state, refresh button, and auto-scroll toggle; both services auto-refresh every 5 seconds
+
+### Changed
+
+- [Changed]: [2026-06-25] Logs page — refactored from single log source to tabbed multi-service view; each service tab maintains independent state (loading, error, auto-scroll, refresh); backend comment for `/api/logs` updated to clarify it serves `llama.service`
+
 ### Fixed
 
 - [Fixed]: [2026-06-25] Library page — `LIBRARY_DIR` now uses `process.env.BETTY_LIBRARY_DIR` environment variable with `~/.betty/library` as fallback, allowing the library path to be configured per-host when the server runs under a different user or the library is stored in a non-standard location

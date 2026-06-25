@@ -3066,10 +3066,20 @@ app.post("/api/update", authorize("admin"), (_req, res) => {
   }
 });
 
-//--- Journalctl logs endpoint ---
+//--- Journalctl logs endpoint (llama.service) ---
 app.get('/api/logs', (_req, res) => {
   try {
     const logs = execSync('journalctl --user -r -u llama.service -n 1000 --no-pager', { encoding: 'utf8' });
+    res.json({ success: true, data: logs });
+  } catch (err) {
+    res.json({ success: true, data: `Error fetching logs: ${err.message}` });
+  }
+});
+
+//--- Journalctl logs endpoint (betty.service) ---
+app.get('/api/logs/betty', (_req, res) => {
+  try {
+    const logs = execSync('journalctl --user -r -u betty.service -n 1000 --no-pager', { encoding: 'utf8' });
     res.json({ success: true, data: logs });
   } catch (err) {
     res.json({ success: true, data: `Error fetching logs: ${err.message}` });
