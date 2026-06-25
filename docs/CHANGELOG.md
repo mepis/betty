@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-25] Research Library — re-added Library view (`Library.vue`) with sidebar topic navigation, tag-based filtering, topics table with summary/preview, and detail view showing index + full report; auto-refresh every 60s with manual refresh button; new backend endpoints: `GET /api/library` (list topics), `GET /api/library/:topicSlug` (topic detail with index/report/state), `GET /api/library/tags` (list tags), `GET /api/library/tag/:tagname` (filter by tag); `/api/library` added to auth exemptions
+
 ### Fixed
 
 - [Fixed]: [2026-06-25] Settings.vue — fixed left column in admin settings grid to use auto width instead of equal third, preventing unnecessary horizontal stretching via `lg:grid-cols-[auto_1fr_1fr]`

@@ -4,6 +4,7 @@ import Settings from '@/views/Settings.vue'
 import Reports from '@/views/Reports.vue'
 import Models from '@/views/Models.vue'
 import Docs from '@/views/Docs.vue'
+import Library from '@/views/Library.vue'
 import Logs from '@/views/Logs.vue'
 import PiChat from '@/views/PiChat.vue'
 import SysInfo from '@/views/SysInfo.vue'
@@ -69,6 +70,15 @@ const routes = [
     component: Docs,
     meta: {
       title: 'Docs',
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/library',
+    name: 'library',
+    component: Library,
+    meta: {
+      title: 'Library',
       requiresAuth: true,
     },
   },

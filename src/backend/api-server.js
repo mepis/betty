@@ -389,12 +389,13 @@ app.use("/api/auth", authRouter);
 // Apply auth to all /api/* routes except auth routes, health, docs, and pi/skills
 if (AUTH_ENABLED) {
   app.use("/api", (req, res, next) => {
-    // Exempt: login/register (public auth routes), health, docs, pi/skills
+    // Exempt: login/register (public auth routes), health, docs, library, pi/skills
     const exempt = [
       "/api/auth/login",
       "/api/auth/register",
       "/api/health",
       "/api/docs",
+      "/api/library",
       "/api/pi/skills",
     ];
     if (exempt.some((p) => req.path === p || req.path.startsWith(p + "/"))) return next();
@@ -2975,6 +2976,182 @@ app.get('/api/docs/:filename', (req, res) => {
     const content = fs.readFileSync(filePath, 'utf8');
     const rendered = resolveDocRef(content, req.params.filename);
     res.json({ success: true, data: rendered });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Library endpoints ---
+const LIBRARY_DIR = join(os.homedir(), '.betty', 'library');
+
+function parseLibraryFrontmatter(content) {
+  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!match) return {};
+  const fm = {};
+  for (const line of match[1].split('\n').filter(l => l.includes(':'))) {
+    const [key, ...rest] = line.split(':');
+    fm[key.trim()] = rest.join(':').trim();
+  }
+  return fm;
+}
+
+function extractLibrarySummary(content) {
+  // Extract the summary paragraph after the title, stopping at ## headings
+  const lines = content.split('\n');
+  let foundTitle = false;
+  const paragraphs = [];
+  for (const line of lines) {
+    if (!foundTitle && line.startsWith('# ')) { foundTitle = true; continue; }
+    if (foundTitle) {
+      if (/^##/.test(line)) break;
+      if (line.startsWith('**Date:**') || line.startsWith('**Status:**') || line.startsWith('**Summary:**')) continue;
+      if (!line.trim() || line.startsWith('---')) continue;
+      paragraphs.push(line.trim());
+      if (paragraphs.length >= 1) break;
+    }
+  }
+  return paragraphs.join(' ').substring(0, 250);
+}
+
+function extractLibraryTags(content) {
+  // Parse tags from frontmatter or from a "Tags:" line at end of file
+  const fmTags = parseLibraryFrontmatter(content).tags;
+  if (fmTags) {
+    return fmTags.split(',').map(t => t.trim()).filter(Boolean);
+  }
+  // Fallback: look for "Tags:" line
+  const tagMatch = content.match(/Tags:\s*\n((?:- \S+\n?)+)/);
+  if (tagMatch) {
+    return tagMatch[1].split('\n').map(l => l.replace(/^- /, '').trim()).filter(Boolean);
+  }
+  return [];
+}
+
+function slugToTitle(slug) {
+  return slug
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+app.get('/api/library', (_req, res) => {
+  try {
+    if (!fs.existsSync(LIBRARY_DIR)) {
+      return res.status(404).json({ success: false, error: 'Library directory not found' });
+    }
+    const topicsDir = join(LIBRARY_DIR, 'topics');
+    if (!fs.existsSync(topicsDir)) {
+      return res.json({ success: true, data: [] });
+    }
+    const topicDirs = fs.readdirSync(topicsDir)
+      .filter(d => fs.statSync(join(topicsDir, d)).isDirectory())
+      .sort();
+
+    const topics = topicDirs.map(slug => {
+      const indexPath = join(topicsDir, slug, 'index.md');
+      if (!fs.existsSync(indexPath)) return null;
+      const content = fs.readFileSync(indexPath, 'utf8');
+      const title = slugToTitle(slug);
+      const tags = extractLibraryTags(content);
+      const summary = extractLibrarySummary(content);
+      // Try to extract date from INDEX.md or from filename pattern
+      let date = '';
+      const dateMatch = content.match(/Date:\s*(\d{4}-\d{2}-\d{2})/);
+      if (dateMatch) date = dateMatch[1];
+      return { slug, title, date, tags, summary };
+    }).filter(Boolean);
+
+    // Sort by date descending, then alphabetically
+    topics.sort((a, b) => {
+      if (a.date && b.date) return b.date.localeCompare(a.date);
+      if (a.date) return -1;
+      if (b.date) return 1;
+      return a.title.localeCompare(b.title);
+    });
+
+    res.json({ success: true, data: topics });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/library/:topicSlug', (req, res) => {
+  try {
+    const topicDir = join(LIBRARY_DIR, 'topics', req.params.topicSlug);
+    if (!fs.existsSync(topicDir)) {
+      return res.status(404).json({ success: false, error: 'Topic not found' });
+    }
+    const indexPath = join(topicDir, 'index.md');
+    if (!fs.existsSync(indexPath)) {
+      return res.status(404).json({ success: false, error: 'Topic index not found' });
+    }
+    const indexContent = fs.readFileSync(indexPath, 'utf8');
+    const result = {
+      index: indexContent,
+      tags: extractLibraryTags(indexContent),
+    };
+
+    // Optionally include report.md
+    const reportPath = join(topicDir, 'report.md');
+    if (fs.existsSync(reportPath)) {
+      result.report = fs.readFileSync(reportPath, 'utf8');
+    }
+
+    // Optionally include state.md
+    const statePath = join(topicDir, 'state.md');
+    if (fs.existsSync(statePath)) {
+      result.state = fs.readFileSync(statePath, 'utf8');
+    }
+
+    res.json({ success: true, data: result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/library/tags', (_req, res) => {
+  try {
+    if (!fs.existsSync(LIBRARY_DIR)) {
+      return res.status(404).json({ success: false, error: 'Library directory not found' });
+    }
+    const tagsDir = join(LIBRARY_DIR, 'tags');
+    if (!fs.existsSync(tagsDir)) {
+      return res.json({ success: true, data: [] });
+    }
+    const tagFiles = fs.readdirSync(tagsDir)
+      .filter(f => f.endsWith('.md'))
+      .map(f => f.replace(/\.md$/, ''))
+      .sort();
+    res.json({ success: true, data: tagFiles });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/library/tag/:tagname', (req, res) => {
+  try {
+    const tagname = req.params.tagname;
+    const tagsDir = join(LIBRARY_DIR, 'tags');
+    const tagFile = join(tagsDir, `${tagname}.md`);
+    if (!fs.existsSync(tagFile)) {
+      return res.status(404).json({ success: false, error: 'Tag not found' });
+    }
+    const content = fs.readFileSync(tagFile, 'utf8');
+    // Parse the tag file: each line like "- [Topic Name](topics/slug/)" or "- Topic Name (topics/slug/)"
+    const topics = [];
+    for (const line of content.split('\n').filter(l => l.trim().startsWith('- '))) {
+      const match = line.trim().substring(2).match(/\[([^\]]+)\]\(topics\/([^/]+)\)/);
+      if (match) {
+        topics.push({ title: match[1], slug: match[2] });
+      } else {
+        // Fallback: simple format "- Topic Name (topics/slug/)"
+        const fallback = line.trim().substring(2).match(/(.+?)\(topics\/([^/]+)\)/);
+        if (fallback) {
+          topics.push({ title: fallback[1].trim(), slug: fallback[2] });
+        }
+      }
+    }
+    res.json({ success: true, data: topics });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
