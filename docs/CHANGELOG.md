@@ -6,10 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-25] ConfigSection — model options are now objects (`{ path, size, mtime }`) and the dropdown correctly extracts the `path` property for display, selection comparison, and stored value
+- [Fixed]: [2026-06-25] Benchmark store — SSE endpoints (`/api/build` and `/api/hf/download`) now pass the auth token as a query parameter instead of an `Authorization` header, fixing authentication reliability with SSE fetch connections
 - [Fixed]: [2026-06-25] Models page — mmproj (multimodal projector) model files are now filtered out from the main models list using a `filteredModels` computed property, preventing them from appearing alongside regular model files in the grouped file browser
 
 ### Changed
 
+- [Changed]: [2026-06-25] Version bumped to 1.0.65
 - [Changed]: [2026-06-25] `scripts/update.sh` — update process now stops the service, installs npm dependencies in both root and `src/frontend/` directories, then restarts; replaces the previous approach of just stashing, pulling, and restarting without installing dependencies
 
 ### Added

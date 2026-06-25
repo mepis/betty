@@ -569,7 +569,10 @@ export const useBenchmarkStore = defineStore('benchmark', {
         this.buildStatus = 'building'
         this.buildProgress = 0
 
-        const response = await fetch(`${API_BASE}/api/build`, {
+        // Pass auth token as query param (SSE fetch can't use Authorization header reliably)
+        const token = localStorage.getItem('betty-token')
+        const tokenParam = token ? `?token=${encodeURIComponent(token)}` : ''
+        const response = await fetch(`${API_BASE}/api/build${tokenParam}`, {
           method: 'POST',
         })
 
@@ -793,7 +796,10 @@ export const useBenchmarkStore = defineStore('benchmark', {
         const body = { modelId, filename }
         if (customFilename) body.customFilename = customFilename
 
-        const response = await fetch(`${API_BASE}/api/hf/download`, {
+        // Pass auth token as query param (SSE fetch can't use Authorization header reliably)
+        const token = localStorage.getItem('betty-token')
+        const tokenParam = token ? `?token=${encodeURIComponent(token)}` : ''
+        const response = await fetch(`${API_BASE}/api/hf/download${tokenParam}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),

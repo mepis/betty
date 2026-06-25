@@ -26,7 +26,9 @@ const toggleDropdown = (key) => {
 }
 
 const selectOption = (key, value) => {
-  update(key, value)
+  // Model options are objects { path, size, mtime } — store the path string
+  const resolvedValue = key === 'model' && typeof value === 'object' ? value.path : value
+  update(key, resolvedValue)
   openDropdown.value = null
 }
 
@@ -86,12 +88,12 @@ const closeDropdown = () => {
                 </button>
                 <button
                   v-for="opt in item.key === 'CUDA_SCALE_LAUNCH_QUEUES' ? queueOptions : item.key === 'GGML_CUDA_P2P' ? p2pOptions : modelOptions"
-                  :key="opt"
+                  :key="typeof opt === 'object' ? opt.path : opt"
                   @click="selectOption(item.key, opt)"
                   class="w-full text-left px-3 py-1.5 text-xs transition-colors"
-                  :class="modelValue[item.key] === opt ? 'bg-accent-subtle text-accent' : 'text-text-secondary hover:bg-bg-card-hover'"
+                  :class="modelValue[item.key] === (typeof opt === 'object' ? opt.path : opt) ? 'bg-accent-subtle text-accent' : 'text-text-secondary hover:bg-bg-card-hover'"
                 >
-                  {{ opt }}
+                  {{ typeof opt === 'object' ? opt.path : opt }}
                 </button>
               </div>
             </div>
