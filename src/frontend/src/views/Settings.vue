@@ -1591,7 +1591,7 @@ function normalizeBuildParams(configs) {
           />
 
           <!-- Modal -->
-          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] mx-4 flex flex-col">
+          <div class="relative bg-bg-secondary border border-border rounded-2xl shadow-2xl w-[80vw] max-h-[85vh] mx-4 flex flex-col">
             <!-- Header -->
             <div class="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
               <div class="flex items-center gap-3">
@@ -1647,7 +1647,8 @@ function normalizeBuildParams(configs) {
                   <label class="text-xs font-semibold text-text-muted uppercase tracking-wider">ExecStart Command</label>
                   <textarea
                     v-model="serviceEditForm.execStart"
-                    class="textarea font-mono text-xs mt-2 h-20"
+                    class="textarea font-mono text-xs mt-2 h-40"
+                    rows="12"
                     placeholder="/path/to/llama-server --port 11434 ..."
                   />
                   <p class="text-xs text-text-muted mt-1">Full command to execute, without the leading path to the binary</p>
