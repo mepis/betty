@@ -60,16 +60,15 @@ curl -s "http://100.91.131.108/searxng/search?q=typescript&format=json&categorie
 
 ## Manual Search Workflow
 
-### 1. Search Bing (headless-browser friendly)
+### 1. Search Bing
 
 ```bash
 # Search directly
-playwright-cli open "https://www.bing.com/search?q=your+search+terms"
+playwright-cli open --headed "https://www.bing.com/search?q=your+search+terms"
 playwright-cli snapshot
 ```
 
 > **Note:** SearxNG is preferred over Bing. Use Bing only when SearxNG is unavailable.
-> DuckDuckGo and Google block headless browsers with CAPTCHAs.
 
 ### 2. Extract Results as JSON (Bing)
 
@@ -143,6 +142,6 @@ curl -s "http://100.91.131.108/searxng/search?q=your+query&format=json" | jq '.r
 ```bash
 # SearxNG: search and open the first result
 TOP_URL=$(curl -s "http://100.91.131.108/searxng/search?q=your+query&format=json" | jq -r '.results[0].url')
-playwright-cli open "$TOP_URL"
+playwright-cli open --headed "$TOP_URL"
 playwright-cli snapshot
 ```

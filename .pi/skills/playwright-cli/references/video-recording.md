@@ -6,7 +6,7 @@ Capture browser automation sessions as video for debugging, documentation, or ve
 
 ```bash
 # Open browser first
-playwright-cli open
+playwright-cli open --headed
 
 # Start recording
 playwright-cli video-start demo.webm

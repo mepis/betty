@@ -8,10 +8,10 @@ Use `-s` flag to isolate browser contexts:
 
 ```bash
 # Browser 1: Authentication flow
-playwright-cli -s=auth open https://app.example.com/login
+playwright-cli -s=auth open --headed https://app.example.com/login
 
 # Browser 2: Public browsing (separate cookies, storage)
-playwright-cli -s=public open https://example.com
+playwright-cli -s=public open --headed https://example.com
 
 # Commands are isolated by browser session
 playwright-cli -s=auth fill e1 "user@example.com"
@@ -55,7 +55,7 @@ Set a default browser session name via environment variable:
 
 ```bash
 export PLAYWRIGHT_CLI_SESSION="mysession"
-playwright-cli open example.com  # Uses "mysession" automatically
+playwright-cli open --headed example.com  # Uses "mysession" automatically
 ```
 
 ## Common Patterns
@@ -67,9 +67,9 @@ playwright-cli open example.com  # Uses "mysession" automatically
 # Scrape multiple sites concurrently
 
 # Start all browsers
-playwright-cli -s=site1 open https://site1.com &
-playwright-cli -s=site2 open https://site2.com &
-playwright-cli -s=site3 open https://site3.com &
+playwright-cli -s=site1 open --headed https://site1.com &
+playwright-cli -s=site2 open --headed https://site2.com &
+playwright-cli -s=site3 open --headed https://site3.com &
 wait
 
 # Take snapshots from each
@@ -85,8 +85,8 @@ playwright-cli close-all
 
 ```bash
 # Test different user experiences
-playwright-cli -s=variant-a open "https://app.com?variant=a"
-playwright-cli -s=variant-b open "https://app.com?variant=b"
+playwright-cli -s=variant-a open --headed "https://app.com?variant=a"
+playwright-cli -s=variant-b open --headed "https://app.com?variant=b"
 
 # Compare
 playwright-cli -s=variant-a screenshot
@@ -99,10 +99,10 @@ By default, browser profile is kept in memory only. Use `--persistent` flag on `
 
 ```bash
 # Use persistent profile (auto-generated location)
-playwright-cli open https://example.com --persistent
+playwright-cli open --headed https://example.com --persistent
 
 # Use persistent profile with custom directory
-playwright-cli open https://example.com --profile=/path/to/profile
+playwright-cli open --headed https://example.com --profile=/path/to/profile
 ```
 
 ## Attaching to a Running Browser
@@ -167,7 +167,7 @@ When `-s` is omitted, commands use the default browser session:
 
 ```bash
 # These use the same default browser session
-playwright-cli open https://example.com
+playwright-cli open --headed https://example.com
 playwright-cli snapshot
 playwright-cli close  # Stops default browser
 ```
@@ -178,16 +178,13 @@ Configure a browser session with specific settings when opening:
 
 ```bash
 # Open with config file
-playwright-cli open https://example.com --config=.playwright/my-cli.json
+playwright-cli open --headed https://example.com --config=.playwright/my-cli.json
 
 # Open with specific browser
-playwright-cli open https://example.com --browser=firefox
-
-# Open in headed mode
-playwright-cli open https://example.com --headed
+playwright-cli open --headed https://example.com --browser=firefox
 
 # Open with persistent profile
-playwright-cli open https://example.com --persistent
+playwright-cli open --headed https://example.com --persistent
 ```
 
 ## Best Practices
@@ -196,11 +193,11 @@ playwright-cli open https://example.com --persistent
 
 ```bash
 # GOOD: Clear purpose
-playwright-cli -s=github-auth open https://github.com
-playwright-cli -s=docs-scrape open https://docs.example.com
+playwright-cli -s=github-auth open --headed https://github.com
+playwright-cli -s=docs-scrape open --headed https://docs.example.com
 
 # AVOID: Generic names
-playwright-cli -s=s1 open https://github.com
+playwright-cli -s=s1 open --headed https://github.com
 ```
 
 ### 2. Always Clean Up

@@ -11,7 +11,7 @@ This code appears in the output and can be copied directly into your test files.
 
 ```bash
 # Start a session
-playwright-cli open https://example.com/login
+playwright-cli open --headed https://example.com/login
 
 # Take a snapshot to see elements
 playwright-cli snapshot
@@ -69,7 +69,7 @@ await page.locator('#submit-btn').click();
 Take snapshots to understand the page structure before recording actions:
 
 ```bash
-playwright-cli open https://example.com
+playwright-cli open --headed https://example.com
 playwright-cli snapshot
 # Review the element structure
 playwright-cli click e5

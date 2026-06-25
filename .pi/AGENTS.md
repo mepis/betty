@@ -141,3 +141,16 @@ This applies to changes made by any session or tool — never skip the changelog
 ## Rule 14 — Favor this repo first
 
 When searching for information, code, or references, always check this repo first before looking externally. The project's own source, `src/docs/`, `src/frontend/`, and `src/backend/` are the primary sources of truth. Only look outside the repo when the answer genuinely cannot be found here.
+
+## Rule 15 — Consult the research library
+
+The research library at `~/.betty/library/` contains archived research, technical deep-dives, and curated knowledge on topics relevant to this project. It is a source of additional knowledge, best practices, and reference material.
+
+Use the library when:
+
+- Looking for information on a topic (LLM serving, GPU optimization, agent architectures, debugging, etc.)
+- Researching best practices or comparing approaches
+- Needing technical context that may have been investigated previously
+- Verifying assumptions before starting new research or implementation
+
+Start by reading `~/.betty/library/INDEX.md` to see available topics, then read the relevant topic directory for full details.

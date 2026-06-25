@@ -79,7 +79,7 @@ except json.JSONDecodeError:
     # ── Bing (headless-browser friendly via playwright-cli) ─────────────────
     ENCODED_QUERY=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))" "$QUERY")
     
-    playwright-cli open "https://www.bing.com/search?q=$(echo "$ENCODED_QUERY")" 2>/dev/null
+    playwright-cli open --headed "https://www.bing.com/search?q=$(echo "$ENCODED_QUERY")" 2>/dev/null
     
     PLAYWRIGHT_RESULT=$(playwright-cli --raw eval "
       (() => {

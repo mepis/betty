@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-24] Rule 15 — "Consult the research library" — added to `.pi/AGENTS.md`; instructs agents to check `~/.betty/library/INDEX.md` for archived research before starting new work
+
+### Changed
+
+- [Changed]: [2026-06-24] `playwright-cli` skill — all `playwright-cli open` commands now default to `--headed` mode across SKILL.md, all reference docs, and the web-search.sh script; added prominent callout at top of SKILL.md emphasizing headed mode
+
+### Removed
+
+- [Removed]: [2026-06-24] `playwright-cli` web-search.md — removed note stating "DuckDuckGo and Google block headless browsers with CAPTCHAs" (no longer relevant with headed mode as default)
+
 ### Changed
 
 - [Changed]: [2026-06-24] Research library moved from `library/` (repo-local) to `~/.betty/library/` (user home directory); updated all references in `.pi/AGENTS.md`, `.pi/skills/planning/SKILL.md`, `.pi/skills/project-docs/SKILL.md`, `.pi/skills/research/SKILL.md`, and `docs/architecture.md`
