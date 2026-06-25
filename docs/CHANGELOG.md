@@ -4,12 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Changed
-
-- [Changed]: [2026-06-25] Admin Settings — Edit SystemD Service modal now uses 80% viewport width (`w-[80vw]`) instead of `max-w-2xl`, giving more horizontal space for service configuration
-- [Changed]: [2026-06-25] Admin Settings — ExecStart Command textarea height doubled (`h-20` → `h-40`) with `rows="12"` for more editing space
-
 ### Added
+
+- [Added]: [2026-06-25] Service Config Profiles — save, list, load, and delete named snapshots of the current `llama.service` systemd configuration (ExecStart, env vars, restart settings); stored in `~/.betty/service-profiles/`; new panel in Admin Settings alongside Config Profiles
 
 - [Added]: [2026-06-24] Rule 15 — "Consult the research library" — added to `.pi/AGENTS.md`; instructs agents to check `~/.betty/library/INDEX.md` for archived research before starting new work
 

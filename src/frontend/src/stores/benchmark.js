@@ -18,6 +18,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
     models: [],
     modelsDir: null,
     profiles: [],
+    serviceProfiles: [],
     error: null,
     sseConnected: false,
     // Benchmark messages (test prompts and LLM responses)
@@ -175,6 +176,55 @@ export const useBenchmarkStore = defineStore('benchmark', {
         const res = await axios.delete(`${API_BASE}/api/profile/${name}`)
         if (res.data.success) {
           this.profiles = this.profiles.filter((p) => p.name !== name)
+          return true
+        }
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
+    //--- Service Profile actions ---
+    async fetchServiceProfiles() {
+      try {
+        const res = await axios.get(`${API_BASE}/api/service-profiles`)
+        if (res.data.success) this.serviceProfiles = res.data.data
+      } catch (e) {
+        this.error = e.message
+      }
+    },
+
+    async saveServiceProfile(name, data) {
+      try {
+        const res = await axios.post(`${API_BASE}/api/service-profile`, { name, data })
+        if (res.data.success) {
+          await this.fetchServiceProfiles()
+          return true
+        }
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
+    async loadServiceProfile(name, restart = true) {
+      try {
+        const res = await axios.post(`${API_BASE}/api/service-profile/${name}/load?restart=${restart}`)
+        if (res.data.success) return true
+        return false
+      } catch (e) {
+        this.error = e.message
+        return false
+      }
+    },
+
+    async deleteServiceProfile(name) {
+      try {
+        const res = await axios.delete(`${API_BASE}/api/service-profile/${name}`)
+        if (res.data.success) {
+          this.serviceProfiles = this.serviceProfiles.filter((p) => p.name !== name)
           return true
         }
         return false

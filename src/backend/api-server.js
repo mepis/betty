@@ -45,6 +45,7 @@ const CONFIGS_FILE = join(BETTY_DIR, "configs.json");
 const RESULTS_FILE = join(BENCHMARK_DIR, "results.md");
 const REPORTS_DIR = join(BETTY_DIR, "reports");
 const PROFILES_DIR = join(BETTY_DIR, "profiles");
+const SERVICE_PROFILES_DIR = join(BETTY_DIR, "service-profiles");
 const MODELS_DIR = join(BETTY_DIR, "models");
 
 // Allowed CORS origins (comma-separated or * for all)
@@ -118,6 +119,7 @@ function ensureDirectory(dir, label) {
 ensureDirectory(BETTY_DIR, "~/.betty");
 ensureDirectory(REPORTS_DIR, "~/.betty/reports");
 ensureDirectory(PROFILES_DIR, "profiles");
+ensureDirectory(SERVICE_PROFILES_DIR, "service-profiles");
 ensureDirectory(MODELS_DIR, "~/.betty/models");
 ensureDirectory(join(BENCHMARK_DIR, "llama_cache"), "llama_cache");
 
@@ -505,6 +507,184 @@ app.post("/api/profile/:name/load", authorize("admin", "operator"), (req, res) =
     // Write the profile's config to configs.json
     fs.writeFileSync(CONFIGS_FILE, JSON.stringify(profile, null, 2));
     res.json({ success: true, message: `Profile "${req.params.name}" loaded`, data: profile });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+//--- Service Profile endpoints ---
+app.get("/api/service-profiles", (_req, res) => {
+  try {
+    const files = fs.readdirSync(SERVICE_PROFILES_DIR).filter((f) => f.endsWith(".json"));
+    const profiles = files.map((file) => {
+      const stats = fs.statSync(join(SERVICE_PROFILES_DIR, file));
+      const name = file.replace(/\.json$/, "");
+      return {
+        name,
+        filename: file,
+        created: stats.birthtime,
+        modified: stats.mtime,
+      };
+    }).sort((a, b) => b.modified - a.modified);
+    res.json({ success: true, data: profiles });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get("/api/service-profile/:name", (req, res) => {
+  try {
+    const safeName = req.params.name.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Service profile not found" });
+    }
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    res.json({ success: true, data });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/service-profile", authorize("admin", "operator"), (req, res) => {
+  try {
+    const { name, data } = req.body;
+    if (!name || !data) {
+      return res.status(400).json({ success: false, error: "name and data required" });
+    }
+
+    // Sanitize name
+    const safeName = name.replace(/[^a-zA-Z0-9_-]/g, "_");
+
+    // Filter out env vars with empty keys
+    if (data.envVars) {
+      const filtered = {};
+      for (const [k, v] of Object.entries(data.envVars)) {
+        if (k && k.trim()) {
+          filtered[k] = v;
+        }
+      }
+      data.envVars = filtered;
+    }
+
+    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    res.json({ success: true, message: "Service profile saved" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.delete("/api/service-profile/:name", authorize("admin"), (req, res) => {
+  try {
+    const safeName = req.params.name.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Service profile not found" });
+    }
+    fs.unlinkSync(filePath);
+    res.json({ success: true, message: "Service profile deleted" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/service-profile/:name/load", authorize("admin", "operator"), (req, res) => {
+  const notSupported = requireSystemd(res);
+  if (notSupported) return;
+  try {
+    const safeName = req.params.name.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ success: false, error: "Service profile not found" });
+    }
+    const profile = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const { execStart, envVars, restart, restartSec } = profile;
+
+    if (!execStart) {
+      return res.status(400).json({ success: false, error: "Profile missing execStart" });
+    }
+
+    const serviceUser = process.env.USER || "jon";
+    const serviceName = "llama.service";
+    const serviceFile = join("/home", serviceUser, ".config", "systemd", "user", serviceName);
+    const envFile = join("/home", serviceUser, ".config", "systemd", "user", "llama-benchmark.env");
+
+    // Read existing service file to preserve other sections
+    if (!fs.existsSync(serviceFile)) {
+      return res.status(404).json({ success: false, error: "Service file not found. Install a service first." });
+    }
+
+    const serviceContent = fs.readFileSync(serviceFile, "utf8");
+
+    // Update ExecStart
+    let updatedService = serviceContent.replace(
+      /^ExecStart=.+$/m,
+      `ExecStart=${execStart}`
+    );
+
+    // Update Restart
+    if (restart) {
+      updatedService = updatedService.replace(
+        /^Restart=.+$/m,
+        `Restart=${restart}`
+      );
+    }
+
+    // Update RestartSec
+    if (restartSec !== undefined && restartSec !== null) {
+      updatedService = updatedService.replace(
+        /^RestartSec=.+$/m,
+        `RestartSec=${restartSec}`
+      );
+    }
+
+    // Write updated service file
+    try {
+      execSync(`cat > ${serviceFile} << 'SVCEOF'\n${updatedService}SVCEOF`);
+    } catch (err) {
+      console.error(`Failed to write service file: ${err.message}`);
+      return res.status(500).json({ success: false, error: `Failed to write service file: ${err.message}` });
+    }
+
+    // Write environment file
+    try {
+      const envContent = Object.entries(envVars || {})
+        .filter(([k, _]) => k && k.trim())
+        .filter(([_, v]) => v !== undefined && v !== null)
+        .map(([k, v]) => `${k}=${v}`)
+        .join("\n") + "\n";
+      execSync(`cat > ${envFile} << 'ENVEOF'\n${envContent}ENVEOF`);
+    } catch (err) {
+      console.error(`Failed to write env file: ${err.message}`);
+      return res.status(500).json({ success: false, error: `Failed to write env file: ${err.message}` });
+    }
+
+    // Reload systemd daemon
+    try {
+      execSync("systemctl --user daemon-reload");
+    } catch (err) {
+      console.error(`Failed to reload systemd: ${err.message}`);
+      return res.status(500).json({ success: false, error: `daemon-reload failed: ${err.message}` });
+    }
+
+    // Restart the service (unless restart=false query param)
+    const shouldRestart = req.query.restart !== "false";
+    if (shouldRestart) {
+      try {
+        execSync("systemctl --user restart llama.service");
+      } catch (err) {
+        console.error(`Failed to restart service: ${err.message}`);
+        return res.status(500).json({ success: false, error: `restart failed: ${err.message}` });
+      }
+    }
+
+    res.json({
+      success: true,
+      message: shouldRestart
+        ? "Service profile loaded, reloaded, and restarted"
+        : "Service profile loaded and daemon-reloaded",
+    });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
