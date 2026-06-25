@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-25] Models page — mmproj (multimodal projector) model files are now filtered out from the main models list using a `filteredModels` computed property, preventing them from appearing alongside regular model files in the grouped file browser
+
 ### Changed
 
 - [Changed]: [2026-06-25] `scripts/update.sh` — update process now stops the service, installs npm dependencies in both root and `src/frontend/` directories, then restarts; replaces the previous approach of just stashing, pulling, and restarting without installing dependencies

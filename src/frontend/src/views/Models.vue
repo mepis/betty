@@ -208,9 +208,13 @@ function getFileIcon(path) {
   return '📦'
 }
 
+const filteredModels = computed(() => {
+  return store.models.filter(file => !file.path.includes('mmprog'))
+})
+
 const groupedModels = computed(() => {
   const groups = {}
-  store.models.forEach(file => {
+  filteredModels.value.forEach(file => {
     const parts = file.path.split('/')
     const dir = parts.length > 1 ? parts.slice(0, -1).join('/') : '(root)'
     if (!groups[dir]) groups[dir] = []
@@ -256,7 +260,7 @@ onMounted(async () => {
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
         Downloads
-        <span v-if="store.models.length" class="ml-1 badge bg-bg-tertiary text-text-muted text-xs">{{ store.models.length }}</span>
+        <span v-if="filteredModels.length" class="ml-1 badge bg-bg-tertiary text-text-muted text-xs">{{ filteredModels.length }}</span>
       </button>
     </div>
 
@@ -386,7 +390,7 @@ onMounted(async () => {
       </div>
 
       <!-- Empty state -->
-      <div v-else-if="store.models.length === 0" class="card flex flex-col items-center justify-center py-16 text-text-muted">
+      <div v-else-if="filteredModels.length === 0" class="card flex flex-col items-center justify-center py-16 text-text-muted">
         <svg class="w-12 h-12 mb-4 text-text-muted/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
         </svg>
