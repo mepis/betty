@@ -1250,6 +1250,8 @@ function getLaunchCommand(configs, testRunConfig) {
   const batchSize = test.batchSize || tp.batch_size || 0;
   const uBatchSize = test.uBatchSize || tp.u_batch_size || 0;
   const cacheRam = test.cacheRam || tp.cache_ram || 0;
+  // Ensure batchSize >= uBatchSize (ubatch can never exceed batch)
+  const effectiveBatchSize = Math.max(batchSize, uBatchSize);
 
   const primaryGpu = gs.enabled ? gs.gpus[0] : 0;
 
@@ -1263,7 +1265,7 @@ function getLaunchCommand(configs, testRunConfig) {
     `--port ${port} --host ${host}`,
     `-c ${contextLength} -ngl ${gpuLayerOffload}`,
     `--temp ${mc.temp} --top-p ${mc.top_p} --min-p ${mc.min_p} --top-k ${mc.top_k}`,
-    `--batch-size ${batchSize} --ubatch-size ${uBatchSize}`,
+    `--batch-size ${effectiveBatchSize} --ubatch-size ${uBatchSize}`,
     `--cache-ram ${cacheRam}`,
   ];
 
@@ -1337,6 +1339,8 @@ function extractConfigsPerRun(liveResults, configs) {
       tp.u_batch_size + (tp.u_batch_size_step || 64) * (r.testRunId - 1),
       tp.u_batch_size_max || 4096,
     );
+    // Ensure batchSize >= uBatchSize (ubatch can never exceed batch)
+    const effectiveBatchSize = Math.max(batchSize, uBatchSize);
     const cacheRam = Math.min(
       tp.cache_ram + (tp.cache_ram_step || 1024) * (r.testRunId - 1),
       tp.cache_ram_max || 4096,
@@ -1346,7 +1350,7 @@ function extractConfigsPerRun(liveResults, configs) {
       testRunId: r.testRunId,
       testParameters: {
         contextLength,
-        batchSize,
+        batchSize: effectiveBatchSize,
         uBatchSize,
         cacheRam,
         gpuLayerOffload,

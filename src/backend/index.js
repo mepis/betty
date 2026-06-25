@@ -305,7 +305,16 @@ async function main() {
     if (initResult.success) {
       // Generate the full cartesian product grid
       const valueArrays = generateValueArrays();
-      const combinations = cartesianProduct(valueArrays);
+      const allCombinations = cartesianProduct(valueArrays);
+      // Filter out combinations where batchSize < uBatchSize (invalid)
+      const combinations = allCombinations.filter((combo) => {
+        let batch = 0, ubatch = 0;
+        for (const { key, val } of combo) {
+          if (key === "batchSize") batch = val;
+          if (key === "uBatchSize") ubatch = val;
+        }
+        return batch >= ubatch;
+      });
       const totalCombinations = combinations.length;
 
       console.log("\n" + "=".repeat(60));

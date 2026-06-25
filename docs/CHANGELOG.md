@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-25] Grid search now filters out invalid combinations where `batchSize < uBatchSize` in `index.js`; both `getLaunchCommand()` and `extractConfigsPerRun()` in `api-server.js` clamp `batchSize` to `Math.max(batchSize, uBatchSize)` so llama.cpp never receives an invalid ubatch > batch configuration
+
 ### Added
 
 - [Added]: [2026-06-25] Chat template file selection in Settings — dropdown to select a Jinja chat template file (`~/.betty/chat_templates/*.json`) when Jinja mode is enabled; `--chat-template-file` flag passed to llama.cpp in both launch command (`api-server.js`) and run script (`index.js`); chat templates fetched on Settings mount; helper functions `joinChatTemplatePath()` and `getTemplateName()` for path management
