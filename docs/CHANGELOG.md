@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-25] Library page — `LIBRARY_DIR` now uses `process.env.BETTY_LIBRARY_DIR` environment variable with `~/.betty/library` as fallback, allowing the library path to be configured per-host when the server runs under a different user or the library is stored in a non-standard location
 - [Fixed]: [2026-06-25] Library page — fixed `extractLibraryTags()` to parse `**Tags:** tag1, tag2, tag3` format used in library topic index files; previously all topics showed empty tags
 
 ### Changed

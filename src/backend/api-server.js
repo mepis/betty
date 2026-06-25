@@ -3163,7 +3163,8 @@ app.get('/api/docs/:filename', (req, res) => {
 });
 
 //--- Library endpoints ---
-const LIBRARY_DIR = join(os.homedir(), '.betty', 'library');
+const LIBRARY_DIR = process.env.BETTY_LIBRARY_DIR
+  || join(os.homedir(), '.betty', 'library');
 
 function parseLibraryFrontmatter(content) {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
