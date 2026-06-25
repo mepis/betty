@@ -1,63 +1,28 @@
-import fs from "fs";
-import { join } from "path";
-import os from "os";
-
-const BETTY_DIR = join(os.homedir(), ".betty");
-const USERS_FILE = join(BETTY_DIR, "users.json");
+import db from "../db/db.js";
+import crypto from "crypto";
 
 /**
- * User schema:
+ * User schema (database):
  * {
- *   id: string (UUID-like)
+ *   id: string (UUID)
  *   username: string
  *   passwordHash: string (bcrypt)
  *   role: 'admin' | 'operator' | 'viewer'
- *   createdAt: string (ISO date)
- *   updatedAt: string (ISO date)
+ *   createdAt: string (ISO)
+ *   updatedAt: string (ISO)
  * }
  */
 
 /**
- * Internal: ensure the .betty directory exists.
- */
-function ensureBettyDir() {
-  if (!fs.existsSync(BETTY_DIR)) {
-    fs.mkdirSync(BETTY_DIR, { recursive: true });
-  }
-}
-
-/**
- * Internal: write users to file without checking existence (avoids infinite loop).
- */
-function saveUsersUnchecked(users) {
-  ensureBettyDir();
-  try {
-    fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), "utf-8");
-  } catch (err) {
-    console.error(`[auth] Failed to save users: ${err.message}`);
-    throw err;
-  }
-}
-
-/**
- * Ensure the users file exists, creating it if missing.
- */
-function ensureUsersFile() {
-  ensureBettyDir();
-  if (!fs.existsSync(USERS_FILE)) {
-    saveUsersUnchecked([]);
-  }
-}
-
-/**
- * Load all users from the JSON file.
- * Caller MUST ensure the file exists first (call ensureUsersFile()).
+ * Load all users from the database.
  * @returns {Array} Array of user objects
  */
-function loadUsers() {
+async function loadUsers() {
   try {
-    const data = fs.readFileSync(USERS_FILE, "utf-8");
-    return JSON.parse(data);
+    const users = await db.jsonAll(
+      "SELECT id, username, password_hash AS passwordHash, role, created_at AS createdAt, updated_at AS updatedAt FROM users ORDER BY username"
+    );
+    return users || [];
   } catch (err) {
     console.error(`[auth] Failed to load users: ${err.message}`);
     return [];
@@ -65,11 +30,37 @@ function loadUsers() {
 }
 
 /**
- * Save all users to the JSON file.
+ * Save all users to the database.
  * @param {Array} users - Array of user objects
  */
-function saveUsers(users) {
-  saveUsersUnchecked(users);
+async function saveUsers(users) {
+  try {
+    // Use REPLACE INTO for each user (upsert)
+    for (const user of users) {
+      await db.run(
+        `REPLACE INTO users (id, username, password_hash, role, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+        [
+          user.id,
+          user.username,
+          user.passwordHash,
+          user.role || "viewer",
+          user.createdAt,
+          user.updatedAt,
+        ]
+      );
+    }
+  } catch (err) {
+    console.error(`[auth] Failed to save users: ${err.message}`);
+    throw err;
+  }
+}
+
+/**
+ * Ensure the database is initialized and users table exists.
+ */
+async function ensureUsersFile() {
+  await db.init();
 }
 
 /**
@@ -77,10 +68,13 @@ function saveUsers(users) {
  * @param {string} username
  * @returns {object|null} User object or null
  */
-function findUser(username) {
-  ensureUsersFile();
-  const users = loadUsers();
-  return users.find((u) => u.username === username) || null;
+async function findUser(username) {
+  await ensureUsersFile();
+  const user = await db.jsonGet(
+    "SELECT id, username, password_hash AS passwordHash, role, created_at AS createdAt, updated_at AS updatedAt FROM users WHERE username = ?",
+    [username]
+  );
+  return user || null;
 }
 
 /**
@@ -88,10 +82,13 @@ function findUser(username) {
  * @param {string} id
  * @returns {object|null} User object or null
  */
-function findUserById(id) {
-  ensureUsersFile();
-  const users = loadUsers();
-  return users.find((u) => u.id === id) || null;
+async function findUserById(id) {
+  await ensureUsersFile();
+  const user = await db.jsonGet(
+    "SELECT id, username, password_hash AS passwordHash, role, created_at AS createdAt, updated_at AS updatedAt FROM users WHERE id = ?",
+    [id]
+  );
+  return user || null;
 }
 
 /**
@@ -99,9 +96,8 @@ function findUserById(id) {
  * @param {object} user - User object (without id/createdAt/updatedAt — these are auto-generated)
  * @returns {object} The created user
  */
-function addUser(user) {
-  ensureUsersFile();
-  const users = loadUsers();
+async function addUser(user) {
+  await ensureUsersFile();
   const now = new Date().toISOString();
   const newUser = {
     id: crypto.randomUUID(),
@@ -111,8 +107,10 @@ function addUser(user) {
     createdAt: now,
     updatedAt: now,
   };
-  users.push(newUser);
-  saveUsers(users);
+  await db.run(
+    "INSERT INTO users (id, username, password_hash, role, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)",
+    [newUser.id, newUser.username, newUser.passwordHash, newUser.role, newUser.createdAt, newUser.updatedAt]
+  );
   return newUser;
 }
 
@@ -122,18 +120,33 @@ function addUser(user) {
  * @param {object} updates - Fields to update (passwordHash, role, etc.)
  * @returns {object|null} Updated user or null
  */
-function updateUser(username, updates) {
-  ensureUsersFile();
-  const users = loadUsers();
-  const index = users.findIndex((u) => u.username === username);
-  if (index === -1) return null;
-  users[index] = {
-    ...users[index],
-    ...updates,
-    updatedAt: new Date().toISOString(),
-  };
-  saveUsers(users);
-  return users[index];
+async function updateUser(username, updates) {
+  await ensureUsersFile();
+  const now = new Date().toISOString();
+  const setClauses = [];
+  const params = [];
+
+  if (updates.passwordHash !== undefined) {
+    setClauses.push("password_hash = ?");
+    params.push(updates.passwordHash);
+  }
+  if (updates.role !== undefined) {
+    setClauses.push("role = ?");
+    params.push(updates.role);
+  }
+
+  if (setClauses.length === 0) {
+    // Find user to return current state
+    return await findUser(username);
+  }
+
+  setClauses.push("updated_at = ?");
+  params.push(now);
+  params.push(username);
+
+  await db.run(`UPDATE users SET ${setClauses.join(", ")} WHERE username = ?`, params);
+
+  return await findUser(username);
 }
 
 /**
@@ -141,47 +154,42 @@ function updateUser(username, updates) {
  * @param {string} username
  * @returns {boolean} True if deleted, false if not found
  */
-function deleteUser(username) {
-  ensureUsersFile();
-  const users = loadUsers();
-  const filtered = users.filter((u) => u.username !== username);
-  if (filtered.length === users.length) return false;
-  saveUsers(filtered);
-  return true;
+async function deleteUser(username) {
+  await ensureUsersFile();
+  const result = await db.run("DELETE FROM users WHERE username = ?", [username]);
+  return result.affectedRows > 0;
 }
 
 /**
  * List all users (without password hashes).
  * @returns {Array} Array of sanitized user objects
  */
-function listUsers() {
-  ensureUsersFile();
-  const users = loadUsers();
-  return users.map(({ id, username, role, createdAt, updatedAt }) => ({
-    id,
-    username,
-    role,
-    createdAt,
-    updatedAt,
-  }));
+async function listUsers() {
+  await ensureUsersFile();
+  const users = await db.jsonAll(
+    "SELECT id, username, role, created_at AS createdAt, updated_at AS updatedAt FROM users ORDER BY username"
+  );
+  return users || [];
 }
 
 /**
  * Check if any users exist.
  * @returns {boolean}
  */
-function hasUsers() {
-  ensureUsersFile();
-  return loadUsers().length > 0;
+async function hasUsers() {
+  await ensureUsersFile();
+  const result = await db.get("SELECT COUNT(*) as count FROM users");
+  return (result?.count || 0) > 0;
 }
 
 /**
  * Get the number of users.
  * @returns {number}
  */
-function getUserCount() {
-  ensureUsersFile();
-  return loadUsers().length;
+async function getUserCount() {
+  await ensureUsersFile();
+  const result = await db.get("SELECT COUNT(*) as count FROM users");
+  return result?.count || 0;
 }
 
 export {

@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ success: false, error: "Username and password required" });
   }
 
-  const user = findUser(username);
+  const user = await findUser(username);
   if (!user) {
     return res.status(401).json({ success: false, error: "Invalid credentials" });
   }
@@ -86,17 +86,18 @@ router.post("/register", async (req, res) => {
   }
 
   // Check if user already exists
-  if (findUser(username)) {
+  const existing = await findUser(username);
+  if (existing) {
     return res.status(409).json({ success: false, error: "Username already exists" });
   }
 
   // Determine role: first user becomes admin, others default to viewer
-  const userRole = getUserCount() === 0 ? "admin" : (role || "viewer");
+  const userRole = (await getUserCount()) === 0 ? "admin" : (role || "viewer");
 
   // Hash password
   const passwordHash = await bcrypt.hash(password, 10);
 
-  const user = addUser({ username, passwordHash, role: userRole });
+  const user = await addUser({ username, passwordHash, role: userRole });
 
   const token = jwt.sign(
     {
@@ -137,7 +138,7 @@ router.put("/password", authenticate, async (req, res) => {
   }
 
   // Find the current user by id
-  const user = findUserById(req.user.id);
+  const user = await findUserById(req.user.id);
   if (!user) {
     return res.status(404).json({ success: false, error: "User not found" });
   }
@@ -150,7 +151,7 @@ router.put("/password", authenticate, async (req, res) => {
 
   // Hash and save new password
   const passwordHash = await bcrypt.hash(newPassword, 10);
-  const updated = updateUser(user.username, { passwordHash });
+  const updated = await updateUser(user.username, { passwordHash });
 
   if (!updated) {
     return res.status(500).json({ success: false, error: "Failed to update password" });
@@ -182,12 +183,12 @@ router.get("/me", authenticate, (req, res) => {
  * GET /api/auth/users
  * List all users (admin only).
  */
-router.get("/users", authenticate, (req, res) => {
+router.get("/users", authenticate, async (req, res) => {
   if (!req.user || req.user.role !== "admin") {
     return res.status(403).json({ success: false, error: "Admin access required" });
   }
 
-  res.json({ success: true, data: listUsers() });
+  res.json({ success: true, data: await listUsers() });
 });
 
 /**
@@ -214,7 +215,7 @@ router.put("/users/:username", authenticate, async (req, res) => {
     updates.passwordHash = await bcrypt.hash(password, 10);
   }
 
-  const updated = updateUser(username, updates);
+  const updated = await updateUser(username, updates);
   if (!updated) {
     return res.status(404).json({ success: false, error: "User not found" });
   }
@@ -235,7 +236,7 @@ router.put("/users/:username", authenticate, async (req, res) => {
  * DELETE /api/auth/users/:username
  * Delete a user (admin only). Cannot delete self.
  */
-router.delete("/users/:username", authenticate, (req, res) => {
+router.delete("/users/:username", authenticate, async (req, res) => {
   if (!req.user || req.user.role !== "admin") {
     return res.status(403).json({ success: false, error: "Admin access required" });
   }
@@ -247,7 +248,8 @@ router.delete("/users/:username", authenticate, (req, res) => {
     return res.status(400).json({ success: false, error: "Cannot delete your own account" });
   }
 
-  if (!deleteUser(username)) {
+  const deleted = await deleteUser(username);
+  if (!deleted) {
     return res.status(404).json({ success: false, error: "User not found" });
   }
 

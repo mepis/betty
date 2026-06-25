@@ -11,8 +11,10 @@ import crypto from "crypto";
 import { createAgentSession, AuthStorage, ModelRegistry, SessionManager, getAgentDir, loadSkills } from "@earendil-works/pi-coding-agent";
 import { authenticate, authorize, optionalAuth } from "./auth/middleware.js";
 import { authRouter } from "./auth/routes.js";
-import { ensureUsersFile, hasUsers, getUserCount } from "./auth/user-store.js";
+import { ensureUsersFile, hasUsers, getUserCount, addUser } from "./auth/user-store.js";
 import bcrypt from "bcrypt";
+import db from "./db/db.js";
+import { getConfigs, saveConfigs, getConfig, listReports, getReport, saveReportData, deleteReport, listProfiles, getProfile, saveProfile, deleteProfile, listServiceProfiles, getServiceProfile, saveServiceProfile, deleteServiceProfile, listChatTemplates, getChatTemplate, saveChatTemplate, deleteChatTemplate, getSetting, saveSetting } from "./db/data-layer.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -54,55 +56,65 @@ const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
 
 //--- Authentication configuration ---
 const AUTH_ENABLED = process.env.BETTY_AUTH_ENABLED !== "false";
-const JWT_SECRET = process.env.JWT_SECRET || generateJwtSecret();
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "24h";
 
-// Make JWT_SECRET available to auth routes module
-process.env.JWT_SECRET = JWT_SECRET;
+// Make JWT_EXPIRES_IN available to auth routes module
 process.env.JWT_EXPIRES_IN = JWT_EXPIRES_IN;
+// JWT_SECRET will be initialized by initJwtSecret() after db.init()
 
-function generateJwtSecret() {
-  // Try to load persisted secret first
+async function initJwtSecret() {
+  // Try to load from database first
+  try {
+    const persisted = await getSetting("jwt-secret");
+    if (persisted && persisted.length >= 32) {
+      console.log(`[auth] Loaded JWT secret from database`);
+      return persisted;
+    }
+  } catch (err) {
+    console.error(`[auth] Failed to load JWT secret from DB: ${err.message}`);
+  }
+
+  // Try to load from file as fallback
   const secretFile = join(BETTY_DIR, "jwt-secret");
   try {
     if (fs.existsSync(secretFile)) {
       const persisted = fs.readFileSync(secretFile, "utf-8").trim();
-      if (persisted.length >= 32) return persisted;
+      if (persisted.length >= 32) {
+        // Persist to database
+        await saveSetting("jwt-secret", persisted);
+        console.log(`[auth] Loaded JWT secret from file and persisted to database`);
+        return persisted;
+      }
     }
   } catch (err) {
-    console.error(`[auth] Failed to load JWT secret: ${err.message}`);
+    console.error(`[auth] Failed to load JWT secret from file: ${err.message}`);
   }
+
   // Generate new secret
   const newSecret = crypto.randomBytes(48).toString("hex");
+  await saveSetting("jwt-secret", newSecret);
+  // Also persist to file for backward compatibility
   try {
     fs.writeFileSync(secretFile, newSecret);
-    console.log(`[auth] Generated new JWT secret`);
   } catch (err) {
-    console.error(`[auth] Failed to persist JWT secret: ${err.message}`);
+    console.error(`[auth] Failed to persist JWT secret to file: ${err.message}`);
   }
+  console.log(`[auth] Generated and persisted new JWT secret`);
   return newSecret;
 }
 
-// Initialize auth: create default admin user if no users exist
-if (AUTH_ENABLED) {
+async function initAuth() {
+  if (!AUTH_ENABLED) return;
   try {
-    ensureUsersFile();
-    if (!hasUsers()) {
+    await ensureUsersFile();
+    if (!(await hasUsers())) {
       const adminPassword = process.env.ADMIN_PASSWORD || "admin";
       const passwordHash = bcrypt.hashSync(adminPassword, 10);
-      const users = [{
-        id: crypto.randomUUID(),
-        username: "admin",
-        passwordHash,
-        role: "admin",
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      }];
-      fs.writeFileSync(join(BETTY_DIR, "users.json"), JSON.stringify(users, null, 2));
+      await addUser({ username: "admin", passwordHash, role: "admin" });
       console.log(`[auth] Created default admin user (password: ${adminPassword})`);
       console.log(`[auth] WARNING: Change the default password immediately!`);
     } else {
-      console.log(`[auth] Authentication enabled, ${getUserCount()} user(s) configured`);
+      console.log(`[auth] Authentication enabled, ${await getUserCount()} user(s) configured`);
     }
   } catch (err) {
     console.error(`[auth] Failed to initialize auth: ${err.message}`);
@@ -329,25 +341,32 @@ function deepMerge(target, defaults) {
 }
 
 // Sync: ensure configs.json has all default keys; add missing ones automatically
-function syncConfigDefaults() {
+async function syncConfigDefaults() {
   try {
-    const current = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-    if (deepMerge(current, DEFAULT_CONFIGS)) {
-      fs.writeFileSync(CONFIGS_FILE, JSON.stringify(current, null, 2));
-      console.log(`[config] Updated configs.json with missing default keys`);
+    let current = await getConfigs();
+    if (!current) {
+      current = { ...DEFAULT_CONFIGS };
     }
+    deepMerge(current, DEFAULT_CONFIGS);
+    await saveConfigs(current);
   } catch (err) {
     console.error(`[config] Failed to sync defaults: ${err.message}`);
   }
 }
 
-// Create default configs.json if it doesn't exist
-if (!fs.existsSync(CONFIGS_FILE)) {
-  fs.writeFileSync(CONFIGS_FILE, JSON.stringify(DEFAULT_CONFIGS, null, 2));
-  console.log(`Created default config file: ${CONFIGS_FILE}`);
-} else {
-  syncConfigDefaults();
+// Initialize configs on startup
+await db.init();
+
+// Initialize JWT secret (with DB persistence)
+const dbJwtSecret = await initJwtSecret();
+if (dbJwtSecret && !process.env.JWT_SECRET) {
+  process.env.JWT_SECRET = dbJwtSecret;
 }
+
+// Initialize auth users
+await initAuth();
+
+await syncConfigDefaults();
 
 // In-memory state
 let benchmarkProcess = null;
@@ -409,19 +428,19 @@ if (AUTH_ENABLED) {
 }
 
 //--- Config endpoints ---
-app.get("/api/configs", (_req, res) => {
+app.get("/api/configs", async (_req, res) => {
   try {
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-    res.json({ success: true, data: configs });
+    const configs = await getConfigs();
+    res.json({ success: true, data: configs || {} });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.put("/api/configs", authorize("admin"), (_req, res) => {
+app.put("/api/configs", authorize("admin"), async (_req, res) => {
   try {
     const configs = _req.body;
-    fs.writeFileSync(CONFIGS_FILE, JSON.stringify(configs, null, 2));
+    await saveConfigs(configs);
     res.json({ success: true, message: "Config saved" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -444,77 +463,60 @@ app.get("/api/messages", (_req, res) => {
 });
 
 //--- Profile endpoints ---
-app.get("/api/profiles", (_req, res) => {
+app.get("/api/profiles", async (_req, res) => {
   try {
-    const files = fs.readdirSync(PROFILES_DIR).filter((f) => f.endsWith(".json"));
-    const profiles = files.map((file) => {
-      const stats = fs.statSync(join(PROFILES_DIR, file));
-      const name = file.replace(/\.json$/, "");
-      return {
-        name,
-        filename: file,
-        created: stats.birthtime,
-        modified: stats.mtime,
-      };
-    }).sort((a, b) => b.modified - a.modified);
+    const profiles = await listProfiles();
     res.json({ success: true, data: profiles });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.get("/api/profile/:name", (req, res) => {
+app.get("/api/profile/:name", async (req, res) => {
   try {
-    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
-    if (!fs.existsSync(filePath)) {
+    const profile = await getProfile(req.params.name);
+    if (!profile) {
       return res.status(404).json({ success: false, error: "Profile not found" });
     }
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    res.json({ success: true, data });
+    res.json({ success: true, data: profile });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.post("/api/profile", authorize("admin", "operator"), (req, res) => {
+app.post("/api/profile", authorize("admin", "operator"), async (req, res) => {
   try {
     const { name, data } = req.body;
     if (!name || !data) {
       return res.status(400).json({ success: false, error: "name and data required" });
     }
-
-    // Sanitize name
-    const safeName = name.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const filePath = join(PROFILES_DIR, `${safeName}.json`);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    await saveProfile(name, data);
     res.json({ success: true, message: "Profile saved" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.delete("/api/profile/:name", authorize("admin"), (req, res) => {
+app.delete("/api/profile/:name", authorize("admin"), async (req, res) => {
   try {
-    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
-    if (!fs.existsSync(filePath)) {
+    const deleted = await deleteProfile(req.params.name);
+    if (!deleted) {
       return res.status(404).json({ success: false, error: "Profile not found" });
     }
-    fs.unlinkSync(filePath);
     res.json({ success: true, message: "Profile deleted" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.post("/api/profile/:name/load", authorize("admin", "operator"), (req, res) => {
+app.post("/api/profile/:name/load", authorize("admin", "operator"), async (req, res) => {
   try {
-    const filePath = join(PROFILES_DIR, `${req.params.name}.json`);
-    if (!fs.existsSync(filePath)) {
+    const profile = await getProfile(req.params.name);
+    if (!profile) {
       return res.status(404).json({ success: false, error: "Profile not found" });
     }
-    const profile = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    // Write the profile's config to configs.json
-    fs.writeFileSync(CONFIGS_FILE, JSON.stringify(profile, null, 2));
+    // Write the profile's config to the database
+    await saveConfigs(profile);
     res.json({ success: true, message: `Profile "${req.params.name}" loaded`, data: profile });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -522,40 +524,28 @@ app.post("/api/profile/:name/load", authorize("admin", "operator"), (req, res) =
 });
 
 //--- Service Profile endpoints ---
-app.get("/api/service-profiles", (_req, res) => {
+app.get("/api/service-profiles", async (_req, res) => {
   try {
-    const files = fs.readdirSync(SERVICE_PROFILES_DIR).filter((f) => f.endsWith(".json"));
-    const profiles = files.map((file) => {
-      const stats = fs.statSync(join(SERVICE_PROFILES_DIR, file));
-      const name = file.replace(/\.json$/, "");
-      return {
-        name,
-        filename: file,
-        created: stats.birthtime,
-        modified: stats.mtime,
-      };
-    }).sort((a, b) => b.modified - a.modified);
+    const profiles = await listServiceProfiles();
     res.json({ success: true, data: profiles });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.get("/api/service-profile/:name", (req, res) => {
+app.get("/api/service-profile/:name", async (req, res) => {
   try {
-    const safeName = req.params.name.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
-    if (!fs.existsSync(filePath)) {
+    const profile = await getServiceProfile(req.params.name);
+    if (!profile) {
       return res.status(404).json({ success: false, error: "Service profile not found" });
     }
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    res.json({ success: true, data });
+    res.json({ success: true, data: profile });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.post("/api/service-profile", authorize("admin", "operator"), (req, res) => {
+app.post("/api/service-profile", authorize("admin", "operator"), async (req, res) => {
   try {
     const { name, data } = req.body;
     if (!name || !data) {
@@ -576,38 +566,30 @@ app.post("/api/service-profile", authorize("admin", "operator"), (req, res) => {
       data.envVars = filtered;
     }
 
-    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    await saveServiceProfile(safeName, data);
     res.json({ success: true, message: "Service profile saved" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.delete("/api/service-profile/:name", authorize("admin"), (req, res) => {
+app.delete("/api/service-profile/:name", authorize("admin"), async (req, res) => {
   try {
-    const safeName = req.params.name.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
-    if (!fs.existsSync(filePath)) {
+    const deleted = await deleteServiceProfile(req.params.name);
+    if (!deleted) {
       return res.status(404).json({ success: false, error: "Service profile not found" });
     }
-    fs.unlinkSync(filePath);
     res.json({ success: true, message: "Service profile deleted" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.post("/api/service-profile/:name/load", authorize("admin", "operator"), (req, res) => {
+app.post("/api/service-profile/:name/load", authorize("admin", "operator"), async (req, res) => {
   const notSupported = requireSystemd(res);
   if (notSupported) return;
   try {
-    const safeName = req.params.name.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const filePath = join(SERVICE_PROFILES_DIR, `${safeName}.json`);
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ success: false, error: "Service profile not found" });
-    }
-    const profile = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const profile = await getServiceProfile(req.params.name);
     const { execStart, envVars, restart, restartSec } = profile;
 
     if (!execStart) {
@@ -712,10 +694,10 @@ app.get("/api/status", (_req, res) => {
 });
 
 //--- Current launch command endpoint ---
-app.get("/api/launch-command", (_req, res) => {
+app.get("/api/launch-command", async (_req, res) => {
   try {
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-    const launchCmd = getLaunchCommand(configs, {});
+    const configs = await getConfigs();
+    const launchCmd = getLaunchCommand(configs || {}, {});
     res.json({ success: true, data: launchCmd });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -771,7 +753,7 @@ function broadcast(event, data) {
 }
 
 //--- Run benchmark endpoint ---
-app.post("/api/run", authorize("admin", "operator"), (req, res) => {
+app.post("/api/run", authorize("admin", "operator"), async (req, res) => {
   if (benchmarkStatus !== "idle" && benchmarkStatus !== "error" && benchmarkStatus !== "stopped") {
     return res.status(409).json({
       success: false,
@@ -781,8 +763,8 @@ app.post("/api/run", authorize("admin", "operator"), (req, res) => {
 
   try {
     // Read current configs
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-    const skipBuild = req.body.skipBuild ?? configs.skip_build;
+    const configs = await getConfigs();
+    const skipBuild = req.body.skipBuild ?? configs?.skip_build;
 
     benchmarkStatus = "building";
     currentTestRun = 0;
@@ -1086,62 +1068,46 @@ app.post("/api/stop", authorize("admin", "operator"), (_req, res) => {
 });
 
 //--- Reports endpoints ---
-app.get("/api/reports", (_req, res) => {
+app.get("/api/reports", async (_req, res) => {
   try {
-    const files = fs.readdirSync(REPORTS_DIR).filter((f) => f.endsWith(".json"));
-    const reports = files.map((file) => {
-      const stats = fs.statSync(join(REPORTS_DIR, file));
-      const name = file.replace(/\.json$/, "");
-      return {
-        name,
-        filename: file,
-        created: stats.birthtime,
-        modified: stats.mtime,
-      };
-    }).sort((a, b) => b.modified - a.modified);
+    const reports = await listReports();
     res.json({ success: true, data: reports });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.get("/api/report/:name", (req, res) => {
+app.get("/api/report/:name", async (req, res) => {
   try {
-    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
-    if (!fs.existsSync(filePath)) {
+    const report = await getReport(req.params.name);
+    if (!report) {
       return res.status(404).json({ success: false, error: "Report not found" });
     }
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    res.json({ success: true, data });
+    res.json({ success: true, data: report });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.post("/api/report", authorize("admin", "operator"), (req, res) => {
+app.post("/api/report", authorize("admin", "operator"), async (req, res) => {
   try {
     const { name, data } = req.body;
     if (!name || !data) {
       return res.status(400).json({ success: false, error: "name and data required" });
     }
-
-    // Sanitize name
-    const safeName = name.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const filePath = join(REPORTS_DIR, `${safeName}.json`);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    await saveReportData(name, data);
     res.json({ success: true, message: "Report saved" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.delete("/api/report/:name", authorize("admin"), (req, res) => {
+app.delete("/api/report/:name", authorize("admin"), async (req, res) => {
   try {
-    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
-    if (!fs.existsSync(filePath)) {
+    const deleted = await deleteReport(req.params.name);
+    if (!deleted) {
       return res.status(404).json({ success: false, error: "Report not found" });
     }
-    fs.unlinkSync(filePath);
     res.json({ success: true, message: "Report deleted" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -1149,12 +1115,12 @@ app.delete("/api/report/:name", authorize("admin"), (req, res) => {
 });
 
 //--- Auto-save report after each test run completes ---
-function saveReport() {
+async function saveReport() {
   if (!currentReportName) {
     // Generate report name on first save
     try {
-      const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-      const modelBasename = configs.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
+      const configs = await getConfigs();
+      const modelBasename = configs?.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
       const today = new Date().toISOString().slice(0, 10);
       currentReportName = `${today}-${modelBasename}`;
     } catch {
@@ -1163,7 +1129,7 @@ function saveReport() {
   }
 
   try {
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
+    const configs = await getConfigs();
     const mdContent = fs.existsSync(RESULTS_FILE) ? fs.readFileSync(RESULTS_FILE, "utf8") : "";
     const configsPerRun = extractConfigsPerRun(liveResults, configs);
 
@@ -1176,9 +1142,8 @@ function saveReport() {
       configs: configs,
     };
 
-    const filePath = join(REPORTS_DIR, `${currentReportName}.json`);
-    fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
-    console.log(`Report saved: ${filePath}`);
+    await saveReport(currentReportName, report);
+    console.log(`Report saved: ${currentReportName}`);
   } catch (err) {
     console.error(`Failed to save report: ${err.message}`);
   }
@@ -1415,13 +1380,13 @@ function extractConfigsPerRun(liveResults, configs) {
 }
 
 //--- Save current results as report ---
-app.post("/api/save-report", authorize("admin", "operator"), (req, res) => {
+app.post("/api/save-report", authorize("admin", "operator"), async (req, res) => {
   try {
     const { name } = req.body;
 
     // Read configs first to get the model name
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-    const modelBasename = configs.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
+    const configs = await getConfigs();
+    const modelBasename = configs?.model ? configs.model.replace(/\.[^.]+$/, "") : "unknown";
     const today = new Date().toISOString().slice(0, 10);
     const defaultName = `${today}-${modelBasename}`;
 
@@ -1442,8 +1407,7 @@ app.post("/api/save-report", authorize("admin", "operator"), (req, res) => {
       configs: configs,
     };
 
-    const filePath = join(REPORTS_DIR, `${safeName}.json`);
-    fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
+    await saveReportData(safeName, report);
     res.json({ success: true, message: `Report saved as ${safeName}` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -1451,13 +1415,12 @@ app.post("/api/save-report", authorize("admin", "operator"), (req, res) => {
 });
 
 //--- Get detailed configs for a specific test run in a report ---
-app.get("/api/report/:name/configs/:testRunId", (req, res) => {
+app.get("/api/report/:name/configs/:testRunId", async (req, res) => {
   try {
-    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
-    if (!fs.existsSync(filePath)) {
+    const report = await getReport(req.params.name);
+    if (!report) {
       return res.status(404).json({ success: false, error: "Report not found" });
     }
-    const report = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const configsPerRun = report.configsPerRun || [];
     const config = configsPerRun.find((c) => c.testRunId === parseInt(req.params.testRunId, 10));
     if (!config) {
@@ -1470,13 +1433,12 @@ app.get("/api/report/:name/configs/:testRunId", (req, res) => {
 });
 
 //--- Get build and launch commands for a specific test run in a report ---
-app.get("/api/report/:name/commands/:testRunId", (req, res) => {
+app.get("/api/report/:name/commands/:testRunId", async (req, res) => {
   try {
-    const filePath = join(REPORTS_DIR, `${req.params.name}.json`);
-    if (!fs.existsSync(filePath)) {
+    const report = await getReport(req.params.name);
+    if (!report) {
       return res.status(404).json({ success: false, error: "Report not found" });
     }
-    const report = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const configsPerRun = report.configsPerRun || [];
     const config = configsPerRun.find((c) => c.testRunId === parseInt(req.params.testRunId, 10));
     // Fall back to generating from top-level configs if per-run data is missing (older reports)
@@ -1915,10 +1877,10 @@ ${serviceContent}SVCEOF`);
 });
 
 //--- Kill processes on llama_port ---
-app.post("/api/kill-port", authorize("admin"), (req, res) => {
+app.post("/api/kill-port", authorize("admin"), async (req, res) => {
   try {
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-    const port = configs.llama_port || 11434;
+    const configs = await getConfigs();
+    const port = configs?.llama_port || 11434;
 
     // Find PIDs using the port
     const pids = execSync(`lsof -ti :${port}`, { encoding: "utf8" })
@@ -2468,20 +2430,10 @@ app.delete("/api/hf/download/:modelId", authorize("admin", "operator"), (req, re
 //--- Chat Templates API ---
 
 // List chat template files
-app.get("/api/chat-templates", (_req, res) => {
+app.get("/api/chat-templates", async (_req, res) => {
   try {
-    if (!fs.existsSync(CHAT_TEMPLATES_DIR)) {
-      return res.json({ success: true, data: [] });
-    }
-    const files = fs.readdirSync(CHAT_TEMPLATES_DIR)
-      .filter(f => !f.startsWith('.'))
-      .map(f => {
-        const fullPath = join(CHAT_TEMPLATES_DIR, f);
-        const stats = fs.statSync(fullPath);
-        return { filename: f, size: stats.size, modified: stats.mtime };
-      })
-      .sort((a, b) => b.modified - a.modified);
-    res.json({ success: true, data: files });
+    const templates = await listChatTemplates();
+    res.json({ success: true, data: templates });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -2558,9 +2510,16 @@ app.post("/api/chat-templates/download", authorize("admin", "operator"), (req, r
       }
     });
 
-    wget.on("close", (code) => {
+    wget.on("close", async (code) => {
       if (code === 0 && fs.existsSync(targetPath)) {
         const stat = fs.statSync(targetPath);
+        // Store the downloaded template in the database
+        try {
+          const content = fs.readFileSync(targetPath, "utf-8");
+          await saveChatTemplate(targetFilename, content, stat.size);
+        } catch (dbErr) {
+          console.error(`[chat-template] Failed to store template in DB: ${dbErr.message}`);
+        }
         res.write(`event: chat-template\ndata: FILE:${targetFilename}\n\n`);
         res.write(`event: chat-template\ndata: SIZE:${stat.size}\n\n`);
         safeFlush(res);
@@ -2595,14 +2554,13 @@ app.post("/api/chat-templates/download", authorize("admin", "operator"), (req, r
 });
 
 // Delete a chat template file
-app.delete("/api/chat-templates/:filename", authorize("admin", "operator"), (req, res) => {
+app.delete("/api/chat-templates/:filename", authorize("admin", "operator"), async (req, res) => {
   try {
     const safeFilename = req.params.filename.replace(/[^a-zA-Z0-9._\-]/g, '_');
-    const filePath = join(CHAT_TEMPLATES_DIR, safeFilename);
-    if (!fs.existsSync(filePath)) {
+    const deleted = await deleteChatTemplate(safeFilename);
+    if (!deleted) {
       return res.status(404).json({ success: false, error: "Template not found" });
     }
-    fs.unlinkSync(filePath);
     res.json({ success: true, message: `Deleted ${safeFilename}` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -2804,18 +2762,18 @@ app.post("/api/build", authorize("admin"), async (req, res) => {
     res.flushHeaders();
 
     // Read configs to get build cores
-    const configs = JSON.parse(fs.readFileSync(CONFIGS_FILE, "utf8"));
-    const buildCores = configs.build_cores || 1;
+    const configs = await getConfigs();
+    const buildCores = configs?.build_cores || 1;
 
     const buildProcess = spawn("node", ["index.js", "--build-only"], {
       cwd: BENCHMARK_DIR,
       env: {
         ...process.env,
-        GGML_CUDA_ENABLE_UNIFIED_MEMORY: configs.export_configs?.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
-        CUDA_SCALE_LAUNCH_QUEUES: configs.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
-        LLAMA_CACHE: resolveConfigPath(configs.export_configs?.LLAMA_CACHE || configs.llama_cache || ""),
-        GGML_CUDA_P2P: configs.export_configs?.GGML_CUDA_P2P || "on",
-        LLAMA_ARG_FIT: configs.export_configs?.LLAMA_ARG_FIT ?? true,
+        GGML_CUDA_ENABLE_UNIFIED_MEMORY: configs?.export_configs?.GGML_CUDA_ENABLE_UNIFIED_MEMORY || "1",
+        CUDA_SCALE_LAUNCH_QUEUES: configs?.export_configs?.CUDA_SCALE_LAUNCH_QUEUES || "4x",
+        LLAMA_CACHE: resolveConfigPath(configs?.export_configs?.LLAMA_CACHE || configs?.llama_cache || ""),
+        GGML_CUDA_P2P: configs?.export_configs?.GGML_CUDA_P2P || "on",
+        LLAMA_ARG_FIT: configs?.export_configs?.LLAMA_ARG_FIT ?? true,
         ...(configs.export_configs?.LLAMA_ARG_FIT && configs.export_configs?.LLAMA_ARG_FIT_TARGET !== undefined && configs.export_configs?.LLAMA_ARG_FIT_TARGET !== null
           ? { LLAMA_ARG_FIT_TARGET: configs.export_configs?.LLAMA_ARG_FIT_TARGET }
           : {}),

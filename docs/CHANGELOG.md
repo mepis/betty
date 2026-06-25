@@ -6,6 +6,33 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-25] Database backend — MySQL (MariaDB) primary with SQLite fallback and JSON file last-resort fallback; unified `db.js` abstraction layer with `init()`, `query()`, `get()`, `all()`, `run()`, `jsonGet()`, `jsonAll()`, `jsonRun()`, `close()` methods; three-tier fallback: MySQL → SQLite (`~/.betty/betty.db`) → JSON files (`~/.betty/*.json`); new `db/schema.sql` with tables for users, configs, reports, profiles, service_profiles, chat_templates, settings, and migrations; new `db/data-layer.js` providing high-level functions for all data operations; new `db/json-store.js` implementing the same interface as `db.js` for JSON file fallback; new `db/migrate.js` CLI tool for bidirectional migration between SQLite, MySQL, and JSON files
+- [Added]: [2026-06-25] Database configuration via environment variables — `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_SQLITE_PATH`, `DB_POOL_SIZE` documented in `.env.example`
+- [Added]: [2026-06-25] JWT secret persistence — JWT secret now stored in database `settings` table with file fallback for backward compatibility
+- [Added]: [2026-06-25] Chat templates — downloaded templates now stored in database alongside filesystem files for persistence
+
+### Changed
+
+- [Changed]: [2026-06-25] All data storage migrated from JSON files to database layer — users, configs, reports, profiles, service profiles, chat templates, and settings now stored in database (MySQL primary, SQLite fallback, JSON last resort); API endpoints unchanged — same HTTP contracts
+- [Changed]: [2026-06-25] `user-store.js` — replaced all `fs.readFileSync/writeFileSync` with `db.*` calls; user data now stored in `users` table
+- [Changed]: [2026-06-25] `api-server.js` — all config, report, profile, service profile, and chat template operations now use `db/data-layer.js` functions; JWT secret initialization moved to async `initJwtSecret()` function; auth initialization moved to async `initAuth()` function
+- [Changed]: [2026-06-25] `auth/routes.js` — all user-store functions are now async; login, register, password change, and user management endpoints updated
+- [Changed]: [2026-06-25] SQL schema uses `REPLACE INTO` for upserts instead of MySQL-specific `ON DUPLICATE KEY UPDATE` for cross-database compatibility
+
+### Fixed
+
+- [Fixed]: [2026-06-25] Schema application — fixed `applySchemaSync` to use `db.exec()` with full schema for SQLite instead of splitting by semicolons (which incorrectly filtered out all statements due to comment lines)
+- [Fixed]: [2026-06-25] Column name mapping — database uses snake_case column names (`password_hash`, `created_at`, `updated_at`) with SQL aliases (`AS passwordHash`, `AS createdAt`, `AS updatedAt`) for compatibility with existing code expecting camelCase
+
+### Removed
+
+- [Removed]: [2026-06-25] Direct JSON file reads/writes for structured data — all config, user, report, profile, and service profile data now goes through the database abstraction layer
+
+### Dependencies
+
+- [Added]: [2026-06-25] `mysql2` (^3.9.0) — MySQL/MariaDB driver with promise support
+- [Added]: [2026-06-25] `better-sqlite3` (^11.0.0) — fast synchronous SQLite3 driver
+
 - [Added]: [2026-06-25] Logs page — tabbed interface for switching between `llama.service` and `betty.service` logs; new `GET /api/logs/betty` backend endpoint fetching `betty.service` journalctl logs (last 1000 lines); each tab has independent loading/error state, refresh button, and auto-scroll toggle; both services auto-refresh every 5 seconds
 
 ### Changed
