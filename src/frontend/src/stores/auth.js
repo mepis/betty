@@ -151,5 +151,107 @@ export const useAuthStore = defineStore("auth", {
     setError(message) {
       this.error = message;
     },
+
+    /**
+     * Fetch all users (admin only).
+     */
+    async fetchUsers() {
+      this.loading = true;
+      this.error = null;
+      try {
+        const { data } = await axios.get(`${API_BASE}/api/auth/users`, {
+          headers: { Authorization: `Bearer ${this.token}` },
+        });
+        if (data.success) {
+          return data.data;
+        } else {
+          this.error = data.error || 'Failed to fetch users';
+          return [];
+        }
+      } catch (err) {
+        this.error = err.response?.data?.error || 'Network error';
+        return [];
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    /**
+     * Update an existing user (role and/or password).
+     */
+    async updateUser(username, updates) {
+      this.loading = true;
+      this.error = null;
+      try {
+        const { data } = await axios.put(
+          `${API_BASE}/api/auth/users/${encodeURIComponent(username)}`,
+          updates,
+          { headers: { Authorization: `Bearer ${this.token}` } }
+        );
+        if (data.success) {
+          return data.data;
+        } else {
+          this.error = data.error || 'Failed to update user';
+          return null;
+        }
+      } catch (err) {
+        this.error = err.response?.data?.error || 'Network error';
+        return null;
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    /**
+     * Delete a user by username.
+     */
+    async deleteUser(username) {
+      this.loading = true;
+      this.error = null;
+      try {
+        const { data } = await axios.delete(
+          `${API_BASE}/api/auth/users/${encodeURIComponent(username)}`,
+          { headers: { Authorization: `Bearer ${this.token}` } }
+        );
+        if (data.success) {
+          return data.data;
+        } else {
+          this.error = data.error || 'Failed to delete user';
+          return null;
+        }
+      } catch (err) {
+        this.error = err.response?.data?.error || 'Network error';
+        return null;
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    /**
+     * Create a new user (admin only).
+     * Unlike register(), this does NOT set session state.
+     */
+    async createUser(username, password, role) {
+      this.loading = true;
+      this.error = null;
+      try {
+        const { data } = await axios.post(
+          `${API_BASE}/api/auth/register`,
+          { username, password, role },
+          { headers: { Authorization: `Bearer ${this.token}` } }
+        );
+        if (data.success) {
+          return data.data;
+        } else {
+          this.error = data.error || 'Failed to create user';
+          return null;
+        }
+      } catch (err) {
+        this.error = err.response?.data?.error || 'Network error';
+        return null;
+      } finally {
+        this.loading = false;
+      }
+    },
   },
 });

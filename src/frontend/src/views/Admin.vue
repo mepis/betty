@@ -10,6 +10,7 @@ const tabs = [
   { name: 'Reports', key: 'reports' },
   { name: 'Logs', key: 'logs' },
   { name: 'Sys Info', key: 'sysInfo' },
+  { name: 'Users', key: 'users' },
 ]
 
 const activeTab = ref('benchmark')
@@ -23,6 +24,7 @@ const components = {
   reports: defineAsyncComponent(() => import('@/views/Reports.vue')),
   logs: defineAsyncComponent(() => import('@/views/Logs.vue')),
   sysInfo: defineAsyncComponent(() => import('@/views/SysInfo.vue')),
+  users: defineAsyncComponent(() => import('@/views/Users.vue')),
 }
 </script>
 

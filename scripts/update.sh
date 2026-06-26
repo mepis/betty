@@ -1,10 +1,10 @@
 #!/bin/bash
 git stash
 git pull
-systemctl --user stop betty.service
 npm install
 cd src/frontend/
 npm install
+systemctl --user restart betty.service
 
 
 # systemctl --user stop betty.service

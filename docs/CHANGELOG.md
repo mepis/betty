@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-26] User management UI — new `Users.vue` view with full CRUD operations (create, read, update, delete users); includes user list table with role badges, creation date, edit/delete actions per row; create and edit modals with form validation; toast notifications for success/error feedback; self-deletion prevention (cannot delete own account)
+- [Added]: [2026-06-26] Auth store admin methods — `fetchUsers()`, `updateUser()`, `deleteUser()`, `createUser()` added to `auth.js`; all methods use Bearer token authorization, manage loading/error state, and return structured responses from the API
+- [Added]: [2026-06-26] "Users" tab in Admin panel — added to `Admin.vue` tab list with async component import for `Users.vue`
+
+### Changed
+
+- [Changed]: [2026-06-26] Version bumped to 1.0.67
+- [Changed]: [2026-06-26] `scripts/update.sh` — simplified update flow: removed explicit `systemctl --user stop`, now runs `npm install` in both root and frontend directories followed by a single `systemctl --user restart betty.service`
+
 ### Fixed
 
 - [Fixed]: [2026-06-26] `stopLlamaServer()` — wrapped `serverProcess.kill("SIGTERM")` in try-catch to handle race condition where the process exits between the liveness check and the kill call; also set `serverProcess = null` in the SIGKILL fallback path to prevent stale references
