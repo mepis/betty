@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-26] `handleBuild()` in Settings.vue — current build configuration is now flattened and saved via `store.saveConfigs()` before triggering the llama.cpp build, ensuring the config snapshot matches what was on screen when Build was clicked
+
+### Changed
+
+- [Changed]: [2026-06-26] Version bumped to 1.0.70
+
 ### Added
 
 - [Added]: [2026-06-26] Benchmark progress logging — per-run start/end timestamps, elapsed time per test run, and estimated remaining time displayed in the benchmark loop output

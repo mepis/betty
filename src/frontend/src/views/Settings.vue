@@ -545,6 +545,8 @@ function formatDate(dateStr) {
 async function handleBuild() {
   if (store.isBuilding) return
   buildClicked.value = true
+  const configs = flattenBuildParams(JSON.parse(JSON.stringify(visualConfigs.value)))
+  await store.saveConfigs(configs)
   const ok = await store.buildLlamaCpp()
   if (ok) {
     showToast('Build successful', 'success')
