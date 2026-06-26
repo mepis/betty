@@ -1,6 +1,6 @@
 {
   "name": "llama-benchmark",
-  "version": "1.0.71",
+  "version": "1.0.72",
   "type": "module",
   "scripts": {
     "update": "cd scripts && ./update.sh",
@@ -17,6 +17,8 @@
     "express": "^4.21.0",
     "express-rate-limit": "^7.4.0",
     "jsonwebtoken": "^9.0.3",
-    "mysql2": "^3.9.0"
+    "multer": "^2.2.0",
+    "mysql2": "^3.9.0",
+    "tar": "^7.5.17"
   }
 }

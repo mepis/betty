@@ -13,6 +13,8 @@ import { authenticate, authorize, optionalAuth } from "./auth/middleware.js";
 import { authRouter } from "./auth/routes.js";
 import { ensureUsersFile, hasUsers, getUserCount, addUser } from "./auth/user-store.js";
 import bcrypt from "bcrypt";
+import tar from "tar";
+import multer from "multer";
 import db from "./db/db.js";
 import { getConfigs, saveConfigs, getConfig, listReports, getReport, saveReportData, deleteReport, listProfiles, getProfile, saveProfile, deleteProfile, listServiceProfiles, getServiceProfile, saveServiceProfile, deleteServiceProfile, listChatTemplates, getChatTemplate, saveChatTemplate, deleteChatTemplate, getSetting, saveSetting } from "./db/data-layer.js";
 
@@ -3311,6 +3313,195 @@ app.get('/api/library/tag/:tagname', (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 });
+
+//--- Library Export Endpoint ---
+app.get("/api/library/export", authorize("admin", "operator"), (req, res) => {
+  try {
+    if (!fs.existsSync(LIBRARY_DIR)) {
+      return res.status(404).json({ success: false, error: "Library directory not found" });
+    }
+
+    res.setHeader("Content-Type", "application/gzip");
+    res.setHeader("Content-Disposition", "attachment; filename=\"betty-library-export.tar.gz\"");
+    res.setHeader("Cache-Control", "no-cache");
+
+    const stream = tar.create({
+      gzip: true,
+      cwd: LIBRARY_DIR,
+    }, ['.']);
+
+    stream.on("error", (err) => {
+      if (!res.headersSent) {
+        return res.status(500).json({ success: false, error: err.message });
+      }
+    });
+
+    stream.pipe(res);
+  } catch (err) {
+    if (!res.headersSent) {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  }
+});
+
+//--- Library Import Endpoint ---
+let libraryImportInProgress = false;
+
+const libraryUpload = multer({
+  dest: os.tmpdir(),
+  limits: { fileSize: 500 * 1024 * 1024 }, // 500MB
+  fileFilter: (_req, file, cb) => {
+    const ext = file.originalname.toLowerCase();
+    if (ext.endsWith('.tar.gz') || ext.endsWith('.tgz')) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only .tar.gz or .tgz files are allowed"));
+    }
+  },
+});
+
+app.post("/api/library/import", authorize("admin", "operator"), libraryUpload.single("archive"), (req, res) => {
+  try {
+    if (!req.file) {
+      if (!res.headersSent) {
+        return res.status(400).json({ success: false, error: "No file uploaded" });
+      }
+      return;
+    }
+
+    // Concurrent import protection
+    if (libraryImportInProgress) {
+      fs.unlinkSync(req.file.path);
+      return res.status(409).json({ success: false, error: "Another import is already in progress" });
+    }
+    libraryImportInProgress = true;
+
+    const tempPath = req.file.path;
+    let totalFileCount = 0;
+
+    // Helper to abort and clean up
+    function abortImport(msg) {
+      libraryImportInProgress = false;
+      try { fs.unlinkSync(tempPath); } catch {}
+      if (!res.headersSent) {
+        res.status(400).json({ success: false, error: msg });
+      }
+    }
+
+    // Detect client disconnect during listing
+    res.on("close", () => {
+      if (libraryImportInProgress) {
+        libraryImportInProgress = false;
+        try { fs.unlinkSync(tempPath); } catch {}
+      }
+    });
+
+    // First pass: count total files for progress tracking (integer only, no path storage)
+    try {
+      const listStream = tar.t({ file: tempPath, gzip: true });
+      listStream.on("entry", (entry) => {
+        totalFileCount++;
+        entry.resume(); // drain entry
+      });
+      listStream.on("end", () => {
+        // Second pass: extract with progress
+        extractWithProgress(tempPath, totalFileCount, res);
+      });
+      listStream.on("error", (err) => {
+        abortImport("Invalid archive: " + err.message);
+      });
+    } catch (err) {
+      abortImport("Invalid archive: " + err.message);
+    }
+  } catch (err) {
+    if (!res.headersSent) {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  }
+});
+
+function extractWithProgress(tempPath, totalFileCount, res) {
+  const total = totalFileCount || 1;
+  let extracted = 0;
+  let finished = false;
+
+  // Ensure library dir exists
+  if (!fs.existsSync(LIBRARY_DIR)) {
+    fs.mkdirSync(LIBRARY_DIR, { recursive: true });
+  }
+
+  // Set up SSE response
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
+
+  function cleanup() {
+    try { fs.unlinkSync(tempPath); } catch {}
+  }
+
+  function sendError(msg) {
+    if (finished) return;
+    finished = true;
+    libraryImportInProgress = false;
+    cleanup();
+    res.write(`event: library-import\ndata: ERROR:${msg}\n\n`);
+    safeFlush(res);
+    res.end();
+  }
+
+  // Detect client disconnect during extraction
+  res.on("close", () => {
+    if (!finished) {
+      finished = true;
+      libraryImportInProgress = false;
+      cleanup();
+    }
+  });
+
+  const extractStream = tar.x({
+    gzip: true,
+    cwd: LIBRARY_DIR,
+    filter: (path, stat) => {
+      // Reject symlinks to prevent symlink-based path traversal
+      if (stat.type === "SymbolicLink") return false;
+      // Path traversal protection: reject entries that would escape LIBRARY_DIR
+      const resolved = resolve(LIBRARY_DIR, path);
+      if (!resolved.startsWith(LIBRARY_DIR + "/") && resolved !== LIBRARY_DIR) {
+        return false;
+      }
+      return true;
+    },
+    onentry: (entry) => {
+      extracted++;
+      const progress = Math.round((extracted / total) * 100);
+      res.write(`event: library-import\ndata: PROGRESS:${progress}:${extracted}/${total}\n\n`);
+      safeFlush(res);
+      entry.resume();
+    },
+  });
+
+  extractStream.on("close", () => {
+    if (finished) return;
+    finished = true;
+    libraryImportInProgress = false;
+    cleanup();
+    res.write(`event: library-import\ndata: COMPLETE:${extracted} files extracted\n\n`);
+    safeFlush(res);
+    res.end();
+  });
+
+  extractStream.on("error", (err) => {
+    sendError(err.message);
+  });
+
+  // Pipe the file into the extract stream
+  const readStream = fs.createReadStream(tempPath);
+  readStream.on("error", (err) => {
+    sendError("Failed to read archive: " + err.message);
+  });
+  readStream.pipe(extractStream);
+}
 
 // ============================================================================
 // Pi Chat Integration

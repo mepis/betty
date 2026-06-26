@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-26] Library export/import — new "Library" tab in Admin page allows exporting the entire library as a downloadable tar.gz archive and importing a tar.gz archive back into the library directory
+
 ### Changed
 
-- [Changed]: [2026-06-26] Version bumped to 1.0.71
+- [Changed]: [2026-06-26] Version bumped to 1.0.72
 
 ### Fixed
 
