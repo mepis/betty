@@ -6,10 +6,14 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-26] Benchmark progress logging — per-run start/end timestamps, elapsed time per test run, and estimated remaining time displayed in the benchmark loop output
 - [Added]: [2026-06-26] Pi Chat — `/new` slash command handled locally in `sendMessage()`, calling `handleNewSession()` to reset the frontend context without sending the command to the agent
 
 ### Changed
 
+- [Changed]: [2026-06-26] Version bumped to 1.0.69
+- [Changed]: [2026-06-26] `src/backend/index.js` — increased llama-server health check timeout from 5 minutes (300 retries) to 15 minutes (900 retries) to accommodate large models that need more time to load
+- [Changed]: [2026-06-26] `src/backend/index.js` — replaced carriage-return progress indicator with newline-based progress output including estimated remaining time calculation
 - [Changed]: [2026-06-26] Version bumped to 1.0.68
 
 ### Added

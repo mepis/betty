@@ -373,18 +373,32 @@ async function main() {
         const combo = combinations[i];
         applyCombo(combo);
 
+        console.log(
+          `\n[${i + 1}/${totalCombinations}] Starting test run: ctx=${contextLength}, batch=${batchSize}, ubatch=${uBatchSize}, cache=${cacheRam}GB, gpu_layers=${gpuLayerOffload}`,
+        );
+        const runStart = Date.now();
+
         const result = await runTestRun();
         if (errorCount >= maxErrors) {
           console.error(`\nReached ${maxErrors} errors. Stopping benchmark.`);
           break;
         }
+
+        const runElapsed = ((Date.now() - runStart) / 1000).toFixed(1);
+        console.log(`[${i + 1}/${totalCombinations}] Test run complete in ${runElapsed}s`);
+
         // Write results after each test run for incremental reporting
         writeResultsToMarkdown();
 
         // Progress indicator
         const pct = ((i + 1) / totalCombinations * 100).toFixed(1);
-        process.stdout.write(
-          `\r  Progress: ${i + 1}/${totalCombinations} (${pct}%)`,
+        const remainingRuns = totalCombinations - (i + 1);
+        const avgPerRun = (Date.now() - runStart) / 1000;
+        const estRemaining = remainingRuns > 0
+          ? `${(remainingRuns * avgPerRun / 60).toFixed(1)}m`
+          : "0m";
+        console.log(
+          `  Progress: ${i + 1}/${totalCombinations} (${pct}%) — est. remaining: ${estRemaining}`,
         );
       }
 
@@ -847,7 +861,7 @@ function tryStartServer(runCmd, binaryPath) {
     // If server dies within 3 seconds, it likely failed to bind the port
     const earlyDeathTimer = setTimeout(() => {
       // Server survived 3 seconds — it's up, now poll for health
-      const maxHealthRetries = 300; // 5 minutes (1s interval)
+      const maxHealthRetries = 900; // 15 minutes (1s interval) — large models need more time to load
       let retries = 0;
       const pollInterval = setInterval(async () => {
         retries++;
