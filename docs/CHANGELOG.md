@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-26] Pi Chat — `/new` slash command handled locally in `sendMessage()`, calling `handleNewSession()` to reset the frontend context without sending the command to the agent
+
+### Changed
+
+- [Changed]: [2026-06-26] Version bumped to 1.0.68
+
+### Added
+
 - [Added]: [2026-06-26] User management UI — new `Users.vue` view with full CRUD operations (create, read, update, delete users); includes user list table with role badges, creation date, edit/delete actions per row; create and edit modals with form validation; toast notifications for success/error feedback; self-deletion prevention (cannot delete own account)
 - [Added]: [2026-06-26] Auth store admin methods — `fetchUsers()`, `updateUser()`, `deleteUser()`, `createUser()` added to `auth.js`; all methods use Bearer token authorization, manage loading/error state, and return structured responses from the API
 - [Added]: [2026-06-26] "Users" tab in Admin panel — added to `Admin.vue` tab list with async component import for `Users.vue`

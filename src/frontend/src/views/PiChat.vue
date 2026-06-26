@@ -316,6 +316,13 @@ async function sendMessage() {
   const text = input.value.trim()
   if (!text || store.isStreaming) return
   input.value = ''
+
+  // Handle /new slash command locally — reset the frontend context
+  if (text === '/new') {
+    await handleNewSession()
+    return
+  }
+
   await store.sendPrompt(text)
   await nextTick()
   if (textareaRef.value) textareaRef.value.style.height = 'auto'
