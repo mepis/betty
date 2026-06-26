@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-26] Version bumped to 1.0.71
+
+### Fixed
+
+- [Fixed]: [2026-06-26] `saveConfigs()` in `data-layer.js` — removed early `return` after successful DB save so the JSON file is always written; wrapped JSON save in its own try-catch so `index.js --build-only` can reliably read configs from the JSON file regardless of DB state
+
 ### Fixed
 
 - [Fixed]: [2026-06-26] `handleBuild()` in Settings.vue — current build configuration is now flattened and saved via `store.saveConfigs()` before triggering the llama.cpp build, ensuring the config snapshot matches what was on screen when Build was clicked

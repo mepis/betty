@@ -43,12 +43,15 @@ export async function saveConfigs(configs) {
       `REPLACE INTO configs (id, value, updated_at) VALUES (1, ?, ?)`,
       [JSON.stringify(configs), now]
     );
-    return;
   } catch (err) {
     console.error(`[data-layer] Failed to save configs to DB: ${err.message}`);
   }
-  // Fallback to JSON file
-  await jsonStore.saveConfigs(configs);
+  // Also save to JSON file so index.js --build-only can read it
+  try {
+    await jsonStore.saveConfigs(configs);
+  } catch (fileErr) {
+    console.error(`[data-layer] Failed to save configs to JSON file: ${fileErr.message}`);
+  }
 }
 
 /**
