@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-26] `stopLlamaServer()` — wrapped `serverProcess.kill("SIGTERM")` in try-catch to handle race condition where the process exits between the liveness check and the kill call; also set `serverProcess = null` in the SIGKILL fallback path to prevent stale references
+
+### Removed
+
+- [Removed]: [2026-06-26] `memTimer` constant and associated `clearInterval(memTimerId)` call in `main()` — unused timer that was set but never served a purpose
+
 - [Fixed]: [2026-06-25] ConfigSection — model options are now objects (`{ path, size, mtime }`) and the dropdown correctly extracts the `path` property for display, selection comparison, and stored value
 - [Fixed]: [2026-06-25] Benchmark store — SSE endpoints (`/api/build` and `/api/hf/download`) now pass the auth token as a query parameter instead of an `Authorization` header, fixing authentication reliability with SSE fetch connections
 - [Fixed]: [2026-06-25] Models page — mmproj (multimodal projector) model files are now filtered out from the main models list using a `filteredModels` computed property, preventing them from appearing alongside regular model files in the grouped file browser

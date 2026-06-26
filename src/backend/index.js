@@ -45,7 +45,6 @@ const benchmarkMessages = configs.benchmark_messages || [
 ];
 
 //--- Configurable test parameters ---
-const memTimer = 5000;
 
 //--- Error tracking ---
 const maxErrors = 10;
@@ -415,8 +414,6 @@ async function main() {
     console.error("=".repeat(60));
     process.exit(1);
   }
-
-  clearInterval(memTimerId);
 
   // Final cleanup: ensure llama-server is stopped
   await stopLlamaServer();
@@ -925,24 +922,31 @@ async function stopLlamaServer() {
 
   // If process is still alive, use SIGTERM -> SIGKILL
   if (serverProcess) {
-    serverProcess.kill("SIGTERM");
+    try {
+      serverProcess.kill("SIGTERM");
+    } catch {
+      // Process already exited between the check and kill()
+      serverProcess = null;
+    }
 
-    await new Promise((resolve) => {
-      serverProcess.on("close", () => {
-        serverProcess = null;
-        console.log("llama-server stopped.");
-        resolve();
-      });
-      // Force kill after 10 seconds
-      setTimeout(() => {
-        if (serverProcess) {
-          serverProcess.kill("SIGKILL");
+    if (serverProcess) {
+      await new Promise((resolve) => {
+        serverProcess.on("close", () => {
           serverProcess = null;
-          console.log("llama-server force killed.");
-        }
-        resolve();
-      }, 10000);
-    });
+          console.log("llama-server stopped.");
+          resolve();
+        });
+        // Force kill after 10 seconds
+        setTimeout(() => {
+          if (serverProcess) {
+            serverProcess.kill("SIGKILL");
+            serverProcess = null;
+            console.log("llama-server force killed.");
+          }
+          resolve();
+        }, 10000);
+      });
+    }
   }
 
   // Wait for port to be truly free (no TIME_WAIT either)
