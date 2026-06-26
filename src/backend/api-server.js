@@ -13,7 +13,7 @@ import { authenticate, authorize, optionalAuth } from "./auth/middleware.js";
 import { authRouter } from "./auth/routes.js";
 import { ensureUsersFile, hasUsers, getUserCount, addUser } from "./auth/user-store.js";
 import bcrypt from "bcrypt";
-import tar from "tar";
+import { create as tarCreate, t as tarT, x as tarX } from "tar";
 import multer from "multer";
 import db from "./db/db.js";
 import { getConfigs, saveConfigs, getConfig, listReports, getReport, saveReportData, deleteReport, listProfiles, getProfile, saveProfile, deleteProfile, listServiceProfiles, getServiceProfile, saveServiceProfile, deleteServiceProfile, listChatTemplates, getChatTemplate, saveChatTemplate, deleteChatTemplate, getSetting, saveSetting } from "./db/data-layer.js";
@@ -3325,7 +3325,7 @@ app.get("/api/library/export", authorize("admin", "operator"), (req, res) => {
     res.setHeader("Content-Disposition", "attachment; filename=\"betty-library-export.tar.gz\"");
     res.setHeader("Cache-Control", "no-cache");
 
-    const stream = tar.create({
+    const stream = tarCreate({
       gzip: true,
       cwd: LIBRARY_DIR,
     }, ['.']);
@@ -3398,7 +3398,7 @@ app.post("/api/library/import", authorize("admin", "operator"), libraryUpload.si
 
     // First pass: count total files for progress tracking (integer only, no path storage)
     try {
-      const listStream = tar.t({ file: tempPath, gzip: true });
+      const listStream = tarT({ file: tempPath, gzip: true });
       listStream.on("entry", (entry) => {
         totalFileCount++;
         entry.resume(); // drain entry
@@ -3459,7 +3459,7 @@ function extractWithProgress(tempPath, totalFileCount, res) {
     }
   });
 
-  const extractStream = tar.x({
+  const extractStream = tarX({
     gzip: true,
     cwd: LIBRARY_DIR,
     filter: (path, stat) => {

@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-26] `src/backend/api-server.js` — changed `tar` import from default (`import tar from "tar"`) to named imports (`import { create as tarCreate, t as tarT, x as tarX } from "tar"`), and updated call sites (`tarCreate`, `tarT`, `tarX`) for library export/import to match
+
+### Changed
+
+- [Changed]: [2026-06-26] Version bumped to 1.0.73
+
 ### Added
 
 - [Added]: [2026-06-26] Library export/import — new "Library" tab in Admin page allows exporting the entire library as a downloadable tar.gz archive and importing a tar.gz archive back into the library directory
