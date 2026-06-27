@@ -388,7 +388,11 @@ async function main() {
         console.log(`[${i + 1}/${totalCombinations}] Test run complete in ${runElapsed}s`);
 
         // Write results after each test run for incremental reporting
-        writeResultsToMarkdown();
+        try {
+          writeResultsToMarkdown();
+        } catch (err) {
+          console.error(`Failed to write results: ${err.message}`);
+        }
 
         // Progress indicator
         const pct = ((i + 1) / totalCombinations * 100).toFixed(1);
@@ -433,7 +437,11 @@ async function main() {
   await stopLlamaServer();
 
   // Final write of results (already written after last test run, but ensure it's up to date)
-  writeResultsToMarkdown();
+  try {
+    writeResultsToMarkdown();
+  } catch (err) {
+    console.error(`Failed to write final results: ${err.message}`);
+  }
   console.log("Benchmark complete. Results saved to", resultsFile);
   process.exit(0);
 }
@@ -777,20 +785,26 @@ function getRunScript() {
 
 //--- System memory helper ---
 function getMem() {
-  const meminfo = fs.readFileSync("/proc/meminfo", "utf8");
-  const match = meminfo.match(/MemTotal:\s+(\d+)/);
-  const totalKb = parseInt(match[1], 10);
-  const totalGb = Math.round(totalKb / 1024 / 1024);
-  const matchFree = meminfo.match(/MemAvailable:\s+(\d+)/);
-  const availKb = parseInt(matchFree[1], 10);
-  const availGb = Math.round(availKb / 1024 / 1024);
-  const usedMB = totalGb - availGb;
-  const percentUsed = (usedMB / totalGb).toFixed(2);
-  return {
-    used: usedMB,
-    total: totalGb,
-    stat: (percentUsed * 100).toFixed(2),
-  };
+  try {
+    const meminfo = fs.readFileSync("/proc/meminfo", "utf8");
+    const match = meminfo.match(/MemTotal:\s+(\d+)/);
+    if (!match) return { used: 0, total: 0, stat: "0.00" };
+    const totalKb = parseInt(match[1], 10);
+    const totalGb = Math.round(totalKb / 1024 / 1024);
+    const matchFree = meminfo.match(/MemAvailable:\s+(\d+)/);
+    if (!matchFree) return { used: 0, total: totalGb, stat: "0.00" };
+    const availKb = parseInt(matchFree[1], 10);
+    const availGb = Math.round(availKb / 1024 / 1024);
+    const usedMB = totalGb - availGb;
+    const percentUsed = (usedMB / totalGb).toFixed(2);
+    return {
+      used: usedMB,
+      total: totalGb,
+      stat: (percentUsed * 100).toFixed(2),
+    };
+  } catch {
+    return { used: 0, total: 0, stat: "0.00" };
+  }
 }
 
 //--- Start llama-server as a child process (with retry on port binding failure) ---
@@ -1028,6 +1042,10 @@ process.on("SIGINT", () => {
 process.on("uncaughtException", (err) => {
   console.error("\nUncaught exception:", err.message);
   stopLlamaServer().then(() => process.exit(1));
+});
+
+process.on("unhandledRejection", (reason) => {
+  console.error("\nUnhandled rejection:", reason);
 });
 
 //--- Send a chat request to the chat/completions endpoint and measure timing ---

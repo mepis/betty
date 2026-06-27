@@ -451,7 +451,14 @@ export const useBenchmarkStore = defineStore('benchmark', {
         const data = JSON.parse(e.data)
         this.status = data.status
         this.testRun = data.testRun
-        this.liveResults = data.liveResults || []
+        // Preserve existing results if server sends empty array while still running
+        if (data.liveResults && data.liveResults.length === 0 &&
+            this.liveResults.length > 0 &&
+            (data.status === 'testing' || data.status === 'building')) {
+          // Keep existing liveResults — server hasn't sent them yet
+        } else {
+          this.liveResults = data.liveResults || []
+        }
         this.processAlive = data.processAlive !== undefined ? data.processAlive : this.processAlive
         lastStatusReceived = Date.now()
         // Refresh launch command when status changes (configs may have advanced)

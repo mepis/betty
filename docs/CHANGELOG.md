@@ -6,11 +6,23 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-27] `src/backend/api-server.js` — fixed infinite recursion in `saveReport()` which called itself instead of `saveReportData()`, blocking the event loop and crashing benchmarks after the first test run
+- [Fixed]: [2026-06-27] `src/backend/api-server.js` — added `uncaughtException` and `unhandledRejection` handlers to prevent server crashes from unhandled errors
+- [Fixed]: [2026-06-27] `src/backend/api-server.js` — wrapped `saveReport()` call in `flushSummary()` with `.catch()` to prevent unhandled rejections from blocking log parsing
+- [Fixed]: [2026-06-27] `src/backend/api-server.js` — added `processAlive` to `test-run-complete` SSE broadcast for consistency with other events
+- [Fixed]: [2026-06-27] `src/backend/index.js` — added null guards to `getMem()` for `/proc/meminfo` parsing to prevent crashes on unexpected format
+- [Fixed]: [2026-06-27] `src/backend/index.js` — wrapped `writeResultsToMarkdown()` in try-catch so file write failures don't crash the benchmark
+- [Fixed]: [2026-06-27] `src/backend/index.js` — added `unhandledRejection` handler to prevent unhandled promise rejections from crashing the process
+- [Fixed]: [2026-06-27] `src/frontend/src/stores/benchmark.js` — SSE `status` handler now preserves existing `liveResults` when server sends empty array during active benchmark, preventing stale status events from clearing results
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — added `flushSummary()` call before emitting `test-run-complete` message and after parsing benchmark JSON lines, ensuring pending summaries are flushed before state transitions
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — added `processAlive` field to all SSE responses (stream, run completion, error, log parsing) so the frontend can accurately track whether the benchmark process is still running
 - [Fixed]: [2026-06-27] `src/frontend/src/stores/benchmark.js` — `processAlive` now reflects server-provided value (`data.processAlive`) instead of being hardcoded to `true` on every SSE event, allowing the frontend to correctly detect process termination
 - [Fixed]: [2026-06-27] `src/frontend/src/main.js` — 401 redirect now uses `router.push()` instead of `window.location.href`, preserving SPA navigation instead of triggering a full page reload on token expiry
 - [Fixed]: [2026-06-26] `src/backend/api-server.js` — changed `tar` import from default (`import tar from "tar"`) to named imports (`import { create as tarCreate, t as tarT, x as tarX } from "tar"`), and updated call sites (`tarCreate`, `tarT`, `tarX`) for library export/import to match
+
+### Changed
+
+- [Changed]: [2026-06-27] Version bumped to 1.0.75
 
 ### Changed
 

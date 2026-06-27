@@ -382,6 +382,16 @@ let currentReportName = null;
 let buildProcess = null;
 let buildStatus = "idle"; // idle | building | success | error
 
+//--- Crash protection: keep server alive on uncaught errors ---
+process.on("uncaughtException", (err) => {
+  console.error("\n[api-server] Uncaught exception:", err.message);
+  if (err.stack) console.error(err.stack);
+});
+
+process.on("unhandledRejection", (reason) => {
+  console.error("\n[api-server] Unhandled rejection:", reason);
+});
+
 // CORS configuration
 // Note: credentials=true is incompatible with origin='*' per the CORS spec.
 // When origin is '*', set credentials to false. When explicit origins are
@@ -932,6 +942,7 @@ function parseBenchmarkJSON(line) {
             testRunId: bm.testRunId,
             messages: bm.messages,
           })),
+          processAlive: benchmarkProcess ? !benchmarkProcess.killed : false,
         });
         break;
     }
@@ -974,7 +985,9 @@ function flushSummary() {
   broadcast("results", { liveResults });
 
   // Save/update report after each test run completes
-  saveReport();
+  saveReport().catch((err) => {
+    console.error(`[api-server] saveReport failed: ${err.message}`);
+  });
 
   inSummaryBlock = false;
   summaryBuffer = {};
@@ -1155,7 +1168,7 @@ async function saveReport() {
       configs: configs,
     };
 
-    await saveReport(currentReportName, report);
+    await saveReportData(currentReportName, report);
     console.log(`Report saved: ${currentReportName}`);
   } catch (err) {
     console.error(`Failed to save report: ${err.message}`);
