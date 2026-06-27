@@ -3275,68 +3275,8 @@ app.get('/api/library/tags', (_req, res) => {
   }
 });
 
-app.get('/api/library/:topicSlug', (req, res) => {
-  try {
-    const topicDir = join(LIBRARY_DIR, 'topics', req.params.topicSlug);
-    if (!fs.existsSync(topicDir)) {
-      return res.status(404).json({ success: false, error: 'Topic not found' });
-    }
-    const indexPath = join(topicDir, 'index.md');
-    if (!fs.existsSync(indexPath)) {
-      return res.status(404).json({ success: false, error: 'Topic index not found' });
-    }
-    const indexContent = fs.readFileSync(indexPath, 'utf8');
-    const result = {
-      index: indexContent,
-      tags: extractLibraryTags(indexContent),
-    };
-
-    // Optionally include report.md
-    const reportPath = join(topicDir, 'report.md');
-    if (fs.existsSync(reportPath)) {
-      result.report = fs.readFileSync(reportPath, 'utf8');
-    }
-
-    // Optionally include state.md
-    const statePath = join(topicDir, 'state.md');
-    if (fs.existsSync(statePath)) {
-      result.state = fs.readFileSync(statePath, 'utf8');
-    }
-
-    res.json({ success: true, data: result });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-app.get('/api/library/tag/:tagname', (req, res) => {
-  try {
-    const tagname = req.params.tagname;
-    const tagsDir = join(LIBRARY_DIR, 'tags');
-    const tagFile = join(tagsDir, `${tagname}.md`);
-    if (!fs.existsSync(tagFile)) {
-      return res.status(404).json({ success: false, error: 'Tag not found' });
-    }
-    const content = fs.readFileSync(tagFile, 'utf8');
-    // Parse the tag file: each line like "- [Topic Name](topics/slug/)" or "- Topic Name (topics/slug/)"
-    const topics = [];
-    for (const line of content.split('\n').filter(l => l.trim().startsWith('- '))) {
-      const match = line.trim().substring(2).match(/\[([^\]]+)\]\(topics\/([^/]+)\)/);
-      if (match) {
-        topics.push({ title: match[1], slug: match[2] });
-      } else {
-        // Fallback: simple format "- Topic Name (topics/slug/)"
-        const fallback = line.trim().substring(2).match(/(.+?)\(topics\/([^/]+)\)/);
-        if (fallback) {
-          topics.push({ title: fallback[1].trim(), slug: fallback[2] });
-        }
-      }
-    }
-    res.json({ success: true, data: topics });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
+// NOTE: /export and /import routes must come BEFORE /:topicSlug
+// so Express doesn't match "export" or "import" as topic slugs.
 
 //--- Library Export Endpoint ---
 app.get("/api/library/export", authorize("admin", "operator"), (req, res) => {
@@ -3526,6 +3466,69 @@ function extractWithProgress(tempPath, totalFileCount, res) {
   });
   readStream.pipe(extractStream);
 }
+
+app.get('/api/library/:topicSlug', (req, res) => {
+  try {
+    const topicDir = join(LIBRARY_DIR, 'topics', req.params.topicSlug);
+    if (!fs.existsSync(topicDir)) {
+      return res.status(404).json({ success: false, error: 'Topic not found' });
+    }
+    const indexPath = join(topicDir, 'index.md');
+    if (!fs.existsSync(indexPath)) {
+      return res.status(404).json({ success: false, error: 'Topic index not found' });
+    }
+    const indexContent = fs.readFileSync(indexPath, 'utf8');
+    const result = {
+      index: indexContent,
+      tags: extractLibraryTags(indexContent),
+    };
+
+    // Optionally include report.md
+    const reportPath = join(topicDir, 'report.md');
+    if (fs.existsSync(reportPath)) {
+      result.report = fs.readFileSync(reportPath, 'utf8');
+    }
+
+    // Optionally include state.md
+    const statePath = join(topicDir, 'state.md');
+    if (fs.existsSync(statePath)) {
+      result.state = fs.readFileSync(statePath, 'utf8');
+    }
+
+    res.json({ success: true, data: result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/library/tag/:tagname', (req, res) => {
+  try {
+    const tagname = req.params.tagname;
+    const tagsDir = join(LIBRARY_DIR, 'tags');
+    const tagFile = join(tagsDir, `${tagname}.md`);
+    if (!fs.existsSync(tagFile)) {
+      return res.status(404).json({ success: false, error: 'Tag not found' });
+    }
+    const content = fs.readFileSync(tagFile, 'utf8');
+    // Parse the tag file: each line like "- [Topic Name](topics/slug/)" or "- Topic Name (topics/slug/)"
+    const topics = [];
+    for (const line of content.split('\n').filter(l => l.trim().startsWith('- '))) {
+      const match = line.trim().substring(2).match(/\[([^\]]+)\]\(topics\/([^/]+)\)/);
+      if (match) {
+        topics.push({ title: match[1], slug: match[2] });
+      } else {
+        // Fallback: simple format "- Topic Name (topics/slug/)"
+        const fallback = line.trim().substring(2).match(/(.+?)\(topics\/([^/]+)\)/);
+        if (fallback) {
+          topics.push({ title: fallback[1].trim(), slug: fallback[2] });
+        }
+      }
+    }
+    res.json({ success: true, data: topics });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
 
 // ============================================================================
 // Pi Chat Integration

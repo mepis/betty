@@ -4,12 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-27] `src/backend/api-server.js` — moved `/api/library/:topicSlug` and `/api/library/tag/:tagname` routes after `/api/library/export` and `/api/library/import` so Express matches literal routes before the parameterized catch-all, preventing "export" and "import" from being treated as topic slugs
+
 ### Added
 
 - [Added]: [2026-06-27] `src/frontend/src/views/Settings.vue` — `handleSaveServiceProfile()` now auto-fills the profile name from the service description if the user hasn't provided one, deriving a sensible default by stripping the "Llama.cpp Benchmark Service -" prefix
 
 ### Changed
 
+- [Changed]: [2026-06-27] Version bumped to 1.0.78
 - [Changed]: [2026-06-27] Version bumped to 1.0.77
 - [Changed]: [2026-06-27] `src/frontend/src/views/Dashboard.vue` — widened the report name input field from `w-36` to `w-64` so longer report names are visible
 
