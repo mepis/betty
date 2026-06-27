@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-27] `src/backend/db/data-layer.js` — `getServiceProfile()` now returns `profile.data` instead of the raw `profile` wrapper from `db.jsonGet()`, fixing cases where callers received the full response object instead of the profile data
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — fixed infinite recursion in `saveReport()` which called itself instead of `saveReportData()`, blocking the event loop and crashing benchmarks after the first test run
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — added `uncaughtException` and `unhandledRejection` handlers to prevent server crashes from unhandled errors
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — wrapped `saveReport()` call in `flushSummary()` with `.catch()` to prevent unhandled rejections from blocking log parsing
@@ -22,6 +23,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-27] Version bumped to 1.0.76
 - [Changed]: [2026-06-27] Version bumped to 1.0.75
 
 ### Changed

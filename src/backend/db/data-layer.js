@@ -278,7 +278,7 @@ export async function listServiceProfiles() {
 export async function getServiceProfile(name) {
   try {
     const profile = await db.jsonGet("SELECT * FROM service_profiles WHERE name = ?", [name]);
-    if (profile) return profile;
+    if (profile) return profile.data;
   } catch (err) {
     console.error(`[data-layer] Failed to get service profile from DB: ${err.message}`);
   }
