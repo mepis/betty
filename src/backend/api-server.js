@@ -722,6 +722,7 @@ app.get("/api/stream", (req, res) => {
     status: benchmarkStatus,
     testRun: currentTestRun,
     liveResults: liveResults,
+    processAlive: benchmarkProcess ? !benchmarkProcess.killed : false,
   });
 
   // Send heartbeat
@@ -837,6 +838,7 @@ app.post("/api/run", authorize("admin", "operator"), async (req, res) => {
           status: "idle",
           testRun: currentTestRun,
           liveResults: liveResults,
+          processAlive: false,
           finished: true,
         });
       } else {
@@ -846,6 +848,7 @@ app.post("/api/run", authorize("admin", "operator"), async (req, res) => {
           error: `Process exited with code ${code}`,
           testRun: currentTestRun,
           liveResults: liveResults,
+          processAlive: false,
           finished: true,
         });
       }
@@ -859,6 +862,7 @@ app.post("/api/run", authorize("admin", "operator"), async (req, res) => {
         error: err.message,
         testRun: currentTestRun,
         liveResults: liveResults,
+        processAlive: false,
         finished: true,
       });
     });
@@ -915,6 +919,8 @@ function parseBenchmarkJSON(line) {
         break;
 
       case 'test-run-complete':
+        // Flush any pending summary for this test run before broadcasting
+        if (inSummaryBlock) flushSummary();
         benchmarkMessages.push({
           testRunId: data.testRunId,
           messages: [...currentTestRunMessages],
@@ -977,7 +983,11 @@ function flushSummary() {
 //--- Parse log output for live results (called with complete lines) ---
 function parseLogOutput(text) {
   // Check for structured benchmark JSON first
-  if (parseBenchmarkJSON(text)) return;
+  if (parseBenchmarkJSON(text)) {
+    // Flush any pending summary before returning
+    if (inSummaryBlock) flushSummary();
+    return;
+  }
 
   // Parse "========== Test Run #N =========="
   const runMatch = text.match(/Test Run #(\d+)/);
@@ -988,6 +998,7 @@ function parseLogOutput(text) {
       status: "testing",
       testRun: currentTestRun,
       liveResults: liveResults,
+      processAlive: true,
     });
   }
 

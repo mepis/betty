@@ -16,7 +16,7 @@ axios.interceptors.response.use(
         if (auth.isLoggedIn) {
           auth.logout()
           const currentPath = window.location.pathname
-          window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`
+          router.push(`/login?redirect=${encodeURIComponent(currentPath)}`)
         }
       })
     }

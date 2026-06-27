@@ -452,7 +452,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
         this.status = data.status
         this.testRun = data.testRun
         this.liveResults = data.liveResults || []
-        this.processAlive = true
+        this.processAlive = data.processAlive !== undefined ? data.processAlive : this.processAlive
         lastStatusReceived = Date.now()
         // Refresh launch command when status changes (configs may have advanced)
         await this.fetchLaunchCommand()
@@ -461,7 +461,6 @@ export const useBenchmarkStore = defineStore('benchmark', {
       eventSource.addEventListener('results', (e) => {
         const data = JSON.parse(e.data)
         this.liveResults = data.liveResults || []
-        this.processAlive = true
         lastStatusReceived = Date.now()
       })
 
@@ -478,7 +477,6 @@ export const useBenchmarkStore = defineStore('benchmark', {
       eventSource.addEventListener('test-run-complete', (e) => {
         const data = JSON.parse(e.data)
         this.benchmarkMessages = data.messages || []
-        this.processAlive = true
         lastStatusReceived = Date.now()
       })
 
