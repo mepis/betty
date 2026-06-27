@@ -434,6 +434,11 @@ if (AUTH_ENABLED) {
       "/library",
       "/pi/skills",
     ];
+    // Library export/import require auth — do not exempt them
+    if (req.path === "/library/export" || req.path === "/library/import") {
+      authenticate(req, res, next);
+      return;
+    }
     if (exempt.some((p) => req.path === p || req.path.startsWith(p + "/"))) return next();
     authenticate(req, res, next);
   });

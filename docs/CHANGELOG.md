@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-27] `src/backend/api-server.js` — added explicit authentication check for `/library/export` and `/library/import` endpoints, ensuring they always require auth regardless of exempt list configuration
+
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — moved `/api/library/:topicSlug` and `/api/library/tag/:tagname` routes after `/api/library/export` and `/api/library/import` so Express matches literal routes before the parameterized catch-all, preventing "export" and "import" from being treated as topic slugs
 
 ### Added
@@ -14,6 +16,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-27] Version bumped to 1.0.79
 - [Changed]: [2026-06-27] Version bumped to 1.0.78
 - [Changed]: [2026-06-27] Version bumped to 1.0.77
 - [Changed]: [2026-06-27] `src/frontend/src/views/Dashboard.vue` — widened the report name input field from `w-36` to `w-64` so longer report names are visible
