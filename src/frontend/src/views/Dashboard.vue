@@ -264,7 +264,7 @@ function statusBg(status) {
                 <input
                   v-model="reportName"
                   :placeholder="store.liveResults.length > 0 ? 'Report name...' : 'No results to save'"
-                  class="input input-sm w-36"
+                  class="input input-sm w-64"
                   :disabled="store.liveResults.length === 0 || savingReport"
                   @keyup.enter="handleSaveReport"
                 />

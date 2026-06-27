@@ -170,11 +170,6 @@ async function handleDeleteProfile(name) {
 
 async function handleSaveServiceProfile() {
   if (savingServiceProfile.value) return
-  if (!serviceProfileName.value.trim()) {
-    serviceProfileMessage.value = 'Please enter a profile name'
-    serviceProfileMessageError.value = true
-    return
-  }
   savingServiceProfile.value = true
   serviceProfileMessage.value = ''
   serviceProfileMessageError.value = false
@@ -183,6 +178,22 @@ async function handleSaveServiceProfile() {
     const config = await store.fetchServiceConfig()
     if (!config || !config.exists) {
       serviceProfileMessage.value = 'No service configuration found. Install a service first.'
+      serviceProfileMessageError.value = true
+      return
+    }
+    // Pre-fill profile name from service description if not already provided
+    if (!serviceProfileName.value.trim()) {
+      let defaultName = config.description || ''
+      if (defaultName.startsWith('Llama.cpp Benchmark Service -')) {
+        defaultName = defaultName.slice('Llama.cpp Benchmark Service -'.length).trim()
+      }
+      if (defaultName) {
+        serviceProfileName.value = defaultName
+      }
+    }
+    // Now check again — if still empty, require input
+    if (!serviceProfileName.value.trim()) {
+      serviceProfileMessage.value = 'Please enter a profile name'
       serviceProfileMessageError.value = true
       return
     }

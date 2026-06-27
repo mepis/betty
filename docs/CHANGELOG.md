@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-27] `src/frontend/src/views/Settings.vue` — `handleSaveServiceProfile()` now auto-fills the profile name from the service description if the user hasn't provided one, deriving a sensible default by stripping the "Llama.cpp Benchmark Service -" prefix
+
+### Changed
+
+- [Changed]: [2026-06-27] Version bumped to 1.0.77
+- [Changed]: [2026-06-27] `src/frontend/src/views/Dashboard.vue` — widened the report name input field from `w-36` to `w-64` so longer report names are visible
+
 ### Fixed
 
 - [Fixed]: [2026-06-27] `src/backend/db/data-layer.js` — `getServiceProfile()` now returns `profile.data` instead of the raw `profile` wrapper from `db.jsonGet()`, fixing cases where callers received the full response object instead of the profile data
