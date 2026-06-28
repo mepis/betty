@@ -531,6 +531,24 @@ function isLastAssistant(msg) {
       </div>
     </div>
 
+    <!-- Processing indicator -->
+    <transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0 translate-y-2"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-2"
+    >
+      <div v-if="store.isStreaming" class="flex-shrink-0 flex items-center justify-center gap-2 py-2 bg-bg-primary">
+        <svg class="w-4 h-4 text-accent animate-spin" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+        </svg>
+        <span class="text-xs font-medium text-accent">Agent is processing...</span>
+      </div>
+    </transition>
+
     <!-- Input area -->
     <div class="flex-shrink-0 bg-bg-primary px-6 py-3">
       <div class="flex items-center gap-3">

@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-28] `src/backend/api-server.js` — added `streamingBehavior: "steer"` to the prompt endpoint's `session.prompt()` call so that messages sent while the agent is processing steer the conversation instead of throwing "Agent is already processing" error
+
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — removed incorrect `entry.resume()` call in `extractWithProgress()` `onentry` callback; the `tar` module handles entry consumption internally and calling `resume()` drains the entry data before the extraction pipeline can pipe it to the output file, resulting in 0-byte files during library import
 
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — library import now uses `fs.createReadStream` piped into `tarT` instead of passing the file path directly, enabling streaming reads for large tar.gz archives and reducing memory usage during import
@@ -17,6 +19,8 @@ All notable changes to this project will be documented in this file.
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — moved `/api/library/:topicSlug` and `/api/library/tag/:tagname` routes after `/api/library/export` and `/api/library/import` so Express matches literal routes before the parameterized catch-all, preventing "export" and "import" from being treated as topic slugs
 
 ### Added
+
+- [Added]: [2026-06-28] `src/frontend/src/views/PiChat.vue` — added a processing indicator banner (spinning icon + "Agent is processing..." text) above the input area when the agent is running, with smooth enter/leave transitions
 
 - [Added]: [2026-06-27] GPU monitoring — `/api/system-status` now returns `gpuStats` array with per-GPU core utilization, VRAM usage, and temperature; displayed in SystemStats component and Dashboard
 

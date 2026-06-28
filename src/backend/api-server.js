@@ -3793,7 +3793,7 @@ app.post("/api/pi/session/:id/prompt", authorize("admin", "operator"), async (re
     }
     // Update activity timestamp
     entry.lastActivity = Date.now();
-    await entry.session.prompt(text, { expandPromptTemplates: true });
+    await entry.session.prompt(text, { expandPromptTemplates: true, streamingBehavior: "steer" });
     res.json({ success: true });
   } catch (err) {
     console.error(`[pi] Prompt error for ${sessionId}:`, err.message);
