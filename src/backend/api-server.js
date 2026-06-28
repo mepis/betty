@@ -3393,7 +3393,9 @@ app.post("/api/library/import", authorize("admin", "operator"), libraryUpload.si
 
     // First pass: count total files for progress tracking (integer only, no path storage)
     try {
-      const listStream = tarT({ file: tempPath, gzip: true });
+      const readStream = fs.createReadStream(tempPath);
+      const listStream = tarT(readStream);
+      readStream.pipe(listStream);
       listStream.on("entry", (entry) => {
         totalFileCount++;
         entry.resume(); // drain entry
