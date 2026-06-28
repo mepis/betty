@@ -59,7 +59,7 @@ defineProps({
       </div>
 
       <!-- Per-core breakdown -->
-      <div v-if="store.systemMemory.cpuCores.length > 0" class="mt-3 space-y-2">
+      <div v-if="store.systemMemory.cpuCores.length > 0" class="mt-3 grid grid-cols-5 gap-3">
         <div
           v-for="core in store.systemMemory.cpuCores"
           :key="core.name"

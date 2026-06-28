@@ -16,6 +16,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-27] `src/frontend/src/components/SystemStats.vue` — switched per-core CPU breakdown layout from vertical stack (`space-y-2`) to 5-column grid (`grid grid-cols-5 gap-3`) for more compact and readable display
+- [Changed]: [2026-06-27] Version bumped to 1.0.80
 - [Changed]: [2026-06-27] Version bumped to 1.0.79
 - [Changed]: [2026-06-27] Version bumped to 1.0.78
 - [Changed]: [2026-06-27] Version bumped to 1.0.77
