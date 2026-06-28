@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-27] `src/backend/api-server.js` — fixed GPU stats query to calculate `memoryUsedPercent` from `memory.used` and `memory.total` instead of querying the non-existent `memory.used_percent` field in nvidia-smi
+
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — added explicit authentication check for `/library/export` and `/library/import` endpoints, ensuring they always require auth regardless of exempt list configuration
 
 - [Fixed]: [2026-06-27] `src/backend/api-server.js` — moved `/api/library/:topicSlug` and `/api/library/tag/:tagname` routes after `/api/library/export` and `/api/library/import` so Express matches literal routes before the parameterized catch-all, preventing "export" and "import" from being treated as topic slugs
@@ -19,7 +21,8 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - [Changed]: [2026-06-27] `src/frontend/src/components/SystemStats.vue` — switched per-core CPU breakdown layout from vertical stack (`space-y-2`) to 5-column grid (`grid grid-cols-5 gap-3`) for more compact and readable display
-- [Changed]: [2026-06-27] Version bumped to 1.0.80
+- [Changed]: [2026-06-27] Version bumped to 1.0.82
+- [Changed]: [2026-06-27] Version bumped to 1.0.81
 - [Changed]: [2026-06-27] Version bumped to 1.0.79
 - [Changed]: [2026-06-27] Version bumped to 1.0.78
 - [Changed]: [2026-06-27] Version bumped to 1.0.77

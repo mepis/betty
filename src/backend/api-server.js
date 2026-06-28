@@ -2045,19 +2045,21 @@ app.get("/api/system-status", async (_req, res) => {
     let gpuStats = [];
     try {
       const output = execSync(
-        'nvidia-smi --query-gpu=index,name,utilization.gpu,memory.used,memory.total,temperature.gpu,memory.used_percent --format=csv,noheader,nounits',
+        'nvidia-smi --query-gpu=index,name,utilization.gpu,memory.used,memory.total,temperature.gpu --format=csv,noheader,nounits',
         { encoding: 'utf8' }
       );
       output.trim().split('\n').forEach(line => {
         const parts = line.split(',').map(s => s.trim());
+        const memoryUsedMB = parseInt(parts[3]);
+        const memoryTotalMB = parseInt(parts[4]);
         gpuStats.push({
           index: parseInt(parts[0]),
           name: parts[1],
           utilization: parseInt(parts[2]),
-          memoryUsedMB: parseInt(parts[3]),
-          memoryTotalMB: parseInt(parts[4]),
+          memoryUsedMB,
+          memoryTotalMB,
           temperature: parseInt(parts[5]),
-          memoryUsedPercent: parseInt(parts[6]),
+          memoryUsedPercent: memoryTotalMB > 0 ? Math.round((memoryUsedMB / memoryTotalMB) * 100) : 0,
         });
       });
     } catch {
