@@ -508,7 +508,11 @@ function statusBg(status) {
             <div class="flex items-center justify-between px-6 py-4 border-b border-border">
               <div>
                 <h3 class="text-lg font-semibold text-text-primary">CPU Cores</h3>
-                <p class="text-xs text-text-muted mt-0.5">{{ store.systemMemory.cpuCores.length }} cores · {{ store.systemMemory.cpuUsage }}% overall</p>
+                <p class="text-xs text-text-muted mt-0.5">{{ store.systemMemory.cpuCores.length }} cores · {{ store.systemMemory.cpuUsage }}% overall
+                  <span v-if="store.systemMemory.gpuStats && store.systemMemory.gpuStats.length > 0" class="ml-2">
+                    · {{ store.systemMemory.gpuStats.length }} GPU{{ store.systemMemory.gpuStats.length > 1 ? 's' : '' }}
+                  </span>
+                </p>
               </div>
               <button
                 @click="closeCpuModal"

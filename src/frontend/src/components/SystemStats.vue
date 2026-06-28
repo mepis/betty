@@ -86,5 +86,45 @@ defineProps({
         </div>
       </div>
     </div>
+
+    <!-- GPU Stats -->
+    <div v-if="store.systemMemory.gpuStats && store.systemMemory.gpuStats.length > 0" class="pt-3 border-t border-border">
+      <div v-for="gpu in store.systemMemory.gpuStats" :key="gpu.index" class="space-y-3">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-sm font-medium text-text-primary">{{ gpu.name }}</span>
+          <span class="text-sm font-mono font-medium">{{ gpu.temperature }}°C</span>
+        </div>
+
+        <!-- Core utilization -->
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-text-muted">Core</span>
+          <span class="text-xs font-mono">{{ gpu.utilization }}%</span>
+        </div>
+        <div class="w-full h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-500"
+            :class="
+              gpu.utilization > 90 ? 'bg-error' : gpu.utilization > 70 ? 'bg-warning' : 'bg-success'
+            "
+            :style="{ width: `${Math.min(gpu.utilization, 100)}%` }"
+          />
+        </div>
+
+        <!-- VRAM -->
+        <div class="flex items-center justify-between mb-1 mt-2">
+          <span class="text-xs text-text-muted">VRAM</span>
+          <span class="text-xs font-mono">{{ gpu.memoryUsedMB }} / {{ gpu.memoryTotalMB }} MB</span>
+        </div>
+        <div class="w-full h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-500"
+            :class="
+              gpu.memoryUsedPercent > 90 ? 'bg-error' : gpu.memoryUsedPercent > 70 ? 'bg-warning' : 'bg-success'
+            "
+            :style="{ width: `${Math.min(gpu.memoryUsedPercent, 100)}%` }"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>

@@ -17,7 +17,7 @@ See also: [[USER-MANUAL]]
 | `POST` | `/api/run` | Start benchmark (body: `{ env: {...} }`) |
 | `POST` | `/api/stop` | Stop running benchmark |
 | `POST` | `/api/kill-port` | Kill process on llama server port |
-| `GET` | `/api/system-status` | Get system memory info |
+| `GET` | `/api/system-status` | Get system memory, CPU, and GPU info |
 
 ## Configuration
 

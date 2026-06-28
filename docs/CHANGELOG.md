@@ -12,6 +12,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- [Added]: [2026-06-27] GPU monitoring — `/api/system-status` now returns `gpuStats` array with per-GPU core utilization, VRAM usage, and temperature; displayed in SystemStats component and Dashboard
+
 - [Added]: [2026-06-27] `src/frontend/src/views/Settings.vue` — `handleSaveServiceProfile()` now auto-fills the profile name from the service description if the user hasn't provided one, deriving a sensible default by stripping the "Llama.cpp Benchmark Service -" prefix
 
 ### Changed

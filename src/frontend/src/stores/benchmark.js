@@ -40,6 +40,7 @@ export const useBenchmarkStore = defineStore('benchmark', {
       percentUsed: 0,
       cpuUsage: 0,
       cpuCores: [],
+      gpuStats: [],
     },
     // HuggingFace
     hfSearchResults: [],

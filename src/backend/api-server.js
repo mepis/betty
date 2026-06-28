@@ -2041,6 +2041,29 @@ app.get("/api/system-status", async (_req, res) => {
       // Silently fail if /proc/stat is unavailable
     }
 
+    // GPU stats via nvidia-smi
+    let gpuStats = [];
+    try {
+      const output = execSync(
+        'nvidia-smi --query-gpu=index,name,utilization.gpu,memory.used,memory.total,temperature.gpu,memory.used_percent --format=csv,noheader,nounits',
+        { encoding: 'utf8' }
+      );
+      output.trim().split('\n').forEach(line => {
+        const parts = line.split(',').map(s => s.trim());
+        gpuStats.push({
+          index: parseInt(parts[0]),
+          name: parts[1],
+          utilization: parseInt(parts[2]),
+          memoryUsedMB: parseInt(parts[3]),
+          memoryTotalMB: parseInt(parts[4]),
+          temperature: parseInt(parts[5]),
+          memoryUsedPercent: parseInt(parts[6]),
+        });
+      });
+    } catch {
+      // nvidia-smi not available — keep gpuStats as []
+    }
+
     res.json({
       success: true,
       data: {
@@ -2052,6 +2075,7 @@ app.get("/api/system-status", async (_req, res) => {
         percentUsed: totalKB > 0 ? Math.round((usedGB / totalGB) * 100) : 0,
         cpuUsage,
         cpuCores,
+        gpuStats,
       },
     });
   } catch (err) {
