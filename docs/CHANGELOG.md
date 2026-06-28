@@ -6,8 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- [Fixed]: [2026-06-28] `src/backend/api-server.js` — added missing `entry.resume()` call in `extractWithProgress()` `onentry` callback, which prevented file contents from being written to disk during library import tar extraction
-- [Fixed]: [2026-06-28] `src/backend/api-server.js` — removed unnecessary `entry.resume()` call in `extractWithProgress` `onentry` callback; the tar module handles entry resumption automatically
+- [Fixed]: [2026-06-28] `src/backend/api-server.js` — removed incorrect `entry.resume()` call in `extractWithProgress()` `onentry` callback; the `tar` module handles entry consumption internally and calling `resume()` drains the entry data before the extraction pipeline can pipe it to the output file, resulting in 0-byte files during library import
 
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — library import now uses `fs.createReadStream` piped into `tarT` instead of passing the file path directly, enabling streaming reads for large tar.gz archives and reducing memory usage during import
 
@@ -25,6 +24,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-28] Version bumped to 1.0.85
 - [Changed]: [2026-06-28] Version bumped to 1.0.83
 - [Changed]: [2026-06-27] `src/frontend/src/components/SystemStats.vue` — switched per-core CPU breakdown layout from vertical stack (`space-y-2`) to 5-column grid (`grid grid-cols-5 gap-3`) for more compact and readable display
 - [Changed]: [2026-06-27] Version bumped to 1.0.82

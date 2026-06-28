@@ -3474,7 +3474,10 @@ function extractWithProgress(tempPath, totalFileCount, res) {
       const progress = Math.round((extracted / total) * 100);
       res.write(`event: library-import\ndata: PROGRESS:${progress}:${extracted}/${total}\n\n`);
       safeFlush(res);
-      entry.resume();
+      // Do NOT call entry.resume() here — tar handles entry consumption
+      // internally. Calling resume() drains the entry data before the
+      // extraction pipeline can pipe it to the output file, resulting
+      // in 0-byte files.
     },
   });
 
