@@ -3474,6 +3474,7 @@ function extractWithProgress(tempPath, totalFileCount, res) {
       const progress = Math.round((extracted / total) * 100);
       res.write(`event: library-import\ndata: PROGRESS:${progress}:${extracted}/${total}\n\n`);
       safeFlush(res);
+      entry.resume();
     },
   });
 

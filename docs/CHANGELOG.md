@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-28] `src/backend/api-server.js` — added missing `entry.resume()` call in `extractWithProgress()` `onentry` callback, which prevented file contents from being written to disk during library import tar extraction
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — removed unnecessary `entry.resume()` call in `extractWithProgress` `onentry` callback; the tar module handles entry resumption automatically
 
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — library import now uses `fs.createReadStream` piped into `tarT` instead of passing the file path directly, enabling streaming reads for large tar.gz archives and reducing memory usage during import
