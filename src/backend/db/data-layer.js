@@ -23,7 +23,10 @@ export async function getConfigs() {
   try {
     const row = await db.jsonGet("SELECT value FROM configs WHERE id = 1");
     if (row && row.value) {
-      return typeof row.value === "string" ? JSON.parse(row.value) : row.value;
+      // db.jsonGet() already parses the value column via parseJsonColumns()
+      if (typeof row.value === "object") return row.value;
+      // Safety: handle the case where it's still a string (shouldn't happen)
+      if (typeof row.value === "string") return JSON.parse(row.value);
     }
   } catch (err) {
     console.error(`[data-layer] Failed to get configs from DB: ${err.message}`);
@@ -108,14 +111,16 @@ export async function getReport(name) {
   try {
     const row = await db.jsonGet("SELECT * FROM reports WHERE name = ?", [name]);
     if (row) {
-      // Map snake_case DB columns back to camelCase and parse JSON fields
+      // db.jsonGet() already parses JSON columns via parseJsonColumns(),
+      // so live_results, configs_per_run, and configs are already objects/arrays.
+      // Map snake_case DB columns to camelCase for the frontend.
       return {
         name: row.name,
         savedAt: row.saved_at,
         mdContent: row.md_content || "",
-        liveResults: row.live_results ? JSON.parse(row.live_results) : [],
-        configsPerRun: row.configs_per_run ? JSON.parse(row.configs_per_run) : [],
-        configs: row.configs ? JSON.parse(row.configs) : {},
+        liveResults: Array.isArray(row.live_results) ? row.live_results : [],
+        configsPerRun: Array.isArray(row.configs_per_run) ? row.configs_per_run : [],
+        configs: row.configs && typeof row.configs === "object" ? row.configs : {},
       };
     }
   } catch (err) {

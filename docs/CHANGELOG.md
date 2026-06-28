@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-28] `src/backend/db/data-layer.js` — removed redundant `JSON.parse()` calls in `getConfigs()` and `getReport()` since `db.jsonGet()` already parses JSON columns via `parseJsonColumns()`; replaced with type-safe guards (`typeof === 'object'`, `Array.isArray()`) to prevent crashes from double-parsing already-deserialized values
+
 ### Added
 
 - [Added]: [2026-06-28] Comprehensive documentation expansion — 33 new documentation pages across `docs/backend/` (api-server, authentication, benchmark-runner, database, data-layer, sse-streaming), `docs/concepts/` (auth-flow, config-schema, data-flow, grid-search), `docs/features/` (benchmark-engine, chat-templates, huggingface-integration, library, library-import-export, mmproj-models, pi-chat, profiles, service-profiles, systemd-service, system-monitoring), `docs/frontend/` (overview, benchmark-store, auth-store, pi-chat-store, views, components), and `docs/qa/` (getting-started, benchmark-workflow, model-management, service-management, profile-workflow, report-workflow, api-usage)
@@ -12,6 +16,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- [Changed]: [2026-06-28] Version bumped to 1.0.88
 - [Changed]: [2026-06-28] Version bumped to 1.0.87
 - [Changed]: [2026-06-28] `docs/tags.md` — updated tag cross-reference index with entries for all 33 new documentation pages; added new tag categories and expanded existing tags
 - [Changed]: [2026-06-28] `docs/llama-cpp-parameters.md` — added frontmatter tags (reference, llama-cpp, parameters, build, cuda, developer)
