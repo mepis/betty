@@ -1768,7 +1768,7 @@ app.post("/api/service/update", authorize("admin"), (req, res) => {
 });
 
 //--- Install a systemd service from a report's launch command ---
-app.post("/api/service/install", authorize("admin"), (req, res) => {
+app.post("/api/service/install", authorize("admin"), async (req, res) => {
   const notSupported = requireSystemd(res);
   if (notSupported) return;
   try {
@@ -1777,12 +1777,11 @@ app.post("/api/service/install", authorize("admin"), (req, res) => {
       return res.status(400).json({ success: false, error: "reportName and testRunId are required" });
     }
 
-    // Get the report
-    const filePath = join(REPORTS_DIR, `${reportName}.json`);
-    if (!fs.existsSync(filePath)) {
+    // Get the report from the database
+    const report = await getReport(reportName);
+    if (!report) {
       return res.status(404).json({ success: false, error: "Report not found" });
     }
-    const report = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const configsPerRun = report.configsPerRun || [];
     const config = configsPerRun.find((c) => c.testRunId === parseInt(testRunId, 10));
     const launchCmd = getLaunchCommand(report.configs, config || {});
