@@ -4,10 +4,22 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-28] Comprehensive documentation expansion — 33 new documentation pages across `docs/backend/` (api-server, authentication, benchmark-runner, database, data-layer, sse-streaming), `docs/concepts/` (auth-flow, config-schema, data-flow, grid-search), `docs/features/` (benchmark-engine, chat-templates, huggingface-integration, library, library-import-export, mmproj-models, pi-chat, profiles, service-profiles, systemd-service, system-monitoring), `docs/frontend/` (overview, benchmark-store, auth-store, pi-chat-store, views, components), and `docs/qa/` (getting-started, benchmark-workflow, model-management, service-management, profile-workflow, report-workflow, api-usage)
+- [Added]: [2026-06-28] `docs/architecture.md` — comprehensive rewrite with enhanced Mermaid diagrams (system overview, component architecture, data flow, benchmark lifecycle), component responsibilities tables, and detailed database schema documentation
+- [Added]: [2026-06-28] `docs/index.md` — reorganized documentation index with new sections: Features, Backend Modules, Frontend Modules, Concepts, Practical Examples (QA), Research
+
+### Changed
+
+- [Changed]: [2026-06-28] Version bumped to 1.0.87
+- [Changed]: [2026-06-28] `docs/tags.md` — updated tag cross-reference index with entries for all 33 new documentation pages; added new tag categories and expanded existing tags
+- [Changed]: [2026-06-28] `docs/llama-cpp-parameters.md` — added frontmatter tags (reference, llama-cpp, parameters, build, cuda, developer)
+
 ### Fixed
 
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — added `streamingBehavior: "steer"` to the prompt endpoint's `session.prompt()` call so that messages sent while the agent is processing steer the conversation instead of throwing "Agent is already processing" error
-
+- [Fixed]: [2026-06-28] `src/backend/db/data-layer.js` — `getReport()` now maps snake_case DB columns back to camelCase and parses JSON fields (`live_results` → `liveResults`, `md_content` → `mdContent`, `saved_at` → `savedAt`, `configs_per_run` → `configsPerRun`, `configs` → `configs`), fixing the issue where reports appeared empty/broken when opened from the Reports tab in the Admin page after the MySQL data layer was added
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — removed incorrect `entry.resume()` call in `extractWithProgress()` `onentry` callback; the `tar` module handles entry consumption internally and calling `resume()` drains the entry data before the extraction pipeline can pipe it to the output file, resulting in 0-byte files during library import
 
 - [Fixed]: [2026-06-28] `src/backend/api-server.js` — library import now uses `fs.createReadStream` piped into `tarT` instead of passing the file path directly, enabling streaming reads for large tar.gz archives and reducing memory usage during import

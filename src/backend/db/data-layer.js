@@ -106,8 +106,18 @@ export async function listReports() {
  */
 export async function getReport(name) {
   try {
-    const report = await db.jsonGet("SELECT * FROM reports WHERE name = ?", [name]);
-    if (report) return report;
+    const row = await db.jsonGet("SELECT * FROM reports WHERE name = ?", [name]);
+    if (row) {
+      // Map snake_case DB columns back to camelCase and parse JSON fields
+      return {
+        name: row.name,
+        savedAt: row.saved_at,
+        mdContent: row.md_content || "",
+        liveResults: row.live_results ? JSON.parse(row.live_results) : [],
+        configsPerRun: row.configs_per_run ? JSON.parse(row.configs_per_run) : [],
+        configs: row.configs ? JSON.parse(row.configs) : {},
+      };
+    }
   } catch (err) {
     console.error(`[data-layer] Failed to get report from DB: ${err.message}`);
   }

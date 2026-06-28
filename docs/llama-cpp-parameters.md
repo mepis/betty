@@ -1,3 +1,7 @@
+---
+tags: [reference, llama-cpp, parameters, build, cuda, developer]
+---
+
 # llama.cpp Parameters Reference
 
 Comprehensive reference for all llama.cpp build options, CLI parameters, server-specific parameters, environment variables, deprecated parameters, and presets.
