@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-29] `src/frontend/src/App.vue`, `src/frontend/src/router/index.js` — renamed admin navigation item and route page title from "Admin" to "LLM Server Configs" for clearer identification of the section's purpose
+- [Changed]: [2026-06-29] Version bumped to 1.0.95
+
 ### Added
 
 - [Added]: [2026-06-29] CPU MoE support — `cpu_moe` (boolean toggle) and `n_cpu_moe` (integer value) added to `DEFAULT_CONFIGS.server_params` in `src/backend/api-server.js`; `--cpu-moe` and `--n-cpu-moe` flags passed to llama.cpp in both `getLaunchCommand()` (api-server.js) and `getRunScript()` (index.js); new "CPU Params" section in Settings.vue with toggle switches for CPU MoE and N-CPU-MoE, numeric input for the MoE count, and mutual-exclusivity logic between the two options

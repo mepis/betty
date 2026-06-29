@@ -27,7 +27,7 @@ const routes = [
     name: 'admin',
     component: Admin,
     meta: {
-      title: 'Admin',
+      title: 'LLM Server Configs',
       requiresAuth: true,
     },
   },
