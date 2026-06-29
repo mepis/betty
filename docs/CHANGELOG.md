@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- [Fixed]: [2026-06-28] `src/frontend/src/stores/pi-chat.js` — removed redundant `pi-turn-end` event listener that was setting `isStreaming = false`; the flag is already managed by `pi-agent-end` (normal completion) and `pi-error` (error path), so the handler was unnecessary and could cause premature state resets
+
 ### Reverted
 
 - [Reverted]: [2026-06-28] Reverted removal of tool call rendering from chat window (restored `src/frontend/src/views/PiChat.vue` changes)

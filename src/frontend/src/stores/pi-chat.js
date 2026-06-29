@@ -301,10 +301,6 @@ export const usePiChatStore = defineStore('piChat', {
         this._persistAfterMessage()
       })
 
-      eventSource.addEventListener('pi-turn-end', () => {
-        this.isStreaming = false
-      })
-
       eventSource.addEventListener('pi-error', (e) => {
         const data = JSON.parse(e.data)
         this.error = data.message
