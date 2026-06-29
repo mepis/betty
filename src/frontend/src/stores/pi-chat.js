@@ -214,7 +214,6 @@ export const usePiChatStore = defineStore('piChat', {
         const data = JSON.parse(e.data)
         if (this.currentAssistant) {
           this.currentAssistant.content += data.delta
-          this.tick++
         }
       })
 
@@ -222,7 +221,6 @@ export const usePiChatStore = defineStore('piChat', {
         const data = JSON.parse(e.data)
         if (this.currentAssistant) {
           this.currentAssistant.thinking += data.delta
-          this.tick++
         }
       })
 
@@ -238,7 +236,6 @@ export const usePiChatStore = defineStore('piChat', {
         }
         if (this.currentAssistant) {
           this.currentAssistant.toolCalls.push(this.currentToolCall)
-          this.tick++
         }
       })
 
@@ -246,7 +243,6 @@ export const usePiChatStore = defineStore('piChat', {
         const data = JSON.parse(e.data)
         if (this.currentToolCall) {
           this.currentToolCall.output = data.output || ''
-          this.tick++
         }
       })
 
@@ -256,7 +252,6 @@ export const usePiChatStore = defineStore('piChat', {
           this.currentToolCall.output = data.output || ''
           this.currentToolCall.success = data.success
           this.currentToolCall = null
-          this.tick++
         }
       })
 
@@ -280,7 +275,6 @@ export const usePiChatStore = defineStore('piChat', {
         if (this.currentAssistant) {
           this.messages.push(this.currentAssistant)
           this.currentAssistant = null
-          this.tick++
           this._persistAfterMessage()
         }
         this.isStreaming = false
@@ -308,7 +302,6 @@ export const usePiChatStore = defineStore('piChat', {
         if (this.currentAssistant) {
           this.messages.push(this.currentAssistant)
           this.currentAssistant = null
-          this.tick++
           this._persistAfterMessage()
         }
         this.isStreaming = false

@@ -258,7 +258,6 @@ function onToolCallRef(el, tool) {
 }
 
 const allMessages = computed(() => {
-  store.tick  // force re-evaluation on nested mutations (content, thinking, toolCalls)
   const msgs = [...store.messages]
   if (store.currentAssistant) {
     msgs.push(store.currentAssistant)
@@ -275,7 +274,7 @@ async function scrollToBottom() {
   }
 }
 
-// Throttled auto-scroll: watch message count instead of deep-watching all messages
+// Throttled auto-scroll: deep-watch currentAssistant to catch streaming content updates
 let scrollRafId = null
 function throttledScrollToBottom() {
   if (scrollRafId) return
@@ -285,9 +284,9 @@ function throttledScrollToBottom() {
   })
 }
 watch(() => store.messages.length, throttledScrollToBottom)
-watch(() => store.currentAssistant, (val) => {
-  if (val) throttledScrollToBottom()
-}, { deep: false })
+watch(() => store.currentAssistant, () => {
+  throttledScrollToBottom()
+}, { deep: true })
 
 onMounted(async () => {
   document.addEventListener('click', handleClickOutside)

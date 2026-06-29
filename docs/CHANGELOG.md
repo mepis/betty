@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- [Changed]: [2026-06-28] `src/frontend/src/stores/pi-chat.js`, `src/frontend/src/views/PiChat.vue` — replaced `tick`-based reactivity workaround with Vue's native deep-watch on `currentAssistant`; removed `this.tick++` from all 7 SSE handlers and the `store.tick` read from `allMessages` computed; auto-scroll watch now uses `{ deep: true }` to catch nested mutations (`content +=`, `thinking +=`, `toolCalls.push`, etc.) directly
+
 ### Fixed
 
 - [Fixed]: [2026-06-28] `src/frontend/src/stores/pi-chat.js` — removed redundant `pi-turn-end` event listener that was setting `isStreaming = false`; the flag is already managed by `pi-agent-end` (normal completion) and `pi-error` (error path), so the handler was unnecessary and could cause premature state resets
