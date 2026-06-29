@@ -288,7 +288,6 @@ watch(() => store.messages.length, throttledScrollToBottom)
 watch(() => store.currentAssistant, (val) => {
   if (val) throttledScrollToBottom()
 }, { deep: false })
-watch(() => store.tick, throttledScrollToBottom)
 
 onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
@@ -374,36 +373,6 @@ function handleToolToggle(event, tool) {
   }, 0)
 }
 
-function getDefaultOpenState(msg) {
-  // Respect user toggle preference, fall back to isLastAssistant rule.
-  // For the last assistant message, default to closed (user sees text first).
-  // For older messages, default to open (user can review thinking).
-  if (msg.thinkingExpanded !== undefined) {
-    return msg.thinkingExpanded
-  }
-  return !isLastAssistant(msg)
-}
-
-function handleThinkingToggle(event, msg) {
-  // @toggle fires before the browser applies the change.
-  // Capture the user's intent and defer the state update until after
-  // Vue's re-render cycle completes, then sync from the DOM.
-  const isOpenAfterToggle = event.target.open === true
-  setTimeout(() => {
-    if (!msg.thinking) {
-      // Message may have been cleared; nothing to do.
-      return
-    }
-    // Read the actual DOM state after Vue's :open binding settled
-    const el = event.target
-    if (el && el.open !== msg.thinkingExpanded) {
-      msg.thinkingExpanded = el.open
-    }
-    // If this is the last assistant message, keep it open if user opened it.
-    // Otherwise, let getDefaultOpenState decide.
-  }, 0)
-}
-
 async function handleNewSession() {
   // Dispose the old server session before creating a new one
   if (store.sessionId) {
@@ -475,8 +444,7 @@ function isLastAssistant(msg) {
             <details
               v-if="msg.thinking"
               class="group"
-              :open="getDefaultOpenState(msg)"
-              @toggle="handleThinkingToggle($event, msg)"
+              :open="!isLastAssistant(msg)"
             >
               <summary class="flex items-center gap-2 cursor-pointer text-xs text-text-muted hover:text-text-secondary transition-colors select-none">
                 <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
