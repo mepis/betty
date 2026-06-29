@@ -1,6 +1,6 @@
 {
   "name": "llama-benchmark",
-  "version": "1.0.96",
+  "version": "1.0.97",
   "type": "module",
   "scripts": {
     "update": "cd scripts && ./update.sh",
@@ -8,7 +8,6 @@
     "start": "npm install && bash src/backend/scripts/update-api-url.sh && cd src/frontend && npm install && npm run build && cd ../.. && node ./src/backend/api-server.js"
   },
   "dependencies": {
-    "@earendil-works/pi-coding-agent": "^0.79.7",
     "axios": "^1.7.0",
     "bcrypt": "^6.0.0",
     "better-sqlite3": "^11.0.0",

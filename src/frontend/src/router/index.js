@@ -6,7 +6,6 @@ import Models from '@/views/Models.vue'
 import Docs from '@/views/Docs.vue'
 import Library from '@/views/Library.vue'
 import Logs from '@/views/Logs.vue'
-import PiChat from '@/views/PiChat.vue'
 import SysInfo from '@/views/SysInfo.vue'
 import Admin from '@/views/Admin.vue'
 import AdminSettings from '@/views/AdminSettings.vue'
@@ -117,15 +116,6 @@ const routes = [
     component: Account,
     meta: {
       title: 'Account',
-      requiresAuth: true,
-    },
-  },
-  {
-    path: '/',
-    name: 'pi',
-    component: PiChat,
-    meta: {
-      title: 'Chat',
       requiresAuth: true,
     },
   },

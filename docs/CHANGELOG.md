@@ -4,12 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Removed
+
+- [Removed]: [2026-06-29] Pi Chat page (`PiChat.vue`), chat store (`pi-chat.js`), and all `/api/pi/*` backend routes (session, stream, prompt, abort, skills)
+- [Removed]: [2026-06-29] `@earendil-works/pi-coding-agent` Pi SDK dependency from `package.json`
+- [Removed]: [2026-06-29] "Chat" nav item from sidebar in `App.vue`
+
 ### Added
 
 - [Added]: [2026-06-29] `src/frontend/src/views/AdminSettings.vue` — new standalone Admin Settings view with tabbed interface for Users, Sys Info, Logs, and Library management; accessible via `/admin-settings` route with admin-only role requirement
 
 ### Changed
 
+- [Changed]: [2026-06-29] Version bumped to 1.0.97
 - [Changed]: [2026-06-29] `src/frontend/src/views/Admin.vue` — removed Users, Sys Info, Logs, and Library tabs (moved to AdminSettings); Admin page now focuses on LLM server configuration: Benchmark, Models, Chat Templates, MMPROJ Models, Settings, and Reports
 - [Changed]: [2026-06-29] `src/frontend/src/App.vue` — added "Admin" nav item pointing to `/admin-settings` with admin role requirement, alongside the existing "LLM Server Configs" nav item
 - [Changed]: [2026-06-29] `src/frontend/src/router/index.js` — added `/admin-settings` route importing `AdminSettings.vue` with `requiredRole: 'admin'` meta guard
