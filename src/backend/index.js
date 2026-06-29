@@ -779,6 +779,8 @@ function getRunScript() {
     parts.push(`--spec-type ${sps2.spec_type.value} `);
   if (sps2.spec_draft_n_max.enabled)
     parts.push(`--spec-draft-n-max ${sps2.spec_draft_n_max.value} `);
+  if (sp.cpu_moe?.enabled) parts.push(`--cpu-moe `);
+  if (sp.n_cpu_moe?.enabled) parts.push(`--n-cpu-moe ${sp.n_cpu_moe.value} `);
 
   return parts.join("");
 }

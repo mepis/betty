@@ -295,6 +295,13 @@ const DEFAULT_CONFIGS = {
       enabled: true,
       value: 999,
     },
+    cpu_moe: {
+      enabled: false,
+    },
+    n_cpu_moe: {
+      enabled: false,
+      value: 4,
+    },
   },
   benchmark_messages: [
     "Develop a design doc for a self-hosted tetris clone web-based game..",
@@ -1288,6 +1295,8 @@ function getLaunchCommand(configs, testRunConfig) {
   if (sps.primary_gpu?.enabled) parts.push(`--main-gpu ${primaryGpu}`);
   if (sp2.spec_type?.enabled) parts.push(`--spec-type ${sp2.spec_type.value}`);
   if (sp2.spec_draft_n_max?.enabled) parts.push(`--spec-draft-n-max ${sp2.spec_draft_n_max.value}`);
+  if (sp.cpu_moe?.enabled) parts.push("--cpu-moe");
+  if (sp.n_cpu_moe?.enabled) parts.push(`--n-cpu-moe ${sp.n_cpu_moe.value}`);
 
   // Build env exports
   const ec = configs.export_configs || {};

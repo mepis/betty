@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-29] CPU MoE support — `cpu_moe` (boolean toggle) and `n_cpu_moe` (integer value) added to `DEFAULT_CONFIGS.server_params` in `src/backend/api-server.js`; `--cpu-moe` and `--n-cpu-moe` flags passed to llama.cpp in both `getLaunchCommand()` (api-server.js) and `getRunScript()` (index.js); new "CPU Params" section in Settings.vue with toggle switches for CPU MoE and N-CPU-MoE, numeric input for the MoE count, and mutual-exclusivity logic between the two options
+- [Added]: [2026-06-29] Version bumped to 1.0.94
+
 ### Changed
 
 - [Changed]: [2026-06-28] `src/frontend/src/stores/pi-chat.js`, `src/frontend/src/views/PiChat.vue` — replaced `tick`-based reactivity workaround with Vue's native deep-watch on `currentAssistant`; removed `this.tick++` from all 7 SSE handlers and the `store.tick` read from `allMessages` computed; auto-scroll watch now uses `{ deep: true }` to catch nested mutations (`content +=`, `thinking +=`, `toolCalls.push`, etc.) directly

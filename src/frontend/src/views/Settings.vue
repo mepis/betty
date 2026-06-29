@@ -391,6 +391,45 @@ function handleReset() {
   saveError.value = ''
 }
 
+function toggleCpuMoe(isCpuMoe) {
+  // Ensure server_params exists
+  if (!visualConfigs.value.server_params) {
+    visualConfigs.value.server_params = {}
+  }
+  const sp = visualConfigs.value.server_params
+
+  if (isCpuMoe) {
+    // Toggle cpu_moe
+    const currentEnabled = sp.cpu_moe?.enabled ?? false
+    if (!currentEnabled) {
+      // Enable cpu_moe, disable n_cpu_moe for mutual exclusivity
+      sp.cpu_moe = { enabled: true }
+      if (sp.n_cpu_moe?.enabled) {
+        sp.n_cpu_moe = { enabled: false, value: sp.n_cpu_moe.value || 4 }
+      }
+    } else {
+      sp.cpu_moe = { enabled: false }
+    }
+    visualConfigs.value.server_params = { ...sp }
+  } else {
+    // Toggle n_cpu_moe
+    const currentEnabled = sp.n_cpu_moe?.enabled ?? false
+    if (!currentEnabled) {
+      // Enable n_cpu_moe, disable cpu_moe for mutual exclusivity
+      if (!sp.n_cpu_moe) {
+        sp.n_cpu_moe = { enabled: false, value: 4 }
+      }
+      sp.n_cpu_moe = { enabled: true, value: sp.n_cpu_moe.value || 4 }
+      if (sp.cpu_moe?.enabled) {
+        sp.cpu_moe = { enabled: false }
+      }
+    } else {
+      sp.n_cpu_moe = { enabled: false, value: sp.n_cpu_moe.value || 4 }
+    }
+    visualConfigs.value.server_params = { ...sp }
+  }
+}
+
 function toggleGpuEnabled() {
   if (!visualConfigs.value.gpu_selection) {
     visualConfigs.value.gpu_selection = { enabled: false, gpus: [] }
@@ -1416,6 +1455,51 @@ function normalizeBuildParams(configs) {
           ]"
           v-model="visualConfigs.server_params"
         />
+
+        <!-- CPU Params -->
+        <div class="space-y-3">
+          <h4 class="text-base font-semibold text-text-muted uppercase tracking-wider">CPU Params</h4>
+          <div class="space-y-2">
+            <!-- cpu-moe toggle (boolean only) -->
+            <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
+              <span class="text-sm text-text-secondary">CPU MoE</span>
+              <button
+                @click="toggleCpuMoe(true)"
+                class="relative w-10 h-5 rounded-full transition-colors"
+                :class="(visualConfigs.server_params?.cpu_moe?.enabled ?? false) ? 'bg-accent' : 'bg-bg-tertiary'"
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                  :class="(visualConfigs.server_params?.cpu_moe?.enabled ?? false) ? 'translate-x-5' : ''"
+                />
+              </button>
+            </div>
+            <!-- n-cpu-moe toggle + value -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-4 rounded-lg px-3 py-2 transition-colors hover:bg-bg-card-hover">
+                <span class="text-sm text-text-secondary">N-CPU-MoE</span>
+                <button
+                  @click="toggleCpuMoe(false)"
+                  class="relative w-10 h-5 rounded-full transition-colors"
+                  :class="(visualConfigs.server_params?.n_cpu_moe?.enabled ?? false) ? 'bg-accent' : 'bg-bg-tertiary'"
+                >
+                  <span
+                    class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform"
+                    :class="(visualConfigs.server_params?.n_cpu_moe?.enabled ?? false) ? 'translate-x-5' : ''"
+                  />
+                </button>
+              </div>
+              <div v-if="visualConfigs.server_params?.n_cpu_moe?.enabled" class="ml-1">
+                <input
+                  type="number"
+                  :value="visualConfigs.server_params.n_cpu_moe?.value ?? ''"
+                  @input="visualConfigs.server_params = { ...visualConfigs.server_params, n_cpu_moe: { ...visualConfigs.server_params.n_cpu_moe, value: Number($event.target.value) } }"
+                  class="input w-40 text-xs"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- mmproj Toggle -->
         <div class="space-y-2">
