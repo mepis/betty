@@ -250,13 +250,6 @@ const messagesRef = ref(null)
 const textareaRef = ref(null)
 const scrollLock = ref(false)
 
-function onToolCallRef(el, tool) {
-  // Set initial open state from tool.expanded (browser defaults to closed)
-  if (el && el.open !== tool.expanded) {
-    el.open = tool.expanded
-  }
-}
-
 const allMessages = computed(() => {
   store.tick  // force re-evaluation on nested mutations (content, thinking, toolCalls)
   const msgs = [...store.messages]
@@ -361,18 +354,6 @@ const contextUsageColor = computed(() => {
   return 'text-text-muted'
 })
 
-function toggleToolCall(toolCall) {
-  toolCall.expanded = !toolCall.expanded
-}
-
-function handleToolToggle(event, tool) {
-  // @toggle fires before the browser applies the change.
-  // Use setTimeout to read the new open state after the browser updates it.
-  setTimeout(() => {
-    tool.expanded = event.target.open
-  }, 0)
-}
-
 async function handleNewSession() {
   // Dispose the old server session before creating a new one
   if (store.sessionId) {
@@ -456,40 +437,6 @@ function isLastAssistant(msg) {
                 {{ msg.thinking }}
               </div>
             </details>
-
-            <!-- Tool calls -->
-            <template v-for="tool in msg.toolCalls" :key="tool.id">
-              <details
-                class="group"
-                :ref="(el) => onToolCallRef(el, tool)"
-                @toggle="handleToolToggle($event, tool)"
-              >
-                <summary class="flex items-center gap-2 cursor-pointer text-xs text-text-muted hover:text-text-secondary transition-colors select-none">
-                  <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                  </svg>
-                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.049.58.025 1.193-.14 1.743" />
-                  </svg>
-                  <span class="font-medium">{{ tool.name }}</span>
-                  <span v-if="tool.success !== null" :class="tool.success ? 'text-success' : 'text-error'">
-                    {{ tool.success ? '✓' : '✗' }}
-                  </span>
-                </summary>
-                <div class="mt-2 ml-5 pl-3 border-l-2 border-border/50 space-y-2">
-                  <!-- Params -->
-                  <div class="text-xs text-text-muted">
-                    <span class="font-medium">Input:</span>
-                    <pre class="mt-1 bg-bg-tertiary rounded-lg p-2 overflow-x-auto text-xs text-text-secondary font-mono">{{ JSON.stringify(tool.params, null, 2) }}</pre>
-                  </div>
-                  <!-- Output -->
-                  <div v-if="tool.output" class="text-xs text-text-muted">
-                    <span class="font-medium">Output:</span>
-                    <pre class="mt-1 bg-bg-tertiary rounded-lg p-2 overflow-x-auto max-h-48 text-xs text-text-secondary font-mono whitespace-pre-wrap">{{ tool.output }}</pre>
-                  </div>
-                </div>
-              </details>
-            </template>
 
             <!-- Message content (markdown) -->
             <div
