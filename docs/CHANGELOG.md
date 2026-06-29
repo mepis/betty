@@ -4,10 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-06-29] `src/frontend/src/views/AdminSettings.vue` — new standalone Admin Settings view with tabbed interface for Users, Sys Info, Logs, and Library management; accessible via `/admin-settings` route with admin-only role requirement
+
 ### Changed
 
-- [Changed]: [2026-06-29] `src/frontend/src/App.vue`, `src/frontend/src/router/index.js` — renamed admin navigation item and route page title from "Admin" to "LLM Server Configs" for clearer identification of the section's purpose
-- [Changed]: [2026-06-29] Version bumped to 1.0.95
+- [Changed]: [2026-06-29] `src/frontend/src/views/Admin.vue` — removed Users, Sys Info, Logs, and Library tabs (moved to AdminSettings); Admin page now focuses on LLM server configuration: Benchmark, Models, Chat Templates, MMPROJ Models, Settings, and Reports
+- [Changed]: [2026-06-29] `src/frontend/src/App.vue` — added "Admin" nav item pointing to `/admin-settings` with admin role requirement, alongside the existing "LLM Server Configs" nav item
+- [Changed]: [2026-06-29] `src/frontend/src/router/index.js` — added `/admin-settings` route importing `AdminSettings.vue` with `requiredRole: 'admin'` meta guard
+- [Changed]: [2026-06-29] Version bumped to 1.0.96
 
 ### Added
 

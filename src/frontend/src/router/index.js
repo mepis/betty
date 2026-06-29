@@ -9,6 +9,7 @@ import Logs from '@/views/Logs.vue'
 import PiChat from '@/views/PiChat.vue'
 import SysInfo from '@/views/SysInfo.vue'
 import Admin from '@/views/Admin.vue'
+import AdminSettings from '@/views/AdminSettings.vue'
 import Account from '@/views/Account.vue'
 import Login from '@/views/Login.vue'
 
@@ -29,6 +30,16 @@ const routes = [
     meta: {
       title: 'LLM Server Configs',
       requiresAuth: true,
+    },
+  },
+  {
+    path: '/admin-settings',
+    name: 'admin-settings',
+    component: AdminSettings,
+    meta: {
+      title: 'Admin',
+      requiresAuth: true,
+      requiredRole: 'admin',
     },
   },
   {
