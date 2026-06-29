@@ -117,6 +117,40 @@ async function handleUpdate() {
         </button>
       </div>
 
+      <!-- Status indicator -->
+      <div class="p-3">
+        <div
+          class="flex items-center gap-2 px-3 py-2 rounded-lg"
+          :class="
+            store.isRunning
+              ? 'bg-success-subtle'
+              : store.isError
+                ? 'bg-error-subtle'
+                : 'bg-bg-tertiary'
+          "
+        >
+          <span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            :class="
+              store.isRunning
+                ? 'bg-success animate-pulse'
+                : store.isError
+                  ? 'bg-error'
+                  : 'bg-text-muted'
+            "
+          />
+          <span v-if="sidebarOpen" class="text-xs font-medium" :class="
+            store.isRunning
+              ? 'text-success'
+              : store.isError
+                ? 'text-error'
+                : 'text-text-muted'
+          ">
+            {{ store.isRunning ? 'Running' : store.isError ? 'Error' : 'Idle' }}
+          </span>
+        </div>
+      </div>
+
       <!-- Update available -->
       <div v-if="sidebarOpen && store.hasUpdate" class="p-3 pt-0">
         <button
