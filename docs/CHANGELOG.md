@@ -4,14 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Removed
+### Reverted
 
-- [Removed]: [2026-06-28] `src/frontend/src/views/PiChat.vue` — removed tool call rendering from the chat window; tool calls still execute (SSE events are still processed in the store) but are no longer displayed in the UI
+- [Reverted]: [2026-06-28] Reverted removal of tool call rendering from chat window (restored `src/frontend/src/views/PiChat.vue` changes)
 
 ### Changed
 
-- [Changed]: [2026-06-28] Version bumped to 1.0.90
-
+- [Changed]: [2026-06-28] Version bumped to 1.0.91
 - [Changed]: [2026-06-28] Version bumped to 1.0.89
 - [Changed]: [2026-06-28] `src/backend/api-server.js` — `/api/service/install` now fetches reports from the database via `getReport()` instead of reading JSON files from disk, making it consistent with the MySQL data layer migration
 
