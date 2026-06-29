@@ -262,12 +262,11 @@ export const usePiChatStore = defineStore('piChat', {
 
       eventSource.addEventListener('pi-message-end', (e) => {
         const data = JSON.parse(e.data)
+        // Only update content — defer push/clear to pi-agent-end
+        // message_end fires before tool execution events; pushing here
+        // would orphan any subsequent tool calls (currentAssistant = null)
         if (data.role === 'assistant' && this.currentAssistant) {
           this.currentAssistant.content = data.content || this.currentAssistant.content
-          this.messages.push(this.currentAssistant)
-          this.currentAssistant = null
-          this.tick++
-          this._persistAfterMessage()
         }
       })
 
@@ -277,6 +276,13 @@ export const usePiChatStore = defineStore('piChat', {
 
       eventSource.addEventListener('pi-agent-end', (e) => {
         const data = JSON.parse(e.data)
+        // Finalize the current assistant message now that all tool calls are done
+        if (this.currentAssistant) {
+          this.messages.push(this.currentAssistant)
+          this.currentAssistant = null
+          this.tick++
+          this._persistAfterMessage()
+        }
         this.isStreaming = false
         if (data.tokens) {
           this.tokens = {
@@ -302,6 +308,13 @@ export const usePiChatStore = defineStore('piChat', {
       eventSource.addEventListener('pi-error', (e) => {
         const data = JSON.parse(e.data)
         this.error = data.message
+        // Push any incomplete assistant message so errors don't lose content
+        if (this.currentAssistant) {
+          this.messages.push(this.currentAssistant)
+          this.currentAssistant = null
+          this.tick++
+          this._persistAfterMessage()
+        }
         this.isStreaming = false
       })
 

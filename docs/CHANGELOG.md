@@ -13,6 +13,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-06-28] `src/frontend/src/stores/pi-chat.js` — tool calls now display correctly in the chat window; the processing indicator stays visible during tool execution; restructured SSE event handling so `currentAssistant` is only finalized after all tool calls complete (`pi-agent-end`) instead of at `pi-message-end` which fires before tool execution events
+
 - [Fixed]: [2026-06-28] `src/backend/db/data-layer.js` — removed redundant `JSON.parse()` calls in `getConfigs()` and `getReport()` since `db.jsonGet()` already parses JSON columns via `parseJsonColumns()`; replaced with type-safe guards (`typeof === 'object'`, `Array.isArray()`) to prevent crashes from double-parsing already-deserialized values
 
 ### Added
