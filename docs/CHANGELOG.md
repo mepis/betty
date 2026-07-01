@@ -38,6 +38,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- [Fixed]: [2026-07-01] `scripts/install-service-root.sh` — removed `--user` flag from all `systemctl` commands (daemon-reload, enable, start, status); the service is installed to `/etc/systemd/system/` (system-level), so user-level systemctl was incorrect
+
 - [Fixed]: [2026-06-28] `src/frontend/src/stores/pi-chat.js` — removed redundant `pi-turn-end` event listener that was setting `isStreaming = false`; the flag is already managed by `pi-agent-end` (normal completion) and `pi-error` (error path), so the handler was unnecessary and could cause premature state resets
 
 ### Reverted

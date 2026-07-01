@@ -50,13 +50,13 @@ echo "==> Enabling linger (keeps user services running after logout)..."
 loginctl enable-linger "$USER"
 
 echo "==> Reloading systemd user daemon..."
-systemctl --user daemon-reload
+systemctl  daemon-reload
 
 echo "==> Enabling service..."
-systemctl --user enable "$APP_NAME.service"
+systemctl  enable "$APP_NAME.service"
 
 echo "==> Starting service..."
-systemctl --user start "$APP_NAME.service"
+systemctl  start "$APP_NAME.service"
 
 echo "==> Service is running. Check status with:"
-echo "    systemctl --user status $APP_NAME.service"
+echo "    systemctl  status $APP_NAME.service"
