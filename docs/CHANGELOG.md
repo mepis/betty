@@ -4,8 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- [Added]: [2026-07-01] `scripts/install-service-root.sh` — standalone systemd user service installation script for Betty; creates `~/.betty` data directories (models, profiles, reports, library, users, chat_templates), writes `betty.service` unit file to `/etc/systemd/system/`, enables linger, and starts the service
+
 ### Removed
 
+- [Removed]: [2026-07-01] All `.pi/` agent and skill definitions — deleted `.pi/agents/` (reviewer, scout, worker), `.pi/skills/` (commit-and-push, orchestrator, planning, playwright-cli, project-docs, research, testing-debugging), and `.pi/extensions/agents-md.ts`; Pi coding agent configuration is now managed externally
 - [Removed]: [2026-06-29] Pi Chat page (`PiChat.vue`), chat store (`pi-chat.js`), and all `/api/pi/*` backend routes (session, stream, prompt, abort, skills)
 - [Removed]: [2026-06-29] `@earendil-works/pi-coding-agent` Pi SDK dependency from `package.json`
 - [Removed]: [2026-06-29] "Chat" nav item from sidebar in `App.vue`
